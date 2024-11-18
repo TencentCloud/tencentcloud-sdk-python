@@ -41,6 +41,9 @@ class AccessVpc(AbstractModel):
 
     @property
     def VpcId(self):
+        """Vpc的Id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -49,6 +52,9 @@ class AccessVpc(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网Id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -57,6 +63,9 @@ class AccessVpc(AbstractModel):
 
     @property
     def Status(self):
+        """内网接入状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -65,6 +74,9 @@ class AccessVpc(AbstractModel):
 
     @property
     def AccessIp(self):
+        """内网接入Ip
+        :rtype: str
+        """
         return self._AccessIp
 
     @AccessIp.setter
@@ -116,6 +128,9 @@ class AutoDelStrategyInfo(AbstractModel):
 
     @property
     def Username(self):
+        """用户名
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -124,6 +139,9 @@ class AutoDelStrategyInfo(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -132,6 +150,9 @@ class AutoDelStrategyInfo(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -140,6 +161,9 @@ class AutoDelStrategyInfo(AbstractModel):
 
     @property
     def Value(self):
+        """策略值
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -148,6 +172,9 @@ class AutoDelStrategyInfo(AbstractModel):
 
     @property
     def Valid(self):
+        """Valid
+        :rtype: int
+        """
         return self._Valid
 
     @Valid.setter
@@ -156,6 +183,9 @@ class AutoDelStrategyInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -198,6 +228,9 @@ class AutoDelStrategyInfoResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -206,6 +239,10 @@ class AutoDelStrategyInfoResp(AbstractModel):
 
     @property
     def StrategyInfo(self):
+        """自动删除策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AutoDelStrategyInfo
+        """
         return self._StrategyInfo
 
     @StrategyInfo.setter
@@ -248,6 +285,9 @@ class BatchDeleteImagePersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -256,6 +296,9 @@ class BatchDeleteImagePersonalRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag列表
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -290,6 +333,9 @@ class BatchDeleteImagePersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -315,6 +361,9 @@ class BatchDeleteRepositoryPersonalRequest(AbstractModel):
 
     @property
     def RepoNames(self):
+        """仓库名称数组
+        :rtype: list of str
+        """
         return self._RepoNames
 
     @RepoNames.setter
@@ -348,6 +397,9 @@ class BatchDeleteRepositoryPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -374,6 +426,10 @@ class CVEWhitelistItem(AbstractModel):
 
     @property
     def CVEID(self):
+        """漏洞白名单 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CVEID
 
     @CVEID.setter
@@ -407,6 +463,9 @@ class CheckInstanceNameRequest(AbstractModel):
 
     @property
     def RegistryName(self):
+        """待创建的实例名称
+        :rtype: str
+        """
         return self._RegistryName
 
     @RegistryName.setter
@@ -447,6 +506,9 @@ class CheckInstanceNameResponse(AbstractModel):
 
     @property
     def IsValidated(self):
+        """检查结果，true为合法，false为非法
+        :rtype: bool
+        """
         return self._IsValidated
 
     @IsValidated.setter
@@ -455,6 +517,10 @@ class CheckInstanceNameResponse(AbstractModel):
 
     @property
     def DetailCode(self):
+        """1: Illegal（名称非法）, 2:Reserved（名字保留）, 3:Existed（名字已存在）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DetailCode
 
     @DetailCode.setter
@@ -463,6 +529,9 @@ class CheckInstanceNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -490,6 +559,9 @@ class CheckInstanceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """待检测的实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -529,6 +601,9 @@ class CheckInstanceResponse(AbstractModel):
 
     @property
     def IsValidated(self):
+        """检查结果，true为合法，false为非法
+        :rtype: bool
+        """
         return self._IsValidated
 
     @IsValidated.setter
@@ -537,6 +612,9 @@ class CheckInstanceResponse(AbstractModel):
 
     @property
     def RegionId(self):
+        """实例所在的RegionId
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -545,6 +623,9 @@ class CheckInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -599,6 +680,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """触发器关联的镜像仓库，library/test格式
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -607,6 +691,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -615,6 +702,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def InvokeMethod(self):
+        """触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发
+        :rtype: str
+        """
         return self._InvokeMethod
 
     @InvokeMethod.setter
@@ -623,6 +713,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """应用所在TKE集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -631,6 +724,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """应用所在TKE集群命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -639,6 +735,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def WorkloadType(self):
+        """应用所在TKE集群工作负载类型,支持Deployment、StatefulSet、DaemonSet、CronJob、Job。
+        :rtype: str
+        """
         return self._WorkloadType
 
     @WorkloadType.setter
@@ -647,6 +746,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def WorkloadName(self):
+        """应用所在TKE集群工作负载名称
+        :rtype: str
+        """
         return self._WorkloadName
 
     @WorkloadName.setter
@@ -655,6 +757,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def ContainerName(self):
+        """应用所在TKE集群工作负载下容器名称
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -663,6 +768,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def ClusterRegion(self):
+        """应用所在TKE集群地域
+        :rtype: int
+        """
         return self._ClusterRegion
 
     @ClusterRegion.setter
@@ -671,6 +779,9 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def InvokeExpr(self):
+        """触发方式对应的表达式
+        :rtype: str
+        """
         return self._InvokeExpr
 
     @InvokeExpr.setter
@@ -713,6 +824,9 @@ class CreateApplicationTriggerPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -756,6 +870,9 @@ class CreateImageAccelerationServiceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -764,6 +881,9 @@ class CreateImageAccelerationServiceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """创建CFS的归属的VPCID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -772,6 +892,9 @@ class CreateImageAccelerationServiceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """创建CFS的归属的子网ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -780,6 +903,9 @@ class CreateImageAccelerationServiceRequest(AbstractModel):
 
     @property
     def StorageType(self):
+        """创建CFS的存储类型，其中 SD 为标准型存储， HP为性能存储。
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -788,6 +914,9 @@ class CreateImageAccelerationServiceRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -796,6 +925,9 @@ class CreateImageAccelerationServiceRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区名称，例如ap-beijing-1，请参考 概览 文档中的地域与可用区列表
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -804,6 +936,9 @@ class CreateImageAccelerationServiceRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """云标签描述
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -848,6 +983,9 @@ class CreateImageAccelerationServiceResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -856,6 +994,9 @@ class CreateImageAccelerationServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -888,6 +1029,9 @@ class CreateImmutableTagRulesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -896,6 +1040,9 @@ class CreateImmutableTagRulesRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -904,6 +1051,9 @@ class CreateImmutableTagRulesRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """规则
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
+        """
         return self._Rule
 
     @Rule.setter
@@ -941,6 +1091,9 @@ class CreateImmutableTagRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -972,6 +1125,9 @@ class CreateInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -980,6 +1136,9 @@ class CreateInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """自定义域名
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -988,6 +1147,9 @@ class CreateInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -1023,6 +1185,9 @@ class CreateInstanceCustomizedDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1069,6 +1234,9 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RegistryName(self):
+        """企业版实例名称
+        :rtype: str
+        """
         return self._RegistryName
 
     @RegistryName.setter
@@ -1077,6 +1245,9 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RegistryType(self):
+        """企业版实例类型（basic 基础版；standard 标准版；premium 高级版）
+        :rtype: str
+        """
         return self._RegistryType
 
     @RegistryType.setter
@@ -1085,6 +1256,9 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """云标签描述
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -1093,6 +1267,9 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RegistryChargeType(self):
+        """实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
+        :rtype: int
+        """
         return self._RegistryChargeType
 
     @RegistryChargeType.setter
@@ -1101,6 +1278,9 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RegistryChargePrepaid(self):
+        """预付费自动续费标识和购买时长
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
+        """
         return self._RegistryChargePrepaid
 
     @RegistryChargePrepaid.setter
@@ -1109,6 +1289,9 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def SyncTag(self):
+        """是否同步TCR云标签至生成的COS Bucket
+        :rtype: bool
+        """
         return self._SyncTag
 
     @SyncTag.setter
@@ -1117,6 +1300,9 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnableCosMAZ(self):
+        """是否开启Cos桶多AZ特性
+        :rtype: bool
+        """
         return self._EnableCosMAZ
 
     @EnableCosMAZ.setter
@@ -1125,6 +1311,9 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
+        """是否开启实例删除保护
+        :rtype: bool
+        """
         return self._DeletionProtection
 
     @DeletionProtection.setter
@@ -1172,6 +1361,9 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """企业版实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -1180,6 +1372,9 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1212,6 +1407,9 @@ class CreateInstanceTokenRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -1220,6 +1418,9 @@ class CreateInstanceTokenRequest(AbstractModel):
 
     @property
     def TokenType(self):
+        """访问凭证类型，longterm 为长期访问凭证，temp 为临时访问凭证，默认是临时访问凭证，有效期1小时
+        :rtype: str
+        """
         return self._TokenType
 
     @TokenType.setter
@@ -1228,6 +1429,9 @@ class CreateInstanceTokenRequest(AbstractModel):
 
     @property
     def Desc(self):
+        """长期访问凭证描述信息
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -1277,6 +1481,10 @@ class CreateInstanceTokenResponse(AbstractModel):
 
     @property
     def Username(self):
+        """用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -1285,6 +1493,9 @@ class CreateInstanceTokenResponse(AbstractModel):
 
     @property
     def Token(self):
+        """访问凭证
+        :rtype: str
+        """
         return self._Token
 
     @Token.setter
@@ -1293,6 +1504,9 @@ class CreateInstanceTokenResponse(AbstractModel):
 
     @property
     def ExpTime(self):
+        """访问凭证过期时间戳，是一个时间戳数字，无单位
+        :rtype: int
+        """
         return self._ExpTime
 
     @ExpTime.setter
@@ -1301,6 +1515,10 @@ class CreateInstanceTokenResponse(AbstractModel):
 
     @property
     def TokenId(self):
+        """长期凭证的TokenId，短期凭证没有TokenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TokenId
 
     @TokenId.setter
@@ -1309,6 +1527,9 @@ class CreateInstanceTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1355,6 +1576,9 @@ false: 使用vpc域名
 
     @property
     def InstanceId(self):
+        """tcr实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1363,6 +1587,9 @@ false: 使用vpc域名
 
     @property
     def VpcId(self):
+        """私有网络id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1371,6 +1598,9 @@ false: 使用vpc域名
 
     @property
     def EniLBIp(self):
+        """tcr内网访问链路ip
+        :rtype: str
+        """
         return self._EniLBIp
 
     @EniLBIp.setter
@@ -1379,6 +1609,11 @@ false: 使用vpc域名
 
     @property
     def UsePublicDomain(self):
+        """true：为默认域名，公网域名一致
+false: 使用vpc域名
+默认为vpc域名
+        :rtype: bool
+        """
         return self._UsePublicDomain
 
     @UsePublicDomain.setter
@@ -1387,6 +1622,9 @@ false: 使用vpc域名
 
     @property
     def RegionName(self):
+        """解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -1395,6 +1633,9 @@ false: 使用vpc域名
 
     @property
     def RegionId(self):
+        """请求的地域ID，用于实例复制地域
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -1433,6 +1674,9 @@ class CreateInternalEndpointDnsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1461,6 +1705,9 @@ class CreateMultipleSecurityPolicyRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -1469,6 +1716,9 @@ class CreateMultipleSecurityPolicyRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """安全组策略
+        :rtype: list of SecurityPolicy
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -1511,6 +1761,9 @@ class CreateMultipleSecurityPolicyResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -1519,6 +1772,9 @@ class CreateMultipleSecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1545,6 +1801,9 @@ class CreateNamespacePersonalRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1578,6 +1837,9 @@ class CreateNamespacePersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1624,6 +1886,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -1632,6 +1897,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间的名称（长度2-30个字符，只能包含小写字母、数字及分隔符("."、"_"、"-")，且不能以分隔符开头、结尾或连续）
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -1640,6 +1908,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def IsPublic(self):
+        """是否公开，true为公开，fale为私有
+        :rtype: bool
+        """
         return self._IsPublic
 
     @IsPublic.setter
@@ -1648,6 +1919,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """云标签描述
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -1656,6 +1930,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def IsAutoScan(self):
+        """自动扫描级别，true为自动，false为手动
+        :rtype: bool
+        """
         return self._IsAutoScan
 
     @IsAutoScan.setter
@@ -1664,6 +1941,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def IsPreventVUL(self):
+        """安全阻断级别，true为自动，false为手动
+        :rtype: bool
+        """
         return self._IsPreventVUL
 
     @IsPreventVUL.setter
@@ -1672,6 +1952,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Severity(self):
+        """阻断漏洞等级，目前仅支持low、medium、high
+        :rtype: str
+        """
         return self._Severity
 
     @Severity.setter
@@ -1680,6 +1963,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def CVEWhitelistItems(self):
+        """漏洞白名单列表
+        :rtype: list of CVEWhitelistItem
+        """
         return self._CVEWhitelistItems
 
     @CVEWhitelistItems.setter
@@ -1727,6 +2013,9 @@ class CreateNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1761,6 +2050,9 @@ class CreateReplicationInstanceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -1769,6 +2061,9 @@ class CreateReplicationInstanceRequest(AbstractModel):
 
     @property
     def ReplicationRegionId(self):
+        """复制实例地域ID
+        :rtype: int
+        """
         return self._ReplicationRegionId
 
     @ReplicationRegionId.setter
@@ -1777,6 +2072,9 @@ class CreateReplicationInstanceRequest(AbstractModel):
 
     @property
     def ReplicationRegionName(self):
+        """复制实例地域名称
+        :rtype: str
+        """
         return self._ReplicationRegionName
 
     @ReplicationRegionName.setter
@@ -1785,6 +2083,9 @@ class CreateReplicationInstanceRequest(AbstractModel):
 
     @property
     def SyncTag(self):
+        """是否同步TCR云标签至生成的COS Bucket
+        :rtype: bool
+        """
         return self._SyncTag
 
     @SyncTag.setter
@@ -1824,6 +2125,9 @@ class CreateReplicationInstanceResponse(AbstractModel):
 
     @property
     def ReplicationRegistryId(self):
+        """企业版复制实例Id
+        :rtype: str
+        """
         return self._ReplicationRegistryId
 
     @ReplicationRegistryId.setter
@@ -1832,6 +2136,9 @@ class CreateReplicationInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1864,6 +2171,9 @@ class CreateRepositoryPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -1872,6 +2182,9 @@ class CreateRepositoryPersonalRequest(AbstractModel):
 
     @property
     def Public(self):
+        """是否公共,1:公共,0:私有
+        :rtype: int
+        """
         return self._Public
 
     @Public.setter
@@ -1880,6 +2193,9 @@ class CreateRepositoryPersonalRequest(AbstractModel):
 
     @property
     def Description(self):
+        """仓库描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1915,6 +2231,9 @@ class CreateRepositoryPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1952,6 +2271,9 @@ class CreateRepositoryRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -1960,6 +2282,9 @@ class CreateRepositoryRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -1968,6 +2293,9 @@ class CreateRepositoryRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -1976,6 +2304,9 @@ class CreateRepositoryRequest(AbstractModel):
 
     @property
     def BriefDescription(self):
+        """仓库简短描述
+        :rtype: str
+        """
         return self._BriefDescription
 
     @BriefDescription.setter
@@ -1984,6 +2315,9 @@ class CreateRepositoryRequest(AbstractModel):
 
     @property
     def Description(self):
+        """仓库详细描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2021,6 +2355,9 @@ class CreateRepositoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2052,6 +2389,9 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2060,6 +2400,9 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """192.168.0.0/24
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -2068,6 +2411,9 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """备注
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2106,6 +2452,9 @@ class CreateSecurityPolicyResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2114,6 +2463,9 @@ class CreateSecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2158,6 +2510,9 @@ class CreateServiceAccountRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2166,6 +2521,9 @@ class CreateServiceAccountRequest(AbstractModel):
 
     @property
     def Name(self):
+        """服务级账号名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2174,6 +2532,9 @@ class CreateServiceAccountRequest(AbstractModel):
 
     @property
     def Permissions(self):
+        """策略列表
+        :rtype: list of Permission
+        """
         return self._Permissions
 
     @Permissions.setter
@@ -2182,6 +2543,9 @@ class CreateServiceAccountRequest(AbstractModel):
 
     @property
     def Description(self):
+        """服务级账号描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2190,6 +2554,9 @@ class CreateServiceAccountRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """有效期(单位：天)，从当前时间开始计算，优先级高于ExpiresAt
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -2198,6 +2565,9 @@ class CreateServiceAccountRequest(AbstractModel):
 
     @property
     def ExpiresAt(self):
+        """过期时间（时间戳，单位:毫秒）
+        :rtype: int
+        """
         return self._ExpiresAt
 
     @ExpiresAt.setter
@@ -2206,6 +2576,9 @@ class CreateServiceAccountRequest(AbstractModel):
 
     @property
     def Disable(self):
+        """是否禁用服务级账号
+        :rtype: bool
+        """
         return self._Disable
 
     @Disable.setter
@@ -2262,6 +2635,9 @@ class CreateServiceAccountResponse(AbstractModel):
 
     @property
     def Name(self):
+        """服务级账号名（会自动加上前缀tcr$）
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2270,6 +2646,9 @@ class CreateServiceAccountResponse(AbstractModel):
 
     @property
     def Password(self):
+        """服务级账号密码，仅展示一次，请注意留存
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -2278,6 +2657,9 @@ class CreateServiceAccountResponse(AbstractModel):
 
     @property
     def ExpiresAt(self):
+        """服务级账号失效时间（时间戳）
+        :rtype: int
+        """
         return self._ExpiresAt
 
     @ExpiresAt.setter
@@ -2286,6 +2668,9 @@ class CreateServiceAccountResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """服务级账号创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2294,6 +2679,9 @@ class CreateServiceAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2341,6 +2729,9 @@ class CreateSignaturePolicyRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2349,6 +2740,9 @@ class CreateSignaturePolicyRequest(AbstractModel):
 
     @property
     def Name(self):
+        """策略名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2357,6 +2751,9 @@ class CreateSignaturePolicyRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -2365,6 +2762,9 @@ class CreateSignaturePolicyRequest(AbstractModel):
 
     @property
     def KmsId(self):
+        """KMS 密钥
+        :rtype: str
+        """
         return self._KmsId
 
     @KmsId.setter
@@ -2373,6 +2773,9 @@ class CreateSignaturePolicyRequest(AbstractModel):
 
     @property
     def KmsRegion(self):
+        """KMS 密钥所属地域
+        :rtype: str
+        """
         return self._KmsRegion
 
     @KmsRegion.setter
@@ -2381,6 +2784,9 @@ class CreateSignaturePolicyRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """用户自定义域名，为空时使用 TCR 实例默认域名生成签名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2389,6 +2795,9 @@ class CreateSignaturePolicyRequest(AbstractModel):
 
     @property
     def Disabled(self):
+        """禁用加签策略，默认为 false
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -2428,6 +2837,9 @@ class CreateSignaturePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2462,6 +2874,9 @@ class CreateSignatureRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2470,6 +2885,9 @@ class CreateSignatureRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -2478,6 +2896,9 @@ class CreateSignatureRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -2486,6 +2907,9 @@ class CreateSignatureRequest(AbstractModel):
 
     @property
     def ImageVersion(self):
+        """Tag名称
+        :rtype: str
+        """
         return self._ImageVersion
 
     @ImageVersion.setter
@@ -2522,6 +2946,9 @@ class CreateSignatureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2553,6 +2980,9 @@ class CreateTagRetentionExecutionRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2561,6 +2991,9 @@ class CreateTagRetentionExecutionRequest(AbstractModel):
 
     @property
     def RetentionId(self):
+        """版本保留规则Id
+        :rtype: int
+        """
         return self._RetentionId
 
     @RetentionId.setter
@@ -2569,6 +3002,9 @@ class CreateTagRetentionExecutionRequest(AbstractModel):
 
     @property
     def DryRun(self):
+        """是否模拟执行，默认值为false，即非模拟执行
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -2604,6 +3040,9 @@ class CreateTagRetentionExecutionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2641,6 +3080,9 @@ class CreateTagRetentionRuleRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2649,6 +3091,9 @@ class CreateTagRetentionRuleRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
+        """命名空间的Id
+        :rtype: int
+        """
         return self._NamespaceId
 
     @NamespaceId.setter
@@ -2657,6 +3102,9 @@ class CreateTagRetentionRuleRequest(AbstractModel):
 
     @property
     def RetentionRule(self):
+        """保留策略
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        """
         return self._RetentionRule
 
     @RetentionRule.setter
@@ -2665,6 +3113,9 @@ class CreateTagRetentionRuleRequest(AbstractModel):
 
     @property
     def CronSetting(self):
+        """执行周期，当前只能选择： manual;daily;weekly;monthly
+        :rtype: str
+        """
         return self._CronSetting
 
     @CronSetting.setter
@@ -2673,6 +3124,9 @@ class CreateTagRetentionRuleRequest(AbstractModel):
 
     @property
     def Disabled(self):
+        """是否禁用规则，默认值为false
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -2712,6 +3166,9 @@ class CreateTagRetentionRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2737,6 +3194,9 @@ class CreateUserPersonalRequest(AbstractModel):
 
     @property
     def Password(self):
+        """用户密码，密码必须为8到16位
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -2770,6 +3230,9 @@ class CreateUserPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2801,6 +3264,9 @@ class CreateWebhookTriggerRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2809,6 +3275,9 @@ class CreateWebhookTriggerRequest(AbstractModel):
 
     @property
     def Trigger(self):
+        """触发器参数
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -2817,6 +3286,9 @@ class CreateWebhookTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2857,6 +3329,9 @@ class CreateWebhookTriggerResponse(AbstractModel):
 
     @property
     def Trigger(self):
+        """新建的触发器
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -2865,6 +3340,9 @@ class CreateWebhookTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2902,6 +3380,9 @@ class CustomizedDomainInfo(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -2910,6 +3391,9 @@ class CustomizedDomainInfo(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -2918,6 +3402,9 @@ class CustomizedDomainInfo(AbstractModel):
 
     @property
     def DomainName(self):
+        """域名名称
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -2926,6 +3413,9 @@ class CustomizedDomainInfo(AbstractModel):
 
     @property
     def Status(self):
+        """域名创建状态（SUCCESS, FAILURE, CREATING, DELETING）
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2962,6 +3452,9 @@ class DeleteApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -2995,6 +3488,9 @@ class DeleteApplicationTriggerPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3020,6 +3516,9 @@ class DeleteImageAccelerateServiceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3053,6 +3552,9 @@ class DeleteImageAccelerateServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3084,6 +3586,9 @@ class DeleteImageLifecycleGlobalPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3112,6 +3617,9 @@ class DeleteImagePersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -3120,6 +3628,9 @@ class DeleteImagePersonalRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """Tag名
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -3154,6 +3665,9 @@ class DeleteImagePersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3188,6 +3702,9 @@ class DeleteImageRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3196,6 +3713,9 @@ class DeleteImageRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -3204,6 +3724,9 @@ class DeleteImageRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """镜像仓库名称
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -3212,6 +3735,9 @@ class DeleteImageRequest(AbstractModel):
 
     @property
     def ImageVersion(self):
+        """镜像版本
+        :rtype: str
+        """
         return self._ImageVersion
 
     @ImageVersion.setter
@@ -3248,6 +3774,9 @@ class DeleteImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3279,6 +3808,9 @@ class DeleteImmutableTagRulesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3287,6 +3819,9 @@ class DeleteImmutableTagRulesRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -3295,6 +3830,9 @@ class DeleteImmutableTagRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 Id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -3330,6 +3868,9 @@ class DeleteImmutableTagRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3361,6 +3902,9 @@ class DeleteInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3369,6 +3913,9 @@ class DeleteInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """自定义域名
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -3377,6 +3924,9 @@ class DeleteInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -3412,6 +3962,9 @@ class DeleteInstanceCustomizedDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3443,6 +3996,9 @@ class DeleteInstanceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3451,6 +4007,9 @@ class DeleteInstanceRequest(AbstractModel):
 
     @property
     def DeleteBucket(self):
+        """是否删除存储桶，默认为false
+        :rtype: bool
+        """
         return self._DeleteBucket
 
     @DeleteBucket.setter
@@ -3459,6 +4018,9 @@ class DeleteInstanceRequest(AbstractModel):
 
     @property
     def DryRun(self):
+        """是否dryRun模式，缺省值：false
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -3494,6 +4056,9 @@ class DeleteInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3522,6 +4087,9 @@ class DeleteInstanceTokenRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3530,6 +4098,9 @@ class DeleteInstanceTokenRequest(AbstractModel):
 
     @property
     def TokenId(self):
+        """访问凭证 ID
+        :rtype: str
+        """
         return self._TokenId
 
     @TokenId.setter
@@ -3564,6 +4135,9 @@ class DeleteInstanceTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3602,6 +4176,9 @@ false:  使用带有vpc的域名
 
     @property
     def InstanceId(self):
+        """tcr实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3610,6 +4187,9 @@ false:  使用带有vpc的域名
 
     @property
     def VpcId(self):
+        """私有网络id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3618,6 +4198,9 @@ false:  使用带有vpc的域名
 
     @property
     def EniLBIp(self):
+        """tcr内网访问链路ip
+        :rtype: str
+        """
         return self._EniLBIp
 
     @EniLBIp.setter
@@ -3626,6 +4209,10 @@ false:  使用带有vpc的域名
 
     @property
     def UsePublicDomain(self):
+        """true：使用默认域名
+false:  使用带有vpc的域名
+        :rtype: bool
+        """
         return self._UsePublicDomain
 
     @UsePublicDomain.setter
@@ -3634,6 +4221,9 @@ false:  使用带有vpc的域名
 
     @property
     def RegionName(self):
+        """解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -3671,6 +4261,9 @@ class DeleteInternalEndpointDnsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3699,6 +4292,9 @@ class DeleteMultipleSecurityPolicyRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3707,6 +4303,9 @@ class DeleteMultipleSecurityPolicyRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """安全组策略
+        :rtype: list of SecurityPolicy
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -3749,6 +4348,9 @@ class DeleteMultipleSecurityPolicyResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3757,6 +4359,9 @@ class DeleteMultipleSecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3783,6 +4388,9 @@ class DeleteNamespacePersonalRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3816,6 +4424,9 @@ class DeleteNamespacePersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3844,6 +4455,9 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3852,6 +4466,9 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间的名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -3886,6 +4503,9 @@ class DeleteNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3917,6 +4537,9 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3925,6 +4548,9 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def ReplicationRegistryId(self):
+        """复制实例ID
+        :rtype: str
+        """
         return self._ReplicationRegistryId
 
     @ReplicationRegistryId.setter
@@ -3933,6 +4559,9 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def ReplicationRegionId(self):
+        """复制实例地域Id
+        :rtype: int
+        """
         return self._ReplicationRegionId
 
     @ReplicationRegionId.setter
@@ -3968,6 +4597,9 @@ class DeleteReplicationInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3993,6 +4625,9 @@ class DeleteRepositoryPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -4026,6 +4661,9 @@ class DeleteRepositoryPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4057,6 +4695,9 @@ class DeleteRepositoryRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4065,6 +4706,9 @@ class DeleteRepositoryRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间的名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -4073,6 +4717,9 @@ class DeleteRepositoryRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """镜像仓库的名称
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -4108,6 +4755,9 @@ class DeleteRepositoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4142,6 +4792,9 @@ class DeleteRepositoryTagsRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4150,6 +4803,9 @@ class DeleteRepositoryTagsRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -4158,6 +4814,9 @@ class DeleteRepositoryTagsRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -4166,6 +4825,9 @@ class DeleteRepositoryTagsRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag列表，单次请求Tag数量最大为20
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -4202,6 +4864,9 @@ class DeleteRepositoryTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4236,6 +4901,9 @@ class DeleteSecurityPolicyRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4244,6 +4912,9 @@ class DeleteSecurityPolicyRequest(AbstractModel):
 
     @property
     def PolicyIndex(self):
+        """白名单Id
+        :rtype: int
+        """
         return self._PolicyIndex
 
     @PolicyIndex.setter
@@ -4252,6 +4923,9 @@ class DeleteSecurityPolicyRequest(AbstractModel):
 
     @property
     def PolicyVersion(self):
+        """白名单版本
+        :rtype: str
+        """
         return self._PolicyVersion
 
     @PolicyVersion.setter
@@ -4260,6 +4934,9 @@ class DeleteSecurityPolicyRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """网段或IP(互斥)
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -4299,6 +4976,9 @@ class DeleteSecurityPolicyResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4307,6 +4987,9 @@ class DeleteSecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4336,6 +5019,9 @@ class DeleteServiceAccountRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id	
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4344,6 +5030,9 @@ class DeleteServiceAccountRequest(AbstractModel):
 
     @property
     def Name(self):
+        """服务级账号名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4378,6 +5067,9 @@ class DeleteServiceAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4406,6 +5098,9 @@ class DeleteSignaturePolicyRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4414,6 +5109,9 @@ class DeleteSignaturePolicyRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间的名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -4448,6 +5146,9 @@ class DeleteSignaturePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4476,6 +5177,9 @@ class DeleteTagRetentionRuleRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4484,6 +5188,9 @@ class DeleteTagRetentionRuleRequest(AbstractModel):
 
     @property
     def RetentionId(self):
+        """版本保留规则的Id
+        :rtype: int
+        """
         return self._RetentionId
 
     @RetentionId.setter
@@ -4518,6 +5225,9 @@ class DeleteTagRetentionRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4549,6 +5259,9 @@ class DeleteWebhookTriggerRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4557,6 +5270,9 @@ class DeleteWebhookTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4565,6 +5281,9 @@ class DeleteWebhookTriggerRequest(AbstractModel):
 
     @property
     def Id(self):
+        """触发器 Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4600,6 +5319,9 @@ class DeleteWebhookTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4637,6 +5359,9 @@ class DescribeApplicationTriggerLogPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -4645,6 +5370,9 @@ class DescribeApplicationTriggerLogPersonalRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4653,6 +5381,9 @@ class DescribeApplicationTriggerLogPersonalRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回最大数量，默认 20, 最大值 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4661,6 +5392,9 @@ class DescribeApplicationTriggerLogPersonalRequest(AbstractModel):
 
     @property
     def Order(self):
+        """升序或降序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4669,6 +5403,9 @@ class DescribeApplicationTriggerLogPersonalRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """按某列排序
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -4710,6 +5447,9 @@ class DescribeApplicationTriggerLogPersonalResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4718,6 +5458,10 @@ class DescribeApplicationTriggerLogPersonalResp(AbstractModel):
 
     @property
     def LogInfo(self):
+        """触发日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerLogResp
+        """
         return self._LogInfo
 
     @LogInfo.setter
@@ -4760,6 +5504,9 @@ class DescribeApplicationTriggerLogPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """触发日志返回值
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeApplicationTriggerLogPersonalResp`
+        """
         return self._Data
 
     @Data.setter
@@ -4768,6 +5515,9 @@ class DescribeApplicationTriggerLogPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4805,6 +5555,9 @@ class DescribeApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -4813,6 +5566,9 @@ class DescribeApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -4821,6 +5577,9 @@ class DescribeApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4829,6 +5588,9 @@ class DescribeApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回最大数量，默认 20, 最大值 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4868,6 +5630,9 @@ class DescribeApplicationTriggerPersonalResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回条目总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4876,6 +5641,9 @@ class DescribeApplicationTriggerPersonalResp(AbstractModel):
 
     @property
     def TriggerInfo(self):
+        """触发器列表
+        :rtype: list of TriggerResp
+        """
         return self._TriggerInfo
 
     @TriggerInfo.setter
@@ -4918,6 +5686,9 @@ class DescribeApplicationTriggerPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """触发器列表返回值
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeApplicationTriggerPersonalResp`
+        """
         return self._Data
 
     @Data.setter
@@ -4926,6 +5697,9 @@ class DescribeApplicationTriggerPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4963,6 +5737,9 @@ class DescribeChartDownloadInfoRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -4971,6 +5748,9 @@ class DescribeChartDownloadInfoRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -4979,6 +5759,9 @@ class DescribeChartDownloadInfoRequest(AbstractModel):
 
     @property
     def ChartName(self):
+        """Chart包的名称
+        :rtype: str
+        """
         return self._ChartName
 
     @ChartName.setter
@@ -4987,6 +5770,9 @@ class DescribeChartDownloadInfoRequest(AbstractModel):
 
     @property
     def ChartVersion(self):
+        """Chart包的版本
+        :rtype: str
+        """
         return self._ChartVersion
 
     @ChartVersion.setter
@@ -5026,6 +5812,9 @@ class DescribeChartDownloadInfoResponse(AbstractModel):
 
     @property
     def PreSignedDownloadURL(self):
+        """用于下载的url的预签名地址
+        :rtype: str
+        """
         return self._PreSignedDownloadURL
 
     @PreSignedDownloadURL.setter
@@ -5034,6 +5823,9 @@ class DescribeChartDownloadInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5060,6 +5852,9 @@ class DescribeExternalEndpointStatusRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -5100,6 +5895,9 @@ class DescribeExternalEndpointStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """开启公网访问状态，开启中（Opening）、已开启（Opened）、关闭（Closed）
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5108,6 +5906,10 @@ class DescribeExternalEndpointStatusResponse(AbstractModel):
 
     @property
     def Reason(self):
+        """原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -5116,6 +5918,9 @@ class DescribeExternalEndpointStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5149,6 +5954,9 @@ class DescribeFavorRepositoryPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -5157,6 +5965,9 @@ class DescribeFavorRepositoryPersonalRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页Limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5165,6 +5976,9 @@ class DescribeFavorRepositoryPersonalRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset用于分页
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5203,6 +6017,9 @@ class DescribeFavorRepositoryPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """个人收藏仓库列表返回信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.FavorResp`
+        """
         return self._Data
 
     @Data.setter
@@ -5211,6 +6028,9 @@ class DescribeFavorRepositoryPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5239,6 +6059,9 @@ class DescribeGCJobsRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -5275,6 +6098,9 @@ class DescribeGCJobsResponse(AbstractModel):
 
     @property
     def Jobs(self):
+        """GC Job 列表
+        :rtype: list of GCJobInfo
+        """
         return self._Jobs
 
     @Jobs.setter
@@ -5283,6 +6109,9 @@ class DescribeGCJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5314,6 +6143,9 @@ class DescribeImageAccelerateServiceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -5356,6 +6188,9 @@ class DescribeImageAccelerateServiceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """镜像加速状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5364,6 +6199,9 @@ class DescribeImageAccelerateServiceResponse(AbstractModel):
 
     @property
     def CFSVIP(self):
+        """CFS的VIP
+        :rtype: str
+        """
         return self._CFSVIP
 
     @CFSVIP.setter
@@ -5372,6 +6210,9 @@ class DescribeImageAccelerateServiceResponse(AbstractModel):
 
     @property
     def IsEnable(self):
+        """是否开通
+        :rtype: bool
+        """
         return self._IsEnable
 
     @IsEnable.setter
@@ -5380,6 +6221,9 @@ class DescribeImageAccelerateServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5411,6 +6255,9 @@ class DescribeImageFilterPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -5419,6 +6266,9 @@ class DescribeImageFilterPersonalRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """Tag名
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -5456,6 +6306,9 @@ class DescribeImageFilterPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回tag镜像内容相同的tag列表
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.SameImagesResp`
+        """
         return self._Data
 
     @Data.setter
@@ -5464,6 +6317,9 @@ class DescribeImageFilterPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5501,6 +6357,9 @@ class DescribeImageLifecycleGlobalPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """全局自动删除策略信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.AutoDelStrategyInfoResp`
+        """
         return self._Data
 
     @Data.setter
@@ -5509,6 +6368,9 @@ class DescribeImageLifecycleGlobalPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5537,6 +6399,9 @@ class DescribeImageLifecyclePersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -5573,6 +6438,9 @@ class DescribeImageLifecyclePersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """自动删除策略信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.AutoDelStrategyInfoResp`
+        """
         return self._Data
 
     @Data.setter
@@ -5581,6 +6449,9 @@ class DescribeImageLifecyclePersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5618,6 +6489,9 @@ class DescribeImageManifestsRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -5626,6 +6500,9 @@ class DescribeImageManifestsRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -5634,6 +6511,9 @@ class DescribeImageManifestsRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """镜像仓库名称
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -5642,6 +6522,9 @@ class DescribeImageManifestsRequest(AbstractModel):
 
     @property
     def ImageVersion(self):
+        """镜像版本
+        :rtype: str
+        """
         return self._ImageVersion
 
     @ImageVersion.setter
@@ -5692,6 +6575,9 @@ class DescribeImageManifestsResponse(AbstractModel):
 
     @property
     def Manifest(self):
+        """镜像的Manifest信息
+        :rtype: str
+        """
         return self._Manifest
 
     @Manifest.setter
@@ -5700,6 +6586,9 @@ class DescribeImageManifestsResponse(AbstractModel):
 
     @property
     def Config(self):
+        """镜像的配置信息
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -5708,6 +6597,10 @@ class DescribeImageManifestsResponse(AbstractModel):
 
     @property
     def Labels(self):
+        """镜像的Labels信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KeyValueString
+        """
         return self._Labels
 
     @Labels.setter
@@ -5716,6 +6609,10 @@ class DescribeImageManifestsResponse(AbstractModel):
 
     @property
     def Size(self):
+        """镜像大小，单位：byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -5724,6 +6621,9 @@ class DescribeImageManifestsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5767,6 +6667,9 @@ class DescribeImagePersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -5775,6 +6678,9 @@ class DescribeImagePersonalRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5783,6 +6689,9 @@ class DescribeImagePersonalRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回最大数量，默认 20, 最大值 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5791,6 +6700,9 @@ class DescribeImagePersonalRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """tag名称，可根据输入搜索
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -5830,6 +6742,9 @@ class DescribeImagePersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """镜像tag信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TagInfoResp`
+        """
         return self._Data
 
     @Data.setter
@@ -5838,6 +6753,9 @@ class DescribeImagePersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5887,6 +6805,9 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -5895,6 +6816,9 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -5903,6 +6827,9 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """镜像仓库名称
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -5911,6 +6838,9 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def ImageVersion(self):
+        """指定镜像版本进行查找，当前为模糊搜索
+        :rtype: str
+        """
         return self._ImageVersion
 
     @ImageVersion.setter
@@ -5919,6 +6849,9 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页个数，用于分页，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5927,6 +6860,9 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页数，默认值为1
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5935,6 +6871,9 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Digest(self):
+        """指定镜像 Digest 进行查找
+        :rtype: str
+        """
         return self._Digest
 
     @Digest.setter
@@ -5943,6 +6882,9 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def ExactMatch(self):
+        """指定是否为精准匹配，true为精准匹配，不填为模糊匹配
+        :rtype: bool
+        """
         return self._ExactMatch
 
     @ExactMatch.setter
@@ -5989,6 +6931,9 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def ImageInfoList(self):
+        """容器镜像信息列表
+        :rtype: list of TcrImageInfo
+        """
         return self._ImageInfoList
 
     @ImageInfoList.setter
@@ -5997,6 +6942,9 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """容器镜像总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6005,6 +6953,9 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6037,6 +6988,9 @@ class DescribeImmutableTagRulesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -6081,6 +7035,10 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ImmutableTagRule
+        """
         return self._Rules
 
     @Rules.setter
@@ -6089,6 +7047,10 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
 
     @property
     def EmptyNs(self):
+        """未创建规则的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._EmptyNs
 
     @EmptyNs.setter
@@ -6097,6 +7059,9 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """规则总量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6105,6 +7070,9 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6141,6 +7109,9 @@ class DescribeInstanceAllNamespacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页个数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6149,6 +7120,9 @@ class DescribeInstanceAllNamespacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """起始偏移位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6183,6 +7157,9 @@ class DescribeInstanceAllNamespacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6214,6 +7191,9 @@ class DescribeInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -6222,6 +7202,9 @@ class DescribeInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页Limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6230,6 +7213,9 @@ class DescribeInstanceCustomizedDomainRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6272,6 +7258,10 @@ class DescribeInstanceCustomizedDomainResponse(AbstractModel):
 
     @property
     def DomainInfoList(self):
+        """域名信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomizedDomainInfo
+        """
         return self._DomainInfoList
 
     @DomainInfoList.setter
@@ -6280,6 +7270,9 @@ class DescribeInstanceCustomizedDomainResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6288,6 +7281,9 @@ class DescribeInstanceCustomizedDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6320,6 +7316,9 @@ class DescribeInstanceStatusRequest(AbstractModel):
 
     @property
     def RegistryIds(self):
+        """实例ID的数组
+        :rtype: list of str
+        """
         return self._RegistryIds
 
     @RegistryIds.setter
@@ -6357,6 +7356,10 @@ class DescribeInstanceStatusResponse(AbstractModel):
 
     @property
     def RegistryStatusSet(self):
+        """实例的状态列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RegistryStatus
+        """
         return self._RegistryStatusSet
 
     @RegistryStatusSet.setter
@@ -6365,6 +7368,9 @@ class DescribeInstanceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6402,6 +7408,9 @@ class DescribeInstanceTokenRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -6410,6 +7419,9 @@ class DescribeInstanceTokenRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6418,6 +7430,9 @@ class DescribeInstanceTokenRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6459,6 +7474,9 @@ class DescribeInstanceTokenResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """长期访问凭证总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6467,6 +7485,9 @@ class DescribeInstanceTokenResponse(AbstractModel):
 
     @property
     def Tokens(self):
+        """长期访问凭证列表
+        :rtype: list of TcrInstanceToken
+        """
         return self._Tokens
 
     @Tokens.setter
@@ -6475,6 +7496,9 @@ class DescribeInstanceTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6520,6 +7544,10 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Registryids(self):
+        """实例ID列表(为空时，
+表示获取账号下所有实例)
+        :rtype: list of str
+        """
         return self._Registryids
 
     @Registryids.setter
@@ -6528,6 +7556,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量,默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6536,6 +7567,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """最大输出条数，默认20，最大为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6544,6 +7578,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6552,6 +7589,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def AllRegion(self):
+        """获取所有地域的实例，默认为False
+        :rtype: bool
+        """
         return self._AllRegion
 
     @AllRegion.setter
@@ -6601,6 +7641,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总实例个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6609,6 +7652,10 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def Registries(self):
+        """实例信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Registry
+        """
         return self._Registries
 
     @Registries.setter
@@ -6617,6 +7664,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6649,6 +7699,9 @@ class DescribeInternalEndpointDnsStatusRequest(AbstractModel):
 
     @property
     def VpcSet(self):
+        """vpc列表
+        :rtype: list of VpcAndDomainInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -6691,6 +7744,10 @@ class DescribeInternalEndpointDnsStatusResponse(AbstractModel):
 
     @property
     def VpcSet(self):
+        """vpc私有域名解析状态列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VpcPrivateDomainStatus
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -6699,6 +7756,9 @@ class DescribeInternalEndpointDnsStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6730,6 +7790,9 @@ class DescribeInternalEndpointsRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -6770,6 +7833,10 @@ class DescribeInternalEndpointsResponse(AbstractModel):
 
     @property
     def AccessVpcSet(self):
+        """内网接入信息的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AccessVpc
+        """
         return self._AccessVpcSet
 
     @AccessVpcSet.setter
@@ -6778,6 +7845,9 @@ class DescribeInternalEndpointsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """内网接入总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6786,6 +7856,9 @@ class DescribeInternalEndpointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6824,6 +7897,9 @@ class DescribeNamespacePersonalRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，支持模糊查询
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6832,6 +7908,9 @@ class DescribeNamespacePersonalRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6840,6 +7919,9 @@ class DescribeNamespacePersonalRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6878,6 +7960,9 @@ class DescribeNamespacePersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """用户命名空间返回信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.NamespaceInfoResp`
+        """
         return self._Data
 
     @Data.setter
@@ -6886,6 +7971,9 @@ class DescribeNamespacePersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6936,6 +8024,9 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -6944,6 +8035,9 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """指定命名空间，不填写默认查询所有命名空间
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -6952,6 +8046,9 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页个数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6960,6 +8057,9 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页面偏移（第几页）
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6968,6 +8068,9 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def All(self):
+        """列出所有命名空间
+        :rtype: bool
+        """
         return self._All
 
     @All.setter
@@ -6976,6 +8079,13 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+- 按照【标签】过滤
+   Name: Tags
+   Value:   tagKey:tagVal
+
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6984,6 +8094,9 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def KmsSignPolicy(self):
+        """仅查询启用了 KMS 镜像签名的空间
+        :rtype: bool
+        """
         return self._KmsSignPolicy
 
     @KmsSignPolicy.setter
@@ -7034,6 +8147,9 @@ class DescribeNamespacesResponse(AbstractModel):
 
     @property
     def NamespaceList(self):
+        """命名空间列表信息
+        :rtype: list of TcrNamespaceInfo
+        """
         return self._NamespaceList
 
     @NamespaceList.setter
@@ -7042,6 +8158,9 @@ class DescribeNamespacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7050,6 +8169,9 @@ class DescribeNamespacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7094,6 +8216,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回的总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7102,6 +8227,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def Regions(self):
+        """地域信息列表
+        :rtype: list of Region
+        """
         return self._Regions
 
     @Regions.setter
@@ -7110,6 +8238,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7145,6 +8276,9 @@ class DescribeReplicationInstanceCreateTasksRequest(AbstractModel):
 
     @property
     def ReplicationRegistryId(self):
+        """同步实例Id，见实例返回列表中的同步实例ID
+        :rtype: str
+        """
         return self._ReplicationRegistryId
 
     @ReplicationRegistryId.setter
@@ -7153,6 +8287,9 @@ class DescribeReplicationInstanceCreateTasksRequest(AbstractModel):
 
     @property
     def ReplicationRegionId(self):
+        """同步实例的地域ID，见实例返回列表中地域ID
+        :rtype: int
+        """
         return self._ReplicationRegionId
 
     @ReplicationRegionId.setter
@@ -7193,6 +8330,9 @@ class DescribeReplicationInstanceCreateTasksResponse(AbstractModel):
 
     @property
     def TaskDetail(self):
+        """任务详情
+        :rtype: list of TaskDetail
+        """
         return self._TaskDetail
 
     @TaskDetail.setter
@@ -7201,6 +8341,9 @@ class DescribeReplicationInstanceCreateTasksResponse(AbstractModel):
 
     @property
     def Status(self):
+        """整体任务状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7209,6 +8352,9 @@ class DescribeReplicationInstanceCreateTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7256,6 +8402,9 @@ class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -7264,6 +8413,9 @@ class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
 
     @property
     def ReplicationRegistryId(self):
+        """复制实例Id
+        :rtype: str
+        """
         return self._ReplicationRegistryId
 
     @ReplicationRegistryId.setter
@@ -7272,6 +8424,9 @@ class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
 
     @property
     def ReplicationRegionId(self):
+        """复制实例的地域Id
+        :rtype: int
+        """
         return self._ReplicationRegionId
 
     @ReplicationRegionId.setter
@@ -7280,6 +8435,9 @@ class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
 
     @property
     def ShowReplicationLog(self):
+        """是否显示同步日志
+        :rtype: bool
+        """
         return self._ShowReplicationLog
 
     @ShowReplicationLog.setter
@@ -7288,6 +8446,9 @@ class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """日志页号, 默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7296,6 +8457,9 @@ class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """最大输出条数，默认5，最大为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7344,6 +8508,9 @@ class DescribeReplicationInstanceSyncStatusResponse(AbstractModel):
 
     @property
     def ReplicationStatus(self):
+        """同步状态
+        :rtype: str
+        """
         return self._ReplicationStatus
 
     @ReplicationStatus.setter
@@ -7352,6 +8519,9 @@ class DescribeReplicationInstanceSyncStatusResponse(AbstractModel):
 
     @property
     def ReplicationTime(self):
+        """同步完成时间
+        :rtype: str
+        """
         return self._ReplicationTime
 
     @ReplicationTime.setter
@@ -7360,6 +8530,10 @@ class DescribeReplicationInstanceSyncStatusResponse(AbstractModel):
 
     @property
     def ReplicationLog(self):
+        """同步日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ReplicationLog`
+        """
         return self._ReplicationLog
 
     @ReplicationLog.setter
@@ -7368,6 +8542,9 @@ class DescribeReplicationInstanceSyncStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7404,6 +8581,9 @@ class DescribeReplicationInstancesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -7412,6 +8592,9 @@ class DescribeReplicationInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量,默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7420,6 +8603,9 @@ class DescribeReplicationInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """最大输出条数，默认20，最大为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7462,6 +8648,9 @@ class DescribeReplicationInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总实例个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7470,6 +8659,10 @@ class DescribeReplicationInstancesResponse(AbstractModel):
 
     @property
     def ReplicationRegistries(self):
+        """同步实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReplicationRegistry
+        """
         return self._ReplicationRegistries
 
     @ReplicationRegistries.setter
@@ -7478,6 +8671,9 @@ class DescribeReplicationInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7525,6 +8721,9 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -7533,6 +8732,9 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """指定命名空间，不填写默认为查询所有命名空间下镜像仓库
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -7541,6 +8743,9 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -7549,6 +8754,9 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页数，用于分页
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7557,6 +8765,9 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页个数，用于分页
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7565,6 +8776,9 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """基于字段排序，支持的值有-creation_time,-name, -update_time
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -7609,6 +8823,9 @@ class DescribeRepositoriesResponse(AbstractModel):
 
     @property
     def RepositoryList(self):
+        """仓库信息列表
+        :rtype: list of TcrRepositoryInfo
+        """
         return self._RepositoryList
 
     @RepositoryList.setter
@@ -7617,6 +8834,9 @@ class DescribeRepositoriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7625,6 +8845,9 @@ class DescribeRepositoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7669,6 +8892,9 @@ class DescribeRepositoryFilterPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """搜索镜像名
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -7677,6 +8903,9 @@ class DescribeRepositoryFilterPersonalRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7685,6 +8914,9 @@ class DescribeRepositoryFilterPersonalRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回最大数量，默认 20，最大100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7693,6 +8925,9 @@ class DescribeRepositoryFilterPersonalRequest(AbstractModel):
 
     @property
     def Public(self):
+        """筛选条件：1表示public，0表示private
+        :rtype: int
+        """
         return self._Public
 
     @Public.setter
@@ -7701,6 +8936,9 @@ class DescribeRepositoryFilterPersonalRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7741,6 +8979,9 @@ class DescribeRepositoryFilterPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """仓库信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.SearchUserRepositoryResp`
+        """
         return self._Data
 
     @Data.setter
@@ -7749,6 +8990,9 @@ class DescribeRepositoryFilterPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7783,6 +9027,9 @@ class DescribeRepositoryOwnerPersonalRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7791,6 +9038,9 @@ class DescribeRepositoryOwnerPersonalRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回最大数量，默认 20, 最大值 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7799,6 +9049,9 @@ class DescribeRepositoryOwnerPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -7837,6 +9090,9 @@ class DescribeRepositoryOwnerPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """仓库信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RepoInfoResp`
+        """
         return self._Data
 
     @Data.setter
@@ -7845,6 +9101,9 @@ class DescribeRepositoryOwnerPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7873,6 +9132,9 @@ class DescribeRepositoryPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名字
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -7909,6 +9171,9 @@ class DescribeRepositoryPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """仓库信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RepositoryInfoResp`
+        """
         return self._Data
 
     @Data.setter
@@ -7917,6 +9182,9 @@ class DescribeRepositoryPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7945,6 +9213,9 @@ class DescribeSecurityPoliciesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例的Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -7982,6 +9253,10 @@ class DescribeSecurityPoliciesResponse(AbstractModel):
 
     @property
     def SecurityPolicySet(self):
+        """实例安全策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecurityPolicy
+        """
         return self._SecurityPolicySet
 
     @SecurityPolicySet.setter
@@ -7990,6 +9265,9 @@ class DescribeSecurityPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8036,6 +9314,9 @@ class DescribeServiceAccountsRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -8044,6 +9325,9 @@ class DescribeServiceAccountsRequest(AbstractModel):
 
     @property
     def All(self):
+        """列出所有服务级账号
+        :rtype: bool
+        """
         return self._All
 
     @All.setter
@@ -8052,6 +9336,9 @@ class DescribeServiceAccountsRequest(AbstractModel):
 
     @property
     def EmbedPermission(self):
+        """是否填充权限信息
+        :rtype: bool
+        """
         return self._EmbedPermission
 
     @EmbedPermission.setter
@@ -8060,6 +9347,9 @@ class DescribeServiceAccountsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -8068,6 +9358,9 @@ class DescribeServiceAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量,默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8076,6 +9369,9 @@ class DescribeServiceAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """最大输出条数，默认20，最大为100（超出最大值，调整到最大值）
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8126,6 +9422,10 @@ class DescribeServiceAccountsResponse(AbstractModel):
 
     @property
     def ServiceAccounts(self):
+        """服务级账号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceAccount
+        """
         return self._ServiceAccounts
 
     @ServiceAccounts.setter
@@ -8134,6 +9434,9 @@ class DescribeServiceAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """服务级账户数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8142,6 +9445,9 @@ class DescribeServiceAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8183,6 +9489,9 @@ class DescribeTagRetentionExecutionRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -8191,6 +9500,9 @@ class DescribeTagRetentionExecutionRequest(AbstractModel):
 
     @property
     def RetentionId(self):
+        """规则Id
+        :rtype: int
+        """
         return self._RetentionId
 
     @RetentionId.setter
@@ -8199,6 +9511,9 @@ class DescribeTagRetentionExecutionRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页PageSize
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8207,6 +9522,9 @@ class DescribeTagRetentionExecutionRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页Page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8249,6 +9567,9 @@ class DescribeTagRetentionExecutionResponse(AbstractModel):
 
     @property
     def RetentionExecutionList(self):
+        """版本保留执行记录列表
+        :rtype: list of RetentionExecution
+        """
         return self._RetentionExecutionList
 
     @RetentionExecutionList.setter
@@ -8257,6 +9578,9 @@ class DescribeTagRetentionExecutionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """版本保留执行记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8265,6 +9589,9 @@ class DescribeTagRetentionExecutionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8309,6 +9636,9 @@ class DescribeTagRetentionExecutionTaskRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -8317,6 +9647,9 @@ class DescribeTagRetentionExecutionTaskRequest(AbstractModel):
 
     @property
     def RetentionId(self):
+        """规则Id
+        :rtype: int
+        """
         return self._RetentionId
 
     @RetentionId.setter
@@ -8325,6 +9658,9 @@ class DescribeTagRetentionExecutionTaskRequest(AbstractModel):
 
     @property
     def ExecutionId(self):
+        """规则执行Id
+        :rtype: int
+        """
         return self._ExecutionId
 
     @ExecutionId.setter
@@ -8333,6 +9669,9 @@ class DescribeTagRetentionExecutionTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页Page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8341,6 +9680,9 @@ class DescribeTagRetentionExecutionTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页PageSize
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8384,6 +9726,9 @@ class DescribeTagRetentionExecutionTaskResponse(AbstractModel):
 
     @property
     def RetentionTaskList(self):
+        """版本保留执行任务列表
+        :rtype: list of RetentionTask
+        """
         return self._RetentionTaskList
 
     @RetentionTaskList.setter
@@ -8392,6 +9737,9 @@ class DescribeTagRetentionExecutionTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """版本保留执行任务总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8400,6 +9748,9 @@ class DescribeTagRetentionExecutionTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8441,6 +9792,9 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -8449,6 +9803,9 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间的名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -8457,6 +9814,9 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页PageSize
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8465,6 +9825,9 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页Page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8507,6 +9870,9 @@ class DescribeTagRetentionRulesResponse(AbstractModel):
 
     @property
     def RetentionPolicyList(self):
+        """版本保留策略列表
+        :rtype: list of RetentionPolicy
+        """
         return self._RetentionPolicyList
 
     @RetentionPolicyList.setter
@@ -8515,6 +9881,9 @@ class DescribeTagRetentionRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """版本保留策略总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8523,6 +9892,9 @@ class DescribeTagRetentionRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8564,6 +9936,9 @@ class DescribeUserQuotaPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """配额返回信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RespLimit`
+        """
         return self._Data
 
     @Data.setter
@@ -8572,6 +9947,9 @@ class DescribeUserQuotaPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8612,6 +9990,9 @@ class DescribeWebhookTriggerLogRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -8620,6 +10001,9 @@ class DescribeWebhookTriggerLogRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8628,6 +10012,9 @@ class DescribeWebhookTriggerLogRequest(AbstractModel):
 
     @property
     def Id(self):
+        """触发器 Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8636,6 +10023,9 @@ class DescribeWebhookTriggerLogRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8644,6 +10034,9 @@ class DescribeWebhookTriggerLogRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8687,6 +10080,9 @@ class DescribeWebhookTriggerLogResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8695,6 +10091,9 @@ class DescribeWebhookTriggerLogResponse(AbstractModel):
 
     @property
     def Logs(self):
+        """日志列表
+        :rtype: list of WebhookTriggerLog
+        """
         return self._Logs
 
     @Logs.setter
@@ -8703,6 +10102,9 @@ class DescribeWebhookTriggerLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8744,6 +10146,9 @@ class DescribeWebhookTriggerRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -8752,6 +10157,9 @@ class DescribeWebhookTriggerRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8760,6 +10168,9 @@ class DescribeWebhookTriggerRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8768,6 +10179,9 @@ class DescribeWebhookTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8810,6 +10224,9 @@ class DescribeWebhookTriggerResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """触发器总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8818,6 +10235,9 @@ class DescribeWebhookTriggerResponse(AbstractModel):
 
     @property
     def Triggers(self):
+        """触发器列表
+        :rtype: list of WebhookTrigger
+        """
         return self._Triggers
 
     @Triggers.setter
@@ -8826,6 +10246,9 @@ class DescribeWebhookTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8867,6 +10290,9 @@ class DownloadHelmChartRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -8875,6 +10301,9 @@ class DownloadHelmChartRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -8883,6 +10312,9 @@ class DownloadHelmChartRequest(AbstractModel):
 
     @property
     def ChartName(self):
+        """Helm chart名称
+        :rtype: str
+        """
         return self._ChartName
 
     @ChartName.setter
@@ -8891,6 +10323,9 @@ class DownloadHelmChartRequest(AbstractModel):
 
     @property
     def ChartVersion(self):
+        """Helm chart版本
+        :rtype: str
+        """
         return self._ChartVersion
 
     @ChartVersion.setter
@@ -8951,6 +10386,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def TmpToken(self):
+        """临时token
+        :rtype: str
+        """
         return self._TmpToken
 
     @TmpToken.setter
@@ -8959,6 +10397,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def TmpSecretId(self):
+        """临时的secretId
+        :rtype: str
+        """
         return self._TmpSecretId
 
     @TmpSecretId.setter
@@ -8967,6 +10408,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def TmpSecretKey(self):
+        """临时的secretKey
+        :rtype: str
+        """
         return self._TmpSecretKey
 
     @TmpSecretKey.setter
@@ -8975,6 +10419,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def Bucket(self):
+        """存储桶信息
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -8983,6 +10430,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def Region(self):
+        """实例ID
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -8991,6 +10441,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def Path(self):
+        """chart信息
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -8999,6 +10452,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9007,6 +10463,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """token过期时间时间戳
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -9015,6 +10474,9 @@ class DownloadHelmChartResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9048,6 +10510,9 @@ class DupImageTagResp(AbstractModel):
 
     @property
     def Digest(self):
+        """镜像Digest值
+        :rtype: str
+        """
         return self._Digest
 
     @Digest.setter
@@ -9084,6 +10549,9 @@ class DuplicateImagePersonalRequest(AbstractModel):
 
     @property
     def SrcImage(self):
+        """源镜像名称，不包含domain。例如： tencentyun/foo:v1
+        :rtype: str
+        """
         return self._SrcImage
 
     @SrcImage.setter
@@ -9092,6 +10560,9 @@ class DuplicateImagePersonalRequest(AbstractModel):
 
     @property
     def DestImage(self):
+        """目的镜像名称，不包含domain。例如： tencentyun/foo:latest
+        :rtype: str
+        """
         return self._DestImage
 
     @DestImage.setter
@@ -9129,6 +10600,9 @@ class DuplicateImagePersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """复制镜像返回值
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DupImageTagResp`
+        """
         return self._Data
 
     @Data.setter
@@ -9137,6 +10611,9 @@ class DuplicateImagePersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9186,6 +10663,9 @@ class DuplicateImageRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -9194,6 +10674,9 @@ class DuplicateImageRequest(AbstractModel):
 
     @property
     def SourceNamespace(self):
+        """源命名空间名称
+        :rtype: str
+        """
         return self._SourceNamespace
 
     @SourceNamespace.setter
@@ -9202,6 +10685,9 @@ class DuplicateImageRequest(AbstractModel):
 
     @property
     def SourceRepo(self):
+        """源镜像仓库名称
+        :rtype: str
+        """
         return self._SourceRepo
 
     @SourceRepo.setter
@@ -9210,6 +10696,9 @@ class DuplicateImageRequest(AbstractModel):
 
     @property
     def SourceReference(self):
+        """源镜像tag或digest值，目前仅支持tag
+        :rtype: str
+        """
         return self._SourceReference
 
     @SourceReference.setter
@@ -9218,6 +10707,9 @@ class DuplicateImageRequest(AbstractModel):
 
     @property
     def DestinationTag(self):
+        """目标镜像版本
+        :rtype: str
+        """
         return self._DestinationTag
 
     @DestinationTag.setter
@@ -9226,6 +10718,9 @@ class DuplicateImageRequest(AbstractModel):
 
     @property
     def DestinationNamespace(self):
+        """目标命名空间，不填默认与源一致
+        :rtype: str
+        """
         return self._DestinationNamespace
 
     @DestinationNamespace.setter
@@ -9234,6 +10729,9 @@ class DuplicateImageRequest(AbstractModel):
 
     @property
     def DestinationRepo(self):
+        """目标镜像仓库，不填默认与源一致
+        :rtype: str
+        """
         return self._DestinationRepo
 
     @DestinationRepo.setter
@@ -9242,6 +10740,9 @@ class DuplicateImageRequest(AbstractModel):
 
     @property
     def Override(self):
+        """是否覆盖
+        :rtype: bool
+        """
         return self._Override
 
     @Override.setter
@@ -9282,6 +10783,9 @@ class DuplicateImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9311,6 +10815,9 @@ class FavorResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """收藏仓库的总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9319,6 +10826,10 @@ class FavorResp(AbstractModel):
 
     @property
     def RepoInfo(self):
+        """仓库信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Favors
+        """
         return self._RepoInfo
 
     @RepoInfo.setter
@@ -9391,6 +10902,9 @@ class Favors(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名字
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -9399,6 +10913,9 @@ class Favors(AbstractModel):
 
     @property
     def RepoType(self):
+        """仓库类型
+        :rtype: str
+        """
         return self._RepoType
 
     @RepoType.setter
@@ -9407,6 +10924,10 @@ class Favors(AbstractModel):
 
     @property
     def PullCount(self):
+        """Pull总共的次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PullCount
 
     @PullCount.setter
@@ -9415,6 +10936,10 @@ class Favors(AbstractModel):
 
     @property
     def FavorCount(self):
+        """仓库收藏次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FavorCount
 
     @FavorCount.setter
@@ -9423,6 +10948,10 @@ class Favors(AbstractModel):
 
     @property
     def Public(self):
+        """仓库是否公开
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Public
 
     @Public.setter
@@ -9431,6 +10960,10 @@ class Favors(AbstractModel):
 
     @property
     def IsQcloudOfficial(self):
+        """是否为官方所有
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsQcloudOfficial
 
     @IsQcloudOfficial.setter
@@ -9439,6 +10972,10 @@ class Favors(AbstractModel):
 
     @property
     def TagCount(self):
+        """仓库Tag的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TagCount
 
     @TagCount.setter
@@ -9447,6 +10984,10 @@ class Favors(AbstractModel):
 
     @property
     def Logo(self):
+        """Logo
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Logo
 
     @Logo.setter
@@ -9455,6 +10996,9 @@ class Favors(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9463,6 +11007,9 @@ class Favors(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域的Id
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -9508,6 +11055,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9516,6 +11066,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -9562,6 +11115,9 @@ class GCJobInfo(AbstractModel):
 
     @property
     def ID(self):
+        """作业 ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -9570,6 +11126,9 @@ class GCJobInfo(AbstractModel):
 
     @property
     def JobStatus(self):
+        """作业状态
+        :rtype: str
+        """
         return self._JobStatus
 
     @JobStatus.setter
@@ -9578,6 +11137,9 @@ class GCJobInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -9586,6 +11148,9 @@ class GCJobInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -9594,6 +11159,9 @@ class GCJobInfo(AbstractModel):
 
     @property
     def Schedule(self):
+        """调度信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.Schedule`
+        """
         return self._Schedule
 
     @Schedule.setter
@@ -9636,6 +11204,9 @@ class Header(AbstractModel):
 
     @property
     def Key(self):
+        """Header Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -9644,6 +11215,9 @@ class Header(AbstractModel):
 
     @property
     def Values(self):
+        """Header Values
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -9696,6 +11270,9 @@ class ImmutableTagRule(AbstractModel):
 
     @property
     def RepositoryPattern(self):
+        """仓库匹配规则
+        :rtype: str
+        """
         return self._RepositoryPattern
 
     @RepositoryPattern.setter
@@ -9704,6 +11281,9 @@ class ImmutableTagRule(AbstractModel):
 
     @property
     def TagPattern(self):
+        """Tag 匹配规则
+        :rtype: str
+        """
         return self._TagPattern
 
     @TagPattern.setter
@@ -9712,6 +11292,9 @@ class ImmutableTagRule(AbstractModel):
 
     @property
     def RepositoryDecoration(self):
+        """repoMatches或repoExcludes
+        :rtype: str
+        """
         return self._RepositoryDecoration
 
     @RepositoryDecoration.setter
@@ -9720,6 +11303,9 @@ class ImmutableTagRule(AbstractModel):
 
     @property
     def TagDecoration(self):
+        """matches或excludes
+        :rtype: str
+        """
         return self._TagDecoration
 
     @TagDecoration.setter
@@ -9728,6 +11314,9 @@ class ImmutableTagRule(AbstractModel):
 
     @property
     def Disabled(self):
+        """禁用规则
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -9736,6 +11325,9 @@ class ImmutableTagRule(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 Id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -9744,6 +11336,9 @@ class ImmutableTagRule(AbstractModel):
 
     @property
     def NsName(self):
+        """命名空间
+        :rtype: str
+        """
         return self._NsName
 
     @NsName.setter
@@ -9786,6 +11381,9 @@ class KeyValueString(AbstractModel):
 
     @property
     def Key(self):
+        """键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -9794,6 +11392,9 @@ class KeyValueString(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -9834,6 +11435,9 @@ class Limit(AbstractModel):
 
     @property
     def Username(self):
+        """用户名
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -9842,6 +11446,9 @@ class Limit(AbstractModel):
 
     @property
     def Type(self):
+        """配额的类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9850,6 +11457,9 @@ class Limit(AbstractModel):
 
     @property
     def Value(self):
+        """配置的值
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -9888,6 +11498,9 @@ class ManageExternalEndpointRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -9896,6 +11509,9 @@ class ManageExternalEndpointRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作（Create/Delete）
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -9933,6 +11549,9 @@ class ManageExternalEndpointResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -9941,6 +11560,9 @@ class ManageExternalEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9970,6 +11592,9 @@ class ManageImageLifecycleGlobalPersonalRequest(AbstractModel):
 
     @property
     def Type(self):
+        """global_keep_last_days:全局保留最近几天的数据;global_keep_last_nums:全局保留最近多少个
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9978,6 +11603,9 @@ class ManageImageLifecycleGlobalPersonalRequest(AbstractModel):
 
     @property
     def Val(self):
+        """策略值
+        :rtype: int
+        """
         return self._Val
 
     @Val.setter
@@ -10012,6 +11640,9 @@ class ManageImageLifecycleGlobalPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10052,6 +11683,9 @@ class ManageInternalEndpointRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -10060,6 +11694,9 @@ class ManageInternalEndpointRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """Create/Delete
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -10068,6 +11705,9 @@ class ManageInternalEndpointRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """需要接入的用户vpcid
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -10076,6 +11716,9 @@ class ManageInternalEndpointRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """需要接入的用户子网id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -10084,6 +11727,9 @@ class ManageInternalEndpointRequest(AbstractModel):
 
     @property
     def RegionId(self):
+        """请求的地域ID，用于实例复制地域
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -10092,6 +11738,9 @@ class ManageInternalEndpointRequest(AbstractModel):
 
     @property
     def RegionName(self):
+        """请求的地域名称，用于实例复制地域
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -10133,6 +11782,9 @@ class ManageInternalEndpointResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -10141,6 +11793,9 @@ class ManageInternalEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10182,6 +11837,9 @@ class ManageReplicationRequest(AbstractModel):
 
     @property
     def SourceRegistryId(self):
+        """复制源实例ID
+        :rtype: str
+        """
         return self._SourceRegistryId
 
     @SourceRegistryId.setter
@@ -10190,6 +11848,9 @@ class ManageReplicationRequest(AbstractModel):
 
     @property
     def DestinationRegistryId(self):
+        """复制目标实例ID
+        :rtype: str
+        """
         return self._DestinationRegistryId
 
     @DestinationRegistryId.setter
@@ -10198,6 +11859,9 @@ class ManageReplicationRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """同步规则
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ReplicationRule`
+        """
         return self._Rule
 
     @Rule.setter
@@ -10206,6 +11870,9 @@ class ManageReplicationRequest(AbstractModel):
 
     @property
     def Description(self):
+        """规则描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10214,6 +11881,9 @@ class ManageReplicationRequest(AbstractModel):
 
     @property
     def DestinationRegionId(self):
+        """目标实例的地域ID，如广州是1
+        :rtype: int
+        """
         return self._DestinationRegionId
 
     @DestinationRegionId.setter
@@ -10222,6 +11892,9 @@ class ManageReplicationRequest(AbstractModel):
 
     @property
     def PeerReplicationOption(self):
+        """开启跨主账号实例同步配置项
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.PeerReplicationOption`
+        """
         return self._PeerReplicationOption
 
     @PeerReplicationOption.setter
@@ -10264,6 +11937,9 @@ class ManageReplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10319,6 +11995,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """触发器关联的镜像仓库，library/test格式
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -10327,6 +12006,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称，必填参数
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -10335,6 +12017,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def InvokeMethod(self):
+        """触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发
+        :rtype: str
+        """
         return self._InvokeMethod
 
     @InvokeMethod.setter
@@ -10343,6 +12028,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def InvokeExpr(self):
+        """触发方式对应的表达式
+        :rtype: str
+        """
         return self._InvokeExpr
 
     @InvokeExpr.setter
@@ -10351,6 +12039,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """应用所在TKE集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -10359,6 +12050,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """应用所在TKE集群命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -10367,6 +12061,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def WorkloadType(self):
+        """应用所在TKE集群工作负载类型,支持Deployment、StatefulSet、DaemonSet、CronJob、Job。
+        :rtype: str
+        """
         return self._WorkloadType
 
     @WorkloadType.setter
@@ -10375,6 +12072,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def WorkloadName(self):
+        """应用所在TKE集群工作负载名称
+        :rtype: str
+        """
         return self._WorkloadName
 
     @WorkloadName.setter
@@ -10383,6 +12083,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def ContainerName(self):
+        """应用所在TKE集群工作负载下容器名称
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -10391,6 +12094,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def ClusterRegion(self):
+        """应用所在TKE集群地域数字ID，如1（广州）、16（成都）
+        :rtype: int
+        """
         return self._ClusterRegion
 
     @ClusterRegion.setter
@@ -10399,6 +12105,9 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
     @property
     def NewTriggerName(self):
+        """新触发器名称
+        :rtype: str
+        """
         return self._NewTriggerName
 
     @NewTriggerName.setter
@@ -10442,6 +12151,9 @@ class ModifyApplicationTriggerPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10476,6 +12188,9 @@ class ModifyImmutableTagRulesRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -10484,6 +12199,9 @@ class ModifyImmutableTagRulesRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -10492,6 +12210,9 @@ class ModifyImmutableTagRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 Id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -10500,6 +12221,9 @@ class ModifyImmutableTagRulesRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """规则
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
+        """
         return self._Rule
 
     @Rule.setter
@@ -10538,6 +12262,9 @@ class ModifyImmutableTagRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10572,6 +12299,9 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -10580,6 +12310,12 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def RegistryType(self):
+        """实例的规格,
+基础版：basic
+标准版：standard
+高级版：premium
+        :rtype: str
+        """
         return self._RegistryType
 
     @RegistryType.setter
@@ -10588,6 +12324,9 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
+        """实例删除保护，false为关闭
+        :rtype: bool
+        """
         return self._DeletionProtection
 
     @DeletionProtection.setter
@@ -10623,6 +12362,9 @@ class ModifyInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10660,6 +12402,9 @@ class ModifyInstanceTokenRequest(AbstractModel):
 
     @property
     def TokenId(self):
+        """实例长期访问凭证 ID
+        :rtype: str
+        """
         return self._TokenId
 
     @TokenId.setter
@@ -10668,6 +12413,9 @@ class ModifyInstanceTokenRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -10676,6 +12424,9 @@ class ModifyInstanceTokenRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """启用或禁用实例长期访问凭证
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -10684,6 +12435,9 @@ class ModifyInstanceTokenRequest(AbstractModel):
 
     @property
     def Desc(self):
+        """访问凭证描述
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -10692,6 +12446,9 @@ class ModifyInstanceTokenRequest(AbstractModel):
 
     @property
     def ModifyFlag(self):
+        """1为修改描述 2为操作启动禁用，默认值为2
+        :rtype: int
+        """
         return self._ModifyFlag
 
     @ModifyFlag.setter
@@ -10729,6 +12486,9 @@ class ModifyInstanceTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10772,6 +12532,9 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -10780,6 +12543,9 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -10788,6 +12554,9 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def IsPublic(self):
+        """访问级别，True为公开，False为私有
+        :rtype: bool
+        """
         return self._IsPublic
 
     @IsPublic.setter
@@ -10796,6 +12565,9 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def IsAutoScan(self):
+        """扫描级别，True为自动，False为手动
+        :rtype: bool
+        """
         return self._IsAutoScan
 
     @IsAutoScan.setter
@@ -10804,6 +12576,9 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def IsPreventVUL(self):
+        """阻断开关，True为开放，False为关闭
+        :rtype: bool
+        """
         return self._IsPreventVUL
 
     @IsPreventVUL.setter
@@ -10812,6 +12587,9 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def Severity(self):
+        """阻断漏洞等级，目前仅支持 low、medium、high
+        :rtype: str
+        """
         return self._Severity
 
     @Severity.setter
@@ -10820,6 +12598,9 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def CVEWhitelistItems(self):
+        """漏洞白名单列表
+        :rtype: list of CVEWhitelistItem
+        """
         return self._CVEWhitelistItems
 
     @CVEWhitelistItems.setter
@@ -10864,6 +12645,9 @@ class ModifyNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10892,6 +12676,9 @@ class ModifyRepositoryAccessPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -10900,6 +12687,9 @@ class ModifyRepositoryAccessPersonalRequest(AbstractModel):
 
     @property
     def Public(self):
+        """默认值为0, 1公共，0私有
+        :rtype: int
+        """
         return self._Public
 
     @Public.setter
@@ -10934,6 +12724,9 @@ class ModifyRepositoryAccessPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10962,6 +12755,9 @@ class ModifyRepositoryInfoPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -10970,6 +12766,9 @@ class ModifyRepositoryInfoPersonalRequest(AbstractModel):
 
     @property
     def Description(self):
+        """仓库描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11004,6 +12803,9 @@ class ModifyRepositoryInfoPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11041,6 +12843,9 @@ class ModifyRepositoryRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -11049,6 +12854,9 @@ class ModifyRepositoryRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -11057,6 +12865,9 @@ class ModifyRepositoryRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
+        """镜像仓库名称
+        :rtype: str
+        """
         return self._RepositoryName
 
     @RepositoryName.setter
@@ -11065,6 +12876,9 @@ class ModifyRepositoryRequest(AbstractModel):
 
     @property
     def BriefDescription(self):
+        """仓库简短描述
+        :rtype: str
+        """
         return self._BriefDescription
 
     @BriefDescription.setter
@@ -11073,6 +12887,9 @@ class ModifyRepositoryRequest(AbstractModel):
 
     @property
     def Description(self):
+        """仓库详细描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11110,6 +12927,9 @@ class ModifyRepositoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11144,6 +12964,9 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例的Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -11152,6 +12975,9 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def PolicyIndex(self):
+        """PolicyId
+        :rtype: int
+        """
         return self._PolicyIndex
 
     @PolicyIndex.setter
@@ -11160,6 +12986,9 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """192.168.0.0/24 白名单Ip
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -11168,6 +12997,9 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """备注
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11207,6 +13039,9 @@ class ModifySecurityPolicyResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -11215,6 +13050,9 @@ class ModifySecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11250,6 +13088,9 @@ class ModifyServiceAccountPasswordRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -11258,6 +13099,9 @@ class ModifyServiceAccountPasswordRequest(AbstractModel):
 
     @property
     def Name(self):
+        """服务级账号名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11266,6 +13110,9 @@ class ModifyServiceAccountPasswordRequest(AbstractModel):
 
     @property
     def Random(self):
+        """是否随机生成密码
+        :rtype: bool
+        """
         return self._Random
 
     @Random.setter
@@ -11274,6 +13121,9 @@ class ModifyServiceAccountPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
+        """服务级账号密码，长度在8到20之间且需包含至少一个大写字符，一个小写字符和一个数字
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -11313,6 +13163,9 @@ class ModifyServiceAccountPasswordResponse(AbstractModel):
 
     @property
     def Password(self):
+        """自定义用户密码，仅展示一次，请注意留存	
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -11321,6 +13174,9 @@ class ModifyServiceAccountPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11365,6 +13221,9 @@ class ModifyServiceAccountRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -11373,6 +13232,9 @@ class ModifyServiceAccountRequest(AbstractModel):
 
     @property
     def Name(self):
+        """服务级账号名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11381,6 +13243,9 @@ class ModifyServiceAccountRequest(AbstractModel):
 
     @property
     def Description(self):
+        """服务级账号描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11389,6 +13254,9 @@ class ModifyServiceAccountRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """有效期(单位：天)，从当前时间开始计算，优先级高于ExpiresAt
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -11397,6 +13265,9 @@ class ModifyServiceAccountRequest(AbstractModel):
 
     @property
     def ExpiresAt(self):
+        """过期时间（时间戳，单位:毫秒）
+        :rtype: int
+        """
         return self._ExpiresAt
 
     @ExpiresAt.setter
@@ -11405,6 +13276,9 @@ class ModifyServiceAccountRequest(AbstractModel):
 
     @property
     def Disable(self):
+        """是否禁用服务级账号
+        :rtype: bool
+        """
         return self._Disable
 
     @Disable.setter
@@ -11413,6 +13287,9 @@ class ModifyServiceAccountRequest(AbstractModel):
 
     @property
     def Permissions(self):
+        """策略列表
+        :rtype: list of Permission
+        """
         return self._Permissions
 
     @Permissions.setter
@@ -11457,6 +13334,9 @@ class ModifyServiceAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11497,6 +13377,9 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例iD
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -11505,6 +13388,9 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
+        """命名空间的Id，必须填写原有的命名空间id
+        :rtype: int
+        """
         return self._NamespaceId
 
     @NamespaceId.setter
@@ -11513,6 +13399,9 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     @property
     def RetentionRule(self):
+        """保留策略
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        """
         return self._RetentionRule
 
     @RetentionRule.setter
@@ -11521,6 +13410,9 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     @property
     def CronSetting(self):
+        """执行周期，必须填写为原来的设置
+        :rtype: str
+        """
         return self._CronSetting
 
     @CronSetting.setter
@@ -11529,6 +13421,9 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     @property
     def RetentionId(self):
+        """规则Id
+        :rtype: int
+        """
         return self._RetentionId
 
     @RetentionId.setter
@@ -11537,6 +13432,9 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
 
     @property
     def Disabled(self):
+        """是否禁用规则
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -11577,6 +13475,9 @@ class ModifyTagRetentionRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11602,6 +13503,9 @@ class ModifyUserPasswordPersonalRequest(AbstractModel):
 
     @property
     def Password(self):
+        """更新后的密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -11635,6 +13539,9 @@ class ModifyUserPasswordPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11666,6 +13573,9 @@ class ModifyWebhookTriggerRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -11674,6 +13584,9 @@ class ModifyWebhookTriggerRequest(AbstractModel):
 
     @property
     def Trigger(self):
+        """触发器参数
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -11682,6 +13595,9 @@ class ModifyWebhookTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -11719,6 +13635,9 @@ class ModifyWebhookTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11750,6 +13669,9 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -11758,6 +13680,9 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -11766,6 +13691,9 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def RepoCount(self):
+        """命名空间下仓库数量
+        :rtype: int
+        """
         return self._RepoCount
 
     @RepoCount.setter
@@ -11804,6 +13732,9 @@ class NamespaceInfoResp(AbstractModel):
 
     @property
     def NamespaceCount(self):
+        """命名空间数量
+        :rtype: int
+        """
         return self._NamespaceCount
 
     @NamespaceCount.setter
@@ -11812,6 +13743,9 @@ class NamespaceInfoResp(AbstractModel):
 
     @property
     def NamespaceInfo(self):
+        """命名空间信息
+        :rtype: list of NamespaceInfo
+        """
         return self._NamespaceInfo
 
     @NamespaceInfo.setter
@@ -11854,6 +13788,9 @@ class NamespaceIsExistsResp(AbstractModel):
 
     @property
     def IsExist(self):
+        """命名空间是否存在
+        :rtype: bool
+        """
         return self._IsExist
 
     @IsExist.setter
@@ -11862,6 +13799,9 @@ class NamespaceIsExistsResp(AbstractModel):
 
     @property
     def IsPreserved(self):
+        """是否为保留命名空间
+        :rtype: bool
+        """
         return self._IsPreserved
 
     @IsPreserved.setter
@@ -11902,6 +13842,9 @@ class PeerReplicationOption(AbstractModel):
 
     @property
     def PeerRegistryUin(self):
+        """待同步实例的uin
+        :rtype: str
+        """
         return self._PeerRegistryUin
 
     @PeerRegistryUin.setter
@@ -11910,6 +13853,9 @@ class PeerReplicationOption(AbstractModel):
 
     @property
     def PeerRegistryToken(self):
+        """待同步实例的访问永久Token
+        :rtype: str
+        """
         return self._PeerRegistryToken
 
     @PeerRegistryToken.setter
@@ -11918,6 +13864,9 @@ class PeerReplicationOption(AbstractModel):
 
     @property
     def EnablePeerReplication(self):
+        """是否开启跨主账号实例同步
+        :rtype: bool
+        """
         return self._EnablePeerReplication
 
     @EnablePeerReplication.setter
@@ -11958,6 +13907,10 @@ class Permission(AbstractModel):
 
     @property
     def Resource(self):
+        """资源路径，目前仅支持Namespace
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -11966,6 +13919,10 @@ class Permission(AbstractModel):
 
     @property
     def Actions(self):
+        """动作，目前仅支持：tcr:PushRepository、tcr:PullRepository、tcr:CreateRepository、tcr:CreateHelmChart、tcr:DescribeHelmCharts
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Actions
 
     @Actions.setter
@@ -12021,6 +13978,9 @@ class Region(AbstractModel):
 
     @property
     def Alias(self):
+        """gz
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -12029,6 +13989,9 @@ class Region(AbstractModel):
 
     @property
     def RegionId(self):
+        """1
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -12037,6 +14000,9 @@ class Region(AbstractModel):
 
     @property
     def RegionName(self):
+        """ap-guangzhou
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -12045,6 +14011,9 @@ class Region(AbstractModel):
 
     @property
     def Status(self):
+        """alluser
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12053,6 +14022,9 @@ class Region(AbstractModel):
 
     @property
     def Remark(self):
+        """remark
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -12061,6 +14033,9 @@ class Region(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -12069,6 +14044,9 @@ class Region(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -12077,6 +14055,9 @@ class Region(AbstractModel):
 
     @property
     def Id(self):
+        """id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -12166,6 +14147,9 @@ class Registry(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -12174,6 +14158,9 @@ class Registry(AbstractModel):
 
     @property
     def RegistryName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._RegistryName
 
     @RegistryName.setter
@@ -12182,6 +14169,9 @@ class Registry(AbstractModel):
 
     @property
     def RegistryType(self):
+        """实例规格
+        :rtype: str
+        """
         return self._RegistryType
 
     @RegistryType.setter
@@ -12190,6 +14180,9 @@ class Registry(AbstractModel):
 
     @property
     def Status(self):
+        """实例状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12198,6 +14191,9 @@ class Registry(AbstractModel):
 
     @property
     def PublicDomain(self):
+        """实例的公共访问地址
+        :rtype: str
+        """
         return self._PublicDomain
 
     @PublicDomain.setter
@@ -12206,6 +14202,9 @@ class Registry(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """实例创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -12214,6 +14213,9 @@ class Registry(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域名称
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -12222,6 +14224,9 @@ class Registry(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域Id
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -12230,6 +14235,9 @@ class Registry(AbstractModel):
 
     @property
     def EnableAnonymous(self):
+        """是否支持匿名
+        :rtype: bool
+        """
         return self._EnableAnonymous
 
     @EnableAnonymous.setter
@@ -12238,6 +14246,9 @@ class Registry(AbstractModel):
 
     @property
     def TokenValidTime(self):
+        """Token有效时间
+        :rtype: int
+        """
         return self._TokenValidTime
 
     @TokenValidTime.setter
@@ -12246,6 +14257,9 @@ class Registry(AbstractModel):
 
     @property
     def InternalEndpoint(self):
+        """实例内部访问地址
+        :rtype: str
+        """
         return self._InternalEndpoint
 
     @InternalEndpoint.setter
@@ -12254,6 +14268,10 @@ class Registry(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """实例云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -12262,6 +14280,10 @@ class Registry(AbstractModel):
 
     @property
     def ExpiredAt(self):
+        """实例过期时间（预付费）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpiredAt
 
     @ExpiredAt.setter
@@ -12270,6 +14292,10 @@ class Registry(AbstractModel):
 
     @property
     def PayMod(self):
+        """实例付费类型，0表示后付费，1表示预付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PayMod
 
     @PayMod.setter
@@ -12278,6 +14304,10 @@ class Registry(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -12286,6 +14316,9 @@ class Registry(AbstractModel):
 
     @property
     def DeletionProtection(self):
+        """是否开启实例删除保护，false表示不开启
+        :rtype: bool
+        """
         return self._DeletionProtection
 
     @DeletionProtection.setter
@@ -12339,6 +14372,9 @@ class RegistryChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """购买实例的时长，单位：月
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -12347,6 +14383,9 @@ class RegistryChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识，0：手动续费，1：自动续费，2：不续费并且不通知
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -12388,6 +14427,9 @@ class RegistryCondition(AbstractModel):
 
     @property
     def Type(self):
+        """实例创建过程类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -12396,6 +14438,9 @@ class RegistryCondition(AbstractModel):
 
     @property
     def Status(self):
+        """实例创建过程状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12404,6 +14449,10 @@ class RegistryCondition(AbstractModel):
 
     @property
     def Reason(self):
+        """转换到该过程的简明原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -12446,6 +14495,9 @@ class RegistryStatus(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例的Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -12454,6 +14506,9 @@ class RegistryStatus(AbstractModel):
 
     @property
     def Status(self):
+        """实例的状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12462,6 +14517,10 @@ class RegistryStatus(AbstractModel):
 
     @property
     def Conditions(self):
+        """附加状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RegistryCondition
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -12508,6 +14567,9 @@ class RenewInstanceRequest(AbstractModel):
 
     @property
     def RegistryId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -12516,6 +14578,9 @@ class RenewInstanceRequest(AbstractModel):
 
     @property
     def RegistryChargePrepaid(self):
+        """预付费自动续费标识和购买时长,0：手动续费，1：自动续费，2：不续费并且不通知;单位为月
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
+        """
         return self._RegistryChargePrepaid
 
     @RegistryChargePrepaid.setter
@@ -12524,6 +14589,9 @@ class RenewInstanceRequest(AbstractModel):
 
     @property
     def Flag(self):
+        """0 续费， 1按量转包年包月
+        :rtype: int
+        """
         return self._Flag
 
     @Flag.setter
@@ -12564,6 +14632,9 @@ class RenewInstanceResponse(AbstractModel):
 
     @property
     def RegistryId(self):
+        """企业版实例Id
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -12572,6 +14643,9 @@ class RenewInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12601,6 +14675,9 @@ class ReplicationFilter(AbstractModel):
 
     @property
     def Type(self):
+        """类型（name、tag和resource）
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -12609,6 +14686,9 @@ class ReplicationFilter(AbstractModel):
 
     @property
     def Value(self):
+        """默认为空
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -12664,6 +14744,10 @@ class ReplicationLog(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -12672,6 +14756,10 @@ class ReplicationLog(AbstractModel):
 
     @property
     def Source(self):
+        """源资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -12680,6 +14768,10 @@ class ReplicationLog(AbstractModel):
 
     @property
     def Destination(self):
+        """目的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Destination
 
     @Destination.setter
@@ -12688,6 +14780,10 @@ class ReplicationLog(AbstractModel):
 
     @property
     def Status(self):
+        """同步状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12696,6 +14792,10 @@ class ReplicationLog(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12704,6 +14804,10 @@ class ReplicationLog(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12757,6 +14861,9 @@ class ReplicationRegistry(AbstractModel):
 
     @property
     def RegistryId(self):
+        """主实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -12765,6 +14872,9 @@ class ReplicationRegistry(AbstractModel):
 
     @property
     def ReplicationRegistryId(self):
+        """复制实例ID
+        :rtype: str
+        """
         return self._ReplicationRegistryId
 
     @ReplicationRegistryId.setter
@@ -12773,6 +14883,9 @@ class ReplicationRegistry(AbstractModel):
 
     @property
     def ReplicationRegionId(self):
+        """复制实例的地域ID
+        :rtype: int
+        """
         return self._ReplicationRegionId
 
     @ReplicationRegionId.setter
@@ -12781,6 +14894,9 @@ class ReplicationRegistry(AbstractModel):
 
     @property
     def ReplicationRegionName(self):
+        """复制实例的地域名称
+        :rtype: str
+        """
         return self._ReplicationRegionName
 
     @ReplicationRegionName.setter
@@ -12789,6 +14905,9 @@ class ReplicationRegistry(AbstractModel):
 
     @property
     def Status(self):
+        """复制实例的状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12797,6 +14916,9 @@ class ReplicationRegistry(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -12844,6 +14966,9 @@ class ReplicationRule(AbstractModel):
 
     @property
     def Name(self):
+        """同步规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12852,6 +14977,9 @@ class ReplicationRule(AbstractModel):
 
     @property
     def DestNamespace(self):
+        """目标命名空间
+        :rtype: str
+        """
         return self._DestNamespace
 
     @DestNamespace.setter
@@ -12860,6 +14988,9 @@ class ReplicationRule(AbstractModel):
 
     @property
     def Override(self):
+        """是否覆盖
+        :rtype: bool
+        """
         return self._Override
 
     @Override.setter
@@ -12868,6 +14999,9 @@ class ReplicationRule(AbstractModel):
 
     @property
     def Filters(self):
+        """同步过滤条件
+        :rtype: list of ReplicationFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12939,6 +15073,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -12947,6 +15084,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def RepoType(self):
+        """仓库类型
+        :rtype: str
+        """
         return self._RepoType
 
     @RepoType.setter
@@ -12955,6 +15095,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def TagCount(self):
+        """Tag数量
+        :rtype: int
+        """
         return self._TagCount
 
     @TagCount.setter
@@ -12963,6 +15106,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def Public(self):
+        """是否为公开
+        :rtype: int
+        """
         return self._Public
 
     @Public.setter
@@ -12971,6 +15117,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def IsUserFavor(self):
+        """是否为用户收藏
+        :rtype: bool
+        """
         return self._IsUserFavor
 
     @IsUserFavor.setter
@@ -12979,6 +15128,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def IsQcloudOfficial(self):
+        """是否为腾讯云官方仓库
+        :rtype: bool
+        """
         return self._IsQcloudOfficial
 
     @IsQcloudOfficial.setter
@@ -12987,6 +15139,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def FavorCount(self):
+        """被收藏的个数
+        :rtype: int
+        """
         return self._FavorCount
 
     @FavorCount.setter
@@ -12995,6 +15150,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def PullCount(self):
+        """拉取的数量
+        :rtype: int
+        """
         return self._PullCount
 
     @PullCount.setter
@@ -13003,6 +15161,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13011,6 +15172,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """仓库创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -13019,6 +15183,9 @@ class RepoInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """仓库更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13068,6 +15235,9 @@ class RepoInfoResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """仓库总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13076,6 +15246,9 @@ class RepoInfoResp(AbstractModel):
 
     @property
     def RepoInfo(self):
+        """仓库信息列表
+        :rtype: list of RepoInfo
+        """
         return self._RepoInfo
 
     @RepoInfo.setter
@@ -13084,6 +15257,9 @@ class RepoInfoResp(AbstractModel):
 
     @property
     def Server(self):
+        """Server信息
+        :rtype: str
+        """
         return self._Server
 
     @Server.setter
@@ -13124,6 +15300,9 @@ class RepoIsExistResp(AbstractModel):
 
     @property
     def IsExist(self):
+        """仓库是否存在
+        :rtype: bool
+        """
         return self._IsExist
 
     @IsExist.setter
@@ -13185,6 +15364,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def RepoName(self):
+        """镜像仓库名字
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -13193,6 +15375,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def RepoType(self):
+        """镜像仓库类型
+        :rtype: str
+        """
         return self._RepoType
 
     @RepoType.setter
@@ -13201,6 +15386,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def Server(self):
+        """镜像仓库服务地址
+        :rtype: str
+        """
         return self._Server
 
     @Server.setter
@@ -13209,6 +15397,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -13217,6 +15408,10 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def Description(self):
+        """镜像仓库描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13225,6 +15420,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def Public(self):
+        """是否为公有镜像
+        :rtype: int
+        """
         return self._Public
 
     @Public.setter
@@ -13233,6 +15431,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def PullCount(self):
+        """下载次数
+        :rtype: int
+        """
         return self._PullCount
 
     @PullCount.setter
@@ -13241,6 +15442,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def FavorCount(self):
+        """收藏次数
+        :rtype: int
+        """
         return self._FavorCount
 
     @FavorCount.setter
@@ -13249,6 +15453,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def IsUserFavor(self):
+        """是否为用户收藏
+        :rtype: bool
+        """
         return self._IsUserFavor
 
     @IsUserFavor.setter
@@ -13257,6 +15464,9 @@ class RepositoryInfoResp(AbstractModel):
 
     @property
     def IsQcloudOfficial(self):
+        """是否为腾讯云官方镜像
+        :rtype: bool
+        """
         return self._IsQcloudOfficial
 
     @IsQcloudOfficial.setter
@@ -13299,6 +15509,9 @@ class RespLimit(AbstractModel):
 
     @property
     def LimitInfo(self):
+        """配额信息
+        :rtype: list of Limit
+        """
         return self._LimitInfo
 
     @LimitInfo.setter
@@ -13349,6 +15562,9 @@ class RetentionExecution(AbstractModel):
 
     @property
     def ExecutionId(self):
+        """执行Id
+        :rtype: int
+        """
         return self._ExecutionId
 
     @ExecutionId.setter
@@ -13357,6 +15573,9 @@ class RetentionExecution(AbstractModel):
 
     @property
     def RetentionId(self):
+        """所属规则id
+        :rtype: int
+        """
         return self._RetentionId
 
     @RetentionId.setter
@@ -13365,6 +15584,9 @@ class RetentionExecution(AbstractModel):
 
     @property
     def StartTime(self):
+        """执行的开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -13373,6 +15595,9 @@ class RetentionExecution(AbstractModel):
 
     @property
     def EndTime(self):
+        """执行的结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -13381,6 +15606,9 @@ class RetentionExecution(AbstractModel):
 
     @property
     def Status(self):
+        """执行的状态，Failed, Succeed, Stopped, InProgress
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13433,6 +15661,9 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def RetentionId(self):
+        """版本保留策略Id
+        :rtype: int
+        """
         return self._RetentionId
 
     @RetentionId.setter
@@ -13441,6 +15672,9 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def NamespaceName(self):
+        """命名空间的名称
+        :rtype: str
+        """
         return self._NamespaceName
 
     @NamespaceName.setter
@@ -13449,6 +15683,9 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def RetentionRuleList(self):
+        """规则列表
+        :rtype: list of RetentionRule
+        """
         return self._RetentionRuleList
 
     @RetentionRuleList.setter
@@ -13457,6 +15694,9 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def CronSetting(self):
+        """定期执行方式
+        :rtype: str
+        """
         return self._CronSetting
 
     @CronSetting.setter
@@ -13465,6 +15705,9 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def Disabled(self):
+        """是否启用规则
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -13473,6 +15716,9 @@ class RetentionPolicy(AbstractModel):
 
     @property
     def NextExecutionTime(self):
+        """基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用
+        :rtype: str
+        """
         return self._NextExecutionTime
 
     @NextExecutionTime.setter
@@ -13521,6 +15767,10 @@ class RetentionRule(AbstractModel):
 
     @property
     def Key(self):
+        """支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -13529,6 +15779,10 @@ class RetentionRule(AbstractModel):
 
     @property
     def Value(self):
+        """规则设置下的对应值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -13584,6 +15838,9 @@ class RetentionTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务Id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13592,6 +15849,9 @@ class RetentionTask(AbstractModel):
 
     @property
     def ExecutionId(self):
+        """所属的规则执行Id
+        :rtype: int
+        """
         return self._ExecutionId
 
     @ExecutionId.setter
@@ -13600,6 +15860,9 @@ class RetentionTask(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -13608,6 +15871,9 @@ class RetentionTask(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -13616,6 +15882,9 @@ class RetentionTask(AbstractModel):
 
     @property
     def Status(self):
+        """任务的执行状态，Failed, Succeed, Stopped, InProgress
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13624,6 +15893,9 @@ class RetentionTask(AbstractModel):
 
     @property
     def Total(self):
+        """总tag数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -13632,6 +15904,9 @@ class RetentionTask(AbstractModel):
 
     @property
     def Retained(self):
+        """保留tag数
+        :rtype: int
+        """
         return self._Retained
 
     @Retained.setter
@@ -13640,6 +15915,9 @@ class RetentionTask(AbstractModel):
 
     @property
     def Repository(self):
+        """应用的仓库
+        :rtype: str
+        """
         return self._Repository
 
     @Repository.setter
@@ -13681,6 +15959,10 @@ class SameImagesResp(AbstractModel):
 
     @property
     def SameImages(self):
+        """tag列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SameImages
 
     @SameImages.setter
@@ -13714,6 +15996,9 @@ class Schedule(AbstractModel):
 
     @property
     def Type(self):
+        """类型：Hourly, Daily, Weekly, Custom, Manual, Dryrun, None
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -13756,6 +16041,9 @@ class SearchUserRepositoryResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13764,6 +16052,9 @@ class SearchUserRepositoryResp(AbstractModel):
 
     @property
     def RepoInfo(self):
+        """仓库列表
+        :rtype: list of RepoInfo
+        """
         return self._RepoInfo
 
     @RepoInfo.setter
@@ -13772,6 +16063,9 @@ class SearchUserRepositoryResp(AbstractModel):
 
     @property
     def Server(self):
+        """Server
+        :rtype: str
+        """
         return self._Server
 
     @Server.setter
@@ -13780,6 +16074,9 @@ class SearchUserRepositoryResp(AbstractModel):
 
     @property
     def PrivilegeFiltered(self):
+        """PrivilegeFiltered
+        :rtype: bool
+        """
         return self._PrivilegeFiltered
 
     @PrivilegeFiltered.setter
@@ -13830,6 +16127,9 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def PolicyIndex(self):
+        """策略索引
+        :rtype: int
+        """
         return self._PolicyIndex
 
     @PolicyIndex.setter
@@ -13838,6 +16138,9 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def Description(self):
+        """备注
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13846,6 +16149,9 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """运行访问的公网IP地址端
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -13854,6 +16160,9 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def PolicyVersion(self):
+        """安全策略的版本
+        :rtype: str
+        """
         return self._PolicyVersion
 
     @PolicyVersion.setter
@@ -13915,6 +16224,10 @@ class ServiceAccount(AbstractModel):
 
     @property
     def Name(self):
+        """服务级账号名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13923,6 +16236,10 @@ class ServiceAccount(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13931,6 +16248,10 @@ class ServiceAccount(AbstractModel):
 
     @property
     def Disable(self):
+        """是否禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Disable
 
     @Disable.setter
@@ -13939,6 +16260,10 @@ class ServiceAccount(AbstractModel):
 
     @property
     def ExpiresAt(self):
+        """过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ExpiresAt
 
     @ExpiresAt.setter
@@ -13947,6 +16272,10 @@ class ServiceAccount(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13955,6 +16284,10 @@ class ServiceAccount(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13963,6 +16296,10 @@ class ServiceAccount(AbstractModel):
 
     @property
     def Permissions(self):
+        """策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Permission
+        """
         return self._Permissions
 
     @Permissions.setter
@@ -14012,6 +16349,10 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """云标签的key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -14020,6 +16361,10 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """云标签的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -14097,6 +16442,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagName(self):
+        """Tag名称
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -14105,6 +16453,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagId(self):
+        """制品的 ID
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -14113,6 +16464,9 @@ class TagInfo(AbstractModel):
 
     @property
     def ImageId(self):
+        """docker image 可以看到的id
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -14121,6 +16475,9 @@ class TagInfo(AbstractModel):
 
     @property
     def Size(self):
+        """大小
+        :rtype: str
+        """
         return self._Size
 
     @Size.setter
@@ -14129,6 +16486,9 @@ class TagInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """制品的创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -14137,6 +16497,10 @@ class TagInfo(AbstractModel):
 
     @property
     def DurationDays(self):
+        """制品创建至今时间长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DurationDays
 
     @DurationDays.setter
@@ -14145,6 +16509,9 @@ class TagInfo(AbstractModel):
 
     @property
     def Author(self):
+        """标注的制品作者
+        :rtype: str
+        """
         return self._Author
 
     @Author.setter
@@ -14153,6 +16520,9 @@ class TagInfo(AbstractModel):
 
     @property
     def Architecture(self):
+        """标注的制品平台
+        :rtype: str
+        """
         return self._Architecture
 
     @Architecture.setter
@@ -14161,6 +16531,9 @@ class TagInfo(AbstractModel):
 
     @property
     def DockerVersion(self):
+        """创建制品的 Docker 版本
+        :rtype: str
+        """
         return self._DockerVersion
 
     @DockerVersion.setter
@@ -14169,6 +16542,9 @@ class TagInfo(AbstractModel):
 
     @property
     def OS(self):
+        """标注的制品操作系统
+        :rtype: str
+        """
         return self._OS
 
     @OS.setter
@@ -14177,6 +16553,9 @@ class TagInfo(AbstractModel):
 
     @property
     def SizeByte(self):
+        """制品大小
+        :rtype: int
+        """
         return self._SizeByte
 
     @SizeByte.setter
@@ -14185,6 +16564,9 @@ class TagInfo(AbstractModel):
 
     @property
     def Id(self):
+        """序号
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -14193,6 +16575,9 @@ class TagInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """数据更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14201,6 +16586,9 @@ class TagInfo(AbstractModel):
 
     @property
     def PushTime(self):
+        """制品更新时间
+        :rtype: str
+        """
         return self._PushTime
 
     @PushTime.setter
@@ -14209,6 +16597,9 @@ class TagInfo(AbstractModel):
 
     @property
     def Kind(self):
+        """制品类型
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -14265,6 +16656,9 @@ class TagInfoResp(AbstractModel):
 
     @property
     def TagCount(self):
+        """Tag的总数
+        :rtype: int
+        """
         return self._TagCount
 
     @TagCount.setter
@@ -14273,6 +16667,9 @@ class TagInfoResp(AbstractModel):
 
     @property
     def TagInfo(self):
+        """TagInfo列表
+        :rtype: list of TagInfo
+        """
         return self._TagInfo
 
     @TagInfo.setter
@@ -14281,6 +16678,9 @@ class TagInfoResp(AbstractModel):
 
     @property
     def Server(self):
+        """Server
+        :rtype: str
+        """
         return self._Server
 
     @Server.setter
@@ -14289,6 +16689,9 @@ class TagInfoResp(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -14335,6 +16738,10 @@ class TagSpecification(AbstractModel):
 
     @property
     def ResourceType(self):
+        """默认值为instance
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -14343,6 +16750,10 @@ class TagSpecification(AbstractModel):
 
     @property
     def Tags(self):
+        """云标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -14399,6 +16810,9 @@ class TaskDetail(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -14407,6 +16821,9 @@ class TaskDetail(AbstractModel):
 
     @property
     def TaskUUID(self):
+        """任务UUID
+        :rtype: str
+        """
         return self._TaskUUID
 
     @TaskUUID.setter
@@ -14415,6 +16832,9 @@ class TaskDetail(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -14423,6 +16843,10 @@ class TaskDetail(AbstractModel):
 
     @property
     def TaskMessage(self):
+        """任务的状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskMessage
 
     @TaskMessage.setter
@@ -14431,6 +16855,9 @@ class TaskDetail(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """任务开始时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -14439,6 +16866,10 @@ class TaskDetail(AbstractModel):
 
     @property
     def FinishedTime(self):
+        """任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishedTime
 
     @FinishedTime.setter
@@ -14494,6 +16925,9 @@ class TcrImageInfo(AbstractModel):
 
     @property
     def Digest(self):
+        """哈希值
+        :rtype: str
+        """
         return self._Digest
 
     @Digest.setter
@@ -14502,6 +16936,9 @@ class TcrImageInfo(AbstractModel):
 
     @property
     def Size(self):
+        """镜像体积（单位：字节）
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -14510,6 +16947,9 @@ class TcrImageInfo(AbstractModel):
 
     @property
     def ImageVersion(self):
+        """Tag名称
+        :rtype: str
+        """
         return self._ImageVersion
 
     @ImageVersion.setter
@@ -14518,6 +16958,9 @@ class TcrImageInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14526,6 +16969,10 @@ class TcrImageInfo(AbstractModel):
 
     @property
     def Kind(self):
+        """制品类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -14534,6 +16981,10 @@ class TcrImageInfo(AbstractModel):
 
     @property
     def KmsSignature(self):
+        """KMS 签名信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KmsSignature
 
     @KmsSignature.setter
@@ -14587,6 +17038,9 @@ class TcrInstanceToken(AbstractModel):
 
     @property
     def Id(self):
+        """令牌ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14595,6 +17049,9 @@ class TcrInstanceToken(AbstractModel):
 
     @property
     def Desc(self):
+        """令牌描述
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -14603,6 +17060,9 @@ class TcrInstanceToken(AbstractModel):
 
     @property
     def RegistryId(self):
+        """令牌所属实例ID
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -14611,6 +17071,9 @@ class TcrInstanceToken(AbstractModel):
 
     @property
     def Enabled(self):
+        """令牌启用状态
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -14619,6 +17082,9 @@ class TcrInstanceToken(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """令牌创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -14627,6 +17093,9 @@ class TcrInstanceToken(AbstractModel):
 
     @property
     def ExpiredAt(self):
+        """令牌过期时间戳
+        :rtype: int
+        """
         return self._ExpiredAt
 
     @ExpiredAt.setter
@@ -14694,6 +17163,9 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def Name(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14702,6 +17174,9 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -14710,6 +17185,9 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def Public(self):
+        """访问级别
+        :rtype: bool
+        """
         return self._Public
 
     @Public.setter
@@ -14718,6 +17196,9 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def NamespaceId(self):
+        """命名空间的Id
+        :rtype: int
+        """
         return self._NamespaceId
 
     @NamespaceId.setter
@@ -14726,6 +17207,10 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """实例云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -14734,6 +17219,10 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def Metadata(self):
+        """命名空间元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KeyValueString
+        """
         return self._Metadata
 
     @Metadata.setter
@@ -14742,6 +17231,9 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def CVEWhitelistItems(self):
+        """漏洞白名单列表
+        :rtype: list of CVEWhitelistItem
+        """
         return self._CVEWhitelistItems
 
     @CVEWhitelistItems.setter
@@ -14750,6 +17242,9 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def AutoScan(self):
+        """扫描级别，true为自动，false为手动
+        :rtype: bool
+        """
         return self._AutoScan
 
     @AutoScan.setter
@@ -14758,6 +17253,9 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def PreventVUL(self):
+        """安全阻断级别，true为开启，false为关闭
+        :rtype: bool
+        """
         return self._PreventVUL
 
     @PreventVUL.setter
@@ -14766,6 +17264,9 @@ class TcrNamespaceInfo(AbstractModel):
 
     @property
     def Severity(self):
+        """阻断漏洞等级，目前仅支持low、medium、high, 为""时表示没有设置
+        :rtype: str
+        """
         return self._Severity
 
     @Severity.setter
@@ -14840,6 +17341,9 @@ class TcrRepositoryInfo(AbstractModel):
 
     @property
     def Name(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14848,6 +17352,9 @@ class TcrRepositoryInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -14856,6 +17363,9 @@ class TcrRepositoryInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -14864,6 +17374,9 @@ class TcrRepositoryInfo(AbstractModel):
 
     @property
     def Public(self):
+        """是否公开
+        :rtype: bool
+        """
         return self._Public
 
     @Public.setter
@@ -14872,6 +17385,10 @@ class TcrRepositoryInfo(AbstractModel):
 
     @property
     def Description(self):
+        """仓库详细描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14880,6 +17397,10 @@ class TcrRepositoryInfo(AbstractModel):
 
     @property
     def BriefDescription(self):
+        """简单描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BriefDescription
 
     @BriefDescription.setter
@@ -14888,6 +17409,9 @@ class TcrRepositoryInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14931,6 +17455,9 @@ class TriggerInvokeCondition(AbstractModel):
 
     @property
     def InvokeMethod(self):
+        """触发方式
+        :rtype: str
+        """
         return self._InvokeMethod
 
     @InvokeMethod.setter
@@ -14939,6 +17466,10 @@ class TriggerInvokeCondition(AbstractModel):
 
     @property
     def InvokeExpr(self):
+        """触发表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvokeExpr
 
     @InvokeExpr.setter
@@ -14994,6 +17525,10 @@ class TriggerInvokePara(AbstractModel):
 
     @property
     def AppId(self):
+        """AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -15002,6 +17537,10 @@ class TriggerInvokePara(AbstractModel):
 
     @property
     def ClusterId(self):
+        """TKE集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -15010,6 +17549,10 @@ class TriggerInvokePara(AbstractModel):
 
     @property
     def Namespace(self):
+        """TKE集群命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -15018,6 +17561,10 @@ class TriggerInvokePara(AbstractModel):
 
     @property
     def ServiceName(self):
+        """TKE集群工作负载名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -15026,6 +17573,10 @@ class TriggerInvokePara(AbstractModel):
 
     @property
     def ContainerName(self):
+        """TKE集群工作负载中容器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -15034,6 +17585,10 @@ class TriggerInvokePara(AbstractModel):
 
     @property
     def ClusterRegion(self):
+        """TKE集群地域数字ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ClusterRegion
 
     @ClusterRegion.setter
@@ -15077,6 +17632,10 @@ class TriggerInvokeResult(AbstractModel):
 
     @property
     def ReturnCode(self):
+        """请求TKE返回值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -15085,6 +17644,10 @@ class TriggerInvokeResult(AbstractModel):
 
     @property
     def ReturnMsg(self):
+        """请求TKE返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReturnMsg
 
     @ReturnMsg.setter
@@ -15152,6 +17715,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -15160,6 +17727,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def TagName(self):
+        """Tag名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -15168,6 +17739,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -15176,6 +17751,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def InvokeSource(self):
+        """触发方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvokeSource
 
     @InvokeSource.setter
@@ -15184,6 +17763,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def InvokeAction(self):
+        """触发动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvokeAction
 
     @InvokeAction.setter
@@ -15192,6 +17775,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def InvokeTime(self):
+        """触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvokeTime
 
     @InvokeTime.setter
@@ -15200,6 +17787,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def InvokeCondition(self):
+        """触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`
+        """
         return self._InvokeCondition
 
     @InvokeCondition.setter
@@ -15208,6 +17799,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def InvokePara(self):
+        """触发参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`
+        """
         return self._InvokePara
 
     @InvokePara.setter
@@ -15216,6 +17811,10 @@ class TriggerLogResp(AbstractModel):
 
     @property
     def InvokeResult(self):
+        """触发结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeResult`
+        """
         return self._InvokeResult
 
     @InvokeResult.setter
@@ -15288,6 +17887,10 @@ class TriggerResp(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -15296,6 +17899,10 @@ class TriggerResp(AbstractModel):
 
     @property
     def InvokeSource(self):
+        """触发来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvokeSource
 
     @InvokeSource.setter
@@ -15304,6 +17911,10 @@ class TriggerResp(AbstractModel):
 
     @property
     def InvokeAction(self):
+        """触发动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvokeAction
 
     @InvokeAction.setter
@@ -15312,6 +17923,10 @@ class TriggerResp(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15320,6 +17935,10 @@ class TriggerResp(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -15328,6 +17947,10 @@ class TriggerResp(AbstractModel):
 
     @property
     def InvokeCondition(self):
+        """触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`
+        """
         return self._InvokeCondition
 
     @InvokeCondition.setter
@@ -15336,6 +17959,10 @@ class TriggerResp(AbstractModel):
 
     @property
     def InvokePara(self):
+        """触发器参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`
+        """
         return self._InvokePara
 
     @InvokePara.setter
@@ -15379,6 +18006,9 @@ class ValidateNamespaceExistPersonalRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -15415,6 +18045,9 @@ class ValidateNamespaceExistPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """验证命名空间是否存在返回信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.NamespaceIsExistsResp`
+        """
         return self._Data
 
     @Data.setter
@@ -15423,6 +18056,9 @@ class ValidateNamespaceExistPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15451,6 +18087,9 @@ class ValidateRepositoryExistPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
+        """仓库名称
+        :rtype: str
+        """
         return self._RepoName
 
     @RepoName.setter
@@ -15487,6 +18126,9 @@ class ValidateRepositoryExistPersonalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """验证个人版仓库是否存在返回信息
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RepoIsExistResp`
+        """
         return self._Data
 
     @Data.setter
@@ -15495,6 +18137,9 @@ class ValidateRepositoryExistPersonalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15536,6 +18181,9 @@ false: use instancename+"-vpc" as subdomain
 
     @property
     def InstanceId(self):
+        """tcr实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -15544,6 +18192,9 @@ false: use instancename+"-vpc" as subdomain
 
     @property
     def VpcId(self):
+        """私有网络id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -15552,6 +18203,9 @@ false: use instancename+"-vpc" as subdomain
 
     @property
     def EniLBIp(self):
+        """tcr内网访问链路ip
+        :rtype: str
+        """
         return self._EniLBIp
 
     @EniLBIp.setter
@@ -15560,6 +18214,10 @@ false: use instancename+"-vpc" as subdomain
 
     @property
     def UsePublicDomain(self):
+        """true：use instance name as subdomain
+false: use instancename+"-vpc" as subdomain
+        :rtype: bool
+        """
         return self._UsePublicDomain
 
     @UsePublicDomain.setter
@@ -15568,6 +18226,9 @@ false: use instancename+"-vpc" as subdomain
 
     @property
     def RegionName(self):
+        """解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -15614,6 +18275,10 @@ class VpcPrivateDomainStatus(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -15622,6 +18287,10 @@ class VpcPrivateDomainStatus(AbstractModel):
 
     @property
     def VpcId(self):
+        """unique vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -15630,6 +18299,10 @@ class VpcPrivateDomainStatus(AbstractModel):
 
     @property
     def Status(self):
+        """ENABLE代表已经开启，DISABLE代表未开启，ERROR代表查询出错
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -15668,6 +18341,9 @@ class WebhookTarget(AbstractModel):
 
     @property
     def Address(self):
+        """目标地址
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -15676,6 +18352,9 @@ class WebhookTarget(AbstractModel):
 
     @property
     def Headers(self):
+        """自定义 Headers
+        :rtype: list of Header
+        """
         return self._Headers
 
     @Headers.setter
@@ -15736,6 +18415,9 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Name(self):
+        """触发器名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15744,6 +18426,9 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Targets(self):
+        """触发器目标
+        :rtype: list of WebhookTarget
+        """
         return self._Targets
 
     @Targets.setter
@@ -15752,6 +18437,9 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def EventTypes(self):
+        """触发动作
+        :rtype: list of str
+        """
         return self._EventTypes
 
     @EventTypes.setter
@@ -15760,6 +18448,9 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Condition(self):
+        """触发规则
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -15768,6 +18459,9 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Enabled(self):
+        """启用触发器
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -15776,6 +18470,9 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Id(self):
+        """触发器Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -15784,6 +18481,9 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Description(self):
+        """触发器描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -15792,6 +18492,9 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def NamespaceId(self):
+        """触发器所属命名空间 Id
+        :rtype: int
+        """
         return self._NamespaceId
 
     @NamespaceId.setter
@@ -15858,6 +18561,9 @@ class WebhookTriggerLog(AbstractModel):
 
     @property
     def Id(self):
+        """日志 Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -15866,6 +18572,9 @@ class WebhookTriggerLog(AbstractModel):
 
     @property
     def TriggerId(self):
+        """触发器 Id
+        :rtype: int
+        """
         return self._TriggerId
 
     @TriggerId.setter
@@ -15874,6 +18583,9 @@ class WebhookTriggerLog(AbstractModel):
 
     @property
     def EventType(self):
+        """事件类型
+        :rtype: str
+        """
         return self._EventType
 
     @EventType.setter
@@ -15882,6 +18594,9 @@ class WebhookTriggerLog(AbstractModel):
 
     @property
     def NotifyType(self):
+        """通知类型
+        :rtype: str
+        """
         return self._NotifyType
 
     @NotifyType.setter
@@ -15890,6 +18605,9 @@ class WebhookTriggerLog(AbstractModel):
 
     @property
     def Detail(self):
+        """详情
+        :rtype: str
+        """
         return self._Detail
 
     @Detail.setter
@@ -15898,6 +18616,9 @@ class WebhookTriggerLog(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -15906,6 +18627,9 @@ class WebhookTriggerLog(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -15914,6 +18638,9 @@ class WebhookTriggerLog(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter

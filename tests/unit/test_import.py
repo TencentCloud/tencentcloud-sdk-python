@@ -389,11 +389,6 @@ def test_import_cpdp():
     from tencentcloud.cpdp.v20190820 import models
 
 
-def test_import_cr():
-    from tencentcloud.cr.v20180321 import cr_client
-    from tencentcloud.cr.v20180321 import models
-
-
 def test_import_csip():
     from tencentcloud.csip.v20221121 import csip_client
     from tencentcloud.csip.v20221121 import models
@@ -624,6 +619,11 @@ def test_import_gse():
     from tencentcloud.gse.v20191112 import models
 
 
+def test_import_gwlb():
+    from tencentcloud.gwlb.v20240906 import gwlb_client
+    from tencentcloud.gwlb.v20240906 import models
+
+
 def test_import_habo():
     from tencentcloud.habo.v20181203 import habo_client
     from tencentcloud.habo.v20181203 import models
@@ -677,6 +677,11 @@ def test_import_ie():
 def test_import_iecp():
     from tencentcloud.iecp.v20210914 import iecp_client
     from tencentcloud.iecp.v20210914 import models
+
+
+def test_import_ig():
+    from tencentcloud.ig.v20210518 import ig_client
+    from tencentcloud.ig.v20210518 import models
 
 
 def test_import_iir():

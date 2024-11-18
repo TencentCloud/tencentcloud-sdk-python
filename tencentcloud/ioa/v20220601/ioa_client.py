@@ -26,8 +26,31 @@ class IoaClient(AbstractClient):
     _service = 'ioa'
 
 
+    def CreateDeviceVirtualGroup(self, request):
+        """创建终端自定义分组，私有化调用path为：/capi/Assets/Device/CreateDeviceVirtualGroup
+
+        :param request: Request instance for CreateDeviceVirtualGroup.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceVirtualGroupRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceVirtualGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeviceVirtualGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeviceVirtualGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccountGroups(self, request):
-        """以分页的方式查询账户目录列表,私有化调用path为：/capi/Assets/DescribeAccountGroups
+        """以分页的方式查询账号分组列表，私有化调用path为：/capi/Assets/DescribeAccountGroups
 
         :param request: Request instance for DescribeAccountGroups.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountGroupsRequest`
@@ -96,7 +119,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeRootAccountGroup(self, request):
-        """查询账户根分组详情，私有化调用path为：capi/Assets/DescribeRootAccountGroup
+        """查询账号根分组详情。对应“用户与授权管理”里内置不可见的全网根账号组，所有新建的目录，都挂在该全网根账号组下。
 
         :param request: Request instance for DescribeRootAccountGroup.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeRootAccountGroupRequest`

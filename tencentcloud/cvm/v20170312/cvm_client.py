@@ -653,6 +653,29 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeImageFromFamily(self, request):
+        """本接口(DescribeImageFromFamily) 用于查看镜像族内可用镜像信息。
+
+        :param request: Request instance for DescribeImageFromFamily.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeImageFromFamilyRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeImageFromFamilyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageFromFamily", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageFromFamilyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeImageQuota(self, request):
         """本接口(DescribeImageQuota)用于查询用户账号的镜像配额。
 
@@ -1364,7 +1387,7 @@ class CvmClient(AbstractClient):
 
 
     def ImportImage(self, request):
-        """本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。目前支持 RAW、VHD、QCOW2、VMDK 镜像格式。
+        """本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。目前支持RAW、VHD、QCOW2、VMDK镜像格式。
 
         :param request: Request instance for ImportImage.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ImportImageRequest`

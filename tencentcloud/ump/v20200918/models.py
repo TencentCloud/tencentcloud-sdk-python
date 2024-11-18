@@ -38,6 +38,9 @@ class BunkZone(AbstractModel):
 
     @property
     def ZoneId(self):
+        """点位ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -46,6 +49,9 @@ class BunkZone(AbstractModel):
 
     @property
     def ZoneName(self):
+        """点位名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -54,6 +60,9 @@ class BunkZone(AbstractModel):
 
     @property
     def BunkCodes(self):
+        """铺位编码
+        :rtype: str
+        """
         return self._BunkCodes
 
     @BunkCodes.setter
@@ -142,6 +151,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -150,6 +162,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -158,6 +173,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def FloorId(self):
+        """楼层ID
+        :rtype: int
+        """
         return self._FloorId
 
     @FloorId.setter
@@ -166,6 +184,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -174,6 +195,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def CameraIp(self):
+        """摄像头IP
+        :rtype: str
+        """
         return self._CameraIp
 
     @CameraIp.setter
@@ -182,6 +206,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def CameraMac(self):
+        """摄像头Mac
+        :rtype: str
+        """
         return self._CameraMac
 
     @CameraMac.setter
@@ -190,6 +217,11 @@ class CameraConfig(AbstractModel):
 
     @property
     def CameraType(self):
+        """摄像头类型:
+1: 码流机
+2: AI相机
+        :rtype: int
+        """
         return self._CameraType
 
     @CameraType.setter
@@ -198,6 +230,11 @@ class CameraConfig(AbstractModel):
 
     @property
     def CameraFeature(self):
+        """摄像头功能:
+1: 人脸
+2: 人体
+        :rtype: int
+        """
         return self._CameraFeature
 
     @CameraFeature.setter
@@ -206,6 +243,11 @@ class CameraConfig(AbstractModel):
 
     @property
     def CameraState(self):
+        """摄像头是否启用:
+0: 下线
+1: 启用
+        :rtype: int
+        """
         return self._CameraState
 
     @CameraState.setter
@@ -214,6 +256,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def ZoneId(self):
+        """点位ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -222,6 +267,17 @@ class CameraConfig(AbstractModel):
 
     @property
     def ZoneType(self):
+        """点位类型:
+1: 场门
+3: 层门
+5: 特殊区域
+7: 门店
+8: 补位
+10: 开放式门店
+11: 品类区
+12: 公共区
+        :rtype: int
+        """
         return self._ZoneType
 
     @ZoneType.setter
@@ -230,6 +286,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def Config(self):
+        """配置
+        :rtype: :class:`tencentcloud.ump.v20200918.models.Config`
+        """
         return self._Config
 
     @Config.setter
@@ -238,6 +297,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def Width(self):
+        """宽
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -246,6 +308,9 @@ class CameraConfig(AbstractModel):
 
     @property
     def Height(self):
+        """高
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -304,6 +369,9 @@ class CameraState(AbstractModel):
 
     @property
     def CameraId(self):
+        """相机ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -312,6 +380,16 @@ class CameraState(AbstractModel):
 
     @property
     def State(self):
+        """相机状态:
+10: 初始化
+11: 未知状态
+12: 网络异常
+13: 未授权
+14: 相机App异常
+15: 相机取流异常
+16: 状态正常
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -382,6 +460,9 @@ class CameraZones(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -390,6 +471,9 @@ class CameraZones(AbstractModel):
 
     @property
     def CameraName(self):
+        """摄像头名称
+        :rtype: str
+        """
         return self._CameraName
 
     @CameraName.setter
@@ -398,6 +482,11 @@ class CameraZones(AbstractModel):
 
     @property
     def CameraFeature(self):
+        """摄像头功能:
+1: 人脸
+2: 人体
+        :rtype: int
+        """
         return self._CameraFeature
 
     @CameraFeature.setter
@@ -406,6 +495,9 @@ class CameraZones(AbstractModel):
 
     @property
     def CameraIp(self):
+        """摄像头IP
+        :rtype: str
+        """
         return self._CameraIp
 
     @CameraIp.setter
@@ -414,6 +506,18 @@ class CameraZones(AbstractModel):
 
     @property
     def CameraState(self):
+        """摄像头状态:
+0: 异常 (不再使用)
+1: 正常 (不再使用)
+10: 初始化
+11: 未知状态 (因服务内部错误产生)
+12: 网络异常
+13: 未授权
+14: 相机App异常
+15: 相机取流异常
+16: 正常
+        :rtype: int
+        """
         return self._CameraState
 
     @CameraState.setter
@@ -422,6 +526,9 @@ class CameraZones(AbstractModel):
 
     @property
     def Zones(self):
+        """点位列表
+        :rtype: list of BunkZone
+        """
         return self._Zones
 
     @Zones.setter
@@ -430,6 +537,12 @@ class CameraZones(AbstractModel):
 
     @property
     def Pixel(self):
+        """像素:
+130W(1280*960)
+200W(1920*1080)
+400W(2560*1440)
+        :rtype: str
+        """
         return self._Pixel
 
     @Pixel.setter
@@ -438,6 +551,10 @@ class CameraZones(AbstractModel):
 
     @property
     def RTSP(self):
+        """相机Rtsp地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RTSP
 
     @RTSP.setter
@@ -518,6 +635,13 @@ L: 联纵
 
     @property
     def CameraProducer(self):
+        """摄像头厂商:
+H: 海康
+D: 大华
+Y: 英飞拓
+L: 联纵
+        :rtype: str
+        """
         return self._CameraProducer
 
     @CameraProducer.setter
@@ -526,6 +650,9 @@ L: 联纵
 
     @property
     def RTSP(self):
+        """rtsp 地址
+        :rtype: str
+        """
         return self._RTSP
 
     @RTSP.setter
@@ -534,6 +661,9 @@ L: 联纵
 
     @property
     def Fps(self):
+        """摄像头帧率
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -542,6 +672,9 @@ L: 联纵
 
     @property
     def DecodeFps(self):
+        """解码帧率
+        :rtype: int
+        """
         return self._DecodeFps
 
     @DecodeFps.setter
@@ -550,6 +683,11 @@ L: 联纵
 
     @property
     def PassengerFlow(self):
+        """是否做客流计算:
+0: 否
+1: 是
+        :rtype: int
+        """
         return self._PassengerFlow
 
     @PassengerFlow.setter
@@ -558,6 +696,11 @@ L: 联纵
 
     @property
     def FaceExpose(self):
+        """是否打开人脸曝光:
+0: 关闭
+1: 开启
+        :rtype: int
+        """
         return self._FaceExpose
 
     @FaceExpose.setter
@@ -566,6 +709,9 @@ L: 联纵
 
     @property
     def MallArea(self):
+        """门线标注
+        :rtype: list of Point
+        """
         return self._MallArea
 
     @MallArea.setter
@@ -574,6 +720,9 @@ L: 联纵
 
     @property
     def ShopArea(self):
+        """店门标注
+        :rtype: list of Point
+        """
         return self._ShopArea
 
     @ShopArea.setter
@@ -582,6 +731,9 @@ L: 联纵
 
     @property
     def TrackAreas(self):
+        """检测区标注
+        :rtype: list of Polygon
+        """
         return self._TrackAreas
 
     @TrackAreas.setter
@@ -590,6 +742,9 @@ L: 联纵
 
     @property
     def Zones(self):
+        """点位列表（品类区）
+        :rtype: list of ZoneArea
+        """
         return self._Zones
 
     @Zones.setter
@@ -670,6 +825,9 @@ class CreateCameraAlertAlert(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -678,6 +836,9 @@ class CreateCameraAlertAlert(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -686,6 +847,9 @@ class CreateCameraAlertAlert(AbstractModel):
 
     @property
     def CameraId(self):
+        """相机ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -694,6 +858,9 @@ class CreateCameraAlertAlert(AbstractModel):
 
     @property
     def CaptureTime(self):
+        """时间戳,ms,默认为告警请求到达时间
+        :rtype: int
+        """
         return self._CaptureTime
 
     @CaptureTime.setter
@@ -702,6 +869,9 @@ class CreateCameraAlertAlert(AbstractModel):
 
     @property
     def Image(self):
+        """图片base64编码
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -710,6 +880,9 @@ class CreateCameraAlertAlert(AbstractModel):
 
     @property
     def MoveAlert(self):
+        """移动告警
+        :rtype: :class:`tencentcloud.ump.v20200918.models.CreateCameraAlertsMoveAlert`
+        """
         return self._MoveAlert
 
     @MoveAlert.setter
@@ -718,6 +891,9 @@ class CreateCameraAlertAlert(AbstractModel):
 
     @property
     def CoverAlert(self):
+        """遮挡告警
+        :rtype: :class:`tencentcloud.ump.v20200918.models.CreateCameraAlertsCoverAlert`
+        """
         return self._CoverAlert
 
     @CoverAlert.setter
@@ -764,6 +940,9 @@ class CreateCameraAlertsCoverAlert(AbstractModel):
 
     @property
     def Cover(self):
+        """是否遮挡
+        :rtype: bool
+        """
         return self._Cover
 
     @Cover.setter
@@ -772,6 +951,9 @@ class CreateCameraAlertsCoverAlert(AbstractModel):
 
     @property
     def CoverConfidence(self):
+        """是否移动置信度
+        :rtype: float
+        """
         return self._CoverConfidence
 
     @CoverConfidence.setter
@@ -809,6 +991,9 @@ class CreateCameraAlertsMoveAlert(AbstractModel):
 
     @property
     def Move(self):
+        """是否移动
+        :rtype: bool
+        """
         return self._Move
 
     @Move.setter
@@ -817,6 +1002,9 @@ class CreateCameraAlertsMoveAlert(AbstractModel):
 
     @property
     def MoveConfidence(self):
+        """是否移动置信度
+        :rtype: float
+        """
         return self._MoveConfidence
 
     @MoveConfidence.setter
@@ -851,6 +1039,9 @@ class CreateCameraAlertsRequest(AbstractModel):
 
     @property
     def Alerts(self):
+        """告警信息列表
+        :rtype: list of CreateCameraAlertAlert
+        """
         return self._Alerts
 
     @Alerts.setter
@@ -889,6 +1080,9 @@ class CreateCameraAlertsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -920,6 +1114,9 @@ class CreateCameraStateRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -928,6 +1125,9 @@ class CreateCameraStateRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -936,6 +1136,9 @@ class CreateCameraStateRequest(AbstractModel):
 
     @property
     def CameraStates(self):
+        """场内所有相机的状态值
+        :rtype: list of CameraState
+        """
         return self._CameraStates
 
     @CameraStates.setter
@@ -976,6 +1179,9 @@ class CreateCameraStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1001,6 +1207,9 @@ class CreateCaptureRequest(AbstractModel):
 
     @property
     def Data(self):
+        """原始抓拍报文
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -1038,6 +1247,10 @@ class CreateCaptureResponse(AbstractModel):
 
     @property
     def RspData(self):
+        """原始应答报文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RspData
 
     @RspData.setter
@@ -1046,6 +1259,9 @@ class CreateCaptureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1096,6 +1312,9 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1104,6 +1323,9 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1112,6 +1334,9 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """点位ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1120,6 +1345,9 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -1128,6 +1356,9 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     @property
     def CaptureTime(self):
+        """时间戳，毫秒
+        :rtype: int
+        """
         return self._CaptureTime
 
     @CaptureTime.setter
@@ -1136,6 +1367,12 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     @property
     def State(self):
+        """状态: 
+1: 侵占
+2: 消失
+3: 即侵占又消失
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -1144,6 +1381,9 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     @property
     def Image(self):
+        """图片base64字符串
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -1152,6 +1392,9 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     @property
     def Warnings(self):
+        """告警列表
+        :rtype: list of MultiBizWarning
+        """
         return self._Warnings
 
     @Warnings.setter
@@ -1197,6 +1440,9 @@ class CreateMultiBizAlertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1228,6 +1474,9 @@ class CreateProgramStateRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1236,6 +1485,9 @@ class CreateProgramStateRequest(AbstractModel):
 
     @property
     def ProgramStateItems(self):
+        """进程监控信息列表
+        :rtype: list of ProgramStateItem
+        """
         return self._ProgramStateItems
 
     @ProgramStateItems.setter
@@ -1244,6 +1496,9 @@ class CreateProgramStateRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """商场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1284,6 +1539,9 @@ class CreateProgramStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1318,6 +1576,9 @@ class CreateServerStateRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1326,6 +1587,9 @@ class CreateServerStateRequest(AbstractModel):
 
     @property
     def ServerStateItems(self):
+        """服务器监控信息列表
+        :rtype: list of ServerStateItem
+        """
         return self._ServerStateItems
 
     @ServerStateItems.setter
@@ -1334,6 +1598,9 @@ class CreateServerStateRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """商场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1342,6 +1609,9 @@ class CreateServerStateRequest(AbstractModel):
 
     @property
     def ReportTime(self):
+        """服务器监控信息上报时间戳，单位毫秒
+        :rtype: int
+        """
         return self._ReportTime
 
     @ReportTime.setter
@@ -1383,6 +1653,9 @@ class CreateServerStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1426,6 +1699,9 @@ class DeleteMultiBizAlertRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1434,6 +1710,9 @@ class DeleteMultiBizAlertRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1442,6 +1721,9 @@ class DeleteMultiBizAlertRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """点位ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1450,6 +1732,9 @@ class DeleteMultiBizAlertRequest(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -1458,6 +1743,12 @@ class DeleteMultiBizAlertRequest(AbstractModel):
 
     @property
     def ActionType(self):
+        """消警动作:
+1: 误报
+2: 正报合规
+3: 正报不合规，整改完成
+        :rtype: int
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -1466,6 +1757,9 @@ class DeleteMultiBizAlertRequest(AbstractModel):
 
     @property
     def Image(self):
+        """图片base64字符串
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -1504,6 +1798,9 @@ class DeleteMultiBizAlertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1535,6 +1832,9 @@ class DeleteTaskRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1543,6 +1843,9 @@ class DeleteTaskRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1551,6 +1854,9 @@ class DeleteTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1586,6 +1892,9 @@ class DeleteTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1614,6 +1923,9 @@ class DescribeCamerasRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1622,6 +1934,9 @@ class DescribeCamerasRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1659,6 +1974,9 @@ class DescribeCamerasResponse(AbstractModel):
 
     @property
     def Cameras(self):
+        """摄像头列表
+        :rtype: list of CameraZones
+        """
         return self._Cameras
 
     @Cameras.setter
@@ -1667,6 +1985,9 @@ class DescribeCamerasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1716,6 +2037,9 @@ class DescribeConfigRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -1724,6 +2048,9 @@ class DescribeConfigRequest(AbstractModel):
 
     @property
     def CameraSign(self):
+        """摄像头签名
+        :rtype: str
+        """
         return self._CameraSign
 
     @CameraSign.setter
@@ -1732,6 +2059,9 @@ class DescribeConfigRequest(AbstractModel):
 
     @property
     def CameraAppId(self):
+        """摄像头app id
+        :rtype: str
+        """
         return self._CameraAppId
 
     @CameraAppId.setter
@@ -1740,6 +2070,9 @@ class DescribeConfigRequest(AbstractModel):
 
     @property
     def CameraTimestamp(self):
+        """摄像头时间戳，毫秒
+        :rtype: int
+        """
         return self._CameraTimestamp
 
     @CameraTimestamp.setter
@@ -1748,6 +2081,9 @@ class DescribeConfigRequest(AbstractModel):
 
     @property
     def ServerMac(self):
+        """MAC地址，字母大写
+        :rtype: str
+        """
         return self._ServerMac
 
     @ServerMac.setter
@@ -1756,6 +2092,9 @@ class DescribeConfigRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1764,6 +2103,9 @@ class DescribeConfigRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1812,6 +2154,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -1820,6 +2165,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def Version(self):
+        """配置版本号
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -1828,6 +2176,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def Cameras(self):
+        """摄像头列表
+        :rtype: list of CameraConfig
+        """
         return self._Cameras
 
     @Cameras.setter
@@ -1836,6 +2187,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1875,6 +2229,9 @@ class DescribeImageRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1883,6 +2240,9 @@ class DescribeImageRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1891,6 +2251,9 @@ class DescribeImageRequest(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -1929,6 +2292,9 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """cos 临时 url，异步上传图片，client需要轮询
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -1937,6 +2303,9 @@ class DescribeImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1972,6 +2341,9 @@ class DescribeMultiBizBaseImageRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -1980,6 +2352,9 @@ class DescribeMultiBizBaseImageRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -1988,6 +2363,9 @@ class DescribeMultiBizBaseImageRequest(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -1996,6 +2374,9 @@ class DescribeMultiBizBaseImageRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """点位ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2035,6 +2416,9 @@ class DescribeMultiBizBaseImageResponse(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """cos 临时 url
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -2043,6 +2427,9 @@ class DescribeMultiBizBaseImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2076,6 +2463,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -2084,6 +2474,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -2092,6 +2485,10 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型:
+1: 底图拉取
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2130,6 +2527,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务列表
+        :rtype: list of Task
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -2138,6 +2538,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2172,6 +2575,9 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -2180,6 +2586,9 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -2217,6 +2626,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def Zones(self):
+        """点位列表
+        :rtype: list of ZoneConfig
+        """
         return self._Zones
 
     @Zones.setter
@@ -2225,6 +2637,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2259,6 +2674,9 @@ class DiskInfo(AbstractModel):
 
     @property
     def DiskName(self):
+        """硬盘名字
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -2267,6 +2685,9 @@ class DiskInfo(AbstractModel):
 
     @property
     def Usage(self):
+        """硬盘使用率
+        :rtype: float
+        """
         return self._Usage
 
     @Usage.setter
@@ -2313,6 +2734,9 @@ class ModifyMultiBizConfigRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -2321,6 +2745,9 @@ class ModifyMultiBizConfigRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -2329,6 +2756,9 @@ class ModifyMultiBizConfigRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """点位ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2337,6 +2767,9 @@ class ModifyMultiBizConfigRequest(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -2345,6 +2778,9 @@ class ModifyMultiBizConfigRequest(AbstractModel):
 
     @property
     def MonitoringAreas(self):
+        """监控区域
+        :rtype: list of Polygon
+        """
         return self._MonitoringAreas
 
     @MonitoringAreas.setter
@@ -2387,6 +2823,9 @@ class ModifyMultiBizConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2418,6 +2857,9 @@ class MultiBizWarning(AbstractModel):
 
     @property
     def Id(self):
+        """编号
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2426,6 +2868,9 @@ class MultiBizWarning(AbstractModel):
 
     @property
     def MonitoringArea(self):
+        """监控区域
+        :rtype: list of Point
+        """
         return self._MonitoringArea
 
     @MonitoringArea.setter
@@ -2434,6 +2879,9 @@ class MultiBizWarning(AbstractModel):
 
     @property
     def WarningInfos(self):
+        """告警列表
+        :rtype: list of MultiBizWarningInfo
+        """
         return self._WarningInfos
 
     @WarningInfos.setter
@@ -2491,6 +2939,12 @@ class MultiBizWarningInfo(AbstractModel):
 
     @property
     def WarningType(self):
+        """告警类型：
+0: 无变化
+1: 侵占
+2: 消失
+        :rtype: int
+        """
         return self._WarningType
 
     @WarningType.setter
@@ -2499,6 +2953,9 @@ class MultiBizWarningInfo(AbstractModel):
 
     @property
     def WarningAreaSize(self):
+        """告警侵占或消失面积
+        :rtype: float
+        """
         return self._WarningAreaSize
 
     @WarningAreaSize.setter
@@ -2507,6 +2964,9 @@ class MultiBizWarningInfo(AbstractModel):
 
     @property
     def WarningLocation(self):
+        """告警侵占或消失坐标
+        :rtype: :class:`tencentcloud.ump.v20200918.models.Point`
+        """
         return self._WarningLocation
 
     @WarningLocation.setter
@@ -2515,6 +2975,9 @@ class MultiBizWarningInfo(AbstractModel):
 
     @property
     def WarningAreaContour(self):
+        """告警侵占或消失轮廓
+        :rtype: list of Point
+        """
         return self._WarningAreaContour
 
     @WarningAreaContour.setter
@@ -2561,6 +3024,9 @@ class Point(AbstractModel):
 
     @property
     def X(self):
+        """X坐标
+        :rtype: int
+        """
         return self._X
 
     @X.setter
@@ -2569,6 +3035,9 @@ class Point(AbstractModel):
 
     @property
     def Y(self):
+        """Y坐标
+        :rtype: int
+        """
         return self._Y
 
     @Y.setter
@@ -2603,6 +3072,9 @@ class Polygon(AbstractModel):
 
     @property
     def Points(self):
+        """标注列表
+        :rtype: list of Point
+        """
         return self._Points
 
     @Points.setter
@@ -2656,6 +3128,9 @@ class ProgramStateItem(AbstractModel):
 
     @property
     def ServerIp(self):
+        """服务器IP
+        :rtype: str
+        """
         return self._ServerIp
 
     @ServerIp.setter
@@ -2664,6 +3139,9 @@ class ProgramStateItem(AbstractModel):
 
     @property
     def ProgramName(self):
+        """进程名字
+        :rtype: str
+        """
         return self._ProgramName
 
     @ProgramName.setter
@@ -2672,6 +3150,9 @@ class ProgramStateItem(AbstractModel):
 
     @property
     def OnlineCount(self):
+        """在线个数
+        :rtype: int
+        """
         return self._OnlineCount
 
     @OnlineCount.setter
@@ -2680,6 +3161,9 @@ class ProgramStateItem(AbstractModel):
 
     @property
     def OfflineCount(self):
+        """离线个数
+        :rtype: int
+        """
         return self._OfflineCount
 
     @OfflineCount.setter
@@ -2688,6 +3172,12 @@ class ProgramStateItem(AbstractModel):
 
     @property
     def State(self):
+        """上报状态:
+1: 正常上报
+2: 异常上报
+注：此处异常上报是指本次上报由于场内服务内部原因导致上报数据不可信等。此时离线个数重置为1，在线个数重置为0
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -2740,6 +3230,9 @@ class ReportServiceRegisterRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -2748,6 +3241,9 @@ class ReportServiceRegisterRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -2756,6 +3252,9 @@ class ReportServiceRegisterRequest(AbstractModel):
 
     @property
     def ServiceRegisterInfos(self):
+        """服务上报当前的服务能力信息
+        :rtype: list of ServiceRegisterInfo
+        """
         return self._ServiceRegisterInfos
 
     @ServiceRegisterInfos.setter
@@ -2764,6 +3263,9 @@ class ReportServiceRegisterRequest(AbstractModel):
 
     @property
     def ServerIp(self):
+        """服务内网Ip
+        :rtype: str
+        """
         return self._ServerIp
 
     @ServerIp.setter
@@ -2772,6 +3274,9 @@ class ReportServiceRegisterRequest(AbstractModel):
 
     @property
     def ServerNodeId(self):
+        """上报服务所在服务器的唯一ID
+        :rtype: str
+        """
         return self._ServerNodeId
 
     @ServerNodeId.setter
@@ -2780,6 +3285,9 @@ class ReportServiceRegisterRequest(AbstractModel):
 
     @property
     def ReportTime(self):
+        """上报时间戳, 单位毫秒
+        :rtype: int
+        """
         return self._ReportTime
 
     @ReportTime.setter
@@ -2823,6 +3331,9 @@ class ReportServiceRegisterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2857,6 +3368,9 @@ class SearchImageRequest(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -2865,6 +3379,9 @@ class SearchImageRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -2873,6 +3390,9 @@ class SearchImageRequest(AbstractModel):
 
     @property
     def Image(self):
+        """图片base64字符串
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -2881,6 +3401,9 @@ class SearchImageRequest(AbstractModel):
 
     @property
     def ImageTime(self):
+        """时间戳，毫秒
+        :rtype: int
+        """
         return self._ImageTime
 
     @ImageTime.setter
@@ -2923,6 +3446,9 @@ class SearchImageResponse(AbstractModel):
 
     @property
     def FaceId(self):
+        """face id
+        :rtype: str
+        """
         return self._FaceId
 
     @FaceId.setter
@@ -2931,6 +3457,9 @@ class SearchImageResponse(AbstractModel):
 
     @property
     def Results(self):
+        """搜索结果列表
+        :rtype: list of SearchResult
+        """
         return self._Results
 
     @Results.setter
@@ -2939,6 +3468,9 @@ class SearchImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2977,6 +3509,9 @@ class SearchResult(AbstractModel):
 
     @property
     def Image(self):
+        """图片base64数据
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -2985,6 +3520,9 @@ class SearchResult(AbstractModel):
 
     @property
     def PersonId(self):
+        """身份ID
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -2993,6 +3531,9 @@ class SearchResult(AbstractModel):
 
     @property
     def Similarity(self):
+        """相似度
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -3037,6 +3578,12 @@ class ServerStateItem(AbstractModel):
 
     @property
     def ServerState(self):
+        """服务器状态
+1: 在线
+2: 离线
+3: 重启
+        :rtype: int
+        """
         return self._ServerState
 
     @ServerState.setter
@@ -3045,6 +3592,9 @@ class ServerStateItem(AbstractModel):
 
     @property
     def ServerIp(self):
+        """服务器IP
+        :rtype: str
+        """
         return self._ServerIp
 
     @ServerIp.setter
@@ -3053,6 +3603,9 @@ class ServerStateItem(AbstractModel):
 
     @property
     def DiskInfos(self):
+        """硬盘监控信息列表
+        :rtype: list of DiskInfo
+        """
         return self._DiskInfos
 
     @DiskInfos.setter
@@ -3099,6 +3652,9 @@ class ServiceRegisterInfo(AbstractModel):
 
     @property
     def CgiUrl(self):
+        """当前服务的回调地址
+        :rtype: str
+        """
         return self._CgiUrl
 
     @CgiUrl.setter
@@ -3107,6 +3663,12 @@ class ServiceRegisterInfo(AbstractModel):
 
     @property
     def ServiceType(self):
+        """当前服务类型:
+1: 多经服务
+2: 相机误报警确认
+3: 底图更新
+        :rtype: int
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -3154,6 +3716,9 @@ class Task(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3162,6 +3727,9 @@ class Task(AbstractModel):
 
     @property
     def GroupCode(self):
+        """集团编码
+        :rtype: str
+        """
         return self._GroupCode
 
     @GroupCode.setter
@@ -3170,6 +3738,9 @@ class Task(AbstractModel):
 
     @property
     def MallId(self):
+        """广场ID
+        :rtype: int
+        """
         return self._MallId
 
     @MallId.setter
@@ -3178,6 +3749,9 @@ class Task(AbstractModel):
 
     @property
     def TaskContent(self):
+        """任务内容
+        :rtype: :class:`tencentcloud.ump.v20200918.models.TaskContent`
+        """
         return self._TaskContent
 
     @TaskContent.setter
@@ -3186,6 +3760,10 @@ class Task(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型:
+1: 底图拉取
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -3231,6 +3809,9 @@ class TaskContent(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头ID
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -3239,6 +3820,9 @@ class TaskContent(AbstractModel):
 
     @property
     def RTSP(self):
+        """rtsp 地址
+        :rtype: str
+        """
         return self._RTSP
 
     @RTSP.setter
@@ -3247,6 +3831,9 @@ class TaskContent(AbstractModel):
 
     @property
     def Url(self):
+        """图片上传地址
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3285,6 +3872,9 @@ class ZoneArea(AbstractModel):
 
     @property
     def ZoneId(self):
+        """点位ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3293,6 +3883,9 @@ class ZoneArea(AbstractModel):
 
     @property
     def ShopArea(self):
+        """店门标注
+        :rtype: list of Point
+        """
         return self._ShopArea
 
     @ShopArea.setter
@@ -3367,6 +3960,9 @@ class ZoneConfig(AbstractModel):
 
     @property
     def ZoneId(self):
+        """点位ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3375,6 +3971,9 @@ class ZoneConfig(AbstractModel):
 
     @property
     def ZoneName(self):
+        """点位名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -3383,6 +3982,17 @@ class ZoneConfig(AbstractModel):
 
     @property
     def ZoneType(self):
+        """点位类型:
+1: 场门
+3: 层门
+5: 特殊区域
+7: 门店
+8: 补位
+10: 开放式门店
+11: 品类区
+12: 公共区
+        :rtype: int
+        """
         return self._ZoneType
 
     @ZoneType.setter
@@ -3391,6 +4001,9 @@ class ZoneConfig(AbstractModel):
 
     @property
     def BunkCodes(self):
+        """铺位编码
+        :rtype: str
+        """
         return self._BunkCodes
 
     @BunkCodes.setter
@@ -3399,6 +4012,9 @@ class ZoneConfig(AbstractModel):
 
     @property
     def FloorName(self):
+        """楼层名称
+        :rtype: str
+        """
         return self._FloorName
 
     @FloorName.setter
@@ -3407,6 +4023,9 @@ class ZoneConfig(AbstractModel):
 
     @property
     def FloorId(self):
+        """楼层ID
+        :rtype: int
+        """
         return self._FloorId
 
     @FloorId.setter
@@ -3415,6 +4034,9 @@ class ZoneConfig(AbstractModel):
 
     @property
     def BindNum(self):
+        """绑定数
+        :rtype: int
+        """
         return self._BindNum
 
     @BindNum.setter
@@ -3423,6 +4045,9 @@ class ZoneConfig(AbstractModel):
 
     @property
     def DebugNum(self):
+        """调试数
+        :rtype: int
+        """
         return self._DebugNum
 
     @DebugNum.setter
@@ -3431,6 +4056,12 @@ class ZoneConfig(AbstractModel):
 
     @property
     def State(self):
+        """下发状态:
+1: 不可下发
+2: 可下发
+3: 已下发
+        :rtype: int
+        """
         return self._State
 
     @State.setter

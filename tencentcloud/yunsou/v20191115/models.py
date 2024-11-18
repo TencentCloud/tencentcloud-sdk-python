@@ -41,6 +41,9 @@ class DataManipulationRequest(AbstractModel):
 
     @property
     def OpType(self):
+        """操作类型，add或del
+        :rtype: str
+        """
         return self._OpType
 
     @OpType.setter
@@ -49,6 +52,9 @@ class DataManipulationRequest(AbstractModel):
 
     @property
     def Encoding(self):
+        """数据编码类型
+        :rtype: str
+        """
         return self._Encoding
 
     @Encoding.setter
@@ -57,6 +63,9 @@ class DataManipulationRequest(AbstractModel):
 
     @property
     def Contents(self):
+        """数据
+        :rtype: str
+        """
         return self._Contents
 
     @Contents.setter
@@ -65,6 +74,9 @@ class DataManipulationRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """应用Id
+        :rtype: int
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -104,6 +116,9 @@ class DataManipulationResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据操作结果
+        :rtype: :class:`tencentcloud.yunsou.v20191115.models.DataManipulationResult`
+        """
         return self._Data
 
     @Data.setter
@@ -112,6 +127,9 @@ class DataManipulationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -154,6 +172,9 @@ class DataManipulationResult(AbstractModel):
 
     @property
     def AppId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -162,6 +183,9 @@ class DataManipulationResult(AbstractModel):
 
     @property
     def Seq(self):
+        """序号
+        :rtype: int
+        """
         return self._Seq
 
     @Seq.setter
@@ -170,6 +194,9 @@ class DataManipulationResult(AbstractModel):
 
     @property
     def TotalResult(self):
+        """结果
+        :rtype: str
+        """
         return self._TotalResult
 
     @TotalResult.setter
@@ -178,6 +205,10 @@ class DataManipulationResult(AbstractModel):
 
     @property
     def Result(self):
+        """操作结果明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataManipulationResultItem
+        """
         return self._Result
 
     @Result.setter
@@ -186,6 +217,10 @@ class DataManipulationResult(AbstractModel):
 
     @property
     def ErrorResult(self):
+        """异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorResult
 
     @ErrorResult.setter
@@ -234,6 +269,9 @@ class DataManipulationResultItem(AbstractModel):
 
     @property
     def Result(self):
+        """结果
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -242,6 +280,9 @@ class DataManipulationResultItem(AbstractModel):
 
     @property
     def DocId(self):
+        """文档ID
+        :rtype: str
+        """
         return self._DocId
 
     @DocId.setter
@@ -250,6 +291,9 @@ class DataManipulationResultItem(AbstractModel):
 
     @property
     def Errno(self):
+        """错误码
+        :rtype: int
+        """
         return self._Errno
 
     @Errno.setter
@@ -351,6 +395,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """云搜的业务ID，用以表明当前数据请求的业务
+        :rtype: int
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -359,6 +406,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def SearchQuery(self):
+        """检索串
+        :rtype: str
+        """
         return self._SearchQuery
 
     @SearchQuery.setter
@@ -367,6 +417,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def PageId(self):
+        """当前页，从第0页开始计算
+        :rtype: int
+        """
         return self._PageId
 
     @PageId.setter
@@ -375,6 +428,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def NumPerPage(self):
+        """每页结果数
+        :rtype: int
+        """
         return self._NumPerPage
 
     @NumPerPage.setter
@@ -383,6 +439,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def SearchId(self):
+        """当前检索号，用于定位问题，建议指定并且全局唯一
+        :rtype: str
+        """
         return self._SearchId
 
     @SearchId.setter
@@ -391,6 +450,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def QueryEncode(self):
+        """请求编码，0表示utf8，1表示gbk，建议指定
+        :rtype: int
+        """
         return self._QueryEncode
 
     @QueryEncode.setter
@@ -399,6 +461,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def RankType(self):
+        """排序类型
+        :rtype: int
+        """
         return self._RankType
 
     @RankType.setter
@@ -407,6 +472,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def NumFilter(self):
+        """数值过滤，结果中按属性过滤
+        :rtype: str
+        """
         return self._NumFilter
 
     @NumFilter.setter
@@ -415,6 +483,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def ClFilter(self):
+        """分类过滤，导航类检索请求
+        :rtype: str
+        """
         return self._ClFilter
 
     @ClFilter.setter
@@ -423,6 +494,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def Extra(self):
+        """检索用户相关字段
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -431,6 +505,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def SourceId(self):
+        """检索来源
+        :rtype: int
+        """
         return self._SourceId
 
     @SourceId.setter
@@ -439,6 +516,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def SecondSearch(self):
+        """是否进行二次检索，0关闭，1打开
+        :rtype: int
+        """
         return self._SecondSearch
 
     @SecondSearch.setter
@@ -447,6 +527,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def MaxDocReturn(self):
+        """指定返回最大篇数，无特殊原因不建议指定
+        :rtype: int
+        """
         return self._MaxDocReturn
 
     @MaxDocReturn.setter
@@ -455,6 +538,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def IsSmartbox(self):
+        """是否smartbox检索，0关闭，1打开
+        :rtype: int
+        """
         return self._IsSmartbox
 
     @IsSmartbox.setter
@@ -463,6 +549,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def EnableAbsHighlight(self):
+        """是否打开高红标亮，0关闭，1打开
+        :rtype: int
+        """
         return self._EnableAbsHighlight
 
     @EnableAbsHighlight.setter
@@ -471,6 +560,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def QcBid(self):
+        """指定访问QC纠错业务ID
+        :rtype: int
+        """
         return self._QcBid
 
     @QcBid.setter
@@ -479,6 +571,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def GroupBy(self):
+        """按指定字段进行group by，只能对数值字段进行操作
+        :rtype: str
+        """
         return self._GroupBy
 
     @GroupBy.setter
@@ -487,6 +582,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def Distinct(self):
+        """按指定字段进行distinct，只能对数值字段进行操作
+        :rtype: str
+        """
         return self._Distinct
 
     @Distinct.setter
@@ -495,6 +593,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def L4RankExpression(self):
+        """高级排序参数，具体参见高级排序说明
+        :rtype: str
+        """
         return self._L4RankExpression
 
     @L4RankExpression.setter
@@ -503,6 +604,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def MatchValue(self):
+        """高级排序参数，具体参见高级排序说明
+        :rtype: str
+        """
         return self._MatchValue
 
     @MatchValue.setter
@@ -511,6 +615,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def Longitude(self):
+        """经度信息
+        :rtype: float
+        """
         return self._Longitude
 
     @Longitude.setter
@@ -519,6 +626,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def Latitude(self):
+        """纬度信息
+        :rtype: float
+        """
         return self._Latitude
 
     @Latitude.setter
@@ -527,6 +637,9 @@ class DataSearchRequest(AbstractModel):
 
     @property
     def MultiFilter(self):
+        """分类过滤并集
+        :rtype: list of str
+        """
         return self._MultiFilter
 
     @MultiFilter.setter
@@ -585,6 +698,9 @@ class DataSearchResponse(AbstractModel):
 
     @property
     def Data(self):
+        """检索结果
+        :rtype: :class:`tencentcloud.yunsou.v20191115.models.SearchResult`
+        """
         return self._Data
 
     @Data.setter
@@ -593,6 +709,9 @@ class DataSearchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -641,6 +760,9 @@ class SearchResult(AbstractModel):
 
     @property
     def CostTime(self):
+        """检索耗时，单位ms
+        :rtype: int
+        """
         return self._CostTime
 
     @CostTime.setter
@@ -649,6 +771,9 @@ class SearchResult(AbstractModel):
 
     @property
     def DisplayNum(self):
+        """搜索最多可以展示的结果数，多页
+        :rtype: int
+        """
         return self._DisplayNum
 
     @DisplayNum.setter
@@ -657,6 +782,9 @@ class SearchResult(AbstractModel):
 
     @property
     def Echo(self):
+        """和检索请求中的echo相对应
+        :rtype: str
+        """
         return self._Echo
 
     @Echo.setter
@@ -665,6 +793,9 @@ class SearchResult(AbstractModel):
 
     @property
     def EResultNum(self):
+        """检索结果的估算篇数，由索引平台估算
+        :rtype: int
+        """
         return self._EResultNum
 
     @EResultNum.setter
@@ -673,6 +804,9 @@ class SearchResult(AbstractModel):
 
     @property
     def ResultNum(self):
+        """检索返回的当前页码结果数
+        :rtype: int
+        """
         return self._ResultNum
 
     @ResultNum.setter
@@ -681,6 +815,10 @@ class SearchResult(AbstractModel):
 
     @property
     def ResultList(self):
+        """检索结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchResultItem
+        """
         return self._ResultList
 
     @ResultList.setter
@@ -689,6 +827,10 @@ class SearchResult(AbstractModel):
 
     @property
     def SegList(self):
+        """检索的分词结果，array类型，可包含多个
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchResultSeg
+        """
         return self._SegList
 
     @SegList.setter
@@ -750,6 +892,9 @@ class SearchResultItem(AbstractModel):
 
     @property
     def DocAbs(self):
+        """动态摘要信息
+        :rtype: str
+        """
         return self._DocAbs
 
     @DocAbs.setter
@@ -758,6 +903,9 @@ class SearchResultItem(AbstractModel):
 
     @property
     def DocId(self):
+        """检索文档id
+        :rtype: str
+        """
         return self._DocId
 
     @DocId.setter
@@ -766,6 +914,9 @@ class SearchResultItem(AbstractModel):
 
     @property
     def DocMeta(self):
+        """原始文档信息
+        :rtype: str
+        """
         return self._DocMeta
 
     @DocMeta.setter
@@ -774,6 +925,9 @@ class SearchResultItem(AbstractModel):
 
     @property
     def L2Score(self):
+        """精计算得分
+        :rtype: float
+        """
         return self._L2Score
 
     @L2Score.setter
@@ -782,6 +936,9 @@ class SearchResultItem(AbstractModel):
 
     @property
     def SearchDebuginfo(self):
+        """文档级回传信息
+        :rtype: str
+        """
         return self._SearchDebuginfo
 
     @SearchDebuginfo.setter
@@ -819,6 +976,9 @@ class SearchResultSeg(AbstractModel):
 
     @property
     def SegStr(self):
+        """分词
+        :rtype: str
+        """
         return self._SegStr
 
     @SegStr.setter

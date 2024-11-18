@@ -18,6 +18,72 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AutoScaleUpRule(AbstractModel):
+    """自动扩容规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 自动扩容策略开启，关闭
+        :type Status: str
+        :param _ScaleThreshold: 集群用量占比，到达这个值后开始扩容,范围[10-90]
+        :type ScaleThreshold: int
+        :param _TargetThreshold: 扩容后使用量跟集群总量比例,范围[1-90]
+        :type TargetThreshold: int
+        """
+        self._Status = None
+        self._ScaleThreshold = None
+        self._TargetThreshold = None
+
+    @property
+    def Status(self):
+        """自动扩容策略开启，关闭
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ScaleThreshold(self):
+        """集群用量占比，到达这个值后开始扩容,范围[10-90]
+        :rtype: int
+        """
+        return self._ScaleThreshold
+
+    @ScaleThreshold.setter
+    def ScaleThreshold(self, ScaleThreshold):
+        self._ScaleThreshold = ScaleThreshold
+
+    @property
+    def TargetThreshold(self):
+        """扩容后使用量跟集群总量比例,范围[1-90]
+        :rtype: int
+        """
+        return self._TargetThreshold
+
+    @TargetThreshold.setter
+    def TargetThreshold(self, TargetThreshold):
+        self._TargetThreshold = TargetThreshold
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ScaleThreshold = params.get("ScaleThreshold")
+        self._TargetThreshold = params.get("TargetThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoSnapshotPolicyInfo(AbstractModel):
     """快照策略信息
 
@@ -79,6 +145,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -87,6 +156,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def PolicyName(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -95,6 +167,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """快照策略创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -103,6 +178,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def FileSystemNums(self):
+        """关联的文件系统个数
+        :rtype: int
+        """
         return self._FileSystemNums
 
     @FileSystemNums.setter
@@ -111,6 +189,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def DayOfWeek(self):
+        """快照定期备份在一星期哪一天，该参数与DayOfMonth,IntervalDays互斥
+        :rtype: str
+        """
         return self._DayOfWeek
 
     @DayOfWeek.setter
@@ -119,6 +200,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def Hour(self):
+        """快照定期备份在一天的哪一小时
+        :rtype: str
+        """
         return self._Hour
 
     @Hour.setter
@@ -127,6 +211,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def IsActivated(self):
+        """是否激活定期快照功能,1代表已激活，0代表未激活
+        :rtype: int
+        """
         return self._IsActivated
 
     @IsActivated.setter
@@ -135,6 +222,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def NextActiveTime(self):
+        """下一次触发快照时间
+        :rtype: str
+        """
         return self._NextActiveTime
 
     @NextActiveTime.setter
@@ -143,6 +233,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def Status(self):
+        """快照策略状态，1代表快照策略状态正常。这里只有一种状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -151,6 +244,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """账号ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -159,6 +255,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def AliveDays(self):
+        """保留时间
+        :rtype: int
+        """
         return self._AliveDays
 
     @AliveDays.setter
@@ -167,6 +266,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -175,6 +277,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def FileSystems(self):
+        """文件系统信息
+        :rtype: list of FileSystemByPolicy
+        """
         return self._FileSystems
 
     @FileSystems.setter
@@ -183,6 +288,10 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def DayOfMonth(self):
+        """快照定期备份在一个月的某个时间；该参数与DayOfWeek,IntervalDays互斥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DayOfMonth
 
     @DayOfMonth.setter
@@ -191,6 +300,10 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def IntervalDays(self):
+        """快照定期间隔天数，1-365 天；该参数与DayOfMonth,DayOfWeek互斥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IntervalDays
 
     @IntervalDays.setter
@@ -199,6 +312,9 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def CrossRegionsAliveDays(self):
+        """跨地域复制的快照保留时间，单位天
+        :rtype: int
+        """
         return self._CrossRegionsAliveDays
 
     @CrossRegionsAliveDays.setter
@@ -255,6 +371,9 @@ class AvailableProtoStatus(AbstractModel):
 
     @property
     def SaleStatus(self):
+        """售卖状态。可选值有 sale_out 售罄、saling可售、no_saling不可销售
+        :rtype: str
+        """
         return self._SaleStatus
 
     @SaleStatus.setter
@@ -263,6 +382,9 @@ class AvailableProtoStatus(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议类型。可选值有 NFS、CIFS、TURBO
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -309,6 +431,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def Region(self):
+        """区域名称，如“ap-beijing”
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -317,6 +442,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def RegionName(self):
+        """区域名称，如“bj”
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -325,6 +453,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def RegionStatus(self):
+        """区域可用情况，当区域内至少有一个可用区处于可售状态时，取值为AVAILABLE，否则为UNAVAILABLE
+        :rtype: str
+        """
         return self._RegionStatus
 
     @RegionStatus.setter
@@ -333,6 +464,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区数组
+        :rtype: list of AvailableZone
+        """
         return self._Zones
 
     @Zones.setter
@@ -341,6 +475,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def RegionCnName(self):
+        """区域中文名称，如“广州”
+        :rtype: str
+        """
         return self._RegionCnName
 
     @RegionCnName.setter
@@ -389,6 +526,9 @@ class AvailableType(AbstractModel):
 
     @property
     def Protocols(self):
+        """协议与售卖详情
+        :rtype: list of AvailableProtoStatus
+        """
         return self._Protocols
 
     @Protocols.setter
@@ -397,6 +537,9 @@ class AvailableType(AbstractModel):
 
     @property
     def Type(self):
+        """存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -405,6 +548,9 @@ class AvailableType(AbstractModel):
 
     @property
     def Prepayment(self):
+        """是否支持预付费。返回值中 true 为支持、false 为不支持
+        :rtype: bool
+        """
         return self._Prepayment
 
     @Prepayment.setter
@@ -457,6 +603,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区名称
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -465,6 +614,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def ZoneId(self):
+        """可用区ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -473,6 +625,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def ZoneCnName(self):
+        """可用区中文名称
+        :rtype: str
+        """
         return self._ZoneCnName
 
     @ZoneCnName.setter
@@ -481,6 +636,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def Types(self):
+        """Type数组
+        :rtype: list of AvailableType
+        """
         return self._Types
 
     @Types.setter
@@ -489,6 +647,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def ZoneName(self):
+        """可用区中英文名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -534,6 +695,9 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -542,6 +706,9 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def FileSystemIds(self):
+        """文件系统列表
+        :rtype: str
+        """
         return self._FileSystemIds
 
     @FileSystemIds.setter
@@ -579,6 +746,9 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -587,6 +757,9 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -617,6 +790,9 @@ class BucketInfo(AbstractModel):
 
     @property
     def Name(self):
+        """桶名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -625,6 +801,10 @@ class BucketInfo(AbstractModel):
 
     @property
     def Region(self):
+        """桶所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -674,6 +854,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def Hour(self):
+        """快照重复时间点,0-23
+        :rtype: str
+        """
         return self._Hour
 
     @Hour.setter
@@ -682,6 +865,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -690,6 +876,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfWeek(self):
+        """快照重复日期，星期一到星期日。 1代表星期一、7代表星期天
+        :rtype: str
+        """
         return self._DayOfWeek
 
     @DayOfWeek.setter
@@ -698,6 +887,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AliveDays(self):
+        """快照保留时长，单位天
+        :rtype: int
+        """
         return self._AliveDays
 
     @AliveDays.setter
@@ -706,6 +898,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfMonth(self):
+        """快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。
+        :rtype: str
+        """
         return self._DayOfMonth
 
     @DayOfMonth.setter
@@ -714,6 +909,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IntervalDays(self):
+        """间隔天数
+        :rtype: int
+        """
         return self._IntervalDays
 
     @IntervalDays.setter
@@ -755,6 +953,9 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -763,6 +964,9 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -837,6 +1041,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -845,6 +1052,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def NetInterface(self):
+        """网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
+        :rtype: str
+        """
         return self._NetInterface
 
     @NetInterface.setter
@@ -853,6 +1063,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -861,6 +1074,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择turbo，不支持NFS、CIFS
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -869,6 +1085,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def StorageType(self):
+        """文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -877,6 +1096,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -885,6 +1107,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网 ID，若网络类型选择的是VPC，该字段为必填。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -893,6 +1118,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def MountIP(self):
+        """指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
+        :rtype: str
+        """
         return self._MountIP
 
     @MountIP.setter
@@ -901,6 +1129,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def FsName(self):
+        """用户自定义文件系统名称
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -909,6 +1140,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """文件系统标签
+        :rtype: list of TagInfo
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -917,6 +1151,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -925,6 +1162,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网ID， 若网络类型选择的是CCN，该字段为必填
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -933,6 +1173,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -941,6 +1184,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def Capacity(self):
+        """文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
+        :rtype: int
+        """
         return self._Capacity
 
     @Capacity.setter
@@ -949,6 +1195,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """文件系统快照ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -957,6 +1206,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """定期快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -965,6 +1217,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def EnableAutoScaleUp(self):
+        """是否开启默认扩容，仅Turbo类型文件存储支持
+        :rtype: bool
+        """
         return self._EnableAutoScaleUp
 
     @EnableAutoScaleUp.setter
@@ -1043,6 +1298,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def CreationTime(self):
+        """文件系统创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -1051,6 +1309,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def CreationToken(self):
+        """用户自定义文件系统名称
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -1059,6 +1320,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1067,6 +1331,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def LifeCycleState(self):
+        """文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。
+        :rtype: str
+        """
         return self._LifeCycleState
 
     @LifeCycleState.setter
@@ -1075,6 +1342,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def SizeByte(self):
+        """文件系统已使用容量大小，单位为 Byte
+        :rtype: int
+        """
         return self._SizeByte
 
     @SizeByte.setter
@@ -1083,6 +1353,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """可用区 ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1091,6 +1364,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def FsName(self):
+        """用户自定义文件系统名称
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -1099,6 +1375,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def Encrypted(self):
+        """文件系统是否加密
+        :rtype: bool
+        """
         return self._Encrypted
 
     @Encrypted.setter
@@ -1107,6 +1386,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1143,6 +1425,9 @@ class CreateCfsPGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1151,6 +1436,9 @@ class CreateCfsPGroupRequest(AbstractModel):
 
     @property
     def DescInfo(self):
+        """权限组描述信息，1-255个字符
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -1200,6 +1488,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1208,6 +1499,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def Name(self):
+        """权限组名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1216,6 +1510,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def DescInfo(self):
+        """权限组描述信息
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -1224,6 +1521,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def BindCfsNum(self):
+        """已经与该权限组绑定的文件系统个数
+        :rtype: int
+        """
         return self._BindCfsNum
 
     @BindCfsNum.setter
@@ -1232,6 +1532,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def CDate(self):
+        """权限组创建时间
+        :rtype: str
+        """
         return self._CDate
 
     @CDate.setter
@@ -1240,6 +1543,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1287,6 +1593,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1295,6 +1604,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def AuthClientIp(self):
+        """可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -1303,6 +1615,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def Priority(self):
+        """规则优先级，参数范围1-100。 其中 1 为最高，100为最低
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -1311,6 +1626,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def RWPermission(self):
+        """读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -1319,6 +1637,14 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def UserPermission(self):
+        """用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。
+all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
+
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -1374,6 +1700,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1382,6 +1711,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1390,6 +1722,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def AuthClientIp(self):
+        """客户端 IP
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -1398,6 +1733,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def RWPermission(self):
+        """读写权限
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -1406,6 +1744,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def UserPermission(self):
+        """用户权限
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -1414,6 +1755,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def Priority(self):
+        """优先级
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -1422,6 +1766,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1459,6 +1806,9 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1467,6 +1817,9 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """快照名称
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -1475,6 +1828,9 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """快照标签
+        :rtype: list of TagInfo
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -1518,6 +1874,9 @@ class CreateCfsSnapshotResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """文件系统快照id
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -1526,6 +1885,9 @@ class CreateCfsSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1594,6 +1956,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """迁移任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -1602,6 +1967,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrationType(self):
+        """迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+        :rtype: int
+        """
         return self._MigrationType
 
     @MigrationType.setter
@@ -1610,6 +1978,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrationMode(self):
+        """迁移模式，默认为0。0: 全量迁移
+        :rtype: int
+        """
         return self._MigrationMode
 
     @MigrationMode.setter
@@ -1618,6 +1989,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcSecretId(self):
+        """数据源账号的SecretId
+        :rtype: str
+        """
         return self._SrcSecretId
 
     @SrcSecretId.setter
@@ -1626,6 +2000,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcSecretKey(self):
+        """数据源账号的SecretKey
+        :rtype: str
+        """
         return self._SrcSecretKey
 
     @SrcSecretKey.setter
@@ -1634,6 +2011,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统实例Id
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1642,6 +2022,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FsPath(self):
+        """文件系统路径
+        :rtype: str
+        """
         return self._FsPath
 
     @FsPath.setter
@@ -1650,6 +2033,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def CoverType(self):
+        """同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+        :rtype: int
+        """
         return self._CoverType
 
     @CoverType.setter
@@ -1658,6 +2044,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcService(self):
+        """数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+        :rtype: str
+        """
         return self._SrcService
 
     @SrcService.setter
@@ -1666,6 +2055,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketName(self):
+        """数据源桶名称，名称和地址至少有一个
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -1674,6 +2066,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """数据源桶地域
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -1682,6 +2077,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketAddress(self):
+        """数据源桶地址，名称和地址至少有一个
+        :rtype: str
+        """
         return self._BucketAddress
 
     @BucketAddress.setter
@@ -1690,6 +2088,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def ListAddress(self):
+        """清单地址，迁移方式为清单迁移时必填
+        :rtype: str
+        """
         return self._ListAddress
 
     @ListAddress.setter
@@ -1698,6 +2099,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FsName(self):
+        """目标文件系统名称
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -1706,6 +2110,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketPath(self):
+        """源桶路径，默认为/
+        :rtype: str
+        """
         return self._BucketPath
 
     @BucketPath.setter
@@ -1756,6 +2163,9 @@ class CreateMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """迁移任务Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1764,6 +2174,9 @@ class CreateMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1790,6 +2203,9 @@ class DeleteAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -1826,6 +2242,9 @@ class DeleteAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -1834,6 +2253,9 @@ class DeleteAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1860,6 +2282,9 @@ class DeleteCfsFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1893,6 +2318,9 @@ class DeleteCfsFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1918,6 +2346,9 @@ class DeleteCfsPGroupRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1957,6 +2388,9 @@ class DeleteCfsPGroupResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1965,6 +2399,9 @@ class DeleteCfsPGroupResponse(AbstractModel):
 
     @property
     def AppId(self):
+        """用户 ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -1973,6 +2410,9 @@ class DeleteCfsPGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2003,6 +2443,9 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -2011,6 +2454,9 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2051,6 +2497,9 @@ class DeleteCfsRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2059,6 +2508,9 @@ class DeleteCfsRuleResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -2067,6 +2519,9 @@ class DeleteCfsRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2097,6 +2552,9 @@ class DeleteCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """文件系统快照id
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -2105,6 +2563,9 @@ class DeleteCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """需要删除的文件文件系统快照ID 列表，快照ID，跟ID列表至少填一项
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -2142,6 +2603,9 @@ class DeleteCfsSnapshotResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """文件系统ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -2150,6 +2614,9 @@ class DeleteCfsSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2176,6 +2643,9 @@ class DeleteMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """迁移任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2209,6 +2679,9 @@ class DeleteMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2237,6 +2710,9 @@ class DeleteMountTargetRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2245,6 +2721,9 @@ class DeleteMountTargetRequest(AbstractModel):
 
     @property
     def MountTargetId(self):
+        """挂载点 ID
+        :rtype: str
+        """
         return self._MountTargetId
 
     @MountTargetId.setter
@@ -2279,6 +2758,9 @@ class DeleteMountTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2313,6 +2795,9 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2321,6 +2806,9 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def UserType(self):
+        """指定配额类型，包括Uid、Gid、Dir
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -2329,6 +2817,9 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """UID/GID信息
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2337,6 +2828,9 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def DirectoryPath(self):
+        """设置目录配额的目录的绝对路径
+        :rtype: str
+        """
         return self._DirectoryPath
 
     @DirectoryPath.setter
@@ -2373,6 +2867,9 @@ class DeleteUserQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2413,6 +2910,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -2421,6 +2921,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页码
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2429,6 +2932,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """页面长
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2437,6 +2943,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2445,6 +2954,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """升序，降序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2453,6 +2965,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序字段
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -2502,6 +3017,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """快照策略总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2510,6 +3028,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicies(self):
+        """快照策略信息
+        :rtype: list of AutoSnapshotPolicyInfo
+        """
         return self._AutoSnapshotPolicies
 
     @AutoSnapshotPolicies.setter
@@ -2518,6 +3039,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2559,6 +3083,9 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
 
     @property
     def RegionZones(self):
+        """各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
+        :rtype: list of AvailableRegion
+        """
         return self._RegionZones
 
     @RegionZones.setter
@@ -2567,6 +3094,9 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2605,6 +3135,9 @@ class DescribeBucketListRequest(AbstractModel):
 
     @property
     def SrcService(self):
+        """数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+        :rtype: str
+        """
         return self._SrcService
 
     @SrcService.setter
@@ -2613,6 +3146,10 @@ class DescribeBucketListRequest(AbstractModel):
 
     @property
     def SrcSecretId(self):
+        """数据源账号的SecretId
+
+        :rtype: str
+        """
         return self._SrcSecretId
 
     @SrcSecretId.setter
@@ -2621,6 +3158,9 @@ class DescribeBucketListRequest(AbstractModel):
 
     @property
     def SrcSecretKey(self):
+        """数据源账号的SecretKey
+        :rtype: str
+        """
         return self._SrcSecretKey
 
     @SrcSecretKey.setter
@@ -2662,6 +3202,9 @@ class DescribeBucketListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """桶的数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2670,6 +3213,9 @@ class DescribeBucketListResponse(AbstractModel):
 
     @property
     def BucketList(self):
+        """桶列表
+        :rtype: list of BucketInfo
+        """
         return self._BucketList
 
     @BucketList.setter
@@ -2678,6 +3224,9 @@ class DescribeBucketListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2716,6 +3265,9 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID。
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2724,6 +3276,9 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset 分页码
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2732,6 +3287,9 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit 页面大小
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2773,6 +3331,9 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
 
     @property
     def ClientList(self):
+        """客户端列表
+        :rtype: list of FileSystemClient
+        """
         return self._ClientList
 
     @ClientList.setter
@@ -2781,6 +3342,9 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """文件系统总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2789,6 +3353,9 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2836,6 +3403,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2844,6 +3414,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络（VPC） ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2852,6 +3425,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网 ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -2860,6 +3436,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset 分页码
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2868,6 +3447,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit 页面大小
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2876,6 +3458,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def CreationToken(self):
+        """用户自定义名称
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -2920,6 +3505,9 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     @property
     def FileSystems(self):
+        """文件系统信息
+        :rtype: list of FileSystemInfo
+        """
         return self._FileSystems
 
     @FileSystems.setter
@@ -2928,6 +3516,9 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """文件系统总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2936,6 +3527,9 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2977,6 +3571,9 @@ class DescribeCfsPGroupsResponse(AbstractModel):
 
     @property
     def PGroupList(self):
+        """权限组信息列表
+        :rtype: list of PGroupInfo
+        """
         return self._PGroupList
 
     @PGroupList.setter
@@ -2985,6 +3582,9 @@ class DescribeCfsPGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3016,6 +3616,9 @@ class DescribeCfsRulesRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -3052,6 +3655,9 @@ class DescribeCfsRulesResponse(AbstractModel):
 
     @property
     def RuleList(self):
+        """权限组规则列表
+        :rtype: list of PGroupRuleInfo
+        """
         return self._RuleList
 
     @RuleList.setter
@@ -3060,6 +3666,9 @@ class DescribeCfsRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3100,6 +3709,9 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
 
     @property
     def CfsServiceStatus(self):
+        """该用户当前 CFS 服务的状态，none 为未开通，creating 为开通中，created 为已开通
+        :rtype: str
+        """
         return self._CfsServiceStatus
 
     @CfsServiceStatus.setter
@@ -3108,6 +3720,9 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3143,6 +3758,9 @@ class DescribeCfsSnapshotOverviewResponse(AbstractModel):
 
     @property
     def StatisticsList(self):
+        """统计信息
+        :rtype: list of SnapshotStatistics
+        """
         return self._StatisticsList
 
     @StatisticsList.setter
@@ -3151,6 +3769,9 @@ class DescribeCfsSnapshotOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3188,7 +3809,8 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 <br>SnapshotName - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。
 <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
-<br>Status - Array of String - 是否必填：否 -（过滤条件）按按照快照状态过滤。(creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中。
+<br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
+(creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中）
 <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
 <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
         :type Filters: list of Filter
@@ -3207,6 +3829,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -3215,6 +3840,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """快照ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -3223,6 +3851,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页起始位置，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3231,6 +3862,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """页面长度，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3239,6 +3873,17 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<br>SnapshotId - Array of String - 是否必填：否 -（过滤条件）按快照ID过滤。
+<br>SnapshotName - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。
+<br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
+<br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
+<br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
+(creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中）
+<br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
+<br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3247,6 +3892,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序取值
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3255,6 +3903,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序 升序或者降序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -3308,6 +3959,9 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3316,6 +3970,9 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
 
     @property
     def Snapshots(self):
+        """快照信息描述
+        :rtype: list of SnapshotInfo
+        """
         return self._Snapshots
 
     @Snapshots.setter
@@ -3324,6 +3981,9 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
 
     @property
     def TotalSize(self):
+        """快照列表快照汇总
+        :rtype: int
+        """
         return self._TotalSize
 
     @TotalSize.setter
@@ -3332,6 +3992,9 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3385,6 +4048,9 @@ class DescribeMigrationTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3393,6 +4059,9 @@ class DescribeMigrationTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3401,6 +4070,23 @@ class DescribeMigrationTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<br><li> taskId
+
+按照【迁移任务id】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> taskName
+
+按照【迁移任务名字】进行模糊搜索过滤。
+类型：String
+
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3447,6 +4133,9 @@ class DescribeMigrationTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """迁移任务的数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3455,6 +4144,9 @@ class DescribeMigrationTasksResponse(AbstractModel):
 
     @property
     def MigrationTasks(self):
+        """迁移任务详情
+        :rtype: list of MigrationTaskInfo
+        """
         return self._MigrationTasks
 
     @MigrationTasks.setter
@@ -3463,6 +4155,9 @@ class DescribeMigrationTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3495,6 +4190,9 @@ class DescribeMountTargetsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -3534,6 +4232,9 @@ class DescribeMountTargetsResponse(AbstractModel):
 
     @property
     def MountTargets(self):
+        """挂载点详情
+        :rtype: list of MountInfo
+        """
         return self._MountTargets
 
     @MountTargets.setter
@@ -3542,6 +4243,9 @@ class DescribeMountTargetsResponse(AbstractModel):
 
     @property
     def NumberOfMountTargets(self):
+        """挂载点数量
+        :rtype: int
+        """
         return self._NumberOfMountTargets
 
     @NumberOfMountTargets.setter
@@ -3550,6 +4254,9 @@ class DescribeMountTargetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3588,6 +4295,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """文件系统快照ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -3596,6 +4306,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3604,6 +4317,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3645,6 +4361,9 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """快照ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -3653,6 +4372,9 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
 
     @property
     def SnapshotOperates(self):
+        """操作日志
+        :rtype: list of SnapshotOperateLog
+        """
         return self._SnapshotOperates
 
     @SnapshotOperates.setter
@@ -3661,6 +4383,9 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3704,6 +4429,9 @@ class DescribeUserQuotaRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -3712,6 +4440,11 @@ class DescribeUserQuotaRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<br><li>UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid| Gid )
+<br><li>UserId - Array of String - 是否必填：否 -（过滤条件）按UID/GID过滤。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3720,6 +4453,9 @@ class DescribeUserQuotaRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset 分页码
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3728,6 +4464,9 @@ class DescribeUserQuotaRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit 页面大小，可填范围为大于0的整数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3775,6 +4514,9 @@ class DescribeUserQuotaResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """UserQuota条目总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3783,6 +4525,9 @@ class DescribeUserQuotaResponse(AbstractModel):
 
     @property
     def UserQuotaInfo(self):
+        """UserQuota条目
+        :rtype: list of UserQuota
+        """
         return self._UserQuotaInfo
 
     @UserQuotaInfo.setter
@@ -3791,6 +4536,9 @@ class DescribeUserQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3841,6 +4589,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def CreationToken(self):
+        """文件系统名称
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -3849,6 +4600,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -3857,6 +4611,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def SizeByte(self):
+        """文件系统大小，单位Byte
+        :rtype: int
+        """
         return self._SizeByte
 
     @SizeByte.setter
@@ -3865,6 +4622,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def StorageType(self):
+        """存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -3873,6 +4633,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def TotalSnapshotSize(self):
+        """快照总大小，单位GiB
+        :rtype: int
+        """
         return self._TotalSnapshotSize
 
     @TotalSnapshotSize.setter
@@ -3881,6 +4644,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def CreationTime(self):
+        """文件系统创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -3889,6 +4655,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def ZoneId(self):
+        """文件系统所在区ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3943,6 +4712,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def CfsVip(self):
+        """文件系统IP地址
+        :rtype: str
+        """
         return self._CfsVip
 
     @CfsVip.setter
@@ -3951,6 +4723,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def ClientIp(self):
+        """客户端IP地址
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -3959,6 +4734,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def VpcId(self):
+        """文件系统所属VPCID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3967,6 +4745,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区名称，例如ap-beijing-1，请参考 概览文档中的地域与可用区列表
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -3975,6 +4756,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def ZoneName(self):
+        """可用区中文名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -3983,6 +4767,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def MountDirectory(self):
+        """该文件系统被挂载到客户端上的路径信息
+        :rtype: str
+        """
         return self._MountDirectory
 
     @MountDirectory.setter
@@ -4056,6 +4843,10 @@ class FileSystemInfo(AbstractModel):
         :type AppId: int
         :param _BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
         :type BandwidthLimit: float
+        :param _AutoSnapshotPolicyId: 文件系统关联的快照策略
+        :type AutoSnapshotPolicyId: str
+        :param _SnapStatus: 文件系统处理快照状态
+        :type SnapStatus: str
         :param _Capacity: 文件系统容量规格上限
 单位:GiB
         :type Capacity: int
@@ -4068,6 +4859,12 @@ Available:可用
         :param _TieringDetail: 分层存储详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type TieringDetail: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
+        :param _AutoScaleUpRule: 文件系统自动扩容策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoScaleUpRule: :class:`tencentcloud.cfs.v20190719.models.AutoScaleUpRule`
+        :param _Version: 文件系统版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
         """
         self._CreationTime = None
         self._CreationToken = None
@@ -4087,13 +4884,20 @@ Available:可用
         self._KmsKeyId = None
         self._AppId = None
         self._BandwidthLimit = None
+        self._AutoSnapshotPolicyId = None
+        self._SnapStatus = None
         self._Capacity = None
         self._Tags = None
         self._TieringState = None
         self._TieringDetail = None
+        self._AutoScaleUpRule = None
+        self._Version = None
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -4102,6 +4906,9 @@ Available:可用
 
     @property
     def CreationToken(self):
+        """用户自定义名称
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -4110,6 +4917,9 @@ Available:可用
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4118,6 +4928,15 @@ Available:可用
 
     @property
     def LifeCycleState(self):
+        """文件系统状态。取值范围：
+- creating:创建中
+- mounting:挂载中
+- create_failed:创建失败
+- available:可使用
+- unserviced:停服中
+- upgrading:升级中
+        :rtype: str
+        """
         return self._LifeCycleState
 
     @LifeCycleState.setter
@@ -4126,6 +4945,9 @@ Available:可用
 
     @property
     def SizeByte(self):
+        """文件系统已使用容量。单位：Byte
+        :rtype: int
+        """
         return self._SizeByte
 
     @SizeByte.setter
@@ -4134,6 +4956,9 @@ Available:可用
 
     @property
     def SizeLimit(self):
+        """文件系统空间限制。单位:GiB
+        :rtype: int
+        """
         return self._SizeLimit
 
     @SizeLimit.setter
@@ -4142,6 +4967,9 @@ Available:可用
 
     @property
     def ZoneId(self):
+        """区域 ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4150,6 +4978,9 @@ Available:可用
 
     @property
     def Zone(self):
+        """区域名称
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -4158,6 +4989,9 @@ Available:可用
 
     @property
     def Protocol(self):
+        """文件系统协议类型, 支持 NFS,CIFS,TURBO
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -4166,6 +5000,9 @@ Available:可用
 
     @property
     def StorageType(self):
+        """存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -4174,6 +5011,9 @@ Available:可用
 
     @property
     def StorageResourcePkg(self):
+        """文件系统绑定的预付费存储包
+        :rtype: str
+        """
         return self._StorageResourcePkg
 
     @StorageResourcePkg.setter
@@ -4182,6 +5022,9 @@ Available:可用
 
     @property
     def BandwidthResourcePkg(self):
+        """文件系统绑定的预付费带宽包（暂未支持）
+        :rtype: str
+        """
         return self._BandwidthResourcePkg
 
     @BandwidthResourcePkg.setter
@@ -4190,6 +5033,9 @@ Available:可用
 
     @property
     def PGroup(self):
+        """文件系统绑定权限组信息
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.PGroup`
+        """
         return self._PGroup
 
     @PGroup.setter
@@ -4198,6 +5044,9 @@ Available:可用
 
     @property
     def FsName(self):
+        """用户自定义名称
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -4206,6 +5055,9 @@ Available:可用
 
     @property
     def Encrypted(self):
+        """文件系统是否加密,true：代表加密，false：非加密
+        :rtype: bool
+        """
         return self._Encrypted
 
     @Encrypted.setter
@@ -4214,6 +5066,9 @@ Available:可用
 
     @property
     def KmsKeyId(self):
+        """加密所使用的密钥，可以为密钥的 ID 或者 ARN
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -4222,6 +5077,9 @@ Available:可用
 
     @property
     def AppId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -4230,6 +5088,9 @@ Available:可用
 
     @property
     def BandwidthLimit(self):
+        """文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
+        :rtype: float
+        """
         return self._BandwidthLimit
 
     @BandwidthLimit.setter
@@ -4237,7 +5098,33 @@ Available:可用
         self._BandwidthLimit = BandwidthLimit
 
     @property
+    def AutoSnapshotPolicyId(self):
+        """文件系统关联的快照策略
+        :rtype: str
+        """
+        return self._AutoSnapshotPolicyId
+
+    @AutoSnapshotPolicyId.setter
+    def AutoSnapshotPolicyId(self, AutoSnapshotPolicyId):
+        self._AutoSnapshotPolicyId = AutoSnapshotPolicyId
+
+    @property
+    def SnapStatus(self):
+        """文件系统处理快照状态
+        :rtype: str
+        """
+        return self._SnapStatus
+
+    @SnapStatus.setter
+    def SnapStatus(self, SnapStatus):
+        self._SnapStatus = SnapStatus
+
+    @property
     def Capacity(self):
+        """文件系统容量规格上限
+单位:GiB
+        :rtype: int
+        """
         return self._Capacity
 
     @Capacity.setter
@@ -4246,6 +5133,9 @@ Available:可用
 
     @property
     def Tags(self):
+        """文件系统标签列表
+        :rtype: list of TagInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -4254,6 +5144,11 @@ Available:可用
 
     @property
     def TieringState(self):
+        """文件系统生命周期管理状态
+NotAvailable：不可用
+Available:可用
+        :rtype: str
+        """
         return self._TieringState
 
     @TieringState.setter
@@ -4262,11 +5157,39 @@ Available:可用
 
     @property
     def TieringDetail(self):
+        """分层存储详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
+        """
         return self._TieringDetail
 
     @TieringDetail.setter
     def TieringDetail(self, TieringDetail):
         self._TieringDetail = TieringDetail
+
+    @property
+    def AutoScaleUpRule(self):
+        """文件系统自动扩容策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.AutoScaleUpRule`
+        """
+        return self._AutoScaleUpRule
+
+    @AutoScaleUpRule.setter
+    def AutoScaleUpRule(self, AutoScaleUpRule):
+        self._AutoScaleUpRule = AutoScaleUpRule
+
+    @property
+    def Version(self):
+        """文件系统版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
@@ -4290,6 +5213,8 @@ Available:可用
         self._KmsKeyId = params.get("KmsKeyId")
         self._AppId = params.get("AppId")
         self._BandwidthLimit = params.get("BandwidthLimit")
+        self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self._SnapStatus = params.get("SnapStatus")
         self._Capacity = params.get("Capacity")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -4301,6 +5226,10 @@ Available:可用
         if params.get("TieringDetail") is not None:
             self._TieringDetail = TieringDetailInfo()
             self._TieringDetail._deserialize(params.get("TieringDetail"))
+        if params.get("AutoScaleUpRule") is not None:
+            self._AutoScaleUpRule = AutoScaleUpRule()
+            self._AutoScaleUpRule._deserialize(params.get("AutoScaleUpRule"))
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4328,6 +5257,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -4336,6 +5268,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4458,6 +5393,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
+        """迁移任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -4466,6 +5404,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """迁移任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4474,6 +5415,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def MigrationType(self):
+        """迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+        :rtype: int
+        """
         return self._MigrationType
 
     @MigrationType.setter
@@ -4482,6 +5426,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def MigrationMode(self):
+        """迁移模式，默认为0。0: 全量迁移
+        :rtype: int
+        """
         return self._MigrationMode
 
     @MigrationMode.setter
@@ -4490,6 +5437,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def BucketName(self):
+        """数据源桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -4498,6 +5449,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """数据源桶地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -4506,6 +5461,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def BucketAddress(self):
+        """数据源桶地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BucketAddress
 
     @BucketAddress.setter
@@ -4514,6 +5473,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def ListAddress(self):
+        """清单地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ListAddress
 
     @ListAddress.setter
@@ -4522,6 +5485,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FsName(self):
+        """文件系统实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -4530,6 +5497,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统实例Id
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4538,6 +5508,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FsPath(self):
+        """文件系统路径
+        :rtype: str
+        """
         return self._FsPath
 
     @FsPath.setter
@@ -4546,6 +5519,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def CoverType(self):
+        """同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+        :rtype: int
+        """
         return self._CoverType
 
     @CoverType.setter
@@ -4554,6 +5530,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4562,6 +5541,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """完成/终止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4570,6 +5553,9 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """迁移状态。0: 已完成；1: 进行中；2: 已终止
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4578,6 +5564,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileTotalCount(self):
+        """文件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileTotalCount
 
     @FileTotalCount.setter
@@ -4586,6 +5576,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileMigratedCount(self):
+        """已迁移文件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileMigratedCount
 
     @FileMigratedCount.setter
@@ -4594,6 +5588,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileFailedCount(self):
+        """迁移失败文件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileFailedCount
 
     @FileFailedCount.setter
@@ -4602,6 +5600,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileTotalSize(self):
+        """文件容量，单位Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileTotalSize
 
     @FileTotalSize.setter
@@ -4610,6 +5612,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileMigratedSize(self):
+        """已迁移文件容量，单位Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileMigratedSize
 
     @FileMigratedSize.setter
@@ -4618,6 +5624,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileFailedSize(self):
+        """迁移失败文件容量，单位Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileFailedSize
 
     @FileFailedSize.setter
@@ -4626,6 +5636,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileTotalList(self):
+        """全部清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileTotalList
 
     @FileTotalList.setter
@@ -4634,6 +5648,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileCompletedList(self):
+        """已完成文件清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileCompletedList
 
     @FileCompletedList.setter
@@ -4642,6 +5660,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileFailedList(self):
+        """失败文件清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileFailedList
 
     @FileFailedList.setter
@@ -4650,6 +5672,10 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def BucketPath(self):
+        """源桶路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BucketPath
 
     @BucketPath.setter
@@ -4717,6 +5743,9 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4725,6 +5754,9 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def ScaleUpThreshold(self):
+        """扩容阈值，范围[10-90]
+        :rtype: int
+        """
         return self._ScaleUpThreshold
 
     @ScaleUpThreshold.setter
@@ -4733,6 +5765,9 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def TargetThreshold(self):
+        """扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
+        :rtype: int
+        """
         return self._TargetThreshold
 
     @TargetThreshold.setter
@@ -4741,6 +5776,10 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态0:关闭，1 开启
+
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4789,6 +5828,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4797,6 +5839,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态0:关闭，1 开启
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4805,6 +5850,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def ScaleUpThreshold(self):
+        """扩容阈值,范围[10-90]
+        :rtype: int
+        """
         return self._ScaleUpThreshold
 
     @ScaleUpThreshold.setter
@@ -4813,6 +5861,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def TargetThreshold(self):
+        """扩容后达到阈值,范围[10-90]
+        :rtype: int
+        """
         return self._TargetThreshold
 
     @TargetThreshold.setter
@@ -4821,6 +5872,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4883,6 +5937,9 @@ class MountInfo(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4891,6 +5948,9 @@ class MountInfo(AbstractModel):
 
     @property
     def MountTargetId(self):
+        """挂载点 ID
+        :rtype: str
+        """
         return self._MountTargetId
 
     @MountTargetId.setter
@@ -4899,6 +5959,9 @@ class MountInfo(AbstractModel):
 
     @property
     def IpAddress(self):
+        """挂载点 IP
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -4907,6 +5970,9 @@ class MountInfo(AbstractModel):
 
     @property
     def FSID(self):
+        """挂载根目录
+        :rtype: str
+        """
         return self._FSID
 
     @FSID.setter
@@ -4915,6 +5981,9 @@ class MountInfo(AbstractModel):
 
     @property
     def LifeCycleState(self):
+        """挂载点状态
+        :rtype: str
+        """
         return self._LifeCycleState
 
     @LifeCycleState.setter
@@ -4923,6 +5992,9 @@ class MountInfo(AbstractModel):
 
     @property
     def NetworkInterface(self):
+        """网络类型
+        :rtype: str
+        """
         return self._NetworkInterface
 
     @NetworkInterface.setter
@@ -4931,6 +6003,9 @@ class MountInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络 ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4939,6 +6014,9 @@ class MountInfo(AbstractModel):
 
     @property
     def VpcName(self):
+        """私有网络名称
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -4947,6 +6025,9 @@ class MountInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网 Id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -4955,6 +6036,9 @@ class MountInfo(AbstractModel):
 
     @property
     def SubnetName(self):
+        """子网名称
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -4963,6 +6047,9 @@ class MountInfo(AbstractModel):
 
     @property
     def CcnID(self):
+        """CFS Turbo使用的云联网ID
+        :rtype: str
+        """
         return self._CcnID
 
     @CcnID.setter
@@ -4971,6 +6058,9 @@ class MountInfo(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """云联网中CFS Turbo使用的网段
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -5018,6 +6108,9 @@ class PGroup(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -5026,6 +6119,9 @@ class PGroup(AbstractModel):
 
     @property
     def Name(self):
+        """权限组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5072,6 +6168,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -5080,6 +6179,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def Name(self):
+        """权限组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5088,6 +6190,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def DescInfo(self):
+        """描述信息
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -5096,6 +6201,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def CDate(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CDate
 
     @CDate.setter
@@ -5104,6 +6212,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def BindCfsNum(self):
+        """关联文件系统个数
+        :rtype: int
+        """
         return self._BindCfsNum
 
     @BindCfsNum.setter
@@ -5157,6 +6268,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def RuleId(self):
+        """规则ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -5165,6 +6279,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def AuthClientIp(self):
+        """允许访问的客户端IP
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -5173,6 +6290,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def RWPermission(self):
+        """读写权限, ro为只读，rw为读写
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -5181,6 +6301,13 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def UserPermission(self):
+        """all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
+
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -5189,6 +6316,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def Priority(self):
+        """规则优先级，1-100。 其中 1 为最高，100为最低
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -5229,6 +6359,9 @@ class ScaleUpFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统Id
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5237,6 +6370,9 @@ class ScaleUpFileSystemRequest(AbstractModel):
 
     @property
     def TargetCapacity(self):
+        """扩容的目标容量（单位GiB）
+        :rtype: int
+        """
         return self._TargetCapacity
 
     @TargetCapacity.setter
@@ -5277,6 +6413,9 @@ class ScaleUpFileSystemResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统Id
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5285,6 +6424,9 @@ class ScaleUpFileSystemResponse(AbstractModel):
 
     @property
     def TargetCapacity(self):
+        """扩容的目标容量（单位GiB）
+        :rtype: int
+        """
         return self._TargetCapacity
 
     @TargetCapacity.setter
@@ -5293,6 +6435,9 @@ class ScaleUpFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5335,6 +6480,9 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5343,6 +6491,9 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def UserType(self):
+        """指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -5351,6 +6502,9 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """UID/GID信息
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5359,6 +6513,9 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def CapacityHardLimit(self):
+        """容量硬限制，单位GiB。设置范围10-10000000。
+        :rtype: int
+        """
         return self._CapacityHardLimit
 
     @CapacityHardLimit.setter
@@ -5367,6 +6524,9 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def FileHardLimit(self):
+        """文件硬限制，单位个。设置范围1000-100000000
+        :rtype: int
+        """
         return self._FileHardLimit
 
     @FileHardLimit.setter
@@ -5375,6 +6535,9 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def DirectoryPath(self):
+        """需设置目录配额的目录绝对路径，不同目录不可存在包含关系
+        :rtype: str
+        """
         return self._DirectoryPath
 
     @DirectoryPath.setter
@@ -5413,6 +6576,9 @@ class SetUserQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5447,6 +6613,9 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     @property
     def CfsServiceStatus(self):
+        """该用户当前 CFS 服务的状态，creating 是开通中，created 是已开通
+        :rtype: str
+        """
         return self._CfsServiceStatus
 
     @CfsServiceStatus.setter
@@ -5455,6 +6624,9 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5525,6 +6697,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建快照时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -5533,6 +6708,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """快照名称
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -5541,6 +6719,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """快照ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -5549,6 +6730,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Status(self):
+        """快照状态，createing-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5557,6 +6741,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域名称
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -5565,6 +6752,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5573,6 +6763,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Size(self):
+        """快照大小
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -5581,6 +6774,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def AliveDay(self):
+        """保留时长天
+        :rtype: int
+        """
         return self._AliveDay
 
     @AliveDay.setter
@@ -5589,6 +6785,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Percent(self):
+        """快照进度百分比，1表示1%
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -5597,6 +6796,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """账号ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -5605,6 +6807,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """快照删除时间
+        :rtype: str
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -5613,6 +6818,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def FsName(self):
+        """文件系统名称
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -5621,6 +6829,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """快照标签
+        :rtype: list of TagInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -5629,6 +6840,10 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotType(self):
+        """快照类型, general为通用系列快照，turbo为Turbo系列快照
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotType
 
     @SnapshotType.setter
@@ -5637,6 +6852,10 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotTime(self):
+        """实际快照时间，反应快照对应文件系统某个时刻的数据。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotTime
 
     @SnapshotTime.setter
@@ -5709,6 +6928,13 @@ UpdateCfsSnapshotAttribute
 
     @property
     def Action(self):
+        """操作类型
+CreateCfsSnapshot：创建快照
+DeleteCfsSnapshot：删除快照
+CreateCfsFileSystem：创建文件系统
+UpdateCfsSnapshotAttribute：更新快照
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -5717,6 +6943,9 @@ UpdateCfsSnapshotAttribute
 
     @property
     def ActionTime(self):
+        """操作时间
+        :rtype: str
+        """
         return self._ActionTime
 
     @ActionTime.setter
@@ -5725,6 +6954,13 @@ UpdateCfsSnapshotAttribute
 
     @property
     def ActionName(self):
+        """操作名称
+CreateCfsSnapshot
+DeleteCfsSnapshot
+CreateCfsFileSystem
+UpdateCfsSnapshotAttribute
+        :rtype: str
+        """
         return self._ActionName
 
     @ActionName.setter
@@ -5733,6 +6969,9 @@ UpdateCfsSnapshotAttribute
 
     @property
     def Operator(self):
+        """操作者uin
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5741,6 +6980,9 @@ UpdateCfsSnapshotAttribute
 
     @property
     def Result(self):
+        """1-任务进行中；2-任务成功；3-任务失败
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -5784,6 +7026,9 @@ class SnapshotStatistics(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -5792,6 +7037,9 @@ class SnapshotStatistics(AbstractModel):
 
     @property
     def SnapshotNumber(self):
+        """快照总个数
+        :rtype: int
+        """
         return self._SnapshotNumber
 
     @SnapshotNumber.setter
@@ -5800,6 +7048,9 @@ class SnapshotStatistics(AbstractModel):
 
     @property
     def SnapshotSize(self):
+        """快照总容量
+        :rtype: int
+        """
         return self._SnapshotSize
 
     @SnapshotSize.setter
@@ -5835,6 +7086,9 @@ class StopMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """迁移任务名称
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5874,6 +7128,9 @@ class StopMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """迁移任务Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5882,6 +7139,9 @@ class StopMigrationTaskResponse(AbstractModel):
 
     @property
     def Status(self):
+        """迁移状态。0: 已完成；1: 进行中；2: 已终止
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5890,6 +7150,9 @@ class StopMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5920,6 +7183,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -5928,6 +7194,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -5963,6 +7232,10 @@ class TieringDetailInfo(AbstractModel):
 
     @property
     def TieringSizeInBytes(self):
+        """低频存储容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TieringSizeInBytes
 
     @TieringSizeInBytes.setter
@@ -5999,6 +7272,9 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def FileSystemIds(self):
+        """需要解绑的文件系统ID列表，用"," 分割
+        :rtype: str
+        """
         return self._FileSystemIds
 
     @FileSystemIds.setter
@@ -6007,6 +7283,9 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """解绑的快照ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -6044,6 +7323,9 @@ class UnbindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -6052,6 +7334,9 @@ class UnbindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6099,6 +7384,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -6107,6 +7395,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """快照策略名称
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -6115,6 +7406,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfWeek(self):
+        """快照定期备份，按照星期一到星期日。 1代表星期一，7代表星期日
+        :rtype: str
+        """
         return self._DayOfWeek
 
     @DayOfWeek.setter
@@ -6123,6 +7417,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def Hour(self):
+        """快照定期备份在一天的哪一小时
+        :rtype: str
+        """
         return self._Hour
 
     @Hour.setter
@@ -6131,6 +7428,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AliveDays(self):
+        """快照保留日期
+        :rtype: int
+        """
         return self._AliveDays
 
     @AliveDays.setter
@@ -6139,6 +7439,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IsActivated(self):
+        """是否激活定期快照功能；1代表激活，0代表未激活
+        :rtype: int
+        """
         return self._IsActivated
 
     @IsActivated.setter
@@ -6147,6 +7450,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfMonth(self):
+        """定期快照在每月的第几天创建快照，该参数与DayOfWeek互斥
+        :rtype: str
+        """
         return self._DayOfMonth
 
     @DayOfMonth.setter
@@ -6155,6 +7461,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IntervalDays(self):
+        """间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 互斥
+        :rtype: int
+        """
         return self._IntervalDays
 
     @IntervalDays.setter
@@ -6198,6 +7507,9 @@ class UpdateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """快照策略ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -6206,6 +7518,9 @@ class UpdateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6235,6 +7550,9 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -6243,6 +7561,9 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
 
     @property
     def FsName(self):
+        """用户自定义文件系统名称
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -6286,6 +7607,9 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     @property
     def CreationToken(self):
+        """用户自定义文件系统名称
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -6294,6 +7618,9 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -6302,6 +7629,9 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     @property
     def FsName(self):
+        """用户自定义文件系统名称
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -6310,6 +7640,9 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6341,6 +7674,9 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6349,6 +7685,9 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -6389,6 +7728,9 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6397,6 +7739,9 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -6405,6 +7750,9 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6435,6 +7783,9 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
 
     @property
     def FsLimit(self):
+        """文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
+        :rtype: int
+        """
         return self._FsLimit
 
     @FsLimit.setter
@@ -6443,6 +7794,9 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统ID，目前仅支持标准型文件系统。
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -6477,6 +7831,9 @@ class UpdateCfsFileSystemSizeLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6508,6 +7865,9 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6516,6 +7876,9 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6524,6 +7887,9 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     @property
     def DescInfo(self):
+        """权限组描述信息，1-255个字符。 Name和Descinfo不能同时为空
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -6568,6 +7934,9 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6576,6 +7945,9 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     @property
     def Name(self):
+        """权限组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6584,6 +7956,9 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     @property
     def DescInfo(self):
+        """描述信息
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -6592,6 +7967,9 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6640,6 +8018,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6648,6 +8029,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -6656,6 +8040,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def AuthClientIp(self):
+        """可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -6664,6 +8051,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def RWPermission(self):
+        """读写权限, 值为RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -6672,6 +8062,14 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def UserPermission(self):
+        """用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。
+all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
+
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -6680,6 +8078,9 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def Priority(self):
+        """规则优先级，参数范围1-100。 其中 1 为最高，100为最低
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -6736,6 +8137,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """权限组 ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6744,6 +8148,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -6752,6 +8159,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def AuthClientIp(self):
+        """允许访问的客户端 IP 或者 IP 段
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -6760,6 +8170,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def RWPermission(self):
+        """读写权限
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -6768,6 +8181,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def UserPermission(self):
+        """用户权限
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -6776,6 +8192,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def Priority(self):
+        """优先级
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -6784,6 +8203,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6821,6 +8243,9 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """文件系统快照ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -6829,6 +8254,9 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """文件系统快照名称
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -6837,6 +8265,9 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def AliveDays(self):
+        """文件系统快照保留天数
+        :rtype: int
+        """
         return self._AliveDays
 
     @AliveDays.setter
@@ -6875,6 +8306,9 @@ class UpdateCfsSnapshotAttributeResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """文件系统快照ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -6883,6 +8317,9 @@ class UpdateCfsSnapshotAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6912,6 +8349,9 @@ class UpdateFileSystemBandwidthLimitRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -6920,6 +8360,9 @@ class UpdateFileSystemBandwidthLimitRequest(AbstractModel):
 
     @property
     def BandwidthLimit(self):
+        """文件系统带宽，仅吞吐型可填。单位MiB/s，最小为1GiB/s，最大200GiB/s。
+        :rtype: int
+        """
         return self._BandwidthLimit
 
     @BandwidthLimit.setter
@@ -6954,6 +8397,9 @@ class UpdateFileSystemBandwidthLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7007,6 +8453,9 @@ class UserQuota(AbstractModel):
 
     @property
     def UserType(self):
+        """指定配额类型，包括Uid、Gid、Dir
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -7015,6 +8464,9 @@ class UserQuota(AbstractModel):
 
     @property
     def UserId(self):
+        """UID/GID信息
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7023,6 +8475,9 @@ class UserQuota(AbstractModel):
 
     @property
     def CapacityHardLimit(self):
+        """容量硬限制，单位GiB
+        :rtype: int
+        """
         return self._CapacityHardLimit
 
     @CapacityHardLimit.setter
@@ -7031,6 +8486,9 @@ class UserQuota(AbstractModel):
 
     @property
     def FileHardLimit(self):
+        """文件硬限制，单位个
+        :rtype: int
+        """
         return self._FileHardLimit
 
     @FileHardLimit.setter
@@ -7039,6 +8497,9 @@ class UserQuota(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -7047,6 +8508,10 @@ class UserQuota(AbstractModel):
 
     @property
     def CapacityUsed(self):
+        """容量使用，单位GiB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CapacityUsed
 
     @CapacityUsed.setter
@@ -7055,6 +8520,10 @@ class UserQuota(AbstractModel):
 
     @property
     def FileUsed(self):
+        """文件使用个数，单位个
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileUsed
 
     @FileUsed.setter
@@ -7063,6 +8532,10 @@ class UserQuota(AbstractModel):
 
     @property
     def DirectoryPath(self):
+        """目录配额的目录绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DirectoryPath
 
     @DirectoryPath.setter
@@ -7071,6 +8544,10 @@ class UserQuota(AbstractModel):
 
     @property
     def Status(self):
+        """配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter

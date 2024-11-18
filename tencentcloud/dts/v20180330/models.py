@@ -47,6 +47,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """订阅实例ID。
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -55,6 +58,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """数据库实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -63,6 +69,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeObjectType(self):
+        """数据订阅类型0-全实例订阅，1数据订阅，2结构订阅，3数据订阅与结构订阅
+        :rtype: int
+        """
         return self._SubscribeObjectType
 
     @SubscribeObjectType.setter
@@ -71,6 +80,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def Objects(self):
+        """订阅对象
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SubscribeObject`
+        """
         return self._Objects
 
     @Objects.setter
@@ -79,6 +91,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
+        """数据订阅服务所在子网。默认为数据库实例所在的子网内。
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -87,6 +102,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def Vport(self):
+        """订阅服务端口；默认为7507
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -130,6 +148,9 @@ class ActivateSubscribeResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """配置数据订阅任务ID。
+        :rtype: str
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -138,6 +159,9 @@ class ActivateSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -167,6 +191,9 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -175,6 +202,9 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def CompleteMode(self):
+        """完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
+        :rtype: str
+        """
         return self._CompleteMode
 
     @CompleteMode.setter
@@ -209,6 +239,9 @@ class CompleteMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -240,6 +273,9 @@ class ConsistencyParams(AbstractModel):
 
     @property
     def SelectRowsPerTable(self):
+        """数据内容检测参数。表中选出用来数据对比的行，占表的总行数的百分比。取值范围是整数[1-100]
+        :rtype: int
+        """
         return self._SelectRowsPerTable
 
     @SelectRowsPerTable.setter
@@ -248,6 +284,9 @@ class ConsistencyParams(AbstractModel):
 
     @property
     def TablesSelectAll(self):
+        """数据内容检测参数。迁移库表中，要进行数据内容检测的表，占所有表的百分比。取值范围是整数[1-100]
+        :rtype: int
+        """
         return self._TablesSelectAll
 
     @TablesSelectAll.setter
@@ -256,6 +295,9 @@ class ConsistencyParams(AbstractModel):
 
     @property
     def TablesSelectCount(self):
+        """数据数量检测，检测表行数是否一致。迁移库表中，要进行数据数量检测的表，占所有表的百分比。取值范围是整数[1-100]
+        :rtype: int
+        """
         return self._TablesSelectCount
 
     @TablesSelectCount.setter
@@ -291,6 +333,9 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -324,6 +369,9 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -386,6 +434,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """数据迁移任务名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -394,6 +445,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def MigrateOption(self):
+        """迁移任务配置选项
+        :rtype: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
+        """
         return self._MigrateOption
 
     @MigrateOption.setter
@@ -402,6 +456,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
+        """源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver 不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
+        :rtype: str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -410,6 +467,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
+        """源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -418,6 +478,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
+        """源实例信息，具体内容跟迁移任务类型相关
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -426,6 +489,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
+        """目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver，cynosdbmysql。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
+        :rtype: str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -434,6 +500,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
+        """目标实例接入类型，目前支持：cdb（腾讯云数据库实例）
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -442,6 +511,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def DstInfo(self):
+        """目标实例信息
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DstInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -450,6 +522,13 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def DatabaseInfo(self):
+        """需要迁移的源数据库表信息，用json格式的字符串描述。当MigrateOption.MigrateObject配置为2（指定库表迁移）时必填。
+对于database-table两级结构的数据库：
+[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
+对于database-schema-table三级结构：
+[{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
+        :rtype: str
+        """
         return self._DatabaseInfo
 
     @DatabaseInfo.setter
@@ -458,6 +537,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """迁移实例的tag
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -466,6 +548,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def SrcNodeType(self):
+        """源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
+        :rtype: str
+        """
         return self._SrcNodeType
 
     @SrcNodeType.setter
@@ -474,6 +559,9 @@ class CreateMigrateJobRequest(AbstractModel):
 
     @property
     def SrcInfoMulti(self):
+        """源实例信息，具体内容跟迁移任务类型相关
+        :rtype: list of SrcInfo
+        """
         return self._SrcInfoMulti
 
     @SrcInfoMulti.setter
@@ -537,6 +625,9 @@ class CreateMigrateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -545,6 +636,9 @@ class CreateMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -589,6 +683,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Product(self):
+        """订阅的数据库类型，目前支持的有 mysql
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -597,6 +694,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def PayType(self):
+        """实例付费类型，1小时计费，0包年包月
+        :rtype: int
+        """
         return self._PayType
 
     @PayType.setter
@@ -605,6 +705,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """购买时长。PayType为0时必填。单位为月，最大支持120
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -613,6 +716,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Count(self):
+        """购买数量,默认为1，最大为10
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -621,6 +727,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """是否自动续费，0表示不自动续费，1表示自动续费，默认为0。小时计费实例设置该标识无效。
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -629,6 +738,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """实例资源标签
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -637,6 +749,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """用户自定义实例名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -685,6 +800,10 @@ class CreateSubscribeResponse(AbstractModel):
 
     @property
     def SubscribeIds(self):
+        """数据订阅实例的ID数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SubscribeIds
 
     @SubscribeIds.setter
@@ -693,6 +812,9 @@ class CreateSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -719,6 +841,9 @@ class DeleteMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -752,6 +877,9 @@ class DeleteMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -777,6 +905,9 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """任务 ID
+        :rtype: str
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -816,6 +947,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def Info(self):
+        """任务执行结果信息
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -824,6 +958,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务执行状态，可能的值有：success，failed，running
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -832,6 +969,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -859,6 +999,9 @@ class DescribeMigrateCheckJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -907,6 +1050,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def Status(self):
+        """校验任务状态：unavailable(当前不可用), starting(开始中)，running(校验中)，finished(校验完成)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -915,6 +1061,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """任务的错误码
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -923,6 +1072,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """任务的错误信息
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -931,6 +1083,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """Check任务总进度,如："30"表示30%
+        :rtype: str
+        """
         return self._Progress
 
     @Progress.setter
@@ -939,6 +1094,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def CheckFlag(self):
+        """校验是否通过,0-未通过，1-校验通过, 3-未校验
+        :rtype: int
+        """
         return self._CheckFlag
 
     @CheckFlag.setter
@@ -947,6 +1105,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -995,6 +1156,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1003,6 +1167,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """数据迁移任务名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -1011,6 +1178,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序字段，可以取值为JobId、Status、JobName、MigrateType、RunMode、CreateTime
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -1019,6 +1189,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def OrderSeq(self):
+        """排序方式，升序为ASC，降序为DESC
+        :rtype: str
+        """
         return self._OrderSeq
 
     @OrderSeq.setter
@@ -1027,6 +1200,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1035,6 +1211,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回实例数量，默认20，有效区间[1,100]
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1043,6 +1222,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤条件
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1093,6 +1275,9 @@ class DescribeMigrateJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1101,6 +1286,9 @@ class DescribeMigrateJobsResponse(AbstractModel):
 
     @property
     def JobList(self):
+        """任务详情数组
+        :rtype: list of MigrateJobInfo
+        """
         return self._JobList
 
     @JobList.setter
@@ -1109,6 +1297,9 @@ class DescribeMigrateJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1141,6 +1332,9 @@ class DescribeSubscribeConfRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """订阅实例ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -1261,6 +1455,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """订阅实例ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -1269,6 +1466,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def SubscribeName(self):
+        """订阅实例名称
+        :rtype: str
+        """
         return self._SubscribeName
 
     @SubscribeName.setter
@@ -1277,6 +1477,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def ChannelId(self):
+        """订阅通道
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -1285,6 +1488,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def Product(self):
+        """订阅数据库类型
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1293,6 +1499,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """被订阅的实例
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1301,6 +1510,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """被订阅的实例的状态，可能的值有running,offline,isolate
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -1309,6 +1521,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def SubsStatus(self):
+        """订阅实例状态，可能的值有unconfigure-未配置，configuring-配置中，configured-已配置
+        :rtype: str
+        """
         return self._SubsStatus
 
     @SubsStatus.setter
@@ -1317,6 +1532,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def Status(self):
+        """订阅实例生命周期状态，可能的值有：normal-正常，isolating-隔离中，isolated-已隔离，offlining-下线中
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1325,6 +1543,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """订阅实例创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1333,6 +1554,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def IsolateTime(self):
+        """订阅实例被隔离时间
+        :rtype: str
+        """
         return self._IsolateTime
 
     @IsolateTime.setter
@@ -1341,6 +1565,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """订阅实例到期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1349,6 +1576,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def OfflineTime(self):
+        """订阅实例下线时间
+        :rtype: str
+        """
         return self._OfflineTime
 
     @OfflineTime.setter
@@ -1357,6 +1587,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def ConsumeStartTime(self):
+        """订阅实例消费时间起点。
+        :rtype: str
+        """
         return self._ConsumeStartTime
 
     @ConsumeStartTime.setter
@@ -1365,6 +1598,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def PayType(self):
+        """订阅实例计费类型，1-小时计费，0-包年包月
+        :rtype: int
+        """
         return self._PayType
 
     @PayType.setter
@@ -1373,6 +1609,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def Vip(self):
+        """订阅通道Vip
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -1381,6 +1620,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def Vport(self):
+        """订阅通道Port
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -1389,6 +1631,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """订阅通道所在VpcId
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -1397,6 +1642,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def UniqSubnetId(self):
+        """订阅通道所在SubnetId
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -1405,6 +1653,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def SdkConsumedTime(self):
+        """当前SDK消费时间位点
+        :rtype: str
+        """
         return self._SdkConsumedTime
 
     @SdkConsumedTime.setter
@@ -1413,6 +1664,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def SdkHost(self):
+        """订阅SDK IP地址
+        :rtype: str
+        """
         return self._SdkHost
 
     @SdkHost.setter
@@ -1421,6 +1675,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def SubscribeObjectType(self):
+        """订阅对象类型0-全实例订阅，1-DDL数据订阅，2-DML结构订阅，3-DDL数据订阅+DML结构订阅
+        :rtype: int
+        """
         return self._SubscribeObjectType
 
     @SubscribeObjectType.setter
@@ -1429,6 +1686,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def SubscribeObjects(self):
+        """订阅对象，当SubscribeObjectType 为0时，此字段为空数组
+        :rtype: list of SubscribeObject
+        """
         return self._SubscribeObjects
 
     @SubscribeObjects.setter
@@ -1437,6 +1697,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -1445,6 +1708,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1453,6 +1719,10 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """订阅实例的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -1461,6 +1731,10 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标识,0-不自动续费，1-自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1469,6 +1743,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def SubscribeVersion(self):
+        """数据订阅版本。老版订阅填txdts，kafka版填kafka
+        :rtype: str
+        """
         return self._SubscribeVersion
 
     @SubscribeVersion.setter
@@ -1477,6 +1754,10 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def Errors(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SubsErr
+        """
         return self._Errors
 
     @Errors.setter
@@ -1485,6 +1766,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1589,6 +1873,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """数据订阅的实例ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -1597,6 +1884,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def SubscribeName(self):
+        """数据订阅的实例名称
+        :rtype: str
+        """
         return self._SubscribeName
 
     @SubscribeName.setter
@@ -1605,6 +1895,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """绑定数据库实例的ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1613,6 +1906,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """数据订阅实例的通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -1621,6 +1917,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def PayType(self):
+        """计费模式筛选，可能的值：0-包年包月，1-按量计费
+        :rtype: str
+        """
         return self._PayType
 
     @PayType.setter
@@ -1629,6 +1928,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """订阅的数据库产品，如mysql
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1637,6 +1939,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -1645,6 +1950,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def SubsStatus(self):
+        """数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+        :rtype: list of str
+        """
         return self._SubsStatus
 
     @SubsStatus.setter
@@ -1653,6 +1961,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回记录的起始偏移量，默认为0。请输入非负整数
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1661,6 +1972,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单次返回的记录数量，默认20。请输入1到100的整数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1669,6 +1983,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -1677,6 +1994,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤条件
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1685,6 +2005,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def SubscribeVersion(self):
+        """订阅实例版本;txdts-旧版数据订阅，kafka-kafka版本数据订阅
+        :rtype: str
+        """
         return self._SubscribeVersion
 
     @SubscribeVersion.setter
@@ -1741,6 +2064,9 @@ class DescribeSubscribesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件的实例总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1749,6 +2075,9 @@ class DescribeSubscribesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """数据订阅实例的信息列表
+        :rtype: list of SubscribeInfo
+        """
         return self._Items
 
     @Items.setter
@@ -1757,6 +2086,9 @@ class DescribeSubscribesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1807,6 +2139,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Region(self):
+        """目标实例地域，如ap-guangzhou
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1815,6 +2150,9 @@ class DstInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """目标实例ID，如cdb-jd92ijd8
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1823,6 +2161,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """目标实例vip。已废弃，无需填写
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -1831,6 +2172,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Port(self):
+        """目标实例vport。已废弃，无需填写
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -1839,6 +2183,9 @@ class DstInfo(AbstractModel):
 
     @property
     def ReadOnly(self):
+        """目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
+        :rtype: int
+        """
         return self._ReadOnly
 
     @ReadOnly.setter
@@ -1847,6 +2194,9 @@ class DstInfo(AbstractModel):
 
     @property
     def User(self):
+        """目标数据库账号
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -1855,6 +2205,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Password(self):
+        """目标数据库密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -1897,6 +2250,9 @@ class ErrorInfo(AbstractModel):
 
     @property
     def ErrorLog(self):
+        """具体的报错日志, 包含错误码和错误信息
+        :rtype: str
+        """
         return self._ErrorLog
 
     @ErrorLog.setter
@@ -1905,6 +2261,9 @@ class ErrorInfo(AbstractModel):
 
     @property
     def HelpDoc(self):
+        """报错对应的帮助文档Ur
+        :rtype: str
+        """
         return self._HelpDoc
 
     @HelpDoc.setter
@@ -1939,6 +2298,9 @@ class IsolateSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """订阅实例ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -1972,6 +2334,9 @@ class IsolateSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2015,6 +2380,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepAll(self):
+        """总步骤数
+        :rtype: int
+        """
         return self._StepAll
 
     @StepAll.setter
@@ -2023,6 +2391,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepNow(self):
+        """当前步骤
+        :rtype: int
+        """
         return self._StepNow
 
     @StepNow.setter
@@ -2031,6 +2402,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def Progress(self):
+        """总进度,如："10"
+        :rtype: str
+        """
         return self._Progress
 
     @Progress.setter
@@ -2039,6 +2413,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def CurrentStepProgress(self):
+        """当前步骤进度,如:"1"
+        :rtype: str
+        """
         return self._CurrentStepProgress
 
     @CurrentStepProgress.setter
@@ -2047,6 +2424,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def MasterSlaveDistance(self):
+        """主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql
+        :rtype: int
+        """
         return self._MasterSlaveDistance
 
     @MasterSlaveDistance.setter
@@ -2055,6 +2435,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def SecondsBehindMaster(self):
+        """主从差距，秒；在增量同步阶段有效，目前支持产品为：mysql
+        :rtype: int
+        """
         return self._SecondsBehindMaster
 
     @SecondsBehindMaster.setter
@@ -2063,6 +2446,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepInfo(self):
+        """步骤信息
+        :rtype: list of MigrateStepDetailInfo
+        """
         return self._StepInfo
 
     @StepInfo.setter
@@ -2160,6 +2546,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2168,6 +2557,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def JobName(self):
+        """数据迁移任务名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -2176,6 +2568,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def MigrateOption(self):
+        """迁移任务配置选项
+        :rtype: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
+        """
         return self._MigrateOption
 
     @MigrateOption.setter
@@ -2184,6 +2579,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
+        """源实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
+        :rtype: str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -2192,6 +2590,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def SrcAccessType(self):
+        """源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -2200,6 +2601,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def SrcInfo(self):
+        """源实例信息，具体内容跟迁移任务类型相关
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -2208,6 +2612,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def DstDatabaseType(self):
+        """目标实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
+        :rtype: str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -2216,6 +2623,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def DstAccessType(self):
+        """目标实例接入类型，目前支持：cdb(腾讯云数据库实例)
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -2224,6 +2634,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def DstInfo(self):
+        """目标实例信息
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DstInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -2232,6 +2645,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def DatabaseInfo(self):
+        """需要迁移的源数据库表信息，如果需要迁移的是整个实例，该字段为[]
+        :rtype: str
+        """
         return self._DatabaseInfo
 
     @DatabaseInfo.setter
@@ -2240,6 +2656,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建(提交)时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2248,6 +2667,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始执行时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2256,6 +2678,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务执行结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2264,6 +2689,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2272,6 +2700,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def Detail(self):
+        """任务详情
+        :rtype: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
+        """
         return self._Detail
 
     @Detail.setter
@@ -2280,6 +2711,9 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """任务错误信息提示，当任务发生错误时，不为null或者空值
+        :rtype: list of ErrorInfo
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -2288,6 +2722,10 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -2296,6 +2734,10 @@ class MigrateJobInfo(AbstractModel):
 
     @property
     def SrcInfoMulti(self):
+        """源实例为集群时且接入为非cdb时源实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SrcInfo
+        """
         return self._SrcInfoMulti
 
     @SrcInfoMulti.setter
@@ -2405,6 +2847,9 @@ MySQL暂不支持额外参数设置。
 
     @property
     def RunMode(self):
+        """任务运行模式，值包括：1-立即执行，2-定时执行
+        :rtype: int
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -2413,6 +2858,9 @@ MySQL暂不支持额外参数设置。
 
     @property
     def ExpectTime(self):
+        """期望执行时间，当runMode=2时，该字段必填，时间格式：yyyy-mm-dd hh:mm:ss
+        :rtype: str
+        """
         return self._ExpectTime
 
     @ExpectTime.setter
@@ -2421,6 +2869,9 @@ MySQL暂不支持额外参数设置。
 
     @property
     def MigrateType(self):
+        """数据迁移类型，值包括：1-结构迁移,2-全量迁移,3-全量+增量迁移
+        :rtype: int
+        """
         return self._MigrateType
 
     @MigrateType.setter
@@ -2429,6 +2880,9 @@ MySQL暂不支持额外参数设置。
 
     @property
     def MigrateObject(self):
+        """迁移对象，1-整个实例，2-指定库表
+        :rtype: int
+        """
         return self._MigrateObject
 
     @MigrateObject.setter
@@ -2437,6 +2891,9 @@ MySQL暂不支持额外参数设置。
 
     @property
     def ConsistencyType(self):
+        """抽样数据一致性检测参数，1-未配置,2-全量检测,3-抽样检测, 4-仅校验不一致表,5-不检测
+        :rtype: int
+        """
         return self._ConsistencyType
 
     @ConsistencyType.setter
@@ -2445,6 +2902,9 @@ MySQL暂不支持额外参数设置。
 
     @property
     def IsOverrideRoot(self):
+        """是否用源库Root账户覆盖目标库，值包括：0-不覆盖，1-覆盖，选择库表或者结构迁移时应该为0
+        :rtype: int
+        """
         return self._IsOverrideRoot
 
     @IsOverrideRoot.setter
@@ -2453,6 +2913,24 @@ MySQL暂不支持额外参数设置。
 
     @property
     def ExternParams(self):
+        """不同数据库用到的额外参数.以JSON格式描述. 
+Redis可定义如下的参数: 
+{ 
+	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 
+	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 
+	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 
+	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 
+	"ReplTimeout":120，		复制超时时间(秒) 
+}
+MongoDB可定义如下的参数: 
+{
+	'SrcAuthDatabase':'admin', 
+	'SrcAuthFlag': "1", 
+	'SrcAuthMechanism':"SCRAM-SHA-1"
+}
+MySQL暂不支持额外参数设置。
+        :rtype: str
+        """
         return self._ExternParams
 
     @ExternParams.setter
@@ -2461,6 +2939,9 @@ MySQL暂不支持额外参数设置。
 
     @property
     def ConsistencyParams(self):
+        """仅用于“抽样数据一致性检测”，ConsistencyType配置为抽样检测时，必选
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ConsistencyParams`
+        """
         return self._ConsistencyParams
 
     @ConsistencyParams.setter
@@ -2516,6 +2997,9 @@ class MigrateStepDetailInfo(AbstractModel):
 
     @property
     def StepNo(self):
+        """步骤序列
+        :rtype: int
+        """
         return self._StepNo
 
     @StepNo.setter
@@ -2524,6 +3008,9 @@ class MigrateStepDetailInfo(AbstractModel):
 
     @property
     def StepName(self):
+        """步骤展现名称
+        :rtype: str
+        """
         return self._StepName
 
     @StepName.setter
@@ -2532,6 +3019,9 @@ class MigrateStepDetailInfo(AbstractModel):
 
     @property
     def StepId(self):
+        """步骤英文标识
+        :rtype: str
+        """
         return self._StepId
 
     @StepId.setter
@@ -2540,6 +3030,9 @@ class MigrateStepDetailInfo(AbstractModel):
 
     @property
     def Status(self):
+        """步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2548,6 +3041,10 @@ class MigrateStepDetailInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2619,6 +3116,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """待修改的数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2627,6 +3127,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """数据迁移任务名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -2635,6 +3138,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def MigrateOption(self):
+        """迁移任务配置选项
+        :rtype: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
+        """
         return self._MigrateOption
 
     @MigrateOption.setter
@@ -2643,6 +3149,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
+        """源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(云上CDB实例)
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -2651,6 +3160,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
+        """源实例信息，具体内容跟迁移任务类型相关
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -2659,6 +3171,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
+        """目标实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例)，cdb(云上CDB实例). 目前只支持cdb.
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -2667,6 +3182,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def DstInfo(self):
+        """目标实例信息, 其中目标实例地域不允许修改.
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DstInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -2675,6 +3193,16 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def DatabaseInfo(self):
+        """当选择'指定库表'迁移的时候, 需要设置待迁移的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
+
+对于database-table两级结构的数据库：
+[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
+对于database-schema-table三级结构：
+[{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
+
+如果是'整个实例'的迁移模式,不需设置该字段
+        :rtype: str
+        """
         return self._DatabaseInfo
 
     @DatabaseInfo.setter
@@ -2683,6 +3211,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def SrcNodeType(self):
+        """源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
+        :rtype: str
+        """
         return self._SrcNodeType
 
     @SrcNodeType.setter
@@ -2691,6 +3222,9 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     @property
     def SrcInfoMulti(self):
+        """源实例信息，具体内容跟迁移任务类型相关
+        :rtype: list of SrcInfo
+        """
         return self._SrcInfoMulti
 
     @SrcInfoMulti.setter
@@ -2744,6 +3278,9 @@ class ModifyMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2772,6 +3309,9 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """订阅实例ID，例如：subs-8uey736k
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -2780,6 +3320,9 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标识。1-自动续费，0-不自动续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -2814,6 +3357,9 @@ class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2842,6 +3388,9 @@ class ModifySubscribeConsumeTimeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """数据订阅实例的ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -2850,6 +3399,9 @@ class ModifySubscribeConsumeTimeRequest(AbstractModel):
 
     @property
     def ConsumeStartTime(self):
+        """消费时间起点，也即是指定订阅数据的时间起点，时间格式如：Y-m-d h:m:s，取值范围为过去24小时之内
+        :rtype: str
+        """
         return self._ConsumeStartTime
 
     @ConsumeStartTime.setter
@@ -2884,6 +3436,9 @@ class ModifySubscribeConsumeTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2912,6 +3467,9 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """数据订阅实例的ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -2920,6 +3478,9 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     @property
     def SubscribeName(self):
+        """数据订阅实例的名称，长度限制为[1,60]
+        :rtype: str
+        """
         return self._SubscribeName
 
     @SubscribeName.setter
@@ -2954,6 +3515,9 @@ class ModifySubscribeNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2985,6 +3549,9 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """数据订阅实例的ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -2993,6 +3560,9 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeObjectType(self):
+        """数据订阅的类型，可选的值有：0 - 全实例订阅；1 - 数据订阅；2 - 结构订阅；3 - 数据订阅+结构订阅
+        :rtype: int
+        """
         return self._SubscribeObjectType
 
     @SubscribeObjectType.setter
@@ -3001,6 +3571,9 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def Objects(self):
+        """订阅的数据库表信息
+        :rtype: list of SubscribeObject
+        """
         return self._Objects
 
     @Objects.setter
@@ -3044,6 +3617,9 @@ class ModifySubscribeObjectsResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务的ID
+        :rtype: str
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -3052,6 +3628,9 @@ class ModifySubscribeObjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3087,6 +3666,9 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """数据订阅实例的ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -3095,6 +3677,9 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     @property
     def DstUniqSubnetId(self):
+        """指定目的子网，如果传此参数，DstIp必须在目的子网内
+        :rtype: str
+        """
         return self._DstUniqSubnetId
 
     @DstUniqSubnetId.setter
@@ -3103,6 +3688,9 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     @property
     def DstIp(self):
+        """目标IP，与DstPort至少传一个
+        :rtype: str
+        """
         return self._DstIp
 
     @DstIp.setter
@@ -3111,6 +3699,9 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     @property
     def DstPort(self):
+        """目标PORT，支持范围为：[1025-65535]
+        :rtype: int
+        """
         return self._DstPort
 
     @DstPort.setter
@@ -3147,6 +3738,9 @@ class ModifySubscribeVipVportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3172,6 +3766,9 @@ class OfflineIsolatedSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """数据订阅实例的ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -3205,6 +3802,9 @@ class OfflineIsolatedSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3230,6 +3830,9 @@ class ResetSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """数据订阅实例的ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -3263,6 +3866,9 @@ class ResetSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3334,6 +3940,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def AccessKey(self):
+        """阿里云AccessKey。源库是阿里云RDS5.6适用
+        :rtype: str
+        """
         return self._AccessKey
 
     @AccessKey.setter
@@ -3342,6 +3951,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """实例的IP地址
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -3350,6 +3962,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def Port(self):
+        """实例的端口
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -3358,6 +3973,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def User(self):
+        """实例的用户名
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -3366,6 +3984,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def Password(self):
+        """实例的密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -3374,6 +3995,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def RdsInstanceId(self):
+        """阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用
+        :rtype: str
+        """
         return self._RdsInstanceId
 
     @RdsInstanceId.setter
@@ -3382,6 +4006,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def CvmInstanceId(self):
+        """CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
+        :rtype: str
+        """
         return self._CvmInstanceId
 
     @CvmInstanceId.setter
@@ -3390,6 +4017,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def UniqDcgId(self):
+        """专线网关ID，格式如：dcg-0rxtqqxb
+        :rtype: str
+        """
         return self._UniqDcgId
 
     @UniqDcgId.setter
@@ -3398,6 +4028,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络ID，格式如：vpc-92jblxto
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3406,6 +4039,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """私有网络下的子网ID，格式如：subnet-3paxmkdz
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -3414,6 +4050,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def UniqVpnGwId(self):
+        """VPN网关ID，格式如：vpngw-9ghexg7q
+        :rtype: str
+        """
         return self._UniqVpnGwId
 
     @UniqVpnGwId.setter
@@ -3422,6 +4061,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """数据库实例ID，格式如：cdb-powiqx8q
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3430,6 +4072,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地域英文名，如：ap-guangzhou
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3438,6 +4083,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def Supplier(self):
+        """当实例为RDS实例时，填写为aliyun, 其他情况均填写others
+        :rtype: str
+        """
         return self._Supplier
 
     @Supplier.setter
@@ -3446,6 +4094,10 @@ class SrcInfo(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网ID，如：ccn-afp6kltc
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -3454,6 +4106,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -3502,6 +4157,9 @@ class StartMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3535,6 +4193,9 @@ class StartMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3560,6 +4221,9 @@ class StopMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """数据迁移任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3593,6 +4257,9 @@ class StopMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3619,6 +4286,10 @@ class SubsErr(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3724,6 +4395,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """数据订阅的实例ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -3732,6 +4406,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubscribeName(self):
+        """数据订阅实例的名称
+        :rtype: str
+        """
         return self._SubscribeName
 
     @SubscribeName.setter
@@ -3740,6 +4417,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ChannelId(self):
+        """数据订阅实例绑定的通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3748,6 +4428,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Product(self):
+        """数据订阅绑定实例对应的产品名称
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3756,6 +4439,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """数据订阅实例绑定的数据库实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3764,6 +4450,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """数据订阅实例绑定的数据库实例状态
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -3772,6 +4461,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubsStatus(self):
+        """数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+        :rtype: str
+        """
         return self._SubsStatus
 
     @SubsStatus.setter
@@ -3780,6 +4472,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """上次修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -3788,6 +4483,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3796,6 +4494,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def IsolateTime(self):
+        """隔离时间
+        :rtype: str
+        """
         return self._IsolateTime
 
     @IsolateTime.setter
@@ -3804,6 +4505,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """到期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3812,6 +4516,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def OfflineTime(self):
+        """下线时间
+        :rtype: str
+        """
         return self._OfflineTime
 
     @OfflineTime.setter
@@ -3820,6 +4527,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ConsumeStartTime(self):
+        """最近一次修改的消费时间起点，如果从未修改则为零值
+        :rtype: str
+        """
         return self._ConsumeStartTime
 
     @ConsumeStartTime.setter
@@ -3828,6 +4538,10 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标识。0-不自动续费，1-自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -3836,6 +4550,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Region(self):
+        """数据订阅实例所属地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3844,6 +4561,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def PayType(self):
+        """计费方式，0 - 包年包月，1 - 按量计费
+        :rtype: int
+        """
         return self._PayType
 
     @PayType.setter
@@ -3852,6 +4572,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Vip(self):
+        """数据订阅实例的Vip
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -3860,6 +4583,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Vport(self):
+        """数据订阅实例的Vport
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -3868,6 +4594,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """数据订阅实例Vip所在VPC的唯一ID
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -3876,6 +4605,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def UniqSubnetId(self):
+        """数据订阅实例Vip所在子网的唯一ID
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -3884,6 +4616,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Status(self):
+        """数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3892,6 +4627,9 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SdkConsumedTime(self):
+        """SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
+        :rtype: str
+        """
         return self._SdkConsumedTime
 
     @SdkConsumedTime.setter
@@ -3900,6 +4638,10 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -3908,6 +4650,10 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubscribeVersion(self):
+        """订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubscribeVersion
 
     @SubscribeVersion.setter
@@ -3978,6 +4724,10 @@ class SubscribeObject(AbstractModel):
 
     @property
     def ObjectsType(self):
+        """数据订阅对象的类型，0-数据库，1-数据库内的表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ObjectsType
 
     @ObjectsType.setter
@@ -3986,6 +4736,10 @@ class SubscribeObject(AbstractModel):
 
     @property
     def DatabaseName(self):
+        """订阅数据库的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatabaseName
 
     @DatabaseName.setter
@@ -3994,6 +4748,10 @@ class SubscribeObject(AbstractModel):
 
     @property
     def TableNames(self):
+        """订阅数据库中表名称数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._TableNames
 
     @TableNames.setter
@@ -4032,6 +4790,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键值
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -4040,6 +4801,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: list of str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -4078,6 +4842,9 @@ class TagItem(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键值
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -4086,6 +4853,10 @@ class TagItem(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter

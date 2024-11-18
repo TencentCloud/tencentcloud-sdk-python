@@ -41,6 +41,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def EventDate(self):
+        """事件的发生日期
+        :rtype: str
+        """
         return self._EventDate
 
     @EventDate.setter
@@ -49,6 +52,10 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def ProductIds(self):
+        """1. 不指定产品列表时将查询所有产品。
+2. 产品ID示例：cvm、lb、cdb、cdn、crs
+        :rtype: list of str
+        """
         return self._ProductIds
 
     @ProductIds.setter
@@ -57,6 +64,11 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def RegionIds(self):
+        """1. 不指定地域列表时将查询所有地域。
+2. 查询非区域性产品事件时，地域ID指定为：non-regional
+3. 其他地域ID取值请参考：https://cloud.tencent.com/document/api/213/15692
+        :rtype: list of str
+        """
         return self._RegionIds
 
     @RegionIds.setter
@@ -95,6 +107,9 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """事件详情列表
+        :rtype: :class:`tencentcloud.tchd.v20230306.models.ProductEventList`
+        """
         return self._Data
 
     @Data.setter
@@ -103,6 +118,9 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -149,6 +167,9 @@ class EventDetail(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -157,6 +178,9 @@ class EventDetail(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品名称
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -165,6 +189,9 @@ class EventDetail(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域ID，非区域性地域返回non-regional
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -173,6 +200,9 @@ class EventDetail(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域名称
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -181,6 +211,9 @@ class EventDetail(AbstractModel):
 
     @property
     def StartTime(self):
+        """事件开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -189,6 +222,9 @@ class EventDetail(AbstractModel):
 
     @property
     def EndTime(self):
+        """事件结束时间，当事件正在发生还未结束时，结束时间返回空
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -197,6 +233,9 @@ class EventDetail(AbstractModel):
 
     @property
     def CurrentStatus(self):
+        """事件当前状态：提示、异常、正常
+        :rtype: str
+        """
         return self._CurrentStatus
 
     @CurrentStatus.setter
@@ -237,6 +276,10 @@ class ProductEventList(AbstractModel):
 
     @property
     def EventList(self):
+        """事件详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventDetail
+        """
         return self._EventList
 
     @EventList.setter

@@ -41,6 +41,10 @@ class AffectedComponent(AbstractModel):
 
     @property
     def Name(self):
+        """受漏洞影响的组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -49,6 +53,10 @@ class AffectedComponent(AbstractModel):
 
     @property
     def AffectedVersionList(self):
+        """受漏洞影响的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AffectedVersionList
 
     @AffectedVersionList.setter
@@ -57,6 +65,10 @@ class AffectedComponent(AbstractModel):
 
     @property
     def FixedVersionList(self):
+        """修复此漏洞的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._FixedVersionList
 
     @FixedVersionList.setter
@@ -134,6 +146,9 @@ class CVSSV2Info(AbstractModel):
 
     @property
     def CVSS(self):
+        """CVE评分。
+        :rtype: float
+        """
         return self._CVSS
 
     @CVSS.setter
@@ -142,6 +157,13 @@ class CVSSV2Info(AbstractModel):
 
     @property
     def AccessVector(self):
+        """AccessVector 攻击途径。
+取值范围：
+<li>NETWORK 远程</li>
+<li>ADJACENT_NETWORK 近邻</li>
+<li>LOCAL 本地</li>
+        :rtype: str
+        """
         return self._AccessVector
 
     @AccessVector.setter
@@ -150,6 +172,13 @@ class CVSSV2Info(AbstractModel):
 
     @property
     def AccessComplexity(self):
+        """AccessComplexity 攻击复杂度。
+取值范围：
+<li>HIGH 高</li>
+<li>MEDIUM 中</li>
+<li>LOW 低</li>
+        :rtype: str
+        """
         return self._AccessComplexity
 
     @AccessComplexity.setter
@@ -158,6 +187,13 @@ class CVSSV2Info(AbstractModel):
 
     @property
     def Authentication(self):
+        """Authentication 身份验证。
+取值范围：
+<li>MULTIPLE 多系统认证</li>
+<li>SINGLE 单系统认证</li>
+<li>NONE 无</li>
+        :rtype: str
+        """
         return self._Authentication
 
     @Authentication.setter
@@ -166,6 +202,13 @@ class CVSSV2Info(AbstractModel):
 
     @property
     def ConImpact(self):
+        """ConfidentialityImpact 机密性影响。
+取值范围：
+<li>NONE 无</li>
+<li>PARTIAL 部分</li>
+<li>COMPLETE 完整</li>
+        :rtype: str
+        """
         return self._ConImpact
 
     @ConImpact.setter
@@ -174,6 +217,13 @@ class CVSSV2Info(AbstractModel):
 
     @property
     def IntegrityImpact(self):
+        """IntegrityImpact 完整性影响。
+取值范围：
+<li>NONE 无</li>
+<li>PARTIAL 部分</li>
+<li>COMPLETE 完整</li>
+        :rtype: str
+        """
         return self._IntegrityImpact
 
     @IntegrityImpact.setter
@@ -182,6 +232,13 @@ class CVSSV2Info(AbstractModel):
 
     @property
     def AvailabilityImpact(self):
+        """AvailabilityImpact 可用性影响。
+取值范围：
+<li>NONE 无</li>
+<li>PARTIAL 部分</li>
+<li>COMPLETE 完整</li>
+        :rtype: str
+        """
         return self._AvailabilityImpact
 
     @AvailabilityImpact.setter
@@ -275,6 +332,9 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def CVSS(self):
+        """CVE评分。
+        :rtype: float
+        """
         return self._CVSS
 
     @CVSS.setter
@@ -283,6 +343,14 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def AttackVector(self):
+        """AttackVector 攻击途径。
+取值范围：
+<li>NETWORK 远程</li>
+<li>ADJACENT_NETWORK 近邻</li>
+<li>LOCAL 本地</li>
+<li>PHYSICAL 物理</li>
+        :rtype: str
+        """
         return self._AttackVector
 
     @AttackVector.setter
@@ -291,6 +359,12 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def AttackComplexity(self):
+        """AttackComplexity 攻击复杂度。
+取值范围：
+<li>HIGH 高</li>
+<li>LOW 低</li>
+        :rtype: str
+        """
         return self._AttackComplexity
 
     @AttackComplexity.setter
@@ -299,6 +373,13 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def PrivilegesRequired(self):
+        """PrivilegesRequired 触发特权。
+取值范围：
+<li>HIGH 高</li>
+<li>LOW 低</li>
+<li>NONE 无</li>
+        :rtype: str
+        """
         return self._PrivilegesRequired
 
     @PrivilegesRequired.setter
@@ -307,6 +388,12 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def UserInteraction(self):
+        """UserInteraction 交互必要性。
+取值范围：
+<li>NONE 无</li>
+<li>REQUIRED 需要</li>
+        :rtype: str
+        """
         return self._UserInteraction
 
     @UserInteraction.setter
@@ -315,6 +402,12 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def Scope(self):
+        """Scope 绕过安全边界。
+取值范围：
+<li>UNCHANGED 否</li>
+<li>CHANGED 能</li>
+        :rtype: str
+        """
         return self._Scope
 
     @Scope.setter
@@ -323,6 +416,13 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def ConImpact(self):
+        """ConfidentialityImpact 机密性影响。
+取值范围：
+<li>NONE 无</li>
+<li>LOW 低</li>
+<li>HIGH 高</li>
+        :rtype: str
+        """
         return self._ConImpact
 
     @ConImpact.setter
@@ -331,6 +431,13 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def IntegrityImpact(self):
+        """IntegrityImpact 完整性影响。
+取值范围：
+<li>NONE 无</li>
+<li>LOW 低</li>
+<li>HIGH 高</li>
+        :rtype: str
+        """
         return self._IntegrityImpact
 
     @IntegrityImpact.setter
@@ -339,6 +446,13 @@ class CVSSV3Info(AbstractModel):
 
     @property
     def AvailabilityImpact(self):
+        """AvailabilityImpact 可用性影响。
+取值范围：
+<li>NONE 无</li>
+<li>LOW 低</li>
+<li>HIGH 高</li>
+        :rtype: str
+        """
         return self._AvailabilityImpact
 
     @AvailabilityImpact.setter
@@ -387,6 +501,15 @@ class Component(AbstractModel):
         :type CodeLocationList: list of str
         :param _LicenseExpression: 第三方组件的许可证表达式
         :type LicenseExpression: str
+        :param _VersionInfo: 第三方组件的版本信息(如果匹配到版本)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionInfo: :class:`tencentcloud.bsca.v20210811.models.ComponentVersionInfo`
+        :param _LastUpdateTime: 第三方组件的最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
+        :param _TagList: 第三方组件的类型标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of str
         """
         self._PURL = None
         self._Homepage = None
@@ -394,9 +517,15 @@ class Component(AbstractModel):
         self._NicknameList = None
         self._CodeLocationList = None
         self._LicenseExpression = None
+        self._VersionInfo = None
+        self._LastUpdateTime = None
+        self._TagList = None
 
     @property
     def PURL(self):
+        """第三方组件的PURL
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        """
         return self._PURL
 
     @PURL.setter
@@ -405,6 +534,9 @@ class Component(AbstractModel):
 
     @property
     def Homepage(self):
+        """第三方组件的主页
+        :rtype: str
+        """
         return self._Homepage
 
     @Homepage.setter
@@ -413,6 +545,9 @@ class Component(AbstractModel):
 
     @property
     def Summary(self):
+        """第三方组件的简介
+        :rtype: str
+        """
         return self._Summary
 
     @Summary.setter
@@ -421,6 +556,10 @@ class Component(AbstractModel):
 
     @property
     def NicknameList(self):
+        """第三方组件的别名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NicknameList
 
     @NicknameList.setter
@@ -429,6 +568,10 @@ class Component(AbstractModel):
 
     @property
     def CodeLocationList(self):
+        """第三方组件的代码位置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CodeLocationList
 
     @CodeLocationList.setter
@@ -437,11 +580,50 @@ class Component(AbstractModel):
 
     @property
     def LicenseExpression(self):
+        """第三方组件的许可证表达式
+        :rtype: str
+        """
         return self._LicenseExpression
 
     @LicenseExpression.setter
     def LicenseExpression(self, LicenseExpression):
         self._LicenseExpression = LicenseExpression
+
+    @property
+    def VersionInfo(self):
+        """第三方组件的版本信息(如果匹配到版本)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.ComponentVersionInfo`
+        """
+        return self._VersionInfo
+
+    @VersionInfo.setter
+    def VersionInfo(self, VersionInfo):
+        self._VersionInfo = VersionInfo
+
+    @property
+    def LastUpdateTime(self):
+        """第三方组件的最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def TagList(self):
+        """第三方组件的类型标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
 
 
     def _deserialize(self, params):
@@ -453,6 +635,64 @@ class Component(AbstractModel):
         self._NicknameList = params.get("NicknameList")
         self._CodeLocationList = params.get("CodeLocationList")
         self._LicenseExpression = params.get("LicenseExpression")
+        if params.get("VersionInfo") is not None:
+            self._VersionInfo = ComponentVersionInfo()
+            self._VersionInfo._deserialize(params.get("VersionInfo"))
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._TagList = params.get("TagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComponentTagFilter(AbstractModel):
+    """筛选条件，同一个Tag不能同时出现在IncludeTags和ExcludeTags，可能的Tag包括："CopyrightUpdated", "LicenseUpdated", "ContainsVulnerability"
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IncludeTags: 包括的Tag
+
+        :type IncludeTags: list of str
+        :param _ExcludeTags: 排除的Tag
+        :type ExcludeTags: list of str
+        """
+        self._IncludeTags = None
+        self._ExcludeTags = None
+
+    @property
+    def IncludeTags(self):
+        """包括的Tag
+
+        :rtype: list of str
+        """
+        return self._IncludeTags
+
+    @IncludeTags.setter
+    def IncludeTags(self, IncludeTags):
+        self._IncludeTags = IncludeTags
+
+    @property
+    def ExcludeTags(self):
+        """排除的Tag
+        :rtype: list of str
+        """
+        return self._ExcludeTags
+
+    @ExcludeTags.setter
+    def ExcludeTags(self, ExcludeTags):
+        self._ExcludeTags = ExcludeTags
+
+
+    def _deserialize(self, params):
+        self._IncludeTags = params.get("IncludeTags")
+        self._ExcludeTags = params.get("ExcludeTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -464,7 +704,7 @@ class Component(AbstractModel):
 
 
 class ComponentVersion(AbstractModel):
-    """描述组件的一条版本信息。
+    """描述一个组件版本。
 
     """
 
@@ -476,12 +716,20 @@ class ComponentVersion(AbstractModel):
         :param _LicenseExpression: 该组件版本的许可证表达式
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseExpression: str
+        :param _VersionInfo: 组件的版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionInfo: :class:`tencentcloud.bsca.v20210811.models.ComponentVersionInfo`
         """
         self._PURL = None
         self._LicenseExpression = None
+        self._VersionInfo = None
 
     @property
     def PURL(self):
+        """该组件的PURL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        """
         return self._PURL
 
     @PURL.setter
@@ -490,11 +738,27 @@ class ComponentVersion(AbstractModel):
 
     @property
     def LicenseExpression(self):
+        """该组件版本的许可证表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LicenseExpression
 
     @LicenseExpression.setter
     def LicenseExpression(self, LicenseExpression):
         self._LicenseExpression = LicenseExpression
+
+    @property
+    def VersionInfo(self):
+        """组件的版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.ComponentVersionInfo`
+        """
+        return self._VersionInfo
+
+    @VersionInfo.setter
+    def VersionInfo(self, VersionInfo):
+        self._VersionInfo = VersionInfo
 
 
     def _deserialize(self, params):
@@ -502,6 +766,81 @@ class ComponentVersion(AbstractModel):
             self._PURL = PURL()
             self._PURL._deserialize(params.get("PURL"))
         self._LicenseExpression = params.get("LicenseExpression")
+        if params.get("VersionInfo") is not None:
+            self._VersionInfo = ComponentVersionInfo()
+            self._VersionInfo._deserialize(params.get("VersionInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComponentVersionInfo(AbstractModel):
+    """描述组件版本的详情，包含组件发布时间、Copyright列表、组件描述Tag。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublishTime: 版本发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishTime: str
+        :param _CopyrightList: 当前版本的所有copyright
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CopyrightList: list of str
+        :param _TagList: 版本标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of str
+        """
+        self._PublishTime = None
+        self._CopyrightList = None
+        self._TagList = None
+
+    @property
+    def PublishTime(self):
+        """版本发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def CopyrightList(self):
+        """当前版本的所有copyright
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CopyrightList
+
+    @CopyrightList.setter
+    def CopyrightList(self, CopyrightList):
+        self._CopyrightList = CopyrightList
+
+    @property
+    def TagList(self):
+        """版本标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._PublishTime = params.get("PublishTime")
+        self._CopyrightList = params.get("CopyrightList")
+        self._TagList = params.get("TagList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -546,6 +885,10 @@ class ComponentVulnerabilitySummary(AbstractModel):
 
     @property
     def PURL(self):
+        """用于匹配漏洞的PURL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        """
         return self._PURL
 
     @PURL.setter
@@ -554,6 +897,9 @@ class ComponentVulnerabilitySummary(AbstractModel):
 
     @property
     def CanBeFixed(self):
+        """该组件是否包含修复漏洞的官方补丁
+        :rtype: bool
+        """
         return self._CanBeFixed
 
     @CanBeFixed.setter
@@ -562,6 +908,9 @@ class ComponentVulnerabilitySummary(AbstractModel):
 
     @property
     def FixedVersion(self):
+        """修复漏洞的组件版本号
+        :rtype: str
+        """
         return self._FixedVersion
 
     @FixedVersion.setter
@@ -570,6 +919,9 @@ class ComponentVulnerabilitySummary(AbstractModel):
 
     @property
     def AffectedVersion(self):
+        """漏洞影响的组件版本号
+        :rtype: str
+        """
         return self._AffectedVersion
 
     @AffectedVersion.setter
@@ -578,6 +930,9 @@ class ComponentVulnerabilitySummary(AbstractModel):
 
     @property
     def AffectedComponent(self):
+        """漏洞影响组件
+        :rtype: str
+        """
         return self._AffectedComponent
 
     @AffectedComponent.setter
@@ -586,6 +941,13 @@ class ComponentVulnerabilitySummary(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """漏洞在该产品中的风险等级
+<li>Critical</li>
+<li>High</li>
+<li>Medium</li>
+<li>Low</li>
+        :rtype: str
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -629,6 +991,9 @@ class ComponentVulnerabilityUnion(AbstractModel):
 
     @property
     def Summary(self):
+        """漏洞概览信息
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.VulnerabilitySummary`
+        """
         return self._Summary
 
     @Summary.setter
@@ -637,6 +1002,9 @@ class ComponentVulnerabilityUnion(AbstractModel):
 
     @property
     def SummaryInComponent(self):
+        """与组件相关的漏洞概览信息
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.ComponentVulnerabilitySummary`
+        """
         return self._SummaryInComponent
 
     @SummaryInComponent.setter
@@ -675,6 +1043,9 @@ class DescribeKBComponentRequest(AbstractModel):
 
     @property
     def PURL(self):
+        """组件的PURL
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        """
         return self._PURL
 
     @PURL.setter
@@ -713,6 +1084,9 @@ class DescribeKBComponentResponse(AbstractModel):
 
     @property
     def Component(self):
+        """匹配的组件信息
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.Component`
+        """
         return self._Component
 
     @Component.setter
@@ -721,6 +1095,9 @@ class DescribeKBComponentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -744,22 +1121,102 @@ class DescribeKBComponentVersionListRequest(AbstractModel):
         r"""
         :param _PURL: 要查询的组件 PURL
         :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        :param _PageNumber: 页号
+        :type PageNumber: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        :param _Order: 排序方式，可以是"ASC"或"DESC"，默认"DESC"
+        :type Order: str
+        :param _OrderBy: 排序字段，可能的字段包括“Version”、"PublishTime"
+        :type OrderBy: list of str
+        :param _Filter: Tag筛选
+        :type Filter: :class:`tencentcloud.bsca.v20210811.models.ComponentTagFilter`
         """
         self._PURL = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Order = None
+        self._OrderBy = None
+        self._Filter = None
 
     @property
     def PURL(self):
+        """要查询的组件 PURL
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        """
         return self._PURL
 
     @PURL.setter
     def PURL(self, PURL):
         self._PURL = PURL
 
+    @property
+    def PageNumber(self):
+        """页号
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Order(self):
+        """排序方式，可以是"ASC"或"DESC"，默认"DESC"
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        """排序字段，可能的字段包括“Version”、"PublishTime"
+        :rtype: list of str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Filter(self):
+        """Tag筛选
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.ComponentTagFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
             self._PURL = PURL()
             self._PURL._deserialize(params.get("PURL"))
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        if params.get("Filter") is not None:
+            self._Filter = ComponentTagFilter()
+            self._Filter._deserialize(params.get("Filter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -787,6 +1244,9 @@ class DescribeKBComponentVersionListResponse(AbstractModel):
 
     @property
     def VersionList(self):
+        """该组件的版本列表信息
+        :rtype: list of ComponentVersion
+        """
         return self._VersionList
 
     @VersionList.setter
@@ -795,6 +1255,9 @@ class DescribeKBComponentVersionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -829,6 +1292,9 @@ class DescribeKBComponentVulnerabilityRequest(AbstractModel):
 
     @property
     def PURL(self):
+        """组件的PURL，其中Name和Version为必填字段
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        """
         return self._PURL
 
     @PURL.setter
@@ -837,6 +1303,9 @@ class DescribeKBComponentVulnerabilityRequest(AbstractModel):
 
     @property
     def Language(self):
+        """语言，ZH或EN
+        :rtype: str
+        """
         return self._Language
 
     @Language.setter
@@ -869,14 +1338,24 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
         :param _VulnerabilityList: 漏洞信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityList: list of ComponentVulnerabilityUnion
+        :param _PURL: 组件purl
+        :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        :param _RecommendedVersion: 推荐版本，当前版本中的所有漏洞都修复了的版本
+        :type RecommendedVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VulnerabilityList = None
+        self._PURL = None
+        self._RecommendedVersion = None
         self._RequestId = None
 
     @property
     def VulnerabilityList(self):
+        """漏洞信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ComponentVulnerabilityUnion
+        """
         return self._VulnerabilityList
 
     @VulnerabilityList.setter
@@ -884,7 +1363,32 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
         self._VulnerabilityList = VulnerabilityList
 
     @property
+    def PURL(self):
+        """组件purl
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        """
+        return self._PURL
+
+    @PURL.setter
+    def PURL(self, PURL):
+        self._PURL = PURL
+
+    @property
+    def RecommendedVersion(self):
+        """推荐版本，当前版本中的所有漏洞都修复了的版本
+        :rtype: str
+        """
+        return self._RecommendedVersion
+
+    @RecommendedVersion.setter
+    def RecommendedVersion(self, RecommendedVersion):
+        self._RecommendedVersion = RecommendedVersion
+
+    @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -899,6 +1403,10 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
                 obj = ComponentVulnerabilityUnion()
                 obj._deserialize(item)
                 self._VulnerabilityList.append(obj)
+        if params.get("PURL") is not None:
+            self._PURL = PURL()
+            self._PURL._deserialize(params.get("PURL"))
+        self._RecommendedVersion = params.get("RecommendedVersion")
         self._RequestId = params.get("RequestId")
 
 
@@ -916,6 +1424,9 @@ class DescribeKBLicenseRequest(AbstractModel):
 
     @property
     def LicenseExpression(self):
+        """License表达式
+        :rtype: str
+        """
         return self._LicenseExpression
 
     @LicenseExpression.setter
@@ -956,6 +1467,10 @@ class DescribeKBLicenseResponse(AbstractModel):
 
     @property
     def LicenseList(self):
+        """许可证列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LicenseUnion
+        """
         return self._LicenseList
 
     @LicenseList.setter
@@ -964,6 +1479,9 @@ class DescribeKBLicenseResponse(AbstractModel):
 
     @property
     def NormalizedLicenseExpression(self):
+        """用于匹配的License表达式
+        :rtype: str
+        """
         return self._NormalizedLicenseExpression
 
     @NormalizedLicenseExpression.setter
@@ -972,6 +1490,9 @@ class DescribeKBLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1016,6 +1537,9 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
 
     @property
     def CVEID(self):
+        """根据CVE ID查询（不能与其他参数同时存在）
+        :rtype: list of str
+        """
         return self._CVEID
 
     @CVEID.setter
@@ -1024,6 +1548,9 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
 
     @property
     def VulID(self):
+        """根据Vul ID查询（不能与其他参数同时存在）
+        :rtype: list of str
+        """
         return self._VulID
 
     @VulID.setter
@@ -1032,6 +1559,9 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
 
     @property
     def CNVDID(self):
+        """根据CNVD ID查询（不能与其他参数同时存在）
+        :rtype: list of str
+        """
         return self._CNVDID
 
     @CNVDID.setter
@@ -1040,6 +1570,9 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
 
     @property
     def CNNVDID(self):
+        """根据CNNVD ID查询（不能与其他参数同时存在）
+        :rtype: list of str
+        """
         return self._CNNVDID
 
     @CNNVDID.setter
@@ -1048,6 +1581,9 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
 
     @property
     def Language(self):
+        """语言，ZH或EN
+        :rtype: str
+        """
         return self._Language
 
     @Language.setter
@@ -1089,6 +1625,10 @@ class DescribeKBVulnerabilityResponse(AbstractModel):
 
     @property
     def VulnerabilityDetailList(self):
+        """漏洞详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VulnerabilityUnion
+        """
         return self._VulnerabilityDetailList
 
     @VulnerabilityDetailList.setter
@@ -1097,6 +1637,9 @@ class DescribeKBVulnerabilityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1137,6 +1680,9 @@ class LicenseDetail(AbstractModel):
 
     @property
     def Content(self):
+        """许可证内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -1145,6 +1691,9 @@ class LicenseDetail(AbstractModel):
 
     @property
     def ConditionSet(self):
+        """许可证允许信息列表
+        :rtype: list of LicenseRestriction
+        """
         return self._ConditionSet
 
     @ConditionSet.setter
@@ -1153,6 +1702,9 @@ class LicenseDetail(AbstractModel):
 
     @property
     def ForbiddenSet(self):
+        """许可证要求信息列表
+        :rtype: list of LicenseRestriction
+        """
         return self._ForbiddenSet
 
     @ForbiddenSet.setter
@@ -1161,6 +1713,9 @@ class LicenseDetail(AbstractModel):
 
     @property
     def PermissionSet(self):
+        """许可证禁止信息列表
+        :rtype: list of LicenseRestriction
+        """
         return self._PermissionSet
 
     @PermissionSet.setter
@@ -1215,6 +1770,9 @@ class LicenseRestriction(AbstractModel):
 
     @property
     def Name(self):
+        """license约束的名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1223,6 +1781,9 @@ class LicenseRestriction(AbstractModel):
 
     @property
     def Description(self):
+        """license约束的描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1276,6 +1837,9 @@ class LicenseSummary(AbstractModel):
 
     @property
     def Key(self):
+        """许可证标识符
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1284,6 +1848,9 @@ class LicenseSummary(AbstractModel):
 
     @property
     def SPDXKey(self):
+        """许可证的SPDX标识符，见 https://spdx.org/licenses/
+        :rtype: str
+        """
         return self._SPDXKey
 
     @SPDXKey.setter
@@ -1292,6 +1859,9 @@ class LicenseSummary(AbstractModel):
 
     @property
     def ShortName(self):
+        """许可证短名称
+        :rtype: str
+        """
         return self._ShortName
 
     @ShortName.setter
@@ -1300,6 +1870,9 @@ class LicenseSummary(AbstractModel):
 
     @property
     def Name(self):
+        """许可证完整名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1308,6 +1881,13 @@ class LicenseSummary(AbstractModel):
 
     @property
     def Risk(self):
+        """License风险等级
+<li>NotDefined</li>
+<li>LowRisk</li>
+<li>MediumRisk</li>
+<li>HighRisk</li>
+        :rtype: str
+        """
         return self._Risk
 
     @Risk.setter
@@ -1316,6 +1896,9 @@ class LicenseSummary(AbstractModel):
 
     @property
     def Source(self):
+        """许可证来源URL
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -1357,6 +1940,9 @@ class LicenseUnion(AbstractModel):
 
     @property
     def LicenseSummary(self):
+        """许可证概览信息
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.LicenseSummary`
+        """
         return self._LicenseSummary
 
     @LicenseSummary.setter
@@ -1365,6 +1951,9 @@ class LicenseUnion(AbstractModel):
 
     @property
     def LicenseDetail(self):
+        """许可证详细信息
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.LicenseDetail`
+        """
         return self._LicenseDetail
 
     @LicenseDetail.setter
@@ -1403,6 +1992,9 @@ class MatchKBPURLListRequest(AbstractModel):
 
     @property
     def SHA1(self):
+        """SHA1。
+        :rtype: str
+        """
         return self._SHA1
 
     @SHA1.setter
@@ -1442,6 +2034,9 @@ class MatchKBPURLListResponse(AbstractModel):
 
     @property
     def PURLList(self):
+        """组件列表。
+        :rtype: list of PURL
+        """
         return self._PURLList
 
     @PURLList.setter
@@ -1450,6 +2045,9 @@ class MatchKBPURLListResponse(AbstractModel):
 
     @property
     def Hit(self):
+        """是否命中数据库。
+        :rtype: bool
+        """
         return self._Hit
 
     @Hit.setter
@@ -1458,6 +2056,9 @@ class MatchKBPURLListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1506,6 +2107,9 @@ class PURL(AbstractModel):
 
     @property
     def Name(self):
+        """组件名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1514,6 +2118,9 @@ class PURL(AbstractModel):
 
     @property
     def Protocol(self):
+        """组件所属的类型，如：github, gitlab, generic, deb, rpm, maven 等
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -1522,6 +2129,9 @@ class PURL(AbstractModel):
 
     @property
     def Namespace(self):
+        """组件名的前缀名，如github和gitlab的用户名，deb的操作系统，maven包的group id等
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1530,6 +2140,10 @@ class PURL(AbstractModel):
 
     @property
     def Qualifiers(self):
+        """修饰组件的额外属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Qualifier
+        """
         return self._Qualifiers
 
     @Qualifiers.setter
@@ -1538,6 +2152,9 @@ class PURL(AbstractModel):
 
     @property
     def Subpath(self):
+        """相对于组件包根位置的子目录
+        :rtype: str
+        """
         return self._Subpath
 
     @Subpath.setter
@@ -1546,6 +2163,9 @@ class PURL(AbstractModel):
 
     @property
     def Version(self):
+        """组件版本号
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -1592,6 +2212,9 @@ class Qualifier(AbstractModel):
 
     @property
     def Key(self):
+        """额外属性的名称。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1600,6 +2223,9 @@ class Qualifier(AbstractModel):
 
     @property
     def Value(self):
+        """额外属性的值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1643,6 +2269,9 @@ class SearchKBComponentRequest(AbstractModel):
 
     @property
     def Query(self):
+        """需要搜索的组件名
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -1651,6 +2280,9 @@ class SearchKBComponentRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """需要搜索的组件类型
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -1659,6 +2291,9 @@ class SearchKBComponentRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页参数，从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1667,6 +2302,9 @@ class SearchKBComponentRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页参数，设置每页返回的结果数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1709,6 +2347,9 @@ class SearchKBComponentResponse(AbstractModel):
 
     @property
     def ComponentList(self):
+        """满足搜索条件的组件列表
+        :rtype: list of Component
+        """
         return self._ComponentList
 
     @ComponentList.setter
@@ -1717,6 +2358,9 @@ class SearchKBComponentResponse(AbstractModel):
 
     @property
     def Total(self):
+        """满足搜索条件的总个数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1725,6 +2369,9 @@ class SearchKBComponentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1770,6 +2417,8 @@ class VulnerabilityDetail(AbstractModel):
         :type CVSSv3Info: :class:`tencentcloud.bsca.v20210811.models.CVSSV3Info`
         :param _SubmitTime: 漏洞提交时间
         :type SubmitTime: str
+        :param _UpdateTime: 漏洞更新时间
+        :type UpdateTime: str
         :param _CWEID: CWE编号
         :type CWEID: str
         :param _CVSSv2Vector: 漏洞CVSSv2向量
@@ -1788,6 +2437,7 @@ class VulnerabilityDetail(AbstractModel):
         self._CVSSv2Info = None
         self._CVSSv3Info = None
         self._SubmitTime = None
+        self._UpdateTime = None
         self._CWEID = None
         self._CVSSv2Vector = None
         self._CVSSv3Vector = None
@@ -1795,6 +2445,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def Category(self):
+        """漏洞类别
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -1803,6 +2456,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def CategoryType(self):
+        """漏洞分类
+        :rtype: str
+        """
         return self._CategoryType
 
     @CategoryType.setter
@@ -1811,6 +2467,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def Description(self):
+        """漏洞描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1819,6 +2478,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def OfficialSolution(self):
+        """漏洞官方解决方案
+        :rtype: str
+        """
         return self._OfficialSolution
 
     @OfficialSolution.setter
@@ -1827,6 +2489,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def ReferenceList(self):
+        """漏洞信息参考列表
+        :rtype: list of str
+        """
         return self._ReferenceList
 
     @ReferenceList.setter
@@ -1835,6 +2500,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def DefenseSolution(self):
+        """漏洞防御方案
+        :rtype: str
+        """
         return self._DefenseSolution
 
     @DefenseSolution.setter
@@ -1843,6 +2511,10 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def CVSSv2Info(self):
+        """漏洞CVSSv2信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.CVSSV2Info`
+        """
         return self._CVSSv2Info
 
     @CVSSv2Info.setter
@@ -1851,6 +2523,10 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def CVSSv3Info(self):
+        """漏洞CVSSv3信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.CVSSV3Info`
+        """
         return self._CVSSv3Info
 
     @CVSSv3Info.setter
@@ -1859,6 +2535,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def SubmitTime(self):
+        """漏洞提交时间
+        :rtype: str
+        """
         return self._SubmitTime
 
     @SubmitTime.setter
@@ -1866,7 +2545,21 @@ class VulnerabilityDetail(AbstractModel):
         self._SubmitTime = SubmitTime
 
     @property
+    def UpdateTime(self):
+        """漏洞更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
     def CWEID(self):
+        """CWE编号
+        :rtype: str
+        """
         return self._CWEID
 
     @CWEID.setter
@@ -1875,6 +2568,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def CVSSv2Vector(self):
+        """漏洞CVSSv2向量
+        :rtype: str
+        """
         return self._CVSSv2Vector
 
     @CVSSv2Vector.setter
@@ -1883,6 +2579,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def CVSSv3Vector(self):
+        """漏洞CVSSv3向量
+        :rtype: str
+        """
         return self._CVSSv3Vector
 
     @CVSSv3Vector.setter
@@ -1891,6 +2590,9 @@ class VulnerabilityDetail(AbstractModel):
 
     @property
     def AffectedComponentList(self):
+        """漏洞影响的组件列表，仅当查询单个漏洞时有效
+        :rtype: list of AffectedComponent
+        """
         return self._AffectedComponentList
 
     @AffectedComponentList.setter
@@ -1912,6 +2614,7 @@ class VulnerabilityDetail(AbstractModel):
             self._CVSSv3Info = CVSSV3Info()
             self._CVSSv3Info._deserialize(params.get("CVSSv3Info"))
         self._SubmitTime = params.get("SubmitTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._CWEID = params.get("CWEID")
         self._CVSSv2Vector = params.get("CVSSv2Vector")
         self._CVSSv3Vector = params.get("CVSSv3Vector")
@@ -1956,6 +2659,15 @@ class VulnerabilitySummary(AbstractModel):
 <li>Medium</li>
 <li>Low</li>
         :type Severity: str
+        :param _Architecture: 架构信息，如x86、ARM等，废弃，请使用ArchitectureList
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Architecture: list of str
+        :param _ArchitectureList: 架构信息，如x86、ARM等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArchitectureList: list of str
+        :param _PatchUrlList: patch链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PatchUrlList: list of str
         """
         self._VulID = None
         self._CVEID = None
@@ -1964,9 +2676,15 @@ class VulnerabilitySummary(AbstractModel):
         self._Name = None
         self._IsSuggest = None
         self._Severity = None
+        self._Architecture = None
+        self._ArchitectureList = None
+        self._PatchUrlList = None
 
     @property
     def VulID(self):
+        """漏洞ID
+        :rtype: str
+        """
         return self._VulID
 
     @VulID.setter
@@ -1975,6 +2693,9 @@ class VulnerabilitySummary(AbstractModel):
 
     @property
     def CVEID(self):
+        """漏洞所属CVE编号
+        :rtype: str
+        """
         return self._CVEID
 
     @CVEID.setter
@@ -1983,6 +2704,9 @@ class VulnerabilitySummary(AbstractModel):
 
     @property
     def CNVDID(self):
+        """漏洞所属CNVD编号
+        :rtype: str
+        """
         return self._CNVDID
 
     @CNVDID.setter
@@ -1991,6 +2715,9 @@ class VulnerabilitySummary(AbstractModel):
 
     @property
     def CNNVDID(self):
+        """漏洞所属CNNVD编号
+        :rtype: str
+        """
         return self._CNNVDID
 
     @CNNVDID.setter
@@ -1999,6 +2726,9 @@ class VulnerabilitySummary(AbstractModel):
 
     @property
     def Name(self):
+        """漏洞名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2007,6 +2737,9 @@ class VulnerabilitySummary(AbstractModel):
 
     @property
     def IsSuggest(self):
+        """该漏洞是否是需重点关注的漏洞
+        :rtype: bool
+        """
         return self._IsSuggest
 
     @IsSuggest.setter
@@ -2015,11 +2748,58 @@ class VulnerabilitySummary(AbstractModel):
 
     @property
     def Severity(self):
+        """漏洞风险等级
+<li>Critical</li>
+<li>High</li>
+<li>Medium</li>
+<li>Low</li>
+        :rtype: str
+        """
         return self._Severity
 
     @Severity.setter
     def Severity(self, Severity):
         self._Severity = Severity
+
+    @property
+    def Architecture(self):
+        warnings.warn("parameter `Architecture` is deprecated", DeprecationWarning) 
+
+        """架构信息，如x86、ARM等，废弃，请使用ArchitectureList
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        warnings.warn("parameter `Architecture` is deprecated", DeprecationWarning) 
+
+        self._Architecture = Architecture
+
+    @property
+    def ArchitectureList(self):
+        """架构信息，如x86、ARM等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ArchitectureList
+
+    @ArchitectureList.setter
+    def ArchitectureList(self, ArchitectureList):
+        self._ArchitectureList = ArchitectureList
+
+    @property
+    def PatchUrlList(self):
+        """patch链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._PatchUrlList
+
+    @PatchUrlList.setter
+    def PatchUrlList(self, PatchUrlList):
+        self._PatchUrlList = PatchUrlList
 
 
     def _deserialize(self, params):
@@ -2030,6 +2810,9 @@ class VulnerabilitySummary(AbstractModel):
         self._Name = params.get("Name")
         self._IsSuggest = params.get("IsSuggest")
         self._Severity = params.get("Severity")
+        self._Architecture = params.get("Architecture")
+        self._ArchitectureList = params.get("ArchitectureList")
+        self._PatchUrlList = params.get("PatchUrlList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2057,6 +2840,9 @@ class VulnerabilityUnion(AbstractModel):
 
     @property
     def Summary(self):
+        """漏洞概览信息
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.VulnerabilitySummary`
+        """
         return self._Summary
 
     @Summary.setter
@@ -2065,6 +2851,9 @@ class VulnerabilityUnion(AbstractModel):
 
     @property
     def Detail(self):
+        """漏洞详细信息
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.VulnerabilityDetail`
+        """
         return self._Detail
 
     @Detail.setter

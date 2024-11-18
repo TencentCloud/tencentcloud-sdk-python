@@ -79,6 +79,9 @@ class License(AbstractModel):
 
     @property
     def LicenseId(self):
+        """License ID
+        :rtype: str
+        """
         return self._LicenseId
 
     @LicenseId.setter
@@ -87,6 +90,9 @@ class License(AbstractModel):
 
     @property
     def LicenseMode(self):
+        """软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr></tbody></table>
+        :rtype: str
+        """
         return self._LicenseMode
 
     @LicenseMode.setter
@@ -95,6 +101,9 @@ class License(AbstractModel):
 
     @property
     def LicenseStatus(self):
+        """软件的授权状态。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Issued</td><td>已颁发，等待激活。一般来说，如果软件已经在运行，不会出现该状态。</td></tr><tr><td>Active</td><td>授权在有效期内，这是软件运行期间最常见的状态。</td></tr><tr><td>Expired</td><td>授权已过期。订阅类的软件授权有有效期，如果服务器时间已晚于有效期，则会进入过期状态。</td></tr><tr><td>Deactivated</td><td>授权已失效。用户如果退货软件，则授权会自动失效。</td></tr></tbody></table>
+        :rtype: str
+        """
         return self._LicenseStatus
 
     @LicenseStatus.setter
@@ -103,6 +112,9 @@ class License(AbstractModel):
 
     @property
     def ProviderId(self):
+        """软件供应方 ID。
+        :rtype: int
+        """
         return self._ProviderId
 
     @ProviderId.setter
@@ -111,6 +123,9 @@ class License(AbstractModel):
 
     @property
     def SoftwarePackageId(self):
+        """软件包 ID。
+        :rtype: str
+        """
         return self._SoftwarePackageId
 
     @SoftwarePackageId.setter
@@ -119,6 +134,9 @@ class License(AbstractModel):
 
     @property
     def SoftwarePackageVersion(self):
+        """软件包版本。
+        :rtype: str
+        """
         return self._SoftwarePackageVersion
 
     @SoftwarePackageVersion.setter
@@ -127,6 +145,9 @@ class License(AbstractModel):
 
     @property
     def AuthorizedUserUin(self):
+        """被授权的用户 UIN。
+        :rtype: str
+        """
         return self._AuthorizedUserUin
 
     @AuthorizedUserUin.setter
@@ -135,6 +156,9 @@ class License(AbstractModel):
 
     @property
     def AuthorizedCloudappId(self):
+        """被授权的应用实例 ID。
+        :rtype: str
+        """
         return self._AuthorizedCloudappId
 
     @AuthorizedCloudappId.setter
@@ -143,6 +167,9 @@ class License(AbstractModel):
 
     @property
     def AuthorizedCloudappRoleId(self):
+        """被授权的角色 ID。
+        :rtype: str
+        """
         return self._AuthorizedCloudappRoleId
 
     @AuthorizedCloudappRoleId.setter
@@ -151,6 +178,9 @@ class License(AbstractModel):
 
     @property
     def AuthorizedSpecification(self):
+        """被授权的软件规格，具体字段请参考结构SaleParam
+        :rtype: list of SaleParam
+        """
         return self._AuthorizedSpecification
 
     @AuthorizedSpecification.setter
@@ -159,6 +189,9 @@ class License(AbstractModel):
 
     @property
     def BillingMode(self):
+        """被授权的软件的计费模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>线上计费，软件的授权从腾讯云线上购买，支持续费、退款等操作。</td></tr><tr><td>2</td><td>线下计费，软件的授权线下签订合同购买，定向客户交付，无法从线上续费和退款。</td></tr><tr><td>4</td><td>免费</td></tr></tbody></table>
+        :rtype: int
+        """
         return self._BillingMode
 
     @BillingMode.setter
@@ -167,6 +200,9 @@ class License(AbstractModel):
 
     @property
     def LifeSpan(self):
+        """授权时长（单位由LifeSpanUnit确定，枚举值有Y年/M月/D日三种）
+        :rtype: int
+        """
         return self._LifeSpan
 
     @LifeSpan.setter
@@ -175,6 +211,9 @@ class License(AbstractModel):
 
     @property
     def IssueDate(self):
+        """授权颁发时间。
+        :rtype: str
+        """
         return self._IssueDate
 
     @IssueDate.setter
@@ -183,6 +222,10 @@ class License(AbstractModel):
 
     @property
     def ActivationDate(self):
+        """授权激活时间，如从未激活则返回 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivationDate
 
     @ActivationDate.setter
@@ -191,6 +234,10 @@ class License(AbstractModel):
 
     @property
     def ExpirationDate(self):
+        """授权过期时间，如未过期或者是永久授权，则返回 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -199,6 +246,9 @@ class License(AbstractModel):
 
     @property
     def LifeSpanUnit(self):
+        """授权时长单位，枚举值有Y年/M月/D日三种
+        :rtype: str
+        """
         return self._LifeSpanUnit
 
     @LifeSpanUnit.setter
@@ -263,6 +313,9 @@ class SaleParam(AbstractModel):
 
     @property
     def ParamKey(self):
+        """售卖参数标识
+        :rtype: str
+        """
         return self._ParamKey
 
     @ParamKey.setter
@@ -271,6 +324,9 @@ class SaleParam(AbstractModel):
 
     @property
     def ParamValue(self):
+        """售卖参数值
+        :rtype: str
+        """
         return self._ParamValue
 
     @ParamValue.setter
@@ -279,6 +335,10 @@ class SaleParam(AbstractModel):
 
     @property
     def ParamKeyName(self):
+        """售卖参数的展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParamKeyName
 
     @ParamKeyName.setter
@@ -287,6 +347,10 @@ class SaleParam(AbstractModel):
 
     @property
     def ParamValueName(self):
+        """售卖参数值的展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParamValueName
 
     @ParamValueName.setter
@@ -332,6 +396,9 @@ class VerifyLicenseResponse(AbstractModel):
 
     @property
     def License(self):
+        """软件的详细授权信息。
+        :rtype: :class:`tencentcloud.cloudapp.v20220530.models.License`
+        """
         return self._License
 
     @License.setter
@@ -340,6 +407,9 @@ class VerifyLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

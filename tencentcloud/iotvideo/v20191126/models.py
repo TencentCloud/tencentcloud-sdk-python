@@ -42,6 +42,9 @@ class BindDevInfo(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -50,6 +53,9 @@ class BindDevInfo(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -58,6 +64,10 @@ class BindDevInfo(AbstractModel):
 
     @property
     def DeviceModel(self):
+        """设备型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceModel
 
     @DeviceModel.setter
@@ -66,6 +76,9 @@ class BindDevInfo(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色，owner：主人，guest：访客
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -105,6 +118,9 @@ class BindUsrInfo(AbstractModel):
 
     @property
     def AccessId(self):
+        """IotVideo平台分配给终端用户的用户id
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -113,6 +129,9 @@ class BindUsrInfo(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色，owner：主人，guest：访客
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -123,6 +142,95 @@ class BindUsrInfo(AbstractModel):
     def _deserialize(self, params):
         self._AccessId = params.get("AccessId")
         self._Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CertificateInfo(AbstractModel):
+    """证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: SecretId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretId: str
+        :param _SecretKey: SecretKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _Token: Token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
+        :param _ExpiredTime: 过期时间，UNIX时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: int
+        """
+        self._SecretId = None
+        self._SecretKey = None
+        self._Token = None
+        self._ExpiredTime = None
+
+    @property
+    def SecretId(self):
+        """SecretId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        """SecretKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Token(self):
+        """Token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def ExpiredTime(self):
+        """过期时间，UNIX时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._Token = params.get("Token")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -147,6 +255,9 @@ class ClearDeviceActiveCodeRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID列表，0<元素数量<=100
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -180,6 +291,9 @@ class ClearDeviceActiveCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -218,6 +332,10 @@ class Contents(AbstractModel):
 
     @property
     def En(self):
+        """英文，长度不超过300个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._En
 
     @En.setter
@@ -226,6 +344,10 @@ class Contents(AbstractModel):
 
     @property
     def Cn(self):
+        """中文简体，长度不超过300个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cn
 
     @Cn.setter
@@ -234,6 +356,10 @@ class Contents(AbstractModel):
 
     @property
     def Tc(self):
+        """中文繁体(Traditional Chinese)，长度不超过300个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Tc
 
     @Tc.setter
@@ -242,6 +368,10 @@ class Contents(AbstractModel):
 
     @property
     def Default(self):
+        """默认语言，最多不超过300个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Default
 
     @Default.setter
@@ -254,6 +384,114 @@ class Contents(AbstractModel):
         self._Cn = params.get("Cn")
         self._Tc = params.get("Tc")
         self._Default = params.get("Default")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosCertificate(AbstractModel):
+    """申请上传证书回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageBucket: cos存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageBucket: str
+        :param _StorageRegion: cos存储园区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageRegion: str
+        :param _StoragePath: 存储路径，录制场景下该值为存储目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoragePath: str
+        :param _TempCertificate: 证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TempCertificate: :class:`tencentcloud.iotvideo.v20191126.models.CertificateInfo`
+        :param _SessionKey: SessionKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionKey: str
+        """
+        self._StorageBucket = None
+        self._StorageRegion = None
+        self._StoragePath = None
+        self._TempCertificate = None
+        self._SessionKey = None
+
+    @property
+    def StorageBucket(self):
+        """cos存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageBucket
+
+    @StorageBucket.setter
+    def StorageBucket(self, StorageBucket):
+        self._StorageBucket = StorageBucket
+
+    @property
+    def StorageRegion(self):
+        """cos存储园区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def StoragePath(self):
+        """存储路径，录制场景下该值为存储目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StoragePath
+
+    @StoragePath.setter
+    def StoragePath(self, StoragePath):
+        self._StoragePath = StoragePath
+
+    @property
+    def TempCertificate(self):
+        """证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.CertificateInfo`
+        """
+        return self._TempCertificate
+
+    @TempCertificate.setter
+    def TempCertificate(self, TempCertificate):
+        self._TempCertificate = TempCertificate
+
+    @property
+    def SessionKey(self):
+        """SessionKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionKey
+
+    @SessionKey.setter
+    def SessionKey(self, SessionKey):
+        self._SessionKey = SessionKey
+
+
+    def _deserialize(self, params):
+        self._StorageBucket = params.get("StorageBucket")
+        self._StorageRegion = params.get("StorageRegion")
+        self._StoragePath = params.get("StoragePath")
+        if params.get("TempCertificate") is not None:
+            self._TempCertificate = CertificateInfo()
+            self._TempCertificate._deserialize(params.get("TempCertificate"))
+        self._SessionKey = params.get("SessionKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -284,6 +522,9 @@ class CreateAnonymousAccessTokenRequest(AbstractModel):
 
     @property
     def TtlMinutes(self):
+        """Token的TTL(time to alive)分钟数,最大值1440(即24小时)
+        :rtype: int
+        """
         return self._TtlMinutes
 
     @TtlMinutes.setter
@@ -292,6 +533,9 @@ class CreateAnonymousAccessTokenRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备ID。创建Token时, 此参数为必须项
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -300,6 +544,9 @@ class CreateAnonymousAccessTokenRequest(AbstractModel):
 
     @property
     def OldAccessToken(self):
+        """旧的AccessToken。续期Token时，此参数为必须
+        :rtype: str
+        """
         return self._OldAccessToken
 
     @OldAccessToken.setter
@@ -344,6 +591,9 @@ class CreateAnonymousAccessTokenResponse(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -352,6 +602,9 @@ class CreateAnonymousAccessTokenResponse(AbstractModel):
 
     @property
     def AccessToken(self):
+        """IoT Video平台的AccessToken
+        :rtype: str
+        """
         return self._AccessToken
 
     @AccessToken.setter
@@ -360,6 +613,9 @@ class CreateAnonymousAccessTokenResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """Token的过期时间，单位秒(UTC时间)
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -368,6 +624,9 @@ class CreateAnonymousAccessTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -399,6 +658,9 @@ class CreateAppUsrRequest(AbstractModel):
 
     @property
     def CunionId(self):
+        """标识用户的唯一ID，防止同一个用户多次注册
+        :rtype: str
+        """
         return self._CunionId
 
     @CunionId.setter
@@ -407,6 +669,9 @@ class CreateAppUsrRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """用于小程序关联手机号
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -450,6 +715,9 @@ class CreateAppUsrResponse(AbstractModel):
 
     @property
     def CunionId(self):
+        """厂商云标识用户的唯一ID
+        :rtype: str
+        """
         return self._CunionId
 
     @CunionId.setter
@@ -458,6 +726,9 @@ class CreateAppUsrResponse(AbstractModel):
 
     @property
     def AccessId(self):
+        """客户的终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -466,6 +737,9 @@ class CreateAppUsrResponse(AbstractModel):
 
     @property
     def NewRegist(self):
+        """用户是否为新创建
+        :rtype: bool
+        """
         return self._NewRegist
 
     @NewRegist.setter
@@ -474,6 +748,9 @@ class CreateAppUsrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -517,6 +794,9 @@ class CreateBindingRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -525,6 +805,9 @@ class CreateBindingRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -533,6 +816,9 @@ class CreateBindingRequest(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色，owner：主人，guest：访客
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -541,6 +827,9 @@ class CreateBindingRequest(AbstractModel):
 
     @property
     def ForceBind(self):
+        """是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为guest时，可以不填
+        :rtype: bool
+        """
         return self._ForceBind
 
     @ForceBind.setter
@@ -549,6 +838,9 @@ class CreateBindingRequest(AbstractModel):
 
     @property
     def Nick(self):
+        """设备昵称，最多不超过64个字符
+        :rtype: str
+        """
         return self._Nick
 
     @Nick.setter
@@ -557,6 +849,9 @@ class CreateBindingRequest(AbstractModel):
 
     @property
     def BindToken(self):
+        """绑定过程中的会话token，由设备通过SDK接口确认是否允许绑定的token，用于增加设备被绑定的安全性
+        :rtype: str
+        """
         return self._BindToken
 
     @BindToken.setter
@@ -598,6 +893,9 @@ class CreateBindingResponse(AbstractModel):
 
     @property
     def AccessToken(self):
+        """访问设备的AccessToken
+        :rtype: str
+        """
         return self._AccessToken
 
     @AccessToken.setter
@@ -606,6 +904,9 @@ class CreateBindingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -638,6 +939,9 @@ class CreateDevTokenRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """客户的终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -646,6 +950,9 @@ class CreateDevTokenRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID列表,0<元素数量<=100
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -654,6 +961,9 @@ class CreateDevTokenRequest(AbstractModel):
 
     @property
     def TtlMinutes(self):
+        """Token的TTL(time to alive)分钟数
+        :rtype: int
+        """
         return self._TtlMinutes
 
     @TtlMinutes.setter
@@ -693,6 +1003,10 @@ class CreateDevTokenResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回的用户token列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DevTokenInfo
+        """
         return self._Data
 
     @Data.setter
@@ -701,6 +1015,9 @@ class CreateDevTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -741,6 +1058,9 @@ class CreateDevicesRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -749,6 +1069,9 @@ class CreateDevicesRequest(AbstractModel):
 
     @property
     def Number(self):
+        """创建设备的数量，数量范围1-100
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -757,6 +1080,9 @@ class CreateDevicesRequest(AbstractModel):
 
     @property
     def NamePrefix(self):
+        """设备名称前缀，支持英文、数字，不超过10字符
+        :rtype: str
+        """
         return self._NamePrefix
 
     @NamePrefix.setter
@@ -765,6 +1091,9 @@ class CreateDevicesRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -804,6 +1133,9 @@ class CreateDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """新创建设备的认证信息
+        :rtype: list of DeviceCertificate
+        """
         return self._Data
 
     @Data.setter
@@ -812,6 +1144,9 @@ class CreateDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -846,6 +1181,9 @@ class CreateGencodeRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -854,6 +1192,9 @@ class CreateGencodeRequest(AbstractModel):
 
     @property
     def Revision(self):
+        """物模型发布版本号,-1代表未发布的，保存的是草稿箱的版本。1代表已发布的物模型。
+        :rtype: int
+        """
         return self._Revision
 
     @Revision.setter
@@ -892,6 +1233,10 @@ class CreateGencodeResponse(AbstractModel):
 
     @property
     def ZipCode(self):
+        """生成的源代码(zip压缩后的base64编码)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ZipCode
 
     @ZipCode.setter
@@ -900,6 +1245,9 @@ class CreateGencodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -926,6 +1274,9 @@ class CreateIotDataTypeRequest(AbstractModel):
 
     @property
     def IotDataType(self):
+        """用户自定义数据类型，json格式的字符串
+        :rtype: str
+        """
         return self._IotDataType
 
     @IotDataType.setter
@@ -959,6 +1310,9 @@ class CreateIotDataTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -987,6 +1341,9 @@ class CreateIotModelRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -995,6 +1352,9 @@ class CreateIotModelRequest(AbstractModel):
 
     @property
     def IotModel(self):
+        """物模型json串
+        :rtype: str
+        """
         return self._IotModel
 
     @IotModel.setter
@@ -1029,6 +1389,9 @@ class CreateIotModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1092,6 +1455,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductModel(self):
+        """产器型号(APP产品,为APP包名)
+        :rtype: str
+        """
         return self._ProductModel
 
     @ProductModel.setter
@@ -1100,6 +1466,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductName(self):
+        """产品名称
+仅支持中文、英文、数字、下划线，不超过32个字符
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -1108,6 +1478,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductDescription(self):
+        """产品描述信息
+不支持单引号、双引号、退格符、回车符、换行符、制表符、反斜杠、下划线、“%”、“#”、“$”，不超过128字符
+        :rtype: str
+        """
         return self._ProductDescription
 
     @ProductDescription.setter
@@ -1116,6 +1490,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def Features(self):
+        """设备功能码（ypsxth:音频双向通话 ，spdxth:视频单向通话）
+        :rtype: list of str
+        """
         return self._Features
 
     @Features.setter
@@ -1124,6 +1501,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ChipManufactureId(self):
+        """主芯片产商ID
+        :rtype: str
+        """
         return self._ChipManufactureId
 
     @ChipManufactureId.setter
@@ -1132,6 +1512,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ChipId(self):
+        """主芯片ID
+        :rtype: str
+        """
         return self._ChipId
 
     @ChipId.setter
@@ -1140,6 +1523,15 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductRegion(self):
+        """地域：
+China-Mainland（中国大陆）
+China-Hong Kong, Macao and Taiwan（港澳台地区）
+America（美国）
+Europe（欧洲）
+India（印度）
+Other-Overseas（其他境外地区）
+        :rtype: str
+        """
         return self._ProductRegion
 
     @ProductRegion.setter
@@ -1148,6 +1540,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductCate(self):
+        """设备类型, 0-普通视频设备，1-NVR设备
+        :rtype: int
+        """
         return self._ProductCate
 
     @ProductCate.setter
@@ -1156,6 +1551,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def AccessMode(self):
+        """接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
+        :rtype: int
+        """
         return self._AccessMode
 
     @AccessMode.setter
@@ -1164,6 +1562,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def Os(self):
+        """Linux,Android,Liteos等系统
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -1172,6 +1573,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ChipArch(self):
+        """芯片架构，只是针对操作系统为android的
+        :rtype: str
+        """
         return self._ChipArch
 
     @ChipArch.setter
@@ -1218,6 +1622,9 @@ class CreateProductResponse(AbstractModel):
 
     @property
     def Data(self):
+        """产品详细信息
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.ProductBase`
+        """
         return self._Data
 
     @Data.setter
@@ -1226,6 +1633,9 @@ class CreateProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1260,6 +1670,9 @@ class CreateStorageRequest(AbstractModel):
 
     @property
     def PkgId(self):
+        """云存套餐ID
+        :rtype: str
+        """
         return self._PkgId
 
     @PkgId.setter
@@ -1268,6 +1681,9 @@ class CreateStorageRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -1276,6 +1692,9 @@ class CreateStorageRequest(AbstractModel):
 
     @property
     def UserTag(self):
+        """用户唯一标识，由厂商保证内部唯一性
+        :rtype: str
+        """
         return self._UserTag
 
     @UserTag.setter
@@ -1311,6 +1730,9 @@ class CreateStorageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1368,6 +1790,23 @@ ye1w7d : 事件7天存储周套餐。
 
     @property
     def PkgId(self):
+        """云存套餐ID：
+yc1m3d ： 全时3天存储月套餐。
+yc1m7d ： 全时7天存储月套餐。
+yc1m30d ：全时30天存储月套餐。
+yc1y3d ：全时3天存储年套餐。
+yc1y7d ：全时7天存储年套餐。
+yc1y30d ：全时30天存储年套餐。
+ye1m3d ：事件3天存储月套餐。
+ye1m7d ：事件7天存储月套餐。
+ye1m30d ：事件30天存储月套餐 。
+ye1y3d ：事件3天存储年套餐。
+ye1y7d ：事件7天存储年套餐。
+ye1y30d ：事件30天存储年套餐。
+yc1w7d : 全时7天存储周套餐。
+ye1w7d : 事件7天存储周套餐。
+        :rtype: str
+        """
         return self._PkgId
 
     @PkgId.setter
@@ -1376,6 +1815,9 @@ ye1w7d : 事件7天存储周套餐。
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -1384,6 +1826,9 @@ ye1w7d : 事件7天存储周套餐。
 
     @property
     def OrderCount(self):
+        """订单数量,可一次性创建多个订单
+        :rtype: int
+        """
         return self._OrderCount
 
     @OrderCount.setter
@@ -1392,6 +1837,9 @@ ye1w7d : 事件7天存储周套餐。
 
     @property
     def StorageRegion(self):
+        """云存服务所在的区域,如ap-guangzhou,ap-singapore, na-siliconvalley, eu-frankfurt
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -1400,6 +1848,9 @@ ye1w7d : 事件7天存储周套餐。
 
     @property
     def ChnNum(self):
+        """视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :rtype: int
+        """
         return self._ChnNum
 
     @ChnNum.setter
@@ -1408,6 +1859,9 @@ ye1w7d : 事件7天存储周套餐。
 
     @property
     def AccessId(self):
+        """设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -1416,6 +1870,9 @@ ye1w7d : 事件7天存储周套餐。
 
     @property
     def EnableTime(self):
+        """服务生效时间,若不指定此参数，服务立即生效
+        :rtype: int
+        """
         return self._EnableTime
 
     @EnableTime.setter
@@ -1489,6 +1946,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def IsRenew(self):
+        """标志是否为续订
+        :rtype: bool
+        """
         return self._IsRenew
 
     @IsRenew.setter
@@ -1497,6 +1957,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def ServiceId(self):
+        """云存服务ID
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -1505,6 +1968,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def StorageRegion(self):
+        """云存服务所在的区域
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -1513,6 +1979,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -1521,6 +1990,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def ChnNum(self):
+        """视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :rtype: int
+        """
         return self._ChnNum
 
     @ChnNum.setter
@@ -1529,6 +2001,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video平台的注册ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -1537,6 +2012,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """服务开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1545,6 +2023,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """服务失效时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1553,6 +2034,13 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """服务状态
+1：正常使用中
+2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+3：已过期。查询不到设备保存在云端的数据。
+4：等待服务生效。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1561,6 +2049,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """新增的云存定单列表
+        :rtype: list of StorageOrder
+        """
         return self._Data
 
     @Data.setter
@@ -1569,6 +2060,9 @@ class CreateStorageServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1609,6 +2103,9 @@ class CreateTraceIdsRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID列表
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -1642,6 +2139,9 @@ class CreateTraceIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1670,6 +2170,9 @@ class CreateUploadPathRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1678,6 +2181,9 @@ class CreateUploadPathRequest(AbstractModel):
 
     @property
     def FileName(self):
+        """固件文件名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -1716,6 +2222,10 @@ class CreateUploadPathResponse(AbstractModel):
 
     @property
     def Data(self):
+        """固件上传地址URL，用户可将本地的固件文件通过该URL以PUT的请求方式上传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -1724,6 +2234,9 @@ class CreateUploadPathResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1733,6 +2246,104 @@ class CreateUploadPathResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUploadTestRequest(AbstractModel):
+    """CreateUploadTest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgId: package ID
+        :type PkgId: str
+        :param _Tid: 设备TID
+        :type Tid: str
+        """
+        self._PkgId = None
+        self._Tid = None
+
+    @property
+    def PkgId(self):
+        """package ID
+        :rtype: str
+        """
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def Tid(self):
+        """设备TID
+        :rtype: str
+        """
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
+
+
+    def _deserialize(self, params):
+        self._PkgId = params.get("PkgId")
+        self._Tid = params.get("Tid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUploadTestResponse(AbstractModel):
+    """CreateUploadTest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 申请设备证书返回的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotvideo.v20191126.models.CosCertificate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """申请设备证书返回的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.CosCertificate`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CosCertificate()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1759,6 +2370,9 @@ class CreateUsrTokenRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -1767,6 +2381,9 @@ class CreateUsrTokenRequest(AbstractModel):
 
     @property
     def UniqueId(self):
+        """终端唯一ID，用于区分同一个用户的多个终端
+        :rtype: str
+        """
         return self._UniqueId
 
     @UniqueId.setter
@@ -1775,6 +2392,9 @@ class CreateUsrTokenRequest(AbstractModel):
 
     @property
     def TtlMinutes(self):
+        """Token的TTL(time to alive)分钟数
+        :rtype: int
+        """
         return self._TtlMinutes
 
     @TtlMinutes.setter
@@ -1783,6 +2403,9 @@ class CreateUsrTokenRequest(AbstractModel):
 
     @property
     def OldAccessToken(self):
+        """旧的AccessToken。续期Token时，此参数为必须。
+        :rtype: str
+        """
         return self._OldAccessToken
 
     @OldAccessToken.setter
@@ -1831,6 +2454,9 @@ class CreateUsrTokenResponse(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -1839,6 +2465,9 @@ class CreateUsrTokenResponse(AbstractModel):
 
     @property
     def AccessToken(self):
+        """IoT Video平台的AccessToken
+        :rtype: str
+        """
         return self._AccessToken
 
     @AccessToken.setter
@@ -1847,6 +2476,9 @@ class CreateUsrTokenResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """Token的过期时间，单位秒(UTC时间)
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1855,6 +2487,9 @@ class CreateUsrTokenResponse(AbstractModel):
 
     @property
     def TerminalId(self):
+        """终端ID
+        :rtype: str
+        """
         return self._TerminalId
 
     @TerminalId.setter
@@ -1863,6 +2498,9 @@ class CreateUsrTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1909,6 +2547,10 @@ class Data(AbstractModel):
 
     @property
     def Protocol(self):
+        """直播协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -1917,6 +2559,10 @@ class Data(AbstractModel):
 
     @property
     def URI(self):
+        """流媒体播放地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._URI
 
     @URI.setter
@@ -1925,6 +2571,10 @@ class Data(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """流媒体地址过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1933,6 +2583,10 @@ class Data(AbstractModel):
 
     @property
     def VideoCodec(self):
+        """视频编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VideoCodec
 
     @VideoCodec.setter
@@ -1941,6 +2595,10 @@ class Data(AbstractModel):
 
     @property
     def AudioCodec(self):
+        """音频编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AudioCodec
 
     @AudioCodec.setter
@@ -1978,6 +2636,9 @@ class DeleteAppUsrRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """客户的终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -2011,6 +2672,9 @@ class DeleteAppUsrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2042,6 +2706,9 @@ class DeleteBindingRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -2050,6 +2717,9 @@ class DeleteBindingRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -2058,6 +2728,9 @@ class DeleteBindingRequest(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色，owner：主人，guest：访客
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -2093,6 +2766,9 @@ class DeleteBindingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2118,6 +2794,9 @@ class DeleteDeviceRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID列表
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -2151,6 +2830,9 @@ class DeleteDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2176,6 +2858,9 @@ class DeleteIotDataTypeRequest(AbstractModel):
 
     @property
     def TypeId(self):
+        """自定义数据类型的标识符
+        :rtype: str
+        """
         return self._TypeId
 
     @TypeId.setter
@@ -2209,6 +2894,9 @@ class DeleteIotDataTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2234,6 +2922,9 @@ class DeleteMessageQueueRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2267,6 +2958,9 @@ class DeleteMessageQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2298,6 +2992,9 @@ class DeleteOtaVersionRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2306,6 +3003,9 @@ class DeleteOtaVersionRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -2314,6 +3014,9 @@ class DeleteOtaVersionRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2349,6 +3052,9 @@ class DeleteOtaVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2374,6 +3080,9 @@ class DeleteProductRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2407,6 +3116,9 @@ class DeleteProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2432,6 +3144,9 @@ class DeleteTraceIdsRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID列表
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -2465,6 +3180,9 @@ class DeleteTraceIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2499,6 +3217,9 @@ class DeliverStorageServiceRequest(AbstractModel):
 
     @property
     def SrcServiceId(self):
+        """待转移的源云存服务ID
+        :rtype: str
+        """
         return self._SrcServiceId
 
     @SrcServiceId.setter
@@ -2507,6 +3228,9 @@ class DeliverStorageServiceRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -2515,6 +3239,9 @@ class DeliverStorageServiceRequest(AbstractModel):
 
     @property
     def ChnNum(self):
+        """视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :rtype: int
+        """
         return self._ChnNum
 
     @ChnNum.setter
@@ -2523,6 +3250,9 @@ class DeliverStorageServiceRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -2593,6 +3323,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def SrcServiceId(self):
+        """被转出的云存服务ID
+        :rtype: str
+        """
         return self._SrcServiceId
 
     @SrcServiceId.setter
@@ -2601,6 +3334,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def ServiceId(self):
+        """被转入的云存服务ID
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -2609,6 +3345,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def StorageRegion(self):
+        """云存服务所在的区域
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -2617,6 +3356,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -2625,6 +3367,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def ChnNum(self):
+        """视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :rtype: int
+        """
         return self._ChnNum
 
     @ChnNum.setter
@@ -2633,6 +3378,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video平台的注册ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -2641,6 +3389,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """服务开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2649,6 +3400,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """服务失效时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2657,6 +3411,13 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """服务状态
+1：正常使用中
+2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+3：已过期。查询不到设备保存在云端的数据。
+4：等待服务生效。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2665,6 +3426,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """新增的云存定单列表
+        :rtype: list of StorageOrder
+        """
         return self._Data
 
     @Data.setter
@@ -2673,6 +3437,9 @@ class DeliverStorageServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2713,6 +3480,9 @@ class DescribeAccountBalanceRequest(AbstractModel):
 
     @property
     def AccountType(self):
+        """账户类型 1:设备接入 2:云存
+        :rtype: int
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -2762,6 +3532,10 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def AccountType(self):
+        """账户类型 1=设备接入;2=云存。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -2770,6 +3544,10 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def Balance(self):
+        """余额, 单位 : 分(人民币)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Balance
 
     @Balance.setter
@@ -2778,6 +3556,10 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def State(self):
+        """账户状态，1=正常；8=冻结；9=销户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -2786,6 +3568,10 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def LastUpdateTime(self):
+        """最后修改时间，UTC值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LastUpdateTime
 
     @LastUpdateTime.setter
@@ -2794,6 +3580,9 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2823,6 +3612,9 @@ class DescribeBindDevRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video上的唯一标识ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -2860,6 +3652,10 @@ class DescribeBindDevResponse(AbstractModel):
 
     @property
     def Data(self):
+        """绑定的设备列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BindDevInfo
+        """
         return self._Data
 
     @Data.setter
@@ -2868,6 +3664,9 @@ class DescribeBindDevResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2902,6 +3701,9 @@ class DescribeBindUsrRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -2910,6 +3712,9 @@ class DescribeBindUsrRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """设备主人的AccessId
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -2948,6 +3753,10 @@ class DescribeBindUsrResponse(AbstractModel):
 
     @property
     def Data(self):
+        """具有绑定关系的终端用户信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BindUsrInfo
+        """
         return self._Data
 
     @Data.setter
@@ -2956,6 +3765,9 @@ class DescribeBindUsrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2990,6 +3802,9 @@ class DescribeDeviceModelRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -2998,6 +3813,9 @@ class DescribeDeviceModelRequest(AbstractModel):
 
     @property
     def Branch(self):
+        """物模型的分支路径
+        :rtype: str
+        """
         return self._Branch
 
     @Branch.setter
@@ -3036,6 +3854,10 @@ class DescribeDeviceModelResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备物模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DeviceModelData`
+        """
         return self._Data
 
     @Data.setter
@@ -3044,6 +3866,9 @@ class DescribeDeviceModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3072,6 +3897,9 @@ class DescribeDeviceRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -3109,6 +3937,10 @@ class DescribeDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DeviceData`
+        """
         return self._Data
 
     @Data.setter
@@ -3117,6 +3949,9 @@ class DescribeDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3161,6 +3996,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -3169,6 +4007,10 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def ReturnModel(self):
+        """是否返回全量数据
+当该值为false时，返回值中的设备物模型、固件版本、在线状态、最后在线时间字段等字段，都将返回数据类型的零值。
+        :rtype: bool
+        """
         return self._ReturnModel
 
     @ReturnModel.setter
@@ -3177,6 +4019,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页数量,0<取值范围<=100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3185,6 +4030,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移，取值＞0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3193,6 +4041,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """指定固件版本号，为空查询此产品下所有设备
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -3201,6 +4052,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称，支持左前缀模糊匹配
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -3246,6 +4100,10 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备信息 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DevicesData
+        """
         return self._Data
 
     @Data.setter
@@ -3254,6 +4112,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """设备总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3262,6 +4123,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3294,6 +4158,9 @@ class DescribeIotDataTypeRequest(AbstractModel):
 
     @property
     def TypeId(self):
+        """自定义数据类型的标识符，为空则返回全量自定义类型的列表
+        :rtype: str
+        """
         return self._TypeId
 
     @TypeId.setter
@@ -3331,6 +4198,10 @@ class DescribeIotDataTypeResponse(AbstractModel):
 
     @property
     def Data(self):
+        """自定义数据类型，json格式的字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Data
 
     @Data.setter
@@ -3339,6 +4210,9 @@ class DescribeIotDataTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3368,6 +4242,9 @@ class DescribeIotModelRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -3376,6 +4253,9 @@ class DescribeIotModelRequest(AbstractModel):
 
     @property
     def Revision(self):
+        """物模型版本号， -1表示最新编辑的（未发布）
+        :rtype: int
+        """
         return self._Revision
 
     @Revision.setter
@@ -3414,6 +4294,10 @@ class DescribeIotModelResponse(AbstractModel):
 
     @property
     def Data(self):
+        """物模型定义，json格式的字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -3422,6 +4306,9 @@ class DescribeIotModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3448,6 +4335,9 @@ class DescribeIotModelsRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -3485,6 +4375,10 @@ class DescribeIotModelsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """历史版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IotModelData
+        """
         return self._Data
 
     @Data.setter
@@ -3493,6 +4387,9 @@ class DescribeIotModelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3542,6 +4439,9 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -3550,6 +4450,9 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """当前分页的最大条数,0<取值范围<=100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3558,6 +4461,9 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量,取值范围>0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3566,6 +4472,9 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """日志类型 1.在线状态变更 2.ProConst变更 3.ProWritable变更 4.Action控制 5.ProReadonly变更 6.Event事件
+        :rtype: int
+        """
         return self._LogType
 
     @LogType.setter
@@ -3574,6 +4483,9 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询的起始时间 UNIX时间戳，单位秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3582,6 +4494,9 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def DataObject(self):
+        """物模型对象索引，用于模糊查询，字符长度<=255，每层节点的字符长度<=16
+        :rtype: str
+        """
         return self._DataObject
 
     @DataObject.setter
@@ -3590,6 +4505,9 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询的结束时间 UNIX时间戳，单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3636,6 +4554,10 @@ class DescribeLogsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备日志信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogData
+        """
         return self._Data
 
     @Data.setter
@@ -3644,6 +4566,9 @@ class DescribeLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Data数组所包含的信息条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3652,6 +4577,9 @@ class DescribeLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3684,6 +4612,9 @@ class DescribeMessageQueueRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -3721,6 +4652,10 @@ class DescribeMessageQueueResponse(AbstractModel):
 
     @property
     def Data(self):
+        """消息队列配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.MsgQueueData`
+        """
         return self._Data
 
     @Data.setter
@@ -3729,6 +4664,9 @@ class DescribeMessageQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3757,6 +4695,9 @@ class DescribeModelDataRetRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3794,6 +4735,10 @@ class DescribeModelDataRetResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备响应结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -3802,6 +4747,9 @@ class DescribeModelDataRetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3838,6 +4786,10 @@ class DescribeOsListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """系统类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.SystemType`
+        """
         return self._Data
 
     @Data.setter
@@ -3846,6 +4798,9 @@ class DescribeOsListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3886,6 +4841,9 @@ class DescribeOtaVersionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3894,6 +4852,9 @@ class DescribeOtaVersionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，0<取值范围<=100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3902,6 +4863,9 @@ class DescribeOtaVersionsRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID，为空时查询客户所有产品的版本信息
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -3910,6 +4874,9 @@ class DescribeOtaVersionsRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """版本号，支持模糊匹配
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -3918,6 +4885,9 @@ class DescribeOtaVersionsRequest(AbstractModel):
 
     @property
     def PubStatus(self):
+        """版本类型 1未发布 2测试发布 3正式发布 4禁用
+        :rtype: int
+        """
         return self._PubStatus
 
     @PubStatus.setter
@@ -3962,6 +4932,9 @@ class DescribeOtaVersionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """版本数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3970,6 +4943,10 @@ class DescribeOtaVersionsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """版本详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VersionData
+        """
         return self._Data
 
     @Data.setter
@@ -3978,6 +4955,9 @@ class DescribeOtaVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4010,6 +4990,9 @@ class DescribeProductRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -4047,6 +5030,10 @@ class DescribeProductResponse(AbstractModel):
 
     @property
     def Data(self):
+        """产品详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.ProductData`
+        """
         return self._Data
 
     @Data.setter
@@ -4055,6 +5042,9 @@ class DescribeProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4095,6 +5085,9 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页大小，当前页面中显示的最大数量，值范围 1-100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4103,6 +5096,9 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移，Offset从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4111,6 +5107,9 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def ProductModel(self):
+        """产器型号(APP产品,为APP包名)
+        :rtype: str
+        """
         return self._ProductModel
 
     @ProductModel.setter
@@ -4119,6 +5118,9 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间 ，UNIX 时间戳，单位秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4127,6 +5129,9 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间 ，UNIX 时间戳，单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4171,6 +5176,10 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """产品详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ProductData
+        """
         return self._Data
 
     @Data.setter
@@ -4179,6 +5188,9 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """产品总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4187,6 +5199,9 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4219,6 +5234,9 @@ class DescribePubVersionsRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -4256,6 +5274,10 @@ class DescribePubVersionsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """历史发布的版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OtaPubHistory
+        """
         return self._Data
 
     @Data.setter
@@ -4264,6 +5286,9 @@ class DescribePubVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4301,6 +5326,9 @@ class DescribeRechargeRecordsRequest(AbstractModel):
 
     @property
     def AccountType(self):
+        """账户类型 1:设备接入 2:云存。
+        :rtype: int
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -4309,6 +5337,9 @@ class DescribeRechargeRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """从第几条记录开始显示, 默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4317,6 +5348,9 @@ class DescribeRechargeRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """总共查询多少条记录，默认为值50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4360,6 +5394,10 @@ class DescribeRechargeRecordsResponse(AbstractModel):
 
     @property
     def AccountType(self):
+        """账户类型 1:设备接入 2:云存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -4368,6 +5406,10 @@ class DescribeRechargeRecordsResponse(AbstractModel):
 
     @property
     def Records(self):
+        """充值记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RechargeRecord
+        """
         return self._Records
 
     @Records.setter
@@ -4376,6 +5418,9 @@ class DescribeRechargeRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4408,6 +5453,9 @@ class DescribeRegistrationStatusRequest(AbstractModel):
 
     @property
     def CunionIds(self):
+        """终端用户的唯一ID列表，0<元素数量<=100
+        :rtype: list of str
+        """
         return self._CunionIds
 
     @CunionIds.setter
@@ -4444,6 +5492,9 @@ class DescribeRegistrationStatusResponse(AbstractModel):
 
     @property
     def Data(self):
+        """终端用户注册状态列表
+        :rtype: list of RegisteredStatus
+        """
         return self._Data
 
     @Data.setter
@@ -4452,6 +5503,9 @@ class DescribeRegistrationStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4483,6 +5537,9 @@ class DescribeRunLogRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -4520,6 +5577,10 @@ class DescribeRunLogResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备运行日志文本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -4528,6 +5589,9 @@ class DescribeRunLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4557,6 +5621,9 @@ class DescribeStorageServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
+        """云存服务ID
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -4565,6 +5632,9 @@ class DescribeStorageServiceRequest(AbstractModel):
 
     @property
     def GetFinishedOrder(self):
+        """是否返回已结束的订单信息(已过期/已退订/已转移)
+        :rtype: bool
+        """
         return self._GetFinishedOrder
 
     @GetFinishedOrder.setter
@@ -4630,6 +5700,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def ServiceId(self):
+        """云存服务ID
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -4638,6 +5711,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def StorageRegion(self):
+        """云存服务所在的区域
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -4646,6 +5722,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -4654,6 +5733,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def ChnNum(self):
+        """视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :rtype: int
+        """
         return self._ChnNum
 
     @ChnNum.setter
@@ -4662,6 +5744,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video平台的注册ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -4670,6 +5755,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """服务开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4678,6 +5766,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """服务失效时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4686,6 +5777,13 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """服务状态
+1：正常使用中
+2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+3：已过期。查询不到设备保存在云端的数据。
+4：等待服务生效。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4694,6 +5792,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """云存定单列表
+        :rtype: list of StorageOrder
+        """
         return self._Data
 
     @Data.setter
@@ -4702,6 +5803,9 @@ class DescribeStorageServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4753,6 +5857,9 @@ class DescribeStreamRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -4761,6 +5868,9 @@ class DescribeStreamRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -4769,6 +5879,9 @@ class DescribeStreamRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """直播协议, 可选值：RTSP、RTMP、HLS、HLS-fmp4
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -4777,6 +5890,9 @@ class DescribeStreamRequest(AbstractModel):
 
     @property
     def Address(self):
+        """音视频流地址
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -4785,6 +5901,9 @@ class DescribeStreamRequest(AbstractModel):
 
     @property
     def AccessToken(self):
+        """设备访问token，访问用户未绑定的设备时，需提供该参数
+        :rtype: str
+        """
         return self._AccessToken
 
     @AccessToken.setter
@@ -4826,6 +5945,10 @@ class DescribeStreamResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回参数结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.Data`
+        """
         return self._Data
 
     @Data.setter
@@ -4834,6 +5957,9 @@ class DescribeStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4872,6 +5998,10 @@ class DescribeTraceIdsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备TID列表，列表元素之间以“,”分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -4880,6 +6010,9 @@ class DescribeTraceIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4906,6 +6039,9 @@ class DescribeTraceStatusRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID列表
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -4943,6 +6079,10 @@ class DescribeTraceStatusResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备追踪状态列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TraceStatus
+        """
         return self._Data
 
     @Data.setter
@@ -4951,6 +6091,9 @@ class DescribeTraceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4991,6 +6134,9 @@ class DevTokenInfo(AbstractModel):
 
     @property
     def AccessId(self):
+        """客户的终端用户在IotVideo上的唯一标识id
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -4999,6 +6145,9 @@ class DevTokenInfo(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -5007,6 +6156,9 @@ class DevTokenInfo(AbstractModel):
 
     @property
     def AccessToken(self):
+        """IotVideo平台的accessToken
+        :rtype: str
+        """
         return self._AccessToken
 
     @AccessToken.setter
@@ -5015,6 +6167,9 @@ class DevTokenInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """Token的过期时间，单位秒(UTC时间)
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -5057,6 +6212,9 @@ class DeviceCertificate(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -5065,6 +6223,9 @@ class DeviceCertificate(AbstractModel):
 
     @property
     def Certificate(self):
+        """设备初始证书信息，base64编码
+        :rtype: str
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -5073,6 +6234,9 @@ class DeviceCertificate(AbstractModel):
 
     @property
     def WhiteBoxSoUrl(self):
+        """设备私钥下载地址
+        :rtype: str
+        """
         return self._WhiteBoxSoUrl
 
     @WhiteBoxSoUrl.setter
@@ -5153,6 +6317,10 @@ class DeviceData(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -5161,6 +6329,10 @@ class DeviceData(AbstractModel):
 
     @property
     def ActiveTime(self):
+        """激活时间 0代表未激活
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActiveTime
 
     @ActiveTime.setter
@@ -5169,6 +6341,10 @@ class DeviceData(AbstractModel):
 
     @property
     def Disabled(self):
+        """设备是否被禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -5177,6 +6353,10 @@ class DeviceData(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -5185,6 +6365,10 @@ class DeviceData(AbstractModel):
 
     @property
     def Online(self):
+        """设备在线状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -5193,6 +6377,10 @@ class DeviceData(AbstractModel):
 
     @property
     def LastOnlineTime(self):
+        """设备最后上线时间（mqtt连接成功时间），UNIX时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LastOnlineTime
 
     @LastOnlineTime.setter
@@ -5201,6 +6389,10 @@ class DeviceData(AbstractModel):
 
     @property
     def IotModel(self):
+        """物模型json数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IotModel
 
     @IotModel.setter
@@ -5209,6 +6401,10 @@ class DeviceData(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -5217,6 +6413,10 @@ class DeviceData(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -5225,6 +6425,10 @@ class DeviceData(AbstractModel):
 
     @property
     def Certificate(self):
+        """设备初始证书信息，base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -5233,6 +6437,10 @@ class DeviceData(AbstractModel):
 
     @property
     def WhiteBoxSoUrl(self):
+        """设备私钥下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WhiteBoxSoUrl
 
     @WhiteBoxSoUrl.setter
@@ -5241,6 +6449,10 @@ class DeviceData(AbstractModel):
 
     @property
     def StreamStatus(self):
+        """设备推流状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._StreamStatus
 
     @StreamStatus.setter
@@ -5293,6 +6505,9 @@ class DeviceModelData(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -5301,6 +6516,10 @@ class DeviceModelData(AbstractModel):
 
     @property
     def Branch(self):
+        """物模型分支路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Branch
 
     @Branch.setter
@@ -5309,6 +6528,10 @@ class DeviceModelData(AbstractModel):
 
     @property
     def IotModel(self):
+        """物模型数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IotModel
 
     @IotModel.setter
@@ -5371,6 +6594,9 @@ class DevicesData(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -5379,6 +6605,9 @@ class DevicesData(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -5387,6 +6616,9 @@ class DevicesData(AbstractModel):
 
     @property
     def ActiveTime(self):
+        """激活时间 0代表未激活
+        :rtype: int
+        """
         return self._ActiveTime
 
     @ActiveTime.setter
@@ -5395,6 +6627,9 @@ class DevicesData(AbstractModel):
 
     @property
     def Disabled(self):
+        """设备是否被禁用
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -5403,6 +6638,9 @@ class DevicesData(AbstractModel):
 
     @property
     def StreamStatus(self):
+        """设备推流状态
+        :rtype: bool
+        """
         return self._StreamStatus
 
     @StreamStatus.setter
@@ -5411,6 +6649,9 @@ class DevicesData(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -5419,6 +6660,9 @@ class DevicesData(AbstractModel):
 
     @property
     def Online(self):
+        """设备在线状态
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -5427,6 +6671,9 @@ class DevicesData(AbstractModel):
 
     @property
     def LastOnlineTime(self):
+        """设备最后上线时间（mqtt连接成功时间），UNIX时间戳，单位秒
+        :rtype: int
+        """
         return self._LastOnlineTime
 
     @LastOnlineTime.setter
@@ -5435,6 +6682,9 @@ class DevicesData(AbstractModel):
 
     @property
     def IotModel(self):
+        """物模型json数据
+        :rtype: str
+        """
         return self._IotModel
 
     @IotModel.setter
@@ -5443,6 +6693,9 @@ class DevicesData(AbstractModel):
 
     @property
     def LastUpdateTime(self):
+        """设备固件最新更新时间，UNIX时间戳，单位秒
+        :rtype: int
+        """
         return self._LastUpdateTime
 
     @LastUpdateTime.setter
@@ -5485,6 +6738,9 @@ class DisableDeviceRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID ≤100
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -5518,6 +6774,9 @@ class DisableDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5543,6 +6802,9 @@ class DisableDeviceStreamRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID列表
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -5576,6 +6838,9 @@ class DisableDeviceStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5607,6 +6872,9 @@ class DisableOtaVersionRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -5615,6 +6883,9 @@ class DisableOtaVersionRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -5623,6 +6894,9 @@ class DisableOtaVersionRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5658,6 +6932,9 @@ class DisableOtaVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5686,6 +6963,9 @@ class IotModelData(AbstractModel):
 
     @property
     def Revision(self):
+        """版本号
+        :rtype: int
+        """
         return self._Revision
 
     @Revision.setter
@@ -5694,6 +6974,9 @@ class IotModelData(AbstractModel):
 
     @property
     def ReleaseTime(self):
+        """发布时间
+        :rtype: int
+        """
         return self._ReleaseTime
 
     @ReleaseTime.setter
@@ -5743,6 +7026,9 @@ class LogData(AbstractModel):
 
     @property
     def Occurtime(self):
+        """发生时间 UNIX时间戳，单位秒
+        :rtype: int
+        """
         return self._Occurtime
 
     @Occurtime.setter
@@ -5751,6 +7037,9 @@ class LogData(AbstractModel):
 
     @property
     def LogType(self):
+        """日志类型 1在线状态变更 2FP变更 3SP变更 4CO控制 5ST变更 6EV事件
+        :rtype: int
+        """
         return self._LogType
 
     @LogType.setter
@@ -5759,6 +7048,10 @@ class LogData(AbstractModel):
 
     @property
     def DataObject(self):
+        """物模型对象索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataObject
 
     @DataObject.setter
@@ -5767,6 +7060,10 @@ class LogData(AbstractModel):
 
     @property
     def OldValue(self):
+        """物模型旧值  json串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OldValue
 
     @OldValue.setter
@@ -5775,6 +7072,10 @@ class LogData(AbstractModel):
 
     @property
     def NewValue(self):
+        """物模型新值  json串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NewValue
 
     @NewValue.setter
@@ -5824,6 +7125,9 @@ class ModifyDeviceActionRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -5832,6 +7136,9 @@ class ModifyDeviceActionRequest(AbstractModel):
 
     @property
     def Wakeup(self):
+        """如果设备处于休眠状态，是否唤醒设备
+        :rtype: bool
+        """
         return self._Wakeup
 
     @Wakeup.setter
@@ -5840,6 +7147,9 @@ class ModifyDeviceActionRequest(AbstractModel):
 
     @property
     def Branch(self):
+        """物模型的分支路径
+        :rtype: str
+        """
         return self._Branch
 
     @Branch.setter
@@ -5848,6 +7158,9 @@ class ModifyDeviceActionRequest(AbstractModel):
 
     @property
     def Value(self):
+        """写入的物模型数据，如果是json需要转义成字符串
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -5856,6 +7169,9 @@ class ModifyDeviceActionRequest(AbstractModel):
 
     @property
     def IsNum(self):
+        """Value字段的类型是否为数值（float、int）
+        :rtype: bool
+        """
         return self._IsNum
 
     @IsNum.setter
@@ -5902,6 +7218,10 @@ class ModifyDeviceActionResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备端的响应结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -5910,6 +7230,11 @@ class ModifyDeviceActionResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+若设备端未能及时响应时，会返回此字段，用户可以通过DescribeModelDataRet获取设备的最终响应结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5918,6 +7243,9 @@ class ModifyDeviceActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5957,6 +7285,9 @@ class ModifyDevicePropertyRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -5965,6 +7296,9 @@ class ModifyDevicePropertyRequest(AbstractModel):
 
     @property
     def Wakeup(self):
+        """如果设备处于休眠状态，是否唤醒设备
+        :rtype: bool
+        """
         return self._Wakeup
 
     @Wakeup.setter
@@ -5973,6 +7307,9 @@ class ModifyDevicePropertyRequest(AbstractModel):
 
     @property
     def Branch(self):
+        """物模型的分支路径
+        :rtype: str
+        """
         return self._Branch
 
     @Branch.setter
@@ -5981,6 +7318,9 @@ class ModifyDevicePropertyRequest(AbstractModel):
 
     @property
     def Value(self):
+        """写入的物模型数据，如果是json需要转义成字符串
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -5989,6 +7329,9 @@ class ModifyDevicePropertyRequest(AbstractModel):
 
     @property
     def IsNum(self):
+        """Value字段是否为数值（float、int）
+        :rtype: bool
+        """
         return self._IsNum
 
     @IsNum.setter
@@ -6026,6 +7369,9 @@ class ModifyDevicePropertyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6057,6 +7403,9 @@ class ModifyDeviceRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备ID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -6065,6 +7414,9 @@ class ModifyDeviceRequest(AbstractModel):
 
     @property
     def AccessId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -6073,6 +7425,9 @@ class ModifyDeviceRequest(AbstractModel):
 
     @property
     def Nick(self):
+        """设备昵称，最多不超过64个字符
+        :rtype: str
+        """
         return self._Nick
 
     @Nick.setter
@@ -6108,6 +7463,9 @@ class ModifyDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6145,6 +7503,9 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -6153,6 +7514,9 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品名称
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -6161,6 +7525,9 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def ProductDescription(self):
+        """产品描述
+        :rtype: str
+        """
         return self._ProductDescription
 
     @ProductDescription.setter
@@ -6169,6 +7536,9 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def ChipManufactureId(self):
+        """主芯片产商ID
+        :rtype: str
+        """
         return self._ChipManufactureId
 
     @ChipManufactureId.setter
@@ -6177,6 +7547,9 @@ class ModifyProductRequest(AbstractModel):
 
     @property
     def ChipId(self):
+        """主芯片ID
+        :rtype: str
+        """
         return self._ChipId
 
     @ChipId.setter
@@ -6214,6 +7587,9 @@ class ModifyProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6251,6 +7627,9 @@ class ModifyVerContentRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品id
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -6259,6 +7638,9 @@ class ModifyVerContentRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """需要修改的版本号
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -6267,6 +7649,9 @@ class ModifyVerContentRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人,字符长度<=64
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -6275,6 +7660,9 @@ class ModifyVerContentRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -6283,6 +7671,9 @@ class ModifyVerContentRequest(AbstractModel):
 
     @property
     def Contents(self):
+        """版本发布的描述信息，需要国际化，可以为空
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.Contents`
+        """
         return self._Contents
 
     @Contents.setter
@@ -6322,6 +7713,9 @@ class ModifyVerContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6359,6 +7753,9 @@ class MsgQueueData(AbstractModel):
 
     @property
     def MsgQueueType(self):
+        """消息队列类型 1：CMQ 2：kafka
+        :rtype: int
+        """
         return self._MsgQueueType
 
     @MsgQueueType.setter
@@ -6367,6 +7764,9 @@ class MsgQueueData(AbstractModel):
 
     @property
     def MsgType(self):
+        """消息类型列表，整型值（0-31）之间以“,”分隔
+        :rtype: str
+        """
         return self._MsgType
 
     @MsgType.setter
@@ -6375,6 +7775,9 @@ class MsgQueueData(AbstractModel):
 
     @property
     def Topic(self):
+        """主题名称
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -6383,6 +7786,9 @@ class MsgQueueData(AbstractModel):
 
     @property
     def Instance(self):
+        """实例名称
+        :rtype: str
+        """
         return self._Instance
 
     @Instance.setter
@@ -6391,6 +7797,9 @@ class MsgQueueData(AbstractModel):
 
     @property
     def MsgRegion(self):
+        """消息地域
+        :rtype: str
+        """
         return self._MsgRegion
 
     @MsgRegion.setter
@@ -6433,6 +7842,10 @@ class OsData(AbstractModel):
 
     @property
     def ChipId(self):
+        """芯片型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChipId
 
     @ChipId.setter
@@ -6441,6 +7854,10 @@ class OsData(AbstractModel):
 
     @property
     def ChipManufacture(self):
+        """芯片厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChipManufacture
 
     @ChipManufacture.setter
@@ -6478,6 +7895,9 @@ class OtaPubHistory(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """版本名称
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -6486,6 +7906,9 @@ class OtaPubHistory(AbstractModel):
 
     @property
     def PublishTime(self):
+        """发布时间，unix时间戳，单位：秒
+        :rtype: int
+        """
         return self._PublishTime
 
     @PublishTime.setter
@@ -6562,6 +7985,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -6570,6 +7996,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductModel(self):
+        """产器型号(APP产品,为APP包名)
+        :rtype: str
+        """
         return self._ProductModel
 
     @ProductModel.setter
@@ -6578,6 +8007,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductName(self):
+        """产品名称
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -6586,6 +8018,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductDescription(self):
+        """产品描述信息
+        :rtype: str
+        """
         return self._ProductDescription
 
     @ProductDescription.setter
@@ -6594,6 +8029,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def CreateTime(self):
+        """创建时间，UNIX 时间戳，单位秒
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6602,6 +8040,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def IotModelRevision(self):
+        """物模型发布版本号,0代表物模型尚未发布
+        :rtype: int
+        """
         return self._IotModelRevision
 
     @IotModelRevision.setter
@@ -6610,6 +8051,9 @@ Other-Overseas（其他境外地区）
 
     @property
     def SecretKey(self):
+        """产品密钥
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -6618,6 +8062,16 @@ Other-Overseas（其他境外地区）
 
     @property
     def FuncCode(self):
+        """设备功能码
+ypsxth : 音频双向通话;	
+spdxth : 视频单向通话(监控);
+NVR0824 : NVR设备,大于8路，小于等于24路;
+WifiKeepalive : Wifi保活(低功耗产品);
+Alexa : Alexa接入;
+Google : Google接入;
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._FuncCode
 
     @FuncCode.setter
@@ -6626,6 +8080,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductCate(self):
+        """产品类别，0 : 普通视频设备；1 : NVR设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProductCate
 
     @ProductCate.setter
@@ -6634,6 +8092,16 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductRegion(self):
+        """产品地域
+China-Mainland（中国大陆）
+China-Hong Kong, Macao and Taiwan（港澳台地区）
+America（美国）
+Europe（欧洲）
+India（印度）
+Other-Overseas（其他境外地区）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductRegion
 
     @ProductRegion.setter
@@ -6735,6 +8203,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductId(self):
+        """产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -6743,6 +8215,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductName(self):
+        """产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -6751,6 +8227,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductDescription(self):
+        """产品描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductDescription
 
     @ProductDescription.setter
@@ -6759,6 +8239,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def CreateTime(self):
+        """创建时间，UNIX 时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6767,6 +8251,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def IotModelRevision(self):
+        """物模型发布版本号,0代表物模型尚未发布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IotModelRevision
 
     @IotModelRevision.setter
@@ -6775,6 +8263,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def SecretKey(self):
+        """产品密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -6783,6 +8275,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def Features(self):
+        """设备功能码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Features
 
     @Features.setter
@@ -6791,6 +8287,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductModel(self):
+        """产器型号(APP产品,为APP包名)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductModel
 
     @ProductModel.setter
@@ -6799,6 +8299,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ChipManufactureId(self):
+        """主芯片厂商id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChipManufactureId
 
     @ChipManufactureId.setter
@@ -6807,6 +8311,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ChipId(self):
+        """主芯片型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChipId
 
     @ChipId.setter
@@ -6815,6 +8323,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductCate(self):
+        """产品类别，0：普通视频设备；1：NVR设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProductCate
 
     @ProductCate.setter
@@ -6823,6 +8335,16 @@ Other-Overseas（其他境外地区）
 
     @property
     def ProductRegion(self):
+        """产品地区
+China-Mainland（中国大陆）
+China-Hong Kong, Macao and Taiwan（港澳台地区）
+America（美国）
+Europe（欧洲）
+India（印度）
+Other-Overseas（其他境外地区）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductRegion
 
     @ProductRegion.setter
@@ -6831,6 +8353,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def AccessMode(self):
+        """接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AccessMode
 
     @AccessMode.setter
@@ -6839,6 +8365,10 @@ Other-Overseas（其他境外地区）
 
     @property
     def Os(self):
+        """linux,android,liteos
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -6898,6 +8428,10 @@ class RechargeRecord(AbstractModel):
 
     @property
     def WaterId(self):
+        """流水记录号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WaterId
 
     @WaterId.setter
@@ -6906,6 +8440,10 @@ class RechargeRecord(AbstractModel):
 
     @property
     def BalanceBeforeRecharge(self):
+        """充值前的余额，单位0.01元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BalanceBeforeRecharge
 
     @BalanceBeforeRecharge.setter
@@ -6914,6 +8452,10 @@ class RechargeRecord(AbstractModel):
 
     @property
     def Money(self):
+        """充值金额，单位0.01元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Money
 
     @Money.setter
@@ -6922,6 +8464,10 @@ class RechargeRecord(AbstractModel):
 
     @property
     def OperateTime(self):
+        """充值时间, UTC值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OperateTime
 
     @OperateTime.setter
@@ -6961,6 +8507,9 @@ class RefundStorageServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
+        """云存服务ID
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -6969,6 +8518,9 @@ class RefundStorageServiceRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """云存子订单ID。如果指定子订单ID,则仅退订该子订单，如果未指定子定单ID，则退订所有子订单
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -7034,6 +8586,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def ServiceId(self):
+        """云存服务ID
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -7042,6 +8597,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def StorageRegion(self):
+        """云存服务所在的区域
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -7050,6 +8608,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -7058,6 +8619,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def ChnNum(self):
+        """视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :rtype: int
+        """
         return self._ChnNum
 
     @ChnNum.setter
@@ -7066,6 +8630,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def AccessId(self):
+        """终端用户在IoT Video平台的注册ID
+        :rtype: str
+        """
         return self._AccessId
 
     @AccessId.setter
@@ -7074,6 +8641,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """服务开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7082,6 +8652,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """服务失效时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7090,6 +8663,13 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """服务状态
+1：正常使用中
+2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+3：已过期。查询不到设备保存在云端的数据。
+4：等待服务生效。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7098,6 +8678,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """有效云存定单列表
+        :rtype: list of StorageOrder
+        """
         return self._Data
 
     @Data.setter
@@ -7106,6 +8689,9 @@ class RefundStorageServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7148,6 +8734,9 @@ class RegisteredStatus(AbstractModel):
 
     @property
     def CunionId(self):
+        """终端用户的唯一ID
+        :rtype: str
+        """
         return self._CunionId
 
     @CunionId.setter
@@ -7156,6 +8745,9 @@ class RegisteredStatus(AbstractModel):
 
     @property
     def IsRegisted(self):
+        """注册状态
+        :rtype: bool
+        """
         return self._IsRegisted
 
     @IsRegisted.setter
@@ -7176,6 +8768,159 @@ class RegisteredStatus(AbstractModel):
         
 
 
+class RenewCertificate(AbstractModel):
+    """刷新证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TempCertificate: 刷新证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TempCertificate: :class:`tencentcloud.iotvideo.v20191126.models.CertificateInfo`
+        """
+        self._TempCertificate = None
+
+    @property
+    def TempCertificate(self):
+        """刷新证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.CertificateInfo`
+        """
+        return self._TempCertificate
+
+    @TempCertificate.setter
+    def TempCertificate(self, TempCertificate):
+        self._TempCertificate = TempCertificate
+
+
+    def _deserialize(self, params):
+        if params.get("TempCertificate") is not None:
+            self._TempCertificate = CertificateInfo()
+            self._TempCertificate._deserialize(params.get("TempCertificate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewUploadTestRequest(AbstractModel):
+    """RenewUploadTest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgId: package ID
+        :type PkgId: str
+        :param _Tid: 设备TID
+        :type Tid: str
+        :param _SessionKey: SessionKeys
+        :type SessionKey: str
+        """
+        self._PkgId = None
+        self._Tid = None
+        self._SessionKey = None
+
+    @property
+    def PkgId(self):
+        """package ID
+        :rtype: str
+        """
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def Tid(self):
+        """设备TID
+        :rtype: str
+        """
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
+
+    @property
+    def SessionKey(self):
+        """SessionKeys
+        :rtype: str
+        """
+        return self._SessionKey
+
+    @SessionKey.setter
+    def SessionKey(self, SessionKey):
+        self._SessionKey = SessionKey
+
+
+    def _deserialize(self, params):
+        self._PkgId = params.get("PkgId")
+        self._Tid = params.get("Tid")
+        self._SessionKey = params.get("SessionKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewUploadTestResponse(AbstractModel):
+    """RenewUploadTest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 刷新证书返回的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotvideo.v20191126.models.RenewCertificate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """刷新证书返回的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.RenewCertificate`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = RenewCertificate()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class RunDeviceRequest(AbstractModel):
     """RunDevice请求参数结构体
 
@@ -7190,6 +8935,9 @@ class RunDeviceRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """TID列表 ≤100
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -7223,6 +8971,9 @@ class RunDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7248,6 +8999,9 @@ class RunDeviceStreamRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """设备TID 列表
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -7281,6 +9035,9 @@ class RunDeviceStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7309,6 +9066,9 @@ class RunIotModelRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -7317,6 +9077,9 @@ class RunIotModelRequest(AbstractModel):
 
     @property
     def IotModel(self):
+        """物模型定义，json格式的字符串
+        :rtype: str
+        """
         return self._IotModel
 
     @IotModel.setter
@@ -7351,6 +9114,9 @@ class RunIotModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7394,6 +9160,9 @@ class RunOtaVersionRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -7402,6 +9171,9 @@ class RunOtaVersionRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -7410,6 +9182,9 @@ class RunOtaVersionRequest(AbstractModel):
 
     @property
     def GrayValue(self):
+        """灰度值,取值范围0-100，为0时相当于暂停发布
+        :rtype: int
+        """
         return self._GrayValue
 
     @GrayValue.setter
@@ -7418,6 +9193,9 @@ class RunOtaVersionRequest(AbstractModel):
 
     @property
     def OldVersions(self):
+        """指定的旧版本
+        :rtype: list of str
+        """
         return self._OldVersions
 
     @OldVersions.setter
@@ -7426,6 +9204,9 @@ class RunOtaVersionRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -7434,6 +9215,9 @@ class RunOtaVersionRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -7442,6 +9226,9 @@ class RunOtaVersionRequest(AbstractModel):
 
     @property
     def Contents(self):
+        """版本发布的描述信息，需要国际化，可以为空
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.Contents`
+        """
         return self._Contents
 
     @Contents.setter
@@ -7483,6 +9270,9 @@ class RunOtaVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7520,6 +9310,9 @@ class RunTestOtaVersionRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -7528,6 +9321,9 @@ class RunTestOtaVersionRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -7536,6 +9332,9 @@ class RunTestOtaVersionRequest(AbstractModel):
 
     @property
     def Tids(self):
+        """指定可升级的设备TID
+        :rtype: list of str
+        """
         return self._Tids
 
     @Tids.setter
@@ -7544,6 +9343,9 @@ class RunTestOtaVersionRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -7552,6 +9354,9 @@ class RunTestOtaVersionRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -7589,6 +9394,9 @@ class RunTestOtaVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7629,6 +9437,9 @@ class SendOnlineMsgRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -7637,6 +9448,9 @@ class SendOnlineMsgRequest(AbstractModel):
 
     @property
     def Wakeup(self):
+        """如果设备处于休眠状态，是否唤醒设备
+        :rtype: bool
+        """
         return self._Wakeup
 
     @Wakeup.setter
@@ -7645,6 +9459,12 @@ class SendOnlineMsgRequest(AbstractModel):
 
     @property
     def WaitResp(self):
+        """等待回应类型
+0：不等待设备回应直接响应请求;
+1：要求设备确认消息已接收,或等待超时后返回;
+2：要求设备进行响应处理,收到设备的响应数据后,将设备响应数据回应给请求方;
+        :rtype: int
+        """
         return self._WaitResp
 
     @WaitResp.setter
@@ -7653,6 +9473,9 @@ class SendOnlineMsgRequest(AbstractModel):
 
     @property
     def MsgTopic(self):
+        """消息主题
+        :rtype: str
+        """
         return self._MsgTopic
 
     @MsgTopic.setter
@@ -7661,6 +9484,9 @@ class SendOnlineMsgRequest(AbstractModel):
 
     @property
     def MsgContent(self):
+        """消息内容，最大长度不超过8k字节
+        :rtype: str
+        """
         return self._MsgContent
 
     @MsgContent.setter
@@ -7704,6 +9530,9 @@ class SendOnlineMsgResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """若返回此项则表明需要用户用此taskID进行查询请求是否成功(只有waitresp不等于0的情况下才可能会返回该taskID项)
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7712,6 +9541,9 @@ class SendOnlineMsgResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备响应信息
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -7720,6 +9552,9 @@ class SendOnlineMsgResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7769,6 +9604,9 @@ class SetMessageQueueRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -7777,6 +9615,9 @@ class SetMessageQueueRequest(AbstractModel):
 
     @property
     def MsgQueueType(self):
+        """消息队列类型 1-CMQ; 2-Ckafka
+        :rtype: int
+        """
         return self._MsgQueueType
 
     @MsgQueueType.setter
@@ -7785,6 +9626,16 @@ class SetMessageQueueRequest(AbstractModel):
 
     @property
     def MsgType(self):
+        """消息类型,整型值（0-31）之间以“,”分隔
+0.设备在线状态变更
+1.常亮属性(ProConst)变更
+2.可写属性(ProWritable)变更
+3.只读属性(ProReadonly)变更
+4.设备控制(Action)
+5.设备事件(Event)
+6.系统事件(System)
+        :rtype: str
+        """
         return self._MsgType
 
     @MsgType.setter
@@ -7793,6 +9644,9 @@ class SetMessageQueueRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """消息队列主题，不超过32字符
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -7801,6 +9655,9 @@ class SetMessageQueueRequest(AbstractModel):
 
     @property
     def Instance(self):
+        """kafka消息队列的实例名，不超过64字符
+        :rtype: str
+        """
         return self._Instance
 
     @Instance.setter
@@ -7809,6 +9666,9 @@ class SetMessageQueueRequest(AbstractModel):
 
     @property
     def MsgRegion(self):
+        """消息地域，不超过32字符
+        :rtype: str
+        """
         return self._MsgRegion
 
     @MsgRegion.setter
@@ -7847,6 +9707,9 @@ class SetMessageQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7890,6 +9753,9 @@ class StorageOrder(AbstractModel):
 
     @property
     def OrderId(self):
+        """定单唯一性ID
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -7898,6 +9764,9 @@ class StorageOrder(AbstractModel):
 
     @property
     def PkgId(self):
+        """云存套餐ID
+        :rtype: str
+        """
         return self._PkgId
 
     @PkgId.setter
@@ -7906,6 +9775,15 @@ class StorageOrder(AbstractModel):
 
     @property
     def Status(self):
+        """定单服务状态
+1;订单正在使用。
+2:订单未开始。
+3:订单已经使用过，现在暂时未开始使用(该订单从其他服务转移而来)。
+4:订单已过期。
+5:订单已被退订。
+6:定单已被转移到其他云存服务。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7914,6 +9792,9 @@ class StorageOrder(AbstractModel):
 
     @property
     def StartTime(self):
+        """定单服务生效时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7922,6 +9803,9 @@ class StorageOrder(AbstractModel):
 
     @property
     def EndTime(self):
+        """定单服务失效时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7968,6 +9852,10 @@ class SystemType(AbstractModel):
 
     @property
     def Android(self):
+        """安卓系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OsData
+        """
         return self._Android
 
     @Android.setter
@@ -7976,6 +9864,10 @@ class SystemType(AbstractModel):
 
     @property
     def Linux(self):
+        """linux系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OsData
+        """
         return self._Linux
 
     @Linux.setter
@@ -7984,6 +9876,10 @@ class SystemType(AbstractModel):
 
     @property
     def LiteOs(self):
+        """LiteOs系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OsData
+        """
         return self._LiteOs
 
     @LiteOs.setter
@@ -8037,6 +9933,9 @@ class TraceStatus(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -8045,6 +9944,9 @@ class TraceStatus(AbstractModel):
 
     @property
     def IsExist(self):
+        """设备追踪状态
+        :rtype: bool
+        """
         return self._IsExist
 
     @IsExist.setter
@@ -8085,6 +9987,9 @@ class UpgradeDeviceRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """设备TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -8093,6 +9998,9 @@ class UpgradeDeviceRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本号
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -8101,6 +10009,9 @@ class UpgradeDeviceRequest(AbstractModel):
 
     @property
     def UpgradeNow(self):
+        """是否立即升级
+        :rtype: bool
+        """
         return self._UpgradeNow
 
     @UpgradeNow.setter
@@ -8140,6 +10051,10 @@ class UpgradeDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备端返回的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -8148,6 +10063,9 @@ class UpgradeDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8195,6 +10113,9 @@ class UploadOtaVersionRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -8203,6 +10124,9 @@ class UploadOtaVersionRequest(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -8211,6 +10135,9 @@ class UploadOtaVersionRequest(AbstractModel):
 
     @property
     def VersionUrl(self):
+        """固件版本URL
+        :rtype: str
+        """
         return self._VersionUrl
 
     @VersionUrl.setter
@@ -8219,6 +10146,9 @@ class UploadOtaVersionRequest(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小，单位：byte
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -8227,6 +10157,9 @@ class UploadOtaVersionRequest(AbstractModel):
 
     @property
     def Md5(self):
+        """文件md5校验码（32字符）
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -8235,6 +10168,9 @@ class UploadOtaVersionRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -8243,6 +10179,9 @@ class UploadOtaVersionRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8251,6 +10190,9 @@ class UploadOtaVersionRequest(AbstractModel):
 
     @property
     def Contents(self):
+        """版本发布的描述信息，需要国际化，可以为空
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.Contents`
+        """
         return self._Contents
 
     @Contents.setter
@@ -8293,6 +10235,9 @@ class UploadOtaVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8387,6 +10332,10 @@ class VersionData(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -8395,6 +10344,10 @@ class VersionData(AbstractModel):
 
     @property
     def OtaVersion(self):
+        """固件版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OtaVersion
 
     @OtaVersion.setter
@@ -8403,6 +10356,10 @@ class VersionData(AbstractModel):
 
     @property
     def PubStatus(self):
+        """版本类型 1未发布 2测试发布 3正式发布 4禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PubStatus
 
     @PubStatus.setter
@@ -8411,6 +10368,10 @@ class VersionData(AbstractModel):
 
     @property
     def VersionUrl(self):
+        """固件版本存储路径URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VersionUrl
 
     @VersionUrl.setter
@@ -8419,6 +10380,10 @@ class VersionData(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小，byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -8427,6 +10392,10 @@ class VersionData(AbstractModel):
 
     @property
     def Md5(self):
+        """文件校验码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -8435,6 +10404,10 @@ class VersionData(AbstractModel):
 
     @property
     def OldVersions(self):
+        """指定的允许升级的旧版本，PubStatus=3时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OldVersions
 
     @OldVersions.setter
@@ -8443,6 +10416,10 @@ class VersionData(AbstractModel):
 
     @property
     def Tids(self):
+        """指定的允许升级的旧设备id，PubStatus=2时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Tids
 
     @Tids.setter
@@ -8451,6 +10428,10 @@ class VersionData(AbstractModel):
 
     @property
     def GrayValue(self):
+        """灰度值（0-100）,PubStatus=3时有效，表示n%的升级总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GrayValue
 
     @GrayValue.setter
@@ -8459,6 +10440,10 @@ class VersionData(AbstractModel):
 
     @property
     def PublishTime(self):
+        """最近一次发布时间，UNIX时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PublishTime
 
     @PublishTime.setter
@@ -8467,6 +10452,10 @@ class VersionData(AbstractModel):
 
     @property
     def ActiveCount(self):
+        """此版本激活的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActiveCount
 
     @ActiveCount.setter
@@ -8475,6 +10464,10 @@ class VersionData(AbstractModel):
 
     @property
     def OnlineCount(self):
+        """此版本在线的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OnlineCount
 
     @OnlineCount.setter
@@ -8483,6 +10476,10 @@ class VersionData(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """上传固件文件的时间，UNIX时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8491,6 +10488,10 @@ class VersionData(AbstractModel):
 
     @property
     def UploadTime(self):
+        """发布记录的最后变更时间，UNIX时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UploadTime
 
     @UploadTime.setter
@@ -8499,6 +10500,10 @@ class VersionData(AbstractModel):
 
     @property
     def ModifyTimes(self):
+        """该固件版本发布的变更次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ModifyTimes
 
     @ModifyTimes.setter
@@ -8507,6 +10512,10 @@ class VersionData(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8515,6 +10524,10 @@ class VersionData(AbstractModel):
 
     @property
     def Contents(self):
+        """版本发布的描述信息，需要国际化，可以为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.Contents`
+        """
         return self._Contents
 
     @Contents.setter
@@ -8523,6 +10536,10 @@ class VersionData(AbstractModel):
 
     @property
     def AliveInMonthCnt(self):
+        """月活设备数，当月第一天开始有上线的设备数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AliveInMonthCnt
 
     @AliveInMonthCnt.setter

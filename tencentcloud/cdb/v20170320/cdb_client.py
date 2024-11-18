@@ -27,7 +27,7 @@ class CdbClient(AbstractClient):
 
 
     def AddTimeWindow(self, request):
-        """本接口(AddTimeWindow)用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
+        """本接口（AddTimeWindow）用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
 
         :param request: Request instance for AddTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AddTimeWindowRequest`
@@ -73,7 +73,7 @@ class CdbClient(AbstractClient):
 
 
     def AdjustCdbProxyAddress(self, request):
-        """调整数据库代理地址配置
+        """本接口（AdjustCdbProxyAddress）用于调整数据库代理地址配置。
 
         :param request: Request instance for AdjustCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyAddressRequest`
@@ -165,7 +165,7 @@ class CdbClient(AbstractClient):
 
 
     def CheckMigrateCluster(self, request):
-        """高可用实例一键迁移到集群版校验
+        """本接口（CheckMigrateCluster）用于高可用实例一键迁移到集群版校验。
 
         :param request: Request instance for CheckMigrateCluster.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CheckMigrateClusterRequest`
@@ -535,7 +535,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBInstance(self, request):
-        """本接口(CreateDBInstance)用于创建包年包月的云数据库实例（包括主实例、灾备实例和只读实例），可通过传入实例规格、MySQL 版本号、购买时长和数量等信息创建云数据库实例。
+        """本接口（CreateDBInstance）用于创建包年包月的云数据库实例（包括主实例、灾备实例和只读实例），可通过传入实例规格、MySQL 版本号、购买时长和数量等信息创建云数据库实例。
 
         该接口为异步接口，您还可以使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询该实例的详细信息。当该实例的 Status 为1，且 TaskStatus 为0，表示实例已经发货成功。
 
@@ -567,7 +567,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBInstanceHour(self, request):
-        """本接口(CreateDBInstanceHour)用于创建按量计费的实例，可通过传入实例规格、MySQL 版本号和数量等信息创建云数据库实例，支持主实例、灾备实例和只读实例的创建。
+        """本接口（CreateDBInstanceHour）用于创建按量计费的实例，可通过传入实例规格、MySQL 版本号和数量等信息创建云数据库实例，支持主实例、灾备实例和只读实例的创建。
 
         该接口为异步接口，您还可以使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询该实例的详细信息。当该实例的 Status 为 1，且 TaskStatus 为 0，表示实例已经发货成功。
 
@@ -1495,7 +1495,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeClusterInfo(self, request):
-        """本接口(DescribeClusterInfo)用于查询集群版实例信息。
+        """本接口（DescribeClusterInfo）用于查询集群版实例信息。
 
         :param request: Request instance for DescribeClusterInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeClusterInfoRequest`
@@ -1541,7 +1541,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBFeatures(self, request):
-        """本接口(DescribeDBFeatures)用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
+        """本接口（DescribeDBFeatures）用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
 
         :param request: Request instance for DescribeDBFeatures.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBFeaturesRequest`
@@ -1656,7 +1656,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceInfo(self, request):
-        """查询实例基本信息（实例 ID ，实例名称，是否开通加密 ）
+        """本接口（DescribeDBInstanceInfo）用于查询实例基本信息（实例 ID，实例名称，是否开通加密）。
 
         :param request: Request instance for DescribeDBInstanceInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceInfoRequest`
@@ -1702,7 +1702,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceRebootTime(self, request):
-        """本接口(DescribeDBInstanceRebootTime)用于查询云数据库实例重启预计所需的时间。
+        """本接口（DescribeDBInstanceRebootTime）用于查询云数据库实例重启预计所需的时间。
 
         :param request: Request instance for DescribeDBInstanceRebootTime.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceRebootTimeRequest`
@@ -1748,7 +1748,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBPrice(self, request):
-        """本接口(DescribeDBPrice)用于查询购买或续费云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。可传入实例名称来查询实例续费价格。
+        """本接口（DescribeDBPrice）用于查询购买或续费云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。可传入实例名称来查询实例续费价格。
 
         注意：对某个地域进行询价，请使用对应地域的接入点，接入点信息请参照 <a href="https://cloud.tencent.com/document/api/236/15832">服务地址</a> 文档。例如：对广州地域进行询价，请把请求发到：cdb.ap-guangzhou.tencentcloudapi.com。同理对上海地域询价，把请求发到：cdb.ap-shanghai.tencentcloudapi.com。
 
@@ -1958,7 +1958,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeInstanceAlarmEvents(self, request):
-        """查询实例发生的事件信息
+        """本接口（DescribeInstanceAlarmEvents）用于查询实例发生的事件信息。
 
         :param request: Request instance for DescribeInstanceAlarmEvents.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceAlarmEventsRequest`
@@ -2050,7 +2050,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeInstanceUpgradeType(self, request):
-        """本接口(DescribeInstanceUpgradeType)用于查询数据库实例升级类型。
+        """本接口（DescribeInstanceUpgradeType）用于查询数据库实例升级类型。
 
         :param request: Request instance for DescribeInstanceUpgradeType.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceUpgradeTypeRequest`
@@ -2234,7 +2234,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRoGroups(self, request):
-        """本接口(DescribeRoGroups)用于查询云数据库实例的所有的RO组的信息。
+        """本接口（DescribeRoGroups）用于查询云数据库实例的所有的 RO 组的信息。
 
         :param request: Request instance for DescribeRoGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRoGroupsRequest`
@@ -2556,31 +2556,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def InitDBInstances(self, request):
-        """该接口不再维护，参考CreateDBInstance+API文档，在发货时即可完成初始化。
-
-        本接口(InitDBInstances)用于初始化云数据库实例，包括初始化密码、默认字符集、实例端口号等。该接口已经废弃，在发货接口CreateDBInstance、CreateDBInstanceHour可以直接使用参数Password设置密码，使用参数ParamList设置字符集，使用参数Port设置端口号。
-
-        :param request: Request instance for InitDBInstances.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InitDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.InitDBInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def InquiryPriceUpgradeInstances(self, request):
         """本接口(InquiryPriceUpgradeInstances)用于查询云数据库实例升级的价格，支持查询按量计费或者包年包月实例的升级价格，实例类型支持主实例、灾备实例和只读实例。
 
@@ -2838,7 +2813,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyAutoRenewFlag(self, request):
-        """本接口(ModifyAutoRenewFlag)用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
+        """本接口（ModifyAutoRenewFlag）用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
 
         :param request: Request instance for ModifyAutoRenewFlag.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAutoRenewFlagRequest`
@@ -3058,6 +3033,29 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyDBInstanceProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstanceProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceReadOnlyStatus(self, request):
+        """本接口（ModifyDBInstanceReadOnlyStatus）用户设置MySQL云数据库实例为只读
+
+        :param request: Request instance for ModifyDBInstanceReadOnlyStatus.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceReadOnlyStatusRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceReadOnlyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceReadOnlyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceReadOnlyStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3371,7 +3369,7 @@ class CdbClient(AbstractClient):
 
 
     def OpenDBInstanceEncryption(self, request):
-        """本接口(OpenDBInstanceEncryption)用于启用实例数据存储加密功能，支持用户指定自定义密钥。
+        """本接口（OpenDBInstanceEncryption）用于启用实例数据存储加密功能，支持用户指定自定义密钥。
 
         注意，启用实例数据存储加密之前，需要进行以下操作：
 
@@ -3590,10 +3588,10 @@ class CdbClient(AbstractClient):
 
 
     def RestartDBInstances(self, request):
-        """本接口(RestartDBInstances)用于重启云数据库实例。
+        """本接口（RestartDBInstances）用于重启云数据库实例。
 
         注意：
-        1、本接口只支持主实例进行重启操作；
+        1、本接口支持主实例、只读实例、灾备实例进行重启操作。
         2、实例状态必须为正常，并且没有其他异步任务在执行中。
 
         :param request: Request instance for RestartDBInstances.
@@ -3663,7 +3661,7 @@ class CdbClient(AbstractClient):
 
 
     def StartReplication(self, request):
-        """开启 RO 复制，从主实例同步数据。
+        """本接口（StartReplication）用于开启 RO 复制，从主实例同步数据。
 
         :param request: Request instance for StartReplication.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StartReplicationRequest`
@@ -3732,7 +3730,7 @@ class CdbClient(AbstractClient):
 
 
     def StopReplication(self, request):
-        """停止 RO 复制，中断从主实例同步数据。
+        """本接口（StopReplication）用于停止 RO 复制，中断从主实例同步数据。
 
         :param request: Request instance for StopReplication.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopReplicationRequest`
@@ -3847,7 +3845,7 @@ class CdbClient(AbstractClient):
 
 
     def SwitchDrInstanceToMaster(self, request):
-        """本接口(SwitchDrInstanceToMaster)用于将云数据库灾备实例切换为主实例，注意请求必须发到灾备实例所在的地域。
+        """本接口（SwitchDrInstanceToMaster）用于将云数据库灾备实例切换为主实例，注意请求必须发到灾备实例所在的地域。
 
         :param request: Request instance for SwitchDrInstanceToMaster.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchDrInstanceToMasterRequest`

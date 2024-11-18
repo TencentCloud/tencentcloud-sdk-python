@@ -27,7 +27,9 @@ class CfwClient(AbstractClient):
 
 
     def AddAcRule(self, request):
-        """添加互联网边界规则
+        """接口不再使用，已有新接口AddAclRule
+
+        添加互联网边界规则
 
         :param request: Request instance for AddAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleRequest`
@@ -96,7 +98,7 @@ class CfwClient(AbstractClient):
 
 
     def AddNatAcRule(self, request):
-        """添加nat访问控制规则(地域必填)
+        """添加nat访问控制规则
 
         :param request: Request instance for AddNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddNatAcRuleRequest`
@@ -1337,29 +1339,6 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeNatSwitchList(self, request):
-        """查询NAT边界防火墙开关列表
-
-        :param request: Request instance for DescribeNatSwitchList.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatSwitchListRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatSwitchListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeNatSwitchList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeNatSwitchListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeResourceGroup(self, request):
         """DescribeResourceGroup资产中心资产树信息
 
@@ -1384,7 +1363,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeResourceGroupNew(self, request):
-        """DescribeResourceGroupNew资产中心资产树信息
+        """资产中心资产组数数据信息查询
 
         :param request: Request instance for DescribeResourceGroupNew.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeResourceGroupNewRequest`
@@ -1499,7 +1478,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeTLogInfo(self, request):
-        """DescribeTLogInfo告警中心概况
+        """DescribeTLogInfo告警中心概况查询
 
         :param request: Request instance for DescribeTLogInfo.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogInfoRequest`
@@ -1775,7 +1754,9 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAllVPCSwitchStatus(self, request):
-        """VPC防火墙一键开关
+        """该接口已不再使用
+
+        VPC防火墙一键开关
 
         :param request: Request instance for ModifyAllVPCSwitchStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllVPCSwitchStatusRequest`
@@ -2194,7 +2175,6 @@ class CfwClient(AbstractClient):
 
     def ModifyResourceGroup(self, request):
         """ModifyResourceGroup-资产中心资产组信息修改
-
 
         :param request: Request instance for ModifyResourceGroup.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyResourceGroupRequest`

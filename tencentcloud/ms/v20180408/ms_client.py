@@ -144,7 +144,9 @@ class MsClient(AbstractClient):
 
 
     def CreateResourceInstances(self, request):
-        """用户可以使用该接口自建资源，只支持白名单用户
+        """不再使用
+
+        用户可以使用该接口自建资源，只支持白名单用户
 
         :param request: Request instance for CreateResourceInstances.
         :type request: :class:`tencentcloud.ms.v20180408.models.CreateResourceInstancesRequest`

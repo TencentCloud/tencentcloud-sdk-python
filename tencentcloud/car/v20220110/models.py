@@ -44,6 +44,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -52,6 +55,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def UserIp(self):
+        """用户IP，用户客户端的公网IP，用于就近调度
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -60,6 +66,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -68,6 +77,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
+        """应用版本ID。如果请求应用的当前版本，可以不用填写该字段。如果请求应用的其它版本时，才需要通过该字段来指定应用的版本。
+        :rtype: str
+        """
         return self._ApplicationVersionId
 
     @ApplicationVersionId.setter
@@ -76,6 +88,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -113,6 +128,9 @@ class ApplyConcurrentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -168,6 +186,9 @@ Viewer：观察者（只能观看，无法操作）
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -176,6 +197,9 @@ Viewer：观察者（只能观看，无法操作）
 
     @property
     def UserIp(self):
+        """用户IP，用户客户端的公网IP，用于就近调度
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -184,6 +208,9 @@ Viewer：观察者（只能观看，无法操作）
 
     @property
     def ClientSession(self):
+        """客户端session信息，从SDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
+        :rtype: str
+        """
         return self._ClientSession
 
     @ClientSession.setter
@@ -192,6 +219,11 @@ Viewer：观察者（只能观看，无法操作）
 
     @property
     def RunMode(self):
+        """云端运行模式。
+RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
+默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -200,6 +232,15 @@ Viewer：观察者（只能观看，无法操作）
 
     @property
     def ApplicationParameters(self):
+        """应用启动参数。
+如果请求的是多应用共享项目，此参数生效；
+如果请求的是关闭预启动的单应用独享项目，此参数生效；
+如果请求的是开启预启动的单应用独享项目，此参数失效。
+
+注意：在此参数生效的情况下，将会被追加到控制台应用或项目配置的启动参数的后面。
+例如，对于某关闭预启动的单应用独享项目，若在控制台中项目配置的启动参数为bar=0，而ApplicationParameters参数为foo=1，则实际应用启动参数为bar=0 foo=1。
+        :rtype: str
+        """
         return self._ApplicationParameters
 
     @ApplicationParameters.setter
@@ -208,6 +249,11 @@ Viewer：观察者（只能观看，无法操作）
 
     @property
     def HostUserId(self):
+        """【多人互动】房主用户ID，在多人互动模式下为必填字段。
+如果该用户是房主，HostUserId需要和UserId保持一致；
+如果该用户非房主，HostUserId需要填写房主的HostUserId。
+        :rtype: str
+        """
         return self._HostUserId
 
     @HostUserId.setter
@@ -216,6 +262,11 @@ Viewer：观察者（只能观看，无法操作）
 
     @property
     def Role(self):
+        """【多人互动】角色。
+Player：玩家（可通过键鼠等操作应用）
+Viewer：观察者（只能观看，无法操作）
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -258,6 +309,9 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def ServerSession(self):
+        """服务端session信息，返回给SDK
+        :rtype: str
+        """
         return self._ServerSession
 
     @ServerSession.setter
@@ -266,6 +320,9 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -292,6 +349,9 @@ class DestroySessionRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -325,6 +385,9 @@ class DestroySessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -353,6 +416,9 @@ class StartPublishStreamRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（UserId将作为StreamId进行推流，比如绑定推流域名为abc.livepush.myqcloud.com，那么推流地址为rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -361,6 +427,9 @@ class StartPublishStreamRequest(AbstractModel):
 
     @property
     def PublishStreamArgs(self):
+        """推流参数，推流时携带自定义参数。
+        :rtype: str
+        """
         return self._PublishStreamArgs
 
     @PublishStreamArgs.setter
@@ -395,6 +464,9 @@ class StartPublishStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -423,6 +495,9 @@ class StartPublishStreamWithURLRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -431,6 +506,9 @@ class StartPublishStreamWithURLRequest(AbstractModel):
 
     @property
     def PublishStreamURL(self):
+        """推流地址，仅支持rtmp协议。
+        :rtype: str
+        """
         return self._PublishStreamURL
 
     @PublishStreamURL.setter
@@ -465,6 +543,9 @@ class StartPublishStreamWithURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -490,6 +571,9 @@ class StopPublishStreamRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -523,6 +607,9 @@ class StopPublishStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

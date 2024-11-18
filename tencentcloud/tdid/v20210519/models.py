@@ -47,6 +47,9 @@ class CRDLArg(AbstractModel):
 
     @property
     def CPTId(self):
+        """CPT ID
+        :rtype: int
+        """
         return self._CPTId
 
     @CPTId.setter
@@ -55,6 +58,9 @@ class CRDLArg(AbstractModel):
 
     @property
     def Issuer(self):
+        """签发者 did
+        :rtype: str
+        """
         return self._Issuer
 
     @Issuer.setter
@@ -63,6 +69,9 @@ class CRDLArg(AbstractModel):
 
     @property
     def ExpirationDate(self):
+        """过期时间
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -71,6 +80,9 @@ class CRDLArg(AbstractModel):
 
     @property
     def ClaimJson(self):
+        """声明
+        :rtype: str
+        """
         return self._ClaimJson
 
     @ClaimJson.setter
@@ -79,6 +91,9 @@ class CRDLArg(AbstractModel):
 
     @property
     def Type(self):
+        """凭证类型
+        :rtype: list of str
+        """
         return self._Type
 
     @Type.setter
@@ -87,6 +102,9 @@ class CRDLArg(AbstractModel):
 
     @property
     def Parties(self):
+        """多方签名的用户did
+        :rtype: list of str
+        """
         return self._Parties
 
     @Parties.setter
@@ -125,6 +143,9 @@ class ChainTransaction(AbstractModel):
 
     @property
     def TransactionHash(self):
+        """交易哈希
+        :rtype: str
+        """
         return self._TransactionHash
 
     @TransactionHash.setter
@@ -167,6 +188,9 @@ class CreateDisclosedCredentialRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """披露策略id，PolicyJson和PolicyId任选其一
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -175,6 +199,9 @@ class CreateDisclosedCredentialRequest(AbstractModel):
 
     @property
     def CredentialData(self):
+        """凭证文本内容，FunctionArg和CredentialText任选其一
+        :rtype: str
+        """
         return self._CredentialData
 
     @CredentialData.setter
@@ -183,6 +210,9 @@ class CreateDisclosedCredentialRequest(AbstractModel):
 
     @property
     def PolicyJson(self):
+        """披露策略文本
+        :rtype: str
+        """
         return self._PolicyJson
 
     @PolicyJson.setter
@@ -191,6 +221,9 @@ class CreateDisclosedCredentialRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用ID
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -230,6 +263,9 @@ class CreateDisclosedCredentialResponse(AbstractModel):
 
     @property
     def CredentialData(self):
+        """凭证字符串
+        :rtype: str
+        """
         return self._CredentialData
 
     @CredentialData.setter
@@ -238,6 +274,9 @@ class CreateDisclosedCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -282,6 +321,9 @@ class CreatePresentationRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -290,6 +332,9 @@ class CreatePresentationRequest(AbstractModel):
 
     @property
     def Credentials(self):
+        """凭证列表
+        :rtype: list of str
+        """
         return self._Credentials
 
     @Credentials.setter
@@ -298,6 +343,9 @@ class CreatePresentationRequest(AbstractModel):
 
     @property
     def Did(self):
+        """VP持有人的DID标识
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -306,6 +354,9 @@ class CreatePresentationRequest(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """VP随机验证码
+        :rtype: str
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -314,6 +365,9 @@ class CreatePresentationRequest(AbstractModel):
 
     @property
     def PolicyJson(self):
+        """选择性披露策略
+        :rtype: str
+        """
         return self._PolicyJson
 
     @PolicyJson.setter
@@ -322,6 +376,9 @@ class CreatePresentationRequest(AbstractModel):
 
     @property
     def Unsigned(self):
+        """是否签名，ture时signatureValue为待签名内容由调用端自行签名，false时signatureValue为平台自动已签名的内容。默认false
+        :rtype: bool
+        """
         return self._Unsigned
 
     @Unsigned.setter
@@ -330,6 +387,9 @@ class CreatePresentationRequest(AbstractModel):
 
     @property
     def CredentialList(self):
+        """可验证凭证证明列表
+        :rtype: list of CredentialProof
+        """
         return self._CredentialList
 
     @CredentialList.setter
@@ -377,6 +437,9 @@ class CreatePresentationResponse(AbstractModel):
 
     @property
     def PresentationData(self):
+        """可验证表达内容
+        :rtype: str
+        """
         return self._PresentationData
 
     @PresentationData.setter
@@ -385,6 +448,9 @@ class CreatePresentationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -414,6 +480,9 @@ class CreateTDidByHostRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用ID
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -422,6 +491,9 @@ class CreateTDidByHostRequest(AbstractModel):
 
     @property
     def CustomAttribute(self):
+        """自定义DID文档json属性
+        :rtype: str
+        """
         return self._CustomAttribute
 
     @CustomAttribute.setter
@@ -462,6 +534,9 @@ class CreateTDidByHostResponse(AbstractModel):
 
     @property
     def Did(self):
+        """DID标识
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -470,6 +545,9 @@ class CreateTDidByHostResponse(AbstractModel):
 
     @property
     def Transaction(self):
+        """链上交易信息
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
+        """
         return self._Transaction
 
     @Transaction.setter
@@ -478,6 +556,9 @@ class CreateTDidByHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -516,6 +597,9 @@ class CreateTDidByPubKeyRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -524,6 +608,9 @@ class CreateTDidByPubKeyRequest(AbstractModel):
 
     @property
     def PublicKey(self):
+        """pem格式的认证公钥
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -532,6 +619,9 @@ class CreateTDidByPubKeyRequest(AbstractModel):
 
     @property
     def CustomAttribute(self):
+        """自定义DID初始化属性json字符串
+        :rtype: str
+        """
         return self._CustomAttribute
 
     @CustomAttribute.setter
@@ -540,6 +630,9 @@ class CreateTDidByPubKeyRequest(AbstractModel):
 
     @property
     def IgnoreExisted(self):
+        """0:did存在返回错误，1:did存在返回该did，默认:0
+        :rtype: int
+        """
         return self._IgnoreExisted
 
     @IgnoreExisted.setter
@@ -582,6 +675,9 @@ class CreateTDidByPubKeyResponse(AbstractModel):
 
     @property
     def Did(self):
+        """did标识
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -590,6 +686,9 @@ class CreateTDidByPubKeyResponse(AbstractModel):
 
     @property
     def Transaction(self):
+        """链上交易信息
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
+        """
         return self._Transaction
 
     @Transaction.setter
@@ -598,6 +697,9 @@ class CreateTDidByPubKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -627,6 +729,9 @@ class CredentialProof(AbstractModel):
 
     @property
     def Credential(self):
+        """可验证凭证内容
+        :rtype: str
+        """
         return self._Credential
 
     @Credential.setter
@@ -687,6 +792,9 @@ class CredentialState(AbstractModel):
 
     @property
     def Id(self):
+        """凭证唯一id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -695,6 +803,9 @@ class CredentialState(AbstractModel):
 
     @property
     def Status(self):
+        """凭证状态（0：吊销；1：有效）
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -703,6 +814,9 @@ class CredentialState(AbstractModel):
 
     @property
     def Issuer(self):
+        """凭证颁发者Did
+        :rtype: str
+        """
         return self._Issuer
 
     @Issuer.setter
@@ -711,6 +825,9 @@ class CredentialState(AbstractModel):
 
     @property
     def VCDigest(self):
+        """VC摘要，对应凭证Proof的vcDigest字段
+        :rtype: str
+        """
         return self._VCDigest
 
     @VCDigest.setter
@@ -719,6 +836,9 @@ class CredentialState(AbstractModel):
 
     @property
     def TXDigest(self):
+        """交易摘要，对应凭证Proof的txDigest字段 
+        :rtype: str
+        """
         return self._TXDigest
 
     @TXDigest.setter
@@ -727,6 +847,9 @@ class CredentialState(AbstractModel):
 
     @property
     def IssueTime(self):
+        """颁布凭证的UTC时间戳
+        :rtype: int
+        """
         return self._IssueTime
 
     @IssueTime.setter
@@ -735,6 +858,9 @@ class CredentialState(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """凭证过期的UTC时间戳
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -743,6 +869,9 @@ class CredentialState(AbstractModel):
 
     @property
     def CPTId(self):
+        """凭证模板id
+        :rtype: int
+        """
         return self._CPTId
 
     @CPTId.setter
@@ -751,6 +880,9 @@ class CredentialState(AbstractModel):
 
     @property
     def Signature(self):
+        """凭证签名
+        :rtype: str
+        """
         return self._Signature
 
     @Signature.setter
@@ -759,6 +891,9 @@ class CredentialState(AbstractModel):
 
     @property
     def MetaDigest(self):
+        """元数据摘要
+        :rtype: str
+        """
         return self._MetaDigest
 
     @MetaDigest.setter
@@ -810,6 +945,9 @@ class DeactivateTDidRequest(AbstractModel):
 
     @property
     def Did(self):
+        """DID标识符
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -818,6 +956,9 @@ class DeactivateTDidRequest(AbstractModel):
 
     @property
     def OperateCredential(self):
+        """设置DID禁用状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+        :rtype: str
+        """
         return self._OperateCredential
 
     @OperateCredential.setter
@@ -826,6 +967,9 @@ class DeactivateTDidRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用Id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -834,6 +978,9 @@ class DeactivateTDidRequest(AbstractModel):
 
     @property
     def Deactivated(self):
+        """是否禁用
+        :rtype: str
+        """
         return self._Deactivated
 
     @Deactivated.setter
@@ -873,6 +1020,9 @@ class DeactivateTDidResponse(AbstractModel):
 
     @property
     def Transaction(self):
+        """上链交易信息
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
+        """
         return self._Transaction
 
     @Transaction.setter
@@ -881,6 +1031,9 @@ class DeactivateTDidResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -912,6 +1065,9 @@ class DidAttribute(AbstractModel):
 
     @property
     def Key(self):
+        """键名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -920,6 +1076,9 @@ class DidAttribute(AbstractModel):
 
     @property
     def Val(self):
+        """键值
+        :rtype: str
+        """
         return self._Val
 
     @Val.setter
@@ -954,6 +1113,9 @@ class GetAppSummaryRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用Id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -995,6 +1157,10 @@ class GetAppSummaryResponse(AbstractModel):
 
     @property
     def AppCounter(self):
+        """用户参与应用的统计指标 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
+        """
         return self._AppCounter
 
     @AppCounter.setter
@@ -1003,6 +1169,10 @@ class GetAppSummaryResponse(AbstractModel):
 
     @property
     def UserCounter(self):
+        """用户创建资源的统计指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
+        """
         return self._UserCounter
 
     @UserCounter.setter
@@ -1011,6 +1181,9 @@ class GetAppSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1045,6 +1218,9 @@ class GetCredentialStateRequest(AbstractModel):
 
     @property
     def CredentialId(self):
+        """凭证唯一Id
+        :rtype: str
+        """
         return self._CredentialId
 
     @CredentialId.setter
@@ -1053,6 +1229,9 @@ class GetCredentialStateRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """用户应用Id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -1091,6 +1270,10 @@ class GetCredentialStateResponse(AbstractModel):
 
     @property
     def CredentialState(self):
+        """凭证状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CredentialState`
+        """
         return self._CredentialState
 
     @CredentialState.setter
@@ -1099,6 +1282,9 @@ class GetCredentialStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1153,6 +1339,10 @@ class GetOverSummaryResponse(AbstractModel):
 
     @property
     def AppCounter(self):
+        """用户参与应用的统计指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
+        """
         return self._AppCounter
 
     @AppCounter.setter
@@ -1161,6 +1351,10 @@ class GetOverSummaryResponse(AbstractModel):
 
     @property
     def UserCounter(self):
+        """用户部署应用的统计指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
+        """
         return self._UserCounter
 
     @UserCounter.setter
@@ -1169,6 +1363,10 @@ class GetOverSummaryResponse(AbstractModel):
 
     @property
     def AppCnt(self):
+        """用户参与的应用总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppCnt
 
     @AppCnt.setter
@@ -1177,6 +1375,10 @@ class GetOverSummaryResponse(AbstractModel):
 
     @property
     def DeployCnt(self):
+        """用户部署的应用总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeployCnt
 
     @DeployCnt.setter
@@ -1185,6 +1387,10 @@ class GetOverSummaryResponse(AbstractModel):
 
     @property
     def ChainCnt(self):
+        """部署网络子链总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChainCnt
 
     @ChainCnt.setter
@@ -1193,6 +1399,9 @@ class GetOverSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1230,6 +1439,9 @@ class GetTDidByObjectIdRequest(AbstractModel):
 
     @property
     def ObjectId(self):
+        """业务层为DID设置的唯一标识
+        :rtype: str
+        """
         return self._ObjectId
 
     @ObjectId.setter
@@ -1238,6 +1450,9 @@ class GetTDidByObjectIdRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用Id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -1276,6 +1491,10 @@ class GetTDidByObjectIdResponse(AbstractModel):
 
     @property
     def Did(self):
+        """DID标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1284,6 +1503,9 @@ class GetTDidByObjectIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1313,6 +1535,9 @@ class GetTDidDocumentRequest(AbstractModel):
 
     @property
     def Did(self):
+        """DID标识
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1321,6 +1546,9 @@ class GetTDidDocumentRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用ID
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -1358,6 +1586,9 @@ class GetTDidDocumentResponse(AbstractModel):
 
     @property
     def Document(self):
+        """DID文档内容
+        :rtype: str
+        """
         return self._Document
 
     @Document.setter
@@ -1366,6 +1597,9 @@ class GetTDidDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1395,6 +1629,9 @@ class GetTDidPubKeyRequest(AbstractModel):
 
     @property
     def Did(self):
+        """DID标识
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1403,6 +1640,9 @@ class GetTDidPubKeyRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用Id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -1440,6 +1680,9 @@ class GetTDidPubKeyResponse(AbstractModel):
 
     @property
     def AuthPublicKeyList(self):
+        """DID公钥数组
+        :rtype: list of str
+        """
         return self._AuthPublicKeyList
 
     @AuthPublicKeyList.setter
@@ -1448,6 +1691,9 @@ class GetTDidPubKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1480,6 +1726,9 @@ class IssueCredentialRequest(AbstractModel):
 
     @property
     def CRDLArg(self):
+        """参数集合，详见示例
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CRDLArg`
+        """
         return self._CRDLArg
 
     @CRDLArg.setter
@@ -1488,6 +1737,9 @@ class IssueCredentialRequest(AbstractModel):
 
     @property
     def UnSigned(self):
+        """是否未签名
+        :rtype: bool
+        """
         return self._UnSigned
 
     @UnSigned.setter
@@ -1496,6 +1748,9 @@ class IssueCredentialRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -1536,6 +1791,9 @@ class IssueCredentialResponse(AbstractModel):
 
     @property
     def CredentialData(self):
+        """可验证凭证内容
+        :rtype: str
+        """
         return self._CredentialData
 
     @CredentialData.setter
@@ -1544,6 +1802,9 @@ class IssueCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1576,6 +1837,9 @@ class QueryAuthorityInfoRequest(AbstractModel):
 
     @property
     def Did(self):
+        """DID标识
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1584,6 +1848,9 @@ class QueryAuthorityInfoRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -1592,6 +1859,9 @@ class QueryAuthorityInfoRequest(AbstractModel):
 
     @property
     def Name(self):
+        """权威机构名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1642,6 +1912,9 @@ class QueryAuthorityInfoResponse(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1650,6 +1923,9 @@ class QueryAuthorityInfoResponse(AbstractModel):
 
     @property
     def Did(self):
+        """权威机构did
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1658,6 +1934,9 @@ class QueryAuthorityInfoResponse(AbstractModel):
 
     @property
     def Status(self):
+        """状态：1为已认证，2为未认证
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1666,6 +1945,9 @@ class QueryAuthorityInfoResponse(AbstractModel):
 
     @property
     def Description(self):
+        """机构备注信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1674,6 +1956,9 @@ class QueryAuthorityInfoResponse(AbstractModel):
 
     @property
     def RecognizeTime(self):
+        """认证时间
+        :rtype: str
+        """
         return self._RecognizeTime
 
     @RecognizeTime.setter
@@ -1682,6 +1967,9 @@ class QueryAuthorityInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1715,6 +2003,9 @@ class QueryCPTRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -1723,6 +2014,9 @@ class QueryCPTRequest(AbstractModel):
 
     @property
     def CPTId(self):
+        """凭证模板id
+        :rtype: int
+        """
         return self._CPTId
 
     @CPTId.setter
@@ -1760,6 +2054,9 @@ class QueryCPTResponse(AbstractModel):
 
     @property
     def CPTJson(self):
+        """凭证模板内容
+        :rtype: str
+        """
         return self._CPTJson
 
     @CPTJson.setter
@@ -1768,6 +2065,9 @@ class QueryCPTResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1811,6 +2111,10 @@ class ResourceCounterData(AbstractModel):
 
     @property
     def DidCnt(self):
+        """DID总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DidCnt
 
     @DidCnt.setter
@@ -1819,6 +2123,10 @@ class ResourceCounterData(AbstractModel):
 
     @property
     def VCCnt(self):
+        """VC总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VCCnt
 
     @VCCnt.setter
@@ -1827,6 +2135,10 @@ class ResourceCounterData(AbstractModel):
 
     @property
     def CPTCnt(self):
+        """CPT总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CPTCnt
 
     @CPTCnt.setter
@@ -1835,6 +2147,10 @@ class ResourceCounterData(AbstractModel):
 
     @property
     def VerifyCnt(self):
+        """ VC验证总数 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VerifyCnt
 
     @VerifyCnt.setter
@@ -1843,6 +2159,10 @@ class ResourceCounterData(AbstractModel):
 
     @property
     def AuthCnt(self):
+        """权威机构数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AuthCnt
 
     @AuthCnt.setter
@@ -1889,6 +2209,9 @@ class SetTDidAttributeRequest(AbstractModel):
 
     @property
     def Did(self):
+        """DID标识符
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1897,6 +2220,9 @@ class SetTDidAttributeRequest(AbstractModel):
 
     @property
     def Attributes(self):
+        """属性名值对数组
+        :rtype: list of DidAttribute
+        """
         return self._Attributes
 
     @Attributes.setter
@@ -1905,6 +2231,9 @@ class SetTDidAttributeRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用Id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -1913,6 +2242,9 @@ class SetTDidAttributeRequest(AbstractModel):
 
     @property
     def OperateCredential(self):
+        """操作鉴权凭证
+        :rtype: str
+        """
         return self._OperateCredential
 
     @OperateCredential.setter
@@ -1957,6 +2289,9 @@ class SetTDidAttributeResponse(AbstractModel):
 
     @property
     def Transaction(self):
+        """上链交易信息
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
+        """
         return self._Transaction
 
     @Transaction.setter
@@ -1965,6 +2300,9 @@ class SetTDidAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1996,6 +2334,9 @@ class UpdateCredentialStateRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用Id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -2004,6 +2345,9 @@ class UpdateCredentialStateRequest(AbstractModel):
 
     @property
     def OperateCredential(self):
+        """更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+        :rtype: str
+        """
         return self._OperateCredential
 
     @OperateCredential.setter
@@ -2042,6 +2386,10 @@ class UpdateCredentialStateResponse(AbstractModel):
 
     @property
     def Result(self):
+        """更新是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -2050,6 +2398,9 @@ class UpdateCredentialStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2082,6 +2433,9 @@ class VerifyCredentialsRequest(AbstractModel):
 
     @property
     def VerifyType(self):
+        """0:仅验证签名，1:验证签名和链上状态，2, 仅验证链上状态，默认为0, 3.验证DID和凭证状态以及签名，4. 验证历史凭证有效性
+        :rtype: int
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -2090,6 +2444,9 @@ class VerifyCredentialsRequest(AbstractModel):
 
     @property
     def CredentialData(self):
+        """凭证内容
+        :rtype: str
+        """
         return self._CredentialData
 
     @CredentialData.setter
@@ -2098,6 +2455,9 @@ class VerifyCredentialsRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -2142,6 +2502,9 @@ class VerifyCredentialsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """是否验证成功
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -2150,6 +2513,9 @@ class VerifyCredentialsResponse(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """验证返回码
+        :rtype: int
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -2158,6 +2524,9 @@ class VerifyCredentialsResponse(AbstractModel):
 
     @property
     def VerifyMessage(self):
+        """验证结果信息
+        :rtype: str
+        """
         return self._VerifyMessage
 
     @VerifyMessage.setter
@@ -2166,6 +2535,9 @@ class VerifyCredentialsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2203,6 +2575,9 @@ class VerifyPresentationRequest(AbstractModel):
 
     @property
     def Did(self):
+        """VP持有人的did标识
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -2211,6 +2586,9 @@ class VerifyPresentationRequest(AbstractModel):
 
     @property
     def PresentationData(self):
+        """可验证表达内容
+        :rtype: str
+        """
         return self._PresentationData
 
     @PresentationData.setter
@@ -2219,6 +2597,9 @@ class VerifyPresentationRequest(AbstractModel):
 
     @property
     def DAPId(self):
+        """DID应用id
+        :rtype: int
+        """
         return self._DAPId
 
     @DAPId.setter
@@ -2227,6 +2608,9 @@ class VerifyPresentationRequest(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """随机验证码
+        :rtype: str
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -2272,6 +2656,9 @@ class VerifyPresentationResponse(AbstractModel):
 
     @property
     def Result(self):
+        """是否验证成功
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -2280,6 +2667,9 @@ class VerifyPresentationResponse(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """验证返回码
+        :rtype: int
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -2288,6 +2678,9 @@ class VerifyPresentationResponse(AbstractModel):
 
     @property
     def VerifyMessage(self):
+        """验证消息
+        :rtype: str
+        """
         return self._VerifyMessage
 
     @VerifyMessage.setter
@@ -2296,6 +2689,9 @@ class VerifyPresentationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

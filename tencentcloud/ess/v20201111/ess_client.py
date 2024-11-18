@@ -26,6 +26,39 @@ class EssClient(AbstractClient):
     _service = 'ess'
 
 
+    def ArchiveDynamicFlow(self, request):
+        """该接口用于结束动态签署方2.0的合同流程。
+
+
+        **功能开通**
+        - 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+
+        **使用条件**
+        - 此接口只能在<font color="red">合同处于非终态且<b>所有的签署方都已经完成签署</b></font>。一旦合同进入终态（例如：过期、拒签、撤销或者调用过此接口成功过），将无法通过此接口结束合同流程。
+
+        **整体流程**
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/75d323c66e44b05bbc8e949c18664455.png)
+
+        :param request: Request instance for ArchiveDynamicFlow.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ArchiveDynamicFlowRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ArchiveDynamicFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ArchiveDynamicFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.ArchiveDynamicFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindEmployeeUserIdWithClientOpenId(self, request):
         """此接口（BindEmployeeUserIdWithClientOpenId）用于将电子签系统员工UserId与客户系统员工OpenId进行绑定。
 
@@ -434,6 +467,42 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDynamicFlowApprover(self, request):
+        """此接口（CreateDynamicFlowApprover）接口主要用于补充动态签署方2.0合同的签署方信息，包括但不限于名字、手机号和签署区域等信息。
+
+
+        **功能开通**
+        动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+
+        **使用条件**
+        - 在发起合同时，必须将OpenDynamicSignFlow参数设置为true，以确保合同以动态签署方2.0的方式处理，否则默认处理为普通合同。
+        - 此接口只能在合同处于非终态时调用。一旦合同进入终态（例如：过期、拒签或撤销），将无法通过此接口添加新的签署方。
+
+
+        动态签署方2.0合同<font color="red">不会自动结束（整个合同变为签署完成）</font>，需要通过调用<a href="https://qian.tencent.com/developers/companyApis/operateFlows/ArchiveDynamicFlow/" target="_blank">结束动态签署合同</a>来手动结束签署流程。整体的流程如下图
+
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/75d323c66e44b05bbc8e949c18664455.png)
+
+        :param request: Request instance for CreateDynamicFlowApprover.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateDynamicFlowApproverRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateDynamicFlowApproverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDynamicFlowApprover", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDynamicFlowApproverResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEmbedWebUrl(self, request):
         """本接口（CreateEmbedWebUrl）用于创建可嵌入web页面的URL（此web页面可以通过iframe方式嵌入到贵方系统的网页中），支持以下类型的Web链接创建：
         1. 创建印章
@@ -600,12 +669,28 @@ class EssClient(AbstractClient):
 
         ![image](https://qcloudimg.tencent-cloud.cn/raw/b2715f0236faee807cfc0521f93cf01b.png)
 
-        <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档    [动态签署人合同](https://qian.tencent.com/developers/company/dynamic_signer/)    。动态签署人在控制台上的展示样式如下：
+        <b><font color="red">2. 动态签署人合同</font>: 若未指定具体签署人的信息，则合同变成动态签署人合同</b>。需调用此接口补充或添加签署人。可以参考文档    <a href="https://qian.tencent.com/developers/company/dynamic_signer/" target="_blank">动态签署人合同</a>   。动态签署人在控制台上的展示样式如下：
 
         ![image](https://qcloudimg.tencent-cloud.cn/raw/2729477978e020c3bbb4d2e767bb78eb.png)
 
         实际签署人需要通过[获取跳转至腾讯电子签小程序的签署链接](https://qian.tencent.com/developers/companyApis/startFlows/CreateSchemeUrl/)生成的链接进入小程序，领取合同并签署。同一签署环节可补充多个员工作为或签署人，最终实际签署人取决于谁先领取合同完成签署。
 
+        **接口使用说明**：
+
+        1.本接口现已支持批量补充签署人
+
+        2.当<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中指定需要补充的FlowId时，可以对指定合同补充签署人；可以指定多个相同发起方的不同合同在完成批量补充
+
+        3.当<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中指定需要补充的FlowId时，是对指定的合同补充多个指定的签署人
+
+        4.如果同时指定了<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId和<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId，仅使用<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId作为补充的合同
+
+        5.如果部分指定了<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId，又指定了<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId；那么<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>存在指定的FlowId，则使用<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId，不存在则使用<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId作为补充的合同
+
+
+        6.如果同时未指定了<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId和<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId，则传参错误。
+
+        7.新加入的签署方<font color="red">平台不会发送短信</font>通知。请您生成相应的链接，并将该链接发送给签署方以便完成签署过程。
 
         **限制条件**：
 
@@ -774,13 +859,25 @@ class EssClient(AbstractClient):
 
 
     def CreateFlowGroupByFiles(self, request):
-        """此接口（CreateFlowGroupByFiles）可用于通过多个文件创建合同组签署流程。
+        """此接口（CreateFlowGroupByFiles）可用于通过多个文件创建合同组签署流程。使用该接口需要先依赖[多文件上传](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口返回的FileIds。
 
-        适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+        - 该接口允许通过PDF资源ID一次性创建多个合同，这些合同被组织在一个合同组中。
+        - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+        - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 
-        注意事项：使用该接口需要先依赖[多文件上传](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口返回的FileIds。
+        <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 
-        注：`合同发起后就会扣减合同的额度, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+        ### 2. 适用场景
+
+        该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+
+
+        ### 3. 合同额度的扣减与返还
+        - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+        - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+        - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
+
+        ### 4.合同组暂不支持抄送功能
 
         :param request: Request instance for CreateFlowGroupByFiles.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowGroupByFilesRequest`
@@ -805,9 +902,23 @@ class EssClient(AbstractClient):
     def CreateFlowGroupByTemplates(self, request):
         """此接口（CreateFlowGroupByTemplates）可用于通过多个模板创建合同组签署流程。
 
-        适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+        - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+        - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+        - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 
-        注：`合同发起后就会扣减合同的额度, 如果未签署完成时撤销合同会返还此额度（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+        <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
+
+        ### 2. 适用场景
+
+        该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+
+
+        ### 3. 合同额度的扣减与返还
+        - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+        - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+        - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
+
+        ### 4.合同组暂不支持抄送功能
 
         :param request: Request instance for CreateFlowGroupByTemplates.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowGroupByTemplatesRequest`
@@ -1323,38 +1434,26 @@ class EssClient(AbstractClient):
     def CreateOrganizationInfoChangeUrl(self, request):
         """此接口（CreateOrganizationInfoChangeUrl）用于创建企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
 
+         需要企业的<font color="red">现有的超级管理员、法人来点击</font>链接执行变动操作。
 
-        <h3 id="1-企业超管变更">1. 企业超管变更</h3>
+        ### 2. 企业基础信息
+        #### A. 可变动的信息
+        - **企业名称**
+        - **法定代表人姓名**（新法人将收到邀请链接）
+        - **企业地址和所在地**
+        - **企业超级管理员变更** （此变更将企业超级管理员的职责转移给企业的其他员工）
 
-        <p>换成企业的其他员工来当超管</p>
+        #### B. 不可变动的信息
+        - **统一社会信用代码**
+        - **企业主体类型**
 
-        <h3 id="2-企业基础信息变更">2. 企业基础信息变更</h3>
+        ### 3.变更影响
 
-        <h4 id="可以变动">可以变动</h4>
+        如果企业的名字变更将导致下面的影响：
 
-        <ul>
-        <li>企业名称<br>
-        </li>
-        <li>法定代表人姓名(新法人有邀请链接)<br>
-        </li>
-        <li>企业地址和所在地</li>
-        </ul>
-
-        <h4 id="不可变动">不可变动</h4>
-
-        <ul>
-        <li>统一社会信用代码<br>
-        </li>
-        <li>企业主体类型</li>
-        </ul>
-
-        <p>如果企业名称变动会引起下面的变动</p>
-
-        <ul>
-        <li>合同:   老合同不做任何处理,   新发起的合同需要用新的企业名字作为签署方, 否则无法签署</li>
-        <li>印章:   会删除所有的印章所有的机构公章和合同专用章,  然后用新企业名称生成新的机构公章 和合同专用章,  而法人章, 财务专用章和人事专用章不会处理</li>
-        <li>证书:   企业证书会重新请求CA机构用新企业名称生成新的证书</li>
-        </ul>
+        - **合同**：已存在的合同将保持不变。新发起的合同需使用新的企业名称作为签署方，否则无法签署。
+        - **印章**：所有现有的机构公章和合同专用章将被删除，并将根据新的企业名称重新生成。法人章、财务专用章和人事专用章将不做处理。
+        - **证书**：企业证书将重新由CA机构使用新的企业名称生成。
 
         :param request: Request instance for CreateOrganizationInfoChangeUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationInfoChangeUrlRequest`
@@ -1377,15 +1476,19 @@ class EssClient(AbstractClient):
 
 
     def CreatePartnerAutoSignAuthUrl(self, request):
-        """创建他方自动签授权链接（他方授权/我方授权），通过该链接可进入小程序进行合作方企业的自动签授权，若授权企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
-        该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+        """创建一个用于他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权操作。
 
-
+        如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
 
         注:
         1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Operator.UserId 需要传递超管或者法人的UserId)
         2. 已经在授权中或者授权成功的企业，无法重复授权
         3. 授权企业和被授权企业必须都是已认证企业
+        4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+
+
+        **该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权**
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/489aa0bf74941469b5e740f428f17c3a.png)
 
         :param request: Request instance for CreatePartnerAutoSignAuthUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreatePartnerAutoSignAuthUrlRequest`
@@ -1493,16 +1596,18 @@ class EssClient(AbstractClient):
 
     def CreateReleaseFlow(self, request):
         """发起解除协议的主要应用场景为：基于一份已经签署的合同（签署流程），进行解除操作。
-        解除协议的模板是官方提供 ，经过提供法务审核，暂不支持自定义。
+        解除协议的模板是官方提供 ，经过提供法务审核，暂不支持自定义。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/company/flow_release)。
 
         注意：
-        <ul><li><code>原合同必须签署完</code>成后才能发起解除协议。</li>
-        <li>只有原合同企业类型的参与人才能发起解除协议，<code>个人参与方不能发起解除协议</code>。</li>
-        <li>原合同个人类型参与人必须是解除协议的参与人，<code>不能更换其他第三方个人</code>参与解除协议。</li>
-        <li>如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的<code>企业员工代为处理</code>。</li>
-        <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
-        <li>在解除协议签署完毕后，原合同及解除协议均变为已解除状态。</li>
-        <li>非原合同企业参与人发起解除协议时，需要有<code>解除合同的权限</code>。</li>
+        <ul>
+        <li><strong>完成原合同签署后方可发起解除协议：</strong>只有在原合同所有签署人完成签署后，才可以启动解除协议的流程。</li>
+        <li><strong>原合同状态更新：</strong>解除协议一旦签署完毕，原合同及解除协议状态将更新为“已解除”。</li>
+        <li><strong>解除协议的个人参与要求：</strong>原合同中的个人参与者必须直接参与解除协议，禁止替换为其他第三方个人。</li>
+        <li><strong>企业参与人的代理权：</strong>若原合同的企业参与人无法亲自参与解除协议，可指派具有等同权限的企业员工代行。</li>
+        <li><strong>解除协议的费用问题：</strong>发起解除协议将产生费用，其扣费标准与其他企业合同相同。</li>
+        <li><strong>解除协议的发起资格：</strong>仅限原合同中的企业类型参与者发起解除协议，个人参与者无此权限。</li>
+        <li><strong>非原合同企业参与者的权限：</strong>非原合同的企业参与者发起解除协议时，必须具备相应的解除权限。</li>
+        <li><strong>自动签署：</strong>支持本企业的自动签署，不支持其他企业的自动签署（不能不动神色的把别人参与的合同作废了）</li>
         </ul>
 
         ![image](https://qcloudimg.tencent-cloud.cn/raw/3427941ecb091bf0c55009bad192dd1c.png)
@@ -1857,6 +1962,35 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteOrganizationAuthorizations(self, request):
+        """批量清理未认证的企业认证流程。
+
+        此接口用来清除企业方认证信息填写错误，批量清理认证中的认证流信息。
+        为接口[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks) 和[查询企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/DescribeBatchOrganizationRegistrationUrls) 接口的扩展接口。即在批量认证过程中，当发起认证企业发现超管信息错误的时候，可以将当前超管下的所有认证流企业清除。
+
+        注意：
+        **这个接口的操作人必须跟生成批量认证链接接口的操作人一致，才可以调用，否则会返回当前操作人没有认证中的企业认证流**
+
+        :param request: Request instance for DeleteOrganizationAuthorizations.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DeleteOrganizationAuthorizationsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DeleteOrganizationAuthorizationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOrganizationAuthorizations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOrganizationAuthorizationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSealPolicies(self, request):
         """本接口（DeleteSealPolicies）用于撤销企业员工持有的印章权限
 
@@ -2049,6 +2183,18 @@ class EssClient(AbstractClient):
     def DescribeFileUrls(self, request):
         """本接口（DescribeFileUrls）用于查询文件的下载URL。
         适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
+
+
+        ### 2. 确保合同的PDF已经合成后，再调用本接口。
+
+        用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
+
+        **第一种**：请确保您的系统配置了[接收合同完成通知的回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign)功能。一旦所有参与方签署完毕，我们的系统将自动向您提供的回调地址发送完成通知。
+
+        **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowBriefs)接口来主动检查合同的签署状态。请仅在确认合同状态为“签署完成”后，进行文件的下载操作。
+
+        ### 3.  链接具有有效期限
+        <font color="red"><b>生成的链接是有时间限制的，过期后将无法访问</b></font>。您可以在接口返回的信息中查看具体的过期时间。为避免错误，请确保在链接过期之前进行下载操作。
 
         :param request: Request instance for DescribeFileUrls.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFileUrlsRequest`
@@ -2469,8 +2615,15 @@ class EssClient(AbstractClient):
 
 
     def DescribeUserVerifyStatus(self, request):
-        """用于客户企业在调用生成[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)接口之前判断C端用户是否实名，如果已经实名，就不需要再次调用生成C端链接接口去实名
-        注意：此接口仅会返回当前员工是否通过[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)所实名的员工是否实名，并不会返回个人用户自己在电子签进行实名的状况
+        """检测个人用户是否已经实名。
+
+        在调用生成C端用户实名链接（[CreateUserVerifyUrl](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)）接口之前，客户企业应首先调用本接口判断C端用户是否已经完成实名认证。如果用户已经实名，那么无需再次调用（[CreateUserVerifyUrl](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)）生成链接并走实名认证流程。
+
+        注意：
+
+        - 此接口<font color="red">仅用于确认通过本公司生成[C端用户实名链接（CreateUserVerifyUrl）](https://qian.tencent.com/developers/companyApis/users/CreateUserVerifyUrl)接口注册认证的用户，不包括其他途径（如主动注册认证、在签署合同中注册认证等）在电子签平台上进行的实名认证</font>。
+
+        - 调用此接口需要购买单独的实名套餐包。<font color="red">使用前请联系对接的客户经理沟通</font>。
 
         :param request: Request instance for DescribeUserVerifyStatus.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeUserVerifyStatusRequest`
@@ -2528,6 +2681,7 @@ class EssClient(AbstractClient):
         适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
         注：
         1. `大文件转换所需的时间可能会比较长`
+        2.  `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
 
         :param request: Request instance for GetTaskResultApi.
         :type request: :class:`tencentcloud.ess.v20201111.models.GetTaskResultApiRequest`
@@ -2576,26 +2730,18 @@ class EssClient(AbstractClient):
 
 
     def ModifyExtendedService(self, request):
-        """管理企业扩展服务 ，企业经办人需要是企业超管或者法人。
+        """管理企业扩展服务
 
-        跳转小程序的几种方式：主要是设置不同的EndPoint
-        1. 通过链接Url直接跳转到小程序，不需要返回
-        设置EndPoint为WEIXINAPP，得到链接打开即可。
+        - **直接开通的情形：** 若在操作过程中接口没有返回跳转链接，这表明无需进行任何跳转操作。此时，相应的企业拓展服务将会直接被开通或关闭。
 
-        2. 客户App直接跳转到小程序-->腾讯电子签小程序操作完成-->返回App
-        跳转到小程序的实现，参考官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html">打开 App</a>
-        设置EndPoint为APP，得到path。
+        - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业拓展服务时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
+          - **OPEN_SERVER_SIGN（企业自动签）**
 
-        3. 客户小程序直接跳到电子签小程序-->腾讯电子签小程序操作完成--->回到客户小程序
-        跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
-        设置EndPoint为APP，得到path。
+        注意： `在调用此接口以管理企业扩展服务时，操作者（入参中的Operator）必须是企业的超级管理员（超管）或法人`
 
-        4.其中小程序的原始Id如下，或者查看小程序信息自助获取。
 
-        | 小程序 | AppID | 原始ID |
-        | ------------ | ------------ | ------------ |
-        | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
-        | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+        对应的扩展服务能力可以在控制台的【扩展服务】中找到
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/7eb35d2473d6c29784f3b35617bca9a9.png)
 
         :param request: Request instance for ModifyExtendedService.
         :type request: :class:`tencentcloud.ess.v20201111.models.ModifyExtendedServiceRequest`

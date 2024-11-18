@@ -146,6 +146,9 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Id(self):
+        """数据源 ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -154,6 +157,9 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Title(self):
+        """数据源名称
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -162,6 +168,9 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Name(self):
+        """数据源标识
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -170,6 +179,9 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Type(self):
+        """数据源类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -178,6 +190,9 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Description(self):
+        """数据源描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -186,6 +201,9 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Schema(self):
+        """数据源配置
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -194,6 +212,9 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def CmsProject(self):
+        """cms 项目状态, 0: 重新获取详情信息，1： 不需要重新获取详情信息
+        :rtype: str
+        """
         return self._CmsProject
 
     @CmsProject.setter
@@ -202,6 +223,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def PkgId(self):
+        """当前为环境 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PkgId
 
     @PkgId.setter
@@ -210,6 +235,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def SchemaVersion(self):
+        """schema 版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SchemaVersion
 
     @SchemaVersion.setter
@@ -218,6 +247,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def CreatorId(self):
+        """创建者用户 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatorId
 
     @CreatorId.setter
@@ -226,6 +259,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -234,6 +271,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -242,6 +283,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -250,6 +295,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def DataSourceVersion(self):
+        """版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceVersion
 
     @DataSourceVersion.setter
@@ -258,6 +307,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def AppUsageList(self):
+        """所属应用数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataSourceLinkApp
+        """
         return self._AppUsageList
 
     @AppUsageList.setter
@@ -266,6 +319,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def PublishedAt(self):
+        """发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PublishedAt
 
     @PublishedAt.setter
@@ -274,6 +331,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def ChildDataSourceIds(self):
+        """子数据源ids
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ChildDataSourceIds
 
     @ChildDataSourceIds.setter
@@ -282,6 +343,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Fun(self):
+        """数据源发布信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Fun
 
     @Fun.setter
@@ -290,6 +355,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def ScfStatus(self):
+        """云函数状态 1 Active 2 Creating 3 Updating 4 Deleting  9 Deleted 11 CreatFailed  12 UpdateFailed 13 DeleteFailed 21 UpdateTimeOut
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ScfStatus
 
     @ScfStatus.setter
@@ -298,6 +367,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Methods(self):
+        """自定义方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Methods
 
     @Methods.setter
@@ -306,6 +379,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def ChildDataSourceNames(self):
+        """子数据源名数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ChildDataSourceNames
 
     @ChildDataSourceNames.setter
@@ -314,6 +391,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def IsNewDataSource(self):
+        """是否旧数据源 1 新 0 旧
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsNewDataSource
 
     @IsNewDataSource.setter
@@ -322,6 +403,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def ViewId(self):
+        """数据源视图id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ViewId
 
     @ViewId.setter
@@ -330,6 +415,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Configuration(self):
+        """数据源属性配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Configuration
 
     @Configuration.setter
@@ -338,6 +427,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def TemplateCode(self):
+        """外部数据源模板code
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateCode
 
     @TemplateCode.setter
@@ -346,6 +439,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def Source(self):
+        """外部数据源模板来源 0 空模板 1 腾讯文档 2 腾讯会议 3 企业微信 4 微信电商
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -354,6 +451,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def PublishVersion(self):
+        """发布版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PublishVersion
 
     @PublishVersion.setter
@@ -362,6 +463,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def PublishViewId(self):
+        """发布视图id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PublishViewId
 
     @PublishViewId.setter
@@ -370,6 +475,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def SubType(self):
+        """数据源子类型   "database" 标准模型 "custom-database" 自定义模型 "system" 系统模型 "connector" 连接器 "custom-connector" 自定义连接器 "hidden" 隐藏数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubType
 
     @SubType.setter
@@ -378,6 +487,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def AuthStatus(self):
+        """授权状态  0 授权无效 1 授权有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AuthStatus
 
     @AuthStatus.setter
@@ -386,6 +499,10 @@ class DataSourceDetail(AbstractModel):
 
     @property
     def AuthInfo(self):
+        """数据源授权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.TicketAuthInfo`
+        """
         return self._AuthInfo
 
     @AuthInfo.setter
@@ -459,6 +576,9 @@ class DataSourceDetailItems(AbstractModel):
 
     @property
     def Rows(self):
+        """数据详情列表
+        :rtype: list of DataSourceDetail
+        """
         return self._Rows
 
     @Rows.setter
@@ -467,6 +587,9 @@ class DataSourceDetailItems(AbstractModel):
 
     @property
     def Count(self):
+        """数据源列表总个数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -522,6 +645,9 @@ class DataSourceLinkApp(AbstractModel):
 
     @property
     def Id(self):
+        """应用Id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -530,6 +656,10 @@ class DataSourceLinkApp(AbstractModel):
 
     @property
     def Title(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -538,6 +668,10 @@ class DataSourceLinkApp(AbstractModel):
 
     @property
     def EditStatusUse(self):
+        """是否编辑状态使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EditStatusUse
 
     @EditStatusUse.setter
@@ -546,6 +680,10 @@ class DataSourceLinkApp(AbstractModel):
 
     @property
     def PreviewStatusUse(self):
+        """是否预览状态使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PreviewStatusUse
 
     @PreviewStatusUse.setter
@@ -554,6 +692,10 @@ class DataSourceLinkApp(AbstractModel):
 
     @property
     def OnlineStatusUse(self):
+        """是否正式状态使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OnlineStatusUse
 
     @OnlineStatusUse.setter
@@ -594,6 +736,9 @@ class DataSourceQueryOption(AbstractModel):
 
     @property
     def LikeName(self):
+        """数据源标识模糊匹配
+        :rtype: str
+        """
         return self._LikeName
 
     @LikeName.setter
@@ -602,6 +747,9 @@ class DataSourceQueryOption(AbstractModel):
 
     @property
     def LikeTitle(self):
+        """数据源名称模糊匹配
+        :rtype: str
+        """
         return self._LikeTitle
 
     @LikeTitle.setter
@@ -672,6 +820,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页条数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -680,6 +831,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def PageIndex(self):
+        """页码
+        :rtype: int
+        """
         return self._PageIndex
 
     @PageIndex.setter
@@ -688,6 +842,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境 id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -696,6 +853,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def Appids(self):
+        """应用id数组
+        :rtype: list of str
+        """
         return self._Appids
 
     @Appids.setter
@@ -704,6 +864,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def DataSourceIds(self):
+        """数据源id数组
+        :rtype: list of str
+        """
         return self._DataSourceIds
 
     @DataSourceIds.setter
@@ -712,6 +875,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def DataSourceNames(self):
+        """数据源名称数组
+        :rtype: list of str
+        """
         return self._DataSourceNames
 
     @DataSourceNames.setter
@@ -720,6 +886,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型 database-自建数据源；cloud-integration-自定义数据源
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -728,6 +897,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def QueryOption(self):
+        """数据源模糊查询参数
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.DataSourceQueryOption`
+        """
         return self._QueryOption
 
     @QueryOption.setter
@@ -736,6 +908,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def ViewIds(self):
+        """数据源视图Id数组
+        :rtype: list of str
+        """
         return self._ViewIds
 
     @ViewIds.setter
@@ -744,6 +919,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def AppLinkStatus(self):
+        """查询未关联应用的数据源，0:未关联，该参数配合 AppIds 参数一块使用
+        :rtype: int
+        """
         return self._AppLinkStatus
 
     @AppLinkStatus.setter
@@ -752,6 +930,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def QueryBindToApp(self):
+        """查询应用绑定数据源: 0: 否,1: 是
+        :rtype: int
+        """
         return self._QueryBindToApp
 
     @QueryBindToApp.setter
@@ -760,6 +941,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def QueryConnector(self):
+        """查询连接器 0 数据模型 1 连接器 2 自定义连接器
+        :rtype: int
+        """
         return self._QueryConnector
 
     @QueryConnector.setter
@@ -768,6 +952,9 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def NotQuerySubTypeList(self):
+        """查询数据源黑名单机制，比如不想要系统数据源["system"]
+        :rtype: list of str
+        """
         return self._NotQuerySubTypeList
 
     @NotQuerySubTypeList.setter
@@ -818,6 +1005,9 @@ class DescribeDataSourceListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """data 数据
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.DataSourceDetailItems`
+        """
         return self._Data
 
     @Data.setter
@@ -826,6 +1016,9 @@ class DescribeDataSourceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -854,6 +1047,9 @@ class TicketAuthInfo(AbstractModel):
 
     @property
     def AuthUser(self):
+        """授权用户
+        :rtype: str
+        """
         return self._AuthUser
 
     @AuthUser.setter

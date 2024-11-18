@@ -72,6 +72,84 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateThread(self, request):
+        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+
+         1. 本接口暂不支持返回图片内容。
+         2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+         3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+         4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+
+        :param request: Request instance for CreateThread.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.CreateThreadRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.CreateThreadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("CreateThread", params, models.CreateThreadResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FilesDeletions(self, request):
+        """删除文件。
+
+        :param request: Request instance for FilesDeletions.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.FilesDeletionsRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.FilesDeletionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("FilesDeletions", params, models.FilesDeletionsResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FilesList(self, request):
+        """文件列表。
+
+        :param request: Request instance for FilesList.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.FilesListRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.FilesListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("FilesList", params, models.FilesListResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FilesUploads(self, request):
+        """上传用于不同用途的文件。
+        当前用途仅支持 hunyuan 等模型的文档理解。
+
+        :param request: Request instance for FilesUploads.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.FilesUploadsRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.FilesUploadsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("FilesUploads", params, models.FilesUploadsResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetEmbedding(self, request):
         """腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
 
@@ -88,6 +166,75 @@ class HunyuanClient(AbstractClient):
             model = models.GetEmbeddingResponse()
             model._deserialize(response["Response"])
             return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetThread(self, request):
+        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+
+         1. 本接口暂不支持返回图片内容。
+         2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+         3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+         4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+
+        :param request: Request instance for GetThread.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetThreadRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.GetThreadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("GetThread", params, models.GetThreadResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetThreadMessage(self, request):
+        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+
+         1. 本接口暂不支持返回图片内容。
+         2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+         3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+         4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+
+        :param request: Request instance for GetThreadMessage.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetThreadMessageRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.GetThreadMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("GetThreadMessage", params, models.GetThreadMessageResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetThreadMessageList(self, request):
+        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+
+         1. 本接口暂不支持返回图片内容。
+         2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+         3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+         4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+
+        :param request: Request instance for GetThreadMessageList.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetThreadMessageListRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.GetThreadMessageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("GetThreadMessageList", params, models.GetThreadMessageListResponse, headers=request.headers)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -163,6 +310,29 @@ class HunyuanClient(AbstractClient):
             model = models.QueryHunyuanImageJobResponse()
             model._deserialize(response["Response"])
             return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunThread(self, request):
+        """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+
+         1. 本接口暂不支持返回图片内容。
+         2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
+         3. 请使用 SDK 调用本接口，每种开发语言的 SDK Git 仓库 examples/hunyuan/v20230901/ 目录下有提供示例供参考。SDK 链接在文档下方 “**开发者资源 - SDK**” 部分提供。
+         4. 我们推荐您使用 API Explorer，方便快速地在线调试接口和下载各语言的示例代码，[点击打开](https://console.cloud.tencent.com/api/explorer?Product=hunyuan&Version=2023-09-01&Action=ChatCompletions)。
+
+        :param request: Request instance for RunThread.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.RunThreadRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.RunThreadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("RunThread", params, models.RunThreadResponse, headers=request.headers)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise

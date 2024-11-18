@@ -281,6 +281,9 @@ INVALIDPARAMETER_INVALIDINSTANCENOTSUPPORTED = 'InvalidParameter.InvalidInstance
 # 指定的私有网络ip格式不正确。
 INVALIDPARAMETER_INVALIDIPFORMAT = 'InvalidParameter.InvalidIpFormat'
 
+# 指定的 KMS 密钥 ID 非法。
+INVALIDPARAMETER_INVALIDKMSKEYID = 'InvalidParameter.InvalidKmsKeyId'
+
 # 不能同时指定ImageIds和Filters。
 INVALIDPARAMETER_INVALIDPARAMETERCOEXISTIMAGEIDSFILTERS = 'InvalidParameter.InvalidParameterCoexistImageIdsFilters'
 
@@ -401,6 +404,9 @@ INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = 'InvalidParameterValue.IPAddressMalfo
 # ipv6地址无效
 INVALIDPARAMETERVALUE_IPV6ADDRESSMALFORMED = 'InvalidParameterValue.IPv6AddressMalformed'
 
+# ISO文件必须强制导入
+INVALIDPARAMETERVALUE_ISOMUSTIMPORTBYFORCE = 'InvalidParameterValue.ISOMustImportByForce'
+
 # HostName参数值不合法
 INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = 'InvalidParameterValue.IllegalHostName'
 
@@ -442,6 +448,9 @@ INVALIDPARAMETERVALUE_INVALIDFILENAMEPREFIXLIST = 'InvalidParameterValue.Invalid
 
 # 不支持转为非GPU或其他类型GPU实例。
 INVALIDPARAMETERVALUE_INVALIDGPUFAMILYCHANGE = 'InvalidParameterValue.InvalidGPUFamilyChange'
+
+# 错误格式的镜像族名称
+INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = 'InvalidParameterValue.InvalidImageFamily'
 
 # 镜像ID不支持指定的实例机型。
 INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = 'InvalidParameterValue.InvalidImageForGivenInstanceType'
@@ -518,7 +527,7 @@ INVALIDPARAMETERVALUE_KEYPAIRNOTSUPPORTED = 'InvalidParameterValue.KeyPairNotSup
 # 不支持删除默认启动模板版本。
 INVALIDPARAMETERVALUE_LAUNCHTEMPLATEDEFAULTVERSION = 'InvalidParameterValue.LaunchTemplateDefaultVersion'
 
-# 实例启动模板ID格式错误。
+# 实例启动模板ID格式错误，请提供规范的实例启动模板ID，类似lt-xxxxxxxx，字母x代表小写字符或者数字。
 INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDMALFORMED = 'InvalidParameterValue.LaunchTemplateIdMalformed'
 
 # 实例启动模板ID不存在。
@@ -1108,6 +1117,9 @@ UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = 'UnsupportedOperation.StoppedMode
 
 # 不支持关机不收费机器做同类型变配操作。
 UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGINGSAMEFAMILY = 'UnsupportedOperation.StoppedModeStopChargingSameFamily'
+
+# 指定的镜像不支持转为加密自定义镜像。
+UNSUPPORTEDOPERATION_SYNCENCRYPTIMAGENOTSUPPORT = 'UnsupportedOperation.SyncEncryptImageNotSupport'
 
 # 请求不支持该类型系统盘。
 UNSUPPORTEDOPERATION_SYSTEMDISKTYPE = 'UnsupportedOperation.SystemDiskType'

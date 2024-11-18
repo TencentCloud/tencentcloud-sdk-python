@@ -463,6 +463,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeJobRuntimeInfo(self, request):
+        """获取作业运行时的信息
+
+        :param request: Request instance for DescribeJobRuntimeInfo.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobRuntimeInfoRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobRuntimeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobRuntimeInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobRuntimeInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeJobSavepoint(self, request):
         """查找Savepoint列表
 

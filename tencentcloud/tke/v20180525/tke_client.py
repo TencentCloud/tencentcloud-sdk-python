@@ -1705,6 +1705,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBatchModifyTagsStatus(self, request):
+        """查询批量修改标签状态
+
+        :param request: Request instance for DescribeBatchModifyTagsStatus.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeBatchModifyTagsStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeBatchModifyTagsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchModifyTagsStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBatchModifyTagsStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterAsGroupOption(self, request):
         """集群弹性伸缩配置
 
@@ -2685,31 +2708,6 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeExistedInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeExistedInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeExternalClusterSpec(self, request):
-        """tdcc接口已迁移至tdcc产品下，tke下的接口下线
-
-        获取导入第三方集群YAML定义
-
-        :param request: Request instance for DescribeExternalClusterSpec.
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalClusterSpecRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExternalClusterSpecResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeExternalClusterSpec", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeExternalClusterSpecResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4352,6 +4350,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterImage(self, request):
+        """修改集群镜像
+
+        :param request: Request instance for ModifyClusterImage.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterImageRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterNodePool(self, request):
         """编辑节点池
 
@@ -4389,6 +4410,29 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyClusterRuntimeConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterRuntimeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterTags(self, request):
+        """修改集群标签
+
+        :param request: Request instance for ModifyClusterTags.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterTagsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterTagsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

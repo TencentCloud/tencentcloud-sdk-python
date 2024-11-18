@@ -41,6 +41,9 @@ class BuildPacksInfo(AbstractModel):
 
     @property
     def BaseImage(self):
+        """基础镜像
+        :rtype: str
+        """
         return self._BaseImage
 
     @BaseImage.setter
@@ -49,6 +52,9 @@ class BuildPacksInfo(AbstractModel):
 
     @property
     def EntryPoint(self):
+        """启动命令
+        :rtype: str
+        """
         return self._EntryPoint
 
     @EntryPoint.setter
@@ -57,6 +63,9 @@ class BuildPacksInfo(AbstractModel):
 
     @property
     def RepoLanguage(self):
+        """语言
+        :rtype: str
+        """
         return self._RepoLanguage
 
     @RepoLanguage.setter
@@ -65,6 +74,9 @@ class BuildPacksInfo(AbstractModel):
 
     @property
     def UploadFilename(self):
+        """上传文件名
+        :rtype: str
+        """
         return self._UploadFilename
 
     @UploadFilename.setter
@@ -110,6 +122,9 @@ class ClsInfo(AbstractModel):
 
     @property
     def ClsRegion(self):
+        """cls所属地域
+        :rtype: str
+        """
         return self._ClsRegion
 
     @ClsRegion.setter
@@ -118,6 +133,9 @@ class ClsInfo(AbstractModel):
 
     @property
     def ClsLogsetId(self):
+        """cls日志集ID
+        :rtype: str
+        """
         return self._ClsLogsetId
 
     @ClsLogsetId.setter
@@ -126,6 +144,9 @@ class ClsInfo(AbstractModel):
 
     @property
     def ClsTopicId(self):
+        """cls日志主题ID
+        :rtype: str
+        """
         return self._ClsTopicId
 
     @ClsTopicId.setter
@@ -134,6 +155,9 @@ class ClsInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -199,6 +223,9 @@ Activity：活动来源
 
     @property
     def PackageType(self):
+        """Trial,Standard,Professional,Enterprise
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -207,6 +234,9 @@ Activity：活动来源
 
     @property
     def Alias(self):
+        """环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -215,6 +245,9 @@ Activity：活动来源
 
     @property
     def FreeQuota(self):
+        """用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+        :rtype: str
+        """
         return self._FreeQuota
 
     @FreeQuota.setter
@@ -223,6 +256,11 @@ Activity：活动来源
 
     @property
     def Flag(self):
+        """订单标记。建议使用方统一转大小写之后再判断。
+QuickStart：快速启动来源
+Activity：活动来源
+        :rtype: str
+        """
         return self._Flag
 
     @Flag.setter
@@ -231,6 +269,9 @@ Activity：活动来源
 
     @property
     def VpcId(self):
+        """私有网络Id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -239,6 +280,9 @@ Activity：活动来源
 
     @property
     def SubNetIds(self):
+        """子网列表
+        :rtype: list of str
+        """
         return self._SubNetIds
 
     @SubNetIds.setter
@@ -247,6 +291,9 @@ Activity：活动来源
 
     @property
     def ReqKey(self):
+        """请求key 用于防重
+        :rtype: str
+        """
         return self._ReqKey
 
     @ReqKey.setter
@@ -255,6 +302,9 @@ Activity：活动来源
 
     @property
     def Source(self):
+        """来源：wechat | cloud
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -263,6 +313,9 @@ Activity：活动来源
 
     @property
     def Channel(self):
+        """渠道：wechat | cloud
+        :rtype: str
+        """
         return self._Channel
 
     @Channel.setter
@@ -271,6 +324,9 @@ Activity：活动来源
 
     @property
     def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -319,6 +375,9 @@ class CreateCloudRunEnvResponse(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -327,6 +386,9 @@ class CreateCloudRunEnvResponse(AbstractModel):
 
     @property
     def TranId(self):
+        """后付费订单号
+        :rtype: str
+        """
         return self._TranId
 
     @TranId.setter
@@ -335,6 +397,9 @@ class CreateCloudRunEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -371,6 +436,9 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -379,6 +447,9 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -387,6 +458,9 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def DeployInfo(self):
+        """部署信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
+        """
         return self._DeployInfo
 
     @DeployInfo.setter
@@ -395,6 +469,9 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerConfig(self):
+        """服务配置信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
+        """
         return self._ServerConfig
 
     @ServerConfig.setter
@@ -438,6 +515,9 @@ class CreateCloudRunServerResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """一键部署任务Id，微信云托管，暂时用不到
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -446,6 +526,9 @@ class CreateCloudRunServerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -483,6 +566,9 @@ class DatabasesInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """数据库唯一标识
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -491,6 +577,13 @@ class DatabasesInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态。包含以下取值：
+<li>INITIALIZING：资源初始化中</li>
+<li>RUNNING：运行中，可正常使用的状态</li>
+<li>UNUSABLE：禁用，不可用</li>
+<li>OVERDUE：资源过期</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -499,6 +592,10 @@ class DatabasesInfo(AbstractModel):
 
     @property
     def Region(self):
+        """所属地域。
+当前支持ap-shanghai
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -555,6 +652,9 @@ class DeployParam(AbstractModel):
 
     @property
     def DeployType(self):
+        """部署类型：package/image/repository/pipeline/jar/war
+        :rtype: str
+        """
         return self._DeployType
 
     @DeployType.setter
@@ -563,6 +663,9 @@ class DeployParam(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """部署类型为image时传入
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -571,6 +674,9 @@ class DeployParam(AbstractModel):
 
     @property
     def PackageName(self):
+        """部署类型为package时传入
+        :rtype: str
+        """
         return self._PackageName
 
     @PackageName.setter
@@ -579,6 +685,9 @@ class DeployParam(AbstractModel):
 
     @property
     def PackageVersion(self):
+        """部署类型为package时传入
+        :rtype: str
+        """
         return self._PackageVersion
 
     @PackageVersion.setter
@@ -587,6 +696,9 @@ class DeployParam(AbstractModel):
 
     @property
     def DeployRemark(self):
+        """部署备注
+        :rtype: str
+        """
         return self._DeployRemark
 
     @DeployRemark.setter
@@ -595,6 +707,9 @@ class DeployParam(AbstractModel):
 
     @property
     def RepoInfo(self):
+        """代码仓库信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.RepositoryInfo`
+        """
         return self._RepoInfo
 
     @RepoInfo.setter
@@ -603,6 +718,9 @@ class DeployParam(AbstractModel):
 
     @property
     def BuildPacks(self):
+        """无Dockerfile时填写
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.BuildPacksInfo`
+        """
         return self._BuildPacks
 
     @BuildPacks.setter
@@ -611,6 +729,9 @@ class DeployParam(AbstractModel):
 
     @property
     def ReleaseType(self):
+        """发布类型 GRAY | FULL
+        :rtype: str
+        """
         return self._ReleaseType
 
     @ReleaseType.setter
@@ -662,6 +783,9 @@ class DescribeCloudRunEnvsRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境ID，如果传了这个参数则只返回该环境的相关信息
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -670,6 +794,10 @@ class DescribeCloudRunEnvsRequest(AbstractModel):
 
     @property
     def IsVisible(self):
+        """指定Channels字段为可见渠道列表或不可见渠道列表
+如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+        :rtype: bool
+        """
         return self._IsVisible
 
     @IsVisible.setter
@@ -678,6 +806,9 @@ class DescribeCloudRunEnvsRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """渠道列表，代表可见或不可见渠道由IsVisible参数指定
+        :rtype: list of str
+        """
         return self._Channels
 
     @Channels.setter
@@ -716,6 +847,9 @@ class DescribeCloudRunEnvsResponse(AbstractModel):
 
     @property
     def EnvList(self):
+        """环境信息列表
+        :rtype: list of EnvInfo
+        """
         return self._EnvList
 
     @EnvList.setter
@@ -724,6 +858,9 @@ class DescribeCloudRunEnvsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -758,6 +895,9 @@ class DescribeCloudRunServerDetailRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -766,6 +906,9 @@ class DescribeCloudRunServerDetailRequest(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -812,6 +955,10 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
 
     @property
     def BaseInfo(self):
+        """服务基本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseInfo`
+        """
         return self._BaseInfo
 
     @BaseInfo.setter
@@ -820,6 +967,10 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
 
     @property
     def ServerConfig(self):
+        """服务配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
+        """
         return self._ServerConfig
 
     @ServerConfig.setter
@@ -828,6 +979,10 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
 
     @property
     def OnlineVersionInfos(self):
+        """在线版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OnlineVersionInfo
+        """
         return self._OnlineVersionInfos
 
     @OnlineVersionInfos.setter
@@ -836,6 +991,9 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -881,6 +1039,9 @@ class DescribeCloudRunServersRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -889,6 +1050,11 @@ class DescribeCloudRunServersRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """默认为9， 最大为30
+不传或传0时 取默认9
+大于30时取30
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -897,6 +1063,9 @@ class DescribeCloudRunServersRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """不传或传0时 会默认为1
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -938,6 +1107,9 @@ class DescribeCloudRunServersResponse(AbstractModel):
 
     @property
     def ServerList(self):
+        """服务列表
+        :rtype: list of ServerBaseInfo
+        """
         return self._ServerList
 
     @ServerList.setter
@@ -946,6 +1118,9 @@ class DescribeCloudRunServersResponse(AbstractModel):
 
     @property
     def Total(self):
+        """服务总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -954,6 +1129,9 @@ class DescribeCloudRunServersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -986,6 +1164,9 @@ class DescribeEnvBaseInfoRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境 Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1022,6 +1203,9 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
 
     @property
     def EnvBaseInfo(self):
+        """环境基础信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.EnvBaseInfo`
+        """
         return self._EnvBaseInfo
 
     @EnvBaseInfo.setter
@@ -1030,6 +1214,9 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1067,6 +1254,9 @@ class DescribeServerManageTaskRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1075,6 +1265,9 @@ class DescribeServerManageTaskRequest(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -1083,6 +1276,9 @@ class DescribeServerManageTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务Id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1091,6 +1287,9 @@ class DescribeServerManageTaskRequest(AbstractModel):
 
     @property
     def OperatorRemark(self):
+        """操作标识
+        :rtype: str
+        """
         return self._OperatorRemark
 
     @OperatorRemark.setter
@@ -1133,6 +1332,9 @@ class DescribeServerManageTaskResponse(AbstractModel):
 
     @property
     def IsExist(self):
+        """是否存在
+        :rtype: bool
+        """
         return self._IsExist
 
     @IsExist.setter
@@ -1141,6 +1343,9 @@ class DescribeServerManageTaskResponse(AbstractModel):
 
     @property
     def Task(self):
+        """任务信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerManageTaskInfo`
+        """
         return self._Task
 
     @Task.setter
@@ -1149,6 +1354,9 @@ class DescribeServerManageTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1202,6 +1410,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1210,6 +1421,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def PackageType(self):
+        """套餐类型：Trial ｜ Standard ｜ Professional ｜ Enterprise
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -1218,6 +1432,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC Id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1226,6 +1443,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """环境创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1234,6 +1454,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def Alias(self):
+        """环境别名
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -1242,6 +1465,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def Status(self):
+        """环境状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1250,6 +1476,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def Region(self):
+        """环境地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1258,6 +1487,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def EnvType(self):
+        """环境类型 tcbr ｜ run
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -1266,6 +1498,9 @@ class EnvBaseInfo(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """子网id
+        :rtype: str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -1385,6 +1620,9 @@ class EnvInfo(AbstractModel):
 
     @property
     def EnvId(self):
+        """账户下该环境唯一标识
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1393,6 +1631,11 @@ class EnvInfo(AbstractModel):
 
     @property
     def Source(self):
+        """环境来源。包含以下取值：
+<li>miniapp：微信小程序</li>
+<li>qcloud ：腾讯云</li>
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -1401,6 +1644,9 @@ class EnvInfo(AbstractModel):
 
     @property
     def Alias(self):
+        """环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -1409,6 +1655,9 @@ class EnvInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1417,6 +1666,9 @@ class EnvInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后修改时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1425,6 +1677,11 @@ class EnvInfo(AbstractModel):
 
     @property
     def Status(self):
+        """环境状态。包含以下取值：
+<li>NORMAL：正常可用</li>
+<li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1433,6 +1690,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def IsAutoDegrade(self):
+        """是否到期自动降为免费版
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAutoDegrade
 
     @IsAutoDegrade.setter
@@ -1441,6 +1702,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def EnvChannel(self):
+        """环境渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnvChannel
 
     @EnvChannel.setter
@@ -1449,6 +1714,12 @@ class EnvInfo(AbstractModel):
 
     @property
     def PayMode(self):
+        """支付方式。包含以下取值：
+<li> prepayment：预付费</li>
+<li> postpaid：后付费</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1457,6 +1728,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否为默认环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -1465,6 +1740,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def Region(self):
+        """环境所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1473,6 +1752,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def EnvType(self):
+        """环境类型：baas, run, hosting, weda,tcbr
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -1481,6 +1764,9 @@ class EnvInfo(AbstractModel):
 
     @property
     def Databases(self):
+        """数据库列表
+        :rtype: list of DatabasesInfo
+        """
         return self._Databases
 
     @Databases.setter
@@ -1489,6 +1775,9 @@ class EnvInfo(AbstractModel):
 
     @property
     def Storages(self):
+        """存储列表
+        :rtype: list of StorageInfo
+        """
         return self._Storages
 
     @Storages.setter
@@ -1497,6 +1786,9 @@ class EnvInfo(AbstractModel):
 
     @property
     def Functions(self):
+        """函数列表
+        :rtype: list of FunctionInfo
+        """
         return self._Functions
 
     @Functions.setter
@@ -1505,6 +1797,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def LogServices(self):
+        """云日志服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogServiceInfo
+        """
         return self._LogServices
 
     @LogServices.setter
@@ -1513,6 +1809,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def StaticStorages(self):
+        """静态资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StaticStorageInfo
+        """
         return self._StaticStorages
 
     @StaticStorages.setter
@@ -1521,6 +1821,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """环境标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1529,6 +1833,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def CustomLogServices(self):
+        """自定义日志服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClsInfo
+        """
         return self._CustomLogServices
 
     @CustomLogServices.setter
@@ -1537,6 +1845,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def PackageId(self):
+        """tcb产品套餐ID，参考DescribePackages接口的返回值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackageId
 
     @PackageId.setter
@@ -1545,6 +1857,10 @@ class EnvInfo(AbstractModel):
 
     @property
     def PackageName(self):
+        """套餐中文名称，参考DescribePackages接口的返回值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackageName
 
     @PackageName.setter
@@ -1637,6 +1953,9 @@ class FunctionInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1645,6 +1964,10 @@ class FunctionInfo(AbstractModel):
 
     @property
     def Region(self):
+        """所属地域。
+当前支持ap-shanghai
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1684,6 +2007,10 @@ class HpaPolicy(AbstractModel):
 
     @property
     def PolicyType(self):
+        """扩缩容类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -1692,6 +2019,10 @@ class HpaPolicy(AbstractModel):
 
     @property
     def PolicyThreshold(self):
+        """扩缩容阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PolicyThreshold
 
     @PolicyThreshold.setter
@@ -1738,6 +2069,9 @@ class LogServiceInfo(AbstractModel):
 
     @property
     def LogsetName(self):
+        """log名
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -1746,6 +2080,9 @@ class LogServiceInfo(AbstractModel):
 
     @property
     def LogsetId(self):
+        """log-id
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -1754,6 +2091,9 @@ class LogServiceInfo(AbstractModel):
 
     @property
     def TopicName(self):
+        """topic名
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1762,6 +2102,9 @@ class LogServiceInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """topic-id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -1770,6 +2113,9 @@ class LogServiceInfo(AbstractModel):
 
     @property
     def Region(self):
+        """cls日志所属地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1810,6 +2156,9 @@ class ObjectKV(AbstractModel):
 
     @property
     def Key(self):
+        """键值对Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1818,6 +2167,9 @@ class ObjectKV(AbstractModel):
 
     @property
     def Value(self):
+        """键值对Value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1861,6 +2213,10 @@ class OnlineVersionInfo(AbstractModel):
 
     @property
     def VersionName(self):
+        """版本名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VersionName
 
     @VersionName.setter
@@ -1869,6 +2225,10 @@ class OnlineVersionInfo(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """镜像url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -1877,6 +2237,10 @@ class OnlineVersionInfo(AbstractModel):
 
     @property
     def FlowRatio(self):
+        """流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowRatio
 
     @FlowRatio.setter
@@ -1924,6 +2288,9 @@ class OperateServerManageRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1932,6 +2299,9 @@ class OperateServerManageRequest(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -1940,6 +2310,9 @@ class OperateServerManageRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任报Id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1948,6 +2321,9 @@ class OperateServerManageRequest(AbstractModel):
 
     @property
     def OperateType(self):
+        """操作类型:cancel | go_back | done
+        :rtype: str
+        """
         return self._OperateType
 
     @OperateType.setter
@@ -1956,6 +2332,9 @@ class OperateServerManageRequest(AbstractModel):
 
     @property
     def OperatorRemark(self):
+        """操作标识
+        :rtype: str
+        """
         return self._OperatorRemark
 
     @OperatorRemark.setter
@@ -1993,6 +2372,9 @@ class OperateServerManageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2036,6 +2418,9 @@ class ReleaseGrayRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2044,6 +2429,9 @@ class ReleaseGrayRequest(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -2052,6 +2440,9 @@ class ReleaseGrayRequest(AbstractModel):
 
     @property
     def GrayType(self):
+        """灰度类型
+        :rtype: str
+        """
         return self._GrayType
 
     @GrayType.setter
@@ -2060,6 +2451,9 @@ class ReleaseGrayRequest(AbstractModel):
 
     @property
     def TrafficType(self):
+        """流量类型
+        :rtype: str
+        """
         return self._TrafficType
 
     @TrafficType.setter
@@ -2068,6 +2462,9 @@ class ReleaseGrayRequest(AbstractModel):
 
     @property
     def VersionFlowItems(self):
+        """流量策略
+        :rtype: list of VersionFlowInfo
+        """
         return self._VersionFlowItems
 
     @VersionFlowItems.setter
@@ -2076,6 +2473,9 @@ class ReleaseGrayRequest(AbstractModel):
 
     @property
     def OperatorRemark(self):
+        """操作标识
+        :rtype: str
+        """
         return self._OperatorRemark
 
     @OperatorRemark.setter
@@ -2084,6 +2484,9 @@ class ReleaseGrayRequest(AbstractModel):
 
     @property
     def GrayFlowRatio(self):
+        """流量比例
+        :rtype: int
+        """
         return self._GrayFlowRatio
 
     @GrayFlowRatio.setter
@@ -2128,6 +2531,9 @@ class ReleaseGrayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2159,6 +2565,9 @@ class RepositoryInfo(AbstractModel):
 
     @property
     def Source(self):
+        """git source
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -2167,6 +2576,9 @@ class RepositoryInfo(AbstractModel):
 
     @property
     def Repo(self):
+        """仓库名
+        :rtype: str
+        """
         return self._Repo
 
     @Repo.setter
@@ -2175,6 +2587,9 @@ class RepositoryInfo(AbstractModel):
 
     @property
     def Branch(self):
+        """分支名
+        :rtype: str
+        """
         return self._Branch
 
     @Branch.setter
@@ -2271,6 +2686,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境 Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2279,6 +2697,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -2287,6 +2708,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def OpenAccessTypes(self):
+        """是否开启公网访问
+        :rtype: list of str
+        """
         return self._OpenAccessTypes
 
     @OpenAccessTypes.setter
@@ -2295,6 +2719,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Cpu(self):
+        """Cpu 规格
+        :rtype: float
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -2303,6 +2730,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Mem(self):
+        """Mem 规格
+        :rtype: float
+        """
         return self._Mem
 
     @Mem.setter
@@ -2311,6 +2741,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def MinNum(self):
+        """最小副本数
+        :rtype: int
+        """
         return self._MinNum
 
     @MinNum.setter
@@ -2319,6 +2752,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def MaxNum(self):
+        """最大副本数
+        :rtype: int
+        """
         return self._MaxNum
 
     @MaxNum.setter
@@ -2327,6 +2763,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def PolicyDetails(self):
+        """扩缩容配置
+        :rtype: list of HpaPolicy
+        """
         return self._PolicyDetails
 
     @PolicyDetails.setter
@@ -2335,6 +2774,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def CustomLogs(self):
+        """日志采集路径
+        :rtype: str
+        """
         return self._CustomLogs
 
     @CustomLogs.setter
@@ -2343,6 +2785,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def EnvParams(self):
+        """环境变量
+        :rtype: str
+        """
         return self._EnvParams
 
     @EnvParams.setter
@@ -2351,6 +2796,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def InitialDelaySeconds(self):
+        """延迟检测时间
+        :rtype: int
+        """
         return self._InitialDelaySeconds
 
     @InitialDelaySeconds.setter
@@ -2359,6 +2807,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2367,6 +2818,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Port(self):
+        """服务端口
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -2375,6 +2829,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def HasDockerfile(self):
+        """是否有Dockerfile
+        :rtype: bool
+        """
         return self._HasDockerfile
 
     @HasDockerfile.setter
@@ -2383,6 +2840,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Dockerfile(self):
+        """Dockerfile 文件名
+        :rtype: str
+        """
         return self._Dockerfile
 
     @Dockerfile.setter
@@ -2391,6 +2851,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def BuildDir(self):
+        """构建目录
+        :rtype: str
+        """
         return self._BuildDir
 
     @BuildDir.setter
@@ -2399,6 +2862,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LogType(self):
+        """日志类型: none | default | custom
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -2407,6 +2873,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LogSetId(self):
+        """cls setId
+        :rtype: str
+        """
         return self._LogSetId
 
     @LogSetId.setter
@@ -2415,6 +2884,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LogTopicId(self):
+        """cls 主题id
+        :rtype: str
+        """
         return self._LogTopicId
 
     @LogTopicId.setter
@@ -2423,6 +2895,9 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LogParseType(self):
+        """解析类型：json ｜ line
+        :rtype: str
+        """
         return self._LogParseType
 
     @LogParseType.setter
@@ -2431,6 +2906,10 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Tag(self):
+        """服务标签, function: 函数托管
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -2507,6 +2986,9 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -2515,6 +2997,9 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def DefaultDomainName(self):
+        """默认服务域名
+        :rtype: str
+        """
         return self._DefaultDomainName
 
     @DefaultDomainName.setter
@@ -2523,6 +3008,9 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def CustomDomainName(self):
+        """自定义域名
+        :rtype: str
+        """
         return self._CustomDomainName
 
     @CustomDomainName.setter
@@ -2531,6 +3019,9 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def Status(self):
+        """服务状态：running/deploying/deploy_failed
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2539,6 +3030,9 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -2547,6 +3041,9 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def AccessTypes(self):
+        """公网访问类型
+        :rtype: list of str
+        """
         return self._AccessTypes
 
     @AccessTypes.setter
@@ -2555,6 +3052,9 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def CustomDomainNames(self):
+        """展示自定义域名
+        :rtype: list of str
+        """
         return self._CustomDomainNames
 
     @CustomDomainNames.setter
@@ -2639,6 +3139,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def Id(self):
+        """任务Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2647,6 +3150,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2655,6 +3161,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -2663,6 +3172,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2671,6 +3183,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def ChangeType(self):
+        """变更类型
+        :rtype: str
+        """
         return self._ChangeType
 
     @ChangeType.setter
@@ -2679,6 +3194,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def ReleaseType(self):
+        """发布类型
+        :rtype: str
+        """
         return self._ReleaseType
 
     @ReleaseType.setter
@@ -2687,6 +3205,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def DeployType(self):
+        """部署类型
+        :rtype: str
+        """
         return self._DeployType
 
     @DeployType.setter
@@ -2695,6 +3216,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def PreVersionName(self):
+        """上一个版本名
+        :rtype: str
+        """
         return self._PreVersionName
 
     @PreVersionName.setter
@@ -2703,6 +3227,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def VersionName(self):
+        """版本名
+        :rtype: str
+        """
         return self._VersionName
 
     @VersionName.setter
@@ -2711,6 +3238,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def PipelineId(self):
+        """流水线Id
+        :rtype: int
+        """
         return self._PipelineId
 
     @PipelineId.setter
@@ -2719,6 +3249,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def PipelineTaskId(self):
+        """流水线任务Id
+        :rtype: int
+        """
         return self._PipelineTaskId
 
     @PipelineTaskId.setter
@@ -2727,6 +3260,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def ReleaseId(self):
+        """发布单Id
+        :rtype: int
+        """
         return self._ReleaseId
 
     @ReleaseId.setter
@@ -2735,6 +3271,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2743,6 +3282,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def Steps(self):
+        """步骤信息
+        :rtype: list of TaskStepInfo
+        """
         return self._Steps
 
     @Steps.setter
@@ -2751,6 +3293,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def FailReason(self):
+        """失败原因
+        :rtype: str
+        """
         return self._FailReason
 
     @FailReason.setter
@@ -2759,6 +3304,9 @@ class ServerManageTaskInfo(AbstractModel):
 
     @property
     def OperatorRemark(self):
+        """操作标识
+        :rtype: str
+        """
         return self._OperatorRemark
 
     @OperatorRemark.setter
@@ -2824,6 +3372,9 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def StaticDomain(self):
+        """静态CDN域名
+        :rtype: str
+        """
         return self._StaticDomain
 
     @StaticDomain.setter
@@ -2832,6 +3383,9 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def DefaultDirName(self):
+        """静态CDN默认文件夹，当前为根目录
+        :rtype: str
+        """
         return self._DefaultDirName
 
     @DefaultDirName.setter
@@ -2840,6 +3394,9 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def Status(self):
+        """资源状态(process/online/offline/init)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2848,6 +3405,9 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def Region(self):
+        """cos所属区域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2856,6 +3416,9 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def Bucket(self):
+        """bucket信息
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -2903,6 +3466,10 @@ class StorageInfo(AbstractModel):
 
     @property
     def Region(self):
+        """资源所属地域。
+当前支持ap-shanghai
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2911,6 +3478,9 @@ class StorageInfo(AbstractModel):
 
     @property
     def Bucket(self):
+        """桶名，存储资源的唯一标识
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -2919,6 +3489,9 @@ class StorageInfo(AbstractModel):
 
     @property
     def CdnDomain(self):
+        """cdn 域名
+        :rtype: str
+        """
         return self._CdnDomain
 
     @CdnDomain.setter
@@ -2927,6 +3500,9 @@ class StorageInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """资源所属用户的腾讯云appId
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -2966,6 +3542,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -2974,6 +3553,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3026,6 +3608,9 @@ class TaskStepInfo(AbstractModel):
 
     @property
     def Name(self):
+        """步骤名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3034,6 +3619,12 @@ class TaskStepInfo(AbstractModel):
 
     @property
     def Status(self):
+        """未启动："todo"
+运行中："running"
+失败："failed"
+成功结束："finished"
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3042,6 +3633,9 @@ class TaskStepInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3050,6 +3644,9 @@ class TaskStepInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3058,6 +3655,9 @@ class TaskStepInfo(AbstractModel):
 
     @property
     def CostTime(self):
+        """消耗时间：秒
+        :rtype: int
+        """
         return self._CostTime
 
     @CostTime.setter
@@ -3066,6 +3666,9 @@ class TaskStepInfo(AbstractModel):
 
     @property
     def FailReason(self):
+        """失败原因
+        :rtype: str
+        """
         return self._FailReason
 
     @FailReason.setter
@@ -3113,6 +3716,9 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -3121,6 +3727,9 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerName(self):
+        """服务名
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -3129,6 +3738,9 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def DeployInfo(self):
+        """部署信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
+        """
         return self._DeployInfo
 
     @DeployInfo.setter
@@ -3137,6 +3749,9 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerConfig(self):
+        """服务配置信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
+        """
         return self._ServerConfig
 
     @ServerConfig.setter
@@ -3183,6 +3798,9 @@ class UpdateCloudRunServerResponse(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境Id
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -3191,6 +3809,9 @@ class UpdateCloudRunServerResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """一键部署任务Id，暂时用不到
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3199,6 +3820,9 @@ class UpdateCloudRunServerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3238,6 +3862,9 @@ class VersionFlowInfo(AbstractModel):
 
     @property
     def VersionName(self):
+        """版本名
+        :rtype: str
+        """
         return self._VersionName
 
     @VersionName.setter
@@ -3246,6 +3873,9 @@ class VersionFlowInfo(AbstractModel):
 
     @property
     def IsDefaultPriority(self):
+        """是否默认版本
+        :rtype: bool
+        """
         return self._IsDefaultPriority
 
     @IsDefaultPriority.setter
@@ -3254,6 +3884,9 @@ class VersionFlowInfo(AbstractModel):
 
     @property
     def FlowRatio(self):
+        """流量比例
+        :rtype: int
+        """
         return self._FlowRatio
 
     @FlowRatio.setter
@@ -3262,6 +3895,9 @@ class VersionFlowInfo(AbstractModel):
 
     @property
     def UrlParam(self):
+        """测试KV值
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ObjectKV`
+        """
         return self._UrlParam
 
     @UrlParam.setter
@@ -3270,6 +3906,9 @@ class VersionFlowInfo(AbstractModel):
 
     @property
     def Priority(self):
+        """权重
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter

@@ -41,6 +41,10 @@ class ApplyParam(AbstractModel):
 
     @property
     def Key(self):
+        """审批流中表单唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -49,6 +53,10 @@ class ApplyParam(AbstractModel):
 
     @property
     def Value(self):
+        """表单value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Value
 
     @Value.setter
@@ -57,6 +65,10 @@ class ApplyParam(AbstractModel):
 
     @property
     def Name(self):
+        """表单参数描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -96,6 +108,9 @@ class ApproveOpinion(AbstractModel):
 
     @property
     def Type(self):
+        """方式 1:输入文字反馈  2:预设选项
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -104,6 +119,10 @@ class ApproveOpinion(AbstractModel):
 
     @property
     def Content(self):
+        """审批意见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Content
 
     @Content.setter
@@ -169,6 +188,9 @@ class ApproveUser(AbstractModel):
 
     @property
     def Uin(self):
+        """用户uin
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -177,6 +199,9 @@ class ApproveUser(AbstractModel):
 
     @property
     def Type(self):
+        """用户类型 (1:用户  2:用户组)
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -185,6 +210,10 @@ class ApproveUser(AbstractModel):
 
     @property
     def Desc(self):
+        """用户描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -193,6 +222,10 @@ class ApproveUser(AbstractModel):
 
     @property
     def Nick(self):
+        """用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Nick
 
     @Nick.setter
@@ -201,6 +234,10 @@ class ApproveUser(AbstractModel):
 
     @property
     def Scf(self):
+        """动态获取Scf
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bpaas.v20181217.models.Scf`
+        """
         return self._Scf
 
     @Scf.setter
@@ -209,6 +246,10 @@ class ApproveUser(AbstractModel):
 
     @property
     def ApproveStatus(self):
+        """审批状态 （取值范围 0:待审批  1:审批通过  2:拒绝  6:其他人已审批）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ApproveStatus
 
     @ApproveStatus.setter
@@ -217,6 +258,10 @@ class ApproveUser(AbstractModel):
 
     @property
     def ApproveMsg(self):
+        """审批意见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApproveMsg
 
     @ApproveMsg.setter
@@ -225,6 +270,10 @@ class ApproveUser(AbstractModel):
 
     @property
     def ApproveTime(self):
+        """审批时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApproveTime
 
     @ApproveTime.setter
@@ -233,6 +282,10 @@ class ApproveUser(AbstractModel):
 
     @property
     def ApproveGroup(self):
+        """审批组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApproveGroup
 
     @ApproveGroup.setter
@@ -276,6 +329,9 @@ class GetBpaasApproveDetailRequest(AbstractModel):
 
     @property
     def ApproveId(self):
+        """审批id
+        :rtype: int
+        """
         return self._ApproveId
 
     @ApproveId.setter
@@ -353,6 +409,9 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApplyUin(self):
+        """申请人uin
+        :rtype: int
+        """
         return self._ApplyUin
 
     @ApplyUin.setter
@@ -361,6 +420,9 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApplyOwnUin(self):
+        """申请人主账号
+        :rtype: int
+        """
         return self._ApplyOwnUin
 
     @ApplyOwnUin.setter
@@ -369,6 +431,10 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApplyUinNick(self):
+        """申请人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplyUinNick
 
     @ApplyUinNick.setter
@@ -377,6 +443,9 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def BpaasId(self):
+        """审批流id
+        :rtype: int
+        """
         return self._BpaasId
 
     @BpaasId.setter
@@ -385,6 +454,9 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def BpaasName(self):
+        """审批流名称
+        :rtype: str
+        """
         return self._BpaasName
 
     @BpaasName.setter
@@ -393,6 +465,10 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApplicationParams(self):
+        """申请参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApplyParam
+        """
         return self._ApplicationParams
 
     @ApplicationParams.setter
@@ -401,6 +477,10 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def Reason(self):
+        """申请原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -409,6 +489,10 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """申请时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -417,6 +501,10 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """申请单状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -425,6 +513,10 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def Nodes(self):
+        """节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StatusNode
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -433,6 +525,10 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ApprovingNodeId(self):
+        """正在审批的节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApprovingNodeId
 
     @ApprovingNodeId.setter
@@ -441,6 +537,10 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """更新时间，时间格式：2021-12-12 10:12:10	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -449,6 +549,9 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -502,6 +605,9 @@ class OutApproveBpaasApplicationRequest(AbstractModel):
 
     @property
     def Status(self):
+        """状态  1:通过  2:拒绝
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -510,6 +616,9 @@ class OutApproveBpaasApplicationRequest(AbstractModel):
 
     @property
     def ApproveId(self):
+        """审批单id
+        :rtype: int
+        """
         return self._ApproveId
 
     @ApproveId.setter
@@ -518,6 +627,9 @@ class OutApproveBpaasApplicationRequest(AbstractModel):
 
     @property
     def Msg(self):
+        """审批意见
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -553,6 +665,9 @@ class OutApproveBpaasApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -589,6 +704,9 @@ class Scf(AbstractModel):
 
     @property
     def ScfRegion(self):
+        """Scf函数地域id
+        :rtype: str
+        """
         return self._ScfRegion
 
     @ScfRegion.setter
@@ -597,6 +715,9 @@ class Scf(AbstractModel):
 
     @property
     def ScfRegionName(self):
+        """Scf函数地域
+        :rtype: str
+        """
         return self._ScfRegionName
 
     @ScfRegionName.setter
@@ -605,6 +726,10 @@ class Scf(AbstractModel):
 
     @property
     def ScfName(self):
+        """Scf函数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScfName
 
     @ScfName.setter
@@ -613,6 +738,10 @@ class Scf(AbstractModel):
 
     @property
     def Params(self):
+        """Scf函数入参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScfParam
+        """
         return self._Params
 
     @Params.setter
@@ -664,6 +793,9 @@ class ScfParam(AbstractModel):
 
     @property
     def Key(self):
+        """参数Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -672,6 +804,9 @@ class ScfParam(AbstractModel):
 
     @property
     def Type(self):
+        """参数类型 1用户输入 2预设参数 3表单参数
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -680,6 +815,9 @@ class ScfParam(AbstractModel):
 
     @property
     def Values(self):
+        """参数值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -688,6 +826,10 @@ class ScfParam(AbstractModel):
 
     @property
     def Name(self):
+        """参数描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -809,6 +951,9 @@ class StatusNode(AbstractModel):
 
     @property
     def NodeId(self):
+        """节点id
+        :rtype: str
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -817,6 +962,9 @@ class StatusNode(AbstractModel):
 
     @property
     def NodeName(self):
+        """节点名称
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -825,6 +973,9 @@ class StatusNode(AbstractModel):
 
     @property
     def NodeType(self):
+        """节点类型 1:审批节点 2:执行节点 3:条件节点
+        :rtype: int
+        """
         return self._NodeType
 
     @NodeType.setter
@@ -833,6 +984,9 @@ class StatusNode(AbstractModel):
 
     @property
     def NextNode(self):
+        """下一个节点
+        :rtype: str
+        """
         return self._NextNode
 
     @NextNode.setter
@@ -841,6 +995,10 @@ class StatusNode(AbstractModel):
 
     @property
     def Opinion(self):
+        """审批意见模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bpaas.v20181217.models.ApproveOpinion`
+        """
         return self._Opinion
 
     @Opinion.setter
@@ -849,6 +1007,10 @@ class StatusNode(AbstractModel):
 
     @property
     def ScfName(self):
+        """scf函数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScfName
 
     @ScfName.setter
@@ -857,6 +1019,10 @@ class StatusNode(AbstractModel):
 
     @property
     def SubStatus(self):
+        """状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SubStatus
 
     @SubStatus.setter
@@ -865,6 +1031,10 @@ class StatusNode(AbstractModel):
 
     @property
     def ApprovedUin(self):
+        """审批节点审批人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
         return self._ApprovedUin
 
     @ApprovedUin.setter
@@ -873,6 +1043,10 @@ class StatusNode(AbstractModel):
 
     @property
     def CreateTime(self):
+        """审批时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -881,6 +1055,10 @@ class StatusNode(AbstractModel):
 
     @property
     def Msg(self):
+        """审批意见信息 审批节点:审批人意见  执行节点:scf函数执行日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -889,6 +1067,10 @@ class StatusNode(AbstractModel):
 
     @property
     def Users(self):
+        """有权限审批该节点的uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bpaas.v20181217.models.ApproveUser`
+        """
         return self._Users
 
     @Users.setter
@@ -897,6 +1079,10 @@ class StatusNode(AbstractModel):
 
     @property
     def IsApprove(self):
+        """是否有权限审批该节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsApprove
 
     @IsApprove.setter
@@ -905,6 +1091,10 @@ class StatusNode(AbstractModel):
 
     @property
     def ApproveId(self):
+        """审批id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApproveId
 
     @ApproveId.setter
@@ -913,6 +1103,10 @@ class StatusNode(AbstractModel):
 
     @property
     def ApproveMethod(self):
+        """审批方式 0或签 1会签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ApproveMethod
 
     @ApproveMethod.setter
@@ -921,6 +1115,10 @@ class StatusNode(AbstractModel):
 
     @property
     def ApproveType(self):
+        """审批节点审批类型，1人工审批 2自动通过 3自动决绝 4外部审批scf
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ApproveType
 
     @ApproveType.setter
@@ -929,6 +1127,10 @@ class StatusNode(AbstractModel):
 
     @property
     def CallMethod(self):
+        """外部审批类型 scf:0或null ; CKafka:1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CallMethod
 
     @CallMethod.setter
@@ -937,6 +1139,10 @@ class StatusNode(AbstractModel):
 
     @property
     def DataHubId(self):
+        """CKafka - 接入资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataHubId
 
     @DataHubId.setter
@@ -945,6 +1151,10 @@ class StatusNode(AbstractModel):
 
     @property
     def TaskName(self):
+        """CKafka - 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -953,6 +1163,10 @@ class StatusNode(AbstractModel):
 
     @property
     def CKafkaRegion(self):
+        """CKafka - 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CKafkaRegion
 
     @CKafkaRegion.setter
@@ -961,6 +1175,10 @@ class StatusNode(AbstractModel):
 
     @property
     def ExternalUrl(self):
+        """外部审批Url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExternalUrl
 
     @ExternalUrl.setter
@@ -969,6 +1187,10 @@ class StatusNode(AbstractModel):
 
     @property
     def ParallelNodes(self):
+        """并行节点 3-4
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParallelNodes
 
     @ParallelNodes.setter
@@ -977,6 +1199,10 @@ class StatusNode(AbstractModel):
 
     @property
     def RejectedCloudFunctionMsg(self):
+        """scf拒绝时返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RejectedCloudFunctionMsg
 
     @RejectedCloudFunctionMsg.setter
@@ -985,6 +1211,10 @@ class StatusNode(AbstractModel):
 
     @property
     def PrevNode(self):
+        """上一个节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrevNode
 
     @PrevNode.setter

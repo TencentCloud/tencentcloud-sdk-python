@@ -474,6 +474,53 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVideoDatabaseEntryTask(self, request):
+        """对URL链接或COS中的视频发起入库任务。
+        可选在任务完成后向回调方发送任务完成状态信息。
+
+        :param request: Request instance for CreateVideoDatabaseEntryTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateVideoDatabaseEntryTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateVideoDatabaseEntryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoDatabaseEntryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoDatabaseEntryTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVideoSearchTask(self, request):
+        """使用检索值检索库中最接近检索值的若干视频。
+
+        :param request: Request instance for CreateVideoSearchTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateVideoSearchTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateVideoSearchTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoSearchTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoSearchTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWatermarkTemplate(self, request):
         """创建用户自定义水印模板，数量上限：1000。
 
@@ -1584,6 +1631,52 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeTranscodeTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTranscodeTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVideoDatabaseEntryTaskDetail(self, request):
+        """根据任务ID查询视频入库任务的状态。
+
+        :param request: Request instance for DescribeVideoDatabaseEntryTaskDetail.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeVideoDatabaseEntryTaskDetailRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeVideoDatabaseEntryTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoDatabaseEntryTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoDatabaseEntryTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVideoSearchTaskDetail(self, request):
+        """根据任务ID查询视频检索任务的状态。
+
+        :param request: Request instance for DescribeVideoSearchTaskDetail.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeVideoSearchTaskDetailRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeVideoSearchTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoSearchTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoSearchTaskDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

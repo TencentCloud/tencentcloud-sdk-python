@@ -73,7 +73,9 @@ class LkeClient(AbstractClient):
 
 
     def ConvertDocument(self, request):
-        """接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
+        """产品规划
+
+        接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
 
         :param request: Request instance for ConvertDocument.
         :type request: :class:`tencentcloud.lke.v20231130.models.ConvertDocumentRequest`

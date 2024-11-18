@@ -32,6 +32,9 @@ class ActivateServiceRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """开通之后，是否关闭后付费；默认为0，不关闭；1为关闭
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -65,6 +68,9 @@ class ActivateServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -83,7 +89,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。
+        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large。
 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 
 注意：
@@ -92,8 +98,8 @@ class ChatCompletionsRequest(AbstractModel):
         :param _Messages: 聊天上下文信息。
 说明：
 1. 长度最多为 40，按对话时间从旧到新在数组中排列。
-2. Message.Role 可选值：system、user、assistant、 tool。
-其中，system 角色可选，如存在则必须位于列表的最开始。user（tool） 和 assistant 需交替出现（一问一答），以 user 提问开始，user（tool）提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。
+2. Message.Role 可选值：system、user、assistant、 tool（functioncall场景）。
+其中，system 角色可选，如存在则必须位于列表的最开始。user（tool） 和 assistant 需交替出现（一问一答），以 user 提问开始，user（tool）提问结束，其中tool可以连续出现多次，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user（tool tool ...） assistant user（tool tool ...） ...]。
 3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
         :type Messages: list of Message
         :param _Stream: 流式调用开关。
@@ -153,14 +159,19 @@ class ChatCompletionsRequest(AbstractModel):
         :type Citation: bool
         :param _EnableSpeedSearch: 是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
         :type EnableSpeedSearch: bool
-        :param _EnableMultimedia: 图文并茂开关。
-详细介绍请阅读 [图文并茂](https://cloud.tencent.com/document/product/1729/111178) 中的说明。
+        :param _EnableMultimedia: 多媒体开关。
+详细介绍请阅读 [多媒体介绍](https://cloud.tencent.com/document/product/1729/111178) 中的说明。
 说明：
-1. 该参数仅在功能增强（如搜索）开关开启（EnableEnhancement=true）时生效。
-2. hunyuan-lite 无图文并茂能力，该参数对 hunyuan-lite 版本不生效。
-3. 未传值时默认关闭。
-4. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
+1. 该参数目前仅对白名单内用户生效，如您想体验该功能请 [联系我们](https://cloud.tencent.com/act/event/Online_service)。
+2. 该参数仅在功能增强（如搜索）开关开启（EnableEnhancement=true）并且极速版搜索开关关闭（EnableSpeedSearch=false）时生效。
+3. hunyuan-lite 无多媒体能力，该参数对 hunyuan-lite 版本不生效。
+4. 未传值时默认关闭。
+5. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
         :type EnableMultimedia: bool
+        :param _EnableDeepSearch: 是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
+        :type EnableDeepSearch: bool
+        :param _Seed: 说明： 1. 确保模型的输出是可复现的。 2. 取值区间为非0正整数，最大值10000。 3. 非必要不建议使用，不合理的取值会影响效果。
+        :type Seed: int
         """
         self._Model = None
         self._Messages = None
@@ -176,9 +187,18 @@ class ChatCompletionsRequest(AbstractModel):
         self._Citation = None
         self._EnableSpeedSearch = None
         self._EnableMultimedia = None
+        self._EnableDeepSearch = None
+        self._Seed = None
 
     @property
     def Model(self):
+        """模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large。
+各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
+
+注意：
+不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -187,6 +207,14 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Messages(self):
+        """聊天上下文信息。
+说明：
+1. 长度最多为 40，按对话时间从旧到新在数组中排列。
+2. Message.Role 可选值：system、user、assistant、 tool（functioncall场景）。
+其中，system 角色可选，如存在则必须位于列表的最开始。user（tool） 和 assistant 需交替出现（一问一答），以 user 提问开始，user（tool）提问结束，其中tool可以连续出现多次，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user（tool tool ...） assistant user（tool tool ...） ...]。
+3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
+        :rtype: list of Message
+        """
         return self._Messages
 
     @Messages.setter
@@ -195,6 +223,19 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Stream(self):
+        """流式调用开关。
+说明：
+1. 未传值时默认为非流式调用（false）。
+2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
+3. 非流式调用时：
+调用方式与普通 HTTP 请求无异。
+接口响应耗时较长，**如需更低时延建议设置为 true**。
+只返回一次最终结果（返回值取 Choices[n].Message 中的值）。
+
+注意：
+通过 SDK 调用时，流式和非流式调用需用**不同的方式**获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。
+        :rtype: bool
+        """
         return self._Stream
 
     @Stream.setter
@@ -203,6 +244,17 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def StreamModeration(self):
+        """流式输出审核开关。
+说明：
+1. 当使用流式输出（Stream 字段值为 true）时，该字段生效。
+2. 输出审核有流式和同步两种模式，**流式模式首包响应更快**。未传值时默认为流式模式（true）。
+3. 如果值为 true，将对输出内容进行分段审核，审核通过的内容流式输出返回。如果出现审核不过，响应中的 FinishReason 值为 sensitive。
+4. 如果值为 false，则不使用流式输出审核，需要审核完所有输出内容后再返回结果。
+
+注意：
+当选择流式输出审核时，可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。
+        :rtype: bool
+        """
         return self._StreamModeration
 
     @StreamModeration.setter
@@ -211,6 +263,11 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def TopP(self):
+        """说明：
+1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+        :rtype: float
+        """
         return self._TopP
 
     @TopP.setter
@@ -219,6 +276,11 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Temperature(self):
+        """说明：
+1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
+2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+        :rtype: float
+        """
         return self._Temperature
 
     @Temperature.setter
@@ -227,6 +289,14 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableEnhancement(self):
+        """功能增强（如搜索）开关。
+说明：
+1. hunyuan-lite 无功能增强（如搜索）能力，该参数对 hunyuan-lite 版本不生效。
+2. 未传值时默认打开开关。
+3. 关闭时将直接由主模型生成回复内容，可以降低响应时延（对于流式输出时的首字时延尤为明显）。但在少数场景里，回复效果可能会下降。
+4. 安全审核能力不属于功能增强范围，不受此字段影响。
+        :rtype: bool
+        """
         return self._EnableEnhancement
 
     @EnableEnhancement.setter
@@ -235,6 +305,9 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Tools(self):
+        """可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+        :rtype: list of Tool
+        """
         return self._Tools
 
     @Tools.setter
@@ -243,6 +316,13 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def ToolChoice(self):
+        """工具使用选项，可选值包括 none、auto、custom。
+说明：
+1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
+3. 未设置时，默认值为auto
+        :rtype: str
+        """
         return self._ToolChoice
 
     @ToolChoice.setter
@@ -251,6 +331,9 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def CustomTool(self):
+        """强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Tool`
+        """
         return self._CustomTool
 
     @CustomTool.setter
@@ -259,6 +342,9 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def SearchInfo(self):
+        """默认是false，在值为true且命中搜索时，接口会返回SearchInfo
+        :rtype: bool
+        """
         return self._SearchInfo
 
     @SearchInfo.setter
@@ -267,6 +353,13 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Citation(self):
+        """搜索引文角标开关。
+说明：
+1. 配合EnableEnhancement和SearchInfo参数使用。打开后，回答中命中搜索的结果会在片段后增加角标标志，对应SearchInfo列表中的链接。
+2. false：开关关闭，true：开关打开。
+3. 未传值时默认开关关闭（false）。
+        :rtype: bool
+        """
         return self._Citation
 
     @Citation.setter
@@ -275,6 +368,9 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableSpeedSearch(self):
+        """是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
+        :rtype: bool
+        """
         return self._EnableSpeedSearch
 
     @EnableSpeedSearch.setter
@@ -283,11 +379,43 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableMultimedia(self):
+        """多媒体开关。
+详细介绍请阅读 [多媒体介绍](https://cloud.tencent.com/document/product/1729/111178) 中的说明。
+说明：
+1. 该参数目前仅对白名单内用户生效，如您想体验该功能请 [联系我们](https://cloud.tencent.com/act/event/Online_service)。
+2. 该参数仅在功能增强（如搜索）开关开启（EnableEnhancement=true）并且极速版搜索开关关闭（EnableSpeedSearch=false）时生效。
+3. hunyuan-lite 无多媒体能力，该参数对 hunyuan-lite 版本不生效。
+4. 未传值时默认关闭。
+5. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
+        :rtype: bool
+        """
         return self._EnableMultimedia
 
     @EnableMultimedia.setter
     def EnableMultimedia(self, EnableMultimedia):
         self._EnableMultimedia = EnableMultimedia
+
+    @property
+    def EnableDeepSearch(self):
+        """是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
+        :rtype: bool
+        """
+        return self._EnableDeepSearch
+
+    @EnableDeepSearch.setter
+    def EnableDeepSearch(self, EnableDeepSearch):
+        self._EnableDeepSearch = EnableDeepSearch
+
+    @property
+    def Seed(self):
+        """说明： 1. 确保模型的输出是可复现的。 2. 取值区间为非0正整数，最大值10000。 3. 非必要不建议使用，不合理的取值会影响效果。
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
 
 
     def _deserialize(self, params):
@@ -317,6 +445,8 @@ class ChatCompletionsRequest(AbstractModel):
         self._Citation = params.get("Citation")
         self._EnableSpeedSearch = params.get("EnableSpeedSearch")
         self._EnableMultimedia = params.get("EnableMultimedia")
+        self._EnableDeepSearch = params.get("EnableDeepSearch")
+        self._Seed = params.get("Seed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -355,7 +485,7 @@ class ChatCompletionsResponse(AbstractModel):
         :type SearchInfo: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
         :param _Replaces: 多媒体信息。
 说明：
-1. 可以用多媒体信息替换回复内容里的占位符，得到完整的图文信息。
+1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
 2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
         :type Replaces: list of Replace
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
@@ -374,6 +504,9 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Created(self):
+        """Unix 时间戳，单位为秒。
+        :rtype: int
+        """
         return self._Created
 
     @Created.setter
@@ -382,6 +515,10 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Usage(self):
+        """Token 统计信息。
+按照总 Token 数量计费。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
+        """
         return self._Usage
 
     @Usage.setter
@@ -390,6 +527,9 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Note(self):
+        """免责声明。
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -398,6 +538,9 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Id(self):
+        """本次请求的 RequestId。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -406,6 +549,9 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Choices(self):
+        """回复内容。
+        :rtype: list of Choice
+        """
         return self._Choices
 
     @Choices.setter
@@ -414,6 +560,11 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误信息。
+如果流式返回中服务处理异常，返回该错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -422,6 +573,9 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def ModerationLevel(self):
+        """多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
+        :rtype: str
+        """
         return self._ModerationLevel
 
     @ModerationLevel.setter
@@ -430,6 +584,9 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def SearchInfo(self):
+        """搜索结果信息
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
+        """
         return self._SearchInfo
 
     @SearchInfo.setter
@@ -438,6 +595,12 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Replaces(self):
+        """多媒体信息。
+说明：
+1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
+2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
+        :rtype: list of Replace
+        """
         return self._Replaces
 
     @Replaces.setter
@@ -446,6 +609,9 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -507,6 +673,12 @@ tool_calls 标识函数调用。
 
     @property
     def FinishReason(self):
+        """结束标志位，可能为 stop、 sensitive或者tool_calls。
+stop 表示输出正常结束。
+sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
+tool_calls 标识函数调用。
+        :rtype: str
+        """
         return self._FinishReason
 
     @FinishReason.setter
@@ -515,6 +687,10 @@ tool_calls 标识函数调用。
 
     @property
     def Delta(self):
+        """增量返回值，流式调用时使用该字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Delta`
+        """
         return self._Delta
 
     @Delta.setter
@@ -523,6 +699,10 @@ tool_calls 标识函数调用。
 
     @property
     def Message(self):
+        """返回值，非流式调用时使用该字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Message`
+        """
         return self._Message
 
     @Message.setter
@@ -574,6 +754,12 @@ class Content(AbstractModel):
 
     @property
     def Type(self):
+        """内容类型
+注意：
+当前只支持传入单张图片，传入多张图片时，以第一个图片为准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -582,6 +768,10 @@ class Content(AbstractModel):
 
     @property
     def Text(self):
+        """当 Type 为 text 时使用，表示具体的文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -590,6 +780,11 @@ class Content(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """图片的url，当 Type 为 image_url 时使用，表示具体的图片内容
+如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ImageUrl`
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -611,6 +806,104 @@ class Content(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateThreadRequest(AbstractModel):
+    """CreateThread请求参数结构体
+
+    """
+
+
+class CreateThreadResponse(AbstractModel):
+    """CreateThread返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 会话 ID
+        :type ID: str
+        :param _Object: 对象类型
+        :type Object: str
+        :param _CreatedAt: 创建时间，Unix 时间戳，单位为秒。
+        :type CreatedAt: int
+        :param _ToolResources: 提供给工具的资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToolResources: :class:`tencentcloud.hunyuan.v20230901.models.ThreadToolResources`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._CreatedAt = None
+        self._ToolResources = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        """对象类型
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def CreatedAt(self):
+        """创建时间，Unix 时间戳，单位为秒。
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ToolResources(self):
+        """提供给工具的资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ThreadToolResources`
+        """
+        return self._ToolResources
+
+    @ToolResources.setter
+    def ToolResources(self, ToolResources):
+        self._ToolResources = ToolResources
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._CreatedAt = params.get("CreatedAt")
+        if params.get("ToolResources") is not None:
+            self._ToolResources = ThreadToolResources()
+            self._ToolResources._deserialize(params.get("ToolResources"))
+        self._RequestId = params.get("RequestId")
 
 
 class Delta(AbstractModel):
@@ -637,6 +930,9 @@ class Delta(AbstractModel):
 
     @property
     def Role(self):
+        """角色名称。
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -645,6 +941,9 @@ class Delta(AbstractModel):
 
     @property
     def Content(self):
+        """内容详情。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -653,6 +952,13 @@ class Delta(AbstractModel):
 
     @property
     def ToolCalls(self):
+        """模型生成的工具调用，仅 hunyuan-functioncall 模型支持
+说明：
+对于每一次的输出值应该以Id为标识对Type、Name、Arguments字段进行合并。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ToolCall
+        """
         return self._ToolCalls
 
     @ToolCalls.setter
@@ -702,6 +1008,10 @@ class EmbeddingData(AbstractModel):
 
     @property
     def Embedding(self):
+        """Embedding 信息，目前为 1024 维浮点数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Embedding
 
     @Embedding.setter
@@ -710,6 +1020,10 @@ class EmbeddingData(AbstractModel):
 
     @property
     def Index(self):
+        """下标，目前不支持批量，因此固定为 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -718,6 +1032,10 @@ class EmbeddingData(AbstractModel):
 
     @property
     def Object(self):
+        """目前固定为 "embedding"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Object
 
     @Object.setter
@@ -756,6 +1074,9 @@ class EmbeddingUsage(AbstractModel):
 
     @property
     def PromptTokens(self):
+        """输入 Token 数。
+        :rtype: int
+        """
         return self._PromptTokens
 
     @PromptTokens.setter
@@ -764,6 +1085,9 @@ class EmbeddingUsage(AbstractModel):
 
     @property
     def TotalTokens(self):
+        """总 Token 数。
+        :rtype: int
+        """
         return self._TotalTokens
 
     @TotalTokens.setter
@@ -804,6 +1128,9 @@ class ErrorMsg(AbstractModel):
 
     @property
     def Msg(self):
+        """错误提示信息。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -812,6 +1139,12 @@ class ErrorMsg(AbstractModel):
 
     @property
     def Code(self):
+        """错误码。
+4000 服务内部异常。
+4001 请求模型超时。
+
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -832,6 +1165,524 @@ class ErrorMsg(AbstractModel):
         
 
 
+class FileObject(AbstractModel):
+    """已上传的文件对象。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 文件标识符，可在各个API中引用。
+        :type ID: str
+        :param _Object: 对象类型，始终为 file。
+        :type Object: str
+        :param _Bytes: 文件大小，单位为字节。
+        :type Bytes: int
+        :param _CreatedAt: 文件创建时的 Unix 时间戳（秒）。
+        :type CreatedAt: int
+        :param _Filename: 文件名。
+        :type Filename: str
+        :param _Purpose: 上传文件的用途。
+        :type Purpose: str
+        """
+        self._ID = None
+        self._Object = None
+        self._Bytes = None
+        self._CreatedAt = None
+        self._Filename = None
+        self._Purpose = None
+
+    @property
+    def ID(self):
+        """文件标识符，可在各个API中引用。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        """对象类型，始终为 file。
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Bytes(self):
+        """文件大小，单位为字节。
+        :rtype: int
+        """
+        return self._Bytes
+
+    @Bytes.setter
+    def Bytes(self, Bytes):
+        self._Bytes = Bytes
+
+    @property
+    def CreatedAt(self):
+        """文件创建时的 Unix 时间戳（秒）。
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Filename(self):
+        """文件名。
+        :rtype: str
+        """
+        return self._Filename
+
+    @Filename.setter
+    def Filename(self, Filename):
+        self._Filename = Filename
+
+    @property
+    def Purpose(self):
+        """上传文件的用途。
+        :rtype: str
+        """
+        return self._Purpose
+
+    @Purpose.setter
+    def Purpose(self, Purpose):
+        self._Purpose = Purpose
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._Bytes = params.get("Bytes")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Filename = params.get("Filename")
+        self._Purpose = params.get("Purpose")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesDeletionsRequest(AbstractModel):
+    """FilesDeletions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 文件标识符。
+        :type ID: str
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        """文件标识符。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesDeletionsResponse(AbstractModel):
+    """FilesDeletions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 文件标识符。
+        :type ID: str
+        :param _Object: 对象类型，始终为 file。
+        :type Object: str
+        :param _Deleted: 是否删除成功。
+        :type Deleted: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._Deleted = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        """文件标识符。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        """对象类型，始终为 file。
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Deleted(self):
+        """是否删除成功。
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._Deleted = params.get("Deleted")
+        self._RequestId = params.get("RequestId")
+
+
+class FilesListRequest(AbstractModel):
+    """FilesList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量。
+        :type Offset: int
+        :param _Limit: 每页数量，最大 100。
+        :type Limit: int
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        """分页偏移量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页数量，最大 100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesListResponse(AbstractModel):
+    """FilesList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 文件数量。
+        :type Total: int
+        :param _Object: 对象类型，始终为 list。
+        :type Object: str
+        :param _Data: FileObject 列表。
+        :type Data: list of FileObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Object = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """文件数量。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Object(self):
+        """对象类型，始终为 list。
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Data(self):
+        """FileObject 列表。
+        :rtype: list of FileObject
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Object = params.get("Object")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FileObject()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class FilesUploadsRequest(AbstractModel):
+    """FilesUploads请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 文件名。
+        :type Name: str
+        :param _URL: 文件链接。目前仅支持 pdf 格式，单文件大小限制为100M。
+        :type URL: str
+        """
+        self._Name = None
+        self._URL = None
+
+    @property
+    def Name(self):
+        """文件名。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def URL(self):
+        """文件链接。目前仅支持 pdf 格式，单文件大小限制为100M。
+        :rtype: str
+        """
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesUploadsResponse(AbstractModel):
+    """FilesUploads返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 文件标识符，可在各个API中引用。
+        :type ID: str
+        :param _Object: 对象类型，始终为 file。
+        :type Object: str
+        :param _Bytes: 文件大小，单位为字节。
+        :type Bytes: int
+        :param _CreatedAt: 文件创建时的 Unix 时间戳（秒）。
+        :type CreatedAt: int
+        :param _Filename: 文件名。
+        :type Filename: str
+        :param _Purpose: 上传文件的用途。
+        :type Purpose: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._Bytes = None
+        self._CreatedAt = None
+        self._Filename = None
+        self._Purpose = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        """文件标识符，可在各个API中引用。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        """对象类型，始终为 file。
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Bytes(self):
+        """文件大小，单位为字节。
+        :rtype: int
+        """
+        return self._Bytes
+
+    @Bytes.setter
+    def Bytes(self, Bytes):
+        self._Bytes = Bytes
+
+    @property
+    def CreatedAt(self):
+        """文件创建时的 Unix 时间戳（秒）。
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Filename(self):
+        """文件名。
+        :rtype: str
+        """
+        return self._Filename
+
+    @Filename.setter
+    def Filename(self, Filename):
+        self._Filename = Filename
+
+    @property
+    def Purpose(self):
+        """上传文件的用途。
+        :rtype: str
+        """
+        return self._Purpose
+
+    @Purpose.setter
+    def Purpose(self, Purpose):
+        self._Purpose = Purpose
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._Bytes = params.get("Bytes")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Filename = params.get("Filename")
+        self._Purpose = params.get("Purpose")
+        self._RequestId = params.get("RequestId")
+
+
 class GetEmbeddingRequest(AbstractModel):
     """GetEmbedding请求参数结构体
 
@@ -841,20 +1692,38 @@ class GetEmbeddingRequest(AbstractModel):
         r"""
         :param _Input: 输入文本。总长度不超过 1024 个 Token，超过则会截断最后面的内容。
         :type Input: str
+        :param _InputList: 输入文本数组。输入数组总长度不超过 200 。
+        :type InputList: list of str
         """
         self._Input = None
+        self._InputList = None
 
     @property
     def Input(self):
+        """输入文本。总长度不超过 1024 个 Token，超过则会截断最后面的内容。
+        :rtype: str
+        """
         return self._Input
 
     @Input.setter
     def Input(self, Input):
         self._Input = Input
 
+    @property
+    def InputList(self):
+        """输入文本数组。输入数组总长度不超过 200 。
+        :rtype: list of str
+        """
+        return self._InputList
+
+    @InputList.setter
+    def InputList(self, InputList):
+        self._InputList = InputList
+
 
     def _deserialize(self, params):
         self._Input = params.get("Input")
+        self._InputList = params.get("InputList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -872,7 +1741,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回的 Embedding 信息。当前不支持批量，所以数组元素数目为 1。
+        :param _Data: 返回的 Embedding 信息。
         :type Data: list of EmbeddingData
         :param _Usage: Token 使用计数，按照总 Token 数量收费。
         :type Usage: :class:`tencentcloud.hunyuan.v20230901.models.EmbeddingUsage`
@@ -885,6 +1754,9 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回的 Embedding 信息。
+        :rtype: list of EmbeddingData
+        """
         return self._Data
 
     @Data.setter
@@ -893,6 +1765,9 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Usage(self):
+        """Token 使用计数，按照总 Token 数量收费。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.EmbeddingUsage`
+        """
         return self._Usage
 
     @Usage.setter
@@ -901,6 +1776,9 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -921,6 +1799,605 @@ class GetEmbeddingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetThreadMessageListRequest(AbstractModel):
+    """GetThreadMessageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _Limit: 返回的消息条数，1 - 100 条
+        :type Limit: int
+        :param _Order: 排序方式，按创建时间升序（asc）或降序（desc），默认为 desc
+        :type Order: str
+        """
+        self._ThreadID = None
+        self._Limit = None
+        self._Order = None
+
+    @property
+    def ThreadID(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def Limit(self):
+        """返回的消息条数，1 - 100 条
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        """排序方式，按创建时间升序（asc）或降序（desc），默认为 desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._ThreadID = params.get("ThreadID")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetThreadMessageListResponse(AbstractModel):
+    """GetThreadMessageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 消息列表
+        :type Data: list of ThreadMessage
+        :param _FirstID: 第一条消息 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstID: str
+        :param _LastID: 最后一条消息 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastID: int
+        :param _HasMore: 是否还有更多消息
+        :type HasMore: bool
+        :param _Object: 对象类型
+        :type Object: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._FirstID = None
+        self._LastID = None
+        self._HasMore = None
+        self._Object = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """消息列表
+        :rtype: list of ThreadMessage
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def FirstID(self):
+        """第一条消息 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FirstID
+
+    @FirstID.setter
+    def FirstID(self, FirstID):
+        self._FirstID = FirstID
+
+    @property
+    def LastID(self):
+        """最后一条消息 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastID
+
+    @LastID.setter
+    def LastID(self, LastID):
+        self._LastID = LastID
+
+    @property
+    def HasMore(self):
+        """是否还有更多消息
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def Object(self):
+        """对象类型
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ThreadMessage()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._FirstID = params.get("FirstID")
+        self._LastID = params.get("LastID")
+        self._HasMore = params.get("HasMore")
+        self._Object = params.get("Object")
+        self._RequestId = params.get("RequestId")
+
+
+class GetThreadMessageRequest(AbstractModel):
+    """GetThreadMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _MessageID: 消息 ID
+        :type MessageID: str
+        """
+        self._ThreadID = None
+        self._MessageID = None
+
+    @property
+    def ThreadID(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def MessageID(self):
+        """消息 ID
+        :rtype: str
+        """
+        return self._MessageID
+
+    @MessageID.setter
+    def MessageID(self, MessageID):
+        self._MessageID = MessageID
+
+
+    def _deserialize(self, params):
+        self._ThreadID = params.get("ThreadID")
+        self._MessageID = params.get("MessageID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetThreadMessageResponse(AbstractModel):
+    """GetThreadMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 消息 ID
+        :type ID: str
+        :param _Object: 对象类型
+        :type Object: str
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: int
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _Status: 状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+        :type Status: str
+        :param _InCompleteDetails: 未完成原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCompleteDetails: :class:`tencentcloud.hunyuan.v20230901.models.ThreadMessageInCompleteDetailsObject`
+        :param _CompletedAt: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompletedAt: int
+        :param _InCompleteAt: 未完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCompleteAt: int
+        :param _Role: 角色
+        :type Role: str
+        :param _Content: 内容
+        :type Content: str
+        :param _AssistantID: 助手 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantID: str
+        :param _RunID: 运行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunID: str
+        :param _Attachments: 附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attachments: list of ThreadMessageAttachmentObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._CreatedAt = None
+        self._ThreadID = None
+        self._Status = None
+        self._InCompleteDetails = None
+        self._CompletedAt = None
+        self._InCompleteAt = None
+        self._Role = None
+        self._Content = None
+        self._AssistantID = None
+        self._RunID = None
+        self._Attachments = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        """消息 ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        """对象类型
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def CreatedAt(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ThreadID(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def Status(self):
+        """状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InCompleteDetails(self):
+        """未完成原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ThreadMessageInCompleteDetailsObject`
+        """
+        return self._InCompleteDetails
+
+    @InCompleteDetails.setter
+    def InCompleteDetails(self, InCompleteDetails):
+        self._InCompleteDetails = InCompleteDetails
+
+    @property
+    def CompletedAt(self):
+        """完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CompletedAt
+
+    @CompletedAt.setter
+    def CompletedAt(self, CompletedAt):
+        self._CompletedAt = CompletedAt
+
+    @property
+    def InCompleteAt(self):
+        """未完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InCompleteAt
+
+    @InCompleteAt.setter
+    def InCompleteAt(self, InCompleteAt):
+        self._InCompleteAt = InCompleteAt
+
+    @property
+    def Role(self):
+        """角色
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        """内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def AssistantID(self):
+        """助手 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssistantID
+
+    @AssistantID.setter
+    def AssistantID(self, AssistantID):
+        self._AssistantID = AssistantID
+
+    @property
+    def RunID(self):
+        """运行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunID
+
+    @RunID.setter
+    def RunID(self, RunID):
+        self._RunID = RunID
+
+    @property
+    def Attachments(self):
+        """附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ThreadMessageAttachmentObject
+        """
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ThreadID = params.get("ThreadID")
+        self._Status = params.get("Status")
+        if params.get("InCompleteDetails") is not None:
+            self._InCompleteDetails = ThreadMessageInCompleteDetailsObject()
+            self._InCompleteDetails._deserialize(params.get("InCompleteDetails"))
+        self._CompletedAt = params.get("CompletedAt")
+        self._InCompleteAt = params.get("InCompleteAt")
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._AssistantID = params.get("AssistantID")
+        self._RunID = params.get("RunID")
+        if params.get("Attachments") is not None:
+            self._Attachments = []
+            for item in params.get("Attachments"):
+                obj = ThreadMessageAttachmentObject()
+                obj._deserialize(item)
+                self._Attachments.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetThreadRequest(AbstractModel):
+    """GetThread请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        """
+        self._ThreadID = None
+
+    @property
+    def ThreadID(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+
+    def _deserialize(self, params):
+        self._ThreadID = params.get("ThreadID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetThreadResponse(AbstractModel):
+    """GetThread返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 会话 ID
+        :type ID: str
+        :param _Object: 对象类型
+        :type Object: str
+        :param _CreatedAt: 创建时间，Unix 时间戳，单位为秒。
+        :type CreatedAt: int
+        :param _ToolResources: 提供给工具的资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToolResources: :class:`tencentcloud.hunyuan.v20230901.models.ThreadToolResources`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._CreatedAt = None
+        self._ToolResources = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        """对象类型
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def CreatedAt(self):
+        """创建时间，Unix 时间戳，单位为秒。
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ToolResources(self):
+        """提供给工具的资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ThreadToolResources`
+        """
+        return self._ToolResources
+
+    @ToolResources.setter
+    def ToolResources(self, ToolResources):
+        self._ToolResources = ToolResources
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._CreatedAt = params.get("CreatedAt")
+        if params.get("ToolResources") is not None:
+            self._ToolResources = ThreadToolResources()
+            self._ToolResources._deserialize(params.get("ToolResources"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetTokenCountRequest(AbstractModel):
     """GetTokenCount请求参数结构体
 
@@ -935,6 +2412,9 @@ class GetTokenCountRequest(AbstractModel):
 
     @property
     def Prompt(self):
+        """输入文本
+        :rtype: str
+        """
         return self._Prompt
 
     @Prompt.setter
@@ -977,6 +2457,9 @@ class GetTokenCountResponse(AbstractModel):
 
     @property
     def TokenCount(self):
+        """token计数
+        :rtype: int
+        """
         return self._TokenCount
 
     @TokenCount.setter
@@ -985,6 +2468,9 @@ class GetTokenCountResponse(AbstractModel):
 
     @property
     def CharacterCount(self):
+        """字符计数
+        :rtype: int
+        """
         return self._CharacterCount
 
     @CharacterCount.setter
@@ -993,6 +2479,9 @@ class GetTokenCountResponse(AbstractModel):
 
     @property
     def Tokens(self):
+        """切分后的列表
+        :rtype: list of str
+        """
         return self._Tokens
 
     @Tokens.setter
@@ -1001,6 +2490,9 @@ class GetTokenCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1042,6 +2534,10 @@ class History(AbstractModel):
 
     @property
     def ChatId(self):
+        """对话的 ID，用于唯一标识一轮对话
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChatId
 
     @ChatId.setter
@@ -1050,6 +2546,10 @@ class History(AbstractModel):
 
     @property
     def Prompt(self):
+        """原始输入的 Prompt 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Prompt
 
     @Prompt.setter
@@ -1058,6 +2558,10 @@ class History(AbstractModel):
 
     @property
     def RevisedPrompt(self):
+        """扩写后的 Prompt 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RevisedPrompt
 
     @RevisedPrompt.setter
@@ -1066,6 +2570,10 @@ class History(AbstractModel):
 
     @property
     def Seed(self):
+        """生成图的随机种子
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Seed
 
     @Seed.setter
@@ -1103,6 +2611,10 @@ class ImageUrl(AbstractModel):
 
     @property
     def Url(self):
+        """图片的 Url（以 http:// 或 https:// 开头）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1142,6 +2654,9 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoUrl(self):
+        """水印url
+        :rtype: str
+        """
         return self._LogoUrl
 
     @LogoUrl.setter
@@ -1150,6 +2665,9 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoImage(self):
+        """水印base64，url和base64二选一传入
+        :rtype: str
+        """
         return self._LogoImage
 
     @LogoImage.setter
@@ -1158,6 +2676,9 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoRect(self):
+        """水印图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.LogoRect`
+        """
         return self._LogoRect
 
     @LogoRect.setter
@@ -1204,6 +2725,9 @@ class LogoRect(AbstractModel):
 
     @property
     def X(self):
+        """左上角X坐标
+        :rtype: int
+        """
         return self._X
 
     @X.setter
@@ -1212,6 +2736,9 @@ class LogoRect(AbstractModel):
 
     @property
     def Y(self):
+        """左上角Y坐标
+        :rtype: int
+        """
         return self._Y
 
     @Y.setter
@@ -1220,6 +2747,9 @@ class LogoRect(AbstractModel):
 
     @property
     def Width(self):
+        """方框宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -1228,6 +2758,9 @@ class LogoRect(AbstractModel):
 
     @property
     def Height(self):
+        """方框高度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -1279,6 +2812,9 @@ class Message(AbstractModel):
 
     @property
     def Role(self):
+        """角色，可选值包括 system、user、assistant、 tool。
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -1287,6 +2823,9 @@ class Message(AbstractModel):
 
     @property
     def Content(self):
+        """文本内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -1295,6 +2834,10 @@ class Message(AbstractModel):
 
     @property
     def Contents(self):
+        """多种类型内容（目前支持图片和文本），仅 hunyuan-vision 模型支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Content
+        """
         return self._Contents
 
     @Contents.setter
@@ -1303,6 +2846,10 @@ class Message(AbstractModel):
 
     @property
     def ToolCallId(self):
+        """当role为tool时传入，标识具体的函数调用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ToolCallId
 
     @ToolCallId.setter
@@ -1311,6 +2858,10 @@ class Message(AbstractModel):
 
     @property
     def ToolCalls(self):
+        """模型生成的工具调用，仅 hunyuan-pro 或者 hunyuan-functioncall 模型支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ToolCall
+        """
         return self._ToolCalls
 
     @ToolCalls.setter
@@ -1344,26 +2895,117 @@ class Message(AbstractModel):
         
 
 
-class Multimedia(AbstractModel):
-    """图文并茂详情
+class Mindmap(AbstractModel):
+    """脑图
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 多媒体类型，image：图片。
+        :param _ThumbUrl: 脑图缩略图链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThumbUrl: str
+        :param _Url: 脑图图片链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._ThumbUrl = None
+        self._Url = None
+
+    @property
+    def ThumbUrl(self):
+        """脑图缩略图链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ThumbUrl
+
+    @ThumbUrl.setter
+    def ThumbUrl(self, ThumbUrl):
+        self._ThumbUrl = ThumbUrl
+
+    @property
+    def Url(self):
+        """脑图图片链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._ThumbUrl = params.get("ThumbUrl")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Multimedia(AbstractModel):
+    """多媒体详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 多媒体类型，可选值包括 image、music、album、playlist。
+说明：
+1. image：图片；music：单曲，类型为单曲时，会返回详细歌手和歌曲信息；album：专辑；playlist：歌单。
+2. 当 type 为 music、album、playlist 时，需要配合 [QQ音乐SDK](https://developer.y.qq.com/) 使用。
         :type Type: str
-        :param _Url: 多媒体预览地址。
+        :param _Url: 多媒体地址。
+说明：
+1. type 为 image 时，地址为图片的预览地址；其他类型时，地址为封面图地址。
         :type Url: str
         :param _JumpUrl: 多媒体详情地址。
+说明：
+1. 仅 type 为 image 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type JumpUrl: str
+        :param _Title: 名称。
+说明：
+1. type 为 image 时，该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Desc: 描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param _Singer: 歌手名称。
+说明：
+1. 仅 type 为 music 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Singer: str
+        :param _Ext: 歌曲详情。
+说明：
+1. 仅 type 为 music 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ext: :class:`tencentcloud.hunyuan.v20230901.models.SongExt`
         """
         self._Type = None
         self._Url = None
         self._JumpUrl = None
+        self._Title = None
+        self._Desc = None
+        self._Singer = None
+        self._Ext = None
 
     @property
     def Type(self):
+        """多媒体类型，可选值包括 image、music、album、playlist。
+说明：
+1. image：图片；music：单曲，类型为单曲时，会返回详细歌手和歌曲信息；album：专辑；playlist：歌单。
+2. 当 type 为 music、album、playlist 时，需要配合 [QQ音乐SDK](https://developer.y.qq.com/) 使用。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1372,6 +3014,11 @@ class Multimedia(AbstractModel):
 
     @property
     def Url(self):
+        """多媒体地址。
+说明：
+1. type 为 image 时，地址为图片的预览地址；其他类型时，地址为封面图地址。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1380,17 +3027,83 @@ class Multimedia(AbstractModel):
 
     @property
     def JumpUrl(self):
+        """多媒体详情地址。
+说明：
+1. 仅 type 为 image 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JumpUrl
 
     @JumpUrl.setter
     def JumpUrl(self, JumpUrl):
         self._JumpUrl = JumpUrl
 
+    @property
+    def Title(self):
+        """名称。
+说明：
+1. type 为 image 时，该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Desc(self):
+        """描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Singer(self):
+        """歌手名称。
+说明：
+1. 仅 type 为 music 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Singer
+
+    @Singer.setter
+    def Singer(self, Singer):
+        self._Singer = Singer
+
+    @property
+    def Ext(self):
+        """歌曲详情。
+说明：
+1. 仅 type 为 music 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SongExt`
+        """
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Url = params.get("Url")
         self._JumpUrl = params.get("JumpUrl")
+        self._Title = params.get("Title")
+        self._Desc = params.get("Desc")
+        self._Singer = params.get("Singer")
+        if params.get("Ext") is not None:
+            self._Ext = SongExt()
+            self._Ext._deserialize(params.get("Ext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1415,6 +3128,9 @@ class QueryHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务 ID。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1479,6 +3195,10 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobStatusCode(self):
+        """当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :rtype: str
+        """
         return self._JobStatusCode
 
     @JobStatusCode.setter
@@ -1487,6 +3207,10 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobStatusMsg(self):
+        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+
+        :rtype: str
+        """
         return self._JobStatusMsg
 
     @JobStatusMsg.setter
@@ -1495,6 +3219,10 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
+        """任务处理失败错误码。
+
+        :rtype: str
+        """
         return self._JobErrorCode
 
     @JobErrorCode.setter
@@ -1503,6 +3231,10 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
+        """任务处理失败错误信息。
+
+        :rtype: str
+        """
         return self._JobErrorMsg
 
     @JobErrorMsg.setter
@@ -1511,6 +3243,11 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def ChatId(self):
+        """本轮对话的 ChatId，ChatId 用于唯一标识一轮对话。
+一个对话组中，最多支持进行100轮对话。
+每轮对话数据有效期为7天，到期后 ChatId 失效，有效期内的历史对话数据可通过 History 查询，如有长期使用需求请及时保存输入输出数据。
+        :rtype: str
+        """
         return self._ChatId
 
     @ChatId.setter
@@ -1519,6 +3256,9 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def ResultImage(self):
+        """生成图 URL 列表，有效期7天，请及时保存。
+        :rtype: list of str
+        """
         return self._ResultImage
 
     @ResultImage.setter
@@ -1527,6 +3267,10 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def ResultDetails(self):
+        """结果 detail 数组，Success 代表成功。
+
+        :rtype: list of str
+        """
         return self._ResultDetails
 
     @ResultDetails.setter
@@ -1535,6 +3279,9 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def History(self):
+        """本轮对话前置的历史对话数据（不含生成图）。
+        :rtype: list of History
+        """
         return self._History
 
     @History.setter
@@ -1543,6 +3290,9 @@ class QueryHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1581,6 +3331,9 @@ class QueryHunyuanImageJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务 ID。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1641,6 +3394,10 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobStatusCode(self):
+        """当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :rtype: str
+        """
         return self._JobStatusCode
 
     @JobStatusCode.setter
@@ -1649,6 +3406,10 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobStatusMsg(self):
+        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+
+        :rtype: str
+        """
         return self._JobStatusMsg
 
     @JobStatusMsg.setter
@@ -1657,6 +3418,10 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
+        """任务处理失败错误码。
+
+        :rtype: str
+        """
         return self._JobErrorCode
 
     @JobErrorCode.setter
@@ -1665,6 +3430,10 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
+        """任务处理失败错误信息。
+
+        :rtype: str
+        """
         return self._JobErrorMsg
 
     @JobErrorMsg.setter
@@ -1673,6 +3442,10 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def ResultImage(self):
+        """生成图 URL 列表，有效期1小时，请及时保存。
+
+        :rtype: list of str
+        """
         return self._ResultImage
 
     @ResultImage.setter
@@ -1681,6 +3454,10 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def ResultDetails(self):
+        """结果 detail 数组，Success 代表成功。
+
+        :rtype: list of str
+        """
         return self._ResultDetails
 
     @ResultDetails.setter
@@ -1689,6 +3466,9 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def RevisedPrompt(self):
+        """对应 SubmitTextToImageProJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
+        :rtype: list of str
+        """
         return self._RevisedPrompt
 
     @RevisedPrompt.setter
@@ -1697,6 +3477,9 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1715,8 +3498,169 @@ class QueryHunyuanImageJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RelevantEntity(AbstractModel):
+    """相关组织及人物
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 相关组织及人物名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Content: 相关组织及人物内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Reference: 相关事件引用文章标号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reference: list of int
+        """
+        self._Name = None
+        self._Content = None
+        self._Reference = None
+
+    @property
+    def Name(self):
+        """相关组织及人物名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        """相关组织及人物内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Reference(self):
+        """相关事件引用文章标号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._Reference
+
+    @Reference.setter
+    def Reference(self, Reference):
+        self._Reference = Reference
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._Reference = params.get("Reference")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RelevantEvent(AbstractModel):
+    """相关事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 相关事件标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Content: 相关事件内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Datetime: 相关事件时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datetime: str
+        :param _Reference: 相关事件引用文章标号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reference: list of int
+        """
+        self._Title = None
+        self._Content = None
+        self._Datetime = None
+        self._Reference = None
+
+    @property
+    def Title(self):
+        """相关事件标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        """相关事件内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Datetime(self):
+        """相关事件时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Datetime
+
+    @Datetime.setter
+    def Datetime(self, Datetime):
+        self._Datetime = Datetime
+
+    @property
+    def Reference(self):
+        """相关事件引用文章标号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._Reference
+
+    @Reference.setter
+    def Reference(self, Reference):
+        self._Reference = Reference
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._Datetime = params.get("Datetime")
+        self._Reference = params.get("Reference")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Replace(AbstractModel):
-    """图文并茂占位符替换信息
+    """多媒体占位符替换信息
 
     """
 
@@ -1732,6 +3676,9 @@ class Replace(AbstractModel):
 
     @property
     def Id(self):
+        """占位符序号
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1740,6 +3687,9 @@ class Replace(AbstractModel):
 
     @property
     def Multimedia(self):
+        """多媒体详情
+        :rtype: list of Multimedia
+        """
         return self._Multimedia
 
     @Multimedia.setter
@@ -1765,6 +3715,230 @@ class Replace(AbstractModel):
         
 
 
+class RunThreadRequest(AbstractModel):
+    """RunThread请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _AssistantID: 助手 ID
+        :type AssistantID: str
+        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :type Model: str
+        :param _AdditionalMessages: 附加消息
+        :type AdditionalMessages: list of ThreadAdditionalMessage
+        :param _Temperature: 说明：1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+        :type Temperature: float
+        :param _TopP: 说明：1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+        :type TopP: float
+        :param _Stream: 是否流式输出，当前只允许 true
+        :type Stream: bool
+        :param _MaxPromptTokens: 运行过程中可使用的 token 最大数量。
+        :type MaxPromptTokens: int
+        :param _MaxCompletionTokens: 运行过程中可使用的完成 token 的最大数量。
+        :type MaxCompletionTokens: int
+        :param _Tools: 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+        :type Tools: list of Tool
+        :param _ToolChoice: 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        :type ToolChoice: str
+        """
+        self._ThreadID = None
+        self._AssistantID = None
+        self._Model = None
+        self._AdditionalMessages = None
+        self._Temperature = None
+        self._TopP = None
+        self._Stream = None
+        self._MaxPromptTokens = None
+        self._MaxCompletionTokens = None
+        self._Tools = None
+        self._ToolChoice = None
+
+    @property
+    def ThreadID(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def AssistantID(self):
+        """助手 ID
+        :rtype: str
+        """
+        return self._AssistantID
+
+    @AssistantID.setter
+    def AssistantID(self, AssistantID):
+        self._AssistantID = AssistantID
+
+    @property
+    def Model(self):
+        """模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def AdditionalMessages(self):
+        """附加消息
+        :rtype: list of ThreadAdditionalMessage
+        """
+        return self._AdditionalMessages
+
+    @AdditionalMessages.setter
+    def AdditionalMessages(self, AdditionalMessages):
+        self._AdditionalMessages = AdditionalMessages
+
+    @property
+    def Temperature(self):
+        """说明：1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        """说明：1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+        :rtype: float
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def Stream(self):
+        """是否流式输出，当前只允许 true
+        :rtype: bool
+        """
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def MaxPromptTokens(self):
+        """运行过程中可使用的 token 最大数量。
+        :rtype: int
+        """
+        return self._MaxPromptTokens
+
+    @MaxPromptTokens.setter
+    def MaxPromptTokens(self, MaxPromptTokens):
+        self._MaxPromptTokens = MaxPromptTokens
+
+    @property
+    def MaxCompletionTokens(self):
+        """运行过程中可使用的完成 token 的最大数量。
+        :rtype: int
+        """
+        return self._MaxCompletionTokens
+
+    @MaxCompletionTokens.setter
+    def MaxCompletionTokens(self, MaxCompletionTokens):
+        self._MaxCompletionTokens = MaxCompletionTokens
+
+    @property
+    def Tools(self):
+        """可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+        :rtype: list of Tool
+        """
+        return self._Tools
+
+    @Tools.setter
+    def Tools(self, Tools):
+        self._Tools = Tools
+
+    @property
+    def ToolChoice(self):
+        """工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        :rtype: str
+        """
+        return self._ToolChoice
+
+    @ToolChoice.setter
+    def ToolChoice(self, ToolChoice):
+        self._ToolChoice = ToolChoice
+
+
+    def _deserialize(self, params):
+        self._ThreadID = params.get("ThreadID")
+        self._AssistantID = params.get("AssistantID")
+        self._Model = params.get("Model")
+        if params.get("AdditionalMessages") is not None:
+            self._AdditionalMessages = []
+            for item in params.get("AdditionalMessages"):
+                obj = ThreadAdditionalMessage()
+                obj._deserialize(item)
+                self._AdditionalMessages.append(obj)
+        self._Temperature = params.get("Temperature")
+        self._TopP = params.get("TopP")
+        self._Stream = params.get("Stream")
+        self._MaxPromptTokens = params.get("MaxPromptTokens")
+        self._MaxCompletionTokens = params.get("MaxCompletionTokens")
+        if params.get("Tools") is not None:
+            self._Tools = []
+            for item in params.get("Tools"):
+                obj = Tool()
+                obj._deserialize(item)
+                self._Tools.append(obj)
+        self._ToolChoice = params.get("ToolChoice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunThreadResponse(AbstractModel):
+    """RunThread返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SearchInfo(AbstractModel):
     """搜索结果信息
 
@@ -1775,16 +3949,116 @@ class SearchInfo(AbstractModel):
         :param _SearchResults: 搜索引文信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SearchResults: list of SearchResult
+        :param _Mindmap: 脑图（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mindmap: :class:`tencentcloud.hunyuan.v20230901.models.Mindmap`
+        :param _RelevantEvents: 相关事件（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantEvents: list of RelevantEvent
+        :param _RelevantEntities: 相关组织及人物（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantEntities: list of RelevantEntity
+        :param _Timeline: 时间线（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeline: list of Timeline
+        :param _SupportDeepSearch: 是否命中搜索深度模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDeepSearch: bool
+        :param _Outline: 搜索回复大纲（深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Outline: list of str
         """
         self._SearchResults = None
+        self._Mindmap = None
+        self._RelevantEvents = None
+        self._RelevantEntities = None
+        self._Timeline = None
+        self._SupportDeepSearch = None
+        self._Outline = None
 
     @property
     def SearchResults(self):
+        """搜索引文信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchResult
+        """
         return self._SearchResults
 
     @SearchResults.setter
     def SearchResults(self, SearchResults):
         self._SearchResults = SearchResults
+
+    @property
+    def Mindmap(self):
+        """脑图（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Mindmap`
+        """
+        return self._Mindmap
+
+    @Mindmap.setter
+    def Mindmap(self, Mindmap):
+        self._Mindmap = Mindmap
+
+    @property
+    def RelevantEvents(self):
+        """相关事件（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RelevantEvent
+        """
+        return self._RelevantEvents
+
+    @RelevantEvents.setter
+    def RelevantEvents(self, RelevantEvents):
+        self._RelevantEvents = RelevantEvents
+
+    @property
+    def RelevantEntities(self):
+        """相关组织及人物（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RelevantEntity
+        """
+        return self._RelevantEntities
+
+    @RelevantEntities.setter
+    def RelevantEntities(self, RelevantEntities):
+        self._RelevantEntities = RelevantEntities
+
+    @property
+    def Timeline(self):
+        """时间线（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Timeline
+        """
+        return self._Timeline
+
+    @Timeline.setter
+    def Timeline(self, Timeline):
+        self._Timeline = Timeline
+
+    @property
+    def SupportDeepSearch(self):
+        """是否命中搜索深度模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SupportDeepSearch
+
+    @SupportDeepSearch.setter
+    def SupportDeepSearch(self, SupportDeepSearch):
+        self._SupportDeepSearch = SupportDeepSearch
+
+    @property
+    def Outline(self):
+        """搜索回复大纲（深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Outline
+
+    @Outline.setter
+    def Outline(self, Outline):
+        self._Outline = Outline
 
 
     def _deserialize(self, params):
@@ -1794,6 +4068,29 @@ class SearchInfo(AbstractModel):
                 obj = SearchResult()
                 obj._deserialize(item)
                 self._SearchResults.append(obj)
+        if params.get("Mindmap") is not None:
+            self._Mindmap = Mindmap()
+            self._Mindmap._deserialize(params.get("Mindmap"))
+        if params.get("RelevantEvents") is not None:
+            self._RelevantEvents = []
+            for item in params.get("RelevantEvents"):
+                obj = RelevantEvent()
+                obj._deserialize(item)
+                self._RelevantEvents.append(obj)
+        if params.get("RelevantEntities") is not None:
+            self._RelevantEntities = []
+            for item in params.get("RelevantEntities"):
+                obj = RelevantEntity()
+                obj._deserialize(item)
+                self._RelevantEntities.append(obj)
+        if params.get("Timeline") is not None:
+            self._Timeline = []
+            for item in params.get("Timeline"):
+                obj = Timeline()
+                obj._deserialize(item)
+                self._Timeline.append(obj)
+        self._SupportDeepSearch = params.get("SupportDeepSearch")
+        self._Outline = params.get("Outline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1827,6 +4124,10 @@ class SearchResult(AbstractModel):
 
     @property
     def Index(self):
+        """搜索引文序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -1835,6 +4136,10 @@ class SearchResult(AbstractModel):
 
     @property
     def Title(self):
+        """搜索引文标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -1843,6 +4148,10 @@ class SearchResult(AbstractModel):
 
     @property
     def Url(self):
+        """搜索引文链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1871,13 +4180,16 @@ class SetPayModeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayMode: 设置后付费状态，0：后付费；1：预付费
+        :param _PayMode: 设置后付费状态，0：后付费打开；1：后付费关闭
         :type PayMode: int
         """
         self._PayMode = None
 
     @property
     def PayMode(self):
+        """设置后付费状态，0：后付费打开；1：后付费关闭
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1911,6 +4223,9 @@ class SetPayModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1920,6 +4235,72 @@ class SetPayModeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SongExt(AbstractModel):
+    """歌曲详情。具体含义参考  [QQ音乐SDK](https://developer.y.qq.com/)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SongId: 歌曲id
+        :type SongId: int
+        :param _SongMid: 歌曲mid
+        :type SongMid: str
+        :param _Vip: 歌曲是否为vip。1：vip歌曲； 0：普通歌曲。
+        :type Vip: int
+        """
+        self._SongId = None
+        self._SongMid = None
+        self._Vip = None
+
+    @property
+    def SongId(self):
+        """歌曲id
+        :rtype: int
+        """
+        return self._SongId
+
+    @SongId.setter
+    def SongId(self, SongId):
+        self._SongId = SongId
+
+    @property
+    def SongMid(self):
+        """歌曲mid
+        :rtype: str
+        """
+        return self._SongMid
+
+    @SongMid.setter
+    def SongMid(self, SongMid):
+        self._SongMid = SongMid
+
+    @property
+    def Vip(self):
+        """歌曲是否为vip。1：vip歌曲； 0：普通歌曲。
+        :rtype: int
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        self._SongId = params.get("SongId")
+        self._SongMid = params.get("SongMid")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubmitHunyuanImageChatJobRequest(AbstractModel):
@@ -1958,6 +4339,15 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def Prompt(self):
+        """本轮对话的文本描述。
+提交一个任务请求对应发起一轮生图对话，每轮对话中可输入一条 Prompt，生成一张图像，支持通过多轮输入 Prompt 来不断调整图像内容。
+推荐使用中文，最多可传1024个 utf-8 字符。
+输入示例：
+<li> 第一轮对话：一颗红色的苹果 </li>
+<li> 第二轮对话：将苹果改为绿色 </li>
+<li> 第三轮对话：苹果放在桌子上 </li>
+        :rtype: str
+        """
         return self._Prompt
 
     @Prompt.setter
@@ -1966,6 +4356,11 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def ChatId(self):
+        """上传上一轮对话的 ChatId，本轮对话将在指定的上一轮对话结果基础上继续生成图像。
+如果不传代表新建一个对话组，重新开启一轮新的对话。
+一个对话组中，最多支持进行100轮对话。
+        :rtype: str
+        """
         return self._ChatId
 
     @ChatId.setter
@@ -1974,6 +4369,13 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
+        """为生成结果图添加显式水印标识的开关，默认为1。  
+1：添加。  
+0：不添加。  
+其他数值：默认按1处理。  
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :rtype: int
+        """
         return self._LogoAdd
 
     @LogoAdd.setter
@@ -1982,6 +4384,10 @@ class SubmitHunyuanImageChatJobRequest(AbstractModel):
 
     @property
     def LogoParam(self):
+        """标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
+        """
         return self._LogoParam
 
     @LogoParam.setter
@@ -2023,6 +4429,9 @@ class SubmitHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务 ID。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2031,6 +4440,9 @@ class SubmitHunyuanImageChatJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2094,6 +4506,11 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Prompt(self):
+        """文本描述。 
+算法将根据输入的文本智能生成与之相关的图像。 
+不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
+        :rtype: str
+        """
         return self._Prompt
 
     @Prompt.setter
@@ -2102,6 +4519,11 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Style(self):
+        """绘画风格。
+请在 [混元生图风格列表](https://cloud.tencent.com/document/product/1729/105846) 中选择期望的风格，传入风格编号。
+不传默认不指定风格。
+        :rtype: str
+        """
         return self._Style
 
     @Style.setter
@@ -2110,6 +4532,10 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Resolution(self):
+        """生成图分辨率。
+支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -2118,6 +4544,10 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Num(self):
+        """图片生成数量。
+支持1 ~ 4张，默认生成1张。
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -2126,6 +4556,11 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Seed(self):
+        """随机种子，默认随机。
+不传：随机种子生成。
+正数：固定种子生成。
+        :rtype: int
+        """
         return self._Seed
 
     @Seed.setter
@@ -2134,6 +4569,12 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def Revise(self):
+        """prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
+如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
+        :rtype: int
+        """
         return self._Revise
 
     @Revise.setter
@@ -2142,6 +4583,13 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
+        """为生成结果图添加显式水印标识的开关，默认为1。  
+1：添加。  
+0：不添加。  
+其他数值：默认按1处理。  
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :rtype: int
+        """
         return self._LogoAdd
 
     @LogoAdd.setter
@@ -2150,6 +4598,10 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     @property
     def LogoParam(self):
+        """标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
+        """
         return self._LogoParam
 
     @LogoParam.setter
@@ -2195,6 +4647,9 @@ class SubmitHunyuanImageJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务 ID。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2203,6 +4658,9 @@ class SubmitHunyuanImageJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2258,6 +4716,11 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Prompt(self):
+        """文本描述。
+算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
+不能为空，推荐使用中文。最多可传256个 utf-8 字符。
+        :rtype: str
+        """
         return self._Prompt
 
     @Prompt.setter
@@ -2266,6 +4729,11 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
+        """反向文本描述。
+用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
+推荐使用中文。最多可传256个 utf-8 字符。
+        :rtype: str
+        """
         return self._NegativePrompt
 
     @NegativePrompt.setter
@@ -2274,6 +4742,10 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Style(self):
+        """绘画风格。
+请在 [文生图轻量版风格列表](https://cloud.tencent.com/document/product/1729/108992) 中选择期望的风格，传入风格编号。不传默认使用201（日系动漫风格）。
+        :rtype: str
+        """
         return self._Style
 
     @Style.setter
@@ -2282,6 +4754,10 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def Resolution(self):
+        """生成图分辨率。
+支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -2290,6 +4766,13 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def LogoAdd(self):
+        """为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按0处理。
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :rtype: int
+        """
         return self._LogoAdd
 
     @LogoAdd.setter
@@ -2298,6 +4781,10 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def LogoParam(self):
+        """标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
+        """
         return self._LogoParam
 
     @LogoParam.setter
@@ -2306,6 +4793,9 @@ class TextToImageLiteRequest(AbstractModel):
 
     @property
     def RspImgType(self):
+        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        :rtype: str
+        """
         return self._RspImgType
 
     @RspImgType.setter
@@ -2352,6 +4842,11 @@ class TextToImageLiteResponse(AbstractModel):
 
     @property
     def ResultImage(self):
+        """根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :rtype: str
+        """
         return self._ResultImage
 
     @ResultImage.setter
@@ -2360,6 +4855,9 @@ class TextToImageLiteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2370,6 +4868,511 @@ class TextToImageLiteResponse(AbstractModel):
     def _deserialize(self, params):
         self._ResultImage = params.get("ResultImage")
         self._RequestId = params.get("RequestId")
+
+
+class ThreadAdditionalMessage(AbstractModel):
+    """会话额外消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色
+        :type Role: str
+        :param _Content: 内容
+        :type Content: str
+        :param _Attachments: 附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attachments: list of ThreadMessageAttachmentObject
+        """
+        self._Role = None
+        self._Content = None
+        self._Attachments = None
+
+    @property
+    def Role(self):
+        """角色
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        """内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Attachments(self):
+        """附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ThreadMessageAttachmentObject
+        """
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        if params.get("Attachments") is not None:
+            self._Attachments = []
+            for item in params.get("Attachments"):
+                obj = ThreadMessageAttachmentObject()
+                obj._deserialize(item)
+                self._Attachments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThreadMessage(AbstractModel):
+    """会话消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 消息 ID
+        :type ID: str
+        :param _Object: 对象类型
+        :type Object: str
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: int
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _Status: 状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+        :type Status: str
+        :param _InCompleteDetails: 未完成原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCompleteDetails: :class:`tencentcloud.hunyuan.v20230901.models.ThreadMessageInCompleteDetailsObject`
+        :param _CompletedAt: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompletedAt: int
+        :param _InCompleteAt: 未完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCompleteAt: int
+        :param _Role: 角色
+        :type Role: str
+        :param _Content: 内容
+        :type Content: str
+        :param _AssistantID: 助手 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantID: str
+        :param _RunID: 运行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunID: str
+        :param _Attachments: 附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attachments: list of ThreadMessageAttachmentObject
+        """
+        self._ID = None
+        self._Object = None
+        self._CreatedAt = None
+        self._ThreadID = None
+        self._Status = None
+        self._InCompleteDetails = None
+        self._CompletedAt = None
+        self._InCompleteAt = None
+        self._Role = None
+        self._Content = None
+        self._AssistantID = None
+        self._RunID = None
+        self._Attachments = None
+
+    @property
+    def ID(self):
+        """消息 ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        """对象类型
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def CreatedAt(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ThreadID(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def Status(self):
+        """状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InCompleteDetails(self):
+        """未完成原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ThreadMessageInCompleteDetailsObject`
+        """
+        return self._InCompleteDetails
+
+    @InCompleteDetails.setter
+    def InCompleteDetails(self, InCompleteDetails):
+        self._InCompleteDetails = InCompleteDetails
+
+    @property
+    def CompletedAt(self):
+        """完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CompletedAt
+
+    @CompletedAt.setter
+    def CompletedAt(self, CompletedAt):
+        self._CompletedAt = CompletedAt
+
+    @property
+    def InCompleteAt(self):
+        """未完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InCompleteAt
+
+    @InCompleteAt.setter
+    def InCompleteAt(self, InCompleteAt):
+        self._InCompleteAt = InCompleteAt
+
+    @property
+    def Role(self):
+        """角色
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        """内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def AssistantID(self):
+        """助手 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssistantID
+
+    @AssistantID.setter
+    def AssistantID(self, AssistantID):
+        self._AssistantID = AssistantID
+
+    @property
+    def RunID(self):
+        """运行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunID
+
+    @RunID.setter
+    def RunID(self, RunID):
+        self._RunID = RunID
+
+    @property
+    def Attachments(self):
+        """附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ThreadMessageAttachmentObject
+        """
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ThreadID = params.get("ThreadID")
+        self._Status = params.get("Status")
+        if params.get("InCompleteDetails") is not None:
+            self._InCompleteDetails = ThreadMessageInCompleteDetailsObject()
+            self._InCompleteDetails._deserialize(params.get("InCompleteDetails"))
+        self._CompletedAt = params.get("CompletedAt")
+        self._InCompleteAt = params.get("InCompleteAt")
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._AssistantID = params.get("AssistantID")
+        self._RunID = params.get("RunID")
+        if params.get("Attachments") is not None:
+            self._Attachments = []
+            for item in params.get("Attachments"):
+                obj = ThreadMessageAttachmentObject()
+                obj._deserialize(item)
+                self._Attachments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThreadMessageAttachmentObject(AbstractModel):
+    """会话消息附件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileID: 文件 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileID: str
+        """
+        self._FileID = None
+
+    @property
+    def FileID(self):
+        """文件 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileID
+
+    @FileID.setter
+    def FileID(self, FileID):
+        self._FileID = FileID
+
+
+    def _deserialize(self, params):
+        self._FileID = params.get("FileID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThreadMessageInCompleteDetailsObject(AbstractModel):
+    """会话消息未完成原因
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Reason: 会话消息未完成原因
+        :type Reason: str
+        """
+        self._Reason = None
+
+    @property
+    def Reason(self):
+        """会话消息未完成原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThreadToolResources(AbstractModel):
+    """在会话中提供给助手工具的一系列资源。不同类型的工具会有各自对应的资源。比如代码解释器需要一个文件 ID 的列表，而文件搜索工具则需要一个向量存储 ID 的列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CodeInterpreter: 文件 ID 列表
+        :type CodeInterpreter: list of str
+        :param _VectorStoreIDs: 向量存储 ID 列表
+        :type VectorStoreIDs: list of str
+        """
+        self._CodeInterpreter = None
+        self._VectorStoreIDs = None
+
+    @property
+    def CodeInterpreter(self):
+        """文件 ID 列表
+        :rtype: list of str
+        """
+        return self._CodeInterpreter
+
+    @CodeInterpreter.setter
+    def CodeInterpreter(self, CodeInterpreter):
+        self._CodeInterpreter = CodeInterpreter
+
+    @property
+    def VectorStoreIDs(self):
+        """向量存储 ID 列表
+        :rtype: list of str
+        """
+        return self._VectorStoreIDs
+
+    @VectorStoreIDs.setter
+    def VectorStoreIDs(self, VectorStoreIDs):
+        self._VectorStoreIDs = VectorStoreIDs
+
+
+    def _deserialize(self, params):
+        self._CodeInterpreter = params.get("CodeInterpreter")
+        self._VectorStoreIDs = params.get("VectorStoreIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Timeline(AbstractModel):
+    """时间线
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Datetime: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datetime: str
+        :param _Url: 相关网页链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._Title = None
+        self._Datetime = None
+        self._Url = None
+
+    @property
+    def Title(self):
+        """标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Datetime(self):
+        """时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Datetime
+
+    @Datetime.setter
+    def Datetime(self, Datetime):
+        self._Datetime = Datetime
+
+    @property
+    def Url(self):
+        """相关网页链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._Datetime = params.get("Datetime")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tool(AbstractModel):
@@ -2389,6 +5392,9 @@ class Tool(AbstractModel):
 
     @property
     def Type(self):
+        """工具类型，当前只支持function
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2397,6 +5403,9 @@ class Tool(AbstractModel):
 
     @property
     def Function(self):
+        """具体要调用的function
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ToolFunction`
+        """
         return self._Function
 
     @Function.setter
@@ -2432,13 +5441,19 @@ class ToolCall(AbstractModel):
         :type Type: str
         :param _Function: 具体的function调用
         :type Function: :class:`tencentcloud.hunyuan.v20230901.models.ToolCallFunction`
+        :param _Index: 索引值
+        :type Index: int
         """
         self._Id = None
         self._Type = None
         self._Function = None
+        self._Index = None
 
     @property
     def Id(self):
+        """工具调用id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2447,6 +5462,9 @@ class ToolCall(AbstractModel):
 
     @property
     def Type(self):
+        """工具调用类型，当前只支持function
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2455,11 +5473,25 @@ class ToolCall(AbstractModel):
 
     @property
     def Function(self):
+        """具体的function调用
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ToolCallFunction`
+        """
         return self._Function
 
     @Function.setter
     def Function(self, Function):
         self._Function = Function
+
+    @property
+    def Index(self):
+        """索引值
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
 
 
     def _deserialize(self, params):
@@ -2468,6 +5500,7 @@ class ToolCall(AbstractModel):
         if params.get("Function") is not None:
             self._Function = ToolCallFunction()
             self._Function._deserialize(params.get("Function"))
+        self._Index = params.get("Index")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2495,6 +5528,9 @@ class ToolCallFunction(AbstractModel):
 
     @property
     def Name(self):
+        """function名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2503,6 +5539,9 @@ class ToolCallFunction(AbstractModel):
 
     @property
     def Arguments(self):
+        """function参数，一般为json字符串
+        :rtype: str
+        """
         return self._Arguments
 
     @Arguments.setter
@@ -2543,6 +5582,9 @@ class ToolFunction(AbstractModel):
 
     @property
     def Name(self):
+        """function名称，只能包含a-z，A-Z，0-9，\_或-
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2551,6 +5593,9 @@ class ToolFunction(AbstractModel):
 
     @property
     def Parameters(self):
+        """function参数，一般为json字符串
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -2559,6 +5604,9 @@ class ToolFunction(AbstractModel):
 
     @property
     def Description(self):
+        """function的简单描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2600,6 +5648,9 @@ class Usage(AbstractModel):
 
     @property
     def PromptTokens(self):
+        """输入 Token 数量。
+        :rtype: int
+        """
         return self._PromptTokens
 
     @PromptTokens.setter
@@ -2608,6 +5659,9 @@ class Usage(AbstractModel):
 
     @property
     def CompletionTokens(self):
+        """输出 Token 数量。
+        :rtype: int
+        """
         return self._CompletionTokens
 
     @CompletionTokens.setter
@@ -2616,6 +5670,9 @@ class Usage(AbstractModel):
 
     @property
     def TotalTokens(self):
+        """总 Token 数量。
+        :rtype: int
+        """
         return self._TotalTokens
 
     @TotalTokens.setter

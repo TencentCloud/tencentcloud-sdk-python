@@ -1166,6 +1166,7 @@ class OcrClient(AbstractClient):
 
     def MLIDPassportOCR(self, request):
         """本接口支持中国港澳台地区以及其他国家、地区的护照识别。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍、国家地区代码，具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
+        本接口支持地区范围：可机读护照国家。
 
         默认接口请求频率限制：5次/秒。
 
@@ -1782,6 +1783,52 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeKoreanDrivingLicenseOCR(self, request):
+        """韩国驾驶证识别
+
+        :param request: Request instance for RecognizeKoreanDrivingLicenseOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanDrivingLicenseOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanDrivingLicenseOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeKoreanDrivingLicenseOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeKoreanDrivingLicenseOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RecognizeKoreanIDCardOCR(self, request):
+        """韩国身份证识别
+
+        :param request: Request instance for RecognizeKoreanIDCardOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanIDCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanIDCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeKoreanIDCardOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeKoreanIDCardOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeMedicalInvoiceOCR(self, request):
         """医疗发票识别目前支持全国统一门诊发票、全国统一住院发票、以及部分地方的门诊和住院发票的识别。
 
@@ -1834,6 +1881,8 @@ class OcrClient(AbstractClient):
 
     def RecognizePhilippinesDrivingLicenseOCR(self, request):
         """菲律宾驾驶证识别
+
+        默认接口请求频率限制：20次/秒。
 
         :param request: Request instance for RecognizePhilippinesDrivingLicenseOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesDrivingLicenseOCRRequest`
@@ -2074,6 +2123,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeValidIDCardOCR(self, request):
+        """本接口支持二代身份证、临时身份证、港澳台居住证、外国人永久居留证，字段内容识别功能，包括姓名、性别、民族、出生、出生日期、住址、公民身份号码、签发机关、有效期限、国籍、通行证号码、持证人持有号码；支持返回证件类型；支持翻拍、复印、边框不完整、遮挡、字段级反光和字段级完整性告警；支持卡片主体框裁剪和头像裁剪。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for RecognizeValidIDCardOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeValidIDCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeValidIDCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeValidIDCardOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeValidIDCardOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReconstructDocument(self, request):
         """服务已迁移至 [文档解析](https://cloud.tencent.com/document/product/1759/107504)，请跳转查看接口文档。该接口支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
 
@@ -2263,6 +2337,31 @@ class OcrClient(AbstractClient):
             body = self.call("SmartStructuralOCRV2", params, headers=headers)
             response = json.loads(body)
             model = models.SmartStructuralOCRV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SmartStructuralPro(self, request):
+        """本接口支持智能提取各类证照、票据、表单、合同等结构化场景的key:value字段信息，并支持提取表格信息的key:value组的结构化，灵活高效，适用于各类非标准材料的信息录入场景，点击[立即体验](https://cloud.tencent.com/product/smart-ocr)。
+
+        默认接口请求频率限制：1次/秒。
+
+        :param request: Request instance for SmartStructuralPro.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralProRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralProResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SmartStructuralPro", params, headers=headers)
+            response = json.loads(body)
+            model = models.SmartStructuralProResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

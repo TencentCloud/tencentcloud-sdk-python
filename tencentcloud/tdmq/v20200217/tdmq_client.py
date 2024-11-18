@@ -256,6 +256,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRabbitMQBinding(self, request):
+        """创建RabbitMQ路由关系
+
+        :param request: Request instance for CreateRabbitMQBinding.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQBindingRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRabbitMQBinding", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRabbitMQBindingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRabbitMQUser(self, request):
         """创建RabbitMQ的用户
 
@@ -707,6 +730,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DeleteProCluster", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteProClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRabbitMQBinding(self, request):
+        """解绑RabbitMQ路由关系
+
+        :param request: Request instance for DeleteRabbitMQBinding.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQBindingRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRabbitMQBinding", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRabbitMQBindingResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1560,6 +1606,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribePulsarProInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePulsarProInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRabbitMQBindings(self, request):
+        """查询RabbitMQ路由关系列表
+
+        :param request: Request instance for DescribeRabbitMQBindings.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQBindingsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQBindings", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQBindingsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

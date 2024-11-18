@@ -57,6 +57,9 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def DataProviderName(self):
+        """数据委托方、需求方：客户主体名称。
+        :rtype: str
+        """
         return self._DataProviderName
 
     @DataProviderName.setter
@@ -65,6 +68,11 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def DataRecipientName(self):
+        """数据受托方、提供方：腾讯云主体名称。
+
+固定填：腾讯云计算（北京）有限责任公司
+        :rtype: str
+        """
         return self._DataRecipientName
 
     @DataRecipientName.setter
@@ -73,6 +81,13 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def UserDataType(self):
+        """客户请求所涉及的用户个人信息类型，支持多选。实际以接口请求传参为准。
+1-手机号；
+2-微信开放账号；
+3-QQ开放账号；
+4-IP地址；
+        :rtype: list of int non-negative
+        """
         return self._UserDataType
 
     @UserDataType.setter
@@ -81,6 +96,11 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def IsAuthorize(self):
+        """客户是否已按合规指南要求获取用户授权，同意客户委托腾讯云处理入参信息，结合已合法收集的用户数据进行必要处理得出服务结果，并返回给客户。
+
+1-已授权；其它值为未授权。
+        :rtype: int
+        """
         return self._IsAuthorize
 
     @IsAuthorize.setter
@@ -89,6 +109,11 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def AuthorizationTerm(self):
+        """客户获得的用户授权期限时间戳（单位秒）。
+
+不填或0默认无固定期限。
+        :rtype: int
+        """
         return self._AuthorizationTerm
 
     @AuthorizationTerm.setter
@@ -97,6 +122,9 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def PrivacyPolicyLink(self):
+        """客户获得用户授权所依赖的协议地址。
+        :rtype: str
+        """
         return self._PrivacyPolicyLink
 
     @PrivacyPolicyLink.setter
@@ -135,6 +163,9 @@ class DescribeFraudBaseRequest(AbstractModel):
 
     @property
     def DeviceToken(self):
+        """客户端通过SDK获取的设备Token
+        :rtype: str
+        """
         return self._DeviceToken
 
     @DeviceToken.setter
@@ -201,6 +232,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def AppVersion(self):
+        """App版本信息
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -209,6 +243,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def Brand(self):
+        """品牌
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -217,6 +254,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def ClientIp(self):
+        """客户端IP
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -225,6 +265,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def Model(self):
+        """机型
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -233,6 +276,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def NetworkType(self):
+        """网络类型
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -241,6 +287,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def PackageName(self):
+        """应用包名
+        :rtype: str
+        """
         return self._PackageName
 
     @PackageName.setter
@@ -249,6 +298,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def Platform(self):
+        """平台（2-Android，3-iOS，4-H5，5-微信小程序）
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -257,6 +309,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def SystemVersion(self):
+        """系统版本
+        :rtype: str
+        """
         return self._SystemVersion
 
     @SystemVersion.setter
@@ -265,6 +320,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def SdkBuildNo(self):
+        """SDK版本号
+        :rtype: str
+        """
         return self._SdkBuildNo
 
     @SdkBuildNo.setter
@@ -273,6 +331,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def RiskInfos(self):
+        """实时风险信息
+        :rtype: list of RiskInfo
+        """
         return self._RiskInfos
 
     @RiskInfos.setter
@@ -281,6 +342,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def HistRiskInfos(self):
+        """离线风险信息
+        :rtype: list of RiskInfo
+        """
         return self._HistRiskInfos
 
     @HistRiskInfos.setter
@@ -289,6 +353,9 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -335,6 +402,9 @@ class DescribeFraudPremiumRequest(AbstractModel):
 
     @property
     def DeviceToken(self):
+        """客户端通过SDK获取的设备Token
+        :rtype: str
+        """
         return self._DeviceToken
 
     @DeviceToken.setter
@@ -404,6 +474,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def AppVersion(self):
+        """App版本信息
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -412,6 +485,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def Brand(self):
+        """品牌
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -420,6 +496,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def ClientIp(self):
+        """客户端IP
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -428,6 +507,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def Model(self):
+        """机型
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -436,6 +518,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def NetworkType(self):
+        """网络类型
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -444,6 +529,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def PackageName(self):
+        """应用包名
+        :rtype: str
+        """
         return self._PackageName
 
     @PackageName.setter
@@ -452,6 +540,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def Platform(self):
+        """平台（2-Android，3-iOS，4-H5，5-微信小程序）
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -460,6 +551,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def SystemVersion(self):
+        """系统版本
+        :rtype: str
+        """
         return self._SystemVersion
 
     @SystemVersion.setter
@@ -468,6 +562,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def SdkBuildNo(self):
+        """SDK版本号
+        :rtype: str
+        """
         return self._SdkBuildNo
 
     @SdkBuildNo.setter
@@ -476,6 +573,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def RiskInfos(self):
+        """实时风险信息
+        :rtype: list of RiskInfo
+        """
         return self._RiskInfos
 
     @RiskInfos.setter
@@ -484,6 +584,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def HistRiskInfos(self):
+        """离线风险信息
+        :rtype: list of RiskInfo
+        """
         return self._HistRiskInfos
 
     @HistRiskInfos.setter
@@ -492,6 +595,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def Openid(self):
+        """设备匿名标识
+        :rtype: str
+        """
         return self._Openid
 
     @Openid.setter
@@ -500,6 +606,9 @@ class DescribeFraudPremiumResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -574,6 +683,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def DeviceToken(self):
+        """客户端通过SDK获取的设备Token
+        :rtype: str
+        """
         return self._DeviceToken
 
     @DeviceToken.setter
@@ -582,6 +694,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def SceneCode(self):
+        """使用场景。目前仅支持login-登录场景、register-注册场景
+        :rtype: str
+        """
         return self._SceneCode
 
     @SceneCode.setter
@@ -590,6 +705,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户唯一标识
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -598,6 +716,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def EventTime(self):
+        """事件时间戳（毫秒）
+        :rtype: int
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -606,6 +727,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def ElapsedTime(self):
+        """事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
+        :rtype: int
+        """
         return self._ElapsedTime
 
     @ElapsedTime.setter
@@ -614,6 +738,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def WeChatOpenId(self):
+        """微信的OpenId
+        :rtype: str
+        """
         return self._WeChatOpenId
 
     @WeChatOpenId.setter
@@ -622,6 +749,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -630,6 +760,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def ClientIP(self):
+        """客户端IP
+        :rtype: str
+        """
         return self._ClientIP
 
     @ClientIP.setter
@@ -638,6 +771,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def QQOpenId(self):
+        """QQ的OpenId
+        :rtype: str
+        """
         return self._QQOpenId
 
     @QQOpenId.setter
@@ -646,6 +782,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def DataAuthorization(self):
+        """数据授权信息
+        :rtype: :class:`tencentcloud.tds.v20220801.models.DataAuthorizationInfo`
+        """
         return self._DataAuthorization
 
     @DataAuthorization.setter
@@ -735,6 +874,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def AppVersion(self):
+        """App版本信息
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -743,6 +885,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def Brand(self):
+        """品牌
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -751,6 +896,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def ClientIp(self):
+        """客户端IP
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -759,6 +907,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def Model(self):
+        """机型
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -767,6 +918,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def NetworkType(self):
+        """网络类型
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -775,6 +929,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def PackageName(self):
+        """应用包名
+        :rtype: str
+        """
         return self._PackageName
 
     @PackageName.setter
@@ -783,6 +940,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def Platform(self):
+        """平台（2-Android，3-iOS，4-H5，5-微信小程序）
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -791,6 +951,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def SystemVersion(self):
+        """系统版本
+        :rtype: str
+        """
         return self._SystemVersion
 
     @SystemVersion.setter
@@ -799,6 +962,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def SdkBuildNo(self):
+        """SDK版本号
+        :rtype: str
+        """
         return self._SdkBuildNo
 
     @SdkBuildNo.setter
@@ -807,6 +973,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def RiskInfos(self):
+        """实时风险信息
+        :rtype: list of RiskInfo
+        """
         return self._RiskInfos
 
     @RiskInfos.setter
@@ -815,6 +984,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def HistRiskInfos(self):
+        """离线风险信息
+        :rtype: list of RiskInfo
+        """
         return self._HistRiskInfos
 
     @HistRiskInfos.setter
@@ -823,6 +995,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def Openid(self):
+        """设备匿名标识
+        :rtype: str
+        """
         return self._Openid
 
     @Openid.setter
@@ -831,6 +1006,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def SceneRiskInfos(self):
+        """场景风险信息
+        :rtype: list of RiskInfo
+        """
         return self._SceneRiskInfos
 
     @SceneRiskInfos.setter
@@ -839,6 +1017,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def SuggestionLevel(self):
+        """建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀
+        :rtype: int
+        """
         return self._SuggestionLevel
 
     @SuggestionLevel.setter
@@ -847,6 +1028,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def Unionid(self):
+        """图灵盾统一ID
+        :rtype: str
+        """
         return self._Unionid
 
     @Unionid.setter
@@ -855,6 +1039,9 @@ class DescribeFraudUltimateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -910,6 +1097,9 @@ class DescribeTrustedIDRequest(AbstractModel):
 
     @property
     def DeviceToken(self):
+        """客户端通过SDK获取的设备Token
+        :rtype: str
+        """
         return self._DeviceToken
 
     @DeviceToken.setter
@@ -973,6 +1163,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def Openid(self):
+        """设备匿名标识
+        :rtype: str
+        """
         return self._Openid
 
     @Openid.setter
@@ -981,6 +1174,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def AppVersion(self):
+        """App版本信息
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -989,6 +1185,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def Brand(self):
+        """品牌
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -997,6 +1196,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def ClientIp(self):
+        """客户端IP
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -1005,6 +1207,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def Model(self):
+        """机型
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -1013,6 +1218,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def NetworkType(self):
+        """网络类型
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -1021,6 +1229,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def PackageName(self):
+        """应用包名
+        :rtype: str
+        """
         return self._PackageName
 
     @PackageName.setter
@@ -1029,6 +1240,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def Platform(self):
+        """平台（2-Android，3-iOS，4-H5，5-微信小程序）
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -1037,6 +1251,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def SystemVersion(self):
+        """系统版本
+        :rtype: str
+        """
         return self._SystemVersion
 
     @SystemVersion.setter
@@ -1045,6 +1262,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def SdkBuildNo(self):
+        """SDK版本号
+        :rtype: str
+        """
         return self._SdkBuildNo
 
     @SdkBuildNo.setter
@@ -1053,6 +1273,9 @@ class DescribeTrustedIDResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1081,9 +1304,9 @@ class RiskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 风险类型
+        :param _Type: 风险类型。更多详情请参见：[Android](https://cloud.tencent.com/document/product/1628/85898)、[iOS](https://cloud.tencent.com/document/product/1628/85896)、[H5](https://cloud.tencent.com/document/product/1628/85897)、[小程序](https://cloud.tencent.com/document/product/1628/85895)、[场景风险](https://cloud.tencent.com/document/product/1628/88912)
         :type Type: int
-        :param _Level: 风险等级
+        :param _Level: [风险等级](https://cloud.tencent.com/document/product/1628/85308)
         :type Level: int
         """
         self._Type = None
@@ -1091,6 +1314,9 @@ class RiskInfo(AbstractModel):
 
     @property
     def Type(self):
+        """风险类型。更多详情请参见：[Android](https://cloud.tencent.com/document/product/1628/85898)、[iOS](https://cloud.tencent.com/document/product/1628/85896)、[H5](https://cloud.tencent.com/document/product/1628/85897)、[小程序](https://cloud.tencent.com/document/product/1628/85895)、[场景风险](https://cloud.tencent.com/document/product/1628/88912)
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1099,6 +1325,9 @@ class RiskInfo(AbstractModel):
 
     @property
     def Level(self):
+        """[风险等级](https://cloud.tencent.com/document/product/1628/85308)
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter

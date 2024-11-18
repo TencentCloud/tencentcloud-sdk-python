@@ -58,6 +58,12 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
     @property
     def AppMd5(self):
+        """app文件的md5算法值，需要正确传递，在线加固必输。
+例如linux环境下执行算法命令md5sum ：
+#md5sum test.apk 
+d40cc11e4bddd643ecdf29cde729a12b
+        :rtype: str
+        """
         return self._AppMd5
 
     @AppMd5.setter
@@ -66,6 +72,9 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
     @property
     def AppSize(self):
+        """app的大小，非必输。
+        :rtype: int
+        """
         return self._AppSize
 
     @AppSize.setter
@@ -74,6 +83,9 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
     @property
     def AppUrl(self):
+        """app下载链接，在线加固必输。
+        :rtype: str
+        """
         return self._AppUrl
 
     @AppUrl.setter
@@ -82,6 +94,9 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
     @property
     def AppName(self):
+        """app名称，非必输
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -90,6 +105,10 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
     @property
     def AppPkgName(self):
+        """app的包名，本次操作的包名。
+当Android是按年收费、免费试用加固时，在线加固和输出工具要求该字段必输，且与AndroidPlan.AppPkgName值相等。
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -98,6 +117,9 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
     @property
     def AppFileName(self):
+        """app的文件名，非必输。
+        :rtype: str
+        """
         return self._AppFileName
 
     @AppFileName.setter
@@ -106,6 +128,9 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
     @property
     def AppVersion(self):
+        """app版本号，非必输。
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -114,6 +139,10 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
     @property
     def AppType(self):
+        """Android app的文件类型，本次加固操作的应用类型 。
+Android在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -277,6 +306,9 @@ aab加固方案二
 
     @property
     def PlanId(self):
+        """非必输字段，PlanId 是指本次加固使用的配置策略Id，可通过载入上次配置接口获取。其值非0时，代表引用对应的策略。
+        :rtype: int
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -285,6 +317,10 @@ aab加固方案二
 
     @property
     def AppPkgName(self):
+        """本次操作的包名。
+当收费模式是android按年收费和android免费试用的在线加固和输出工具加固时，要求该字段必输，且与AndroidAppInfo.AppPkgName值相等。
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -293,6 +329,11 @@ aab加固方案二
 
     @property
     def AppType(self):
+        """android app的文件类型，本次加固操作的应用类型 。 
+android在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
+
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -301,6 +342,120 @@ aab加固方案二
 
     @property
     def EncryptParam(self):
+        """android加固必输字段。
+加固策略，json格式字符串。
+字段说明（0-关闭，1-开启）：
+        "enable"=1 #DEX整体加固;
+        "antiprotect"=1 #反调试;
+        "antirepack"=1 #防重打包、防篡改;
+        "dexsig"=1       #签名校验;
+        "antimonitor"=1 #防模拟器运行保护;
+        "ptrace"=1 #防动态注入、动态调试;
+        "so"."enable" = 1 #文件加密;
+        "vmp"."enable" = 1 #VMP虚拟化保护;
+        "respro"."assets"."enable" = 1 #assets资源文件加密
+       "respro"."res"."enable" = 1 #res资源文件加密
+
+so文件加密：
+支持5种架构:
+apk 格式: /lib/armeabi/libxxx.so,/lib/arm64-v8a/libxxx.so,/lib/armeabi-v7a/libxxx.so,/lib/x86/libxxx.so,/lib/x86_64/libxxx.so
+aab格式: /base/lib/armeabi/libxxx.so,/base/lib/arm64-v8a/libxxx.so,/base/lib/armeabi-v7a/libxxx.so,/base/lib/x86/libxxx.so,/base/lib/x86_64/libxxx.so
+请列举 SO 库在 apk 文件解压后的完整有效路径，如:/lib/armeabi/libxxx.so；
+需要加固的 SO 库需确认为自研的 SO 库，不要加固第三方 SO 库，否则会增加 crash 风险
+
+res资源文件加密注意事项：
+请指定需要加密的文件全路径，如：res/layout/1.xml;
+res资源文件加密不能加密APP图标
+res目录文件，不能加密以下后缀规则的文件".wav", ".mp2", ".mp3", ".ogg", ".aac", ".mpg",".mpeg", ".mid", ".midi", ".smf", ".jet", ".rtttl", ".imy", ".xmf", ".mp4", ".m4a", ".m4v", ".3gp",".3gpp", ".3g2", ".3gpp2", ".amr", ".awb", ".wma", ".wmv"
+
+assets资源文件加密注意事项:
+请指定需要加密的文件全路径，如：assets/main.js；可以完整路径，也可以相对路径。
+如果有通配符需要完整路径 ":all"或者"*"代表所有文件
+assets资源文件加密不能加密APP图标
+assets目录文件，不能加密以下后缀规则的文件".wav", ".mp2", ".mp3", ".ogg", ".aac", ".mpg",".mpeg", ".mid", ".midi", ".smf", ".jet", ".rtttl", ".imy", ".xmf", ".mp4", ".m4a", ".m4v", ".3gp",".3gpp", ".3g2", ".3gpp2", ".amr", ".awb", ".wma", ".wmv"
+
+
+apk[dex+so+vmp+res+assets]加固参数示例：
+‘{
+    "dex": {
+        "enable": 1,
+        "antiprotect": 1,
+        "antirepack": 1,
+        "dexsig": 1,
+        "antimonitor": 1,
+        "ptrace": 1
+    },
+    "so": {
+        "enable": 1,
+        "ver": "1.3.3",
+        "file": [
+            "/lib/armeabi/libtest.so"
+        ]
+    },
+    "vmp": {
+        "enable": 1,
+        "ndkpath": "/xxx/android-ndk-r10e",
+        "profile": "/xxx/vmpprofile.txt",
+        "mapping": "/xxx/mapping.txt"
+    },
+    "respro": {
+        "assets": {
+            "enable": 1,
+            "file": [
+                "assets/1.js",
+                "assets/2.jpg"
+            ]
+        },
+        "res": {
+            "enable": 1,
+            "file": [
+                "res/layout/1.xml",
+                "res/layout/2.xml"
+            ]
+        }
+    }
+}’
+
+aab加固方案一 
+[dex+res+assets]加固json字符串：
+‘{
+    "dex": {
+        "enable": 1,
+        "antiprotect": 1,
+        "antimonitor": 1
+    },
+    "respro": {
+        "assets": {
+            "enable": 1,
+            "file": [
+                "assets/1.js",
+                "assets/2.jpg"
+            ]
+        },
+        "res": {
+            "enable": 1,
+            "file": [
+                "res/layout/1.xml",
+                "res/layout/2.xml"
+            ]
+        }
+    }
+}’
+
+aab加固方案二
+单独vmp加固：
+‘{
+    "vmp": {
+        "enable": 1,
+        "ndkpath": "/xxx/android-ndk-r10e",
+        "profile": "/xxx/vmpprofile.txt",
+        "mapping": "/xxx/mapping.txt",
+        "antiprotect": 1,
+        "antimonitor": 1
+    }
+}’
+        :rtype: str
+        """
         return self._EncryptParam
 
     @EncryptParam.setter
@@ -427,6 +582,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def ResultId(self):
+        """结果Id,用于查询加固结果
+        :rtype: str
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -435,6 +593,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def OrderId(self):
+        """与当前任务关联的订单id
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -443,6 +604,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def ResourceId(self):
+        """与当前任务关联的资源Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -451,6 +615,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def OpUin(self):
+        """本次任务发起者
+        :rtype: int
+        """
         return self._OpUin
 
     @OpUin.setter
@@ -459,6 +626,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def AppType(self):
+        """应用类型：android-apk; android-aab;
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -467,6 +637,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """应用包名
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -475,6 +648,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def BindAppPkgName(self):
+        """后台资源绑定的包名
+        :rtype: str
+        """
         return self._BindAppPkgName
 
     @BindAppPkgName.setter
@@ -483,6 +659,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EncryptState(self):
+        """加固结果
+        :rtype: int
+        """
         return self._EncryptState
 
     @EncryptState.setter
@@ -491,6 +670,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EncryptStateDesc(self):
+        """加固结果描述
+        :rtype: str
+        """
         return self._EncryptStateDesc
 
     @EncryptStateDesc.setter
@@ -499,6 +681,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EncryptErrCode(self):
+        """加固失败错误码
+        :rtype: int
+        """
         return self._EncryptErrCode
 
     @EncryptErrCode.setter
@@ -507,6 +692,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EncryptErrDesc(self):
+        """加固失败原因
+        :rtype: str
+        """
         return self._EncryptErrDesc
 
     @EncryptErrDesc.setter
@@ -515,6 +703,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EncryptErrRef(self):
+        """加固失败解决方案
+        :rtype: str
+        """
         return self._EncryptErrRef
 
     @EncryptErrRef.setter
@@ -523,6 +714,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def CreatTime(self):
+        """任务创建时间
+        :rtype: str
+        """
         return self._CreatTime
 
     @CreatTime.setter
@@ -531,6 +725,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始处理时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -539,6 +736,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务处理结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -547,6 +747,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def CostTime(self):
+        """加固耗时（秒单位）
+        :rtype: int
+        """
         return self._CostTime
 
     @CostTime.setter
@@ -555,6 +758,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def AppUrl(self):
+        """在线加固-android应用原包下载链接
+        :rtype: str
+        """
         return self._AppUrl
 
     @AppUrl.setter
@@ -563,6 +769,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def AppMd5(self):
+        """在线加固-android应用文件MD5算法值
+        :rtype: str
+        """
         return self._AppMd5
 
     @AppMd5.setter
@@ -571,6 +780,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def AppName(self):
+        """在线加固-android应用应用名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -579,6 +791,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def AppVersion(self):
+        """在线加固-android应用版本；
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -587,6 +802,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def AppSize(self):
+        """在线加固-android应用大小
+        :rtype: int
+        """
         return self._AppSize
 
     @AppSize.setter
@@ -595,6 +813,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def OnlineToolVersion(self):
+        """在线加固-android加固-腾讯云应用加固工具版本
+        :rtype: str
+        """
         return self._OnlineToolVersion
 
     @OnlineToolVersion.setter
@@ -603,6 +824,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EncryptAppMd5(self):
+        """在线加固-android加固，加固成功后文件md5算法值
+        :rtype: str
+        """
         return self._EncryptAppMd5
 
     @EncryptAppMd5.setter
@@ -611,6 +835,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EncryptAppSize(self):
+        """在线加固-android加固，加固成功后应用大小
+        :rtype: int
+        """
         return self._EncryptAppSize
 
     @EncryptAppSize.setter
@@ -619,6 +846,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def EncryptPkgUrl(self):
+        """在线加固-android加固，加固包下载链接。
+        :rtype: str
+        """
         return self._EncryptPkgUrl
 
     @EncryptPkgUrl.setter
@@ -627,6 +857,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def OutputToolVersion(self):
+        """输出工具-android加固-腾讯云输出工具版本
+        :rtype: str
+        """
         return self._OutputToolVersion
 
     @OutputToolVersion.setter
@@ -635,6 +868,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def OutputToolSize(self):
+        """输出工具-android加固-工具大小
+        :rtype: int
+        """
         return self._OutputToolSize
 
     @OutputToolSize.setter
@@ -643,6 +879,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def ToolOutputTime(self):
+        """输出工具-android加固-工具输出时间
+        :rtype: str
+        """
         return self._ToolOutputTime
 
     @ToolOutputTime.setter
@@ -651,6 +890,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def ToolExpireTime(self):
+        """输出工具-android加固-工具到期时间
+        :rtype: str
+        """
         return self._ToolExpireTime
 
     @ToolExpireTime.setter
@@ -659,6 +901,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def OutputToolUrl(self):
+        """输出工具-android加固-输出工具下载链接
+        :rtype: str
+        """
         return self._OutputToolUrl
 
     @OutputToolUrl.setter
@@ -667,6 +912,9 @@ class AndroidResult(AbstractModel):
 
     @property
     def AndroidPlan(self):
+        """本次android加固策略信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
+        """
         return self._AndroidPlan
 
     @AndroidPlan.setter
@@ -750,6 +998,9 @@ class AppDetailInfo(AbstractModel):
 
     @property
     def AppName(self):
+        """app的名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -758,6 +1009,9 @@ class AppDetailInfo(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """app的包名
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -766,6 +1020,9 @@ class AppDetailInfo(AbstractModel):
 
     @property
     def AppVersion(self):
+        """app的版本号
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -774,6 +1031,9 @@ class AppDetailInfo(AbstractModel):
 
     @property
     def AppSize(self):
+        """app的大小
+        :rtype: int
+        """
         return self._AppSize
 
     @AppSize.setter
@@ -782,6 +1042,9 @@ class AppDetailInfo(AbstractModel):
 
     @property
     def AppMd5(self):
+        """app的md5
+        :rtype: str
+        """
         return self._AppMd5
 
     @AppMd5.setter
@@ -790,6 +1053,9 @@ class AppDetailInfo(AbstractModel):
 
     @property
     def AppIconUrl(self):
+        """app的图标url
+        :rtype: str
+        """
         return self._AppIconUrl
 
     @AppIconUrl.setter
@@ -798,6 +1064,9 @@ class AppDetailInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """app的文件名称
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -858,6 +1127,9 @@ class AppInfo(AbstractModel):
 
     @property
     def AppUrl(self):
+        """app的url，必须保证不用权限校验就可以下载
+        :rtype: str
+        """
         return self._AppUrl
 
     @AppUrl.setter
@@ -866,6 +1138,9 @@ class AppInfo(AbstractModel):
 
     @property
     def AppMd5(self):
+        """app的md5，需要正确传递
+        :rtype: str
+        """
         return self._AppMd5
 
     @AppMd5.setter
@@ -874,6 +1149,9 @@ class AppInfo(AbstractModel):
 
     @property
     def AppSize(self):
+        """app的大小
+        :rtype: int
+        """
         return self._AppSize
 
     @AppSize.setter
@@ -882,6 +1160,9 @@ class AppInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """app的文件名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -890,6 +1171,9 @@ class AppInfo(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """app的包名，需要正确的传递此字段
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -898,6 +1182,9 @@ class AppInfo(AbstractModel):
 
     @property
     def AppVersion(self):
+        """app的版本号
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -906,6 +1193,9 @@ class AppInfo(AbstractModel):
 
     @property
     def AppIconUrl(self):
+        """app的图标url
+        :rtype: str
+        """
         return self._AppIconUrl
 
     @AppIconUrl.setter
@@ -914,6 +1204,9 @@ class AppInfo(AbstractModel):
 
     @property
     def AppName(self):
+        """app的名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -996,6 +1289,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def ItemId(self):
+        """任务唯一标识
+        :rtype: str
+        """
         return self._ItemId
 
     @ItemId.setter
@@ -1004,6 +1300,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def AppName(self):
+        """app的名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1012,6 +1311,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """app的包名
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -1020,6 +1322,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def AppVersion(self):
+        """app的版本号
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -1028,6 +1333,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def AppMd5(self):
+        """app的md5
+        :rtype: str
+        """
         return self._AppMd5
 
     @AppMd5.setter
@@ -1036,6 +1344,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def AppSize(self):
+        """app的大小
+        :rtype: int
+        """
         return self._AppSize
 
     @AppSize.setter
@@ -1044,6 +1355,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def ServiceEdition(self):
+        """加固服务版本
+        :rtype: str
+        """
         return self._ServiceEdition
 
     @ServiceEdition.setter
@@ -1052,6 +1366,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def ShieldCode(self):
+        """加固结果返回码
+        :rtype: int
+        """
         return self._ShieldCode
 
     @ShieldCode.setter
@@ -1060,6 +1377,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def AppUrl(self):
+        """加固后的APP下载地址
+        :rtype: str
+        """
         return self._AppUrl
 
     @AppUrl.setter
@@ -1068,6 +1388,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -1076,6 +1399,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def ClientIp(self):
+        """请求的客户端ip
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -1084,6 +1410,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def TaskTime(self):
+        """提交加固时间
+        :rtype: int
+        """
         return self._TaskTime
 
     @TaskTime.setter
@@ -1092,6 +1421,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def AppIconUrl(self):
+        """app的图标url
+        :rtype: str
+        """
         return self._AppIconUrl
 
     @AppIconUrl.setter
@@ -1100,6 +1432,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def ShieldMd5(self):
+        """加固后app的md5
+        :rtype: str
+        """
         return self._ShieldMd5
 
     @ShieldMd5.setter
@@ -1108,6 +1443,9 @@ class AppSetInfo(AbstractModel):
 
     @property
     def ShieldSize(self):
+        """加固后app的大小
+        :rtype: int
+        """
         return self._ShieldSize
 
     @ShieldSize.setter
@@ -1162,6 +1500,9 @@ class AppletInfo(AbstractModel):
 
     @property
     def AppletJsUrl(self):
+        """客户JS包
+        :rtype: str
+        """
         return self._AppletJsUrl
 
     @AppletJsUrl.setter
@@ -1170,6 +1511,10 @@ class AppletInfo(AbstractModel):
 
     @property
     def AppletLevel(self):
+        """小程序加固等级配置
+1 - 开启代码混淆、代码压缩、代码反调试保护。 2 - 开启字符串编码和代码变换，代码膨胀，随机插入冗余代码，开启代码控制流平坦化，保证业务逻辑正常前提下，扁平化代码逻辑分支，破坏代码简单的线性结构。 3 - 开启代码加密，对字符串、函数、变量、属性、类、数组等结构进行加密保护，更多得代码控制流平坦化，扁平化逻辑分支。
+        :rtype: int
+        """
         return self._AppletLevel
 
     @AppletLevel.setter
@@ -1178,6 +1523,9 @@ class AppletInfo(AbstractModel):
 
     @property
     def Name(self):
+        """本次加固输出产物名称，如”test.zip“,非空必须是 ”.zip“结尾
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1218,6 +1566,9 @@ class AppletPlan(AbstractModel):
 
     @property
     def PlanId(self):
+        """策略Id
+        :rtype: int
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -1226,6 +1577,11 @@ class AppletPlan(AbstractModel):
 
     @property
     def AppletLevel(self):
+        """1 - 开启代码混淆、代码压缩、代码反调试保护。
+2 - 开启字符串编码和代码变换，代码膨胀，随机插入冗余代码，开启代码控制流平坦化，保证业务逻辑正常前提下，扁平化代码逻辑分支，破坏代码简单的线性结构。
+3 - 开启代码加密，对字符串、函数、变量、属性、类、数组等结构进行加密保护，更多得代码控制流平坦化，扁平化逻辑分支。
+        :rtype: int
+        """
         return self._AppletLevel
 
     @AppletLevel.setter
@@ -1302,6 +1658,9 @@ class AppletResult(AbstractModel):
 
     @property
     def ResultId(self):
+        """加固任务结果id
+        :rtype: str
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -1310,6 +1669,9 @@ class AppletResult(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -1318,6 +1680,9 @@ class AppletResult(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单id
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -1326,6 +1691,9 @@ class AppletResult(AbstractModel):
 
     @property
     def OpUin(self):
+        """操作账号
+        :rtype: int
+        """
         return self._OpUin
 
     @OpUin.setter
@@ -1334,6 +1702,9 @@ class AppletResult(AbstractModel):
 
     @property
     def EncryptState(self):
+        """加固结果
+        :rtype: int
+        """
         return self._EncryptState
 
     @EncryptState.setter
@@ -1342,6 +1713,9 @@ class AppletResult(AbstractModel):
 
     @property
     def EncryptStateDesc(self):
+        """加固结果描述
+        :rtype: str
+        """
         return self._EncryptStateDesc
 
     @EncryptStateDesc.setter
@@ -1350,6 +1724,9 @@ class AppletResult(AbstractModel):
 
     @property
     def EncryptErrCode(self):
+        """失败错误码
+        :rtype: int
+        """
         return self._EncryptErrCode
 
     @EncryptErrCode.setter
@@ -1358,6 +1735,9 @@ class AppletResult(AbstractModel):
 
     @property
     def EncryptErrDesc(self):
+        """失败原因
+        :rtype: str
+        """
         return self._EncryptErrDesc
 
     @EncryptErrDesc.setter
@@ -1366,6 +1746,9 @@ class AppletResult(AbstractModel):
 
     @property
     def EncryptErrRef(self):
+        """解决方案
+        :rtype: str
+        """
         return self._EncryptErrRef
 
     @EncryptErrRef.setter
@@ -1374,6 +1757,9 @@ class AppletResult(AbstractModel):
 
     @property
     def CreatTime(self):
+        """任务创建时间
+        :rtype: str
+        """
         return self._CreatTime
 
     @CreatTime.setter
@@ -1382,6 +1768,9 @@ class AppletResult(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始处理时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1390,6 +1779,9 @@ class AppletResult(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务处理结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1398,6 +1790,9 @@ class AppletResult(AbstractModel):
 
     @property
     def CostTime(self):
+        """加固耗时（秒单位）
+        :rtype: int
+        """
         return self._CostTime
 
     @CostTime.setter
@@ -1406,6 +1801,9 @@ class AppletResult(AbstractModel):
 
     @property
     def EncryptPkgUrl(self):
+        """在线加固成功下载包
+        :rtype: str
+        """
         return self._EncryptPkgUrl
 
     @EncryptPkgUrl.setter
@@ -1414,6 +1812,9 @@ class AppletResult(AbstractModel):
 
     @property
     def AppletInfo(self):
+        """本次加固配置
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AppletInfo`
+        """
         return self._AppletInfo
 
     @AppletInfo.setter
@@ -1469,6 +1870,9 @@ class BindInfo(AbstractModel):
 
     @property
     def AppIconUrl(self):
+        """app的icon的url
+        :rtype: str
+        """
         return self._AppIconUrl
 
     @AppIconUrl.setter
@@ -1477,6 +1881,9 @@ class BindInfo(AbstractModel):
 
     @property
     def AppName(self):
+        """app的名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1485,6 +1892,9 @@ class BindInfo(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """app的包名
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -1520,6 +1930,9 @@ class CancelEncryptTaskRequest(AbstractModel):
 
     @property
     def ResultId(self):
+        """加固任务结果Id 
+        :rtype: str
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -1556,6 +1969,9 @@ class CancelEncryptTaskResponse(AbstractModel):
 
     @property
     def State(self):
+        """1: 取消任务成功 ； -1 ：取消任务失败，原因为任务进程已结束，不能取消。
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -1564,6 +1980,9 @@ class CancelEncryptTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1599,6 +2018,9 @@ class CreateBindInstanceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id，全局唯一
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -1607,6 +2029,9 @@ class CreateBindInstanceRequest(AbstractModel):
 
     @property
     def AppIconUrl(self):
+        """app的icon的url
+        :rtype: str
+        """
         return self._AppIconUrl
 
     @AppIconUrl.setter
@@ -1615,6 +2040,9 @@ class CreateBindInstanceRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """app的名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1623,6 +2051,9 @@ class CreateBindInstanceRequest(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """app的包名
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -1662,6 +2093,9 @@ class CreateBindInstanceResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -1670,6 +2104,9 @@ class CreateBindInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1699,6 +2136,9 @@ class CreateCosSecKeyInstanceRequest(AbstractModel):
 
     @property
     def CosRegion(self):
+        """地域信息，例如广州：ap-guangzhou，上海：ap-shanghai，默认为广州。
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -1707,6 +2147,9 @@ class CreateCosSecKeyInstanceRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """密钥有效时间，默认为1小时。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -1768,6 +2211,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def CosAppid(self):
+        """COS密钥对应的AppId
+        :rtype: int
+        """
         return self._CosAppid
 
     @CosAppid.setter
@@ -1776,6 +2222,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def CosBucket(self):
+        """COS密钥对应的存储桶名
+        :rtype: str
+        """
         return self._CosBucket
 
     @CosBucket.setter
@@ -1784,6 +2233,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def CosRegion(self):
+        """存储桶对应的地域
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -1792,6 +2244,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """密钥过期时间
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1800,6 +2255,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def CosId(self):
+        """密钥ID信息
+        :rtype: str
+        """
         return self._CosId
 
     @CosId.setter
@@ -1808,6 +2266,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def CosKey(self):
+        """密钥KEY信息
+        :rtype: str
+        """
         return self._CosKey
 
     @CosKey.setter
@@ -1818,6 +2279,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
     def CosTocken(self):
         warnings.warn("parameter `CosTocken` is deprecated", DeprecationWarning) 
 
+        """密钥TOCKEN信息
+        :rtype: str
+        """
         return self._CosTocken
 
     @CosTocken.setter
@@ -1828,6 +2292,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def CosPrefix(self):
+        """密钥可访问的文件前缀人。例如：CosPrefix=test/123/666，则该密钥只能操作test/123/666为前缀的文件，例如test/123/666/1.txt
+        :rtype: str
+        """
         return self._CosPrefix
 
     @CosPrefix.setter
@@ -1836,6 +2303,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def CosToken(self):
+        """密钥TOCKEN信息
+        :rtype: str
+        """
         return self._CosToken
 
     @CosToken.setter
@@ -1844,6 +2314,9 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1899,6 +2372,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     @property
     def PlatformType(self):
+        """平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -1907,6 +2383,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """订单采购类型 1-免费试用 2-按年收费 3-按次收费
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -1915,6 +2394,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     @property
     def EncryptOpType(self):
+        """1-在线加固、  2-输出工具加固
+        :rtype: int
+        """
         return self._EncryptOpType
 
     @EncryptOpType.setter
@@ -1923,6 +2405,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """本次加固使用的资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -1931,6 +2416,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     @property
     def AndroidAppInfo(self):
+        """渠道合作android加固App信息 
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AndroidAppInfo`
+        """
         return self._AndroidAppInfo
 
     @AndroidAppInfo.setter
@@ -1939,6 +2427,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     @property
     def AndroidPlan(self):
+        """渠道合作android加固策略信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
+        """
         return self._AndroidPlan
 
     @AndroidPlan.setter
@@ -1947,6 +2438,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     @property
     def AppletInfo(self):
+        """小程序加固信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AppletInfo`
+        """
         return self._AppletInfo
 
     @AppletInfo.setter
@@ -1955,6 +2449,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     @property
     def IOSInfo(self):
+        """iOS混淆信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.IOSInfo`
+        """
         return self._IOSInfo
 
     @IOSInfo.setter
@@ -2006,6 +2503,9 @@ class CreateEncryptInstanceResponse(AbstractModel):
 
     @property
     def ResultId(self):
+        """加固任务Id
+        :rtype: str
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -2014,6 +2514,9 @@ class CreateEncryptInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2048,6 +2551,9 @@ class CreateOrderInstanceRequest(AbstractModel):
 
     @property
     def PlatformType(self):
+        """平台类型枚举值：1-android加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -2056,6 +2562,9 @@ class CreateOrderInstanceRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """订单采购类型 1-免费试用 ；2-按年收费 ；3-按次收费
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -2064,6 +2573,11 @@ class CreateOrderInstanceRequest(AbstractModel):
 
     @property
     def AppPkgNameList(self):
+        """代表应用包名列表，值为单个包名（例如：“a.b.xxx”）或多个包名用逗号隔开(例如：“a.b.xxx,b.c.xxx”)。
+当android按年收费加固或android免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
+
+        :rtype: str
+        """
         return self._AppPkgNameList
 
     @AppPkgNameList.setter
@@ -2105,6 +2619,9 @@ class CreateOrderInstanceResponse(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单Id
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -2113,6 +2630,9 @@ class CreateOrderInstanceResponse(AbstractModel):
 
     @property
     def ResourceId(self):
+        """与订单关联的资源id
+        :rtype: list of str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2121,6 +2641,9 @@ class CreateOrderInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2157,6 +2680,9 @@ class CreateResourceInstancesRequest(AbstractModel):
 
     @property
     def Pid(self):
+        """资源类型id。13624：加固专业版。
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -2165,6 +2691,9 @@ class CreateResourceInstancesRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """时间单位，取值为d，m，y，分别表示天，月，年。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -2173,6 +2702,9 @@ class CreateResourceInstancesRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """时间数量。
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -2181,6 +2713,9 @@ class CreateResourceInstancesRequest(AbstractModel):
 
     @property
     def ResourceNum(self):
+        """资源数量。
+        :rtype: int
+        """
         return self._ResourceNum
 
     @ResourceNum.setter
@@ -2220,6 +2755,9 @@ class CreateResourceInstancesResponse(AbstractModel):
 
     @property
     def ResourceSet(self):
+        """新创建的资源列表。
+        :rtype: list of str
+        """
         return self._ResourceSet
 
     @ResourceSet.setter
@@ -2228,6 +2766,9 @@ class CreateResourceInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2257,6 +2798,9 @@ class CreateShieldInstanceRequest(AbstractModel):
 
     @property
     def AppInfo(self):
+        """待加固的应用信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AppInfo`
+        """
         return self._AppInfo
 
     @AppInfo.setter
@@ -2265,6 +2809,9 @@ class CreateShieldInstanceRequest(AbstractModel):
 
     @property
     def ServiceInfo(self):
+        """加固服务信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.ServiceInfo`
+        """
         return self._ServiceInfo
 
     @ServiceInfo.setter
@@ -2309,6 +2856,9 @@ class CreateShieldInstanceResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -2317,6 +2867,9 @@ class CreateShieldInstanceResponse(AbstractModel):
 
     @property
     def ItemId(self):
+        """任务唯一标识
+        :rtype: str
+        """
         return self._ItemId
 
     @ItemId.setter
@@ -2325,6 +2878,9 @@ class CreateShieldInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2358,6 +2914,9 @@ class CreateShieldPlanInstanceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2366,6 +2925,9 @@ class CreateShieldPlanInstanceRequest(AbstractModel):
 
     @property
     def PlanName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -2374,6 +2936,9 @@ class CreateShieldPlanInstanceRequest(AbstractModel):
 
     @property
     def PlanInfo(self):
+        """策略具体信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.PlanInfo`
+        """
         return self._PlanInfo
 
     @PlanInfo.setter
@@ -2417,6 +2982,9 @@ class CreateShieldPlanInstanceResponse(AbstractModel):
 
     @property
     def PlanId(self):
+        """策略id
+        :rtype: int
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -2425,6 +2993,9 @@ class CreateShieldPlanInstanceResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -2433,6 +3004,9 @@ class CreateShieldPlanInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2460,6 +3034,9 @@ class DeleteShieldInstancesRequest(AbstractModel):
 
     @property
     def ItemIds(self):
+        """任务唯一标识ItemId的列表
+        :rtype: list of str
+        """
         return self._ItemIds
 
     @ItemIds.setter
@@ -2496,6 +3073,9 @@ class DeleteShieldInstancesResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -2504,6 +3084,9 @@ class DeleteShieldInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2533,6 +3116,9 @@ class DescribeApkDetectionResultRequest(AbstractModel):
 
     @property
     def ApkUrl(self):
+        """软件包的下载链接
+        :rtype: str
+        """
         return self._ApkUrl
 
     @ApkUrl.setter
@@ -2541,6 +3127,9 @@ class DescribeApkDetectionResultRequest(AbstractModel):
 
     @property
     def ApkMd5(self):
+        """软件包的md5值，具有唯一性。腾讯APK云检测服务会根据md5值来判断该包是否为库中已收集的样本，已存在，则返回检测结果，反之，需要一定时间检测该样本。
+        :rtype: str
+        """
         return self._ApkMd5
 
     @ApkMd5.setter
@@ -2584,6 +3173,9 @@ class DescribeApkDetectionResultResponse(AbstractModel):
 
     @property
     def Result(self):
+        """响应结果，ok表示正常，error表示错误
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2592,6 +3184,9 @@ class DescribeApkDetectionResultResponse(AbstractModel):
 
     @property
     def Reason(self):
+        """Result为error错误时的原因说明
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -2600,6 +3195,9 @@ class DescribeApkDetectionResultResponse(AbstractModel):
 
     @property
     def ResultList(self):
+        """APK检测结果数组
+        :rtype: list of ResultListItem
+        """
         return self._ResultList
 
     @ResultList.setter
@@ -2608,6 +3206,9 @@ class DescribeApkDetectionResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2683,6 +3284,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """多记录查询时使用，页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2691,6 +3295,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """多记录每页展示数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2699,6 +3306,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """多记录查询时排序使用  仅支持CreateTime 任务创建时间排序
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -2707,6 +3317,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """升序（asc）还是降序（desc），默认：desc。
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -2715,6 +3328,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def PlatformType(self):
+        """(条件过滤字段) 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -2723,6 +3339,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """(条件过滤字段) 订单采购类型 1-免费试用 2-按年收费 3-按次收费
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -2731,6 +3350,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def EncryptOpType(self):
+        """(条件过滤字段) 1-在线加固 或 2-输出工具加固
+        :rtype: int
+        """
         return self._EncryptOpType
 
     @EncryptOpType.setter
@@ -2739,6 +3361,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def ResultId(self):
+        """(条件过滤字段) 单记录查询时使用，结果ID该字段非空时，结构会根据结果ID进行单记录查询，符合查询条件时，只返回一条记录。
+        :rtype: str
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -2747,6 +3372,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """(条件过滤字段) 查询与订单Id关联的任务
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -2755,6 +3383,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """(条件过滤字段) 查询与资源Id关联的任务
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2763,6 +3394,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def AppType(self):
+        """(条件过滤字段) 应用类型：android-apk; android-aab;
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -2771,6 +3405,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """（条件过滤字段）应用的包名
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -2779,6 +3416,15 @@ class DescribeEncryptInstancesRequest(AbstractModel):
 
     @property
     def EncryptState(self):
+        """加固结果，
+0：正在排队；
+1：加固成功；
+2：加固中；
+3：加固失败；
+5：重试；
+多记录查询时，根据查询结果进行检索使用。
+        :rtype: list of int
+        """
         return self._EncryptState
 
     @EncryptState.setter
@@ -2830,6 +3476,9 @@ class DescribeEncryptInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2838,6 +3487,9 @@ class DescribeEncryptInstancesResponse(AbstractModel):
 
     @property
     def EncryptResults(self):
+        """渠道合作加固信息数组
+        :rtype: list of EncryptResults
+        """
         return self._EncryptResults
 
     @EncryptResults.setter
@@ -2846,6 +3498,9 @@ class DescribeEncryptInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2893,6 +3548,9 @@ class DescribeEncryptPlanRequest(AbstractModel):
 
     @property
     def PlatformType(self):
+        """平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -2901,6 +3559,9 @@ class DescribeEncryptPlanRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """订单采购类型 1-免费试用 2-按年收费 3-按次收费
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -2909,6 +3570,9 @@ class DescribeEncryptPlanRequest(AbstractModel):
 
     @property
     def EncryptOpType(self):
+        """1-在线加固；2-输出工具
+        :rtype: int
+        """
         return self._EncryptOpType
 
     @EncryptOpType.setter
@@ -2917,6 +3581,9 @@ class DescribeEncryptPlanRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """本次加固使用的资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2925,6 +3592,9 @@ class DescribeEncryptPlanRequest(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """（条件过滤字段）加固查询时，根据包名查询
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -2933,6 +3603,9 @@ class DescribeEncryptPlanRequest(AbstractModel):
 
     @property
     def AppType(self):
+        """（条件过滤字段）加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -2979,16 +3652,12 @@ class DescribeEncryptPlanResponse(AbstractModel):
         :param _ResourceId: 资源id
         :type ResourceId: str
         :param _AndroidPlan: 上次加固策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidPlan: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
         :param _AppletPlan: 上次小程序加固策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppletPlan: :class:`tencentcloud.ms.v20180408.models.AppletPlan`
         :param _IOSPlan: 上次ios源码混淆加固配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type IOSPlan: :class:`tencentcloud.ms.v20180408.models.IOSPlan`
         :param _SDKPlan: 上次sdk加固配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type SDKPlan: :class:`tencentcloud.ms.v20180408.models.SDKPlan`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3008,6 +3677,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def PlatformType(self):
+        """平台类型整型值  
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -3016,6 +3688,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def PlatformTypeDesc(self):
+        """平台类型描述 1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :rtype: str
+        """
         return self._PlatformTypeDesc
 
     @PlatformTypeDesc.setter
@@ -3024,6 +3699,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def EncryptOpType(self):
+        """1- 在线加固 2-输出工具加固
+        :rtype: int
+        """
         return self._EncryptOpType
 
     @EncryptOpType.setter
@@ -3032,6 +3710,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def EncryptOpTypeDesc(self):
+        """1- 在线加固 2-输出工具加固
+        :rtype: str
+        """
         return self._EncryptOpTypeDesc
 
     @EncryptOpTypeDesc.setter
@@ -3040,6 +3721,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def OrderType(self):
+        """订单收费类型枚举值
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -3048,6 +3732,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def OrderTypeDesc(self):
+        """订单收费类型描述
+        :rtype: str
+        """
         return self._OrderTypeDesc
 
     @OrderTypeDesc.setter
@@ -3056,6 +3743,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -3064,6 +3754,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def AndroidPlan(self):
+        """上次加固策略
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
+        """
         return self._AndroidPlan
 
     @AndroidPlan.setter
@@ -3072,6 +3765,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def AppletPlan(self):
+        """上次小程序加固策略
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AppletPlan`
+        """
         return self._AppletPlan
 
     @AppletPlan.setter
@@ -3080,6 +3776,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def IOSPlan(self):
+        """上次ios源码混淆加固配置
+        :rtype: :class:`tencentcloud.ms.v20180408.models.IOSPlan`
+        """
         return self._IOSPlan
 
     @IOSPlan.setter
@@ -3088,6 +3787,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def SDKPlan(self):
+        """上次sdk加固配置
+        :rtype: :class:`tencentcloud.ms.v20180408.models.SDKPlan`
+        """
         return self._SDKPlan
 
     @SDKPlan.setter
@@ -3096,6 +3798,9 @@ class DescribeEncryptPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3170,6 +3875,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -3178,6 +3886,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页展示数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3186,6 +3897,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """按某个字段排序，目前仅支持CreateTime排序。
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3194,6 +3908,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """升序（asc）还是降序（desc），默认：desc。
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -3202,6 +3919,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def PlatformType(self):
+        """（条件过滤字段）平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -3210,6 +3930,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """（条件过滤字段）订单采购类型 1-免费试用 2-按年收费 3-按次收费
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -3218,6 +3941,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def ApprovalStatus(self):
+        """（条件过滤字段）订单审批状态：
+        :rtype: int
+        """
         return self._ApprovalStatus
 
     @ApprovalStatus.setter
@@ -3226,6 +3952,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def ResourceStatus(self):
+        """（条件过滤字段）资源状态：
+        :rtype: int
+        """
         return self._ResourceStatus
 
     @ResourceStatus.setter
@@ -3234,6 +3963,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """（条件过滤字段）订单ID
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -3242,6 +3974,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """（条件过滤字段）资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -3250,6 +3985,9 @@ class DescribeOrderInstancesRequest(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """（条件过滤字段）包名，查询android加固订单时使用
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -3299,6 +4037,9 @@ class DescribeOrderInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3307,6 +4048,9 @@ class DescribeOrderInstancesResponse(AbstractModel):
 
     @property
     def Orders(self):
+        """订单信息
+        :rtype: list of Orders
+        """
         return self._Orders
 
     @Orders.setter
@@ -3315,6 +4059,9 @@ class DescribeOrderInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3362,6 +4109,9 @@ class DescribeResourceInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """支持CreateTime、ExpireTime、AppName、AppPkgName、BindValue、IsBind过滤
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3370,6 +4120,9 @@ class DescribeResourceInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3378,6 +4131,9 @@ class DescribeResourceInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """数量限制，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3386,6 +4142,9 @@ class DescribeResourceInstancesRequest(AbstractModel):
 
     @property
     def Pids(self):
+        """资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
+        :rtype: list of int non-negative
+        """
         return self._Pids
 
     @Pids.setter
@@ -3394,6 +4153,9 @@ class DescribeResourceInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """按某个字段排序，目前支持CreateTime、ExpireTime其中的一个排序。
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3402,6 +4164,9 @@ class DescribeResourceInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """升序（asc）还是降序（desc），默认：desc。
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -3451,6 +4216,9 @@ class DescribeResourceInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合要求的资源数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3459,6 +4227,9 @@ class DescribeResourceInstancesResponse(AbstractModel):
 
     @property
     def ResourceSet(self):
+        """符合要求的资源数组
+        :rtype: list of ResourceInfo
+        """
         return self._ResourceSet
 
     @ResourceSet.setter
@@ -3467,6 +4238,9 @@ class DescribeResourceInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3514,6 +4288,9 @@ class DescribeShieldInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """支持通过app名称，app包名，加固的服务版本，提交的渠道进行筛选。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3522,6 +4299,9 @@ class DescribeShieldInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3530,6 +4310,9 @@ class DescribeShieldInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """数量限制，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3538,6 +4321,9 @@ class DescribeShieldInstancesRequest(AbstractModel):
 
     @property
     def ItemIds(self):
+        """可以提供ItemId数组来查询一个或者多个结果。注意不可以同时指定ItemIds和Filters。
+        :rtype: list of str
+        """
         return self._ItemIds
 
     @ItemIds.setter
@@ -3546,6 +4332,9 @@ class DescribeShieldInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """按某个字段排序，目前仅支持TaskTime排序。
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3554,6 +4343,9 @@ class DescribeShieldInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """升序（asc）还是降序（desc），默认：desc。
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -3603,6 +4395,9 @@ class DescribeShieldInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合要求的app数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3611,6 +4406,9 @@ class DescribeShieldInstancesResponse(AbstractModel):
 
     @property
     def AppSet(self):
+        """一个关于app详细信息的结构体，主要包括app的基本信息和加固信息。
+        :rtype: list of AppSetInfo
+        """
         return self._AppSet
 
     @AppSet.setter
@@ -3619,6 +4417,9 @@ class DescribeShieldInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3654,6 +4455,9 @@ class DescribeShieldPlanInstanceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -3662,6 +4466,9 @@ class DescribeShieldPlanInstanceRequest(AbstractModel):
 
     @property
     def Pid(self):
+        """服务类别id
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -3705,6 +4512,9 @@ class DescribeShieldPlanInstanceResponse(AbstractModel):
 
     @property
     def BindInfo(self):
+        """绑定资源信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.BindInfo`
+        """
         return self._BindInfo
 
     @BindInfo.setter
@@ -3713,6 +4523,9 @@ class DescribeShieldPlanInstanceResponse(AbstractModel):
 
     @property
     def ShieldPlanInfo(self):
+        """加固策略信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.ShieldPlanInfo`
+        """
         return self._ShieldPlanInfo
 
     @ShieldPlanInfo.setter
@@ -3721,6 +4534,9 @@ class DescribeShieldPlanInstanceResponse(AbstractModel):
 
     @property
     def ResourceServiceInfo(self):
+        """加固资源信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.ResourceServiceInfo`
+        """
         return self._ResourceServiceInfo
 
     @ResourceServiceInfo.setter
@@ -3729,6 +4545,9 @@ class DescribeShieldPlanInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3763,6 +4582,9 @@ class DescribeShieldResultRequest(AbstractModel):
 
     @property
     def ItemId(self):
+        """任务唯一标识
+        :rtype: str
+        """
         return self._ItemId
 
     @ItemId.setter
@@ -3811,6 +4633,9 @@ class DescribeShieldResultResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态: 0-请返回,1-已完成,2-处理中,3-处理出错,4-处理超时
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -3819,6 +4644,9 @@ class DescribeShieldResultResponse(AbstractModel):
 
     @property
     def AppDetailInfo(self):
+        """app加固前的详细信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AppDetailInfo`
+        """
         return self._AppDetailInfo
 
     @AppDetailInfo.setter
@@ -3827,6 +4655,9 @@ class DescribeShieldResultResponse(AbstractModel):
 
     @property
     def ShieldInfo(self):
+        """app加固后的详细信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.ShieldInfo`
+        """
         return self._ShieldInfo
 
     @ShieldInfo.setter
@@ -3835,6 +4666,9 @@ class DescribeShieldResultResponse(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """状态描述
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -3843,6 +4677,9 @@ class DescribeShieldResultResponse(AbstractModel):
 
     @property
     def StatusRef(self):
+        """状态指引
+        :rtype: str
+        """
         return self._StatusRef
 
     @StatusRef.setter
@@ -3851,6 +4688,9 @@ class DescribeShieldResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3885,6 +4725,9 @@ class DescribeUrlDetectionResultRequest(AbstractModel):
 
     @property
     def Url(self):
+        """查询的网址
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3972,6 +4815,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def ResultCode(self):
+        """[查询结果]查询结果；枚举值：0 查询成功，否则查询失败
+        :rtype: int
+        """
         return self._ResultCode
 
     @ResultCode.setter
@@ -3980,6 +4826,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def RespVer(self):
+        """[固定信息]响应协议版本号
+        :rtype: int
+        """
         return self._RespVer
 
     @RespVer.setter
@@ -3988,6 +4837,15 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def UrlType(self):
+        """[查询结果]url恶意状态
+枚举值：
+0-1：未知，访问暂无风险。
+2 ：	风险网址，具体的恶意类型定义参考恶意大类EvilClass字段。
+3-4：安全，访问无风险。
+
+注意：查询结果EvilClass字段在Urltype=2时，才有意义。
+        :rtype: int
+        """
         return self._UrlType
 
     @UrlType.setter
@@ -3996,6 +4854,18 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def EvilClass(self):
+        """[查询结果]url恶意类型大类:{
+    "1": "社工欺诈（仿冒、账号钓鱼、中奖诈骗）",
+    "2": "信息诈骗（虚假充值、虚假兼职、虚假金融投资、虚假信用卡代办、网络赌博诈骗）",
+    "3": "虚假销售（男女保健美容减肥产品、电子产品、虚假广告、违法销售）",
+    "4": "恶意文件（病毒文件，木马文件，恶意apk文件的下载链接以及站点，挂马网站）",
+    "5": "博彩网站（博彩网站，在线赌博网站）",
+    "6": "色情网站（涉嫌传播色情内容，提供色情服务的网站）"，
+    "7": "风险网站（弱类型，传播垃圾信息的网站，如果客户端有阻断，不建议使用这个网站）"，
+    "8": "违法网站（根据法律法规不能传播的内容，以及侵犯知识产权的类型）"
+  }
+        :rtype: int
+        """
         return self._EvilClass
 
     @EvilClass.setter
@@ -4004,6 +4874,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def EvilType(self):
+        """该字段暂为空
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -4012,6 +4885,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def Level(self):
+        """该字段暂为空
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -4020,6 +4896,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def DetectTime(self):
+        """[查询详情]url检出时间；时间戳
+        :rtype: int
+        """
         return self._DetectTime
 
     @DetectTime.setter
@@ -4028,6 +4907,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def Wording(self):
+        """该字段暂为空
+        :rtype: str
+        """
         return self._Wording
 
     @Wording.setter
@@ -4036,6 +4918,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def WordingTitle(self):
+        """该字段暂为空
+        :rtype: str
+        """
         return self._WordingTitle
 
     @WordingTitle.setter
@@ -4044,6 +4929,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def UrlTypeDesc(self):
+        """[查询结果]url恶意状态说明；为UrlType字段值对应的说明
+        :rtype: str
+        """
         return self._UrlTypeDesc
 
     @UrlTypeDesc.setter
@@ -4052,6 +4940,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def EvilClassDesc(self):
+        """[查询结果]url恶意大类说明；为EvilClass字段值对应的说明
+        :rtype: str
+        """
         return self._EvilClassDesc
 
     @EvilClassDesc.setter
@@ -4060,6 +4951,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def EvilTypeDesc(self):
+        """该字段暂为空
+        :rtype: str
+        """
         return self._EvilTypeDesc
 
     @EvilTypeDesc.setter
@@ -4068,6 +4962,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def LevelDesc(self):
+        """该字段暂为空
+        :rtype: str
+        """
         return self._LevelDesc
 
     @LevelDesc.setter
@@ -4076,6 +4973,9 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4129,6 +5029,9 @@ class DescribeUserBaseInfoInstanceResponse(AbstractModel):
 
     @property
     def UserUin(self):
+        """用户uin信息
+        :rtype: int
+        """
         return self._UserUin
 
     @UserUin.setter
@@ -4137,6 +5040,9 @@ class DescribeUserBaseInfoInstanceResponse(AbstractModel):
 
     @property
     def UserAppid(self):
+        """用户APPID信息
+        :rtype: int
+        """
         return self._UserAppid
 
     @UserAppid.setter
@@ -4145,6 +5051,9 @@ class DescribeUserBaseInfoInstanceResponse(AbstractModel):
 
     @property
     def TimeStamp(self):
+        """系统时间戳
+        :rtype: int
+        """
         return self._TimeStamp
 
     @TimeStamp.setter
@@ -4153,6 +5062,9 @@ class DescribeUserBaseInfoInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4184,6 +5096,9 @@ class DestroyResourceInstancesRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """ResourceId 资源id，在创建订单时，返回的resourceId
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4192,6 +5107,9 @@ class DestroyResourceInstancesRequest(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """资源绑定的包名，为了防止误删除，需要指定绑定时的包名
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -4238,6 +5156,9 @@ class DestroyResourceInstancesResponse(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4246,6 +5167,9 @@ class DestroyResourceInstancesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回状态
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -4254,6 +5178,9 @@ class DestroyResourceInstancesResponse(AbstractModel):
 
     @property
     def PlatformType(self):
+        """平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -4262,6 +5189,9 @@ class DestroyResourceInstancesResponse(AbstractModel):
 
     @property
     def OrderType(self):
+        """订单采购类型 1-免费试用 2-按年收费 3-按次收费  
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -4270,6 +5200,9 @@ class DestroyResourceInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4309,16 +5242,12 @@ class EncryptResults(AbstractModel):
         :param _OrderId: 与当前任务关联的订单Id
         :type OrderId: str
         :param _AndroidResult: 对应PlatformType平台类型值   1-android加固结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidResult: :class:`tencentcloud.ms.v20180408.models.AndroidResult`
         :param _IOSResult: 对应PlatformType平台类型值   2-ios源码混淆加固结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type IOSResult: :class:`tencentcloud.ms.v20180408.models.IOSResult`
         :param _SDKResult: 对应PlatformType平台类型值   3-sdk加固结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type SDKResult: :class:`tencentcloud.ms.v20180408.models.SDKResult`
         :param _AppletResult: 对应PlatformType平台类型值   4-applet小程序加固结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppletResult: :class:`tencentcloud.ms.v20180408.models.AppletResult`
         """
         self._PlatformType = None
@@ -4336,6 +5265,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def PlatformType(self):
+        """平台类型枚举值  1-android加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -4344,6 +5276,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def PlatformDesc(self):
+        """平台类型描述  1-android加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
+        :rtype: str
+        """
         return self._PlatformDesc
 
     @PlatformDesc.setter
@@ -4352,6 +5287,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def OrderType(self):
+        """订单采购类型枚举值， 1-免费试用 2-按年收费 3-按次收费
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -4360,6 +5298,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def OrderTypeDesc(self):
+        """订单采购类型 描述：1-免费试用 2-按年收费 3-按次收费
+        :rtype: str
+        """
         return self._OrderTypeDesc
 
     @OrderTypeDesc.setter
@@ -4368,6 +5309,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def EncryptOpType(self):
+        """枚举值：1-在线加固 或 2-输出工具加固
+        :rtype: int
+        """
         return self._EncryptOpType
 
     @EncryptOpType.setter
@@ -4376,6 +5320,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def EncryptOpTypeDesc(self):
+        """描述：1-在线加固 或 2-输出工具加固
+        :rtype: str
+        """
         return self._EncryptOpTypeDesc
 
     @EncryptOpTypeDesc.setter
@@ -4384,6 +5331,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def ResourceId(self):
+        """与当前任务关联的资源Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4392,6 +5342,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def OrderId(self):
+        """与当前任务关联的订单Id
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -4400,6 +5353,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def AndroidResult(self):
+        """对应PlatformType平台类型值   1-android加固结果
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AndroidResult`
+        """
         return self._AndroidResult
 
     @AndroidResult.setter
@@ -4408,6 +5364,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def IOSResult(self):
+        """对应PlatformType平台类型值   2-ios源码混淆加固结果
+        :rtype: :class:`tencentcloud.ms.v20180408.models.IOSResult`
+        """
         return self._IOSResult
 
     @IOSResult.setter
@@ -4416,6 +5375,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def SDKResult(self):
+        """对应PlatformType平台类型值   3-sdk加固结果
+        :rtype: :class:`tencentcloud.ms.v20180408.models.SDKResult`
+        """
         return self._SDKResult
 
     @SDKResult.setter
@@ -4424,6 +5386,9 @@ class EncryptResults(AbstractModel):
 
     @property
     def AppletResult(self):
+        """对应PlatformType平台类型值   4-applet小程序加固结果
+        :rtype: :class:`tencentcloud.ms.v20180408.models.AppletResult`
+        """
         return self._AppletResult
 
     @AppletResult.setter
@@ -4479,6 +5444,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """需要过滤的字段
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4487,6 +5455,9 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
+        """需要过滤字段的值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -4535,6 +5506,9 @@ class IOSInfo(AbstractModel):
 
     @property
     def InfoPListUrl(self):
+        """info.plist的url，必须保证不用权限校验就可以下载
+        :rtype: str
+        """
         return self._InfoPListUrl
 
     @InfoPListUrl.setter
@@ -4543,6 +5517,9 @@ class IOSInfo(AbstractModel):
 
     @property
     def InfoPListSize(self):
+        """info.plist文件的大小
+        :rtype: int
+        """
         return self._InfoPListSize
 
     @InfoPListSize.setter
@@ -4551,6 +5528,9 @@ class IOSInfo(AbstractModel):
 
     @property
     def InfoPListMd5(self):
+        """info.plist文件的md5
+        :rtype: str
+        """
         return self._InfoPListMd5
 
     @InfoPListMd5.setter
@@ -4559,6 +5539,9 @@ class IOSInfo(AbstractModel):
 
     @property
     def BuildType(self):
+        """release: 需要INFO-PLIST文件，会生成工具部署安装包，并带有license文件，绑定机器；nobind不需要INFO-PLIST文件，不绑定机器
+        :rtype: str
+        """
         return self._BuildType
 
     @BuildType.setter
@@ -4595,6 +5578,9 @@ class IOSPlan(AbstractModel):
 
     @property
     def PlanId(self):
+        """策略id
+        :rtype: int
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -4622,40 +5608,28 @@ class IOSResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultId: 加固任务结果Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: str
         :param _OpUin: 用户uid
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpUin: int
         :param _EncryptType: 加固类型，这里为ios
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptType: str
         :param _ResourceId: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param _EncryptState: 加固状态
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _EncryptState: 加固状态：0等待，1成功，2任务中，3失败，4重试中
         :type EncryptState: int
         :param _EncryptErrno: 业务错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptErrno: int
         :param _EncryptErrDesc: 业务错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptErrDesc: str
         :param _CreatTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatTime: str
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CostTime: 消耗时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CostTime: int
         :param _EncryptPkgUrl: 加固（混淆）包结果url
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptPkgUrl: str
         """
         self._ResultId = None
@@ -4673,6 +5647,9 @@ class IOSResult(AbstractModel):
 
     @property
     def ResultId(self):
+        """加固任务结果Id
+        :rtype: str
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -4681,6 +5658,9 @@ class IOSResult(AbstractModel):
 
     @property
     def OpUin(self):
+        """用户uid
+        :rtype: int
+        """
         return self._OpUin
 
     @OpUin.setter
@@ -4689,6 +5669,9 @@ class IOSResult(AbstractModel):
 
     @property
     def EncryptType(self):
+        """加固类型，这里为ios
+        :rtype: str
+        """
         return self._EncryptType
 
     @EncryptType.setter
@@ -4697,6 +5680,9 @@ class IOSResult(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4705,6 +5691,9 @@ class IOSResult(AbstractModel):
 
     @property
     def EncryptState(self):
+        """加固状态：0等待，1成功，2任务中，3失败，4重试中
+        :rtype: int
+        """
         return self._EncryptState
 
     @EncryptState.setter
@@ -4713,6 +5702,9 @@ class IOSResult(AbstractModel):
 
     @property
     def EncryptErrno(self):
+        """业务错误码
+        :rtype: int
+        """
         return self._EncryptErrno
 
     @EncryptErrno.setter
@@ -4721,6 +5713,9 @@ class IOSResult(AbstractModel):
 
     @property
     def EncryptErrDesc(self):
+        """业务错误信息
+        :rtype: str
+        """
         return self._EncryptErrDesc
 
     @EncryptErrDesc.setter
@@ -4729,6 +5724,9 @@ class IOSResult(AbstractModel):
 
     @property
     def CreatTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatTime
 
     @CreatTime.setter
@@ -4737,6 +5735,9 @@ class IOSResult(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4745,6 +5746,9 @@ class IOSResult(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4753,6 +5757,9 @@ class IOSResult(AbstractModel):
 
     @property
     def CostTime(self):
+        """消耗时间
+        :rtype: int
+        """
         return self._CostTime
 
     @CostTime.setter
@@ -4761,6 +5768,9 @@ class IOSResult(AbstractModel):
 
     @property
     def EncryptPkgUrl(self):
+        """加固（混淆）包结果url
+        :rtype: str
+        """
         return self._EncryptPkgUrl
 
     @EncryptPkgUrl.setter
@@ -4811,6 +5821,9 @@ class OptPluginListItem(AbstractModel):
 
     @property
     def PluginType(self):
+        """非广告类型
+        :rtype: str
+        """
         return self._PluginType
 
     @PluginType.setter
@@ -4819,6 +5832,9 @@ class OptPluginListItem(AbstractModel):
 
     @property
     def PluginName(self):
+        """非广告插件名称
+        :rtype: str
+        """
         return self._PluginName
 
     @PluginName.setter
@@ -4827,6 +5843,9 @@ class OptPluginListItem(AbstractModel):
 
     @property
     def PluginDesc(self):
+        """非广告插件描述
+        :rtype: str
+        """
         return self._PluginDesc
 
     @PluginDesc.setter
@@ -4920,6 +5939,9 @@ class Orders(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单号
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -4928,6 +5950,9 @@ class Orders(AbstractModel):
 
     @property
     def PlatformType(self):
+        """平台类型整型值 
+        :rtype: int
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -4936,6 +5961,9 @@ class Orders(AbstractModel):
 
     @property
     def PlatformTypeDesc(self):
+        """平台类型描述：  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :rtype: str
+        """
         return self._PlatformTypeDesc
 
     @PlatformTypeDesc.setter
@@ -4944,6 +5972,9 @@ class Orders(AbstractModel):
 
     @property
     def OrderType(self):
+        """订单采购类型整型值
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -4952,6 +5983,9 @@ class Orders(AbstractModel):
 
     @property
     def OrderTypeDesc(self):
+        """订单采购类型描述： 1-免费试用 2-按年收费 3-按次收费
+        :rtype: str
+        """
         return self._OrderTypeDesc
 
     @OrderTypeDesc.setter
@@ -4960,6 +5994,9 @@ class Orders(AbstractModel):
 
     @property
     def AppPkgName(self):
+        """android包年收费加固的包名
+        :rtype: str
+        """
         return self._AppPkgName
 
     @AppPkgName.setter
@@ -4968,6 +6005,9 @@ class Orders(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源号
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4976,6 +6016,9 @@ class Orders(AbstractModel):
 
     @property
     def ResourceStatus(self):
+        """资源状态整型值
+        :rtype: int
+        """
         return self._ResourceStatus
 
     @ResourceStatus.setter
@@ -4984,6 +6027,10 @@ class Orders(AbstractModel):
 
     @property
     def ResourceStatusDesc(self):
+        """资源状态描述
+0-未生效、1-生效中、2-已失效。
+        :rtype: str
+        """
         return self._ResourceStatusDesc
 
     @ResourceStatusDesc.setter
@@ -4992,6 +6039,9 @@ class Orders(AbstractModel):
 
     @property
     def TestTimes(self):
+        """订单类型为免费试用时的免费加固次数。
+        :rtype: int
+        """
         return self._TestTimes
 
     @TestTimes.setter
@@ -5000,6 +6050,9 @@ class Orders(AbstractModel):
 
     @property
     def ValidTime(self):
+        """资源生效时间
+        :rtype: str
+        """
         return self._ValidTime
 
     @ValidTime.setter
@@ -5008,6 +6061,9 @@ class Orders(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """资源过期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -5016,6 +6072,9 @@ class Orders(AbstractModel):
 
     @property
     def CreateTime(self):
+        """资源创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5024,6 +6083,9 @@ class Orders(AbstractModel):
 
     @property
     def Approver(self):
+        """订单审批人
+        :rtype: str
+        """
         return self._Approver
 
     @Approver.setter
@@ -5032,6 +6094,9 @@ class Orders(AbstractModel):
 
     @property
     def ApprovalStatus(self):
+        """订单审批状态整型值
+        :rtype: int
+        """
         return self._ApprovalStatus
 
     @ApprovalStatus.setter
@@ -5040,6 +6105,9 @@ class Orders(AbstractModel):
 
     @property
     def ApprovalStatusDesc(self):
+        """订单审批状态整型值描述：0-未审批、1-审批通过、2-驳回。
+        :rtype: str
+        """
         return self._ApprovalStatusDesc
 
     @ApprovalStatusDesc.setter
@@ -5048,6 +6116,9 @@ class Orders(AbstractModel):
 
     @property
     def ApprovalTime(self):
+        """订单审批时间
+        :rtype: str
+        """
         return self._ApprovalTime
 
     @ApprovalTime.setter
@@ -5056,6 +6127,9 @@ class Orders(AbstractModel):
 
     @property
     def TimesTaskTotalCount(self):
+        """按次收费加固资源，其关联的总任务数
+        :rtype: int
+        """
         return self._TimesTaskTotalCount
 
     @TimesTaskTotalCount.setter
@@ -5064,6 +6138,9 @@ class Orders(AbstractModel):
 
     @property
     def TimesTaskSuccessCount(self):
+        """按次收费加固资源，其关联的任务成功数
+        :rtype: int
+        """
         return self._TimesTaskSuccessCount
 
     @TimesTaskSuccessCount.setter
@@ -5072,6 +6149,9 @@ class Orders(AbstractModel):
 
     @property
     def TimesTaskFailCount(self):
+        """按次收费加固资源，其关联的任务失败数
+        :rtype: int
+        """
         return self._TimesTaskFailCount
 
     @TimesTaskFailCount.setter
@@ -5133,6 +6213,9 @@ class PlanDetailInfo(AbstractModel):
 
     @property
     def IsDefault(self):
+        """默认策略，1为默认，0为非默认
+        :rtype: int
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -5141,6 +6224,9 @@ class PlanDetailInfo(AbstractModel):
 
     @property
     def PlanId(self):
+        """策略id
+        :rtype: int
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -5149,6 +6235,9 @@ class PlanDetailInfo(AbstractModel):
 
     @property
     def PlanName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -5157,6 +6246,9 @@ class PlanDetailInfo(AbstractModel):
 
     @property
     def PlanInfo(self):
+        """策略信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.PlanInfo`
+        """
         return self._PlanInfo
 
     @PlanInfo.setter
@@ -5188,6 +6280,8 @@ class PlanInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SetFile: Dex分离，0关闭，1开启
+        :type SetFile: str
         :param _ApkSizeOpt: apk大小优化，0关闭，1开启
         :type ApkSizeOpt: int
         :param _Dex: Dex加固，0关闭，1开启
@@ -5198,12 +6292,8 @@ class PlanInfo(AbstractModel):
         :type Bugly: int
         :param _AntiRepack: 防止重打包，0关闭，1开启
         :type AntiRepack: int
-        :param _SeperateDex: Dex分离，0关闭，1开启
-        :type SeperateDex: int
         :param _Db: 内存保护，0关闭，1开启
         :type Db: int
-        :param _DexSig: Dex签名校验，0关闭，1开启
-        :type DexSig: int
         :param _SoInfo: So文件信息
         :type SoInfo: :class:`tencentcloud.ms.v20180408.models.SoInfo`
         :param _AntiVMP: vmp，0关闭，1开启
@@ -5212,46 +6302,59 @@ class PlanInfo(AbstractModel):
         :type SoType: list of str
         :param _AntiLogLeak: 防日志泄漏，0关闭，1开启
         :type AntiLogLeak: int
-        :param _AntiQemuRoot: root检测，0关闭，1开启
-        :type AntiQemuRoot: int
         :param _AntiAssets: 资源防篡改，0关闭，1开启
         :type AntiAssets: int
         :param _AntiScreenshot: 防止截屏，0关闭，1开启
         :type AntiScreenshot: int
         :param _AntiSSL: SSL证书防窃取，0关闭，1开启
         :type AntiSSL: int
-        :param _SetFile: Dex分离，0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SetFile: str
         :param _FileSign: Dex签名校验，0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSign: str
         :param _AntiRoot: root检测，0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type AntiRoot: str
+        :param _SeperateDex: Dex分离，0关闭，1开启
+        :type SeperateDex: int
+        :param _DexSig: Dex签名校验，0关闭，1开启
+        :type DexSig: int
+        :param _AntiQemuRoot: root检测，0关闭，1开启
+        :type AntiQemuRoot: int
         """
+        self._SetFile = None
         self._ApkSizeOpt = None
         self._Dex = None
         self._So = None
         self._Bugly = None
         self._AntiRepack = None
-        self._SeperateDex = None
         self._Db = None
-        self._DexSig = None
         self._SoInfo = None
         self._AntiVMP = None
         self._SoType = None
         self._AntiLogLeak = None
-        self._AntiQemuRoot = None
         self._AntiAssets = None
         self._AntiScreenshot = None
         self._AntiSSL = None
-        self._SetFile = None
         self._FileSign = None
         self._AntiRoot = None
+        self._SeperateDex = None
+        self._DexSig = None
+        self._AntiQemuRoot = None
+
+    @property
+    def SetFile(self):
+        """Dex分离，0关闭，1开启
+        :rtype: str
+        """
+        return self._SetFile
+
+    @SetFile.setter
+    def SetFile(self, SetFile):
+        self._SetFile = SetFile
 
     @property
     def ApkSizeOpt(self):
+        """apk大小优化，0关闭，1开启
+        :rtype: int
+        """
         return self._ApkSizeOpt
 
     @ApkSizeOpt.setter
@@ -5260,6 +6363,9 @@ class PlanInfo(AbstractModel):
 
     @property
     def Dex(self):
+        """Dex加固，0关闭，1开启
+        :rtype: int
+        """
         return self._Dex
 
     @Dex.setter
@@ -5268,6 +6374,9 @@ class PlanInfo(AbstractModel):
 
     @property
     def So(self):
+        """So加固，0关闭，1开启
+        :rtype: int
+        """
         return self._So
 
     @So.setter
@@ -5276,6 +6385,9 @@ class PlanInfo(AbstractModel):
 
     @property
     def Bugly(self):
+        """数据收集，0关闭，1开启
+        :rtype: int
+        """
         return self._Bugly
 
     @Bugly.setter
@@ -5284,6 +6396,9 @@ class PlanInfo(AbstractModel):
 
     @property
     def AntiRepack(self):
+        """防止重打包，0关闭，1开启
+        :rtype: int
+        """
         return self._AntiRepack
 
     @AntiRepack.setter
@@ -5291,9 +6406,122 @@ class PlanInfo(AbstractModel):
         self._AntiRepack = AntiRepack
 
     @property
+    def Db(self):
+        """内存保护，0关闭，1开启
+        :rtype: int
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def SoInfo(self):
+        """So文件信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.SoInfo`
+        """
+        return self._SoInfo
+
+    @SoInfo.setter
+    def SoInfo(self, SoInfo):
+        self._SoInfo = SoInfo
+
+    @property
+    def AntiVMP(self):
+        """vmp，0关闭，1开启
+        :rtype: int
+        """
+        return self._AntiVMP
+
+    @AntiVMP.setter
+    def AntiVMP(self, AntiVMP):
+        self._AntiVMP = AntiVMP
+
+    @property
+    def SoType(self):
+        """保护so的强度，
+        :rtype: list of str
+        """
+        return self._SoType
+
+    @SoType.setter
+    def SoType(self, SoType):
+        self._SoType = SoType
+
+    @property
+    def AntiLogLeak(self):
+        """防日志泄漏，0关闭，1开启
+        :rtype: int
+        """
+        return self._AntiLogLeak
+
+    @AntiLogLeak.setter
+    def AntiLogLeak(self, AntiLogLeak):
+        self._AntiLogLeak = AntiLogLeak
+
+    @property
+    def AntiAssets(self):
+        """资源防篡改，0关闭，1开启
+        :rtype: int
+        """
+        return self._AntiAssets
+
+    @AntiAssets.setter
+    def AntiAssets(self, AntiAssets):
+        self._AntiAssets = AntiAssets
+
+    @property
+    def AntiScreenshot(self):
+        """防止截屏，0关闭，1开启
+        :rtype: int
+        """
+        return self._AntiScreenshot
+
+    @AntiScreenshot.setter
+    def AntiScreenshot(self, AntiScreenshot):
+        self._AntiScreenshot = AntiScreenshot
+
+    @property
+    def AntiSSL(self):
+        """SSL证书防窃取，0关闭，1开启
+        :rtype: int
+        """
+        return self._AntiSSL
+
+    @AntiSSL.setter
+    def AntiSSL(self, AntiSSL):
+        self._AntiSSL = AntiSSL
+
+    @property
+    def FileSign(self):
+        """Dex签名校验，0关闭，1开启
+        :rtype: str
+        """
+        return self._FileSign
+
+    @FileSign.setter
+    def FileSign(self, FileSign):
+        self._FileSign = FileSign
+
+    @property
+    def AntiRoot(self):
+        """root检测，0关闭，1开启
+        :rtype: str
+        """
+        return self._AntiRoot
+
+    @AntiRoot.setter
+    def AntiRoot(self, AntiRoot):
+        self._AntiRoot = AntiRoot
+
+    @property
     def SeperateDex(self):
         warnings.warn("parameter `SeperateDex` is deprecated", DeprecationWarning) 
 
+        """Dex分离，0关闭，1开启
+        :rtype: int
+        """
         return self._SeperateDex
 
     @SeperateDex.setter
@@ -5303,17 +6531,12 @@ class PlanInfo(AbstractModel):
         self._SeperateDex = SeperateDex
 
     @property
-    def Db(self):
-        return self._Db
-
-    @Db.setter
-    def Db(self, Db):
-        self._Db = Db
-
-    @property
     def DexSig(self):
         warnings.warn("parameter `DexSig` is deprecated", DeprecationWarning) 
 
+        """Dex签名校验，0关闭，1开启
+        :rtype: int
+        """
         return self._DexSig
 
     @DexSig.setter
@@ -5323,41 +6546,12 @@ class PlanInfo(AbstractModel):
         self._DexSig = DexSig
 
     @property
-    def SoInfo(self):
-        return self._SoInfo
-
-    @SoInfo.setter
-    def SoInfo(self, SoInfo):
-        self._SoInfo = SoInfo
-
-    @property
-    def AntiVMP(self):
-        return self._AntiVMP
-
-    @AntiVMP.setter
-    def AntiVMP(self, AntiVMP):
-        self._AntiVMP = AntiVMP
-
-    @property
-    def SoType(self):
-        return self._SoType
-
-    @SoType.setter
-    def SoType(self, SoType):
-        self._SoType = SoType
-
-    @property
-    def AntiLogLeak(self):
-        return self._AntiLogLeak
-
-    @AntiLogLeak.setter
-    def AntiLogLeak(self, AntiLogLeak):
-        self._AntiLogLeak = AntiLogLeak
-
-    @property
     def AntiQemuRoot(self):
         warnings.warn("parameter `AntiQemuRoot` is deprecated", DeprecationWarning) 
 
+        """root检测，0关闭，1开启
+        :rtype: int
+        """
         return self._AntiQemuRoot
 
     @AntiQemuRoot.setter
@@ -5366,77 +6560,29 @@ class PlanInfo(AbstractModel):
 
         self._AntiQemuRoot = AntiQemuRoot
 
-    @property
-    def AntiAssets(self):
-        return self._AntiAssets
-
-    @AntiAssets.setter
-    def AntiAssets(self, AntiAssets):
-        self._AntiAssets = AntiAssets
-
-    @property
-    def AntiScreenshot(self):
-        return self._AntiScreenshot
-
-    @AntiScreenshot.setter
-    def AntiScreenshot(self, AntiScreenshot):
-        self._AntiScreenshot = AntiScreenshot
-
-    @property
-    def AntiSSL(self):
-        return self._AntiSSL
-
-    @AntiSSL.setter
-    def AntiSSL(self, AntiSSL):
-        self._AntiSSL = AntiSSL
-
-    @property
-    def SetFile(self):
-        return self._SetFile
-
-    @SetFile.setter
-    def SetFile(self, SetFile):
-        self._SetFile = SetFile
-
-    @property
-    def FileSign(self):
-        return self._FileSign
-
-    @FileSign.setter
-    def FileSign(self, FileSign):
-        self._FileSign = FileSign
-
-    @property
-    def AntiRoot(self):
-        return self._AntiRoot
-
-    @AntiRoot.setter
-    def AntiRoot(self, AntiRoot):
-        self._AntiRoot = AntiRoot
-
 
     def _deserialize(self, params):
+        self._SetFile = params.get("SetFile")
         self._ApkSizeOpt = params.get("ApkSizeOpt")
         self._Dex = params.get("Dex")
         self._So = params.get("So")
         self._Bugly = params.get("Bugly")
         self._AntiRepack = params.get("AntiRepack")
-        self._SeperateDex = params.get("SeperateDex")
         self._Db = params.get("Db")
-        self._DexSig = params.get("DexSig")
         if params.get("SoInfo") is not None:
             self._SoInfo = SoInfo()
             self._SoInfo._deserialize(params.get("SoInfo"))
         self._AntiVMP = params.get("AntiVMP")
         self._SoType = params.get("SoType")
         self._AntiLogLeak = params.get("AntiLogLeak")
-        self._AntiQemuRoot = params.get("AntiQemuRoot")
         self._AntiAssets = params.get("AntiAssets")
         self._AntiScreenshot = params.get("AntiScreenshot")
         self._AntiSSL = params.get("AntiSSL")
-        self._SetFile = params.get("SetFile")
         self._FileSign = params.get("FileSign")
         self._AntiRoot = params.get("AntiRoot")
+        self._SeperateDex = params.get("SeperateDex")
+        self._DexSig = params.get("DexSig")
+        self._AntiQemuRoot = params.get("AntiQemuRoot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5467,6 +6613,9 @@ class PluginListItem(AbstractModel):
 
     @property
     def PluginType(self):
+        """数字类型，分别为 1-通知栏广告，2-积分墙广告，3-banner广告，4- 悬浮窗图标广告，5-精品推荐列表广告, 6-插播广告
+        :rtype: str
+        """
         return self._PluginType
 
     @PluginType.setter
@@ -5475,6 +6624,9 @@ class PluginListItem(AbstractModel):
 
     @property
     def PluginName(self):
+        """广告插件名称
+        :rtype: str
+        """
         return self._PluginName
 
     @PluginName.setter
@@ -5483,6 +6635,9 @@ class PluginListItem(AbstractModel):
 
     @property
     def PluginDesc(self):
+        """广告插件描述
+        :rtype: str
+        """
         return self._PluginDesc
 
     @PluginDesc.setter
@@ -5518,6 +6673,9 @@ class RequestLocalTaskRequest(AbstractModel):
 
     @property
     def ClientId(self):
+        """Client Id
+        :rtype: str
+        """
         return self._ClientId
 
     @ClientId.setter
@@ -5576,6 +6734,9 @@ trial
 
     @property
     def Sid(self):
+        """返回的任务id
+        :rtype: str
+        """
         return self._Sid
 
     @Sid.setter
@@ -5584,6 +6745,9 @@ trial
 
     @property
     def SrcFileMd5(self):
+        """任务文件的mk5
+        :rtype: str
+        """
         return self._SrcFileMd5
 
     @SrcFileMd5.setter
@@ -5592,6 +6756,9 @@ trial
 
     @property
     def SrcFileSize(self):
+        """文件大小，可不传
+        :rtype: int
+        """
         return self._SrcFileSize
 
     @SrcFileSize.setter
@@ -5600,6 +6767,9 @@ trial
 
     @property
     def SrcFileUrl(self):
+        """任务文件的下载地址，必须无鉴权可下载
+        :rtype: str
+        """
         return self._SrcFileUrl
 
     @SrcFileUrl.setter
@@ -5608,6 +6778,9 @@ trial
 
     @property
     def SrcFileType(self):
+        """release: 需要INFO-PLIST文件，会生成工具部署安装包，并带有license文件，绑定机器；nobind不需要INFO-PLIST文件，不绑定机器
+        :rtype: str
+        """
         return self._SrcFileType
 
     @SrcFileType.setter
@@ -5616,6 +6789,10 @@ trial
 
     @property
     def SrcFileVersion(self):
+        """enterprise
+trial
+        :rtype: str
+        """
         return self._SrcFileVersion
 
     @SrcFileVersion.setter
@@ -5624,6 +6801,9 @@ trial
 
     @property
     def EncryptParam(self):
+        """补充字段
+        :rtype: str
+        """
         return self._EncryptParam
 
     @EncryptParam.setter
@@ -5632,6 +6812,9 @@ trial
 
     @property
     def EncryptState(self):
+        """任务状态
+        :rtype: int
+        """
         return self._EncryptState
 
     @EncryptState.setter
@@ -5640,6 +6823,9 @@ trial
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5691,6 +6877,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
+        """用户购买的资源id，全局唯一
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -5699,6 +6888,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Pid(self):
+        """资源的pid，MTP加固-12767，应用加固-12750 MTP反作弊-12766 源代码混淆-12736
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -5707,6 +6899,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """购买时间戳
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5715,6 +6910,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """到期时间戳
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -5723,6 +6921,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def IsBind(self):
+        """0-未绑定，1-已绑定
+        :rtype: int
+        """
         return self._IsBind
 
     @IsBind.setter
@@ -5731,6 +6932,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def BindInfo(self):
+        """用户绑定app的基本信息
+        :rtype: :class:`tencentcloud.ms.v20180408.models.BindInfo`
+        """
         return self._BindInfo
 
     @BindInfo.setter
@@ -5739,6 +6943,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称，如应用加固，漏洞扫描
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -5786,6 +6993,9 @@ class ResourceServiceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间戳
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5794,6 +7004,9 @@ class ResourceServiceInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """到期时间戳
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -5802,6 +7015,9 @@ class ResourceServiceInfo(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称，如应用加固，源码混淆
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -5888,6 +7104,30 @@ class ResultListItem(AbstractModel):
         :type Errno: str
         :param _ErrMsg: 对应errno的错误信息描述
         :type ErrMsg: str
+        :param _ErrNo: 应用错误码：0、1-表示正常；                  
+
+2表示System Error(engine analysis error).
+
+3表示App analysis error, please confirm it.
+
+4表示App have not cert, please confirm it.
+
+5表示App size is zero, please confirm it.
+
+6表示App have not package name, please confirm it.
+
+7表示App build time is empty, please confirm it.
+
+8表示App have not valid cert, please confirm it.
+
+99表示Other error.
+
+1000表示App downloadlink download fail, please confirm it.
+
+1001表示APP md5 different between real md5, please confirm it.
+
+1002表示App md5 uncollect, please offer downloadlink.
+        :type ErrNo: str
         """
         self._Banner = None
         self._BoutiqueRecommand = None
@@ -5907,9 +7147,13 @@ class ResultListItem(AbstractModel):
         self._RepackageStatus = None
         self._Errno = None
         self._ErrMsg = None
+        self._ErrNo = None
 
     @property
     def Banner(self):
+        """banner广告软件标记，分别为-1-不确定，0-否，1-是
+        :rtype: str
+        """
         return self._Banner
 
     @Banner.setter
@@ -5918,6 +7162,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def BoutiqueRecommand(self):
+        """精品推荐列表广告标记，分别为-1-不确定，0-否，1-是
+        :rtype: str
+        """
         return self._BoutiqueRecommand
 
     @BoutiqueRecommand.setter
@@ -5926,6 +7173,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def FloatWindows(self):
+        """悬浮窗图标广告标记,分别为-1-不确定，0-否，1-是
+        :rtype: str
+        """
         return self._FloatWindows
 
     @FloatWindows.setter
@@ -5934,6 +7184,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def IntegralWall(self):
+        """积分墙广告软件标记，分别为 -1 -不确定，0-否，1-是
+        :rtype: str
+        """
         return self._IntegralWall
 
     @IntegralWall.setter
@@ -5942,6 +7195,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def Md5(self):
+        """安装包的md5
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -5950,6 +7206,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def NotifyBar(self):
+        """通知栏广告软件标记，分别为-1-不确定，0-否，1-是
+        :rtype: str
+        """
         return self._NotifyBar
 
     @NotifyBar.setter
@@ -5958,6 +7217,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def Official(self):
+        """1表示官方，0表示非官方
+        :rtype: str
+        """
         return self._Official
 
     @Official.setter
@@ -5966,6 +7228,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def PluginList(self):
+        """广告插件结果列表
+        :rtype: list of PluginListItem
+        """
         return self._PluginList
 
     @PluginList.setter
@@ -5974,6 +7239,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def OptPluginList(self):
+        """非广告插件结果列表(SDK、风险插件等)
+        :rtype: list of OptPluginListItem
+        """
         return self._OptPluginList
 
     @OptPluginList.setter
@@ -5982,6 +7250,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def SafeType(self):
+        """数字类型，分别为0-未知， 1-安全软件，2-风险软件，3-病毒软件
+        :rtype: str
+        """
         return self._SafeType
 
     @SafeType.setter
@@ -5990,6 +7261,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def Sid(self):
+        """Session id，合作方可以用来区分回调数据，需要唯一。
+        :rtype: str
+        """
         return self._Sid
 
     @Sid.setter
@@ -5998,6 +7272,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def SoftName(self):
+        """安装包名称
+        :rtype: str
+        """
         return self._SoftName
 
     @SoftName.setter
@@ -6006,6 +7283,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def Spot(self):
+        """插播广告软件标记，取值：-1 不确定，0否， 1 是
+        :rtype: str
+        """
         return self._Spot
 
     @Spot.setter
@@ -6014,6 +7294,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def VirusName(self):
+        """病毒名称，utf8编码
+        :rtype: str
+        """
         return self._VirusName
 
     @VirusName.setter
@@ -6022,6 +7305,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def VirusDesc(self):
+        """病毒描述，utf8编码
+        :rtype: str
+        """
         return self._VirusDesc
 
     @VirusDesc.setter
@@ -6030,6 +7316,9 @@ class ResultListItem(AbstractModel):
 
     @property
     def RepackageStatus(self):
+        """二次打包状态：0-表示默认；1-表示二次
+        :rtype: str
+        """
         return self._RepackageStatus
 
     @RepackageStatus.setter
@@ -6038,19 +7327,84 @@ class ResultListItem(AbstractModel):
 
     @property
     def Errno(self):
+        warnings.warn("parameter `Errno` is deprecated", DeprecationWarning) 
+
+        """应用错误码：0、1-表示正常；                  
+
+2表示System Error(engine analysis error).
+
+3表示App analysis error, please confirm it.
+
+4表示App have not cert, please confirm it.
+
+5表示App size is zero, please confirm it.
+
+6表示App have not package name, please confirm it.
+
+7表示App build time is empty, please confirm it.
+
+8表示App have not valid cert, please confirm it.
+
+99表示Other error.
+
+1000表示App downloadlink download fail, please confirm it.
+
+1001表示APP md5 different between real md5, please confirm it.
+
+1002表示App md5 uncollect, please offer downloadlink.
+        :rtype: str
+        """
         return self._Errno
 
     @Errno.setter
     def Errno(self, Errno):
+        warnings.warn("parameter `Errno` is deprecated", DeprecationWarning) 
+
         self._Errno = Errno
 
     @property
     def ErrMsg(self):
+        """对应errno的错误信息描述
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
     def ErrMsg(self, ErrMsg):
         self._ErrMsg = ErrMsg
+
+    @property
+    def ErrNo(self):
+        """应用错误码：0、1-表示正常；                  
+
+2表示System Error(engine analysis error).
+
+3表示App analysis error, please confirm it.
+
+4表示App have not cert, please confirm it.
+
+5表示App size is zero, please confirm it.
+
+6表示App have not package name, please confirm it.
+
+7表示App build time is empty, please confirm it.
+
+8表示App have not valid cert, please confirm it.
+
+99表示Other error.
+
+1000表示App downloadlink download fail, please confirm it.
+
+1001表示APP md5 different between real md5, please confirm it.
+
+1002表示App md5 uncollect, please offer downloadlink.
+        :rtype: str
+        """
+        return self._ErrNo
+
+    @ErrNo.setter
+    def ErrNo(self, ErrNo):
+        self._ErrNo = ErrNo
 
 
     def _deserialize(self, params):
@@ -6082,6 +7436,7 @@ class ResultListItem(AbstractModel):
         self._RepackageStatus = params.get("RepackageStatus")
         self._Errno = params.get("Errno")
         self._ErrMsg = params.get("ErrMsg")
+        self._ErrNo = params.get("ErrNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6106,6 +7461,9 @@ class SDKPlan(AbstractModel):
 
     @property
     def PlanId(self):
+        """策略id
+        :rtype: int
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -6139,6 +7497,9 @@ class SDKResult(AbstractModel):
 
     @property
     def ResultId(self):
+        """加固任务结果Id
+        :rtype: str
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -6181,6 +7542,9 @@ class ServiceInfo(AbstractModel):
 
     @property
     def ServiceEdition(self):
+        """服务版本，基础版basic，专业版professional，企业版enterprise。
+        :rtype: str
+        """
         return self._ServiceEdition
 
     @ServiceEdition.setter
@@ -6189,6 +7553,9 @@ class ServiceInfo(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """任务处理完成后的反向通知回调地址，如果不需要通知请传递空字符串。通知为POST请求，post包体数据示例{"Response":{"ItemId":"4cdad8fb86f036b06bccb3f58971c306","ShieldCode":0,"ShieldMd5":"78701576793c4a5f04e1c9660de0aa0b","ShieldSize":11997354,"TaskStatus":1,"TaskTime":1539148141}}，调用方需要返回如下信息，{"Result":"ok","Reason":"xxxxx"}，如果Result字段值不等于ok会继续回调。
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -6197,6 +7564,9 @@ class ServiceInfo(AbstractModel):
 
     @property
     def SubmitSource(self):
+        """提交来源 YYB-应用宝 RDM-rdm MC-控制台 MAC_TOOL-mac工具 WIN_TOOL-window工具。
+        :rtype: str
+        """
         return self._SubmitSource
 
     @SubmitSource.setter
@@ -6205,6 +7575,9 @@ class ServiceInfo(AbstractModel):
 
     @property
     def PlanId(self):
+        """加固策略编号，如果不传则使用系统默认加固策略。如果指定的plan不存在会返回错误。
+        :rtype: int
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -6259,6 +7632,9 @@ class ShieldInfo(AbstractModel):
 
     @property
     def ShieldCode(self):
+        """加固结果的返回码
+        :rtype: int
+        """
         return self._ShieldCode
 
     @ShieldCode.setter
@@ -6267,6 +7643,9 @@ class ShieldInfo(AbstractModel):
 
     @property
     def ShieldSize(self):
+        """加固后app的大小
+        :rtype: int
+        """
         return self._ShieldSize
 
     @ShieldSize.setter
@@ -6275,6 +7654,9 @@ class ShieldInfo(AbstractModel):
 
     @property
     def ShieldMd5(self):
+        """加固后app的md5
+        :rtype: str
+        """
         return self._ShieldMd5
 
     @ShieldMd5.setter
@@ -6283,6 +7665,9 @@ class ShieldInfo(AbstractModel):
 
     @property
     def AppUrl(self):
+        """加固后的APP下载地址，该地址有效期为20分钟，请及时下载
+        :rtype: str
+        """
         return self._AppUrl
 
     @AppUrl.setter
@@ -6291,6 +7676,9 @@ class ShieldInfo(AbstractModel):
 
     @property
     def TaskTime(self):
+        """加固的提交时间
+        :rtype: int
+        """
         return self._TaskTime
 
     @TaskTime.setter
@@ -6299,6 +7687,9 @@ class ShieldInfo(AbstractModel):
 
     @property
     def ItemId(self):
+        """任务唯一标识
+        :rtype: str
+        """
         return self._ItemId
 
     @ItemId.setter
@@ -6307,6 +7698,9 @@ class ShieldInfo(AbstractModel):
 
     @property
     def ServiceEdition(self):
+        """加固版本，basic基础版，professional专业版，enterprise企业版
+        :rtype: str
+        """
         return self._ServiceEdition
 
     @ServiceEdition.setter
@@ -6349,6 +7743,9 @@ class ShieldPlanInfo(AbstractModel):
 
     @property
     def TotalCount(self):
+        """加固策略数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6357,6 +7754,9 @@ class ShieldPlanInfo(AbstractModel):
 
     @property
     def PlanSet(self):
+        """加固策略具体信息数组
+        :rtype: list of PlanDetailInfo
+        """
         return self._PlanSet
 
     @PlanSet.setter
@@ -6396,6 +7796,9 @@ class SoInfo(AbstractModel):
 
     @property
     def SoFileNames(self):
+        """so文件列表
+        :rtype: list of str
+        """
         return self._SoFileNames
 
     @SoFileNames.setter
@@ -6444,6 +7847,9 @@ class UpdateClientStateRequest(AbstractModel):
 
     @property
     def ClientId(self):
+        """Client Id
+        :rtype: str
+        """
         return self._ClientId
 
     @ClientId.setter
@@ -6452,6 +7858,9 @@ class UpdateClientStateRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Ip addr
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -6460,6 +7869,9 @@ class UpdateClientStateRequest(AbstractModel):
 
     @property
     def Internal(self):
+        """内部分组
+        :rtype: int
+        """
         return self._Internal
 
     @Internal.setter
@@ -6468,6 +7880,9 @@ class UpdateClientStateRequest(AbstractModel):
 
     @property
     def ServerVersion(self):
+        """Client  Version
+        :rtype: str
+        """
         return self._ServerVersion
 
     @ServerVersion.setter
@@ -6476,6 +7891,9 @@ class UpdateClientStateRequest(AbstractModel):
 
     @property
     def Hostname(self):
+        """主机
+        :rtype: str
+        """
         return self._Hostname
 
     @Hostname.setter
@@ -6484,6 +7902,9 @@ class UpdateClientStateRequest(AbstractModel):
 
     @property
     def Os(self):
+        """系统
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -6525,6 +7946,9 @@ class UpdateClientStateResponse(AbstractModel):
 
     @property
     def ResultCode(self):
+        """返回值
+        :rtype: str
+        """
         return self._ResultCode
 
     @ResultCode.setter
@@ -6533,6 +7957,9 @@ class UpdateClientStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6571,6 +7998,9 @@ class UpdateLocalTaskResultRequest(AbstractModel):
 
     @property
     def Sid(self):
+        """任务id
+        :rtype: str
+        """
         return self._Sid
 
     @Sid.setter
@@ -6579,6 +8009,9 @@ class UpdateLocalTaskResultRequest(AbstractModel):
 
     @property
     def ResultCode(self):
+        """一级任务code。标记任务状态
+        :rtype: int
+        """
         return self._ResultCode
 
     @ResultCode.setter
@@ -6587,6 +8020,9 @@ class UpdateLocalTaskResultRequest(AbstractModel):
 
     @property
     def SubCode(self):
+        """二级错误码
+        :rtype: int
+        """
         return self._SubCode
 
     @SubCode.setter
@@ -6595,6 +8031,9 @@ class UpdateLocalTaskResultRequest(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """二级错误信息
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -6603,6 +8042,9 @@ class UpdateLocalTaskResultRequest(AbstractModel):
 
     @property
     def Result(self):
+        """结果
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -6643,6 +8085,9 @@ class UpdateLocalTaskResultResponse(AbstractModel):
 
     @property
     def ResultCode(self):
+        """标记成功
+        :rtype: str
+        """
         return self._ResultCode
 
     @ResultCode.setter
@@ -6651,6 +8096,9 @@ class UpdateLocalTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

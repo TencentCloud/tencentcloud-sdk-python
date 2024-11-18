@@ -26,29 +26,6 @@ class TmsClient(AbstractClient):
     _service = 'tms'
 
 
-    def ModerateText(self, request):
-        """天御文本内容安全定制标签文本审核接口为定制接口，会按照客户定制标签输出审核结果，如需使用请联系商务经理或[在线客服](https://cloud.tencent.com/online-service?from=doc_1125)咨询。
-
-        :param request: Request instance for ModerateText.
-        :type request: :class:`tencentcloud.tms.v20201229.models.ModerateTextRequest`
-        :rtype: :class:`tencentcloud.tms.v20201229.models.ModerateTextResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModerateText", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModerateTextResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def TextModeration(self, request):
         """本接口（Text Moderation）用于提交文本内容进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通文本内容安全服务](https://console.cloud.tencent.com/cms) 并调整好对应的业务配置。
 

@@ -71,6 +71,9 @@ class BrandData(AbstractModel):
 
     @property
     def CompanyId(self):
+        """品牌Id
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -79,6 +82,9 @@ class BrandData(AbstractModel):
 
     @property
     def CompanyName(self):
+        """企业名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -87,6 +93,9 @@ class BrandData(AbstractModel):
 
     @property
     def BrandName(self):
+        """品牌名称
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -95,6 +104,9 @@ class BrandData(AbstractModel):
 
     @property
     def Phone(self):
+        """联系电话
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -103,6 +115,9 @@ class BrandData(AbstractModel):
 
     @property
     def License(self):
+        """营业执照
+        :rtype: str
+        """
         return self._License
 
     @License.setter
@@ -111,6 +126,9 @@ class BrandData(AbstractModel):
 
     @property
     def LicenseStatus(self):
+        """营业执照审核状态
+        :rtype: int
+        """
         return self._LicenseStatus
 
     @LicenseStatus.setter
@@ -119,6 +137,9 @@ class BrandData(AbstractModel):
 
     @property
     def LicenseNote(self):
+        """营业执照审核状态说明
+        :rtype: str
+        """
         return self._LicenseNote
 
     @LicenseNote.setter
@@ -127,6 +148,9 @@ class BrandData(AbstractModel):
 
     @property
     def Authorization(self):
+        """授权书
+        :rtype: str
+        """
         return self._Authorization
 
     @Authorization.setter
@@ -135,6 +159,9 @@ class BrandData(AbstractModel):
 
     @property
     def AuthorizationStatus(self):
+        """授权书审核状态
+        :rtype: int
+        """
         return self._AuthorizationStatus
 
     @AuthorizationStatus.setter
@@ -143,6 +170,9 @@ class BrandData(AbstractModel):
 
     @property
     def AuthorizationNote(self):
+        """授权书审核状态说明
+        :rtype: str
+        """
         return self._AuthorizationNote
 
     @AuthorizationNote.setter
@@ -151,6 +181,9 @@ class BrandData(AbstractModel):
 
     @property
     def Trademarks(self):
+        """商标信息
+        :rtype: list of TrademarkData
+        """
         return self._Trademarks
 
     @Trademarks.setter
@@ -159,6 +192,9 @@ class BrandData(AbstractModel):
 
     @property
     def InsertTime(self):
+        """新增时间
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -167,6 +203,9 @@ class BrandData(AbstractModel):
 
     @property
     def Services(self):
+        """服务信息
+        :rtype: :class:`tencentcloud.bma.v20221115.models.ServiceData`
+        """
         return self._Services
 
     @Services.setter
@@ -175,6 +214,9 @@ class BrandData(AbstractModel):
 
     @property
     def Uin(self):
+        """账号id
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -270,6 +312,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def BrandName(self):
+        """品牌名称
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -278,6 +323,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def CompanyName(self):
+        """企业名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -286,6 +334,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def BrandLogo(self):
+        """品牌logo
+        :rtype: str
+        """
         return self._BrandLogo
 
     @BrandLogo.setter
@@ -294,6 +345,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def Phone(self):
+        """联系电话
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -302,6 +356,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def License(self):
+        """营业执照
+        :rtype: str
+        """
         return self._License
 
     @License.setter
@@ -310,6 +367,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def Authorization(self):
+        """授权书
+        :rtype: str
+        """
         return self._Authorization
 
     @Authorization.setter
@@ -318,6 +378,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def TrademarkNames(self):
+        """商标名称
+        :rtype: list of str
+        """
         return self._TrademarkNames
 
     @TrademarkNames.setter
@@ -326,6 +389,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def Trademarks(self):
+        """商标证明
+        :rtype: list of str
+        """
         return self._Trademarks
 
     @Trademarks.setter
@@ -334,6 +400,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def IsTransfers(self):
+        """是否涉及转让: 0-不转让 1-转让
+        :rtype: list of str
+        """
         return self._IsTransfers
 
     @IsTransfers.setter
@@ -342,6 +411,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def Transfers(self):
+        """转让证明
+        :rtype: list of str
+        """
         return self._Transfers
 
     @Transfers.setter
@@ -350,6 +422,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def ProtectURLs(self):
+        """保护网址
+        :rtype: list of str
+        """
         return self._ProtectURLs
 
     @ProtectURLs.setter
@@ -358,6 +433,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def ProtectAPPs(self):
+        """保护应用
+        :rtype: list of str
+        """
         return self._ProtectAPPs
 
     @ProtectAPPs.setter
@@ -366,6 +444,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def ProtectOfficialAccounts(self):
+        """保护公众号
+        :rtype: list of str
+        """
         return self._ProtectOfficialAccounts
 
     @ProtectOfficialAccounts.setter
@@ -374,6 +455,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def ProtectMiniPrograms(self):
+        """保护小程序
+        :rtype: list of str
+        """
         return self._ProtectMiniPrograms
 
     @ProtectMiniPrograms.setter
@@ -382,6 +466,9 @@ class CreateBPBrandRequest(AbstractModel):
 
     @property
     def APISource(self):
+        """请求来源：0-反钓鱼 2-反假冒
+        :rtype: int
+        """
         return self._APISource
 
     @APISource.setter
@@ -432,6 +519,9 @@ class CreateBPBrandResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """企业id
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -440,6 +530,9 @@ class CreateBPBrandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -466,6 +559,9 @@ class CreateBPFakeAPPListRequest(AbstractModel):
 
     @property
     def FakeAPPs(self):
+        """批量模板
+        :rtype: str
+        """
         return self._FakeAPPs
 
     @FakeAPPs.setter
@@ -499,6 +595,9 @@ class CreateBPFakeAPPListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -545,6 +644,9 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """企业id
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -553,6 +655,9 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     @property
     def FakeAPPName(self):
+        """仿冒应用名称
+        :rtype: str
+        """
         return self._FakeAPPName
 
     @FakeAPPName.setter
@@ -561,6 +666,9 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     @property
     def APPChan(self):
+        """仿冒来源
+        :rtype: str
+        """
         return self._APPChan
 
     @APPChan.setter
@@ -569,6 +677,9 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     @property
     def FakeAPPPackageName(self):
+        """仿冒应用包名
+        :rtype: str
+        """
         return self._FakeAPPPackageName
 
     @FakeAPPPackageName.setter
@@ -577,6 +688,9 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     @property
     def FakeAPPCert(self):
+        """仿冒应用证书
+        :rtype: str
+        """
         return self._FakeAPPCert
 
     @FakeAPPCert.setter
@@ -585,6 +699,9 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     @property
     def FakeAPPSize(self):
+        """仿冒应用大小
+        :rtype: str
+        """
         return self._FakeAPPSize
 
     @FakeAPPSize.setter
@@ -593,6 +710,9 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     @property
     def FakeAPPSnapshots(self):
+        """仿冒截图
+        :rtype: list of str
+        """
         return self._FakeAPPSnapshots
 
     @FakeAPPSnapshots.setter
@@ -601,6 +721,9 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -634,13 +757,30 @@ class CreateBPFakeAPPResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FakeAPPId: FakeAPPId
+        :type FakeAPPId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FakeAPPId = None
         self._RequestId = None
 
     @property
+    def FakeAPPId(self):
+        """FakeAPPId
+        :rtype: int
+        """
+        return self._FakeAPPId
+
+    @FakeAPPId.setter
+    def FakeAPPId(self, FakeAPPId):
+        self._FakeAPPId = FakeAPPId
+
+    @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -649,6 +789,7 @@ class CreateBPFakeAPPResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FakeAPPId = params.get("FakeAPPId")
         self._RequestId = params.get("RequestId")
 
 
@@ -675,6 +816,9 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """企业id
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -683,6 +827,9 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     @property
     def FakeURL(self):
+        """仿冒网址
+        :rtype: str
+        """
         return self._FakeURL
 
     @FakeURL.setter
@@ -691,6 +838,9 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     @property
     def FakeURLSnapshots(self):
+        """仿冒网址截图
+        :rtype: list of str
+        """
         return self._FakeURLSnapshots
 
     @FakeURLSnapshots.setter
@@ -699,6 +849,9 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -728,13 +881,30 @@ class CreateBPFakeURLResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FakeURLId: FakeURLId
+        :type FakeURLId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FakeURLId = None
         self._RequestId = None
 
     @property
+    def FakeURLId(self):
+        """FakeURLId
+        :rtype: int
+        """
+        return self._FakeURLId
+
+    @FakeURLId.setter
+    def FakeURLId(self, FakeURLId):
+        self._FakeURLId = FakeURLId
+
+    @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -743,6 +913,7 @@ class CreateBPFakeURLResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FakeURLId = params.get("FakeURLId")
         self._RequestId = params.get("RequestId")
 
 
@@ -760,6 +931,9 @@ class CreateBPFakeURLsRequest(AbstractModel):
 
     @property
     def FakeURLs(self):
+        """批量模板
+        :rtype: str
+        """
         return self._FakeURLs
 
     @FakeURLs.setter
@@ -793,6 +967,9 @@ class CreateBPFakeURLsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -827,6 +1004,9 @@ class CreateBPWhiteListRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """企业Id
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -835,6 +1015,9 @@ class CreateBPWhiteListRequest(AbstractModel):
 
     @property
     def WhiteListType(self):
+        """白名单类型：0-网站 1-应用 2-公众号 3-小程
+        :rtype: int
+        """
         return self._WhiteListType
 
     @WhiteListType.setter
@@ -843,6 +1026,9 @@ class CreateBPWhiteListRequest(AbstractModel):
 
     @property
     def WhiteLists(self):
+        """白名单名称
+        :rtype: list of str
+        """
         return self._WhiteLists
 
     @WhiteLists.setter
@@ -851,6 +1037,9 @@ class CreateBPWhiteListRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """白名单备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -887,6 +1076,9 @@ class CreateBPWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -912,6 +1104,9 @@ class DeleteBPWhiteListRequest(AbstractModel):
 
     @property
     def WhiteListId(self):
+        """白名单id
+        :rtype: int
+        """
         return self._WhiteListId
 
     @WhiteListId.setter
@@ -945,6 +1140,9 @@ class DeleteBPWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -982,6 +1180,9 @@ class DescribeBPBrandsResponse(AbstractModel):
 
     @property
     def Brands(self):
+        """品牌信息
+        :rtype: list of BrandData
+        """
         return self._Brands
 
     @Brands.setter
@@ -990,6 +1191,9 @@ class DescribeBPBrandsResponse(AbstractModel):
 
     @property
     def NoticeStatus(self):
+        """品牌审核通知栏状态：0 不显示 1 显示
+        :rtype: int
+        """
         return self._NoticeStatus
 
     @NoticeStatus.setter
@@ -998,6 +1202,9 @@ class DescribeBPBrandsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1036,6 +1243,9 @@ class DescribeBPFakeAPPListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1044,6 +1254,9 @@ class DescribeBPFakeAPPListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1052,6 +1265,9 @@ class DescribeBPFakeAPPListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1098,6 +1314,9 @@ class DescribeBPFakeAPPListResponse(AbstractModel):
 
     @property
     def FakeAPPList(self):
+        """仿冒应用列表
+        :rtype: list of FakeAPPData
+        """
         return self._FakeAPPList
 
     @FakeAPPList.setter
@@ -1106,6 +1325,9 @@ class DescribeBPFakeAPPListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """仿冒应用总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1114,6 +1336,9 @@ class DescribeBPFakeAPPListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1152,6 +1377,9 @@ class DescribeBPFakeURLsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1160,6 +1388,9 @@ class DescribeBPFakeURLsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1168,6 +1399,9 @@ class DescribeBPFakeURLsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1214,6 +1448,9 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     @property
     def FakeURLs(self):
+        """仿冒网址列表
+        :rtype: list of FakeURLData
+        """
         return self._FakeURLs
 
     @FakeURLs.setter
@@ -1222,6 +1459,9 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """仿冒网址总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1230,6 +1470,9 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1268,6 +1511,9 @@ class DescribeBPWhiteListsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1276,6 +1522,9 @@ class DescribeBPWhiteListsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1284,6 +1533,9 @@ class DescribeBPWhiteListsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1330,6 +1582,9 @@ class DescribeBPWhiteListsResponse(AbstractModel):
 
     @property
     def WhiteLists(self):
+        """白名单列表
+        :rtype: list of WhiteListData
+        """
         return self._WhiteLists
 
     @WhiteLists.setter
@@ -1338,6 +1593,9 @@ class DescribeBPWhiteListsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """白名单总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1346,6 +1604,9 @@ class DescribeBPWhiteListsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1439,6 +1700,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def FakeAPPId(self):
+        """仿冒应用id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FakeAPPId
 
     @FakeAPPId.setter
@@ -1447,6 +1712,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def BrandName(self):
+        """品牌名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -1455,6 +1724,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def Origin(self):
+        """仿冒来源：0-系统检测 1-人工举报
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Origin
 
     @Origin.setter
@@ -1463,6 +1736,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def FakeAPPName(self):
+        """仿冒应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FakeAPPName
 
     @FakeAPPName.setter
@@ -1471,6 +1748,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def FakeAPPPackageName(self):
+        """仿冒应用包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FakeAPPPackageName
 
     @FakeAPPPackageName.setter
@@ -1479,6 +1760,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def FakeAPPCert(self):
+        """仿冒应用证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FakeAPPCert
 
     @FakeAPPCert.setter
@@ -1487,6 +1772,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def FakeAPPSize(self):
+        """仿冒应用大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FakeAPPSize
 
     @FakeAPPSize.setter
@@ -1495,6 +1784,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def Heat(self):
+        """热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Heat
 
     @Heat.setter
@@ -1503,6 +1796,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def BlockStatus(self):
+        """协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BlockStatus
 
     @BlockStatus.setter
@@ -1511,6 +1808,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def BlockNote(self):
+        """协助处置状态说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BlockNote
 
     @BlockNote.setter
@@ -1519,6 +1820,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def OfflineStatus(self):
+        """关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OfflineStatus
 
     @OfflineStatus.setter
@@ -1527,6 +1832,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def OfflineNote(self):
+        """关停状态说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OfflineNote
 
     @OfflineNote.setter
@@ -1535,6 +1844,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def DownloadWay(self):
+        """app来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DownloadWay
 
     @DownloadWay.setter
@@ -1543,6 +1856,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def InsertTime(self):
+        """新增时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -1551,6 +1868,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def DownloadCosURL(self):
+        """App下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DownloadCosURL
 
     @DownloadCosURL.setter
@@ -1559,6 +1880,10 @@ class FakeAPPData(AbstractModel):
 
     @property
     def CertificationStatus(self):
+        """资质证明状态:0-不可用 1-可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CertificationStatus
 
     @CertificationStatus.setter
@@ -1700,6 +2025,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def FakeURLId(self):
+        """仿冒网址id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FakeURLId
 
     @FakeURLId.setter
@@ -1708,6 +2037,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def BrandName(self):
+        """品牌名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -1716,6 +2049,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def Origin(self):
+        """仿冒来源：0-系统检测 1-人工举报
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Origin
 
     @Origin.setter
@@ -1724,6 +2061,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def FakeURL(self):
+        """仿冒网址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FakeURL
 
     @FakeURL.setter
@@ -1732,6 +2073,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def FakeDomain(self):
+        """仿冒域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FakeDomain
 
     @FakeDomain.setter
@@ -1740,6 +2085,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def Heat(self):
+        """热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Heat
 
     @Heat.setter
@@ -1748,6 +2097,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def BlockStatus(self):
+        """拦截处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BlockStatus
 
     @BlockStatus.setter
@@ -1756,6 +2109,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def BlockNote(self):
+        """拦截处置状态说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BlockNote
 
     @BlockNote.setter
@@ -1764,6 +2121,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def OfflineStatus(self):
+        """关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OfflineStatus
 
     @OfflineStatus.setter
@@ -1772,6 +2133,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def OfflineNote(self):
+        """关停状态说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OfflineNote
 
     @OfflineNote.setter
@@ -1780,6 +2145,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def IP(self):
+        """ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -1788,6 +2157,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def IPLocation(self):
+        """ip地理位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IPLocation
 
     @IPLocation.setter
@@ -1796,6 +2169,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def WebCompany(self):
+        """网站所属单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebCompany
 
     @WebCompany.setter
@@ -1804,6 +2181,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def WebAttribute(self):
+        """网站性质
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebAttribute
 
     @WebAttribute.setter
@@ -1812,6 +2193,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def WebName(self):
+        """网站名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebName
 
     @WebName.setter
@@ -1820,6 +2205,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def WebICP(self):
+        """备案号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebICP
 
     @WebICP.setter
@@ -1828,6 +2217,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def WebCreateTime(self):
+        """网站创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebCreateTime
 
     @WebCreateTime.setter
@@ -1836,6 +2229,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def WebExpireTime(self):
+        """网站过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebExpireTime
 
     @WebExpireTime.setter
@@ -1844,6 +2241,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def InsertTime(self):
+        """新增时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -1852,6 +2253,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def CertificationStatus(self):
+        """资质证明状态：0-不可用 1-可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CertificationStatus
 
     @CertificationStatus.setter
@@ -1860,6 +2265,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def Snapshot(self):
+        """网址截图
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Snapshot
 
     @Snapshot.setter
@@ -1868,6 +2277,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def AccountStatus(self):
+        """账户资源状态：0-不可用 1-可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AccountStatus
 
     @AccountStatus.setter
@@ -1876,6 +2289,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def AuditStatus(self):
+        """审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AuditStatus
 
     @AuditStatus.setter
@@ -1884,6 +2301,10 @@ class FakeURLData(AbstractModel):
 
     @property
     def OfflineTime(self):
+        """下线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OfflineTime
 
     @OfflineTime.setter
@@ -1943,6 +2364,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤参数键
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1951,6 +2375,9 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
+        """过滤参数值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2009,6 +2436,9 @@ class ServiceData(AbstractModel):
 
     @property
     def ProtectURLCount(self):
+        """网站保护关联资产数
+        :rtype: int
+        """
         return self._ProtectURLCount
 
     @ProtectURLCount.setter
@@ -2017,6 +2447,9 @@ class ServiceData(AbstractModel):
 
     @property
     def ProtectURLExpireTime(self):
+        """网站保护服务到期时间
+        :rtype: str
+        """
         return self._ProtectURLExpireTime
 
     @ProtectURLExpireTime.setter
@@ -2025,6 +2458,9 @@ class ServiceData(AbstractModel):
 
     @property
     def ProtectAPPCount(self):
+        """应用保护关联资产数
+        :rtype: int
+        """
         return self._ProtectAPPCount
 
     @ProtectAPPCount.setter
@@ -2033,6 +2469,9 @@ class ServiceData(AbstractModel):
 
     @property
     def ProtectAPPExpireTime(self):
+        """应用保护服务到期时间
+        :rtype: str
+        """
         return self._ProtectAPPExpireTime
 
     @ProtectAPPExpireTime.setter
@@ -2041,6 +2480,9 @@ class ServiceData(AbstractModel):
 
     @property
     def ProtectOfficialAccountCount(self):
+        """公众号保护关联资产数
+        :rtype: int
+        """
         return self._ProtectOfficialAccountCount
 
     @ProtectOfficialAccountCount.setter
@@ -2049,6 +2491,9 @@ class ServiceData(AbstractModel):
 
     @property
     def ProtectOfficialAccountExpireTime(self):
+        """公众号保护服务到期时间
+        :rtype: str
+        """
         return self._ProtectOfficialAccountExpireTime
 
     @ProtectOfficialAccountExpireTime.setter
@@ -2057,6 +2502,9 @@ class ServiceData(AbstractModel):
 
     @property
     def ProtectMiniProgramCount(self):
+        """小程序保护关联资产数
+        :rtype: int
+        """
         return self._ProtectMiniProgramCount
 
     @ProtectMiniProgramCount.setter
@@ -2065,6 +2513,9 @@ class ServiceData(AbstractModel):
 
     @property
     def ProtectMiniProgramExpireTime(self):
+        """小程序保护服务到期时间
+        :rtype: str
+        """
         return self._ProtectMiniProgramExpireTime
 
     @ProtectMiniProgramExpireTime.setter
@@ -2073,6 +2524,9 @@ class ServiceData(AbstractModel):
 
     @property
     def OfflineCount(self):
+        """关停下架使用次数
+        :rtype: int
+        """
         return self._OfflineCount
 
     @OfflineCount.setter
@@ -2135,6 +2589,9 @@ class TrademarkData(AbstractModel):
 
     @property
     def Trademark(self):
+        """商标证明
+        :rtype: str
+        """
         return self._Trademark
 
     @Trademark.setter
@@ -2143,6 +2600,9 @@ class TrademarkData(AbstractModel):
 
     @property
     def TrademarkStatus(self):
+        """商标审核状态
+        :rtype: int
+        """
         return self._TrademarkStatus
 
     @TrademarkStatus.setter
@@ -2151,6 +2611,9 @@ class TrademarkData(AbstractModel):
 
     @property
     def TrademarkNote(self):
+        """商标审核状态说明
+        :rtype: str
+        """
         return self._TrademarkNote
 
     @TrademarkNote.setter
@@ -2159,6 +2622,9 @@ class TrademarkData(AbstractModel):
 
     @property
     def TrademarkId(self):
+        """商标id
+        :rtype: int
+        """
         return self._TrademarkId
 
     @TrademarkId.setter
@@ -2167,6 +2633,9 @@ class TrademarkData(AbstractModel):
 
     @property
     def Transfer(self):
+        """商标转让书
+        :rtype: str
+        """
         return self._Transfer
 
     @Transfer.setter
@@ -2175,6 +2644,9 @@ class TrademarkData(AbstractModel):
 
     @property
     def TransferStatus(self):
+        """商标转让书审核状态
+        :rtype: int
+        """
         return self._TransferStatus
 
     @TransferStatus.setter
@@ -2183,6 +2655,9 @@ class TrademarkData(AbstractModel):
 
     @property
     def TransferNote(self):
+        """商标转让书审核状态说明
+        :rtype: str
+        """
         return self._TransferNote
 
     @TransferNote.setter
@@ -2191,6 +2666,9 @@ class TrademarkData(AbstractModel):
 
     @property
     def TrademarkName(self):
+        """商标名称
+        :rtype: str
+        """
         return self._TrademarkName
 
     @TrademarkName.setter
@@ -2256,6 +2734,10 @@ class WhiteListData(AbstractModel):
 
     @property
     def WhiteListId(self):
+        """白名单id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WhiteListId
 
     @WhiteListId.setter
@@ -2264,6 +2746,10 @@ class WhiteListData(AbstractModel):
 
     @property
     def CompanyId(self):
+        """企业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -2272,6 +2758,10 @@ class WhiteListData(AbstractModel):
 
     @property
     def BrandName(self):
+        """品牌名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -2280,6 +2770,10 @@ class WhiteListData(AbstractModel):
 
     @property
     def AssetsType(self):
+        """资产类型：0-网站 1-app 2-公众号 3-小程序
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssetsType
 
     @AssetsType.setter
@@ -2288,6 +2782,10 @@ class WhiteListData(AbstractModel):
 
     @property
     def WhiteList(self):
+        """白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WhiteList
 
     @WhiteList.setter
@@ -2296,6 +2794,10 @@ class WhiteListData(AbstractModel):
 
     @property
     def Remark(self):
+        """白名单备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2304,6 +2806,10 @@ class WhiteListData(AbstractModel):
 
     @property
     def InsertTime(self):
+        """新增时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter

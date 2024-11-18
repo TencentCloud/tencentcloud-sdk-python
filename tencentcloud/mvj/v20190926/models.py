@@ -45,6 +45,9 @@ accountType不同对应不同的用户ID。如果是QQ或微信用户则填入�
 
     @property
     def PostTime(self):
+        """操作时间戳，单位秒
+        :rtype: int
+        """
         return self._PostTime
 
     @PostTime.setter
@@ -53,6 +56,10 @@ accountType不同对应不同的用户ID。如果是QQ或微信用户则填入�
 
     @property
     def Uid(self):
+        """用户ID 
+accountType不同对应不同的用户ID。如果是QQ或微信用户则填入对应的openId
+        :rtype: str
+        """
         return self._Uid
 
     @Uid.setter
@@ -61,6 +68,9 @@ accountType不同对应不同的用户ID。如果是QQ或微信用户则填入�
 
     @property
     def UserIp(self):
+        """操作来源的外网IP
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -69,6 +79,12 @@ accountType不同对应不同的用户ID。如果是QQ或微信用户则填入�
 
     @property
     def ValueScore(self):
+        """0~100：营销价值评分，分值越高，价值越大
+[0,50]低价值
+[50,70]价值一般
+[70,100]高价值
+        :rtype: int
+        """
         return self._ValueScore
 
     @ValueScore.setter
@@ -120,6 +136,9 @@ class MarketingValueJudgementRequest(AbstractModel):
 
     @property
     def AccountType(self):
+        """手机账号类型填写4
+        :rtype: int
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -128,6 +147,9 @@ class MarketingValueJudgementRequest(AbstractModel):
 
     @property
     def Uid(self):
+        """填写手机号码，如15317537488
+        :rtype: str
+        """
         return self._Uid
 
     @Uid.setter
@@ -136,6 +158,9 @@ class MarketingValueJudgementRequest(AbstractModel):
 
     @property
     def UserIp(self):
+        """用户请求时的客户端外网IP
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -144,6 +169,9 @@ class MarketingValueJudgementRequest(AbstractModel):
 
     @property
     def PostTime(self):
+        """用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）
+        :rtype: int
+        """
         return self._PostTime
 
     @PostTime.setter
@@ -152,6 +180,9 @@ class MarketingValueJudgementRequest(AbstractModel):
 
     @property
     def Imei(self):
+        """用户设备号imei/idfa(建议填写)
+        :rtype: str
+        """
         return self._Imei
 
     @Imei.setter
@@ -160,6 +191,9 @@ class MarketingValueJudgementRequest(AbstractModel):
 
     @property
     def Referer(self):
+        """活动链接(建议填写)
+        :rtype: str
+        """
         return self._Referer
 
     @Referer.setter
@@ -201,6 +235,9 @@ class MarketingValueJudgementResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.mvj.v20190926.models.Data`
+        """
         return self._Data
 
     @Data.setter
@@ -209,6 +246,9 @@ class MarketingValueJudgementResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

@@ -38,6 +38,9 @@ class CBSSpec(AbstractModel):
 
     @property
     def DiskType(self):
+        """盘类型
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -46,6 +49,9 @@ class CBSSpec(AbstractModel):
 
     @property
     def DiskSize(self):
+        """大小
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -54,6 +60,9 @@ class CBSSpec(AbstractModel):
 
     @property
     def DiskCount(self):
+        """个数
+        :rtype: int
+        """
         return self._DiskCount
 
     @DiskCount.setter
@@ -98,6 +107,10 @@ class CBSSpecInfo(AbstractModel):
 
     @property
     def DiskType(self):
+        """盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -106,6 +119,10 @@ class CBSSpecInfo(AbstractModel):
 
     @property
     def DiskSize(self):
+        """大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -114,6 +131,10 @@ class CBSSpecInfo(AbstractModel):
 
     @property
     def DiskCount(self):
+        """个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskCount
 
     @DiskCount.setter
@@ -166,6 +187,10 @@ class ChargeProperties(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """1-需要自动续期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -174,6 +199,10 @@ class ChargeProperties(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """订单时间范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -182,6 +211,10 @@ class ChargeProperties(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """时间单位，一般为h和m
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -190,6 +223,10 @@ class ChargeProperties(AbstractModel):
 
     @property
     def PayMode(self):
+        """计费类型0-按量计费，1-包年包月
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -198,6 +235,10 @@ class ChargeProperties(AbstractModel):
 
     @property
     def ChargeType(self):
+        """PREPAID、POSTPAID_BY_HOUR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -259,6 +300,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -267,6 +311,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -275,6 +322,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def UserVPCId(self):
+        """私有网络
+        :rtype: str
+        """
         return self._UserVPCId
 
     @UserVPCId.setter
@@ -283,6 +333,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def UserSubnetId(self):
+        """子网
+        :rtype: str
+        """
         return self._UserSubnetId
 
     @UserSubnetId.setter
@@ -291,6 +344,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def ChargeProperties(self):
+        """计费方式
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.ChargeProperties`
+        """
         return self._ChargeProperties
 
     @ChargeProperties.setter
@@ -299,6 +355,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def AdminPassword(self):
+        """集群密码
+        :rtype: str
+        """
         return self._AdminPassword
 
     @AdminPassword.setter
@@ -307,6 +366,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def Resources(self):
+        """资源信息
+        :rtype: list of ResourceSpecNew
+        """
         return self._Resources
 
     @Resources.setter
@@ -315,6 +377,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.Tag`
+        """
         return self._Tags
 
     @Tags.setter
@@ -323,6 +388,9 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def ProductVersion(self):
+        """版本
+        :rtype: str
+        """
         return self._ProductVersion
 
     @ProductVersion.setter
@@ -385,6 +453,10 @@ class CreateInstanceByApiResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -393,6 +465,10 @@ class CreateInstanceByApiResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -401,6 +477,10 @@ class CreateInstanceByApiResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -409,6 +489,9 @@ class CreateInstanceByApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -437,6 +520,9 @@ class DescribeInstanceInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """集群实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -476,6 +562,9 @@ class DescribeInstanceInfoResponse(AbstractModel):
 
     @property
     def SimpleInstanceInfo(self):
+        """1
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.SimpleInstanceInfo`
+        """
         return self._SimpleInstanceInfo
 
     @SimpleInstanceInfo.setter
@@ -484,6 +573,9 @@ class DescribeInstanceInfoResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """1
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -492,6 +584,9 @@ class DescribeInstanceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -521,6 +616,9 @@ class DescribeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """集群实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -557,6 +655,9 @@ class DescribeInstanceResponse(AbstractModel):
 
     @property
     def InstanceInfo(self):
+        """实例描述信息
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.InstanceInfo`
+        """
         return self._InstanceInfo
 
     @InstanceInfo.setter
@@ -565,6 +666,9 @@ class DescribeInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -593,6 +697,9 @@ class DescribeInstanceStateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """集群实例名称
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -657,6 +764,9 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def InstanceState(self):
+        """集群状态，例如：Serving
+        :rtype: str
+        """
         return self._InstanceState
 
     @InstanceState.setter
@@ -665,6 +775,10 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def FlowCreateTime(self):
+        """集群操作创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowCreateTime
 
     @FlowCreateTime.setter
@@ -673,6 +787,10 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def FlowName(self):
+        """集群操作名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowName
 
     @FlowName.setter
@@ -681,6 +799,10 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def FlowProgress(self):
+        """集群操作进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._FlowProgress
 
     @FlowProgress.setter
@@ -689,6 +811,10 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def InstanceStateDesc(self):
+        """集群状态描述，例如：运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceStateDesc
 
     @InstanceStateDesc.setter
@@ -697,6 +823,10 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def FlowMsg(self):
+        """集群流程错误信息，例如：“创建失败，资源不足”
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowMsg
 
     @FlowMsg.setter
@@ -705,6 +835,10 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def ProcessName(self):
+        """当前步骤的名称，例如：”购买资源中“
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -713,6 +847,10 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def BackupStatus(self):
+        """集群备份任务开启状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BackupStatus
 
     @BackupStatus.setter
@@ -721,6 +859,9 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -766,6 +907,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchInstanceId(self):
+        """搜索的集群id名称
+        :rtype: str
+        """
         return self._SearchInstanceId
 
     @SearchInstanceId.setter
@@ -774,6 +918,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchInstanceName(self):
+        """搜索的集群name
+        :rtype: str
+        """
         return self._SearchInstanceName
 
     @SearchInstanceName.setter
@@ -782,6 +929,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数，第一页为0，第二页为10
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -790,6 +940,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数，分页步长，默认为10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -798,6 +951,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchTags(self):
+        """搜索标签列表
+        :rtype: list of SearchTags
+        """
         return self._SearchTags
 
     @SearchTags.setter
@@ -852,6 +1008,10 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -860,6 +1020,10 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstancesList(self):
+        """实例数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceInfo
+        """
         return self._InstancesList
 
     @InstancesList.setter
@@ -868,6 +1032,10 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -876,6 +1044,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -921,6 +1092,9 @@ class DescribeSimpleInstancesRequest(AbstractModel):
 
     @property
     def SearchInstanceId(self):
+        """11
+        :rtype: str
+        """
         return self._SearchInstanceId
 
     @SearchInstanceId.setter
@@ -929,6 +1103,9 @@ class DescribeSimpleInstancesRequest(AbstractModel):
 
     @property
     def SearchInstanceName(self):
+        """11
+        :rtype: str
+        """
         return self._SearchInstanceName
 
     @SearchInstanceName.setter
@@ -937,6 +1114,9 @@ class DescribeSimpleInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """11
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -945,6 +1125,9 @@ class DescribeSimpleInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """11
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -953,6 +1136,9 @@ class DescribeSimpleInstancesRequest(AbstractModel):
 
     @property
     def SearchTags(self):
+        """11
+        :rtype: list of str
+        """
         return self._SearchTags
 
     @SearchTags.setter
@@ -1002,6 +1188,10 @@ class DescribeSimpleInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1010,6 +1200,10 @@ class DescribeSimpleInstancesResponse(AbstractModel):
 
     @property
     def InstancesList(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceSimpleInfoNew
+        """
         return self._InstancesList
 
     @InstancesList.setter
@@ -1018,6 +1212,10 @@ class DescribeSimpleInstancesResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -1026,6 +1224,9 @@ class DescribeSimpleInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1059,6 +1260,9 @@ class DestroyInstanceByApiRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例名称，例如"cdwpg-xxxx"
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1098,6 +1302,9 @@ class DestroyInstanceByApiResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """销毁流程Id
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -1106,6 +1313,9 @@ class DestroyInstanceByApiResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误信息
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -1114,6 +1324,9 @@ class DestroyInstanceByApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1222,6 +1435,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ID(self):
+        """ID值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1230,6 +1447,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceType(self):
+        """cdwpg-cn或者其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -1238,6 +1459,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """cdwpg-cn或者其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1246,6 +1471,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """Running
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1254,6 +1483,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -1262,6 +1495,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceStateInfo(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.InstanceStateInfo`
+        """
         return self._InstanceStateInfo
 
     @InstanceStateInfo.setter
@@ -1270,6 +1507,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceID(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -1278,6 +1519,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """2022-09-05 20:00:01
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1286,6 +1531,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
+        """ap-chongqing
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1294,6 +1543,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
+        """ap
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1302,6 +1555,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RegionDesc(self):
+        """region
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionDesc
 
     @RegionDesc.setter
@@ -1310,6 +1567,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ZoneDesc(self):
+        """zone
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ZoneDesc
 
     @ZoneDesc.setter
@@ -1318,6 +1579,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1326,6 +1591,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Version(self):
+        """v3
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -1334,6 +1603,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Charset(self):
+        """字符集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Charset
 
     @Charset.setter
@@ -1342,6 +1615,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """引擎版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -1350,6 +1627,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def GTMNodes(self):
+        """GTM节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceNodeGroup
+        """
         return self._GTMNodes
 
     @GTMNodes.setter
@@ -1358,6 +1639,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CNNodes(self):
+        """CN节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceNodeGroup
+        """
         return self._CNNodes
 
     @CNNodes.setter
@@ -1366,6 +1651,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DNNodes(self):
+        """DN节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceNodeGroup
+        """
         return self._DNNodes
 
     @DNNodes.setter
@@ -1374,6 +1663,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BackupStorage(self):
+        """备份存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceNodeGroup
+        """
         return self._BackupStorage
 
     @BackupStorage.setter
@@ -1382,6 +1675,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def FNNodes(self):
+        """FN节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceNodeGroup
+        """
         return self._FNNodes
 
     @FNNodes.setter
@@ -1538,6 +1835,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def ID(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1546,6 +1847,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def InstanceId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1554,6 +1859,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def InstanceName(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1562,6 +1871,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def Version(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -1570,6 +1883,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def Region(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1578,6 +1895,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def RegionId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -1586,6 +1907,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def RegionDesc(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionDesc
 
     @RegionDesc.setter
@@ -1594,6 +1919,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def Zone(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1602,6 +1931,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def ZoneId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1610,6 +1943,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def ZoneDesc(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ZoneDesc
 
     @ZoneDesc.setter
@@ -1618,6 +1955,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def VpcId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1626,6 +1967,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def SubnetId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1634,6 +1979,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def CreateTime(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1642,6 +1991,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1650,6 +2003,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def AccessInfo(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccessInfo
 
     @AccessInfo.setter
@@ -1658,6 +2015,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def PayMode(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1666,6 +2027,10 @@ class InstanceSimpleInfoNew(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -1752,6 +2117,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def InstanceState(self):
+        """集群状态，例如：Serving
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceState
 
     @InstanceState.setter
@@ -1760,6 +2129,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def FlowCreateTime(self):
+        """集群操作创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowCreateTime
 
     @FlowCreateTime.setter
@@ -1768,6 +2141,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def FlowName(self):
+        """集群操作名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowName
 
     @FlowName.setter
@@ -1776,6 +2153,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def FlowProgress(self):
+        """集群操作进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FlowProgress
 
     @FlowProgress.setter
@@ -1784,6 +2165,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def InstanceStateDesc(self):
+        """集群状态描述，例如：运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceStateDesc
 
     @InstanceStateDesc.setter
@@ -1792,6 +2177,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def FlowMsg(self):
+        """集群流程错误信息，例如：“创建失败，资源不足”
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowMsg
 
     @FlowMsg.setter
@@ -1800,6 +2189,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def ProcessName(self):
+        """当前步骤的名称，例如：”购买资源中“
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -1808,6 +2201,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def BackupStatus(self):
+        """集群是否有备份中任务，有为1,无为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BackupStatus
 
     @BackupStatus.setter
@@ -1816,6 +2213,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def RequestId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1824,6 +2225,10 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def BackupOpenStatus(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BackupOpenStatus
 
     @BackupOpenStatus.setter
@@ -1869,6 +2274,9 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1877,6 +2285,9 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """新修改的实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1911,6 +2322,9 @@ class ModifyInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1949,6 +2363,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def SpecName(self):
+        """资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpecName
 
     @SpecName.setter
@@ -1957,6 +2375,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Count(self):
+        """资源数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -1965,6 +2387,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def DiskSpec(self):
+        """磁盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.CBSSpecInfo`
+        """
         return self._DiskSpec
 
     @DiskSpec.setter
@@ -1973,6 +2399,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Type(self):
+        """资源类型，DATA
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2020,6 +2450,9 @@ class ResourceSpecNew(AbstractModel):
 
     @property
     def SpecName(self):
+        """资源名称
+        :rtype: str
+        """
         return self._SpecName
 
     @SpecName.setter
@@ -2028,6 +2461,9 @@ class ResourceSpecNew(AbstractModel):
 
     @property
     def Count(self):
+        """资源数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -2036,6 +2472,9 @@ class ResourceSpecNew(AbstractModel):
 
     @property
     def DiskSpec(self):
+        """磁盘信息
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.CBSSpec`
+        """
         return self._DiskSpec
 
     @DiskSpec.setter
@@ -2044,6 +2483,9 @@ class ResourceSpecNew(AbstractModel):
 
     @property
     def Type(self):
+        """资源类型，DATA
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2088,6 +2530,9 @@ class SearchTags(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签的键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2096,6 +2541,9 @@ class SearchTags(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签的值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -2104,6 +2552,9 @@ class SearchTags(AbstractModel):
 
     @property
     def AllValue(self):
+        """1表示只输入标签的键，没有输入值；0表示输入键时且输入值
+        :rtype: int
+        """
         return self._AllValue
 
     @AllValue.setter
@@ -2200,6 +2651,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def ID(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -2208,6 +2663,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2216,6 +2675,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2224,6 +2687,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def Version(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -2232,6 +2699,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def Region(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2240,6 +2711,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -2248,6 +2723,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def UserVPCID(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserVPCID
 
     @UserVPCID.setter
@@ -2256,6 +2735,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def UserSubnetID(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserSubnetID
 
     @UserSubnetID.setter
@@ -2264,6 +2747,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2272,6 +2759,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -2280,6 +2771,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def AccessInfo(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccessInfo
 
     @AccessInfo.setter
@@ -2288,6 +2783,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -2296,6 +2795,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def ChargeProperties(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.ChargeProperties`
+        """
         return self._ChargeProperties
 
     @ChargeProperties.setter
@@ -2304,6 +2807,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def Resources(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceInfo
+        """
         return self._Resources
 
     @Resources.setter
@@ -2312,6 +2819,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2320,6 +2831,10 @@ class SimpleInstanceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2383,6 +2898,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签的键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2391,6 +2909,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签的值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter

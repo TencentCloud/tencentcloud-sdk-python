@@ -32,6 +32,9 @@ class CancelVRSTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -68,6 +71,9 @@ class CancelVRSTaskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """任务ID
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.CancelVRSTaskRsp`
+        """
         return self._Data
 
     @Data.setter
@@ -76,6 +82,9 @@ class CancelVRSTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -151,6 +160,9 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """唯一请求 ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -159,6 +171,9 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceName(self):
+        """音色名称
+        :rtype: str
+        """
         return self._VoiceName
 
     @VoiceName.setter
@@ -167,6 +182,13 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceGender(self):
+        """音色性别:
+
+1-male
+
+2-female
+        :rtype: int
+        """
         return self._VoiceGender
 
     @VoiceGender.setter
@@ -175,6 +197,11 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceLanguage(self):
+        """语言类型：
+
+1-中文
+        :rtype: int
+        """
         return self._VoiceLanguage
 
     @VoiceLanguage.setter
@@ -183,6 +210,9 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def AudioIdList(self):
+        """音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）
+        :rtype: list of str
+        """
         return self._AudioIdList
 
     @AudioIdList.setter
@@ -191,6 +221,11 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def SampleRate(self):
+        """音频采样率：
+
+16000：16k
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -199,6 +234,9 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def Codec(self):
+        """音频格式，音频类型(wav,mp3,aac,m4a)
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -207,6 +245,10 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
+回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -215,6 +257,9 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def ModelType(self):
+        """模型类型 1:在线 2:离线  默认为1
+        :rtype: int
+        """
         return self._ModelType
 
     @ModelType.setter
@@ -223,6 +268,11 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """复刻类型。
+0 - 轻量版声音复刻（默认）；
+5 - 一句话声音复刻。
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -231,6 +281,9 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VPRAudioId(self):
+        """校验音频ID。（仅基础版声音复刻使用）
+        :rtype: str
+        """
         return self._VPRAudioId
 
     @VPRAudioId.setter
@@ -275,6 +328,10 @@ class CreateVRSTaskRespData(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -311,6 +368,9 @@ class CreateVRSTaskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """创建任务结果
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.CreateVRSTaskRespData`
+        """
         return self._Data
 
     @Data.setter
@@ -319,6 +379,9 @@ class CreateVRSTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -347,6 +410,9 @@ class DescribeVRSTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -405,6 +471,10 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -413,6 +483,10 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -421,6 +495,10 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def StatusStr(self):
+        """任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusStr
 
     @StatusStr.setter
@@ -429,6 +507,10 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def VoiceType(self):
+        """音色id。（若为一句话复刻时，该值为固定值“200000000”）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VoiceType
 
     @VoiceType.setter
@@ -437,6 +519,10 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """失败原因说明。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -445,6 +531,10 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """任务过期时间。（当复刻类型为一句话复刻时展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -453,6 +543,10 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
 
     @property
     def FastVoiceType(self):
+        """快速复刻音色ID。（当复刻类型为一句话复刻时展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FastVoiceType
 
     @FastVoiceType.setter
@@ -495,6 +589,9 @@ class DescribeVRSTaskStatusResponse(AbstractModel):
 
     @property
     def Data(self):
+        """声音复刻任务结果
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.DescribeVRSTaskStatusRespData`
+        """
         return self._Data
 
     @Data.setter
@@ -503,6 +600,9 @@ class DescribeVRSTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -551,6 +651,9 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TextId(self):
+        """标注文本信息 ID
+        :rtype: str
+        """
         return self._TextId
 
     @TextId.setter
@@ -559,6 +662,9 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def AudioData(self):
+        """语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
+        :rtype: str
+        """
         return self._AudioData
 
     @AudioData.setter
@@ -567,6 +673,9 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TypeId(self):
+        """1:环境检测 2:音质检测
+        :rtype: int
+        """
         return self._TypeId
 
     @TypeId.setter
@@ -575,6 +684,9 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def Codec(self):
+        """音频格式，音频类型(wav,mp3,aac,m4a)
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -583,6 +695,12 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def SampleRate(self):
+        """音频采样率。
+16000：16k（默认）；
+24000：24k（仅一句话声音复刻支持）；
+48000：48k（仅一句话声音复刻支持）。
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -591,6 +709,11 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """复刻类型。
+0 - 轻量版声音复刻（默认）;
+5 - 一句话声音复刻。
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -632,6 +755,9 @@ class DetectEnvAndSoundQualityResponse(AbstractModel):
 
     @property
     def Data(self):
+        """检测结果
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.DetectionEnvAndSoundQualityRespData`
+        """
         return self._Data
 
     @Data.setter
@@ -640,6 +766,9 @@ class DetectEnvAndSoundQualityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -686,6 +815,10 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
     @property
     def AudioId(self):
+        """音频ID （用于创建任务接口AudioIds）,环境检测该值为空，仅在音质检测情况下返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AudioId
 
     @AudioId.setter
@@ -694,6 +827,15 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
     @property
     def DetectionCode(self):
+        """检测code 
+
+0 表示当前语音通过
+-1 表示检测失败，需要重试
+-2 表示语音检测不通过，提示用户再重新录制一下（通常漏读，错读，或多读）
+-3 表示语音中噪声较大，不通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DetectionCode
 
     @DetectionCode.setter
@@ -702,6 +844,10 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
     @property
     def DetectionMsg(self):
+        """检测提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DetectionMsg
 
     @DetectionMsg.setter
@@ -710,6 +856,10 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
 
     @property
     def DetectionTip(self):
+        """检测提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Words
+        """
         return self._DetectionTip
 
     @DetectionTip.setter
@@ -751,6 +901,9 @@ class DownloadVRSModelRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -787,6 +940,9 @@ class DownloadVRSModelResponse(AbstractModel):
 
     @property
     def Data(self):
+        """响应
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.DownloadVRSModelRsp`
+        """
         return self._Data
 
     @Data.setter
@@ -795,6 +951,9 @@ class DownloadVRSModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -842,6 +1001,10 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def Model(self):
+        """模型cos地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -850,6 +1013,10 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def VoiceName(self):
+        """音色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VoiceName
 
     @VoiceName.setter
@@ -858,6 +1025,12 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def VoiceGender(self):
+        """音色性别:
+1-male
+2-female
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VoiceGender
 
     @VoiceGender.setter
@@ -866,6 +1039,11 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def VoiceLanguage(self):
+        """语言类型：
+1-中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VoiceLanguage
 
     @VoiceLanguage.setter
@@ -874,6 +1052,9 @@ class DownloadVRSModelRsp(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -924,6 +1105,11 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """复刻类型。
+0 - 轻量版声音复刻（默认）;
+5 - 一句话声音复刻。
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -932,6 +1118,13 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
+0 - 通用场景（默认）； 
+1 - 聊天场景； 
+2 - 阅读场景； 
+3 - 资讯播报场景。
+        :rtype: int
+        """
         return self._Domain
 
     @Domain.setter
@@ -940,6 +1133,10 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def TextLanguage(self):
+        """文本语种。（仅支持一句话声音复刻，其余复刻类型不生效） 
+1 - 中文（默认）。
+        :rtype: int
+        """
         return self._TextLanguage
 
     @TextLanguage.setter
@@ -978,6 +1175,9 @@ class GetTrainingTextResponse(AbstractModel):
 
     @property
     def Data(self):
+        """文本列表
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.TrainingTexts`
+        """
         return self._Data
 
     @Data.setter
@@ -986,6 +1186,9 @@ class GetTrainingTextResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1016,6 +1219,11 @@ class GetVRSVoiceTypesRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """复刻类型。
+0 - 除快速声音复刻外其他复刻类型（默认）；
+5 - 一句话声音复刻。
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -1052,6 +1260,9 @@ class GetVRSVoiceTypesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """复刻音色信息
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.VoiceTypeListData`
+        """
         return self._Data
 
     @Data.setter
@@ -1060,6 +1271,9 @@ class GetVRSVoiceTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1094,6 +1308,11 @@ class TrainingText(AbstractModel):
 
     @property
     def TextId(self):
+        """文本ID
+当复刻类型为一句话声音复刻时，生成的TextId有效期为7天，且在成功创建一次复刻任务后失效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TextId
 
     @TextId.setter
@@ -1102,6 +1321,10 @@ class TrainingText(AbstractModel):
 
     @property
     def Text(self):
+        """文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -1137,6 +1360,10 @@ class TrainingTexts(AbstractModel):
 
     @property
     def TrainingTextList(self):
+        """训练文本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TrainingText
+        """
         return self._TrainingTextList
 
     @TrainingTextList.setter
@@ -1202,6 +1429,9 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def VoiceType(self):
+        """音色id。（若为一句话复刻时，该值为固定值“200000000”）
+        :rtype: int
+        """
         return self._VoiceType
 
     @VoiceType.setter
@@ -1210,6 +1440,9 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def VoiceName(self):
+        """音色名称
+        :rtype: str
+        """
         return self._VoiceName
 
     @VoiceName.setter
@@ -1218,6 +1451,9 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def VoiceGender(self):
+        """音色性别: 1-male 2-female
+        :rtype: int
+        """
         return self._VoiceGender
 
     @VoiceGender.setter
@@ -1226,6 +1462,9 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """复刻类型: 0-轻量版复刻 1-基础版复刻
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -1234,6 +1473,9 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def TaskID(self):
+        """复刻任务 ID
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -1242,6 +1484,9 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def DateCreated(self):
+        """创建时间
+        :rtype: str
+        """
         return self._DateCreated
 
     @DateCreated.setter
@@ -1250,6 +1495,9 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def IsDeployed(self):
+        """部署状态。若已部署，则可通过语音合成接口调用该音色
+        :rtype: bool
+        """
         return self._IsDeployed
 
     @IsDeployed.setter
@@ -1258,6 +1506,11 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """任务过期时间。（当复刻类型为一句话复刻时展示）
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1266,6 +1519,10 @@ class VoiceTypeInfo(AbstractModel):
 
     @property
     def FastVoiceType(self):
+        """快速复刻音色ID。（当复刻类型为一句话复刻时展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FastVoiceType
 
     @FastVoiceType.setter
@@ -1308,6 +1565,10 @@ class VoiceTypeListData(AbstractModel):
 
     @property
     def VoiceTypeList(self):
+        """音色信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VoiceTypeInfo
+        """
         return self._VoiceTypeList
 
     @VoiceTypeList.setter
@@ -1367,6 +1628,10 @@ class Words(AbstractModel):
 
     @property
     def PronAccuracy(self):
+        """准确度 (<75则认为不合格)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._PronAccuracy
 
     @PronAccuracy.setter
@@ -1375,6 +1640,10 @@ class Words(AbstractModel):
 
     @property
     def PronFluency(self):
+        """流畅度 (<0.95则认为不合格)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._PronFluency
 
     @PronFluency.setter
@@ -1383,6 +1652,16 @@ class Words(AbstractModel):
 
     @property
     def Tag(self):
+        """tag: 
+0: match  匹配
+1: insert   多读
+2: delete  少读
+3: replace 错读
+4: oov  待评估字不在发音评估的词库
+5: unknown 未知错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Tag
 
     @Tag.setter
@@ -1391,6 +1670,10 @@ class Words(AbstractModel):
 
     @property
     def Word(self):
+        """字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter

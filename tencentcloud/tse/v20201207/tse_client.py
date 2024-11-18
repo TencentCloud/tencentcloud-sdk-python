@@ -1659,6 +1659,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceTagInfos(self, request):
+        """查看实例的标签信息
+
+        :param request: Request instance for DescribeInstanceTagInfos.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeInstanceTagInfosRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeInstanceTagInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceTagInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceTagInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNacosReplicas(self, request):
         """查询Nacos类型引擎实例副本信息
 
@@ -2432,6 +2455,29 @@ class TseClient(AbstractClient):
             body = self.call("PublishConfigFiles", params, headers=headers)
             response = json.loads(body)
             model = models.PublishConfigFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestartSREInstance(self, request):
+        """重启微服务引擎实例
+
+        :param request: Request instance for RestartSREInstance.
+        :type request: :class:`tencentcloud.tse.v20201207.models.RestartSREInstanceRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.RestartSREInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartSREInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartSREInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

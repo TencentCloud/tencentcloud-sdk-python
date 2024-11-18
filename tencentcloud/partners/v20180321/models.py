@@ -52,16 +52,12 @@ class AgentAuditedClient(AbstractModel):
         :param _ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
         :type ProjectType: str
         :param _SalesUin: 业务员ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
         :param _SalesName: 业务员姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
         :param _Mail: 代客邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mail: str
         :param _TransactionType: 交易类型:交易类型 1-原类型 2-代理型  3-代采型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransactionType: str
         """
         self._Uin = None
@@ -84,6 +80,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def Uin(self):
+        """代理商账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -92,6 +91,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def ClientUin(self):
+        """代客账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -100,6 +102,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def AgentTime(self):
+        """代客审核通过时间戳
+        :rtype: str
+        """
         return self._AgentTime
 
     @AgentTime.setter
@@ -108,6 +113,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def ClientFlag(self):
+        """代客类型，可能值为a/b/c
+        :rtype: str
+        """
         return self._ClientFlag
 
     @ClientFlag.setter
@@ -116,6 +124,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def ClientRemark(self):
+        """代客备注
+        :rtype: str
+        """
         return self._ClientRemark
 
     @ClientRemark.setter
@@ -124,6 +135,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def ClientName(self):
+        """代客名称（首选实名认证名称）
+        :rtype: str
+        """
         return self._ClientName
 
     @ClientName.setter
@@ -132,6 +146,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def AuthType(self):
+        """认证类型, 0：个人，1：企业；其他：未认证或无效值
+        :rtype: str
+        """
         return self._AuthType
 
     @AuthType.setter
@@ -140,6 +157,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def AppId(self):
+        """代客APPID
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -148,6 +168,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def LastMonthAmt(self):
+        """上月消费金额
+        :rtype: int
+        """
         return self._LastMonthAmt
 
     @LastMonthAmt.setter
@@ -156,6 +179,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def ThisMonthAmt(self):
+        """本月消费金额
+        :rtype: int
+        """
         return self._ThisMonthAmt
 
     @ThisMonthAmt.setter
@@ -164,6 +190,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def HasOverdueBill(self):
+        """是否欠费,0：不欠费；1：欠费
+        :rtype: int
+        """
         return self._HasOverdueBill
 
     @HasOverdueBill.setter
@@ -172,6 +201,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def ClientType(self):
+        """客户类型：可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
+        :rtype: str
+        """
         return self._ClientType
 
     @ClientType.setter
@@ -180,6 +212,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def ProjectType(self):
+        """项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+        :rtype: str
+        """
         return self._ProjectType
 
     @ProjectType.setter
@@ -188,6 +223,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def SalesUin(self):
+        """业务员ID
+        :rtype: str
+        """
         return self._SalesUin
 
     @SalesUin.setter
@@ -196,6 +234,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def SalesName(self):
+        """业务员姓名
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -204,6 +245,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def Mail(self):
+        """代客邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -212,6 +256,9 @@ class AgentAuditedClient(AbstractModel):
 
     @property
     def TransactionType(self):
+        """交易类型:交易类型 1-原类型 2-代理型  3-代采型
+        :rtype: str
+        """
         return self._TransactionType
 
     @TransactionType.setter
@@ -275,13 +322,10 @@ class AgentBillElem(AbstractModel):
         :param _PayerMode: agentpay：代付；selfpay：自付
         :type PayerMode: str
         :param _ClientType: 客户类型：可以为new(自拓)/assign(指定)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientType: str
         :param _ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectType: str
         :param _ActivityId: 活动ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
         """
         self._Uin = None
@@ -300,6 +344,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def Uin(self):
+        """代理商账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -308,6 +355,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单号，仅对预付费账单有意义
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -316,6 +366,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def ClientUin(self):
+        """代客账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -324,6 +377,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def ClientRemark(self):
+        """代客备注名称
+        :rtype: str
+        """
         return self._ClientRemark
 
     @ClientRemark.setter
@@ -332,6 +388,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def PayTime(self):
+        """支付时间
+        :rtype: str
+        """
         return self._PayTime
 
     @PayTime.setter
@@ -340,6 +399,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def GoodsType(self):
+        """云产品名称
+        :rtype: str
+        """
         return self._GoodsType
 
     @GoodsType.setter
@@ -348,6 +410,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def PayMode(self):
+        """预付费/后付费
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -356,6 +421,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def SettleMonth(self):
+        """支付月份
+        :rtype: str
+        """
         return self._SettleMonth
 
     @SettleMonth.setter
@@ -364,6 +432,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def Amt(self):
+        """支付金额，单位分
+        :rtype: int
+        """
         return self._Amt
 
     @Amt.setter
@@ -372,6 +443,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def PayerMode(self):
+        """agentpay：代付；selfpay：自付
+        :rtype: str
+        """
         return self._PayerMode
 
     @PayerMode.setter
@@ -380,6 +454,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def ClientType(self):
+        """客户类型：可以为new(自拓)/assign(指定)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
+        :rtype: str
+        """
         return self._ClientType
 
     @ClientType.setter
@@ -388,6 +465,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def ProjectType(self):
+        """项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+        :rtype: str
+        """
         return self._ProjectType
 
     @ProjectType.setter
@@ -396,6 +476,9 @@ class AgentBillElem(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -440,7 +523,7 @@ class AgentClientElem(AbstractModel):
         :type ClientUin: str
         :param _ApplyTime: 代客申请时间戳
         :type ApplyTime: int
-        :param _ClientFlag: 代客类型，可能值为a/b/c
+        :param _ClientFlag: 代客类型，可能值为a/b/c/other
         :type ClientFlag: str
         :param _Mail: 代客邮箱，打码显示
         :type Mail: str
@@ -451,13 +534,10 @@ class AgentClientElem(AbstractModel):
         :param _Status: 1:待代理商审核;2:待腾讯云审核4:待腾讯云渠道审批
         :type Status: int
         :param _SalesUin: 业务员ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
         :param _SalesName: 业务员姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
         :param _ClientName: 客户名称，此字段和控制台返回一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientName: str
         """
         self._Uin = None
@@ -474,6 +554,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def Uin(self):
+        """代理商账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -482,6 +565,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def ClientUin(self):
+        """代客账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -490,6 +576,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def ApplyTime(self):
+        """代客申请时间戳
+        :rtype: int
+        """
         return self._ApplyTime
 
     @ApplyTime.setter
@@ -498,6 +587,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def ClientFlag(self):
+        """代客类型，可能值为a/b/c/other
+        :rtype: str
+        """
         return self._ClientFlag
 
     @ClientFlag.setter
@@ -506,6 +598,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def Mail(self):
+        """代客邮箱，打码显示
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -514,6 +609,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def Phone(self):
+        """代客手机，打码显示
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -522,6 +620,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def HasOverdueBill(self):
+        """0表示不欠费，1表示欠费
+        :rtype: int
+        """
         return self._HasOverdueBill
 
     @HasOverdueBill.setter
@@ -530,6 +631,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def Status(self):
+        """1:待代理商审核;2:待腾讯云审核4:待腾讯云渠道审批
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -538,6 +642,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def SalesUin(self):
+        """业务员ID
+        :rtype: str
+        """
         return self._SalesUin
 
     @SalesUin.setter
@@ -546,6 +653,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def SalesName(self):
+        """业务员姓名
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -554,6 +664,9 @@ class AgentClientElem(AbstractModel):
 
     @property
     def ClientName(self):
+        """客户名称，此字段和控制台返回一致。
+        :rtype: str
+        """
         return self._ClientName
 
     @ClientName.setter
@@ -599,85 +712,58 @@ class AgentDealNewElem(AbstractModel):
         :param _OwnerUin: 订单所有者
         :type OwnerUin: str
         :param _AppId: 订单所有者对应 appId
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _GoodsNum: 商品数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsNum: str
         :param _GoodsPrice: 价格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsPrice: :class:`tencentcloud.partners.v20180321.models.DealGoodsPriceNewElem`
         :param _Creater: 下单人
-注意：此字段可能返回 null，表示取不到有效值。
         :type Creater: str
         :param _CreatTime: 下单时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatTime: str
         :param _PayEndTime: 支付结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayEndTime: str
         :param _BillId: 扣费流水号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillId: str
         :param _Payer: 支付人
-注意：此字段可能返回 null，表示取不到有效值。
         :type Payer: str
         :param _DealStatus: 订单状态，中文描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealStatus: str
         :param _Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _GoodsName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsName: str
         :param _ClientRemark: 客户备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientRemark: str
         :param _ActionType: 订单操作类型，"purchase":"新购","upgrade":"升配","upConvertExpire":"升配","downgrade":"降配","downConvertExpire":"降配","renew":"续费","refund":"退货","modifyNetworkMode":"调整带宽模式","modifyNetworkSize":"调整带宽大小","preMoveOut":"资源迁出","preMoveIn":"资源迁入","preToPost":"包年包月转按量","modify":"变配","postMoveOut":"资源迁出","postMoveIn":"资源迁入","recoverRefundForward":"调账补偿","recoverPayReserve":"调账补偿","recoverPayForward":"调账扣费","recoverRefundReserve":"调账扣费"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _VoucherDecline: 代金券抵扣金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherDecline: str
         :param _BigDealId: 大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealId: str
         :param _ClientType: 客户类型（new：自拓；old：官网；assign：指派；direct：直销；direct_newopp：直销(新商机)）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientType: str
         :param _ProjectType: 项目类型（self：自拓；repeat：直销；platform：官网合作）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectType: str
         :param _SalesUin: 业务员账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
         :param _PayerMode: 支付方式，0：自付；1：代付
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerMode: str
         :param _ActivityId: 活动ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
         :param _OverdueTime: 订单过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OverdueTime: str
         :param _ProductInfo: 产品详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfo: list of ProductInfoElem
         :param _PaymentMethod: 付款方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentMethod: str
         :param _UpdateTime: 订单更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
         :param _RefundMap: 退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type RefundMap: list of RefundMap
         :param _SubGoodsName: 子产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubGoodsName: str
         """
         self._DealId = None
@@ -714,6 +800,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def DealId(self):
+        """订单自增 ID【请勿依赖该字段作为唯一标识】
+        :rtype: str
+        """
         return self._DealId
 
     @DealId.setter
@@ -722,6 +811,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def DealName(self):
+        """订单号【订单唯一键】
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -730,6 +822,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def GoodsCategoryId(self):
+        """商品类型 ID
+        :rtype: str
+        """
         return self._GoodsCategoryId
 
     @GoodsCategoryId.setter
@@ -738,6 +833,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """订单所有者
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -746,6 +844,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def AppId(self):
+        """订单所有者对应 appId
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -754,6 +855,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def GoodsNum(self):
+        """商品数量
+        :rtype: str
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -762,6 +866,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def GoodsPrice(self):
+        """价格详情
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DealGoodsPriceNewElem`
+        """
         return self._GoodsPrice
 
     @GoodsPrice.setter
@@ -770,6 +877,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def Creater(self):
+        """下单人
+        :rtype: str
+        """
         return self._Creater
 
     @Creater.setter
@@ -778,6 +888,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def CreatTime(self):
+        """下单时间
+        :rtype: str
+        """
         return self._CreatTime
 
     @CreatTime.setter
@@ -786,6 +899,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def PayEndTime(self):
+        """支付结束时间
+        :rtype: str
+        """
         return self._PayEndTime
 
     @PayEndTime.setter
@@ -794,6 +910,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def BillId(self):
+        """扣费流水号
+        :rtype: str
+        """
         return self._BillId
 
     @BillId.setter
@@ -802,6 +921,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def Payer(self):
+        """支付人
+        :rtype: str
+        """
         return self._Payer
 
     @Payer.setter
@@ -810,6 +932,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def DealStatus(self):
+        """订单状态，中文描述
+        :rtype: str
+        """
         return self._DealStatus
 
     @DealStatus.setter
@@ -818,6 +943,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def Status(self):
+        """订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -826,6 +954,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def GoodsName(self):
+        """产品名称
+        :rtype: str
+        """
         return self._GoodsName
 
     @GoodsName.setter
@@ -834,6 +965,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def ClientRemark(self):
+        """客户备注
+        :rtype: str
+        """
         return self._ClientRemark
 
     @ClientRemark.setter
@@ -842,6 +976,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def ActionType(self):
+        """订单操作类型，"purchase":"新购","upgrade":"升配","upConvertExpire":"升配","downgrade":"降配","downConvertExpire":"降配","renew":"续费","refund":"退货","modifyNetworkMode":"调整带宽模式","modifyNetworkSize":"调整带宽大小","preMoveOut":"资源迁出","preMoveIn":"资源迁入","preToPost":"包年包月转按量","modify":"变配","postMoveOut":"资源迁出","postMoveIn":"资源迁入","recoverRefundForward":"调账补偿","recoverPayReserve":"调账补偿","recoverPayForward":"调账扣费","recoverRefundReserve":"调账扣费"
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -850,6 +987,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def VoucherDecline(self):
+        """代金券抵扣金额，单位分
+        :rtype: str
+        """
         return self._VoucherDecline
 
     @VoucherDecline.setter
@@ -858,6 +998,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def BigDealId(self):
+        """大订单号
+        :rtype: str
+        """
         return self._BigDealId
 
     @BigDealId.setter
@@ -866,6 +1009,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def ClientType(self):
+        """客户类型（new：自拓；old：官网；assign：指派；direct：直销；direct_newopp：直销(新商机)）
+        :rtype: str
+        """
         return self._ClientType
 
     @ClientType.setter
@@ -874,6 +1020,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def ProjectType(self):
+        """项目类型（self：自拓；repeat：直销；platform：官网合作）
+        :rtype: str
+        """
         return self._ProjectType
 
     @ProjectType.setter
@@ -882,6 +1031,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def SalesUin(self):
+        """业务员账号ID
+        :rtype: str
+        """
         return self._SalesUin
 
     @SalesUin.setter
@@ -890,6 +1042,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def PayerMode(self):
+        """支付方式，0：自付；1：代付
+        :rtype: str
+        """
         return self._PayerMode
 
     @PayerMode.setter
@@ -898,6 +1053,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -906,6 +1064,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def OverdueTime(self):
+        """订单过期时间
+        :rtype: str
+        """
         return self._OverdueTime
 
     @OverdueTime.setter
@@ -914,6 +1075,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def ProductInfo(self):
+        """产品详情
+        :rtype: list of ProductInfoElem
+        """
         return self._ProductInfo
 
     @ProductInfo.setter
@@ -922,6 +1086,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def PaymentMethod(self):
+        """付款方式
+        :rtype: str
+        """
         return self._PaymentMethod
 
     @PaymentMethod.setter
@@ -930,6 +1097,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """订单更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -938,6 +1108,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """资源id
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -946,6 +1119,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def RefundMap(self):
+        """退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
+        :rtype: list of RefundMap
+        """
         return self._RefundMap
 
     @RefundMap.setter
@@ -954,6 +1130,9 @@ class AgentDealNewElem(AbstractModel):
 
     @property
     def SubGoodsName(self):
+        """子产品名称
+        :rtype: str
+        """
         return self._SubGoodsName
 
     @SubGoodsName.setter
@@ -1035,6 +1214,9 @@ class AgentPayDealsRequest(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """订单所有者uin
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -1043,6 +1225,9 @@ class AgentPayDealsRequest(AbstractModel):
 
     @property
     def AgentPay(self):
+        """代付标志，1：代付；0：自付
+        :rtype: int
+        """
         return self._AgentPay
 
     @AgentPay.setter
@@ -1051,6 +1236,9 @@ class AgentPayDealsRequest(AbstractModel):
 
     @property
     def DealNames(self):
+        """订单号数组
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -1086,6 +1274,9 @@ class AgentPayDealsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1120,6 +1311,9 @@ class AgentSalesmanElem(AbstractModel):
 
     @property
     def Uin(self):
+        """代理商账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -1128,6 +1322,9 @@ class AgentSalesmanElem(AbstractModel):
 
     @property
     def SalesUin(self):
+        """业务员ID
+        :rtype: str
+        """
         return self._SalesUin
 
     @SalesUin.setter
@@ -1136,6 +1333,9 @@ class AgentSalesmanElem(AbstractModel):
 
     @property
     def SalesName(self):
+        """业务员姓名
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -1144,6 +1344,9 @@ class AgentSalesmanElem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """业务员创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1183,6 +1386,9 @@ class AgentTransferMoneyRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -1191,6 +1397,9 @@ class AgentTransferMoneyRequest(AbstractModel):
 
     @property
     def Amount(self):
+        """转账金额，单位分
+        :rtype: int
+        """
         return self._Amount
 
     @Amount.setter
@@ -1225,6 +1434,9 @@ class AgentTransferMoneyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1259,6 +1471,9 @@ class AssignClientsToSalesRequest(AbstractModel):
 
     @property
     def ClientUins(self):
+        """代客/申请中代客uin列表，最大50条
+        :rtype: list of str
+        """
         return self._ClientUins
 
     @ClientUins.setter
@@ -1267,6 +1482,9 @@ class AssignClientsToSalesRequest(AbstractModel):
 
     @property
     def SalesUin(self):
+        """业务员uin
+        :rtype: str
+        """
         return self._SalesUin
 
     @SalesUin.setter
@@ -1275,6 +1493,9 @@ class AssignClientsToSalesRequest(AbstractModel):
 
     @property
     def AssignClientStatus(self):
+        """代客类型:normal-代客 apply-申请中代客
+        :rtype: str
+        """
         return self._AssignClientStatus
 
     @AssignClientStatus.setter
@@ -1283,6 +1504,9 @@ class AssignClientsToSalesRequest(AbstractModel):
 
     @property
     def AssignActionType(self):
+        """操作类型:assign-执行分派 cancel-取消分派
+        :rtype: str
+        """
         return self._AssignActionType
 
     @AssignActionType.setter
@@ -1313,10 +1537,8 @@ class AssignClientsToSalesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SucceedUins: 处理成功的代客uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SucceedUins: list of str
         :param _FailedUins: 处理失败的代客uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedUins: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1327,6 +1549,9 @@ class AssignClientsToSalesResponse(AbstractModel):
 
     @property
     def SucceedUins(self):
+        """处理成功的代客uin列表
+        :rtype: list of str
+        """
         return self._SucceedUins
 
     @SucceedUins.setter
@@ -1335,6 +1560,9 @@ class AssignClientsToSalesResponse(AbstractModel):
 
     @property
     def FailedUins(self):
+        """处理失败的代客uin列表
+        :rtype: list of str
+        """
         return self._FailedUins
 
     @FailedUins.setter
@@ -1343,6 +1571,9 @@ class AssignClientsToSalesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1376,6 +1607,9 @@ class AuditApplyClientRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """待审核客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -1384,6 +1618,9 @@ class AuditApplyClientRequest(AbstractModel):
 
     @property
     def AuditResult(self):
+        """审核结果，可能的取值：accept/reject
+        :rtype: str
+        """
         return self._AuditResult
 
     @AuditResult.setter
@@ -1392,6 +1629,9 @@ class AuditApplyClientRequest(AbstractModel):
 
     @property
     def Note(self):
+        """申请理由，B类客户审核通过时必须填写申请理由
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -1427,7 +1667,6 @@ class AuditApplyClientResponse(AbstractModel):
         :param _AuditResult: 审核结果，包括accept/reject/qcloudaudit（腾讯云审核）
         :type AuditResult: str
         :param _AgentTime: 关联时间对应的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type AgentTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1440,6 +1679,9 @@ class AuditApplyClientResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """代理商账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -1448,6 +1690,9 @@ class AuditApplyClientResponse(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -1456,6 +1701,9 @@ class AuditApplyClientResponse(AbstractModel):
 
     @property
     def AuditResult(self):
+        """审核结果，包括accept/reject/qcloudaudit（腾讯云审核）
+        :rtype: str
+        """
         return self._AuditResult
 
     @AuditResult.setter
@@ -1464,6 +1712,9 @@ class AuditApplyClientResponse(AbstractModel):
 
     @property
     def AgentTime(self):
+        """关联时间对应的时间戳
+        :rtype: int
+        """
         return self._AgentTime
 
     @AgentTime.setter
@@ -1472,6 +1723,9 @@ class AuditApplyClientResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1501,6 +1755,9 @@ class CreatePayRelationForClientRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -1534,6 +1791,9 @@ class CreatePayRelationForClientResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1562,6 +1822,9 @@ class DealGoodsPriceNewElem(AbstractModel):
 
     @property
     def RealTotalCost(self):
+        """实付金额（单位：分）
+        :rtype: int
+        """
         return self._RealTotalCost
 
     @RealTotalCost.setter
@@ -1570,6 +1833,9 @@ class DealGoodsPriceNewElem(AbstractModel):
 
     @property
     def OriginalTotalCost(self):
+        """原始金额（不含折扣，单位：分）
+        :rtype: int
+        """
         return self._OriginalTotalCost
 
     @OriginalTotalCost.setter
@@ -1640,6 +1906,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -1648,6 +1917,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def ClientName(self):
+        """客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
+        :rtype: str
+        """
         return self._ClientName
 
     @ClientName.setter
@@ -1656,6 +1928,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def ClientFlag(self):
+        """客户类型，a/b，类型定义参考代理商相关政策文档
+        :rtype: str
+        """
         return self._ClientFlag
 
     @ClientFlag.setter
@@ -1664,6 +1939,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """ASC/DESC， 不区分大小写，按审核通过时间排序
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -1672,6 +1950,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def ClientUins(self):
+        """客户账号ID列表
+        :rtype: list of str
+        """
         return self._ClientUins
 
     @ClientUins.setter
@@ -1680,6 +1961,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def HasOverdueBill(self):
+        """是否欠费。0：不欠费；1：欠费
+        :rtype: int
+        """
         return self._HasOverdueBill
 
     @HasOverdueBill.setter
@@ -1688,6 +1972,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def ClientRemark(self):
+        """客户备注
+        :rtype: str
+        """
         return self._ClientRemark
 
     @ClientRemark.setter
@@ -1696,6 +1983,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1704,6 +1994,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1712,6 +2005,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def ClientType(self):
+        """可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
+        :rtype: str
+        """
         return self._ClientType
 
     @ClientType.setter
@@ -1720,6 +2016,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def ProjectType(self):
+        """项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+        :rtype: str
+        """
         return self._ProjectType
 
     @ProjectType.setter
@@ -1728,6 +2027,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def SalesUin(self):
+        """业务员ID
+        :rtype: str
+        """
         return self._SalesUin
 
     @SalesUin.setter
@@ -1736,6 +2038,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def SalesName(self):
+        """业务员姓名（模糊查询）
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -1787,6 +2092,9 @@ class DescribeAgentAuditedClientsResponse(AbstractModel):
 
     @property
     def AgentClientSet(self):
+        """已审核代客列表
+        :rtype: list of AgentAuditedClient
+        """
         return self._AgentClientSet
 
     @AgentClientSet.setter
@@ -1795,6 +2103,9 @@ class DescribeAgentAuditedClientsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的代客总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1803,6 +2114,9 @@ class DescribeAgentAuditedClientsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1853,6 +2167,9 @@ class DescribeAgentBillsRequest(AbstractModel):
 
     @property
     def SettleMonth(self):
+        """支付月份，如2018-02
+        :rtype: str
+        """
         return self._SettleMonth
 
     @SettleMonth.setter
@@ -1861,6 +2178,9 @@ class DescribeAgentBillsRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -1869,6 +2189,9 @@ class DescribeAgentBillsRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """支付方式，prepay/postpay
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1877,6 +2200,9 @@ class DescribeAgentBillsRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """预付费订单号
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -1885,6 +2211,9 @@ class DescribeAgentBillsRequest(AbstractModel):
 
     @property
     def ClientRemark(self):
+        """客户备注名称
+        :rtype: str
+        """
         return self._ClientRemark
 
     @ClientRemark.setter
@@ -1893,6 +2222,9 @@ class DescribeAgentBillsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1901,6 +2233,9 @@ class DescribeAgentBillsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1946,6 +2281,9 @@ class DescribeAgentBillsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件列表总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1954,6 +2292,9 @@ class DescribeAgentBillsResponse(AbstractModel):
 
     @property
     def AgentBillSet(self):
+        """业务明细列表
+        :rtype: list of AgentBillElem
+        """
         return self._AgentBillSet
 
     @AgentBillSet.setter
@@ -1962,6 +2303,9 @@ class DescribeAgentBillsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1994,6 +2338,9 @@ class DescribeAgentClientGradeRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """代客uin
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -2039,6 +2386,9 @@ class DescribeAgentClientGradeResponse(AbstractModel):
 
     @property
     def AuditStatus(self):
+        """审核状态：0待审核，1，已审核
+        :rtype: int
+        """
         return self._AuditStatus
 
     @AuditStatus.setter
@@ -2047,6 +2397,9 @@ class DescribeAgentClientGradeResponse(AbstractModel):
 
     @property
     def AuthState(self):
+        """实名认证状态：0，未实名认证，1实名认证
+        :rtype: int
+        """
         return self._AuthState
 
     @AuthState.setter
@@ -2055,6 +2408,9 @@ class DescribeAgentClientGradeResponse(AbstractModel):
 
     @property
     def ClientGrade(self):
+        """客户级别
+        :rtype: str
+        """
         return self._ClientGrade
 
     @ClientGrade.setter
@@ -2063,6 +2419,9 @@ class DescribeAgentClientGradeResponse(AbstractModel):
 
     @property
     def ClientType(self):
+        """客户类型：1，个人；2，企业；3，其他
+        :rtype: int
+        """
         return self._ClientType
 
     @ClientType.setter
@@ -2071,6 +2430,9 @@ class DescribeAgentClientGradeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2121,6 +2483,9 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -2129,6 +2494,9 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     @property
     def ClientName(self):
+        """客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
+        :rtype: str
+        """
         return self._ClientName
 
     @ClientName.setter
@@ -2137,6 +2505,9 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     @property
     def ClientFlag(self):
+        """客户类型，a/b，类型定义参考代理商相关政策文档
+        :rtype: str
+        """
         return self._ClientFlag
 
     @ClientFlag.setter
@@ -2145,6 +2516,9 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """ASC/DESC， 不区分大小写，按申请时间排序
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -2153,6 +2527,9 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2161,6 +2538,9 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2169,6 +2549,9 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     @property
     def SalesUin(self):
+        """业务员ID
+        :rtype: str
+        """
         return self._SalesUin
 
     @SalesUin.setter
@@ -2177,6 +2560,9 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     @property
     def SalesName(self):
+        """业务员姓名（模糊查询）
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -2223,6 +2609,9 @@ class DescribeAgentClientsResponse(AbstractModel):
 
     @property
     def AgentClientSet(self):
+        """待审核代客列表
+        :rtype: list of AgentClientElem
+        """
         return self._AgentClientSet
 
     @AgentClientSet.setter
@@ -2231,6 +2620,9 @@ class DescribeAgentClientsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的代客总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2239,6 +2631,9 @@ class DescribeAgentClientsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2298,6 +2693,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2306,6 +2704,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目 最大200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2314,6 +2715,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
+        """下单时间范围起始点【请保持时间范围最大90天】
+        :rtype: str
+        """
         return self._CreatTimeRangeStart
 
     @CreatTimeRangeStart.setter
@@ -2322,6 +2726,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def CreatTimeRangeEnd(self):
+        """下单时间范围终止点【请保持时间范围最大90天】
+        :rtype: str
+        """
         return self._CreatTimeRangeEnd
 
     @CreatTimeRangeEnd.setter
@@ -2330,6 +2737,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def Order(self):
+        """0:下单时间降序；其他：下单时间升序
+        :rtype: int
+        """
         return self._Order
 
     @Order.setter
@@ -2338,6 +2748,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def Status(self):
+        """订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2346,6 +2759,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def OwnerUins(self):
+        """下单人账号ID列表
+        :rtype: list of str
+        """
         return self._OwnerUins
 
     @OwnerUins.setter
@@ -2354,6 +2770,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def DealNames(self):
+        """子订单号列表
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -2362,6 +2781,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def BigDealIds(self):
+        """大订单号列表
+        :rtype: list of str
+        """
         return self._BigDealIds
 
     @BigDealIds.setter
@@ -2370,6 +2792,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def PayerMode(self):
+        """支付方式，0：自付；1：代付
+        :rtype: int
+        """
         return self._PayerMode
 
     @PayerMode.setter
@@ -2418,6 +2843,9 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
 
     @property
     def AgentDealSet(self):
+        """订单数组
+        :rtype: list of AgentDealNewElem
+        """
         return self._AgentDealSet
 
     @AgentDealSet.setter
@@ -2426,6 +2854,9 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的订单总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2434,6 +2865,9 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2490,6 +2924,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2498,6 +2935,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目 最大100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2506,6 +2946,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
+        """下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        :rtype: str
+        """
         return self._CreatTimeRangeStart
 
     @CreatTimeRangeStart.setter
@@ -2514,6 +2957,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeEnd(self):
+        """下单时间范围终止点
+        :rtype: str
+        """
         return self._CreatTimeRangeEnd
 
     @CreatTimeRangeEnd.setter
@@ -2522,6 +2968,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def Order(self):
+        """0:下单时间降序；其他：下单时间升序
+        :rtype: int
+        """
         return self._Order
 
     @Order.setter
@@ -2530,6 +2979,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def Status(self):
+        """订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2538,6 +2990,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def OwnerUins(self):
+        """下单人账号ID列表
+        :rtype: list of str
+        """
         return self._OwnerUins
 
     @OwnerUins.setter
@@ -2546,6 +3001,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def DealNames(self):
+        """子订单号列表
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -2554,6 +3012,9 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def BigDealIds(self):
+        """大订单号列表
+        :rtype: list of str
+        """
         return self._BigDealIds
 
     @BigDealIds.setter
@@ -2601,6 +3062,9 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
 
     @property
     def AgentPayDealSet(self):
+        """订单数组
+        :rtype: list of AgentDealNewElem
+        """
         return self._AgentPayDealSet
 
     @AgentPayDealSet.setter
@@ -2609,6 +3073,9 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的订单总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2617,6 +3084,9 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2632,6 +3102,85 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
                 obj._deserialize(item)
                 self._AgentPayDealSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAgentRelateBigDealIdsRequest(AbstractModel):
+    """DescribeAgentRelateBigDealIds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealId: 大订单号
+        :type BigDealId: str
+        """
+        self._BigDealId = None
+
+    @property
+    def BigDealId(self):
+        """大订单号
+        :rtype: str
+        """
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+
+    def _deserialize(self, params):
+        self._BigDealId = params.get("BigDealId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentRelateBigDealIdsResponse(AbstractModel):
+    """DescribeAgentRelateBigDealIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealIdList: 申请合并支付的关联大订单号列表（不包含请求的订单号）
+        :type BigDealIdList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BigDealIdList = None
+        self._RequestId = None
+
+    @property
+    def BigDealIdList(self):
+        """申请合并支付的关联大订单号列表（不包含请求的订单号）
+        :rtype: list of str
+        """
+        return self._BigDealIdList
+
+    @BigDealIdList.setter
+    def BigDealIdList(self, BigDealIdList):
+        self._BigDealIdList = BigDealIdList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigDealIdList = params.get("BigDealIdList")
         self._RequestId = params.get("RequestId")
 
 
@@ -2673,6 +3222,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """下单人账号ID
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -2681,6 +3233,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2689,6 +3244,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目 最大100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2697,6 +3255,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
+        """下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        :rtype: str
+        """
         return self._CreatTimeRangeStart
 
     @CreatTimeRangeStart.setter
@@ -2705,6 +3266,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeEnd(self):
+        """下单时间范围终止点
+        :rtype: str
+        """
         return self._CreatTimeRangeEnd
 
     @CreatTimeRangeEnd.setter
@@ -2713,6 +3277,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def Order(self):
+        """0:下单时间降序；其他：下单时间升序
+        :rtype: int
+        """
         return self._Order
 
     @Order.setter
@@ -2721,6 +3288,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def Status(self):
+        """订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2729,6 +3299,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def DealNames(self):
+        """子订单号列表
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -2737,6 +3310,9 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def BigDealIds(self):
+        """大订单号列表
+        :rtype: list of str
+        """
         return self._BigDealIds
 
     @BigDealIds.setter
@@ -2784,6 +3360,9 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
 
     @property
     def AgentPayDealSet(self):
+        """订单数组
+        :rtype: list of AgentDealNewElem
+        """
         return self._AgentPayDealSet
 
     @AgentPayDealSet.setter
@@ -2792,6 +3371,9 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的订单总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2800,6 +3382,9 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2832,6 +3417,9 @@ class DescribeClientBalanceNewRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户(代客)账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -2871,6 +3459,9 @@ class DescribeClientBalanceNewResponse(AbstractModel):
 
     @property
     def Balance(self):
+        """账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
+        :rtype: int
+        """
         return self._Balance
 
     @Balance.setter
@@ -2879,6 +3470,9 @@ class DescribeClientBalanceNewResponse(AbstractModel):
 
     @property
     def Cash(self):
+        """账户现金余额，单位分
+        :rtype: int
+        """
         return self._Cash
 
     @Cash.setter
@@ -2887,6 +3481,9 @@ class DescribeClientBalanceNewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2920,6 +3517,9 @@ class DescribeRebateInfosNewRequest(AbstractModel):
 
     @property
     def RebateMonth(self):
+        """返佣月份，如2018-02
+        :rtype: str
+        """
         return self._RebateMonth
 
     @RebateMonth.setter
@@ -2928,6 +3528,9 @@ class DescribeRebateInfosNewRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2936,6 +3539,9 @@ class DescribeRebateInfosNewRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2977,6 +3583,9 @@ class DescribeRebateInfosNewResponse(AbstractModel):
 
     @property
     def RebateInfoSet(self):
+        """返佣信息列表
+        :rtype: list of RebateInfoElemNew
+        """
         return self._RebateInfoSet
 
     @RebateInfoSet.setter
@@ -2985,6 +3594,9 @@ class DescribeRebateInfosNewResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件返佣信息数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2993,6 +3605,9 @@ class DescribeRebateInfosNewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3031,6 +3646,9 @@ class DescribeRebateInfosRequest(AbstractModel):
 
     @property
     def RebateMonth(self):
+        """返佣月份，如2018-02
+        :rtype: str
+        """
         return self._RebateMonth
 
     @RebateMonth.setter
@@ -3039,6 +3657,9 @@ class DescribeRebateInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3047,6 +3668,9 @@ class DescribeRebateInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3088,6 +3712,9 @@ class DescribeRebateInfosResponse(AbstractModel):
 
     @property
     def RebateInfoSet(self):
+        """返佣信息列表
+        :rtype: list of RebateInfoElem
+        """
         return self._RebateInfoSet
 
     @RebateInfoSet.setter
@@ -3096,6 +3723,9 @@ class DescribeRebateInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件返佣信息数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3104,6 +3734,9 @@ class DescribeRebateInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3148,6 +3781,9 @@ class DescribeSalesmansRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3156,6 +3792,9 @@ class DescribeSalesmansRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3164,6 +3803,9 @@ class DescribeSalesmansRequest(AbstractModel):
 
     @property
     def SalesName(self):
+        """业务员姓名(模糊查询)
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -3172,6 +3814,9 @@ class DescribeSalesmansRequest(AbstractModel):
 
     @property
     def SalesUin(self):
+        """业务员ID
+        :rtype: str
+        """
         return self._SalesUin
 
     @SalesUin.setter
@@ -3180,6 +3825,9 @@ class DescribeSalesmansRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """ASC/DESC， 不区分大小写，按创建通过时间排序
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -3223,6 +3871,9 @@ class DescribeSalesmansResponse(AbstractModel):
 
     @property
     def AgentSalesmanSet(self):
+        """业务员列表
+        :rtype: list of AgentSalesmanElem
+        """
         return self._AgentSalesmanSet
 
     @AgentSalesmanSet.setter
@@ -3231,6 +3882,9 @@ class DescribeSalesmansResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的代客总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3239,6 +3893,9 @@ class DescribeSalesmansResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3289,6 +3946,9 @@ class DescribeUnbindClientListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """解绑状态：0:所有,1:审核中,2已解绑
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3297,6 +3957,9 @@ class DescribeUnbindClientListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3305,6 +3968,9 @@ class DescribeUnbindClientListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3313,6 +3979,9 @@ class DescribeUnbindClientListRequest(AbstractModel):
 
     @property
     def UnbindUin(self):
+        """解绑账号ID
+        :rtype: str
+        """
         return self._UnbindUin
 
     @UnbindUin.setter
@@ -3321,6 +3990,9 @@ class DescribeUnbindClientListRequest(AbstractModel):
 
     @property
     def ApplyTimeStart(self):
+        """解绑申请时间范围起始点
+        :rtype: str
+        """
         return self._ApplyTimeStart
 
     @ApplyTimeStart.setter
@@ -3329,6 +4001,9 @@ class DescribeUnbindClientListRequest(AbstractModel):
 
     @property
     def ApplyTimeEnd(self):
+        """解绑申请时间范围终止点
+        :rtype: str
+        """
         return self._ApplyTimeEnd
 
     @ApplyTimeEnd.setter
@@ -3337,6 +4012,9 @@ class DescribeUnbindClientListRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """对申请时间的升序降序，值：asc，desc
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -3382,6 +4060,9 @@ class DescribeUnbindClientListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的解绑客户数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3390,6 +4071,9 @@ class DescribeUnbindClientListResponse(AbstractModel):
 
     @property
     def UnbindClientList(self):
+        """符合条件的解绑客户列表
+        :rtype: list of UnbindClientElem
+        """
         return self._UnbindClientList
 
     @UnbindClientList.setter
@@ -3398,6 +4082,9 @@ class DescribeUnbindClientListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3433,6 +4120,9 @@ class ModifyClientRemarkRequest(AbstractModel):
 
     @property
     def ClientRemark(self):
+        """客户备注名称
+        :rtype: str
+        """
         return self._ClientRemark
 
     @ClientRemark.setter
@@ -3441,6 +4131,9 @@ class ModifyClientRemarkRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -3475,6 +4168,9 @@ class ModifyClientRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3503,6 +4199,9 @@ class ProductInfoElem(AbstractModel):
 
     @property
     def Name(self):
+        """产品属性
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3511,6 +4210,9 @@ class ProductInfoElem(AbstractModel):
 
     @property
     def Value(self):
+        """产品属性值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3539,16 +4241,22 @@ class RebateInfoElem(AbstractModel):
     def __init__(self):
         r"""
         :param _Uin: 代理商账号ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _RebateMonth: 返佣月份，如2018-02
+注意：此字段可能返回 null，表示取不到有效值。
         :type RebateMonth: str
         :param _Amt: 返佣金额，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :type Amt: int
         :param _MonthSales: 月度业绩，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :type MonthSales: int
         :param _QuarterSales: 季度业绩，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :type QuarterSales: int
         :param _ExceptionFlag: NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionFlag: str
         """
         self._Uin = None
@@ -3560,6 +4268,10 @@ class RebateInfoElem(AbstractModel):
 
     @property
     def Uin(self):
+        """代理商账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -3568,6 +4280,10 @@ class RebateInfoElem(AbstractModel):
 
     @property
     def RebateMonth(self):
+        """返佣月份，如2018-02
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RebateMonth
 
     @RebateMonth.setter
@@ -3576,6 +4292,10 @@ class RebateInfoElem(AbstractModel):
 
     @property
     def Amt(self):
+        """返佣金额，单位分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Amt
 
     @Amt.setter
@@ -3584,6 +4304,10 @@ class RebateInfoElem(AbstractModel):
 
     @property
     def MonthSales(self):
+        """月度业绩，单位分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MonthSales
 
     @MonthSales.setter
@@ -3592,6 +4316,10 @@ class RebateInfoElem(AbstractModel):
 
     @property
     def QuarterSales(self):
+        """季度业绩，单位分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._QuarterSales
 
     @QuarterSales.setter
@@ -3600,6 +4328,10 @@ class RebateInfoElem(AbstractModel):
 
     @property
     def ExceptionFlag(self):
+        """NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExceptionFlag
 
     @ExceptionFlag.setter
@@ -3653,6 +4385,9 @@ class RebateInfoElemNew(AbstractModel):
 
     @property
     def Uin(self):
+        """代理商账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -3661,6 +4396,9 @@ class RebateInfoElemNew(AbstractModel):
 
     @property
     def RebateMonth(self):
+        """返佣月份，如2018-02
+        :rtype: str
+        """
         return self._RebateMonth
 
     @RebateMonth.setter
@@ -3669,6 +4407,9 @@ class RebateInfoElemNew(AbstractModel):
 
     @property
     def Amt(self):
+        """返佣金额，单位分
+        :rtype: int
+        """
         return self._Amt
 
     @Amt.setter
@@ -3677,6 +4418,9 @@ class RebateInfoElemNew(AbstractModel):
 
     @property
     def MonthSales(self):
+        """月度业绩，单位分
+        :rtype: int
+        """
         return self._MonthSales
 
     @MonthSales.setter
@@ -3685,6 +4429,9 @@ class RebateInfoElemNew(AbstractModel):
 
     @property
     def QuarterSales(self):
+        """季度业绩，单位分
+        :rtype: int
+        """
         return self._QuarterSales
 
     @QuarterSales.setter
@@ -3693,6 +4440,9 @@ class RebateInfoElemNew(AbstractModel):
 
     @property
     def ExceptionFlag(self):
+        """NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+        :rtype: str
+        """
         return self._ExceptionFlag
 
     @ExceptionFlag.setter
@@ -3725,10 +4475,8 @@ class RefundMap(AbstractModel):
     def __init__(self):
         r"""
         :param _DealName: 退款单关联的原始子订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
         :param _RefundAmount: 退款金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :type RefundAmount: int
         """
         self._DealName = None
@@ -3736,6 +4484,9 @@ class RefundMap(AbstractModel):
 
     @property
     def DealName(self):
+        """退款单关联的原始子订单号
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -3744,6 +4495,9 @@ class RefundMap(AbstractModel):
 
     @property
     def RefundAmount(self):
+        """退款金额，单位分
+        :rtype: int
+        """
         return self._RefundAmount
 
     @RefundAmount.setter
@@ -3778,6 +4532,9 @@ class RemovePayRelationForClientRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """客户账号ID
+        :rtype: str
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -3811,6 +4568,9 @@ class RemovePayRelationForClientResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3836,10 +4596,8 @@ class UnbindClientElem(AbstractModel):
         :param _Status: 状态：0:审核中；1：已解绑；2：已撤销 3：关联撤销 4: 已驳回
         :type Status: int
         :param _ApplyTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyTime: str
         :param _ActionTime: 解绑/撤销时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTime: str
         """
         self._Uin = None
@@ -3850,6 +4608,9 @@ class UnbindClientElem(AbstractModel):
 
     @property
     def Uin(self):
+        """解绑账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -3858,6 +4619,9 @@ class UnbindClientElem(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3866,6 +4630,9 @@ class UnbindClientElem(AbstractModel):
 
     @property
     def Status(self):
+        """状态：0:审核中；1：已解绑；2：已撤销 3：关联撤销 4: 已驳回
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3874,6 +4641,9 @@ class UnbindClientElem(AbstractModel):
 
     @property
     def ApplyTime(self):
+        """申请时间
+        :rtype: str
+        """
         return self._ApplyTime
 
     @ApplyTime.setter
@@ -3882,6 +4652,9 @@ class UnbindClientElem(AbstractModel):
 
     @property
     def ActionTime(self):
+        """解绑/撤销时间
+        :rtype: str
+        """
         return self._ActionTime
 
     @ActionTime.setter

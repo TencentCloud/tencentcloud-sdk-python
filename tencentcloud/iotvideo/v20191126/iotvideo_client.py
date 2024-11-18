@@ -354,6 +354,29 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUploadTest(self, request):
+        """设备申请cos上传证书
+
+        :param request: Request instance for CreateUploadTest.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateUploadTestRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.CreateUploadTestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUploadTest", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUploadTestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUsrToken(self, request):
         """本接口（CreateUsrToken）用于终端用户获取IoT Video平台的accessToken，初始化SDK,连接到IoT Video接入服务器。
 
@@ -1351,6 +1374,29 @@ class IotvideoClient(AbstractClient):
             body = self.call("RefundStorageService", params, headers=headers)
             response = json.loads(body)
             model = models.RefundStorageServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewUploadTest(self, request):
+        """设备刷新cos上传证书
+
+        :param request: Request instance for RenewUploadTest.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.RenewUploadTestRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.RenewUploadTestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewUploadTest", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewUploadTestResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

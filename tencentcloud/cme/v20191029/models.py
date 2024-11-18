@@ -43,6 +43,9 @@ class AccountInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 Id。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -51,6 +54,9 @@ class AccountInfo(AbstractModel):
 
     @property
     def Phone(self):
+        """用户手机号码。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -59,6 +65,9 @@ class AccountInfo(AbstractModel):
 
     @property
     def Nick(self):
+        """用户昵称。
+        :rtype: str
+        """
         return self._Nick
 
     @Nick.setter
@@ -67,6 +76,11 @@ class AccountInfo(AbstractModel):
 
     @property
     def Status(self):
+        """账号状态，取值：
+<li>Normal：有效；</li>
+<li>Stopped：无效。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -111,6 +125,9 @@ class AddMemberInfo(AbstractModel):
 
     @property
     def MemberId(self):
+        """团队成员 ID。
+        :rtype: str
+        """
         return self._MemberId
 
     @MemberId.setter
@@ -119,6 +136,9 @@ class AddMemberInfo(AbstractModel):
 
     @property
     def Remark(self):
+        """团队成员备注。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -127,6 +147,11 @@ class AddMemberInfo(AbstractModel):
 
     @property
     def Role(self):
+        """团队成员角色，不填则默认添加普通成员。可选值：
+<li>Admin：团队管理员；</li>
+<li>Member：普通成员。</li>
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -171,6 +196,9 @@ class AddTeamMemberRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -179,6 +207,9 @@ class AddTeamMemberRequest(AbstractModel):
 
     @property
     def TeamId(self):
+        """团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -187,6 +218,9 @@ class AddTeamMemberRequest(AbstractModel):
 
     @property
     def TeamMembers(self):
+        """要添加的成员列表，一次最多添加30个成员。
+        :rtype: list of AddMemberInfo
+        """
         return self._TeamMembers
 
     @TeamMembers.setter
@@ -195,6 +229,9 @@ class AddTeamMemberRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向任意团队中添加成员。如果指定操作者，则操作者必须为管理员或者团队所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -236,6 +273,9 @@ class AddTeamMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -277,6 +317,9 @@ class AudioMaterial(AbstractModel):
 
     @property
     def MetaData(self):
+        """素材元信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -285,6 +328,9 @@ class AudioMaterial(AbstractModel):
 
     @property
     def MaterialUrl(self):
+        """素材媒体文件的播放 URL 地址。
+        :rtype: str
+        """
         return self._MaterialUrl
 
     @MaterialUrl.setter
@@ -293,6 +339,9 @@ class AudioMaterial(AbstractModel):
 
     @property
     def CoverUrl(self):
+        """素材媒体文件的封面图片地址。
+        :rtype: str
+        """
         return self._CoverUrl
 
     @CoverUrl.setter
@@ -301,6 +350,10 @@ class AudioMaterial(AbstractModel):
 
     @property
     def MaterialStatus(self):
+        """素材状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`
+        """
         return self._MaterialStatus
 
     @MaterialStatus.setter
@@ -309,6 +362,9 @@ class AudioMaterial(AbstractModel):
 
     @property
     def OriginalUrl(self):
+        """素材媒体文件的原始 URL 地址。
+        :rtype: str
+        """
         return self._OriginalUrl
 
     @OriginalUrl.setter
@@ -317,6 +373,9 @@ class AudioMaterial(AbstractModel):
 
     @property
     def VodFileId(self):
+        """云点播媒资 FileId。
+        :rtype: str
+        """
         return self._VodFileId
 
     @VodFileId.setter
@@ -365,6 +424,9 @@ class AudioStreamInfo(AbstractModel):
 
     @property
     def Bitrate(self):
+        """码率，单位：bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -373,6 +435,9 @@ class AudioStreamInfo(AbstractModel):
 
     @property
     def SamplingRate(self):
+        """采样率，单位：hz。
+        :rtype: int
+        """
         return self._SamplingRate
 
     @SamplingRate.setter
@@ -381,6 +446,9 @@ class AudioStreamInfo(AbstractModel):
 
     @property
     def Codec(self):
+        """编码格式。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -439,6 +507,14 @@ class AudioTrackItem(AbstractModel):
 
     @property
     def SourceType(self):
+        """音频媒体来源类型，取值有：
+<ul>
+<li>VOD ：素材来源于云点播文件 ；</li>
+<li>CME ：视频来源于制作云媒体文件 ；</li>
+<li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
+</ul>
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -447,6 +523,18 @@ class AudioTrackItem(AbstractModel):
 
     @property
     def SourceMedia(self):
+        """音频媒体，可取值为：
+<ul>
+<li>当 SourceType 为 VOD 时，参数填云点播 FileId ；</li>
+<li>当 SourceType 为 CME 时，参数填多媒体创作引擎媒体 Id；</li>
+<li>当 SourceType 为 EXTERNAL 时，目前仅支持外部媒体 URL(如`https://www.example.com/a.mp3`)，参数填写规则请参见注意事项。</li>
+</ul>
+
+注意：
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `https` 时(如：`https://www.example.com/a.mp3`)，参数为：`1000000:www.example.com/a.mp3`。</li>
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `http` 时(如：`http://www.example.com/b.mp3`)，参数为：`1000001:www.example.com/b.mp3`。</li>
+        :rtype: str
+        """
         return self._SourceMedia
 
     @SourceMedia.setter
@@ -455,6 +543,9 @@ class AudioTrackItem(AbstractModel):
 
     @property
     def SourceMediaStartTime(self):
+        """音频片段取自媒体文件的起始时间，单位为秒。0 表示从媒体开始位置截取。默认为0。
+        :rtype: float
+        """
         return self._SourceMediaStartTime
 
     @SourceMediaStartTime.setter
@@ -463,6 +554,9 @@ class AudioTrackItem(AbstractModel):
 
     @property
     def Duration(self):
+        """音频片段的时长，单位为秒。默认和媒体本身长度一致，表示截取全部媒体。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -506,6 +600,9 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def Authorizee(self):
+        """被授权者实体。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Authorizee
 
     @Authorizee.setter
@@ -514,6 +611,13 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def PermissionSet(self):
+        """详细授权值。 取值有：
+<li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中。</li>
+<li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
+<li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
+<li>W：可修改、删除媒资。</li>
+        :rtype: list of str
+        """
         return self._PermissionSet
 
     @PermissionSet.setter
@@ -555,6 +659,11 @@ class Authorizer(AbstractModel):
 
     @property
     def Type(self):
+        """授权者类型，取值有：
+<li>PERSON：个人。</li>
+<li>TEAM：团队。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -563,6 +672,9 @@ class Authorizer(AbstractModel):
 
     @property
     def Id(self):
+        """Id，当 Type=PERSON，取值为用户 Id。当Type=TEAM，取值为团队 ID。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -612,6 +724,9 @@ class CMEExportInfo(AbstractModel):
 
     @property
     def Owner(self):
+        """导出媒体归属，个人或团队。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -620,6 +735,9 @@ class CMEExportInfo(AbstractModel):
 
     @property
     def Name(self):
+        """导出的媒体名称，不得超过30个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -628,6 +746,9 @@ class CMEExportInfo(AbstractModel):
 
     @property
     def Description(self):
+        """导出的媒体信息，不得超过50个字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -636,6 +757,9 @@ class CMEExportInfo(AbstractModel):
 
     @property
     def ClassPath(self):
+        """导出的媒体分类路径，长度不能超过15字符。不存在默认创建。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -644,6 +768,9 @@ class CMEExportInfo(AbstractModel):
 
     @property
     def TagSet(self):
+        """导出的媒体标签，单个标签不得超过10个字符。
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -652,6 +779,9 @@ class CMEExportInfo(AbstractModel):
 
     @property
     def ThirdPartyPublishInfos(self):
+        """第三方平台发布信息列表。暂未正式对外，请勿使用。
+        :rtype: list of ThirdPartyPublishInfo
+        """
         return self._ThirdPartyPublishInfos
 
     @ThirdPartyPublishInfos.setter
@@ -700,6 +830,9 @@ class ClassCreatedEvent(AbstractModel):
 
     @property
     def Owner(self):
+        """分类归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -708,6 +841,9 @@ class ClassCreatedEvent(AbstractModel):
 
     @property
     def ClassPath(self):
+        """分类路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -747,6 +883,9 @@ class ClassDeletedEvent(AbstractModel):
 
     @property
     def Owner(self):
+        """删除的分类归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -755,6 +894,9 @@ class ClassDeletedEvent(AbstractModel):
 
     @property
     def ClassPathSet(self):
+        """删除的分类路径列表。
+        :rtype: list of str
+        """
         return self._ClassPathSet
 
     @ClassPathSet.setter
@@ -794,6 +936,9 @@ class ClassInfo(AbstractModel):
 
     @property
     def Owner(self):
+        """归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -802,6 +947,9 @@ class ClassInfo(AbstractModel):
 
     @property
     def ClassPath(self):
+        """分类路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -847,6 +995,9 @@ class ClassMovedEvent(AbstractModel):
 
     @property
     def SourceOwner(self):
+        """源分类归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._SourceOwner
 
     @SourceOwner.setter
@@ -855,6 +1006,9 @@ class ClassMovedEvent(AbstractModel):
 
     @property
     def SourceClassPathSet(self):
+        """源分类路径列表。
+        :rtype: list of str
+        """
         return self._SourceClassPathSet
 
     @SourceClassPathSet.setter
@@ -863,6 +1017,9 @@ class ClassMovedEvent(AbstractModel):
 
     @property
     def DestinationOwner(self):
+        """目标分类归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._DestinationOwner
 
     @DestinationOwner.setter
@@ -871,6 +1028,9 @@ class ClassMovedEvent(AbstractModel):
 
     @property
     def DestinationClassPath(self):
+        """目标分类归属。
+        :rtype: str
+        """
         return self._DestinationClassPath
 
     @DestinationClassPath.setter
@@ -923,6 +1083,9 @@ class CopyProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -931,6 +1094,9 @@ class CopyProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """被复制的项目 ID。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -939,6 +1105,9 @@ class CopyProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """复制后的项目名称，不填为原项目名称+"(副本)"。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -947,6 +1116,9 @@ class CopyProjectRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """复制后的项目归属者，不填为原项目归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -955,6 +1127,9 @@ class CopyProjectRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -997,6 +1172,9 @@ class CopyProjectResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """复制后的项目 ID。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1005,6 +1183,9 @@ class CopyProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1040,6 +1221,9 @@ class CosPublishInputInfo(AbstractModel):
 
     @property
     def Bucket(self):
+        """发布生成的对象存储文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -1048,6 +1232,9 @@ class CosPublishInputInfo(AbstractModel):
 
     @property
     def Region(self):
+        """发布生成的对象存储文件所在的 COS Bucket 所属园区，如 ap-chongqing。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1056,6 +1243,9 @@ class CosPublishInputInfo(AbstractModel):
 
     @property
     def VideoKey(self):
+        """发布生成的视频在 COS 存储的对象键。对象键（ObjectKey）是对象（Object）在存储桶（Bucket）中的唯一标识。
+        :rtype: str
+        """
         return self._VideoKey
 
     @VideoKey.setter
@@ -1064,6 +1254,9 @@ class CosPublishInputInfo(AbstractModel):
 
     @property
     def CoverKey(self):
+        """发布生成的封面在 COS 存储的对象键。
+        :rtype: str
+        """
         return self._CoverKey
 
     @CoverKey.setter
@@ -1109,6 +1302,9 @@ class CreateClassRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -1117,6 +1313,9 @@ class CreateClassRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -1125,6 +1324,9 @@ class CreateClassRequest(AbstractModel):
 
     @property
     def ClassPath(self):
+        """分类路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -1133,6 +1335,9 @@ class CreateClassRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。填写用户的 Id，用于标识调用者及校验分类创建权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -1171,6 +1376,9 @@ class CreateClassResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1221,6 +1429,9 @@ class CreateLinkRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -1229,6 +1440,11 @@ class CreateLinkRequest(AbstractModel):
 
     @property
     def Type(self):
+        """链接类型，可取值有:
+<li>CLASS: 分类链接；</li>
+<li> MATERIAL：媒体文件链接。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1237,6 +1453,9 @@ class CreateLinkRequest(AbstractModel):
 
     @property
     def Name(self):
+        """链接名称，不能超过30个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1245,6 +1464,9 @@ class CreateLinkRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """链接归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -1253,6 +1475,11 @@ class CreateLinkRequest(AbstractModel):
 
     @property
     def DestinationId(self):
+        """目标资源Id。可取值有：
+<li>当 Type 为 MATERIAL 时填媒体 ID；</li>
+<li>当 Type 为 CLASS 时填写分类路径。</li>
+        :rtype: str
+        """
         return self._DestinationId
 
     @DestinationId.setter
@@ -1261,6 +1488,9 @@ class CreateLinkRequest(AbstractModel):
 
     @property
     def DestinationOwner(self):
+        """目标资源归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._DestinationOwner
 
     @DestinationOwner.setter
@@ -1269,6 +1499,9 @@ class CreateLinkRequest(AbstractModel):
 
     @property
     def ClassPath(self):
+        """链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -1277,6 +1510,9 @@ class CreateLinkRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以创建任意源及目标资源的链接。如果指定操作者，则操作者必须对源资源有读权限，对目标媒体有写权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -1324,6 +1560,9 @@ class CreateLinkResponse(AbstractModel):
 
     @property
     def MaterialId(self):
+        """新建链接的媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -1332,6 +1571,9 @@ class CreateLinkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1411,6 +1653,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -1419,6 +1664,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """项目名称，不可超过30个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1427,6 +1675,11 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """项目归属者，即项目的所有者，后续操作只有该所有者有权限操作。
+
+注：目前所有项目只能设置归属个人，暂不支持团队项目。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -1435,6 +1688,15 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Category(self):
+        """项目类别，取值有：
+<li>VIDEO_EDIT：视频编辑。</li>
+<li>SWITCHER：导播台。</li>
+<li>VIDEO_SEGMENTATION：视频拆条。</li>
+<li>STREAM_CONNECT：云转推。</li>
+<li>RECORD_REPLAY：录制回放。</li>
+<li>MEDIA_CAST：媒体转推。</li>
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -1443,6 +1705,14 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """项目模式，一个项目可以有多种模式并相互切换。
+当 Category 为 VIDEO_EDIT 时，可选模式有：
+<li>Default：默认模式，即普通视频编辑项目。</li>
+<li>VideoEditTemplate：剪辑模板制作模式，用于制作剪辑模板。</li>
+
+注：不填则为默认模式。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -1451,6 +1721,10 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def AspectRatio(self):
+        """画布宽高比。
+该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
+        :rtype: str
+        """
         return self._AspectRatio
 
     @AspectRatio.setter
@@ -1459,6 +1733,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Description(self):
+        """项目描述信息。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1467,6 +1744,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def SwitcherProjectInput(self):
+        """导播台项目输入信息，仅当项目类型为 SWITCHER 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.SwitcherProjectInput`
+        """
         return self._SwitcherProjectInput
 
     @SwitcherProjectInput.setter
@@ -1475,6 +1755,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def LiveStreamClipProjectInput(self):
+        """直播剪辑项目输入信息，暂未开放，请勿使用。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.LiveStreamClipProjectInput`
+        """
         return self._LiveStreamClipProjectInput
 
     @LiveStreamClipProjectInput.setter
@@ -1483,6 +1766,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def VideoEditProjectInput(self):
+        """视频编辑项目输入信息，仅当项目类型为 VIDEO_EDIT 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectInput`
+        """
         return self._VideoEditProjectInput
 
     @VideoEditProjectInput.setter
@@ -1491,6 +1777,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def VideoSegmentationProjectInput(self):
+        """视频拆条项目输入信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoSegmentationProjectInput`
+        """
         return self._VideoSegmentationProjectInput
 
     @VideoSegmentationProjectInput.setter
@@ -1499,6 +1788,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def StreamConnectProjectInput(self):
+        """云转推项目输入信息，仅当项目类型为 STREAM_CONNECT 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInput`
+        """
         return self._StreamConnectProjectInput
 
     @StreamConnectProjectInput.setter
@@ -1507,6 +1799,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def RecordReplayProjectInput(self):
+        """录制回放项目输入信息，仅当项目类型为 RECORD_REPLAY 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.RecordReplayProjectInput`
+        """
         return self._RecordReplayProjectInput
 
     @RecordReplayProjectInput.setter
@@ -1515,6 +1810,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def MediaCastProjectInput(self):
+        """媒体转推项目输入信息，仅当项目类型为 MEDIA_CAST 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastProjectInput`
+        """
         return self._MediaCastProjectInput
 
     @MediaCastProjectInput.setter
@@ -1583,6 +1881,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1591,6 +1892,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def RtmpPushInputInfoSet(self):
+        """<li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为2 ，第0个代表主输入源推流信息，第1个代表备输入源推流信息。只有当各自输入源类型为推流时才有有效内容。</li>
+        :rtype: list of RtmpPushInputInfo
+        """
         return self._RtmpPushInputInfoSet
 
     @RtmpPushInputInfoSet.setter
@@ -1599,6 +1903,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1643,6 +1950,9 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -1651,6 +1961,9 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def Name(self):
+        """团队名称，限30个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1659,6 +1972,9 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def OwnerId(self):
+        """团队所有者，指定用户 ID。
+        :rtype: str
+        """
         return self._OwnerId
 
     @OwnerId.setter
@@ -1667,6 +1983,9 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def OwnerRemark(self):
+        """团队所有者的备注，限30个字符。
+        :rtype: str
+        """
         return self._OwnerRemark
 
     @OwnerRemark.setter
@@ -1675,6 +1994,9 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def TeamId(self):
+        """自定义团队 ID。创建后不可修改，限20个英文字符及"-"。同时不能以 cmetid_开头。不填会生成默认团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -1715,6 +2037,9 @@ class CreateTeamResponse(AbstractModel):
 
     @property
     def TeamId(self):
+        """创建的团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -1723,6 +2048,9 @@ class CreateTeamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1776,6 +2104,9 @@ class CreateVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -1784,6 +2115,9 @@ class CreateVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Name(self):
+        """配置名，可用来简单描述该配置的作用。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1792,6 +2126,12 @@ class CreateVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Container(self):
+        """封装格式，可选值：
+<li>mp4 ；</li>
+<li>mov 。</li>
+默认值：mp4。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -1800,6 +2140,12 @@ class CreateVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -1808,6 +2154,12 @@ class CreateVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -1816,6 +2168,9 @@ class CreateVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def VideoSetting(self):
+        """编码配置的视频设置。默认值参考VideoEncodingPresetVideoSetting 定义。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetVideoSetting`
+        """
         return self._VideoSetting
 
     @VideoSetting.setter
@@ -1824,6 +2179,9 @@ class CreateVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def AudioSetting(self):
+        """编码配置的音频设置。默认值参考VideoEncodingPresetAudioSetting 定义。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetAudioSetting`
+        """
         return self._AudioSetting
 
     @AudioSetting.setter
@@ -1870,6 +2228,9 @@ class CreateVideoEncodingPresetResponse(AbstractModel):
 
     @property
     def Id(self):
+        """模板 ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1878,6 +2239,9 @@ class CreateVideoEncodingPresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1913,6 +2277,9 @@ class DeleteClassRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -1921,6 +2288,9 @@ class DeleteClassRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -1929,6 +2299,9 @@ class DeleteClassRequest(AbstractModel):
 
     @property
     def ClassPath(self):
+        """分类路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -1937,6 +2310,9 @@ class DeleteClassRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -1975,6 +2351,9 @@ class DeleteClassResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2003,6 +2382,9 @@ class DeleteLoginStatusRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2011,6 +2393,9 @@ class DeleteLoginStatusRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """用户 Id 列表，N 从 0 开始取值，最大 19。
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -2045,6 +2430,9 @@ class DeleteLoginStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2076,6 +2464,9 @@ class DeleteMaterialRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2084,6 +2475,9 @@ class DeleteMaterialRequest(AbstractModel):
 
     @property
     def MaterialId(self):
+        """媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -2092,6 +2486,9 @@ class DeleteMaterialRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。填写用户的 Id，用于标识调用者及校验媒体删除权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2127,6 +2524,9 @@ class DeleteMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2158,6 +2558,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2166,6 +2569,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """要删除的项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2174,6 +2580,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除一切项目。如果指定操作者，则操作者必须为项目所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2209,6 +2618,9 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2243,6 +2655,9 @@ class DeleteTeamMembersRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2251,6 +2666,9 @@ class DeleteTeamMembersRequest(AbstractModel):
 
     @property
     def TeamId(self):
+        """团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -2259,6 +2677,9 @@ class DeleteTeamMembersRequest(AbstractModel):
 
     @property
     def MemberIds(self):
+        """要删除的成员列表。
+        :rtype: list of str
+        """
         return self._MemberIds
 
     @MemberIds.setter
@@ -2267,6 +2688,9 @@ class DeleteTeamMembersRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除所有团队的成员。如果指定操作者，则操作者必须为团队管理员或者所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2303,6 +2727,9 @@ class DeleteTeamMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2334,6 +2761,9 @@ class DeleteTeamRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2342,6 +2772,9 @@ class DeleteTeamRequest(AbstractModel):
 
     @property
     def TeamId(self):
+        """要删除的团队  ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -2350,6 +2783,9 @@ class DeleteTeamRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除所有团队。如果指定操作者，则操作者必须为团队所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2385,6 +2821,9 @@ class DeleteTeamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2413,6 +2852,9 @@ class DeleteVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2421,6 +2863,9 @@ class DeleteVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Id(self):
+        """要删除的视频编码配置 ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2455,6 +2900,9 @@ class DeleteVideoEncodingPresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2489,6 +2937,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2497,6 +2948,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Phone(self):
+        """手机号码。指定手机号获取账号信息，目前仅支持国内手机号，且号码不加地区码 `+86` 等。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -2505,6 +2959,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2513,6 +2970,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：10，最大值：20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2555,6 +3015,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合搜索条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2563,6 +3026,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def AccountInfoSet(self):
+        """账号信息列表。
+        :rtype: list of AccountInfo
+        """
         return self._AccountInfoSet
 
     @AccountInfoSet.setter
@@ -2571,6 +3037,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2609,6 +3078,9 @@ class DescribeClassRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2617,6 +3089,9 @@ class DescribeClassRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -2625,6 +3100,9 @@ class DescribeClassRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2665,6 +3143,9 @@ class DescribeClassResponse(AbstractModel):
 
     @property
     def ClassInfoSet(self):
+        """分类信息列表。
+        :rtype: list of ClassInfo
+        """
         return self._ClassInfoSet
 
     @ClassInfoSet.setter
@@ -2673,6 +3154,9 @@ class DescribeClassResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2713,6 +3197,9 @@ class DescribeJoinTeamsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2721,6 +3208,9 @@ class DescribeJoinTeamsRequest(AbstractModel):
 
     @property
     def MemberId(self):
+        """团队成员　ID。
+        :rtype: str
+        """
         return self._MemberId
 
     @MemberId.setter
@@ -2729,6 +3219,9 @@ class DescribeJoinTeamsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2737,6 +3230,9 @@ class DescribeJoinTeamsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：30，最大值：30。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2779,6 +3275,9 @@ class DescribeJoinTeamsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2787,6 +3286,9 @@ class DescribeJoinTeamsResponse(AbstractModel):
 
     @property
     def TeamSet(self):
+        """团队列表。
+        :rtype: list of JoinTeamInfo
+        """
         return self._TeamSet
 
     @TeamSet.setter
@@ -2795,6 +3297,9 @@ class DescribeJoinTeamsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2830,6 +3335,9 @@ class DescribeLoginStatusRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2838,6 +3346,9 @@ class DescribeLoginStatusRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """用户 Id 列表，N 从0开始取值，最大19。
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -2875,6 +3386,9 @@ class DescribeLoginStatusResponse(AbstractModel):
 
     @property
     def LoginStatusInfoSet(self):
+        """用户登录状态列表。
+        :rtype: list of LoginStatusInfo
+        """
         return self._LoginStatusInfoSet
 
     @LoginStatusInfoSet.setter
@@ -2883,6 +3397,9 @@ class DescribeLoginStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2925,6 +3442,9 @@ class DescribeMaterialsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2933,6 +3453,9 @@ class DescribeMaterialsRequest(AbstractModel):
 
     @property
     def MaterialIds(self):
+        """媒体 ID 列表，一次最多可拉取20个媒体的信息。
+        :rtype: list of str
+        """
         return self._MaterialIds
 
     @MaterialIds.setter
@@ -2941,6 +3464,11 @@ class DescribeMaterialsRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """列表排序，支持下列排序字段：
+<li>CreateTime：创建时间；</li>
+<li>UpdateTime：更新时间。</li>
+        :rtype: :class:`tencentcloud.cme.v20191029.models.SortBy`
+        """
         return self._Sort
 
     @Sort.setter
@@ -2949,6 +3477,9 @@ class DescribeMaterialsRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取任意媒体的信息。如果指定操作者，则操作者必须对媒体有读权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2990,6 +3521,9 @@ class DescribeMaterialsResponse(AbstractModel):
 
     @property
     def MaterialInfoSet(self):
+        """媒体列表信息。
+        :rtype: list of MaterialInfo
+        """
         return self._MaterialInfoSet
 
     @MaterialInfoSet.setter
@@ -2998,6 +3532,9 @@ class DescribeMaterialsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3038,6 +3575,9 @@ class DescribePlatformsRequest(AbstractModel):
 
     @property
     def Platforms(self):
+        """平台 Id 列表。如果不填，则不按平台 Id 进行过滤。
+        :rtype: list of str
+        """
         return self._Platforms
 
     @Platforms.setter
@@ -3046,6 +3586,9 @@ class DescribePlatformsRequest(AbstractModel):
 
     @property
     def LicenseIds(self):
+        """平台绑定的 License Id 列表。如果不填，则不按平台绑定的 License Id 进行过滤。
+        :rtype: list of str
+        """
         return self._LicenseIds
 
     @LicenseIds.setter
@@ -3054,6 +3597,9 @@ class DescribePlatformsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3062,6 +3608,9 @@ class DescribePlatformsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：10，最大值：20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3104,6 +3653,9 @@ class DescribePlatformsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3112,6 +3664,9 @@ class DescribePlatformsResponse(AbstractModel):
 
     @property
     def PlatformInfoSet(self):
+        """平台信息列表。
+        :rtype: list of PlatformInfo
+        """
         return self._PlatformInfoSet
 
     @PlatformInfoSet.setter
@@ -3120,6 +3675,9 @@ class DescribePlatformsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3196,6 +3754,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3204,6 +3765,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
+        """项目 Id 过滤参数列表，最大支持20个项目 Id 过滤。如果不填不需要项目 Id 进行过滤。
+        :rtype: list of str
+        """
         return self._ProjectIds
 
     @ProjectIds.setter
@@ -3212,6 +3776,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def AspectRatioSet(self):
+        """画布宽高比过滤参数列表。如果不填则不用画布宽高比进行过滤。
+        :rtype: list of str
+        """
         return self._AspectRatioSet
 
     @AspectRatioSet.setter
@@ -3220,6 +3787,17 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def CategorySet(self):
+        """项目类型过滤参数列表，取值有：
+<li>VIDEO_EDIT：视频编辑。</li>
+<li>SWITCHER：导播台。</li>
+<li>VIDEO_SEGMENTATION：视频拆条。</li>
+<li>STREAM_CONNECT：云转推。</li>
+<li>RECORD_REPLAY：录制回放。</li>
+<li>MEDIA_CAST：点播转直播。</li>
+
+注：如果不填则不使用项目类型进行过滤。
+        :rtype: list of str
+        """
         return self._CategorySet
 
     @CategorySet.setter
@@ -3228,6 +3806,14 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Modes(self):
+        """项目模式过滤参数列表，一个项目可以有多种模式并相互切换。
+当 Category 为 VIDEO_EDIT 时，可选模式有：
+<li>Default：默认模式。</li>
+<li>VideoEditTemplate：视频编辑模板制作模式。</li>
+
+注：不填不使用项目模式进行过滤。
+        :rtype: list of str
+        """
         return self._Modes
 
     @Modes.setter
@@ -3236,6 +3822,13 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """结果排序方式，支持下列排序字段：
+<li>CreateTime：创建时间；</li>
+<li>UpdateTime：更新时间。</li>
+
+注：如不填，则使用项目创建时间倒序排列。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.SortBy`
+        """
         return self._Sort
 
     @Sort.setter
@@ -3244,6 +3837,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """项目所有者，目前仅支持个人项目过滤。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -3252,6 +3848,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3260,6 +3859,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3268,6 +3870,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询一切用户项目信息。如果指定操作者，则操作者必须为项目所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -3320,6 +3925,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3328,6 +3936,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def ProjectInfoSet(self):
+        """项目信息列表。
+        :rtype: list of ProjectInfo
+        """
         return self._ProjectInfoSet
 
     @ProjectInfoSet.setter
@@ -3336,6 +3947,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3377,6 +3991,9 @@ class DescribeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3385,6 +4002,9 @@ class DescribeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -3393,6 +4013,9 @@ class DescribeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Resource(self):
+        """资源。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Resource`
+        """
         return self._Resource
 
     @Resource.setter
@@ -3401,6 +4024,9 @@ class DescribeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询任意资源的被授权情况。如果指定操作者，则操作者必须对被授权资源有读权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -3448,6 +4074,10 @@ class DescribeResourceAuthorizationResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的资源授权记录总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3456,6 +4086,9 @@ class DescribeResourceAuthorizationResponse(AbstractModel):
 
     @property
     def AuthorizationInfoSet(self):
+        """授权信息列表。
+        :rtype: list of AuthorizationInfo
+        """
         return self._AuthorizationInfoSet
 
     @AuthorizationInfoSet.setter
@@ -3464,6 +4097,9 @@ class DescribeResourceAuthorizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3502,6 +4138,9 @@ class DescribeSharedSpaceRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3510,6 +4149,9 @@ class DescribeSharedSpaceRequest(AbstractModel):
 
     @property
     def Authorizee(self):
+        """被授权目标，个人或团队。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Authorizee
 
     @Authorizee.setter
@@ -3518,6 +4160,9 @@ class DescribeSharedSpaceRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询任意个人或者团队的共享空间。如果指定操作者，则操作者必须本人或者团队成员。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -3561,6 +4206,9 @@ class DescribeSharedSpaceResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询到的共享空间总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3569,6 +4217,9 @@ class DescribeSharedSpaceResponse(AbstractModel):
 
     @property
     def AuthorizerSet(self):
+        """各个共享空间对应的授权者信息。
+        :rtype: list of Authorizer
+        """
         return self._AuthorizerSet
 
     @AuthorizerSet.setter
@@ -3577,6 +4228,9 @@ class DescribeSharedSpaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3615,6 +4269,9 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3623,6 +4280,9 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3631,6 +4291,9 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取任意任务信息。如果指定操作者，则操作者需要是任务发起者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -3694,6 +4357,12 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，取值有：
+<li>PROCESSING：处理中：</li>
+<li>SUCCESS：成功；</li>
+<li>FAIL：失败。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3702,6 +4371,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务进度，取值为：0~100。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -3710,6 +4382,11 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码。
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -3718,6 +4395,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -3726,6 +4406,10 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，取值有：
+<li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -3734,6 +4418,10 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def VideoEditProjectOutput(self):
+        """导出项目输出信息。仅当 TaskType 为 VIDEO_EDIT_PROJECT_EXPORT 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectOutput`
+        """
         return self._VideoEditProjectOutput
 
     @VideoEditProjectOutput.setter
@@ -3742,6 +4430,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3750,6 +4441,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3810,6 +4504,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3818,6 +4515,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id，使用项目 Id 进行过滤。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3826,6 +4526,12 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def TaskTypeSet(self):
+        """任务类型集合，取值有：
+<li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
+
+注：不填不使用任务类型进行过滤。
+        :rtype: list of str
+        """
         return self._TaskTypeSet
 
     @TaskTypeSet.setter
@@ -3834,6 +4540,14 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def StatusSet(self):
+        """任务状态集合，取值有：
+<li>PROCESSING：处理中；</li>
+<li>SUCCESS：成功；</li>
+<li>FAIL：失败。</li>
+
+注：不填则不使用任务状态进行过滤。
+        :rtype: list of str
+        """
         return self._StatusSet
 
     @StatusSet.setter
@@ -3842,6 +4556,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3850,6 +4567,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：10。最大值：20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3858,6 +4578,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取所有任务信息。如果指定操作者，则操作者需要是任务发起者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -3903,6 +4626,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合搜索条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3911,6 +4637,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskBaseInfoSet(self):
+        """任务基础信息列表。
+        :rtype: list of TaskBaseInfo
+        """
         return self._TaskBaseInfoSet
 
     @TaskBaseInfoSet.setter
@@ -3919,6 +4648,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3966,6 +4698,9 @@ class DescribeTeamMembersRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3974,6 +4709,9 @@ class DescribeTeamMembersRequest(AbstractModel):
 
     @property
     def TeamId(self):
+        """团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -3982,6 +4720,9 @@ class DescribeTeamMembersRequest(AbstractModel):
 
     @property
     def MemberIds(self):
+        """成员 ID 列表，限指定30个指定成员。如不填，则返回指定团队下的所有成员。
+        :rtype: list of str
+        """
         return self._MemberIds
 
     @MemberIds.setter
@@ -3990,6 +4731,9 @@ class DescribeTeamMembersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3998,6 +4742,9 @@ class DescribeTeamMembersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：30，最大值：30。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4006,6 +4753,9 @@ class DescribeTeamMembersRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以拉取任意团队成员的信息。如果指定操作者，则操作者必须为团队成员。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -4050,6 +4800,9 @@ class DescribeTeamMembersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4058,6 +4811,9 @@ class DescribeTeamMembersResponse(AbstractModel):
 
     @property
     def MemberSet(self):
+        """团队成员列表。
+        :rtype: list of TeamMemberInfo
+        """
         return self._MemberSet
 
     @MemberSet.setter
@@ -4066,6 +4822,9 @@ class DescribeTeamMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4107,6 +4866,9 @@ class DescribeTeamsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -4115,6 +4877,9 @@ class DescribeTeamsRequest(AbstractModel):
 
     @property
     def TeamIds(self):
+        """团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。
+        :rtype: list of str
+        """
         return self._TeamIds
 
     @TeamIds.setter
@@ -4123,6 +4888,9 @@ class DescribeTeamsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4131,6 +4899,9 @@ class DescribeTeamsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：20，最大值：30。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4173,6 +4944,9 @@ class DescribeTeamsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4181,6 +4955,9 @@ class DescribeTeamsResponse(AbstractModel):
 
     @property
     def TeamSet(self):
+        """团队列表。
+        :rtype: list of TeamInfo
+        """
         return self._TeamSet
 
     @TeamSet.setter
@@ -4189,6 +4966,9 @@ class DescribeTeamsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4230,6 +5010,9 @@ class DescribeVideoEncodingPresetsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -4238,6 +5021,9 @@ class DescribeVideoEncodingPresetsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """要查询的配置 ID 列表。填写该参数则按照配置 ID 进行查询。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -4246,6 +5032,9 @@ class DescribeVideoEncodingPresetsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页大小，默认20。最大值50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4254,6 +5043,9 @@ class DescribeVideoEncodingPresetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页起始，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4296,6 +5088,9 @@ class DescribeVideoEncodingPresetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的编码配置总个数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4304,6 +5099,9 @@ class DescribeVideoEncodingPresetsResponse(AbstractModel):
 
     @property
     def VideoEncodingPresetSet(self):
+        """视频编码配置信息。
+        :rtype: list of VideoEncodingPreset
+        """
         return self._VideoEncodingPresetSet
 
     @VideoEncodingPresetSet.setter
@@ -4312,6 +5110,9 @@ class DescribeVideoEncodingPresetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4344,6 +5145,9 @@ class EmptyTrackItem(AbstractModel):
 
     @property
     def Duration(self):
+        """持续时间，单位为秒。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -4382,6 +5186,11 @@ class Entity(AbstractModel):
 
     @property
     def Type(self):
+        """类型，取值有：
+<li>PERSON：个人。</li>
+<li>TEAM：团队。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4390,6 +5199,9 @@ class Entity(AbstractModel):
 
     @property
     def Id(self):
+        """Id，当 Type=PERSON，取值为用户 Id，当 Type=TEAM，取值为团队 Id。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4490,6 +5302,22 @@ class EventContent(AbstractModel):
 
     @property
     def EventType(self):
+        """事件类型，可取值有：
+<li>Storage.NewFileCreated：新文件产生事件；</li>
+<li>Project.StreamConnect.StatusChanged：云转推项目状态变更事件；</li>
+<li>Project.Switcher.StatusChanged：导播台项目状态变更事件；</li>
+<li>Material.Imported：媒体导入事件；</li>
+<li>Material.Added：媒体添加事件；</li>
+<li>Material.Moved：媒体移动事件；</li>
+<li>Material.Modified：媒体变更事件；</li>
+<li>Material.Deleted：媒体删除事件；</li>
+<li>Class.Created：分类新增事件；</li>
+<li>Class.Moved：分类移动事件；</li>
+<li>Class.Deleted：分类删除事件；</li>
+<li>Task.VideoExportCompleted：视频导出完成事件； </li>
+<li>Project.MediaCast.StatusChanged：点播转直播项目状态变更事件。 </li>
+        :rtype: str
+        """
         return self._EventType
 
     @EventType.setter
@@ -4498,6 +5326,9 @@ class EventContent(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者，表示触发事件的操作者。如果是 `cmeid_system` 表示平台管理员操作。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -4506,6 +5337,9 @@ class EventContent(AbstractModel):
 
     @property
     def StorageNewFileCreatedEvent(self):
+        """新文件产生事件。仅当 EventType 为 Storage.NewFileCreated 时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StorageNewFileCreatedEvent`
+        """
         return self._StorageNewFileCreatedEvent
 
     @StorageNewFileCreatedEvent.setter
@@ -4514,6 +5348,9 @@ class EventContent(AbstractModel):
 
     @property
     def ProjectStreamConnectStatusChangedEvent(self):
+        """云转推项目状态变更事件。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ProjectStreamConnectStatusChangedEvent`
+        """
         return self._ProjectStreamConnectStatusChangedEvent
 
     @ProjectStreamConnectStatusChangedEvent.setter
@@ -4522,6 +5359,10 @@ class EventContent(AbstractModel):
 
     @property
     def ProjectSwitcherStatusChangedEvent(self):
+        """导播台项目状态变更事件。仅当 EventType 为 Project.Switcher.StatusChanged 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ProjectSwitcherStatusChangedEvent`
+        """
         return self._ProjectSwitcherStatusChangedEvent
 
     @ProjectSwitcherStatusChangedEvent.setter
@@ -4530,6 +5371,10 @@ class EventContent(AbstractModel):
 
     @property
     def MaterialImportedEvent(self):
+        """媒体导入事件。仅当 EventType 为 Material.Imported 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialImportedEvent`
+        """
         return self._MaterialImportedEvent
 
     @MaterialImportedEvent.setter
@@ -4538,6 +5383,10 @@ class EventContent(AbstractModel):
 
     @property
     def MaterialAddedEvent(self):
+        """媒体添加事件。仅当 EventType 为 Material.Added 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialAddedEvent`
+        """
         return self._MaterialAddedEvent
 
     @MaterialAddedEvent.setter
@@ -4546,6 +5395,10 @@ class EventContent(AbstractModel):
 
     @property
     def MaterialMovedEvent(self):
+        """媒体移动事件。仅当 EventType 为 Material.Moved 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialMovedEvent`
+        """
         return self._MaterialMovedEvent
 
     @MaterialMovedEvent.setter
@@ -4554,6 +5407,10 @@ class EventContent(AbstractModel):
 
     @property
     def MaterialModifiedEvent(self):
+        """媒体更新事件。仅当 EventType 为 Material.Modified 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialModifiedEvent`
+        """
         return self._MaterialModifiedEvent
 
     @MaterialModifiedEvent.setter
@@ -4562,6 +5419,10 @@ class EventContent(AbstractModel):
 
     @property
     def MaterialDeletedEvent(self):
+        """媒体删除事件。仅当 EventType 为 Material.Deleted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialDeletedEvent`
+        """
         return self._MaterialDeletedEvent
 
     @MaterialDeletedEvent.setter
@@ -4570,6 +5431,10 @@ class EventContent(AbstractModel):
 
     @property
     def ClassCreatedEvent(self):
+        """分类创建事件。仅当 EventType 为 Class.Created 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ClassCreatedEvent`
+        """
         return self._ClassCreatedEvent
 
     @ClassCreatedEvent.setter
@@ -4578,6 +5443,10 @@ class EventContent(AbstractModel):
 
     @property
     def ClassMovedEvent(self):
+        """分类移动事件。仅当 EventType 为 Class.Moved 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ClassMovedEvent`
+        """
         return self._ClassMovedEvent
 
     @ClassMovedEvent.setter
@@ -4586,6 +5455,10 @@ class EventContent(AbstractModel):
 
     @property
     def ClassDeletedEvent(self):
+        """分类删除事件。仅当 EventType 为 Class.Deleted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ClassDeletedEvent`
+        """
         return self._ClassDeletedEvent
 
     @ClassDeletedEvent.setter
@@ -4594,6 +5467,10 @@ class EventContent(AbstractModel):
 
     @property
     def VideoExportCompletedEvent(self):
+        """视频导出完成事件。仅当 EventType 为 Task.VideoExportCompleted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoExportCompletedEvent`
+        """
         return self._VideoExportCompletedEvent
 
     @VideoExportCompletedEvent.setter
@@ -4602,6 +5479,10 @@ class EventContent(AbstractModel):
 
     @property
     def ProjectMediaCastStatusChangedEvent(self):
+        """点播转直播项目状态变更事件。仅当 EventType 为 Project.MediaCast.StatusChanged 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ProjectMediaCastStatusChangedEvent`
+        """
         return self._ProjectMediaCastStatusChangedEvent
 
     @ProjectMediaCastStatusChangedEvent.setter
@@ -4709,6 +5590,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -4717,6 +5601,12 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """导出视频预设配置 Id，推荐优先使用下面的默认预设配置 Id，有其他需求可通过接口定制预设配置。
+<li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+<li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4725,6 +5615,11 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def ExportDestination(self):
+        """导出目标，指定导出视频的目标媒资库，可取值有：
+<li>CME：多媒体创建引擎，即导出到多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+<li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
+        :rtype: str
+        """
         return self._ExportDestination
 
     @ExportDestination.setter
@@ -4733,6 +5628,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def TrackData(self):
+        """轨道数据，用于描述待导出视频的内容。关于轨道数据的格式请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。文档中也描述了如何在页面上查看一个剪辑项目的轨道数据，该能力可以帮助开发者更方便地构造自己的轨道数据。
+        :rtype: str
+        """
         return self._TrackData
 
     @TrackData.setter
@@ -4741,6 +5639,11 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def AspectRatio(self):
+        """轨道数据对应的画布宽高比，配合预设配置中的视频短边尺寸，可决定导出画面的尺寸。例：
+<li>如果 AspectRatio 取值 16:9，预设配置选为12（短边1080），则导出尺寸为 1920 * 1080；</li>
+<li>如果 AspectRatio 取值 9:16，预设配置选为11（短边720），则导出尺寸为 720 *1280。</li>
+        :rtype: str
+        """
         return self._AspectRatio
 
     @AspectRatio.setter
@@ -4749,6 +5652,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def CoverData(self):
+        """视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+        :rtype: str
+        """
         return self._CoverData
 
     @CoverData.setter
@@ -4757,6 +5663,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def CMEExportInfo(self):
+        """导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
+        """
         return self._CMEExportInfo
 
     @CMEExportInfo.setter
@@ -4765,6 +5674,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def VODExportInfo(self):
+        """导出的云点播媒资信息。当导出目标为 VOD 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        """
         return self._VODExportInfo
 
     @VODExportInfo.setter
@@ -4773,6 +5685,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def ExportExtensionArgs(self):
+        """视频导出扩展参数。可以覆盖导出模板中的参数，灵活的指定导出规格及参数。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoExportExtensionArgs`
+        """
         return self._ExportExtensionArgs
 
     @ExportExtensionArgs.setter
@@ -4781,6 +5696,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使用的媒资该操作者需要拥有使用权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -4832,6 +5750,9 @@ class ExportVideoByEditorTrackDataResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4840,6 +5761,9 @@ class ExportVideoByEditorTrackDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4895,6 +5819,9 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -4903,6 +5830,9 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """视频编辑模板  Id。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -4911,6 +5841,12 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """导出视频预设配置 Id，推荐优先使用下面的默认预设配置 Id，有其他需求可通过接口定制预设配置。
+<li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+<li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4919,6 +5855,11 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def ExportDestination(self):
+        """导出目标，指定导出视频的目标媒资库，可取值有：
+<li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+<li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
+        :rtype: str
+        """
         return self._ExportDestination
 
     @ExportDestination.setter
@@ -4927,6 +5868,9 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def SlotReplacements(self):
+        """需要替换的素材信息。
+        :rtype: list of SlotReplacementInfo
+        """
         return self._SlotReplacements
 
     @SlotReplacements.setter
@@ -4935,6 +5879,9 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def CMEExportInfo(self):
+        """导出的多媒体创作引擎媒资信息。当导出目标为 CME 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
+        """
         return self._CMEExportInfo
 
     @CMEExportInfo.setter
@@ -4943,6 +5890,9 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def VODExportInfo(self):
+        """导出的云点播媒资信息。当导出目标为 VOD 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        """
         return self._VODExportInfo
 
     @VODExportInfo.setter
@@ -4951,6 +5901,9 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def ExportExtensionArgs(self):
+        """视频导出扩展参数。可以覆盖导出模板中的参数，灵活的指定导出规格及参数。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoExportExtensionArgs`
+        """
         return self._ExportExtensionArgs
 
     @ExportExtensionArgs.setter
@@ -4959,6 +5912,9 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，则操作者需要有替换媒体及剪辑模板的权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5014,6 +5970,9 @@ class ExportVideoByTemplateResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """导出任务 Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5022,6 +5981,9 @@ class ExportVideoByTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5077,6 +6039,9 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5085,6 +6050,9 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """视频拆条项目 Id 。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5093,6 +6061,9 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def SegmentGroupId(self):
+        """指定需要导出的智能拆条片段的组 Id 。
+        :rtype: str
+        """
         return self._SegmentGroupId
 
     @SegmentGroupId.setter
@@ -5101,6 +6072,9 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def SegmentIds(self):
+        """指定需要导出的智能拆条片段 Id  集合。
+        :rtype: list of str
+        """
         return self._SegmentIds
 
     @SegmentIds.setter
@@ -5109,6 +6083,12 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+<li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+<li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5117,6 +6097,11 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def ExportDestination(self):
+        """导出目标，指定导出视频的目标媒资库，可取值有：
+<li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+<li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
+        :rtype: str
+        """
         return self._ExportDestination
 
     @ExportDestination.setter
@@ -5125,6 +6110,9 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def CMEExportInfo(self):
+        """导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
+        """
         return self._CMEExportInfo
 
     @CMEExportInfo.setter
@@ -5133,6 +6121,9 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def VODExportInfo(self):
+        """导出的云点播媒资信息。当导出目标为 VOD 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        """
         return self._VODExportInfo
 
     @VODExportInfo.setter
@@ -5141,6 +6132,9 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作任意智能拆条项目。如果指定操作者，则操作者必须为项目所有。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5189,6 +6183,9 @@ class ExportVideoByVideoSegmentationDataResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5197,6 +6194,9 @@ class ExportVideoByVideoSegmentationDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5252,6 +6252,9 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5260,6 +6263,9 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5268,6 +6274,12 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """视频编码配置 ID，支持自定义创建，推荐优先使用系统预置的导出配置。
+<li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+<li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5276,6 +6288,11 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def ExportDestination(self):
+        """导出目标，指定导出视频的目标媒资库，可取值有：
+<li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+<li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
+        :rtype: str
+        """
         return self._ExportDestination
 
     @ExportDestination.setter
@@ -5284,6 +6301,9 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def CoverData(self):
+        """视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+        :rtype: str
+        """
         return self._CoverData
 
     @CoverData.setter
@@ -5292,6 +6312,9 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def CMEExportInfo(self):
+        """导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
+        """
         return self._CMEExportInfo
 
     @CMEExportInfo.setter
@@ -5300,6 +6323,9 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def VODExportInfo(self):
+        """导出的云点播媒资信息。当导出目标为 VOD 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        """
         return self._VODExportInfo
 
     @VODExportInfo.setter
@@ -5308,6 +6334,9 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def ExportExtensionArgs(self):
+        """视频导出扩展参数。可以覆盖导出模板中的参数，灵活的指定导出规格及参数。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoExportExtensionArgs`
+        """
         return self._ExportExtensionArgs
 
     @ExportExtensionArgs.setter
@@ -5316,6 +6345,9 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5366,6 +6398,9 @@ class ExportVideoEditProjectResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5374,6 +6409,9 @@ class ExportVideoEditProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5406,6 +6444,9 @@ class ExternalMediaInfo(AbstractModel):
 
     @property
     def MediaKey(self):
+        """目前仅支持绑定 COS 桶的媒体，请填写存储对象 Key 值，例如：`example-folder/example.mp4`。
+        :rtype: str
+        """
         return self._MediaKey
 
     @MediaKey.setter
@@ -5414,6 +6455,9 @@ class ExternalMediaInfo(AbstractModel):
 
     @property
     def Definition(self):
+        """该字段废弃，请勿使用。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5422,6 +6466,9 @@ class ExternalMediaInfo(AbstractModel):
 
     @property
     def StorageId(self):
+        """媒资挂载的存储 Id。
+        :rtype: str
+        """
         return self._StorageId
 
     @StorageId.setter
@@ -5472,6 +6519,9 @@ class FlattenListMediaRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5480,6 +6530,9 @@ class FlattenListMediaRequest(AbstractModel):
 
     @property
     def ClassPath(self):
+        """媒体分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的媒体信息。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -5488,6 +6541,9 @@ class FlattenListMediaRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """媒体分类的归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -5496,6 +6552,9 @@ class FlattenListMediaRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5504,6 +6563,9 @@ class FlattenListMediaRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5512,6 +6574,9 @@ class FlattenListMediaRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以平铺查询任意分类下的媒体信息。如果指定操作者，则操作者必须对当前分类有读权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5558,6 +6623,9 @@ class FlattenListMediaResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5566,6 +6634,9 @@ class FlattenListMediaResponse(AbstractModel):
 
     @property
     def MaterialInfoSet(self):
+        """该分类路径下及其子分类下的所有媒体基础信息列表。
+        :rtype: list of MaterialInfo
+        """
         return self._MaterialInfoSet
 
     @MaterialInfoSet.setter
@@ -5574,6 +6645,9 @@ class FlattenListMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5612,6 +6686,9 @@ class GenerateVideoSegmentationSchemeByAiRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5620,6 +6697,9 @@ class GenerateVideoSegmentationSchemeByAiRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """视频拆条项目 Id 。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5628,6 +6708,9 @@ class GenerateVideoSegmentationSchemeByAiRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以对任务视频拆条项目发起拆条任务。如果指定操作者，则操作者必须为项目所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5666,6 +6749,9 @@ class GenerateVideoSegmentationSchemeByAiResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """视频智能拆条任务 Id 。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5674,6 +6760,9 @@ class GenerateVideoSegmentationSchemeByAiResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5719,6 +6808,9 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5727,6 +6819,9 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """资源归属者，个人或者团队。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -5735,6 +6830,9 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Resources(self):
+        """被授权资源。
+        :rtype: list of Resource
+        """
         return self._Resources
 
     @Resources.setter
@@ -5743,6 +6841,9 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Authorizees(self):
+        """被授权目标，个人或者团队。
+        :rtype: list of Entity
+        """
         return self._Authorizees
 
     @Authorizees.setter
@@ -5751,6 +6852,13 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Permissions(self):
+        """详细授权值。 取值有：
+<li>R：可读，可以浏览媒体，但不能使用该媒体文件（将其添加到 Project），或复制到自己的媒资库中</li>
+<li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
+<li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
+<li>W：可修改、删除媒资。</li>
+        :rtype: list of str
+        """
         return self._Permissions
 
     @Permissions.setter
@@ -5759,6 +6867,9 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以授权任意归属者的资源。如果指定操作者，则操作者必须对资源拥有写权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5809,6 +6920,9 @@ class GrantResourceAuthorizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5863,6 +6977,9 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5871,6 +6988,9 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """媒体转推项目 Id 。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5879,6 +6999,9 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """请参考 [操作类型](#Operation)。
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -5887,6 +7010,10 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def SourceInfos(self):
+        """输入源信息。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 AddSource、DeleteSource、SwitchSource 时必填。
+        :rtype: list of MediaCastSourceInfo
+        """
         return self._SourceInfos
 
     @SourceInfos.setter
@@ -5895,6 +7022,10 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def DestinationInfos(self):
+        """输出源信息。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 AddDestination、DeleteDestination、EnableDestination、DisableDestination、ModifyDestination 时必填。
+        :rtype: list of MediaCastDestinationInfo
+        """
         return self._DestinationInfos
 
     @DestinationInfos.setter
@@ -5903,6 +7034,10 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def OutputMediaSetting(self):
+        """输出媒体配置。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 ModfiyOutputSetting 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastOutputMediaSetting`
+        """
         return self._OutputMediaSetting
 
     @OutputMediaSetting.setter
@@ -5911,6 +7046,10 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def PlaySetting(self):
+        """播放控制参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 ModifyPlaySetting 时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastPlaySetting`
+        """
         return self._PlaySetting
 
     @PlaySetting.setter
@@ -5919,6 +7058,10 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def Position(self):
+        """新添加的输入源位于输入源列表的位置，从0开始。默认加在输入源列表的后面。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 AddSource 时必填。
+        :rtype: int
+        """
         return self._Position
 
     @Position.setter
@@ -5927,6 +7070,9 @@ class HandleMediaCastProjectRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有媒体转推项目。如果指定操作者，则操作者必须为项目所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5994,6 +7140,10 @@ class HandleMediaCastProjectResponse(AbstractModel):
 
     @property
     def PlayInfo(self):
+        """播放信息，Operation 为 DescribePlayInfo 时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastPlayInfo`
+        """
         return self._PlayInfo
 
     @PlayInfo.setter
@@ -6002,6 +7152,10 @@ class HandleMediaCastProjectResponse(AbstractModel):
 
     @property
     def SourceInfoSet(self):
+        """输入源信息， Operation 为 AddSource 时返回添加成功的输入源信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MediaCastSourceInfo
+        """
         return self._SourceInfoSet
 
     @SourceInfoSet.setter
@@ -6010,6 +7164,10 @@ class HandleMediaCastProjectResponse(AbstractModel):
 
     @property
     def DestinationInfoSet(self):
+        """输出源信息， Operation 为 AddDestination 时返回添加成功的输出源信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MediaCastDestinationInfo
+        """
         return self._DestinationInfoSet
 
     @DestinationInfoSet.setter
@@ -6018,6 +7176,9 @@ class HandleMediaCastProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6081,6 +7242,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -6089,6 +7253,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """云转推项目 Id 。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6097,6 +7264,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """请参考 [操作类型](#Operation)
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -6105,6 +7275,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     @property
     def InputInfo(self):
+        """转推输入源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -6113,6 +7286,11 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     @property
     def InputEndpoint(self):
+        """主备输入源标识，取值有：
+<li> Main ：主源；</li>
+<li> Backup ：备源。</li>
+        :rtype: str
+        """
         return self._InputEndpoint
 
     @InputEndpoint.setter
@@ -6121,6 +7299,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     @property
     def OutputInfo(self):
+        """转推输出源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`
+        """
         return self._OutputInfo
 
     @OutputInfo.setter
@@ -6129,6 +7310,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     @property
     def CurrentStopTime(self):
+        """云转推当前预计结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+        :rtype: str
+        """
         return self._CurrentStopTime
 
     @CurrentStopTime.setter
@@ -6137,6 +7321,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有云转推项目。如果指定操作者，则操作者必须为项目所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -6188,6 +7375,9 @@ class HandleStreamConnectProjectResponse(AbstractModel):
 
     @property
     def StreamInputRtmpPushUrl(self):
+        """输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
+        :rtype: str
+        """
         return self._StreamInputRtmpPushUrl
 
     @StreamInputRtmpPushUrl.setter
@@ -6196,6 +7386,10 @@ class HandleStreamConnectProjectResponse(AbstractModel):
 
     @property
     def VodPullInputPlayInfo(self):
+        """点播输入源播放进度信息，当 Operation 取值 DescribeInputPlayInfo 且 InputType 为 VodPull 类型时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VodPullInputPlayInfo`
+        """
         return self._VodPullInputPlayInfo
 
     @VodPullInputPlayInfo.setter
@@ -6204,6 +7398,9 @@ class HandleStreamConnectProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6248,6 +7445,9 @@ class ImageMaterial(AbstractModel):
 
     @property
     def Height(self):
+        """图片高度，单位：px。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -6256,6 +7456,9 @@ class ImageMaterial(AbstractModel):
 
     @property
     def Width(self):
+        """图片宽度，单位：px。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -6264,6 +7467,9 @@ class ImageMaterial(AbstractModel):
 
     @property
     def MaterialUrl(self):
+        """素材媒体文件的展示 URL 地址。
+        :rtype: str
+        """
         return self._MaterialUrl
 
     @MaterialUrl.setter
@@ -6272,6 +7478,9 @@ class ImageMaterial(AbstractModel):
 
     @property
     def Size(self):
+        """图片大小，单位：字节。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -6280,6 +7489,9 @@ class ImageMaterial(AbstractModel):
 
     @property
     def OriginalUrl(self):
+        """素材媒体文件的原始 URL 地址。
+        :rtype: str
+        """
         return self._OriginalUrl
 
     @OriginalUrl.setter
@@ -6288,6 +7500,9 @@ class ImageMaterial(AbstractModel):
 
     @property
     def VodFileId(self):
+        """云点播媒资 FileId。
+        :rtype: str
+        """
         return self._VodFileId
 
     @VodFileId.setter
@@ -6355,6 +7570,9 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -6363,6 +7581,9 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """媒体归属者，可支持归属团队或个人。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -6371,6 +7592,9 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def Name(self):
+        """媒体名称，不能超过30个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6379,6 +7603,13 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def SourceType(self):
+        """导入媒资类型，取值：
+<li>VOD：云点播文件；</li>
+<li>EXTERNAL：媒资绑定。</li>
+
+注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。另外，导入云点播的文件，使用云点播的子应用 Id 必须与创建多媒体创作引擎平台时使用的云点播子应用一致。
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -6387,6 +7618,9 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def VodFileId(self):
+        """云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。
+        :rtype: str
+        """
         return self._VodFileId
 
     @VodFileId.setter
@@ -6395,6 +7629,9 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def ExternalMediaInfo(self):
+        """原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`
+        """
         return self._ExternalMediaInfo
 
     @ExternalMediaInfo.setter
@@ -6403,6 +7640,9 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def ClassPath(self):
+        """媒体分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -6411,6 +7651,10 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def PreProcessDefinition(self):
+        """媒体预处理任务参数 ID。可取值有：
+<li>10：进行编辑预处理。</li>
+        :rtype: int
+        """
         return self._PreProcessDefinition
 
     @PreProcessDefinition.setter
@@ -6419,6 +7663,9 @@ class ImportMaterialRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向任意团队或者个人导入媒体。如果指定操作者，如果媒体归属为个人，则操作者必须与归属者一致；如果媒体归属为团队，则必须为团队可导入媒体的团队成员(如果没有特殊设置，所有团队成员可导入媒体)。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -6470,6 +7717,9 @@ class ImportMaterialResponse(AbstractModel):
 
     @property
     def MaterialId(self):
+        """媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -6478,6 +7728,9 @@ class ImportMaterialResponse(AbstractModel):
 
     @property
     def PreProcessTaskId(self):
+        """媒体文件预处理任务 ID，如果未指定发起预处理任务则为空。
+        :rtype: str
+        """
         return self._PreProcessTaskId
 
     @PreProcessTaskId.setter
@@ -6486,6 +7739,9 @@ class ImportMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6516,6 +7772,9 @@ class ImportMediaInfo(AbstractModel):
 
     @property
     def FileId(self):
+        """云点播文件 FileId。
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -6524,6 +7783,9 @@ class ImportMediaInfo(AbstractModel):
 
     @property
     def MaterialId(self):
+        """媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -6586,6 +7848,9 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -6594,6 +7859,9 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6602,6 +7870,13 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     @property
     def SourceType(self):
+        """导入媒资类型，取值：
+<li>VOD：云点播文件；</li>
+<li>EXTERNAL：媒资绑定。</li>
+
+注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -6610,6 +7885,9 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     @property
     def VodFileId(self):
+        """云点播媒资文件 Id，当 SourceType 取值 VOD 或者缺省的时候必填。
+        :rtype: str
+        """
         return self._VodFileId
 
     @VodFileId.setter
@@ -6618,6 +7896,9 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     @property
     def ExternalMediaInfo(self):
+        """原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`
+        """
         return self._ExternalMediaInfo
 
     @ExternalMediaInfo.setter
@@ -6626,6 +7907,9 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """媒体名称，不能超过30个字符。如果不填，则媒体名称为点播媒资文件名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6634,6 +7918,12 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     @property
     def PreProcessDefinition(self):
+        """媒体预处理配置 ID，取值：
+<li>10：进行视频编辑预处理。</li>
+
+注意：如果填0或者不填则不进行处理，如果原始视频不可在浏览器直接播放将无法在编辑页面编辑。
+        :rtype: int
+        """
         return self._PreProcessDefinition
 
     @PreProcessDefinition.setter
@@ -6642,6 +7932,9 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向所有视频编辑项目导入媒体；如果指定操作者，则操作者必须为项目所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -6690,6 +7983,9 @@ class ImportMediaToProjectResponse(AbstractModel):
 
     @property
     def MaterialId(self):
+        """媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -6698,6 +7994,9 @@ class ImportMediaToProjectResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """媒体预处理任务 ID，如果未指定发起预处理任务则为空。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6706,6 +8005,9 @@ class ImportMediaToProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6736,6 +8038,9 @@ class IntegerRange(AbstractModel):
 
     @property
     def LowerBound(self):
+        """按整形代表值的下限检索。
+        :rtype: int
+        """
         return self._LowerBound
 
     @LowerBound.setter
@@ -6744,6 +8049,9 @@ class IntegerRange(AbstractModel):
 
     @property
     def UpperBound(self):
+        """按整形代表值的上限检索。
+        :rtype: int
+        """
         return self._UpperBound
 
     @UpperBound.setter
@@ -6790,6 +8098,9 @@ class JoinTeamInfo(AbstractModel):
 
     @property
     def TeamId(self):
+        """团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -6798,6 +8109,9 @@ class JoinTeamInfo(AbstractModel):
 
     @property
     def Name(self):
+        """团队名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6806,6 +8120,9 @@ class JoinTeamInfo(AbstractModel):
 
     @property
     def MemberCount(self):
+        """团队成员个数。
+        :rtype: int
+        """
         return self._MemberCount
 
     @MemberCount.setter
@@ -6814,6 +8131,12 @@ class JoinTeamInfo(AbstractModel):
 
     @property
     def Role(self):
+        """成员在团队中的角色，取值有：
+<li>Owner：团队所有者，添加团队成员及修改团队成员解决时不能填此角色；</li>
+<li>Admin：团队管理员；</li>
+<li>Member：普通成员。</li>
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -6850,6 +8173,9 @@ class KuaishouPublishInfo(AbstractModel):
 
     @property
     def Title(self):
+        """视频发布标题，限30个字符。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -6898,6 +8224,11 @@ class LinkMaterial(AbstractModel):
 
     @property
     def LinkType(self):
+        """链接类型取值:
+<li>CLASS: 分类链接;</li>
+<li> MATERIAL：素材链接。</li>
+        :rtype: str
+        """
         return self._LinkType
 
     @LinkType.setter
@@ -6906,6 +8237,11 @@ class LinkMaterial(AbstractModel):
 
     @property
     def LinkStatus(self):
+        """链接状态取值：
+<li> Normal：正常 ；</li>
+<li>NotFound：链接目标不存在；</li> <li>Forbidden：无权限。</li>
+        :rtype: str
+        """
         return self._LinkStatus
 
     @LinkStatus.setter
@@ -6914,6 +8250,10 @@ class LinkMaterial(AbstractModel):
 
     @property
     def LinkMaterialInfo(self):
+        """素材链接详细信息，当LinkType="MATERIAL"时有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.LinkMaterialInfo`
+        """
         return self._LinkMaterialInfo
 
     @LinkMaterialInfo.setter
@@ -6922,6 +8262,10 @@ class LinkMaterial(AbstractModel):
 
     @property
     def LinkClassInfo(self):
+        """分类链接目标信息，当LinkType=“CLASS”时有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ClassInfo`
+        """
         return self._LinkClassInfo
 
     @LinkClassInfo.setter
@@ -6974,6 +8318,9 @@ class LinkMaterialInfo(AbstractModel):
 
     @property
     def BasicInfo(self):
+        """素材基本信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
+        """
         return self._BasicInfo
 
     @BasicInfo.setter
@@ -6982,6 +8329,10 @@ class LinkMaterialInfo(AbstractModel):
 
     @property
     def VideoMaterial(self):
+        """视频素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`
+        """
         return self._VideoMaterial
 
     @VideoMaterial.setter
@@ -6990,6 +8341,10 @@ class LinkMaterialInfo(AbstractModel):
 
     @property
     def AudioMaterial(self):
+        """音频素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`
+        """
         return self._AudioMaterial
 
     @AudioMaterial.setter
@@ -6998,6 +8353,10 @@ class LinkMaterialInfo(AbstractModel):
 
     @property
     def ImageMaterial(self):
+        """图片素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`
+        """
         return self._ImageMaterial
 
     @ImageMaterial.setter
@@ -7057,6 +8416,9 @@ class ListMediaRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -7065,6 +8427,9 @@ class ListMediaRequest(AbstractModel):
 
     @property
     def ClassPath(self):
+        """媒体分类路径，例如填写"/a/b"，则代表浏览该分类路径下的媒体和子分类信息。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -7073,6 +8438,9 @@ class ListMediaRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """媒体和分类的归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -7081,6 +8449,9 @@ class ListMediaRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7089,6 +8460,9 @@ class ListMediaRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7097,6 +8471,9 @@ class ListMediaRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以浏览任意分类的信息。如果指定操作者，则操作者必须对分类有读权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -7146,6 +8523,9 @@ class ListMediaResponse(AbstractModel):
 
     @property
     def MaterialTotalCount(self):
+        """符合条件的媒体记录总数。
+        :rtype: int
+        """
         return self._MaterialTotalCount
 
     @MaterialTotalCount.setter
@@ -7154,6 +8534,9 @@ class ListMediaResponse(AbstractModel):
 
     @property
     def MaterialInfoSet(self):
+        """浏览分类路径下的媒体列表信息。
+        :rtype: list of MaterialInfo
+        """
         return self._MaterialInfoSet
 
     @MaterialInfoSet.setter
@@ -7162,6 +8545,9 @@ class ListMediaResponse(AbstractModel):
 
     @property
     def ClassInfoSet(self):
+        """浏览分类路径下的一级子类。
+        :rtype: list of ClassInfo
+        """
         return self._ClassInfoSet
 
     @ClassInfoSet.setter
@@ -7170,6 +8556,9 @@ class ListMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7208,6 +8597,9 @@ class LivePullInputInfo(AbstractModel):
 
     @property
     def InputUrl(self):
+        """直播拉流地址。
+        :rtype: str
+        """
         return self._InputUrl
 
     @InputUrl.setter
@@ -7244,6 +8636,9 @@ class LiveStreamClipProjectInput(AbstractModel):
 
     @property
     def Url(self):
+        """直播流播放地址，目前仅支持 HLS 和 FLV 格式。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -7252,6 +8647,9 @@ class LiveStreamClipProjectInput(AbstractModel):
 
     @property
     def StreamRecordDuration(self):
+        """直播流录制时长，单位为秒，最大值为 7200。
+        :rtype: int
+        """
         return self._StreamRecordDuration
 
     @StreamRecordDuration.setter
@@ -7291,6 +8689,9 @@ class LoginStatusInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 Id。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7299,6 +8700,11 @@ class LoginStatusInfo(AbstractModel):
 
     @property
     def Status(self):
+        """用户登录状态。
+<li>Online：在线；</li>
+<li>Offline：离线。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7339,6 +8745,9 @@ class MaterialAddedEvent(AbstractModel):
 
     @property
     def MaterialIdSet(self):
+        """添加的媒体 Id 列表。
+        :rtype: list of str
+        """
         return self._MaterialIdSet
 
     @MaterialIdSet.setter
@@ -7347,6 +8756,9 @@ class MaterialAddedEvent(AbstractModel):
 
     @property
     def Owner(self):
+        """添加的媒体归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -7355,6 +8767,9 @@ class MaterialAddedEvent(AbstractModel):
 
     @property
     def ClassPath(self):
+        """添加的媒体分类路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -7429,6 +8844,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def MaterialId(self):
+        """媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -7437,6 +8855,14 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def MaterialType(self):
+        """媒体类型，取值为：
+<li> AUDIO :音频;</li>
+<li> VIDEO :视频;</li>
+<li> IMAGE :图片;</li>
+<li> LINK  :链接.</li>
+<li> OTHER : 其他.</li>
+        :rtype: str
+        """
         return self._MaterialType
 
     @MaterialType.setter
@@ -7445,6 +8871,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def Owner(self):
+        """媒体归属实体。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -7453,6 +8882,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def Name(self):
+        """媒体名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7461,6 +8893,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """媒体文件的创建时间，使用 ISO 日期格式。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7469,6 +8904,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 ISO 日期格式。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -7477,6 +8915,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def ClassPath(self):
+        """媒体的分类路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -7485,6 +8926,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def PresetTagSet(self):
+        """预置标签列表。
+        :rtype: list of PresetTagInfo
+        """
         return self._PresetTagSet
 
     @PresetTagSet.setter
@@ -7493,6 +8937,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def TagSet(self):
+        """人工标签列表。
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -7501,6 +8948,9 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def PreviewUrl(self):
+        """媒体文件的预览图。
+        :rtype: str
+        """
         return self._PreviewUrl
 
     @PreviewUrl.setter
@@ -7509,6 +8959,11 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def TagInfoSet(self):
+        """媒体绑定的标签信息列表 。
+该字段已废弃。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MaterialTagInfo
+        """
         return self._TagInfoSet
 
     @TagInfoSet.setter
@@ -7564,6 +9019,9 @@ class MaterialDeletedEvent(AbstractModel):
 
     @property
     def MaterialIdSet(self):
+        """删除的媒体 Id 列表。
+        :rtype: list of str
+        """
         return self._MaterialIdSet
 
     @MaterialIdSet.setter
@@ -7603,6 +9061,9 @@ class MaterialImportedEvent(AbstractModel):
 
     @property
     def MediaInfoSet(self):
+        """导入的媒体信息列表。
+        :rtype: list of ImportMediaInfo
+        """
         return self._MediaInfoSet
 
     @MediaInfoSet.setter
@@ -7611,6 +9072,9 @@ class MaterialImportedEvent(AbstractModel):
 
     @property
     def Owner(self):
+        """媒体归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -7619,6 +9083,9 @@ class MaterialImportedEvent(AbstractModel):
 
     @property
     def ClassPath(self):
+        """媒体分类路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -7685,6 +9152,9 @@ class MaterialInfo(AbstractModel):
 
     @property
     def BasicInfo(self):
+        """媒体基本信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
+        """
         return self._BasicInfo
 
     @BasicInfo.setter
@@ -7693,6 +9163,10 @@ class MaterialInfo(AbstractModel):
 
     @property
     def VideoMaterial(self):
+        """视频媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`
+        """
         return self._VideoMaterial
 
     @VideoMaterial.setter
@@ -7701,6 +9175,10 @@ class MaterialInfo(AbstractModel):
 
     @property
     def AudioMaterial(self):
+        """音频媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`
+        """
         return self._AudioMaterial
 
     @AudioMaterial.setter
@@ -7709,6 +9187,10 @@ class MaterialInfo(AbstractModel):
 
     @property
     def ImageMaterial(self):
+        """图片媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`
+        """
         return self._ImageMaterial
 
     @ImageMaterial.setter
@@ -7717,6 +9199,10 @@ class MaterialInfo(AbstractModel):
 
     @property
     def LinkMaterial(self):
+        """链接媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.LinkMaterial`
+        """
         return self._LinkMaterial
 
     @LinkMaterial.setter
@@ -7725,6 +9211,10 @@ class MaterialInfo(AbstractModel):
 
     @property
     def VideoEditTemplateMaterial(self):
+        """模板媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEditTemplateMaterial`
+        """
         return self._VideoEditTemplateMaterial
 
     @VideoEditTemplateMaterial.setter
@@ -7733,6 +9223,10 @@ class MaterialInfo(AbstractModel):
 
     @property
     def OtherMaterial(self):
+        """其他类型媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.OtherMaterial`
+        """
         return self._OtherMaterial
 
     @OtherMaterial.setter
@@ -7795,6 +9289,9 @@ class MaterialModifiedEvent(AbstractModel):
 
     @property
     def MaterialId(self):
+        """媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -7803,6 +9300,9 @@ class MaterialModifiedEvent(AbstractModel):
 
     @property
     def Name(self):
+        """更新后的媒体名称。如未更新则为空。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7811,6 +9311,9 @@ class MaterialModifiedEvent(AbstractModel):
 
     @property
     def PresetTagIdSet(self):
+        """更新后的媒体预置标签列表。如未更新媒体预置标签，则该字段为空数组。
+        :rtype: list of str
+        """
         return self._PresetTagIdSet
 
     @PresetTagIdSet.setter
@@ -7819,6 +9322,9 @@ class MaterialModifiedEvent(AbstractModel):
 
     @property
     def TagSet(self):
+        """更新后的媒体自定义标签列表。如未更新媒体自定义标签，则该字段为空数组。
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -7867,6 +9373,9 @@ class MaterialMovedEvent(AbstractModel):
 
     @property
     def MaterialIdSet(self):
+        """要移动的媒体 Id 列表。
+        :rtype: list of str
+        """
         return self._MaterialIdSet
 
     @MaterialIdSet.setter
@@ -7875,6 +9384,9 @@ class MaterialMovedEvent(AbstractModel):
 
     @property
     def SourceOwner(self):
+        """源媒体归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._SourceOwner
 
     @SourceOwner.setter
@@ -7883,6 +9395,9 @@ class MaterialMovedEvent(AbstractModel):
 
     @property
     def SourceClassPath(self):
+        """源媒体分类路径。
+        :rtype: str
+        """
         return self._SourceClassPath
 
     @SourceClassPath.setter
@@ -7891,6 +9406,9 @@ class MaterialMovedEvent(AbstractModel):
 
     @property
     def DestinationOwner(self):
+        """目标媒体分类归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._DestinationOwner
 
     @DestinationOwner.setter
@@ -7899,6 +9417,9 @@ class MaterialMovedEvent(AbstractModel):
 
     @property
     def DestinationClassPath(self):
+        """目标媒体分类路径。
+        :rtype: str
+        """
         return self._DestinationClassPath
 
     @DestinationClassPath.setter
@@ -7943,6 +9464,12 @@ class MaterialStatus(AbstractModel):
 
     @property
     def EditorUsableStatus(self):
+        """素材编辑可用状态，取值有：
+<li>NORMAL：正常，可直接用于编辑；</li>
+<li>ABNORMAL : 异常，不可用于编辑；</li>
+<li>PROCESSING：处理中，暂不可用于编辑。</li>
+        :rtype: str
+        """
         return self._EditorUsableStatus
 
     @EditorUsableStatus.setter
@@ -7983,6 +9510,10 @@ class MaterialTagInfo(AbstractModel):
 
     @property
     def Type(self):
+        """标签类型，取值为：
+<li>PRESET：预置标签；</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -7991,6 +9522,9 @@ class MaterialTagInfo(AbstractModel):
 
     @property
     def Id(self):
+        """标签 Id 。当标签类型为 PRESET 时，标签 Id 为预置标签 Id 。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7999,6 +9533,9 @@ class MaterialTagInfo(AbstractModel):
 
     @property
     def Name(self):
+        """标签名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8040,6 +9577,9 @@ class MediaCastDestinationInfo(AbstractModel):
 
     @property
     def Id(self):
+        """输出源 Id。由系统进行分配。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8048,6 +9588,9 @@ class MediaCastDestinationInfo(AbstractModel):
 
     @property
     def PushUrl(self):
+        """输出直播流地址。支持的直播流类型为 RTMP 和 SRT。
+        :rtype: str
+        """
         return self._PushUrl
 
     @PushUrl.setter
@@ -8056,6 +9599,9 @@ class MediaCastDestinationInfo(AbstractModel):
 
     @property
     def Name(self):
+        """输出源的名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8096,6 +9642,9 @@ class MediaCastDestinationInterruptInfo(AbstractModel):
 
     @property
     def DestinationInfo(self):
+        """发生断流的输出源信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastDestinationInfo`
+        """
         return self._DestinationInfo
 
     @DestinationInfo.setter
@@ -8104,6 +9653,11 @@ class MediaCastDestinationInterruptInfo(AbstractModel):
 
     @property
     def Reason(self):
+        """输出源断流原因，取值有：
+<li>SystemError：系统错误；</li>
+<li>Unknown：未知错误。</li>
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -8149,6 +9703,9 @@ class MediaCastDestinationStatus(AbstractModel):
 
     @property
     def Id(self):
+        """输出源 Id，由系统分配。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8157,6 +9714,9 @@ class MediaCastDestinationStatus(AbstractModel):
 
     @property
     def PushUrl(self):
+        """输出源直播地址。
+        :rtype: str
+        """
         return self._PushUrl
 
     @PushUrl.setter
@@ -8165,6 +9725,12 @@ class MediaCastDestinationStatus(AbstractModel):
 
     @property
     def Status(self):
+        """输出源的状态。取值有：
+<li> Working ：运行中；</li>
+<li> Stopped：停止输出；</li>
+<li> Failed：输出失败。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8203,6 +9769,9 @@ class MediaCastOutputMediaSetting(AbstractModel):
 
     @property
     def VideoSetting(self):
+        """视频配置。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastVideoSetting`
+        """
         return self._VideoSetting
 
     @VideoSetting.setter
@@ -8211,6 +9780,9 @@ class MediaCastOutputMediaSetting(AbstractModel):
 
     @property
     def FollowSourceInfo(self):
+        """视频配置是否和第一个输入源的视频配置相同，默认值：false。如果 FollowSourceInfo 的值为 true，忽略 VideoSetting 参数。
+        :rtype: bool
+        """
         return self._FollowSourceInfo
 
     @FollowSourceInfo.setter
@@ -8264,6 +9836,11 @@ class MediaCastPlayInfo(AbstractModel):
 
     @property
     def Status(self):
+        """点播转直播项目运行状态，取值有：
+<li> Working : 运行中；</li>
+<li> Idle: 空闲状态。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8272,6 +9849,9 @@ class MediaCastPlayInfo(AbstractModel):
 
     @property
     def CurrentSourceId(self):
+        """当前播放的输入源 Id。
+        :rtype: str
+        """
         return self._CurrentSourceId
 
     @CurrentSourceId.setter
@@ -8280,6 +9860,9 @@ class MediaCastPlayInfo(AbstractModel):
 
     @property
     def CurrentSourcePosition(self):
+        """当前播放的输入源的播放位置，单位：秒。
+        :rtype: float
+        """
         return self._CurrentSourcePosition
 
     @CurrentSourcePosition.setter
@@ -8288,6 +9871,9 @@ class MediaCastPlayInfo(AbstractModel):
 
     @property
     def CurrentSourceDuration(self):
+        """当前播放的输入源时长，单位：秒。
+        :rtype: float
+        """
         return self._CurrentSourceDuration
 
     @CurrentSourceDuration.setter
@@ -8296,6 +9882,9 @@ class MediaCastPlayInfo(AbstractModel):
 
     @property
     def DestinationStatusSet(self):
+        """输出源状态信息。
+        :rtype: list of MediaCastDestinationStatus
+        """
         return self._DestinationStatusSet
 
     @DestinationStatusSet.setter
@@ -8304,6 +9893,9 @@ class MediaCastPlayInfo(AbstractModel):
 
     @property
     def LoopCount(self):
+        """已经循环播放的次数。
+        :rtype: int
+        """
         return self._LoopCount
 
     @LoopCount.setter
@@ -8353,6 +9945,9 @@ class MediaCastPlaySetting(AbstractModel):
 
     @property
     def LoopCount(self):
+        """循环播放次数。LoopCount 和 EndTime 同时只能有一个生效。默认循环播放次数为一次。如果同时设置了 LoopCount 和 EndTime 参数，优先使用 LoopCount 参数。
+        :rtype: int
+        """
         return self._LoopCount
 
     @LoopCount.setter
@@ -8361,6 +9956,9 @@ class MediaCastPlaySetting(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8369,6 +9967,9 @@ class MediaCastPlaySetting(AbstractModel):
 
     @property
     def AutoStartTime(self):
+        """自动启动时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
         return self._AutoStartTime
 
     @AutoStartTime.setter
@@ -8427,6 +10028,11 @@ class MediaCastProjectInfo(AbstractModel):
 
     @property
     def Status(self):
+        """点播转直播项目状态，取值有：
+<li>Working ：运行中；</li>
+<li>Idle ：空闲。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8435,6 +10041,9 @@ class MediaCastProjectInfo(AbstractModel):
 
     @property
     def SourceInfos(self):
+        """输入源列表。
+        :rtype: list of MediaCastSourceInfo
+        """
         return self._SourceInfos
 
     @SourceInfos.setter
@@ -8443,6 +10052,9 @@ class MediaCastProjectInfo(AbstractModel):
 
     @property
     def DestinationInfos(self):
+        """输出源列表。
+        :rtype: list of MediaCastDestinationInfo
+        """
         return self._DestinationInfos
 
     @DestinationInfos.setter
@@ -8451,6 +10063,9 @@ class MediaCastProjectInfo(AbstractModel):
 
     @property
     def OutputMediaSetting(self):
+        """输出媒体配置。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastOutputMediaSetting`
+        """
         return self._OutputMediaSetting
 
     @OutputMediaSetting.setter
@@ -8459,6 +10074,9 @@ class MediaCastProjectInfo(AbstractModel):
 
     @property
     def PlaySetting(self):
+        """播放参数。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastPlaySetting`
+        """
         return self._PlaySetting
 
     @PlaySetting.setter
@@ -8467,6 +10085,9 @@ class MediaCastProjectInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """项目启动时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8475,6 +10096,9 @@ class MediaCastProjectInfo(AbstractModel):
 
     @property
     def StopTime(self):
+        """项目结束时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如果项目还在运行中，该字段为空。
+        :rtype: str
+        """
         return self._StopTime
 
     @StopTime.setter
@@ -8483,6 +10107,9 @@ class MediaCastProjectInfo(AbstractModel):
 
     @property
     def Duration(self):
+        """推流时长，单位：秒。项目结束后，返回上次项目运行时的推流时长。如果项目是 Working 状态，返回的时长是0。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -8546,6 +10173,9 @@ class MediaCastProjectInput(AbstractModel):
 
     @property
     def SourceInfos(self):
+        """输入源列表。输入源列表最大个数为100.
+        :rtype: list of MediaCastSourceInfo
+        """
         return self._SourceInfos
 
     @SourceInfos.setter
@@ -8554,6 +10184,9 @@ class MediaCastProjectInput(AbstractModel):
 
     @property
     def DestinationInfos(self):
+        """输出源列表。输出源列表最大个数为10.
+        :rtype: list of MediaCastDestinationInfo
+        """
         return self._DestinationInfos
 
     @DestinationInfos.setter
@@ -8562,6 +10195,9 @@ class MediaCastProjectInput(AbstractModel):
 
     @property
     def OutputMediaSetting(self):
+        """输出媒体配置。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastOutputMediaSetting`
+        """
         return self._OutputMediaSetting
 
     @OutputMediaSetting.setter
@@ -8570,6 +10206,9 @@ class MediaCastProjectInput(AbstractModel):
 
     @property
     def PlaySetting(self):
+        """播放控制参数。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastPlaySetting`
+        """
         return self._PlaySetting
 
     @PlaySetting.setter
@@ -8642,6 +10281,10 @@ class MediaCastSourceInfo(AbstractModel):
 
     @property
     def Id(self):
+        """输入源 Id，由系统分配。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8650,6 +10293,12 @@ class MediaCastSourceInfo(AbstractModel):
 
     @property
     def Type(self):
+        """输入源的媒体类型，取值有：
+<li>CME：多媒体创作引擎的媒体文件；</li>
+<li>VOD：云点播的媒资文件。</li>
+<li>EXTERNAL：非多媒体创建引擎或者云点播的媒资文件。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8658,6 +10307,9 @@ class MediaCastSourceInfo(AbstractModel):
 
     @property
     def FileId(self):
+        """云点播媒体文件 ID。当 Type = VOD 时必填。
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -8666,6 +10318,9 @@ class MediaCastSourceInfo(AbstractModel):
 
     @property
     def MaterialId(self):
+        """多媒体创作引擎的媒体 ID。当 Type = CME  时必填。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -8674,6 +10329,9 @@ class MediaCastSourceInfo(AbstractModel):
 
     @property
     def Offset(self):
+        """文件播放的起始位置，单位：秒。默认为0，从文件头开始播放。当 Type = CME  或者 VOD 时有效。
+        :rtype: float
+        """
         return self._Offset
 
     @Offset.setter
@@ -8682,6 +10340,9 @@ class MediaCastSourceInfo(AbstractModel):
 
     @property
     def Duration(self):
+        """播放时长，单位：秒。默认播放整个文件。当 Type = CME  或者 VOD 时有效。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -8690,6 +10351,9 @@ class MediaCastSourceInfo(AbstractModel):
 
     @property
     def Url(self):
+        """外部文件的 Url， Type=EXTERNAL 时必填，可以是点播文件或者直播文件，支持的 Scheme 包括HTTP、HTTPS、RTMP。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -8734,6 +10398,9 @@ class MediaCastSourceInterruptInfo(AbstractModel):
 
     @property
     def SourceInfo(self):
+        """发生断流的输入源信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastSourceInfo`
+        """
         return self._SourceInfo
 
     @SourceInfo.setter
@@ -8742,6 +10409,11 @@ class MediaCastSourceInterruptInfo(AbstractModel):
 
     @property
     def Reason(self):
+        """输入源断开原因。取值有：
+<li>SystemError：系统错误；</li>
+<li>Unknown：未知错误。</li>
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -8787,6 +10459,9 @@ class MediaCastVideoSetting(AbstractModel):
 
     @property
     def Width(self):
+        """视频宽度，单位：px，默认值为1280。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -8795,6 +10470,9 @@ class MediaCastVideoSetting(AbstractModel):
 
     @property
     def Height(self):
+        """视频高度，单位：px，默认值为720。支持的视频分辨率最大为1920*1080。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -8803,6 +10481,9 @@ class MediaCastVideoSetting(AbstractModel):
 
     @property
     def Bitrate(self):
+        """视频码率，单位：kbps，默认值为2500。最大值为10000 kbps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -8811,6 +10492,9 @@ class MediaCastVideoSetting(AbstractModel):
 
     @property
     def FrameRate(self):
+        """视频帧率，单位：Hz，默认值为25。最大值为60。
+        :rtype: float
+        """
         return self._FrameRate
 
     @FrameRate.setter
@@ -8859,6 +10543,9 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def Height(self):
+        """雪碧图小图的高度。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -8867,6 +10554,9 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def Width(self):
+        """雪碧图小图的宽度。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -8875,6 +10565,9 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def TotalCount(self):
+        """雪碧图小图的总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8883,6 +10576,9 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def ImageUrlSet(self):
+        """截取雪碧图输出的地址。
+        :rtype: list of str
+        """
         return self._ImageUrlSet
 
     @ImageUrlSet.setter
@@ -8891,6 +10587,9 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def WebVttUrl(self):
+        """雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+        :rtype: str
+        """
         return self._WebVttUrl
 
     @WebVttUrl.setter
@@ -8952,6 +10651,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Size(self):
+        """大小。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -8960,6 +10662,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Container(self):
+        """容器类型。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -8968,6 +10673,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Bitrate(self):
+        """视频流码率平均值与音频流码率平均值之和，单位：bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -8976,6 +10684,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Height(self):
+        """视频流高度的最大值，单位：px。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -8984,6 +10695,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Width(self):
+        """视频流宽度的最大值，单位：px。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -8992,6 +10706,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Duration(self):
+        """时长，单位：秒。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -9000,6 +10717,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Rotate(self):
+        """视频拍摄时的选择角度，单位：度
+        :rtype: int
+        """
         return self._Rotate
 
     @Rotate.setter
@@ -9008,6 +10728,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def VideoStreamInfoSet(self):
+        """视频流信息。
+        :rtype: list of VideoStreamInfo
+        """
         return self._VideoStreamInfoSet
 
     @VideoStreamInfoSet.setter
@@ -9016,6 +10739,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def AudioStreamInfoSet(self):
+        """音频流信息。
+        :rtype: list of AudioStreamInfo
+        """
         return self._AudioStreamInfoSet
 
     @AudioStreamInfoSet.setter
@@ -9072,6 +10798,10 @@ class MediaPreprocessOperation(AbstractModel):
 
     @property
     def Type(self):
+        """预处理操作的类型，取值范围：
+<li>ImageTextMask：图片文字遮罩。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9080,6 +10810,10 @@ class MediaPreprocessOperation(AbstractModel):
 
     @property
     def Args(self):
+        """预处理操作参数。
+当 Type 取值 ImageTextMask 时，参数为要保留的文字。
+        :rtype: list of str
+        """
         return self._Args
 
     @Args.setter
@@ -9134,6 +10868,13 @@ class MediaReplacementInfo(AbstractModel):
 
     @property
     def MediaType(self):
+        """替换的媒体类型，取值有：
+<li>CMEMaterialId：替换的媒体类型为媒体 ID；</li>
+<li>ImageUrl：替换的媒体类型为图片 URL；</li>
+
+注：默认为 CMEMaterialId 。
+        :rtype: str
+        """
         return self._MediaType
 
     @MediaType.setter
@@ -9142,6 +10883,10 @@ class MediaReplacementInfo(AbstractModel):
 
     @property
     def MaterialId(self):
+        """媒体 ID。
+当媒体类型取值为 CMEMaterialId 时有效。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -9150,6 +10895,11 @@ class MediaReplacementInfo(AbstractModel):
 
     @property
     def MediaUrl(self):
+        """媒体 URL。
+当媒体类型取值为 ImageUrl 时有效，
+图片仅支持 jpg、png 格式，且大小不超过 2M 。
+        :rtype: str
+        """
         return self._MediaUrl
 
     @MediaUrl.setter
@@ -9158,6 +10908,9 @@ class MediaReplacementInfo(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """替换媒体选取的开始时间，单位为秒，默认为 0。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -9166,6 +10919,10 @@ class MediaReplacementInfo(AbstractModel):
 
     @property
     def PreprocessOperation(self):
+        """预处理操作。
+注：目前该功能暂不支持，请勿使用。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaPreprocessOperation`
+        """
         return self._PreprocessOperation
 
     @PreprocessOperation.setter
@@ -9212,6 +10969,13 @@ class MediaTrack(AbstractModel):
 
     @property
     def Type(self):
+        """轨道类型，取值有：
+<ul>
+<li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li><li>MediaTransitionItem</li></ul> </li>
+<li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>EmptyTrackItem</li></ul> </li>
+</ul>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9220,6 +10984,9 @@ class MediaTrack(AbstractModel):
 
     @property
     def TrackItems(self):
+        """轨道上的媒体片段列表。
+        :rtype: list of MediaTrackItem
+        """
         return self._TrackItems
 
     @TrackItems.setter
@@ -9276,6 +11043,13 @@ class MediaTrackItem(AbstractModel):
 
     @property
     def Type(self):
+        """片段类型。取值有：
+<li>Video：视频片段；</li>
+<li>Audio：音频片段；</li>
+<li>Empty：空白片段；</li>
+<li>Transition：转场。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9284,6 +11058,9 @@ class MediaTrackItem(AbstractModel):
 
     @property
     def VideoItem(self):
+        """视频片段，当 Type = Video 时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoTrackItem`
+        """
         return self._VideoItem
 
     @VideoItem.setter
@@ -9292,6 +11069,9 @@ class MediaTrackItem(AbstractModel):
 
     @property
     def AudioItem(self):
+        """音频片段，当 Type = Audio 时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.AudioTrackItem`
+        """
         return self._AudioItem
 
     @AudioItem.setter
@@ -9300,6 +11080,10 @@ class MediaTrackItem(AbstractModel):
 
     @property
     def EmptyItem(self):
+        """空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
+<li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
+        :rtype: :class:`tencentcloud.cme.v20191029.models.EmptyTrackItem`
+        """
         return self._EmptyItem
 
     @EmptyItem.setter
@@ -9308,6 +11092,9 @@ class MediaTrackItem(AbstractModel):
 
     @property
     def TransitionItem(self):
+        """转场，当 Type = Transition 时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaTransitionItem`
+        """
         return self._TransitionItem
 
     @TransitionItem.setter
@@ -9356,6 +11143,9 @@ class MediaTransitionItem(AbstractModel):
 
     @property
     def TransitionId(self):
+        """转场 Id 。暂只支持一个转场。
+        :rtype: str
+        """
         return self._TransitionId
 
     @TransitionId.setter
@@ -9364,6 +11154,9 @@ class MediaTransitionItem(AbstractModel):
 
     @property
     def Duration(self):
+        """转场持续时间，单位为秒，默认为2秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -9413,6 +11206,9 @@ class ModifyMaterialRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -9421,6 +11217,9 @@ class ModifyMaterialRequest(AbstractModel):
 
     @property
     def MaterialId(self):
+        """要修改的媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -9429,6 +11228,9 @@ class ModifyMaterialRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """媒体归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -9437,6 +11239,9 @@ class ModifyMaterialRequest(AbstractModel):
 
     @property
     def Name(self):
+        """媒体名称，不能超过30个字符，不填则不修改。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9445,6 +11250,9 @@ class ModifyMaterialRequest(AbstractModel):
 
     @property
     def ClassPath(self):
+        """媒体分类路径，例如填写"/a/b"，则代表该媒体存储的路径为"/a/b"。若修改分类路径，则 Owner 字段必填。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -9453,6 +11261,9 @@ class ModifyMaterialRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改任意媒体的信息。如果指定操作者，则操作者必须对媒体有写权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -9493,6 +11304,9 @@ class ModifyMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9536,6 +11350,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -9544,6 +11361,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -9552,6 +11372,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """项目名称，不可超过30个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9560,6 +11383,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def AspectRatio(self):
+        """画布宽高比，值为视频编辑项目画布宽与高的像素值的比值，如 16:9、9:16 等。
+        :rtype: str
+        """
         return self._AspectRatio
 
     @AspectRatio.setter
@@ -9568,6 +11394,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """项目所有者。目前仅支持个人项目，不支持团队项目。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -9576,6 +11405,12 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """项目模式，一个项目可以有多种模式并相互切换。
+当 Category 为 VIDEO_EDIT 时，可选模式有：
+<li>Default：默认模式，即普通视频编辑项目。</li>
+<li>VideoEditTemplate：剪辑模板制作模式，用于制作剪辑模板。</li>
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -9616,6 +11451,9 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9658,6 +11496,9 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -9666,6 +11507,9 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def TeamId(self):
+        """团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -9674,6 +11518,9 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def MemberId(self):
+        """团队成员 ID。
+        :rtype: str
+        """
         return self._MemberId
 
     @MemberId.setter
@@ -9682,6 +11529,9 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """成员备注，长度不能超过15个字符。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -9690,6 +11540,11 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def Role(self):
+        """成员角色，可取值有：
+<li>Admin：团队管理员；</li>
+<li>Member：普通成员。</li>
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -9698,6 +11553,9 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -9736,6 +11594,9 @@ class ModifyTeamMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9770,6 +11631,9 @@ class ModifyTeamRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -9778,6 +11642,9 @@ class ModifyTeamRequest(AbstractModel):
 
     @property
     def TeamId(self):
+        """团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -9786,6 +11653,9 @@ class ModifyTeamRequest(AbstractModel):
 
     @property
     def Name(self):
+        """团队名称。团队名称不能置空，并且不能超过30个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9794,6 +11664,9 @@ class ModifyTeamRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改所有团队的信息。如果指定操作者，则操作者必须为团队管理员或者所有者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -9830,6 +11703,9 @@ class ModifyTeamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9879,6 +11755,9 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -9887,6 +11766,9 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Id(self):
+        """配置 ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9895,6 +11777,9 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Name(self):
+        """更改后的视频编码配置名，不填则不修改。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9903,6 +11788,12 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -9911,6 +11802,12 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -9919,6 +11816,9 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def VideoSetting(self):
+        """更改后的编码配置的视频设置。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetVideoSettingForUpdate`
+        """
         return self._VideoSetting
 
     @VideoSetting.setter
@@ -9927,6 +11827,9 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def AudioSetting(self):
+        """更改后的编码配置的音频设置。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetAudioSettingForUpdate`
+        """
         return self._AudioSetting
 
     @AudioSetting.setter
@@ -9970,6 +11873,9 @@ class ModifyVideoEncodingPresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10007,6 +11913,9 @@ class MoveClassRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -10015,6 +11924,9 @@ class MoveClassRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -10023,6 +11935,9 @@ class MoveClassRequest(AbstractModel):
 
     @property
     def SourceClassPath(self):
+        """源分类路径。
+        :rtype: str
+        """
         return self._SourceClassPath
 
     @SourceClassPath.setter
@@ -10031,6 +11946,9 @@ class MoveClassRequest(AbstractModel):
 
     @property
     def DestinationClassPath(self):
+        """目标分类路径。
+        :rtype: str
+        """
         return self._DestinationClassPath
 
     @DestinationClassPath.setter
@@ -10039,6 +11957,9 @@ class MoveClassRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -10078,6 +11999,9 @@ class MoveClassResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10112,6 +12036,9 @@ class MoveResourceRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -10120,6 +12047,9 @@ class MoveResourceRequest(AbstractModel):
 
     @property
     def SourceResource(self):
+        """待移动的原始资源信息，包含原始媒体或分类资源，以及资源归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`
+        """
         return self._SourceResource
 
     @SourceResource.setter
@@ -10128,6 +12058,9 @@ class MoveResourceRequest(AbstractModel):
 
     @property
     def DestinationResource(self):
+        """目标信息，包含分类及归属，仅支持移动资源到分类。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`
+        """
         return self._DestinationResource
 
     @DestinationResource.setter
@@ -10136,6 +12069,9 @@ class MoveResourceRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以移动任务资源。如果指定操作者，则操作者必须对源及目标资源有写权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -10176,6 +12112,9 @@ class MoveResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10204,6 +12143,9 @@ class OtherMaterial(AbstractModel):
 
     @property
     def MaterialUrl(self):
+        """素材媒体文件的播放 URL 地址。
+        :rtype: str
+        """
         return self._MaterialUrl
 
     @MaterialUrl.setter
@@ -10212,6 +12154,9 @@ class OtherMaterial(AbstractModel):
 
     @property
     def VodFileId(self):
+        """云点播媒资 FileId。
+        :rtype: str
+        """
         return self._VodFileId
 
     @VodFileId.setter
@@ -10249,6 +12194,9 @@ class ParseEventRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台名称，指定访问的平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -10257,6 +12205,9 @@ class ParseEventRequest(AbstractModel):
 
     @property
     def EventContent(self):
+        """回调事件内容。
+        :rtype: str
+        """
         return self._EventContent
 
     @EventContent.setter
@@ -10294,6 +12245,9 @@ class ParseEventResponse(AbstractModel):
 
     @property
     def EventContent(self):
+        """事件内容。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.EventContent`
+        """
         return self._EventContent
 
     @EventContent.setter
@@ -10302,6 +12256,9 @@ class ParseEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10339,6 +12296,9 @@ class PenguinMediaPlatformPublishInfo(AbstractModel):
 
     @property
     def Title(self):
+        """视频发布标题。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -10347,6 +12307,9 @@ class PenguinMediaPlatformPublishInfo(AbstractModel):
 
     @property
     def Description(self):
+        """视频发布描述信息。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10355,6 +12318,9 @@ class PenguinMediaPlatformPublishInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """视频标签。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -10363,6 +12329,9 @@ class PenguinMediaPlatformPublishInfo(AbstractModel):
 
     @property
     def Category(self):
+        """视频分类，详见[企鹅号官网](https://open.om.qq.com/resources/resourcesCenter)视频分类。
+        :rtype: int
+        """
         return self._Category
 
     @Category.setter
@@ -10420,6 +12389,9 @@ class PlatformInfo(AbstractModel):
 
     @property
     def Platform(self):
+        """平台标识。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -10428,6 +12400,9 @@ class PlatformInfo(AbstractModel):
 
     @property
     def Description(self):
+        """平台描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10436,6 +12411,9 @@ class PlatformInfo(AbstractModel):
 
     @property
     def VodSubAppId(self):
+        """云点播子应用 Id。
+        :rtype: int
+        """
         return self._VodSubAppId
 
     @VodSubAppId.setter
@@ -10444,6 +12422,9 @@ class PlatformInfo(AbstractModel):
 
     @property
     def LicenseId(self):
+        """平台绑定的 license Id。
+        :rtype: str
+        """
         return self._LicenseId
 
     @LicenseId.setter
@@ -10452,6 +12433,12 @@ class PlatformInfo(AbstractModel):
 
     @property
     def Status(self):
+        """平台状态，可取值为：
+<li>Normal：正常，可使用。；</li>
+<li>Stopped：已停用，暂无法使用；</li>
+<li>Expired：已过期，需要重新购买会员包。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10460,6 +12447,9 @@ class PlatformInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10468,6 +12458,9 @@ class PlatformInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10513,6 +12506,9 @@ class PresetTagInfo(AbstractModel):
 
     @property
     def Id(self):
+        """标签 Id 。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -10521,6 +12517,9 @@ class PresetTagInfo(AbstractModel):
 
     @property
     def Name(self):
+        """标签名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10529,6 +12528,9 @@ class PresetTagInfo(AbstractModel):
 
     @property
     def ParentTagId(self):
+        """父级预设 Id。
+        :rtype: str
+        """
         return self._ParentTagId
 
     @ParentTagId.setter
@@ -10598,6 +12600,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10606,6 +12611,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def Name(self):
+        """项目名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10614,6 +12622,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def AspectRatio(self):
+        """画布宽高比。
+        :rtype: str
+        """
         return self._AspectRatio
 
     @AspectRatio.setter
@@ -10622,6 +12633,14 @@ class ProjectInfo(AbstractModel):
 
     @property
     def Category(self):
+        """项目类别，取值有：
+<li>VIDEO_EDIT：视频编辑。</li>
+<li>SWITCHER：导播台。</li>
+<li>VIDEO_SEGMENTATION：视频拆条。</li>
+<li>STREAM_CONNECT：云转推。</li>
+<li>RECORD_REPLAY：录制回放。</li>
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -10630,6 +12649,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def Owner(self):
+        """归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -10638,6 +12660,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def CoverUrl(self):
+        """项目封面图片地址。
+        :rtype: str
+        """
         return self._CoverUrl
 
     @CoverUrl.setter
@@ -10646,6 +12671,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def StreamConnectProjectInfo(self):
+        """云转推项目信息，仅当项目类别取值 STREAM_CONNECT 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInfo`
+        """
         return self._StreamConnectProjectInfo
 
     @StreamConnectProjectInfo.setter
@@ -10654,6 +12683,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def MediaCastProjectInfo(self):
+        """点播转直播项目信息，仅当项目类别取值为 MEDIA_CAST 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastProjectInfo`
+        """
         return self._MediaCastProjectInfo
 
     @MediaCastProjectInfo.setter
@@ -10662,6 +12695,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """项目更新时间，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10670,6 +12706,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """项目创建时间，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10731,6 +12770,9 @@ class ProjectMediaCastStatusChangedEvent(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10739,6 +12781,13 @@ class ProjectMediaCastStatusChangedEvent(AbstractModel):
 
     @property
     def Status(self):
+        """项目状态，取值有：
+<li>Started：点播转直播开始；</li>
+<li>Stopped：点播转直播结束；</li>
+<li>SourceInterrupted：点播转直播输入断流；</li>
+<li>DestinationInterrupted：点播转直播输出断流。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10747,6 +12796,9 @@ class ProjectMediaCastStatusChangedEvent(AbstractModel):
 
     @property
     def SourceInterruptInfo(self):
+        """点播转直播输入断流信息，仅当 Status 取值 SourceInterrupted 时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastSourceInterruptInfo`
+        """
         return self._SourceInterruptInfo
 
     @SourceInterruptInfo.setter
@@ -10755,6 +12807,9 @@ class ProjectMediaCastStatusChangedEvent(AbstractModel):
 
     @property
     def DestinationInterruptInfo(self):
+        """点播转直播输出断流信息，仅当 Status 取值 DestinationInterrupted 时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaCastDestinationInterruptInfo`
+        """
         return self._DestinationInterruptInfo
 
     @DestinationInterruptInfo.setter
@@ -10810,6 +12865,9 @@ class ProjectStreamConnectStatusChangedEvent(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10818,6 +12876,13 @@ class ProjectStreamConnectStatusChangedEvent(AbstractModel):
 
     @property
     def Status(self):
+        """项目状态，取值有：
+<li>Working：云转推推流开始；</li>
+<li>Stopped：云转推推流结束；</li>
+<li>InputInterrupted：云转推输入断流；</li>
+<li>OutputInterrupted：云转推输出断流。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10826,6 +12891,10 @@ class ProjectStreamConnectStatusChangedEvent(AbstractModel):
 
     @property
     def InputInterruptInfo(self):
+        """云转推输入断流信息，仅当 Status 取值 InputInterrupted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamConnectInputInterruptInfo`
+        """
         return self._InputInterruptInfo
 
     @InputInterruptInfo.setter
@@ -10834,6 +12903,10 @@ class ProjectStreamConnectStatusChangedEvent(AbstractModel):
 
     @property
     def OutputInterruptInfo(self):
+        """云转推输出断流信息，仅当 Status 取值 OutputInterrupted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutputInterruptInfo`
+        """
         return self._OutputInterruptInfo
 
     @OutputInterruptInfo.setter
@@ -10883,6 +12956,9 @@ class ProjectSwitcherStatusChangedEvent(AbstractModel):
 
     @property
     def ProjectId(self):
+        """导播台项目 Id。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10891,6 +12967,15 @@ class ProjectSwitcherStatusChangedEvent(AbstractModel):
 
     @property
     def Status(self):
+        """导播台项目状态，可取值有：
+<li>Started：导播台启动；</li>
+<li>Stopped：导播台停止；</li>
+<li>PvwStarted：导播台 PVW 开启；</li>
+<li>PgmStarted：导播台 PGM 开启，输出推流开始；</li>
+<li>PvwStopped：导播台 PVW 停止；</li>
+<li>PgmStopped：导播台 PGM 停止，输出推流结束。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10934,6 +13019,9 @@ class RecordReplayProjectInput(AbstractModel):
 
     @property
     def PullStreamUrl(self):
+        """录制拉流地址。
+        :rtype: str
+        """
         return self._PullStreamUrl
 
     @PullStreamUrl.setter
@@ -10942,6 +13030,9 @@ class RecordReplayProjectInput(AbstractModel):
 
     @property
     def MaterialOwner(self):
+        """录制文件归属者。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._MaterialOwner
 
     @MaterialOwner.setter
@@ -10950,6 +13041,9 @@ class RecordReplayProjectInput(AbstractModel):
 
     @property
     def MaterialClassPath(self):
+        """录制文件存储分类路径。
+        :rtype: str
+        """
         return self._MaterialClassPath
 
     @MaterialClassPath.setter
@@ -10958,6 +13052,9 @@ class RecordReplayProjectInput(AbstractModel):
 
     @property
     def PushStreamUrl(self):
+        """回放推流地址。
+        :rtype: str
+        """
         return self._PushStreamUrl
 
     @PushStreamUrl.setter
@@ -11001,6 +13098,11 @@ class Resource(AbstractModel):
 
     @property
     def Type(self):
+        """类型，取值有：
+<li>MATERIAL：素材。</li>
+<li>CLASS：分类。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11009,6 +13111,9 @@ class Resource(AbstractModel):
 
     @property
     def Id(self):
+        """资源 Id，当 Type 为 MATERIAL 时，取值为素材 Id；当 Type 为 CLASS 时，取值为分类路径 ClassPath。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -11046,6 +13151,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Resource(self):
+        """媒资和分类资源。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Resource`
+        """
         return self._Resource
 
     @Resource.setter
@@ -11054,6 +13162,9 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Owner(self):
+        """资源归属，个人或团队。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -11111,6 +13222,9 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -11119,6 +13233,9 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """资源所属实体。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -11127,6 +13244,9 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Resources(self):
+        """被授权资源。
+        :rtype: list of Resource
+        """
         return self._Resources
 
     @Resources.setter
@@ -11135,6 +13255,9 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Authorizees(self):
+        """被授权目标实体。
+        :rtype: list of Entity
+        """
         return self._Authorizees
 
     @Authorizees.setter
@@ -11143,6 +13266,13 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Permissions(self):
+        """详细授权值。 取值有：
+<li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
+<li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
+<li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
+<li>W：可修改、删除媒资。</li>
+        :rtype: list of str
+        """
         return self._Permissions
 
     @Permissions.setter
@@ -11151,6 +13281,9 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，撤销任意资源的授权权限。如果指定操作者，则操作者必须对被授权资源有写权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -11201,6 +13334,9 @@ class RevokeResourceAuthorizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11229,6 +13365,9 @@ class RtmpPushInputInfo(AbstractModel):
 
     @property
     def ExpiredSecond(self):
+        """直播推流地址有效期，单位：秒 。
+        :rtype: int
+        """
         return self._ExpiredSecond
 
     @ExpiredSecond.setter
@@ -11237,6 +13376,9 @@ class RtmpPushInputInfo(AbstractModel):
 
     @property
     def PushUrl(self):
+        """直播推流地址，入参不填默认由多媒体创作引擎生成。
+        :rtype: str
+        """
         return self._PushUrl
 
     @PushUrl.setter
@@ -11308,6 +13450,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -11316,6 +13461,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def SearchScopes(self):
+        """指定搜索空间，数组长度不得超过5。
+        :rtype: list of SearchScope
+        """
         return self._SearchScopes
 
     @SearchScopes.setter
@@ -11324,6 +13472,13 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def MaterialTypes(self):
+        """媒体类型，可取值有：
+<li>AUDIO：音频；</li>
+<li>VIDEO：视频 ；</li>
+<li>IMAGE：图片；</li>
+<li>VIDEO_EDIT_TEMPLATE：剪辑模板。</li>
+        :rtype: list of str
+        """
         return self._MaterialTypes
 
     @MaterialTypes.setter
@@ -11332,6 +13487,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def Text(self):
+        """搜索文本，模糊匹配媒体名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -11340,6 +13498,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def Resolution(self):
+        """按画质检索，取值为：LD/SD/HD/FHD/2K/4K。
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -11348,6 +13509,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def DurationRange(self):
+        """按媒体时长检索，单位s。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.IntegerRange`
+        """
         return self._DurationRange
 
     @DurationRange.setter
@@ -11356,6 +13520,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def CreateTimeRange(self):
+        """按照媒体创建时间检索。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.TimeRange`
+        """
         return self._CreateTimeRange
 
     @CreateTimeRange.setter
@@ -11364,6 +13531,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """按标签检索，填入检索的标签名。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -11372,6 +13542,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.SortBy`
+        """
         return self._Sort
 
     @Sort.setter
@@ -11380,6 +13553,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11388,6 +13564,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11396,6 +13575,9 @@ class SearchMaterialRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以搜索任意媒体的信息。如果指定操作者，则操作者必须对媒体有读权限。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -11457,6 +13639,9 @@ class SearchMaterialResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合记录总条数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11465,6 +13650,9 @@ class SearchMaterialResponse(AbstractModel):
 
     @property
     def MaterialInfoSet(self):
+        """媒体信息，仅返回基础信息。
+        :rtype: list of MaterialInfo
+        """
         return self._MaterialInfoSet
 
     @MaterialInfoSet.setter
@@ -11473,6 +13661,9 @@ class SearchMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11508,6 +13699,9 @@ class SearchScope(AbstractModel):
 
     @property
     def Owner(self):
+        """分类路径归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -11516,6 +13710,9 @@ class SearchScope(AbstractModel):
 
     @property
     def ClassPath(self):
+        """按分类路径检索。 不填则默认按根分类路径检索。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -11572,6 +13769,9 @@ class SlotInfo(AbstractModel):
 
     @property
     def Id(self):
+        """卡槽 Id。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -11580,6 +13780,13 @@ class SlotInfo(AbstractModel):
 
     @property
     def Type(self):
+        """卡槽类型，可取值有：
+<li> AUDIO：音频卡槽，可替换素材类型为 AUDIO 的音频素材;</li>
+<li> VIDEO：视频卡槽，可替换素材类型为 VIDEO 的视频素材;</li>
+<li> IMAGE：图片卡槽，可替换素材类型为 IMAGE 的图片素材;</li>
+<li> TEXT：文本卡槽，可替换文本内容。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11588,6 +13795,9 @@ class SlotInfo(AbstractModel):
 
     @property
     def DefaultMaterialId(self):
+        """默认素材ID。当卡槽类型为 AUDIO，VIDEO，或 IMAGE 中的一种时有效。
+        :rtype: str
+        """
         return self._DefaultMaterialId
 
     @DefaultMaterialId.setter
@@ -11596,6 +13806,10 @@ class SlotInfo(AbstractModel):
 
     @property
     def DefaultTextSlotInfo(self):
+        """默认文本卡槽信息。当卡槽类型为 TEXT 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.TextSlotInfo`
+        """
         return self._DefaultTextSlotInfo
 
     @DefaultTextSlotInfo.setter
@@ -11604,6 +13818,9 @@ class SlotInfo(AbstractModel):
 
     @property
     def Duration(self):
+        """素材时长，单位秒。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -11612,6 +13829,9 @@ class SlotInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """卡槽起始时间，单位秒。
+        :rtype: float
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11666,6 +13886,9 @@ class SlotReplacementInfo(AbstractModel):
 
     @property
     def Id(self):
+        """卡槽 Id。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -11674,6 +13897,14 @@ class SlotReplacementInfo(AbstractModel):
 
     @property
     def ReplacementType(self):
+        """替换类型，可取值有：
+<li> AUDIO ：音频；</li>
+<li> VIDEO ：视频；</li>
+<li> IMAGE ：图片；</li>
+<li> TEXT ：文本。</li>
+注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。如果替换的类型为Text,，则必须保证模板轨道数据中相应卡槽的位置标记的是文本。
+        :rtype: str
+        """
         return self._ReplacementType
 
     @ReplacementType.setter
@@ -11682,6 +13913,9 @@ class SlotReplacementInfo(AbstractModel):
 
     @property
     def MediaReplacementInfo(self):
+        """媒体替换信息，仅当要替换的媒体类型为音频、视频、图片时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaReplacementInfo`
+        """
         return self._MediaReplacementInfo
 
     @MediaReplacementInfo.setter
@@ -11690,6 +13924,9 @@ class SlotReplacementInfo(AbstractModel):
 
     @property
     def TextReplacementInfo(self):
+        """文本替换信息，仅当要替换的卡槽类型为文本时有效。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.TextReplacementInfo`
+        """
         return self._TextReplacementInfo
 
     @TextReplacementInfo.setter
@@ -11733,6 +13970,9 @@ class SortBy(AbstractModel):
 
     @property
     def Field(self):
+        """排序字段。
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -11741,6 +13981,9 @@ class SortBy(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式，可选值：Asc（升序）、Desc（降序），默认降序。
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -11801,6 +14044,9 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def FileId(self):
+        """云点播文件  Id。
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -11809,6 +14055,9 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def MaterialId(self):
+        """媒体 Id。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -11817,6 +14066,9 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者 Id。（废弃，请勿使用）
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -11825,6 +14077,14 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def OperationType(self):
+        """操作类型，可取值有：
+<li>Upload：本地上传；</li>
+<li>PullUpload：拉取上传；</li>
+<li>VideoEdit：视频剪辑；</li>
+<li>LiveStreamClip：直播流剪辑；</li>
+<li>LiveStreamRecord：直播流录制。</li>
+        :rtype: str
+        """
         return self._OperationType
 
     @OperationType.setter
@@ -11833,6 +14093,9 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def Owner(self):
+        """媒体归属。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
         return self._Owner
 
     @Owner.setter
@@ -11841,6 +14104,9 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def ClassPath(self):
+        """媒体分类路径。
+        :rtype: str
+        """
         return self._ClassPath
 
     @ClassPath.setter
@@ -11849,6 +14115,9 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def TaskId(self):
+        """生成文件的任务 Id。当生成新文件是拉取上传、视频剪辑、直播流剪辑时为任务 Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11857,6 +14126,9 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def SourceContext(self):
+        """来源上下文信息。视频剪辑生成新文件时此字段为项目 Id；直播流剪辑或者直播流录制生成新文件则为原始流地址。
+        :rtype: str
+        """
         return self._SourceContext
 
     @SourceContext.setter
@@ -11901,6 +14173,11 @@ class StreamConnectInputInterruptInfo(AbstractModel):
 
     @property
     def EndPoint(self):
+        """云转推输入源标识，取值有：
+<li>Main：主源；</li>
+<li>Backup：备源。</li>
+        :rtype: str
+        """
         return self._EndPoint
 
     @EndPoint.setter
@@ -11945,6 +14222,9 @@ class StreamConnectOutput(AbstractModel):
 
     @property
     def Id(self):
+        """云转推输出源标识，转推项目级别唯一。若不填则由后端生成。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -11953,6 +14233,9 @@ class StreamConnectOutput(AbstractModel):
 
     @property
     def Name(self):
+        """云转推输出源名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11961,6 +14244,11 @@ class StreamConnectOutput(AbstractModel):
 
     @property
     def Type(self):
+        """云转推输出源类型，取值：
+<li>URL ：URL类型</li>
+不填默认为URL类型。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11969,6 +14257,9 @@ class StreamConnectOutput(AbstractModel):
 
     @property
     def PushUrl(self):
+        """云转推推流地址。
+        :rtype: str
+        """
         return self._PushUrl
 
     @PushUrl.setter
@@ -12011,6 +14302,10 @@ class StreamConnectOutputInfo(AbstractModel):
 
     @property
     def StreamConnectOutput(self):
+        """输出源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`
+        """
         return self._StreamConnectOutput
 
     @StreamConnectOutput.setter
@@ -12019,6 +14314,11 @@ class StreamConnectOutputInfo(AbstractModel):
 
     @property
     def PushSwitch(self):
+        """输出流状态：
+<li>On ：开；</li>
+<li>Off ：关 。</li>
+        :rtype: str
+        """
         return self._PushSwitch
 
     @PushSwitch.setter
@@ -12061,6 +14361,9 @@ class StreamConnectOutputInterruptInfo(AbstractModel):
 
     @property
     def Id(self):
+        """云转推输出标识。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -12069,6 +14372,9 @@ class StreamConnectOutputInterruptInfo(AbstractModel):
 
     @property
     def Name(self):
+        """云转推输出名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12077,6 +14383,9 @@ class StreamConnectOutputInterruptInfo(AbstractModel):
 
     @property
     def Url(self):
+        """云转推输出地址。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -12139,6 +14448,11 @@ class StreamConnectProjectInfo(AbstractModel):
 
     @property
     def Status(self):
+        """转推项目状态，取值有：
+<li>Working ：转推中；</li>
+<li>Idle ：空闲中。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12147,6 +14461,11 @@ class StreamConnectProjectInfo(AbstractModel):
 
     @property
     def CurrentInputEndpoint(self):
+        """当前转推输入源，取值有：
+<li>Main ：主输入源；</li>
+<li>Backup ：备输入源。</li>
+        :rtype: str
+        """
         return self._CurrentInputEndpoint
 
     @CurrentInputEndpoint.setter
@@ -12155,6 +14474,9 @@ class StreamConnectProjectInfo(AbstractModel):
 
     @property
     def CurrentStartTime(self):
+        """当前转推开始时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。
+        :rtype: str
+        """
         return self._CurrentStartTime
 
     @CurrentStartTime.setter
@@ -12163,6 +14485,9 @@ class StreamConnectProjectInfo(AbstractModel):
 
     @property
     def CurrentStopTime(self):
+        """当前转推计划结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。
+        :rtype: str
+        """
         return self._CurrentStopTime
 
     @CurrentStopTime.setter
@@ -12171,6 +14496,9 @@ class StreamConnectProjectInfo(AbstractModel):
 
     @property
     def LastStopTime(self):
+        """上一次转推结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Idle 时有效。
+        :rtype: str
+        """
         return self._LastStopTime
 
     @LastStopTime.setter
@@ -12179,6 +14507,10 @@ class StreamConnectProjectInfo(AbstractModel):
 
     @property
     def MainInput(self):
+        """云转推主输入源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        """
         return self._MainInput
 
     @MainInput.setter
@@ -12187,6 +14519,10 @@ class StreamConnectProjectInfo(AbstractModel):
 
     @property
     def BackupInput(self):
+        """云转推备输入源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        """
         return self._BackupInput
 
     @BackupInput.setter
@@ -12195,6 +14531,9 @@ class StreamConnectProjectInfo(AbstractModel):
 
     @property
     def OutputSet(self):
+        """云转推输出源。
+        :rtype: list of StreamConnectOutputInfo
+        """
         return self._OutputSet
 
     @OutputSet.setter
@@ -12250,6 +14589,9 @@ class StreamConnectProjectInput(AbstractModel):
 
     @property
     def MainInput(self):
+        """云转推主输入源信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        """
         return self._MainInput
 
     @MainInput.setter
@@ -12258,6 +14600,9 @@ class StreamConnectProjectInput(AbstractModel):
 
     @property
     def BackupInput(self):
+        """云转推备输入源信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        """
         return self._BackupInput
 
     @BackupInput.setter
@@ -12266,6 +14611,9 @@ class StreamConnectProjectInput(AbstractModel):
 
     @property
     def Outputs(self):
+        """云转推输出源信息。
+        :rtype: list of StreamConnectOutput
+        """
         return self._Outputs
 
     @Outputs.setter
@@ -12325,6 +14673,12 @@ class StreamInputInfo(AbstractModel):
 
     @property
     def InputType(self):
+        """流输入类型，取值：
+<li>VodPull ： 点播拉流；</li>
+<li>LivePull ：直播拉流；</li>
+<li>RtmpPush ： 直播推流。</li>
+        :rtype: str
+        """
         return self._InputType
 
     @InputType.setter
@@ -12333,6 +14687,10 @@ class StreamInputInfo(AbstractModel):
 
     @property
     def VodPullInputInfo(self):
+        """点播拉流信息，当 InputType = VodPull 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VodPullInputInfo`
+        """
         return self._VodPullInputInfo
 
     @VodPullInputInfo.setter
@@ -12341,6 +14699,10 @@ class StreamInputInfo(AbstractModel):
 
     @property
     def LivePullInputInfo(self):
+        """直播拉流信息，当 InputType = LivePull  时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.LivePullInputInfo`
+        """
         return self._LivePullInputInfo
 
     @LivePullInputInfo.setter
@@ -12349,6 +14711,10 @@ class StreamInputInfo(AbstractModel):
 
     @property
     def RtmpPushInputInfo(self):
+        """直播推流信息，当 InputType = RtmpPush 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.RtmpPushInputInfo`
+        """
         return self._RtmpPushInputInfo
 
     @RtmpPushInputInfo.setter
@@ -12406,6 +14772,12 @@ class SwitcherPgmOutputConfig(AbstractModel):
 
     @property
     def TemplateId(self):
+        """导播台输出模板 ID，可取值：
+<li>10001：分辨率为1080 P；</li>
+<li>10002：分辨率为720 P；</li>
+<li>10003：分辨率为480 P。</li>
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -12414,6 +14786,9 @@ class SwitcherPgmOutputConfig(AbstractModel):
 
     @property
     def Width(self):
+        """导播台输出宽，单位：像素。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12422,6 +14797,9 @@ class SwitcherPgmOutputConfig(AbstractModel):
 
     @property
     def Height(self):
+        """导播台输出高，单位：像素。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12430,6 +14808,9 @@ class SwitcherPgmOutputConfig(AbstractModel):
 
     @property
     def Fps(self):
+        """导播台输出帧率，单位：帧/秒
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -12438,6 +14819,9 @@ class SwitcherPgmOutputConfig(AbstractModel):
 
     @property
     def BitRate(self):
+        """导播台输出码率， 单位：bit/s。
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -12478,6 +14862,9 @@ class SwitcherProjectInput(AbstractModel):
 
     @property
     def StopTime(self):
+        """导播台停止时间，格式按照 ISO 8601 标准表示。若不填，该值默认为当前时间加七天。
+        :rtype: str
+        """
         return self._StopTime
 
     @StopTime.setter
@@ -12486,6 +14873,9 @@ class SwitcherProjectInput(AbstractModel):
 
     @property
     def PgmOutputConfig(self):
+        """导播台主监输出配置信息。若不填，默认输出 720P。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.SwitcherPgmOutputConfig`
+        """
         return self._PgmOutputConfig
 
     @PgmOutputConfig.setter
@@ -12546,6 +14936,9 @@ class TaskBaseInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -12554,6 +14947,10 @@ class TaskBaseInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，取值有：
+<li>VIDEO_EDIT_PROJECT_EXPORT：项目导出。</li>
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -12562,6 +14959,12 @@ class TaskBaseInfo(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，取值有：
+<li>PROCESSING：处理中：</li>
+<li>SUCCESS：成功；</li>
+<li>FAIL：失败。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12570,6 +14973,9 @@ class TaskBaseInfo(AbstractModel):
 
     @property
     def Progress(self):
+        """任务进度，取值为：0~100。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -12578,6 +14984,11 @@ class TaskBaseInfo(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码。
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -12586,6 +14997,9 @@ class TaskBaseInfo(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -12594,6 +15008,9 @@ class TaskBaseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12645,6 +15062,9 @@ class TeamInfo(AbstractModel):
 
     @property
     def TeamId(self):
+        """团队 ID。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -12653,6 +15073,9 @@ class TeamInfo(AbstractModel):
 
     @property
     def Name(self):
+        """团队名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12661,6 +15084,9 @@ class TeamInfo(AbstractModel):
 
     @property
     def MemberCount(self):
+        """团队成员个数
+        :rtype: int
+        """
         return self._MemberCount
 
     @MemberCount.setter
@@ -12669,6 +15095,9 @@ class TeamInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """团队创建时间，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12677,6 +15106,9 @@ class TeamInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """团队最后更新时间，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -12723,6 +15155,9 @@ class TeamMemberInfo(AbstractModel):
 
     @property
     def MemberId(self):
+        """团队成员 ID。
+        :rtype: str
+        """
         return self._MemberId
 
     @MemberId.setter
@@ -12731,6 +15166,9 @@ class TeamMemberInfo(AbstractModel):
 
     @property
     def Remark(self):
+        """团队成员备注。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -12739,6 +15177,12 @@ class TeamMemberInfo(AbstractModel):
 
     @property
     def Role(self):
+        """团队成员角色，取值：
+<li>Owner：团队所有者，添加团队成员及修改团队成员解决时不能填此角色；</li>
+<li>Admin：团队管理员；</li>
+<li>Member：普通成员。</li>
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -12774,6 +15218,9 @@ class TextReplacementInfo(AbstractModel):
 
     @property
     def Text(self):
+        """替换的文本信息。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -12807,6 +15254,9 @@ class TextSlotInfo(AbstractModel):
 
     @property
     def Text(self):
+        """文本内容。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -12852,6 +15302,9 @@ class ThirdPartyPublishInfo(AbstractModel):
 
     @property
     def ChannelMaterialId(self):
+        """发布通道  ID。
+        :rtype: str
+        """
         return self._ChannelMaterialId
 
     @ChannelMaterialId.setter
@@ -12860,6 +15313,9 @@ class ThirdPartyPublishInfo(AbstractModel):
 
     @property
     def PenguinMediaPlatformPublishInfo(self):
+        """企鹅号发布信息，如果使用的发布通道为企鹅号时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.PenguinMediaPlatformPublishInfo`
+        """
         return self._PenguinMediaPlatformPublishInfo
 
     @PenguinMediaPlatformPublishInfo.setter
@@ -12868,6 +15324,9 @@ class ThirdPartyPublishInfo(AbstractModel):
 
     @property
     def WeiboPublishInfo(self):
+        """新浪微博发布信息，如果使用的发布通道为新浪微博时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.WeiboPublishInfo`
+        """
         return self._WeiboPublishInfo
 
     @WeiboPublishInfo.setter
@@ -12876,6 +15335,9 @@ class ThirdPartyPublishInfo(AbstractModel):
 
     @property
     def KuaishouPublishInfo(self):
+        """快手发布信息，如果使用的发布通道为快手时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.KuaishouPublishInfo`
+        """
         return self._KuaishouPublishInfo
 
     @KuaishouPublishInfo.setter
@@ -12884,6 +15346,9 @@ class ThirdPartyPublishInfo(AbstractModel):
 
     @property
     def CosPublishInfo(self):
+        """腾讯云对象存储发布信息， 如果使用的发布通道为腾讯云对象存储时必填。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.CosPublishInputInfo`
+        """
         return self._CosPublishInfo
 
     @CosPublishInfo.setter
@@ -12932,6 +15397,9 @@ class TimeRange(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12940,6 +15408,9 @@ class TimeRange(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12980,6 +15451,9 @@ class VODExportInfo(AbstractModel):
 
     @property
     def Name(self):
+        """导出的媒资名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12988,6 +15462,9 @@ class VODExportInfo(AbstractModel):
 
     @property
     def ClassId(self):
+        """导出的媒资分类 Id。
+        :rtype: int
+        """
         return self._ClassId
 
     @ClassId.setter
@@ -12996,6 +15473,9 @@ class VODExportInfo(AbstractModel):
 
     @property
     def ThirdPartyPublishInfos(self):
+        """第三方平台发布信息列表。暂未正式对外，请勿使用。
+        :rtype: list of ThirdPartyPublishInfo
+        """
         return self._ThirdPartyPublishInfos
 
     @ThirdPartyPublishInfos.setter
@@ -13047,6 +15527,13 @@ class VideoEditProjectInput(AbstractModel):
 
     @property
     def AspectRatio(self):
+        """画布宽高比，取值有：
+<li>16:9；</li>
+<li>9:16；</li>
+<li>2:1。</li>
+默认值 16:9 。
+        :rtype: str
+        """
         return self._AspectRatio
 
     @AspectRatio.setter
@@ -13055,6 +15542,9 @@ class VideoEditProjectInput(AbstractModel):
 
     @property
     def VideoEditTemplateId(self):
+        """视频编辑模板媒体 ID ，通过模板媒体导入项目轨道数据时填写。
+        :rtype: str
+        """
         return self._VideoEditTemplateId
 
     @VideoEditTemplateId.setter
@@ -13063,6 +15553,10 @@ class VideoEditProjectInput(AbstractModel):
 
     @property
     def InitTracks(self):
+        """输入的媒体轨道列表，包括视频、音频，等媒体组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+注：当从模板导入项目时（即 VideoEditTemplateId 不为空时），该参数无效。
+        :rtype: list of MediaTrack
+        """
         return self._InitTracks
 
     @InitTracks.setter
@@ -13116,6 +15610,9 @@ class VideoEditProjectOutput(AbstractModel):
 
     @property
     def MaterialId(self):
+        """导出的多媒体创作引擎媒体 Id，仅当导出目标为多媒体创作引擎媒体时有效。
+        :rtype: str
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -13124,6 +15621,9 @@ class VideoEditProjectOutput(AbstractModel):
 
     @property
     def VodFileId(self):
+        """云点播媒资 FileId。
+        :rtype: str
+        """
         return self._VodFileId
 
     @VodFileId.setter
@@ -13132,6 +15632,9 @@ class VideoEditProjectOutput(AbstractModel):
 
     @property
     def URL(self):
+        """导出的媒资 URL。
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -13140,6 +15643,10 @@ class VideoEditProjectOutput(AbstractModel):
 
     @property
     def MetaData(self):
+        """元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -13148,6 +15655,9 @@ class VideoEditProjectOutput(AbstractModel):
 
     @property
     def CoverURL(self):
+        """导出视频的封面图片 URL。
+        :rtype: str
+        """
         return self._CoverURL
 
     @CoverURL.setter
@@ -13193,6 +15703,9 @@ class VideoEditTemplateMaterial(AbstractModel):
 
     @property
     def AspectRatio(self):
+        """视频编辑模板宽高比。
+        :rtype: str
+        """
         return self._AspectRatio
 
     @AspectRatio.setter
@@ -13201,6 +15714,9 @@ class VideoEditTemplateMaterial(AbstractModel):
 
     @property
     def SlotSet(self):
+        """卡槽信息。
+        :rtype: list of SlotInfo
+        """
         return self._SlotSet
 
     @SlotSet.setter
@@ -13209,6 +15725,9 @@ class VideoEditTemplateMaterial(AbstractModel):
 
     @property
     def PreviewVideoUrl(self):
+        """模板预览视频 URL 地址 。
+        :rtype: str
+        """
         return self._PreviewVideoUrl
 
     @PreviewVideoUrl.setter
@@ -13275,6 +15794,9 @@ class VideoEncodingPreset(AbstractModel):
 
     @property
     def Id(self):
+        """配置 ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13283,6 +15805,9 @@ class VideoEncodingPreset(AbstractModel):
 
     @property
     def Name(self):
+        """配置名。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13291,6 +15816,11 @@ class VideoEncodingPreset(AbstractModel):
 
     @property
     def Container(self):
+        """封装格式，可选值：
+<li>mp4 ；</li>
+<li>mov 。</li>
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -13299,6 +15829,12 @@ class VideoEncodingPreset(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -13307,6 +15843,12 @@ class VideoEncodingPreset(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -13315,6 +15857,9 @@ class VideoEncodingPreset(AbstractModel):
 
     @property
     def VideoSetting(self):
+        """视频编码配置中的视频设置。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetVideoSetting`
+        """
         return self._VideoSetting
 
     @VideoSetting.setter
@@ -13323,6 +15868,9 @@ class VideoEncodingPreset(AbstractModel):
 
     @property
     def AudioSetting(self):
+        """视频编码配置中的音频设置。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetAudioSetting`
+        """
         return self._AudioSetting
 
     @AudioSetting.setter
@@ -13383,6 +15931,12 @@ AAC：AAC 编码。
 
     @property
     def Codec(self):
+        """音频流的编码格式，可选值：
+AAC：AAC 编码。
+
+默认值：AAC。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -13391,6 +15945,10 @@ AAC：AAC 编码。
 
     @property
     def Bitrate(self):
+        """音频码率，单位：bps。
+默认值：64K。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -13399,6 +15957,12 @@ AAC：AAC 编码。
 
     @property
     def Channels(self):
+        """音频声道数，可选值： 
+<li>1：单声道；</li>
+<li>2：双声道。</li> 
+默认值：2。
+        :rtype: int
+        """
         return self._Channels
 
     @Channels.setter
@@ -13407,6 +15971,10 @@ AAC：AAC 编码。
 
     @property
     def SampleRate(self):
+        """音频流的采样率，仅支持 16000； 32000； 44100； 48000。单位：Hz。 
+默认值：16000。
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -13454,6 +16022,10 @@ class VideoEncodingPresetAudioSettingForUpdate(AbstractModel):
 
     @property
     def Bitrate(self):
+        """音频码率，单位：bps。
+不填则不修改。
+        :rtype: str
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -13462,6 +16034,12 @@ class VideoEncodingPresetAudioSettingForUpdate(AbstractModel):
 
     @property
     def Channels(self):
+        """音频声道数，可选值： 
+<li>1：单声道；</li>
+<li>2：双声道。</li> 
+不填则不修改。
+        :rtype: int
+        """
         return self._Channels
 
     @Channels.setter
@@ -13470,6 +16048,10 @@ class VideoEncodingPresetAudioSettingForUpdate(AbstractModel):
 
     @property
     def SampleRate(self):
+        """音频流的采样率，目前仅支持： 16000； 32000； 44100； 48000。单位：Hz。
+不填则不修改。
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -13521,6 +16103,10 @@ class VideoEncodingPresetVideoSetting(AbstractModel):
 
     @property
     def Codec(self):
+        """视频流的编码格式，可选值：
+<li>H264：H.264 编码。</li>
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -13529,6 +16115,17 @@ class VideoEncodingPresetVideoSetting(AbstractModel):
 
     @property
     def ShortEdge(self):
+        """视频短边尺寸，取值范围： [128, 4096]，单位：px。
+视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+例：如果项目的宽高比是 16：9 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720。</li>
+如果项目的宽高比是 9：16 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1080 * 1920。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 720 * 1280。</li>
+默认值：1080。
+        :rtype: int
+        """
         return self._ShortEdge
 
     @ShortEdge.setter
@@ -13537,6 +16134,10 @@ class VideoEncodingPresetVideoSetting(AbstractModel):
 
     @property
     def Bitrate(self):
+        """指定码率，单位 bps。当该参数为'0'时则不强制限定码率。
+默认值：0。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -13588,6 +16189,17 @@ class VideoEncodingPresetVideoSettingForUpdate(AbstractModel):
 
     @property
     def ShortEdge(self):
+        """视频短边尺寸，取值范围： [128, 4096]，单位：px。
+视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+例：如果项目的宽高比是 16：9 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720。</li>
+如果项目的宽高比是 9：16 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1080 * 1920。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 720 * 1280。</li>
+不填则不修改。
+        :rtype: int
+        """
         return self._ShortEdge
 
     @ShortEdge.setter
@@ -13596,6 +16208,10 @@ class VideoEncodingPresetVideoSettingForUpdate(AbstractModel):
 
     @property
     def Bitrate(self):
+        """指定码率，单位 bps。当该参数为'0' 时则不强制限定码率。
+不填则不修改。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -13604,6 +16220,10 @@ class VideoEncodingPresetVideoSettingForUpdate(AbstractModel):
 
     @property
     def FrameRate(self):
+        """指定帧率。单位 Hz。
+不填则不修改。
+        :rtype: float
+        """
         return self._FrameRate
 
     @FrameRate.setter
@@ -13656,6 +16276,9 @@ class VideoExportCompletedEvent(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13664,6 +16287,11 @@ class VideoExportCompletedEvent(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，取值有：
+<li>SUCCESS：成功；</li>
+<li>FAIL：失败。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13672,6 +16300,11 @@ class VideoExportCompletedEvent(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，取值有：
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -13680,6 +16313,9 @@ class VideoExportCompletedEvent(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -13688,6 +16324,10 @@ class VideoExportCompletedEvent(AbstractModel):
 
     @property
     def Output(self):
+        """任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -13763,6 +16403,12 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def Container(self):
+        """封装格式，可选值：
+<li>mp4 </li>
+<li>mov </li>
+不填则使用视频导出编码配置。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -13771,6 +16417,14 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def ShortEdge(self):
+        """视频短边尺寸，取值范围： [128, 4096]，单位：px。
+视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+例如：项目的宽高比是 16：9 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>
+不填则使用视频导出编码配置。
+        :rtype: int
+        """
         return self._ShortEdge
 
     @ShortEdge.setter
@@ -13779,6 +16433,10 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def VideoBitrate(self):
+        """指定码率，单位 bps。当该参数为 0 时则不强制限定码率。
+不填则使用视频导出编码配置。
+        :rtype: int
+        """
         return self._VideoBitrate
 
     @VideoBitrate.setter
@@ -13787,6 +16445,9 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def FrameRate(self):
+        """帧率。取值范围：[15, 60]，不填默认值为 25。
+        :rtype: float
+        """
         return self._FrameRate
 
     @FrameRate.setter
@@ -13795,6 +16456,12 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+不填则使用视频导出编码配置。
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -13803,6 +16470,12 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+不填则使用视频导出编码配置。
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -13811,6 +16484,9 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def StartTime(self):
+        """片段起始时间，单位：毫秒。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -13819,6 +16495,9 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def EndTime(self):
+        """片段结束时间，单位：毫秒。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -13881,6 +16560,9 @@ class VideoMaterial(AbstractModel):
 
     @property
     def MetaData(self):
+        """素材元信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -13889,6 +16571,9 @@ class VideoMaterial(AbstractModel):
 
     @property
     def ImageSpriteInfo(self):
+        """雪碧图信息。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MediaImageSpriteInfo`
+        """
         return self._ImageSpriteInfo
 
     @ImageSpriteInfo.setter
@@ -13897,6 +16582,9 @@ class VideoMaterial(AbstractModel):
 
     @property
     def MaterialUrl(self):
+        """素材媒体文件的播放 URL 地址。
+        :rtype: str
+        """
         return self._MaterialUrl
 
     @MaterialUrl.setter
@@ -13905,6 +16593,9 @@ class VideoMaterial(AbstractModel):
 
     @property
     def CoverUrl(self):
+        """素材媒体文件的封面图片地址。
+        :rtype: str
+        """
         return self._CoverUrl
 
     @CoverUrl.setter
@@ -13913,6 +16604,9 @@ class VideoMaterial(AbstractModel):
 
     @property
     def Resolution(self):
+        """媒体文件分辨率。取值为：LD/SD/HD/FHD/2K/4K。
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -13921,6 +16615,10 @@ class VideoMaterial(AbstractModel):
 
     @property
     def MaterialStatus(self):
+        """素材状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`
+        """
         return self._MaterialStatus
 
     @MaterialStatus.setter
@@ -13929,6 +16627,9 @@ class VideoMaterial(AbstractModel):
 
     @property
     def OriginalUrl(self):
+        """素材媒体文件的原始 URL 地址。
+        :rtype: str
+        """
         return self._OriginalUrl
 
     @OriginalUrl.setter
@@ -13937,6 +16638,9 @@ class VideoMaterial(AbstractModel):
 
     @property
     def VodFileId(self):
+        """云点播媒资 FileId。
+        :rtype: str
+        """
         return self._VodFileId
 
     @VodFileId.setter
@@ -13996,6 +16700,13 @@ class VideoSegmentationProjectInput(AbstractModel):
 
     @property
     def AspectRatio(self):
+        """画布宽高比，取值有：
+<li>16:9；</li>
+<li>9:16；</li>
+<li>2:1。</li>
+默认值 16:9 。
+        :rtype: str
+        """
         return self._AspectRatio
 
     @AspectRatio.setter
@@ -14004,6 +16715,15 @@ class VideoSegmentationProjectInput(AbstractModel):
 
     @property
     def ProcessModel(self):
+        """视频拆条处理模型，不填则默认为手工分割视频。取值 ：
+<li>AI.GameHighlights.PUBG：和平精英集锦 ;</li>
+<li>AI.GameHighlights.Honor OfKings：王者荣耀集锦 ;</li>
+<li>AI.SportHighlights.Football：足球集锦 </li>
+<li>AI.SportHighlights.Basketball：篮球集锦 ；</li>
+<li>AI.PersonSegmentation：人物集锦  ;</li>
+<li>AI.NewsSegmentation：新闻拆条。</li>
+        :rtype: str
+        """
         return self._ProcessModel
 
     @ProcessModel.setter
@@ -14050,6 +16770,9 @@ class VideoStreamInfo(AbstractModel):
 
     @property
     def Bitrate(self):
+        """码率，单位：bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -14058,6 +16781,9 @@ class VideoStreamInfo(AbstractModel):
 
     @property
     def Height(self):
+        """高度，单位：px。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -14066,6 +16792,9 @@ class VideoStreamInfo(AbstractModel):
 
     @property
     def Width(self):
+        """宽度，单位：px。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -14074,6 +16803,9 @@ class VideoStreamInfo(AbstractModel):
 
     @property
     def Codec(self):
+        """编码格式。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -14082,6 +16814,9 @@ class VideoStreamInfo(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率，单位：hz。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -14175,6 +16910,14 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def SourceType(self):
+        """视频媒体来源类型，取值有：
+<ul>
+<li>VOD ：媒体来源于云点播文件 。</li>
+<li>CME ：视频来源制作云媒体文件。</li>
+<li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
+</ul>
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -14183,6 +16926,18 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def SourceMedia(self):
+        """视频媒体，可取值为：
+<ul>
+<li>当 SourceType 为 VOD 时，参数填云点播 FileId ；</li>
+<li>当 SourceType 为 CME 时，参数填多媒体创作引擎媒体 Id；</li>
+<li>当 SourceType 为 EXTERNAL 时，目前仅支持外部媒体 URL(如`https://www.example.com/a.mp4`)，参数填写规则请参见注意事项。</li>
+</ul>
+
+注意：
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `https` 时(如：`https://www.example.com/a.mp4`)，参数为：`1000000:www.example.com/a.mp4`。</li>
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `http` 时(如：`http://www.example.com/b.mp4`)，参数为：`1000001:www.example.com/b.mp4`。</li>
+        :rtype: str
+        """
         return self._SourceMedia
 
     @SourceMedia.setter
@@ -14191,6 +16946,9 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def SourceMediaStartTime(self):
+        """视频片段取自媒体文件的起始时间，单位为秒。默认为0。
+        :rtype: float
+        """
         return self._SourceMediaStartTime
 
     @SourceMediaStartTime.setter
@@ -14199,6 +16957,9 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def Duration(self):
+        """视频片段时长，单位为秒。默认取视频媒体文件本身长度，表示截取全部媒体文件。如果源文件是图片，Duration需要大于0。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -14207,6 +16968,12 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def XPos(self):
+        """视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布口宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示视频片段 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+默认值：0px。
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -14215,6 +16982,12 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def YPos(self):
+        """视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示视频片段 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+默认值：0px。
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -14223,6 +16996,11 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
+        """视频原点位置，取值有：
+<li>Center：坐标原点为中心位置，如画布中心。</li>
+默认值 ：Center。
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -14231,6 +17009,14 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def Height(self):
+        """视频片段的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；</li>
+<li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素；</li>
+<li>当 Width、Height 均为空，则 Width 和 Height 取视频媒体文件本身的 Width、Height；</li>
+<li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -14239,6 +17025,14 @@ class VideoTrackItem(AbstractModel):
 
     @property
     def Width(self):
+        """视频片段的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素；</li>
+<li>当 Width、Height 均为空，则 Width 和 Height 取视频媒体文件本身的 Width、Height；</li>
+<li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -14287,6 +17081,9 @@ class VodPullInputInfo(AbstractModel):
 
     @property
     def InputUrls(self):
+        """点播输入拉流 URL 。
+        :rtype: list of str
+        """
         return self._InputUrls
 
     @InputUrls.setter
@@ -14295,6 +17092,13 @@ class VodPullInputInfo(AbstractModel):
 
     @property
     def LoopTimes(self):
+        """播放次数，取值有：
+<li>-1 : 循环播放，直到转推结束；</li>
+<li>0 : 不循环；</li>
+<li>大于0 : 具体循环次数，次数和时间以先结束的为准。</li>
+默认不循环。
+        :rtype: int
+        """
         return self._LoopTimes
 
     @LoopTimes.setter
@@ -14332,6 +17136,9 @@ class VodPullInputPlayInfo(AbstractModel):
 
     @property
     def Url(self):
+        """当前正在播放文件 Url 。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -14340,6 +17147,9 @@ class VodPullInputPlayInfo(AbstractModel):
 
     @property
     def TimeOffset(self):
+        """点播文件已播放时长，单位：秒。
+        :rtype: float
+        """
         return self._TimeOffset
 
     @TimeOffset.setter
@@ -14384,6 +17194,9 @@ class WeiboPublishInfo(AbstractModel):
 
     @property
     def Title(self):
+        """视频发布标题。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -14392,6 +17205,9 @@ class WeiboPublishInfo(AbstractModel):
 
     @property
     def Description(self):
+        """视频发布描述信息。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14400,6 +17216,13 @@ class WeiboPublishInfo(AbstractModel):
 
     @property
     def Visible(self):
+        """微博可见性，可取值为：
+<li>Public：公开，所有人可见；</li>
+<li>Private：私有，仅自己可见。</li>
+
+默认为 Public，所有人可见。
+        :rtype: str
+        """
         return self._Visible
 
     @Visible.setter

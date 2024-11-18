@@ -49,6 +49,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateClusterSnapshot(self, request):
+        """集群快照手动创建
+
+        :param request: Request instance for CreateClusterSnapshot.
+        :type request: :class:`tencentcloud.es.v20180416.models.CreateClusterSnapshotRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CreateClusterSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateClusterSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateClusterSnapshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCosMigrateToServerlessInstance(self, request):
         """cos迁移流程
 
@@ -187,6 +210,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteClusterSnapshot(self, request):
+        """删除快照仓库里备份的快照
+
+        :param request: Request instance for DeleteClusterSnapshot.
+        :type request: :class:`tencentcloud.es.v20180416.models.DeleteClusterSnapshotRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DeleteClusterSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClusterSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteClusterSnapshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteIndex(self, request):
         """删除索引
 
@@ -316,6 +362,29 @@ class EsClient(AbstractClient):
             body = self.call("DeleteServerlessSpaceUser", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteServerlessSpaceUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterSnapshot(self, request):
+        """获取快照备份列表
+
+        :param request: Request instance for DescribeClusterSnapshot.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeClusterSnapshotRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeClusterSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterSnapshotResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -961,6 +1030,29 @@ class EsClient(AbstractClient):
             body = self.call("RestartNodes", params, headers=headers)
             response = json.loads(body)
             model = models.RestartNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestoreClusterSnapshot(self, request):
+        """快照备份恢复，从仓库中恢复快照到集群中
+
+        :param request: Request instance for RestoreClusterSnapshot.
+        :type request: :class:`tencentcloud.es.v20180416.models.RestoreClusterSnapshotRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.RestoreClusterSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestoreClusterSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestoreClusterSnapshotResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

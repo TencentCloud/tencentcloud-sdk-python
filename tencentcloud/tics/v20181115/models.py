@@ -35,6 +35,9 @@ class DescribeDomainInfoRequest(AbstractModel):
 
     @property
     def Key(self):
+        """要查询的域名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -43,6 +46,9 @@ class DescribeDomainInfoRequest(AbstractModel):
 
     @property
     def Option(self):
+        """附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+        :rtype: int
+        """
         return self._Option
 
     @Option.setter
@@ -114,6 +120,9 @@ malware IP = 恶意IP
 
     @property
     def ReturnCode(self):
+        """是否有数据，0代表有数据，1代表没有数据
+        :rtype: int
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -122,6 +131,9 @@ malware IP = 恶意IP
 
     @property
     def Result(self):
+        """判定结果，如：black、white、grey
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -130,6 +142,9 @@ malware IP = 恶意IP
 
     @property
     def Confidence(self):
+        """置信度，取值0-100
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -138,6 +153,25 @@ malware IP = 恶意IP
 
     @property
     def ThreatTypes(self):
+        """威胁类型。
+botnet = 僵尸网络
+trojan = 木马
+ransomware = 勒索软件
+worm = 蠕虫
+dga = 域名生成算法
+c2 = c&c
+compromised = 失陷主机
+dynamicIP = 动态IP
+proxy = 代理
+idc = idc 机房
+whitelist = 白名单
+tor = 暗网
+miner = 挖矿
+maleware site = 恶意站点
+malware IP = 恶意IP
+等等
+        :rtype: list of str
+        """
         return self._ThreatTypes
 
     @ThreatTypes.setter
@@ -146,6 +180,9 @@ malware IP = 恶意IP
 
     @property
     def Tags(self):
+        """恶意标签，对应的团伙，家族等信息。
+        :rtype: list of TagType
+        """
         return self._Tags
 
     @Tags.setter
@@ -154,6 +191,9 @@ malware IP = 恶意IP
 
     @property
     def Intelligences(self):
+        """对应的历史上的威胁情报事件
+        :rtype: list of IntelligenceType
+        """
         return self._Intelligences
 
     @Intelligences.setter
@@ -162,6 +202,9 @@ malware IP = 恶意IP
 
     @property
     def Context(self):
+        """情报相关的上下文
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -170,6 +213,9 @@ malware IP = 恶意IP
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -215,6 +261,9 @@ class DescribeFileInfoRequest(AbstractModel):
 
     @property
     def Key(self):
+        """要查询文件的MD5
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -223,6 +272,9 @@ class DescribeFileInfoRequest(AbstractModel):
 
     @property
     def Option(self):
+        """附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+        :rtype: int
+        """
         return self._Option
 
     @Option.setter
@@ -280,6 +332,9 @@ class DescribeFileInfoResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
+        """是否有数据，0代表有数据，1代表没有数据
+        :rtype: int
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -288,6 +343,9 @@ class DescribeFileInfoResponse(AbstractModel):
 
     @property
     def Result(self):
+        """判定结果，如：black、white、grey
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -296,6 +354,9 @@ class DescribeFileInfoResponse(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度，取值0-100
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -304,6 +365,11 @@ class DescribeFileInfoResponse(AbstractModel):
 
     @property
     def FileInfo(self):
+        """文件类型，文件hash
+（md5,sha1,sha256）,文件大小等等文件
+基础信息
+        :rtype: list of FileInfoType
+        """
         return self._FileInfo
 
     @FileInfo.setter
@@ -312,6 +378,9 @@ class DescribeFileInfoResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """恶意标签，对应的团伙，家族等信息。
+        :rtype: list of TagType
+        """
         return self._Tags
 
     @Tags.setter
@@ -320,6 +389,9 @@ class DescribeFileInfoResponse(AbstractModel):
 
     @property
     def Intelligences(self):
+        """对应的历史上的威胁情报事件
+        :rtype: list of IntelligenceType
+        """
         return self._Intelligences
 
     @Intelligences.setter
@@ -328,6 +400,9 @@ class DescribeFileInfoResponse(AbstractModel):
 
     @property
     def Context(self):
+        """情报相关的上下文
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -336,6 +411,9 @@ class DescribeFileInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -386,6 +464,9 @@ class DescribeIpInfoRequest(AbstractModel):
 
     @property
     def Key(self):
+        """要查询的IP
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -394,6 +475,9 @@ class DescribeIpInfoRequest(AbstractModel):
 
     @property
     def Option(self):
+        """附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+        :rtype: int
+        """
         return self._Option
 
     @Option.setter
@@ -465,6 +549,9 @@ malware IP = 恶意IP
 
     @property
     def ReturnCode(self):
+        """是否有数据，0代表有数据，1代表没有数据
+        :rtype: int
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -473,6 +560,9 @@ malware IP = 恶意IP
 
     @property
     def Result(self):
+        """判定结果，如：black、white、grey
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -481,6 +571,9 @@ malware IP = 恶意IP
 
     @property
     def Confidence(self):
+        """置信度，取值0-100
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -489,6 +582,25 @@ malware IP = 恶意IP
 
     @property
     def ThreatTypes(self):
+        """威胁类型。
+botnet = 僵尸网络
+trojan = 木马
+ransomware = 勒索软件
+worm = 蠕虫
+dga = 域名生成算法
+c2 = c&c
+compromised = 失陷主机
+dynamicIP = 动态IP
+proxy = 代理
+idc = idc 机房
+whitelist = 白名单
+tor = 暗网
+miner = 挖矿
+maleware site = 恶意站点
+malware IP = 恶意IP
+等等
+        :rtype: list of str
+        """
         return self._ThreatTypes
 
     @ThreatTypes.setter
@@ -497,6 +609,9 @@ malware IP = 恶意IP
 
     @property
     def Tags(self):
+        """恶意标签，对应的团伙，家族等信息。
+        :rtype: list of TagType
+        """
         return self._Tags
 
     @Tags.setter
@@ -505,6 +620,9 @@ malware IP = 恶意IP
 
     @property
     def Intelligences(self):
+        """对应的历史上的威胁情报事件
+        :rtype: list of IntelligenceType
+        """
         return self._Intelligences
 
     @Intelligences.setter
@@ -513,6 +631,9 @@ malware IP = 恶意IP
 
     @property
     def Context(self):
+        """情报相关的上下文
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -521,6 +642,9 @@ malware IP = 恶意IP
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -569,6 +693,9 @@ class DescribeThreatInfoRequest(AbstractModel):
 
     @property
     def Key(self):
+        """查询对象，域名或IP
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -577,6 +704,9 @@ class DescribeThreatInfoRequest(AbstractModel):
 
     @property
     def Type(self):
+        """查询类型，当前取值为domain或ip
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -585,6 +715,9 @@ class DescribeThreatInfoRequest(AbstractModel):
 
     @property
     def Option(self):
+        """附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+        :rtype: int
+        """
         return self._Option
 
     @Option.setter
@@ -663,6 +796,9 @@ expired = 过期
 
     @property
     def ReturnCode(self):
+        """是否有数据，0代表有数据，1代表没有数据
+        :rtype: int
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -671,6 +807,9 @@ expired = 过期
 
     @property
     def Result(self):
+        """判定结果，如：black、white、grey
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -679,6 +818,9 @@ expired = 过期
 
     @property
     def Confidence(self):
+        """置信度，取值0-100
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -687,6 +829,25 @@ expired = 过期
 
     @property
     def ThreatTypes(self):
+        """威胁类型。
+botnet = 僵尸网络
+trojan = 木马
+ransomware = 勒索软件
+worm = 蠕虫
+dga = 域名生成算法
+c2 = c&c
+compromised = 失陷主机
+dynamicIP = 动态IP
+proxy = 代理
+idc = idc 机房
+whitelist = 白名单
+tor = 暗网
+miner = 挖矿
+maleware site = 恶意站点
+malware IP = 恶意IP
+等等
+        :rtype: list of str
+        """
         return self._ThreatTypes
 
     @ThreatTypes.setter
@@ -695,6 +856,9 @@ expired = 过期
 
     @property
     def Tags(self):
+        """恶意标签，对应的团伙，家族等信息。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -703,6 +867,14 @@ expired = 过期
 
     @property
     def Status(self):
+        """当前状态
+active = 活跃
+sinkholed = sinkholed
+inactive = 不活跃
+unknown = 未知
+expired = 过期
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -711,6 +883,10 @@ expired = 过期
 
     @property
     def Context(self):
+        """情报相关的上下文，参数option=1 的时候提供
+每个数据默认为3 条
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -719,6 +895,9 @@ expired = 过期
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -802,6 +981,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def DetectId(self):
+        """判定渠道
+        :rtype: str
+        """
         return self._DetectId
 
     @DetectId.setter
@@ -810,6 +992,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def DetectPriority(self):
+        """检测优先级
+        :rtype: str
+        """
         return self._DetectPriority
 
     @DetectPriority.setter
@@ -818,6 +1003,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def EnginePriority(self):
+        """引擎优先级
+        :rtype: str
+        """
         return self._EnginePriority
 
     @EnginePriority.setter
@@ -826,6 +1014,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def FileExist(self):
+        """样本是否存在
+        :rtype: str
+        """
         return self._FileExist
 
     @FileExist.setter
@@ -834,6 +1025,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def FileForceUpload(self):
+        """文件上传
+        :rtype: str
+        """
         return self._FileForceUpload
 
     @FileForceUpload.setter
@@ -842,6 +1036,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小
+        :rtype: str
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -850,6 +1047,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def FileupTime(self):
+        """文件上传时间
+        :rtype: str
+        """
         return self._FileupTime
 
     @FileupTime.setter
@@ -858,6 +1058,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def FullVirusName(self):
+        """病毒文件全名
+        :rtype: str
+        """
         return self._FullVirusName
 
     @FullVirusName.setter
@@ -866,6 +1069,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def IdcPosition(self):
+        """IDC位置
+        :rtype: str
+        """
         return self._IdcPosition
 
     @IdcPosition.setter
@@ -874,6 +1080,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def Md5Type(self):
+        """文件md5值
+        :rtype: str
+        """
         return self._Md5Type
 
     @Md5Type.setter
@@ -882,6 +1091,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def PeExist(self):
+        """PE结构是否存在
+        :rtype: str
+        """
         return self._PeExist
 
     @PeExist.setter
@@ -890,6 +1102,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def PeForceUpload(self):
+        """PE结构上传
+        :rtype: str
+        """
         return self._PeForceUpload
 
     @PeForceUpload.setter
@@ -898,6 +1113,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def SafeLevel(self):
+        """安全性等级
+        :rtype: str
+        """
         return self._SafeLevel
 
     @SafeLevel.setter
@@ -906,6 +1124,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def ScanModiTime(self):
+        """扫描时间
+        :rtype: str
+        """
         return self._ScanModiTime
 
     @ScanModiTime.setter
@@ -914,6 +1135,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def SubdetectId(self):
+        """子判定渠道
+        :rtype: str
+        """
         return self._SubdetectId
 
     @SubdetectId.setter
@@ -922,6 +1146,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def UserDefName(self):
+        """病毒名
+        :rtype: str
+        """
         return self._UserDefName
 
     @UserDefName.setter
@@ -930,6 +1157,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def VirusType(self):
+        """病毒类型
+        :rtype: str
+        """
         return self._VirusType
 
     @VirusType.setter
@@ -938,6 +1168,9 @@ class FileInfoType(AbstractModel):
 
     @property
     def WhiteScore(self):
+        """白名单分数
+        :rtype: str
+        """
         return self._WhiteScore
 
     @WhiteScore.setter
@@ -994,6 +1227,9 @@ class IntelligenceType(AbstractModel):
 
     @property
     def Source(self):
+        """来源
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -1002,6 +1238,9 @@ class IntelligenceType(AbstractModel):
 
     @property
     def Stamp(self):
+        """标记
+        :rtype: str
+        """
         return self._Stamp
 
     @Stamp.setter
@@ -1010,6 +1249,9 @@ class IntelligenceType(AbstractModel):
 
     @property
     def Time(self):
+        """时间
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -1048,6 +1290,9 @@ class TagType(AbstractModel):
 
     @property
     def Tag(self):
+        """标签
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -1056,6 +1301,9 @@ class TagType(AbstractModel):
 
     @property
     def Desc(self):
+        """标签对应的中文解释
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter

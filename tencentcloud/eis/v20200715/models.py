@@ -35,6 +35,9 @@ class DescribeEisConnectorConfigRequest(AbstractModel):
 
     @property
     def ConnectorName(self):
+        """连接器名称
+        :rtype: str
+        """
         return self._ConnectorName
 
     @ConnectorName.setter
@@ -43,6 +46,9 @@ class DescribeEisConnectorConfigRequest(AbstractModel):
 
     @property
     def ConnectorVersion(self):
+        """连接器版本
+        :rtype: str
+        """
         return self._ConnectorVersion
 
     @ConnectorVersion.setter
@@ -254,6 +260,183 @@ class DescribeEisConnectorConfigResponse(AbstractModel):
 
     @property
     def ConnectorParameter(self):
+        """连接器配置参数描述（json结构），示例如下：
+{
+    "attributes":{
+        "description":"测试", // 连接器的描述
+        "displayName":"测试", // 连接器的展示名
+        "name":"test", // 连接器的名称
+        "version":"1.0.0" // 连接器的版本号
+    },
+    "properties":[
+        {
+            "attributes":{
+                "displayName":"企业ID", // 参数的展示名
+                "name":"para1", // 参数名
+                "required":"true", // 是否必填
+                "type":"int" // 参数的类型
+            }
+        },
+        {
+            "attributes":{
+                "displayName":"成员管理密钥",
+                "name":"para2",
+                "required":"true",
+                "type":"float"
+            }
+        },
+        {
+            "attributes":{
+                "displayName":"应用管理密钥",
+                "name":"para3",
+                "required":"true",
+                "type":"string"
+            }
+        },
+        {
+            "attributes":{
+                "displayName":"企业ID",
+                "name":"para4",
+                "required":"true",
+                "type":"decimal"
+            }
+        },
+        {
+            "attributes":{
+                "displayName":"成员管理密钥",
+                "name":"para5",
+                "required":"true",
+                "type":"bool"
+            }
+        },
+        {
+            "attributes":{
+                "displayName":"应用管理密钥",
+                "name":"para6",
+                "required":"true",
+                "type":"date"
+            }
+        },
+        {
+            "attributes":{
+                "displayName":"企业ID",
+                "name":"para7",
+                "required":"true",
+                "type":"time"
+            }
+        },
+        {
+            "attributes":{
+                "displayName":"成员管理密钥",
+                "name":"para8",
+                "required":"true",
+                "type":"datetime"
+            }
+        },
+        {
+            "attributes":{
+                "displayName":"应用管理密钥",
+                "name":"para9",
+                "required":"true",
+                "type":"map"
+            },
+            "children":[
+                {
+                    "attributes":{
+                        "displayName":"key",
+                        "name":"key",
+                        "required":"true",
+                        "type":"string"
+                    }
+                },
+                {
+                    "attributes":{
+                        "displayName":"value",
+                        "name":"value",
+                        "required":"true",
+                        "type":"any"
+                    }
+                }
+            ]
+        },
+        {
+            "attributes":{
+                "displayName":"企业ID",
+                "name":"para10",
+                "required":"true",
+                "type":"list" // list，list里元素的类型是结构体，children里是结构体的描述
+            },
+            "children":[
+                {
+                    "attributes":{
+                        "displayName":"field1",
+                        "name":"field1",
+                        "required":"true",
+                        "type":"string"
+                    }
+                },
+                {
+                    "attributes":{
+                        "displayName":"field2",
+                        "name":"field2",
+                        "required":"true",
+                        "type":"any"
+                    }
+                }
+            ]
+        },
+        {
+            "attributes":{
+                "displayName":"成员管理密钥",
+                "name":"para11",
+                "required":"true",
+                "type":"struct"
+            },
+            "children":[
+                {
+                    "attributes":{
+                        "displayName":"field1", // 结构体属性的展示名
+                        "name":"field1", // 结构体属性的名称
+                        "required":"true", // 是否必填
+                        "type":"string" // 属性的类型
+                    }
+                },
+                {
+                    "attributes":{
+                        "displayName":"field2",
+                        "name":"field2",
+                        "required":"true",
+                        "type":"any"
+                    }
+                }
+            ]
+        },
+        {
+            "attributes":{
+                "displayName":"应用管理密钥",
+                "name":"para12",
+                "required":"true",
+                "type":"enum"
+            },
+            "children":[
+                {
+                    "attributes":{
+                        "displayName":"PC", // 枚举值的展示名
+                        "name":"PC" // 枚举值的名称
+                    }
+                },
+                {
+                    "attributes":{
+                        "displayName":"MAC",
+                        "name":"MAC"
+                    }
+                }
+            ]
+        }
+    ]
+}
+        :rtype: str
+        """
         return self._ConnectorParameter
 
     @ConnectorParameter.setter
@@ -262,6 +445,9 @@ class DescribeEisConnectorConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -294,6 +480,9 @@ class EisConnectionOperation(AbstractModel):
 
     @property
     def OperationName(self):
+        """连接器操作名称
+        :rtype: str
+        """
         return self._OperationName
 
     @OperationName.setter
@@ -302,6 +491,9 @@ class EisConnectionOperation(AbstractModel):
 
     @property
     def DisplayName(self):
+        """连接器展示名称
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -310,6 +502,9 @@ class EisConnectionOperation(AbstractModel):
 
     @property
     def IsTrigger(self):
+        """操作是否为触发器
+        :rtype: bool
+        """
         return self._IsTrigger
 
     @IsTrigger.setter
@@ -360,6 +555,9 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def ConnectorName(self):
+        """连接器名称
+        :rtype: str
+        """
         return self._ConnectorName
 
     @ConnectorName.setter
@@ -368,6 +566,9 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def DisplayName(self):
+        """连接器展示名称
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -376,6 +577,9 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def Company(self):
+        """连接器对应企业
+        :rtype: str
+        """
         return self._Company
 
     @Company.setter
@@ -384,6 +588,9 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def Product(self):
+        """连接器对应产品
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -392,6 +599,9 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def ConnectorVersion(self):
+        """连接器版本
+        :rtype: str
+        """
         return self._ConnectorVersion
 
     @ConnectorVersion.setter
@@ -400,6 +610,9 @@ class EisConnectorSummary(AbstractModel):
 
     @property
     def CreateTime(self):
+        """连接器创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -441,6 +654,9 @@ class ListEisConnectorOperationsRequest(AbstractModel):
 
     @property
     def ConnectorName(self):
+        """连接器名称
+        :rtype: str
+        """
         return self._ConnectorName
 
     @ConnectorName.setter
@@ -449,6 +665,9 @@ class ListEisConnectorOperationsRequest(AbstractModel):
 
     @property
     def ConnectorVersion(self):
+        """连接器版本
+        :rtype: str
+        """
         return self._ConnectorVersion
 
     @ConnectorVersion.setter
@@ -486,6 +705,9 @@ class ListEisConnectorOperationsResponse(AbstractModel):
 
     @property
     def Operations(self):
+        """连接器列表
+        :rtype: list of EisConnectionOperation
+        """
         return self._Operations
 
     @Operations.setter
@@ -494,6 +716,9 @@ class ListEisConnectorOperationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -531,6 +756,9 @@ class ListEisConnectorsRequest(AbstractModel):
 
     @property
     def ConnectorName(self):
+        """连接器名称,非必输，如输入则按照输入值模糊匹配
+        :rtype: str
+        """
         return self._ConnectorName
 
     @ConnectorName.setter
@@ -539,6 +767,9 @@ class ListEisConnectorsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数,数据偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -547,6 +778,9 @@ class ListEisConnectorsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数,每页显示的条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -588,6 +822,9 @@ class ListEisConnectorsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """连接器总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -596,6 +833,9 @@ class ListEisConnectorsResponse(AbstractModel):
 
     @property
     def Connectors(self):
+        """连接器列表
+        :rtype: list of EisConnectorSummary
+        """
         return self._Connectors
 
     @Connectors.setter
@@ -604,6 +844,9 @@ class ListEisConnectorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

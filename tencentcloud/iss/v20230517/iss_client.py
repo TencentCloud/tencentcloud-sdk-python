@@ -282,29 +282,6 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CheckDomain(self, request):
-        """用于检测域名是否备案。
-
-        :param request: Request instance for CheckDomain.
-        :type request: :class:`tencentcloud.iss.v20230517.models.CheckDomainRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.CheckDomainResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CheckDomain", params, headers=headers)
-            response = json.loads(body)
-            model = models.CheckDomainResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ControlDevicePTZ(self, request):
         """用于设备通道云台控制，包括转动、变倍、变焦、光圈等。
 
@@ -1664,7 +1641,7 @@ class IssClient(AbstractClient):
 
 
     def RefreshDeviceChannel(self, request):
-        """用于刷新国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
+        """用于同步国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
 
         :param request: Request instance for RefreshDeviceChannel.
         :type request: :class:`tencentcloud.iss.v20230517.models.RefreshDeviceChannelRequest`

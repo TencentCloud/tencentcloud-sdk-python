@@ -38,6 +38,9 @@ class AMEMusicBaseInfo(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲 Id。
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -46,6 +49,9 @@ class AMEMusicBaseInfo(AbstractModel):
 
     @property
     def Name(self):
+        """歌曲名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -54,6 +60,9 @@ class AMEMusicBaseInfo(AbstractModel):
 
     @property
     def SingerSet(self):
+        """歌手列表。
+        :rtype: list of str
+        """
         return self._SingerSet
 
     @SingerSet.setter
@@ -104,6 +113,9 @@ class ApplyChorusRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -112,6 +124,9 @@ class ApplyChorusRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -120,6 +135,9 @@ class ApplyChorusRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -128,6 +146,9 @@ class ApplyChorusRequest(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲 Id。
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -136,6 +157,9 @@ class ApplyChorusRequest(AbstractModel):
 
     @property
     def MaxChorusNum(self):
+        """最大合唱人数，默认值为 8，最大值为 20。
+        :rtype: int
+        """
         return self._MaxChorusNum
 
     @MaxChorusNum.setter
@@ -144,6 +168,9 @@ class ApplyChorusRequest(AbstractModel):
 
     @property
     def ChorusUserIds(self):
+        """合唱用户标识列表。
+        :rtype: list of str
+        """
         return self._ChorusUserIds
 
     @ChorusUserIds.setter
@@ -185,6 +212,9 @@ class ApplyChorusResponse(AbstractModel):
 
     @property
     def ChorusToken(self):
+        """合唱 Token。
+        :rtype: str
+        """
         return self._ChorusToken
 
     @ChorusToken.setter
@@ -193,6 +223,9 @@ class ApplyChorusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -235,6 +268,9 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -243,6 +279,9 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -251,6 +290,9 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
 
     @property
     def MusicIds(self):
+        """歌曲 Id 列表。
+        :rtype: list of str
+        """
         return self._MusicIds
 
     @MusicIds.setter
@@ -259,6 +301,10 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
 
     @property
     def PlayScene(self):
+        """播放场景。默认为Chat
+<li>Live：直播</li><li>Chat：语聊</li>
+        :rtype: str
+        """
         return self._PlayScene
 
     @PlayScene.setter
@@ -267,6 +313,9 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
 
     @property
     def GuestUserId(self):
+        """玩家用户标识
+        :rtype: str
+        """
         return self._GuestUserId
 
     @GuestUserId.setter
@@ -275,6 +324,9 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间Id
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -319,6 +371,9 @@ class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
 
     @property
     def KTVMusicDetailInfoSet(self):
+        """歌曲详细信息列表。
+        :rtype: list of KTVMusicDetailInfo
+        """
         return self._KTVMusicDetailInfoSet
 
     @KTVMusicDetailInfoSet.setter
@@ -327,6 +382,9 @@ class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
 
     @property
     def NotExistMusicIdSet(self):
+        """不存在歌曲Id列表。
+        :rtype: list of str
+        """
         return self._NotExistMusicIdSet
 
     @NotExistMusicIdSet.setter
@@ -335,6 +393,9 @@ class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -370,6 +431,9 @@ class ChorusClip(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，单位：毫秒。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -378,6 +442,9 @@ class ChorusClip(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，单位：毫秒。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -425,6 +492,9 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -433,6 +503,9 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -441,6 +514,10 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def RTCSystem(self):
+        """RTC厂商类型，取值有：
+<li>TRTC</li>
+        :rtype: str
+        """
         return self._RTCSystem
 
     @RTCSystem.setter
@@ -449,6 +526,9 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def JoinRoomInput(self):
+        """进房参数。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.JoinRoomInput`
+        """
         return self._JoinRoomInput
 
     @JoinRoomInput.setter
@@ -457,6 +537,9 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def SyncRobotCommands(self):
+        """创建机器人时初始化参数。
+        :rtype: list of SyncRobotCommand
+        """
         return self._SyncRobotCommands
 
     @SyncRobotCommands.setter
@@ -504,6 +587,9 @@ class CreateKTVRobotResponse(AbstractModel):
 
     @property
     def RobotId(self):
+        """机器人Id。
+        :rtype: str
+        """
         return self._RobotId
 
     @RobotId.setter
@@ -512,6 +598,9 @@ class CreateKTVRobotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -544,6 +633,9 @@ class DescribeKTVMatchMusicsRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -552,6 +644,9 @@ class DescribeKTVMatchMusicsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -560,6 +655,9 @@ class DescribeKTVMatchMusicsRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """匹配规则列表。
+        :rtype: list of KTVMatchRule
+        """
         return self._Rules
 
     @Rules.setter
@@ -606,6 +704,9 @@ class DescribeKTVMatchMusicsResponse(AbstractModel):
 
     @property
     def MatchMusicSet(self):
+        """匹配到的歌曲列表。
+        :rtype: list of KTVMatchMusic
+        """
         return self._MatchMusicSet
 
     @MatchMusicSet.setter
@@ -614,6 +715,9 @@ class DescribeKTVMatchMusicsResponse(AbstractModel):
 
     @property
     def NotMatchRuleSet(self):
+        """未匹配的规则列表。
+        :rtype: list of KTVMatchRule
+        """
         return self._NotMatchRuleSet
 
     @NotMatchRuleSet.setter
@@ -622,6 +726,9 @@ class DescribeKTVMatchMusicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -672,6 +779,9 @@ class DescribeKTVMusicAccompanySegmentUrlRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -680,6 +790,9 @@ class DescribeKTVMusicAccompanySegmentUrlRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -688,6 +801,9 @@ class DescribeKTVMusicAccompanySegmentUrlRequest(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲 Id 。
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -696,6 +812,10 @@ class DescribeKTVMusicAccompanySegmentUrlRequest(AbstractModel):
 
     @property
     def PlayScene(self):
+        """播放场景。默认为Chat
+<li>Live：直播</li><li>Chat：语聊</li>
+        :rtype: str
+        """
         return self._PlayScene
 
     @PlayScene.setter
@@ -704,6 +824,9 @@ class DescribeKTVMusicAccompanySegmentUrlRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间Id
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -768,6 +891,14 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     @property
     def Status(self):
+        """歌曲状态。
+0：可用
+1：下线
+2：没权限
+3：没伴奏
+当返回2时，其他参数有可能全部为空
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -776,6 +907,9 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     @property
     def Url(self):
+        """伴奏链接
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -784,6 +918,9 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     @property
     def ExtName(self):
+        """伴奏类型，如mkv，mp3等
+        :rtype: str
+        """
         return self._ExtName
 
     @ExtName.setter
@@ -792,6 +929,9 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     @property
     def SegmentBegin(self):
+        """高潮开始时间
+        :rtype: int
+        """
         return self._SegmentBegin
 
     @SegmentBegin.setter
@@ -800,6 +940,9 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     @property
     def SegmentEnd(self):
+        """高潮结束时间
+        :rtype: int
+        """
         return self._SegmentEnd
 
     @SegmentEnd.setter
@@ -808,6 +951,9 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     @property
     def FileSize(self):
+        """链接文件大小 单位 字节
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -816,6 +962,10 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     @property
     def OtherSegments(self):
+        """其它片段时间（可用于抢唱）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KTVOtherSegments
+        """
         return self._OtherSegments
 
     @OtherSegments.setter
@@ -824,6 +974,9 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -870,6 +1023,9 @@ class DescribeKTVMusicAccompanySegmentUrlVipRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -878,6 +1034,9 @@ class DescribeKTVMusicAccompanySegmentUrlVipRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -886,6 +1045,9 @@ class DescribeKTVMusicAccompanySegmentUrlVipRequest(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲 Id 
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -894,6 +1056,9 @@ class DescribeKTVMusicAccompanySegmentUrlVipRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间Id
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -953,6 +1118,9 @@ class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
 
     @property
     def Status(self):
+        """0:成功获取 1:歌曲下架 2:无权限 3: 非包月会员 4:没有对应的链接
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -961,6 +1129,10 @@ class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
 
     @property
     def Url(self):
+        """伴奏链接
+
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -969,6 +1141,10 @@ class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
 
     @property
     def ExtName(self):
+        """伴奏类型，如mkv，mp3等
+
+        :rtype: str
+        """
         return self._ExtName
 
     @ExtName.setter
@@ -977,6 +1153,10 @@ class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
 
     @property
     def SegmentBegin(self):
+        """高潮开始时间
+
+        :rtype: int
+        """
         return self._SegmentBegin
 
     @SegmentBegin.setter
@@ -985,6 +1165,10 @@ class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
 
     @property
     def SegmentEnd(self):
+        """高潮结束时间
+
+        :rtype: int
+        """
         return self._SegmentEnd
 
     @SegmentEnd.setter
@@ -993,6 +1177,10 @@ class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
 
     @property
     def FileSize(self):
+        """链接文件大小 (单位:字节)
+
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -1001,6 +1189,9 @@ class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1054,6 +1245,9 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1062,6 +1256,9 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1070,6 +1267,9 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 
     @property
     def TagId(self):
+        """标签 Id。
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -1078,6 +1278,9 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """滚动标记。
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -1086,6 +1289,9 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回条数限制，默认 20，最大 50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1094,6 +1300,11 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 
     @property
     def RightFilters(self):
+        """权益过滤，取值有：
+<li>Play：可播；</li>
+<li>Sing：可唱。</li>
+        :rtype: list of str
+        """
         return self._RightFilters
 
     @RightFilters.setter
@@ -1102,6 +1313,11 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 
     @property
     def MaterialFilters(self):
+        """物料过滤，取值有：
+<li>Lyrics：含有歌词；</li>
+<li>Midi：含有音高线。</li>
+        :rtype: list of str
+        """
         return self._MaterialFilters
 
     @MaterialFilters.setter
@@ -1147,6 +1363,9 @@ class DescribeKTVMusicsByTagResponse(AbstractModel):
 
     @property
     def KTVMusicInfoSet(self):
+        """歌曲信息列表。
+        :rtype: list of KTVMusicBaseInfo
+        """
         return self._KTVMusicInfoSet
 
     @KTVMusicInfoSet.setter
@@ -1155,6 +1374,9 @@ class DescribeKTVMusicsByTagResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """滚动标记，用于设置下次请求的 ScrollToken 参数。
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -1163,6 +1385,9 @@ class DescribeKTVMusicsByTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1221,6 +1446,9 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1229,6 +1457,9 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1237,6 +1468,9 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def PlaylistId(self):
+        """歌单 Id。
+        :rtype: str
+        """
         return self._PlaylistId
 
     @PlaylistId.setter
@@ -1245,6 +1479,9 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """滚动标记。
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -1253,6 +1490,9 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回条数，默认：20，最大：50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1261,6 +1501,11 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def RightFilters(self):
+        """权益过滤，取值有：
+<li>Play：可播；</li>
+<li>Sing：可唱。</li>
+        :rtype: list of str
+        """
         return self._RightFilters
 
     @RightFilters.setter
@@ -1269,6 +1514,10 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def PlayScene(self):
+        """播放场景。默认为Chat
+<li>Live：直播</li><li>Chat：语聊</li>
+        :rtype: str
+        """
         return self._PlayScene
 
     @PlayScene.setter
@@ -1277,6 +1526,11 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def MaterialFilters(self):
+        """物料过滤，取值有：
+<li>Lyrics：含有歌词；</li>
+<li>Midi：含有音高线。</li>
+        :rtype: list of str
+        """
         return self._MaterialFilters
 
     @MaterialFilters.setter
@@ -1323,6 +1577,9 @@ class DescribeKTVPlaylistDetailResponse(AbstractModel):
 
     @property
     def KTVMusicInfoSet(self):
+        """歌曲信息列表。
+        :rtype: list of KTVMusicBaseInfo
+        """
         return self._KTVMusicInfoSet
 
     @KTVMusicInfoSet.setter
@@ -1331,6 +1588,9 @@ class DescribeKTVPlaylistDetailResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """滚动标记，用于设置下次请求的 ScrollToken 参数。
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -1339,6 +1599,9 @@ class DescribeKTVPlaylistDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1386,6 +1649,9 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1394,6 +1660,9 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1402,6 +1671,12 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     @property
     def Types(self):
+        """类型列表，取值有：
+<li>OfficialRec：官方推荐；</li>
+<li>Customize：自定义。</li>
+默认值为 OfficialRec。
+        :rtype: list of str
+        """
         return self._Types
 
     @Types.setter
@@ -1410,6 +1685,9 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1418,6 +1696,9 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：20，最大值：50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1461,6 +1742,9 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
 
     @property
     def PlaylistBaseInfoSet(self):
+        """歌单基础信息。
+        :rtype: list of KTVPlaylistBaseInfo
+        """
         return self._PlaylistBaseInfoSet
 
     @PlaylistBaseInfoSet.setter
@@ -1469,6 +1753,9 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """歌单总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1477,6 +1764,9 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1531,6 +1821,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1539,6 +1832,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1547,6 +1843,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def RobotIds(self):
+        """机器人Id列表。
+        :rtype: list of str
+        """
         return self._RobotIds
 
     @RobotIds.setter
@@ -1555,6 +1854,12 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def Statuses(self):
+        """机器人状态，取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>Destroy：销毁</li>
+        :rtype: list of str
+        """
         return self._Statuses
 
     @Statuses.setter
@@ -1563,6 +1868,10 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def CreateTime(self):
+        """匹配创建时间在此时间段内的机器人。
+<li>包含所指定的头尾时间点。</li>
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.TimeRange`
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1571,6 +1880,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1579,6 +1891,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的起始偏移量，默认值：10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1626,6 +1941,9 @@ class DescribeKTVRobotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """机器人总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1634,6 +1952,9 @@ class DescribeKTVRobotsResponse(AbstractModel):
 
     @property
     def KTVRobotInfoSet(self):
+        """机器人信息集合。
+        :rtype: list of KTVRobotInfo
+        """
         return self._KTVRobotInfoSet
 
     @KTVRobotInfoSet.setter
@@ -1642,6 +1963,9 @@ class DescribeKTVRobotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1680,6 +2004,9 @@ class DescribeKTVSuggestionsRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1688,6 +2015,9 @@ class DescribeKTVSuggestionsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1696,6 +2026,9 @@ class DescribeKTVSuggestionsRequest(AbstractModel):
 
     @property
     def KeyWord(self):
+        """搜索词。
+        :rtype: str
+        """
         return self._KeyWord
 
     @KeyWord.setter
@@ -1734,6 +2067,9 @@ class DescribeKTVSuggestionsResponse(AbstractModel):
 
     @property
     def KTVSuggestionInfoSet(self):
+        """联想词信息列表。
+        :rtype: list of KTVSuggestionInfo
+        """
         return self._KTVSuggestionInfoSet
 
     @KTVSuggestionInfoSet.setter
@@ -1742,6 +2078,9 @@ class DescribeKTVSuggestionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1776,6 +2115,9 @@ class DescribeKTVTagsRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1784,6 +2126,9 @@ class DescribeKTVTagsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1821,6 +2166,9 @@ class DescribeKTVTagsResponse(AbstractModel):
 
     @property
     def TagGroupInfoSet(self):
+        """标签分组列表。
+        :rtype: list of KTVTagGroupInfo
+        """
         return self._TagGroupInfoSet
 
     @TagGroupInfoSet.setter
@@ -1829,6 +2177,9 @@ class DescribeKTVTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1880,6 +2231,9 @@ class DescribeLiveVipTradeInfosRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1888,6 +2242,9 @@ class DescribeLiveVipTradeInfosRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """直播会员充值下单起始时间，格式为 ISO。默认为当前时间前一天。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1896,6 +2253,9 @@ class DescribeLiveVipTradeInfosRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """直播会员充值下单截止时间，格式为 ISO。默认为当前时间。 EndTime不能小于StartTime
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1904,6 +2264,10 @@ class DescribeLiveVipTradeInfosRequest(AbstractModel):
 
     @property
     def TradeSerialNos(self):
+        """交易流水号集合，匹配集合指定所有流水号 。
+<li>数组长度限制：10。</li>
+        :rtype: list of str
+        """
         return self._TradeSerialNos
 
     @TradeSerialNos.setter
@@ -1912,6 +2276,10 @@ class DescribeLiveVipTradeInfosRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """用户标识集合，匹配集合指定所有用户标识 。
+<li>数组长度限制：10。</li>
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -1920,6 +2288,9 @@ class DescribeLiveVipTradeInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1928,6 +2299,9 @@ class DescribeLiveVipTradeInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：20，最大值：50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1973,6 +2347,9 @@ class DescribeLiveVipTradeInfosResponse(AbstractModel):
 
     @property
     def LiveVipTradeInfoSet(self):
+        """直播会员充值流水信息列表
+        :rtype: list of LiveVipTradeInfo
+        """
         return self._LiveVipTradeInfoSet
 
     @LiveVipTradeInfoSet.setter
@@ -1981,6 +2358,9 @@ class DescribeLiveVipTradeInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """直播会员充值流水总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1989,6 +2369,9 @@ class DescribeLiveVipTradeInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2024,6 +2407,9 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2032,6 +2418,9 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2069,6 +2458,9 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def UserInfo(self):
+        """用户信息。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.UserInfo`
+        """
         return self._UserInfo
 
     @UserInfo.setter
@@ -2077,6 +2469,9 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2108,6 +2503,9 @@ class DescribeVipUserInfoRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2116,6 +2514,9 @@ class DescribeVipUserInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2165,6 +2566,9 @@ class DescribeVipUserInfoResponse(AbstractModel):
 
     @property
     def IsVip(self):
+        """是否是会员。（0:不是会员 1:是会员）
+        :rtype: int
+        """
         return self._IsVip
 
     @IsVip.setter
@@ -2173,6 +2577,9 @@ class DescribeVipUserInfoResponse(AbstractModel):
 
     @property
     def AnchorId(self):
+        """主播id
+        :rtype: str
+        """
         return self._AnchorId
 
     @AnchorId.setter
@@ -2181,6 +2588,9 @@ class DescribeVipUserInfoResponse(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间id
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -2189,6 +2599,9 @@ class DescribeVipUserInfoResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """会员过期时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2197,6 +2610,9 @@ class DescribeVipUserInfoResponse(AbstractModel):
 
     @property
     def Status(self):
+        """会员状态。（-1:未开通过；1:已开通，未过期；2:已开通，已过期）
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2205,6 +2621,9 @@ class DescribeVipUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2241,6 +2660,9 @@ class DestroyKTVRobotRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2249,6 +2671,9 @@ class DestroyKTVRobotRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2257,6 +2682,9 @@ class DestroyKTVRobotRequest(AbstractModel):
 
     @property
     def RobotId(self):
+        """机器人Id。
+        :rtype: str
+        """
         return self._RobotId
 
     @RobotId.setter
@@ -2292,6 +2720,9 @@ class DestroyKTVRobotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2317,6 +2748,9 @@ class JoinRoomInput(AbstractModel):
 
     @property
     def TRTCJoinRoomInput(self):
+        """TRTC进房参数
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.TRTCJoinRoomInput`
+        """
         return self._TRTCJoinRoomInput
 
     @TRTCJoinRoomInput.setter
@@ -2359,6 +2793,13 @@ class KTVBPMInfo(AbstractModel):
 
     @property
     def Type(self):
+        """节拍类型，取值有：
+<li>Slow：慢；</li>
+<li>Middle：中等；</li>
+<li>Fast：快；</li>
+<li>Unknown：未知。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2367,6 +2808,9 @@ class KTVBPMInfo(AbstractModel):
 
     @property
     def Value(self):
+        """BPM 值。
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -2408,6 +2852,9 @@ class KTVMatchMusic(AbstractModel):
 
     @property
     def KTVMusicBaseInfo(self):
+        """匹配到的歌曲基础信息。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.KTVMusicBaseInfo`
+        """
         return self._KTVMusicBaseInfo
 
     @KTVMusicBaseInfo.setter
@@ -2416,6 +2863,9 @@ class KTVMatchMusic(AbstractModel):
 
     @property
     def MatchRule(self):
+        """命中规则。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.KTVMatchRule`
+        """
         return self._MatchRule
 
     @MatchRule.setter
@@ -2424,6 +2874,10 @@ class KTVMatchMusic(AbstractModel):
 
     @property
     def AMEMusicBaseInfo(self):
+        """AME 歌曲基础信息，仅在使用音速达歌曲 Id 匹配 AME 曲库时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.AMEMusicBaseInfo`
+        """
         return self._AMEMusicBaseInfo
 
     @AMEMusicBaseInfo.setter
@@ -2472,6 +2926,9 @@ class KTVMatchRule(AbstractModel):
 
     @property
     def AMEMusicId(self):
+        """AME 曲库 Id。
+        :rtype: str
+        """
         return self._AMEMusicId
 
     @AMEMusicId.setter
@@ -2480,6 +2937,10 @@ class KTVMatchRule(AbstractModel):
 
     @property
     def MusicInfo(self):
+        """歌曲匹配信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.KTVMatchRuleMusicInfo`
+        """
         return self._MusicInfo
 
     @MusicInfo.setter
@@ -2488,6 +2949,9 @@ class KTVMatchRule(AbstractModel):
 
     @property
     def MusicIdToMatchAME(self):
+        """音速达歌曲 Id，用于匹配 AME 曲库歌曲。
+        :rtype: str
+        """
         return self._MusicIdToMatchAME
 
     @MusicIdToMatchAME.setter
@@ -2528,6 +2992,9 @@ class KTVMatchRuleMusicInfo(AbstractModel):
 
     @property
     def MusicName(self):
+        """歌曲名称。
+        :rtype: str
+        """
         return self._MusicName
 
     @MusicName.setter
@@ -2536,6 +3003,9 @@ class KTVMatchRuleMusicInfo(AbstractModel):
 
     @property
     def SingerSet(self):
+        """歌手列表。
+        :rtype: list of str
+        """
         return self._SingerSet
 
     @SingerSet.setter
@@ -2596,6 +3066,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲Id。
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -2604,6 +3077,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def Name(self):
+        """歌曲名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2612,6 +3088,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def SingerSet(self):
+        """歌手名称。
+        :rtype: list of str
+        """
         return self._SingerSet
 
     @SingerSet.setter
@@ -2620,6 +3099,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def Duration(self):
+        """播放时长。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -2628,6 +3110,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def SingerImageUrl(self):
+        """歌手图片链接。
+        :rtype: str
+        """
         return self._SingerImageUrl
 
     @SingerImageUrl.setter
@@ -2636,6 +3121,10 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def AlbumInfo(self):
+        """专辑信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.MusicAlbumInfo`
+        """
         return self._AlbumInfo
 
     @AlbumInfo.setter
@@ -2644,6 +3133,11 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def RightSet(self):
+        """权益列表，取值有：
+<li>Play：可播；</li>
+<li>Sing：可唱。</li>
+        :rtype: list of str
+        """
         return self._RightSet
 
     @RightSet.setter
@@ -2652,6 +3146,11 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def RecommendType(self):
+        """推荐类型，取值有：
+<li>Featured：精选；</li>
+<li>Other：其他。</li>
+        :rtype: str
+        """
         return self._RecommendType
 
     @RecommendType.setter
@@ -2716,6 +3215,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def KTVMusicBaseInfo(self):
+        """歌曲基础信息。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.KTVMusicBaseInfo`
+        """
         return self._KTVMusicBaseInfo
 
     @KTVMusicBaseInfo.setter
@@ -2724,6 +3226,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def PlayToken(self):
+        """播放凭证。
+        :rtype: str
+        """
         return self._PlayToken
 
     @PlayToken.setter
@@ -2732,6 +3237,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def LyricsUrl(self):
+        """歌词下载链接。
+        :rtype: str
+        """
         return self._LyricsUrl
 
     @LyricsUrl.setter
@@ -2740,6 +3248,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def MidiUrl(self):
+        """音高数据下载链接。
+        :rtype: str
+        """
         return self._MidiUrl
 
     @MidiUrl.setter
@@ -2748,6 +3259,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def ChorusClipSet(self):
+        """副歌片段信息。
+        :rtype: list of ChorusClip
+        """
         return self._ChorusClipSet
 
     @ChorusClipSet.setter
@@ -2756,6 +3270,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def PreludeInterval(self):
+        """前奏间隔。
+        :rtype: int
+        """
         return self._PreludeInterval
 
     @PreludeInterval.setter
@@ -2764,6 +3281,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def GenreSet(self):
+        """歌曲流派列表。
+        :rtype: list of str
+        """
         return self._GenreSet
 
     @GenreSet.setter
@@ -2772,6 +3292,10 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def BPMInfo(self):
+        """节拍信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.KTVBPMInfo`
+        """
         return self._BPMInfo
 
     @BPMInfo.setter
@@ -2826,6 +3350,10 @@ class KTVOtherSegments(AbstractModel):
 
     @property
     def SegmentBegin(self):
+        """片段开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SegmentBegin
 
     @SegmentBegin.setter
@@ -2834,6 +3362,10 @@ class KTVOtherSegments(AbstractModel):
 
     @property
     def SegmentEnd(self):
+        """片段结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SegmentEnd
 
     @SegmentEnd.setter
@@ -2871,6 +3403,9 @@ class KTVPlaylistBaseInfo(AbstractModel):
 
     @property
     def PlaylistId(self):
+        """歌单Id。
+        :rtype: str
+        """
         return self._PlaylistId
 
     @PlaylistId.setter
@@ -2879,6 +3414,9 @@ class KTVPlaylistBaseInfo(AbstractModel):
 
     @property
     def Title(self):
+        """歌单标题。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -2945,6 +3483,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def RobotId(self):
+        """机器人Id。
+        :rtype: str
+        """
         return self._RobotId
 
     @RobotId.setter
@@ -2953,6 +3494,12 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态，取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>Destroy：销毁</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2961,6 +3508,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def Playlists(self):
+        """播放列表。
+        :rtype: list of str
+        """
         return self._Playlists
 
     @Playlists.setter
@@ -2969,6 +3519,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def CurIndex(self):
+        """当前歌单索引位置。
+        :rtype: int
+        """
         return self._CurIndex
 
     @CurIndex.setter
@@ -2977,6 +3530,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def Position(self):
+        """播放进度，单位：毫秒。
+        :rtype: int
+        """
         return self._Position
 
     @Position.setter
@@ -2985,6 +3541,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def SetAudioParamInput(self):
+        """音频参数。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SetAudioParamCommandInput`
+        """
         return self._SetAudioParamInput
 
     @SetAudioParamInput.setter
@@ -2993,6 +3552,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def JoinRoomInput(self):
+        """进房信息。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.JoinRoomInput`
+        """
         return self._JoinRoomInput
 
     @JoinRoomInput.setter
@@ -3001,6 +3563,10 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def RTCSystem(self):
+        """RTC厂商类型，取值有：
+<li>TRTC</li>
+        :rtype: str
+        """
         return self._RTCSystem
 
     @RTCSystem.setter
@@ -3009,6 +3575,13 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def SetPlayModeInput(self):
+        """播放模式，PlayMode取值有：
+<li>RepeatPlaylist：列表循环</li>
+<li>Order：顺序播放</li>
+<li>RepeatSingle：单曲循环</li>
+<li>Shuffle：随机播放</li>
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SetPlayModeCommandInput`
+        """
         return self._SetPlayModeInput
 
     @SetPlayModeInput.setter
@@ -3056,6 +3629,9 @@ class KTVSuggestionInfo(AbstractModel):
 
     @property
     def Suggestion(self):
+        """联想词。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -3095,6 +3671,9 @@ class KTVTagGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组 Id。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -3103,6 +3682,9 @@ class KTVTagGroupInfo(AbstractModel):
 
     @property
     def Name(self):
+        """分组名。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3111,6 +3693,9 @@ class KTVTagGroupInfo(AbstractModel):
 
     @property
     def TagInfoSet(self):
+        """标签列表。
+        :rtype: list of KTVTagInfo
+        """
         return self._TagInfoSet
 
     @TagInfoSet.setter
@@ -3154,6 +3739,9 @@ class KTVTagInfo(AbstractModel):
 
     @property
     def TagId(self):
+        """标签 Id。
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -3162,6 +3750,9 @@ class KTVTagInfo(AbstractModel):
 
     @property
     def Name(self):
+        """标签名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3218,6 +3809,9 @@ class LiveVipTradeInfo(AbstractModel):
 
     @property
     def TradeSerialNo(self):
+        """交易流水号。
+        :rtype: str
+        """
         return self._TradeSerialNo
 
     @TradeSerialNo.setter
@@ -3226,6 +3820,9 @@ class LiveVipTradeInfo(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -3234,6 +3831,9 @@ class LiveVipTradeInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3242,6 +3842,9 @@ class LiveVipTradeInfo(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间标识。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3250,6 +3853,11 @@ class LiveVipTradeInfo(AbstractModel):
 
     @property
     def VipDays(self):
+        """充值会员天数。
+取值有： 
+<li>31</li> <li>93</li><li>186</li> <li>372</li>
+        :rtype: int
+        """
         return self._VipDays
 
     @VipDays.setter
@@ -3258,6 +3866,11 @@ class LiveVipTradeInfo(AbstractModel):
 
     @property
     def Status(self):
+        """订单状态。 
+取值有： 
+<li>Success：成功</li><li>Fail：失败</li><li>Processing：订单处理中</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3266,6 +3879,9 @@ class LiveVipTradeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3312,6 +3928,9 @@ class LiveVipUserInfo(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间标识。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3320,6 +3939,9 @@ class LiveVipUserInfo(AbstractModel):
 
     @property
     def LiveVipEndTime(self):
+        """直播会员结束时间。
+        :rtype: str
+        """
         return self._LiveVipEndTime
 
     @LiveVipEndTime.setter
@@ -3328,6 +3950,10 @@ class LiveVipUserInfo(AbstractModel):
 
     @property
     def LiveVipStatus(self):
+        """会员生效状态
+<li>Valid：生效</li><li>Invalid：无效</li>
+        :rtype: str
+        """
         return self._LiveVipStatus
 
     @LiveVipStatus.setter
@@ -3369,6 +3995,12 @@ class MusicAlbumCoverInfo(AbstractModel):
 
     @property
     def Dimension(self):
+        """尺寸规格，取值有：
+<li>Mini：150 x 150 尺寸；</li>
+<li>Small：240 x 240 尺寸；</li>
+<li>Medium：480 x 480 尺寸。</li>
+        :rtype: str
+        """
         return self._Dimension
 
     @Dimension.setter
@@ -3377,6 +4009,9 @@ class MusicAlbumCoverInfo(AbstractModel):
 
     @property
     def Url(self):
+        """下载链接。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3414,6 +4049,9 @@ class MusicAlbumInfo(AbstractModel):
 
     @property
     def Name(self):
+        """专辑名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3422,6 +4060,9 @@ class MusicAlbumInfo(AbstractModel):
 
     @property
     def CoverInfoSet(self):
+        """封面列表。
+        :rtype: list of MusicAlbumCoverInfo
+        """
         return self._CoverInfoSet
 
     @CoverInfoSet.setter
@@ -3461,6 +4102,9 @@ class PlayCommandInput(AbstractModel):
 
     @property
     def Index(self):
+        """歌曲位置索引。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -3518,6 +4162,9 @@ class RechargeLiveVipRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -3526,6 +4173,9 @@ class RechargeLiveVipRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3534,6 +4184,9 @@ class RechargeLiveVipRequest(AbstractModel):
 
     @property
     def TradeSerialNo(self):
+        """交易流水号，用于标记此次充值记录，多次充值记录传入相同的 TradeSerialNo 会判断为失败，可用于防止重提提交造成重复计费。
+        :rtype: str
+        """
         return self._TradeSerialNo
 
     @TradeSerialNo.setter
@@ -3542,6 +4195,9 @@ class RechargeLiveVipRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间标识。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3550,6 +4206,14 @@ class RechargeLiveVipRequest(AbstractModel):
 
     @property
     def VipDays(self):
+        """充值会员天数。
+取值有：
+<li>31</li>
+<li>93</li>
+<li>186</li>
+<li>372</li>
+        :rtype: int
+        """
         return self._VipDays
 
     @VipDays.setter
@@ -3558,6 +4222,9 @@ class RechargeLiveVipRequest(AbstractModel):
 
     @property
     def GiveType(self):
+        """充值分类。取值有：room_card-包月房卡; 其他-保留。
+        :rtype: str
+        """
         return self._GiveType
 
     @GiveType.setter
@@ -3566,6 +4233,10 @@ class RechargeLiveVipRequest(AbstractModel):
 
     @property
     def PlayScene(self):
+        """播放场景。默认为Live
+<li>Live：直播</li><li>Chat：语聊</li>
+        :rtype: str
+        """
         return self._PlayScene
 
     @PlayScene.setter
@@ -3608,6 +4279,9 @@ class RechargeLiveVipResponse(AbstractModel):
 
     @property
     def LiveVipUserInfo(self):
+        """直播会员信息。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.LiveVipUserInfo`
+        """
         return self._LiveVipUserInfo
 
     @LiveVipUserInfo.setter
@@ -3616,6 +4290,9 @@ class RechargeLiveVipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3656,6 +4333,9 @@ class RechargeVipRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -3664,6 +4344,9 @@ class RechargeVipRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3672,6 +4355,9 @@ class RechargeVipRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间Id。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3680,6 +4366,9 @@ class RechargeVipRequest(AbstractModel):
 
     @property
     def VipDays(self):
+        """充值会员天数。(取值有：31、93、186、372)
+        :rtype: int
+        """
         return self._VipDays
 
     @VipDays.setter
@@ -3688,6 +4377,9 @@ class RechargeVipRequest(AbstractModel):
 
     @property
     def AnchorId(self):
+        """主播id。
+        :rtype: str
+        """
         return self._AnchorId
 
     @AnchorId.setter
@@ -3734,6 +4426,9 @@ class RechargeVipResponse(AbstractModel):
 
     @property
     def PartnerNo(self):
+        """厂商订单号。
+        :rtype: str
+        """
         return self._PartnerNo
 
     @PartnerNo.setter
@@ -3742,6 +4437,9 @@ class RechargeVipResponse(AbstractModel):
 
     @property
     def OrderNo(self):
+        """TME订单号。
+        :rtype: str
+        """
         return self._OrderNo
 
     @OrderNo.setter
@@ -3750,6 +4448,9 @@ class RechargeVipResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """订单创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3758,6 +4459,9 @@ class RechargeVipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3812,6 +4516,9 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -3820,6 +4527,9 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3828,6 +4538,9 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def KeyWord(self):
+        """关键词。
+        :rtype: str
+        """
         return self._KeyWord
 
     @KeyWord.setter
@@ -3836,6 +4549,9 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """滚动标记。
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -3844,6 +4560,9 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回条数限制，默认 20，最大 50.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3852,6 +4571,11 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def RightFilters(self):
+        """权益过滤，取值有：
+<li>Play：可播；</li>
+<li>Sing：可唱。</li>
+        :rtype: list of str
+        """
         return self._RightFilters
 
     @RightFilters.setter
@@ -3860,6 +4584,10 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def PlayScene(self):
+        """播放场景。默认为Chat
+<li>Live：直播</li><li>Chat：语聊</li>
+        :rtype: str
+        """
         return self._PlayScene
 
     @PlayScene.setter
@@ -3868,6 +4596,11 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def MaterialFilters(self):
+        """物料过滤，取值有：
+<li>Lyrics：含有歌词；</li>
+<li>Midi：含有音高线。</li>
+        :rtype: list of str
+        """
         return self._MaterialFilters
 
     @MaterialFilters.setter
@@ -3914,6 +4647,9 @@ class SearchKTVMusicsResponse(AbstractModel):
 
     @property
     def KTVMusicInfoSet(self):
+        """歌曲信息列表。
+        :rtype: list of KTVMusicBaseInfo
+        """
         return self._KTVMusicInfoSet
 
     @KTVMusicInfoSet.setter
@@ -3922,6 +4658,9 @@ class SearchKTVMusicsResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """滚动标记，用于设置下次请求的 ScrollToken 参数。
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -3930,6 +4669,9 @@ class SearchKTVMusicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3962,6 +4704,9 @@ class SeekCommandInput(AbstractModel):
 
     @property
     def Position(self):
+        """播放位置，单位：毫秒。
+        :rtype: int
+        """
         return self._Position
 
     @Position.setter
@@ -3998,6 +4743,9 @@ class SendMessageCommandInput(AbstractModel):
 
     @property
     def Message(self):
+        """自定义消息，json格式字符串。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4006,6 +4754,9 @@ class SendMessageCommandInput(AbstractModel):
 
     @property
     def Repeat(self):
+        """消息重复次数，默认为 1。
+        :rtype: int
+        """
         return self._Repeat
 
     @Repeat.setter
@@ -4043,6 +4794,12 @@ class SetAudioParamCommandInput(AbstractModel):
 
     @property
     def Type(self):
+        """音频类型，取值有：
+<li>Original：原唱</li>
+<li>Accompaniment：伴奏</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4082,6 +4839,12 @@ class SetDestroyModeCommandInput(AbstractModel):
 
     @property
     def DestroyMode(self):
+        """销毁模式，取值有：
+<li>Auto：房间没人时自动销毁</li>
+<li>Expire：房间没人时过期自动销毁</li>
+<li>Never：不自动销毁，需手动销毁</li>默认为：Auto。
+        :rtype: str
+        """
         return self._DestroyMode
 
     @DestroyMode.setter
@@ -4090,6 +4853,9 @@ class SetDestroyModeCommandInput(AbstractModel):
 
     @property
     def DestroyExpireTime(self):
+        """过期销毁时间，单位：秒，当DestroyMode取Expire时必填。
+        :rtype: int
+        """
         return self._DestroyExpireTime
 
     @DestroyExpireTime.setter
@@ -4129,6 +4895,14 @@ class SetPlayModeCommandInput(AbstractModel):
 
     @property
     def PlayMode(self):
+        """播放模式，取值有：
+<li>RepeatPlaylist：列表循环</li>
+<li>Order：顺序播放</li>
+<li>RepeatSingle：单曲循环</li>
+<li>Shuffle：随机播放</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlayMode
 
     @PlayMode.setter
@@ -4178,6 +4952,13 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def Type(self):
+        """变更类型，取值有：
+<li>Add：添加</li>
+<li>Delete：删除</li>
+<li>ClearList：清空歌曲列表</li>
+<li>Move：移动歌曲</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4186,6 +4967,12 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def Index(self):
+        """歌单索引位置，
+当 Type 取 Add 时，-1表示添加在列表最后位置，大于-1表示要添加的位置；
+当 Type 取 Delete 时，表示待删除歌曲的位置；
+当 Type 取 Move 时，表示待调整歌曲的位置。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -4194,6 +4981,9 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def ChangedIndex(self):
+        """当 Type 取 Move 时，必填，表示移动歌曲的目标位置。
+        :rtype: int
+        """
         return self._ChangedIndex
 
     @ChangedIndex.setter
@@ -4202,6 +4992,9 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def MusicIds(self):
+        """歌曲 ID 列表，当 Type 取 Add 时，必填。
+        :rtype: list of str
+        """
         return self._MusicIds
 
     @MusicIds.setter
@@ -4247,6 +5040,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -4255,6 +5051,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4263,6 +5062,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def RobotId(self):
+        """机器人Id。
+        :rtype: str
+        """
         return self._RobotId
 
     @RobotId.setter
@@ -4271,6 +5073,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SyncRobotCommands(self):
+        """指令及指令参数数组。
+        :rtype: list of SyncRobotCommand
+        """
         return self._SyncRobotCommands
 
     @SyncRobotCommands.setter
@@ -4312,6 +5117,9 @@ class SyncKTVRobotCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4368,6 +5176,19 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def Command(self):
+        """可同时传入多个指令，顺序执行。取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>SwitchPrevious：上一首</li>
+<li>SwitchNext：下一首</li>
+<li>SetPlayMode：设置播放模式</li>
+<li>Seek：调整播放进度</li>
+<li>SetPlaylist：歌单变更</li>
+<li>SetAudioParam：音频参数变更</li>
+<li>SendMessage：发送自定义消息</li>
+<li>SetDestroyMode：设置销毁模式</li>
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -4376,6 +5197,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def PlayCommandInput(self):
+        """播放参数。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.PlayCommandInput`
+        """
         return self._PlayCommandInput
 
     @PlayCommandInput.setter
@@ -4384,6 +5208,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetPlaylistCommandInput(self):
+        """播放列表变更信息，当Command取SetPlaylist时，必填。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SetPlaylistCommandInput`
+        """
         return self._SetPlaylistCommandInput
 
     @SetPlaylistCommandInput.setter
@@ -4392,6 +5219,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SeekCommandInput(self):
+        """播放进度，当Command取Seek时，必填。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SeekCommandInput`
+        """
         return self._SeekCommandInput
 
     @SeekCommandInput.setter
@@ -4400,6 +5230,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetAudioParamCommandInput(self):
+        """音频参数，当Command取SetAudioParam时，必填。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SetAudioParamCommandInput`
+        """
         return self._SetAudioParamCommandInput
 
     @SetAudioParamCommandInput.setter
@@ -4408,6 +5241,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SendMessageCommandInput(self):
+        """自定义消息，当Command取SendMessage时，必填。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SendMessageCommandInput`
+        """
         return self._SendMessageCommandInput
 
     @SendMessageCommandInput.setter
@@ -4416,6 +5252,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetPlayModeCommandInput(self):
+        """播放模式，当Command取SetPlayMode时，必填。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SetPlayModeCommandInput`
+        """
         return self._SetPlayModeCommandInput
 
     @SetPlayModeCommandInput.setter
@@ -4424,6 +5263,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetDestroyModeCommandInput(self):
+        """销毁模式，当Command取SetDestroyMode时，必填。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SetDestroyModeCommandInput`
+        """
         return self._SetDestroyModeCommandInput
 
     @SetDestroyModeCommandInput.setter
@@ -4495,6 +5337,9 @@ String：字符串类型
 
     @property
     def Sign(self):
+        """签名。
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -4503,6 +5348,9 @@ String：字符串类型
 
     @property
     def RoomId(self):
+        """房间号。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -4511,6 +5359,9 @@ String：字符串类型
 
     @property
     def SdkAppId(self):
+        """推流应用ID。
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4519,6 +5370,9 @@ String：字符串类型
 
     @property
     def UserId(self):
+        """用户唯一标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4527,6 +5381,14 @@ String：字符串类型
 
     @property
     def RoomIdType(self):
+        """TRTC房间号的类型：
+
+Integer：数字类型
+String：字符串类型
+默认为：Integer 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -4569,6 +5431,10 @@ class TimeRange(AbstractModel):
 
     @property
     def Before(self):
+        """<li>大于等于此时间（起始时间）。</li>
+<li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+        :rtype: str
+        """
         return self._Before
 
     @Before.setter
@@ -4577,6 +5443,10 @@ class TimeRange(AbstractModel):
 
     @property
     def After(self):
+        """<li>小于此时间（结束时间）。</li>
+<li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+        :rtype: str
+        """
         return self._After
 
     @After.setter
@@ -4623,6 +5493,9 @@ class UserInfo(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -4631,6 +5504,9 @@ class UserInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4639,6 +5515,10 @@ class UserInfo(AbstractModel):
 
     @property
     def LiveVipUserInfo(self):
+        """直播会员详细信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.LiveVipUserInfo`
+        """
         return self._LiveVipUserInfo
 
     @LiveVipUserInfo.setter
@@ -4647,6 +5527,11 @@ class UserInfo(AbstractModel):
 
     @property
     def UserType(self):
+        """用户类型
+<li>Normal：普通用户</li>
+<li>LiveVip：直播会员用户</li>
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter

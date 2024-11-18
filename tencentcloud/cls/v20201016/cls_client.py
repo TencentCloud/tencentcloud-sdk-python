@@ -165,7 +165,14 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """该接口用于创建通知渠道组。
+        """该接口用于创建通知渠道组，提供两种配置模式，二选一：
+        1，简易模式，提供最基本的通知渠道功能。需填写如下参数：
+        - Type
+        - NoticeReceivers
+        - WebCallbacks
+
+        2，高级模式，在简易模式基础上，支持设定规则，为不同类型的告警分别设定通知渠道，并支持告警升级功能。需填写如下参数：
+        - NoticeRules
 
         :param request: Request instance for CreateAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmNoticeRequest`
@@ -201,6 +208,29 @@ class ClsClient(AbstractClient):
             body = self.call("CreateAlarmShield", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCloudProductLogTask(self, request):
+        """内部云产品接入使用相关接口
+
+        :param request: Request instance for CreateCloudProductLogTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateCloudProductLogTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateCloudProductLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudProductLogTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudProductLogTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -509,6 +539,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateNoticeContent(self, request):
+        """该接口用于创建通知内容。
+
+        :param request: Request instance for CreateNoticeContent.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateNoticeContentRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateNoticeContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNoticeContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNoticeContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateScheduledSql(self, request):
         """本接口用于创建定时SQL分析任务
 
@@ -638,6 +691,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteAlarmShield", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudProductLogTask(self, request):
+        """内部云产品接入使用相关接口
+
+        :param request: Request instance for DeleteCloudProductLogTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteCloudProductLogTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteCloudProductLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudProductLogTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudProductLogTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -946,6 +1022,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteNoticeContent(self, request):
+        """该接口用于删除通知内容配置
+
+        :param request: Request instance for DeleteNoticeContent.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteNoticeContentRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteNoticeContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNoticeContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteNoticeContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteScheduledSql(self, request):
         """本接口用于删除定时SQL分析任务
 
@@ -1098,6 +1197,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeAlertRecordHistory", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAlertRecordHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudProductLogTasks(self, request):
+        """云产品接入使用相关接口
+
+        :param request: Request instance for DescribeCloudProductLogTasks.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeCloudProductLogTasksRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeCloudProductLogTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudProductLogTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudProductLogTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1545,6 +1667,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNoticeContents(self, request):
+        """获取通知内容列表
+
+        :param request: Request instance for DescribeNoticeContents.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeNoticeContentsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeNoticeContentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNoticeContents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNoticeContentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePartitions(self, request):
         """该接口已废弃，如需获取分区数量，请使用DescribeTopics接口。
 
@@ -1766,6 +1911,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyAlarmShield", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudProductLogTask(self, request):
+        """内部云产品接入使用相关接口
+
+        :param request: Request instance for ModifyCloudProductLogTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyCloudProductLogTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyCloudProductLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudProductLogTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudProductLogTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2051,6 +2219,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyNoticeContent(self, request):
+        """该接口用于修改通知内容配置
+
+        :param request: Request instance for ModifyNoticeContent.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyNoticeContentRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyNoticeContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNoticeContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNoticeContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyScheduledSql(self, request):
         """本接口用于修改定时SQL分析任务
 
@@ -2167,7 +2358,8 @@ class ClsClient(AbstractClient):
 
 
     def QueryMetric(self, request):
-        """查询指定时刻指标的最新值
+        """查询指定时刻指标的最新值。
+        如果该时刻向前推5分钟内均无指标数据，则无相应的查询结果。
 
         :param request: Request instance for QueryMetric.
         :type request: :class:`tencentcloud.cls.v20201016.models.QueryMetricRequest`

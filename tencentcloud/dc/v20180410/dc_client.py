@@ -72,6 +72,29 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudAttachService(self, request):
+        """创建敏捷上云服务
+
+        :param request: Request instance for CreateCloudAttachService.
+        :type request: :class:`tencentcloud.dc.v20180410.models.CreateCloudAttachServiceRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.CreateCloudAttachServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudAttachService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudAttachServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDirectConnect(self, request):
         """申请物理专线接入。
         调用该接口时，请注意：

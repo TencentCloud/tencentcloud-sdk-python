@@ -1393,31 +1393,6 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def SummarizeTranscription(self, request):
-        """接口不再支持
-
-        对转录的文本进行总结。
-
-        :param request: Request instance for SummarizeTranscription.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.SummarizeTranscriptionRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.SummarizeTranscriptionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SummarizeTranscription", params, headers=headers)
-            response = json.loads(body)
-            model = models.SummarizeTranscriptionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def UpdateAIConversation(self, request):
         """更新AIConversation参数
 

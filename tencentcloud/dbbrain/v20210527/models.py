@@ -38,6 +38,9 @@ class AddUserContactRequest(AbstractModel):
 
     @property
     def Name(self):
+        """联系人姓名，由中英文、数字、空格、!@#$%^&*()_+-=（）组成，不能以下划线开头，长度在20以内。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -46,6 +49,9 @@ class AddUserContactRequest(AbstractModel):
 
     @property
     def ContactInfo(self):
+        """邮箱地址，支持大小写字母、数字、下划线、连字符及@字符， 只能以数字或字母开头，邮箱地址不可重复。
+        :rtype: str
+        """
         return self._ContactInfo
 
     @ContactInfo.setter
@@ -54,6 +60,9 @@ class AddUserContactRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，固定值："mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -92,6 +101,9 @@ class AddUserContactResponse(AbstractModel):
 
     @property
     def Id(self):
+        """添加成功的联系人id。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -100,6 +112,9 @@ class AddUserContactResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -139,6 +154,9 @@ class Aggregation(AbstractModel):
 
     @property
     def AvgExecTime(self):
+        """平均执行时间（ms）。
+        :rtype: int
+        """
         return self._AvgExecTime
 
     @AvgExecTime.setter
@@ -147,6 +165,9 @@ class Aggregation(AbstractModel):
 
     @property
     def AvgDocsExamined(self):
+        """平均扫描行数。
+        :rtype: int
+        """
         return self._AvgDocsExamined
 
     @AvgDocsExamined.setter
@@ -155,6 +176,9 @@ class Aggregation(AbstractModel):
 
     @property
     def SlowLogCount(self):
+        """产生慢查次数（/天）。
+        :rtype: int
+        """
         return self._SlowLogCount
 
     @SlowLogCount.setter
@@ -163,6 +187,9 @@ class Aggregation(AbstractModel):
 
     @property
     def SortCount(self):
+        """内存排序次数。
+        :rtype: int
+        """
         return self._SortCount
 
     @SortCount.setter
@@ -171,6 +198,10 @@ class Aggregation(AbstractModel):
 
     @property
     def SlowLogs(self):
+        """慢查模板概览。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SlowLogs
 
     @SlowLogs.setter
@@ -261,6 +292,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def IsWebHook(self):
+        """0-不是 1-是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsWebHook
 
     @IsWebHook.setter
@@ -269,6 +304,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def ReceiveUinCount(self):
+        """接收告警用户数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReceiveUinCount
 
     @ReceiveUinCount.setter
@@ -277,6 +316,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def Lang(self):
+        """语言
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Lang
 
     @Lang.setter
@@ -285,6 +328,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def TemplateType(self):
+        """模板类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateType
 
     @TemplateType.setter
@@ -293,6 +340,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -301,6 +352,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def ReceiveGroupCount(self):
+        """接收组数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReceiveGroupCount
 
     @ReceiveGroupCount.setter
@@ -309,6 +364,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def UpdateUin(self):
+        """更新用户的uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateUin
 
     @UpdateUin.setter
@@ -317,6 +376,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def ReceiveType(self):
+        """接收类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._ReceiveType
 
     @ReceiveType.setter
@@ -325,6 +388,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def ReceiveInfo(self):
+        """接收用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReceiveInfo
+        """
         return self._ReceiveInfo
 
     @ReceiveInfo.setter
@@ -333,6 +400,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -341,6 +412,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -349,6 +424,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def SendChannel(self):
+        """发送渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._SendChannel
 
     @SendChannel.setter
@@ -357,6 +436,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -365,6 +448,10 @@ class AlarmProfileList(AbstractModel):
 
     @property
     def WebHookCount(self):
+        """webhook数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WebHookCount
 
     @WebHookCount.setter
@@ -436,6 +523,9 @@ information-通知
 
     @property
     def Interval(self):
+        """间隔
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -444,6 +534,9 @@ information-通知
 
     @property
     def Name(self):
+        """告警名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -452,6 +545,9 @@ information-通知
 
     @property
     def Metric(self):
+        """指标
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -460,6 +556,9 @@ information-通知
 
     @property
     def Operator(self):
+        """操作符
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -468,6 +567,14 @@ information-通知
 
     @property
     def Severity(self):
+        """等级 
+fatal-致命
+critical-严重
+warning-告警
+information-通知
+
+        :rtype: str
+        """
         return self._Severity
 
     @Severity.setter
@@ -476,6 +583,9 @@ information-通知
 
     @property
     def Value(self):
+        """指标值
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -544,6 +654,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def AuditStatus(self):
+        """审计状态，已开通审计为：YES，未开通审计为：ON。
+        :rtype: str
+        """
         return self._AuditStatus
 
     @AuditStatus.setter
@@ -552,6 +665,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def BillingAmount(self):
+        """审计日志大小，为兼容老版本用。
+        :rtype: int
+        """
         return self._BillingAmount
 
     @BillingAmount.setter
@@ -560,6 +676,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def BillingConfirmed(self):
+        """计费确认状态，0-未确认；1-已确认。
+        :rtype: int
+        """
         return self._BillingConfirmed
 
     @BillingConfirmed.setter
@@ -568,6 +687,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def ColdLogExpireDay(self):
+        """低频存储时长。
+        :rtype: int
+        """
         return self._ColdLogExpireDay
 
     @ColdLogExpireDay.setter
@@ -576,6 +698,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def ColdLogSize(self):
+        """低频日志存储量单位MB。
+        :rtype: int
+        """
         return self._ColdLogSize
 
     @ColdLogSize.setter
@@ -584,6 +709,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def HotLogExpireDay(self):
+        """高频日志存储天数。
+        :rtype: int
+        """
         return self._HotLogExpireDay
 
     @HotLogExpireDay.setter
@@ -592,6 +720,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def HotLogSize(self):
+        """高频日志存储量，单位MB。
+        :rtype: int
+        """
         return self._HotLogSize
 
     @HotLogSize.setter
@@ -600,6 +731,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -608,6 +742,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def LogExpireDay(self):
+        """日志保存总天数，为高频存储时长+低频存储时长。
+        :rtype: int
+        """
         return self._LogExpireDay
 
     @LogExpireDay.setter
@@ -616,6 +753,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def CreateTime(self):
+        """实例创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -624,6 +764,9 @@ class AuditInstance(AbstractModel):
 
     @property
     def InstanceInfo(self):
+        """实例详细信息。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.AuditInstanceInfo`
+        """
         return self._InstanceInfo
 
     @InstanceInfo.setter
@@ -672,6 +815,9 @@ class AuditInstanceFilter(AbstractModel):
 
     @property
     def Name(self):
+        """搜索条件名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -680,6 +826,9 @@ class AuditInstanceFilter(AbstractModel):
 
     @property
     def Values(self):
+        """要搜索的条件的值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -733,6 +882,9 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """appId。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -741,6 +893,9 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def AuditStatus(self):
+        """审计状态，0-未开通审计；1-已开通审计。
+        :rtype: int
+        """
         return self._AuditStatus
 
     @AuditStatus.setter
@@ -749,6 +904,9 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -757,6 +915,9 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -765,6 +926,9 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目Id。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -773,6 +937,9 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def Region(self):
+        """实例所在地域。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -781,6 +948,10 @@ class AuditInstanceInfo(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """资源Tags。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -850,6 +1021,10 @@ class AuditLogFile(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """审计日志文件生成异步任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -858,6 +1033,9 @@ class AuditLogFile(AbstractModel):
 
     @property
     def FileName(self):
+        """审计日志文件名称。
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -866,6 +1044,10 @@ class AuditLogFile(AbstractModel):
 
     @property
     def CreateTime(self):
+        """审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -874,6 +1056,13 @@ class AuditLogFile(AbstractModel):
 
     @property
     def Status(self):
+        """文件状态值。可能返回的值为：
+"creating" - 生成中;
+"failed" - 创建失败;
+"success" - 已生成;
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -882,6 +1071,9 @@ class AuditLogFile(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小，单位为 KB。
+        :rtype: float
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -890,6 +1082,9 @@ class AuditLogFile(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """审计日志下载地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -898,6 +1093,9 @@ class AuditLogFile(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -906,6 +1104,9 @@ class AuditLogFile(AbstractModel):
 
     @property
     def Progress(self):
+        """文件生成进度。
+        :rtype: float
+        """
         return self._Progress
 
     @Progress.setter
@@ -914,6 +1115,9 @@ class AuditLogFile(AbstractModel):
 
     @property
     def FinishTime(self):
+        """文件生成成功时间。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -970,6 +1174,9 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def Host(self):
+        """客户端地址。
+        :rtype: list of str
+        """
         return self._Host
 
     @Host.setter
@@ -978,6 +1185,9 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def DBName(self):
+        """数据库名称。
+        :rtype: list of str
+        """
         return self._DBName
 
     @DBName.setter
@@ -986,6 +1196,9 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def User(self):
+        """用户名。
+        :rtype: list of str
+        """
         return self._User
 
     @User.setter
@@ -994,6 +1207,9 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def SentRows(self):
+        """返回行数。表示筛选返回行数大于该值的审计日志。
+        :rtype: int
+        """
         return self._SentRows
 
     @SentRows.setter
@@ -1002,6 +1218,9 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def AffectRows(self):
+        """影响行数。表示筛选影响行数大于该值的审计日志。
+        :rtype: int
+        """
         return self._AffectRows
 
     @AffectRows.setter
@@ -1010,6 +1229,9 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def ExecTime(self):
+        """执行时间。单位为：µs。表示筛选执行时间大于该值的审计日志。
+        :rtype: int
+        """
         return self._ExecTime
 
     @ExecTime.setter
@@ -1051,6 +1273,9 @@ class CancelKillTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1059,6 +1284,9 @@ class CancelKillTaskRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1096,6 +1324,9 @@ class CancelKillTaskResponse(AbstractModel):
 
     @property
     def Status(self):
+        """kill会话任务终止成功返回1。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1104,6 +1335,9 @@ class CancelKillTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1136,6 +1370,9 @@ class CloseAuditServiceRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1144,6 +1381,9 @@ class CloseAuditServiceRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
+        """与Product保持一致。如："dcdb" ,"mariadb"。
+        :rtype: str
+        """
         return self._NodeRequestType
 
     @NodeRequestType.setter
@@ -1152,6 +1392,9 @@ class CloseAuditServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1190,6 +1433,9 @@ class CloseAuditServiceResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """0-关闭审计成功，非0关闭审计失败。
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1198,6 +1444,9 @@ class CloseAuditServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1230,6 +1479,9 @@ class ContactItem(AbstractModel):
 
     @property
     def Id(self):
+        """联系人id。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1238,6 +1490,9 @@ class ContactItem(AbstractModel):
 
     @property
     def Name(self):
+        """联系人姓名。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1246,6 +1501,9 @@ class ContactItem(AbstractModel):
 
     @property
     def Mail(self):
+        """联系人绑定的邮箱。
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -1296,6 +1554,9 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1304,6 +1565,9 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
+        """与Product保持一致。如："dcdb" ,"mariadb"
+        :rtype: str
+        """
         return self._NodeRequestType
 
     @NodeRequestType.setter
@@ -1312,6 +1576,9 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1320,6 +1587,9 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，如“2019-09-10 12:13:14”。	
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1328,6 +1598,9 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """截止时间，如“2019-09-11 10:13:14”。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1336,6 +1609,9 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件。可按设置的过滤条件过滤日志。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.AuditLogFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -1379,6 +1655,9 @@ class CreateAuditLogFileResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """审计日志文件下载的任务ID
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -1387,6 +1666,9 @@ class CreateAuditLogFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1431,6 +1713,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1439,6 +1724,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，如“2020-11-08T14:00:00+08:00”。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1447,6 +1735,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，如“2020-11-09T14:00:00+08:00”。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1455,6 +1746,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def SendMailFlag(self):
+        """是否发送邮件: 0 - 否，1 - 是。
+        :rtype: int
+        """
         return self._SendMailFlag
 
     @SendMailFlag.setter
@@ -1463,6 +1757,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def ContactPerson(self):
+        """接收邮件的联系人ID数组。
+        :rtype: list of int
+        """
         return self._ContactPerson
 
     @ContactPerson.setter
@@ -1471,6 +1768,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def ContactGroup(self):
+        """接收邮件的联系组ID数组。
+        :rtype: list of int
+        """
         return self._ContactGroup
 
     @ContactGroup.setter
@@ -1479,6 +1779,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1522,6 +1825,10 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -1530,6 +1837,9 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1562,6 +1872,9 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1570,6 +1883,9 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -1578,6 +1894,9 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1619,6 +1938,9 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
+        """健康报告浏览地址。
+        :rtype: str
+        """
         return self._ReportUrl
 
     @ReportUrl.setter
@@ -1627,6 +1949,9 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """健康报告浏览地址到期时间戳（秒）。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1635,6 +1960,9 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1689,6 +2017,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """kill会话任务的关联实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1697,6 +2028,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """任务持续时间，单位秒，手动关闭任务传-1。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -1705,6 +2039,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def Host(self):
+        """任务过滤条件，客户端IP。
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -1713,6 +2050,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def DB(self):
+        """任务过滤条件，数据库库名,多个","隔开。
+        :rtype: str
+        """
         return self._DB
 
     @DB.setter
@@ -1721,6 +2061,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def Command(self):
+        """任务过滤条件，相关命令，多个","隔开。
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -1729,6 +2072,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def Info(self):
+        """任务过滤条件，支持单条件前缀匹配。
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -1737,6 +2083,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def Infos(self):
+        """任务过滤条件，支持多个关键字匹配，与Info参数互斥。
+        :rtype: list of str
+        """
         return self._Infos
 
     @Infos.setter
@@ -1745,6 +2094,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def User(self):
+        """任务过滤条件，用户类型。
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -1753,6 +2105,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def Time(self):
+        """任务过滤条件，会话持续时长，单位秒。
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -1761,6 +2116,9 @@ class CreateKillTaskRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1806,6 +2164,9 @@ class CreateKillTaskResponse(AbstractModel):
 
     @property
     def Status(self):
+        """kill会话任务创建成功返回1
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1814,6 +2175,9 @@ class CreateKillTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1855,6 +2219,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileInfo(self):
+        """邮件配置内容。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
+        """
         return self._ProfileInfo
 
     @ProfileInfo.setter
@@ -1863,6 +2230,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileLevel(self):
+        """配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
+        :rtype: str
+        """
         return self._ProfileLevel
 
     @ProfileLevel.setter
@@ -1871,6 +2241,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileName(self):
+        """配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -1879,6 +2252,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileType(self):
+        """配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+        :rtype: str
+        """
         return self._ProfileType
 
     @ProfileType.setter
@@ -1887,6 +2263,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1895,6 +2274,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def BindInstanceIds(self):
+        """配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
+        :rtype: list of str
+        """
         return self._BindInstanceIds
 
     @BindInstanceIds.setter
@@ -1935,6 +2317,9 @@ class CreateMailProfileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1963,6 +2348,9 @@ class CreateProxySessionKillTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1971,6 +2359,9 @@ class CreateProxySessionKillTaskRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2008,6 +2399,9 @@ class CreateProxySessionKillTaskResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """创建 kill 会话任务返回的异步任务 id
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -2016,6 +2410,9 @@ class CreateProxySessionKillTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2052,6 +2449,9 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2060,6 +2460,9 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2068,6 +2471,9 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     @property
     def ShardIds(self):
+        """分片节点序号列表。当列表为空时，选择所有分片节点。
+        :rtype: list of int
+        """
         return self._ShardIds
 
     @ShardIds.setter
@@ -2076,6 +2482,10 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     @property
     def KeyDelimiterList(self):
+        """Top Key前缀的分隔符列表。
+目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
+        :rtype: list of str
+        """
         return self._KeyDelimiterList
 
     @KeyDelimiterList.setter
@@ -2115,6 +2525,9 @@ class CreateRedisBigKeyAnalysisTaskResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务ID。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -2123,6 +2536,9 @@ class CreateRedisBigKeyAnalysisTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2161,6 +2577,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def WeekConfiguration(self):
+        """取值范围1-7，分别代表周一至周日。
+        :rtype: list of int
+        """
         return self._WeekConfiguration
 
     @WeekConfiguration.setter
@@ -2169,6 +2588,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def ProfileInfo(self):
+        """邮件配置内容。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
+        """
         return self._ProfileInfo
 
     @ProfileInfo.setter
@@ -2177,6 +2599,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def ProfileName(self):
+        """配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -2185,6 +2610,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def BindInstanceId(self):
+        """配置订阅的实例ID。
+        :rtype: str
+        """
         return self._BindInstanceId
 
     @BindInstanceId.setter
@@ -2193,6 +2621,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2232,6 +2663,9 @@ class CreateSchedulerMailProfileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2269,6 +2703,9 @@ class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
 
     @property
     def SecAuditGroupId(self):
+        """安全审计组Id。
+        :rtype: str
+        """
         return self._SecAuditGroupId
 
     @SecAuditGroupId.setter
@@ -2277,6 +2714,9 @@ class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """导出日志开始时间，例如2020-12-28 00:00:00。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2285,6 +2725,9 @@ class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """导出日志结束时间，例如2020-12-28 01:00:00。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2293,6 +2736,9 @@ class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2301,6 +2747,9 @@ class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
 
     @property
     def DangerLevels(self):
+        """日志风险等级列表，支持值包括：0 无风险；1 低风险；2 中风险；3 高风险。
+        :rtype: list of int
+        """
         return self._DangerLevels
 
     @DangerLevels.setter
@@ -2341,6 +2790,9 @@ class CreateSecurityAuditLogExportTaskResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """日志导出任务Id。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -2349,6 +2801,9 @@ class CreateSecurityAuditLogExportTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2393,6 +2848,9 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2401,6 +2859,9 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def SqlType(self):
+        """SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+        :rtype: str
+        """
         return self._SqlType
 
     @SqlType.setter
@@ -2409,6 +2870,9 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def FilterKey(self):
+        """关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
+        :rtype: str
+        """
         return self._FilterKey
 
     @FilterKey.setter
@@ -2417,6 +2881,9 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
+        """最大并发度，取值不能小于0，如果该值设为 0，则表示限制所有匹配的SQL执行。
+        :rtype: int
+        """
         return self._MaxConcurrency
 
     @MaxConcurrency.setter
@@ -2425,6 +2892,9 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -2433,6 +2903,9 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def SessionToken(self):
+        """通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :rtype: str
+        """
         return self._SessionToken
 
     @SessionToken.setter
@@ -2441,6 +2914,9 @@ class CreateSqlFilterRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2483,6 +2959,9 @@ class CreateSqlFilterResponse(AbstractModel):
 
     @property
     def FilterId(self):
+        """限流任务ID。
+        :rtype: int
+        """
         return self._FilterId
 
     @FilterId.setter
@@ -2491,6 +2970,9 @@ class CreateSqlFilterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2526,6 +3008,9 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2534,6 +3019,9 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
+        """与Product保持一致。如："dcdb" ,"mariadb"	
+        :rtype: str
+        """
         return self._NodeRequestType
 
     @NodeRequestType.setter
@@ -2542,6 +3030,9 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2550,6 +3041,9 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """审计日志文件生成异步任务ID。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -2586,6 +3080,9 @@ class DeleteAuditLogFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2617,6 +3114,9 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def AsyncRequestIds(self):
+        """需要删除的任务id列表
+        :rtype: list of int
+        """
         return self._AsyncRequestIds
 
     @AsyncRequestIds.setter
@@ -2625,6 +3125,9 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2633,6 +3136,9 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2671,6 +3177,9 @@ class DeleteDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务删除状态, 0-删除成功
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2679,6 +3188,9 @@ class DeleteDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2711,6 +3223,9 @@ class DeleteRedisBigKeyAnalysisTasksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2719,6 +3234,9 @@ class DeleteRedisBigKeyAnalysisTasksRequest(AbstractModel):
 
     @property
     def AsyncRequestIds(self):
+        """待删除的异步任务ID列表。
+        :rtype: list of int
+        """
         return self._AsyncRequestIds
 
     @AsyncRequestIds.setter
@@ -2727,6 +3245,9 @@ class DeleteRedisBigKeyAnalysisTasksRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2765,6 +3286,9 @@ class DeleteRedisBigKeyAnalysisTasksResponse(AbstractModel):
 
     @property
     def Status(self):
+        """状态值，为0时代表正常处理。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2773,6 +3297,9 @@ class DeleteRedisBigKeyAnalysisTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2805,6 +3332,9 @@ class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
 
     @property
     def SecAuditGroupId(self):
+        """安全审计组Id。
+        :rtype: str
+        """
         return self._SecAuditGroupId
 
     @SecAuditGroupId.setter
@@ -2813,6 +3343,9 @@ class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
 
     @property
     def AsyncRequestIds(self):
+        """日志导出任务Id列表，接口会忽略不存在或已删除的任务Id。
+        :rtype: list of int non-negative
+        """
         return self._AsyncRequestIds
 
     @AsyncRequestIds.setter
@@ -2821,6 +3354,9 @@ class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值： "mysql" - 云数据库 MySQL。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2856,6 +3392,9 @@ class DeleteSecurityAuditLogExportTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2890,6 +3429,9 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2898,6 +3440,9 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     @property
     def FilterIds(self):
+        """限流任务ID列表。
+        :rtype: list of int
+        """
         return self._FilterIds
 
     @FilterIds.setter
@@ -2906,6 +3451,9 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     @property
     def SessionToken(self):
+        """通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :rtype: str
+        """
         return self._SessionToken
 
     @SessionToken.setter
@@ -2914,6 +3462,9 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2950,6 +3501,9 @@ class DeleteSqlFiltersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2985,6 +3539,9 @@ cynosdb -  tdsql-c
 
     @property
     def TemplateNameRegexp(self):
+        """搜索字段
+        :rtype: str
+        """
         return self._TemplateNameRegexp
 
     @TemplateNameRegexp.setter
@@ -2993,6 +3550,9 @@ cynosdb -  tdsql-c
 
     @property
     def Limit(self):
+        """返回限制长度
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3001,6 +3561,9 @@ cynosdb -  tdsql-c
 
     @property
     def Offset(self):
+        """偏置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3009,6 +3572,10 @@ cynosdb -  tdsql-c
 
     @property
     def Product(self):
+        """mysql -  mysql
+cynosdb -  tdsql-c
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3051,6 +3618,9 @@ class DescribeAlarmTemplateResponse(AbstractModel):
 
     @property
     def ProfileList(self):
+        """模板列表
+        :rtype: list of AlarmProfileList
+        """
         return self._ProfileList
 
     @ProfileList.setter
@@ -3059,6 +3629,9 @@ class DescribeAlarmTemplateResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """模板总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3067,6 +3640,9 @@ class DescribeAlarmTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3102,6 +3678,9 @@ class DescribeAllUserContactRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，固定值：mysql。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3110,6 +3689,9 @@ class DescribeAllUserContactRequest(AbstractModel):
 
     @property
     def Names(self):
+        """联系人名数组，支持模糊搜索。
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -3151,6 +3733,9 @@ class DescribeAllUserContactResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """联系人的总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3159,6 +3744,10 @@ class DescribeAllUserContactResponse(AbstractModel):
 
     @property
     def Contacts(self):
+        """联系人的信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ContactItem
+        """
         return self._Contacts
 
     @Contacts.setter
@@ -3167,6 +3756,9 @@ class DescribeAllUserContactResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3202,6 +3794,9 @@ class DescribeAllUserGroupRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，固定值：mysql。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3210,6 +3805,9 @@ class DescribeAllUserGroupRequest(AbstractModel):
 
     @property
     def Names(self):
+        """联系组名称数组，支持模糊搜索。
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -3251,6 +3849,9 @@ class DescribeAllUserGroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """组总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3259,6 +3860,10 @@ class DescribeAllUserGroupResponse(AbstractModel):
 
     @property
     def Groups(self):
+        """组信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupItem
+        """
         return self._Groups
 
     @Groups.setter
@@ -3267,6 +3872,9 @@ class DescribeAllUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3314,6 +3922,9 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3322,6 +3933,9 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
+        """与Product保持一致。如："dcdb" ,"mariadb"。
+        :rtype: str
+        """
         return self._NodeRequestType
 
     @NodeRequestType.setter
@@ -3330,6 +3944,9 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def AuditSwitch(self):
+        """审计状态标识，0-未开通审计；1-已开通审计，默认为0。
+        :rtype: int
+        """
         return self._AuditSwitch
 
     @AuditSwitch.setter
@@ -3338,6 +3955,9 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3346,6 +3966,9 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数目，默认为20，最大为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3354,6 +3977,9 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询实例的搜索条件。
+        :rtype: list of AuditInstanceFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3404,6 +4030,10 @@ class DescribeAuditInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的实例个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3412,6 +4042,9 @@ class DescribeAuditInstanceListResponse(AbstractModel):
 
     @property
     def Items(self):
+        """实例详情。
+        :rtype: list of AuditInstance
+        """
         return self._Items
 
     @Items.setter
@@ -3420,6 +4053,9 @@ class DescribeAuditInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3464,6 +4100,9 @@ class DescribeAuditLogFilesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3472,6 +4111,9 @@ class DescribeAuditLogFilesRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
+        """与Product保持一致。如："dcdb" ,"mariadb"
+        :rtype: str
+        """
         return self._NodeRequestType
 
     @NodeRequestType.setter
@@ -3480,6 +4122,9 @@ class DescribeAuditLogFilesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3488,6 +4133,9 @@ class DescribeAuditLogFilesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3496,6 +4144,9 @@ class DescribeAuditLogFilesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数目，默认为20，最大为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3541,6 +4192,10 @@ class DescribeAuditLogFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的审计日志文件个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3549,6 +4204,10 @@ class DescribeAuditLogFilesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """审计日志文件详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuditLogFile
+        """
         return self._Items
 
     @Items.setter
@@ -3557,6 +4216,9 @@ class DescribeAuditLogFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3595,6 +4257,9 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3603,6 +4268,9 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -3611,6 +4279,9 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3680,6 +4351,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def DiagItem(self):
+        """诊断项。
+        :rtype: str
+        """
         return self._DiagItem
 
     @DiagItem.setter
@@ -3688,6 +4362,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def DiagType(self):
+        """诊断类型。
+        :rtype: str
+        """
         return self._DiagType
 
     @DiagType.setter
@@ -3696,6 +4373,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def EventId(self):
+        """事件 ID 。
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -3704,6 +4384,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def Explanation(self):
+        """诊断事件详情，若无附加解释信息则输出为空。
+        :rtype: str
+        """
         return self._Explanation
 
     @Explanation.setter
@@ -3712,6 +4395,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def Outline(self):
+        """诊断概要。
+        :rtype: str
+        """
         return self._Outline
 
     @Outline.setter
@@ -3720,6 +4406,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def Problem(self):
+        """诊断出的问题。
+        :rtype: str
+        """
         return self._Problem
 
     @Problem.setter
@@ -3728,6 +4417,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def Severity(self):
+        """严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+        :rtype: int
+        """
         return self._Severity
 
     @Severity.setter
@@ -3736,6 +4428,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3744,6 +4439,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def Suggestions(self):
+        """诊断建议，若无建议则输出为空。
+        :rtype: str
+        """
         return self._Suggestions
 
     @Suggestions.setter
@@ -3752,6 +4450,10 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def Metric(self):
+        """保留字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -3760,6 +4462,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3768,6 +4473,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3819,6 +4527,9 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3827,6 +4538,9 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3835,6 +4549,9 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def Severities(self):
+        """风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
+        :rtype: list of int
+        """
         return self._Severities
 
     @Severities.setter
@@ -3843,6 +4560,9 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID列表。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3851,6 +4571,9 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3859,6 +4582,9 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认20，最大值为50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3903,6 +4629,9 @@ class DescribeDBDiagEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """诊断事件的总数目。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3911,6 +4640,9 @@ class DescribeDBDiagEventsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """诊断事件的列表。
+        :rtype: list of DiagHistoryEventItem
+        """
         return self._Items
 
     @Items.setter
@@ -3919,6 +4651,9 @@ class DescribeDBDiagEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3960,6 +4695,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3968,6 +4706,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，如“2019-09-10 12:13:14”。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3976,6 +4717,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3984,6 +4728,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4023,6 +4770,9 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
 
     @property
     def Events(self):
+        """事件描述。
+        :rtype: list of DiagHistoryEventItem
+        """
         return self._Events
 
     @Events.setter
@@ -4031,6 +4781,9 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4086,6 +4839,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4094,6 +4850,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4102,6 +4861,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID数组，用于筛选指定实例的任务列表。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4110,6 +4872,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Sources(self):
+        """任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        :rtype: list of str
+        """
         return self._Sources
 
     @Sources.setter
@@ -4118,6 +4883,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def HealthLevels(self):
+        """报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
+        :rtype: str
+        """
         return self._HealthLevels
 
     @HealthLevels.setter
@@ -4126,6 +4894,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def TaskStatuses(self):
+        """任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+        :rtype: str
+        """
         return self._TaskStatuses
 
     @TaskStatuses.setter
@@ -4134,6 +4905,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4142,6 +4916,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4150,6 +4927,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4197,6 +4977,9 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务总数目。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4205,6 +4988,9 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务列表。
+        :rtype: list of HealthReportTask
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -4213,6 +4999,9 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4251,6 +5040,9 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4259,6 +5051,9 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def RangeDays(self):
+        """时间段天数，截止日期为当日，默认为7天。
+        :rtype: int
+        """
         return self._RangeDays
 
     @RangeDays.setter
@@ -4267,6 +5062,9 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4314,6 +5112,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Growth(self):
+        """磁盘增长量(MB)。
+        :rtype: int
+        """
         return self._Growth
 
     @Growth.setter
@@ -4322,6 +5123,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Remain(self):
+        """磁盘剩余(MB)。
+        :rtype: int
+        """
         return self._Remain
 
     @Remain.setter
@@ -4330,6 +5134,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Total(self):
+        """磁盘总量(MB)。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4338,6 +5145,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def AvailableDays(self):
+        """预计可用天数。
+        :rtype: int
+        """
         return self._AvailableDays
 
     @AvailableDays.setter
@@ -4346,6 +5156,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4393,6 +5206,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def IsSupported(self):
+        """是否是DBbrain支持的实例，固定传 true。
+        :rtype: bool
+        """
         return self._IsSupported
 
     @IsSupported.setter
@@ -4401,6 +5217,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4409,6 +5228,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数，偏移量。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4417,6 +5239,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数，分页值，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4425,6 +5250,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
+        """根据实例名称条件查询。
+        :rtype: list of str
+        """
         return self._InstanceNames
 
     @InstanceNames.setter
@@ -4433,6 +5261,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """根据实例ID条件查询。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4441,6 +5272,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def Regions(self):
+        """根据地域条件查询。
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -4489,6 +5323,9 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """实例总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4497,6 +5334,9 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     @property
     def DbScanStatus(self):
+        """全实例巡检状态：0：开启全实例巡检；1：未开启全实例巡检。
+        :rtype: int
+        """
         return self._DbScanStatus
 
     @DbScanStatus.setter
@@ -4505,6 +5345,9 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """实例相关信息。
+        :rtype: list of InstanceInfo
+        """
         return self._Items
 
     @Items.setter
@@ -4513,6 +5356,9 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4552,6 +5398,9 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """需要获取健康得分的实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4560,6 +5409,9 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def Time(self):
+        """获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -4568,6 +5420,9 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4606,6 +5461,9 @@ class DescribeHealthScoreResponse(AbstractModel):
 
     @property
     def Data(self):
+        """健康得分以及异常扣分项。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.HealthScoreInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -4614,6 +5472,9 @@ class DescribeHealthScoreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4654,6 +5515,9 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括："mongodb" - 云数据库 。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4662,6 +5526,9 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4670,6 +5537,9 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def Db(self):
+        """数据库名称。
+        :rtype: str
+        """
         return self._Db
 
     @Db.setter
@@ -4678,6 +5548,9 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def Collection(self):
+        """表明。
+        :rtype: str
+        """
         return self._Collection
 
     @Collection.setter
@@ -4686,6 +5559,9 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def Signs(self):
+        """签名。
+        :rtype: list of str
+        """
         return self._Signs
 
     @Signs.setter
@@ -4727,6 +5603,10 @@ class DescribeIndexRecommendAggregationSlowLogsResponse(AbstractModel):
 
     @property
     def Aggregation(self):
+        """查询实例慢查询聚合结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.Aggregation`
+        """
         return self._Aggregation
 
     @Aggregation.setter
@@ -4735,6 +5615,9 @@ class DescribeIndexRecommendAggregationSlowLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4766,6 +5649,9 @@ class DescribeIndexRecommendInfoRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括："mongodb" - 云数据库 。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4774,6 +5660,9 @@ class DescribeIndexRecommendInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4826,6 +5715,9 @@ class DescribeIndexRecommendInfoResponse(AbstractModel):
 
     @property
     def CollectionNum(self):
+        """索引推荐的集合数量。
+        :rtype: int
+        """
         return self._CollectionNum
 
     @CollectionNum.setter
@@ -4834,6 +5726,9 @@ class DescribeIndexRecommendInfoResponse(AbstractModel):
 
     @property
     def IndexNum(self):
+        """索引推荐的索引数量。
+        :rtype: int
+        """
         return self._IndexNum
 
     @IndexNum.setter
@@ -4842,6 +5737,9 @@ class DescribeIndexRecommendInfoResponse(AbstractModel):
 
     @property
     def Items(self):
+        """索引项。
+        :rtype: list of MongoDBIndex
+        """
         return self._Items
 
     @Items.setter
@@ -4850,6 +5748,9 @@ class DescribeIndexRecommendInfoResponse(AbstractModel):
 
     @property
     def Level(self):
+        """优化级别，1-4，优先级从高到低。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -4858,6 +5759,9 @@ class DescribeIndexRecommendInfoResponse(AbstractModel):
 
     @property
     def Optimized(self):
+        """历史优化数。
+        :rtype: int
+        """
         return self._Optimized
 
     @Optimized.setter
@@ -4866,6 +5770,9 @@ class DescribeIndexRecommendInfoResponse(AbstractModel):
 
     @property
     def OptimizedCount(self):
+        """累计优化条数。
+        :rtype: int
+        """
         return self._OptimizedCount
 
     @OptimizedCount.setter
@@ -4874,6 +5781,9 @@ class DescribeIndexRecommendInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4922,6 +5832,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def ProfileType(self):
+        """配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+        :rtype: str
+        """
         return self._ProfileType
 
     @ProfileType.setter
@@ -4930,6 +5843,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4938,6 +5854,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4946,6 +5865,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单位，最大支持50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4954,6 +5876,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def ProfileName(self):
+        """根据邮件配置名称查询，定期发送的邮件配置名称遵循："scheduler_"+{instanceId}的规则。
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -4999,6 +5924,10 @@ class DescribeMailProfileResponse(AbstractModel):
 
     @property
     def ProfileList(self):
+        """邮件配置详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserProfile
+        """
         return self._ProfileList
 
     @ProfileList.setter
@@ -5007,6 +5936,10 @@ class DescribeMailProfileResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """邮件配置总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5015,6 +5948,9 @@ class DescribeMailProfileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5080,6 +6016,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5088,6 +6027,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def ID(self):
+        """线程的ID，用于筛选线程列表。
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -5096,6 +6038,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def User(self):
+        """线程的操作账号名，用于筛选线程列表。
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -5104,6 +6049,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Host(self):
+        """线程的操作主机地址，用于筛选线程列表。
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -5112,6 +6060,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def DB(self):
+        """线程的操作数据库，用于筛选线程列表。
+        :rtype: str
+        """
         return self._DB
 
     @DB.setter
@@ -5120,6 +6071,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def State(self):
+        """线程的操作状态，用于筛选线程列表。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -5128,6 +6082,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Command(self):
+        """线程的执行类型，用于筛选线程列表。
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -5136,6 +6093,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Time(self):
+        """线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -5144,6 +6104,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Info(self):
+        """线程的操作语句，用于筛选线程列表。
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -5152,6 +6115,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5160,6 +6126,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5168,6 +6137,9 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def StatDimensions(self):
+        """会话统计的维度信息,可以多个维度。
+        :rtype: list of StatDimension
+        """
         return self._StatDimensions
 
     @StatDimensions.setter
@@ -5224,6 +6196,9 @@ class DescribeMySqlProcessListResponse(AbstractModel):
 
     @property
     def ProcessList(self):
+        """实时线程列表。
+        :rtype: list of MySqlProcess
+        """
         return self._ProcessList
 
     @ProcessList.setter
@@ -5232,6 +6207,10 @@ class DescribeMySqlProcessListResponse(AbstractModel):
 
     @property
     def Statistics(self):
+        """sql会话统计信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StatisticInfo
+        """
         return self._Statistics
 
     @Statistics.setter
@@ -5240,6 +6219,9 @@ class DescribeMySqlProcessListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5289,6 +6271,9 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5297,6 +6282,9 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
 
     @property
     def Date(self):
+        """查询日期，如2021-05-27，最早为30天前的日期。
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -5305,6 +6293,9 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数目，默认为20，最大为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5313,6 +6304,9 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5321,6 +6315,9 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5373,6 +6370,9 @@ class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
 
     @property
     def NoPrimaryKeyTableCount(self):
+        """无主键表总数。
+        :rtype: int
+        """
         return self._NoPrimaryKeyTableCount
 
     @NoPrimaryKeyTableCount.setter
@@ -5381,6 +6381,9 @@ class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
 
     @property
     def NoPrimaryKeyTableCountDiff(self):
+        """与昨日扫描无主键表的差值，正数为增加，负数为减少，0为无变化。
+        :rtype: int
+        """
         return self._NoPrimaryKeyTableCountDiff
 
     @NoPrimaryKeyTableCountDiff.setter
@@ -5389,6 +6392,9 @@ class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
 
     @property
     def NoPrimaryKeyTableRecordCount(self):
+        """记录的无主键表总数（不超过无主键表总数），可用于分页查询。
+        :rtype: int
+        """
         return self._NoPrimaryKeyTableRecordCount
 
     @NoPrimaryKeyTableRecordCount.setter
@@ -5397,6 +6403,9 @@ class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
 
     @property
     def NoPrimaryKeyTables(self):
+        """无主键表列表。
+        :rtype: list of Table
+        """
         return self._NoPrimaryKeyTables
 
     @NoPrimaryKeyTables.setter
@@ -5405,6 +6414,9 @@ class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """采集时间戳（秒）。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -5413,6 +6425,9 @@ class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5466,6 +6481,9 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5474,6 +6492,9 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     @property
     def InstanceProxyId(self):
+        """该实例下需要查询的某一个 ProxyID 。
+        :rtype: str
+        """
         return self._InstanceProxyId
 
     @InstanceProxyId.setter
@@ -5482,6 +6503,9 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5490,6 +6514,9 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5498,6 +6525,9 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5506,6 +6536,9 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """按照某字段排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -5514,6 +6547,9 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """排序方向。支持值包括："DESC"，"ASC"。
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -5556,6 +6592,9 @@ class DescribeProxyProcessStatisticsResponse(AbstractModel):
 
     @property
     def ProcessStatistics(self):
+        """实时会话统计详情。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ProcessStatistic`
+        """
         return self._ProcessStatistics
 
     @ProcessStatistics.setter
@@ -5564,6 +6603,9 @@ class DescribeProxyProcessStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5598,6 +6640,9 @@ class DescribeProxySessionKillTasksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5606,6 +6651,9 @@ class DescribeProxySessionKillTasksRequest(AbstractModel):
 
     @property
     def AsyncRequestIds(self):
+        """kill 会话异步任务 ID,  接口 CreateProxySessionKillTask 调用成功后获取。
+        :rtype: list of int
+        """
         return self._AsyncRequestIds
 
     @AsyncRequestIds.setter
@@ -5614,6 +6662,9 @@ class DescribeProxySessionKillTasksRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5655,6 +6706,9 @@ class DescribeProxySessionKillTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """kill 任务的详情。
+        :rtype: list of TaskInfo
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -5663,6 +6717,9 @@ class DescribeProxySessionKillTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5671,6 +6728,9 @@ class DescribeProxySessionKillTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5712,6 +6772,9 @@ class DescribeRedisBigKeyAnalysisTasksRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5720,6 +6783,9 @@ class DescribeRedisBigKeyAnalysisTasksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5728,6 +6794,9 @@ class DescribeRedisBigKeyAnalysisTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数目，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5736,6 +6805,9 @@ class DescribeRedisBigKeyAnalysisTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5779,6 +6851,10 @@ class DescribeRedisBigKeyAnalysisTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5787,6 +6863,9 @@ class DescribeRedisBigKeyAnalysisTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务列表。
+        :rtype: list of RedisBigKeyTask
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -5795,6 +6874,9 @@ class DescribeRedisBigKeyAnalysisTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5836,6 +6918,9 @@ class DescribeRedisProcessListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Redis 实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5844,6 +6929,9 @@ class DescribeRedisProcessListRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5852,6 +6940,9 @@ class DescribeRedisProcessListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询的Proxy节点数量上限，默认值为20，最大值为50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5860,6 +6951,9 @@ class DescribeRedisProcessListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Proxy节点的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5902,6 +6996,9 @@ class DescribeRedisProcessListResponse(AbstractModel):
 
     @property
     def ProxyCount(self):
+        """该实例的Proxy节点数量，可用于分页查询。
+        :rtype: int
+        """
         return self._ProxyCount
 
     @ProxyCount.setter
@@ -5910,6 +7007,9 @@ class DescribeRedisProcessListResponse(AbstractModel):
 
     @property
     def Processes(self):
+        """实时会话详情列表。
+        :rtype: list of Process
+        """
         return self._Processes
 
     @Processes.setter
@@ -5918,6 +7018,9 @@ class DescribeRedisProcessListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5971,6 +7074,9 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5979,6 +7085,9 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def Date(self):
+        """查询日期，如2021-05-27，最早可为前30天的日期。
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -5987,6 +7096,9 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5995,6 +7107,9 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -6003,6 +7118,9 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def KeyType(self):
+        """key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。
+        :rtype: str
+        """
         return self._KeyType
 
     @KeyType.setter
@@ -6011,6 +7129,9 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数目，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6019,6 +7140,9 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务ID。当为空时，选择最近任务的ID。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -6027,6 +7151,9 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     @property
     def ShardIds(self):
+        """分片节点序号列表。当列表为空时，选择所有分片节点。
+        :rtype: list of int
+        """
         return self._ShardIds
 
     @ShardIds.setter
@@ -6073,6 +7200,9 @@ class DescribeRedisTopBigKeysResponse(AbstractModel):
 
     @property
     def TopKeys(self):
+        """top key列表。
+        :rtype: list of RedisKeySpaceData
+        """
         return self._TopKeys
 
     @TopKeys.setter
@@ -6081,6 +7211,9 @@ class DescribeRedisTopBigKeysResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """采集时间戳（秒）。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -6089,6 +7222,9 @@ class DescribeRedisTopBigKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6130,6 +7266,9 @@ class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6138,6 +7277,9 @@ class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
 
     @property
     def Date(self):
+        """查询日期，如2021-05-27，最早可为前30天的日期。
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -6146,6 +7288,9 @@ class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -6154,6 +7299,9 @@ class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数目，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6196,6 +7344,9 @@ class DescribeRedisTopKeyPrefixListResponse(AbstractModel):
 
     @property
     def Items(self):
+        """top key前缀列表。
+        :rtype: list of RedisPreKeySpaceData
+        """
         return self._Items
 
     @Items.setter
@@ -6204,6 +7355,9 @@ class DescribeRedisTopKeyPrefixListResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """采集时间戳（秒）。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -6212,6 +7366,9 @@ class DescribeRedisTopKeyPrefixListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6250,6 +7407,9 @@ class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
 
     @property
     def SecAuditGroupId(self):
+        """安全审计组Id。
+        :rtype: str
+        """
         return self._SecAuditGroupId
 
     @SecAuditGroupId.setter
@@ -6258,6 +7418,9 @@ class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务Id。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -6266,6 +7429,9 @@ class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -6304,6 +7470,9 @@ class DescribeSecurityAuditLogDownloadUrlsResponse(AbstractModel):
 
     @property
     def Urls(self):
+        """导出结果的COS链接列表。当结果集很大时，可能会切分为多个url下载。
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -6312,6 +7481,9 @@ class DescribeSecurityAuditLogDownloadUrlsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6350,6 +7522,9 @@ class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
 
     @property
     def SecAuditGroupId(self):
+        """安全审计组Id。
+        :rtype: str
+        """
         return self._SecAuditGroupId
 
     @SecAuditGroupId.setter
@@ -6358,6 +7533,9 @@ class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -6366,6 +7544,9 @@ class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
 
     @property
     def AsyncRequestIds(self):
+        """日志导出任务Id列表。
+        :rtype: list of int non-negative
+        """
         return self._AsyncRequestIds
 
     @AsyncRequestIds.setter
@@ -6374,6 +7555,9 @@ class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6382,6 +7566,9 @@ class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6425,6 +7612,9 @@ class DescribeSecurityAuditLogExportTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """安全审计日志导出任务列表。
+        :rtype: list of SecLogExportTaskInfo
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -6433,6 +7623,9 @@ class DescribeSecurityAuditLogExportTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """安全审计日志导出任务总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6441,6 +7634,9 @@ class DescribeSecurityAuditLogExportTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6482,6 +7678,9 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6490,6 +7689,9 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，如“2019-09-10 12:13:14”。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6498,6 +7700,9 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6506,6 +7711,9 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -6551,6 +7759,9 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     @property
     def Period(self):
+        """柱间单位时间间隔，单位为秒。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -6559,6 +7770,9 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     @property
     def TimeSeries(self):
+        """单位时间间隔内慢日志数量统计。
+        :rtype: list of TimeSlice
+        """
         return self._TimeSeries
 
     @TimeSeries.setter
@@ -6567,6 +7781,9 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     @property
     def SeriesData(self):
+        """单位时间间隔内的实例 cpu 利用率监控数据。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MonitorMetricSeriesData`
+        """
         return self._SeriesData
 
     @SeriesData.setter
@@ -6575,6 +7792,9 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6634,6 +7854,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6642,6 +7865,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，如“2019-09-10 12:13:14”。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6650,6 +7876,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6658,6 +7887,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -6666,6 +7898,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -6674,6 +7909,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6682,6 +7920,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6690,6 +7931,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def SchemaList(self):
+        """数据库名称数组。
+        :rtype: list of SchemaItem
+        """
         return self._SchemaList
 
     @SchemaList.setter
@@ -6698,6 +7942,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -6750,6 +7997,9 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6758,6 +8008,9 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     @property
     def Rows(self):
+        """慢日志 top sql 列表
+        :rtype: list of SlowLogTopSqlItem
+        """
         return self._Rows
 
     @Rows.setter
@@ -6766,6 +8019,9 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6810,6 +8066,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6818,6 +8077,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6826,6 +8088,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6834,6 +8099,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -6842,6 +8110,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def Md5(self):
+        """SQL模板的MD5值
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -6891,6 +8162,9 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """来源地址数目。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6899,6 +8173,9 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """各来源地址的慢日志占比详情列表。
+        :rtype: list of SlowLogHost
+        """
         return self._Items
 
     @Items.setter
@@ -6907,6 +8184,9 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def UserNameItems(self):
+        """各来源用户名的慢日志占比详情列表。
+        :rtype: list of SlowLogUser
+        """
         return self._UserNameItems
 
     @UserNameItems.setter
@@ -6915,6 +8195,9 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def UserTotalCount(self):
+        """来源用户数目。
+        :rtype: int
+        """
         return self._UserTotalCount
 
     @UserTotalCount.setter
@@ -6923,6 +8206,9 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6995,6 +8281,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -7003,6 +8292,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7011,6 +8303,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Md5(self):
+        """sql模板的md5值
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -7019,6 +8314,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，如“2019-09-10 12:13:14”。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7027,6 +8325,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7035,6 +8336,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7043,6 +8347,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数目，默认为20，最大为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7051,6 +8358,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def DB(self):
+        """数据库列表
+        :rtype: list of str
+        """
         return self._DB
 
     @DB.setter
@@ -7059,6 +8369,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Key(self):
+        """关键字
+        :rtype: list of str
+        """
         return self._Key
 
     @Key.setter
@@ -7067,6 +8380,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def User(self):
+        """用户
+        :rtype: list of str
+        """
         return self._User
 
     @User.setter
@@ -7075,6 +8391,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """IP
+        :rtype: list of str
+        """
         return self._Ip
 
     @Ip.setter
@@ -7083,6 +8402,9 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Time(self):
+        """耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
+        :rtype: list of int
+        """
         return self._Time
 
     @Time.setter
@@ -7133,6 +8455,9 @@ class DescribeSlowLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7141,6 +8466,9 @@ class DescribeSlowLogsResponse(AbstractModel):
 
     @property
     def Rows(self):
+        """慢日志明细
+        :rtype: list of SlowLogInfoItem
+        """
         return self._Rows
 
     @Rows.setter
@@ -7149,6 +8477,9 @@ class DescribeSlowLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7196,6 +8527,9 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7204,6 +8538,9 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     @property
     def FilterIds(self):
+        """任务ID列表，用于筛选任务列表。
+        :rtype: list of int
+        """
         return self._FilterIds
 
     @FilterIds.setter
@@ -7212,6 +8549,9 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     @property
     def Statuses(self):
+        """任务状态列表，用于筛选任务列表，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
+        :rtype: list of str
+        """
         return self._Statuses
 
     @Statuses.setter
@@ -7220,6 +8560,9 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7228,6 +8571,9 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7236,6 +8582,9 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -7280,6 +8629,9 @@ class DescribeSqlFiltersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """限流任务总数目。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7288,6 +8640,9 @@ class DescribeSqlFiltersResponse(AbstractModel):
 
     @property
     def Items(self):
+        """限流任务列表。
+        :rtype: list of SQLFilter
+        """
         return self._Items
 
     @Items.setter
@@ -7296,6 +8651,9 @@ class DescribeSqlFiltersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7337,6 +8695,9 @@ class DescribeSqlTemplateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7345,6 +8706,9 @@ class DescribeSqlTemplateRequest(AbstractModel):
 
     @property
     def Schema(self):
+        """数据库名。
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -7353,6 +8717,9 @@ class DescribeSqlTemplateRequest(AbstractModel):
 
     @property
     def SqlText(self):
+        """SQL语句。
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -7361,6 +8728,9 @@ class DescribeSqlTemplateRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -7412,6 +8782,9 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     @property
     def Schema(self):
+        """数据库名。
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -7420,6 +8793,9 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     @property
     def SqlText(self):
+        """SQL语句。
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -7428,6 +8804,9 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     @property
     def SqlType(self):
+        """SQL类型。
+        :rtype: str
+        """
         return self._SqlType
 
     @SqlType.setter
@@ -7436,6 +8815,9 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     @property
     def SqlTemplate(self):
+        """SQL模版内容。
+        :rtype: str
+        """
         return self._SqlTemplate
 
     @SqlTemplate.setter
@@ -7444,6 +8826,9 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     @property
     def SqlId(self):
+        """SQL模版ID。
+        :rtype: int
+        """
         return self._SqlId
 
     @SqlId.setter
@@ -7452,6 +8837,9 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7497,6 +8885,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7505,6 +8896,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的Top库数量，最大值为100，默认为20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7513,6 +8907,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -7521,6 +8918,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -7529,6 +8929,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -7537,6 +8940,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -7578,6 +8984,9 @@ class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
 
     @property
     def TopSpaceSchemaTimeSeries(self):
+        """返回的Top库空间统计信息的时序数据列表。
+        :rtype: list of SchemaSpaceTimeSeries
+        """
         return self._TopSpaceSchemaTimeSeries
 
     @TopSpaceSchemaTimeSeries.setter
@@ -7586,6 +8995,9 @@ class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7626,6 +9038,9 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7634,6 +9049,9 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的Top库数量，最大值为100，默认为20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7642,6 +9060,9 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -7650,6 +9071,9 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -7692,6 +9116,9 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
 
     @property
     def TopSpaceSchemas(self):
+        """返回的Top库空间统计信息列表。
+        :rtype: list of SchemaSpaceData
+        """
         return self._TopSpaceSchemas
 
     @TopSpaceSchemas.setter
@@ -7700,6 +9127,9 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """采集库空间数据的时间戳（秒）。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -7708,6 +9138,9 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7755,6 +9188,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7763,6 +9199,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的Top表数量，最大值为100，默认为20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7771,6 +9210,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -7779,6 +9221,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -7787,6 +9232,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -7795,6 +9243,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -7836,6 +9287,9 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
 
     @property
     def TopSpaceTableTimeSeries(self):
+        """返回的Top表空间统计信息的时序数据列表。
+        :rtype: list of TableSpaceTimeSeries
+        """
         return self._TopSpaceTableTimeSeries
 
     @TopSpaceTableTimeSeries.setter
@@ -7844,6 +9298,9 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7884,6 +9341,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7892,6 +9352,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的Top表数量，最大值为100，默认为20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7900,6 +9363,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -7908,6 +9374,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -7950,6 +9419,9 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     @property
     def TopSpaceTables(self):
+        """返回的Top表空间统计信息列表。
+        :rtype: list of TableSpaceData
+        """
         return self._TopSpaceTables
 
     @TopSpaceTables.setter
@@ -7958,6 +9430,9 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """采集表空间数据的时间戳（秒）。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -7966,6 +9441,9 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8007,6 +9485,9 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8015,6 +9496,9 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def SqlText(self):
+        """SQL语句。
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -8023,6 +9507,9 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def Schema(self):
+        """库名。
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -8031,6 +9518,9 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -8088,6 +9578,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Advices(self):
+        """SQL优化建议，可解析为JSON数组，无需优化时输出为空。
+        :rtype: str
+        """
         return self._Advices
 
     @Advices.setter
@@ -8096,6 +9589,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Comments(self):
+        """SQL优化建议备注，可解析为String数组，无需优化时输出为空。
+        :rtype: str
+        """
         return self._Comments
 
     @Comments.setter
@@ -8104,6 +9600,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def SqlText(self):
+        """SQL语句。
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -8112,6 +9611,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Schema(self):
+        """库名。
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -8120,6 +9622,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Tables(self):
+        """相关表的DDL信息，可解析为JSON数组。
+        :rtype: str
+        """
         return self._Tables
 
     @Tables.setter
@@ -8128,6 +9633,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def SqlPlan(self):
+        """SQL执行计划，可解析为JSON，无需优化时输出为空。
+        :rtype: str
+        """
         return self._SqlPlan
 
     @SqlPlan.setter
@@ -8136,6 +9644,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Cost(self):
+        """SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
+        :rtype: str
+        """
         return self._Cost
 
     @Cost.setter
@@ -8144,6 +9655,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8204,6 +9718,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def DiagType(self):
+        """诊断类型。
+        :rtype: str
+        """
         return self._DiagType
 
     @DiagType.setter
@@ -8212,6 +9729,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8220,6 +9740,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8228,6 +9751,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def EventId(self):
+        """事件唯一ID 。
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -8236,6 +9762,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def Severity(self):
+        """严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+        :rtype: int
+        """
         return self._Severity
 
     @Severity.setter
@@ -8244,6 +9773,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def Outline(self):
+        """诊断概要。
+        :rtype: str
+        """
         return self._Outline
 
     @Outline.setter
@@ -8252,6 +9784,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def DiagItem(self):
+        """诊断项说明。
+        :rtype: str
+        """
         return self._DiagItem
 
     @DiagItem.setter
@@ -8260,6 +9795,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8268,6 +9806,10 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def Metric(self):
+        """保留字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -8276,6 +9818,9 @@ class DiagHistoryEventItem(AbstractModel):
 
     @property
     def Region(self):
+        """地域。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -8342,6 +9887,9 @@ class EventInfo(AbstractModel):
 
     @property
     def EventId(self):
+        """事件 ID 。
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -8350,6 +9898,9 @@ class EventInfo(AbstractModel):
 
     @property
     def DiagType(self):
+        """诊断类型。
+        :rtype: str
+        """
         return self._DiagType
 
     @DiagType.setter
@@ -8358,6 +9909,9 @@ class EventInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8366,6 +9920,9 @@ class EventInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8374,6 +9931,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Outline(self):
+        """概要。
+        :rtype: str
+        """
         return self._Outline
 
     @Outline.setter
@@ -8382,6 +9942,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Severity(self):
+        """严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+        :rtype: int
+        """
         return self._Severity
 
     @Severity.setter
@@ -8390,6 +9953,9 @@ class EventInfo(AbstractModel):
 
     @property
     def ScoreLost(self):
+        """扣分。
+        :rtype: int
+        """
         return self._ScoreLost
 
     @ScoreLost.setter
@@ -8398,6 +9964,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Metric(self):
+        """保留字段。
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -8406,6 +9975,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Count(self):
+        """告警数目。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -8453,6 +10025,9 @@ class GroupItem(AbstractModel):
 
     @property
     def Id(self):
+        """组id。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8461,6 +10036,9 @@ class GroupItem(AbstractModel):
 
     @property
     def Name(self):
+        """组名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8469,6 +10047,9 @@ class GroupItem(AbstractModel):
 
     @property
     def MemberCount(self):
+        """组成员数量。
+        :rtype: int
+        """
         return self._MemberCount
 
     @MemberCount.setter
@@ -8525,6 +10106,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务请求 ID。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -8533,6 +10117,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def Source(self):
+        """任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -8541,6 +10128,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def Progress(self):
+        """任务完成进度，单位%。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -8549,6 +10139,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8557,6 +10150,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始执行时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8565,6 +10161,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务完成执行时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8573,6 +10172,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def InstanceInfo(self):
+        """任务所属实例的基础信息。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.InstanceBasicInfo`
+        """
         return self._InstanceInfo
 
     @InstanceInfo.setter
@@ -8581,6 +10183,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def HealthStatus(self):
+        """健康报告中的健康信息。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.HealthStatus`
+        """
         return self._HealthStatus
 
     @HealthStatus.setter
@@ -8634,6 +10239,9 @@ class HealthScoreInfo(AbstractModel):
 
     @property
     def IssueTypes(self):
+        """异常详情。
+        :rtype: list of IssueTypeInfo
+        """
         return self._IssueTypes
 
     @IssueTypes.setter
@@ -8642,6 +10250,9 @@ class HealthScoreInfo(AbstractModel):
 
     @property
     def EventsTotalCount(self):
+        """异常事件总数。
+        :rtype: int
+        """
         return self._EventsTotalCount
 
     @EventsTotalCount.setter
@@ -8650,6 +10261,9 @@ class HealthScoreInfo(AbstractModel):
 
     @property
     def HealthScore(self):
+        """健康得分。
+        :rtype: int
+        """
         return self._HealthScore
 
     @HealthScore.setter
@@ -8658,6 +10272,9 @@ class HealthScoreInfo(AbstractModel):
 
     @property
     def HealthLevel(self):
+        """健康等级, 如："HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"。
+        :rtype: str
+        """
         return self._HealthLevel
 
     @HealthLevel.setter
@@ -8709,6 +10326,9 @@ class HealthStatus(AbstractModel):
 
     @property
     def HealthScore(self):
+        """健康分数，满分100。
+        :rtype: int
+        """
         return self._HealthScore
 
     @HealthScore.setter
@@ -8717,6 +10337,9 @@ class HealthStatus(AbstractModel):
 
     @property
     def HealthLevel(self):
+        """健康等级，取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK"- 危险；"HIGH_RISK" - 高危。
+        :rtype: str
+        """
         return self._HealthLevel
 
     @HealthLevel.setter
@@ -8725,6 +10348,9 @@ class HealthStatus(AbstractModel):
 
     @property
     def ScoreLost(self):
+        """总扣分分数。
+        :rtype: int
+        """
         return self._ScoreLost
 
     @ScoreLost.setter
@@ -8733,6 +10359,10 @@ class HealthStatus(AbstractModel):
 
     @property
     def ScoreDetails(self):
+        """扣分详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScoreDetail
+        """
         return self._ScoreDetails
 
     @ScoreDetails.setter
@@ -8792,6 +10422,9 @@ class IndexesToBuild(AbstractModel):
 
     @property
     def Id(self):
+        """索引id，唯一标识一个索引。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8800,6 +10433,9 @@ class IndexesToBuild(AbstractModel):
 
     @property
     def IndexCommand(self):
+        """创建索引命令。
+        :rtype: str
+        """
         return self._IndexCommand
 
     @IndexCommand.setter
@@ -8808,6 +10444,9 @@ class IndexesToBuild(AbstractModel):
 
     @property
     def IndexStr(self):
+        """索引字符串。
+        :rtype: str
+        """
         return self._IndexStr
 
     @IndexStr.setter
@@ -8816,6 +10455,9 @@ class IndexesToBuild(AbstractModel):
 
     @property
     def Level(self):
+        """优化级别，1-4，优先级从高到低。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -8824,6 +10466,9 @@ class IndexesToBuild(AbstractModel):
 
     @property
     def Score(self):
+        """索引得分。
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -8832,6 +10477,9 @@ class IndexesToBuild(AbstractModel):
 
     @property
     def Signs(self):
+        """签名。
+        :rtype: list of str
+        """
         return self._Signs
 
     @Signs.setter
@@ -8840,6 +10488,9 @@ class IndexesToBuild(AbstractModel):
 
     @property
     def Status(self):
+        """0-待创建；1-创建中。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8891,6 +10542,9 @@ class IndexesToDrop(AbstractModel):
 
     @property
     def IndexStr(self):
+        """索引字符串。
+        :rtype: str
+        """
         return self._IndexStr
 
     @IndexStr.setter
@@ -8899,6 +10553,9 @@ class IndexesToDrop(AbstractModel):
 
     @property
     def Score(self):
+        """索引得分。
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -8907,6 +10564,9 @@ class IndexesToDrop(AbstractModel):
 
     @property
     def Reason(self):
+        """无效原因。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -8915,6 +10575,9 @@ class IndexesToDrop(AbstractModel):
 
     @property
     def IndexCommand(self):
+        """删除索引命令。
+        :rtype: str
+        """
         return self._IndexCommand
 
     @IndexCommand.setter
@@ -8923,6 +10586,9 @@ class IndexesToDrop(AbstractModel):
 
     @property
     def IndexName(self):
+        """索引名。
+        :rtype: str
+        """
         return self._IndexName
 
     @IndexName.setter
@@ -8975,6 +10641,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8983,6 +10652,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -8991,6 +10663,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def Vip(self):
+        """实例内网IP。
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -8999,6 +10674,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def Vport(self):
+        """实例内网Port。
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -9007,6 +10685,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def Product(self):
+        """实例产品。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -9015,6 +10696,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """实例引擎版本。
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -9068,6 +10752,9 @@ class InstanceConfs(AbstractModel):
 
     @property
     def DailyInspection(self):
+        """数据库巡检开关, Yes/No。
+        :rtype: str
+        """
         return self._DailyInspection
 
     @DailyInspection.setter
@@ -9076,6 +10763,9 @@ class InstanceConfs(AbstractModel):
 
     @property
     def OverviewDisplay(self):
+        """实例概览开关，Yes/No。
+        :rtype: str
+        """
         return self._OverviewDisplay
 
     @OverviewDisplay.setter
@@ -9084,6 +10774,10 @@ class InstanceConfs(AbstractModel):
 
     @property
     def KeyDelimiters(self):
+        """redis大key分析的自定义分割符，仅redis使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._KeyDelimiters
 
     @KeyDelimiters.setter
@@ -9092,6 +10786,10 @@ class InstanceConfs(AbstractModel):
 
     @property
     def ShardNum(self):
+        """分片节点数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShardNum
 
     @ShardNum.setter
@@ -9100,6 +10798,10 @@ class InstanceConfs(AbstractModel):
 
     @property
     def AnalysisTopKey(self):
+        """是否开启大key周期性分析，仅redis产品有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnalysisTopKey
 
     @AnalysisTopKey.setter
@@ -9137,6 +10839,9 @@ class InstanceID(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9276,6 +10981,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9284,6 +10992,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -9292,6 +11003,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
+        """实例所属地域。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9300,6 +11014,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def HealthScore(self):
+        """健康得分。
+        :rtype: int
+        """
         return self._HealthScore
 
     @HealthScore.setter
@@ -9308,6 +11025,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Product(self):
+        """所属产品。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -9316,6 +11036,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EventCount(self):
+        """异常事件数量。
+        :rtype: int
+        """
         return self._EventCount
 
     @EventCount.setter
@@ -9324,6 +11047,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例类型：1:MASTER；2:DR，3：RO，4:SDR。
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -9332,6 +11058,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Cpu(self):
+        """核心数。
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -9340,6 +11069,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Memory(self):
+        """内存，单位MB。
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -9348,6 +11080,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Volume(self):
+        """硬盘存储，单位GB。
+        :rtype: int
+        """
         return self._Volume
 
     @Volume.setter
@@ -9356,6 +11091,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """数据库版本。
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -9364,6 +11102,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Vip(self):
+        """内网地址。
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -9372,6 +11113,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Vport(self):
+        """内网端口。
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -9380,6 +11124,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Source(self):
+        """接入来源。
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -9388,6 +11135,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -9396,6 +11146,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def GroupName(self):
+        """分组组名。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -9404,6 +11157,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """实例状态：0：发货中；1：运行正常；4：销毁中；5：隔离中。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9412,6 +11168,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def UniqSubnetId(self):
+        """子网统一ID。
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -9420,6 +11179,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeployMode(self):
+        """cdb类型。
+        :rtype: str
+        """
         return self._DeployMode
 
     @DeployMode.setter
@@ -9428,6 +11190,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InitFlag(self):
+        """cdb实例初始化标志：0：未初始化；1：已初始化。
+        :rtype: int
+        """
         return self._InitFlag
 
     @InitFlag.setter
@@ -9436,6 +11201,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态。
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -9444,6 +11212,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """私有网络统一ID。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -9452,6 +11223,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceConf(self):
+        """实例巡检/概览的状态。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.InstanceConfs`
+        """
         return self._InstanceConf
 
     @InstanceConf.setter
@@ -9460,6 +11234,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeadlineTime(self):
+        """资源到期时间。
+        :rtype: str
+        """
         return self._DeadlineTime
 
     @DeadlineTime.setter
@@ -9468,6 +11245,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsSupported(self):
+        """是否是DBbrain支持的实例。
+        :rtype: bool
+        """
         return self._IsSupported
 
     @IsSupported.setter
@@ -9476,6 +11256,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SecAuditStatus(self):
+        """实例安全审计日志开启状态：ON： 安全审计开启；OFF： 未开启安全审计。
+        :rtype: str
+        """
         return self._SecAuditStatus
 
     @SecAuditStatus.setter
@@ -9484,6 +11267,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AuditPolicyStatus(self):
+        """实例审计日志开启状态，ALL_AUDIT： 开启全审计；RULE_AUDIT： 开启规则审计；UNBOUND： 未开启审计。
+        :rtype: str
+        """
         return self._AuditPolicyStatus
 
     @AuditPolicyStatus.setter
@@ -9492,6 +11278,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AuditRunningStatus(self):
+        """实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
+        :rtype: str
+        """
         return self._AuditRunningStatus
 
     @AuditRunningStatus.setter
@@ -9500,6 +11289,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InternalVip(self):
+        """内网vip。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InternalVip
 
     @InternalVip.setter
@@ -9508,6 +11301,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InternalVport(self):
+        """内网port。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InternalVport
 
     @InternalVport.setter
@@ -9516,6 +11313,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9524,6 +11324,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -9532,6 +11336,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ClusterName(self):
+        """所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -9540,6 +11348,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AgentStatus(self):
+        """自建MySQL的Agent状态，"not_deployed" - 未部署，"deploying" - 部署中，"connected" - 连接正常，"deploy_failed" - 连接失败，"monitoring" - 连接正常，"stopped" - 暂停连接，"connect_failed" - 连接失败，unknown - 未知。
+        :rtype: str
+        """
         return self._AgentStatus
 
     @AgentStatus.setter
@@ -9548,6 +11359,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """自建MySQL的实例状态，"not_attached" - 未连接，"attached" - 连接正常，"failed" - 连接失败，"stopped" - 停止监控，unknown- 未知。
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -9623,6 +11437,9 @@ class IssueTypeInfo(AbstractModel):
 
     @property
     def IssueType(self):
+        """指标分类：AVAILABILITY：可用性，MAINTAINABILITY：可维护性，PERFORMANCE，性能，RELIABILITY可靠性。
+        :rtype: str
+        """
         return self._IssueType
 
     @IssueType.setter
@@ -9631,6 +11448,9 @@ class IssueTypeInfo(AbstractModel):
 
     @property
     def Events(self):
+        """异常事件。
+        :rtype: list of EventInfo
+        """
         return self._Events
 
     @Events.setter
@@ -9639,6 +11459,9 @@ class IssueTypeInfo(AbstractModel):
 
     @property
     def TotalCount(self):
+        """异常事件总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9694,6 +11517,9 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9702,6 +11528,9 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     @property
     def Stage(self):
+        """kill会话任务的阶段，取值包括："Prepare"-准备阶段，"Commit"-提交阶段。
+        :rtype: str
+        """
         return self._Stage
 
     @Stage.setter
@@ -9710,6 +11539,9 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     @property
     def Threads(self):
+        """需要kill的sql会话ID列表，此参数用于Prepare阶段。
+        :rtype: list of int
+        """
         return self._Threads
 
     @Threads.setter
@@ -9718,6 +11550,9 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     @property
     def SqlExecId(self):
+        """执行ID，此参数用于Commit阶段。
+        :rtype: str
+        """
         return self._SqlExecId
 
     @SqlExecId.setter
@@ -9726,6 +11561,9 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -9734,6 +11572,9 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     @property
     def RecordHistory(self):
+        """默认是ture, 记录下kill的记录，为了加快kill，可设置为false。
+        :rtype: bool
+        """
         return self._RecordHistory
 
     @RecordHistory.setter
@@ -9779,6 +11620,9 @@ class KillMySqlThreadsResponse(AbstractModel):
 
     @property
     def Threads(self):
+        """kill完成的sql会话ID列表。
+        :rtype: list of int
+        """
         return self._Threads
 
     @Threads.setter
@@ -9787,6 +11631,10 @@ class KillMySqlThreadsResponse(AbstractModel):
 
     @property
     def SqlExecId(self):
+        """执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SqlExecId
 
     @SqlExecId.setter
@@ -9795,6 +11643,9 @@ class KillMySqlThreadsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9834,6 +11685,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def SendMail(self):
+        """是否开启邮件发送: 0, 否; 1, 是。
+        :rtype: int
+        """
         return self._SendMail
 
     @SendMail.setter
@@ -9842,6 +11696,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def Region(self):
+        """地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模板，配置需要发送巡检邮件的地域；订阅的邮件发送模板，配置当前订阅实例的所属地域。
+        :rtype: list of str
+        """
         return self._Region
 
     @Region.setter
@@ -9850,6 +11707,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def HealthStatus(self):
+        """发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
+        :rtype: list of str
+        """
         return self._HealthStatus
 
     @HealthStatus.setter
@@ -9858,6 +11718,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def ContactPerson(self):
+        """联系人id, 联系人/联系组不能都为空。
+        :rtype: list of int
+        """
         return self._ContactPerson
 
     @ContactPerson.setter
@@ -9866,6 +11729,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def ContactGroup(self):
+        """联系组id, 联系人/联系组不能都为空。
+        :rtype: list of int
+        """
         return self._ContactGroup
 
     @ContactGroup.setter
@@ -9939,6 +11805,9 @@ information-通知
 
     @property
     def ApplyType(self):
+        """类型
+        :rtype: str
+        """
         return self._ApplyType
 
     @ApplyType.setter
@@ -9947,6 +11816,9 @@ information-通知
 
     @property
     def Enable(self):
+        """开启策略
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -9955,6 +11827,9 @@ information-通知
 
     @property
     def InstanceIds(self):
+        """列表
+        :rtype: list of InstanceID
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9963,6 +11838,10 @@ information-通知
 
     @property
     def NewProfileLevel(self):
+        """User-动态关联该用户所有实例
+Instance-关联实例列表的实例
+        :rtype: str
+        """
         return self._NewProfileLevel
 
     @NewProfileLevel.setter
@@ -9971,6 +11850,9 @@ information-通知
 
     @property
     def NewProfileName(self):
+        """新策略名
+        :rtype: str
+        """
         return self._NewProfileName
 
     @NewProfileName.setter
@@ -9979,6 +11861,9 @@ information-通知
 
     @property
     def ProfileName(self):
+        """旧策略名
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -9987,6 +11872,9 @@ information-通知
 
     @property
     def ProfileType(self):
+        """策略类型
+        :rtype: str
+        """
         return self._ProfileType
 
     @ProfileType.setter
@@ -9995,6 +11883,9 @@ information-通知
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -10003,6 +11894,9 @@ information-通知
 
     @property
     def RuleType(self):
+        """规则类型 0-快速，1-自定义 若值为0，则QuickRule不能为空，若值为1，则Rules 不能为空
+        :rtype: int
+        """
         return self._RuleType
 
     @RuleType.setter
@@ -10011,6 +11905,9 @@ information-通知
 
     @property
     def TemplateInfo(self):
+        """接受模板
+        :rtype: list of TemplateInfo
+        """
         return self._TemplateInfo
 
     @TemplateInfo.setter
@@ -10019,6 +11916,11 @@ information-通知
 
     @property
     def QuickRule(self):
+        """快速规则  支持包括fatal-致命, critical-严重,
+warning-告警,
+information-通知
+        :rtype: str
+        """
         return self._QuickRule
 
     @QuickRule.setter
@@ -10027,6 +11929,9 @@ information-通知
 
     @property
     def Rules(self):
+        """自定义规则
+        :rtype: list of AlarmsRules
+        """
         return self._Rules
 
     @Rules.setter
@@ -10086,6 +11991,9 @@ class ModifyAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10123,6 +12031,9 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -10131,6 +12042,9 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
+        """与Product保持一致。如："dcdb" ,"mariadb"。
+        :rtype: str
+        """
         return self._NodeRequestType
 
     @NodeRequestType.setter
@@ -10139,6 +12053,9 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10147,6 +12064,9 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def LogExpireDay(self):
+        """日志保存总时长，只能是7,30,90,180,365,1095,1825。
+        :rtype: int
+        """
         return self._LogExpireDay
 
     @LogExpireDay.setter
@@ -10155,6 +12075,9 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     @property
     def HotLogExpireDay(self):
+        """高频日志保存时长，只能是7,30,90,180,365,1095,1825。
+        :rtype: int
+        """
         return self._HotLogExpireDay
 
     @HotLogExpireDay.setter
@@ -10195,6 +12118,9 @@ class ModifyAuditServiceResponse(AbstractModel):
 
     @property
     def Success(self):
+        """审计配置修改结果，0-修改成功,非0-修改失败。
+        :rtype: int
+        """
         return self._Success
 
     @Success.setter
@@ -10203,6 +12129,9 @@ class ModifyAuditServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10238,6 +12167,9 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def InstanceConfs(self):
+        """实例配置，包括巡检、概览开关等。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.InstanceConfs`
+        """
         return self._InstanceConfs
 
     @InstanceConfs.setter
@@ -10246,6 +12178,9 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def Regions(self):
+        """生效实例地域，取值为"All"，代表全地域。
+        :rtype: str
+        """
         return self._Regions
 
     @Regions.setter
@@ -10254,6 +12189,9 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -10262,6 +12200,9 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """指定更改巡检状态的实例ID。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -10300,6 +12241,9 @@ class ModifyDiagDBInstanceConfResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10337,6 +12281,9 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10345,6 +12292,9 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def FilterIds(self):
+        """SQL限流任务ID列表。
+        :rtype: list of int
+        """
         return self._FilterIds
 
     @FilterIds.setter
@@ -10353,6 +12303,9 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def Status(self):
+        """限流任务状态，取值支持TERMINATED - 终止。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10361,6 +12314,9 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def SessionToken(self):
+        """通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :rtype: str
+        """
         return self._SessionToken
 
     @SessionToken.setter
@@ -10369,6 +12325,9 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -10406,6 +12365,9 @@ class ModifySqlFiltersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10451,6 +12413,9 @@ class MongoDBIndex(AbstractModel):
 
     @property
     def ClusterId(self):
+        """实例id。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -10459,6 +12424,9 @@ class MongoDBIndex(AbstractModel):
 
     @property
     def Collection(self):
+        """表名。
+        :rtype: str
+        """
         return self._Collection
 
     @Collection.setter
@@ -10467,6 +12435,9 @@ class MongoDBIndex(AbstractModel):
 
     @property
     def Db(self):
+        """库名。
+        :rtype: str
+        """
         return self._Db
 
     @Db.setter
@@ -10475,6 +12446,9 @@ class MongoDBIndex(AbstractModel):
 
     @property
     def Level(self):
+        """优化级别，1-4，优先级从高到低。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -10483,6 +12457,9 @@ class MongoDBIndex(AbstractModel):
 
     @property
     def Score(self):
+        """得分。
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -10491,6 +12468,10 @@ class MongoDBIndex(AbstractModel):
 
     @property
     def IndexesToBuild(self):
+        """推荐索引列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IndexesToBuild
+        """
         return self._IndexesToBuild
 
     @IndexesToBuild.setter
@@ -10499,6 +12480,10 @@ class MongoDBIndex(AbstractModel):
 
     @property
     def IndexesToDrop(self):
+        """无效索引列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IndexesToDrop
+        """
         return self._IndexesToDrop
 
     @IndexesToDrop.setter
@@ -10555,6 +12540,9 @@ class MonitorFloatMetric(AbstractModel):
 
     @property
     def Metric(self):
+        """指标名称。
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -10563,6 +12551,9 @@ class MonitorFloatMetric(AbstractModel):
 
     @property
     def Unit(self):
+        """指标单位。
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -10571,6 +12562,10 @@ class MonitorFloatMetric(AbstractModel):
 
     @property
     def Values(self):
+        """指标值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Values
 
     @Values.setter
@@ -10609,6 +12604,9 @@ class MonitorFloatMetricSeriesData(AbstractModel):
 
     @property
     def Series(self):
+        """监控指标。
+        :rtype: list of MonitorFloatMetric
+        """
         return self._Series
 
     @Series.setter
@@ -10617,6 +12615,9 @@ class MonitorFloatMetricSeriesData(AbstractModel):
 
     @property
     def Timestamp(self):
+        """监控指标对应的时间戳。
+        :rtype: list of int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -10663,6 +12664,9 @@ class MonitorMetric(AbstractModel):
 
     @property
     def Metric(self):
+        """指标名称。
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -10671,6 +12675,9 @@ class MonitorMetric(AbstractModel):
 
     @property
     def Unit(self):
+        """指标单位。
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -10679,6 +12686,10 @@ class MonitorMetric(AbstractModel):
 
     @property
     def Values(self):
+        """指标值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Values
 
     @Values.setter
@@ -10717,6 +12728,9 @@ class MonitorMetricSeriesData(AbstractModel):
 
     @property
     def Series(self):
+        """监控指标。
+        :rtype: list of MonitorMetric
+        """
         return self._Series
 
     @Series.setter
@@ -10725,6 +12739,9 @@ class MonitorMetricSeriesData(AbstractModel):
 
     @property
     def Timestamp(self):
+        """监控指标对应的时间戳。
+        :rtype: list of int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -10785,6 +12802,9 @@ class MySqlProcess(AbstractModel):
 
     @property
     def ID(self):
+        """线程ID。
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -10793,6 +12813,9 @@ class MySqlProcess(AbstractModel):
 
     @property
     def User(self):
+        """线程的操作账号名。
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -10801,6 +12824,9 @@ class MySqlProcess(AbstractModel):
 
     @property
     def Host(self):
+        """线程的操作主机地址。
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -10809,6 +12835,9 @@ class MySqlProcess(AbstractModel):
 
     @property
     def DB(self):
+        """线程的操作数据库。
+        :rtype: str
+        """
         return self._DB
 
     @DB.setter
@@ -10817,6 +12846,9 @@ class MySqlProcess(AbstractModel):
 
     @property
     def State(self):
+        """线程的操作状态。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -10825,6 +12857,9 @@ class MySqlProcess(AbstractModel):
 
     @property
     def Command(self):
+        """线程的执行类型。
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -10833,6 +12868,9 @@ class MySqlProcess(AbstractModel):
 
     @property
     def Time(self):
+        """线程的操作时长，单位秒。
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -10841,6 +12879,9 @@ class MySqlProcess(AbstractModel):
 
     @property
     def Info(self):
+        """线程的操作语句。
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -10893,6 +12934,9 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -10901,6 +12945,9 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def NodeRequestType(self):
+        """与Product保持一致。如："dcdb" ,"mariadb"。
+        :rtype: str
+        """
         return self._NodeRequestType
 
     @NodeRequestType.setter
@@ -10909,6 +12956,9 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10917,6 +12967,9 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def LogExpireDay(self):
+        """日志保存总时长，只能是7,30,90,180,365,1095,1825。
+        :rtype: int
+        """
         return self._LogExpireDay
 
     @LogExpireDay.setter
@@ -10925,6 +12978,9 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def HotLogExpireDay(self):
+        """高频日志保存时长，只能是7,30,90,180,365,1095,1825。
+        :rtype: int
+        """
         return self._HotLogExpireDay
 
     @HotLogExpireDay.setter
@@ -10965,6 +13021,9 @@ class OpenAuditServiceResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """taskId 为0表示开通审计成功，否则开通失败
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10973,6 +13032,9 @@ class OpenAuditServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11020,6 +13082,9 @@ class Process(AbstractModel):
 
     @property
     def Id(self):
+        """会话 ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -11028,6 +13093,9 @@ class Process(AbstractModel):
 
     @property
     def Address(self):
+        """访问来源，IP 地址和端口号。
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -11036,6 +13104,9 @@ class Process(AbstractModel):
 
     @property
     def FileDescriptor(self):
+        """文件描述符。
+        :rtype: int
+        """
         return self._FileDescriptor
 
     @FileDescriptor.setter
@@ -11044,6 +13115,9 @@ class Process(AbstractModel):
 
     @property
     def Name(self):
+        """会话名称，使用 CLIENT SETNAME 命令设置。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11052,6 +13126,9 @@ class Process(AbstractModel):
 
     @property
     def LastCommand(self):
+        """最后一次执行的命令。
+        :rtype: str
+        """
         return self._LastCommand
 
     @LastCommand.setter
@@ -11060,6 +13137,9 @@ class Process(AbstractModel):
 
     @property
     def Age(self):
+        """会话存活时间，单位：秒。
+        :rtype: int
+        """
         return self._Age
 
     @Age.setter
@@ -11068,6 +13148,9 @@ class Process(AbstractModel):
 
     @property
     def Idle(self):
+        """最后一次执行命令后空闲的时间，单位：秒。
+        :rtype: int
+        """
         return self._Idle
 
     @Idle.setter
@@ -11076,6 +13159,9 @@ class Process(AbstractModel):
 
     @property
     def ProxyId(self):
+        """会话所属的 Proxy节点 ID。
+        :rtype: str
+        """
         return self._ProxyId
 
     @ProxyId.setter
@@ -11122,6 +13208,9 @@ class ProcessStatistic(AbstractModel):
 
     @property
     def Items(self):
+        """会话详情数组。
+        :rtype: list of SessionItem
+        """
         return self._Items
 
     @Items.setter
@@ -11130,6 +13219,9 @@ class ProcessStatistic(AbstractModel):
 
     @property
     def AllConnSum(self):
+        """总连接数。
+        :rtype: int
+        """
         return self._AllConnSum
 
     @AllConnSum.setter
@@ -11138,6 +13230,9 @@ class ProcessStatistic(AbstractModel):
 
     @property
     def ActiveConnSum(self):
+        """总活跃连接数。
+        :rtype: int
+        """
         return self._ActiveConnSum
 
     @ActiveConnSum.setter
@@ -11181,6 +13276,9 @@ class ProfileInfo(AbstractModel):
 
     @property
     def Language(self):
+        """语言, 如"zh"。
+        :rtype: str
+        """
         return self._Language
 
     @Language.setter
@@ -11189,6 +13287,9 @@ class ProfileInfo(AbstractModel):
 
     @property
     def MailConfiguration(self):
+        """邮件模板的内容。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MailConfiguration`
+        """
         return self._MailConfiguration
 
     @MailConfiguration.setter
@@ -11246,6 +13347,10 @@ class ReceiveInfo(AbstractModel):
 
     @property
     def ReceiveGroup(self):
+        """接收组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._ReceiveGroup
 
     @ReceiveGroup.setter
@@ -11254,6 +13359,10 @@ class ReceiveInfo(AbstractModel):
 
     @property
     def EndReceiveTime(self):
+        """最后接收时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndReceiveTime
 
     @EndReceiveTime.setter
@@ -11262,6 +13371,10 @@ class ReceiveInfo(AbstractModel):
 
     @property
     def ReceiveName(self):
+        """接收名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReceiveName
 
     @ReceiveName.setter
@@ -11270,6 +13383,10 @@ class ReceiveInfo(AbstractModel):
 
     @property
     def SendChannel(self):
+        """推送渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._SendChannel
 
     @SendChannel.setter
@@ -11278,6 +13395,10 @@ class ReceiveInfo(AbstractModel):
 
     @property
     def StartReceiveTime(self):
+        """开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartReceiveTime
 
     @StartReceiveTime.setter
@@ -11286,6 +13407,10 @@ class ReceiveInfo(AbstractModel):
 
     @property
     def ReceiveUin(self):
+        """接收用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReceiveUin
+        """
         return self._ReceiveUin
 
     @ReceiveUin.setter
@@ -11334,6 +13459,10 @@ class ReceiveUin(AbstractModel):
 
     @property
     def UinName(self):
+        """用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UinName
 
     @UinName.setter
@@ -11342,6 +13471,10 @@ class ReceiveUin(AbstractModel):
 
     @property
     def Uin(self):
+        """用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -11394,6 +13527,9 @@ class RedisBigKeyTask(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务请求 ID。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -11402,6 +13538,9 @@ class RedisBigKeyTask(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11410,6 +13549,9 @@ class RedisBigKeyTask(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11418,6 +13560,9 @@ class RedisBigKeyTask(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务结束时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11426,6 +13571,9 @@ class RedisBigKeyTask(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态。
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -11434,6 +13582,9 @@ class RedisBigKeyTask(AbstractModel):
 
     @property
     def Progress(self):
+        """任务执行进度。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -11442,6 +13593,9 @@ class RedisBigKeyTask(AbstractModel):
 
     @property
     def ShardIds(self):
+        """任务包含的分片节点序号列表。
+        :rtype: list of int
+        """
         return self._ShardIds
 
     @ShardIds.setter
@@ -11505,6 +13659,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def Key(self):
+        """key名。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -11513,6 +13670,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def Type(self):
+        """key类型。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11521,6 +13681,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def Encoding(self):
+        """key编码方式。
+        :rtype: str
+        """
         return self._Encoding
 
     @Encoding.setter
@@ -11529,6 +13692,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """key过期时间戳（毫秒），0代表未设置过期时间。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11537,6 +13703,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def Length(self):
+        """key内存大小，单位Byte。
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -11545,6 +13714,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def ItemCount(self):
+        """元素个数。
+        :rtype: int
+        """
         return self._ItemCount
 
     @ItemCount.setter
@@ -11553,6 +13725,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def MaxElementSize(self):
+        """最大元素长度。
+        :rtype: int
+        """
         return self._MaxElementSize
 
     @MaxElementSize.setter
@@ -11561,6 +13736,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def AveElementSize(self):
+        """平均元素长度。
+        :rtype: int
+        """
         return self._AveElementSize
 
     @AveElementSize.setter
@@ -11569,6 +13747,9 @@ class RedisKeySpaceData(AbstractModel):
 
     @property
     def ShardId(self):
+        """所属分片序号。
+        :rtype: str
+        """
         return self._ShardId
 
     @ShardId.setter
@@ -11625,6 +13806,9 @@ class RedisPreKeySpaceData(AbstractModel):
 
     @property
     def AveElementSize(self):
+        """平均元素长度。
+        :rtype: int
+        """
         return self._AveElementSize
 
     @AveElementSize.setter
@@ -11633,6 +13817,9 @@ class RedisPreKeySpaceData(AbstractModel):
 
     @property
     def Length(self):
+        """总占用内存（Byte）。
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -11641,6 +13828,9 @@ class RedisPreKeySpaceData(AbstractModel):
 
     @property
     def KeyPreIndex(self):
+        """key前缀。
+        :rtype: str
+        """
         return self._KeyPreIndex
 
     @KeyPreIndex.setter
@@ -11649,6 +13839,9 @@ class RedisPreKeySpaceData(AbstractModel):
 
     @property
     def ItemCount(self):
+        """元素数量。
+        :rtype: int
+        """
         return self._ItemCount
 
     @ItemCount.setter
@@ -11657,6 +13850,9 @@ class RedisPreKeySpaceData(AbstractModel):
 
     @property
     def Count(self):
+        """key个数。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -11665,6 +13861,9 @@ class RedisPreKeySpaceData(AbstractModel):
 
     @property
     def MaxElementSize(self):
+        """最大元素长度。
+        :rtype: int
+        """
         return self._MaxElementSize
 
     @MaxElementSize.setter
@@ -11733,6 +13932,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def Id(self):
+        """任务ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -11741,6 +13943,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11749,6 +13954,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def SqlType(self):
+        """SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+        :rtype: str
+        """
         return self._SqlType
 
     @SqlType.setter
@@ -11757,6 +13965,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def OriginKeys(self):
+        """筛选SQL的关键词，多个关键词用英文逗号拼接。
+        :rtype: str
+        """
         return self._OriginKeys
 
     @OriginKeys.setter
@@ -11765,6 +13976,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def OriginRule(self):
+        """筛选SQL的规则。
+        :rtype: str
+        """
         return self._OriginRule
 
     @OriginRule.setter
@@ -11773,6 +13987,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def RejectedSqlCount(self):
+        """已拒绝SQL数目。
+        :rtype: int
+        """
         return self._RejectedSqlCount
 
     @RejectedSqlCount.setter
@@ -11781,6 +13998,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def CurrentConcurrency(self):
+        """当前并发数。
+        :rtype: int
+        """
         return self._CurrentConcurrency
 
     @CurrentConcurrency.setter
@@ -11789,6 +14009,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def MaxConcurrency(self):
+        """最大并发数。
+        :rtype: int
+        """
         return self._MaxConcurrency
 
     @MaxConcurrency.setter
@@ -11797,6 +14020,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11805,6 +14031,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def CurrentTime(self):
+        """当前时间。
+        :rtype: str
+        """
         return self._CurrentTime
 
     @CurrentTime.setter
@@ -11813,6 +14042,9 @@ class SQLFilter(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """限流过期时间。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11856,6 +14088,9 @@ class SchemaItem(AbstractModel):
 
     @property
     def Schema(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -11911,6 +14146,9 @@ class SchemaSpaceData(AbstractModel):
 
     @property
     def TableSchema(self):
+        """库名。
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -11919,6 +14157,9 @@ class SchemaSpaceData(AbstractModel):
 
     @property
     def DataLength(self):
+        """数据空间（MB）。
+        :rtype: float
+        """
         return self._DataLength
 
     @DataLength.setter
@@ -11927,6 +14168,9 @@ class SchemaSpaceData(AbstractModel):
 
     @property
     def IndexLength(self):
+        """索引空间（MB）。
+        :rtype: float
+        """
         return self._IndexLength
 
     @IndexLength.setter
@@ -11935,6 +14179,9 @@ class SchemaSpaceData(AbstractModel):
 
     @property
     def DataFree(self):
+        """碎片空间（MB）。
+        :rtype: float
+        """
         return self._DataFree
 
     @DataFree.setter
@@ -11943,6 +14190,9 @@ class SchemaSpaceData(AbstractModel):
 
     @property
     def TotalLength(self):
+        """总使用空间（MB）。
+        :rtype: float
+        """
         return self._TotalLength
 
     @TotalLength.setter
@@ -11951,6 +14201,9 @@ class SchemaSpaceData(AbstractModel):
 
     @property
     def FragRatio(self):
+        """碎片率（%）。
+        :rtype: float
+        """
         return self._FragRatio
 
     @FragRatio.setter
@@ -11959,6 +14212,9 @@ class SchemaSpaceData(AbstractModel):
 
     @property
     def TableRows(self):
+        """行数。
+        :rtype: int
+        """
         return self._TableRows
 
     @TableRows.setter
@@ -11967,6 +14223,10 @@ class SchemaSpaceData(AbstractModel):
 
     @property
     def PhysicalFileSize(self):
+        """库中所有表对应的独立物理文件大小加和（MB）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._PhysicalFileSize
 
     @PhysicalFileSize.setter
@@ -12010,6 +14270,9 @@ class SchemaSpaceTimeSeries(AbstractModel):
 
     @property
     def TableSchema(self):
+        """库名
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -12018,6 +14281,9 @@ class SchemaSpaceTimeSeries(AbstractModel):
 
     @property
     def SeriesData(self):
+        """单位时间间隔内的空间指标数据。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MonitorMetricSeriesData`
+        """
         return self._SeriesData
 
     @SeriesData.setter
@@ -12064,6 +14330,9 @@ class ScoreDetail(AbstractModel):
 
     @property
     def IssueType(self):
+        """扣分项分类，取值包括：可用性、可维护性、性能及可靠性。
+        :rtype: str
+        """
         return self._IssueType
 
     @IssueType.setter
@@ -12072,6 +14341,9 @@ class ScoreDetail(AbstractModel):
 
     @property
     def ScoreLost(self):
+        """扣分总分。
+        :rtype: int
+        """
         return self._ScoreLost
 
     @ScoreLost.setter
@@ -12080,6 +14352,9 @@ class ScoreDetail(AbstractModel):
 
     @property
     def ScoreLostMax(self):
+        """扣分总分上限。
+        :rtype: int
+        """
         return self._ScoreLostMax
 
     @ScoreLostMax.setter
@@ -12088,6 +14363,10 @@ class ScoreDetail(AbstractModel):
 
     @property
     def Items(self):
+        """扣分项列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScoreItem
+        """
         return self._Items
 
     @Items.setter
@@ -12141,6 +14420,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def DiagItem(self):
+        """异常诊断项名称。
+        :rtype: str
+        """
         return self._DiagItem
 
     @DiagItem.setter
@@ -12149,6 +14431,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def IssueType(self):
+        """诊断项分类，取值包括：可用性、可维护性、性能及可靠性。
+        :rtype: str
+        """
         return self._IssueType
 
     @IssueType.setter
@@ -12157,6 +14442,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def TopSeverity(self):
+        """健康等级，取值包括：信息、提示、告警、严重、致命。
+        :rtype: str
+        """
         return self._TopSeverity
 
     @TopSeverity.setter
@@ -12165,6 +14453,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def Count(self):
+        """该异常诊断项出现次数。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -12173,6 +14464,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def ScoreLost(self):
+        """扣分分数。
+        :rtype: int
+        """
         return self._ScoreLost
 
     @ScoreLost.setter
@@ -12243,6 +14537,9 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务Id。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -12251,6 +14548,10 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12259,6 +14560,10 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12267,6 +14572,9 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12275,6 +14583,9 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12283,6 +14594,9 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def Progress(self):
+        """任务执行进度。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -12291,6 +14605,10 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def LogStartTime(self):
+        """导出日志开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogStartTime
 
     @LogStartTime.setter
@@ -12299,6 +14617,10 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def LogEndTime(self):
+        """导出日志结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogEndTime
 
     @LogEndTime.setter
@@ -12307,6 +14629,10 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def TotalSize(self):
+        """日志文件总大小，单位KB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalSize
 
     @TotalSize.setter
@@ -12315,6 +14641,10 @@ class SecLogExportTaskInfo(AbstractModel):
 
     @property
     def DangerLevels(self):
+        """风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
         return self._DangerLevels
 
     @DangerLevels.setter
@@ -12363,6 +14693,9 @@ class SessionItem(AbstractModel):
 
     @property
     def Ip(self):
+        """访问来源。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -12371,6 +14704,9 @@ class SessionItem(AbstractModel):
 
     @property
     def ActiveConn(self):
+        """当前访问来源活跃连接数
+        :rtype: str
+        """
         return self._ActiveConn
 
     @ActiveConn.setter
@@ -12379,6 +14715,9 @@ class SessionItem(AbstractModel):
 
     @property
     def AllConn(self):
+        """当前访问来源总连接数
+        :rtype: int
+        """
         return self._AllConn
 
     @AllConn.setter
@@ -12420,6 +14759,9 @@ class SlowLogHost(AbstractModel):
 
     @property
     def UserHost(self):
+        """来源地址。
+        :rtype: str
+        """
         return self._UserHost
 
     @UserHost.setter
@@ -12428,6 +14770,9 @@ class SlowLogHost(AbstractModel):
 
     @property
     def Ratio(self):
+        """该来源地址的慢日志数目占总数目的比例，单位%。
+        :rtype: float
+        """
         return self._Ratio
 
     @Ratio.setter
@@ -12436,6 +14781,9 @@ class SlowLogHost(AbstractModel):
 
     @property
     def Count(self):
+        """该来源地址的慢日志数目。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -12500,6 +14848,9 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def Timestamp(self):
+        """慢日志开始时间
+        :rtype: str
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -12508,6 +14859,9 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def SqlText(self):
+        """sql语句
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -12516,6 +14870,9 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def Database(self):
+        """数据库
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -12524,6 +14881,10 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def UserName(self):
+        """User来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -12532,6 +14893,10 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def UserHost(self):
+        """IP来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserHost
 
     @UserHost.setter
@@ -12540,6 +14905,9 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def QueryTime(self):
+        """执行时间,单位秒
+        :rtype: float
+        """
         return self._QueryTime
 
     @QueryTime.setter
@@ -12548,6 +14916,10 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def LockTime(self):
+        """锁时间,单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._LockTime
 
     @LockTime.setter
@@ -12556,6 +14928,10 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def RowsExamined(self):
+        """扫描行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RowsExamined
 
     @RowsExamined.setter
@@ -12564,6 +14940,10 @@ class SlowLogInfoItem(AbstractModel):
 
     @property
     def RowsSent(self):
+        """返回行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RowsSent
 
     @RowsSent.setter
@@ -12677,6 +15057,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTime(self):
+        """sql总锁等待时间，单位秒
+        :rtype: float
+        """
         return self._LockTime
 
     @LockTime.setter
@@ -12685,6 +15068,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTimeMax(self):
+        """最大锁等待时间，单位秒
+        :rtype: float
+        """
         return self._LockTimeMax
 
     @LockTimeMax.setter
@@ -12693,6 +15079,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTimeMin(self):
+        """最小锁等待时间，单位秒
+        :rtype: float
+        """
         return self._LockTimeMin
 
     @LockTimeMin.setter
@@ -12701,6 +15090,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExamined(self):
+        """总扫描行数
+        :rtype: int
+        """
         return self._RowsExamined
 
     @RowsExamined.setter
@@ -12709,6 +15101,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExaminedMax(self):
+        """最大扫描行数
+        :rtype: int
+        """
         return self._RowsExaminedMax
 
     @RowsExaminedMax.setter
@@ -12717,6 +15112,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExaminedMin(self):
+        """最小扫描行数
+        :rtype: int
+        """
         return self._RowsExaminedMin
 
     @RowsExaminedMin.setter
@@ -12725,6 +15123,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTime(self):
+        """总耗时，单位秒
+        :rtype: float
+        """
         return self._QueryTime
 
     @QueryTime.setter
@@ -12733,6 +15134,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTimeMax(self):
+        """最大执行时间，单位秒
+        :rtype: float
+        """
         return self._QueryTimeMax
 
     @QueryTimeMax.setter
@@ -12741,6 +15145,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTimeMin(self):
+        """最小执行时间，单位秒
+        :rtype: float
+        """
         return self._QueryTimeMin
 
     @QueryTimeMin.setter
@@ -12749,6 +15156,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSent(self):
+        """总返回行数
+        :rtype: int
+        """
         return self._RowsSent
 
     @RowsSent.setter
@@ -12757,6 +15167,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSentMax(self):
+        """最大返回行数
+        :rtype: int
+        """
         return self._RowsSentMax
 
     @RowsSentMax.setter
@@ -12765,6 +15178,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSentMin(self):
+        """最小返回行数
+        :rtype: int
+        """
         return self._RowsSentMin
 
     @RowsSentMin.setter
@@ -12773,6 +15189,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def ExecTimes(self):
+        """执行次数
+        :rtype: int
+        """
         return self._ExecTimes
 
     @ExecTimes.setter
@@ -12781,6 +15200,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def SqlTemplate(self):
+        """sql模板
+        :rtype: str
+        """
         return self._SqlTemplate
 
     @SqlTemplate.setter
@@ -12789,6 +15211,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def SqlText(self):
+        """带参数SQL（随机）
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -12797,6 +15222,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def Schema(self):
+        """数据库名
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -12805,6 +15233,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTimeRatio(self):
+        """总耗时占比，单位%
+        :rtype: float
+        """
         return self._QueryTimeRatio
 
     @QueryTimeRatio.setter
@@ -12813,6 +15244,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTimeRatio(self):
+        """sql总锁等待时间占比，单位%
+        :rtype: float
+        """
         return self._LockTimeRatio
 
     @LockTimeRatio.setter
@@ -12821,6 +15255,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExaminedRatio(self):
+        """总扫描行数占比，单位%
+        :rtype: float
+        """
         return self._RowsExaminedRatio
 
     @RowsExaminedRatio.setter
@@ -12829,6 +15266,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSentRatio(self):
+        """总返回行数占比，单位%
+        :rtype: float
+        """
         return self._RowsSentRatio
 
     @RowsSentRatio.setter
@@ -12837,6 +15277,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTimeAvg(self):
+        """平均执行时间，单位秒
+        :rtype: float
+        """
         return self._QueryTimeAvg
 
     @QueryTimeAvg.setter
@@ -12845,6 +15288,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSentAvg(self):
+        """平均返回行数
+        :rtype: float
+        """
         return self._RowsSentAvg
 
     @RowsSentAvg.setter
@@ -12853,6 +15299,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTimeAvg(self):
+        """平均锁等待时间，单位秒
+        :rtype: float
+        """
         return self._LockTimeAvg
 
     @LockTimeAvg.setter
@@ -12861,6 +15310,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExaminedAvg(self):
+        """平均扫描行数
+        :rtype: float
+        """
         return self._RowsExaminedAvg
 
     @RowsExaminedAvg.setter
@@ -12869,6 +15321,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def Md5(self):
+        """SQL模板的MD5值
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -12932,6 +15387,9 @@ class SlowLogUser(AbstractModel):
 
     @property
     def UserName(self):
+        """来源用户名。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -12940,6 +15398,9 @@ class SlowLogUser(AbstractModel):
 
     @property
     def Ratio(self):
+        """该来源用户名的慢日志数目占总数目的比例，单位%。
+        :rtype: float
+        """
         return self._Ratio
 
     @Ratio.setter
@@ -12948,6 +15409,9 @@ class SlowLogUser(AbstractModel):
 
     @property
     def Count(self):
+        """该来源用户名的慢日志数目。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -12991,6 +15455,9 @@ class StatDimension(AbstractModel):
 
     @property
     def Dimension(self):
+        """维度名称，目前仅支持：SqlTag。
+        :rtype: str
+        """
         return self._Dimension
 
     @Dimension.setter
@@ -12999,6 +15466,14 @@ class StatDimension(AbstractModel):
 
     @property
     def Data(self):
+        """SQL 标签过滤与统计信息
+示例：
+
+示例 1：[p=position] 统计包含 p=position 标签的 SQL 会话。
+示例 2：[p] 统计包含 p 标签的 SQL 会话。
+示例 3：[p=position, c=idCard] 统计同时包含 p=position 标签和 c=idCard 标签的 SQL 会话。
+        :rtype: list of str
+        """
         return self._Data
 
     @Data.setter
@@ -13046,6 +15521,10 @@ class StatisticDataInfo(AbstractModel):
 
     @property
     def Name(self):
+        """统计维度的值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13054,6 +15533,10 @@ class StatisticDataInfo(AbstractModel):
 
     @property
     def TimeAvg(self):
+        """平均时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TimeAvg
 
     @TimeAvg.setter
@@ -13062,6 +15545,10 @@ class StatisticDataInfo(AbstractModel):
 
     @property
     def TimeSum(self):
+        """总时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TimeSum
 
     @TimeSum.setter
@@ -13070,6 +15557,10 @@ class StatisticDataInfo(AbstractModel):
 
     @property
     def Count(self):
+        """数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -13111,6 +15602,10 @@ class StatisticInfo(AbstractModel):
 
     @property
     def Dimension(self):
+        """统计分析的维度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Dimension
 
     @Dimension.setter
@@ -13119,6 +15614,10 @@ class StatisticInfo(AbstractModel):
 
     @property
     def Data(self):
+        """统计分析的维度下的统计数据详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StatisticDataInfo
+        """
         return self._Data
 
     @Data.setter
@@ -13170,6 +15669,9 @@ class Table(AbstractModel):
 
     @property
     def TableSchema(self):
+        """库名。
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -13178,6 +15680,9 @@ class Table(AbstractModel):
 
     @property
     def TableName(self):
+        """表名。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -13186,6 +15691,9 @@ class Table(AbstractModel):
 
     @property
     def Engine(self):
+        """库表的存储引擎。
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -13194,6 +15702,9 @@ class Table(AbstractModel):
 
     @property
     def TableRows(self):
+        """行数。
+        :rtype: int
+        """
         return self._TableRows
 
     @TableRows.setter
@@ -13202,6 +15713,9 @@ class Table(AbstractModel):
 
     @property
     def TotalLength(self):
+        """总使用空间（MB）。
+        :rtype: float
+        """
         return self._TotalLength
 
     @TotalLength.setter
@@ -13266,6 +15780,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def TableName(self):
+        """表名。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -13274,6 +15791,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def TableSchema(self):
+        """库名。
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -13282,6 +15802,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def Engine(self):
+        """库表的存储引擎。
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -13290,6 +15813,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def DataLength(self):
+        """数据空间（MB）。
+        :rtype: float
+        """
         return self._DataLength
 
     @DataLength.setter
@@ -13298,6 +15824,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def IndexLength(self):
+        """索引空间（MB）。
+        :rtype: float
+        """
         return self._IndexLength
 
     @IndexLength.setter
@@ -13306,6 +15835,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def DataFree(self):
+        """碎片空间（MB）。
+        :rtype: float
+        """
         return self._DataFree
 
     @DataFree.setter
@@ -13314,6 +15846,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def TotalLength(self):
+        """总使用空间（MB）。
+        :rtype: float
+        """
         return self._TotalLength
 
     @TotalLength.setter
@@ -13322,6 +15857,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def FragRatio(self):
+        """碎片率（%）。
+        :rtype: float
+        """
         return self._FragRatio
 
     @FragRatio.setter
@@ -13330,6 +15868,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def TableRows(self):
+        """行数。
+        :rtype: int
+        """
         return self._TableRows
 
     @TableRows.setter
@@ -13338,6 +15879,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def PhysicalFileSize(self):
+        """表对应的独立物理文件大小（MB）。
+        :rtype: float
+        """
         return self._PhysicalFileSize
 
     @PhysicalFileSize.setter
@@ -13389,6 +15933,9 @@ class TableSpaceTimeSeries(AbstractModel):
 
     @property
     def TableName(self):
+        """表名。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -13397,6 +15944,9 @@ class TableSpaceTimeSeries(AbstractModel):
 
     @property
     def TableSchema(self):
+        """库名。
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -13405,6 +15955,9 @@ class TableSpaceTimeSeries(AbstractModel):
 
     @property
     def Engine(self):
+        """库表的存储引擎。
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -13413,6 +15966,9 @@ class TableSpaceTimeSeries(AbstractModel):
 
     @property
     def SeriesData(self):
+        """单位时间间隔内的空间指标数据。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MonitorFloatMetricSeriesData`
+        """
         return self._SeriesData
 
     @SeriesData.setter
@@ -13481,6 +16037,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """异步任务 ID。
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -13489,6 +16048,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def InstProxyList(self):
+        """当前实例所有 proxy 列表。
+        :rtype: list of str
+        """
         return self._InstProxyList
 
     @InstProxyList.setter
@@ -13497,6 +16059,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def InstProxyCount(self):
+        """当前实例所有 proxy 数量。
+        :rtype: int
+        """
         return self._InstProxyCount
 
     @InstProxyCount.setter
@@ -13505,6 +16070,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13513,6 +16081,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务启动时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -13521,6 +16092,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -13529,6 +16103,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def FinishedProxyList(self):
+        """完成 kill 任务的 proxyId。
+        :rtype: list of str
+        """
         return self._FinishedProxyList
 
     @FinishedProxyList.setter
@@ -13537,6 +16114,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def FailedProxyList(self):
+        """kill 任务实行失败的 proxyId。
+        :rtype: list of str
+        """
         return self._FailedProxyList
 
     @FailedProxyList.setter
@@ -13545,6 +16125,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务结束时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -13553,6 +16136,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def Progress(self):
+        """任务执行进度。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -13561,6 +16147,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -13607,6 +16196,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -13615,6 +16207,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -13652,6 +16247,9 @@ class TimeSlice(AbstractModel):
 
     @property
     def Count(self):
+        """总数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -13660,6 +16258,9 @@ class TimeSlice(AbstractModel):
 
     @property
     def Timestamp(self):
+        """统计开始时间
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -13700,6 +16301,9 @@ class UpdateAgentSwitchRequest(AbstractModel):
 
     @property
     def AgentId(self):
+        """Agent标识。
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -13708,6 +16312,9 @@ class UpdateAgentSwitchRequest(AbstractModel):
 
     @property
     def Switch(self):
+        """停止或重连Agent，支持值包括："on" - 重连Agent， "off" - 停止Agent。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -13716,6 +16323,9 @@ class UpdateAgentSwitchRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -13751,6 +16361,9 @@ class UpdateAgentSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13782,6 +16395,9 @@ class UpdateMonitorSwitchRequest(AbstractModel):
 
     @property
     def Switch(self):
+        """停止或重连Agent实例，支持值包括："on" - 重连实例， "off" - 停止实例。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -13790,6 +16406,9 @@ class UpdateMonitorSwitchRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -13798,6 +16417,9 @@ class UpdateMonitorSwitchRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -13833,6 +16455,9 @@ class UpdateMonitorSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13874,6 +16499,10 @@ class UserProfile(AbstractModel):
 
     @property
     def ProfileId(self):
+        """配置的id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProfileId
 
     @ProfileId.setter
@@ -13882,6 +16511,10 @@ class UserProfile(AbstractModel):
 
     @property
     def ProfileType(self):
+        """配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProfileType
 
     @ProfileType.setter
@@ -13890,6 +16523,10 @@ class UserProfile(AbstractModel):
 
     @property
     def ProfileLevel(self):
+        """配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProfileLevel
 
     @ProfileLevel.setter
@@ -13898,6 +16535,10 @@ class UserProfile(AbstractModel):
 
     @property
     def ProfileName(self):
+        """配置名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -13906,6 +16547,9 @@ class UserProfile(AbstractModel):
 
     @property
     def ProfileInfo(self):
+        """配置详情。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
+        """
         return self._ProfileInfo
 
     @ProfileInfo.setter
@@ -13954,6 +16598,9 @@ class VerifyUserAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -13962,6 +16609,9 @@ class VerifyUserAccountRequest(AbstractModel):
 
     @property
     def User(self):
+        """数据库账号名。
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -13970,6 +16620,9 @@ class VerifyUserAccountRequest(AbstractModel):
 
     @property
     def Password(self):
+        """数据库账号密码。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -13978,6 +16631,9 @@ class VerifyUserAccountRequest(AbstractModel):
 
     @property
     def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -14017,6 +16673,9 @@ class VerifyUserAccountResponse(AbstractModel):
 
     @property
     def SessionToken(self):
+        """会话token，有效期为5分钟。
+        :rtype: str
+        """
         return self._SessionToken
 
     @SessionToken.setter
@@ -14025,6 +16684,9 @@ class VerifyUserAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

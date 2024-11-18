@@ -70,6 +70,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def BatchTasks(self):
+        """批量任务名-地址
+        :rtype: list of ProbeTaskBasicConfiguration
+        """
         return self._BatchTasks
 
     @BatchTasks.setter
@@ -78,6 +81,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -86,6 +92,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Nodes(self):
+        """拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。
+        :rtype: list of str
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -94,6 +103,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Interval(self):
+        """拨测间隔
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -102,6 +114,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Parameters(self):
+        """拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -110,6 +125,11 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def TaskCategory(self):
+        """任务分类
+<li>1 = PC</li>
+<li> 2 = Mobile </li>
+        :rtype: int
+        """
         return self._TaskCategory
 
     @TaskCategory.setter
@@ -118,6 +138,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Cron(self):
+        """定时任务cron表达式
+        :rtype: str
+        """
         return self._Cron
 
     @Cron.setter
@@ -126,6 +149,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """资源标签值
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -134,6 +160,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def ProbeType(self):
+        """测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+        :rtype: int
+        """
         return self._ProbeType
 
     @ProbeType.setter
@@ -142,6 +171,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def PluginSource(self):
+        """插件类型，如CDN，详情参考云拨测官方文档。
+        :rtype: str
+        """
         return self._PluginSource
 
     @PluginSource.setter
@@ -150,6 +182,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def ClientNum(self):
+        """客户端ID
+        :rtype: str
+        """
         return self._ClientNum
 
     @ClientNum.setter
@@ -158,6 +193,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def NodeIpType(self):
+        """拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
+        :rtype: int
+        """
         return self._NodeIpType
 
     @NodeIpType.setter
@@ -166,6 +204,9 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def SubSyncFlag(self):
+        """供应商子账户同步标志
+        :rtype: int
+        """
         return self._SubSyncFlag
 
     @SubSyncFlag.setter
@@ -224,6 +265,9 @@ class CreateProbeTasksResponse(AbstractModel):
 
     @property
     def TaskIDs(self):
+        """任务ID列表
+        :rtype: list of str
+        """
         return self._TaskIDs
 
     @TaskIDs.setter
@@ -232,6 +276,9 @@ class CreateProbeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -258,6 +305,9 @@ class DeleteProbeTaskRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """任务 ID
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -302,6 +352,9 @@ class DeleteProbeTaskResponse(AbstractModel):
 
     @property
     def Total(self):
+        """任务总量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -310,6 +363,10 @@ class DeleteProbeTaskResponse(AbstractModel):
 
     @property
     def SuccessCount(self):
+        """任务成功量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccessCount
 
     @SuccessCount.setter
@@ -318,6 +375,10 @@ class DeleteProbeTaskResponse(AbstractModel):
 
     @property
     def Results(self):
+        """任务执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskResult
+        """
         return self._Results
 
     @Results.setter
@@ -326,6 +387,9 @@ class DeleteProbeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -428,6 +492,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def BeginTime(self):
+        """开始时间戳（毫秒级）
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -436,6 +503,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def EndTime(self):
+        """结束时间戳（毫秒级）
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -444,6 +514,14 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def TaskType(self):
+        """任务类型
+AnalyzeTaskType_Network：网络质量
+AnalyzeTaskType_Browse：页面性能
+AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）
+AnalyzeTaskType_Transport：端口性能
+AnalyzeTaskType_MediaStream：音视频体验
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -452,6 +530,11 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def SortField(self):
+        """待排序字段
+可以填写 ProbeTime 拨测时间排序
+也可填写SelectedFields 中的选中字段
+        :rtype: str
+        """
         return self._SortField
 
     @SortField.setter
@@ -460,6 +543,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Ascending(self):
+        """true表示升序
+        :rtype: bool
+        """
         return self._Ascending
 
     @Ascending.setter
@@ -468,6 +554,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def SelectedFields(self):
+        """选中字段，如ProbeTime、TransferTime、TransferSize等。
+        :rtype: list of str
+        """
         return self._SelectedFields
 
     @SelectedFields.setter
@@ -476,6 +565,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Offset(self):
+        """起始取数位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -484,6 +576,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Limit(self):
+        """取数数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -492,6 +587,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def TaskID(self):
+        """任务ID
+        :rtype: list of str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -500,6 +598,15 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Operators(self):
+        """拨测点运营商
+	
+这里实际按拨测结果中的运营商来填写即可
+
+电信：中国电信
+移动：中国移动
+联通：中国联通
+        :rtype: list of str
+        """
         return self._Operators
 
     @Operators.setter
@@ -508,6 +615,15 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Districts(self):
+        """拨测点地区
+	
+这里实际按拨测结果中的地区来填写即可
+
+国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海
+
+境外一般是国家名，如澳大利亚、新加坡
+        :rtype: list of str
+        """
         return self._Districts
 
     @Districts.setter
@@ -516,6 +632,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def ErrorTypes(self):
+        """错误类型
+        :rtype: list of str
+        """
         return self._ErrorTypes
 
     @ErrorTypes.setter
@@ -524,6 +643,17 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def City(self):
+        """城市
+这里实际按拨测结果中的城市来填写即可
+
+示例：
+
+深圳市
+武汉市
+首尔
+多伦多
+        :rtype: list of str
+        """
         return self._City
 
     @City.setter
@@ -532,6 +662,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def ScrollID(self):
+        """es scroll查询id
+        :rtype: str
+        """
         return self._ScrollID
 
     @ScrollID.setter
@@ -540,6 +673,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def QueryFlag(self):
+        """详情数据下载
+        :rtype: str
+        """
         return self._QueryFlag
 
     @QueryFlag.setter
@@ -596,6 +732,9 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     @property
     def DataSet(self):
+        """单次详情数据
+        :rtype: list of DetailedSingleDataDefine
+        """
         return self._DataSet
 
     @DataSet.setter
@@ -604,6 +743,9 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     @property
     def TotalNumber(self):
+        """符合条件的数据总数
+        :rtype: int
+        """
         return self._TotalNumber
 
     @TotalNumber.setter
@@ -612,6 +754,9 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     @property
     def ScrollID(self):
+        """es scroll查询的id
+        :rtype: str
+        """
         return self._ScrollID
 
     @ScrollID.setter
@@ -620,6 +765,9 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -656,6 +804,9 @@ class DescribeInstantTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -664,6 +815,9 @@ class DescribeInstantTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """起始位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -705,6 +859,10 @@ class DescribeInstantTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SingleInstantTask
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -713,6 +871,9 @@ class DescribeInstantTasksResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -721,6 +882,9 @@ class DescribeInstantTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -782,6 +946,12 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def NodeType(self):
+        """节点类型
+<li> 1 = IDC </li>
+<li> 2 = LastMile </li>
+<li> 3 = Mobile </li>
+        :rtype: int
+        """
         return self._NodeType
 
     @NodeType.setter
@@ -790,6 +960,12 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def Location(self):
+        """节点区域
+<li> 1 = 中国大陆 </li>
+<li> 2 = 港澳台 </li>
+<li> 3 = 境外</li>
+        :rtype: int
+        """
         return self._Location
 
     @Location.setter
@@ -798,6 +974,9 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def IsIPv6(self):
+        """是否IPv6
+        :rtype: bool
+        """
         return self._IsIPv6
 
     @IsIPv6.setter
@@ -806,6 +985,9 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def NodeName(self):
+        """名字模糊搜索
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -814,6 +996,11 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式
+<li>1 = 试用版本</li>
+<li> 2 = 付费版本 </li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -822,6 +1009,15 @@ class DescribeNodesRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型
+<li>1 = 页面性能</li>
+<li>2 = 文件上传</li>
+<li>3 = 文件下载</li>
+<li>4 = 端口性能</li>
+<li>5 = 网络质量</li>
+<li>6 = 音视频体验</li>
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -864,6 +1060,10 @@ class DescribeNodesResponse(AbstractModel):
 
     @property
     def NodeSet(self):
+        """节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeDefineExt
+        """
         return self._NodeSet
 
     @NodeSet.setter
@@ -872,6 +1072,9 @@ class DescribeNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -924,6 +1127,14 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def AnalyzeTaskType(self):
+        """分析任务类型，支持以下几种类型：
+AnalyzeTaskType_Network：网络质量
+AnalyzeTaskType_Browse：页面性能
+AnalyzeTaskType_Transport：端口性能
+AnalyzeTaskType_UploadDownload：文件传输
+AnalyzeTaskType_MediaStream：音视频体验
+        :rtype: str
+        """
         return self._AnalyzeTaskType
 
     @AnalyzeTaskType.setter
@@ -932,6 +1143,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def MetricType(self):
+        """指标类型（counter、gauge以及histogram），指标查询默认传gauge
+        :rtype: str
+        """
         return self._MetricType
 
     @MetricType.setter
@@ -940,6 +1154,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Field(self):
+        """指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -948,6 +1165,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Filter(self):
+        """过滤条件可以传单个过滤条件也可以拼接多个参数
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -956,6 +1176,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def GroupBy(self):
+        """聚合时间, 1m、1d、30d 等等
+        :rtype: str
+        """
         return self._GroupBy
 
     @GroupBy.setter
@@ -964,6 +1187,10 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Filters(self):
+        """多条件过滤，支持多个过滤条件组合查询
+例如：[""host" = 'www.test.com'", "time >= now()-1h"]
+        :rtype: list of str
+        """
         return self._Filters
 
     @Filters.setter
@@ -1005,6 +1232,9 @@ class DescribeProbeMetricDataResponse(AbstractModel):
 
     @property
     def MetricSet(self):
+        """ 返回指标 JSON 序列化后的字符串，具体如下所示："[{\"name\":\"task_navigate_request_gauge\",\"columns\":[\"time\",\"avg(first_screen_time) / 1000\"],\"values\":[[1641571200,6.756600000000001]],\"tags\":null}]"
+        :rtype: str
+        """
         return self._MetricSet
 
     @MetricSet.setter
@@ -1013,6 +1243,9 @@ class DescribeProbeMetricDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1059,6 +1292,12 @@ class DescribeProbeNodesRequest(AbstractModel):
 
     @property
     def NodeType(self):
+        """节点类型
+<li> 1 = IDC </li>
+<li> 2 = LastMile </li>
+<li> 3 = Mobile </li>
+        :rtype: int
+        """
         return self._NodeType
 
     @NodeType.setter
@@ -1067,6 +1306,12 @@ class DescribeProbeNodesRequest(AbstractModel):
 
     @property
     def Location(self):
+        """节点区域
+<li> 1 = 中国大陆 </li>
+<li> 2 = 港澳台 </li>
+<li> 3 = 海外 </li>
+        :rtype: int
+        """
         return self._Location
 
     @Location.setter
@@ -1075,6 +1320,9 @@ class DescribeProbeNodesRequest(AbstractModel):
 
     @property
     def IsIPv6(self):
+        """是否IPv6
+        :rtype: bool
+        """
         return self._IsIPv6
 
     @IsIPv6.setter
@@ -1083,6 +1331,9 @@ class DescribeProbeNodesRequest(AbstractModel):
 
     @property
     def NodeName(self):
+        """名字模糊搜索
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -1091,6 +1342,11 @@ class DescribeProbeNodesRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式
+<li>1 = 试用版本</li>
+<li> 2 = 付费版本 </li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1132,6 +1388,10 @@ class DescribeProbeNodesResponse(AbstractModel):
 
     @property
     def NodeSet(self):
+        """节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeDefine
+        """
         return self._NodeSet
 
     @NodeSet.setter
@@ -1140,6 +1400,9 @@ class DescribeProbeNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1229,6 +1492,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskIDs(self):
+        """任务 ID  列表
+        :rtype: list of str
+        """
         return self._TaskIDs
 
     @TaskIDs.setter
@@ -1237,6 +1503,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -1245,6 +1514,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TargetAddress(self):
+        """拨测目标
+        :rtype: str
+        """
         return self._TargetAddress
 
     @TargetAddress.setter
@@ -1253,6 +1525,19 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态列表
+<li>1 = 创建中</li>
+<li> 2 = 运行中 </li>
+<li> 3 = 运行异常 </li>
+<li> 4 = 暂停中 </li>
+<li> 5 = 暂停异常 </li>
+<li> 6 = 任务暂停 </li>
+<li> 7 = 任务删除中 </li>
+<li> 8 = 任务删除异常 </li>
+<li> 9 = 任务删除</li>
+<li> 10 = 定时任务暂停中 </li>
+        :rtype: list of int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -1261,6 +1546,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1269,6 +1557,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1277,6 +1568,11 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式
+<li>1 = 试用版本</li>
+<li> 2 = 付费版本 </li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1285,6 +1581,11 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def OrderState(self):
+        """订单状态
+<li>1 = 正常</li>
+<li> 2 = 欠费 </li>
+        :rtype: int
+        """
         return self._OrderState
 
     @OrderState.setter
@@ -1293,6 +1594,17 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """拨测类型
+<li>1 = 页面浏览</li>
+<li> 2 =文件上传 </li>
+<li> 3 = 文件下载</li>
+<li> 4 = 端口性能 </li>
+<li> 5 = 网络质量 </li>
+<li> 6 =流媒体 </li>
+
+即使拨测只支持页面浏览，网络质量，文件下载
+        :rtype: list of int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -1301,6 +1613,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskCategory(self):
+        """节点类型
+        :rtype: list of int
+        """
         return self._TaskCategory
 
     @TaskCategory.setter
@@ -1309,6 +1624,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """排序的列
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -1317,6 +1635,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def Ascend(self):
+        """是否正序
+        :rtype: bool
+        """
         return self._Ascend
 
     @Ascend.setter
@@ -1325,6 +1646,9 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """资源标签值
+        :rtype: list of KeyValuePair
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1382,6 +1706,10 @@ class DescribeProbeTasksResponse(AbstractModel):
 
     @property
     def TaskSet(self):
+        """任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ProbeTask
+        """
         return self._TaskSet
 
     @TaskSet.setter
@@ -1390,6 +1718,9 @@ class DescribeProbeTasksResponse(AbstractModel):
 
     @property
     def Total(self):
+        """任务总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1398,6 +1729,9 @@ class DescribeProbeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1436,6 +1770,9 @@ class DetailedSingleDataDefine(AbstractModel):
 
     @property
     def ProbeTime(self):
+        """拨测时间戳
+        :rtype: int
+        """
         return self._ProbeTime
 
     @ProbeTime.setter
@@ -1444,6 +1781,9 @@ class DetailedSingleDataDefine(AbstractModel):
 
     @property
     def Labels(self):
+        """储存所有string类型字段
+        :rtype: list of Label
+        """
         return self._Labels
 
     @Labels.setter
@@ -1452,6 +1792,9 @@ class DetailedSingleDataDefine(AbstractModel):
 
     @property
     def Fields(self):
+        """储存所有float类型字段
+        :rtype: list of Field
+        """
         return self._Fields
 
     @Fields.setter
@@ -1503,6 +1846,9 @@ class Field(AbstractModel):
 
     @property
     def ID(self):
+        """自定义字段编号
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1511,6 +1857,9 @@ class Field(AbstractModel):
 
     @property
     def Name(self):
+        """自定义字段名称/说明
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1519,6 +1868,9 @@ class Field(AbstractModel):
 
     @property
     def Value(self):
+        """字段值
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -1557,6 +1909,9 @@ class KeyValuePair(AbstractModel):
 
     @property
     def Key(self):
+        """健
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1565,6 +1920,9 @@ class KeyValuePair(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1605,6 +1963,9 @@ class Label(AbstractModel):
 
     @property
     def ID(self):
+        """自定义字段编号
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1613,6 +1974,9 @@ class Label(AbstractModel):
 
     @property
     def Name(self):
+        """自定义字段名称/说明
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1621,6 +1985,9 @@ class Label(AbstractModel):
 
     @property
     def Value(self):
+        """字段值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1695,6 +2062,9 @@ class NodeDefine(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1703,6 +2073,9 @@ class NodeDefine(AbstractModel):
 
     @property
     def Code(self):
+        """节点代码
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -1711,6 +2084,12 @@ class NodeDefine(AbstractModel):
 
     @property
     def Type(self):
+        """节点类型
+<li> 1 = IDC </li>
+<li> 2 = LastMile </li>
+<li> 3 = Mobile </li>
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1719,6 +2098,9 @@ class NodeDefine(AbstractModel):
 
     @property
     def NetService(self):
+        """网络服务商
+        :rtype: str
+        """
         return self._NetService
 
     @NetService.setter
@@ -1727,6 +2109,9 @@ class NodeDefine(AbstractModel):
 
     @property
     def District(self):
+        """区域
+        :rtype: str
+        """
         return self._District
 
     @District.setter
@@ -1735,6 +2120,9 @@ class NodeDefine(AbstractModel):
 
     @property
     def City(self):
+        """城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -1743,6 +2131,12 @@ class NodeDefine(AbstractModel):
 
     @property
     def IPType(self):
+        """IP 类型
+<li> 1 = IPv4 </li>
+<li> 2 = IPv6 </li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IPType
 
     @IPType.setter
@@ -1751,6 +2145,13 @@ class NodeDefine(AbstractModel):
 
     @property
     def Location(self):
+        """区域
+<li> 1 = 中国大陆 </li>
+<li> 2 = 港澳台 </li>
+<li> 3 = 国外 </li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Location
 
     @Location.setter
@@ -1759,6 +2160,10 @@ class NodeDefine(AbstractModel):
 
     @property
     def CodeType(self):
+        """节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CodeType
 
     @CodeType.setter
@@ -1767,6 +2172,10 @@ class NodeDefine(AbstractModel):
 
     @property
     def NodeDefineStatus(self):
+        """节点状态：1-运行,2-下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NodeDefineStatus
 
     @NodeDefineStatus.setter
@@ -1848,6 +2257,9 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1856,6 +2268,9 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def Code(self):
+        """节点代码
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -1864,6 +2279,12 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def Type(self):
+        """节点类型
+<li> 1 = IDC </li>
+<li> 2 = LastMile </li>
+<li> 3 = Mobile </li>
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1872,6 +2293,9 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def NetService(self):
+        """网络服务商
+        :rtype: str
+        """
         return self._NetService
 
     @NetService.setter
@@ -1880,6 +2304,9 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def District(self):
+        """区域
+        :rtype: str
+        """
         return self._District
 
     @District.setter
@@ -1888,6 +2315,9 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def City(self):
+        """城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -1896,6 +2326,12 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def IPType(self):
+        """IP 类型
+<li> 1 = IPv4 </li>
+<li> 2 = IPv6 </li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IPType
 
     @IPType.setter
@@ -1904,6 +2340,13 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def Location(self):
+        """区域
+<li> 1 = 中国大陆 </li>
+<li> 2 = 港澳台 </li>
+<li> 3 = 境外 </li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Location
 
     @Location.setter
@@ -1912,6 +2355,10 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def CodeType(self):
+        """节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CodeType
 
     @CodeType.setter
@@ -1920,6 +2367,10 @@ class NodeDefineExt(AbstractModel):
 
     @property
     def TaskTypes(self):
+        """节点支持的任务类型。1: 页面性能 2: 文件上传 3: 文件下载 4: 端口性能 5: 网络质量 6: 音视频体验
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._TaskTypes
 
     @TaskTypes.setter
@@ -2042,6 +2493,10 @@ class ProbeTask(AbstractModel):
 
     @property
     def Name(self):
+        """任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2050,6 +2505,9 @@ class ProbeTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2058,6 +2516,17 @@ class ProbeTask(AbstractModel):
 
     @property
     def TaskType(self):
+        """拨测类型
+<li>1 = 页面浏览</li>
+<li> 2 =文件上传 </li>
+<li> 3 = 文件下载</li>
+<li> 4 = 端口性能 </li>
+<li> 5 = 网络质量 </li>
+<li> 6 =流媒体 </li>
+
+即时拨测只支持页面浏览，网络质量，文件下载
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2066,6 +2535,9 @@ class ProbeTask(AbstractModel):
 
     @property
     def Nodes(self):
+        """拨测节点列表
+        :rtype: list of str
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -2074,6 +2546,10 @@ class ProbeTask(AbstractModel):
 
     @property
     def NodeIpType(self):
+        """拨测任务所选的拨测点IP类型，0-不限，1-IPv4，2-IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NodeIpType
 
     @NodeIpType.setter
@@ -2082,6 +2558,9 @@ class ProbeTask(AbstractModel):
 
     @property
     def Interval(self):
+        """拨测间隔
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -2090,6 +2569,9 @@ class ProbeTask(AbstractModel):
 
     @property
     def Parameters(self):
+        """拨测参数
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -2098,6 +2580,19 @@ class ProbeTask(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+<li>1 = 创建中</li>
+<li> 2 = 运行中 </li>
+<li> 3 = 运行异常 </li>
+<li> 4 = 暂停中 </li>
+<li> 5 = 暂停异常 </li>
+<li> 6 = 任务暂停 </li>
+<li> 7 = 任务删除中 </li>
+<li> 8 = 任务删除异常 </li>
+<li> 9 = 任务删除</li>
+<li> 10 = 定时任务暂停中 </li>
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2106,6 +2601,9 @@ class ProbeTask(AbstractModel):
 
     @property
     def TargetAddress(self):
+        """目标地址
+        :rtype: str
+        """
         return self._TargetAddress
 
     @TargetAddress.setter
@@ -2114,6 +2612,11 @@ class ProbeTask(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式
+<li>1 = 试用版本</li>
+<li> 2 = 付费版本 </li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -2122,6 +2625,11 @@ class ProbeTask(AbstractModel):
 
     @property
     def OrderState(self):
+        """订单状态
+<li>1 = 正常</li>
+<li> 2 = 欠费 </li>
+        :rtype: int
+        """
         return self._OrderState
 
     @OrderState.setter
@@ -2130,6 +2638,11 @@ class ProbeTask(AbstractModel):
 
     @property
     def TaskCategory(self):
+        """任务分类
+<li>1 = PC</li>
+<li> 2 = Mobile </li>
+        :rtype: int
+        """
         return self._TaskCategory
 
     @TaskCategory.setter
@@ -2138,6 +2651,9 @@ class ProbeTask(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -2146,6 +2662,10 @@ class ProbeTask(AbstractModel):
 
     @property
     def Cron(self):
+        """定时任务cron表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cron
 
     @Cron.setter
@@ -2154,6 +2674,12 @@ class ProbeTask(AbstractModel):
 
     @property
     def CronState(self):
+        """定时任务启动状态
+<li>1 = 定时任务表达式生效</li>
+<li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CronState
 
     @CronState.setter
@@ -2162,6 +2688,10 @@ class ProbeTask(AbstractModel):
 
     @property
     def TagInfoList(self):
+        """任务当前绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KeyValuePair
+        """
         return self._TagInfoList
 
     @TagInfoList.setter
@@ -2170,6 +2700,10 @@ class ProbeTask(AbstractModel):
 
     @property
     def SubSyncFlag(self):
+        """是否为同步账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SubSyncFlag
 
     @SubSyncFlag.setter
@@ -2227,6 +2761,9 @@ class ProbeTaskBasicConfiguration(AbstractModel):
 
     @property
     def Name(self):
+        """拨测任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2235,6 +2772,9 @@ class ProbeTaskBasicConfiguration(AbstractModel):
 
     @property
     def TargetAddress(self):
+        """拨测目标地址
+        :rtype: str
+        """
         return self._TargetAddress
 
     @TargetAddress.setter
@@ -2269,6 +2809,9 @@ class ResumeProbeTaskRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """任务 ID
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -2313,6 +2856,9 @@ class ResumeProbeTaskResponse(AbstractModel):
 
     @property
     def Total(self):
+        """任务总量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2321,6 +2867,10 @@ class ResumeProbeTaskResponse(AbstractModel):
 
     @property
     def SuccessCount(self):
+        """任务成功量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccessCount
 
     @SuccessCount.setter
@@ -2329,6 +2879,10 @@ class ResumeProbeTaskResponse(AbstractModel):
 
     @property
     def Results(self):
+        """任务执行详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskResult
+        """
         return self._Results
 
     @Results.setter
@@ -2337,6 +2891,9 @@ class ResumeProbeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2391,6 +2948,9 @@ class SingleInstantTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2399,6 +2959,9 @@ class SingleInstantTask(AbstractModel):
 
     @property
     def TargetAddress(self):
+        """任务地址
+        :rtype: str
+        """
         return self._TargetAddress
 
     @TargetAddress.setter
@@ -2407,6 +2970,9 @@ class SingleInstantTask(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2415,6 +2981,9 @@ class SingleInstantTask(AbstractModel):
 
     @property
     def ProbeTime(self):
+        """测试时间
+        :rtype: int
+        """
         return self._ProbeTime
 
     @ProbeTime.setter
@@ -2423,6 +2992,9 @@ class SingleInstantTask(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2431,6 +3003,9 @@ class SingleInstantTask(AbstractModel):
 
     @property
     def SuccessRate(self):
+        """成功率
+        :rtype: float
+        """
         return self._SuccessRate
 
     @SuccessRate.setter
@@ -2439,6 +3014,9 @@ class SingleInstantTask(AbstractModel):
 
     @property
     def NodeCount(self):
+        """节点数量
+        :rtype: int
+        """
         return self._NodeCount
 
     @NodeCount.setter
@@ -2447,6 +3025,9 @@ class SingleInstantTask(AbstractModel):
 
     @property
     def TaskCategory(self):
+        """节点类型
+        :rtype: int
+        """
         return self._TaskCategory
 
     @TaskCategory.setter
@@ -2487,6 +3068,9 @@ class SuspendProbeTaskRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """任务 ID
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -2531,6 +3115,9 @@ class SuspendProbeTaskResponse(AbstractModel):
 
     @property
     def Total(self):
+        """任务总量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2539,6 +3126,10 @@ class SuspendProbeTaskResponse(AbstractModel):
 
     @property
     def SuccessCount(self):
+        """任务成功量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccessCount
 
     @SuccessCount.setter
@@ -2547,6 +3138,10 @@ class SuspendProbeTaskResponse(AbstractModel):
 
     @property
     def Results(self):
+        """任务执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskResult
+        """
         return self._Results
 
     @Results.setter
@@ -2555,6 +3150,9 @@ class SuspendProbeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2591,6 +3189,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2599,6 +3200,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """value
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -2641,6 +3245,9 @@ class TaskResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2649,6 +3256,10 @@ class TaskResult(AbstractModel):
 
     @property
     def Success(self):
+        """是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Success
 
     @Success.setter
@@ -2657,6 +3268,10 @@ class TaskResult(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -2695,6 +3310,9 @@ class UpdateProbeTaskAttributesRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2703,6 +3321,9 @@ class UpdateProbeTaskAttributesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名，该参数为空时不作任何修改。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2737,6 +3358,9 @@ class UpdateProbeTaskAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2770,6 +3394,8 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         :type ResourceIDs: list of str
         :param _NodeIpType: 拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
         :type NodeIpType: int
+        :param _BatchTasks: 批量任务名-地址
+        :type BatchTasks: list of ProbeTaskBasicConfiguration
         """
         self._TaskIds = None
         self._Nodes = None
@@ -2778,9 +3404,13 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         self._Cron = None
         self._ResourceIDs = None
         self._NodeIpType = None
+        self._BatchTasks = None
 
     @property
     def TaskIds(self):
+        """任务 ID，如task-n1wchki8
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -2789,6 +3419,9 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def Nodes(self):
+        """拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。
+        :rtype: list of str
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -2797,6 +3430,9 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def Interval(self):
+        """拨测间隔，如30，单位为分钟。
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -2805,6 +3441,9 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def Parameters(self):
+        """拨测参数，详细参数配置可参考云拨测官网文档。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -2813,6 +3452,9 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def Cron(self):
+        """定时任务cron表达式
+        :rtype: str
+        """
         return self._Cron
 
     @Cron.setter
@@ -2821,6 +3463,10 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def ResourceIDs(self):
+        """预付费套餐id
+需要与taskId对应
+        :rtype: list of str
+        """
         return self._ResourceIDs
 
     @ResourceIDs.setter
@@ -2829,11 +3475,25 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def NodeIpType(self):
+        """拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
+        :rtype: int
+        """
         return self._NodeIpType
 
     @NodeIpType.setter
     def NodeIpType(self, NodeIpType):
         self._NodeIpType = NodeIpType
+
+    @property
+    def BatchTasks(self):
+        """批量任务名-地址
+        :rtype: list of ProbeTaskBasicConfiguration
+        """
+        return self._BatchTasks
+
+    @BatchTasks.setter
+    def BatchTasks(self, BatchTasks):
+        self._BatchTasks = BatchTasks
 
 
     def _deserialize(self, params):
@@ -2844,6 +3504,12 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         self._Cron = params.get("Cron")
         self._ResourceIDs = params.get("ResourceIDs")
         self._NodeIpType = params.get("NodeIpType")
+        if params.get("BatchTasks") is not None:
+            self._BatchTasks = []
+            for item in params.get("BatchTasks"):
+                obj = ProbeTaskBasicConfiguration()
+                obj._deserialize(item)
+                self._BatchTasks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2868,6 +3534,9 @@ class UpdateProbeTaskConfigurationListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

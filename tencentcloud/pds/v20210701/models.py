@@ -32,6 +32,9 @@ class DescribeNewUserAcquisitionRequest(AbstractModel):
 
     @property
     def ServiceParams(self):
+        """用户信息
+        :rtype: :class:`tencentcloud.pds.v20210701.models.UserInfos`
+        """
         return self._ServiceParams
 
     @ServiceParams.setter
@@ -70,6 +73,9 @@ class DescribeNewUserAcquisitionResponse(AbstractModel):
 
     @property
     def ServiceRsp(self):
+        """用户信誉分，1-5从低到高
+        :rtype: :class:`tencentcloud.pds.v20210701.models.Score`
+        """
         return self._ServiceRsp
 
     @ServiceRsp.setter
@@ -78,6 +84,9 @@ class DescribeNewUserAcquisitionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -106,6 +115,9 @@ class DescribeStockEstimationRequest(AbstractModel):
 
     @property
     def ServiceParams(self):
+        """用户信息
+        :rtype: :class:`tencentcloud.pds.v20210701.models.UserInfos`
+        """
         return self._ServiceParams
 
     @ServiceParams.setter
@@ -144,6 +156,9 @@ class DescribeStockEstimationResponse(AbstractModel):
 
     @property
     def ServiceRsp(self):
+        """用户信誉分，1-5从低到高
+        :rtype: :class:`tencentcloud.pds.v20210701.models.Score`
+        """
         return self._ServiceRsp
 
     @ServiceRsp.setter
@@ -152,6 +167,9 @@ class DescribeStockEstimationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -180,6 +198,9 @@ class Score(AbstractModel):
 
     @property
     def Star(self):
+        """信誉分，1-5从低到高
+        :rtype: int
+        """
         return self._Star
 
     @Star.setter
@@ -231,6 +252,9 @@ class UserInfos(AbstractModel):
 
     @property
     def PhoneNum(self):
+        """用户的手机号
+        :rtype: str
+        """
         return self._PhoneNum
 
     @PhoneNum.setter
@@ -239,6 +263,9 @@ class UserInfos(AbstractModel):
 
     @property
     def Openid(self):
+        """用户的微信OpenID
+        :rtype: str
+        """
         return self._Openid
 
     @Openid.setter
@@ -247,6 +274,9 @@ class UserInfos(AbstractModel):
 
     @property
     def IP(self):
+        """用户移动设备的客户端IP
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -255,6 +285,9 @@ class UserInfos(AbstractModel):
 
     @property
     def WiFiBssid(self):
+        """用户WiFi的BSSID
+        :rtype: str
+        """
         return self._WiFiBssid
 
     @WiFiBssid.setter
@@ -263,6 +296,9 @@ class UserInfos(AbstractModel):
 
     @property
     def IMEI(self):
+        """用户Android设备的IMEI
+        :rtype: str
+        """
         return self._IMEI
 
     @IMEI.setter
@@ -271,6 +307,9 @@ class UserInfos(AbstractModel):
 
     @property
     def OAID(self):
+        """用户Android设备的OAID
+        :rtype: str
+        """
         return self._OAID
 
     @OAID.setter
@@ -279,6 +318,9 @@ class UserInfos(AbstractModel):
 
     @property
     def IDFA(self):
+        """用户iOS设备的IDFA
+        :rtype: str
+        """
         return self._IDFA
 
     @IDFA.setter

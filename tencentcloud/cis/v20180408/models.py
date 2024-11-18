@@ -65,6 +65,9 @@ class Container(AbstractModel):
 
     @property
     def Command(self):
+        """容器启动命令
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -73,6 +76,9 @@ class Container(AbstractModel):
 
     @property
     def Args(self):
+        """容器启动参数
+        :rtype: list of str
+        """
         return self._Args
 
     @Args.setter
@@ -81,6 +87,9 @@ class Container(AbstractModel):
 
     @property
     def EnvironmentVars(self):
+        """容器环境变量
+        :rtype: list of EnvironmentVar
+        """
         return self._EnvironmentVars
 
     @EnvironmentVars.setter
@@ -89,6 +98,9 @@ class Container(AbstractModel):
 
     @property
     def Image(self):
+        """镜像
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -97,6 +109,9 @@ class Container(AbstractModel):
 
     @property
     def Name(self):
+        """容器名，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 63个字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -105,6 +120,9 @@ class Container(AbstractModel):
 
     @property
     def Cpu(self):
+        """CPU，单位：核
+        :rtype: float
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -113,6 +131,9 @@ class Container(AbstractModel):
 
     @property
     def Memory(self):
+        """内存，单位：Gi
+        :rtype: float
+        """
         return self._Memory
 
     @Memory.setter
@@ -121,6 +142,9 @@ class Container(AbstractModel):
 
     @property
     def RestartCount(self):
+        """重启次数
+        :rtype: int
+        """
         return self._RestartCount
 
     @RestartCount.setter
@@ -129,6 +153,9 @@ class Container(AbstractModel):
 
     @property
     def CurrentState(self):
+        """当前状态
+        :rtype: :class:`tencentcloud.cis.v20180408.models.ContainerState`
+        """
         return self._CurrentState
 
     @CurrentState.setter
@@ -137,6 +164,9 @@ class Container(AbstractModel):
 
     @property
     def PreviousState(self):
+        """上一次状态
+        :rtype: :class:`tencentcloud.cis.v20180408.models.ContainerState`
+        """
         return self._PreviousState
 
     @PreviousState.setter
@@ -145,6 +175,9 @@ class Container(AbstractModel):
 
     @property
     def WorkingDir(self):
+        """容器工作目录
+        :rtype: str
+        """
         return self._WorkingDir
 
     @WorkingDir.setter
@@ -153,6 +186,9 @@ class Container(AbstractModel):
 
     @property
     def ContainerId(self):
+        """容器ID
+        :rtype: str
+        """
         return self._ContainerId
 
     @ContainerId.setter
@@ -248,6 +284,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """容器实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -256,6 +295,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def InstanceName(self):
+        """容器实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -264,6 +306,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def VpcId(self):
+        """容器实例所属VpcId
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -272,6 +317,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def SubnetId(self):
+        """容器实例所属SubnetId
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -280,6 +328,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def State(self):
+        """容器实例状态
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -288,6 +339,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def Containers(self):
+        """容器列表
+        :rtype: list of Container
+        """
         return self._Containers
 
     @Containers.setter
@@ -296,6 +350,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def RestartPolicy(self):
+        """重启策略
+        :rtype: str
+        """
         return self._RestartPolicy
 
     @RestartPolicy.setter
@@ -304,6 +361,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -312,6 +372,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def StartTime(self):
+        """启动时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -320,6 +383,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -328,6 +394,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def VpcName(self):
+        """Vpc名称
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -336,6 +405,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def VpcCidr(self):
+        """VpcCidr
+        :rtype: str
+        """
         return self._VpcCidr
 
     @VpcCidr.setter
@@ -344,6 +416,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def SubnetName(self):
+        """SubnetName
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -352,6 +427,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def SubnetCidr(self):
+        """子网Cidr
+        :rtype: str
+        """
         return self._SubnetCidr
 
     @SubnetCidr.setter
@@ -360,6 +438,9 @@ class ContainerInstance(AbstractModel):
 
     @property
     def LanIp(self):
+        """内网IP
+        :rtype: str
+        """
         return self._LanIp
 
     @LanIp.setter
@@ -418,6 +499,9 @@ class ContainerLog(AbstractModel):
 
     @property
     def Name(self):
+        """容器名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -426,6 +510,9 @@ class ContainerLog(AbstractModel):
 
     @property
     def Log(self):
+        """日志
+        :rtype: str
+        """
         return self._Log
 
     @Log.setter
@@ -434,6 +521,9 @@ class ContainerLog(AbstractModel):
 
     @property
     def Time(self):
+        """日志记录时间
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -481,6 +571,9 @@ class ContainerState(AbstractModel):
 
     @property
     def StartTime(self):
+        """容器运行开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -489,6 +582,9 @@ class ContainerState(AbstractModel):
 
     @property
     def State(self):
+        """容器状态
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -497,6 +593,9 @@ class ContainerState(AbstractModel):
 
     @property
     def Reason(self):
+        """状态详情
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -505,6 +604,9 @@ class ContainerState(AbstractModel):
 
     @property
     def FinishTime(self):
+        """容器运行结束时间
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -513,6 +615,9 @@ class ContainerState(AbstractModel):
 
     @property
     def ExitCode(self):
+        """容器运行退出码
+        :rtype: int
+        """
         return self._ExitCode
 
     @ExitCode.setter
@@ -565,6 +670,9 @@ class CreateContainerInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -573,6 +681,9 @@ class CreateContainerInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpcId
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -581,6 +692,9 @@ class CreateContainerInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """subnetId
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -589,6 +703,9 @@ class CreateContainerInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """容器实例名称，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 40个字符
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -597,6 +714,9 @@ class CreateContainerInstanceRequest(AbstractModel):
 
     @property
     def RestartPolicy(self):
+        """重启策略（Always,OnFailure,Never）
+        :rtype: str
+        """
         return self._RestartPolicy
 
     @RestartPolicy.setter
@@ -605,6 +725,9 @@ class CreateContainerInstanceRequest(AbstractModel):
 
     @property
     def Containers(self):
+        """容器列表
+        :rtype: list of Container
+        """
         return self._Containers
 
     @Containers.setter
@@ -651,6 +774,9 @@ class CreateContainerInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """容器实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -659,6 +785,9 @@ class CreateContainerInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -685,6 +814,9 @@ class DeleteContainerInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """容器实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -721,6 +853,9 @@ class DeleteContainerInstanceResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """操作信息
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -729,6 +864,9 @@ class DeleteContainerInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -755,6 +893,9 @@ class DescribeContainerInstanceEventsRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """容器实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -791,6 +932,9 @@ class DescribeContainerInstanceEventsResponse(AbstractModel):
 
     @property
     def EventList(self):
+        """容器实例事件列表
+        :rtype: list of Event
+        """
         return self._EventList
 
     @EventList.setter
@@ -799,6 +943,9 @@ class DescribeContainerInstanceEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -830,6 +977,9 @@ class DescribeContainerInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """容器实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -866,6 +1016,9 @@ class DescribeContainerInstanceResponse(AbstractModel):
 
     @property
     def ContainerInstance(self):
+        """容器实例详细信息
+        :rtype: :class:`tencentcloud.cis.v20180408.models.ContainerInstance`
+        """
         return self._ContainerInstance
 
     @ContainerInstance.setter
@@ -874,6 +1027,9 @@ class DescribeContainerInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -911,6 +1067,9 @@ class DescribeContainerInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -919,6 +1078,9 @@ class DescribeContainerInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -927,6 +1089,12 @@ class DescribeContainerInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+- Zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。
+- VpcId - String - 是否必填：否 -（过滤条件）按照VpcId过滤。
+- InstanceName - String - 是否必填：否 -（过滤条件）按照容器实例名称做模糊查询。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -973,6 +1141,9 @@ class DescribeContainerInstancesResponse(AbstractModel):
 
     @property
     def ContainerInstanceList(self):
+        """容器实例列表
+        :rtype: list of ContainerInstance
+        """
         return self._ContainerInstanceList
 
     @ContainerInstanceList.setter
@@ -981,6 +1152,9 @@ class DescribeContainerInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """容器实例总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -989,6 +1163,9 @@ class DescribeContainerInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1030,6 +1207,9 @@ class DescribeContainerLogRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """容器实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1038,6 +1218,9 @@ class DescribeContainerLogRequest(AbstractModel):
 
     @property
     def ContainerName(self):
+        """容器名称
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -1046,6 +1229,9 @@ class DescribeContainerLogRequest(AbstractModel):
 
     @property
     def Tail(self):
+        """日志显示尾部行数
+        :rtype: int
+        """
         return self._Tail
 
     @Tail.setter
@@ -1054,6 +1240,9 @@ class DescribeContainerLogRequest(AbstractModel):
 
     @property
     def SinceTime(self):
+        """日志起始时间
+        :rtype: str
+        """
         return self._SinceTime
 
     @SinceTime.setter
@@ -1093,6 +1282,9 @@ class DescribeContainerLogResponse(AbstractModel):
 
     @property
     def ContainerLogList(self):
+        """容器日志数组
+        :rtype: list of ContainerLog
+        """
         return self._ContainerLogList
 
     @ContainerLogList.setter
@@ -1101,6 +1293,9 @@ class DescribeContainerLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1135,6 +1330,9 @@ class EnvironmentVar(AbstractModel):
 
     @property
     def Name(self):
+        """环境变量名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1143,6 +1341,9 @@ class EnvironmentVar(AbstractModel):
 
     @property
     def Value(self):
+        """环境变量值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1192,6 +1393,9 @@ class Event(AbstractModel):
 
     @property
     def FirstSeen(self):
+        """事件首次出现时间
+        :rtype: str
+        """
         return self._FirstSeen
 
     @FirstSeen.setter
@@ -1200,6 +1404,9 @@ class Event(AbstractModel):
 
     @property
     def LastSeen(self):
+        """事件上次出现时间
+        :rtype: str
+        """
         return self._LastSeen
 
     @LastSeen.setter
@@ -1208,6 +1415,9 @@ class Event(AbstractModel):
 
     @property
     def Level(self):
+        """事件等级
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -1216,6 +1426,9 @@ class Event(AbstractModel):
 
     @property
     def Count(self):
+        """事件出现次数
+        :rtype: str
+        """
         return self._Count
 
     @Count.setter
@@ -1224,6 +1437,9 @@ class Event(AbstractModel):
 
     @property
     def Reason(self):
+        """事件出现原因
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -1232,6 +1448,9 @@ class Event(AbstractModel):
 
     @property
     def Message(self):
+        """事件消息
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1273,6 +1492,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤字段，可选值 - Zone，VpcId，InstanceName
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1281,6 +1503,9 @@ class Filter(AbstractModel):
 
     @property
     def ValueList(self):
+        """过滤值列表
+        :rtype: list of str
+        """
         return self._ValueList
 
     @ValueList.setter
@@ -1321,6 +1546,9 @@ class InquiryPriceCreateCisRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1329,6 +1557,9 @@ class InquiryPriceCreateCisRequest(AbstractModel):
 
     @property
     def Cpu(self):
+        """CPU，单位：核
+        :rtype: float
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -1337,6 +1568,9 @@ class InquiryPriceCreateCisRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """内存，单位：Gi
+        :rtype: float
+        """
         return self._Memory
 
     @Memory.setter
@@ -1375,6 +1609,9 @@ class InquiryPriceCreateCisResponse(AbstractModel):
 
     @property
     def Price(self):
+        """价格
+        :rtype: :class:`tencentcloud.cis.v20180408.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -1383,6 +1620,9 @@ class InquiryPriceCreateCisResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1414,6 +1654,9 @@ class Price(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """原价，单位：元
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -1422,6 +1665,9 @@ class Price(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """折扣价，单位：元
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter

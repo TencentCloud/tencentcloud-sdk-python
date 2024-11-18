@@ -96,7 +96,7 @@ class RedisClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
+        """本接口 (AssociateSecurityGroups) 用于将一个安全组绑定于一个或多个数据库实例。创建实例时，未配置安全组，建议通过该接口，绑定安全组。
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.AssociateSecurityGroupsRequest`
@@ -418,7 +418,7 @@ class RedisClient(AbstractClient):
 
 
     def DeleteReplicationInstance(self, request):
-        """移除复制组成员 注：接口下线中，请使用 RemoveReplicationInstance
+        """移除复制组成员。注：该接口下线中，请使用 [RemoveReplicationInstance](https://cloud.tencent.com/document/product/239/90099)。
 
         :param request: Request instance for DeleteReplicationInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.DeleteReplicationInstanceRequest`
@@ -1478,6 +1478,8 @@ class RedisClient(AbstractClient):
     def DescribeTaskList(self, request):
         """本接口（DescribeTaskList）用于查询指定实例的任务列表信息。
 
+        - 可查询近30天内任务列表数据。
+
         :param request: Request instance for DescribeTaskList.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTaskListRequest`
         :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeTaskListResponse`
@@ -1752,7 +1754,7 @@ class RedisClient(AbstractClient):
 
 
     def ModfiyInstancePassword(self, request):
-        """本接口（ModfiyInstancePassword）用于修改实例访问密码。
+        """本接口（ModfiyInstancePassword）用于修改实例访问密码。鉴于该接口名存在拼写错误，现已更正为（[ModifyInstancePassword](https://cloud.tencent.com/document/product/239/111555)）接口，推荐使用更正后的接口。
 
         :param request: Request instance for ModfiyInstancePassword.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModfiyInstancePasswordRequest`
@@ -1844,7 +1846,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+        """本接口（ModifyDBInstanceSecurityGroups）用于对实例原有的安全组列表进行修改。
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -1995,6 +1997,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyInstanceParams", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstancePassword(self, request):
+        """本接口（ModifyInstancePassword）用于修改实例访问密码。
+
+        :param request: Request instance for ModifyInstancePassword.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancePassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstancePasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -41,6 +41,10 @@ class AKSKLeak(AbstractModel):
 
     @property
     def AK(self):
+        """AK编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AK
 
     @AK.setter
@@ -49,6 +53,10 @@ class AKSKLeak(AbstractModel):
 
     @property
     def SK(self):
+        """SK编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SK
 
     @SK.setter
@@ -57,6 +65,10 @@ class AKSKLeak(AbstractModel):
 
     @property
     def URL(self):
+        """URL编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -97,6 +109,10 @@ class AccountRisk(AbstractModel):
 
     @property
     def Id(self):
+        """id（可不参考）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -105,6 +121,10 @@ class AccountRisk(AbstractModel):
 
     @property
     def RiskAccount(self):
+        """风险账户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskAccount
 
     @RiskAccount.setter
@@ -165,6 +185,9 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def ItemId(self):
+        """评估项Id
+        :rtype: str
+        """
         return self._ItemId
 
     @ItemId.setter
@@ -173,6 +196,9 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def ItemName(self):
+        """评估项名称
+        :rtype: str
+        """
         return self._ItemName
 
     @ItemName.setter
@@ -181,6 +207,10 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def Description(self):
+        """评估项描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -189,6 +219,9 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def Source(self):
+        """评估项来源，内置/用户自定，取值（system，user）
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -197,6 +230,9 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def ItemType(self):
+        """评估项类型，问卷/自动化，取值（questionnaire，auto）
+        :rtype: str
+        """
         return self._ItemType
 
     @ItemType.setter
@@ -205,6 +241,9 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def ItemSubType(self):
+        """评估项子类型，单选/多选/时间/文本/AKSK等，取值（singlechoice，multichoice，date，text，AKSK……等）
+        :rtype: str
+        """
         return self._ItemSubType
 
     @ItemSubType.setter
@@ -213,6 +252,9 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """评估项创建时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -221,6 +263,9 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def Status(self):
+        """评估项启用状态，启用/未启用，取值draft / launched
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -229,6 +274,10 @@ class AssessmentControlItem(AbstractModel):
 
     @property
     def TemplateCount(self):
+        """评估项关联的模板数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TemplateCount
 
     @TemplateCount.setter
@@ -335,6 +384,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskId(self):
+        """风险项Id
+        :rtype: str
+        """
         return self._RiskId
 
     @RiskId.setter
@@ -343,6 +395,10 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskDescription(self):
+        """风险项描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskDescription
 
     @RiskDescription.setter
@@ -351,6 +407,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板Id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -359,6 +418,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def TemplateName(self):
+        """评估模板名称
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -367,6 +429,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def ControlItemId(self):
+        """评估项Id
+        :rtype: str
+        """
         return self._ControlItemId
 
     @ControlItemId.setter
@@ -375,6 +440,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def ControlItemName(self):
+        """评估项名称
+        :rtype: str
+        """
         return self._ControlItemName
 
     @ControlItemName.setter
@@ -383,6 +451,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def ControlItemDesc(self):
+        """评估描述
+        :rtype: str
+        """
         return self._ControlItemDesc
 
     @ControlItemDesc.setter
@@ -391,6 +462,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """风险等级，取值（high，medium，low）
+        :rtype: str
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -399,6 +473,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskMitigation(self):
+        """风险缓解措施
+        :rtype: str
+        """
         return self._RiskMitigation
 
     @RiskMitigation.setter
@@ -407,6 +484,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def Status(self):
+        """风险处理状态。(waiting待处理, processing处理中, finished已处理)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -415,6 +495,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """风险生成时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -423,6 +506,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskOwner(self):
+        """风险负责人
+        :rtype: str
+        """
         return self._RiskOwner
 
     @RiskOwner.setter
@@ -431,6 +517,9 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RelatedAsset(self):
+        """风险涉及资产
+        :rtype: str
+        """
         return self._RelatedAsset
 
     @RelatedAsset.setter
@@ -439,6 +528,10 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """风险涉及资产id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -447,6 +540,10 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """风险涉及资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -455,6 +552,10 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def AssetName(self):
+        """资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -463,6 +564,10 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def SecurityProduct(self):
+        """建议使用安全产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecurityProduct
+        """
         return self._SecurityProduct
 
     @SecurityProduct.setter
@@ -471,6 +576,10 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskType(self):
+        """风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskType
 
     @RiskType.setter
@@ -479,6 +588,10 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def RiskSide(self):
+        """风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskSide
 
     @RiskSide.setter
@@ -487,6 +600,10 @@ class AssessmentRisk(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -577,6 +694,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def Id(self):
+        """脆弱项id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -585,6 +706,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def RiskName(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskName
 
     @RiskName.setter
@@ -593,6 +718,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def Level(self):
+        """脆弱性级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -601,6 +730,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def Description(self):
+        """说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -609,6 +742,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def RiskType(self):
+        """风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskType
 
     @RiskType.setter
@@ -617,6 +754,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def ReferTemplateCount(self):
+        """关联模板个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReferTemplateCount
 
     @ReferTemplateCount.setter
@@ -625,6 +766,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def SupportDataSource(self):
+        """支持的数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SupportDataSource
 
     @SupportDataSource.setter
@@ -633,6 +778,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def RiskSide(self):
+        """风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskSide
 
     @RiskSide.setter
@@ -641,6 +790,10 @@ class AssessmentRiskItem(AbstractModel):
 
     @property
     def ReferTemplateList(self):
+        """关联模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TemplateInfo
+        """
         return self._ReferTemplateList
 
     @ReferTemplateList.setter
@@ -750,6 +903,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """评估任务Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -758,6 +914,11 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TaskUid(self):
+        """评估任务的自增ID
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskUid
 
     @TaskUid.setter
@@ -766,6 +927,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TaskName(self):
+        """评估任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -774,6 +938,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def BusinessName(self):
+        """业务名称
+        :rtype: str
+        """
         return self._BusinessName
 
     @BusinessName.setter
@@ -782,6 +949,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def BusinessDept(self):
+        """业务所属部门
+        :rtype: str
+        """
         return self._BusinessDept
 
     @BusinessDept.setter
@@ -790,6 +960,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def BusinessOwner(self):
+        """业务负责人
+        :rtype: str
+        """
         return self._BusinessOwner
 
     @BusinessOwner.setter
@@ -798,6 +971,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板Id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -806,6 +982,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TemplateName(self):
+        """评估模板名称
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -814,6 +993,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
+        """分类分级模板Id
+        :rtype: int
+        """
         return self._ComplianceGroupId
 
     @ComplianceGroupId.setter
@@ -822,6 +1004,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ComplianceGroupName(self):
+        """分类分级模板名称
+        :rtype: str
+        """
         return self._ComplianceGroupName
 
     @ComplianceGroupName.setter
@@ -830,6 +1015,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ControlItemCount(self):
+        """评估项数量
+        :rtype: int
+        """
         return self._ControlItemCount
 
     @ControlItemCount.setter
@@ -838,6 +1026,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def RiskCount(self):
+        """风险项数量（仅状态为finished的风险项不计入总数，其余状态均算入该数量）
+        :rtype: int
+        """
         return self._RiskCount
 
     @RiskCount.setter
@@ -846,6 +1037,10 @@ class AssessmentTask(AbstractModel):
 
     @property
     def FinishedTime(self):
+        """评估任务完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishedTime
 
     @FinishedTime.setter
@@ -854,6 +1049,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """评估任务发起时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -862,6 +1060,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def Status(self):
+        """评估状态。(waiting待评估，processing评估中, , finished已评估, failed评估失败)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -870,6 +1071,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def RiskCountInfoList(self):
+        """待处理各等级风险项信息
+        :rtype: list of RiskCountInfo
+        """
         return self._RiskCountInfoList
 
     @RiskCountInfoList.setter
@@ -878,6 +1082,10 @@ class AssessmentTask(AbstractModel):
 
     @property
     def DiscoveryCondition(self):
+        """数据源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
+        """
         return self._DiscoveryCondition
 
     @DiscoveryCondition.setter
@@ -886,6 +1094,9 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """评估任务失败信息
+        :rtype: str
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -894,6 +1105,10 @@ class AssessmentTask(AbstractModel):
 
     @property
     def TemplateUid(self):
+        """模板主键id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TemplateUid
 
     @TemplateUid.setter
@@ -902,6 +1117,10 @@ class AssessmentTask(AbstractModel):
 
     @property
     def ProgressPercent(self):
+        """进度百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProgressPercent
 
     @ProgressPercent.setter
@@ -1002,6 +1221,10 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def Id(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1010,6 +1233,9 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板Id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1018,6 +1244,9 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def TemplateName(self):
+        """评估模板名称
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -1026,6 +1255,10 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1034,6 +1267,9 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def Source(self):
+        """模板来源，内置/用户自定，取值（system，user）
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -1042,6 +1278,9 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def UseType(self):
+        """模板类型，自动化/半自动化/问卷，取值（auto，semi-auto，law）等
+        :rtype: str
+        """
         return self._UseType
 
     @UseType.setter
@@ -1050,6 +1289,9 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """评估模板创建时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -1058,6 +1300,9 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def ControlItemCount(self):
+        """模板关联的评估项数量
+        :rtype: int
+        """
         return self._ControlItemCount
 
     @ControlItemCount.setter
@@ -1066,6 +1311,9 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def AppliedItemCount(self):
+        """模板已启用的评估项数量
+        :rtype: int
+        """
         return self._AppliedItemCount
 
     @AppliedItemCount.setter
@@ -1074,6 +1322,9 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def Status(self):
+        """模板启用状态，草稿/已启用，取值draft / launched
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1082,6 +1333,10 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def SupportDataSource(self):
+        """支持的数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SupportDataSource
 
     @SupportDataSource.setter
@@ -1090,6 +1345,10 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def IsASMTemplate(self):
+        """是否包含攻击面风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsASMTemplate
 
     @IsASMTemplate.setter
@@ -1098,6 +1357,10 @@ class AssessmentTemplate(AbstractModel):
 
     @property
     def IdentifyComplianceId(self):
+        """合规组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentifyComplianceId
 
     @IdentifyComplianceId.setter
@@ -1164,6 +1427,10 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def Bucket(self):
+        """桶的名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -1172,6 +1439,10 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def DataType(self):
+        """数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataType
 
     @DataType.setter
@@ -1180,6 +1451,10 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def FileNums(self):
+        """文件的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileNums
 
     @FileNums.setter
@@ -1188,6 +1463,10 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def SensitiveFileNums(self):
+        """敏感的文件个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFileNums
 
     @SensitiveFileNums.setter
@@ -1196,6 +1475,10 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def DistributionData(self):
+        """敏感分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._DistributionData
 
     @DistributionData.setter
@@ -1204,6 +1487,10 @@ class AssetCosDetail(AbstractModel):
 
     @property
     def MatchedNum(self):
+        """cos文件的敏感数据个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MatchedNum
 
     @MatchedNum.setter
@@ -1276,6 +1563,10 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -1284,6 +1575,10 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def DdName(self):
+        """数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DdName
 
     @DdName.setter
@@ -1292,6 +1587,10 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def DataType(self):
+        """数据库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataType
 
     @DataType.setter
@@ -1300,6 +1599,10 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def TableNums(self):
+        """表的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TableNums
 
     @TableNums.setter
@@ -1308,6 +1611,10 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def SensitiveTableNums(self):
+        """敏感表数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveTableNums
 
     @SensitiveTableNums.setter
@@ -1316,6 +1623,10 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def FieldNums(self):
+        """字段的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FieldNums
 
     @FieldNums.setter
@@ -1324,6 +1635,10 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
+        """敏感字段的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFieldNums
 
     @SensitiveFieldNums.setter
@@ -1332,6 +1647,10 @@ class AssetDBDetail(AbstractModel):
 
     @property
     def DistributionData(self):
+        """敏感数据分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._DistributionData
 
     @DistributionData.setter
@@ -1380,6 +1699,9 @@ class AssetList(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -1388,6 +1710,9 @@ class AssetList(AbstractModel):
 
     @property
     def DataSourceInfo(self):
+        """数据源信息
+        :rtype: list of DataSourceInfo
+        """
         return self._DataSourceInfo
 
     @DataSourceInfo.setter
@@ -1430,15 +1755,24 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
         :type ResourceRegion: str
         :param _ResourcesAccount: 用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
         :type ResourcesAccount: list of DspaResourceAccount
+        :param _CreateDefaultTask: 创建默认主模板扫描任务
+        :type CreateDefaultTask: bool
+        :param _AuthRange: 授权范围（all:授权整个数据源 manual:手动指定数据库）
+        :type AuthRange: str
         """
         self._DspaId = None
         self._AuthType = None
         self._MetaType = None
         self._ResourceRegion = None
         self._ResourcesAccount = None
+        self._CreateDefaultTask = None
+        self._AuthRange = None
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -1447,6 +1781,9 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def AuthType(self):
+        """授权方式，可选：automatic(一键自动授权) 、 account(指定用户名授权)。
+        :rtype: str
+        """
         return self._AuthType
 
     @AuthType.setter
@@ -1455,6 +1792,9 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -1463,6 +1803,9 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -1471,11 +1814,36 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def ResourcesAccount(self):
+        """用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
+        :rtype: list of DspaResourceAccount
+        """
         return self._ResourcesAccount
 
     @ResourcesAccount.setter
     def ResourcesAccount(self, ResourcesAccount):
         self._ResourcesAccount = ResourcesAccount
+
+    @property
+    def CreateDefaultTask(self):
+        """创建默认主模板扫描任务
+        :rtype: bool
+        """
+        return self._CreateDefaultTask
+
+    @CreateDefaultTask.setter
+    def CreateDefaultTask(self, CreateDefaultTask):
+        self._CreateDefaultTask = CreateDefaultTask
+
+    @property
+    def AuthRange(self):
+        """授权范围（all:授权整个数据源 manual:手动指定数据库）
+        :rtype: str
+        """
+        return self._AuthRange
+
+    @AuthRange.setter
+    def AuthRange(self, AuthRange):
+        self._AuthRange = AuthRange
 
 
     def _deserialize(self, params):
@@ -1489,6 +1857,8 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
                 obj = DspaResourceAccount()
                 obj._deserialize(item)
                 self._ResourcesAccount.append(obj)
+        self._CreateDefaultTask = params.get("CreateDefaultTask")
+        self._AuthRange = params.get("AuthRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1520,6 +1890,9 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -1528,6 +1901,10 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def Results(self):
+        """授权结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaTaskResult
+        """
         return self._Results
 
     @Results.setter
@@ -1536,6 +1913,9 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1574,6 +1954,9 @@ class BindDSPAResourceCosBucketsRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -1582,6 +1965,9 @@ class BindDSPAResourceCosBucketsRequest(AbstractModel):
 
     @property
     def BindCosResourceItems(self):
+        """绑定的COS桶信息。
+        :rtype: list of CosResourceItem
+        """
         return self._BindCosResourceItems
 
     @BindCosResourceItems.setter
@@ -1590,6 +1976,9 @@ class BindDSPAResourceCosBucketsRequest(AbstractModel):
 
     @property
     def UnbindCosResourceItems(self):
+        """解绑的COS桶信息。
+        :rtype: list of CosResourceItem
+        """
         return self._UnbindCosResourceItems
 
     @UnbindCosResourceItems.setter
@@ -1638,6 +2027,9 @@ class BindDSPAResourceCosBucketsResponse(AbstractModel):
 
     @property
     def CosTaskResults(self):
+        """绑定结果数组
+        :rtype: list of CosTaskResult
+        """
         return self._CosTaskResults
 
     @CosTaskResults.setter
@@ -1646,6 +2038,9 @@ class BindDSPAResourceCosBucketsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1689,6 +2084,9 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -1697,6 +2095,9 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """数据库实例ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -1705,6 +2106,9 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def MetaType(self):
+        """数据库实例类型。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -1713,6 +2117,9 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def BindDbItems(self):
+        """绑定DB列表。
+        :rtype: list of DbResourceItem
+        """
         return self._BindDbItems
 
     @BindDbItems.setter
@@ -1721,6 +2128,9 @@ class BindDSPAResourceDatabasesRequest(AbstractModel):
 
     @property
     def UnbindDbItems(self):
+        """解绑DB列表。
+        :rtype: list of DbResourceItem
+        """
         return self._UnbindDbItems
 
     @UnbindDbItems.setter
@@ -1771,6 +2181,9 @@ class BindDSPAResourceDatabasesResponse(AbstractModel):
 
     @property
     def DbTaskResults(self):
+        """绑定结果数组
+        :rtype: list of DbTaskResult
+        """
         return self._DbTaskResults
 
     @DbTaskResults.setter
@@ -1779,6 +2192,9 @@ class BindDSPAResourceDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1814,6 +2230,10 @@ class COSDataRule(AbstractModel):
 
     @property
     def Operator(self):
+        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
+默认值为or
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -1822,6 +2242,9 @@ class COSDataRule(AbstractModel):
 
     @property
     def Contents(self):
+        """规则内容
+        :rtype: list of DataContent
+        """
         return self._Contents
 
     @Contents.setter
@@ -1867,6 +2290,9 @@ class COSInstance(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源Id
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -1875,6 +2301,9 @@ class COSInstance(AbstractModel):
 
     @property
     def BucketName(self):
+        """桶名
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -1883,6 +2312,9 @@ class COSInstance(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -1949,6 +2381,9 @@ class CategoryRule(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类id
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -1957,6 +2392,9 @@ class CategoryRule(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1965,6 +2403,9 @@ class CategoryRule(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -1973,6 +2414,9 @@ class CategoryRule(AbstractModel):
 
     @property
     def LevelId(self):
+        """级别id
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -1981,6 +2425,9 @@ class CategoryRule(AbstractModel):
 
     @property
     def LevelName(self):
+        """级别名称
+        :rtype: str
+        """
         return self._LevelName
 
     @LevelName.setter
@@ -1989,6 +2436,9 @@ class CategoryRule(AbstractModel):
 
     @property
     def Id(self):
+        """分类规则绑定关系id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1997,6 +2447,10 @@ class CategoryRule(AbstractModel):
 
     @property
     def AliasRuleId(self):
+        """别名ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AliasRuleId
 
     @AliasRuleId.setter
@@ -2005,6 +2459,10 @@ class CategoryRule(AbstractModel):
 
     @property
     def AliasRuleName(self):
+        """别名规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AliasRuleName
 
     @AliasRuleName.setter
@@ -2013,6 +2471,10 @@ class CategoryRule(AbstractModel):
 
     @property
     def RuleEffectItems(self):
+        """各类分类分级规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleEffectItem
+        """
         return self._RuleEffectItems
 
     @RuleEffectItems.setter
@@ -2021,6 +2483,10 @@ class CategoryRule(AbstractModel):
 
     @property
     def RuleStatus(self):
+        """规则状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleStatus
 
     @RuleStatus.setter
@@ -2074,6 +2540,9 @@ class CategoryRuleStatistic(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类id
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -2082,6 +2551,9 @@ class CategoryRuleStatistic(AbstractModel):
 
     @property
     def RuleCount(self):
+        """规则数量
+        :rtype: int
+        """
         return self._RuleCount
 
     @RuleCount.setter
@@ -2090,6 +2562,9 @@ class CategoryRuleStatistic(AbstractModel):
 
     @property
     def CategoryName(self):
+        """分类名称
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -2128,6 +2603,9 @@ class CloudResourceItem(AbstractModel):
 
     @property
     def Region(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2136,6 +2614,9 @@ class CloudResourceItem(AbstractModel):
 
     @property
     def Items(self):
+        """	云上资源列表。
+        :rtype: list of DspaCloudResourceMeta
+        """
         return self._Items
 
     @Items.setter
@@ -2204,6 +2685,9 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def Id(self):
+        """模板id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2212,6 +2696,9 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def Name(self):
+        """模板名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2220,6 +2707,10 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2228,6 +2719,10 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def ComplianceGroupType(self):
+        """模板类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ComplianceGroupType
 
     @ComplianceGroupType.setter
@@ -2236,6 +2731,9 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def LevelGroupId(self):
+        """模板分级方案id
+        :rtype: int
+        """
         return self._LevelGroupId
 
     @LevelGroupId.setter
@@ -2244,6 +2742,9 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def LevelGroupName(self):
+        """模板分级方案名称
+        :rtype: str
+        """
         return self._LevelGroupName
 
     @LevelGroupName.setter
@@ -2252,6 +2753,10 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2260,6 +2765,10 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -2268,6 +2777,10 @@ class ComplianceGroupDetail(AbstractModel):
 
     @property
     def IsAlias(self):
+        """是否开启别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAlias
 
     @IsAlias.setter
@@ -2315,6 +2828,9 @@ class ComplianceGroupRuleIdInfo(AbstractModel):
 
     @property
     def RuleId(self):
+        """敏感数据识别规则ID
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2323,6 +2839,9 @@ class ComplianceGroupRuleIdInfo(AbstractModel):
 
     @property
     def CategoryId(self):
+        """敏感数据分类ID
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -2331,6 +2850,9 @@ class ComplianceGroupRuleIdInfo(AbstractModel):
 
     @property
     def LevelId(self):
+        """敏感数据分级标识ID, 系统支持高、中、低三级，也支持自定义分级
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -2369,6 +2891,9 @@ class CopyDSPATemplateRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -2377,6 +2902,9 @@ class CopyDSPATemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2414,6 +2942,9 @@ class CopyDSPATemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2422,6 +2953,9 @@ class CopyDSPATemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2461,6 +2995,10 @@ class CosAsset(AbstractModel):
 
     @property
     def BucketNums(self):
+        """桶的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BucketNums
 
     @BucketNums.setter
@@ -2469,6 +3007,10 @@ class CosAsset(AbstractModel):
 
     @property
     def SensitiveBucketNums(self):
+        """敏感桶的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveBucketNums
 
     @SensitiveBucketNums.setter
@@ -2477,6 +3019,10 @@ class CosAsset(AbstractModel):
 
     @property
     def FileNums(self):
+        """文件个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileNums
 
     @FileNums.setter
@@ -2485,6 +3031,10 @@ class CosAsset(AbstractModel):
 
     @property
     def SensitiveFileNums(self):
+        """敏感文件的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFileNums
 
     @SensitiveFileNums.setter
@@ -2524,6 +3074,9 @@ class CosBucketItem(AbstractModel):
 
     @property
     def Region(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2532,6 +3085,9 @@ class CosBucketItem(AbstractModel):
 
     @property
     def Buckets(self):
+        """COS桶列表。
+        :rtype: list of str
+        """
         return self._Buckets
 
     @Buckets.setter
@@ -2572,6 +3128,9 @@ class CosResourceItem(AbstractModel):
 
     @property
     def ResourceId(self):
+        """cos数据源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2580,6 +3139,9 @@ class CosResourceItem(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """桶所在地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -2588,6 +3150,9 @@ class CosResourceItem(AbstractModel):
 
     @property
     def ResourceName(self):
+        """桶名称。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -2633,6 +3198,9 @@ class CosTaskResult(AbstractModel):
 
     @property
     def Result(self):
+        """结果类型。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2641,6 +3209,9 @@ class CosTaskResult(AbstractModel):
 
     @property
     def ResultDescription(self):
+        """结果描述。
+        :rtype: str
+        """
         return self._ResultDescription
 
     @ResultDescription.setter
@@ -2649,6 +3220,10 @@ class CosTaskResult(AbstractModel):
 
     @property
     def ErrDescription(self):
+        """错误信息描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ErrDescription`
+        """
         return self._ErrDescription
 
     @ErrDescription.setter
@@ -2657,6 +3232,9 @@ class CosTaskResult(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2698,6 +3276,9 @@ class CreateAssetSortingReportRetryTaskRequest(AbstractModel):
 
     @property
     def ReportTaskId(self):
+        """任务id
+        :rtype: int
+        """
         return self._ReportTaskId
 
     @ReportTaskId.setter
@@ -2706,6 +3287,9 @@ class CreateAssetSortingReportRetryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -2748,6 +3332,10 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
 
     @property
     def ReportTaskId(self):
+        """任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReportTaskId
 
     @ReportTaskId.setter
@@ -2756,6 +3344,10 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2764,6 +3356,9 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2797,6 +3392,9 @@ class CreateAssetSortingReportTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -2805,6 +3403,9 @@ class CreateAssetSortingReportTaskRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """识别模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -2813,6 +3414,9 @@ class CreateAssetSortingReportTaskRequest(AbstractModel):
 
     @property
     def AssetList(self):
+        """选中资产列表
+        :rtype: list of AssetList
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -2861,6 +3465,10 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
 
     @property
     def ReportTaskId(self):
+        """报表任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReportTaskId
 
     @ReportTaskId.setter
@@ -2869,6 +3477,10 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2877,6 +3489,9 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2910,6 +3525,9 @@ class CreateClassificationRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2938,6 +3556,9 @@ class CreateComplianceRules(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2946,6 +3567,9 @@ class CreateComplianceRules(AbstractModel):
 
     @property
     def LevelId(self):
+        """级别id
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -2992,6 +3616,9 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -3000,6 +3627,9 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelName(self):
+        """风险等级名称
+        :rtype: str
+        """
         return self._RiskLevelName
 
     @RiskLevelName.setter
@@ -3008,6 +3638,9 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def IdentifyComplianceId(self):
+        """识别模板
+        :rtype: int
+        """
         return self._IdentifyComplianceId
 
     @IdentifyComplianceId.setter
@@ -3016,6 +3649,9 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelRule(self):
+        """风险等级矩阵
+        :rtype: list of RiskLevelMatrix
+        """
         return self._RiskLevelRule
 
     @RiskLevelRule.setter
@@ -3024,6 +3660,9 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelDescription(self):
+        """风险等级的描述
+        :rtype: str
+        """
         return self._RiskLevelDescription
 
     @RiskLevelDescription.setter
@@ -3066,6 +3705,9 @@ class CreateDSPAAssessmentRiskLevelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3103,6 +3745,9 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -3111,6 +3756,9 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -3119,6 +3767,9 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def RiskLevelId(self):
+        """风险等级id
+        :rtype: int
+        """
         return self._RiskLevelId
 
     @RiskLevelId.setter
@@ -3127,6 +3778,9 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def RiskIdList(self):
+        """风险id列表
+        :rtype: list of int
+        """
         return self._RiskIdList
 
     @RiskIdList.setter
@@ -3135,6 +3789,9 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateDescription(self):
+        """模板描述
+        :rtype: str
+        """
         return self._TemplateDescription
 
     @TemplateDescription.setter
@@ -3172,6 +3829,9 @@ class CreateDSPAAssessmentRiskTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3221,6 +3881,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -3229,6 +3892,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def Name(self):
+        """评估任务名称。1-20个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3237,6 +3903,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板Id，格式“template-xxxxxxxx”
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -3247,6 +3916,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
     def BusinessName(self):
         warnings.warn("parameter `BusinessName` is deprecated", DeprecationWarning) 
 
+        """评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
+        :rtype: str
+        """
         return self._BusinessName
 
     @BusinessName.setter
@@ -3259,6 +3931,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
     def BusinessDept(self):
         warnings.warn("parameter `BusinessDept` is deprecated", DeprecationWarning) 
 
+        """业务所属部门。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
+        :rtype: str
+        """
         return self._BusinessDept
 
     @BusinessDept.setter
@@ -3271,6 +3946,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
     def BusinessOwner(self):
         warnings.warn("parameter `BusinessOwner` is deprecated", DeprecationWarning) 
 
+        """业务负责人。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
+        :rtype: str
+        """
         return self._BusinessOwner
 
     @BusinessOwner.setter
@@ -3281,6 +3959,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """分类分级模板Id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -3289,6 +3970,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def DiscoveryCondition(self):
+        """敏感数据扫描数据源条件。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
+        """
         return self._DiscoveryCondition
 
     @DiscoveryCondition.setter
@@ -3297,6 +3981,9 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def Description(self):
+        """说明
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3343,6 +4030,9 @@ class CreateDSPAAssessmentTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """评估任务Id，格式“task-xxxxxxxx”
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3351,6 +4041,9 @@ class CreateDSPAAssessmentTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3417,6 +4110,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -3425,6 +4121,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3433,6 +4132,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -3441,6 +4143,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """任务开关，0 关闭，1 启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -3449,6 +4154,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Bucket(self):
+        """桶名
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -3457,6 +4165,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
+        """通用规则集开关，0 关闭，1 启用
+        :rtype: int
+        """
         return self._GeneralRuleSetEnable
 
     @GeneralRuleSetEnable.setter
@@ -3465,6 +4176,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Plan(self):
+        """执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次。
+        :rtype: int
+        """
         return self._Plan
 
     @Plan.setter
@@ -3473,6 +4187,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Period(self):
+        """扫描周期，0单次 1每天 2每周 3每月
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -3481,6 +4198,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def FileTypes(self):
+        """待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
+        :rtype: list of str
+        """
         return self._FileTypes
 
     @FileTypes.setter
@@ -3489,6 +4209,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def FileSizeLimit(self):
+        """文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
+        :rtype: int
+        """
         return self._FileSizeLimit
 
     @FileSizeLimit.setter
@@ -3497,6 +4220,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -3505,6 +4231,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Description(self):
+        """任务描述，最大长度为1024个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3513,6 +4242,9 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def ComplianceGroupIds(self):
+        """合规组ID列表，最多支持添加5个
+        :rtype: list of int
+        """
         return self._ComplianceGroupIds
 
     @ComplianceGroupIds.setter
@@ -3521,6 +4253,10 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def TimingStartTime(self):
+        """任务定时启动时间，格式如：2006-01-02 15:04:05
+当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
+        :rtype: str
+        """
         return self._TimingStartTime
 
     @TimingStartTime.setter
@@ -3574,6 +4310,9 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3582,6 +4321,10 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def ResultId(self):
+        """扫描结果ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -3590,6 +4333,9 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3626,6 +4372,9 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -3634,6 +4383,9 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类id
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -3642,6 +4394,9 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def ParentCategoryId(self):
+        """父级分类id（无父级分类传-1）
+        :rtype: int
+        """
         return self._ParentCategoryId
 
     @ParentCategoryId.setter
@@ -3650,6 +4405,9 @@ class CreateDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """分类模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -3686,6 +4444,9 @@ class CreateDSPACategoryRelationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3714,6 +4475,9 @@ class CreateDSPACategoryRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -3722,6 +4486,9 @@ class CreateDSPACategoryRequest(AbstractModel):
 
     @property
     def Name(self):
+        """敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3759,6 +4526,9 @@ class CreateDSPACategoryResponse(AbstractModel):
 
     @property
     def CategoryId(self):
+        """敏感数据分类ID
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -3767,6 +4537,9 @@ class CreateDSPACategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3805,6 +4578,9 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -3813,6 +4589,9 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3821,6 +4600,9 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """合规组描述，最大长度为1024个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3829,6 +4611,9 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def ComplianceGroupRules(self):
+        """合规组规则配置（参数已废弃，请传空数组）
+        :rtype: list of ComplianceGroupRuleIdInfo
+        """
         return self._ComplianceGroupRules
 
     @ComplianceGroupRules.setter
@@ -3837,6 +4622,9 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def LevelGroupId(self):
+        """分级组ID，默认值为1，新增参数，可选
+        :rtype: int
+        """
         return self._LevelGroupId
 
     @LevelGroupId.setter
@@ -3882,6 +4670,9 @@ class CreateDSPAComplianceGroupResponse(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceGroupId
 
     @ComplianceGroupId.setter
@@ -3890,6 +4681,9 @@ class CreateDSPAComplianceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3925,6 +4719,9 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -3933,6 +4730,9 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类id
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -3941,6 +4741,9 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -3949,6 +4752,9 @@ class CreateDSPAComplianceRulesRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """规则列表
+        :rtype: list of CreateComplianceRules
+        """
         return self._Rules
 
     @Rules.setter
@@ -3990,6 +4796,9 @@ class CreateDSPAComplianceRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4024,6 +4833,9 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -4034,6 +4846,9 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
     def ResourceRegion(self):
         warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
 
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -4046,6 +4861,9 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
     def Buckets(self):
         warnings.warn("parameter `Buckets` is deprecated", DeprecationWarning) 
 
+        """COS桶列表
+        :rtype: list of str
+        """
         return self._Buckets
 
     @Buckets.setter
@@ -4056,6 +4874,9 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
 
     @property
     def CosBucketItems(self):
+        """必填，COS资源列表
+        :rtype: list of CosBucketItem
+        """
         return self._CosBucketItems
 
     @CosBucketItems.setter
@@ -4097,6 +4918,9 @@ class CreateDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4140,6 +4964,9 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -4148,6 +4975,9 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -4158,6 +4988,9 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     def ResourceRegion(self):
         warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
 
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -4170,6 +5003,9 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     def UpdateStatus(self):
         warnings.warn("parameter `UpdateStatus` is deprecated", DeprecationWarning) 
 
+        """用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
+        :rtype: str
+        """
         return self._UpdateStatus
 
     @UpdateStatus.setter
@@ -4182,6 +5018,9 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     def UpdateId(self):
         warnings.warn("parameter `UpdateId` is deprecated", DeprecationWarning) 
 
+        """本次更新的ID号，用来标记一次完整的更新过程。
+        :rtype: str
+        """
         return self._UpdateId
 
     @UpdateId.setter
@@ -4194,6 +5033,9 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
     def Items(self):
         warnings.warn("parameter `Items` is deprecated", DeprecationWarning) 
 
+        """云上资源列表。
+        :rtype: list of DspaCloudResourceMeta
+        """
         return self._Items
 
     @Items.setter
@@ -4204,6 +5046,9 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
     @property
     def CloudResourceItems(self):
+        """必填，云数据库资源列表。
+        :rtype: list of CloudResourceItem
+        """
         return self._CloudResourceItems
 
     @CloudResourceItems.setter
@@ -4267,6 +5112,9 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
     def UpdateId(self):
         warnings.warn("parameter `UpdateId` is deprecated", DeprecationWarning) 
 
+        """本次更新的ID号，用来标记一次完整的更新过程。
+        :rtype: str
+        """
         return self._UpdateId
 
     @UpdateId.setter
@@ -4277,6 +5125,9 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -4285,6 +5136,9 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -4295,6 +5149,9 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
     def ResourceRegion(self):
         warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
 
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -4305,6 +5162,9 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4349,6 +5209,9 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -4357,6 +5220,9 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4365,6 +5231,9 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Description(self):
+        """规则描述，最大长度为1024个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4373,6 +5242,9 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def RDBRules(self):
+        """RDB类敏感数据识别规则
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryRDBRules`
+        """
         return self._RDBRules
 
     @RDBRules.setter
@@ -4381,6 +5253,9 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def COSRules(self):
+        """COS类敏感数据识别规则
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSRules`
+        """
         return self._COSRules
 
     @COSRules.setter
@@ -4389,6 +5264,9 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态；0 不启用, 1 启用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4434,6 +5312,9 @@ class CreateDSPADiscoveryRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -4442,6 +5323,9 @@ class CreateDSPADiscoveryRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4521,6 +5405,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -4529,6 +5416,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Name(self):
+        """任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4537,6 +5427,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -4545,6 +5438,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Enable(self):
+        """任务开关，0 关闭，1 启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -4553,6 +5449,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def GeneralRuleSetEnable(self):
+        """通用规则集开关，0 关闭，1 启用
+        :rtype: int
+        """
         return self._GeneralRuleSetEnable
 
     @GeneralRuleSetEnable.setter
@@ -4561,6 +5460,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Plan(self):
+        """执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
+        :rtype: int
+        """
         return self._Plan
 
     @Plan.setter
@@ -4569,6 +5471,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Period(self):
+        """扫描周期，0单次 1每天 2每周 3每月
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -4577,6 +5482,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -4585,6 +5493,16 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceType(self):
+        """数据源类型，可取值如下：
+cdb 表示云数据库 MySQL,
+dcdb 表示TDSQL MySQL版,
+mariadb 表示云数据库 MariaDB,
+postgres 表示云数据库 PostgreSQL,
+cynosdbpg 表示TDSQL-C PostgreSQL版,
+cynosdbmysql 表示TDSQL-C MySQL版,
+selfbuilt-db 表示自建数据库
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -4593,6 +5511,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Description(self):
+        """任务描述，最大长度为1024个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4601,6 +5522,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Condition(self):
+        """用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -4609,6 +5533,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ComplianceGroupIds(self):
+        """合规组ID列表，最多支持添加5个
+        :rtype: list of int
+        """
         return self._ComplianceGroupIds
 
     @ComplianceGroupIds.setter
@@ -4617,6 +5544,10 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TimingStartTime(self):
+        """任务定时启动时间，格式如：2006-01-02 15:04:05
+当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
+        :rtype: str
+        """
         return self._TimingStartTime
 
     @TimingStartTime.setter
@@ -4625,6 +5556,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Order(self):
+        """random-随机，asc生序，desc降序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4633,6 +5567,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Rows(self):
+        """抽样的条数，范围30-1000
+        :rtype: int
+        """
         return self._Rows
 
     @Rows.setter
@@ -4641,6 +5578,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def GlobalOrderField(self):
+        """抽样的排序字段
+        :rtype: str
+        """
         return self._GlobalOrderField
 
     @GlobalOrderField.setter
@@ -4696,6 +5636,9 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4704,6 +5647,10 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def ResultId(self):
+        """扫描结果ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -4712,6 +5659,9 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4748,6 +5698,9 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -4756,6 +5709,9 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4764,6 +5720,9 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
     @property
     def ItemLevels(self):
+        """分级标识配置
+        :rtype: list of ItemLevel
+        """
         return self._ItemLevels
 
     @ItemLevels.setter
@@ -4772,6 +5731,9 @@ class CreateDSPALevelGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """分级组描述，最多1024字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4816,6 +5778,9 @@ class CreateDSPALevelGroupResponse(AbstractModel):
 
     @property
     def LevelGroupId(self):
+        """分级组ID
+        :rtype: int
+        """
         return self._LevelGroupId
 
     @LevelGroupId.setter
@@ -4824,6 +5789,9 @@ class CreateDSPALevelGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4865,6 +5833,9 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -4873,6 +5844,9 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -4881,6 +5855,9 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -4889,6 +5866,9 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def UpdateStatus(self):
+        """用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
+        :rtype: str
+        """
         return self._UpdateStatus
 
     @UpdateStatus.setter
@@ -4897,6 +5877,9 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def UpdateId(self):
+        """本次更新的ID号，用来标记一次完整的更新过程。
+        :rtype: str
+        """
         return self._UpdateId
 
     @UpdateId.setter
@@ -4905,6 +5888,9 @@ class CreateDSPAMetaResourcesRequest(AbstractModel):
 
     @property
     def Items(self):
+        """资源列表。
+        :rtype: list of DspaUserResourceMeta
+        """
         return self._Items
 
     @Items.setter
@@ -4960,6 +5946,9 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def UpdateId(self):
+        """本次更新的ID号，用来标记一次完整的更新过程。
+        :rtype: str
+        """
         return self._UpdateId
 
     @UpdateId.setter
@@ -4968,6 +5957,9 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -4976,6 +5968,9 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -4984,6 +5979,9 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -4992,6 +5990,9 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5025,10 +6026,6 @@ postgre_like_proto -- Postgre协议类关系型数据库。
         :type ResourceRegion: str
         :param _ResourceId: 自建云资源ID。
         :type ResourceId: str
-        :param _ResourceVip: 可用于访问自建云资源的IP。
-        :type ResourceVip: str
-        :param _ResourceVPort: 可用于访问自建云资源的端口。
-        :type ResourceVPort: int
         :param _ResourceUniqueVpcId: 自建云资源的VPC ID。
         :type ResourceUniqueVpcId: str
         :param _ResourceUniqueSubnetId: 自建云资源的Subnet ID。
@@ -5037,9 +6034,15 @@ postgre_like_proto -- Postgre协议类关系型数据库。
 cvm - 通过云服务器直接访问。
 clb - 通过LB的方式进行访问。
         :type ResourceAccessType: str
-        :param _UserName: 账户名。
+        :param _ResourceVip: 可用于访问自建云资源的IP。
+emr的连接不需要使用该字段
+        :type ResourceVip: str
+        :param _ResourceVPort: 可用于访问自建云资源的端口。
+emr的连接不需要使用该字段
+        :type ResourceVPort: int
+        :param _UserName: 账户名。如果emr_hive的连接方式为“LDAP”，则复用该字段
         :type UserName: str
-        :param _Password: 账户密码。
+        :param _Password: 账户密码。如果emr_hive的连接方式为“LDAP”，则复用该字段
         :type Password: str
         :param _ResourceName: 资源名称，1-60个字符。
         :type ResourceName: str
@@ -5050,24 +6053,30 @@ serviceName
         :type InstanceType: str
         :param _InstanceValue: 实例值
         :type InstanceValue: str
+        :param _AuthRange: 授权范围（all:授权整个数据源 manual:手动指定数据库）
+        :type AuthRange: str
         """
         self._DspaId = None
         self._MetaType = None
         self._ResourceRegion = None
         self._ResourceId = None
-        self._ResourceVip = None
-        self._ResourceVPort = None
         self._ResourceUniqueVpcId = None
         self._ResourceUniqueSubnetId = None
         self._ResourceAccessType = None
+        self._ResourceVip = None
+        self._ResourceVPort = None
         self._UserName = None
         self._Password = None
         self._ResourceName = None
         self._InstanceType = None
         self._InstanceValue = None
+        self._AuthRange = None
 
     @property
     def DspaId(self):
+        """Dspa实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -5076,6 +6085,12 @@ serviceName
 
     @property
     def MetaType(self):
+        """自建数据库类型。目前支持的自建数据库类型按照协议进行区分，支持两种开源数据库协议：
+mysql_like_proto -- Mysql协议类关系型数据库，
+postgre_like_proto -- Postgre协议类关系型数据库。
+其他闭源协议的数据库如SqlServer、Oracle等暂不支持。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -5084,6 +6099,9 @@ serviceName
 
     @property
     def ResourceRegion(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -5092,6 +6110,9 @@ serviceName
 
     @property
     def ResourceId(self):
+        """自建云资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -5099,23 +6120,10 @@ serviceName
         self._ResourceId = ResourceId
 
     @property
-    def ResourceVip(self):
-        return self._ResourceVip
-
-    @ResourceVip.setter
-    def ResourceVip(self, ResourceVip):
-        self._ResourceVip = ResourceVip
-
-    @property
-    def ResourceVPort(self):
-        return self._ResourceVPort
-
-    @ResourceVPort.setter
-    def ResourceVPort(self, ResourceVPort):
-        self._ResourceVPort = ResourceVPort
-
-    @property
     def ResourceUniqueVpcId(self):
+        """自建云资源的VPC ID。
+        :rtype: str
+        """
         return self._ResourceUniqueVpcId
 
     @ResourceUniqueVpcId.setter
@@ -5124,6 +6132,9 @@ serviceName
 
     @property
     def ResourceUniqueSubnetId(self):
+        """自建云资源的Subnet ID。
+        :rtype: str
+        """
         return self._ResourceUniqueSubnetId
 
     @ResourceUniqueSubnetId.setter
@@ -5132,6 +6143,11 @@ serviceName
 
     @property
     def ResourceAccessType(self):
+        """自建云资源所处的服务类型，可选：
+cvm - 通过云服务器直接访问。
+clb - 通过LB的方式进行访问。
+        :rtype: str
+        """
         return self._ResourceAccessType
 
     @ResourceAccessType.setter
@@ -5139,7 +6155,34 @@ serviceName
         self._ResourceAccessType = ResourceAccessType
 
     @property
+    def ResourceVip(self):
+        """可用于访问自建云资源的IP。
+emr的连接不需要使用该字段
+        :rtype: str
+        """
+        return self._ResourceVip
+
+    @ResourceVip.setter
+    def ResourceVip(self, ResourceVip):
+        self._ResourceVip = ResourceVip
+
+    @property
+    def ResourceVPort(self):
+        """可用于访问自建云资源的端口。
+emr的连接不需要使用该字段
+        :rtype: int
+        """
+        return self._ResourceVPort
+
+    @ResourceVPort.setter
+    def ResourceVPort(self, ResourceVPort):
+        self._ResourceVPort = ResourceVPort
+
+    @property
     def UserName(self):
+        """账户名。如果emr_hive的连接方式为“LDAP”，则复用该字段
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -5148,6 +6191,9 @@ serviceName
 
     @property
     def Password(self):
+        """账户密码。如果emr_hive的连接方式为“LDAP”，则复用该字段
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -5156,6 +6202,9 @@ serviceName
 
     @property
     def ResourceName(self):
+        """资源名称，1-60个字符。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -5164,6 +6213,12 @@ serviceName
 
     @property
     def InstanceType(self):
+        """实例类型
+databse
+sid
+serviceName
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -5172,11 +6227,25 @@ serviceName
 
     @property
     def InstanceValue(self):
+        """实例值
+        :rtype: str
+        """
         return self._InstanceValue
 
     @InstanceValue.setter
     def InstanceValue(self, InstanceValue):
         self._InstanceValue = InstanceValue
+
+    @property
+    def AuthRange(self):
+        """授权范围（all:授权整个数据源 manual:手动指定数据库）
+        :rtype: str
+        """
+        return self._AuthRange
+
+    @AuthRange.setter
+    def AuthRange(self, AuthRange):
+        self._AuthRange = AuthRange
 
 
     def _deserialize(self, params):
@@ -5184,16 +6253,17 @@ serviceName
         self._MetaType = params.get("MetaType")
         self._ResourceRegion = params.get("ResourceRegion")
         self._ResourceId = params.get("ResourceId")
-        self._ResourceVip = params.get("ResourceVip")
-        self._ResourceVPort = params.get("ResourceVPort")
         self._ResourceUniqueVpcId = params.get("ResourceUniqueVpcId")
         self._ResourceUniqueSubnetId = params.get("ResourceUniqueSubnetId")
         self._ResourceAccessType = params.get("ResourceAccessType")
+        self._ResourceVip = params.get("ResourceVip")
+        self._ResourceVPort = params.get("ResourceVPort")
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
         self._ResourceName = params.get("ResourceName")
         self._InstanceType = params.get("InstanceType")
         self._InstanceValue = params.get("InstanceValue")
+        self._AuthRange = params.get("AuthRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5224,6 +6294,9 @@ class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
 
     @property
     def ConnectivityStatus(self):
+        """连通性测试情况，success表示可正常访问，failed表示无法访问。
+        :rtype: str
+        """
         return self._ConnectivityStatus
 
     @ConnectivityStatus.setter
@@ -5232,6 +6305,9 @@ class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
 
     @property
     def ConnectivityDescription(self):
+        """连通性描述字段，如果连通性测试失败，这里会返回无法访问的相关信息说明。
+        :rtype: str
+        """
         return self._ConnectivityDescription
 
     @ConnectivityDescription.setter
@@ -5240,6 +6316,9 @@ class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5288,6 +6367,9 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -5296,6 +6378,9 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -5304,6 +6389,9 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """规则绑定的分类id
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -5312,6 +6400,9 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -5320,6 +6411,9 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -5328,6 +6422,9 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def AnotherName(self):
+        """规则别名
+        :rtype: str
+        """
         return self._AnotherName
 
     @AnotherName.setter
@@ -5336,6 +6433,9 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def AliasRuleId(self):
+        """别名规则id
+        :rtype: int
+        """
         return self._AliasRuleId
 
     @AliasRuleId.setter
@@ -5344,6 +6444,9 @@ class CreateIdentifyRuleAnotherNameRequest(AbstractModel):
 
     @property
     def AliasRuleName(self):
+        """别名规则名称
+        :rtype: str
+        """
         return self._AliasRuleName
 
     @AliasRuleName.setter
@@ -5392,6 +6495,10 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
 
     @property
     def AliasRuleId(self):
+        """创建的别名规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AliasRuleId
 
     @AliasRuleId.setter
@@ -5400,6 +6507,10 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
 
     @property
     def AliasRuleName(self):
+        """别名规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AliasRuleName
 
     @AliasRuleName.setter
@@ -5408,6 +6519,9 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5441,6 +6555,9 @@ class CreateNewClassificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5472,6 +6589,9 @@ class CreateOrCopyStandardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5502,6 +6622,10 @@ class DBInstanceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -5510,6 +6634,10 @@ class DBInstanceInfo(AbstractModel):
 
     @property
     def DbInfos(self):
+        """数据源绑定的db信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DbInfo
+        """
         return self._DbInfos
 
     @DbInfos.setter
@@ -5552,6 +6680,9 @@ class DBStatements(AbstractModel):
 
     @property
     def DBName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DBName
 
     @DBName.setter
@@ -5560,6 +6691,9 @@ class DBStatements(AbstractModel):
 
     @property
     def DBSchema(self):
+        """数据库Schema
+        :rtype: str
+        """
         return self._DBSchema
 
     @DBSchema.setter
@@ -5601,6 +6735,8 @@ class DSPACosMetaDataInfo(AbstractModel):
         :type BindStatus: str
         :param _Storage: COS桶存储量
         :type Storage: float
+        :param _GovernAuthStatus: 治理授权状态，0:关闭 1：开启
+        :type GovernAuthStatus: int
         """
         self._Bucket = None
         self._CreateTime = None
@@ -5609,9 +6745,13 @@ class DSPACosMetaDataInfo(AbstractModel):
         self._ResourceRegion = None
         self._BindStatus = None
         self._Storage = None
+        self._GovernAuthStatus = None
 
     @property
     def Bucket(self):
+        """COS桶名
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -5620,6 +6760,9 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """COS桶创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5628,6 +6771,9 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def Valid(self):
+        """1 -- 有效，0 -- 无效，资源可能已被删除。
+        :rtype: int
+        """
         return self._Valid
 
     @Valid.setter
@@ -5636,6 +6782,9 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def ResourceId(self):
+        """DSPA为COS资源生成的资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -5644,6 +6793,9 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """COS资源所处的地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -5652,6 +6804,9 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def BindStatus(self):
+        """COS桶绑定状态
+        :rtype: str
+        """
         return self._BindStatus
 
     @BindStatus.setter
@@ -5660,11 +6815,25 @@ class DSPACosMetaDataInfo(AbstractModel):
 
     @property
     def Storage(self):
+        """COS桶存储量
+        :rtype: float
+        """
         return self._Storage
 
     @Storage.setter
     def Storage(self, Storage):
         self._Storage = Storage
+
+    @property
+    def GovernAuthStatus(self):
+        """治理授权状态，0:关闭 1：开启
+        :rtype: int
+        """
+        return self._GovernAuthStatus
+
+    @GovernAuthStatus.setter
+    def GovernAuthStatus(self, GovernAuthStatus):
+        self._GovernAuthStatus = GovernAuthStatus
 
 
     def _deserialize(self, params):
@@ -5675,6 +6844,7 @@ class DSPACosMetaDataInfo(AbstractModel):
         self._ResourceRegion = params.get("ResourceRegion")
         self._BindStatus = params.get("BindStatus")
         self._Storage = params.get("Storage")
+        self._GovernAuthStatus = params.get("GovernAuthStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5700,6 +6870,10 @@ class DSPADataSourceDbInfo(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -5745,6 +6919,10 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
 
     @property
     def MetaType(self):
+        """元数据类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -5753,6 +6931,10 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
 
     @property
     def Regions(self):
+        """支持的此元数据类型的地域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -5761,6 +6943,13 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
 
     @property
     def SupportedAuthTypes(self):
+        """此元数据类型支持的授权类型：
+account    -- 账户名密码授权，账户的最高只读权限需要由用户自行赋予；
+automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例中给账户名赋予最高只读权限；
+如果此列表为空，表明此类资源不支持以上的授权机制，无法通过后台进行授权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SupportedAuthTypes
 
     @SupportedAuthTypes.setter
@@ -5797,6 +6986,10 @@ class DSPATableInfo(AbstractModel):
 
     @property
     def TableName(self):
+        """表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -5839,6 +7032,9 @@ class DataCategory(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类ID
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -5847,6 +7043,9 @@ class DataCategory(AbstractModel):
 
     @property
     def Name(self):
+        """敏感数据分类名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5855,6 +7054,9 @@ class DataCategory(AbstractModel):
 
     @property
     def Source(self):
+        """敏感数据分类来源，取值：0 内置, 1 自定义
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -5863,6 +7065,9 @@ class DataCategory(AbstractModel):
 
     @property
     def RelateComplianceCount(self):
+        """关联模板数量
+        :rtype: int
+        """
         return self._RelateComplianceCount
 
     @RelateComplianceCount.setter
@@ -5905,6 +7110,10 @@ true:区分大小写
 
     @property
     def RuleContent(self):
+        """规则内容，可以是正则规则，关键词，
+忽略词扥
+        :rtype: str
+        """
         return self._RuleContent
 
     @RuleContent.setter
@@ -5913,6 +7122,11 @@ true:区分大小写
 
     @property
     def IsIgnoreCase(self):
+        """是否区分大小写
+false: 不区分大小写
+true:区分大小写
+        :rtype: bool
+        """
         return self._IsIgnoreCase
 
     @IsIgnoreCase.setter
@@ -5955,6 +7169,11 @@ regex 正则
 
     @property
     def RuleType(self):
+        """规则类型；取值：
+keyword 关键字, 
+regex 正则
+        :rtype: str
+        """
         return self._RuleType
 
     @RuleType.setter
@@ -5963,6 +7182,9 @@ regex 正则
 
     @property
     def RuleContent(self):
+        """内容
+        :rtype: str
+        """
         return self._RuleContent
 
     @RuleContent.setter
@@ -5971,6 +7193,9 @@ regex 正则
 
     @property
     def ExtendParameters(self):
+        """该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
+        :rtype: list of DatagovRuleExtendParameter
+        """
         return self._ExtendParameters
 
     @ExtendParameters.setter
@@ -6015,6 +7240,9 @@ class DataRules(AbstractModel):
 
     @property
     def Operator(self):
+        """操作符；只能取and, or的其中一种
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -6023,6 +7251,10 @@ class DataRules(AbstractModel):
 
     @property
     def Contents(self):
+        """规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataRule
+        """
         return self._Contents
 
     @Contents.setter
@@ -6065,6 +7297,9 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -6073,6 +7308,9 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def BindList(self):
+        """针对rbd-就是绑定的db_name
+        :rtype: list of str
+        """
         return self._BindList
 
     @BindList.setter
@@ -6114,6 +7352,12 @@ IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"t
 
     @property
     def Name(self):
+        """扩展参数名称，目前支持如下两个扩展属性名称：
+IsFullWordMatch，表示是否全文匹配，该Name对应的Value可取值为"true"或"false":，默认值为"false"，
+IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"true"或"false"，默认值为"true"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6122,6 +7366,10 @@ IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"t
 
     @property
     def Value(self):
+        """扩展参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6165,6 +7413,10 @@ class DbInfo(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -6173,6 +7425,10 @@ class DbInfo(AbstractModel):
 
     @property
     def ValidStatus(self):
+        """绑定的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValidStatus
 
     @ValidStatus.setter
@@ -6181,6 +7437,10 @@ class DbInfo(AbstractModel):
 
     @property
     def BindType(self):
+        """绑定的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BindType
 
     @BindType.setter
@@ -6222,6 +7482,9 @@ class DbRelationStatusItem(AbstractModel):
 
     @property
     def DbName(self):
+        """DB名称。
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -6230,6 +7493,9 @@ class DbRelationStatusItem(AbstractModel):
 
     @property
     def BindStatus(self):
+        """DB绑定状态。
+        :rtype: str
+        """
         return self._BindStatus
 
     @BindStatus.setter
@@ -6238,6 +7504,9 @@ class DbRelationStatusItem(AbstractModel):
 
     @property
     def ValidStatus(self):
+        """DB有效性状态。
+        :rtype: str
+        """
         return self._ValidStatus
 
     @ValidStatus.setter
@@ -6273,6 +7542,9 @@ class DbResourceItem(AbstractModel):
 
     @property
     def DbName(self):
+        """DB名称。
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -6319,6 +7591,9 @@ class DbTaskResult(AbstractModel):
 
     @property
     def Result(self):
+        """结果类型。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -6327,6 +7602,9 @@ class DbTaskResult(AbstractModel):
 
     @property
     def ResultDescription(self):
+        """结果描述。
+        :rtype: str
+        """
         return self._ResultDescription
 
     @ResultDescription.setter
@@ -6335,6 +7613,10 @@ class DbTaskResult(AbstractModel):
 
     @property
     def ErrDescription(self):
+        """错误信息描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ErrDescription`
+        """
         return self._ErrDescription
 
     @ErrDescription.setter
@@ -6343,6 +7625,9 @@ class DbTaskResult(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -6351,6 +7636,9 @@ class DbTaskResult(AbstractModel):
 
     @property
     def DbName(self):
+        """database名称。
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -6397,6 +7685,10 @@ class DecribeSuggestRiskLevelMatrixRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspaId
+
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6405,6 +7697,9 @@ class DecribeSuggestRiskLevelMatrixRequest(AbstractModel):
 
     @property
     def SensitiveLevelList(self):
+        """分类分级等级列表
+        :rtype: list of RiskMatrixLevel
+        """
         return self._SensitiveLevelList
 
     @SensitiveLevelList.setter
@@ -6413,6 +7708,9 @@ class DecribeSuggestRiskLevelMatrixRequest(AbstractModel):
 
     @property
     def VulnerabilityLevelList(self):
+        """脆弱项等级列表
+        :rtype: list of RiskMatrixLevel
+        """
         return self._VulnerabilityLevelList
 
     @VulnerabilityLevelList.setter
@@ -6461,6 +7759,9 @@ class DecribeSuggestRiskLevelMatrixResponse(AbstractModel):
 
     @property
     def SuggestRiskLevelMatrix(self):
+        """矩阵
+        :rtype: list of SuggestRiskLevelMatrix
+        """
         return self._SuggestRiskLevelMatrix
 
     @SuggestRiskLevelMatrix.setter
@@ -6469,6 +7770,9 @@ class DecribeSuggestRiskLevelMatrixResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6506,6 +7810,9 @@ class DeleteCosMetaResourceRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """实例Id。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6514,6 +7821,9 @@ class DeleteCosMetaResourceRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -6522,6 +7832,9 @@ class DeleteCosMetaResourceRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """资源实例ID。
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -6564,6 +7877,10 @@ class DeleteCosMetaResourceResponse(AbstractModel):
 
     @property
     def Results(self):
+        """结果集合。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaTaskResult
+        """
         return self._Results
 
     @Results.setter
@@ -6572,6 +7889,9 @@ class DeleteCosMetaResourceResponse(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6580,6 +7900,9 @@ class DeleteCosMetaResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6615,6 +7938,9 @@ class DeleteDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6623,6 +7949,9 @@ class DeleteDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """评估任务Id，格式“task-xxxxxxxx”
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6657,6 +7986,9 @@ class DeleteDSPAAssessmentTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6685,6 +8017,9 @@ class DeleteDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6693,6 +8028,9 @@ class DeleteDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6727,6 +8065,9 @@ class DeleteDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6755,6 +8096,9 @@ class DeleteDSPACOSDiscoveryTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6763,6 +8107,9 @@ class DeleteDSPACOSDiscoveryTaskResultRequest(AbstractModel):
 
     @property
     def BucketResultId(self):
+        """扫描bucket结果ID
+        :rtype: int
+        """
         return self._BucketResultId
 
     @BucketResultId.setter
@@ -6797,6 +8144,9 @@ class DeleteDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6828,6 +8178,9 @@ class DeleteDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6836,6 +8189,9 @@ class DeleteDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6844,6 +8200,9 @@ class DeleteDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -6879,6 +8238,9 @@ class DeleteDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6907,6 +8269,9 @@ class DeleteDSPADiscoveryTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6915,6 +8280,9 @@ class DeleteDSPADiscoveryTaskResultRequest(AbstractModel):
 
     @property
     def DbResultId(self):
+        """扫描数据库结果ID
+        :rtype: int
+        """
         return self._DbResultId
 
     @DbResultId.setter
@@ -6949,6 +8317,9 @@ class DeleteDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6977,6 +8348,9 @@ class DeleteDSPAMetaResourceRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -6985,6 +8359,9 @@ class DeleteDSPAMetaResourceRequest(AbstractModel):
 
     @property
     def ResourceIDs(self):
+        """用户云资源ID。
+        :rtype: list of str
+        """
         return self._ResourceIDs
 
     @ResourceIDs.setter
@@ -7025,6 +8402,9 @@ class DeleteDSPAMetaResourceResponse(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -7033,6 +8413,9 @@ class DeleteDSPAMetaResourceResponse(AbstractModel):
 
     @property
     def Results(self):
+        """删除结果。
+        :rtype: list of DspaTaskResult
+        """
         return self._Results
 
     @Results.setter
@@ -7041,6 +8424,9 @@ class DeleteDSPAMetaResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7076,6 +8462,9 @@ class DescribeAssetDetailDataExportResultRequest(AbstractModel):
 
     @property
     def ExportTaskId(self):
+        """导出任务id
+        :rtype: int
+        """
         return self._ExportTaskId
 
     @ExportTaskId.setter
@@ -7084,6 +8473,9 @@ class DescribeAssetDetailDataExportResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -7124,6 +8516,9 @@ class DescribeAssetDetailDataExportResultResponse(AbstractModel):
 
     @property
     def ExportResult(self):
+        """导出结果
+        :rtype: str
+        """
         return self._ExportResult
 
     @ExportResult.setter
@@ -7132,6 +8527,9 @@ class DescribeAssetDetailDataExportResultResponse(AbstractModel):
 
     @property
     def ExportFileUrl(self):
+        """导出文件地址
+        :rtype: str
+        """
         return self._ExportFileUrl
 
     @ExportFileUrl.setter
@@ -7140,6 +8538,9 @@ class DescribeAssetDetailDataExportResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7173,6 +8574,9 @@ class DescribeAssetOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -7181,6 +8585,9 @@ class DescribeAssetOverviewRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -7189,6 +8596,9 @@ class DescribeAssetOverviewRequest(AbstractModel):
 
     @property
     def AssetList(self):
+        """查询的资产信息列表
+        :rtype: list of AssetList
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -7293,6 +8703,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def DBInstanceNums(self):
+        """数据库实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DBInstanceNums
 
     @DBInstanceNums.setter
@@ -7301,6 +8715,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def DBNums(self):
+        """数据库个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DBNums
 
     @DBNums.setter
@@ -7309,6 +8727,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def TableNums(self):
+        """表的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TableNums
 
     @TableNums.setter
@@ -7317,6 +8739,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def FieldNums(self):
+        """字段个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FieldNums
 
     @FieldNums.setter
@@ -7325,6 +8751,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def DBInstanceDistribution(self):
+        """数据库实例的分布情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._DBInstanceDistribution
 
     @DBInstanceDistribution.setter
@@ -7333,6 +8763,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def DBDistribution(self):
+        """db分布情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._DBDistribution
 
     @DBDistribution.setter
@@ -7341,6 +8775,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def BucketNums(self):
+        """cos桶的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BucketNums
 
     @BucketNums.setter
@@ -7349,6 +8787,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def FileNums(self):
+        """文件个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileNums
 
     @FileNums.setter
@@ -7357,6 +8799,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """用于对用户进行提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -7365,6 +8811,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def EsInstanceNums(self):
+        """es实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EsInstanceNums
 
     @EsInstanceNums.setter
@@ -7373,6 +8823,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def EsIndexNums(self):
+        """es索引数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EsIndexNums
 
     @EsIndexNums.setter
@@ -7381,6 +8835,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def EsFieldNums(self):
+        """es字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EsFieldNums
 
     @EsFieldNums.setter
@@ -7389,6 +8847,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def MongoInstanceNums(self):
+        """mongo实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MongoInstanceNums
 
     @MongoInstanceNums.setter
@@ -7397,6 +8859,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def MongoDbNums(self):
+        """mongo数据库数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MongoDbNums
 
     @MongoDbNums.setter
@@ -7405,6 +8871,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def MongoColNums(self):
+        """mongo集合数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MongoColNums
 
     @MongoColNums.setter
@@ -7413,6 +8883,10 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def MongoFieldNums(self):
+        """mongo字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MongoFieldNums
 
     @MongoFieldNums.setter
@@ -7421,6 +8895,9 @@ class DescribeAssetOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7478,6 +8955,9 @@ class DescribeBindDBListRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -7486,6 +8966,9 @@ class DescribeBindDBListRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -7494,6 +8977,9 @@ class DescribeBindDBListRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -7537,6 +9023,10 @@ class DescribeBindDBListResponse(AbstractModel):
 
     @property
     def BindDBList(self):
+        """绑定的DB列表（已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._BindDBList
 
     @BindDBList.setter
@@ -7545,6 +9035,10 @@ class DescribeBindDBListResponse(AbstractModel):
 
     @property
     def BindList(self):
+        """绑定信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DBInstanceInfo
+        """
         return self._BindList
 
     @BindList.setter
@@ -7553,6 +9047,9 @@ class DescribeBindDBListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7591,6 +9088,9 @@ class DescribeCOSAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -7599,6 +9099,9 @@ class DescribeCOSAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -7607,6 +9110,9 @@ class DescribeCOSAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
+        """查询的资产列表
+        :rtype: list of AssetList
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -7659,6 +9165,10 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def CosAsset(self):
+        """cos的涉敏资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.CosAsset`
+        """
         return self._CosAsset
 
     @CosAsset.setter
@@ -7667,6 +9177,10 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def TopAsset(self):
+        """涉敏top
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopAsset
+        """
         return self._TopAsset
 
     @TopAsset.setter
@@ -7675,6 +9189,10 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def CosDetail(self):
+        """cos资产详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssetCosDetail
+        """
         return self._CosDetail
 
     @CosDetail.setter
@@ -7683,6 +9201,9 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7729,6 +9250,9 @@ class DescribeClassificationInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7760,6 +9284,9 @@ class DescribeClassificationRuleCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7792,6 +9319,9 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例Id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -7800,6 +9330,9 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -7808,6 +9341,10 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件， rdb（数据库）cos（对象存储）
+不传就是全部
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -7847,6 +9384,10 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
 
     @property
     def AssetsList(self):
+        """含高风险资产TOP10的列表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HighRiskAssetsDetail
+        """
         return self._AssetsList
 
     @AssetsList.setter
@@ -7855,6 +9396,9 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7892,6 +9436,9 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例Id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -7900,6 +9447,9 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -7908,6 +9458,9 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
 
     @property
     def RiskId(self):
+        """风险id
+        :rtype: int
+        """
         return self._RiskId
 
     @RiskId.setter
@@ -8019,6 +9572,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -8027,6 +9584,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -8035,6 +9596,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def AssetName(self):
+        """资产对象名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -8043,6 +9608,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def AssessmentTemplateId(self):
+        """风险评估模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssessmentTemplateId
 
     @AssessmentTemplateId.setter
@@ -8051,6 +9620,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def IdentifyTemplateId(self):
+        """分类分级的模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentifyTemplateId
 
     @IdentifyTemplateId.setter
@@ -8059,6 +9632,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskType(self):
+        """风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskType
 
     @RiskType.setter
@@ -8067,6 +9644,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskName(self):
+        """风险项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskName
 
     @RiskName.setter
@@ -8075,6 +9656,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskDescription(self):
+        """风险的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskDescription
 
     @RiskDescription.setter
@@ -8083,6 +9668,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """风险的级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -8091,6 +9680,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def SuggestAction(self):
+        """处置的建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SuggestAction
 
     @SuggestAction.setter
@@ -8099,6 +9692,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def Status(self):
+        """处置状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8107,6 +9704,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8115,6 +9716,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def SecurityProduct(self):
+        """安全产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecurityProduct
+        """
         return self._SecurityProduct
 
     @SecurityProduct.setter
@@ -8123,6 +9728,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RiskDimension(self):
+        """风险归属
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskDimension
 
     @RiskDimension.setter
@@ -8131,6 +9740,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RelationAsset(self):
+        """关联数据库（如果风险归属是instance）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._RelationAsset
 
     @RelationAsset.setter
@@ -8139,6 +9752,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def AccountRiskDetail(self):
+        """风险账号详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AccountRisk
+        """
         return self._AccountRiskDetail
 
     @AccountRiskDetail.setter
@@ -8147,6 +9764,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def PrivilegeRiskDetail(self):
+        """权限风险详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrivilegeRisk
+        """
         return self._PrivilegeRiskDetail
 
     @PrivilegeRiskDetail.setter
@@ -8155,6 +9776,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def PolicyRiskCosFileList(self):
+        """策略风险的cos风险文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PolicyRiskCosFileList
 
     @PolicyRiskCosFileList.setter
@@ -8163,6 +9788,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def AKSKLeak(self):
+        """AKSK泄漏列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AKSKLeak
+        """
         return self._AKSKLeak
 
     @AKSKLeak.setter
@@ -8171,6 +9800,9 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8271,6 +9903,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例Id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -8279,6 +9914,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8287,6 +9925,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8295,6 +9936,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -8303,6 +9947,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """资产名称，数据源id
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -8311,6 +9958,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def RiskType(self):
+        """风险类型
+        :rtype: str
+        """
         return self._RiskType
 
     @RiskType.setter
@@ -8319,6 +9969,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def ControlItemId(self):
+        """风险项
+        :rtype: str
+        """
         return self._ControlItemId
 
     @ControlItemId.setter
@@ -8327,6 +9980,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """风险状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8335,6 +9991,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """扫描开始时间
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -8343,6 +10002,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """扫描结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8351,6 +10013,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """风险等级筛选
+        :rtype: str
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -8359,6 +10024,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def RiskSide(self):
+        """风险面筛选
+        :rtype: list of str
+        """
         return self._RiskSide
 
     @RiskSide.setter
@@ -8367,6 +10035,9 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
 
     @property
     def TimeSort(self):
+        """ASC 正序，DESC倒叙
+        :rtype: str
+        """
         return self._TimeSort
 
     @TimeSort.setter
@@ -8419,6 +10090,10 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
 
     @property
     def LatestRiskList(self):
+        """最新风险详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskItemInfo
+        """
         return self._LatestRiskList
 
     @LatestRiskList.setter
@@ -8427,6 +10102,9 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8435,6 +10113,9 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8470,6 +10151,9 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -8478,6 +10162,9 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8521,6 +10208,9 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
     @property
     def NewDiscoveredRiskCount(self):
+        """待处理的风险数
+        :rtype: int
+        """
         return self._NewDiscoveredRiskCount
 
     @NewDiscoveredRiskCount.setter
@@ -8529,6 +10219,9 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
     @property
     def AffectedAssetCount(self):
+        """受影响的资产数
+        :rtype: int
+        """
         return self._AffectedAssetCount
 
     @AffectedAssetCount.setter
@@ -8537,6 +10230,9 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
     @property
     def WeekRatio(self):
+        """周同比
+        :rtype: float
+        """
         return self._WeekRatio
 
     @WeekRatio.setter
@@ -8545,6 +10241,9 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8576,6 +10275,9 @@ class DescribeDSPAAssessmentPendingRiskOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -8584,6 +10286,9 @@ class DescribeDSPAAssessmentPendingRiskOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8627,6 +10332,9 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
     @property
     def PendingRiskCount(self):
+        """待处理的风险数
+        :rtype: int
+        """
         return self._PendingRiskCount
 
     @PendingRiskCount.setter
@@ -8635,6 +10343,9 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
     @property
     def AffectedAssetCount(self):
+        """受影响的资产数
+        :rtype: int
+        """
         return self._AffectedAssetCount
 
     @AffectedAssetCount.setter
@@ -8643,6 +10354,9 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
     @property
     def WeekRatio(self):
+        """周同比
+        :rtype: float
+        """
         return self._WeekRatio
 
     @WeekRatio.setter
@@ -8651,6 +10365,9 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8682,6 +10399,9 @@ class DescribeDSPAAssessmentProcessingRiskOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -8690,6 +10410,9 @@ class DescribeDSPAAssessmentProcessingRiskOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8733,6 +10456,9 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
     @property
     def ProcessingRiskCount(self):
+        """待处理的风险数
+        :rtype: int
+        """
         return self._ProcessingRiskCount
 
     @ProcessingRiskCount.setter
@@ -8741,6 +10467,9 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
     @property
     def AffectedAssetCount(self):
+        """受影响的资产数
+        :rtype: int
+        """
         return self._AffectedAssetCount
 
     @AffectedAssetCount.setter
@@ -8749,6 +10478,9 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
     @property
     def WeekRatio(self):
+        """周同比
+        :rtype: float
+        """
         return self._WeekRatio
 
     @WeekRatio.setter
@@ -8757,6 +10489,9 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8788,6 +10523,9 @@ class DescribeDSPAAssessmentRiskAmountOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -8796,6 +10534,9 @@ class DescribeDSPAAssessmentRiskAmountOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8836,6 +10577,9 @@ class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
 
     @property
     def TotalRiskCount(self):
+        """风险总数
+        :rtype: int
+        """
         return self._TotalRiskCount
 
     @TotalRiskCount.setter
@@ -8844,6 +10588,9 @@ class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
 
     @property
     def TotalAffectedAssetCount(self):
+        """受影响的资产数
+        :rtype: int
+        """
         return self._TotalAffectedAssetCount
 
     @TotalAffectedAssetCount.setter
@@ -8852,6 +10599,9 @@ class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8879,6 +10629,9 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Request(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -8916,6 +10669,10 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
 
     @property
     def Items(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskItem
+        """
         return self._Items
 
     @Items.setter
@@ -8924,6 +10681,9 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8955,6 +10715,9 @@ class DescribeDSPAAssessmentRiskDealedOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9000,6 +10763,9 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """遗留待处理风险总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9008,6 +10774,9 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def YesterdayDealedCount(self):
+        """昨日完成风险处置数
+        :rtype: int
+        """
         return self._YesterdayDealedCount
 
     @YesterdayDealedCount.setter
@@ -9016,6 +10785,9 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def UnDealedRiskWeekRatio(self):
+        """遗留待处理风险数周同比
+        :rtype: float
+        """
         return self._UnDealedRiskWeekRatio
 
     @UnDealedRiskWeekRatio.setter
@@ -9024,6 +10796,9 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def UnDealedRiskDayRatio(self):
+        """遗留待处理风险数日环比
+        :rtype: float
+        """
         return self._UnDealedRiskDayRatio
 
     @UnDealedRiskDayRatio.setter
@@ -9032,6 +10807,9 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9070,6 +10848,9 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9078,6 +10859,9 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始日期
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9086,6 +10870,9 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束日期
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9094,6 +10881,9 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -9134,6 +10924,10 @@ class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
 
     @property
     def Items(self):
+        """趋势统计结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskDealedTrendItem
+        """
         return self._Items
 
     @Items.setter
@@ -9142,6 +10936,9 @@ class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9180,6 +10977,9 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例Id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9188,6 +10988,9 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -9196,6 +10999,10 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """风险资产分布的过滤条件
+（rdb，cos，不传就筛选全部）
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -9243,6 +11050,10 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
     @property
     def RiskTypeDistribution(self):
+        """风险类型分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._RiskTypeDistribution
 
     @RiskTypeDistribution.setter
@@ -9251,6 +11062,10 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
     @property
     def RiskDetailDistribution(self):
+        """风险详情分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._RiskDetailDistribution
 
     @RiskDetailDistribution.setter
@@ -9259,6 +11074,10 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
     @property
     def RiskAssetsDistribution(self):
+        """风险资产详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._RiskAssetsDistribution
 
     @RiskAssetsDistribution.setter
@@ -9267,6 +11086,9 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9310,6 +11132,9 @@ class DescribeDSPAAssessmentRiskItemTop5Request(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9347,6 +11172,10 @@ class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
 
     @property
     def Items(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskItem
+        """
         return self._Items
 
     @Items.setter
@@ -9355,6 +11184,9 @@ class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9389,6 +11221,9 @@ class DescribeDSPAAssessmentRiskLevelDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9397,6 +11232,9 @@ class DescribeDSPAAssessmentRiskLevelDetailRequest(AbstractModel):
 
     @property
     def RiskLevelId(self):
+        """风险级别id
+        :rtype: int
+        """
         return self._RiskLevelId
 
     @RiskLevelId.setter
@@ -9449,6 +11287,9 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def RiskLevelName(self):
+        """风险级别名称
+        :rtype: str
+        """
         return self._RiskLevelName
 
     @RiskLevelName.setter
@@ -9457,6 +11298,10 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def RiskLevelDescription(self):
+        """风险级别描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskLevelDescription
 
     @RiskLevelDescription.setter
@@ -9465,6 +11310,10 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def IdentifyComplianceId(self):
+        """分类分级id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentifyComplianceId
 
     @IdentifyComplianceId.setter
@@ -9473,6 +11322,9 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def IdentifyComplianceName(self):
+        """分类分级模板名称
+        :rtype: str
+        """
         return self._IdentifyComplianceName
 
     @IdentifyComplianceName.setter
@@ -9481,6 +11333,10 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def RiskLevelMatrix(self):
+        """风险数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskLevelMatrix
+        """
         return self._RiskLevelMatrix
 
     @RiskLevelMatrix.setter
@@ -9489,6 +11345,9 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9530,6 +11389,9 @@ class DescribeDSPAAssessmentRiskLevelListRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9538,6 +11400,9 @@ class DescribeDSPAAssessmentRiskLevelListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9546,6 +11411,9 @@ class DescribeDSPAAssessmentRiskLevelListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9588,6 +11456,9 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9596,6 +11467,10 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
 
     @property
     def RiskLevelList(self):
+        """风险等级列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskLevelRisk
+        """
         return self._RiskLevelList
 
     @RiskLevelList.setter
@@ -9604,6 +11479,9 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9645,6 +11523,9 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9653,6 +11534,9 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始日期
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9661,6 +11545,9 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时日期
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9669,6 +11556,9 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -9709,6 +11599,10 @@ class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
 
     @property
     def Items(self):
+        """结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskLevelTrendItem
+        """
         return self._Items
 
     @Items.setter
@@ -9717,6 +11611,9 @@ class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9748,6 +11645,9 @@ class DescribeDSPAAssessmentRiskOverviewRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9793,6 +11693,9 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """风险总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9801,6 +11704,9 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def HighRiskCount(self):
+        """高危风险数
+        :rtype: int
+        """
         return self._HighRiskCount
 
     @HighRiskCount.setter
@@ -9809,6 +11715,9 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def HighRiskWeekRatio(self):
+        """周同比
+        :rtype: float
+        """
         return self._HighRiskWeekRatio
 
     @HighRiskWeekRatio.setter
@@ -9817,6 +11726,9 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def HighRiskDayRatio(self):
+        """高危风险数日环比
+        :rtype: float
+        """
         return self._HighRiskDayRatio
 
     @HighRiskDayRatio.setter
@@ -9825,6 +11737,9 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9857,6 +11772,9 @@ class DescribeDSPAAssessmentRiskProcessHistoryRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9865,6 +11783,9 @@ class DescribeDSPAAssessmentRiskProcessHistoryRequest(AbstractModel):
 
     @property
     def RiskId(self):
+        """xxx
+        :rtype: int
+        """
         return self._RiskId
 
     @RiskId.setter
@@ -9903,6 +11824,10 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
 
     @property
     def ProcessHistory(self):
+        """处理的历史
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ProcessHistory
+        """
         return self._ProcessHistory
 
     @ProcessHistory.setter
@@ -9911,6 +11836,9 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9945,6 +11873,9 @@ class DescribeDSPAAssessmentRiskSideDistributedRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -9953,6 +11884,9 @@ class DescribeDSPAAssessmentRiskSideDistributedRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -9991,6 +11925,10 @@ class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
 
     @property
     def RiskSideDistributed(self):
+        """风险面的分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskSideDistributed
+        """
         return self._RiskSideDistributed
 
     @RiskSideDistributed.setter
@@ -9999,6 +11937,9 @@ class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10033,6 +11974,9 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -10041,6 +11985,9 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """评估模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -10079,6 +12026,10 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
 
     @property
     def RiskSideItmeList(self):
+        """风险面列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._RiskSideItmeList
 
     @RiskSideItmeList.setter
@@ -10087,6 +12038,9 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10127,6 +12081,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -10135,6 +12092,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -10143,6 +12103,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10151,6 +12114,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10215,6 +12181,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -10223,6 +12192,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -10231,6 +12203,10 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TemplateDescription(self):
+        """模板的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateDescription
 
     @TemplateDescription.setter
@@ -10239,6 +12215,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def RiskLevelId(self):
+        """风险等级
+        :rtype: int
+        """
         return self._RiskLevelId
 
     @RiskLevelId.setter
@@ -10247,6 +12226,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def RiskLevelName(self):
+        """风险等级名称
+        :rtype: str
+        """
         return self._RiskLevelName
 
     @RiskLevelName.setter
@@ -10255,6 +12237,10 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def RiskItemList(self):
+        """脆弱项配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssessmentRiskItem
+        """
         return self._RiskItemList
 
     @RiskItemList.setter
@@ -10263,6 +12249,10 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """脆弱项配置条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10271,6 +12261,10 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def TaskCitations(self):
+        """被任务引用次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskCitations
 
     @TaskCitations.setter
@@ -10279,6 +12273,9 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10332,6 +12329,9 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -10340,6 +12340,9 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10348,6 +12351,9 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10356,6 +12362,9 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def RiskType(self):
+        """风险类型
+        :rtype: str
+        """
         return self._RiskType
 
     @RiskType.setter
@@ -10364,6 +12373,9 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def RiskName(self):
+        """风险名称
+        :rtype: str
+        """
         return self._RiskName
 
     @RiskName.setter
@@ -10372,6 +12384,9 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
 
     @property
     def RiskSide(self):
+        """风险面
+        :rtype: str
+        """
         return self._RiskSide
 
     @RiskSide.setter
@@ -10417,6 +12432,10 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
 
     @property
     def RiskItemList(self):
+        """脆弱项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssessmentRiskItem
+        """
         return self._RiskItemList
 
     @RiskItemList.setter
@@ -10425,6 +12444,9 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10433,6 +12455,9 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10481,6 +12506,9 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -10489,6 +12517,9 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def TaskId(self):
+        """评估任务Id，格式“task-xxxxxxxx”
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10497,6 +12528,9 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def Offset(self):
+        """偏移量。默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10505,6 +12539,9 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def Limit(self):
+        """结果集个数限制。默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10513,6 +12550,13 @@ Status：风险处理状态(waiting待处理, processing处理中, stopped处理
 
     @property
     def Filters(self):
+        """过滤项。
+支持模糊搜索：ControlItemName。
+支持过滤：
+RiskLevel：风险等级（high，medium，low）
+Status：风险处理状态(waiting待处理, processing处理中, stopped处理暂停, finished已处理, failed处理失败)
+        :rtype: list of DspaAssessmentFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10561,6 +12605,9 @@ class DescribeDSPAAssessmentRisksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的评估风险项数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10569,6 +12616,9 @@ class DescribeDSPAAssessmentRisksResponse(AbstractModel):
 
     @property
     def Items(self):
+        """评估风险项列表
+        :rtype: list of AssessmentRisk
+        """
         return self._Items
 
     @Items.setter
@@ -10577,6 +12627,9 @@ class DescribeDSPAAssessmentRisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10624,6 +12677,9 @@ Status：评估状态 (waiting待评估，processing评估中, , finished已评�
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -10632,6 +12688,9 @@ Status：评估状态 (waiting待评估，processing评估中, , finished已评�
 
     @property
     def Offset(self):
+        """偏移量。默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10640,6 +12699,9 @@ Status：评估状态 (waiting待评估，processing评估中, , finished已评�
 
     @property
     def Limit(self):
+        """结果集个数限制。默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10648,6 +12710,15 @@ Status：评估状态 (waiting待评估，processing评估中, , finished已评�
 
     @property
     def Filters(self):
+        """过滤项。
+支持模糊搜索：TaskId，TaskName
+支持过滤：
+BusinessName：业务名称
+BusinessDept：业务部门名称
+TemplateName：评估模版名称
+Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
+        :rtype: list of DspaAssessmentFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10695,6 +12766,9 @@ class DescribeDSPAAssessmentTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的评估任务数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10703,6 +12777,9 @@ class DescribeDSPAAssessmentTasksResponse(AbstractModel):
 
     @property
     def Items(self):
+        """评估任务列表
+        :rtype: list of AssessmentTask
+        """
         return self._Items
 
     @Items.setter
@@ -10711,6 +12788,9 @@ class DescribeDSPAAssessmentTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10761,6 +12841,9 @@ Status：评估项启用状态，draft / launched
 
     @property
     def DspaId(self):
+        """DSPA实例Id。格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -10769,6 +12852,9 @@ Status：评估项启用状态，draft / launched
 
     @property
     def TemplateId(self):
+        """评估模板Id。格式“template-xxxxxxxx”
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -10777,6 +12863,9 @@ Status：评估项启用状态，draft / launched
 
     @property
     def Offset(self):
+        """偏移量。默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10785,6 +12874,9 @@ Status：评估项启用状态，draft / launched
 
     @property
     def Limit(self):
+        """结果集个数限制。默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10793,6 +12885,15 @@ Status：评估项启用状态，draft / launched
 
     @property
     def Filters(self):
+        """过滤项。
+支持模糊搜索：ItemId，ItemName
+支持过滤：
+Source：评估项来源，system / user
+ItemType：评估项类型，questionnaire / auto
+ItemSubType：评估项子类型
+Status：评估项启用状态，draft / launched
+        :rtype: list of DspaAssessmentFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10841,6 +12942,9 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的评估项数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10849,6 +12953,9 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """模板关联的评估项列表
+        :rtype: list of AssessmentControlItem
+        """
         return self._Items
 
     @Items.setter
@@ -10857,6 +12964,9 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10898,6 +13008,9 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -10906,6 +13019,9 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10914,6 +13030,9 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果集个数限制。默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10922,6 +13041,9 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched，ComplianceId：关联的分类分级模板id
+        :rtype: list of DspaAssessmentFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10969,6 +13091,9 @@ class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的模板数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10977,6 +13102,9 @@ class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """模板列表。
+        :rtype: list of AssessmentTemplate
+        """
         return self._Items
 
     @Items.setter
@@ -10985,6 +13113,9 @@ class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11020,6 +13151,9 @@ class DescribeDSPACOSDataAssetBucketsRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例Id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11028,6 +13162,9 @@ class DescribeDSPACOSDataAssetBucketsRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组Id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -11066,6 +13203,10 @@ class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
 
     @property
     def Buckets(self):
+        """COS对象存储敏感数据资产已扫描的桶集合。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Buckets
 
     @Buckets.setter
@@ -11074,6 +13215,9 @@ class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11103,6 +13247,9 @@ class DescribeDSPACOSDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11111,6 +13258,9 @@ class DescribeDSPACOSDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -11150,6 +13300,11 @@ class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def Stats(self):
+        """符合条件的COS存储对象的敏感数据资产统计记录
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDataAssetCount`
+        """
         return self._Stats
 
     @Stats.setter
@@ -11158,6 +13313,9 @@ class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11189,6 +13347,9 @@ class DescribeDSPACOSDataAssetDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11197,6 +13358,9 @@ class DescribeDSPACOSDataAssetDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -11238,6 +13402,10 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
 
     @property
     def Details(self):
+        """COS对象存储敏感数据资产详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaCOSDataAssetDetail
+        """
         return self._Details
 
     @Details.setter
@@ -11246,6 +13414,9 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的COS对象存储敏感数据资产数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11254,6 +13425,9 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11289,6 +13463,9 @@ class DescribeDSPACOSDiscoveryTaskDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11297,6 +13474,9 @@ class DescribeDSPACOSDiscoveryTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11335,6 +13515,10 @@ class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
 
     @property
     def Task(self):
+        """任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDetail`
+        """
         return self._Task
 
     @Task.setter
@@ -11343,6 +13527,9 @@ class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11377,6 +13564,9 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例Id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11385,6 +13575,9 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """扫描任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11393,6 +13586,9 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
     @property
     def BucketResultId(self):
+        """扫描Bucket任务结果ID
+        :rtype: int
+        """
         return self._BucketResultId
 
     @BucketResultId.setter
@@ -11432,6 +13628,10 @@ class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
 
     @property
     def Files(self):
+        """文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Files
 
     @Files.setter
@@ -11440,6 +13640,9 @@ class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11481,6 +13684,9 @@ ResourceRegion：资源所在地域
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11489,6 +13695,9 @@ ResourceRegion：资源所在地域
 
     @property
     def Offset(self):
+        """偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11497,6 +13706,9 @@ ResourceRegion：资源所在地域
 
     @property
     def Limit(self):
+        """返回数量，默认值为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11505,6 +13717,15 @@ ResourceRegion：资源所在地域
 
     @property
     def Filters(self):
+        """Array of Filter	此参数对外不可见。过滤数组。支持的Name：
+BucketName 对象桶名
+TaskID 任务ID，
+TaskName 任务名，
+DataSourceId：数据源ID，
+ResourceRegion：资源所在地域
+每项过滤条件最多支持5个。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -11554,6 +13775,10 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def Items(self):
+        """扫描任务结果项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaCOSDiscoveryTaskResult
+        """
         return self._Items
 
     @Items.setter
@@ -11562,6 +13787,10 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的数据结果数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11570,6 +13799,9 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11617,6 +13849,9 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11625,6 +13860,9 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11633,6 +13871,9 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11641,6 +13882,9 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def StatusList(self):
+        """任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        :rtype: list of int
+        """
         return self._StatusList
 
     @StatusList.setter
@@ -11649,6 +13893,9 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11657,6 +13904,9 @@ class DescribeDSPACOSDiscoveryTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11702,6 +13952,10 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
 
     @property
     def Items(self):
+        """任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaCOSDiscoveryTask
+        """
         return self._Items
 
     @Items.setter
@@ -11710,6 +13964,9 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的任务列表数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11718,6 +13975,9 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11780,6 +14040,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11788,6 +14051,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11796,6 +14062,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def BucketResultId(self):
+        """扫描Bucket结果ID
+        :rtype: int
+        """
         return self._BucketResultId
 
     @BucketResultId.setter
@@ -11804,6 +14073,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -11812,6 +14084,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -11820,6 +14095,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """敏感数据分类ID
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -11828,6 +14106,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def LevelId(self):
+        """敏感数据分级ID
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -11836,6 +14117,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11844,6 +14128,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认值为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11852,6 +14139,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def BucketName(self):
+        """扫描桶名称。
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -11860,6 +14150,9 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryIdList(self):
+        """多级分类的分类ID集合
+        :rtype: list of int
+        """
         return self._CategoryIdList
 
     @CategoryIdList.setter
@@ -11910,6 +14203,10 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
 
     @property
     def Items(self):
+        """扫描结果详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryCOSTaskResultDetail
+        """
         return self._Items
 
     @Items.setter
@@ -11918,6 +14215,9 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的详情数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11926,6 +14226,9 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11970,6 +14273,9 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -11978,6 +14284,9 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """数据分类ID
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -11986,6 +14295,9 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """敏感数据分类名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11994,6 +14306,9 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12002,6 +14317,9 @@ class DescribeDSPACategoriesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12047,6 +14365,10 @@ class DescribeDSPACategoriesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """敏感数据分类列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataCategory
+        """
         return self._Items
 
     @Items.setter
@@ -12055,6 +14377,10 @@ class DescribeDSPACategoriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的敏感数据分类数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12063,6 +14389,9 @@ class DescribeDSPACategoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12098,6 +14427,9 @@ class DescribeDSPACategoryRuleStatisticRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12106,6 +14438,9 @@ class DescribeDSPACategoryRuleStatisticRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -12144,6 +14479,10 @@ class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
 
     @property
     def StatisticSet(self):
+        """分类规则统计信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CategoryRuleStatistic
+        """
         return self._StatisticSet
 
     @StatisticSet.setter
@@ -12152,6 +14491,9 @@ class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12189,6 +14531,9 @@ class DescribeDSPACategoryRulesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12197,6 +14542,9 @@ class DescribeDSPACategoryRulesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类id
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -12205,6 +14553,9 @@ class DescribeDSPACategoryRulesRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -12244,6 +14595,10 @@ class DescribeDSPACategoryRulesResponse(AbstractModel):
 
     @property
     def CategoryRules(self):
+        """分类规则信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CategoryRule
+        """
         return self._CategoryRules
 
     @CategoryRules.setter
@@ -12252,6 +14607,9 @@ class DescribeDSPACategoryRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12286,6 +14644,9 @@ class DescribeDSPACategoryTreeRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12294,6 +14655,9 @@ class DescribeDSPACategoryTreeRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -12332,6 +14696,10 @@ class DescribeDSPACategoryTreeResponse(AbstractModel):
 
     @property
     def ResultJson(self):
+        """分类树json
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResultJson
 
     @ResultJson.setter
@@ -12340,6 +14708,9 @@ class DescribeDSPACategoryTreeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12372,6 +14743,9 @@ class DescribeDSPACategoryTreeWithRulesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12380,6 +14754,9 @@ class DescribeDSPACategoryTreeWithRulesRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -12388,6 +14765,9 @@ class DescribeDSPACategoryTreeWithRulesRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类id
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -12427,6 +14807,10 @@ class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
 
     @property
     def ResultJson(self):
+        """分类树json
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResultJson
 
     @ResultJson.setter
@@ -12435,6 +14819,9 @@ class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12464,6 +14851,9 @@ class DescribeDSPAComplianceGroupDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12472,6 +14862,9 @@ class DescribeDSPAComplianceGroupDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -12510,6 +14903,10 @@ class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
 
     @property
     def Detail(self):
+        """模板详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ComplianceGroupDetail`
+        """
         return self._Detail
 
     @Detail.setter
@@ -12518,6 +14915,9 @@ class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12561,6 +14961,9 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12569,6 +14972,9 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceGroupId
 
     @ComplianceGroupId.setter
@@ -12577,6 +14983,9 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """合规组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12585,6 +14994,9 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12593,6 +15005,9 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12601,6 +15016,9 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
 
     @property
     def ComplianceGroupTypeList(self):
+        """合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
+        :rtype: list of int
+        """
         return self._ComplianceGroupTypeList
 
     @ComplianceGroupTypeList.setter
@@ -12647,6 +15065,10 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """合规组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryComplianceGroupInfo
+        """
         return self._Items
 
     @Items.setter
@@ -12655,6 +15077,10 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的合规组列表数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12663,6 +15089,9 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12698,6 +15127,9 @@ class DescribeDSPAComplianceUpdateNotificationRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12706,6 +15138,9 @@ class DescribeDSPAComplianceUpdateNotificationRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组分类模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -12748,6 +15183,10 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
 
     @property
     def IsUpdated(self):
+        """模板是否更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdated
 
     @IsUpdated.setter
@@ -12756,6 +15195,10 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
 
     @property
     def TaskNameSet(self):
+        """任务名称集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._TaskNameSet
 
     @TaskNameSet.setter
@@ -12764,6 +15207,9 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12797,6 +15243,9 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12805,6 +15254,9 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -12813,6 +15265,9 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -12852,6 +15307,10 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
 
     @property
     def Items(self):
+        """数据库信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DSPADataSourceDbInfo
+        """
         return self._Items
 
     @Items.setter
@@ -12860,6 +15319,9 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12906,6 +15368,9 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -12914,6 +15379,9 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12922,6 +15390,9 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回上限，默认值10， 最大值10000。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12930,6 +15401,9 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -12938,6 +15412,9 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12946,6 +15423,9 @@ class DescribeDSPADiscoveryRulesRequest(AbstractModel):
 
     @property
     def FilterRuleSource(self):
+        """是否需要过滤别名
+        :rtype: bool
+        """
         return self._FilterRuleSource
 
     @FilterRuleSource.setter
@@ -12991,6 +15471,9 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """规则ID
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12999,6 +15482,10 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """规则集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryRuleDetail
+        """
         return self._Items
 
     @Items.setter
@@ -13007,6 +15494,9 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13039,6 +15529,9 @@ class DescribeDSPADiscoveryServiceStatusRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -13075,6 +15568,9 @@ class DescribeDSPADiscoveryServiceStatusResponse(AbstractModel):
 
     @property
     def ServiceEnabled(self):
+        """分类分级服务是否开通，true 表示已开通，false表示未开通
+        :rtype: bool
+        """
         return self._ServiceEnabled
 
     @ServiceEnabled.setter
@@ -13083,6 +15579,9 @@ class DescribeDSPADiscoveryServiceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13112,6 +15611,9 @@ class DescribeDSPADiscoveryTaskDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -13120,6 +15622,9 @@ class DescribeDSPADiscoveryTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13158,6 +15663,10 @@ class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
 
     @property
     def Task(self):
+        """任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDetail`
+        """
         return self._Task
 
     @Task.setter
@@ -13166,6 +15675,9 @@ class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13224,6 +15736,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -13232,6 +15747,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13240,6 +15758,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DbResultId(self):
+        """扫描数据库结果ID
+        :rtype: int
+        """
         return self._DbResultId
 
     @DbResultId.setter
@@ -13248,6 +15769,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -13256,6 +15780,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -13264,6 +15791,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def TableName(self):
+        """所属数据表名
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -13272,6 +15802,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """敏感数据分类ID
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -13280,6 +15813,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def LevelId(self):
+        """敏感数据分级ID
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -13288,6 +15824,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13296,6 +15835,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认值为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13304,6 +15846,9 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryIdList(self):
+        """多级分类的分类ID集合
+        :rtype: list of int
+        """
         return self._CategoryIdList
 
     @CategoryIdList.setter
@@ -13355,6 +15900,10 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def Items(self):
+        """扫描结果详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryTaskResultDetail
+        """
         return self._Items
 
     @Items.setter
@@ -13363,6 +15912,10 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的扫描结果详情记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13371,6 +15924,9 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13434,6 +15990,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -13442,6 +16001,16 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceType(self):
+        """数据源类型，可取值如下：
+cdb 表示云数据库 MySQL,
+dcdb 表示TDSQL MySQL版,
+mariadb 表示云数据库 MariaDB,
+postgres 表示云数据库 PostgreSQL,
+cynosdbpg 表示TDSQL-C PostgreSQL版,
+cynosdbmysql 表示TDSQL-C MySQL版,
+selfbuilt-db 表示自建数据库
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -13450,6 +16019,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13458,6 +16030,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -13466,6 +16041,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -13474,6 +16052,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DbName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -13482,6 +16063,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Offset(self):
+        """偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13490,6 +16074,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Limit(self):
+        """返回数量，默认值为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13498,6 +16085,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -13547,6 +16137,10 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def Items(self):
+        """扫描任务结果项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryTaskDbResult
+        """
         return self._Items
 
     @Items.setter
@@ -13555,6 +16149,10 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的扫描任务结果记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13563,6 +16161,9 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13604,6 +16205,9 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -13612,6 +16216,9 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13620,6 +16227,9 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def DbResultId(self):
+        """数据库扫描结果ID
+        :rtype: int
+        """
         return self._DbResultId
 
     @DbResultId.setter
@@ -13628,6 +16238,9 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """db名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -13668,6 +16281,10 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """分类分级扫描表集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DSPATableInfo
+        """
         return self._Items
 
     @Items.setter
@@ -13676,6 +16293,9 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13717,6 +16337,9 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -13725,6 +16348,9 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -13733,6 +16359,10 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def BuildType(self):
+        """云上还是自建
+
+        :rtype: str
+        """
         return self._BuildType
 
     @BuildType.setter
@@ -13741,6 +16371,9 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -13781,6 +16414,10 @@ class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def Stats(self):
+        """概览统计结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ESDataAssetCountDto`
+        """
         return self._Stats
 
     @Stats.setter
@@ -13789,6 +16426,9 @@ class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13833,6 +16473,9 @@ DESC降序
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -13841,6 +16484,9 @@ DESC降序
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -13849,6 +16495,9 @@ DESC降序
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13857,6 +16506,9 @@ DESC降序
 
     @property
     def Limit(self):
+        """限制条目数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13865,6 +16517,9 @@ DESC降序
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -13873,6 +16528,10 @@ DESC降序
 
     @property
     def CreditScore(self):
+        """可信分排序，ASC升序
+DESC降序
+        :rtype: str
+        """
         return self._CreditScore
 
     @CreditScore.setter
@@ -13924,6 +16583,10 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13932,6 +16595,10 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
 
     @property
     def Details(self):
+        """概览详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ESDataAssetDetail
+        """
         return self._Details
 
     @Details.setter
@@ -13940,6 +16607,9 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13981,6 +16651,9 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -13989,6 +16662,9 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
     @property
     def FieldResultId(self):
+        """字段扫描结果ID
+        :rtype: int
+        """
         return self._FieldResultId
 
     @FieldResultId.setter
@@ -13997,6 +16673,9 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -14005,6 +16684,9 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序字段
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -14045,6 +16727,10 @@ class DescribeDSPAESDataSampleResponse(AbstractModel):
 
     @property
     def Items(self):
+        """数据样本列表，最多10条数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Items
 
     @Items.setter
@@ -14053,6 +16739,9 @@ class DescribeDSPAESDataSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14100,6 +16789,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -14108,6 +16800,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -14116,6 +16811,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -14124,6 +16822,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14132,6 +16833,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认值为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14140,6 +16844,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def CategoryIdList(self):
+        """多级分类的分类ID集合
+        :rtype: list of int
+        """
         return self._CategoryIdList
 
     @CategoryIdList.setter
@@ -14148,6 +16855,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def LevelId(self):
+        """敏感数据分级ID
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -14156,6 +16866,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """索引名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -14204,6 +16917,10 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def Items(self):
+        """ES扫描结果详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ESTaskResultDetail
+        """
         return self._Items
 
     @Items.setter
@@ -14212,6 +16929,10 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的扫描结果详情记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14220,6 +16941,9 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14257,6 +16981,9 @@ LevelGroupId 敏感分级组ID
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -14265,6 +16992,11 @@ LevelGroupId 敏感分级组ID
 
     @property
     def Filters(self):
+        """过滤数组。支持的Name：
+ComplianceId 合规组ID
+LevelGroupId 敏感分级组ID
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -14312,6 +17044,10 @@ class DescribeDSPALevelDetailResponse(AbstractModel):
 
     @property
     def Items(self):
+        """符合条件的敏感数据分级标识记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LevelItem
+        """
         return self._Items
 
     @Items.setter
@@ -14320,6 +17056,10 @@ class DescribeDSPALevelDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的敏感数据分级标识记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14328,6 +17068,9 @@ class DescribeDSPALevelDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14363,6 +17106,9 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -14371,6 +17117,9 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """分级组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14415,6 +17164,11 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """符合条件的敏感数据分级标识记录
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryLevelDetail
+        """
         return self._Items
 
     @Items.setter
@@ -14423,6 +17177,11 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的敏感数据分级标识记录数
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14431,6 +17190,9 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14472,6 +17234,9 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -14480,6 +17245,9 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -14488,6 +17256,9 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -14496,6 +17267,9 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
 
     @property
     def BuildType(self):
+        """自建还是云上
+        :rtype: str
+        """
         return self._BuildType
 
     @BuildType.setter
@@ -14536,6 +17310,10 @@ class DescribeDSPARDBDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def Stats(self):
+        """符合条件的RDB关系数据库敏感数据资产统计记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaRDBDataAssetCount`
+        """
         return self._Stats
 
     @Stats.setter
@@ -14544,6 +17322,9 @@ class DescribeDSPARDBDataAssetByComplianceIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14597,6 +17378,9 @@ DESC降序
 
     @property
     def DspaId(self):
+        """DSPA实例Id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -14605,6 +17389,9 @@ DESC降序
 
     @property
     def ComplianceId(self):
+        """合规组Id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -14613,6 +17400,18 @@ DESC降序
 
     @property
     def Filters(self):
+        """过滤数组。支持的Name：
+DataSourceID 数据源ID
+DbName 数据库名称
+CategoryID 敏感数据分类ID
+RuleID 规则ID
+LevelID 敏感分级ID
+ResourceRegion 资源所在地域
+SensitiveField 过滤敏感字段，可选值为1，或者无此SensitiveField字段
+DataSourceType 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
+注意：每个name默认支持最多5个values。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -14621,6 +17420,9 @@ DESC降序
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14629,6 +17431,9 @@ DESC降序
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14637,6 +17442,10 @@ DESC降序
 
     @property
     def CreditScore(self):
+        """可信分排序，ASC-升序
+DESC降序
+        :rtype: str
+        """
         return self._CreditScore
 
     @CreditScore.setter
@@ -14687,6 +17496,10 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
 
     @property
     def Details(self):
+        """RDB关系数据库敏感数据资产详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaRDBDataAssetDetail
+        """
         return self._Details
 
     @Details.setter
@@ -14695,6 +17508,9 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的RDB关系数据库敏感数据资产数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14703,6 +17519,9 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14735,6 +17554,9 @@ class DescribeDSPASupportedMetasRequest(AbstractModel):
 
     @property
     def MetaTypes(self):
+        """元数据类型
+        :rtype: list of str
+        """
         return self._MetaTypes
 
     @MetaTypes.setter
@@ -14775,6 +17597,10 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
 
     @property
     def Metas(self):
+        """支持的元数据类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DSPAMetaType
+        """
         return self._Metas
 
     @Metas.setter
@@ -14783,6 +17609,9 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
 
     @property
     def MaxDBInstanceLimit(self):
+        """最大支持每批次同步数量
+        :rtype: int
+        """
         return self._MaxDBInstanceLimit
 
     @MaxDBInstanceLimit.setter
@@ -14791,6 +17620,9 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14832,6 +17664,9 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -14840,6 +17675,9 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
     @property
     def FieldResultId(self):
+        """字段扫描结果ID
+        :rtype: int
+        """
         return self._FieldResultId
 
     @FieldResultId.setter
@@ -14848,6 +17686,9 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -14856,6 +17697,9 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序字段
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -14896,6 +17740,10 @@ class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
 
     @property
     def Items(self):
+        """数据样本列表，最多10条数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaFieldResultDataSample
+        """
         return self._Items
 
     @Items.setter
@@ -14904,6 +17752,9 @@ class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14941,6 +17792,9 @@ class DescribeESAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -14949,6 +17803,9 @@ class DescribeESAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -14957,6 +17814,9 @@ class DescribeESAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
+        """查询的资产信息列表
+        :rtype: list of AssetList
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -15009,6 +17869,10 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def ESAsset(self):
+        """ES的资产统计数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ESAsset`
+        """
         return self._ESAsset
 
     @ESAsset.setter
@@ -15017,6 +17881,10 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def TopAsset(self):
+        """涉敏top数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopAsset
+        """
         return self._TopAsset
 
     @TopAsset.setter
@@ -15025,6 +17893,10 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def ESDetail(self):
+        """ES的详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ESAssetDBDetail
+        """
         return self._ESDetail
 
     @ESDetail.setter
@@ -15033,6 +17905,9 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15076,6 +17951,9 @@ class DescribeExportTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -15084,6 +17962,9 @@ class DescribeExportTaskResultRequest(AbstractModel):
 
     @property
     def ExportTaskId(self):
+        """导出任务id
+        :rtype: int
+        """
         return self._ExportTaskId
 
     @ExportTaskId.setter
@@ -15124,6 +18005,9 @@ class DescribeExportTaskResultResponse(AbstractModel):
 
     @property
     def ExportResult(self):
+        """导出任务结果
+        :rtype: str
+        """
         return self._ExportResult
 
     @ExportResult.setter
@@ -15132,6 +18016,9 @@ class DescribeExportTaskResultResponse(AbstractModel):
 
     @property
     def ExportFileUrl(self):
+        """导出文件地址
+        :rtype: str
+        """
         return self._ExportFileUrl
 
     @ExportFileUrl.setter
@@ -15140,6 +18027,9 @@ class DescribeExportTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15173,6 +18063,9 @@ class DescribeLeafClassificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15204,6 +18097,9 @@ class DescribeMongoAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -15212,6 +18108,9 @@ class DescribeMongoAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -15220,6 +18119,9 @@ class DescribeMongoAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
+        """查询的资产信息列表
+        :rtype: list of AssetList
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -15272,6 +18174,10 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def MongoAsset(self):
+        """mongo的资产统计数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.MongoAsset`
+        """
         return self._MongoAsset
 
     @MongoAsset.setter
@@ -15280,6 +18186,10 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def TopAsset(self):
+        """涉敏top数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopAsset
+        """
         return self._TopAsset
 
     @TopAsset.setter
@@ -15288,6 +18198,10 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def MongoDetail(self):
+        """mongo的详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MongoAssetDBDetail
+        """
         return self._MongoDetail
 
     @MongoDetail.setter
@@ -15296,6 +18210,9 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15342,6 +18259,9 @@ class DescribeRDBAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -15350,6 +18270,9 @@ class DescribeRDBAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -15358,6 +18281,9 @@ class DescribeRDBAssetSensitiveDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
+        """查询的资产信息列表
+        :rtype: list of AssetList
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -15410,6 +18336,10 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RDBAsset(self):
+        """rdb的资产统计数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.RDBAsset`
+        """
         return self._RDBAsset
 
     @RDBAsset.setter
@@ -15418,6 +18348,10 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def TopAsset(self):
+        """涉敏top数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopAsset
+        """
         return self._TopAsset
 
     @TopAsset.setter
@@ -15426,6 +18360,10 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RDBDetail(self):
+        """rdb的详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssetDBDetail
+        """
         return self._RDBDetail
 
     @RDBDetail.setter
@@ -15434,6 +18372,9 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15480,6 +18421,9 @@ class DescribeReportTaskDownloadUrlRequest(AbstractModel):
 
     @property
     def ReportTaskId(self):
+        """任务id
+        :rtype: int
+        """
         return self._ReportTaskId
 
     @ReportTaskId.setter
@@ -15488,6 +18432,9 @@ class DescribeReportTaskDownloadUrlRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -15496,6 +18443,9 @@ class DescribeReportTaskDownloadUrlRequest(AbstractModel):
 
     @property
     def IsWithSensitiveDetailReport(self):
+        """是否同时下载敏感资产详情报告
+        :rtype: bool
+        """
         return self._IsWithSensitiveDetailReport
 
     @IsWithSensitiveDetailReport.setter
@@ -15535,6 +18485,10 @@ class DescribeReportTaskDownloadUrlResponse(AbstractModel):
 
     @property
     def DownloadUrlSet(self):
+        """下载链接集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DownloadUrlSet
 
     @DownloadUrlSet.setter
@@ -15543,6 +18497,9 @@ class DescribeReportTaskDownloadUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15578,6 +18535,9 @@ class DescribeReportTasksRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -15586,6 +18546,9 @@ class DescribeReportTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页大小
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15594,6 +18557,9 @@ class DescribeReportTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15602,6 +18568,9 @@ class DescribeReportTasksRequest(AbstractModel):
 
     @property
     def ReportName(self):
+        """报表名称
+        :rtype: str
+        """
         return self._ReportName
 
     @ReportName.setter
@@ -15646,6 +18615,10 @@ class DescribeReportTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15654,6 +18627,10 @@ class DescribeReportTasksResponse(AbstractModel):
 
     @property
     def ItemSet(self):
+        """报表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReportInfo
+        """
         return self._ItemSet
 
     @ItemSet.setter
@@ -15662,6 +18639,9 @@ class DescribeReportTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15700,6 +18680,9 @@ class DescribeRuleDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15731,6 +18714,9 @@ class DescribeRuleListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15762,6 +18748,9 @@ class DescribeSensitiveCOSDataDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -15770,6 +18759,9 @@ class DescribeSensitiveCOSDataDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """2331
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -15778,6 +18770,9 @@ class DescribeSensitiveCOSDataDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
+        """查询的资产信息列表
+        :rtype: list of AssetList
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -15834,6 +18829,10 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def LevelDistribution(self):
+        """分级分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._LevelDistribution
 
     @LevelDistribution.setter
@@ -15842,6 +18841,10 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def CategoryDistribution(self):
+        """分类分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._CategoryDistribution
 
     @CategoryDistribution.setter
@@ -15850,6 +18853,10 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def RuleDistribution(self):
+        """规则分布详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleDistribution
+        """
         return self._RuleDistribution
 
     @RuleDistribution.setter
@@ -15858,6 +18865,10 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def SensitiveDataNum(self):
+        """计算占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveDataNum
 
     @SensitiveDataNum.setter
@@ -15866,6 +18877,9 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15916,6 +18930,9 @@ class DescribeSensitiveRDBDataDistributionRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa-实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -15924,6 +18941,9 @@ class DescribeSensitiveRDBDataDistributionRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -15932,6 +18952,9 @@ class DescribeSensitiveRDBDataDistributionRequest(AbstractModel):
 
     @property
     def AssetList(self):
+        """查询的资产信息列表
+        :rtype: list of AssetList
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -15988,6 +19011,10 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def LevelDistribution(self):
+        """分级分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._LevelDistribution
 
     @LevelDistribution.setter
@@ -15996,6 +19023,10 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def CategoryDistribution(self):
+        """分类分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._CategoryDistribution
 
     @CategoryDistribution.setter
@@ -16004,6 +19035,10 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def RuleDistribution(self):
+        """敏感规则分布详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleDistribution
+        """
         return self._RuleDistribution
 
     @RuleDistribution.setter
@@ -16012,6 +19047,10 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def SensitiveDataNum(self):
+        """计算占比字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveDataNum
 
     @SensitiveDataNum.setter
@@ -16020,6 +19059,9 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16073,6 +19115,9 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -16081,6 +19126,9 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -16089,6 +19137,9 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -16097,6 +19148,9 @@ class DisableDSPAMetaResourceAuthRequest(AbstractModel):
 
     @property
     def ResourceIDs(self):
+        """用户云资源ID列表。
+        :rtype: list of str
+        """
         return self._ResourceIDs
 
     @ResourceIDs.setter
@@ -16140,6 +19194,9 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -16148,6 +19205,10 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
 
     @property
     def Results(self):
+        """授权结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaTaskResult
+        """
         return self._Results
 
     @Results.setter
@@ -16156,6 +19217,9 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16201,6 +19265,10 @@ class DiscoveryCondition(AbstractModel):
 
     @property
     def RDBInstances(self):
+        """RDB实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RDBInstance
+        """
         return self._RDBInstances
 
     @RDBInstances.setter
@@ -16209,6 +19277,10 @@ class DiscoveryCondition(AbstractModel):
 
     @property
     def COSInstances(self):
+        """COS实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of COSInstance
+        """
         return self._COSInstances
 
     @COSInstances.setter
@@ -16217,6 +19289,10 @@ class DiscoveryCondition(AbstractModel):
 
     @property
     def NOSQLInstances(self):
+        """Mongo实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NOSQLInstance
+        """
         return self._NOSQLInstances
 
     @NOSQLInstances.setter
@@ -16225,6 +19301,10 @@ class DiscoveryCondition(AbstractModel):
 
     @property
     def ESInstances(self):
+        """ES实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ESInstance
+        """
         return self._ESInstances
 
     @ESInstances.setter
@@ -16284,6 +19364,9 @@ class DspaAssessmentFilter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤类型。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16292,6 +19375,9 @@ class DspaAssessmentFilter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤类型的值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -16359,6 +19445,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def DataAssetType(self):
+        """数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataAssetType
 
     @DataAssetType.setter
@@ -16367,6 +19457,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def TotalBucketCnt(self):
+        """已扫描的存储桶的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalBucketCnt
 
     @TotalBucketCnt.setter
@@ -16375,6 +19469,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def TotalObjectCnt(self):
+        """对象总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalObjectCnt
 
     @TotalObjectCnt.setter
@@ -16383,6 +19481,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveCategoryCnt(self):
+        """敏感数据类型个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveCategoryCnt
 
     @SensitiveCategoryCnt.setter
@@ -16391,6 +19493,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveDataCnt(self):
+        """敏感数据条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveDataCnt
 
     @SensitiveDataCnt.setter
@@ -16399,6 +19505,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveLevel(self):
+        """敏感等级分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SensitiveLevel
+        """
         return self._SensitiveLevel
 
     @SensitiveLevel.setter
@@ -16407,6 +19517,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveBucketCnt(self):
+        """敏感存储桶个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveBucketCnt
 
     @SensitiveBucketCnt.setter
@@ -16415,6 +19529,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def SensitiveObjectCnt(self):
+        """敏感对象个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveObjectCnt
 
     @SensitiveObjectCnt.setter
@@ -16423,6 +19541,10 @@ class DspaCOSDataAssetCount(AbstractModel):
 
     @property
     def CategoryDistributed(self):
+        """数据分类分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDataCategoryDistributed
+        """
         return self._CategoryDistributed
 
     @CategoryDistributed.setter
@@ -16541,6 +19663,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def BucketName(self):
+        """对象桶
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -16549,6 +19674,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def FileName(self):
+        """对象名称
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -16557,6 +19685,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -16565,6 +19696,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def SensitiveDataCount(self):
+        """出现次数
+        :rtype: int
+        """
         return self._SensitiveDataCount
 
     @SensitiveDataCount.setter
@@ -16573,6 +19707,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def CategoryName(self):
+        """敏感数据分类
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -16581,6 +19718,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskName(self):
+        """敏感等级
+        :rtype: str
+        """
         return self._LevelRiskName
 
     @LevelRiskName.setter
@@ -16589,6 +19729,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def KMSEncrypted(self):
+        """KMS加密
+        :rtype: bool
+        """
         return self._KMSEncrypted
 
     @KMSEncrypted.setter
@@ -16597,6 +19740,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def FileType(self):
+        """文件类型
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -16605,6 +19751,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小
+        :rtype: str
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -16613,6 +19762,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """敏感数据分级分数
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -16621,6 +19773,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -16629,6 +19784,9 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -16637,6 +19795,10 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -16645,6 +19807,10 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -16653,6 +19819,10 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def LevelId(self):
+        """分级ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -16661,6 +19831,10 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def FileResultId(self):
+        """文件扫描结果ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileResultId
 
     @FileResultId.setter
@@ -16669,6 +19843,10 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -16677,6 +19855,10 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def CategoryFullPath(self):
+        """分类路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryFullPath
 
     @CategoryFullPath.setter
@@ -16685,6 +19867,11 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def IdentifyType(self):
+        """0-系统识别
+1-人工识别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentifyType
 
     @IdentifyType.setter
@@ -16693,6 +19880,11 @@ class DspaCOSDataAssetDetail(AbstractModel):
 
     @property
     def CheckStatus(self):
+        """0-系统识别
+1-人工识别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CheckStatus
 
     @CheckStatus.setter
@@ -16775,6 +19967,9 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16783,6 +19978,9 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Description(self):
+        """任务描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -16791,6 +19989,9 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Period(self):
+        """执行周期，0单次 1每天 2每周 3每月
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -16799,6 +20000,9 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Plan(self):
+        """执行计划，0立即 1定时
+        :rtype: int
+        """
         return self._Plan
 
     @Plan.setter
@@ -16807,6 +20011,9 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Enable(self):
+        """任务开关；1 打开，0 关闭
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -16815,6 +20022,9 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def DataSourceInfo(self):
+        """数据源对象信息
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDataSourceInfo`
+        """
         return self._DataSourceInfo
 
     @DataSourceInfo.setter
@@ -16823,6 +20033,9 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
+        """通用规则集开关，0 关闭，1 启用
+        :rtype: int
+        """
         return self._GeneralRuleSetEnable
 
     @GeneralRuleSetEnable.setter
@@ -16831,6 +20044,10 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def Result(self):
+        """任务最新的一次执行结果信息，该字段用于查询任务列表接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
+        """
         return self._Result
 
     @Result.setter
@@ -16839,6 +20056,10 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def TimingStartTime(self):
+        """定时开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimingStartTime
 
     @TimingStartTime.setter
@@ -16847,6 +20068,10 @@ class DspaCOSDiscoveryTask(AbstractModel):
 
     @property
     def ComplianceUpdate(self):
+        """关联分类模板是否更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ComplianceUpdate
 
     @ComplianceUpdate.setter
@@ -16909,6 +20134,9 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -16917,6 +20145,10 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def ProxyAddress(self):
+        """代理地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ProxyAddress
 
     @ProxyAddress.setter
@@ -16925,6 +20157,10 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -16933,6 +20169,10 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def Condition(self):
+        """扫描任务条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskCOSCondition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -16941,6 +20181,10 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -17010,6 +20254,9 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17018,6 +20265,9 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Description(self):
+        """任务描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -17026,6 +20276,9 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Period(self):
+        """执行周期，0单次 1每天 2每周 3每月
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -17034,6 +20287,9 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Plan(self):
+        """执行计划，0立即 1定时
+        :rtype: int
+        """
         return self._Plan
 
     @Plan.setter
@@ -17042,6 +20298,9 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Enable(self):
+        """任务开关；1 打开，0 关闭
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -17050,6 +20309,9 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def DataSourceInfo(self):
+        """数据源对象信息
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDataSourceInfo`
+        """
         return self._DataSourceInfo
 
     @DataSourceInfo.setter
@@ -17058,6 +20320,9 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
+        """通用规则集开关，0 关闭，1 启用
+        :rtype: int
+        """
         return self._GeneralRuleSetEnable
 
     @GeneralRuleSetEnable.setter
@@ -17066,6 +20331,10 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def DefaultComplianceInfo(self):
+        """当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScanTaskComplianceInfo
+        """
         return self._DefaultComplianceInfo
 
     @DefaultComplianceInfo.setter
@@ -17074,6 +20343,10 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def CustomComplianceInfo(self):
+        """该任务中用户选择的合规组信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScanTaskComplianceInfo
+        """
         return self._CustomComplianceInfo
 
     @CustomComplianceInfo.setter
@@ -17082,6 +20355,10 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
 
     @property
     def TimingStartTime(self):
+        """定时开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimingStartTime
 
     @TimingStartTime.setter
@@ -17179,6 +20456,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def BucketResultId(self):
+        """扫描bucket结果ID
+        :rtype: int
+        """
         return self._BucketResultId
 
     @BucketResultId.setter
@@ -17187,6 +20467,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -17195,6 +20478,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -17203,6 +20489,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def ResultId(self):
+        """扫描任务最新一次扫描结果ID
+        :rtype: int
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -17211,6 +20500,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -17219,6 +20511,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def BucketName(self):
+        """桶名称
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -17227,6 +20522,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def TotalFiles(self):
+        """总文件数
+        :rtype: int
+        """
         return self._TotalFiles
 
     @TotalFiles.setter
@@ -17235,6 +20533,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def SensitiveDataNums(self):
+        """被识别出的敏感数据数
+        :rtype: int
+        """
         return self._SensitiveDataNums
 
     @SensitiveDataNums.setter
@@ -17243,6 +20544,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def EndTime(self):
+        """Bucket扫描的结束时间，格式如：2006-01-02 15:04:05
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -17251,6 +20555,10 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -17259,6 +20567,9 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """Bucket扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -17267,6 +20578,10 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """Bucket扫描结果错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -17275,6 +20590,10 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -17283,6 +20602,10 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
 
     @property
     def OverSize(self):
+        """是否超额
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OverSize
 
     @OverSize.setter
@@ -17347,6 +20670,9 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceId(self):
+        """用户资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -17355,6 +20681,9 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -17363,6 +20692,9 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceVip(self):
+        """资源VIP。
+        :rtype: str
+        """
         return self._ResourceVip
 
     @ResourceVip.setter
@@ -17371,6 +20703,9 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceVPort(self):
+        """资源端口。
+        :rtype: int
+        """
         return self._ResourceVPort
 
     @ResourceVPort.setter
@@ -17379,6 +20714,9 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceCreateTime(self):
+        """资源被创建时间。
+        :rtype: str
+        """
         return self._ResourceCreateTime
 
     @ResourceCreateTime.setter
@@ -17387,6 +20725,9 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceUniqueVpcId(self):
+        """用户资源VPC ID 字符串。
+        :rtype: str
+        """
         return self._ResourceUniqueVpcId
 
     @ResourceUniqueVpcId.setter
@@ -17395,6 +20736,9 @@ class DspaCloudResourceMeta(AbstractModel):
 
     @property
     def ResourceUniqueSubnetId(self):
+        """用户资源Subnet ID 字符串。
+        :rtype: str
+        """
         return self._ResourceUniqueSubnetId
 
     @ResourceUniqueSubnetId.setter
@@ -17447,6 +20791,10 @@ class DspaDataCategoryDistributed(AbstractModel):
 
     @property
     def CategoryId(self):
+        """数据分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -17455,6 +20803,10 @@ class DspaDataCategoryDistributed(AbstractModel):
 
     @property
     def CategoryName(self):
+        """数据分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -17463,6 +20815,10 @@ class DspaDataCategoryDistributed(AbstractModel):
 
     @property
     def Count(self):
+        """数据分类统计个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -17471,6 +20827,10 @@ class DspaDataCategoryDistributed(AbstractModel):
 
     @property
     def CategoryFullPath(self):
+        """分类路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryFullPath
 
     @CategoryFullPath.setter
@@ -17510,6 +20870,9 @@ class DspaDataSourceMngFilter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤类型。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17518,6 +20881,9 @@ class DspaDataSourceMngFilter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤类型的值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -17558,6 +20924,11 @@ class DspaDiscoveryCOSDataRule(AbstractModel):
 
     @property
     def Operator(self):
+        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
+默认值为or
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -17566,6 +20937,10 @@ class DspaDiscoveryCOSDataRule(AbstractModel):
 
     @property
     def Contents(self):
+        """规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryDataContent
+        """
         return self._Contents
 
     @Contents.setter
@@ -17622,6 +20997,10 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态；0 不启用, 1 启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -17630,6 +21009,10 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def RegexRule(self):
+        """regex规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
+        """
         return self._RegexRule
 
     @RegexRule.setter
@@ -17638,6 +21021,10 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def KeywordRule(self):
+        """关键词规则内容组，最大支持5个关键词。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
+        """
         return self._KeywordRule
 
     @KeywordRule.setter
@@ -17646,6 +21033,10 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def IgnoreStringRule(self):
+        """忽略词规则内容组，最大支持5个忽略词。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
+        """
         return self._IgnoreStringRule
 
     @IgnoreStringRule.setter
@@ -17654,6 +21045,10 @@ class DspaDiscoveryCOSRules(AbstractModel):
 
     @property
     def MaxMatch(self):
+        """最大匹配距离，默认值为100。上限为500.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxMatch
 
     @MaxMatch.setter
@@ -17765,6 +21160,9 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -17773,6 +21171,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def FileResultId(self):
+        """扫描File结果详情ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileResultId
 
     @FileResultId.setter
@@ -17781,6 +21183,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def BucketName(self):
+        """所属桶名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -17789,6 +21195,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def FileName(self):
+        """所属文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -17797,6 +21207,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def CategoryId(self):
+        """敏感数据分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -17805,6 +21219,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def CategoryName(self):
+        """敏感数据分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -17813,6 +21231,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def LevelId(self):
+        """敏感数据分级ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -17821,6 +21243,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def LevelName(self):
+        """敏感数据分级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelName
 
     @LevelName.setter
@@ -17829,6 +21255,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def KMSEncrypted(self):
+        """KMS加密，true or false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._KMSEncrypted
 
     @KMSEncrypted.setter
@@ -17837,6 +21267,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -17845,6 +21279,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -17853,6 +21291,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """敏感数据分级分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -17861,6 +21303,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小，单位为KB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -17869,6 +21315,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def FileType(self):
+        """文件类型，如csv，txt
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -17877,6 +21327,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def SensitiveDataCount(self):
+        """敏感数据出现次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveDataCount
 
     @SensitiveDataCount.setter
@@ -17885,6 +21339,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def CategoryFullPath(self):
+        """分类树路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CategoryFullPath
 
     @CategoryFullPath.setter
@@ -17893,6 +21351,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -17901,6 +21363,10 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
 
     @property
     def ResultId(self):
+        """结果id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -17972,6 +21438,10 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
+        """合规组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ComplianceGroupId
 
     @ComplianceGroupId.setter
@@ -17980,6 +21450,10 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def Name(self):
+        """合规组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17988,6 +21462,10 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def Description(self):
+        """合规组描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -17996,6 +21474,10 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def ComplianceGroupType(self):
+        """合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ComplianceGroupType
 
     @ComplianceGroupType.setter
@@ -18004,6 +21486,10 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def ComplianceGroupRules(self):
+        """合规组对应的规则项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryComplianceGroupRuleInfo
+        """
         return self._ComplianceGroupRules
 
     @ComplianceGroupRules.setter
@@ -18012,6 +21498,10 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
 
     @property
     def LevelGroupId(self):
+        """合规组对应的分级组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelGroupId
 
     @LevelGroupId.setter
@@ -18084,6 +21574,10 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
+        """合规组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ComplianceGroupId
 
     @ComplianceGroupId.setter
@@ -18092,6 +21586,10 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def Name(self):
+        """合规组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -18100,6 +21598,10 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def Description(self):
+        """合规组描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -18108,6 +21610,10 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def ComplianceGroupType(self):
+        """合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ComplianceGroupType
 
     @ComplianceGroupType.setter
@@ -18116,6 +21622,10 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def ComplianceGroupRules(self):
+        """合规组对应的规则项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryComplianceGroupRule
+        """
         return self._ComplianceGroupRules
 
     @ComplianceGroupRules.setter
@@ -18124,6 +21634,10 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def LevelGroupId(self):
+        """合规组对应的分级组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelGroupId
 
     @LevelGroupId.setter
@@ -18132,6 +21646,10 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def Disabled(self):
+        """是否禁止使用（true，禁止使用，false，可以使用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -18140,6 +21658,10 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
 
     @property
     def IsAlias(self):
+        """是否别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAlias
 
     @IsAlias.setter
@@ -18206,6 +21728,10 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def RuleId(self):
+        """敏感数据识别规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -18214,6 +21740,10 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def RuleName(self):
+        """敏感数据识别规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -18222,6 +21752,10 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def CategoryId(self):
+        """敏感数据分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -18230,6 +21764,10 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def LevelId(self):
+        """敏感数据分级ID, 目前只支持高、中、低三级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -18238,6 +21776,10 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def CategoryName(self):
+        """合规组对应的分类信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -18246,6 +21788,10 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
 
     @property
     def LevelRiskName(self):
+        """分级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelRiskName
 
     @LevelRiskName.setter
@@ -18297,6 +21843,10 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
     @property
     def RuleId(self):
+        """敏感数据识别规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -18305,6 +21855,10 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
     @property
     def RuleName(self):
+        """敏感数据识别规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -18313,6 +21867,10 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
     @property
     def CategoryId(self):
+        """敏感数据分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -18321,6 +21879,10 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
 
     @property
     def LevelId(self):
+        """敏感数据分级ID, 目前只支持高、中、低三级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -18365,6 +21927,11 @@ true:区分大小写
 
     @property
     def RuleContent(self):
+        """规则内容，可以是正则规则，关键词，
+忽略词扥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleContent
 
     @RuleContent.setter
@@ -18373,6 +21940,12 @@ true:区分大小写
 
     @property
     def IsIgnoreCase(self):
+        """是否区分大小写
+false: 不区分大小写
+true:区分大小写
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsIgnoreCase
 
     @IsIgnoreCase.setter
@@ -18418,6 +21991,12 @@ regex 正则
 
     @property
     def RuleType(self):
+        """规则类型；取值：
+keyword 关键字, 
+regex 正则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleType
 
     @RuleType.setter
@@ -18426,6 +22005,10 @@ regex 正则
 
     @property
     def RuleContent(self):
+        """内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleContent
 
     @RuleContent.setter
@@ -18434,6 +22017,10 @@ regex 正则
 
     @property
     def ExtendParameters(self):
+        """该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatagovRuleExtendParameter
+        """
         return self._ExtendParameters
 
     @ExtendParameters.setter
@@ -18479,6 +22066,10 @@ class DspaDiscoveryDataRules(AbstractModel):
 
     @property
     def Operator(self):
+        """操作符；只能取and, or的其中一种
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -18487,6 +22078,10 @@ class DspaDiscoveryDataRules(AbstractModel):
 
     @property
     def Contents(self):
+        """规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryDataRule
+        """
         return self._Contents
 
     @Contents.setter
@@ -18551,6 +22146,10 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def LevelGroupName(self):
+        """分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelGroupName
 
     @LevelGroupName.setter
@@ -18559,6 +22158,10 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def Source(self):
+        """分级组来源，0为内置，1为自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -18567,6 +22170,10 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def LevelGroupDesc(self):
+        """分级组描述，最多1024字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelGroupDesc
 
     @LevelGroupDesc.setter
@@ -18575,6 +22182,10 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def LevelDetail(self):
+        """具体分级标识详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LevelItem
+        """
         return self._LevelDetail
 
     @LevelDetail.setter
@@ -18583,6 +22194,10 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def RefComplianceCnt(self):
+        """引用合规组次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RefComplianceCnt
 
     @RefComplianceCnt.setter
@@ -18591,6 +22206,10 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def RefCompliance(self):
+        """引用合规组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDiscoveryComplianceGroup
+        """
         return self._RefCompliance
 
     @RefCompliance.setter
@@ -18599,6 +22218,10 @@ class DspaDiscoveryLevelDetail(AbstractModel):
 
     @property
     def LevelGroupId(self):
+        """分级组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelGroupId
 
     @LevelGroupId.setter
@@ -18661,6 +22284,10 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态；0 不启用, 1 启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -18669,6 +22296,10 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
     @property
     def MatchOperator(self):
+        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MatchOperator
 
     @MatchOperator.setter
@@ -18677,6 +22308,10 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
     @property
     def MetaRule(self):
+        """字段名包含规则，最大支持选择9项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryDataRules`
+        """
         return self._MetaRule
 
     @MetaRule.setter
@@ -18685,6 +22320,10 @@ class DspaDiscoveryRDBRules(AbstractModel):
 
     @property
     def ContentRule(self):
+        """内容包含规则，最大支持选择9项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryDataRules`
+        """
         return self._ContentRule
 
     @ContentRule.setter
@@ -18750,6 +22389,10 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -18758,6 +22401,10 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -18766,6 +22413,10 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def Description(self):
+        """规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -18774,6 +22425,10 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def Source(self):
+        """规则来源，取值：0 内置, 1 自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -18782,6 +22437,10 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def RDBRules(self):
+        """RDB规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryRDBRules`
+        """
         return self._RDBRules
 
     @RDBRules.setter
@@ -18790,6 +22449,10 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def COSRules(self):
+        """COS规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSRules`
+        """
         return self._COSRules
 
     @COSRules.setter
@@ -18798,6 +22461,10 @@ class DspaDiscoveryRuleDetail(AbstractModel):
 
     @property
     def Status(self):
+        """0关闭，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -18850,6 +22517,10 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
 
     @property
     def Bucket(self):
+        """数据桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -18858,6 +22529,10 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
 
     @property
     def FileTypes(self):
+        """文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._FileTypes
 
     @FileTypes.setter
@@ -18866,6 +22541,10 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
 
     @property
     def FileSizeLimit(self):
+        """文件大小上限，单位为KB，如1000, 目前单个文件最大只支持1GB（1048576KB）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileSizeLimit
 
     @FileSizeLimit.setter
@@ -18920,6 +22599,9 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -18928,6 +22610,9 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def Condition(self):
+        """用于传入的数据源的条件，可以选择多个数据库，数据库之间通过逗号分隔，如果为空，默认是全部数据库
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -18936,6 +22621,10 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def ProxyAddress(self):
+        """代理地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ProxyAddress
 
     @ProxyAddress.setter
@@ -18944,6 +22633,10 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -18952,6 +22645,10 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -18960,6 +22657,10 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -19045,6 +22746,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def DbResultId(self):
+        """扫描数据库结果ID
+        :rtype: int
+        """
         return self._DbResultId
 
     @DbResultId.setter
@@ -19053,6 +22757,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -19061,6 +22768,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -19069,6 +22779,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def ResultId(self):
+        """扫描任务最新一次扫描结果ID
+        :rtype: int
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -19077,6 +22790,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -19085,6 +22801,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -19093,6 +22812,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TotalTables(self):
+        """总表数
+        :rtype: int
+        """
         return self._TotalTables
 
     @TotalTables.setter
@@ -19101,6 +22823,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def SensitiveTables(self):
+        """敏感表数
+        :rtype: int
+        """
         return self._SensitiveTables
 
     @SensitiveTables.setter
@@ -19109,6 +22834,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def EndTime(self):
+        """DB扫描的结束时间，格式如：2006-01-02 15:04:05
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -19117,6 +22845,10 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -19125,6 +22857,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def Status(self):
+        """DB扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -19133,6 +22868,10 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """DB扫描结果错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -19141,6 +22880,10 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -19149,6 +22892,10 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def SensitiveField(self):
+        """敏感字段数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveField
 
     @SensitiveField.setter
@@ -19157,6 +22904,10 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
 
     @property
     def TotalField(self):
+        """总的字段数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalField
 
     @TotalField.setter
@@ -19237,6 +22988,9 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -19245,6 +22999,10 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Description(self):
+        """任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -19253,6 +23011,9 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Period(self):
+        """执行周期，0单次 1每天 2每周 3每月
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -19261,6 +23022,9 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Plan(self):
+        """执行计划，0立即 1定时
+        :rtype: int
+        """
         return self._Plan
 
     @Plan.setter
@@ -19269,6 +23033,9 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def Enable(self):
+        """任务开关；1 打开，0 关闭
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -19277,6 +23044,10 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def DataSourceInfo(self):
+        """元数据对象信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDataSource`
+        """
         return self._DataSourceInfo
 
     @DataSourceInfo.setter
@@ -19285,6 +23056,10 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
+        """通用规则集开关，0 关闭，1 启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GeneralRuleSetEnable
 
     @GeneralRuleSetEnable.setter
@@ -19293,6 +23068,10 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def DefaultComplianceInfo(self):
+        """当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScanTaskComplianceInfo
+        """
         return self._DefaultComplianceInfo
 
     @DefaultComplianceInfo.setter
@@ -19301,6 +23080,10 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def CustomComplianceInfo(self):
+        """该任务中用户选择的合规组信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScanTaskComplianceInfo
+        """
         return self._CustomComplianceInfo
 
     @CustomComplianceInfo.setter
@@ -19309,6 +23092,10 @@ class DspaDiscoveryTaskDetail(AbstractModel):
 
     @property
     def TimingStartTime(self):
+        """定时开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimingStartTime
 
     @TimingStartTime.setter
@@ -19401,6 +23188,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -19409,6 +23199,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def FieldResultId(self):
+        """扫描结果详情ID
+        :rtype: int
+        """
         return self._FieldResultId
 
     @FieldResultId.setter
@@ -19417,6 +23210,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def TableName(self):
+        """所属数据表名
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -19425,6 +23221,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def FieldName(self):
+        """字段名
+        :rtype: str
+        """
         return self._FieldName
 
     @FieldName.setter
@@ -19433,6 +23232,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def CategoryId(self):
+        """敏感数据分类ID
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -19441,6 +23243,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def CategoryName(self):
+        """敏感数据分类名称
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -19449,6 +23254,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def LevelId(self):
+        """敏感数据分级ID
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -19457,6 +23265,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def LevelName(self):
+        """敏感数据分级名称
+        :rtype: str
+        """
         return self._LevelName
 
     @LevelName.setter
@@ -19465,6 +23276,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -19473,6 +23287,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -19481,6 +23298,9 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """敏感数据分级分数
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -19489,6 +23309,10 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def SafeGuard(self):
+        """保护措施
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaSafeGuard`
+        """
         return self._SafeGuard
 
     @SafeGuard.setter
@@ -19497,6 +23321,10 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
 
     @property
     def CategoryFullPath(self):
+        """分类路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryFullPath
 
     @CategoryFullPath.setter
@@ -19545,6 +23373,10 @@ class DspaFieldResultDataSample(AbstractModel):
 
     @property
     def DataSample(self):
+        """数据样本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSample
 
     @DataSample.setter
@@ -19606,6 +23438,12 @@ class DspaInstance(AbstractModel):
         :param _Channel: 实例渠道
 注意：此字段可能返回 null，表示取不到有效值。
         :type Channel: str
+        :param _InsAuthCount: 已授权的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsAuthCount: int
+        :param _InsTotalQuota: 已购买的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsTotalQuota: int
         """
         self._DspaId = None
         self._DspaName = None
@@ -19623,9 +23461,14 @@ class DspaInstance(AbstractModel):
         self._CosQuotaUnit = None
         self._RenewFlag = None
         self._Channel = None
+        self._InsAuthCount = None
+        self._InsTotalQuota = None
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -19634,6 +23477,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def DspaName(self):
+        """DSPA实例名称。
+        :rtype: str
+        """
         return self._DspaName
 
     @DspaName.setter
@@ -19642,6 +23488,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def DspaDescription(self):
+        """DSPA实例描述信息。
+        :rtype: str
+        """
         return self._DspaDescription
 
     @DspaDescription.setter
@@ -19650,6 +23499,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def DBAuthCount(self):
+        """DSPA实例已授权的数据库实例数量。
+        :rtype: int
+        """
         return self._DBAuthCount
 
     @DBAuthCount.setter
@@ -19658,6 +23510,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def CosBindCount(self):
+        """DSPA实例已绑定的cos桶数量。
+        :rtype: int
+        """
         return self._CosBindCount
 
     @CosBindCount.setter
@@ -19666,6 +23521,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def InstanceVersion(self):
+        """DSPA实例版本。
+        :rtype: str
+        """
         return self._InstanceVersion
 
     @InstanceVersion.setter
@@ -19674,6 +23532,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def Status(self):
+        """DSPA实例状态。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -19682,6 +23543,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def ExpiredAt(self):
+        """实例过期时间戳。
+        :rtype: int
+        """
         return self._ExpiredAt
 
     @ExpiredAt.setter
@@ -19690,6 +23554,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def AppId(self):
+        """账户APPID。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -19698,6 +23565,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def TrialVersion(self):
+        """体验版本信息。
+        :rtype: str
+        """
         return self._TrialVersion
 
     @TrialVersion.setter
@@ -19706,6 +23576,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def TrialEndAt(self):
+        """体验版本过期时间戳。
+        :rtype: int
+        """
         return self._TrialEndAt
 
     @TrialEndAt.setter
@@ -19714,6 +23587,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def DbTotalQuota(self):
+        """DB已购配额。
+        :rtype: int
+        """
         return self._DbTotalQuota
 
     @DbTotalQuota.setter
@@ -19722,6 +23598,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def CosTotalQuota(self):
+        """COS已购配额。
+        :rtype: int
+        """
         return self._CosTotalQuota
 
     @CosTotalQuota.setter
@@ -19730,6 +23609,9 @@ class DspaInstance(AbstractModel):
 
     @property
     def CosQuotaUnit(self):
+        """COS配额单位，例如:TB。
+        :rtype: str
+        """
         return self._CosQuotaUnit
 
     @CosQuotaUnit.setter
@@ -19738,6 +23620,11 @@ class DspaInstance(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """0: 默认状态(用户未设置)
+1: 开启自动续费
+2: 明确不自动续费
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -19746,11 +23633,39 @@ class DspaInstance(AbstractModel):
 
     @property
     def Channel(self):
+        """实例渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Channel
 
     @Channel.setter
     def Channel(self, Channel):
         self._Channel = Channel
+
+    @property
+    def InsAuthCount(self):
+        """已授权的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InsAuthCount
+
+    @InsAuthCount.setter
+    def InsAuthCount(self, InsAuthCount):
+        self._InsAuthCount = InsAuthCount
+
+    @property
+    def InsTotalQuota(self):
+        """已购买的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InsTotalQuota
+
+    @InsTotalQuota.setter
+    def InsTotalQuota(self, InsTotalQuota):
+        self._InsTotalQuota = InsTotalQuota
 
 
     def _deserialize(self, params):
@@ -19770,6 +23685,8 @@ class DspaInstance(AbstractModel):
         self._CosQuotaUnit = params.get("CosQuotaUnit")
         self._RenewFlag = params.get("RenewFlag")
         self._Channel = params.get("Channel")
+        self._InsAuthCount = params.get("InsAuthCount")
+        self._InsTotalQuota = params.get("InsTotalQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19831,6 +23748,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def DataAssetType(self):
+        """数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataAssetType
 
     @DataAssetType.setter
@@ -19839,6 +23760,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def TotalDbCnt(self):
+        """已扫描的数据库的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalDbCnt
 
     @TotalDbCnt.setter
@@ -19847,6 +23772,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def TotalTableCnt(self):
+        """数据库表的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalTableCnt
 
     @TotalTableCnt.setter
@@ -19855,6 +23784,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveCategoryCnt(self):
+        """敏感数据类型个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveCategoryCnt
 
     @SensitiveCategoryCnt.setter
@@ -19863,6 +23796,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveFieldCnt(self):
+        """敏感字段的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFieldCnt
 
     @SensitiveFieldCnt.setter
@@ -19871,6 +23808,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveLevel(self):
+        """敏感等级分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SensitiveLevel
+        """
         return self._SensitiveLevel
 
     @SensitiveLevel.setter
@@ -19879,6 +23820,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveDbCnt(self):
+        """敏感数据库的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveDbCnt
 
     @SensitiveDbCnt.setter
@@ -19887,6 +23832,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def SensitiveTableCnt(self):
+        """敏感数据库表的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveTableCnt
 
     @SensitiveTableCnt.setter
@@ -19895,6 +23844,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def TotalFieldCnt(self):
+        """扫描字段的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalFieldCnt
 
     @TotalFieldCnt.setter
@@ -19903,6 +23856,10 @@ class DspaRDBDataAssetCount(AbstractModel):
 
     @property
     def CategoryDistributed(self):
+        """数据分类分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDataCategoryDistributed
+        """
         return self._CategoryDistributed
 
     @CategoryDistributed.setter
@@ -20028,6 +23985,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -20036,6 +23996,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def DbType(self):
+        """数据库类型
+        :rtype: str
+        """
         return self._DbType
 
     @DbType.setter
@@ -20044,6 +24007,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -20052,6 +24018,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def TableName(self):
+        """数据库表名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -20060,6 +24029,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def FieldName(self):
+        """数据库表字段名称
+        :rtype: str
+        """
         return self._FieldName
 
     @FieldName.setter
@@ -20068,6 +24040,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -20076,6 +24051,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def CategoryName(self):
+        """数据分类
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -20084,6 +24062,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskName(self):
+        """敏感等级
+        :rtype: str
+        """
         return self._LevelRiskName
 
     @LevelRiskName.setter
@@ -20092,6 +24073,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """分级风险分数，1-10，最小值为1，最大值为10
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -20100,6 +24085,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def TrustedScore(self):
+        """可信分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrustedScore
 
     @TrustedScore.setter
@@ -20108,6 +24097,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -20116,6 +24109,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def FieldResultId(self):
+        """字段扫描结果ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FieldResultId
 
     @FieldResultId.setter
@@ -20124,6 +24121,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -20132,6 +24133,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def LevelId(self):
+        """分级ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -20140,6 +24145,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -20148,6 +24157,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -20156,6 +24169,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def SafeGuard(self):
+        """保护措施
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaSafeGuard`
+        """
         return self._SafeGuard
 
     @SafeGuard.setter
@@ -20164,6 +24181,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def CategoryFullPath(self):
+        """分类路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryFullPath
 
     @CategoryFullPath.setter
@@ -20172,6 +24193,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def IdentifyType(self):
+        """0.系统识别，1人工打标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentifyType
 
     @IdentifyType.setter
@@ -20180,6 +24205,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def CheckStatus(self):
+        """0未核查 1已核查
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CheckStatus
 
     @CheckStatus.setter
@@ -20188,6 +24217,10 @@ class DspaRDBDataAssetDetail(AbstractModel):
 
     @property
     def IsSensitiveData(self):
+        """0非敏感，1敏感
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsSensitiveData
 
     @IsSensitiveData.setter
@@ -20249,6 +24282,9 @@ class DspaResourceAccount(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -20257,6 +24293,9 @@ class DspaResourceAccount(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -20265,6 +24304,9 @@ class DspaResourceAccount(AbstractModel):
 
     @property
     def Password(self):
+        """密码。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -20311,6 +24353,13 @@ ENABLE 规则设置并启用
 
     @property
     def Encrypt(self):
+        """加密状态，可取值如下：
+UNSET 未设置
+DISABLE 规则设置未启用
+ENABLE 规则设置并启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -20319,6 +24368,13 @@ ENABLE 规则设置并启用
 
     @property
     def Desensitization(self):
+        """脱敏状态，可取值如下：
+UNSET 未设置
+DISABLE 规则设置未启用
+ENABLE 规则设置并启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Desensitization
 
     @Desensitization.setter
@@ -20362,6 +24418,9 @@ class DspaTaskResult(AbstractModel):
 
     @property
     def Result(self):
+        """任务结果。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -20370,6 +24429,9 @@ class DspaTaskResult(AbstractModel):
 
     @property
     def ResultDescription(self):
+        """结果描述。
+        :rtype: str
+        """
         return self._ResultDescription
 
     @ResultDescription.setter
@@ -20378,6 +24440,9 @@ class DspaTaskResult(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -20386,6 +24451,9 @@ class DspaTaskResult(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -20459,6 +24527,11 @@ class DspaUserResourceMeta(AbstractModel):
         :param _InstanceValue: 实例值
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceValue: str
+        :param _GovernAuthStatus: //治理授权状态（0：关闭 1：开启）
+        :type GovernAuthStatus: int
+        :param _AuthRange: 授权范围：all - 授权整个数据源 manual:手动指定数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthRange: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -20481,9 +24554,14 @@ class DspaUserResourceMeta(AbstractModel):
         self._ResourceAuthAccount = None
         self._InstanceType = None
         self._InstanceValue = None
+        self._GovernAuthStatus = None
+        self._AuthRange = None
 
     @property
     def ResourceId(self):
+        """用户资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -20492,6 +24570,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -20500,6 +24581,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceVip(self):
+        """资源VIP。
+        :rtype: str
+        """
         return self._ResourceVip
 
     @ResourceVip.setter
@@ -20508,6 +24592,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceVPort(self):
+        """资源端口。
+        :rtype: int
+        """
         return self._ResourceVPort
 
     @ResourceVPort.setter
@@ -20516,6 +24603,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceCreateTime(self):
+        """资源被创建时间。
+        :rtype: str
+        """
         return self._ResourceCreateTime
 
     @ResourceCreateTime.setter
@@ -20524,6 +24614,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceUniqueVpcId(self):
+        """用户资源VPC ID 字符串。
+        :rtype: str
+        """
         return self._ResourceUniqueVpcId
 
     @ResourceUniqueVpcId.setter
@@ -20532,6 +24625,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceUniqueSubnetId(self):
+        """用户资源Subnet ID 字符串。
+        :rtype: str
+        """
         return self._ResourceUniqueSubnetId
 
     @ResourceUniqueSubnetId.setter
@@ -20540,6 +24636,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def MetaType(self):
+        """用户资源类型信息。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -20548,6 +24647,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -20556,6 +24658,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceSyncTime(self):
+        """资源被同步时间。
+        :rtype: str
+        """
         return self._ResourceSyncTime
 
     @ResourceSyncTime.setter
@@ -20564,6 +24669,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def AuthStatus(self):
+        """资源被授权状态。
+        :rtype: str
+        """
         return self._AuthStatus
 
     @AuthStatus.setter
@@ -20572,6 +24680,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def BuildType(self):
+        """资源创建类型，cloud-云原生资源，build-用户自建资源。
+        :rtype: str
+        """
         return self._BuildType
 
     @BuildType.setter
@@ -20580,6 +24691,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def MasterInsId(self):
+        """主实例ID。
+        :rtype: str
+        """
         return self._MasterInsId
 
     @MasterInsId.setter
@@ -20588,6 +24702,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceVpcId(self):
+        """用户资源VPC ID 整数。
+        :rtype: int
+        """
         return self._ResourceVpcId
 
     @ResourceVpcId.setter
@@ -20596,6 +24713,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceSubnetId(self):
+        """用户资源Subnet ID 整数。
+        :rtype: int
+        """
         return self._ResourceSubnetId
 
     @ResourceSubnetId.setter
@@ -20604,6 +24724,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议类型。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -20612,6 +24735,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceVersion(self):
+        """资源版本号。
+        :rtype: str
+        """
         return self._ResourceVersion
 
     @ResourceVersion.setter
@@ -20620,6 +24746,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceAuthType(self):
+        """授权方式
+        :rtype: str
+        """
         return self._ResourceAuthType
 
     @ResourceAuthType.setter
@@ -20628,6 +24757,9 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def ResourceAuthAccount(self):
+        """授权账号名
+        :rtype: str
+        """
         return self._ResourceAuthAccount
 
     @ResourceAuthAccount.setter
@@ -20636,6 +24768,10 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -20644,11 +24780,38 @@ class DspaUserResourceMeta(AbstractModel):
 
     @property
     def InstanceValue(self):
+        """实例值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceValue
 
     @InstanceValue.setter
     def InstanceValue(self, InstanceValue):
         self._InstanceValue = InstanceValue
+
+    @property
+    def GovernAuthStatus(self):
+        """//治理授权状态（0：关闭 1：开启）
+        :rtype: int
+        """
+        return self._GovernAuthStatus
+
+    @GovernAuthStatus.setter
+    def GovernAuthStatus(self, GovernAuthStatus):
+        self._GovernAuthStatus = GovernAuthStatus
+
+    @property
+    def AuthRange(self):
+        """授权范围：all - 授权整个数据源 manual:手动指定数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AuthRange
+
+    @AuthRange.setter
+    def AuthRange(self, AuthRange):
+        self._AuthRange = AuthRange
 
 
     def _deserialize(self, params):
@@ -20673,6 +24836,8 @@ class DspaUserResourceMeta(AbstractModel):
         self._ResourceAuthAccount = params.get("ResourceAuthAccount")
         self._InstanceType = params.get("InstanceType")
         self._InstanceValue = params.get("InstanceValue")
+        self._GovernAuthStatus = params.get("GovernAuthStatus")
+        self._AuthRange = params.get("AuthRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20710,6 +24875,10 @@ class ESAsset(AbstractModel):
 
     @property
     def IndexNums(self):
+        """索引总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IndexNums
 
     @IndexNums.setter
@@ -20718,6 +24887,10 @@ class ESAsset(AbstractModel):
 
     @property
     def SensitiveIndexNums(self):
+        """敏感索引的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveIndexNums
 
     @SensitiveIndexNums.setter
@@ -20726,6 +24899,10 @@ class ESAsset(AbstractModel):
 
     @property
     def FieldNums(self):
+        """字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FieldNums
 
     @FieldNums.setter
@@ -20734,6 +24911,10 @@ class ESAsset(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
+        """敏感的字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFieldNums
 
     @SensitiveFieldNums.setter
@@ -20791,6 +24972,10 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -20799,6 +24984,10 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def IndexName(self):
+        """索引名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexName
 
     @IndexName.setter
@@ -20807,6 +24996,10 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def DataType(self):
+        """数据库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataType
 
     @DataType.setter
@@ -20815,6 +25008,10 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def FieldNums(self):
+        """字段的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FieldNums
 
     @FieldNums.setter
@@ -20823,6 +25020,10 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
+        """敏感字段的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFieldNums
 
     @SensitiveFieldNums.setter
@@ -20831,6 +25032,10 @@ class ESAssetDBDetail(AbstractModel):
 
     @property
     def DistributionData(self):
+        """敏感数据分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._DistributionData
 
     @DistributionData.setter
@@ -20903,6 +25108,10 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def DataAssetType(self):
+        """es
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataAssetType
 
     @DataAssetType.setter
@@ -20911,6 +25120,10 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def SensitiveIndexCnt(self):
+        """敏感索引个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveIndexCnt
 
     @SensitiveIndexCnt.setter
@@ -20919,6 +25132,10 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def TotalIndexCnt(self):
+        """总的索引个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalIndexCnt
 
     @TotalIndexCnt.setter
@@ -20927,6 +25144,10 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def SensitiveFieldCnt(self):
+        """敏感字段个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFieldCnt
 
     @SensitiveFieldCnt.setter
@@ -20935,6 +25156,10 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def TotalFieldCnt(self):
+        """总的字段个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalFieldCnt
 
     @TotalFieldCnt.setter
@@ -20943,6 +25168,10 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def SensitiveCategoryCnt(self):
+        """敏感分类的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveCategoryCnt
 
     @SensitiveCategoryCnt.setter
@@ -20951,6 +25180,10 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def SensitiveLevel(self):
+        """敏感分级的分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SensitiveLevel
+        """
         return self._SensitiveLevel
 
     @SensitiveLevel.setter
@@ -20959,6 +25192,10 @@ class ESDataAssetCountDto(AbstractModel):
 
     @property
     def CategoryDistributed(self):
+        """敏感分类的分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DspaDataCategoryDistributed
+        """
         return self._CategoryDistributed
 
     @CategoryDistributed.setter
@@ -21076,6 +25313,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def FieldResultId(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FieldResultId
 
     @FieldResultId.setter
@@ -21084,6 +25325,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -21092,6 +25337,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -21100,6 +25349,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -21108,6 +25361,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -21116,6 +25373,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def IndexName(self):
+        """索引名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexName
 
     @IndexName.setter
@@ -21124,6 +25385,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def FieldName(self):
+        """字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FieldName
 
     @FieldName.setter
@@ -21132,6 +25397,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -21140,6 +25409,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def CategoryName(self):
+        """分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -21148,6 +25421,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def CategoryArr(self):
+        """分类路径数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CategoryArr
 
     @CategoryArr.setter
@@ -21156,6 +25433,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def LevelId(self):
+        """等级id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -21164,6 +25445,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskName(self):
+        """分级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelRiskName
 
     @LevelRiskName.setter
@@ -21172,6 +25457,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """分级分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -21180,6 +25469,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def TrustedScore(self):
+        """可信分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TrustedScore
 
     @TrustedScore.setter
@@ -21188,6 +25481,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -21196,6 +25493,10 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -21204,6 +25505,9 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def IdentifyType(self):
+        """0系统识别，1人工打标
+        :rtype: int
+        """
         return self._IdentifyType
 
     @IdentifyType.setter
@@ -21212,6 +25516,9 @@ class ESDataAssetDetail(AbstractModel):
 
     @property
     def CheckStatus(self):
+        """0未核查，1已核查
+        :rtype: int
+        """
         return self._CheckStatus
 
     @CheckStatus.setter
@@ -21274,6 +25581,9 @@ class ESInstance(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -21282,6 +25592,9 @@ class ESInstance(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -21290,6 +25603,9 @@ class ESInstance(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -21298,6 +25614,9 @@ class ESInstance(AbstractModel):
 
     @property
     def DiscoveryTaskId(self):
+        """扫描任务ID
+        :rtype: int
+        """
         return self._DiscoveryTaskId
 
     @DiscoveryTaskId.setter
@@ -21306,6 +25625,9 @@ class ESInstance(AbstractModel):
 
     @property
     def DiscoveryTaskInstanceID(self):
+        """扫描任务实例ID
+        :rtype: int
+        """
         return self._DiscoveryTaskInstanceID
 
     @DiscoveryTaskInstanceID.setter
@@ -21384,6 +25706,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def Id(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -21392,6 +25718,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -21400,6 +25730,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def FieldName(self):
+        """字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FieldName
 
     @FieldName.setter
@@ -21408,6 +25742,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -21416,6 +25754,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -21424,6 +25766,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def CategoryId(self):
+        """分类id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -21432,6 +25778,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def CategoryName(self):
+        """分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryName
 
     @CategoryName.setter
@@ -21440,6 +25790,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def CategoryArr(self):
+        """多级分类的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CategoryArr
 
     @CategoryArr.setter
@@ -21448,6 +25802,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def LevelId(self):
+        """分级id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -21456,6 +25814,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def LevelName(self):
+        """分级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelName
 
     @LevelName.setter
@@ -21464,6 +25826,10 @@ class ESTaskResultDetail(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """分级分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -21513,6 +25879,9 @@ class EnableDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -21521,6 +25890,9 @@ class EnableDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -21529,6 +25901,9 @@ class EnableDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """开关ScanRule
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -21564,6 +25939,9 @@ class EnableDSPADiscoveryRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21592,6 +25970,9 @@ class EnableTrialVersionRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -21600,6 +25981,9 @@ class EnableTrialVersionRequest(AbstractModel):
 
     @property
     def TrialVersion(self):
+        """体验版本名称。
+        :rtype: str
+        """
         return self._TrialVersion
 
     @TrialVersion.setter
@@ -21634,6 +26018,9 @@ class EnableTrialVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21662,6 +26049,9 @@ class ErrDescription(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码。
+        :rtype: str
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -21670,6 +26060,9 @@ class ErrDescription(AbstractModel):
 
     @property
     def ErrMessage(self):
+        """具体错误信息。
+        :rtype: str
+        """
         return self._ErrMessage
 
     @ErrMessage.setter
@@ -21724,6 +26117,9 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -21732,6 +26128,9 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def ComplianceId(self):
+        """合规组id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -21740,6 +26139,9 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def MetaDataType(self):
+        """资产类型（rdb,cvm_db,cos）
+        :rtype: str
+        """
         return self._MetaDataType
 
     @MetaDataType.setter
@@ -21748,6 +26150,17 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def Filters(self):
+        """过滤数组。支持的Name：
+DataSourceID 数据源ID
+DbName 数据库名称
+CategoryID 敏感数据分类ID
+RuleID 规则ID
+LevelID 敏感分级ID
+ResourceRegion 资源所在地域
+DataSourceType 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
+注意：每个name默认支持最多5个values。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -21756,6 +26169,9 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
 
     @property
     def CasbId(self):
+        """casbId
+        :rtype: str
+        """
         return self._CasbId
 
     @CasbId.setter
@@ -21801,6 +26217,9 @@ class ExportAssetDetailDataResponse(AbstractModel):
 
     @property
     def ExportTaskId(self):
+        """导出任务id
+        :rtype: int
+        """
         return self._ExportTaskId
 
     @ExportTaskId.setter
@@ -21809,6 +26228,9 @@ class ExportAssetDetailDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21841,6 +26263,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21849,6 +26274,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -21892,6 +26320,9 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -21900,6 +26331,9 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -21908,6 +26342,9 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所处地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -21916,6 +26353,9 @@ class GetResourceConnectionStatusRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源列表中展示的资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -21959,6 +26399,9 @@ class GetResourceConnectionStatusResponse(AbstractModel):
 
     @property
     def ConnectionStatus(self):
+        """连接状态，success -- 连接成功，failed -- 连接失败
+        :rtype: str
+        """
         return self._ConnectionStatus
 
     @ConnectionStatus.setter
@@ -21967,6 +26410,10 @@ class GetResourceConnectionStatusResponse(AbstractModel):
 
     @property
     def ConnectionDesc(self):
+        """连接状态的描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConnectionDesc
 
     @ConnectionDesc.setter
@@ -21975,6 +26422,9 @@ class GetResourceConnectionStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22002,6 +26452,9 @@ class GetTrialVersionRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -22041,6 +26494,9 @@ class GetTrialVersionResponse(AbstractModel):
 
     @property
     def TrialVersion(self):
+        """体验版本名称。
+        :rtype: str
+        """
         return self._TrialVersion
 
     @TrialVersion.setter
@@ -22049,6 +26505,9 @@ class GetTrialVersionResponse(AbstractModel):
 
     @property
     def TrialEndAt(self):
+        """版本体验结束时间戳。
+        :rtype: int
+        """
         return self._TrialEndAt
 
     @TrialEndAt.setter
@@ -22057,6 +26516,9 @@ class GetTrialVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22084,6 +26546,9 @@ class GetUserQuotaInfoRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -22126,6 +26591,12 @@ class GetUserQuotaInfoResponse(AbstractModel):
         :type DBUnbindNum: int
         :param _COSUnbindNum: cos月解绑次数
         :type COSUnbindNum: int
+        :param _InsTotalQuota: 用户购买的实例配额。
+        :type InsTotalQuota: int
+        :param _InsRemainQuota: 用户可用的实例配额。
+        :type InsRemainQuota: int
+        :param _Version: 用户购买的版本
+        :type Version: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -22137,10 +26608,16 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._CosQuotaUnit = None
         self._DBUnbindNum = None
         self._COSUnbindNum = None
+        self._InsTotalQuota = None
+        self._InsRemainQuota = None
+        self._Version = None
         self._RequestId = None
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -22149,6 +26626,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def DbTotalQuota(self):
+        """用户购买的DB配额。
+        :rtype: int
+        """
         return self._DbTotalQuota
 
     @DbTotalQuota.setter
@@ -22157,6 +26637,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def CosTotalQuota(self):
+        """用户购买的COS存储量配额。
+        :rtype: int
+        """
         return self._CosTotalQuota
 
     @CosTotalQuota.setter
@@ -22165,6 +26648,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def DbRemainQuota(self):
+        """用户可用的DB配额。
+        :rtype: int
+        """
         return self._DbRemainQuota
 
     @DbRemainQuota.setter
@@ -22173,6 +26659,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def CosRemainQuota(self):
+        """用户可用的COS存储量配额。
+        :rtype: float
+        """
         return self._CosRemainQuota
 
     @CosRemainQuota.setter
@@ -22181,6 +26670,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def CosQuotaUnit(self):
+        """COS存储量单位，例如TB。
+        :rtype: str
+        """
         return self._CosQuotaUnit
 
     @CosQuotaUnit.setter
@@ -22189,6 +26681,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def DBUnbindNum(self):
+        """db月解绑次数
+        :rtype: int
+        """
         return self._DBUnbindNum
 
     @DBUnbindNum.setter
@@ -22197,6 +26692,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
 
     @property
     def COSUnbindNum(self):
+        """cos月解绑次数
+        :rtype: int
+        """
         return self._COSUnbindNum
 
     @COSUnbindNum.setter
@@ -22204,7 +26702,43 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._COSUnbindNum = COSUnbindNum
 
     @property
+    def InsTotalQuota(self):
+        """用户购买的实例配额。
+        :rtype: int
+        """
+        return self._InsTotalQuota
+
+    @InsTotalQuota.setter
+    def InsTotalQuota(self, InsTotalQuota):
+        self._InsTotalQuota = InsTotalQuota
+
+    @property
+    def InsRemainQuota(self):
+        """用户可用的实例配额。
+        :rtype: int
+        """
+        return self._InsRemainQuota
+
+    @InsRemainQuota.setter
+    def InsRemainQuota(self, InsRemainQuota):
+        self._InsRemainQuota = InsRemainQuota
+
+    @property
+    def Version(self):
+        """用户购买的版本
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22221,6 +26755,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._CosQuotaUnit = params.get("CosQuotaUnit")
         self._DBUnbindNum = params.get("DBUnbindNum")
         self._COSUnbindNum = params.get("COSUnbindNum")
+        self._InsTotalQuota = params.get("InsTotalQuota")
+        self._InsRemainQuota = params.get("InsRemainQuota")
+        self._Version = params.get("Version")
         self._RequestId = params.get("RequestId")
 
 
@@ -22271,6 +26808,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -22279,6 +26820,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -22287,6 +26832,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -22295,6 +26844,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def AssetsName(self):
+        """资产对象名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetsName
 
     @AssetsName.setter
@@ -22303,6 +26856,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def HighRiskCount(self):
+        """高风险个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HighRiskCount
 
     @HighRiskCount.setter
@@ -22311,6 +26868,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def RiskType(self):
+        """风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskType
 
     @RiskType.setter
@@ -22319,6 +26880,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def TotalRiskCount(self):
+        """总的风险个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalRiskCount
 
     @TotalRiskCount.setter
@@ -22327,6 +26892,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def RiskSide(self):
+        """风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskSide
 
     @RiskSide.setter
@@ -22335,6 +26904,10 @@ class HighRiskAssetsDetail(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -22379,6 +26952,9 @@ class ItemLevel(AbstractModel):
 
     @property
     def LevelRiskName(self):
+        """分级标识名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._LevelRiskName
 
     @LevelRiskName.setter
@@ -22387,6 +26963,9 @@ class ItemLevel(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """分级标识对应的风险分数值，1-10，最小为1，最大为10
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -22430,6 +27009,9 @@ class LevelItem(AbstractModel):
 
     @property
     def LevelId(self):
+        """分级ID
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -22438,6 +27020,9 @@ class LevelItem(AbstractModel):
 
     @property
     def LevelGroupId(self):
+        """分级组ID
+        :rtype: int
+        """
         return self._LevelGroupId
 
     @LevelGroupId.setter
@@ -22446,6 +27031,9 @@ class LevelItem(AbstractModel):
 
     @property
     def LevelRiskName(self):
+        """分级标识名称，支持内置分级，内置分级取值：高，中，低，也可以自定义
+        :rtype: str
+        """
         return self._LevelRiskName
 
     @LevelRiskName.setter
@@ -22454,6 +27042,9 @@ class LevelItem(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """分级风险分数，1-10，最小值为1，最大值为10
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -22503,6 +27094,9 @@ Version支持的可选值：trial、official。
 
     @property
     def Limit(self):
+        """分页步长，默认为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -22511,6 +27105,9 @@ Version支持的可选值：trial、official。
 
     @property
     def Offset(self):
+        """分页偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22519,6 +27116,13 @@ Version支持的可选值：trial、official。
 
     @property
     def Filters(self):
+        """过滤项。
+支持的过滤项包括：DspaId、Status、Version、DspaName。
+DspaId和DspaName支持模糊搜索。
+Status支持的可选值：enabled、disabled。
+Version支持的可选值：trial、official。
+        :rtype: list of DspaDataSourceMngFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -22527,6 +27131,9 @@ Version支持的可选值：trial、official。
 
     @property
     def ListMode(self):
+        """展示模式。
+        :rtype: str
+        """
         return self._ListMode
 
     @ListMode.setter
@@ -22577,6 +27184,9 @@ class ListDSPAClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """资源总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -22585,6 +27195,9 @@ class ListDSPAClustersResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """资源列表。
+        :rtype: list of DspaInstance
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -22593,6 +27206,9 @@ class ListDSPAClustersResponse(AbstractModel):
 
     @property
     def DenyAll(self):
+        """是否被拒绝访问所有dspa实例资源。
+        :rtype: bool
+        """
         return self._DenyAll
 
     @DenyAll.setter
@@ -22601,6 +27217,9 @@ class ListDSPAClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22651,6 +27270,9 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def DspaId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -22659,6 +27281,14 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def Filters(self):
+        """过滤数组。支持的Name：
+Bucket - 桶名，支持模糊匹配
+
+ResoureRegion - 资源所处地域，需要填写完整地域名称，不支持模糊匹配。
+
+Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
+        :rtype: list of DspaDataSourceMngFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -22667,6 +27297,9 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22675,6 +27308,9 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def Limit(self):
+        """返回数量，默认为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -22683,6 +27319,9 @@ Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
 
     @property
     def BindType(self):
+        """资源绑定状态过滤，默认为全部
+        :rtype: str
+        """
         return self._BindType
 
     @BindType.setter
@@ -22736,6 +27375,9 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的COS元数据数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -22744,6 +27386,10 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """COS元数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DSPACosMetaDataInfo
+        """
         return self._Items
 
     @Items.setter
@@ -22752,6 +27398,10 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -22760,6 +27410,9 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22799,6 +27452,8 @@ BuildType - cloud（云原生资源）、build（用户自建资源），不支�
 MetaType - cdb（云数据Mysql）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbmysql（TDSQL-C MySQL版）、cos（对象存储）、mysql_like_proto（自建型Mysql协议类关系型数据库）、postgre_like_proto（自建型Postgre协议类关系型数据库）。
 
 ResourceId - 资源ID，支持模糊搜索。
+
+CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用dsgc接口时，根据cvmId和vport确定具体的自建实例
         :type Filters: list of DspaDataSourceMngFilter
         :param _Limit: 分页步长，默认为100。
         :type Limit: int
@@ -22815,6 +27470,9 @@ ResourceId - 资源ID，支持模糊搜索。
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -22823,6 +27481,21 @@ ResourceId - 资源ID，支持模糊搜索。
 
     @property
     def Filters(self):
+        """过滤项。
+可过滤值包括：
+ResoureRegion - 资源所处地域，需要填写完整地域名称，不支持模糊匹配。
+
+AuthStatus - authorized（已授权）、unauthorized（未授权）、deleted（资源已被删除），不支持模糊匹配，需要填写完整。
+
+BuildType - cloud（云原生资源）、build（用户自建资源），不支持模糊匹配，需要填写完整。
+
+MetaType - cdb（云数据Mysql）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbmysql（TDSQL-C MySQL版）、cos（对象存储）、mysql_like_proto（自建型Mysql协议类关系型数据库）、postgre_like_proto（自建型Postgre协议类关系型数据库）。
+
+ResourceId - 资源ID，支持模糊搜索。
+
+CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用dsgc接口时，根据cvmId和vport确定具体的自建实例
+        :rtype: list of DspaDataSourceMngFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -22831,6 +27504,9 @@ ResourceId - 资源ID，支持模糊搜索。
 
     @property
     def Limit(self):
+        """分页步长，默认为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -22839,6 +27515,9 @@ ResourceId - 资源ID，支持模糊搜索。
 
     @property
     def Offset(self):
+        """分页偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22847,6 +27526,9 @@ ResourceId - 资源ID，支持模糊搜索。
 
     @property
     def BindType(self):
+        """资源绑定状态过滤，默认为全部
+        :rtype: str
+        """
         return self._BindType
 
     @BindType.setter
@@ -22898,6 +27580,9 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -22906,6 +27591,9 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def Resources(self):
+        """用户资源列表。
+        :rtype: list of DspaUserResourceMeta
+        """
         return self._Resources
 
     @Resources.setter
@@ -22914,6 +27602,9 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """资源总量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -22922,6 +27613,9 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22961,6 +27655,9 @@ class ModifyClassificationRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22992,6 +27689,9 @@ class ModifyClassificationRuleStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23032,6 +27732,9 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23040,6 +27743,9 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def Status(self):
+        """风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -23050,6 +27756,9 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
     def RiskLatestTableId(self):
         warnings.warn("parameter `RiskLatestTableId` is deprecated", DeprecationWarning) 
 
+        """最新风险项Id
+        :rtype: int
+        """
         return self._RiskLatestTableId
 
     @RiskLatestTableId.setter
@@ -23060,6 +27769,9 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -23068,6 +27780,9 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def ProcessPeople(self):
+        """处置人
+        :rtype: str
+        """
         return self._ProcessPeople
 
     @ProcessPeople.setter
@@ -23076,6 +27791,9 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def BathRiskIdList(self):
+        """批量处理的列表
+        :rtype: list of int
+        """
         return self._BathRiskIdList
 
     @BathRiskIdList.setter
@@ -23114,6 +27832,9 @@ class ModifyDSPAAssessmentRiskLatestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23151,6 +27872,9 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23159,6 +27883,9 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelName(self):
+        """风险等级名称
+        :rtype: str
+        """
         return self._RiskLevelName
 
     @RiskLevelName.setter
@@ -23167,6 +27894,9 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskLevelDescription(self):
+        """风险的描述
+        :rtype: str
+        """
         return self._RiskLevelDescription
 
     @RiskLevelDescription.setter
@@ -23175,6 +27905,9 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def RiskId(self):
+        """风险id
+        :rtype: int
+        """
         return self._RiskId
 
     @RiskId.setter
@@ -23183,6 +27916,9 @@ class ModifyDSPAAssessmentRiskLevelRequest(AbstractModel):
 
     @property
     def ModifyRiskItem(self):
+        """需要修改的风险列表
+        :rtype: list of RiskLevelMatrix
+        """
         return self._ModifyRiskItem
 
     @ModifyRiskItem.setter
@@ -23225,6 +27961,9 @@ class ModifyDSPAAssessmentRiskLevelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23259,6 +27998,9 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23267,6 +28009,9 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """评估任务Id，格式“task-xxxxxxxx”
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -23275,6 +28020,9 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
     @property
     def RiskId(self):
+        """风险项Id，格式“risk-xxxxxxxx”
+        :rtype: str
+        """
         return self._RiskId
 
     @RiskId.setter
@@ -23283,6 +28031,9 @@ class ModifyDSPAAssessmentRiskRequest(AbstractModel):
 
     @property
     def Status(self):
+        """风险项状态。（waiting:待处理，processing:处理中，finished:已处理）
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -23319,6 +28070,9 @@ class ModifyDSPAAssessmentRiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23359,6 +28113,9 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23367,6 +28124,9 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -23375,6 +28135,9 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateDescription(self):
+        """模板的描述
+        :rtype: str
+        """
         return self._TemplateDescription
 
     @TemplateDescription.setter
@@ -23383,6 +28146,9 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -23391,6 +28157,9 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def RiskLevelId(self):
+        """修改的风险等级id
+        :rtype: int
+        """
         return self._RiskLevelId
 
     @RiskLevelId.setter
@@ -23399,6 +28168,9 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
 
     @property
     def RiskIdList(self):
+        """脆弱项列表
+        :rtype: list of int
+        """
         return self._RiskIdList
 
     @RiskIdList.setter
@@ -23437,6 +28209,9 @@ class ModifyDSPAAssessmentRiskTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23499,6 +28274,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23507,6 +28285,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -23515,6 +28296,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -23523,6 +28307,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Description(self):
+        """任务描述，最大长度为1024个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -23531,6 +28318,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """任务开关，0 关闭，1 启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -23539,6 +28329,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def GeneralRuleSetEnable(self):
+        """通用规则集开关；0 关闭，1 启用
+        :rtype: int
+        """
         return self._GeneralRuleSetEnable
 
     @GeneralRuleSetEnable.setter
@@ -23547,6 +28340,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def ComplianceGroupIds(self):
+        """合规组ID列表，最多支持添加5个
+        :rtype: list of int
+        """
         return self._ComplianceGroupIds
 
     @ComplianceGroupIds.setter
@@ -23555,6 +28351,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Plan(self):
+        """执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
+        :rtype: int
+        """
         return self._Plan
 
     @Plan.setter
@@ -23563,6 +28362,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def Period(self):
+        """扫描周期；0单次 1每天 2每周 3每月
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -23571,6 +28373,10 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def TimingStartTime(self):
+        """任务定时启动时间，格式：2006-01-02 15:04:05
+当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
+        :rtype: str
+        """
         return self._TimingStartTime
 
     @TimingStartTime.setter
@@ -23579,6 +28385,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def FileTypes(self):
+        """待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
+        :rtype: list of str
+        """
         return self._FileTypes
 
     @FileTypes.setter
@@ -23587,6 +28396,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def FileSizeLimit(self):
+        """文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
+        :rtype: int
+        """
         return self._FileSizeLimit
 
     @FileSizeLimit.setter
@@ -23595,6 +28407,9 @@ class ModifyDSPACOSDiscoveryTaskRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -23640,6 +28455,9 @@ class ModifyDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23683,6 +28501,9 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23691,6 +28512,9 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -23699,6 +28523,9 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def FileResultId(self):
+        """文件扫描结果ID
+        :rtype: int
+        """
         return self._FileResultId
 
     @FileResultId.setter
@@ -23707,6 +28534,9 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def IsSetNonSensitiveFile(self):
+        """是否设置为非敏感文件
+        :rtype: bool
+        """
         return self._IsSetNonSensitiveFile
 
     @IsSetNonSensitiveFile.setter
@@ -23715,6 +28545,9 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -23723,6 +28556,9 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def BucketName(self):
+        """桶名
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -23731,6 +28567,9 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -23770,6 +28609,9 @@ class ModifyDSPACOSTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23804,6 +28646,9 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """dspa实例id
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23812,6 +28657,9 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """当前分类id
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -23820,6 +28668,9 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def MergedCategoryId(self):
+        """合并到的分类id
+        :rtype: int
+        """
         return self._MergedCategoryId
 
     @MergedCategoryId.setter
@@ -23828,6 +28679,9 @@ class ModifyDSPACategoryRelationRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组模板id
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -23864,6 +28718,9 @@ class ModifyDSPACategoryRelationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23895,6 +28752,9 @@ class ModifyDSPACategoryRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23903,6 +28763,9 @@ class ModifyDSPACategoryRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """数据分类ID
+        :rtype: int
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -23911,6 +28774,9 @@ class ModifyDSPACategoryRequest(AbstractModel):
 
     @property
     def Name(self):
+        """敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -23946,6 +28812,9 @@ class ModifyDSPACategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23977,6 +28846,9 @@ class ModifyDSPAClusterInfoRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -23985,6 +28857,9 @@ class ModifyDSPAClusterInfoRequest(AbstractModel):
 
     @property
     def DspaName(self):
+        """DSPA实例名。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字。
+        :rtype: str
+        """
         return self._DspaName
 
     @DspaName.setter
@@ -23993,6 +28868,9 @@ class ModifyDSPAClusterInfoRequest(AbstractModel):
 
     @property
     def DspaDescription(self):
+        """DSPA实例描述信息。最长1024个字符。
+        :rtype: str
+        """
         return self._DspaDescription
 
     @DspaDescription.setter
@@ -24028,6 +28906,9 @@ class ModifyDSPAClusterInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24071,6 +28952,9 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -24079,6 +28963,9 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceGroupId
 
     @ComplianceGroupId.setter
@@ -24087,6 +28974,9 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -24095,6 +28985,9 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """合规组描述，最大长度为1024个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -24103,6 +28996,9 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def ComplianceGroupRules(self):
+        """合规组规则配置（参数已废弃，请传空数组）
+        :rtype: list of ComplianceGroupRuleIdInfo
+        """
         return self._ComplianceGroupRules
 
     @ComplianceGroupRules.setter
@@ -24111,6 +29007,9 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def LevelGroupId(self):
+        """分级组ID，新增参数，可选参数，默认值为1
+        :rtype: int
+        """
         return self._LevelGroupId
 
     @LevelGroupId.setter
@@ -24119,6 +29018,9 @@ class ModifyDSPAComplianceGroupRequest(AbstractModel):
 
     @property
     def RuleAlias(self):
+        """是否开启别名
+        :rtype: bool
+        """
         return self._RuleAlias
 
     @RuleAlias.setter
@@ -24163,6 +29065,9 @@ class ModifyDSPAComplianceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24206,6 +29111,9 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -24214,6 +29122,9 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -24222,6 +29133,9 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -24230,6 +29144,9 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Description(self):
+        """规则描述，最大长度为1024个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -24238,6 +29155,9 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def RDBRules(self):
+        """RDB类敏感数据识别规则
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskRDBRules`
+        """
         return self._RDBRules
 
     @RDBRules.setter
@@ -24246,6 +29166,9 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def COSRules(self):
+        """COS类敏感数据识别规则
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskCOSRules`
+        """
         return self._COSRules
 
     @COSRules.setter
@@ -24254,6 +29177,9 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -24297,6 +29223,9 @@ class ModifyDSPADiscoveryRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24369,6 +29298,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -24377,6 +29309,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -24385,6 +29320,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Name(self):
+        """任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -24393,6 +29331,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Description(self):
+        """任务描述，最大长度为1024个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -24401,6 +29342,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Enable(self):
+        """任务开关，0 关闭，1 启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -24409,6 +29353,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceId(self):
+        """数据源ID
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -24417,6 +29364,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Condition(self):
+        """用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，最多添加5个数据库，之间通过逗号分隔
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -24425,6 +29375,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def GeneralRuleSetEnable(self):
+        """通用规则集开关；0 关闭，1 启用
+        :rtype: int
+        """
         return self._GeneralRuleSetEnable
 
     @GeneralRuleSetEnable.setter
@@ -24433,6 +29386,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ComplianceGroupIds(self):
+        """合规组ID列表，最多支持添加5个
+        :rtype: list of int
+        """
         return self._ComplianceGroupIds
 
     @ComplianceGroupIds.setter
@@ -24441,6 +29397,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Plan(self):
+        """执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
+        :rtype: int
+        """
         return self._Plan
 
     @Plan.setter
@@ -24449,6 +29408,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def Period(self):
+        """扫描周期；0单次 1每天 2每周 3每月
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -24457,6 +29419,10 @@ selfbuilt-db 表示自建数据库
 
     @property
     def TimingStartTime(self):
+        """任务定时启动时间，格式：2006-01-02 15:04:05
+当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
+        :rtype: str
+        """
         return self._TimingStartTime
 
     @TimingStartTime.setter
@@ -24465,6 +29431,9 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -24473,6 +29442,16 @@ selfbuilt-db 表示自建数据库
 
     @property
     def DataSourceType(self):
+        """数据源类型，可取值如下：
+cdb 表示云数据库 MySQL,
+dcdb 表示TDSQL MySQL版,
+mariadb 表示云数据库 MariaDB,
+postgres 表示云数据库 PostgreSQL,
+cynosdbpg 表示TDSQL-C PostgreSQL版,
+cynosdbmysql 表示TDSQL-C MySQL版,
+selfbuilt-db 表示自建数据库
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -24519,6 +29498,9 @@ class ModifyDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24574,6 +29556,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -24582,6 +29567,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def FieldResultId(self):
+        """字段扫描结果ID
+        :rtype: int
+        """
         return self._FieldResultId
 
     @FieldResultId.setter
@@ -24590,6 +29578,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -24598,6 +29589,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def IsSetNonSensitiveField(self):
+        """是否设置为非敏感字段
+        :rtype: bool
+        """
         return self._IsSetNonSensitiveField
 
     @IsSetNonSensitiveField.setter
@@ -24606,6 +29600,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def DestRuleId(self):
+        """调整后新的规则ID
+        :rtype: int
+        """
         return self._DestRuleId
 
     @DestRuleId.setter
@@ -24614,6 +29611,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def DestCategoryId(self):
+        """调整后新的分类ID
+        :rtype: int
+        """
         return self._DestCategoryId
 
     @DestCategoryId.setter
@@ -24622,6 +29622,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def DestLevelId(self):
+        """调整后新的分级ID
+        :rtype: int
+        """
         return self._DestLevelId
 
     @DestLevelId.setter
@@ -24630,6 +29633,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def SrcRuleId(self):
+        """调整前的规则id（系统识别的id）
+        :rtype: int
+        """
         return self._SrcRuleId
 
     @SrcRuleId.setter
@@ -24638,6 +29644,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def SrcCategoryId(self):
+        """调整前的规则id（系统识别的id）
+        :rtype: int
+        """
         return self._SrcCategoryId
 
     @SrcCategoryId.setter
@@ -24646,6 +29655,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def SrcLevelId(self):
+        """调整前的等级id
+        :rtype: int
+        """
         return self._SrcLevelId
 
     @SrcLevelId.setter
@@ -24654,6 +29666,9 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
 
     @property
     def IdentifyType(self):
+        """0系统识别，1人工打标
+        :rtype: int
+        """
         return self._IdentifyType
 
     @IdentifyType.setter
@@ -24697,6 +29712,9 @@ class ModifyDSPAESTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24754,6 +29772,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -24762,6 +29783,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def FieldResultId(self):
+        """字段扫描结果ID
+        :rtype: int
+        """
         return self._FieldResultId
 
     @FieldResultId.setter
@@ -24770,6 +29794,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -24778,6 +29805,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def IsSetNonSensitiveField(self):
+        """是否设置为非敏感字段
+        :rtype: bool
+        """
         return self._IsSetNonSensitiveField
 
     @IsSetNonSensitiveField.setter
@@ -24786,6 +29816,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def DestRuleId(self):
+        """调整后新的规则ID
+        :rtype: int
+        """
         return self._DestRuleId
 
     @DestRuleId.setter
@@ -24794,6 +29827,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def DestCategoryId(self):
+        """调整后新的分类ID
+        :rtype: int
+        """
         return self._DestCategoryId
 
     @DestCategoryId.setter
@@ -24802,6 +29838,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def DestLevelId(self):
+        """调整后新的分级ID
+        :rtype: int
+        """
         return self._DestLevelId
 
     @DestLevelId.setter
@@ -24810,6 +29849,10 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def SrcRuleId(self):
+        """调整前的规则ID
+
+        :rtype: int
+        """
         return self._SrcRuleId
 
     @SrcRuleId.setter
@@ -24818,6 +29861,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def SrcCategoryId(self):
+        """调整之前的分类id
+        :rtype: int
+        """
         return self._SrcCategoryId
 
     @SrcCategoryId.setter
@@ -24826,6 +29872,9 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def SrcLevelId(self):
+        """调整之前的分级id
+        :rtype: int
+        """
         return self._SrcLevelId
 
     @SrcLevelId.setter
@@ -24834,6 +29883,10 @@ class ModifyDSPATaskResultRequest(AbstractModel):
 
     @property
     def IdentifyType(self):
+        """识别方式
+0-系统识别，1-人工打标
+        :rtype: int
+        """
         return self._IdentifyType
 
     @IdentifyType.setter
@@ -24877,6 +29930,9 @@ class ModifyDSPATaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24908,6 +29964,9 @@ class ModifyLevelInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24939,6 +29998,9 @@ class ModifyLevelNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24970,6 +30032,9 @@ class ModifyLevelStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25001,6 +30066,9 @@ class ModifyMergeClassificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25032,6 +30100,9 @@ class ModifyNewClassificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25063,6 +30134,9 @@ class ModifyStandardInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25109,6 +30183,10 @@ class MongoAsset(AbstractModel):
 
     @property
     def DbNums(self):
+        """DB总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DbNums
 
     @DbNums.setter
@@ -25117,6 +30195,10 @@ class MongoAsset(AbstractModel):
 
     @property
     def SensitiveDbNums(self):
+        """敏感DB数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveDbNums
 
     @SensitiveDbNums.setter
@@ -25125,6 +30207,10 @@ class MongoAsset(AbstractModel):
 
     @property
     def ColNums(self):
+        """集合数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ColNums
 
     @ColNums.setter
@@ -25133,6 +30219,10 @@ class MongoAsset(AbstractModel):
 
     @property
     def SensitiveColNums(self):
+        """敏感集合的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveColNums
 
     @SensitiveColNums.setter
@@ -25141,6 +30231,10 @@ class MongoAsset(AbstractModel):
 
     @property
     def FieldNums(self):
+        """字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FieldNums
 
     @FieldNums.setter
@@ -25149,6 +30243,10 @@ class MongoAsset(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
+        """敏感的字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFieldNums
 
     @SensitiveFieldNums.setter
@@ -25216,6 +30314,10 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -25224,6 +30326,10 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def DdName(self):
+        """数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DdName
 
     @DdName.setter
@@ -25232,6 +30338,10 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def DataType(self):
+        """数据库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataType
 
     @DataType.setter
@@ -25240,6 +30350,10 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def ColNums(self):
+        """集合的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ColNums
 
     @ColNums.setter
@@ -25248,6 +30362,10 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def SensitiveColNums(self):
+        """敏感集合数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveColNums
 
     @SensitiveColNums.setter
@@ -25256,6 +30374,10 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def FieldNums(self):
+        """字段的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FieldNums
 
     @FieldNums.setter
@@ -25264,6 +30386,10 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
+        """敏感字段的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFieldNums
 
     @SensitiveFieldNums.setter
@@ -25272,6 +30398,10 @@ class MongoAssetDBDetail(AbstractModel):
 
     @property
     def DistributionData(self):
+        """敏感数据分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._DistributionData
 
     @DistributionData.setter
@@ -25329,6 +30459,9 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -25337,6 +30470,9 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """cdb, dcdb, mariadb, postgres, cynosdbpg, cynosdbmysql, cos, mysql_like_proto, postgre_like_proto,mongodb
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -25345,6 +30481,9 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -25353,6 +30492,9 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def DiscoveryTaskId(self):
+        """根据实例创建的敏感数据识别扫描任务Id
+        :rtype: int
+        """
         return self._DiscoveryTaskId
 
     @DiscoveryTaskId.setter
@@ -25361,6 +30503,9 @@ class NOSQLInstance(AbstractModel):
 
     @property
     def DiscoveryTaskInstanceID(self):
+        """敏感数据识别任务实例id
+        :rtype: int
+        """
         return self._DiscoveryTaskInstanceID
 
     @DiscoveryTaskInstanceID.setter
@@ -25403,6 +30548,10 @@ class Note(AbstractModel):
 
     @property
     def Key(self):
+        """通用key，例如分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -25411,6 +30560,10 @@ class Note(AbstractModel):
 
     @property
     def Value(self):
+        """通用value，例如分类个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -25454,6 +30607,10 @@ class PrivilegeRisk(AbstractModel):
 
     @property
     def AccountName(self):
+        """账户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -25462,6 +30619,10 @@ class PrivilegeRisk(AbstractModel):
 
     @property
     def TableName(self):
+        """表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -25470,6 +30631,10 @@ class PrivilegeRisk(AbstractModel):
 
     @property
     def Description(self):
+        """说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -25518,6 +30683,10 @@ class ProcessHistory(AbstractModel):
 
     @property
     def Time(self):
+        """处理时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -25526,6 +30695,10 @@ class ProcessHistory(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -25534,6 +30707,10 @@ class ProcessHistory(AbstractModel):
 
     @property
     def Handler(self):
+        """处理人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Handler
 
     @Handler.setter
@@ -25542,6 +30719,10 @@ class ProcessHistory(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -25587,6 +30768,9 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -25595,6 +30779,9 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """数据库实例ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -25603,6 +30790,9 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """数据库实例所在地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -25611,6 +30801,9 @@ class QueryDSPAMetaResourceDbListRequest(AbstractModel):
 
     @property
     def MetaType(self):
+        """数据库实例类型。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -25650,6 +30843,9 @@ class QueryDSPAMetaResourceDbListResponse(AbstractModel):
 
     @property
     def DbRelationStatusItems(self):
+        """数据库实例DB列表的查询结果。
+        :rtype: list of DbRelationStatusItem
+        """
         return self._DbRelationStatusItems
 
     @DbRelationStatusItems.setter
@@ -25658,6 +30854,9 @@ class QueryDSPAMetaResourceDbListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25698,6 +30897,9 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -25706,6 +30908,9 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -25714,6 +30919,9 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -25722,6 +30930,9 @@ class QueryResourceDbBindStatusRequest(AbstractModel):
 
     @property
     def MetaType(self):
+        """资源类型。
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -25764,6 +30975,9 @@ class QueryResourceDbBindStatusResponse(AbstractModel):
 
     @property
     def BindDbNums(self):
+        """绑定DB数量。
+        :rtype: int
+        """
         return self._BindDbNums
 
     @BindDbNums.setter
@@ -25772,6 +30986,9 @@ class QueryResourceDbBindStatusResponse(AbstractModel):
 
     @property
     def UnbindDbNums(self):
+        """未绑定DB数量。
+        :rtype: int
+        """
         return self._UnbindDbNums
 
     @UnbindDbNums.setter
@@ -25780,6 +30997,9 @@ class QueryResourceDbBindStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25828,6 +31048,10 @@ class RDBAsset(AbstractModel):
 
     @property
     def DbNums(self):
+        """DB总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DbNums
 
     @DbNums.setter
@@ -25836,6 +31060,10 @@ class RDBAsset(AbstractModel):
 
     @property
     def SensitiveDbNums(self):
+        """敏感DB数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveDbNums
 
     @SensitiveDbNums.setter
@@ -25844,6 +31072,10 @@ class RDBAsset(AbstractModel):
 
     @property
     def TableNums(self):
+        """表数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TableNums
 
     @TableNums.setter
@@ -25852,6 +31084,10 @@ class RDBAsset(AbstractModel):
 
     @property
     def SensitiveTableNums(self):
+        """敏感表的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveTableNums
 
     @SensitiveTableNums.setter
@@ -25860,6 +31096,10 @@ class RDBAsset(AbstractModel):
 
     @property
     def FieldNums(self):
+        """字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FieldNums
 
     @FieldNums.setter
@@ -25868,6 +31108,10 @@ class RDBAsset(AbstractModel):
 
     @property
     def SensitiveFieldNums(self):
+        """敏感的字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveFieldNums
 
     @SensitiveFieldNums.setter
@@ -25916,6 +31160,9 @@ class RDBInstance(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源Id
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -25924,6 +31171,9 @@ class RDBInstance(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """cdb, dcdb, mariadb, postgres, cynosdbpg, cynosdbmysql, cos, mysql_like_proto, postgre_like_proto
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -25932,6 +31182,9 @@ class RDBInstance(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在地域
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -25940,6 +31193,10 @@ class RDBInstance(AbstractModel):
 
     @property
     def DBs(self):
+        """若未来扩展到DBName粒度，可采用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DBStatements
+        """
         return self._DBs
 
     @DBs.setter
@@ -26014,6 +31271,9 @@ class ReportInfo(AbstractModel):
         :param _ProgressPercent: 进度百分比
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressPercent: int
+        :param _ReportTemplateName: 报告模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportTemplateName: str
         """
         self._Id = None
         self._ReportName = None
@@ -26029,9 +31289,13 @@ class ReportInfo(AbstractModel):
         self._Enable = None
         self._ComplianceName = None
         self._ProgressPercent = None
+        self._ReportTemplateName = None
 
     @property
     def Id(self):
+        """任务id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -26040,6 +31304,9 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportName(self):
+        """报告名称
+        :rtype: str
+        """
         return self._ReportName
 
     @ReportName.setter
@@ -26048,6 +31315,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportType(self):
+        """报告类型（AssetSorting:资产梳理）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReportType
 
     @ReportType.setter
@@ -26056,6 +31327,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportPeriod(self):
+        """报告周期（0单次 1每天 2每周 3每月）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReportPeriod
 
     @ReportPeriod.setter
@@ -26064,6 +31339,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportPlan(self):
+        """执行计划 （0:单次报告 1:定时报告）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReportPlan
 
     @ReportPlan.setter
@@ -26072,6 +31351,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def ReportStatus(self):
+        """报告导出状态（Success 成功, Failed 失败, InProgress 进行中）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReportStatus
 
     @ReportStatus.setter
@@ -26080,6 +31363,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def TimingStartTime(self):
+        """任务下次启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimingStartTime
 
     @TimingStartTime.setter
@@ -26088,6 +31375,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -26096,6 +31387,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def FinishedTime(self):
+        """完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishedTime
 
     @FinishedTime.setter
@@ -26104,6 +31399,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def SubUin(self):
+        """子账号uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubUin
 
     @SubUin.setter
@@ -26112,6 +31411,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def FailedMessage(self):
+        """失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailedMessage
 
     @FailedMessage.setter
@@ -26120,6 +31423,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def Enable(self):
+        """是否启用（0：否 1：是）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -26128,6 +31435,10 @@ class ReportInfo(AbstractModel):
 
     @property
     def ComplianceName(self):
+        """识别模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ComplianceName
 
     @ComplianceName.setter
@@ -26136,11 +31447,27 @@ class ReportInfo(AbstractModel):
 
     @property
     def ProgressPercent(self):
+        """进度百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProgressPercent
 
     @ProgressPercent.setter
     def ProgressPercent(self, ProgressPercent):
         self._ProgressPercent = ProgressPercent
+
+    @property
+    def ReportTemplateName(self):
+        """报告模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReportTemplateName
+
+    @ReportTemplateName.setter
+    def ReportTemplateName(self, ReportTemplateName):
+        self._ReportTemplateName = ReportTemplateName
 
 
     def _deserialize(self, params):
@@ -26158,6 +31485,7 @@ class ReportInfo(AbstractModel):
         self._Enable = params.get("Enable")
         self._ComplianceName = params.get("ComplianceName")
         self._ProgressPercent = params.get("ProgressPercent")
+        self._ReportTemplateName = params.get("ReportTemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26185,6 +31513,9 @@ class RestartDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例Id，格式“dspa-xxxxxxxx”
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -26193,6 +31524,9 @@ class RestartDSPAAssessmentTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """评估任务Id，格式“task-xxxxxxxx”
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -26227,6 +31561,9 @@ class RestartDSPAAssessmentTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26259,6 +31596,9 @@ class RiskCountInfo(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """风险等级
+        :rtype: str
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -26267,6 +31607,9 @@ class RiskCountInfo(AbstractModel):
 
     @property
     def Count(self):
+        """该等级风险项数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -26275,6 +31618,10 @@ class RiskCountInfo(AbstractModel):
 
     @property
     def RiskLevelName(self):
+        """风险等级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskLevelName
 
     @RiskLevelName.setter
@@ -26320,6 +31667,9 @@ class RiskDealedTrendItem(AbstractModel):
 
     @property
     def Date(self):
+        """日期
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -26328,6 +31678,9 @@ class RiskDealedTrendItem(AbstractModel):
 
     @property
     def Unhandled(self):
+        """未解决数量
+        :rtype: int
+        """
         return self._Unhandled
 
     @Unhandled.setter
@@ -26336,6 +31689,9 @@ class RiskDealedTrendItem(AbstractModel):
 
     @property
     def Handled(self):
+        """已解决数量
+        :rtype: int
+        """
         return self._Handled
 
     @Handled.setter
@@ -26344,6 +31700,10 @@ class RiskDealedTrendItem(AbstractModel):
 
     @property
     def NewDiscoveryHandled(self):
+        """新发现
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NewDiscoveryHandled
 
     @NewDiscoveryHandled.setter
@@ -26383,6 +31743,9 @@ class RiskItem(AbstractModel):
 
     @property
     def ItemName(self):
+        """名称
+        :rtype: str
+        """
         return self._ItemName
 
     @ItemName.setter
@@ -26391,6 +31754,9 @@ class RiskItem(AbstractModel):
 
     @property
     def RiskNum(self):
+        """风险数量
+        :rtype: int
+        """
         return self._RiskNum
 
     @RiskNum.setter
@@ -26501,6 +31867,9 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def Id(self):
+        """最新风险项id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -26509,6 +31878,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -26517,6 +31890,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def DataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceName
 
     @DataSourceName.setter
@@ -26525,6 +31902,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -26533,6 +31914,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -26541,6 +31926,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def AssetName(self):
+        """资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -26549,6 +31938,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskType(self):
+        """风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskType
 
     @RiskType.setter
@@ -26557,6 +31950,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskName(self):
+        """风险项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskName
 
     @RiskName.setter
@@ -26565,6 +31962,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """风险级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -26573,6 +31974,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskDescription(self):
+        """风险描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskDescription
 
     @RiskDescription.setter
@@ -26581,6 +31986,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def SuggestAction(self):
+        """建议措施
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SuggestAction
 
     @SuggestAction.setter
@@ -26589,6 +31998,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def SecurityProduct(self):
+        """安全产品（可能有多个）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecurityProduct
+        """
         return self._SecurityProduct
 
     @SecurityProduct.setter
@@ -26597,6 +32010,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态(waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -26605,6 +32022,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def ScanTime(self):
+        """扫描时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScanTime
 
     @ScanTime.setter
@@ -26613,6 +32034,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def LastProcessTime(self):
+        """最后处置时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastProcessTime
 
     @LastProcessTime.setter
@@ -26621,6 +32046,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def IdentifyComplianceId(self):
+        """分类分级合规组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentifyComplianceId
 
     @IdentifyComplianceId.setter
@@ -26629,6 +32058,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def ItemSubType(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ItemSubType
 
     @ItemSubType.setter
@@ -26637,6 +32070,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def RiskSide(self):
+        """风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskSide
 
     @RiskSide.setter
@@ -26645,6 +32082,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def APIRiskLinkURL(self):
+        """API安全风险链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._APIRiskLinkURL
 
     @APIRiskLinkURL.setter
@@ -26653,6 +32094,10 @@ class RiskItemInfo(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -26727,6 +32172,10 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def Id(self):
+        """存储id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -26735,6 +32184,10 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def SensitiveLevelId(self):
+        """分类分级levelID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveLevelId
 
     @SensitiveLevelId.setter
@@ -26743,6 +32196,10 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def SensitiveLevelName(self):
+        """分类分级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SensitiveLevelName
 
     @SensitiveLevelName.setter
@@ -26751,6 +32208,10 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def VulnerabilityLevel(self):
+        """漏洞级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulnerabilityLevel
 
     @VulnerabilityLevel.setter
@@ -26759,6 +32220,10 @@ class RiskLevelMatrix(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """风险级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -26813,6 +32278,10 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def Id(self):
+        """风险id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -26821,6 +32290,10 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def RiskLevelName(self):
+        """风险等级列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskLevelName
 
     @RiskLevelName.setter
@@ -26829,6 +32302,10 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def RiskLevelDescription(self):
+        """风险级别描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskLevelDescription
 
     @RiskLevelDescription.setter
@@ -26837,6 +32314,10 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def IdentifyComplianceName(self):
+        """引用的分类分级模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentifyComplianceName
 
     @IdentifyComplianceName.setter
@@ -26845,6 +32326,10 @@ class RiskLevelRisk(AbstractModel):
 
     @property
     def Type(self):
+        """类型，区分自定义还是系统内置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -26894,6 +32379,9 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def Date(self):
+        """日期
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -26902,6 +32390,9 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def High(self):
+        """高风险数量
+        :rtype: int
+        """
         return self._High
 
     @High.setter
@@ -26910,6 +32401,9 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def Medium(self):
+        """中风险数量
+        :rtype: int
+        """
         return self._Medium
 
     @Medium.setter
@@ -26918,6 +32412,9 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def Low(self):
+        """低风险数量
+        :rtype: int
+        """
         return self._Low
 
     @Low.setter
@@ -26926,6 +32423,9 @@ class RiskLevelTrendItem(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -26972,6 +32472,10 @@ class RiskMatrixLevel(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26980,6 +32484,10 @@ class RiskMatrixLevel(AbstractModel):
 
     @property
     def Id(self):
+        """就是id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -26988,6 +32496,10 @@ class RiskMatrixLevel(AbstractModel):
 
     @property
     def Score(self):
+        """分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -27028,6 +32540,10 @@ class RiskSideDistributed(AbstractModel):
 
     @property
     def AssessmentRiskSide(self):
+        """风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.Note`
+        """
         return self._AssessmentRiskSide
 
     @AssessmentRiskSide.setter
@@ -27036,6 +32552,10 @@ class RiskSideDistributed(AbstractModel):
 
     @property
     def AssessmentRisk(self):
+        """风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Note
+        """
         return self._AssessmentRisk
 
     @AssessmentRisk.setter
@@ -27094,6 +32614,10 @@ class RuleDistribution(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -27102,6 +32626,10 @@ class RuleDistribution(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -27110,6 +32638,10 @@ class RuleDistribution(AbstractModel):
 
     @property
     def LevelId(self):
+        """分级id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -27118,6 +32650,10 @@ class RuleDistribution(AbstractModel):
 
     @property
     def LevelName(self):
+        """分级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelName
 
     @LevelName.setter
@@ -27126,6 +32662,10 @@ class RuleDistribution(AbstractModel):
 
     @property
     def RuleCnt(self):
+        """规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleCnt
 
     @RuleCnt.setter
@@ -27168,6 +32708,10 @@ class RuleEffectItem(AbstractModel):
 
     @property
     def Name(self):
+        """规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -27176,6 +32720,10 @@ class RuleEffectItem(AbstractModel):
 
     @property
     def Value(self):
+        """规则值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -27225,6 +32773,10 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def RegexRule(self):
+        """regex规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
+        """
         return self._RegexRule
 
     @RegexRule.setter
@@ -27233,6 +32785,9 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态；0 不启用, 1 启用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -27241,6 +32796,10 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def KeywordRule(self):
+        """关键词规则内容组，最大支持5个关键词。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
+        """
         return self._KeywordRule
 
     @KeywordRule.setter
@@ -27249,6 +32808,10 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def IgnoreStringRule(self):
+        """忽略词规则内容组，最大支持5个忽略词。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
+        """
         return self._IgnoreStringRule
 
     @IgnoreStringRule.setter
@@ -27257,6 +32820,9 @@ class ScanTaskCOSRules(AbstractModel):
 
     @property
     def MaxMatch(self):
+        """最大匹配距离，默认值为100。上限为500.
+        :rtype: int
+        """
         return self._MaxMatch
 
     @MaxMatch.setter
@@ -27303,6 +32869,9 @@ class ScanTaskComplianceInfo(AbstractModel):
 
     @property
     def ComplianceGroupId(self):
+        """合规组ID
+        :rtype: int
+        """
         return self._ComplianceGroupId
 
     @ComplianceGroupId.setter
@@ -27311,6 +32880,9 @@ class ScanTaskComplianceInfo(AbstractModel):
 
     @property
     def ComplianceGroupName(self):
+        """合规组名称
+        :rtype: str
+        """
         return self._ComplianceGroupName
 
     @ComplianceGroupName.setter
@@ -27354,6 +32926,9 @@ class ScanTaskRDBRules(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态；0 不启用, 1 启用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -27362,6 +32937,9 @@ class ScanTaskRDBRules(AbstractModel):
 
     @property
     def MatchOperator(self):
+        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
+        :rtype: str
+        """
         return self._MatchOperator
 
     @MatchOperator.setter
@@ -27370,6 +32948,9 @@ class ScanTaskRDBRules(AbstractModel):
 
     @property
     def MetaRule(self):
+        """字段名包含规则，最大支持选择9项
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DataRules`
+        """
         return self._MetaRule
 
     @MetaRule.setter
@@ -27378,6 +32959,9 @@ class ScanTaskRDBRules(AbstractModel):
 
     @property
     def ContentRule(self):
+        """内容包含规则，最大支持选择9项
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DataRules`
+        """
         return self._ContentRule
 
     @ContentRule.setter
@@ -27427,6 +33011,9 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def Id(self):
+        """任务最新一次运行结果ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -27435,6 +33022,9 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务扫描结束的时间，格式如：2021-12-12 12:12:12
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -27443,6 +33033,9 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -27451,6 +33044,9 @@ class ScanTaskResult(AbstractModel):
 
     @property
     def Result(self):
+        """扫描任务结果展示，如果扫描失败，则显示失败原因
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -27492,6 +33088,10 @@ class SecurityProduct(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -27500,6 +33100,10 @@ class SecurityProduct(AbstractModel):
 
     @property
     def ReferUrl(self):
+        """产品链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReferUrl
 
     @ReferUrl.setter
@@ -27543,6 +33147,9 @@ class SensitiveLevel(AbstractModel):
 
     @property
     def LevelId(self):
+        """分级标识ID
+        :rtype: int
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -27551,6 +33158,9 @@ class SensitiveLevel(AbstractModel):
 
     @property
     def LevelCnt(self):
+        """分级标识统计
+        :rtype: int
+        """
         return self._LevelCnt
 
     @LevelCnt.setter
@@ -27559,6 +33169,9 @@ class SensitiveLevel(AbstractModel):
 
     @property
     def LevelRiskName(self):
+        """分级标识名称
+        :rtype: str
+        """
         return self._LevelRiskName
 
     @LevelRiskName.setter
@@ -27567,6 +33180,9 @@ class SensitiveLevel(AbstractModel):
 
     @property
     def LevelRiskScore(self):
+        """分级标识分数
+        :rtype: int
+        """
         return self._LevelRiskScore
 
     @LevelRiskScore.setter
@@ -27606,6 +33222,9 @@ class StartDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -27614,6 +33233,9 @@ class StartDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -27652,6 +33274,10 @@ class StartDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def ResultId(self):
+        """任务扫描结果ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -27660,6 +33286,9 @@ class StartDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27689,6 +33318,9 @@ class StopDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -27697,6 +33329,9 @@ class StopDSPADiscoveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -27735,6 +33370,10 @@ class StopDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def ResultId(self):
+        """任务扫描结果ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResultId
 
     @ResultId.setter
@@ -27743,6 +33382,9 @@ class StopDSPADiscoveryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27770,6 +33412,10 @@ class SuggestRiskLevelMatrix(AbstractModel):
 
     @property
     def RiskLevelMatrix(self):
+        """矩阵
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SuggestRiskLevelMatrixItem
+        """
         return self._RiskLevelMatrix
 
     @RiskLevelMatrix.setter
@@ -27821,6 +33467,10 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
     @property
     def SensitiveLevel(self):
+        """分类分级等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.RiskMatrixLevel`
+        """
         return self._SensitiveLevel
 
     @SensitiveLevel.setter
@@ -27829,6 +33479,10 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
     @property
     def VulnerabilityLevel(self):
+        """脆弱项等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.RiskMatrixLevel`
+        """
         return self._VulnerabilityLevel
 
     @VulnerabilityLevel.setter
@@ -27837,6 +33491,10 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
     @property
     def RiskName(self):
+        """风险名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskName
 
     @RiskName.setter
@@ -27845,6 +33503,10 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
     @property
     def RiskScore(self):
+        """分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._RiskScore
 
     @RiskScore.setter
@@ -27890,6 +33552,10 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -27898,6 +33564,10 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -27937,6 +33607,10 @@ class TopAsset(AbstractModel):
 
     @property
     def LevelName(self):
+        """分级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelName
 
     @LevelName.setter
@@ -27945,6 +33619,10 @@ class TopAsset(AbstractModel):
 
     @property
     def TopStat(self):
+        """top数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopAssetStat
+        """
         return self._TopStat
 
     @TopStat.setter
@@ -27993,6 +33671,10 @@ class TopAssetStat(AbstractModel):
 
     @property
     def DataSourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceId
 
     @DataSourceId.setter
@@ -28001,6 +33683,10 @@ class TopAssetStat(AbstractModel):
 
     @property
     def SubData(self):
+        """db_name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubData
 
     @SubData.setter
@@ -28009,6 +33695,10 @@ class TopAssetStat(AbstractModel):
 
     @property
     def SensitiveCnt(self):
+        """敏感个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveCnt
 
     @SensitiveCnt.setter
@@ -28049,15 +33739,21 @@ UserName和Password必须同时填写或同时为空。
         :param _Password: 账户密码，为空则表示不更新。
 UserName和Password必须同时填写或同时为空。
         :type Password: str
+        :param _AuthRange: 授权范围：all 授权全部  manual：手动指定
+        :type AuthRange: str
         """
         self._DspaId = None
         self._ResourceId = None
         self._ResourceVPort = None
         self._UserName = None
         self._Password = None
+        self._AuthRange = None
 
     @property
     def DspaId(self):
+        """DSPA实例ID。
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -28066,6 +33762,9 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def ResourceId(self):
+        """云资源名称，如果是通过CVM访问则填写CVM的资源ID，如果是通过LB访问则填写LB的资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -28074,6 +33773,9 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def ResourceVPort(self):
+        """资源绑定的端口，为0则表示不更新。
+        :rtype: int
+        """
         return self._ResourceVPort
 
     @ResourceVPort.setter
@@ -28082,6 +33784,10 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def UserName(self):
+        """账户名，为空则表示不更新。
+UserName和Password必须同时填写或同时为空。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -28090,11 +33796,26 @@ UserName和Password必须同时填写或同时为空。
 
     @property
     def Password(self):
+        """账户密码，为空则表示不更新。
+UserName和Password必须同时填写或同时为空。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
     def Password(self, Password):
         self._Password = Password
+
+    @property
+    def AuthRange(self):
+        """授权范围：all 授权全部  manual：手动指定
+        :rtype: str
+        """
+        return self._AuthRange
+
+    @AuthRange.setter
+    def AuthRange(self, AuthRange):
+        self._AuthRange = AuthRange
 
 
     def _deserialize(self, params):
@@ -28103,6 +33824,7 @@ UserName和Password必须同时填写或同时为空。
         self._ResourceVPort = params.get("ResourceVPort")
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
+        self._AuthRange = params.get("AuthRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28127,6 +33849,9 @@ class UpdateDSPASelfBuildResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28158,6 +33883,9 @@ class VerifyDSPACOSRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -28166,6 +33894,9 @@ class VerifyDSPACOSRuleRequest(AbstractModel):
 
     @property
     def COSRules(self):
+        """待验证COS规则
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskCOSRules`
+        """
         return self._COSRules
 
     @COSRules.setter
@@ -28174,6 +33905,9 @@ class VerifyDSPACOSRuleRequest(AbstractModel):
 
     @property
     def Data(self):
+        """待验证数据
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -28219,6 +33953,11 @@ Failed 验证失败
 
     @property
     def VerifyResult(self):
+        """验证结果
+Success 验证成功
+Failed 验证失败
+        :rtype: str
+        """
         return self._VerifyResult
 
     @VerifyResult.setter
@@ -28227,6 +33966,9 @@ Failed 验证失败
 
     @property
     def DetailInfo(self):
+        """验证结果详情
+        :rtype: str
+        """
         return self._DetailInfo
 
     @DetailInfo.setter
@@ -28235,6 +33977,9 @@ Failed 验证失败
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28277,6 +34022,9 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
         return self._DspaId
 
     @DspaId.setter
@@ -28285,6 +34033,9 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def MatchOperator(self):
+        """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
+        :rtype: str
+        """
         return self._MatchOperator
 
     @MatchOperator.setter
@@ -28293,6 +34044,9 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def MetaRule(self):
+        """字段名包含规则，最大支持选择9项
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DataRules`
+        """
         return self._MetaRule
 
     @MetaRule.setter
@@ -28301,6 +34055,9 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def ContentRule(self):
+        """内容包含规则，最大支持选择9项
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DataRules`
+        """
         return self._ContentRule
 
     @ContentRule.setter
@@ -28309,6 +34066,9 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def VerifyMeta(self):
+        """验证规则字段名，最大长度为1024个字符
+        :rtype: str
+        """
         return self._VerifyMeta
 
     @VerifyMeta.setter
@@ -28317,6 +34077,9 @@ class VerifyDSPADiscoveryRuleRequest(AbstractModel):
 
     @property
     def VerifyContent(self):
+        """验证规则数据内容，最大长度为1024个字符
+        :rtype: str
+        """
         return self._VerifyContent
 
     @VerifyContent.setter
@@ -28367,6 +34130,11 @@ Failed 验证失败
 
     @property
     def VerifyResult(self):
+        """验证结果
+Success 验证成功
+Failed 验证失败
+        :rtype: str
+        """
         return self._VerifyResult
 
     @VerifyResult.setter
@@ -28375,6 +34143,9 @@ Failed 验证失败
 
     @property
     def DetailInfo(self):
+        """验证结果详情
+        :rtype: str
+        """
         return self._DetailInfo
 
     @DetailInfo.setter
@@ -28383,6 +34154,9 @@ Failed 验证失败
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

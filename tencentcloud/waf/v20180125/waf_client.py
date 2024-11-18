@@ -509,31 +509,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteDownloadRecord(self, request):
-        """废弃接口，无有效调用
-
-        删除访问日志下载记录
-
-        :param request: Request instance for DeleteDownloadRecord.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteDownloadRecordRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteDownloadRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteDownloadRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteDownloadRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteHost(self, request):
         """删除负载均衡型域名，支持批量操作。
 
@@ -764,56 +739,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAntiFakeUrl(self, request):
-        """废弃接口
-
-        获取防篡改url
-
-        :param request: Request instance for DescribeAntiFakeUrl.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeUrlRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeUrlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAntiFakeUrl", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAntiFakeUrlResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAntiInfoLeakRules(self, request):
-        """老接口已经不再使用。
-
-        获取信息防泄漏规则列表
-
-        :param request: Request instance for DescribeAntiInfoLeakRules.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiInfoLeakRulesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAntiInfoLeakRulesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAntiInfoLeakRules", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAntiInfoLeakRulesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAntiInfoLeakageRules(self, request):
         """取得信息防泄漏规则列表
 
@@ -828,6 +753,52 @@ class WafClient(AbstractClient):
             body = self.call("DescribeAntiInfoLeakageRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAntiInfoLeakageRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApiDetail(self, request):
+        """获取Api请求详情信息
+
+        :param request: Request instance for DescribeApiDetail.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiDetailRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeApiDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApiListVersionTwo(self, request):
+        """api资产列表
+
+        :param request: Request instance for DescribeApiListVersionTwo.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiListVersionTwoRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeApiListVersionTwoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiListVersionTwo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiListVersionTwoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1665,6 +1636,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProtectionModes(self, request):
+        """查询Tiga引擎大类规则及其防护模式
+
+        :param request: Request instance for DescribeProtectionModes.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeProtectionModesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeProtectionModesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProtectionModes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProtectionModesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRuleLimit(self, request):
         """获取各个模块具体的规格限制
 
@@ -1679,6 +1673,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeRuleLimit", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRuleLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScanIp(self, request):
+        """查询扫描ip
+
+        :param request: Request instance for DescribeScanIp.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeScanIpRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeScanIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScanIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScanIpResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2968,6 +2985,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyUserSignatureRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserSignatureRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserSignatureRuleV2(self, request):
+        """修改用户防护规则，开启关闭具体的某条规则
+
+        :param request: Request instance for ModifyUserSignatureRuleV2.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleV2Request`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserSignatureRuleV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserSignatureRuleV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

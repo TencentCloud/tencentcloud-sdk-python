@@ -35,6 +35,9 @@ class AttributeMap(AbstractModel):
 
     @property
     def Key(self):
+        """属性字典 key [a-zA-Z0-9-\.]*
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -43,6 +46,9 @@ class AttributeMap(AbstractModel):
 
     @property
     def Value(self):
+        """属性字典 value
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -80,6 +86,9 @@ class CancelMatchingRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配 Code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -88,6 +97,9 @@ class CancelMatchingRequest(AbstractModel):
 
     @property
     def MatchTicketId(self):
+        """要取消的匹配匹配票据 ID
+        :rtype: str
+        """
         return self._MatchTicketId
 
     @MatchTicketId.setter
@@ -125,6 +137,9 @@ class CancelMatchingResponse(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -133,6 +148,9 @@ class CancelMatchingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -195,6 +213,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def MatchName(self):
+        """匹配名称，[a-zA-Z0-9-\.]* 长度128
+        :rtype: str
+        """
         return self._MatchName
 
     @MatchName.setter
@@ -203,6 +224,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def RuleCode(self):
+        """规则code
+        :rtype: str
+        """
         return self._RuleCode
 
     @RuleCode.setter
@@ -211,6 +235,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def Timeout(self):
+        """超时时间，1-600秒
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -219,6 +246,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def ServerType(self):
+        """是否为匹配结果请求服务器资源，0表示否，1表示请求GSE资源
+        :rtype: int
+        """
         return self._ServerType
 
     @ServerType.setter
@@ -227,6 +257,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def MatchDesc(self):
+        """匹配描述，最长1024
+        :rtype: str
+        """
         return self._MatchDesc
 
     @MatchDesc.setter
@@ -235,6 +268,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def NotifyUrl(self):
+        """只支持https 和 http 协议
+        :rtype: str
+        """
         return self._NotifyUrl
 
     @NotifyUrl.setter
@@ -243,6 +279,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def ServerRegion(self):
+        """游戏服务器队列地域
+        :rtype: str
+        """
         return self._ServerRegion
 
     @ServerRegion.setter
@@ -251,6 +290,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def ServerQueue(self):
+        """游戏服务器队列
+        :rtype: str
+        """
         return self._ServerQueue
 
     @ServerQueue.setter
@@ -259,6 +301,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def CustomPushData(self):
+        """自定义推送数据
+        :rtype: str
+        """
         return self._CustomPushData
 
     @CustomPushData.setter
@@ -267,6 +312,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def ServerSessionData(self):
+        """游戏服务器会话数据
+        :rtype: str
+        """
         return self._ServerSessionData
 
     @ServerSessionData.setter
@@ -275,6 +323,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def GameProperties(self):
+        """游戏属性，key-value结构的数组
+        :rtype: list of StringKV
+        """
         return self._GameProperties
 
     @GameProperties.setter
@@ -283,6 +334,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def LogSwitch(self):
+        """日志开关，0表示关，1表示开
+        :rtype: int
+        """
         return self._LogSwitch
 
     @LogSwitch.setter
@@ -291,6 +345,9 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签，key-value结构的数组
+        :rtype: list of StringKV
+        """
         return self._Tags
 
     @Tags.setter
@@ -349,6 +406,9 @@ class CreateMatchResponse(AbstractModel):
 
     @property
     def MatchInfo(self):
+        """匹配信息
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
+        """
         return self._MatchInfo
 
     @MatchInfo.setter
@@ -357,6 +417,9 @@ class CreateMatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -394,6 +457,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称，[a-zA-Z0-9-\.]* 长度128
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -402,6 +468,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleScript(self):
+        """规则脚本，长度65535
+        :rtype: str
+        """
         return self._RuleScript
 
     @RuleScript.setter
@@ -410,6 +479,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleDesc(self):
+        """规则描述，最长1024
+        :rtype: str
+        """
         return self._RuleDesc
 
     @RuleDesc.setter
@@ -418,6 +490,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签，key-value结构的数组，最多关联50组标签
+        :rtype: list of StringKV
+        """
         return self._Tags
 
     @Tags.setter
@@ -462,6 +537,9 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RuleInfo(self):
+        """规则信息
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
+        """
         return self._RuleInfo
 
     @RuleInfo.setter
@@ -470,6 +548,9 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -498,6 +579,9 @@ class DeleteMatchRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -531,6 +615,9 @@ class DeleteMatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -556,6 +643,9 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def RuleCode(self):
+        """规则code
+        :rtype: str
+        """
         return self._RuleCode
 
     @RuleCode.setter
@@ -589,6 +679,9 @@ class DeleteRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -623,6 +716,9 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，单位：秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -631,6 +727,9 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """截止时间，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -639,6 +738,9 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def TimeType(self):
+        """时间粒度，1表示1天；2表示1小时；3表示1分钟；4表示10分钟；5表示30分钟
+        :rtype: int
+        """
         return self._TimeType
 
     @TimeType.setter
@@ -647,6 +749,9 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -691,6 +796,10 @@ class DescribeDataResponse(AbstractModel):
 
     @property
     def OverviewData(self):
+        """匹配概况
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.ReportOverviewData`
+        """
         return self._OverviewData
 
     @OverviewData.setter
@@ -699,6 +808,10 @@ class DescribeDataResponse(AbstractModel):
 
     @property
     def TrendData(self):
+        """匹配请求次数趋势数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.ReportTrendData`
+        """
         return self._TrendData
 
     @TrendData.setter
@@ -707,6 +820,9 @@ class DescribeDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -744,6 +860,9 @@ class DescribeMatchCodesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，页码
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -752,6 +871,9 @@ class DescribeMatchCodesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -760,6 +882,9 @@ class DescribeMatchCodesRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """搜索的字符串
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -803,6 +928,10 @@ class DescribeMatchCodesResponse(AbstractModel):
 
     @property
     def MatchCodes(self):
+        """匹配Code
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MatchCodeAttr
+        """
         return self._MatchCodes
 
     @MatchCodes.setter
@@ -811,6 +940,10 @@ class DescribeMatchCodesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -819,6 +952,9 @@ class DescribeMatchCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -851,6 +987,9 @@ class DescribeMatchRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -888,6 +1027,10 @@ class DescribeMatchResponse(AbstractModel):
 
     @property
     def MatchInfo(self):
+        """匹配信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
+        """
         return self._MatchInfo
 
     @MatchInfo.setter
@@ -896,6 +1039,9 @@ class DescribeMatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -936,6 +1082,9 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页号，不传则获取所有有权限的资源。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -944,6 +1093,9 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """单页大小，不传则获取所有有权限的资源。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -952,6 +1104,9 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def SearchType(self):
+        """查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。
+        :rtype: str
+        """
         return self._SearchType
 
     @SearchType.setter
@@ -960,6 +1115,9 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """查询关键词，针对SearchType进行具体过滤的内容。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -968,6 +1126,9 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，用于过滤。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1029,6 +1190,10 @@ class DescribeMatchesResponse(AbstractModel):
 
     @property
     def MatchInfoList(self):
+        """匹配信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MatchInfo
+        """
         return self._MatchInfoList
 
     @MatchInfoList.setter
@@ -1037,6 +1202,9 @@ class DescribeMatchesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1045,6 +1213,9 @@ class DescribeMatchesResponse(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页号，不填默认返回第一页
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1053,6 +1224,9 @@ class DescribeMatchesResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """单页大小，不填默认取 30，最大值不能超过 30
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1061,6 +1235,9 @@ class DescribeMatchesResponse(AbstractModel):
 
     @property
     def SearchType(self):
+        """查询类型（可选）：matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
+        :rtype: str
+        """
         return self._SearchType
 
     @SearchType.setter
@@ -1069,6 +1246,9 @@ class DescribeMatchesResponse(AbstractModel):
 
     @property
     def Keyword(self):
+        """查询关键词（可选）
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -1077,6 +1257,9 @@ class DescribeMatchesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1113,6 +1296,9 @@ class DescribeMatchingProgressRequest(AbstractModel):
 
     @property
     def MatchTicketIds(self):
+        """匹配票据 ID列表, 列表长度 12。
+        :rtype: list of MTicket
+        """
         return self._MatchTicketIds
 
     @MatchTicketIds.setter
@@ -1159,6 +1345,10 @@ class DescribeMatchingProgressResponse(AbstractModel):
 
     @property
     def MatchTickets(self):
+        """匹配票据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MatchTicket
+        """
         return self._MatchTickets
 
     @MatchTickets.setter
@@ -1167,6 +1357,10 @@ class DescribeMatchingProgressResponse(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -1175,6 +1369,9 @@ class DescribeMatchingProgressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1207,6 +1404,9 @@ class DescribeRuleRequest(AbstractModel):
 
     @property
     def RuleCode(self):
+        """规则code
+        :rtype: str
+        """
         return self._RuleCode
 
     @RuleCode.setter
@@ -1244,6 +1444,10 @@ class DescribeRuleResponse(AbstractModel):
 
     @property
     def RuleInfo(self):
+        """规则信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
+        """
         return self._RuleInfo
 
     @RuleInfo.setter
@@ -1252,6 +1456,9 @@ class DescribeRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1292,6 +1499,9 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页号，不传则返回第一页
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1300,6 +1510,9 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """单页大小，最大 30，不填默认30
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1308,6 +1521,9 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def SearchType(self):
+        """查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。
+        :rtype: str
+        """
         return self._SearchType
 
     @SearchType.setter
@@ -1316,6 +1532,9 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """查询关键词，针对SearchType进行具体过滤的内容。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -1324,6 +1543,9 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，用于过滤。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1385,6 +1607,10 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def RuleInfoList(self):
+        """规则信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleBriefInfo
+        """
         return self._RuleInfoList
 
     @RuleInfoList.setter
@@ -1393,6 +1619,9 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1401,6 +1630,9 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页号
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1409,6 +1641,9 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """单页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1417,6 +1652,9 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def SearchType(self):
+        """查询类型（可选）matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
+        :rtype: str
+        """
         return self._SearchType
 
     @SearchType.setter
@@ -1425,6 +1663,9 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def Keyword(self):
+        """查询关键词（可选）
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -1433,6 +1674,9 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1469,6 +1713,9 @@ class DescribeTokenRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -1510,6 +1757,10 @@ class DescribeTokenResponse(AbstractModel):
 
     @property
     def MatchToken(self):
+        """当前的MatchCode对应的Token。如果当前MatchCode没有Token，该参数可能取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MatchToken
 
     @MatchToken.setter
@@ -1518,6 +1769,10 @@ class DescribeTokenResponse(AbstractModel):
 
     @property
     def CompatibleSpan(self):
+        """当Token被替换后，GPM将兼容推送原始Token的时间（秒）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CompatibleSpan
 
     @CompatibleSpan.setter
@@ -1526,6 +1781,9 @@ class DescribeTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1556,6 +1814,9 @@ class MTicket(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配Code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -1564,6 +1825,9 @@ class MTicket(AbstractModel):
 
     @property
     def MatchTicketId(self):
+        """匹配票据 ID
+        :rtype: str
+        """
         return self._MatchTicketId
 
     @MatchTicketId.setter
@@ -1613,6 +1877,9 @@ class MatchAttribute(AbstractModel):
 
     @property
     def Name(self):
+        """属性名 长度 128 [a-zA-Z0-9-\.]*
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1621,6 +1888,9 @@ class MatchAttribute(AbstractModel):
 
     @property
     def Type(self):
+        """属性类型: 0 数值; 1 string; 默认 0
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1629,6 +1899,9 @@ class MatchAttribute(AbstractModel):
 
     @property
     def NumberValue(self):
+        """数字属性值 默认 0.0
+        :rtype: float
+        """
         return self._NumberValue
 
     @NumberValue.setter
@@ -1637,6 +1910,9 @@ class MatchAttribute(AbstractModel):
 
     @property
     def StringValue(self):
+        """字符串属性值 长度 128 默认 ""
+        :rtype: str
+        """
         return self._StringValue
 
     @StringValue.setter
@@ -1645,6 +1921,9 @@ class MatchAttribute(AbstractModel):
 
     @property
     def ListValue(self):
+        """list 属性值
+        :rtype: list of str
+        """
         return self._ListValue
 
     @ListValue.setter
@@ -1653,6 +1932,9 @@ class MatchAttribute(AbstractModel):
 
     @property
     def MapValue(self):
+        """字典属性值
+        :rtype: list of AttributeMap
+        """
         return self._MapValue
 
     @MapValue.setter
@@ -1697,6 +1979,10 @@ class MatchCodeAttr(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配code
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -1819,6 +2105,9 @@ class MatchInfo(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -1827,6 +2116,9 @@ class MatchInfo(AbstractModel):
 
     @property
     def MatchName(self):
+        """匹配名称
+        :rtype: str
+        """
         return self._MatchName
 
     @MatchName.setter
@@ -1835,6 +2127,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def MatchDesc(self):
+        """匹配描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MatchDesc
 
     @MatchDesc.setter
@@ -1843,6 +2139,9 @@ class MatchInfo(AbstractModel):
 
     @property
     def RuleCode(self):
+        """规则code
+        :rtype: str
+        """
         return self._RuleCode
 
     @RuleCode.setter
@@ -1851,6 +2150,9 @@ class MatchInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1859,6 +2161,9 @@ class MatchInfo(AbstractModel):
 
     @property
     def Timeout(self):
+        """超时时间
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -1867,6 +2172,9 @@ class MatchInfo(AbstractModel):
 
     @property
     def NotifyUrl(self):
+        """接收通知地址
+        :rtype: str
+        """
         return self._NotifyUrl
 
     @NotifyUrl.setter
@@ -1875,6 +2183,9 @@ class MatchInfo(AbstractModel):
 
     @property
     def ServerType(self):
+        """是否为匹配结果请求服务器资源，0否，1请求GSE资源
+        :rtype: int
+        """
         return self._ServerType
 
     @ServerType.setter
@@ -1883,6 +2194,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def ServerRegion(self):
+        """服务器队列所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServerRegion
 
     @ServerRegion.setter
@@ -1891,6 +2206,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def ServerQueue(self):
+        """服务器队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServerQueue
 
     @ServerQueue.setter
@@ -1899,6 +2218,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def CustomPushData(self):
+        """自定义推送数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CustomPushData
 
     @CustomPushData.setter
@@ -1907,6 +2230,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def ServerSessionData(self):
+        """游戏服务器会话数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServerSessionData
 
     @ServerSessionData.setter
@@ -1915,6 +2242,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def GameProperties(self):
+        """游戏属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StringKV
+        """
         return self._GameProperties
 
     @GameProperties.setter
@@ -1923,6 +2254,9 @@ class MatchInfo(AbstractModel):
 
     @property
     def LogSwitch(self):
+        """日志开关，0表示关，1表示开
+        :rtype: int
+        """
         return self._LogSwitch
 
     @LogSwitch.setter
@@ -1931,6 +2265,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -1939,6 +2277,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def LogsetName(self):
+        """日志集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -1947,6 +2289,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def LogTopicId(self):
+        """日志主题id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogTopicId
 
     @LogTopicId.setter
@@ -1955,6 +2301,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def LogTopicName(self):
+        """日志主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogTopicName
 
     @LogTopicName.setter
@@ -1963,6 +2313,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StringKV
+        """
         return self._Tags
 
     @Tags.setter
@@ -1971,6 +2325,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1979,6 +2337,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -1987,6 +2349,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def Uin(self):
+        """用户主账号Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -1995,6 +2361,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def CreateUin(self):
+        """用户创建账号Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -2003,6 +2373,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -2011,6 +2385,10 @@ class MatchInfo(AbstractModel):
 
     @property
     def LogStatus(self):
+        """日志状态，0表示正常，1表示日志集不存在，2表示日志主题不存在，3表示日志集和日志主题都不存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LogStatus
 
     @LogStatus.setter
@@ -2110,6 +2488,9 @@ class MatchTicket(AbstractModel):
 
     @property
     def Id(self):
+        """匹配票据 ID长度 128 [a-zA-Z0-9-\.]*
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2118,6 +2499,9 @@ class MatchTicket(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配 Code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -2126,6 +2510,10 @@ class MatchTicket(AbstractModel):
 
     @property
     def MatchResult(self):
+        """根据 MatchType 取不同的结构序列化结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MatchResult
 
     @MatchResult.setter
@@ -2134,6 +2522,10 @@ class MatchTicket(AbstractModel):
 
     @property
     def MatchType(self):
+        """表示不同的匹配类型,NORMAL | GSE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MatchType
 
     @MatchType.setter
@@ -2142,6 +2534,9 @@ class MatchTicket(AbstractModel):
 
     @property
     def Players(self):
+        """玩家信息列表
+        :rtype: list of Player
+        """
         return self._Players
 
     @Players.setter
@@ -2150,6 +2545,9 @@ class MatchTicket(AbstractModel):
 
     @property
     def Status(self):
+        """匹配状态: SEARCHING 匹配中; PLACING 匹配放置中; COMPLETED 匹配完成; CANCELLED 匹配取消; TIMEDOUT 匹配超时; FAILED 匹配失败
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2158,6 +2556,10 @@ class MatchTicket(AbstractModel):
 
     @property
     def StatusMessage(self):
+        """匹配状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusMessage
 
     @StatusMessage.setter
@@ -2166,6 +2568,10 @@ class MatchTicket(AbstractModel):
 
     @property
     def StatusReason(self):
+        """匹配状态原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusReason
 
     @StatusReason.setter
@@ -2174,6 +2580,9 @@ class MatchTicket(AbstractModel):
 
     @property
     def StartTime(self):
+        """收到发起匹配请求的时间 eg: "2020-08-17T08:14:38.077Z"
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2182,6 +2591,10 @@ class MatchTicket(AbstractModel):
 
     @property
     def EndTime(self):
+        """匹配请求因完成、失败、超时、被取消而停止执行的时间 eg: "2020-08-17T08:14:38.077Z"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2268,6 +2681,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def MatchName(self):
+        """匹配名称，[a-zA-Z0-9-\.]* 长度128
+        :rtype: str
+        """
         return self._MatchName
 
     @MatchName.setter
@@ -2276,6 +2692,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def RuleCode(self):
+        """规则code
+        :rtype: str
+        """
         return self._RuleCode
 
     @RuleCode.setter
@@ -2284,6 +2703,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def Timeout(self):
+        """超时时间，1-600秒
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -2292,6 +2714,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def ServerType(self):
+        """是否为匹配结果请求服务器资源，0表示否，1表示请求GSE资源
+        :rtype: int
+        """
         return self._ServerType
 
     @ServerType.setter
@@ -2300,6 +2725,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -2308,6 +2736,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def MatchDesc(self):
+        """匹配描述，最长1024
+        :rtype: str
+        """
         return self._MatchDesc
 
     @MatchDesc.setter
@@ -2316,6 +2747,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def NotifyUrl(self):
+        """只支持 http 和 https 协议
+        :rtype: str
+        """
         return self._NotifyUrl
 
     @NotifyUrl.setter
@@ -2324,6 +2758,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def ServerRegion(self):
+        """游戏服务器队列地域
+        :rtype: str
+        """
         return self._ServerRegion
 
     @ServerRegion.setter
@@ -2332,6 +2769,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def ServerQueue(self):
+        """游戏服务器队列
+        :rtype: str
+        """
         return self._ServerQueue
 
     @ServerQueue.setter
@@ -2340,6 +2780,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def CustomPushData(self):
+        """自定义推送数据
+        :rtype: str
+        """
         return self._CustomPushData
 
     @CustomPushData.setter
@@ -2348,6 +2791,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def ServerSessionData(self):
+        """游戏服务器会话数据
+        :rtype: str
+        """
         return self._ServerSessionData
 
     @ServerSessionData.setter
@@ -2356,6 +2802,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def GameProperties(self):
+        """游戏属性，key-value结构的数组
+        :rtype: list of StringKV
+        """
         return self._GameProperties
 
     @GameProperties.setter
@@ -2364,6 +2813,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def LogSwitch(self):
+        """日志开关，0表示关，1表示开
+        :rtype: int
+        """
         return self._LogSwitch
 
     @LogSwitch.setter
@@ -2372,6 +2824,9 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签，key-value结构的数组
+        :rtype: list of StringKV
+        """
         return self._Tags
 
     @Tags.setter
@@ -2431,6 +2886,9 @@ class ModifyMatchResponse(AbstractModel):
 
     @property
     def MatchInfo(self):
+        """匹配信息
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
+        """
         return self._MatchInfo
 
     @MatchInfo.setter
@@ -2439,6 +2897,9 @@ class ModifyMatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2476,6 +2937,9 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def RuleCode(self):
+        """规则code
+        :rtype: str
+        """
         return self._RuleCode
 
     @RuleCode.setter
@@ -2484,6 +2948,9 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称，只能包含数字、字母、. 和 -
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -2492,6 +2959,9 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def RuleDesc(self):
+        """规则描述，最长1024
+        :rtype: str
+        """
         return self._RuleDesc
 
     @RuleDesc.setter
@@ -2500,6 +2970,9 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签，key-value结构的数组，最多关联50组标签
+        :rtype: list of StringKV
+        """
         return self._Tags
 
     @Tags.setter
@@ -2544,6 +3017,9 @@ class ModifyRuleResponse(AbstractModel):
 
     @property
     def RuleInfo(self):
+        """规则信息
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
+        """
         return self._RuleInfo
 
     @RuleInfo.setter
@@ -2552,6 +3028,9 @@ class ModifyRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2586,6 +3065,9 @@ class ModifyTokenRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配Code。
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -2594,6 +3076,9 @@ class ModifyTokenRequest(AbstractModel):
 
     @property
     def CompatibleSpan(self):
+        """单位秒，取值0-1800。此参数表示当前Token被替换后，GPM将持续推送原Token的时间。在CompatibleSpan时间范围内，用户将在事件消息中收到当前和原始Token。
+        :rtype: int
+        """
         return self._CompatibleSpan
 
     @CompatibleSpan.setter
@@ -2602,6 +3087,9 @@ class ModifyTokenRequest(AbstractModel):
 
     @property
     def MatchToken(self):
+        """Token，[a-zA-Z0-9-_.], 长度0-64。如果为空，将由GPM随机生成。
+        :rtype: str
+        """
         return self._MatchToken
 
     @MatchToken.setter
@@ -2644,6 +3132,9 @@ class ModifyTokenResponse(AbstractModel):
 
     @property
     def MatchToken(self):
+        """成功设置的Token。
+        :rtype: str
+        """
         return self._MatchToken
 
     @MatchToken.setter
@@ -2652,6 +3143,10 @@ class ModifyTokenResponse(AbstractModel):
 
     @property
     def CompatibleSpan(self):
+        """当前Token被替换后，GPM将持续推送原Token的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CompatibleSpan
 
     @CompatibleSpan.setter
@@ -2660,6 +3155,9 @@ class ModifyTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2705,6 +3203,9 @@ class Player(AbstractModel):
 
     @property
     def Id(self):
+        """玩家 PlayerId 长度 128 [a-zA-Z\d-\._]*
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2713,6 +3214,9 @@ class Player(AbstractModel):
 
     @property
     def Name(self):
+        """玩家昵称，长度 128
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2721,6 +3225,9 @@ class Player(AbstractModel):
 
     @property
     def MatchAttributes(self):
+        """玩家匹配属性，最多 10 条
+        :rtype: list of MatchAttribute
+        """
         return self._MatchAttributes
 
     @MatchAttributes.setter
@@ -2729,6 +3236,9 @@ class Player(AbstractModel):
 
     @property
     def Team(self):
+        """队伍名，可以传递不同队伍名，长度 128 [a-zA-Z0-9-\.]*
+        :rtype: str
+        """
         return self._Team
 
     @Team.setter
@@ -2737,6 +3247,9 @@ class Player(AbstractModel):
 
     @property
     def CustomPlayerStatus(self):
+        """自定义玩家状态 透传参数 [0, 99999]
+        :rtype: int
+        """
         return self._CustomPlayerStatus
 
     @CustomPlayerStatus.setter
@@ -2745,6 +3258,9 @@ class Player(AbstractModel):
 
     @property
     def CustomProfile(self):
+        """自定义玩家信息 透传参数 长度 1024
+        :rtype: str
+        """
         return self._CustomProfile
 
     @CustomProfile.setter
@@ -2753,6 +3269,9 @@ class Player(AbstractModel):
 
     @property
     def RegionLatencies(self):
+        """各区域延迟，最多 20 条
+        :rtype: list of RegionLatency
+        """
         return self._RegionLatencies
 
     @RegionLatencies.setter
@@ -2820,6 +3339,24 @@ ap-tokyo          亚太地区(东京)
 
     @property
     def Region(self):
+        """地域
+ap-beijing          华北地区(北京)
+ap-chengdu          西南地区(成都)
+ap-guangzhou          华南地区(广州)
+ap-hongkong          港澳台地区(中国香港)
+ap-seoul          亚太地区(首尔)
+ap-shanghai          华东地区(上海)
+ap-singapore          东南亚地区(新加坡)
+eu-frankfurt          欧洲地区(法兰克福)
+na-siliconvalley          美国西部(硅谷)
+na-toronto          北美地区(多伦多)
+ap-mumbai          亚太地区(孟买)
+na-ashburn          美国东部(弗吉尼亚)
+ap-bangkok          亚太地区(曼谷)
+eu-moscow          欧洲地区(莫斯科)
+ap-tokyo          亚太地区(东京)
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2828,6 +3365,9 @@ ap-tokyo          亚太地区(东京)
 
     @property
     def Latency(self):
+        """毫秒延迟 0～999999
+        :rtype: int
+        """
         return self._Latency
 
     @Latency.setter
@@ -2874,6 +3414,9 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def TotalTimes(self):
+        """总次数
+        :rtype: str
+        """
         return self._TotalTimes
 
     @TotalTimes.setter
@@ -2882,6 +3425,9 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def SuccessPercent(self):
+        """成功率
+        :rtype: float
+        """
         return self._SuccessPercent
 
     @SuccessPercent.setter
@@ -2890,6 +3436,9 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def TimeoutPercent(self):
+        """超时率
+        :rtype: float
+        """
         return self._TimeoutPercent
 
     @TimeoutPercent.setter
@@ -2898,6 +3447,9 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def FailPercent(self):
+        """失败率
+        :rtype: float
+        """
         return self._FailPercent
 
     @FailPercent.setter
@@ -2906,6 +3458,9 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def AverageSec(self):
+        """平均匹配时间
+        :rtype: float
+        """
         return self._AverageSec
 
     @AverageSec.setter
@@ -2958,6 +3513,9 @@ class ReportTrendData(AbstractModel):
 
     @property
     def TotalList(self):
+        """总次数
+        :rtype: list of str
+        """
         return self._TotalList
 
     @TotalList.setter
@@ -2966,6 +3524,9 @@ class ReportTrendData(AbstractModel):
 
     @property
     def CancelList(self):
+        """被取消次数
+        :rtype: list of str
+        """
         return self._CancelList
 
     @CancelList.setter
@@ -2974,6 +3535,9 @@ class ReportTrendData(AbstractModel):
 
     @property
     def SuccessList(self):
+        """成功次数
+        :rtype: list of str
+        """
         return self._SuccessList
 
     @SuccessList.setter
@@ -2982,6 +3546,9 @@ class ReportTrendData(AbstractModel):
 
     @property
     def FailList(self):
+        """失败次数
+        :rtype: list of str
+        """
         return self._FailList
 
     @FailList.setter
@@ -2990,6 +3557,9 @@ class ReportTrendData(AbstractModel):
 
     @property
     def TimeoutList(self):
+        """超时次数
+        :rtype: list of str
+        """
         return self._TimeoutList
 
     @TimeoutList.setter
@@ -2998,6 +3568,9 @@ class ReportTrendData(AbstractModel):
 
     @property
     def TimeList(self):
+        """时间数组，单位：秒
+        :rtype: list of str
+        """
         return self._TimeList
 
     @TimeList.setter
@@ -3045,6 +3618,9 @@ class RuleBriefInfo(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称 [a-zA-Z\d-\.]*
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -3053,6 +3629,9 @@ class RuleBriefInfo(AbstractModel):
 
     @property
     def MatchCodeList(self):
+        """关联匹配
+        :rtype: list of StringKV
+        """
         return self._MatchCodeList
 
     @MatchCodeList.setter
@@ -3061,6 +3640,9 @@ class RuleBriefInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3069,6 +3651,9 @@ class RuleBriefInfo(AbstractModel):
 
     @property
     def RuleCode(self):
+        """规则code
+        :rtype: str
+        """
         return self._RuleCode
 
     @RuleCode.setter
@@ -3147,6 +3732,9 @@ class RuleInfo(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称 [a-zA-Z0-9-\.]*
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -3155,6 +3743,9 @@ class RuleInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3163,6 +3754,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def RuleDesc(self):
+        """规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleDesc
 
     @RuleDesc.setter
@@ -3171,6 +3766,9 @@ class RuleInfo(AbstractModel):
 
     @property
     def RuleScript(self):
+        """规则脚本
+        :rtype: str
+        """
         return self._RuleScript
 
     @RuleScript.setter
@@ -3179,6 +3777,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StringKV
+        """
         return self._Tags
 
     @Tags.setter
@@ -3187,6 +3789,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def MatchCodeList(self):
+        """关联匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StringKV
+        """
         return self._MatchCodeList
 
     @MatchCodeList.setter
@@ -3195,6 +3801,9 @@ class RuleInfo(AbstractModel):
 
     @property
     def RuleCode(self):
+        """规则code
+        :rtype: str
+        """
         return self._RuleCode
 
     @RuleCode.setter
@@ -3203,6 +3812,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3211,6 +3824,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -3219,6 +3836,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def Uin(self):
+        """用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -3227,6 +3848,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def CreateUin(self):
+        """用户OwnerUin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -3289,6 +3914,9 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配code
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -3297,6 +3925,9 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     @property
     def Players(self):
+        """玩家信息
+        :rtype: list of Player
+        """
         return self._Players
 
     @Players.setter
@@ -3305,6 +3936,9 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器回话 ID [1-256] 个ASCII 字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -3313,6 +3947,9 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     @property
     def MatchTicketId(self):
+        """匹配票据 Id 默认 "" 为空则由 GPM 自动生成 长度 [1, 128]
+        :rtype: str
+        """
         return self._MatchTicketId
 
     @MatchTicketId.setter
@@ -3358,6 +3995,10 @@ class StartMatchingBackfillResponse(AbstractModel):
 
     @property
     def MatchTicket(self):
+        """匹配票据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.MatchTicket`
+        """
         return self._MatchTicket
 
     @MatchTicket.setter
@@ -3366,6 +4007,9 @@ class StartMatchingBackfillResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3400,6 +4044,9 @@ class StartMatchingRequest(AbstractModel):
 
     @property
     def MatchCode(self):
+        """匹配 Code。
+        :rtype: str
+        """
         return self._MatchCode
 
     @MatchCode.setter
@@ -3408,6 +4055,9 @@ class StartMatchingRequest(AbstractModel):
 
     @property
     def Players(self):
+        """玩家信息 最多 200 条。
+        :rtype: list of Player
+        """
         return self._Players
 
     @Players.setter
@@ -3416,6 +4066,9 @@ class StartMatchingRequest(AbstractModel):
 
     @property
     def MatchTicketId(self):
+        """匹配票据 ID 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
+        :rtype: str
+        """
         return self._MatchTicketId
 
     @MatchTicketId.setter
@@ -3462,6 +4115,9 @@ class StartMatchingResponse(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -3470,6 +4126,9 @@ class StartMatchingResponse(AbstractModel):
 
     @property
     def MatchTicketId(self):
+        """匹配票据 ID长度 128。
+        :rtype: str
+        """
         return self._MatchTicketId
 
     @MatchTicketId.setter
@@ -3478,6 +4137,9 @@ class StartMatchingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3508,6 +4170,9 @@ class StringKV(AbstractModel):
 
     @property
     def Key(self):
+        """键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3516,6 +4181,9 @@ class StringKV(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3553,6 +4221,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -3561,6 +4232,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter

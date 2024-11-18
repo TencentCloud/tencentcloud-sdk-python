@@ -85,6 +85,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -93,6 +96,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def GameId(self):
+        """【已废弃】只在TrylockWorker时生效
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -101,6 +107,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def GameRegion(self):
+        """【已废弃】只在TrylockWorker时生效
+        :rtype: str
+        """
         return self._GameRegion
 
     @GameRegion.setter
@@ -109,6 +118,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def GameParas(self):
+        """游戏参数
+        :rtype: str
+        """
         return self._GameParas
 
     @GameParas.setter
@@ -117,6 +129,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def ClientSession(self):
+        """客户端session信息，从JSSDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
+        :rtype: str
+        """
         return self._ClientSession
 
     @ClientSession.setter
@@ -125,6 +140,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Resolution(self):
+        """分辨率,，可设置为1080p或720p或1920x1080格式
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -133,6 +151,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def ImageUrl(self):
+        """背景图url，格式为png或jpeg，宽高1920*1080
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -141,6 +162,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def SetNo(self):
+        """【已废弃】
+        :rtype: int
+        """
         return self._SetNo
 
     @SetNo.setter
@@ -149,6 +173,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Bitrate(self):
+        """【已废弃】
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -157,6 +184,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def MaxBitrate(self):
+        """单位Mbps，动态调整最大码率建议值，会按实际情况调整
+        :rtype: int
+        """
         return self._MaxBitrate
 
     @MaxBitrate.setter
@@ -165,6 +195,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def MinBitrate(self):
+        """单位Mbps，动态调整最小码率建议值，会按实际情况调整
+        :rtype: int
+        """
         return self._MinBitrate
 
     @MinBitrate.setter
@@ -173,6 +206,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Fps(self):
+        """帧率，可设置为30、45、60、90、120、144
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -181,6 +217,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def UserIp(self):
+        """【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -189,6 +228,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Optimization(self):
+        """【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
+        :rtype: int
+        """
         return self._Optimization
 
     @Optimization.setter
@@ -197,6 +239,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def HostUserId(self):
+        """【互动云游】游戏主机用户ID
+        :rtype: str
+        """
         return self._HostUserId
 
     @HostUserId.setter
@@ -205,6 +250,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def Role(self):
+        """【互动云游】角色；Player表示玩家；Viewer表示观察者
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -213,6 +261,9 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def GameContext(self):
+        """游戏相关参数
+        :rtype: str
+        """
         return self._GameContext
 
     @GameContext.setter
@@ -221,6 +272,11 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
     @property
     def RunMode(self):
+        """云端运行模式。
+RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
+默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -280,6 +336,9 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def ServerSession(self):
+        """服务端session信息，返回给JSSDK
+        :rtype: str
+        """
         return self._ServerSession
 
     @ServerSession.setter
@@ -288,6 +347,9 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def RoleNumber(self):
+        """【已废弃】
+        :rtype: str
+        """
         return self._RoleNumber
 
     @RoleNumber.setter
@@ -296,6 +358,9 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def Role(self):
+        """【互动云游】角色；Player表示玩家；Viewer表示观察者
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -304,6 +369,9 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -343,6 +411,9 @@ PC：默认值，端游
 
     @property
     def GameId(self):
+        """游戏ID
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -351,6 +422,9 @@ PC：默认值，端游
 
     @property
     def GroupId(self):
+        """实例分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -359,6 +433,9 @@ PC：默认值，端游
 
     @property
     def GameRegion(self):
+        """游戏区域
+        :rtype: str
+        """
         return self._GameRegion
 
     @GameRegion.setter
@@ -367,6 +444,11 @@ PC：默认值，端游
 
     @property
     def GameType(self):
+        """游戏类型。
+MOBILE：手游
+PC：默认值，端游
+        :rtype: str
+        """
         return self._GameType
 
     @GameType.setter
@@ -409,6 +491,9 @@ class DescribeInstancesCountResponse(AbstractModel):
 
     @property
     def Total(self):
+        """客户的实例总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -417,6 +502,9 @@ class DescribeInstancesCountResponse(AbstractModel):
 
     @property
     def Running(self):
+        """客户的实例运行数
+        :rtype: int
+        """
         return self._Running
 
     @Running.setter
@@ -425,6 +513,9 @@ class DescribeInstancesCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -455,6 +546,9 @@ class SaveGameArchiveRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """游戏用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -463,6 +557,9 @@ class SaveGameArchiveRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏ID
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -497,6 +594,9 @@ class SaveGameArchiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -525,6 +625,9 @@ class StartPublishStreamRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -533,6 +636,9 @@ class StartPublishStreamRequest(AbstractModel):
 
     @property
     def PublishUrl(self):
+        """推流地址，仅支持rtmp协议
+        :rtype: str
+        """
         return self._PublishUrl
 
     @PublishUrl.setter
@@ -567,6 +673,9 @@ class StartPublishStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -595,6 +704,9 @@ class StartPublishStreamToCSSRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -603,6 +715,9 @@ class StartPublishStreamToCSSRequest(AbstractModel):
 
     @property
     def PublishStreamArgs(self):
+        """推流参数，推流时携带自定义参数。
+        :rtype: str
+        """
         return self._PublishStreamArgs
 
     @PublishStreamArgs.setter
@@ -637,6 +752,9 @@ class StartPublishStreamToCSSResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -665,6 +783,9 @@ class StopGameRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -673,6 +794,9 @@ class StopGameRequest(AbstractModel):
 
     @property
     def HostUserId(self):
+        """【多人游戏】游戏主机用户ID
+        :rtype: str
+        """
         return self._HostUserId
 
     @HostUserId.setter
@@ -707,6 +831,9 @@ class StopGameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -732,6 +859,9 @@ class StopPublishStreamRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -765,6 +895,9 @@ class StopPublishStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -799,6 +932,9 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """游戏用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -807,6 +943,9 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏ID
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -815,6 +954,9 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     @property
     def GameArchiveUrl(self):
+        """游戏存档Url
+        :rtype: str
+        """
         return self._GameArchiveUrl
 
     @GameArchiveUrl.setter
@@ -823,6 +965,9 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     @property
     def GameContext(self):
+        """游戏相关参数
+        :rtype: str
+        """
         return self._GameContext
 
     @GameContext.setter
@@ -859,6 +1004,9 @@ class SwitchGameArchiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -899,6 +1047,9 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -907,6 +1058,9 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏ID
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -915,6 +1069,9 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def GameRegion(self):
+        """游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器
+        :rtype: str
+        """
         return self._GameRegion
 
     @GameRegion.setter
@@ -923,6 +1080,9 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def SetNo(self):
+        """【废弃】资源池编号
+        :rtype: int
+        """
         return self._SetNo
 
     @SetNo.setter
@@ -931,6 +1091,9 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def UserIp(self):
+        """【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -939,6 +1102,9 @@ class TrylockWorkerRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -977,6 +1143,9 @@ class TrylockWorkerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

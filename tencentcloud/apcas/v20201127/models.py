@@ -38,6 +38,9 @@ class CallDetailItem(AbstractModel):
 
     @property
     def DataType(self):
+        """数据类型 0 imei 1 qimei 2 qq 3 phone 7:IDFA 8:MD5(imei)
+        :rtype: int
+        """
         return self._DataType
 
     @DataType.setter
@@ -46,6 +49,9 @@ class CallDetailItem(AbstractModel):
 
     @property
     def ValidAmount(self):
+        """有效数据量
+        :rtype: int
+        """
         return self._ValidAmount
 
     @ValidAmount.setter
@@ -54,6 +60,9 @@ class CallDetailItem(AbstractModel):
 
     @property
     def Date(self):
+        """调用时间
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -92,6 +101,9 @@ class CallDetails(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -100,6 +112,9 @@ class CallDetails(AbstractModel):
 
     @property
     def CallDetailSet(self):
+        """调用明细数组
+        :rtype: list of CallDetailItem
+        """
         return self._CallDetailSet
 
     @CallDetailSet.setter
@@ -142,6 +157,9 @@ class CallStatItem(AbstractModel):
 
     @property
     def Date(self):
+        """当前统计量的时间段
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -150,6 +168,9 @@ class CallStatItem(AbstractModel):
 
     @property
     def Amount(self):
+        """当前时间段的调用量
+        :rtype: int
+        """
         return self._Amount
 
     @Amount.setter
@@ -193,6 +214,9 @@ class GeneralStat(AbstractModel):
 
     @property
     def TodayAmount(self):
+        """今日调用量
+        :rtype: int
+        """
         return self._TodayAmount
 
     @TodayAmount.setter
@@ -201,6 +225,9 @@ class GeneralStat(AbstractModel):
 
     @property
     def WeekAmount(self):
+        """本周调用量
+        :rtype: int
+        """
         return self._WeekAmount
 
     @WeekAmount.setter
@@ -209,6 +236,9 @@ class GeneralStat(AbstractModel):
 
     @property
     def MonthAmount(self):
+        """本月调用量
+        :rtype: int
+        """
         return self._MonthAmount
 
     @MonthAmount.setter
@@ -217,6 +247,9 @@ class GeneralStat(AbstractModel):
 
     @property
     def TotalAmount(self):
+        """总调用量
+        :rtype: int
+        """
         return self._TotalAmount
 
     @TotalAmount.setter
@@ -253,6 +286,9 @@ class GetTaskDetailRequest(AbstractModel):
 
     @property
     def Id(self):
+        """任务ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -289,6 +325,9 @@ class GetTaskDetailResponse(AbstractModel):
 
     @property
     def TaskDetailDataList(self):
+        """画像洞察任务TAG详细数据列表
+        :rtype: list of TaskDetailData
+        """
         return self._TaskDetailDataList
 
     @TaskDetailDataList.setter
@@ -297,6 +336,9 @@ class GetTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -343,6 +385,9 @@ class GetTaskListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """查询分页页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -351,6 +396,9 @@ class GetTaskListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """查询分页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -359,6 +407,9 @@ class GetTaskListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询起始时间（13位数字的UNIX时间戳，单位毫秒 ）
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -367,6 +418,9 @@ class GetTaskListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间（13位数字的UNIX时间戳，单位毫秒 ）
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -375,6 +429,9 @@ class GetTaskListRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -383,6 +440,9 @@ class GetTaskListRequest(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """查询任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -424,6 +484,9 @@ class GetTaskListResponse(AbstractModel):
 
     @property
     def TaskListData(self):
+        """任务列表对象
+        :rtype: :class:`tencentcloud.apcas.v20201127.models.TaskListData`
+        """
         return self._TaskListData
 
     @TaskListData.setter
@@ -432,6 +495,9 @@ class GetTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -463,6 +529,9 @@ class LabelDetailData(AbstractModel):
 
     @property
     def Value(self):
+        """标签数据对象
+        :rtype: :class:`tencentcloud.apcas.v20201127.models.LabelValue`
+        """
         return self._Value
 
     @Value.setter
@@ -471,6 +540,9 @@ class LabelDetailData(AbstractModel):
 
     @property
     def Label(self):
+        """标签表述，如"汽车资讯"、"游戏#手游"等
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -513,6 +585,9 @@ class LabelValue(AbstractModel):
 
     @property
     def Proportion(self):
+        """标签覆盖率占比（在整个上传的ID列表中的覆盖率）
+        :rtype: float
+        """
         return self._Proportion
 
     @Proportion.setter
@@ -521,6 +596,9 @@ class LabelValue(AbstractModel):
 
     @property
     def Market(self):
+        """标签大盘覆盖率占比
+        :rtype: float
+        """
         return self._Market
 
     @Market.setter
@@ -529,6 +607,9 @@ class LabelValue(AbstractModel):
 
     @property
     def Tgi(self):
+        """TGI指数，由Proportion除以Market得到
+        :rtype: float
+        """
         return self._Tgi
 
     @Tgi.setter
@@ -579,6 +660,9 @@ class ListModel(AbstractModel):
 
     @property
     def ID(self):
+        """任务ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -587,6 +671,9 @@ class ListModel(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -595,6 +682,9 @@ class ListModel(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务起始时间（13位数字的UNIX 时间戳，单位毫秒 ）
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -603,6 +693,9 @@ class ListModel(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -611,6 +704,9 @@ class ListModel(AbstractModel):
 
     @property
     def Available(self):
+        """画像覆盖人数
+        :rtype: int
+        """
         return self._Available
 
     @Available.setter
@@ -619,6 +715,9 @@ class ListModel(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """任务失败描述信息
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -660,6 +759,9 @@ class PredictRatingRequest(AbstractModel):
 
     @property
     def Type(self):
+        """ID标志的类型，0:IMEI 7:IDFA 8:MD5(imei) 100: 手机号明文 101: 手机号md5加密
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -668,6 +770,9 @@ class PredictRatingRequest(AbstractModel):
 
     @property
     def Id(self):
+        """请求唯一标志ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -705,6 +810,9 @@ class PredictRatingResponse(AbstractModel):
 
     @property
     def RatingData(self):
+        """意向评级
+        :rtype: :class:`tencentcloud.apcas.v20201127.models.RatingData`
+        """
         return self._RatingData
 
     @RatingData.setter
@@ -713,6 +821,9 @@ class PredictRatingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -753,6 +864,9 @@ class QueryCallDetailsRequest(AbstractModel):
 
     @property
     def Type(self):
+        """请求类型 1:人群特征洞察统计 2:购车意向预测统计
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -761,6 +875,9 @@ class QueryCallDetailsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间戳（毫秒）
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -769,6 +886,9 @@ class QueryCallDetailsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间戳（毫秒）
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -777,6 +897,9 @@ class QueryCallDetailsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页数
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -785,6 +908,9 @@ class QueryCallDetailsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页个数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -825,6 +951,9 @@ class QueryCallDetailsResponse(AbstractModel):
 
     @property
     def CallDetails(self):
+        """调用明细
+        :rtype: :class:`tencentcloud.apcas.v20201127.models.CallDetails`
+        """
         return self._CallDetails
 
     @CallDetails.setter
@@ -833,6 +962,9 @@ class QueryCallDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -867,6 +999,9 @@ class QueryCallStatRequest(AbstractModel):
 
     @property
     def Type(self):
+        """请求类型 1:人群特征洞察统计 2:购车意向预测统计
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -875,6 +1010,9 @@ class QueryCallStatRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间戳（毫秒）
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -883,6 +1021,9 @@ class QueryCallStatRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间戳（毫秒）
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -921,6 +1062,9 @@ class QueryCallStatResponse(AbstractModel):
 
     @property
     def CallSet(self):
+        """调用量数组
+        :rtype: list of CallStatItem
+        """
         return self._CallSet
 
     @CallSet.setter
@@ -929,6 +1073,9 @@ class QueryCallStatResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -960,6 +1107,9 @@ class QueryGeneralStatRequest(AbstractModel):
 
     @property
     def Type(self):
+        """请求类型:1,人群特征洞察统计 2购车意向预测统计
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -996,6 +1146,9 @@ class QueryGeneralStatResponse(AbstractModel):
 
     @property
     def GeneralStat(self):
+        """调用量信息
+        :rtype: :class:`tencentcloud.apcas.v20201127.models.GeneralStat`
+        """
         return self._GeneralStat
 
     @GeneralStat.setter
@@ -1004,6 +1157,9 @@ class QueryGeneralStatResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1032,6 +1188,9 @@ class RatingData(AbstractModel):
 
     @property
     def Rank(self):
+        """线索评级（取值：0、1、2、3分别代表无、低、中、高意愿）
+        :rtype: int
+        """
         return self._Rank
 
     @Rank.setter
@@ -1065,6 +1224,9 @@ class TaskData(AbstractModel):
 
     @property
     def Id(self):
+        """画像洞察任务ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1104,6 +1266,9 @@ class TaskDetailData(AbstractModel):
 
     @property
     def TagId(self):
+        """画像TAG ID
+        :rtype: int
+        """
         return self._TagId
 
     @TagId.setter
@@ -1112,6 +1277,9 @@ class TaskDetailData(AbstractModel):
 
     @property
     def TagDesc(self):
+        """画像TAG描述（如“省份分布”）
+        :rtype: str
+        """
         return self._TagDesc
 
     @TagDesc.setter
@@ -1120,6 +1288,9 @@ class TaskDetailData(AbstractModel):
 
     @property
     def LabelDetailDataList(self):
+        """画像Label对象列表（一个TAG对于N个Label，例如“省份分布”TAG对应“广东省”、“浙江省”等多个Label）
+        :rtype: list of LabelDetailData
+        """
         return self._LabelDetailDataList
 
     @LabelDetailDataList.setter
@@ -1169,6 +1340,9 @@ class TaskListData(AbstractModel):
 
     @property
     def PageNumber(self):
+        """查询分页页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1177,6 +1351,9 @@ class TaskListData(AbstractModel):
 
     @property
     def PageSize(self):
+        """查询分页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1185,6 +1362,9 @@ class TaskListData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务列表总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1193,6 +1373,9 @@ class TaskListData(AbstractModel):
 
     @property
     def TaskList(self):
+        """任务列表
+        :rtype: list of ListModel
+        """
         return self._TaskList
 
     @TaskList.setter
@@ -1240,6 +1423,9 @@ class UploadIdRequest(AbstractModel):
 
     @property
     def Type(self):
+        """id标志的类型: 0:imei 7:IDFA 8:MD5(imei)
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1248,6 +1434,9 @@ class UploadIdRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -1256,6 +1445,9 @@ class UploadIdRequest(AbstractModel):
 
     @property
     def IdListBase64(self):
+        """ID列表（ID间使用换行符分割、然后使用Base64编码）
+        :rtype: str
+        """
         return self._IdListBase64
 
     @IdListBase64.setter
@@ -1294,6 +1486,9 @@ class UploadIdResponse(AbstractModel):
 
     @property
     def TaskData(self):
+        """画像洞察任务ID等信息
+        :rtype: :class:`tencentcloud.apcas.v20201127.models.TaskData`
+        """
         return self._TaskData
 
     @TaskData.setter
@@ -1302,6 +1497,9 @@ class UploadIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

@@ -42,6 +42,9 @@ class DevInfoQ(AbstractModel):
 
     @property
     def OpenId(self):
+        """devid
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -50,6 +53,9 @@ class DevInfoQ(AbstractModel):
 
     @property
     def RiskScore(self):
+        """风险值
+        :rtype: int
+        """
         return self._RiskScore
 
     @RiskScore.setter
@@ -58,6 +64,10 @@ class DevInfoQ(AbstractModel):
 
     @property
     def RiskInfo(self):
+        """风险详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskDetail
+        """
         return self._RiskInfo
 
     @RiskInfo.setter
@@ -66,6 +76,9 @@ class DevInfoQ(AbstractModel):
 
     @property
     def Probability(self):
+        """概率值
+        :rtype: float
+        """
         return self._Probability
 
     @Probability.setter
@@ -119,6 +132,9 @@ class GetOpenIdRequest(AbstractModel):
 
     @property
     def DeviceToken(self):
+        """dev临时token，通过sdk接口获取
+        :rtype: str
+        """
         return self._DeviceToken
 
     @DeviceToken.setter
@@ -127,6 +143,9 @@ class GetOpenIdRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+        :rtype: int
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -135,6 +154,9 @@ class GetOpenIdRequest(AbstractModel):
 
     @property
     def BusinessUserId(self):
+        """业务侧账号体系下的用户ID
+        :rtype: str
+        """
         return self._BusinessUserId
 
     @BusinessUserId.setter
@@ -143,6 +165,9 @@ class GetOpenIdRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """平台：0-Android， 1-iOS， 2-web
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -151,6 +176,9 @@ class GetOpenIdRequest(AbstractModel):
 
     @property
     def Option(self):
+        """选项
+        :rtype: str
+        """
         return self._Option
 
     @Option.setter
@@ -196,6 +224,10 @@ class GetOpenIdResponse(AbstractModel):
 
     @property
     def OpenId(self):
+        """设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -204,6 +236,10 @@ class GetOpenIdResponse(AbstractModel):
 
     @property
     def RiskInfo(self):
+        """设备风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskInfo
+        """
         return self._RiskInfo
 
     @RiskInfo.setter
@@ -212,6 +248,9 @@ class GetOpenIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -259,6 +298,9 @@ class GetTokenRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+        :rtype: int
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -267,6 +309,9 @@ class GetTokenRequest(AbstractModel):
 
     @property
     def Scene(self):
+        """业务子场景
+        :rtype: int
+        """
         return self._Scene
 
     @Scene.setter
@@ -275,6 +320,9 @@ class GetTokenRequest(AbstractModel):
 
     @property
     def BusinessUserId(self):
+        """业务侧账号体系下的用户ID
+        :rtype: str
+        """
         return self._BusinessUserId
 
     @BusinessUserId.setter
@@ -283,6 +331,9 @@ class GetTokenRequest(AbstractModel):
 
     @property
     def AppClientIp(self):
+        """用户侧的IP
+        :rtype: str
+        """
         return self._AppClientIp
 
     @AppClientIp.setter
@@ -291,6 +342,9 @@ class GetTokenRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -299,6 +353,9 @@ class GetTokenRequest(AbstractModel):
 
     @property
     def OldToken(self):
+        """上一个token
+        :rtype: str
+        """
         return self._OldToken
 
     @OldToken.setter
@@ -343,6 +400,9 @@ class GetTokenResponse(AbstractModel):
 
     @property
     def Token(self):
+        """返回token
+        :rtype: str
+        """
         return self._Token
 
     @Token.setter
@@ -351,6 +411,9 @@ class GetTokenResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -359,6 +422,9 @@ class GetTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -455,6 +521,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def DevType(self):
+        """设备类型 0表示Android， 1表示IOS
+        :rtype: int
+        """
         return self._DevType
 
     @DevType.setter
@@ -463,6 +532,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Imei(self):
+        """Android Imei号
+        :rtype: str
+        """
         return self._Imei
 
     @Imei.setter
@@ -471,6 +543,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Mac(self):
+        """Mac地址
+        :rtype: str
+        """
         return self._Mac
 
     @Mac.setter
@@ -479,6 +554,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Aid(self):
+        """android  Aid
+        :rtype: str
+        """
         return self._Aid
 
     @Aid.setter
@@ -487,6 +565,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Cid(self):
+        """Android Cid
+        :rtype: str
+        """
         return self._Cid
 
     @Cid.setter
@@ -495,6 +576,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Imsi(self):
+        """手机Imsi
+        :rtype: str
+        """
         return self._Imsi
 
     @Imsi.setter
@@ -503,6 +587,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Df(self):
+        """Df 磁盘分区信息
+        :rtype: str
+        """
         return self._Df
 
     @Df.setter
@@ -511,6 +598,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def KernelVer(self):
+        """内核版本
+        :rtype: str
+        """
         return self._KernelVer
 
     @KernelVer.setter
@@ -519,6 +609,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """存储大小
+        :rtype: str
+        """
         return self._Storage
 
     @Storage.setter
@@ -527,6 +620,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Dfp(self):
+        """设备驱动指纹
+        :rtype: str
+        """
         return self._Dfp
 
     @Dfp.setter
@@ -535,6 +631,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def BootTime(self):
+        """启动时间
+        :rtype: str
+        """
         return self._BootTime
 
     @BootTime.setter
@@ -543,6 +642,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Resolution(self):
+        """分辨率 水平*垂直 格式
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -551,6 +653,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def RingList(self):
+        """铃声列表
+        :rtype: str
+        """
         return self._RingList
 
     @RingList.setter
@@ -559,6 +664,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def FontList(self):
+        """字体列表
+        :rtype: str
+        """
         return self._FontList
 
     @FontList.setter
@@ -567,6 +675,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def SensorList(self):
+        """传感器列表
+        :rtype: str
+        """
         return self._SensorList
 
     @SensorList.setter
@@ -575,6 +686,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def CpuType(self):
+        """CPU型号
+        :rtype: str
+        """
         return self._CpuType
 
     @CpuType.setter
@@ -583,6 +697,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Battery(self):
+        """电池容量
+        :rtype: str
+        """
         return self._Battery
 
     @Battery.setter
@@ -591,6 +708,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Oaid(self):
+        """信通院广告ID
+        :rtype: str
+        """
         return self._Oaid
 
     @Oaid.setter
@@ -599,6 +719,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Idfa(self):
+        """IOS 广告ID
+        :rtype: str
+        """
         return self._Idfa
 
     @Idfa.setter
@@ -607,6 +730,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Idfv(self):
+        """IOS 应用ID
+        :rtype: str
+        """
         return self._Idfv
 
     @Idfv.setter
@@ -615,6 +741,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -623,6 +752,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def IphoneModel(self):
+        """IOS手机型号
+        :rtype: str
+        """
         return self._IphoneModel
 
     @IphoneModel.setter
@@ -631,6 +763,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def Fingerprint(self):
+        """Android 指纹
+        :rtype: str
+        """
         return self._Fingerprint
 
     @Fingerprint.setter
@@ -639,6 +774,9 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     @property
     def SerialId(self):
+        """Android序列号
+        :rtype: str
+        """
         return self._SerialId
 
     @SerialId.setter
@@ -706,6 +844,9 @@ class QueryDevAndRiskResponse(AbstractModel):
 
     @property
     def Found(self):
+        """是否查得
+        :rtype: int
+        """
         return self._Found
 
     @Found.setter
@@ -714,6 +855,10 @@ class QueryDevAndRiskResponse(AbstractModel):
 
     @property
     def AllCnt(self):
+        """匹配数量级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AllCnt
 
     @AllCnt.setter
@@ -722,6 +867,10 @@ class QueryDevAndRiskResponse(AbstractModel):
 
     @property
     def Matches(self):
+        """匹配到的设备信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DevInfoQ
+        """
         return self._Matches
 
     @Matches.setter
@@ -730,6 +879,9 @@ class QueryDevAndRiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -767,6 +919,9 @@ class RiskDetail(AbstractModel):
 
     @property
     def RiskCode(self):
+        """风险码
+        :rtype: int
+        """
         return self._RiskCode
 
     @RiskCode.setter
@@ -775,6 +930,10 @@ class RiskDetail(AbstractModel):
 
     @property
     def RiskCodeValue(self):
+        """风险详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskCodeValue
 
     @RiskCodeValue.setter
@@ -813,6 +972,9 @@ class RiskInfo(AbstractModel):
 
     @property
     def Key(self):
+        """风险码
+        :rtype: int
+        """
         return self._Key
 
     @Key.setter
@@ -821,6 +983,10 @@ class RiskInfo(AbstractModel):
 
     @property
     def Value(self):
+        """风险详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter

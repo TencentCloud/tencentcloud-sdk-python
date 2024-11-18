@@ -35,6 +35,9 @@ class DeleteCertRequest(AbstractModel):
 
     @property
     def Id(self):
+        """证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -43,6 +46,9 @@ class DeleteCertRequest(AbstractModel):
 
     @property
     def ModuleType(self):
+        """模块名称，应填 ssl。
+        :rtype: str
+        """
         return self._ModuleType
 
     @ModuleType.setter
@@ -77,6 +83,9 @@ class DeleteCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -123,6 +132,9 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def ModuleType(self):
+        """模块名称，应填 ssl。
+        :rtype: str
+        """
         return self._ModuleType
 
     @ModuleType.setter
@@ -131,6 +143,9 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页数，默认第一页。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -139,6 +154,9 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页条数，默认每页20条。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -147,6 +165,9 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """搜索关键字。
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -155,6 +176,9 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def CertType(self):
+        """证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
+        :rtype: str
+        """
         return self._CertType
 
     @CertType.setter
@@ -163,6 +187,9 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def Id(self):
+        """证书ID。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -171,6 +198,9 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def WithCert(self):
+        """是否同时获取证书内容。
+        :rtype: str
+        """
         return self._WithCert
 
     @WithCert.setter
@@ -179,6 +209,9 @@ class DescribeCertListRequest(AbstractModel):
 
     @property
     def AltDomain(self):
+        """如传，则只返回可以给该域名使用的证书。
+        :rtype: str
+        """
         return self._AltDomain
 
     @AltDomain.setter
@@ -225,6 +258,9 @@ class DescribeCertListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -233,6 +269,9 @@ class DescribeCertListResponse(AbstractModel):
 
     @property
     def CertificateSet(self):
+        """列表。
+        :rtype: list of SSLCertificate
+        """
         return self._CertificateSet
 
     @CertificateSet.setter
@@ -241,6 +280,9 @@ class DescribeCertListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -374,6 +416,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """所属账户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -382,6 +428,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -390,6 +440,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def From(self):
+        """证书来源：trustasia = 亚洲诚信， upload = 用户上传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -398,6 +452,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Type(self):
+        """证书类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -406,6 +464,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def CertType(self):
+        """证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertType
 
     @CertType.setter
@@ -414,6 +476,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def ProductZhName(self):
+        """证书办法者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductZhName
 
     @ProductZhName.setter
@@ -422,6 +488,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Domain(self):
+        """主域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -430,6 +500,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Alias(self):
+        """别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -438,6 +512,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Status(self):
+        """状态值 0：审核中，1：已通过，2：审核失败，3：已过期，4：已添加云解析记录，5：OV/EV 证书，待提交资料，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -446,6 +524,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def VulnerabilityStatus(self):
+        """漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulnerabilityStatus
 
     @VulnerabilityStatus.setter
@@ -454,6 +536,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def StatusMsg(self):
+        """状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -462,6 +548,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def VerifyType(self):
+        """验证类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -470,6 +560,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def CertBeginTime(self):
+        """证书生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertBeginTime
 
     @CertBeginTime.setter
@@ -478,6 +572,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def CertEndTime(self):
+        """证书过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertEndTime
 
     @CertEndTime.setter
@@ -486,6 +584,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def ValidityPeriod(self):
+        """证书过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -494,6 +596,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -502,6 +608,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def ProjectInfo(self):
+        """项目信息，ProjectId：项目ID，OwnerUin：项目所属的 uin（默认项目为0），Name：项目名称，CreatorUin：创建项目的 uin，CreateTime：项目创建时间，Info：项目说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wss.v20180426.models.SSLProjectInfo`
+        """
         return self._ProjectInfo
 
     @ProjectInfo.setter
@@ -510,6 +620,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Id(self):
+        """证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -518,6 +632,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def SubjectAltName(self):
+        """证书包含的多个域名（包含主域名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SubjectAltName
 
     @SubjectAltName.setter
@@ -526,6 +644,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def TypeName(self):
+        """证书类型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -534,6 +656,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def StatusName(self):
+        """状态名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusName
 
     @StatusName.setter
@@ -542,6 +668,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def IsVip(self):
+        """是否为 VIP 客户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsVip
 
     @IsVip.setter
@@ -550,6 +680,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def IsDv(self):
+        """是否我 DV 版证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDv
 
     @IsDv.setter
@@ -558,6 +692,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def IsWildcard(self):
+        """是否为泛域名证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsWildcard
 
     @IsWildcard.setter
@@ -566,6 +704,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def IsVulnerability(self):
+        """是否启用了漏洞扫描功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsVulnerability
 
     @IsVulnerability.setter
@@ -574,6 +716,10 @@ class SSLCertificate(AbstractModel):
 
     @property
     def Cert(self):
+        """证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cert
 
     @Cert.setter
@@ -655,6 +801,10 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -663,6 +813,10 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """项目所属的 uin（默认项目为0）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -671,6 +825,10 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def Name(self):
+        """项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -679,6 +837,10 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建项目的 uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -687,6 +849,10 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """项目创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -695,6 +861,10 @@ class SSLProjectInfo(AbstractModel):
 
     @property
     def Info(self):
+        """项目说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -748,6 +918,9 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Cert(self):
+        """证书内容。
+        :rtype: str
+        """
         return self._Cert
 
     @Cert.setter
@@ -756,6 +929,9 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def CertType(self):
+        """证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
+        :rtype: str
+        """
         return self._CertType
 
     @CertType.setter
@@ -764,6 +940,9 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -772,6 +951,9 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def ModuleType(self):
+        """模块名称，应填 ssl。
+        :rtype: str
+        """
         return self._ModuleType
 
     @ModuleType.setter
@@ -780,6 +962,9 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Key(self):
+        """证书私钥，certType=SVR 时必填。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -788,6 +973,9 @@ class UploadCertRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """证书备注。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -829,6 +1017,9 @@ class UploadCertResponse(AbstractModel):
 
     @property
     def Id(self):
+        """证书ID。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -837,6 +1028,9 @@ class UploadCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

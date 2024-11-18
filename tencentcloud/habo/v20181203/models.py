@@ -35,6 +35,9 @@ class DescribeStatusRequest(AbstractModel):
 
     @property
     def Pk(self):
+        """购买服务后获得的授权帐号，用于保证请求有效性
+        :rtype: str
+        """
         return self._Pk
 
     @Pk.setter
@@ -43,6 +46,9 @@ class DescribeStatusRequest(AbstractModel):
 
     @property
     def Md5(self):
+        """需要获取分析结果的样本md5
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -86,6 +92,9 @@ class DescribeStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """接口调用状态，1表示成功，非1表示失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -94,6 +103,9 @@ class DescribeStatusResponse(AbstractModel):
 
     @property
     def Info(self):
+        """成功时返回success，失败时返回具体的失败原因，如样本分析未完成
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -102,6 +114,9 @@ class DescribeStatusResponse(AbstractModel):
 
     @property
     def Data(self):
+        """成功时返回样本日志下载地址，该地址10分钟内有效
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -110,6 +125,9 @@ class DescribeStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -144,6 +162,9 @@ class StartAnalyseRequest(AbstractModel):
 
     @property
     def Pk(self):
+        """购买服务后获得的授权帐号，用于保证请求有效性
+        :rtype: str
+        """
         return self._Pk
 
     @Pk.setter
@@ -152,6 +173,9 @@ class StartAnalyseRequest(AbstractModel):
 
     @property
     def Md5(self):
+        """样本md5，用于对下载获得的样本完整性进行校验
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -160,6 +184,9 @@ class StartAnalyseRequest(AbstractModel):
 
     @property
     def DlUrl(self):
+        """待分析样本下载地址
+        :rtype: str
+        """
         return self._DlUrl
 
     @DlUrl.setter
@@ -204,6 +231,9 @@ class StartAnalyseResponse(AbstractModel):
 
     @property
     def Status(self):
+        """接口调用状态，1表示成功，非1表示失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -212,6 +242,9 @@ class StartAnalyseResponse(AbstractModel):
 
     @property
     def Info(self):
+        """成功时返回success，失败时返回具体的失败原因
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -220,6 +253,9 @@ class StartAnalyseResponse(AbstractModel):
 
     @property
     def Data(self):
+        """保留字段
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -228,6 +264,9 @@ class StartAnalyseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

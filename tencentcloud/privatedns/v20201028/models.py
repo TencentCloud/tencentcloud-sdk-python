@@ -44,6 +44,9 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """VpcId： vpc-xadsafsdasd
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -52,6 +55,10 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def Region(self):
+        """Vpc所属地区: ap-guangzhou, ap-shanghai
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -60,6 +67,10 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def Uin(self):
+        """Vpc所属账号: 123456789
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -68,6 +79,10 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def VpcName(self):
+        """vpc资源名称：testname
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -113,6 +128,9 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def VpcId(self):
+        """VpcId： vpc-xadsafsdasd
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -121,6 +139,9 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def Region(self):
+        """Vpc所属地区: ap-guangzhou, ap-shanghai
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -129,6 +150,9 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def Uin(self):
+        """Vpc所属账号: 123456789
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -137,6 +161,9 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def VpcName(self):
+        """vpc资源名称：testname
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -179,6 +206,9 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def Uin(self):
+        """关联账户的uin
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -187,6 +217,9 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """vpcid
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -195,6 +228,9 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -239,6 +275,9 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域id
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -247,6 +286,9 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def VpcSet(self):
+        """本次新增的vpc信息
+        :rtype: list of VpcInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -255,6 +297,9 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
+        """本次新增关联账户vpc信息
+        :rtype: list of AccountVpcInfo
+        """
         return self._AccountVpcSet
 
     @AccountVpcSet.setter
@@ -263,6 +308,9 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def Sync(self):
+        """是否为同步操作
+        :rtype: bool
+        """
         return self._Sync
 
     @Sync.setter
@@ -322,6 +370,9 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """zone id
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -330,6 +381,9 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def VpcSet(self):
+        """本次新增的vpc
+        :rtype: list of VpcInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -338,6 +392,9 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def AccountVpcSet(self):
+        """本次新增的关联账号vpc
+        :rtype: list of AccountVpcInfo
+        """
         return self._AccountVpcSet
 
     @AccountVpcSet.setter
@@ -346,6 +403,10 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def UniqId(self):
+        """唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqId
 
     @UniqId.setter
@@ -354,6 +415,9 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -402,6 +466,9 @@ class AuditLog(AbstractModel):
 
     @property
     def Resource(self):
+        """日志类型
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -410,6 +477,9 @@ class AuditLog(AbstractModel):
 
     @property
     def Metric(self):
+        """日志表名
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -418,6 +488,9 @@ class AuditLog(AbstractModel):
 
     @property
     def TotalCount(self):
+        """日志总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -426,6 +499,9 @@ class AuditLog(AbstractModel):
 
     @property
     def DataSet(self):
+        """日志列表
+        :rtype: list of AuditLogInfo
+        """
         return self._DataSet
 
     @DataSet.setter
@@ -473,6 +549,9 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def Date(self):
+        """时间
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -481,6 +560,9 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def OperatorUin(self):
+        """操作人uin
+        :rtype: str
+        """
         return self._OperatorUin
 
     @OperatorUin.setter
@@ -489,6 +571,9 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def Content(self):
+        """日志内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -510,6 +595,588 @@ class AuditLogInfo(AbstractModel):
         
 
 
+class CreateEndPointAndEndPointServiceRequest(AbstractModel):
+    """CreateEndPointAndEndPointService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC实例ID
+        :type VpcId: str
+        :param _AutoAcceptFlag: 是否自动接受
+        :type AutoAcceptFlag: bool
+        :param _ServiceInstanceId: 后端服务ID
+        :type ServiceInstanceId: str
+        :param _EndPointName: 终端节点名称
+        :type EndPointName: str
+        :param _EndPointRegion: 终端节点地域，必须要和终端节点服务所属地域一致
+        :type EndPointRegion: str
+        :param _EndPointServiceName: 终端节点服务名称
+        :type EndPointServiceName: str
+        :param _ServiceType: 挂载的PAAS服务类型，CLB,CDB,CRS
+        :type ServiceType: str
+        :param _IpNum: 终端节点ip数量
+        :type IpNum: int
+        """
+        self._VpcId = None
+        self._AutoAcceptFlag = None
+        self._ServiceInstanceId = None
+        self._EndPointName = None
+        self._EndPointRegion = None
+        self._EndPointServiceName = None
+        self._ServiceType = None
+        self._IpNum = None
+
+    @property
+    def VpcId(self):
+        """VPC实例ID
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def AutoAcceptFlag(self):
+        """是否自动接受
+        :rtype: bool
+        """
+        return self._AutoAcceptFlag
+
+    @AutoAcceptFlag.setter
+    def AutoAcceptFlag(self, AutoAcceptFlag):
+        self._AutoAcceptFlag = AutoAcceptFlag
+
+    @property
+    def ServiceInstanceId(self):
+        """后端服务ID
+        :rtype: str
+        """
+        return self._ServiceInstanceId
+
+    @ServiceInstanceId.setter
+    def ServiceInstanceId(self, ServiceInstanceId):
+        self._ServiceInstanceId = ServiceInstanceId
+
+    @property
+    def EndPointName(self):
+        """终端节点名称
+        :rtype: str
+        """
+        return self._EndPointName
+
+    @EndPointName.setter
+    def EndPointName(self, EndPointName):
+        self._EndPointName = EndPointName
+
+    @property
+    def EndPointRegion(self):
+        """终端节点地域，必须要和终端节点服务所属地域一致
+        :rtype: str
+        """
+        return self._EndPointRegion
+
+    @EndPointRegion.setter
+    def EndPointRegion(self, EndPointRegion):
+        self._EndPointRegion = EndPointRegion
+
+    @property
+    def EndPointServiceName(self):
+        """终端节点服务名称
+        :rtype: str
+        """
+        return self._EndPointServiceName
+
+    @EndPointServiceName.setter
+    def EndPointServiceName(self, EndPointServiceName):
+        self._EndPointServiceName = EndPointServiceName
+
+    @property
+    def ServiceType(self):
+        """挂载的PAAS服务类型，CLB,CDB,CRS
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def IpNum(self):
+        """终端节点ip数量
+        :rtype: int
+        """
+        return self._IpNum
+
+    @IpNum.setter
+    def IpNum(self, IpNum):
+        self._IpNum = IpNum
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._AutoAcceptFlag = params.get("AutoAcceptFlag")
+        self._ServiceInstanceId = params.get("ServiceInstanceId")
+        self._EndPointName = params.get("EndPointName")
+        self._EndPointRegion = params.get("EndPointRegion")
+        self._EndPointServiceName = params.get("EndPointServiceName")
+        self._ServiceType = params.get("ServiceType")
+        self._IpNum = params.get("IpNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEndPointAndEndPointServiceResponse(AbstractModel):
+    """CreateEndPointAndEndPointService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndPointId: 终端节点id
+        :type EndPointId: str
+        :param _EndPointName: 终端节点名
+        :type EndPointName: str
+        :param _EndPointServiceId: 终端节点服务ID
+        :type EndPointServiceId: str
+        :param _EndPointVipSet: 终端节点的IP列表
+        :type EndPointVipSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EndPointId = None
+        self._EndPointName = None
+        self._EndPointServiceId = None
+        self._EndPointVipSet = None
+        self._RequestId = None
+
+    @property
+    def EndPointId(self):
+        """终端节点id
+        :rtype: str
+        """
+        return self._EndPointId
+
+    @EndPointId.setter
+    def EndPointId(self, EndPointId):
+        self._EndPointId = EndPointId
+
+    @property
+    def EndPointName(self):
+        """终端节点名
+        :rtype: str
+        """
+        return self._EndPointName
+
+    @EndPointName.setter
+    def EndPointName(self, EndPointName):
+        self._EndPointName = EndPointName
+
+    @property
+    def EndPointServiceId(self):
+        """终端节点服务ID
+        :rtype: str
+        """
+        return self._EndPointServiceId
+
+    @EndPointServiceId.setter
+    def EndPointServiceId(self, EndPointServiceId):
+        self._EndPointServiceId = EndPointServiceId
+
+    @property
+    def EndPointVipSet(self):
+        """终端节点的IP列表
+        :rtype: list of str
+        """
+        return self._EndPointVipSet
+
+    @EndPointVipSet.setter
+    def EndPointVipSet(self, EndPointVipSet):
+        self._EndPointVipSet = EndPointVipSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EndPointId = params.get("EndPointId")
+        self._EndPointName = params.get("EndPointName")
+        self._EndPointServiceId = params.get("EndPointServiceId")
+        self._EndPointVipSet = params.get("EndPointVipSet")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateEndPointRequest(AbstractModel):
+    """CreateEndPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndPointName: 终端节点名称
+        :type EndPointName: str
+        :param _EndPointServiceId: 终端节点服务ID（vpc终端节点服务ID）
+        :type EndPointServiceId: str
+        :param _EndPointRegion: 终端节点地域，必须要和终端节点服务所属地域一致
+        :type EndPointRegion: str
+        :param _IpNum: 终端节点ip数量
+        :type IpNum: int
+        """
+        self._EndPointName = None
+        self._EndPointServiceId = None
+        self._EndPointRegion = None
+        self._IpNum = None
+
+    @property
+    def EndPointName(self):
+        """终端节点名称
+        :rtype: str
+        """
+        return self._EndPointName
+
+    @EndPointName.setter
+    def EndPointName(self, EndPointName):
+        self._EndPointName = EndPointName
+
+    @property
+    def EndPointServiceId(self):
+        """终端节点服务ID（vpc终端节点服务ID）
+        :rtype: str
+        """
+        return self._EndPointServiceId
+
+    @EndPointServiceId.setter
+    def EndPointServiceId(self, EndPointServiceId):
+        self._EndPointServiceId = EndPointServiceId
+
+    @property
+    def EndPointRegion(self):
+        """终端节点地域，必须要和终端节点服务所属地域一致
+        :rtype: str
+        """
+        return self._EndPointRegion
+
+    @EndPointRegion.setter
+    def EndPointRegion(self, EndPointRegion):
+        self._EndPointRegion = EndPointRegion
+
+    @property
+    def IpNum(self):
+        """终端节点ip数量
+        :rtype: int
+        """
+        return self._IpNum
+
+    @IpNum.setter
+    def IpNum(self, IpNum):
+        self._IpNum = IpNum
+
+
+    def _deserialize(self, params):
+        self._EndPointName = params.get("EndPointName")
+        self._EndPointServiceId = params.get("EndPointServiceId")
+        self._EndPointRegion = params.get("EndPointRegion")
+        self._IpNum = params.get("IpNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEndPointResponse(AbstractModel):
+    """CreateEndPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndPointId: 终端节点id
+        :type EndPointId: str
+        :param _EndPointName: 终端节点名称
+        :type EndPointName: str
+        :param _EndPointServiceId: 终端节点服务ID
+        :type EndPointServiceId: str
+        :param _EndPointVipSet: 终端节点的IP列表
+        :type EndPointVipSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EndPointId = None
+        self._EndPointName = None
+        self._EndPointServiceId = None
+        self._EndPointVipSet = None
+        self._RequestId = None
+
+    @property
+    def EndPointId(self):
+        """终端节点id
+        :rtype: str
+        """
+        return self._EndPointId
+
+    @EndPointId.setter
+    def EndPointId(self, EndPointId):
+        self._EndPointId = EndPointId
+
+    @property
+    def EndPointName(self):
+        """终端节点名称
+        :rtype: str
+        """
+        return self._EndPointName
+
+    @EndPointName.setter
+    def EndPointName(self, EndPointName):
+        self._EndPointName = EndPointName
+
+    @property
+    def EndPointServiceId(self):
+        """终端节点服务ID
+        :rtype: str
+        """
+        return self._EndPointServiceId
+
+    @EndPointServiceId.setter
+    def EndPointServiceId(self, EndPointServiceId):
+        self._EndPointServiceId = EndPointServiceId
+
+    @property
+    def EndPointVipSet(self):
+        """终端节点的IP列表
+        :rtype: list of str
+        """
+        return self._EndPointVipSet
+
+    @EndPointVipSet.setter
+    def EndPointVipSet(self, EndPointVipSet):
+        self._EndPointVipSet = EndPointVipSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EndPointId = params.get("EndPointId")
+        self._EndPointName = params.get("EndPointName")
+        self._EndPointServiceId = params.get("EndPointServiceId")
+        self._EndPointVipSet = params.get("EndPointVipSet")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateForwardRuleRequest(AbstractModel):
+    """CreateForwardRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 转发规则名称
+        :type RuleName: str
+        :param _RuleType: 转发规则类型：云上到云下DOWN，云下到云上UP
+        :type RuleType: str
+        :param _ZoneId: 私有域ID，可在私有域列表页面查看
+        :type ZoneId: str
+        :param _EndPointId: 终端节点ID
+        :type EndPointId: str
+        """
+        self._RuleName = None
+        self._RuleType = None
+        self._ZoneId = None
+        self._EndPointId = None
+
+    @property
+    def RuleName(self):
+        """转发规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleType(self):
+        """转发规则类型：云上到云下DOWN，云下到云上UP
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def ZoneId(self):
+        """私有域ID，可在私有域列表页面查看
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EndPointId(self):
+        """终端节点ID
+        :rtype: str
+        """
+        return self._EndPointId
+
+    @EndPointId.setter
+    def EndPointId(self, EndPointId):
+        self._EndPointId = EndPointId
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._RuleType = params.get("RuleType")
+        self._ZoneId = params.get("ZoneId")
+        self._EndPointId = params.get("EndPointId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateForwardRuleResponse(AbstractModel):
+    """CreateForwardRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 转发规则ID
+        :type RuleId: str
+        :param _RuleName: 转发规则名称
+        :type RuleName: str
+        :param _RuleType: 转发规则类型
+        :type RuleType: str
+        :param _ZoneId: 私有域ID
+        :type ZoneId: str
+        :param _EndPointId: 终端节点ID
+        :type EndPointId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._RuleType = None
+        self._ZoneId = None
+        self._EndPointId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        """转发规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """转发规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleType(self):
+        """转发规则类型
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EndPointId(self):
+        """终端节点ID
+        :rtype: str
+        """
+        return self._EndPointId
+
+    @EndPointId.setter
+    def EndPointId(self, EndPointId):
+        self._EndPointId = EndPointId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._RuleType = params.get("RuleType")
+        self._ZoneId = params.get("ZoneId")
+        self._EndPointId = params.get("EndPointId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePrivateDNSAccountRequest(AbstractModel):
     """CreatePrivateDNSAccount请求参数结构体
 
@@ -524,6 +1191,9 @@ class CreatePrivateDNSAccountRequest(AbstractModel):
 
     @property
     def Account(self):
+        """私有域解析账号
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
+        """
         return self._Account
 
     @Account.setter
@@ -559,6 +1229,9 @@ class CreatePrivateDNSAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -602,6 +1275,9 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -610,6 +1286,9 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
+        """记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :rtype: str
+        """
         return self._RecordType
 
     @RecordType.setter
@@ -618,6 +1297,9 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
+        """子域名，例如 "www", "m", "@"
+        :rtype: str
+        """
         return self._SubDomain
 
     @SubDomain.setter
@@ -626,6 +1308,9 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordValue(self):
+        """记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+        :rtype: str
+        """
         return self._RecordValue
 
     @RecordValue.setter
@@ -634,6 +1319,9 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
+        """记录权重，值为1-100
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -642,6 +1330,9 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def MX(self):
+        """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+        :rtype: int
+        """
         return self._MX
 
     @MX.setter
@@ -650,6 +1341,9 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
+        """记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        :rtype: int
+        """
         return self._TTL
 
     @TTL.setter
@@ -692,6 +1386,9 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
+        """记录Id
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -700,6 +1397,9 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -747,6 +1447,9 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名，格式必须是标准的TLD
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -755,6 +1458,9 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def TagSet(self):
+        """创建私有域的同时，为其打上标签
+        :rtype: list of TagInfo
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -763,6 +1469,9 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def VpcSet(self):
+        """创建私有域的同时，将其关联至VPC
+        :rtype: list of VpcInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -771,6 +1480,9 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -779,6 +1491,9 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def DnsForwardStatus(self):
+        """是否开启子域名递归, ENABLED， DISABLED。默认值为ENABLED
+        :rtype: str
+        """
         return self._DnsForwardStatus
 
     @DnsForwardStatus.setter
@@ -787,6 +1502,9 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def Vpcs(self):
+        """创建私有域的同时，将其关联至VPC
+        :rtype: list of VpcInfo
+        """
         return self._Vpcs
 
     @Vpcs.setter
@@ -795,6 +1513,9 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
+        """创建私有域同时绑定关联账号的VPC
+        :rtype: list of AccountVpcInfo
+        """
         return self._AccountVpcSet
 
     @AccountVpcSet.setter
@@ -803,6 +1524,9 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def CnameSpeedupStatus(self):
+        """是否CNAME加速：ENABLED，DISABLED，默认值为ENABLED
+        :rtype: str
+        """
         return self._CnameSpeedupStatus
 
     @CnameSpeedupStatus.setter
@@ -869,6 +1593,9 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID, zone-xxxxxx
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -877,6 +1604,9 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """私有域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -885,6 +1615,9 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -915,6 +1648,9 @@ class DatePoint(AbstractModel):
 
     @property
     def Date(self):
+        """时间
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -923,6 +1659,9 @@ class DatePoint(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -957,6 +1696,9 @@ class DeleteEndPointRequest(AbstractModel):
 
     @property
     def EndPointId(self):
+        """终端节点ID
+        :rtype: str
+        """
         return self._EndPointId
 
     @EndPointId.setter
@@ -990,6 +1732,73 @@ class DeleteEndPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteForwardRuleRequest(AbstractModel):
+    """DeleteForwardRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIdSet: 转发规则ID数组
+        :type RuleIdSet: list of str
+        """
+        self._RuleIdSet = None
+
+    @property
+    def RuleIdSet(self):
+        """转发规则ID数组
+        :rtype: list of str
+        """
+        return self._RuleIdSet
+
+    @RuleIdSet.setter
+    def RuleIdSet(self, RuleIdSet):
+        self._RuleIdSet = RuleIdSet
+
+
+    def _deserialize(self, params):
+        self._RuleIdSet = params.get("RuleIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteForwardRuleResponse(AbstractModel):
+    """DeleteForwardRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1015,6 +1824,9 @@ class DeletePrivateDNSAccountRequest(AbstractModel):
 
     @property
     def Account(self):
+        """私有域解析账号
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
+        """
         return self._Account
 
     @Account.setter
@@ -1050,6 +1862,9 @@ class DeletePrivateDNSAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1081,6 +1896,9 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1089,6 +1907,9 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
+        """记录ID（调用DescribePrivateZoneRecordList可获取到RecordId）
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -1097,6 +1918,9 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordIdSet(self):
+        """记录ID数组，RecordId 优先
+        :rtype: list of str
+        """
         return self._RecordIdSet
 
     @RecordIdSet.setter
@@ -1132,6 +1956,9 @@ class DeletePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1160,6 +1987,9 @@ class DeletePrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1168,6 +1998,9 @@ class DeletePrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneIdSet(self):
+        """私有域ID数组，ZoneId 优先
+        :rtype: list of str
+        """
         return self._ZoneIdSet
 
     @ZoneIdSet.setter
@@ -1202,6 +2035,9 @@ class DeletePrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1236,6 +2072,9 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域id
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1244,6 +2083,9 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def VpcSet(self):
+        """本次删除的VPC
+        :rtype: list of VpcInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -1252,6 +2094,9 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
+        """本次删除的关联账户VPC
+        :rtype: list of AccountVpcInfo
+        """
         return self._AccountVpcSet
 
     @AccountVpcSet.setter
@@ -1260,6 +2105,9 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def Sync(self):
+        """是否为同步操作
+        :rtype: bool
+        """
         return self._Sync
 
     @Sync.setter
@@ -1319,6 +2167,9 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域id
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1327,6 +2178,9 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def VpcSet(self):
+        """本次删除的VPC
+        :rtype: list of VpcInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -1335,6 +2189,9 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def AccountVpcSet(self):
+        """本次删除的关联账户的VPC
+        :rtype: list of AccountVpcInfo
+        """
         return self._AccountVpcSet
 
     @AccountVpcSet.setter
@@ -1343,6 +2200,10 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def UniqId(self):
+        """唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqId
 
     @UniqId.setter
@@ -1351,6 +2212,9 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1399,6 +2263,9 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def AccountUin(self):
+        """关联账号的uin
+        :rtype: str
+        """
         return self._AccountUin
 
     @AccountUin.setter
@@ -1407,6 +2274,9 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1415,6 +2285,9 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页限制数目， 最大100，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1423,6 +2296,9 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1470,6 +2346,9 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """VPC数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1478,6 +2357,9 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def VpcSet(self):
+        """VPC 列表
+        :rtype: list of AccountVpcInfoOut
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -1486,6 +2368,9 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1530,6 +2415,9 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def TimeRangeBegin(self):
+        """请求量统计起始时间
+        :rtype: str
+        """
         return self._TimeRangeBegin
 
     @TimeRangeBegin.setter
@@ -1538,6 +2426,9 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1546,6 +2437,9 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def TimeRangeEnd(self):
+        """请求量统计结束时间
+        :rtype: str
+        """
         return self._TimeRangeEnd
 
     @TimeRangeEnd.setter
@@ -1554,6 +2448,9 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1562,6 +2459,9 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页限制数目， 最大100，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1607,6 +2507,9 @@ class DescribeAuditLogResponse(AbstractModel):
 
     @property
     def Data(self):
+        """操作日志列表
+        :rtype: list of AuditLog
+        """
         return self._Data
 
     @Data.setter
@@ -1615,6 +2518,9 @@ class DescribeAuditLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1664,6 +2570,9 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def ZoneTotal(self):
+        """私有域解析总数
+        :rtype: int
+        """
         return self._ZoneTotal
 
     @ZoneTotal.setter
@@ -1672,6 +2581,9 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def ZoneVpcCount(self):
+        """私有域关联VPC数量
+        :rtype: int
+        """
         return self._ZoneVpcCount
 
     @ZoneVpcCount.setter
@@ -1680,6 +2592,9 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def RequestTotalCount(self):
+        """历史请求量总数
+        :rtype: int
+        """
         return self._RequestTotalCount
 
     @RequestTotalCount.setter
@@ -1688,6 +2603,9 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def FlowUsage(self):
+        """流量包用量
+        :rtype: list of FlowUsage
+        """
         return self._FlowUsage
 
     @FlowUsage.setter
@@ -1696,6 +2614,9 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1713,6 +2634,411 @@ class DescribeDashboardResponse(AbstractModel):
                 obj = FlowUsage()
                 obj._deserialize(item)
                 self._FlowUsage.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEndPointListRequest(AbstractModel):
+    """DescribeEndPointList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量，从0开始
+        :type Offset: int
+        :param _Limit: 分页限制数目， 最大100，默认20
+        :type Limit: int
+        :param _Filters: 过滤参数，支持EndPointName,EndPointId,EndPointServiceId,EndPointVip
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        """分页偏移量，从0开始
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页限制数目， 最大100，默认20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """过滤参数，支持EndPointName,EndPointId,EndPointServiceId,EndPointVip
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEndPointListResponse(AbstractModel):
+    """DescribeEndPointList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 终端节点总数
+        :type TotalCount: int
+        :param _EndPointSet: 终端节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndPointSet: list of EndPointInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._EndPointSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """终端节点总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EndPointSet(self):
+        """终端节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EndPointInfo
+        """
+        return self._EndPointSet
+
+    @EndPointSet.setter
+    def EndPointSet(self, EndPointSet):
+        self._EndPointSet = EndPointSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("EndPointSet") is not None:
+            self._EndPointSet = []
+            for item in params.get("EndPointSet"):
+                obj = EndPointInfo()
+                obj._deserialize(item)
+                self._EndPointSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEndPointRegionRequest(AbstractModel):
+    """DescribeEndPointRegion请求参数结构体
+
+    """
+
+
+class DescribeEndPointRegionResponse(AbstractModel):
+    """DescribeEndPointRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionSet: 地域数组
+        :type RegionSet: list of RegionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegionSet = None
+        self._RequestId = None
+
+    @property
+    def RegionSet(self):
+        """地域数组
+        :rtype: list of RegionInfo
+        """
+        return self._RegionSet
+
+    @RegionSet.setter
+    def RegionSet(self, RegionSet):
+        self._RegionSet = RegionSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RegionSet") is not None:
+            self._RegionSet = []
+            for item in params.get("RegionSet"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self._RegionSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeForwardRuleListRequest(AbstractModel):
+    """DescribeForwardRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量，从0开始
+        :type Offset: int
+        :param _Limit: 分页限制数目， 最大100，默认20
+        :type Limit: int
+        :param _Filters: 过滤参数
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        """分页偏移量，从0开始
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页限制数目， 最大100，默认20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """过滤参数
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeForwardRuleListResponse(AbstractModel):
+    """DescribeForwardRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 私有域数量
+        :type TotalCount: int
+        :param _ForwardRuleSet: 私有域列表
+        :type ForwardRuleSet: list of ForwardRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ForwardRuleSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """私有域数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ForwardRuleSet(self):
+        """私有域列表
+        :rtype: list of ForwardRule
+        """
+        return self._ForwardRuleSet
+
+    @ForwardRuleSet.setter
+    def ForwardRuleSet(self, ForwardRuleSet):
+        self._ForwardRuleSet = ForwardRuleSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ForwardRuleSet") is not None:
+            self._ForwardRuleSet = []
+            for item in params.get("ForwardRuleSet"):
+                obj = ForwardRule()
+                obj._deserialize(item)
+                self._ForwardRuleSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeForwardRuleRequest(AbstractModel):
+    """DescribeForwardRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 转发规则ID
+        :type RuleId: str
+        """
+        self._RuleId = None
+
+    @property
+    def RuleId(self):
+        """转发规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeForwardRuleResponse(AbstractModel):
+    """DescribeForwardRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ForwardRule: 转发规则详情
+        :type ForwardRule: :class:`tencentcloud.privatedns.v20201028.models.ForwardRule`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ForwardRule = None
+        self._RequestId = None
+
+    @property
+    def ForwardRule(self):
+        """转发规则详情
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.ForwardRule`
+        """
+        return self._ForwardRule
+
+    @ForwardRule.setter
+    def ForwardRule(self, ForwardRule):
+        self._ForwardRule = ForwardRule
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ForwardRule") is not None:
+            self._ForwardRule = ForwardRule()
+            self._ForwardRule._deserialize(params.get("ForwardRule"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1736,6 +3062,9 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1744,6 +3073,9 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页限制数目， 最大100，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1752,6 +3084,9 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1798,6 +3133,9 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """私有域解析账号数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1806,6 +3144,9 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def AccountSet(self):
+        """私有域解析账号列表
+        :rtype: list of PrivateDNSAccount
+        """
         return self._AccountSet
 
     @AccountSet.setter
@@ -1814,6 +3155,9 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1852,6 +3196,9 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1860,6 +3207,9 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页限制数目， 最大100，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1868,6 +3218,9 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1914,6 +3267,9 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """私有域数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1922,6 +3278,9 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def PrivateZoneSet(self):
+        """私有域列表
+        :rtype: list of PrivateZone
+        """
         return self._PrivateZoneSet
 
     @PrivateZoneSet.setter
@@ -1930,6 +3289,9 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1971,6 +3333,9 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID: zone-xxxxxx
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1979,6 +3344,9 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数（支持使用Value、RecordType过滤）
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1987,6 +3355,9 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1995,6 +3366,9 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页限制数目， 最大200，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2042,6 +3416,9 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """解析记录数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2050,6 +3427,9 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def RecordSet(self):
+        """解析记录列表
+        :rtype: list of PrivateZoneRecord
+        """
         return self._RecordSet
 
     @RecordSet.setter
@@ -2058,6 +3438,9 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2090,6 +3473,9 @@ class DescribePrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """域名，格式必须是标准的TLD
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2126,6 +3512,9 @@ class DescribePrivateZoneResponse(AbstractModel):
 
     @property
     def PrivateZone(self):
+        """私有域详情
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.PrivateZone`
+        """
         return self._PrivateZone
 
     @PrivateZone.setter
@@ -2134,6 +3523,9 @@ class DescribePrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2171,6 +3563,9 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def ServiceStatus(self):
+        """私有域解析服务开通状态。ENABLED已开通，DISABLED未开通
+        :rtype: str
+        """
         return self._ServiceStatus
 
     @ServiceStatus.setter
@@ -2179,6 +3574,9 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2214,6 +3612,9 @@ class DescribeQuotaUsageResponse(AbstractModel):
 
     @property
     def TldQuota(self):
+        """Tld额度使用情况
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.TldQuota`
+        """
         return self._TldQuota
 
     @TldQuota.setter
@@ -2222,6 +3623,9 @@ class DescribeQuotaUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2256,6 +3660,9 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def TimeRangeBegin(self):
+        """请求量统计起始时间，格式：2020-11-22 00:00:00
+        :rtype: str
+        """
         return self._TimeRangeBegin
 
     @TimeRangeBegin.setter
@@ -2264,6 +3671,9 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """筛选参数：
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2272,6 +3682,9 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def TimeRangeEnd(self):
+        """请求量统计结束时间，格式：2020-11-22 23:59:59
+        :rtype: str
+        """
         return self._TimeRangeEnd
 
     @TimeRangeEnd.setter
@@ -2318,6 +3731,9 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """请求量统计表
+        :rtype: list of MetricData
+        """
         return self._Data
 
     @Data.setter
@@ -2326,6 +3742,9 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def Interval(self):
+        """请求量单位时间: Day：天，Hour：小时
+        :rtype: str
+        """
         return self._Interval
 
     @Interval.setter
@@ -2334,6 +3753,9 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2350,6 +3772,126 @@ class DescribeRequestDataResponse(AbstractModel):
                 self._Data.append(obj)
         self._Interval = params.get("Interval")
         self._RequestId = params.get("RequestId")
+
+
+class EndPointInfo(AbstractModel):
+    """终端节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndPointId: 终端节点ID
+        :type EndPointId: str
+        :param _EndPointName: 终端节点名称
+        :type EndPointName: str
+        :param _EndPointServiceId: 终端节点服务ID
+        :type EndPointServiceId: str
+        :param _EndPointVipSet: 终端节点VIP列表
+        :type EndPointVipSet: list of str
+        :param _RegionCode: ap-guangzhou
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCode: str
+        :param _Tags: 标签键值对集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        """
+        self._EndPointId = None
+        self._EndPointName = None
+        self._EndPointServiceId = None
+        self._EndPointVipSet = None
+        self._RegionCode = None
+        self._Tags = None
+
+    @property
+    def EndPointId(self):
+        """终端节点ID
+        :rtype: str
+        """
+        return self._EndPointId
+
+    @EndPointId.setter
+    def EndPointId(self, EndPointId):
+        self._EndPointId = EndPointId
+
+    @property
+    def EndPointName(self):
+        """终端节点名称
+        :rtype: str
+        """
+        return self._EndPointName
+
+    @EndPointName.setter
+    def EndPointName(self, EndPointName):
+        self._EndPointName = EndPointName
+
+    @property
+    def EndPointServiceId(self):
+        """终端节点服务ID
+        :rtype: str
+        """
+        return self._EndPointServiceId
+
+    @EndPointServiceId.setter
+    def EndPointServiceId(self, EndPointServiceId):
+        self._EndPointServiceId = EndPointServiceId
+
+    @property
+    def EndPointVipSet(self):
+        """终端节点VIP列表
+        :rtype: list of str
+        """
+        return self._EndPointVipSet
+
+    @EndPointVipSet.setter
+    def EndPointVipSet(self, EndPointVipSet):
+        self._EndPointVipSet = EndPointVipSet
+
+    @property
+    def RegionCode(self):
+        """ap-guangzhou
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def Tags(self):
+        """标签键值对集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._EndPointId = params.get("EndPointId")
+        self._EndPointName = params.get("EndPointName")
+        self._EndPointServiceId = params.get("EndPointServiceId")
+        self._EndPointVipSet = params.get("EndPointVipSet")
+        self._RegionCode = params.get("RegionCode")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Filter(AbstractModel):
@@ -2369,6 +3911,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """参数名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2377,6 +3922,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """参数值数组
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2417,6 +3965,9 @@ class FlowUsage(AbstractModel):
 
     @property
     def FlowType(self):
+        """流量包类型：ZONE 私有域；TRAFFIC 解析流量包
+        :rtype: str
+        """
         return self._FlowType
 
     @FlowType.setter
@@ -2425,6 +3976,9 @@ class FlowUsage(AbstractModel):
 
     @property
     def TotalQuantity(self):
+        """流量包总额度
+        :rtype: int
+        """
         return self._TotalQuantity
 
     @TotalQuantity.setter
@@ -2433,6 +3987,9 @@ class FlowUsage(AbstractModel):
 
     @property
     def AvailableQuantity(self):
+        """流量包可用额度
+        :rtype: int
+        """
         return self._AvailableQuantity
 
     @AvailableQuantity.setter
@@ -2444,6 +4001,221 @@ class FlowUsage(AbstractModel):
         self._FlowType = params.get("FlowType")
         self._TotalQuantity = params.get("TotalQuantity")
         self._AvailableQuantity = params.get("AvailableQuantity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForwardRule(AbstractModel):
+    """转发规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 私有域名
+        :type Domain: str
+        :param _RuleName: 转发规则名称
+        :type RuleName: str
+        :param _RuleId: 规则id
+        :type RuleId: str
+        :param _RuleType: 转发规则类型：云上到云下DOWN、云下到云上DOWN
+        :type RuleType: str
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param _UpdatedAt: 更新时间
+        :type UpdatedAt: str
+        :param _EndPointName: 终端节点名称
+        :type EndPointName: str
+        :param _EndPointId: 终端节点ID
+        :type EndPointId: str
+        :param _ForwardAddress: 转发地址
+        :type ForwardAddress: list of str
+        :param _VpcSet: 私有域绑定的vpc列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcSet: list of VpcInfo
+        :param _ZoneId: 绑定的私有域ID
+        :type ZoneId: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        """
+        self._Domain = None
+        self._RuleName = None
+        self._RuleId = None
+        self._RuleType = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._EndPointName = None
+        self._EndPointId = None
+        self._ForwardAddress = None
+        self._VpcSet = None
+        self._ZoneId = None
+        self._Tags = None
+
+    @property
+    def Domain(self):
+        """私有域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleName(self):
+        """转发规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleId(self):
+        """规则id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleType(self):
+        """转发规则类型：云上到云下DOWN、云下到云上DOWN
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def EndPointName(self):
+        """终端节点名称
+        :rtype: str
+        """
+        return self._EndPointName
+
+    @EndPointName.setter
+    def EndPointName(self, EndPointName):
+        self._EndPointName = EndPointName
+
+    @property
+    def EndPointId(self):
+        """终端节点ID
+        :rtype: str
+        """
+        return self._EndPointId
+
+    @EndPointId.setter
+    def EndPointId(self, EndPointId):
+        self._EndPointId = EndPointId
+
+    @property
+    def ForwardAddress(self):
+        """转发地址
+        :rtype: list of str
+        """
+        return self._ForwardAddress
+
+    @ForwardAddress.setter
+    def ForwardAddress(self, ForwardAddress):
+        self._ForwardAddress = ForwardAddress
+
+    @property
+    def VpcSet(self):
+        """私有域绑定的vpc列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VpcInfo
+        """
+        return self._VpcSet
+
+    @VpcSet.setter
+    def VpcSet(self, VpcSet):
+        self._VpcSet = VpcSet
+
+    @property
+    def ZoneId(self):
+        """绑定的私有域ID
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleName = params.get("RuleName")
+        self._RuleId = params.get("RuleId")
+        self._RuleType = params.get("RuleType")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._EndPointName = params.get("EndPointName")
+        self._EndPointId = params.get("EndPointId")
+        self._ForwardAddress = params.get("ForwardAddress")
+        if params.get("VpcSet") is not None:
+            self._VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcSet.append(obj)
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2478,6 +4250,9 @@ class MetricData(AbstractModel):
 
     @property
     def Resource(self):
+        """资源描述
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -2486,6 +4261,9 @@ class MetricData(AbstractModel):
 
     @property
     def Metric(self):
+        """表名
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -2494,6 +4272,9 @@ class MetricData(AbstractModel):
 
     @property
     def DataSet(self):
+        """表数据
+        :rtype: list of DatePoint
+        """
         return self._DataSet
 
     @DataSet.setter
@@ -2502,6 +4283,10 @@ class MetricData(AbstractModel):
 
     @property
     def MetricCount(self):
+        """查询范围内的请求总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MetricCount
 
     @MetricCount.setter
@@ -2527,6 +4312,100 @@ class MetricData(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyForwardRuleRequest(AbstractModel):
+    """ModifyForwardRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 转发规则ID
+        :type RuleId: str
+        :param _RuleName: 转发规则名称
+        :type RuleName: str
+        :param _EndPointId: 终端节点ID
+        :type EndPointId: str
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._EndPointId = None
+
+    @property
+    def RuleId(self):
+        """转发规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """转发规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def EndPointId(self):
+        """终端节点ID
+        :rtype: str
+        """
+        return self._EndPointId
+
+    @EndPointId.setter
+    def EndPointId(self, EndPointId):
+        self._EndPointId = EndPointId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._EndPointId = params.get("EndPointId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyForwardRuleResponse(AbstractModel):
+    """ModifyForwardRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyPrivateZoneRecordRequest(AbstractModel):
@@ -2564,6 +4443,9 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2572,6 +4454,9 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
+        """记录ID
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -2580,6 +4465,9 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
+        """记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :rtype: str
+        """
         return self._RecordType
 
     @RecordType.setter
@@ -2588,6 +4476,9 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
+        """子域名，例如 "www", "m", "@"
+        :rtype: str
+        """
         return self._SubDomain
 
     @SubDomain.setter
@@ -2596,6 +4487,9 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordValue(self):
+        """记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
+        :rtype: str
+        """
         return self._RecordValue
 
     @RecordValue.setter
@@ -2604,6 +4498,9 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
+        """记录权重，值为1-100
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -2612,6 +4509,9 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def MX(self):
+        """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+        :rtype: int
+        """
         return self._MX
 
     @MX.setter
@@ -2620,6 +4520,9 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
+        """记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        :rtype: int
+        """
         return self._TTL
 
     @TTL.setter
@@ -2660,6 +4563,9 @@ class ModifyPrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2694,6 +4600,9 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2702,6 +4611,9 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2710,6 +4622,9 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def DnsForwardStatus(self):
+        """是否开启子域名递归, ENABLED， DISABLED
+        :rtype: str
+        """
         return self._DnsForwardStatus
 
     @DnsForwardStatus.setter
@@ -2718,6 +4633,9 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def CnameSpeedupStatus(self):
+        """是否开启CNAME加速：ENABLED， DISABLED
+        :rtype: str
+        """
         return self._CnameSpeedupStatus
 
     @CnameSpeedupStatus.setter
@@ -2754,6 +4672,9 @@ class ModifyPrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2785,6 +4706,9 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2793,6 +4717,9 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def VpcSet(self):
+        """私有域关联的全部VPC列表
+        :rtype: list of VpcInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -2801,6 +4728,9 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
+        """私有域账号关联的全部VPC列表
+        :rtype: list of AccountVpcInfo
+        """
         return self._AccountVpcSet
 
     @AccountVpcSet.setter
@@ -2855,6 +4785,9 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID, zone-xxxxxx
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2863,6 +4796,9 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def VpcSet(self):
+        """解析域关联的VPC列表
+        :rtype: list of VpcInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -2871,6 +4807,9 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def AccountVpcSet(self):
+        """私有域账号关联的全部VPC列表
+        :rtype: list of AccountVpcInfoOutput
+        """
         return self._AccountVpcSet
 
     @AccountVpcSet.setter
@@ -2879,6 +4818,9 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2923,6 +4865,9 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2931,6 +4876,9 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def RecordIds(self):
+        """解析记录ID列表
+        :rtype: list of int
+        """
         return self._RecordIds
 
     @RecordIds.setter
@@ -2939,6 +4887,9 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """enabled：生效，disabled：失效
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2983,6 +4934,9 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2991,6 +4945,9 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def RecordIds(self):
+        """解析记录ID列表
+        :rtype: list of int
+        """
         return self._RecordIds
 
     @RecordIds.setter
@@ -2999,6 +4956,9 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """enabled：生效，disabled：失效
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3007,6 +4967,9 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3041,6 +5004,9 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Uin(self):
+        """主账号Uin
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -3049,6 +5015,9 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Account(self):
+        """主账号名称
+        :rtype: str
+        """
         return self._Account
 
     @Account.setter
@@ -3057,6 +5026,9 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Nickname(self):
+        """用户昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -3155,6 +5127,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域id: zone-xxxxxxxx
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3163,6 +5138,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """域名所有者uin
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -3171,6 +5149,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def Domain(self):
+        """私有域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3179,6 +5160,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -3187,6 +5171,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def UpdatedOn(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdatedOn
 
     @UpdatedOn.setter
@@ -3195,6 +5182,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def RecordCount(self):
+        """记录数
+        :rtype: int
+        """
         return self._RecordCount
 
     @RecordCount.setter
@@ -3203,6 +5193,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -3211,6 +5205,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def VpcSet(self):
+        """绑定的Vpc列表
+        :rtype: list of VpcInfo
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -3219,6 +5216,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def Status(self):
+        """私有域绑定VPC状态，未关联vpc：SUSPEND，已关联VPC：ENABLED
+，关联VPC失败：FAILED
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3227,6 +5228,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def DnsForwardStatus(self):
+        """域名递归解析状态：开通：ENABLED, 关闭，DISABLED
+        :rtype: str
+        """
         return self._DnsForwardStatus
 
     @DnsForwardStatus.setter
@@ -3235,6 +5239,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def Tags(self):
+        """标签键值对集合
+        :rtype: list of TagInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -3243,6 +5250,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def AccountVpcSet(self):
+        """绑定的关联账号的vpc列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AccountVpcInfoOutput
+        """
         return self._AccountVpcSet
 
     @AccountVpcSet.setter
@@ -3251,6 +5262,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def IsCustomTld(self):
+        """是否自定义TLD
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsCustomTld
 
     @IsCustomTld.setter
@@ -3259,6 +5274,9 @@ class PrivateZone(AbstractModel):
 
     @property
     def CnameSpeedupStatus(self):
+        """CNAME加速状态：开通：ENABLED, 关闭，DISABLED
+        :rtype: str
+        """
         return self._CnameSpeedupStatus
 
     @CnameSpeedupStatus.setter
@@ -3267,6 +5285,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def ForwardRuleName(self):
+        """转发规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ForwardRuleName
 
     @ForwardRuleName.setter
@@ -3275,6 +5297,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def ForwardRuleType(self):
+        """转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ForwardRuleType
 
     @ForwardRuleType.setter
@@ -3283,6 +5309,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def ForwardAddress(self):
+        """转发的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ForwardAddress
 
     @ForwardAddress.setter
@@ -3291,6 +5321,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def EndPointName(self):
+        """终端节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndPointName
 
     @EndPointName.setter
@@ -3299,6 +5333,10 @@ class PrivateZone(AbstractModel):
 
     @property
     def DeletedVpcSet(self):
+        """已删除的vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VpcInfo
+        """
         return self._DeletedVpcSet
 
     @DeletedVpcSet.setter
@@ -3410,6 +5448,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def RecordId(self):
+        """记录id
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -3418,6 +5459,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def ZoneId(self):
+        """私有域id: zone-xxxxxxxx
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3426,6 +5470,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def SubDomain(self):
+        """子域名
+        :rtype: str
+        """
         return self._SubDomain
 
     @SubDomain.setter
@@ -3434,6 +5481,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def RecordType(self):
+        """记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :rtype: str
+        """
         return self._RecordType
 
     @RecordType.setter
@@ -3442,6 +5492,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def RecordValue(self):
+        """记录值
+        :rtype: str
+        """
         return self._RecordValue
 
     @RecordValue.setter
@@ -3450,6 +5503,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def TTL(self):
+        """记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        :rtype: int
+        """
         return self._TTL
 
     @TTL.setter
@@ -3458,6 +5514,10 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def MX(self):
+        """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MX
 
     @MX.setter
@@ -3466,6 +5526,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Status(self):
+        """记录状态：ENABLED
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3474,6 +5537,10 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Weight(self):
+        """记录权重，值为1-100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -3482,6 +5549,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """记录创建时间
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -3490,6 +5560,9 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def UpdatedOn(self):
+        """记录更新时间
+        :rtype: str
+        """
         return self._UpdatedOn
 
     @UpdatedOn.setter
@@ -3498,6 +5571,10 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Extra(self):
+        """附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3506,6 +5583,10 @@ class PrivateZoneRecord(AbstractModel):
 
     @property
     def Enabled(self):
+        """0暂停，1启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -3551,6 +5632,9 @@ class QueryAsyncBindVpcStatusRequest(AbstractModel):
 
     @property
     def UniqId(self):
+        """唯一ID
+        :rtype: str
+        """
         return self._UniqId
 
     @UniqId.setter
@@ -3592,6 +5676,10 @@ failed 执行失败
 
     @property
     def Status(self):
+        """processing 处理中，success 执行成功，
+failed 执行失败
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3600,6 +5688,10 @@ failed 执行失败
 
     @property
     def ErrorMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -3608,6 +5700,9 @@ failed 执行失败
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3619,6 +5714,108 @@ failed 执行失败
         self._Status = params.get("Status")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
+
+
+class RegionInfo(AbstractModel):
+    """地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionCode: 地域编码
+        :type RegionCode: str
+        :param _CnName: 地域中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CnName: str
+        :param _EnName: 地域英文名
+        :type EnName: str
+        :param _RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param _AvailableZoneNum: 可用区数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableZoneNum: int
+        """
+        self._RegionCode = None
+        self._CnName = None
+        self._EnName = None
+        self._RegionId = None
+        self._AvailableZoneNum = None
+
+    @property
+    def RegionCode(self):
+        """地域编码
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def CnName(self):
+        """地域中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CnName
+
+    @CnName.setter
+    def CnName(self, CnName):
+        self._CnName = CnName
+
+    @property
+    def EnName(self):
+        """地域英文名
+        :rtype: str
+        """
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def RegionId(self):
+        """地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def AvailableZoneNum(self):
+        """可用区数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AvailableZoneNum
+
+    @AvailableZoneNum.setter
+    def AvailableZoneNum(self, AvailableZoneNum):
+        self._AvailableZoneNum = AvailableZoneNum
+
+
+    def _deserialize(self, params):
+        self._RegionCode = params.get("RegionCode")
+        self._CnName = params.get("CnName")
+        self._EnName = params.get("EnName")
+        self._RegionId = params.get("RegionId")
+        self._AvailableZoneNum = params.get("AvailableZoneNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubscribePrivateZoneServiceRequest(AbstractModel):
@@ -3644,6 +5841,9 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def ServiceStatus(self):
+        """私有域解析服务开通状态
+        :rtype: str
+        """
         return self._ServiceStatus
 
     @ServiceStatus.setter
@@ -3652,6 +5852,9 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3681,6 +5884,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -3689,6 +5895,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -3732,6 +5941,9 @@ class TldQuota(AbstractModel):
 
     @property
     def Total(self):
+        """总共额度
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3740,6 +5952,9 @@ class TldQuota(AbstractModel):
 
     @property
     def Used(self):
+        """已使用额度
+        :rtype: int
+        """
         return self._Used
 
     @Used.setter
@@ -3748,6 +5963,9 @@ class TldQuota(AbstractModel):
 
     @property
     def Stock(self):
+        """库存
+        :rtype: int
+        """
         return self._Stock
 
     @Stock.setter
@@ -3756,6 +5974,9 @@ class TldQuota(AbstractModel):
 
     @property
     def Quota(self):
+        """用户限额
+        :rtype: int
+        """
         return self._Quota
 
     @Quota.setter
@@ -3795,6 +6016,9 @@ class VpcInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """VpcId： vpc-xadsafsdasd
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -3803,6 +6027,9 @@ class VpcInfo(AbstractModel):
 
     @property
     def Region(self):
+        """Vpc所属地区: ap-guangzhou, ap-shanghai
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter

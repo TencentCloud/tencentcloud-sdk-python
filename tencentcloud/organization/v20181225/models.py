@@ -32,6 +32,9 @@ class AcceptOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Id(self):
+        """邀请ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -65,6 +68,9 @@ class AcceptOrganizationInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -93,6 +99,9 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """父组织单元ID
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -101,6 +110,9 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """组织单元名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -138,6 +150,9 @@ class AddOrganizationNodeResponse(AbstractModel):
 
     @property
     def NodeId(self):
+        """组织单元ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -146,6 +161,9 @@ class AddOrganizationNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -172,6 +190,9 @@ class CancelOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Id(self):
+        """邀请ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -205,6 +226,9 @@ class CancelOrganizationInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -230,6 +254,9 @@ class CreateOrganizationRequest(AbstractModel):
 
     @property
     def OrgType(self):
+        """组织类型（目前固定为1）
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -275,6 +302,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def OrgId(self):
+        """企业组织ID
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -283,6 +313,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def Nickname(self):
+        """创建者昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -291,6 +324,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def Mail(self):
+        """创建者邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -299,6 +335,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def OrgType(self):
+        """组织类型
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -307,6 +346,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -339,6 +381,9 @@ class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """被删除成员UIN
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -347,6 +392,9 @@ class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """组织单元ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -381,6 +429,9 @@ class DeleteOrganizationMemberFromNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -406,6 +457,9 @@ class DeleteOrganizationMembersRequest(AbstractModel):
 
     @property
     def Uins(self):
+        """被删除成员的UIN列表
+        :rtype: list of int non-negative
+        """
         return self._Uins
 
     @Uins.setter
@@ -439,6 +493,9 @@ class DeleteOrganizationMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -464,6 +521,9 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
     @property
     def NodeIds(self):
+        """组织单元ID列表
+        :rtype: list of int non-negative
+        """
         return self._NodeIds
 
     @NodeIds.setter
@@ -497,6 +557,9 @@ class DeleteOrganizationNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -528,6 +591,9 @@ class DeleteOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -553,6 +619,9 @@ class DenyOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Id(self):
+        """邀请ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -586,6 +655,9 @@ class DenyOrganizationInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -611,6 +683,9 @@ class GetOrganizationMemberRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """组织成员UIN
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -665,6 +740,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """组织成员UIN
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -673,6 +751,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def Name(self):
+        """组织成员名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -681,6 +762,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -689,6 +773,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def JoinTime(self):
+        """加入时间
+        :rtype: str
+        """
         return self._JoinTime
 
     @JoinTime.setter
@@ -697,6 +784,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def NodeId(self):
+        """组织单元ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -705,6 +795,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def NodeName(self):
+        """组织单元名称
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -713,6 +806,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """父组织单元ID
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -721,6 +817,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -777,6 +876,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def OrgId(self):
+        """企业组织ID
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -785,6 +887,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def HostUin(self):
+        """创建者UIN
+        :rtype: int
+        """
         return self._HostUin
 
     @HostUin.setter
@@ -793,6 +898,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def Nickname(self):
+        """创建者昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -801,6 +909,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def Mail(self):
+        """创建者邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -809,6 +920,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def OrgType(self):
+        """企业组织类型
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -817,6 +931,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def IsEmpty(self):
+        """是否为空
+        :rtype: int
+        """
         return self._IsEmpty
 
     @IsEmpty.setter
@@ -825,6 +942,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -862,6 +982,9 @@ class ListOrganizationInvitationsRequest(AbstractModel):
 
     @property
     def Invited(self):
+        """是否被邀请。1：被邀请，0：发出的邀请
+        :rtype: int
+        """
         return self._Invited
 
     @Invited.setter
@@ -870,6 +993,9 @@ class ListOrganizationInvitationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -878,6 +1004,9 @@ class ListOrganizationInvitationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -919,6 +1048,9 @@ class ListOrganizationInvitationsResponse(AbstractModel):
 
     @property
     def Invitations(self):
+        """邀请信息列表
+        :rtype: list of OrgInvitation
+        """
         return self._Invitations
 
     @Invitations.setter
@@ -927,6 +1059,9 @@ class ListOrganizationInvitationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -935,6 +1070,9 @@ class ListOrganizationInvitationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -970,6 +1108,9 @@ class ListOrganizationMembersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -978,6 +1119,9 @@ class ListOrganizationMembersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1018,6 +1162,9 @@ class ListOrganizationMembersResponse(AbstractModel):
 
     @property
     def Members(self):
+        """成员列表
+        :rtype: list of OrgMember
+        """
         return self._Members
 
     @Members.setter
@@ -1026,6 +1173,9 @@ class ListOrganizationMembersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1034,6 +1184,9 @@ class ListOrganizationMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1072,6 +1225,9 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """企业组织单元ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1080,6 +1236,9 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1088,6 +1247,9 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1129,6 +1291,9 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1137,6 +1302,9 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
 
     @property
     def Members(self):
+        """成员列表
+        :rtype: list of OrgMember
+        """
         return self._Members
 
     @Members.setter
@@ -1145,6 +1313,9 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1186,6 +1357,9 @@ class ListOrganizationNodesResponse(AbstractModel):
 
     @property
     def Nodes(self):
+        """企业组织单元列表
+        :rtype: list of OrgNode
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -1194,6 +1368,9 @@ class ListOrganizationNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1228,6 +1405,9 @@ class MoveOrganizationMembersToNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """组织单元ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1236,6 +1416,9 @@ class MoveOrganizationMembersToNodeRequest(AbstractModel):
 
     @property
     def Uins(self):
+        """成员UIN列表
+        :rtype: list of int non-negative
+        """
         return self._Uins
 
     @Uins.setter
@@ -1270,6 +1453,9 @@ class MoveOrganizationMembersToNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1325,6 +1511,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Id(self):
+        """邀请ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1333,6 +1522,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Uin(self):
+        """被邀请UIN
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -1341,6 +1533,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def HostUin(self):
+        """创建者UIN
+        :rtype: int
+        """
         return self._HostUin
 
     @HostUin.setter
@@ -1349,6 +1544,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def HostName(self):
+        """创建者名称
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -1357,6 +1555,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def HostMail(self):
+        """创建者邮箱
+        :rtype: str
+        """
         return self._HostMail
 
     @HostMail.setter
@@ -1365,6 +1566,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Status(self):
+        """邀请状态。-1：已过期，0：正常，1：已接受，2：已失效，3：已取消
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1373,6 +1577,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1381,6 +1588,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1389,6 +1599,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def OrgType(self):
+        """企业组织类型
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -1397,6 +1610,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def InviteTime(self):
+        """邀请时间
+        :rtype: str
+        """
         return self._InviteTime
 
     @InviteTime.setter
@@ -1405,6 +1621,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1457,6 +1676,9 @@ class OrgMember(AbstractModel):
 
     @property
     def Uin(self):
+        """UIN
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -1465,6 +1687,9 @@ class OrgMember(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1473,6 +1698,9 @@ class OrgMember(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1481,6 +1709,9 @@ class OrgMember(AbstractModel):
 
     @property
     def JoinTime(self):
+        """加入时间
+        :rtype: str
+        """
         return self._JoinTime
 
     @JoinTime.setter
@@ -1526,6 +1757,9 @@ class OrgNode(AbstractModel):
 
     @property
     def NodeId(self):
+        """组织单元ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1534,6 +1768,9 @@ class OrgNode(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1542,6 +1779,9 @@ class OrgNode(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """父单元ID
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -1550,6 +1790,9 @@ class OrgNode(AbstractModel):
 
     @property
     def MemberCount(self):
+        """成员数量
+        :rtype: int
+        """
         return self._MemberCount
 
     @MemberCount.setter
@@ -1586,6 +1829,9 @@ class QuitOrganizationRequest(AbstractModel):
 
     @property
     def OrgId(self):
+        """企业组织ID
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -1619,6 +1865,9 @@ class QuitOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1650,6 +1899,9 @@ class SendOrganizationInvitationRequest(AbstractModel):
 
     @property
     def InviteUin(self):
+        """被邀请账户UIN
+        :rtype: int
+        """
         return self._InviteUin
 
     @InviteUin.setter
@@ -1658,6 +1910,9 @@ class SendOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1666,6 +1921,9 @@ class SendOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1701,6 +1959,9 @@ class SendOrganizationInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1732,6 +1993,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员UIN
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -1740,6 +2004,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1748,6 +2015,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1783,6 +2053,9 @@ class UpdateOrganizationMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1814,6 +2087,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """企业组织单元ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1822,6 +2098,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1830,6 +2109,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """父单元ID
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -1865,6 +2147,9 @@ class UpdateOrganizationNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

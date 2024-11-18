@@ -25,9 +25,9 @@ class AuthorizationPolicyItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 规则id
+        :param _Id: 规则ID
         :type Id: int
-        :param _InstanceId: 集群id
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _PolicyName: 规则名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -53,13 +53,15 @@ class AuthorizationPolicyItem(AbstractModel):
         :param _Username: 用户
 注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
-        :param _Ip: ip地址
+        :param _Ip: IP地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Qos: 0，1，2
 注意：此字段可能返回 null，表示取不到有效值。
         :type Qos: str
-        :param _Retain: 1、2、3
+        :param _Retain: 1：表示匹配retain消息
+2：表示匹配非retain消息
+3：表示匹配retain和非retain消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Retain: int
         :param _Remark: 描述
@@ -89,6 +91,9 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -97,6 +102,9 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -105,6 +113,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def PolicyName(self):
+        """规则名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -113,6 +125,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Version(self):
+        """规则语法版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -121,6 +137,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Priority(self):
+        """越小越优先
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -129,6 +149,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Effect(self):
+        """allow/deny
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Effect
 
     @Effect.setter
@@ -137,6 +161,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Actions(self):
+        """connect、pub、sub
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Actions
 
     @Actions.setter
@@ -145,6 +173,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Resources(self):
+        """资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resources
 
     @Resources.setter
@@ -153,6 +185,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def ClientId(self):
+        """client
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClientId
 
     @ClientId.setter
@@ -161,6 +197,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Username(self):
+        """用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -169,6 +209,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Ip(self):
+        """IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -177,6 +221,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Qos(self):
+        """0，1，2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Qos
 
     @Qos.setter
@@ -185,6 +233,12 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Retain(self):
+        """1：表示匹配retain消息
+2：表示匹配非retain消息
+3：表示匹配retain和非retain消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Retain
 
     @Retain.setter
@@ -193,6 +247,10 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def Remark(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -201,6 +259,9 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """1713164969433
+        :rtype: int
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -209,6 +270,9 @@ class AuthorizationPolicyItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """1713164969433
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -262,6 +326,10 @@ class AuthorizationPolicyPriority(AbstractModel):
 
     @property
     def Id(self):
+        """策略id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -270,6 +338,10 @@ class AuthorizationPolicyPriority(AbstractModel):
 
     @property
     def Priority(self):
+        """优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -319,7 +391,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
         :type Username: str
         :param _ClientId: 客户端
         :type ClientId: str
-        :param _Ip: ip
+        :param _Ip: IP地址
         :type Ip: str
         :param _Remark: 备注信息
         :type Remark: str
@@ -340,6 +412,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -348,6 +423,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -356,6 +434,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def PolicyVersion(self):
+        """策略版本
+        :rtype: int
+        """
         return self._PolicyVersion
 
     @PolicyVersion.setter
@@ -364,6 +445,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Priority(self):
+        """策略优先级，越小越优先
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -372,6 +456,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Effect(self):
+        """allow、deny
+        :rtype: str
+        """
         return self._Effect
 
     @Effect.setter
@@ -380,6 +467,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Actions(self):
+        """connect、pub、sub
+        :rtype: str
+        """
         return self._Actions
 
     @Actions.setter
@@ -388,6 +478,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Retain(self):
+        """1,匹配保留消息；2,匹配非保留消息，3.匹配所有消息
+        :rtype: int
+        """
         return self._Retain
 
     @Retain.setter
@@ -396,6 +489,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Qos(self):
+        """0、1、2
+        :rtype: str
+        """
         return self._Qos
 
     @Qos.setter
@@ -404,6 +500,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Resources(self):
+        """资源
+        :rtype: str
+        """
         return self._Resources
 
     @Resources.setter
@@ -412,6 +511,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Username(self):
+        """用户名
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -420,6 +522,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def ClientId(self):
+        """客户端
+        :rtype: str
+        """
         return self._ClientId
 
     @ClientId.setter
@@ -428,6 +533,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """IP地址
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -436,6 +544,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -481,6 +592,9 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -524,6 +638,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -532,6 +649,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def Endpoint(self):
+        """jwks端点
+        :rtype: str
+        """
         return self._Endpoint
 
     @Endpoint.setter
@@ -540,6 +660,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def RefreshInterval(self):
+        """jwks刷新间隔,单位：秒
+        :rtype: int
+        """
         return self._RefreshInterval
 
     @RefreshInterval.setter
@@ -548,6 +671,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def Text(self):
+        """jwks文本
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -556,6 +682,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def Status(self):
+        """认证器是否开启：open-启用；close-关闭
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -564,6 +693,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """说明
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -572,6 +704,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def From(self):
+        """设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -611,6 +746,9 @@ class CreateJWKSAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -654,6 +792,9 @@ class CreateJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -662,6 +803,9 @@ class CreateJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """算法：hmac-based，public-key
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -670,6 +814,9 @@ class CreateJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def From(self):
+        """设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -678,6 +825,9 @@ class CreateJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def Secret(self):
+        """密码
+        :rtype: str
+        """
         return self._Secret
 
     @Secret.setter
@@ -686,6 +836,9 @@ class CreateJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def PublicKey(self):
+        """公钥
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -694,6 +847,9 @@ class CreateJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def Status(self):
+        """认证器是否开启：open-启用；close-关闭
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -702,6 +858,9 @@ class CreateJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """说明
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -741,6 +900,9 @@ class CreateJWTAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -772,6 +934,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -780,6 +945,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """主题
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -788,6 +956,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -829,6 +1000,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -837,6 +1011,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
+        """主题
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -845,6 +1022,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -875,6 +1055,9 @@ class DeleteAuthenticatorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -883,6 +1066,9 @@ class DeleteAuthenticatorRequest(AbstractModel):
 
     @property
     def Type(self):
+        """认证器类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -917,6 +1103,9 @@ class DeleteAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -945,6 +1134,9 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -953,6 +1145,9 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Id(self):
+        """策略规则id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -987,6 +1182,9 @@ class DeleteAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1015,6 +1213,9 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1023,6 +1224,9 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """主题
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -1057,6 +1261,9 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1085,6 +1292,9 @@ class DescribeAuthenticatorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1093,6 +1303,9 @@ class DescribeAuthenticatorRequest(AbstractModel):
 
     @property
     def Type(self):
+        """认证器类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1130,6 +1343,9 @@ class DescribeAuthenticatorResponse(AbstractModel):
 
     @property
     def Authenticators(self):
+        """集群认证器列表
+        :rtype: list of MQTTAuthenticatorItem
+        """
         return self._Authenticators
 
     @Authenticators.setter
@@ -1138,6 +1354,9 @@ class DescribeAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1169,6 +1388,9 @@ class DescribeAuthorizationPoliciesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1205,6 +1427,9 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """规则
+        :rtype: list of AuthorizationPolicyItem
+        """
         return self._Data
 
     @Data.setter
@@ -1213,6 +1438,9 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1253,6 +1481,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询条件列表
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1261,6 +1492,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1269,6 +1503,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1277,6 +1514,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤器
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1330,6 +1570,10 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1338,6 +1582,9 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """实例列表
+        :rtype: list of MQTTInstanceItem
+        """
         return self._Data
 
     @Data.setter
@@ -1346,6 +1593,9 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1378,6 +1628,9 @@ class DescribeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1486,6 +1739,13 @@ PLATINUM 铂金版
 
     @property
     def InstanceType(self):
+        """实例类型，
+EXPERIMENT 体验版
+BASIC 基础版
+PRO  专业版
+PLATINUM 铂金版
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -1494,6 +1754,9 @@ PLATINUM 铂金版
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1502,6 +1765,9 @@ PLATINUM 铂金版
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1510,6 +1776,9 @@ PLATINUM 铂金版
 
     @property
     def TopicNum(self):
+        """主题数量
+        :rtype: int
+        """
         return self._TopicNum
 
     @TopicNum.setter
@@ -1518,6 +1787,9 @@ PLATINUM 铂金版
 
     @property
     def TopicNumLimit(self):
+        """实例最大主题数量
+        :rtype: int
+        """
         return self._TopicNumLimit
 
     @TopicNumLimit.setter
@@ -1526,6 +1798,9 @@ PLATINUM 铂金版
 
     @property
     def TpsLimit(self):
+        """TPS限流值
+        :rtype: int
+        """
         return self._TpsLimit
 
     @TpsLimit.setter
@@ -1534,6 +1809,9 @@ PLATINUM 铂金版
 
     @property
     def CreatedTime(self):
+        """创建时间，秒为单位
+        :rtype: int
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -1542,6 +1820,9 @@ PLATINUM 铂金版
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1550,6 +1831,9 @@ PLATINUM 铂金版
 
     @property
     def InstanceStatus(self):
+        """实例状态
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -1558,6 +1842,9 @@ PLATINUM 铂金版
 
     @property
     def SkuCode(self):
+        """实例规格
+        :rtype: str
+        """
         return self._SkuCode
 
     @SkuCode.setter
@@ -1566,6 +1853,9 @@ PLATINUM 铂金版
 
     @property
     def MaxSubscriptionPerClient(self):
+        """单客户端最大订阅数
+        :rtype: int
+        """
         return self._MaxSubscriptionPerClient
 
     @MaxSubscriptionPerClient.setter
@@ -1574,6 +1864,9 @@ PLATINUM 铂金版
 
     @property
     def AuthorizationPolicyLimit(self):
+        """授权规则条数
+        :rtype: int
+        """
         return self._AuthorizationPolicyLimit
 
     @AuthorizationPolicyLimit.setter
@@ -1582,6 +1875,9 @@ PLATINUM 铂金版
 
     @property
     def ClientNumLimit(self):
+        """客户端数量上限
+        :rtype: int
+        """
         return self._ClientNumLimit
 
     @ClientNumLimit.setter
@@ -1590,6 +1886,9 @@ PLATINUM 铂金版
 
     @property
     def DeviceCertificateProvisionType(self):
+        """客户端证书注册方式：JITP，API
+        :rtype: str
+        """
         return self._DeviceCertificateProvisionType
 
     @DeviceCertificateProvisionType.setter
@@ -1598,6 +1897,9 @@ PLATINUM 铂金版
 
     @property
     def AutomaticActivation(self):
+        """自动注册设备证书时是否自动激活
+        :rtype: bool
+        """
         return self._AutomaticActivation
 
     @AutomaticActivation.setter
@@ -1606,6 +1908,9 @@ PLATINUM 铂金版
 
     @property
     def RenewFlag(self):
+        """是否自动续费
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -1614,6 +1919,9 @@ PLATINUM 铂金版
 
     @property
     def PayMode(self):
+        """计费模式， POSTPAID，按量计费 PREPAID，包年包月
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1622,6 +1930,9 @@ PLATINUM 铂金版
 
     @property
     def ExpiryTime(self):
+        """到期时间，秒为单位
+        :rtype: int
+        """
         return self._ExpiryTime
 
     @ExpiryTime.setter
@@ -1630,6 +1941,9 @@ PLATINUM 铂金版
 
     @property
     def DestroyTime(self):
+        """预销毁时间
+        :rtype: int
+        """
         return self._DestroyTime
 
     @DestroyTime.setter
@@ -1638,6 +1952,11 @@ PLATINUM 铂金版
 
     @property
     def X509Mode(self):
+        """    TLS,单向认证
+    mTLS,双向认证
+    BYOC;一机一证
+        :rtype: str
+        """
         return self._X509Mode
 
     @X509Mode.setter
@@ -1646,6 +1965,9 @@ PLATINUM 铂金版
 
     @property
     def MaxCaNum(self):
+        """最大Ca配额
+        :rtype: int
+        """
         return self._MaxCaNum
 
     @MaxCaNum.setter
@@ -1654,6 +1976,9 @@ PLATINUM 铂金版
 
     @property
     def RegistrationCode(self):
+        """证书注册码
+        :rtype: str
+        """
         return self._RegistrationCode
 
     @RegistrationCode.setter
@@ -1662,6 +1987,9 @@ PLATINUM 铂金版
 
     @property
     def MaxSubscription(self):
+        """集群最大订阅数
+        :rtype: int
+        """
         return self._MaxSubscription
 
     @MaxSubscription.setter
@@ -1670,6 +1998,9 @@ PLATINUM 铂金版
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1727,6 +2058,9 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1735,6 +2069,9 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询条件列表
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1743,6 +2080,9 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1751,6 +2091,9 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1799,6 +2142,10 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1807,6 +2154,9 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """主题列表
+        :rtype: list of MQTTTopicItem
+        """
         return self._Data
 
     @Data.setter
@@ -1815,6 +2165,9 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1850,6 +2203,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1858,6 +2214,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """主题
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -1904,6 +2263,9 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1912,6 +2274,9 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
+        """主题名称
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -1920,6 +2285,9 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1928,6 +2296,9 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间，秒为单位
+        :rtype: int
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -1936,6 +2307,9 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1968,6 +2342,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤条件名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1976,6 +2353,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤条件的值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2003,7 +2383,7 @@ class MQTTAuthenticatorItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 认证器类型
+        :param _Type: 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 BYOC：一端一证认证器
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Config: 认证器配置
@@ -2027,6 +2407,10 @@ class MQTTAuthenticatorItem(AbstractModel):
 
     @property
     def Type(self):
+        """认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 BYOC：一端一证认证器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2035,6 +2419,10 @@ class MQTTAuthenticatorItem(AbstractModel):
 
     @property
     def Config(self):
+        """认证器配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -2043,6 +2431,10 @@ class MQTTAuthenticatorItem(AbstractModel):
 
     @property
     def Status(self):
+        """认证器状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2051,6 +2443,10 @@ class MQTTAuthenticatorItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2059,6 +2455,10 @@ class MQTTAuthenticatorItem(AbstractModel):
 
     @property
     def Remark(self):
+        """说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2179,6 +2579,9 @@ DELETING，删除中
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2187,6 +2590,9 @@ DELETING，删除中
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2195,6 +2601,9 @@ DELETING，删除中
 
     @property
     def Version(self):
+        """实例版本
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -2203,6 +2612,13 @@ DELETING，删除中
 
     @property
     def InstanceType(self):
+        """实例类型，
+EXPERIMENT，体验版
+BASIC，基础版
+PRO，专业版
+PLATINUM，铂金版
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -2211,6 +2627,19 @@ DELETING，删除中
 
     @property
     def InstanceStatus(self):
+        """实例状态，
+RUNNING, 运行中
+MAINTAINING，维护中
+ABNORMAL，异常
+OVERDUE，欠费
+DESTROYED，已删除
+CREATING，创建中
+MODIFYING，变配中
+CREATE_FAILURE，创建失败
+MODIFY_FAILURE，变配失败
+DELETING，删除中
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -2219,6 +2648,9 @@ DELETING，删除中
 
     @property
     def TopicNumLimit(self):
+        """实例主题数上限
+        :rtype: int
+        """
         return self._TopicNumLimit
 
     @TopicNumLimit.setter
@@ -2227,6 +2659,10 @@ DELETING，删除中
 
     @property
     def Remark(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2235,6 +2671,9 @@ DELETING，删除中
 
     @property
     def TopicNum(self):
+        """主题数量
+        :rtype: int
+        """
         return self._TopicNum
 
     @TopicNum.setter
@@ -2243,6 +2682,9 @@ DELETING，删除中
 
     @property
     def SkuCode(self):
+        """商品规格
+        :rtype: str
+        """
         return self._SkuCode
 
     @SkuCode.setter
@@ -2251,6 +2693,10 @@ DELETING，删除中
 
     @property
     def TpsLimit(self):
+        """弹性TPS限流值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TpsLimit
 
     @TpsLimit.setter
@@ -2259,6 +2705,10 @@ DELETING，删除中
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2267,6 +2717,10 @@ DELETING，删除中
 
     @property
     def MaxSubscriptionPerClient(self):
+        """单客户端最大订阅数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxSubscriptionPerClient
 
     @MaxSubscriptionPerClient.setter
@@ -2275,6 +2729,10 @@ DELETING，删除中
 
     @property
     def ClientNumLimit(self):
+        """客户端连接数上线
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ClientNumLimit
 
     @ClientNumLimit.setter
@@ -2283,6 +2741,10 @@ DELETING，删除中
 
     @property
     def RenewFlag(self):
+        """是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -2291,6 +2753,10 @@ DELETING，删除中
 
     @property
     def PayMode(self):
+        """计费模式， POSTPAID，按量计费 PREPAID，包年包月
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -2299,6 +2765,10 @@ DELETING，删除中
 
     @property
     def ExpiryTime(self):
+        """到期时间，秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ExpiryTime
 
     @ExpiryTime.setter
@@ -2307,6 +2777,10 @@ DELETING，删除中
 
     @property
     def DestroyTime(self):
+        """预销毁时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DestroyTime
 
     @DestroyTime.setter
@@ -2315,6 +2789,10 @@ DELETING，删除中
 
     @property
     def AuthorizationPolicyLimit(self):
+        """授权规则条数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AuthorizationPolicyLimit
 
     @AuthorizationPolicyLimit.setter
@@ -2323,6 +2801,10 @@ DELETING，删除中
 
     @property
     def MaxCaNum(self):
+        """最大ca配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxCaNum
 
     @MaxCaNum.setter
@@ -2331,6 +2813,10 @@ DELETING，删除中
 
     @property
     def MaxSubscription(self):
+        """最大订阅数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxSubscription
 
     @MaxSubscription.setter
@@ -2390,6 +2876,9 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2398,6 +2887,9 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def Topic(self):
+        """主题名称
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -2406,6 +2898,10 @@ class MQTTTopicItem(AbstractModel):
 
     @property
     def Remark(self):
+        """主题描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2456,7 +2952,7 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
         :type Retain: int
         :param _ClientId: 客户端
         :type ClientId: str
-        :param _Ip: ip
+        :param _Ip: IP
         :type Ip: str
         :param _Qos: 0、1、2
         :type Qos: str
@@ -2480,6 +2976,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Id(self):
+        """策略
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2488,6 +2987,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2496,6 +2998,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -2504,6 +3009,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def PolicyVersion(self):
+        """策略版本
+        :rtype: int
+        """
         return self._PolicyVersion
 
     @PolicyVersion.setter
@@ -2512,6 +3020,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Priority(self):
+        """策略优先级，越小越优先
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -2520,6 +3031,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Effect(self):
+        """allow、deny
+        :rtype: str
+        """
         return self._Effect
 
     @Effect.setter
@@ -2528,6 +3042,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Actions(self):
+        """connect、pub、sub
+        :rtype: str
+        """
         return self._Actions
 
     @Actions.setter
@@ -2536,6 +3053,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Resources(self):
+        """资源
+        :rtype: str
+        """
         return self._Resources
 
     @Resources.setter
@@ -2544,6 +3064,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Username(self):
+        """用户名
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -2552,6 +3075,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Retain(self):
+        """1.匹配保留消息；2.匹配非保留消息；3.匹配所有消息
+        :rtype: int
+        """
         return self._Retain
 
     @Retain.setter
@@ -2560,6 +3086,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def ClientId(self):
+        """客户端
+        :rtype: str
+        """
         return self._ClientId
 
     @ClientId.setter
@@ -2568,6 +3097,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -2576,6 +3108,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Qos(self):
+        """0、1、2
+        :rtype: str
+        """
         return self._Qos
 
     @Qos.setter
@@ -2584,6 +3119,9 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2630,6 +3168,9 @@ class ModifyAuthorizationPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2673,6 +3214,9 @@ class ModifyJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2681,6 +3225,9 @@ class ModifyJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def Endpoint(self):
+        """端点
+        :rtype: str
+        """
         return self._Endpoint
 
     @Endpoint.setter
@@ -2689,6 +3236,9 @@ class ModifyJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def Status(self):
+        """认证器状态：open-启用；close-关闭
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2697,6 +3247,9 @@ class ModifyJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def RefreshInterval(self):
+        """刷新时间
+        :rtype: int
+        """
         return self._RefreshInterval
 
     @RefreshInterval.setter
@@ -2705,6 +3258,9 @@ class ModifyJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def Text(self):
+        """JSKS文本
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -2713,6 +3269,9 @@ class ModifyJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def From(self):
+        """设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -2721,6 +3280,9 @@ class ModifyJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """说明
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2760,6 +3322,9 @@ class ModifyJWKSAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2803,6 +3368,9 @@ class ModifyJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2811,6 +3379,9 @@ class ModifyJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """算法：hmac-based，public-key
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -2819,6 +3390,9 @@ class ModifyJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def From(self):
+        """设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -2827,6 +3401,9 @@ class ModifyJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def Secret(self):
+        """密码
+        :rtype: str
+        """
         return self._Secret
 
     @Secret.setter
@@ -2835,6 +3412,9 @@ class ModifyJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def PublicKey(self):
+        """公钥
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -2843,6 +3423,9 @@ class ModifyJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def Text(self):
+        """JSKS文本
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -2851,6 +3434,9 @@ class ModifyJWTAuthenticatorRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """说明
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2890,6 +3476,9 @@ class ModifyJWTAuthenticatorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2921,6 +3510,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2929,6 +3521,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """主题
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -2937,6 +3532,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2972,6 +3570,9 @@ class ModifyTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3012,6 +3613,9 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3020,6 +3624,9 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def DeviceCertificate(self):
+        """设备证书
+        :rtype: str
+        """
         return self._DeviceCertificate
 
     @DeviceCertificate.setter
@@ -3028,6 +3635,9 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def CaSn(self):
+        """关联的CA证书SN
+        :rtype: str
+        """
         return self._CaSn
 
     @CaSn.setter
@@ -3036,6 +3646,9 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def ClientId(self):
+        """客户端ID
+        :rtype: str
+        """
         return self._ClientId
 
     @ClientId.setter
@@ -3044,6 +3657,9 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """证书格式
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -3052,6 +3668,9 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def Status(self):
+        """    ACTIVE,//激活     INACTIVE,//未激活     REVOKED,//吊销     PENDING_ACTIVATION,//注册待激活
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3090,6 +3709,9 @@ class RegisterDeviceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3118,6 +3740,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键名称
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -3126,6 +3751,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValues(self):
+        """标签键名称
+        :rtype: list of str
+        """
         return self._TagValues
 
     @TagValues.setter
@@ -3163,6 +3791,9 @@ class UpdateAuthorizationPolicyPriorityRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3171,6 +3802,9 @@ class UpdateAuthorizationPolicyPriorityRequest(AbstractModel):
 
     @property
     def Priorities(self):
+        """策略ID和优先级
+        :rtype: list of AuthorizationPolicyPriority
+        """
         return self._Priorities
 
     @Priorities.setter
@@ -3210,6 +3844,9 @@ class UpdateAuthorizationPolicyPriorityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

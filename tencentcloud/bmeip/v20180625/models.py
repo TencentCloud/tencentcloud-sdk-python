@@ -32,6 +32,9 @@ class BindEipAclsRequest(AbstractModel):
 
     @property
     def EipIdAclIdList(self):
+        """待关联的 EIP 与 ACL关系列表
+        :rtype: list of EipAclMap
+        """
         return self._EipIdAclIdList
 
     @EipIdAclIdList.setter
@@ -70,6 +73,9 @@ class BindEipAclsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -98,6 +104,9 @@ class BindHostedRequest(AbstractModel):
 
     @property
     def EipId(self):
+        """Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -106,6 +115,9 @@ class BindHostedRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """托管机器实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -143,6 +155,9 @@ class BindHostedResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """异步任务ID，可以通过EipBmQueryTask查询任务状态
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -151,6 +166,9 @@ class BindHostedResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -180,6 +198,9 @@ class BindRsRequest(AbstractModel):
 
     @property
     def EipId(self):
+        """Eip实例ID
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -188,6 +209,9 @@ class BindRsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """物理服务器实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -225,6 +249,9 @@ class BindRsResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """绑定黑石物理机异步任务ID，可以通过DescribeEipTask查询任务状态
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -233,6 +260,9 @@ class BindRsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -265,6 +295,9 @@ class BindVpcIpRequest(AbstractModel):
 
     @property
     def EipId(self):
+        """Eip实例ID
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -273,6 +306,9 @@ class BindVpcIpRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """EIP归属VpcId，例如vpc-k7j1t2x1
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -281,6 +317,9 @@ class BindVpcIpRequest(AbstractModel):
 
     @property
     def VpcIp(self):
+        """绑定的VPC内IP地址
+        :rtype: str
+        """
         return self._VpcIp
 
     @VpcIp.setter
@@ -319,6 +358,9 @@ class BindVpcIpResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """EIP绑定VPC网络IP异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -327,6 +369,9 @@ class BindVpcIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -356,6 +401,9 @@ class CreateEipAclRequest(AbstractModel):
 
     @property
     def AclName(self):
+        """ACL 名称
+        :rtype: str
+        """
         return self._AclName
 
     @AclName.setter
@@ -364,6 +412,9 @@ class CreateEipAclRequest(AbstractModel):
 
     @property
     def Status(self):
+        """ACL 状态 0：无状态，1：有状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -410,6 +461,9 @@ class CreateEipAclResponse(AbstractModel):
 
     @property
     def AclId(self):
+        """ACL 实例 ID
+        :rtype: str
+        """
         return self._AclId
 
     @AclId.setter
@@ -418,6 +472,9 @@ class CreateEipAclResponse(AbstractModel):
 
     @property
     def Status(self):
+        """ACL 实例状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -426,6 +483,9 @@ class CreateEipAclResponse(AbstractModel):
 
     @property
     def AclName(self):
+        """ACL 实例名称
+        :rtype: str
+        """
         return self._AclName
 
     @AclName.setter
@@ -434,6 +494,9 @@ class CreateEipAclResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """ACL 实例创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -442,6 +505,9 @@ class CreateEipAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -489,6 +555,9 @@ class CreateEipRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
+        """申请数量，默认为1, 最大 20
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -497,6 +566,9 @@ class CreateEipRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """EIP计费方式，flow-流量计费；bandwidth-带宽计费
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -505,6 +577,9 @@ class CreateEipRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """带宽设定值（只在带宽计费时生效）
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -513,6 +588,9 @@ class CreateEipRequest(AbstractModel):
 
     @property
     def SetType(self):
+        """EIP模式，目前支持tunnel和fullnat
+        :rtype: str
+        """
         return self._SetType
 
     @SetType.setter
@@ -521,6 +599,9 @@ class CreateEipRequest(AbstractModel):
 
     @property
     def Exclusive(self):
+        """是否使用独占集群，0：不使用，1：使用。默认为0
+        :rtype: int
+        """
         return self._Exclusive
 
     @Exclusive.setter
@@ -529,6 +610,9 @@ class CreateEipRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """EIP归属私有网络ID，例如vpc-k7j1t2x1
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -537,6 +621,9 @@ class CreateEipRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """指定申请的IP列表
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -582,6 +669,9 @@ class CreateEipResponse(AbstractModel):
 
     @property
     def EipIds(self):
+        """EIP列表
+        :rtype: list of str
+        """
         return self._EipIds
 
     @EipIds.setter
@@ -590,6 +680,9 @@ class CreateEipResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -598,6 +691,9 @@ class CreateEipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -625,6 +721,9 @@ class DeleteEipAclRequest(AbstractModel):
 
     @property
     def AclId(self):
+        """待删除的 ACL 实例 ID
+        :rtype: str
+        """
         return self._AclId
 
     @AclId.setter
@@ -658,6 +757,9 @@ class DeleteEipAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -683,6 +785,9 @@ class DeleteEipRequest(AbstractModel):
 
     @property
     def EipIds(self):
+        """Eip实例ID列表
+        :rtype: list of str
+        """
         return self._EipIds
 
     @EipIds.setter
@@ -719,6 +824,9 @@ class DeleteEipResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务Id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -727,6 +835,9 @@ class DeleteEipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -780,6 +891,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def AclName(self):
+        """ACL 名称，支持模糊查找
+        :rtype: str
+        """
         return self._AclName
 
     @AclName.setter
@@ -788,6 +902,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def AclIds(self):
+        """ACL 实例 ID 列表，数组下标从 0 开始
+        :rtype: list of str
+        """
         return self._AclIds
 
     @AclIds.setter
@@ -796,6 +913,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数。偏移量，默认为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -804,6 +924,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数。每一页的 EIPACL 列表数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -812,6 +935,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def EipIds(self):
+        """EIP实例ID列表
+        :rtype: list of str
+        """
         return self._EipIds
 
     @EipIds.setter
@@ -820,6 +946,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def EipIps(self):
+        """EIP IP地址列表
+        :rtype: list of str
+        """
         return self._EipIps
 
     @EipIps.setter
@@ -828,6 +957,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def EipNames(self):
+        """EIP名称列表
+        :rtype: list of str
+        """
         return self._EipNames
 
     @EipNames.setter
@@ -836,6 +968,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序字段
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -844,6 +979,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式，取值：0:增序(默认)，1:降序
+        :rtype: int
+        """
         return self._Order
 
     @Order.setter
@@ -852,6 +990,9 @@ class DescribeEipAclsRequest(AbstractModel):
 
     @property
     def AclNames(self):
+        """ACL名称列表，支持模糊查找
+        :rtype: list of str
+        """
         return self._AclNames
 
     @AclNames.setter
@@ -900,6 +1041,9 @@ class DescribeEipAclsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回 EIPACL 列表总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -908,6 +1052,9 @@ class DescribeEipAclsResponse(AbstractModel):
 
     @property
     def EipAclList(self):
+        """EIPACL列表
+        :rtype: list of EipAcl
+        """
         return self._EipAclList
 
     @EipAclList.setter
@@ -916,6 +1063,9 @@ class DescribeEipAclsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -969,6 +1119,9 @@ class DescribeEipQuotaResponse(AbstractModel):
 
     @property
     def EipNumQuota(self):
+        """能拥有的EIP个数的总配额，默认是100个
+        :rtype: int
+        """
         return self._EipNumQuota
 
     @EipNumQuota.setter
@@ -977,6 +1130,9 @@ class DescribeEipQuotaResponse(AbstractModel):
 
     @property
     def CurrentEipNum(self):
+        """当前已使用的EIP个数，包括创建中、绑定中、已绑定、解绑中、未绑定几种状态的EIP个数总和
+        :rtype: int
+        """
         return self._CurrentEipNum
 
     @CurrentEipNum.setter
@@ -985,6 +1141,9 @@ class DescribeEipQuotaResponse(AbstractModel):
 
     @property
     def DailyApplyCount(self):
+        """当天申请EIP次数
+        :rtype: int
+        """
         return self._DailyApplyCount
 
     @DailyApplyCount.setter
@@ -993,6 +1152,9 @@ class DescribeEipQuotaResponse(AbstractModel):
 
     @property
     def DailyApplyQuota(self):
+        """每日申请EIP的次数限制
+        :rtype: int
+        """
         return self._DailyApplyQuota
 
     @DailyApplyQuota.setter
@@ -1001,6 +1163,9 @@ class DescribeEipQuotaResponse(AbstractModel):
 
     @property
     def BatchApplyMax(self):
+        """BatchApplyMax
+        :rtype: int
+        """
         return self._BatchApplyMax
 
     @BatchApplyMax.setter
@@ -1009,6 +1174,9 @@ class DescribeEipQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1039,6 +1207,9 @@ class DescribeEipTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """EIP查询任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1075,6 +1246,9 @@ class DescribeEipTaskResponse(AbstractModel):
 
     @property
     def Status(self):
+        """当前任务状态码：0-成功，1-失败，2-进行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1083,6 +1257,9 @@ class DescribeEipTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1151,6 +1328,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def EipIds(self):
+        """EIP实例ID列表
+        :rtype: list of str
+        """
         return self._EipIds
 
     @EipIds.setter
@@ -1159,6 +1339,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def Eips(self):
+        """EIP IP 列表
+        :rtype: list of str
+        """
         return self._Eips
 
     @Eips.setter
@@ -1167,6 +1350,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """主机实例ID 列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1175,6 +1361,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """EIP名称,模糊匹配
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -1183,6 +1372,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def Status(self):
+        """状态列表, 默认所有
+        :rtype: list of int
+        """
         return self._Status
 
     @Status.setter
@@ -1191,6 +1383,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1199,6 +1394,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回EIP数量，默认 20, 最大值 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1207,6 +1405,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序字段，支持： EipId,Eip,Status, InstanceId,CreatedAt
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -1215,6 +1416,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式 0:递增 1:递减(默认)
+        :rtype: int
+        """
         return self._Order
 
     @Order.setter
@@ -1223,6 +1427,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """计费模式,流量：flow，带宽：bandwidth
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1231,6 +1438,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """EIP归属VpcId，例如vpc-k7j1t2x1
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1239,6 +1449,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def BindTypes(self):
+        """绑定类型，-1：未绑定，0：物理机，1：nat网关，2：虚拟IP, 3:托管机器
+        :rtype: list of int
+        """
         return self._BindTypes
 
     @BindTypes.setter
@@ -1247,6 +1460,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def ExclusiveTag(self):
+        """独占标志，0：共享，1：独占
+        :rtype: int
+        """
         return self._ExclusiveTag
 
     @ExclusiveTag.setter
@@ -1255,6 +1471,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def AclId(self):
+        """EIP ACL实例ID
+        :rtype: str
+        """
         return self._AclId
 
     @AclId.setter
@@ -1263,6 +1482,9 @@ class DescribeEipsRequest(AbstractModel):
 
     @property
     def BindAcl(self):
+        """搜索条件，是否绑定了EIP ACL， 0：未绑定，1：绑定
+        :rtype: int
+        """
         return self._BindAcl
 
     @BindAcl.setter
@@ -1316,6 +1538,9 @@ class DescribeEipsResponse(AbstractModel):
 
     @property
     def EipSet(self):
+        """返回EIP信息数组
+        :rtype: list of EipInfo
+        """
         return self._EipSet
 
     @EipSet.setter
@@ -1324,6 +1549,9 @@ class DescribeEipsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回EIP数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1332,6 +1560,9 @@ class DescribeEipsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1382,6 +1613,9 @@ class EipAcl(AbstractModel):
 
     @property
     def AclId(self):
+        """ACL 实例 ID。
+        :rtype: str
+        """
         return self._AclId
 
     @AclId.setter
@@ -1390,6 +1624,9 @@ class EipAcl(AbstractModel):
 
     @property
     def AclName(self):
+        """ACL 实例名称
+        :rtype: str
+        """
         return self._AclName
 
     @AclName.setter
@@ -1398,6 +1635,9 @@ class EipAcl(AbstractModel):
 
     @property
     def Status(self):
+        """ACL 状态。0：无状态，1：有状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1406,6 +1646,9 @@ class EipAcl(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """EIPACL 创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -1414,6 +1657,9 @@ class EipAcl(AbstractModel):
 
     @property
     def EipNum(self):
+        """EIPACL 已关联的 eip 数目
+        :rtype: int
+        """
         return self._EipNum
 
     @EipNum.setter
@@ -1422,6 +1668,9 @@ class EipAcl(AbstractModel):
 
     @property
     def OutRules(self):
+        """出站规则
+        :rtype: list of EipAclRule
+        """
         return self._OutRules
 
     @OutRules.setter
@@ -1430,6 +1679,9 @@ class EipAcl(AbstractModel):
 
     @property
     def InRules(self):
+        """入站规则
+        :rtype: list of EipAclRule
+        """
         return self._InRules
 
     @InRules.setter
@@ -1482,6 +1734,9 @@ class EipAclMap(AbstractModel):
 
     @property
     def EipId(self):
+        """EIP 实例 ID
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -1490,6 +1745,9 @@ class EipAclMap(AbstractModel):
 
     @property
     def AclId(self):
+        """ACL 实例 ID
+        :rtype: str
+        """
         return self._AclId
 
     @AclId.setter
@@ -1536,6 +1794,9 @@ class EipAclRule(AbstractModel):
 
     @property
     def Ip(self):
+        """源 IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -1544,6 +1805,9 @@ class EipAclRule(AbstractModel):
 
     @property
     def Port(self):
+        """目标端口
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -1552,6 +1816,9 @@ class EipAclRule(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议(TCP/UDP/ICMP/ANY)
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -1560,6 +1827,9 @@ class EipAclRule(AbstractModel):
 
     @property
     def Action(self):
+        """策略（accept/drop）
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -1568,6 +1838,9 @@ class EipAclRule(AbstractModel):
 
     @property
     def Description(self):
+        """备注
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1686,6 +1959,9 @@ class EipInfo(AbstractModel):
 
     @property
     def EipId(self):
+        """EIP实例ID
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -1694,6 +1970,9 @@ class EipInfo(AbstractModel):
 
     @property
     def EipName(self):
+        """EIP名称
+        :rtype: str
+        """
         return self._EipName
 
     @EipName.setter
@@ -1702,6 +1981,9 @@ class EipInfo(AbstractModel):
 
     @property
     def Eip(self):
+        """EIP地址
+        :rtype: str
+        """
         return self._Eip
 
     @Eip.setter
@@ -1710,6 +1992,9 @@ class EipInfo(AbstractModel):
 
     @property
     def IspId(self):
+        """运营商ID 0：电信； 1：联通； 2：移动； 3：教育网； 4：盈科； 5：BGP； 6：中国香港
+        :rtype: int
+        """
         return self._IspId
 
     @IspId.setter
@@ -1718,6 +2003,9 @@ class EipInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态 0：创建中； 1：绑定中； 2：已绑定； 3：解绑中； 4：未绑定； 6：下线中； 9：创建失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1726,6 +2014,9 @@ class EipInfo(AbstractModel):
 
     @property
     def Arrears(self):
+        """是否欠费隔离 1： 欠费隔离； 0： 正常。处在欠费隔离情况下的EIP不能进行任何管理操作。
+        :rtype: int
+        """
         return self._Arrears
 
     @Arrears.setter
@@ -1734,6 +2025,9 @@ class EipInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """EIP所绑定的服务器实例ID，未绑定则为空
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1742,6 +2036,9 @@ class EipInfo(AbstractModel):
 
     @property
     def InstanceAlias(self):
+        """服务器别名
+        :rtype: str
+        """
         return self._InstanceAlias
 
     @InstanceAlias.setter
@@ -1750,6 +2047,9 @@ class EipInfo(AbstractModel):
 
     @property
     def FreeAt(self):
+        """EIP解绑时间
+        :rtype: str
+        """
         return self._FreeAt
 
     @FreeAt.setter
@@ -1758,6 +2058,9 @@ class EipInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """EIP创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -1766,6 +2069,9 @@ class EipInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """EIP更新时间
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -1774,6 +2080,9 @@ class EipInfo(AbstractModel):
 
     @property
     def FreeSecond(self):
+        """EIP未绑定服务器时长（单位：秒）
+        :rtype: int
+        """
         return self._FreeSecond
 
     @FreeSecond.setter
@@ -1782,6 +2091,9 @@ class EipInfo(AbstractModel):
 
     @property
     def Type(self):
+        """EIP所绑定的资源类型，-1：未绑定资源；0：黑石物理机，字段对应unInstanceId；1：Nat网关，字段对应natUid；2：云服务器字段对应vpcIp; 3: 托管机器，字段对应HInstanceId, HInstanceAlias
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1790,6 +2102,9 @@ class EipInfo(AbstractModel):
 
     @property
     def PayMode(self):
+        """EIP计费模式，"flow"：流量计费； "bandwidth"：带宽计费
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1798,6 +2113,9 @@ class EipInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """EIP带宽计费模式下的带宽上限（单位：MB）
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -1806,6 +2124,9 @@ class EipInfo(AbstractModel):
 
     @property
     def LatestPayMode(self):
+        """最近一次操作变更的EIP计费模式，"flow"：流量计费； "bandwidth"：带宽计费
+        :rtype: str
+        """
         return self._LatestPayMode
 
     @LatestPayMode.setter
@@ -1814,6 +2135,9 @@ class EipInfo(AbstractModel):
 
     @property
     def LatestBandwidth(self):
+        """最近一次操作变更的EIP计费模式对应的带宽上限值，仅在带宽计费模式下有效（单位：MB）
+        :rtype: int
+        """
         return self._LatestBandwidth
 
     @LatestBandwidth.setter
@@ -1822,6 +2146,9 @@ class EipInfo(AbstractModel):
 
     @property
     def VpcName(self):
+        """私有网络名称
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -1830,6 +2157,9 @@ class EipInfo(AbstractModel):
 
     @property
     def NatId(self):
+        """EIP所绑定的NAT网关的数字ID，形如：1001,，未绑定则为空
+        :rtype: int
+        """
         return self._NatId
 
     @NatId.setter
@@ -1838,6 +2168,9 @@ class EipInfo(AbstractModel):
 
     @property
     def NatUid(self):
+        """EIP所绑定的NAT网关实例ID，形如："nat-n47xxxxx"，未绑定则为空
+        :rtype: str
+        """
         return self._NatUid
 
     @NatUid.setter
@@ -1846,6 +2179,9 @@ class EipInfo(AbstractModel):
 
     @property
     def VpcIp(self):
+        """EIP所绑定的云服务器IP(托管或者云服务器的IP），形如："10.1.1.3"。 注意：IP资源需要通过bmvpc模块注册或者申请后才可以绑定eip，接口使用申请子网IP和注册子网IP：,未绑定则为空
+        :rtype: str
+        """
         return self._VpcIp
 
     @VpcIp.setter
@@ -1854,6 +2190,9 @@ class EipInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络实例ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1862,6 +2201,9 @@ class EipInfo(AbstractModel):
 
     @property
     def Exclusive(self):
+        """是否为独占类型EIP
+        :rtype: int
+        """
         return self._Exclusive
 
     @Exclusive.setter
@@ -1870,6 +2212,9 @@ class EipInfo(AbstractModel):
 
     @property
     def VpcCidr(self):
+        """私有网络的cidr
+        :rtype: str
+        """
         return self._VpcCidr
 
     @VpcCidr.setter
@@ -1878,6 +2223,9 @@ class EipInfo(AbstractModel):
 
     @property
     def AclId(self):
+        """EIP ACL实例ID
+        :rtype: str
+        """
         return self._AclId
 
     @AclId.setter
@@ -1886,6 +2234,9 @@ class EipInfo(AbstractModel):
 
     @property
     def AclName(self):
+        """EIP ACL名称
+        :rtype: str
+        """
         return self._AclName
 
     @AclName.setter
@@ -1894,6 +2245,9 @@ class EipInfo(AbstractModel):
 
     @property
     def HInstanceId(self):
+        """托管机器实例ID
+        :rtype: str
+        """
         return self._HInstanceId
 
     @HInstanceId.setter
@@ -1902,6 +2256,9 @@ class EipInfo(AbstractModel):
 
     @property
     def HInstanceAlias(self):
+        """托管机器别名
+        :rtype: str
+        """
         return self._HInstanceAlias
 
     @HInstanceAlias.setter
@@ -1965,6 +2322,9 @@ class EipRsMap(AbstractModel):
 
     @property
     def EipId(self):
+        """EIP实例 ID
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -1973,6 +2333,9 @@ class EipRsMap(AbstractModel):
 
     @property
     def InstanceId(self):
+        """黑石物理机实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2019,6 +2382,9 @@ class ModifyEipAclRequest(AbstractModel):
 
     @property
     def AclId(self):
+        """ACL 实例 ID
+        :rtype: str
+        """
         return self._AclId
 
     @AclId.setter
@@ -2027,6 +2393,9 @@ class ModifyEipAclRequest(AbstractModel):
 
     @property
     def AclName(self):
+        """ACL 名称
+        :rtype: str
+        """
         return self._AclName
 
     @AclName.setter
@@ -2035,6 +2404,9 @@ class ModifyEipAclRequest(AbstractModel):
 
     @property
     def Status(self):
+        """ACL 状态。0：无状态 1：有状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2043,6 +2415,9 @@ class ModifyEipAclRequest(AbstractModel):
 
     @property
     def Type(self):
+        """规则类型（in/out）。in：入站规则 out：出站规则
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2051,6 +2426,9 @@ class ModifyEipAclRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """ACL规则列表
+        :rtype: list of EipAclRule
+        """
         return self._Rules
 
     @Rules.setter
@@ -2093,6 +2471,9 @@ class ModifyEipAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2124,6 +2505,9 @@ class ModifyEipChargeRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """EIP计费方式，flow-流量计费；bandwidth-带宽计费
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -2132,6 +2516,9 @@ class ModifyEipChargeRequest(AbstractModel):
 
     @property
     def EipIds(self):
+        """Eip实例ID列表
+        :rtype: list of str
+        """
         return self._EipIds
 
     @EipIds.setter
@@ -2140,6 +2527,9 @@ class ModifyEipChargeRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """带宽设定值（只在带宽计费时生效）
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -2178,6 +2568,9 @@ class ModifyEipChargeResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """修改计费模式的异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2186,6 +2579,9 @@ class ModifyEipChargeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2215,6 +2611,9 @@ class ModifyEipNameRequest(AbstractModel):
 
     @property
     def EipId(self):
+        """Eip实例ID，可通过/v2/DescribeEip 接口返回字段中的 eipId获取
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -2223,6 +2622,9 @@ class ModifyEipNameRequest(AbstractModel):
 
     @property
     def EipName(self):
+        """EIP 实例别名
+        :rtype: str
+        """
         return self._EipName
 
     @EipName.setter
@@ -2257,6 +2659,9 @@ class ModifyEipNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2282,6 +2687,9 @@ class UnbindEipAclsRequest(AbstractModel):
 
     @property
     def EipIdAclIdList(self):
+        """待解关联的 EIP 与 ACL列表
+        :rtype: list of EipAclMap
+        """
         return self._EipIdAclIdList
 
     @EipIdAclIdList.setter
@@ -2320,6 +2728,9 @@ class UnbindEipAclsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2351,6 +2762,9 @@ class UnbindHostedRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """托管机器实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2359,6 +2773,9 @@ class UnbindHostedRequest(AbstractModel):
 
     @property
     def EipId(self):
+        """Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -2367,6 +2784,9 @@ class UnbindHostedRequest(AbstractModel):
 
     @property
     def Eip(self):
+        """弹性IP。Eip和EipId参数必须要填写一个。
+        :rtype: str
+        """
         return self._Eip
 
     @Eip.setter
@@ -2405,6 +2825,9 @@ class UnbindHostedResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """异步任务ID，可以通过EipBmQueryTask查询任务状态
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2413,6 +2836,9 @@ class UnbindHostedResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2439,6 +2865,9 @@ class UnbindRsListRequest(AbstractModel):
 
     @property
     def EipRsList(self):
+        """物理机绑定的EIP列表
+        :rtype: list of EipRsMap
+        """
         return self._EipRsList
 
     @EipRsList.setter
@@ -2480,6 +2909,9 @@ class UnbindRsListResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2488,6 +2920,9 @@ class UnbindRsListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2517,6 +2952,9 @@ class UnbindRsRequest(AbstractModel):
 
     @property
     def EipId(self):
+        """Eip实例ID
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -2525,6 +2963,9 @@ class UnbindRsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """物理服务器实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2562,6 +3003,9 @@ class UnbindRsResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2570,6 +3014,9 @@ class UnbindRsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2602,6 +3049,9 @@ class UnbindVpcIpRequest(AbstractModel):
 
     @property
     def EipId(self):
+        """Eip实例ID
+        :rtype: str
+        """
         return self._EipId
 
     @EipId.setter
@@ -2610,6 +3060,9 @@ class UnbindVpcIpRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """EIP归属VpcId，例如vpc-k7j1t2x1
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2618,6 +3071,9 @@ class UnbindVpcIpRequest(AbstractModel):
 
     @property
     def VpcIp(self):
+        """绑定的VPC内IP地址
+        :rtype: str
+        """
         return self._VpcIp
 
     @VpcIp.setter
@@ -2656,6 +3112,9 @@ class UnbindVpcIpResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """绑定黑石物理机异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2664,6 +3123,9 @@ class UnbindVpcIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

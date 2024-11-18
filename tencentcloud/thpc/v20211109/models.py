@@ -60,6 +60,9 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def ClusterId(self):
+        """集群ID。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -68,6 +71,9 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def LaunchConfigurationId(self):
+        """弹性伸缩启动配置ID。
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -76,6 +82,9 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def AutoScalingGroupId(self):
+        """弹性伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -84,6 +93,9 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def QueueName(self):
+        """队列名称。
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -92,6 +104,9 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def ExpansionBusyTime(self):
+        """任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
+        :rtype: int
+        """
         return self._ExpansionBusyTime
 
     @ExpansionBusyTime.setter
@@ -100,6 +115,9 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def ShrinkIdleTime(self):
+        """节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
+        :rtype: int
+        """
         return self._ShrinkIdleTime
 
     @ShrinkIdleTime.setter
@@ -108,6 +126,9 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def EnableAutoExpansion(self):
+        """是否开启自动扩容，默认值true。
+        :rtype: bool
+        """
         return self._EnableAutoExpansion
 
     @EnableAutoExpansion.setter
@@ -116,6 +137,9 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def EnableAutoShrink(self):
+        """是否开启自动缩容，默认值true。
+        :rtype: bool
+        """
         return self._EnableAutoShrink
 
     @EnableAutoShrink.setter
@@ -124,6 +148,13 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
 
     @property
     def DryRun(self):
+        """是否只预检此次请求。
+true：发送检查请求，不会绑定弹性伸缩组。检查项包括是否填写了必需参数，请求格式，业务限制。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId。
+false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩组。
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -165,6 +196,9 @@ class BindAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -202,6 +236,9 @@ class CFSOption(AbstractModel):
 
     @property
     def LocalPath(self):
+        """文件系统本地挂载路径
+        :rtype: str
+        """
         return self._LocalPath
 
     @LocalPath.setter
@@ -210,6 +247,9 @@ class CFSOption(AbstractModel):
 
     @property
     def RemotePath(self):
+        """文件系统远程挂载ip及路径
+        :rtype: str
+        """
         return self._RemotePath
 
     @RemotePath.setter
@@ -218,6 +258,12 @@ class CFSOption(AbstractModel):
 
     @property
     def Protocol(self):
+        """文件系统协议类型，默认值NFS 3.0。
+<li>NFS 3.0。
+<li>NFS 4.0。
+<li>TURBO。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -226,6 +272,9 @@ class CFSOption(AbstractModel):
 
     @property
     def StorageType(self):
+        """文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -295,6 +344,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -303,6 +355,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ClusterStatus(self):
+        """集群状态。取值范围：<br><li>PENDING：创建中<br><li>INITING：初始化中<br><li>INIT_FAILED：初始化失败<br><li>RUNNING：运行中<br><li>TERMINATING：销毁中
+        :rtype: str
+        """
         return self._ClusterStatus
 
     @ClusterStatus.setter
@@ -311,6 +366,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名称。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -319,6 +377,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def Placement(self):
+        """集群位置信息。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -327,6 +388,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def CreateTime(self):
+        """集群创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -335,6 +399,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def SchedulerType(self):
+        """集群调度器。
+        :rtype: str
+        """
         return self._SchedulerType
 
     @SchedulerType.setter
@@ -343,6 +410,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ComputeNodeCount(self):
+        """计算节点数量。
+        :rtype: int
+        """
         return self._ComputeNodeCount
 
     @ComputeNodeCount.setter
@@ -351,6 +421,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ComputeNodeSet(self):
+        """计算节点概览。
+        :rtype: list of ComputeNodeOverview
+        """
         return self._ComputeNodeSet
 
     @ComputeNodeSet.setter
@@ -359,6 +432,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ManagerNodeCount(self):
+        """管控节点数量。
+        :rtype: int
+        """
         return self._ManagerNodeCount
 
     @ManagerNodeCount.setter
@@ -367,6 +443,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def ManagerNodeSet(self):
+        """管控节点概览。
+        :rtype: list of ManagerNodeOverview
+        """
         return self._ManagerNodeSet
 
     @ManagerNodeSet.setter
@@ -375,6 +454,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def LoginNodeSet(self):
+        """登录节点概览。
+        :rtype: list of LoginNodeOverview
+        """
         return self._LoginNodeSet
 
     @LoginNodeSet.setter
@@ -383,6 +465,9 @@ class ClusterOverview(AbstractModel):
 
     @property
     def LoginNodeCount(self):
+        """登录节点数量。
+        :rtype: int
+        """
         return self._LoginNodeCount
 
     @LoginNodeCount.setter
@@ -465,6 +550,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -473,6 +561,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -481,6 +572,10 @@ class ComputeNode(AbstractModel):
 
     @property
     def InstanceType(self):
+        """节点机型。不同实例机型指定了不同的资源规格。
+<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -489,6 +584,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -497,6 +595,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def DataDisks(self):
+        """节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -505,6 +606,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def InternetAccessible(self):
+        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -513,6 +617,11 @@ class ComputeNode(AbstractModel):
 
     @property
     def InstanceName(self):
+        """节点显示名称。<br><li>
+不指定节点显示名称则默认显示‘未命名’。
+最多支持60个字符。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -564,6 +673,10 @@ class ComputeNodeOverview(AbstractModel):
 
     @property
     def NodeId(self):
+        """计算节点ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -655,6 +768,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Placement(self):
+        """集群中实例所在的位置。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -663,6 +779,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ManagerNode(self):
+        """指定管理节点。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.ManagerNode`
+        """
         return self._ManagerNode
 
     @ManagerNode.setter
@@ -671,6 +790,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ManagerNodeCount(self):
+        """指定管理节点的数量。默认取值：1。取值范围：1～2。
+        :rtype: int
+        """
         return self._ManagerNodeCount
 
     @ManagerNodeCount.setter
@@ -679,6 +801,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ComputeNode(self):
+        """指定计算节点。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.ComputeNode`
+        """
         return self._ComputeNode
 
     @ComputeNode.setter
@@ -687,6 +812,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ComputeNodeCount(self):
+        """指定计算节点的数量。默认取值：0。
+        :rtype: int
+        """
         return self._ComputeNodeCount
 
     @ComputeNodeCount.setter
@@ -695,6 +823,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SchedulerType(self):
+        """调度器类型。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+        :rtype: str
+        """
         return self._SchedulerType
 
     @SchedulerType.setter
@@ -703,6 +834,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ImageId(self):
+        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -711,6 +845,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def VirtualPrivateCloud(self):
+        """私有网络相关信息配置。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.VirtualPrivateCloud`
+        """
         return self._VirtualPrivateCloud
 
     @VirtualPrivateCloud.setter
@@ -719,6 +856,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def LoginSettings(self):
+        """集群登录设置。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -727,6 +867,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SecurityGroupIds(self):
+        """集群中实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -735,6 +878,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ClientToken(self):
+        """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -743,6 +889,13 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def DryRun(self):
+        """是否只预检此次请求。
+true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId.
+false（默认）：发送正常请求，通过检查后直接创建实例
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -751,6 +904,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def AccountType(self):
+        """域名字服务类型。默认值：NIS
+<li>NIS：NIS域名字服务。
+        :rtype: str
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -759,6 +916,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ClusterName(self):
+        """集群显示名称。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -767,6 +927,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def StorageOption(self):
+        """集群存储选项
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.StorageOption`
+        """
         return self._StorageOption
 
     @StorageOption.setter
@@ -775,6 +938,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def LoginNode(self):
+        """已废弃。
+指定登录节点。
+        :rtype: list of LoginNode
+        """
         return self._LoginNode
 
     @LoginNode.setter
@@ -783,6 +950,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def LoginNodeCount(self):
+        """已废弃。
+指定登录节点的数量。默认取值：0。取值范围：0～10。
+        :rtype: int
+        """
         return self._LoginNodeCount
 
     @LoginNodeCount.setter
@@ -791,6 +962,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Tags(self):
+        """创建集群时同时绑定的标签对说明。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -867,6 +1041,10 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -875,6 +1053,9 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -904,6 +1085,9 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
+        """数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -912,6 +1096,9 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskType(self):
+        """数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_HSSD：增强型SSD云硬盘<br><li>CLOUD_TSSD：极速型SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -946,6 +1133,9 @@ class DeleteClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -979,6 +1169,9 @@ class DeleteClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1010,6 +1203,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
+        """集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
+        :rtype: list of str
+        """
         return self._ClusterIds
 
     @ClusterIds.setter
@@ -1018,6 +1214,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1026,6 +1225,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1067,6 +1269,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def ClusterSet(self):
+        """集群概览信息列表。
+        :rtype: list of ClusterOverview
+        """
         return self._ClusterSet
 
     @ClusterSet.setter
@@ -1075,6 +1280,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """集群数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1083,6 +1291,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1121,6 +1332,9 @@ class GooseFSOption(AbstractModel):
 
     @property
     def LocalPath(self):
+        """文件系统本地挂载路径
+        :rtype: str
+        """
         return self._LocalPath
 
     @LocalPath.setter
@@ -1129,6 +1343,9 @@ class GooseFSOption(AbstractModel):
 
     @property
     def RemotePath(self):
+        """文件系统远程挂载路径
+        :rtype: str
+        """
         return self._RemotePath
 
     @RemotePath.setter
@@ -1137,6 +1354,9 @@ class GooseFSOption(AbstractModel):
 
     @property
     def Masters(self):
+        """文件系统master的ip和端口
+        :rtype: list of str
+        """
         return self._Masters
 
     @Masters.setter
@@ -1180,6 +1400,9 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
     @property
     def Period(self):
+        """购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -1188,6 +1411,14 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：
+NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -1230,6 +1461,14 @@ BANDWIDTH_PACKAGE：带宽包用户
 
     @property
     def InternetChargeType(self):
+        """网络计费类型。取值范围：
+BANDWIDTH_PREPAID：预付费按带宽结算
+TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
+BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费
+BANDWIDTH_PACKAGE：带宽包用户
+默认取值：非带宽包用户默认与子机付费类型保持一致。
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -1238,6 +1477,9 @@ BANDWIDTH_PACKAGE：带宽包用户
 
     @property
     def InternetMaxBandwidthOut(self):
+        """公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见购买网络带宽。
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -1293,6 +1535,9 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -1301,6 +1546,9 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -1309,6 +1557,10 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceType(self):
+        """节点机型。不同实例机型指定了不同的资源规格。
+<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -1317,6 +1569,9 @@ class LoginNode(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :rtype: list of SystemDisk
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -1325,6 +1580,9 @@ class LoginNode(AbstractModel):
 
     @property
     def DataDisks(self):
+        """节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -1333,6 +1591,9 @@ class LoginNode(AbstractModel):
 
     @property
     def InternetAccessible(self):
+        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :rtype: list of InternetAccessible
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -1341,6 +1602,11 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceName(self):
+        """节点显示名称。<br><li>
+不指定节点显示名称则默认显示‘未命名’。
+最多支持60个字符。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1397,6 +1663,9 @@ class LoginNodeOverview(AbstractModel):
 
     @property
     def NodeId(self):
+        """登录节点ID。
+        :rtype: str
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1430,6 +1699,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def Password(self):
+        """实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -1486,6 +1758,9 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -1494,6 +1769,9 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -1502,6 +1780,10 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceType(self):
+        """节点机型。不同实例机型指定了不同的资源规格。
+<br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -1510,6 +1792,9 @@ class ManagerNode(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -1518,6 +1803,9 @@ class ManagerNode(AbstractModel):
 
     @property
     def DataDisks(self):
+        """节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -1526,6 +1814,9 @@ class ManagerNode(AbstractModel):
 
     @property
     def InternetAccessible(self):
+        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -1534,6 +1825,13 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceName(self):
+        """节点显示名称。<br><li>
+不指定节点显示名称则默认显示‘未命名’。
+</li><li>购买多个节点，如果指定模式串`{R:x}`，表示生成数字[`[x, x+n-1]`，其中`n`表示购买节点的数量，例如`server_{R:3}`，购买1个时，节点显示名称为`server_3`；购买2个时，节点显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。
+购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li>
+最多支持60个字符（包含模式串）。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1585,6 +1883,10 @@ class ManagerNodeOverview(AbstractModel):
 
     @property
     def NodeId(self):
+        """管控节点ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1618,6 +1920,9 @@ class Placement(AbstractModel):
 
     @property
     def Zone(self):
+        """实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1654,6 +1959,9 @@ class StorageOption(AbstractModel):
 
     @property
     def CFSOptions(self):
+        """集群挂载CFS文件系统选项
+        :rtype: list of CFSOption
+        """
         return self._CFSOptions
 
     @CFSOptions.setter
@@ -1662,6 +1970,9 @@ class StorageOption(AbstractModel):
 
     @property
     def GooseFSOptions(self):
+        """集群挂在GooseFS文件系统选项
+        :rtype: list of GooseFSOption
+        """
         return self._GooseFSOptions
 
     @GooseFSOptions.setter
@@ -1716,6 +2027,16 @@ CLOUD_PREMIUM：高性能云硬盘
 
     @property
     def DiskType(self):
+        """系统盘类型。系统盘类型限制详见存储概述。取值范围：
+LOCAL_BASIC：本地硬盘
+LOCAL_SSD：本地SSD硬盘
+CLOUD_BASIC：普通云硬盘
+CLOUD_SSD：SSD云硬盘
+CLOUD_PREMIUM：高性能云硬盘
+
+默认取值：当前有库存的硬盘类型。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -1724,6 +2045,9 @@ CLOUD_PREMIUM：高性能云硬盘
 
     @property
     def DiskSize(self):
+        """系统盘大小，单位：GB。默认值为 50
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -1761,6 +2085,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1769,6 +2096,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1806,6 +2136,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。若在创建子机时VpcId与SubnetId同时传入`DEFAULT`，则强制使用默认vpc网络。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1814,6 +2147,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def SubnetId(self):
+        """私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter

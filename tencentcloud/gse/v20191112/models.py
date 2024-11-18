@@ -55,6 +55,9 @@ class Alias(AbstractModel):
 
     @property
     def AliasId(self):
+        """别名的唯一标识符
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -63,6 +66,9 @@ class Alias(AbstractModel):
 
     @property
     def AliasArn(self):
+        """别名的全局唯一资源标识符
+        :rtype: str
+        """
         return self._AliasArn
 
     @AliasArn.setter
@@ -71,6 +77,9 @@ class Alias(AbstractModel):
 
     @property
     def Name(self):
+        """名字，长度不小于1字符不超过1024字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -79,6 +88,10 @@ class Alias(AbstractModel):
 
     @property
     def Description(self):
+        """别名的可读说明，长度不小于1字符不超过1024字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -87,6 +100,9 @@ class Alias(AbstractModel):
 
     @property
     def RoutingStrategy(self):
+        """别名的路由配置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.RoutingStrategy`
+        """
         return self._RoutingStrategy
 
     @RoutingStrategy.setter
@@ -95,6 +111,9 @@ class Alias(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -103,6 +122,9 @@ class Alias(AbstractModel):
 
     @property
     def LastUpdatedTime(self):
+        """上次修改此数据对象的时间
+        :rtype: str
+        """
         return self._LastUpdatedTime
 
     @LastUpdatedTime.setter
@@ -111,6 +133,10 @@ class Alias(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -198,6 +224,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包ID
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -206,6 +235,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetName(self):
+        """生成包名字，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -214,6 +246,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetVersion(self):
+        """生成包版本，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._AssetVersion
 
     @AssetVersion.setter
@@ -222,6 +257,9 @@ class Asset(AbstractModel):
 
     @property
     def OperateSystem(self):
+        """生成包可运行的操作系统，暂时只支持CentOS7.16
+        :rtype: str
+        """
         return self._OperateSystem
 
     @OperateSystem.setter
@@ -230,6 +268,9 @@ class Asset(AbstractModel):
 
     @property
     def Stauts(self):
+        """生成包状态，0代表上传中，1代表上传失败，2代表上传成功
+        :rtype: int
+        """
         return self._Stauts
 
     @Stauts.setter
@@ -238,6 +279,9 @@ class Asset(AbstractModel):
 
     @property
     def Size(self):
+        """生成包大小
+        :rtype: str
+        """
         return self._Size
 
     @Size.setter
@@ -246,6 +290,9 @@ class Asset(AbstractModel):
 
     @property
     def CreateTime(self):
+        """生成包创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -254,6 +301,9 @@ class Asset(AbstractModel):
 
     @property
     def BindFleetNum(self):
+        """生成包绑定的Fleet个数，最小值为0
+        :rtype: int
+        """
         return self._BindFleetNum
 
     @BindFleetNum.setter
@@ -262,6 +312,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetArn(self):
+        """生成包的全局唯一资源标识符
+        :rtype: str
+        """
         return self._AssetArn
 
     @AssetArn.setter
@@ -270,6 +323,9 @@ class Asset(AbstractModel):
 
     @property
     def ImageId(self):
+        """生成包支持的操作系统镜像id
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -278,6 +334,9 @@ class Asset(AbstractModel):
 
     @property
     def OsType(self):
+        """生成包支持的操作系统类型
+        :rtype: str
+        """
         return self._OsType
 
     @OsType.setter
@@ -286,6 +345,9 @@ class Asset(AbstractModel):
 
     @property
     def ResourceType(self):
+        """生成包资源类型，ASSET 或者 IMAGE；ASSET 代表是原有生成包类型，IMAGE 为扩充使用镜像类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -294,6 +356,9 @@ class Asset(AbstractModel):
 
     @property
     def SharingStatus(self):
+        """镜像资源共享类型，当 ResourceType 为 IMAGE 时该字段有意义，SHARED 表示共享、SHARED_IMAGE 表示未共享；ResourceType 为 ASSET 时这里返回 UNKNOWN_SHARED 用于占位
+        :rtype: str
+        """
         return self._SharingStatus
 
     @SharingStatus.setter
@@ -302,6 +367,10 @@ class Asset(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -359,6 +428,9 @@ class AssetCredentials(AbstractModel):
 
     @property
     def TmpSecretId(self):
+        """临时证书密钥ID
+        :rtype: str
+        """
         return self._TmpSecretId
 
     @TmpSecretId.setter
@@ -367,6 +439,9 @@ class AssetCredentials(AbstractModel):
 
     @property
     def TmpSecretKey(self):
+        """临时证书密钥Key
+        :rtype: str
+        """
         return self._TmpSecretKey
 
     @TmpSecretKey.setter
@@ -375,6 +450,9 @@ class AssetCredentials(AbstractModel):
 
     @property
     def Token(self):
+        """临时证书Token
+        :rtype: str
+        """
         return self._Token
 
     @Token.setter
@@ -419,6 +497,9 @@ class AssetSupportSys(AbstractModel):
 
     @property
     def ImageId(self):
+        """生成包操作系统的镜像Id
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -427,6 +508,9 @@ class AssetSupportSys(AbstractModel):
 
     @property
     def OsType(self):
+        """生成包操作系统的类型
+        :rtype: str
+        """
         return self._OsType
 
     @OsType.setter
@@ -435,6 +519,9 @@ class AssetSupportSys(AbstractModel):
 
     @property
     def OsBit(self):
+        """生成包操作系统的位数
+        :rtype: int
+        """
         return self._OsBit
 
     @OsBit.setter
@@ -443,6 +530,9 @@ class AssetSupportSys(AbstractModel):
 
     @property
     def OsVersion(self):
+        """生成包操作系统的版本
+        :rtype: str
+        """
         return self._OsVersion
 
     @OsVersion.setter
@@ -485,6 +575,9 @@ class AttachCcnInstancesRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -493,6 +586,9 @@ class AttachCcnInstancesRequest(AbstractModel):
 
     @property
     def AccountId(self):
+        """云联网账号 Uin
+        :rtype: str
+        """
         return self._AccountId
 
     @AccountId.setter
@@ -501,6 +597,9 @@ class AttachCcnInstancesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网 Id
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -536,6 +635,9 @@ class AttachCcnInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -564,6 +666,9 @@ class CcnInfo(AbstractModel):
 
     @property
     def AccountId(self):
+        """云联网所属账号
+        :rtype: str
+        """
         return self._AccountId
 
     @AccountId.setter
@@ -572,6 +677,9 @@ class CcnInfo(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网id
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -623,6 +731,10 @@ class CcnInstanceSets(AbstractModel):
 
     @property
     def AccountId(self):
+        """云联网账号 Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccountId
 
     @AccountId.setter
@@ -631,6 +743,10 @@ class CcnInstanceSets(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -639,6 +755,10 @@ class CcnInstanceSets(AbstractModel):
 
     @property
     def CreateTime(self):
+        """云联网关联时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -647,6 +767,10 @@ class CcnInstanceSets(AbstractModel):
 
     @property
     def InstanceName(self):
+        """云联网实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -655,6 +779,10 @@ class CcnInstanceSets(AbstractModel):
 
     @property
     def State(self):
+        """云联网状态：申请中、已连接、已过期、已拒绝、已删除、失败的、关联中、解关联中、解关联失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -749,6 +877,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -757,6 +888,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def CopyNumber(self):
+        """复制数量，最小值1，最大值为剩余配额，可以根据[获取用户配额](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+        :rtype: int
+        """
         return self._CopyNumber
 
     @CopyNumber.setter
@@ -765,6 +899,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包 Id
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -773,6 +910,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述，最小长度0，最大长度100
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -781,6 +921,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def InboundPermissions(self):
+        """网络配置
+        :rtype: list of InboundPermission
+        """
         return self._InboundPermissions
 
     @InboundPermissions.setter
@@ -789,6 +932,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -797,6 +943,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def FleetType(self):
+        """服务器舰队类型，目前只支持ON_DEMAND类型
+        :rtype: str
+        """
         return self._FleetType
 
     @FleetType.setter
@@ -805,6 +954,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def Name(self):
+        """服务器舰队名称，最小长度1，最大长度50
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -813,6 +965,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def NewGameServerSessionProtectionPolicy(self):
+        """保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+        :rtype: str
+        """
         return self._NewGameServerSessionProtectionPolicy
 
     @NewGameServerSessionProtectionPolicy.setter
@@ -821,6 +976,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def ResourceCreationLimitPolicy(self):
+        """资源创建限制策略
+        :rtype: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
+        """
         return self._ResourceCreationLimitPolicy
 
     @ResourceCreationLimitPolicy.setter
@@ -829,6 +987,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def RuntimeConfiguration(self):
+        """进程配置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
+        """
         return self._RuntimeConfiguration
 
     @RuntimeConfiguration.setter
@@ -837,6 +998,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def GameServerSessionProtectionTimeLimit(self):
+        """时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+        :rtype: int
+        """
         return self._GameServerSessionProtectionTimeLimit
 
     @GameServerSessionProtectionTimeLimit.setter
@@ -845,6 +1009,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def SelectedScalingType(self):
+        """是否选择扩缩容：SCALING_SELECTED 或者 SCALING_UNSELECTED；默认是 SCALING_UNSELECTED
+        :rtype: str
+        """
         return self._SelectedScalingType
 
     @SelectedScalingType.setter
@@ -853,6 +1020,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def SelectedCcnType(self):
+        """是否选择云联网：CCN_SELECTED_BEFORE_CREATE（创建前关联）， CCN_SELECTED_AFTER_CREATE（创建后关联）或者 CCN_UNSELECTED（不关联）；默认是 CCN_UNSELECTED
+        :rtype: str
+        """
         return self._SelectedCcnType
 
     @SelectedCcnType.setter
@@ -861,6 +1031,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -869,6 +1042,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def SystemDiskInfo(self):
+        """系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        """
         return self._SystemDiskInfo
 
     @SystemDiskInfo.setter
@@ -877,6 +1053,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def DataDiskInfo(self):
+        """数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+        :rtype: list of DiskInfo
+        """
         return self._DataDiskInfo
 
     @DataDiskInfo.setter
@@ -885,6 +1064,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def SelectedTimerType(self):
+        """是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
+        :rtype: str
+        """
         return self._SelectedTimerType
 
     @SelectedTimerType.setter
@@ -893,6 +1075,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def CcnInfos(self):
+        """云联网信息，包含对应的账号信息及所属id
+        :rtype: list of CcnInfo
+        """
         return self._CcnInfos
 
     @CcnInfos.setter
@@ -901,6 +1086,9 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -986,6 +1174,10 @@ class CopyFleetResponse(AbstractModel):
 
     @property
     def FleetAttributes(self):
+        """服务器舰队属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FleetAttributes
+        """
         return self._FleetAttributes
 
     @FleetAttributes.setter
@@ -994,6 +1186,9 @@ class CopyFleetResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """服务器舰队数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1002,6 +1197,9 @@ class CopyFleetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1043,6 +1241,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名字，长度不小于1字符不超过1024字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1051,6 +1252,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def RoutingStrategy(self):
+        """别名的路由配置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.RoutingStrategy`
+        """
         return self._RoutingStrategy
 
     @RoutingStrategy.setter
@@ -1059,6 +1263,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Description(self):
+        """别名的可读说明，长度不小于1字符不超过1024字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1067,6 +1274,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1113,6 +1323,9 @@ class CreateAliasResponse(AbstractModel):
 
     @property
     def Alias(self):
+        """别名对象
+        :rtype: :class:`tencentcloud.gse.v20191112.models.Alias`
+        """
         return self._Alias
 
     @Alias.setter
@@ -1121,6 +1334,9 @@ class CreateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1167,6 +1383,9 @@ class CreateAssetRequest(AbstractModel):
 
     @property
     def BucketKey(self):
+        """生成包的ZIP包名，例如：server.zip
+        :rtype: str
+        """
         return self._BucketKey
 
     @BucketKey.setter
@@ -1175,6 +1394,9 @@ class CreateAssetRequest(AbstractModel):
 
     @property
     def AssetName(self):
+        """生成包名字，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -1183,6 +1405,9 @@ class CreateAssetRequest(AbstractModel):
 
     @property
     def AssetVersion(self):
+        """生成包版本，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._AssetVersion
 
     @AssetVersion.setter
@@ -1191,6 +1416,9 @@ class CreateAssetRequest(AbstractModel):
 
     @property
     def AssetRegion(self):
+        """生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :rtype: str
+        """
         return self._AssetRegion
 
     @AssetRegion.setter
@@ -1199,6 +1427,9 @@ class CreateAssetRequest(AbstractModel):
 
     @property
     def OperateSystem(self):
+        """生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）。这里可通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统进行传入（使用AssetSupportSys的OsVersion字段）
+        :rtype: str
+        """
         return self._OperateSystem
 
     @OperateSystem.setter
@@ -1207,6 +1438,9 @@ class CreateAssetRequest(AbstractModel):
 
     @property
     def ImageId(self):
+        """生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统ImageId进行传入
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -1215,6 +1449,9 @@ class CreateAssetRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1265,6 +1502,9 @@ class CreateAssetResponse(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包ID
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -1273,6 +1513,9 @@ class CreateAssetResponse(AbstractModel):
 
     @property
     def AssetArn(self):
+        """生成包的全局唯一资源标识符
+        :rtype: str
+        """
         return self._AssetArn
 
     @AssetArn.setter
@@ -1281,6 +1524,9 @@ class CreateAssetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1332,6 +1578,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def AssetName(self):
+        """生成包名字，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -1340,6 +1589,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def AssetVersion(self):
+        """生成包版本，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._AssetVersion
 
     @AssetVersion.setter
@@ -1348,6 +1600,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def AssetRegion(self):
+        """生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :rtype: str
+        """
         return self._AssetRegion
 
     @AssetRegion.setter
@@ -1356,6 +1611,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def ImageId(self):
+        """生成包支持的操作系统镜像id
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -1364,6 +1622,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def ImageSize(self):
+        """操作系统镜像包大小，比如：40GB，支持单位 KB、MB、GB
+        :rtype: str
+        """
         return self._ImageSize
 
     @ImageSize.setter
@@ -1372,6 +1633,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def ImageOs(self):
+        """操作系统镜像包名称，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._ImageOs
 
     @ImageOs.setter
@@ -1380,6 +1644,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def OsType(self):
+        """操作系统镜像包类型，CentOS 或者 Windows
+        :rtype: str
+        """
         return self._OsType
 
     @OsType.setter
@@ -1388,6 +1655,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def ImageType(self):
+        """操作系统镜像包类型，当前只支持 SHARED_IMAGE
+        :rtype: str
+        """
         return self._ImageType
 
     @ImageType.setter
@@ -1396,6 +1666,9 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     @property
     def OsBit(self):
+        """操作系统镜像包位数，32 或者 64
+        :rtype: int
+        """
         return self._OsBit
 
     @OsBit.setter
@@ -1443,6 +1716,9 @@ class CreateAssetWithImageResponse(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包ID
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -1451,6 +1727,9 @@ class CreateAssetWithImageResponse(AbstractModel):
 
     @property
     def AssetArn(self):
+        """生成包的全局唯一资源标识符
+        :rtype: str
+        """
         return self._AssetArn
 
     @AssetArn.setter
@@ -1459,6 +1738,9 @@ class CreateAssetWithImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1534,6 +1816,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包 Id
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -1542,6 +1827,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述，最小长度0，最大长度100
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1550,6 +1838,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def InboundPermissions(self):
+        """网络配置
+        :rtype: list of InboundPermission
+        """
         return self._InboundPermissions
 
     @InboundPermissions.setter
@@ -1558,6 +1849,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -1566,6 +1860,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def FleetType(self):
+        """服务器舰队类型，目前只支持ON_DEMAND类型
+        :rtype: str
+        """
         return self._FleetType
 
     @FleetType.setter
@@ -1574,6 +1871,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def Name(self):
+        """服务器舰队名称，最小长度1，最大长度50
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1582,6 +1882,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def NewGameServerSessionProtectionPolicy(self):
+        """保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+        :rtype: str
+        """
         return self._NewGameServerSessionProtectionPolicy
 
     @NewGameServerSessionProtectionPolicy.setter
@@ -1590,6 +1893,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def PeerVpcId(self):
+        """VPC 网络 Id，对等连接已不再使用
+        :rtype: str
+        """
         return self._PeerVpcId
 
     @PeerVpcId.setter
@@ -1598,6 +1904,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def ResourceCreationLimitPolicy(self):
+        """资源创建限制策略
+        :rtype: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
+        """
         return self._ResourceCreationLimitPolicy
 
     @ResourceCreationLimitPolicy.setter
@@ -1606,6 +1915,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def RuntimeConfiguration(self):
+        """进程配置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
+        """
         return self._RuntimeConfiguration
 
     @RuntimeConfiguration.setter
@@ -1614,6 +1926,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def SubNetId(self):
+        """VPC 子网，对等连接已不再使用
+        :rtype: str
+        """
         return self._SubNetId
 
     @SubNetId.setter
@@ -1622,6 +1937,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def GameServerSessionProtectionTimeLimit(self):
+        """时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+        :rtype: int
+        """
         return self._GameServerSessionProtectionTimeLimit
 
     @GameServerSessionProtectionTimeLimit.setter
@@ -1630,6 +1948,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1638,6 +1959,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def SystemDiskInfo(self):
+        """系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        """
         return self._SystemDiskInfo
 
     @SystemDiskInfo.setter
@@ -1646,6 +1970,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def DataDiskInfo(self):
+        """数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+        :rtype: list of DiskInfo
+        """
         return self._DataDiskInfo
 
     @DataDiskInfo.setter
@@ -1654,6 +1981,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def CcnInfos(self):
+        """云联网信息，包含对应的账号信息及所属id
+        :rtype: list of CcnInfo
+        """
         return self._CcnInfos
 
     @CcnInfos.setter
@@ -1662,6 +1992,9 @@ class CreateFleetRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -1741,6 +2074,10 @@ class CreateFleetResponse(AbstractModel):
 
     @property
     def FleetAttributes(self):
+        """服务器舰队属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.FleetAttributes`
+        """
         return self._FleetAttributes
 
     @FleetAttributes.setter
@@ -1749,6 +2086,9 @@ class CreateFleetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1789,6 +2129,9 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def Name(self):
+        """游戏服务器会话队列名称，长度1~128
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1797,6 +2140,9 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def Destinations(self):
+        """目的服务器舰队（可为别名）列表
+        :rtype: list of GameServerSessionQueueDestination
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -1805,6 +2151,9 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def PlayerLatencyPolicies(self):
+        """延迟策略集合
+        :rtype: list of PlayerLatencyPolicy
+        """
         return self._PlayerLatencyPolicies
 
     @PlayerLatencyPolicies.setter
@@ -1813,6 +2162,9 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def TimeoutInSeconds(self):
+        """超时时间（单位秒，默认值为600秒）
+        :rtype: int
+        """
         return self._TimeoutInSeconds
 
     @TimeoutInSeconds.setter
@@ -1821,6 +2173,9 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1876,6 +2231,9 @@ class CreateGameServerSessionQueueResponse(AbstractModel):
 
     @property
     def GameServerSessionQueue(self):
+        """游戏服务器会话队列
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSessionQueue`
+        """
         return self._GameServerSessionQueue
 
     @GameServerSessionQueue.setter
@@ -1884,6 +2242,9 @@ class CreateGameServerSessionQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1936,6 +2297,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
+        """最大玩家数量，最小值不小于0
+        :rtype: int
+        """
         return self._MaximumPlayerSessionCount
 
     @MaximumPlayerSessionCount.setter
@@ -1944,6 +2308,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def AliasId(self):
+        """别名ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -1952,6 +2319,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def CreatorId(self):
+        """创建者ID，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._CreatorId
 
     @CreatorId.setter
@@ -1960,6 +2330,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """舰队ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -1968,6 +2341,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def GameProperties(self):
+        """游戏属性，最大长度不超过16组
+        :rtype: list of GameProperty
+        """
         return self._GameProperties
 
     @GameProperties.setter
@@ -1976,6 +2352,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def GameServerSessionData(self):
+        """游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionData
 
     @GameServerSessionData.setter
@@ -1984,6 +2363,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话自定义ID，最大长度不超过4096个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -1992,6 +2374,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def IdempotencyToken(self):
+        """幂等token，最大长度不超过48个ASCII字符
+        :rtype: str
+        """
         return self._IdempotencyToken
 
     @IdempotencyToken.setter
@@ -2000,6 +2385,9 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def Name(self):
+        """游戏服务器会话名称，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2050,6 +2438,10 @@ class CreateGameServerSessionResponse(AbstractModel):
 
     @property
     def GameServerSession(self):
+        """游戏服务器会话
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
+        """
         return self._GameServerSession
 
     @GameServerSession.setter
@@ -2058,6 +2450,9 @@ class CreateGameServerSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2089,6 +2484,9 @@ class Credentials(AbstractModel):
 
     @property
     def Secret(self):
+        """ssh私钥
+        :rtype: str
+        """
         return self._Secret
 
     @Secret.setter
@@ -2097,6 +2495,9 @@ class Credentials(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -2131,6 +2532,9 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def AliasId(self):
+        """要删除的别名ID
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -2164,6 +2568,9 @@ class DeleteAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2189,6 +2596,9 @@ class DeleteAssetRequest(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包ID
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -2222,6 +2632,9 @@ class DeleteAssetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2247,6 +2660,9 @@ class DeleteFleetRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -2280,6 +2696,9 @@ class DeleteFleetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2305,6 +2724,9 @@ class DeleteGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def Name(self):
+        """游戏服务器会话队列名字，长度1~128
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2338,6 +2760,9 @@ class DeleteGameServerSessionQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2366,6 +2791,9 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -2374,6 +2802,9 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
     @property
     def Name(self):
+        """扩缩容策略名称，最小长度为0，最大长度为1024
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2408,6 +2839,9 @@ class DeleteScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2439,6 +2873,9 @@ class DeleteTimerScalingPolicyRequest(AbstractModel):
 
     @property
     def TimerId(self):
+        """定时器ID, 进行encode
+        :rtype: str
+        """
         return self._TimerId
 
     @TimerId.setter
@@ -2447,6 +2884,9 @@ class DeleteTimerScalingPolicyRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """扩缩容配置服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -2455,6 +2895,9 @@ class DeleteTimerScalingPolicyRequest(AbstractModel):
 
     @property
     def TimerName(self):
+        """定时器名称
+        :rtype: str
+        """
         return self._TimerName
 
     @TimerName.setter
@@ -2490,6 +2933,9 @@ class DeleteTimerScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2515,6 +2961,9 @@ class DescribeAliasRequest(AbstractModel):
 
     @property
     def AliasId(self):
+        """要检索的队列别名的唯一标识符
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -2552,6 +3001,10 @@ class DescribeAliasResponse(AbstractModel):
 
     @property
     def Alias(self):
+        """别名对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.Alias`
+        """
         return self._Alias
 
     @Alias.setter
@@ -2560,6 +3013,9 @@ class DescribeAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2588,6 +3044,9 @@ class DescribeAssetRequest(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包ID
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -2624,6 +3083,9 @@ class DescribeAssetResponse(AbstractModel):
 
     @property
     def Asset(self):
+        """生成包信息
+        :rtype: :class:`tencentcloud.gse.v20191112.models.Asset`
+        """
         return self._Asset
 
     @Asset.setter
@@ -2632,6 +3094,9 @@ class DescribeAssetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2663,6 +3128,9 @@ class DescribeAssetSystemsRequest(AbstractModel):
 
     @property
     def OsType(self):
+        """生成包支持的操作系统类型
+        :rtype: str
+        """
         return self._OsType
 
     @OsType.setter
@@ -2671,6 +3139,9 @@ class DescribeAssetSystemsRequest(AbstractModel):
 
     @property
     def OsBit(self):
+        """生成包支持的操作系统位数
+        :rtype: int
+        """
         return self._OsBit
 
     @OsBit.setter
@@ -2708,6 +3179,9 @@ class DescribeAssetSystemsResponse(AbstractModel):
 
     @property
     def AssetSupportSys(self):
+        """生成包支持的操作系统类型列表
+        :rtype: list of AssetSupportSys
+        """
         return self._AssetSupportSys
 
     @AssetSupportSys.setter
@@ -2716,6 +3190,9 @@ class DescribeAssetSystemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2759,6 +3236,9 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def AssetRegion(self):
+        """生成包支持的可部署 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :rtype: str
+        """
         return self._AssetRegion
 
     @AssetRegion.setter
@@ -2767,6 +3247,9 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移，代表页数，与asset实际数量相关
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2775,6 +3258,9 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """前端界面每页显示的最大条数，不超过100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2783,6 +3269,9 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """搜索条件，支持包ID或包名字过滤，该字段会逐步废弃，建议使用 Filters 字段
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -2791,6 +3280,9 @@ class DescribeAssetsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（生成包当前仅支持单个名称的过滤）- 资源ID过滤    - Key: 固定字符串 "resource:resourceId"    - Values: 生成包ID数组（生成包当前仅支持单个生成包ID的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2839,6 +3331,9 @@ class DescribeAssetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """生成包总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2847,6 +3342,9 @@ class DescribeAssetsResponse(AbstractModel):
 
     @property
     def Assets(self):
+        """生成包列表
+        :rtype: list of Asset
+        """
         return self._Assets
 
     @Assets.setter
@@ -2855,6 +3353,9 @@ class DescribeAssetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2887,6 +3388,9 @@ class DescribeCcnInstancesRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -2927,6 +3431,10 @@ class DescribeCcnInstancesResponse(AbstractModel):
 
     @property
     def CcnInstanceSets(self):
+        """云联网实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CcnInstanceSets
+        """
         return self._CcnInstanceSets
 
     @CcnInstanceSets.setter
@@ -2935,6 +3443,9 @@ class DescribeCcnInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """云联网实例个数，最小值为0
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2943,6 +3454,9 @@ class DescribeCcnInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2981,6 +3495,9 @@ class DescribeFleetAttributesRequest(AbstractModel):
 
     @property
     def FleetIds(self):
+        """服务器舰队 Ids
+        :rtype: list of str
+        """
         return self._FleetIds
 
     @FleetIds.setter
@@ -2989,6 +3506,9 @@ class DescribeFleetAttributesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果返回最大数量，默认值20，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2997,6 +3517,9 @@ class DescribeFleetAttributesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回结果偏移，最小值0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3039,6 +3562,10 @@ class DescribeFleetAttributesResponse(AbstractModel):
 
     @property
     def FleetAttributes(self):
+        """服务器舰队属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FleetAttributes
+        """
         return self._FleetAttributes
 
     @FleetAttributes.setter
@@ -3047,6 +3574,9 @@ class DescribeFleetAttributesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """服务器舰队总数，最小值0
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3055,6 +3585,9 @@ class DescribeFleetAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3093,6 +3626,9 @@ class DescribeFleetCapacityRequest(AbstractModel):
 
     @property
     def FleetIds(self):
+        """服务器舰队ID列表
+        :rtype: list of str
+        """
         return self._FleetIds
 
     @FleetIds.setter
@@ -3101,6 +3637,9 @@ class DescribeFleetCapacityRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果返回最大数量，最大值 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3109,6 +3648,9 @@ class DescribeFleetCapacityRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回结果偏移，最小值 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3152,6 +3694,10 @@ class DescribeFleetCapacityResponse(AbstractModel):
 
     @property
     def FleetCapacity(self):
+        """服务器舰队的容量配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FleetCapacity
+        """
         return self._FleetCapacity
 
     @FleetCapacity.setter
@@ -3160,6 +3706,10 @@ class DescribeFleetCapacityResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果返回最大数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3168,6 +3718,9 @@ class DescribeFleetCapacityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3215,6 +3768,9 @@ class DescribeFleetEventsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -3223,6 +3779,9 @@ class DescribeFleetEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页时返回服务器舰队事件的数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3231,6 +3790,9 @@ class DescribeFleetEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页时的数据偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3239,6 +3801,9 @@ class DescribeFleetEventsRequest(AbstractModel):
 
     @property
     def EventCode(self):
+        """事件代码
+        :rtype: str
+        """
         return self._EventCode
 
     @EventCode.setter
@@ -3247,6 +3812,9 @@ class DescribeFleetEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """发生事件的开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3255,6 +3823,9 @@ class DescribeFleetEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """发生事件的结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3299,6 +3870,9 @@ class DescribeFleetEventsResponse(AbstractModel):
 
     @property
     def Events(self):
+        """返回的事件列表
+        :rtype: list of Event
+        """
         return self._Events
 
     @Events.setter
@@ -3307,6 +3881,9 @@ class DescribeFleetEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回的事件总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3315,6 +3892,9 @@ class DescribeFleetEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3347,6 +3927,9 @@ class DescribeFleetPortSettingsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -3384,6 +3967,10 @@ class DescribeFleetPortSettingsResponse(AbstractModel):
 
     @property
     def InboundPermissions(self):
+        """安全组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InboundPermission
+        """
         return self._InboundPermissions
 
     @InboundPermissions.setter
@@ -3392,6 +3979,9 @@ class DescribeFleetPortSettingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3423,6 +4013,9 @@ class DescribeFleetRelatedResourcesRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -3460,6 +4053,10 @@ class DescribeFleetRelatedResourcesResponse(AbstractModel):
 
     @property
     def Resources(self):
+        """与服务器舰队关联的资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FleetRelatedResource
+        """
         return self._Resources
 
     @Resources.setter
@@ -3468,6 +4065,9 @@ class DescribeFleetRelatedResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3511,6 +4111,9 @@ class DescribeFleetStatisticDetailsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -3519,6 +4122,9 @@ class DescribeFleetStatisticDetailsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间，时间格式：YYYY-MM-DD hh:mm:ss
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -3527,6 +4133,9 @@ class DescribeFleetStatisticDetailsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，时间格式：YYYY-MM-DD hh:mm:ss
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3535,6 +4144,9 @@ class DescribeFleetStatisticDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果返回最大数量，最小值0，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3543,6 +4155,9 @@ class DescribeFleetStatisticDetailsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回结果偏移，最小值0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3592,6 +4207,10 @@ class DescribeFleetStatisticDetailsResponse(AbstractModel):
 
     @property
     def DetailList(self):
+        """服务部署统计详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FleetStatisticDetail
+        """
         return self._DetailList
 
     @DetailList.setter
@@ -3600,6 +4219,10 @@ class DescribeFleetStatisticDetailsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3608,6 +4231,10 @@ class DescribeFleetStatisticDetailsResponse(AbstractModel):
 
     @property
     def TimeType(self):
+        """统计时间类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeType
 
     @TimeType.setter
@@ -3616,6 +4243,9 @@ class DescribeFleetStatisticDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3661,6 +4291,9 @@ class DescribeFleetStatisticFlowsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -3669,6 +4302,9 @@ class DescribeFleetStatisticFlowsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间，时间格式：YYYY-MM-DD hh:mm:ss
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -3677,6 +4313,9 @@ class DescribeFleetStatisticFlowsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，时间格式：YYYY-MM-DD hh:mm:ss
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3685,6 +4324,9 @@ class DescribeFleetStatisticFlowsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果返回最大数量，最小值0，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3693,6 +4335,9 @@ class DescribeFleetStatisticFlowsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回结果偏移，最小值0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3746,6 +4391,10 @@ class DescribeFleetStatisticFlowsResponse(AbstractModel):
 
     @property
     def UsedFlowList(self):
+        """流量统计列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FleetStatisticFlows
+        """
         return self._UsedFlowList
 
     @UsedFlowList.setter
@@ -3754,6 +4403,10 @@ class DescribeFleetStatisticFlowsResponse(AbstractModel):
 
     @property
     def UsedTimeList(self):
+        """时长统计列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FleetStatisticTimes
+        """
         return self._UsedTimeList
 
     @UsedTimeList.setter
@@ -3762,6 +4415,10 @@ class DescribeFleetStatisticFlowsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3770,6 +4427,10 @@ class DescribeFleetStatisticFlowsResponse(AbstractModel):
 
     @property
     def TimeType(self):
+        """统计时间类型，取值：小时和天
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeType
 
     @TimeType.setter
@@ -3778,6 +4439,9 @@ class DescribeFleetStatisticFlowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3823,6 +4487,9 @@ class DescribeFleetStatisticSummaryRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -3831,6 +4498,9 @@ class DescribeFleetStatisticSummaryRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间，时间格式: YYYY-MM-DD hh:mm:ss
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -3839,6 +4509,9 @@ class DescribeFleetStatisticSummaryRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，时间格式: YYYY-MM-DD hh:mm:ss
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3882,6 +4555,10 @@ class DescribeFleetStatisticSummaryResponse(AbstractModel):
 
     @property
     def TotalUsedTimeSeconds(self):
+        """总时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TotalUsedTimeSeconds
 
     @TotalUsedTimeSeconds.setter
@@ -3890,6 +4567,10 @@ class DescribeFleetStatisticSummaryResponse(AbstractModel):
 
     @property
     def TotalUsedFlowMegaBytes(self):
+        """总流量，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalUsedFlowMegaBytes
 
     @TotalUsedFlowMegaBytes.setter
@@ -3898,6 +4579,9 @@ class DescribeFleetStatisticSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3925,6 +4609,9 @@ class DescribeFleetUtilizationRequest(AbstractModel):
 
     @property
     def FleetIds(self):
+        """服务器舰队 Ids
+        :rtype: list of str
+        """
         return self._FleetIds
 
     @FleetIds.setter
@@ -3965,6 +4652,10 @@ class DescribeFleetUtilizationResponse(AbstractModel):
 
     @property
     def FleetUtilization(self):
+        """服务器舰队利用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FleetUtilization
+        """
         return self._FleetUtilization
 
     @FleetUtilization.setter
@@ -3973,6 +4664,9 @@ class DescribeFleetUtilizationResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数，最小值0
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3981,6 +4675,9 @@ class DescribeFleetUtilizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4028,6 +4725,9 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def AliasId(self):
+        """别名ID
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -4036,6 +4736,9 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -4044,6 +4747,9 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -4052,6 +4758,9 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单次查询记录数上限
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4060,6 +4769,9 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -4068,6 +4780,9 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def StatusFilter(self):
+        """游戏服务器会话状态(ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR)
+        :rtype: str
+        """
         return self._StatusFilter
 
     @StatusFilter.setter
@@ -4114,6 +4829,10 @@ class DescribeGameServerSessionDetailsResponse(AbstractModel):
 
     @property
     def GameServerSessionDetails(self):
+        """游戏服务器会话详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GameServerSessionDetail
+        """
         return self._GameServerSessionDetails
 
     @GameServerSessionDetails.setter
@@ -4122,6 +4841,10 @@ class DescribeGameServerSessionDetailsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -4130,6 +4853,9 @@ class DescribeGameServerSessionDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4162,6 +4888,9 @@ class DescribeGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def PlacementId(self):
+        """游戏服务器会话放置的唯一标识符
+        :rtype: str
+        """
         return self._PlacementId
 
     @PlacementId.setter
@@ -4198,6 +4927,9 @@ class DescribeGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def GameServerSessionPlacement(self):
+        """游戏服务器会话放置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
+        """
         return self._GameServerSessionPlacement
 
     @GameServerSessionPlacement.setter
@@ -4206,6 +4938,9 @@ class DescribeGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4243,6 +4978,9 @@ class DescribeGameServerSessionQueuesRequest(AbstractModel):
 
     @property
     def Names(self):
+        """游戏服务器会话队列名称数组，单个名字长度1~128
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -4251,6 +4989,9 @@ class DescribeGameServerSessionQueuesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果返回最大数量，最小值0，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4259,6 +5000,9 @@ class DescribeGameServerSessionQueuesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回结果偏移，最小值0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4267,6 +5011,9 @@ class DescribeGameServerSessionQueuesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（游戏服务器会话队列支持多个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4315,6 +5062,10 @@ class DescribeGameServerSessionQueuesResponse(AbstractModel):
 
     @property
     def GameServerSessionQueues(self):
+        """游戏服务器会话队列数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GameServerSessionQueue
+        """
         return self._GameServerSessionQueues
 
     @GameServerSessionQueues.setter
@@ -4323,6 +5074,9 @@ class DescribeGameServerSessionQueuesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """游戏服务器会话队列总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4331,6 +5085,9 @@ class DescribeGameServerSessionQueuesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4378,6 +5135,9 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def AliasId(self):
+        """别名ID
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -4386,6 +5146,9 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -4394,6 +5157,9 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -4402,6 +5168,9 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单次查询记录数上限
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4410,6 +5179,9 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -4418,6 +5190,9 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def StatusFilter(self):
+        """游戏服务器会话状态(ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR)
+        :rtype: str
+        """
         return self._StatusFilter
 
     @StatusFilter.setter
@@ -4464,6 +5239,10 @@ class DescribeGameServerSessionsResponse(AbstractModel):
 
     @property
     def GameServerSessions(self):
+        """游戏服务器会话列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GameServerSession
+        """
         return self._GameServerSessions
 
     @GameServerSessions.setter
@@ -4472,6 +5251,10 @@ class DescribeGameServerSessionsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -4480,6 +5263,9 @@ class DescribeGameServerSessionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4524,6 +5310,9 @@ class DescribeInstanceLimitResponse(AbstractModel):
 
     @property
     def Limit(self):
+        """限额
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4532,6 +5321,9 @@ class DescribeInstanceLimitResponse(AbstractModel):
 
     @property
     def ExtraInfos(self):
+        """详细信息
+        :rtype: list of ExtraInfos
+        """
         return self._ExtraInfos
 
     @ExtraInfos.setter
@@ -4540,6 +5332,9 @@ class DescribeInstanceLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4581,6 +5376,9 @@ class DescribeInstanceTypesResponse(AbstractModel):
 
     @property
     def InstanceTypeList(self):
+        """服务器实例类型列表
+        :rtype: list of InstanceTypeInfo
+        """
         return self._InstanceTypeList
 
     @InstanceTypeList.setter
@@ -4589,6 +5387,9 @@ class DescribeInstanceTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4629,6 +5430,9 @@ class DescribeInstancesExtendRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -4637,6 +5441,9 @@ class DescribeInstancesExtendRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回结果偏移，最小值0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4645,6 +5452,9 @@ class DescribeInstancesExtendRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果返回最大数量，最小值0，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4653,6 +5463,9 @@ class DescribeInstancesExtendRequest(AbstractModel):
 
     @property
     def IpAddress(self):
+        """CVM实例公网IP
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -4697,6 +5510,10 @@ class DescribeInstancesExtendResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """实例信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceExtend
+        """
         return self._Instances
 
     @Instances.setter
@@ -4705,6 +5522,10 @@ class DescribeInstancesExtendResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """梳理信息总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4713,6 +5534,9 @@ class DescribeInstancesExtendResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4757,6 +5581,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -4765,6 +5592,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """CVM实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4773,6 +5603,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """结果返回最大数量，最小值0，最大值100
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4781,6 +5614,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回结果偏移，最小值0
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4789,6 +5625,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def IpAddress(self):
+        """CVM实例公网IP
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -4834,6 +5673,10 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """实例信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Instance
+        """
         return self._Instances
 
     @Instances.setter
@@ -4842,6 +5685,10 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果返回最大数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4850,6 +5697,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4897,6 +5747,9 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -4905,6 +5758,9 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单次查询记录数上限
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4913,6 +5769,9 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -4921,6 +5780,9 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家ID，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -4929,6 +5791,9 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def PlayerSessionId(self):
+        """玩家会话ID，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._PlayerSessionId
 
     @PlayerSessionId.setter
@@ -4937,6 +5802,9 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def PlayerSessionStatusFilter(self):
+        """玩家会话状态（RESERVED,ACTIVE,COMPLETED,TIMEDOUT）
+        :rtype: str
+        """
         return self._PlayerSessionStatusFilter
 
     @PlayerSessionStatusFilter.setter
@@ -4983,6 +5851,10 @@ class DescribePlayerSessionsResponse(AbstractModel):
 
     @property
     def PlayerSessions(self):
+        """玩家会话列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PlayerSession
+        """
         return self._PlayerSessions
 
     @PlayerSessions.setter
@@ -4991,6 +5863,10 @@ class DescribePlayerSessionsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -4999,6 +5875,9 @@ class DescribePlayerSessionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5031,6 +5910,9 @@ class DescribeRuntimeConfigurationRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -5068,6 +5950,10 @@ class DescribeRuntimeConfigurationResponse(AbstractModel):
 
     @property
     def RuntimeConfiguration(self):
+        """服务器舰队运行配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
+        """
         return self._RuntimeConfiguration
 
     @RuntimeConfiguration.setter
@@ -5076,6 +5962,9 @@ class DescribeRuntimeConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5113,6 +6002,9 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -5121,6 +6013,9 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     @property
     def StatusFilter(self):
+        """状态过滤条件，取值：ACTIVE表示活跃
+        :rtype: str
+        """
         return self._StatusFilter
 
     @StatusFilter.setter
@@ -5129,6 +6024,9 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回结果偏移，最小值0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5137,6 +6035,9 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果返回最大数量，最小值0，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5181,6 +6082,10 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def ScalingPolicies(self):
+        """动态扩缩容配置策略数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScalingPolicy
+        """
         return self._ScalingPolicies
 
     @ScalingPolicies.setter
@@ -5189,6 +6094,10 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """动态扩缩容配置策略总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5197,6 +6106,9 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5244,6 +6156,9 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """扩缩容配置服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -5252,6 +6167,9 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def TimerName(self):
+        """定时器名称
+        :rtype: str
+        """
         return self._TimerName
 
     @TimerName.setter
@@ -5260,6 +6178,9 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """定时器开始时间
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -5268,6 +6189,9 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """定时器结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5276,6 +6200,9 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5284,6 +6211,9 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """页大小
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5330,6 +6260,10 @@ class DescribeTimerScalingPoliciesResponse(AbstractModel):
 
     @property
     def TimerScalingPolicies(self):
+        """定时器扩缩容策略配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TimerScalingPolicy
+        """
         return self._TimerScalingPolicies
 
     @TimerScalingPolicies.setter
@@ -5338,6 +6272,10 @@ class DescribeTimerScalingPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """定时器总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5346,6 +6284,9 @@ class DescribeTimerScalingPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5378,6 +6319,9 @@ class DescribeUserQuotaRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -5415,6 +6359,10 @@ class DescribeUserQuotaResponse(AbstractModel):
 
     @property
     def QuotaResource(self):
+        """配额资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.QuotaResource`
+        """
         return self._QuotaResource
 
     @QuotaResource.setter
@@ -5423,6 +6371,9 @@ class DescribeUserQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5464,6 +6415,10 @@ class DescribeUserQuotasResponse(AbstractModel):
 
     @property
     def QuotaResource(self):
+        """配额信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QuotaResource
+        """
         return self._QuotaResource
 
     @QuotaResource.setter
@@ -5472,6 +6427,9 @@ class DescribeUserQuotasResponse(AbstractModel):
 
     @property
     def Total(self):
+        """配额信息列表总数，最小值0
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5480,6 +6438,9 @@ class DescribeUserQuotasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5515,6 +6476,9 @@ class DesiredPlayerSession(AbstractModel):
 
     @property
     def PlayerId(self):
+        """与玩家会话关联的唯一玩家标识
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -5523,6 +6487,9 @@ class DesiredPlayerSession(AbstractModel):
 
     @property
     def PlayerData(self):
+        """开发人员定义的玩家数据
+        :rtype: str
+        """
         return self._PlayerData
 
     @PlayerData.setter
@@ -5557,6 +6524,9 @@ class DetachCcnInstancesRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -5590,6 +6560,9 @@ class DetachCcnInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5618,6 +6591,9 @@ class DiskInfo(AbstractModel):
 
     @property
     def DiskType(self):
+        """磁盘类型，支持：高性能云硬盘（CLOUD_PREMIUM）、SSD云硬盘（CLOUD_SSD）
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -5626,6 +6602,9 @@ class DiskInfo(AbstractModel):
 
     @property
     def DiskSize(self):
+        """系统盘：可选硬盘容量，50-500GB，数字以1为单位，数据盘：可选硬盘容量：10-32000GB，数字以10为单位；当磁盘类型为SSD云硬盘（CLOUD_SSD）最小大小为 100GB
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -5666,6 +6645,9 @@ class EndGameServerSessionAndProcessRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，如果传入游戏服务器会话ID，结束对应进程以及游戏服务器会话和玩家会话。
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -5674,6 +6656,9 @@ class EndGameServerSessionAndProcessRequest(AbstractModel):
 
     @property
     def IpAddress(self):
+        """CVM的公网IP地址，需同时传入IpAddress和Port，结束IpAddress和Port对应的进程以及游戏服务器会话（如果存在）和玩家会话（如果存在），单独传入IpAddress不生效。
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -5682,6 +6667,9 @@ class EndGameServerSessionAndProcessRequest(AbstractModel):
 
     @property
     def Port(self):
+        """端口号，取值范围1025-60000，需同时传入IpAddress和Port，结束IpAddress和Port对应的进程以及游戏服务器会话（如果存在）和玩家会话（如果存在），单独传入Port不生效。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -5717,6 +6705,9 @@ class EndGameServerSessionAndProcessResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5781,6 +6772,31 @@ class Event(AbstractModel):
 
     @property
     def EventCode(self):
+        """事件代码，支持以下的事件代码
+
+- FLEET_CREATED 
+- FLEET_STATE_DOWNLOADING 
+- FLEET_BINARY_DOWNLOAD_FAILED 
+- FLEET_CREATION_EXTRACTING_BUILD
+- FLEET_CREATION_VALIDATING_RUNTIME_CONFIG
+- FLEET_STATE_VALIDATING
+- FLEET_STATE_BUILDING 
+- FLEET_STATE_ACTIVATING
+- FLEET_STATE_ACTIVE
+- FLEET_SCALING_EVENT
+- FLEET_STATE_ERROR
+- FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND
+- FLEET_ACTIVATION_FAILED_NO_INSTANCES
+- FLEET_VPC_PEERING_SUCCEEDED
+- FLEET_VPC_PEERING_FAILED
+- FLEET_VPC_PEERING_DELETE
+- FLEET_INITIALIZATION_FAILED
+- FLEET_DELETED
+- FLEET_STATE_DELETING
+- FLEET_ACTIVATION_FAILED
+- GAME_SESSION_ACTIVATION_TIMEOUT
+        :rtype: str
+        """
         return self._EventCode
 
     @EventCode.setter
@@ -5789,6 +6805,9 @@ class Event(AbstractModel):
 
     @property
     def EventId(self):
+        """事件的唯一标识 ID
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -5797,6 +6816,9 @@ class Event(AbstractModel):
 
     @property
     def EventTime(self):
+        """事件的发生时间，UTC 时间格式
+        :rtype: str
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -5805,6 +6827,10 @@ class Event(AbstractModel):
 
     @property
     def Message(self):
+        """事件的消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5813,6 +6839,10 @@ class Event(AbstractModel):
 
     @property
     def PreSignedLogUrl(self):
+        """事件相关的日志存储路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PreSignedLogUrl
 
     @PreSignedLogUrl.setter
@@ -5821,6 +6851,9 @@ class Event(AbstractModel):
 
     @property
     def ResourceId(self):
+        """事件对应的资源对象唯一标识 ID，例如服务器舰队 ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -5864,6 +6897,10 @@ class ExtraInfos(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例类型，例如S5.LARGE8
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -5872,6 +6909,10 @@ class ExtraInfos(AbstractModel):
 
     @property
     def TotalInstances(self):
+        """实例限额数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalInstances
 
     @TotalInstances.setter
@@ -5909,6 +6950,9 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
+        """过滤属性的 key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -5917,6 +6961,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤属性的 values 值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -6029,6 +7076,9 @@ class FleetAttributes(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包 Id
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -6037,6 +7087,9 @@ class FleetAttributes(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建服务器舰队时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -6045,6 +7098,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6053,6 +7110,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def FleetArn(self):
+        """服务器舰队资源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetArn
 
     @FleetArn.setter
@@ -6061,6 +7122,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -6069,6 +7134,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def FleetType(self):
+        """服务器舰队类型，目前只支持ON_DEMAND
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetType
 
     @FleetType.setter
@@ -6077,6 +7146,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def InstanceType(self):
+        """服务器类型，例如S5.LARGE8
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -6085,6 +7158,9 @@ class FleetAttributes(AbstractModel):
 
     @property
     def Name(self):
+        """服务器舰队名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6093,6 +7169,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def NewGameServerSessionProtectionPolicy(self):
+        """游戏会话保护策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NewGameServerSessionProtectionPolicy
 
     @NewGameServerSessionProtectionPolicy.setter
@@ -6101,6 +7181,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def OperatingSystem(self):
+        """操作系统类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OperatingSystem
 
     @OperatingSystem.setter
@@ -6109,6 +7193,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def ResourceCreationLimitPolicy(self):
+        """资源创建限制策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
+        """
         return self._ResourceCreationLimitPolicy
 
     @ResourceCreationLimitPolicy.setter
@@ -6117,6 +7205,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def Status(self):
+        """状态：新建、下载中、验证中、生成中、激活中、活跃、异常、删除中、结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6125,6 +7217,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def StoppedActions(self):
+        """服务器舰队停止状态，为空时表示自动扩缩容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._StoppedActions
 
     @StoppedActions.setter
@@ -6133,6 +7229,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def TerminationTime(self):
+        """服务器舰队终止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TerminationTime
 
     @TerminationTime.setter
@@ -6141,6 +7241,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def GameServerSessionProtectionTimeLimit(self):
+        """时限保护超时时间，默认60分钟，最小值5，最大值1440
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GameServerSessionProtectionTimeLimit
 
     @GameServerSessionProtectionTimeLimit.setter
@@ -6149,6 +7253,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def BillingStatus(self):
+        """计费状态：未开通、已开通、异常、欠费隔离、销毁、解冻
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BillingStatus
 
     @BillingStatus.setter
@@ -6157,6 +7265,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6165,6 +7277,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def DataDiskInfo(self):
+        """数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DiskInfo
+        """
         return self._DataDiskInfo
 
     @DataDiskInfo.setter
@@ -6173,6 +7289,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def SystemDiskInfo(self):
+        """系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        """
         return self._SystemDiskInfo
 
     @SystemDiskInfo.setter
@@ -6181,6 +7301,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def RelatedCcnInfos(self):
+        """云联网相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RelatedCcnInfo
+        """
         return self._RelatedCcnInfos
 
     @RelatedCcnInfos.setter
@@ -6189,6 +7313,10 @@ class FleetAttributes(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -6274,6 +7402,10 @@ class FleetCapacity(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务部署 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -6282,6 +7414,10 @@ class FleetCapacity(AbstractModel):
 
     @property
     def InstanceType(self):
+        """服务器类型，如S3.LARGE8,S2.LARGE8,S5.LARGE8等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -6290,6 +7426,10 @@ class FleetCapacity(AbstractModel):
 
     @property
     def InstanceCounts(self):
+        """服务器实例统计数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.InstanceCounts`
+        """
         return self._InstanceCounts
 
     @InstanceCounts.setter
@@ -6298,6 +7438,10 @@ class FleetCapacity(AbstractModel):
 
     @property
     def ScalingInterval(self):
+        """服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ScalingInterval
 
     @ScalingInterval.setter
@@ -6347,6 +7491,12 @@ class FleetRelatedResource(AbstractModel):
 
     @property
     def Type(self):
+        """资源类型。
+- ALIAS：别名
+- QUEUE：队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6355,6 +7505,10 @@ class FleetRelatedResource(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID，目前仅支持别名ID和队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -6363,6 +7517,10 @@ class FleetRelatedResource(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """资源所在区域，如ap-shanghai、na-siliconvalley等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -6423,6 +7581,10 @@ class FleetStatisticDetail(AbstractModel):
 
     @property
     def FleetId(self):
+        """舰队ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -6431,6 +7593,10 @@ class FleetStatisticDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6439,6 +7605,10 @@ class FleetStatisticDetail(AbstractModel):
 
     @property
     def InstanceIP(self):
+        """实例IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceIP
 
     @InstanceIP.setter
@@ -6447,6 +7617,10 @@ class FleetStatisticDetail(AbstractModel):
 
     @property
     def BeginTime(self):
+        """开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -6455,6 +7629,10 @@ class FleetStatisticDetail(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6463,6 +7641,10 @@ class FleetStatisticDetail(AbstractModel):
 
     @property
     def TotalUsedTimeSeconds(self):
+        """总时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TotalUsedTimeSeconds
 
     @TotalUsedTimeSeconds.setter
@@ -6471,6 +7653,10 @@ class FleetStatisticDetail(AbstractModel):
 
     @property
     def TotalUsedFlowMegaBytes(self):
+        """总流量，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalUsedFlowMegaBytes
 
     @TotalUsedFlowMegaBytes.setter
@@ -6515,6 +7701,10 @@ class FleetStatisticFlows(AbstractModel):
 
     @property
     def TotalUsedFlowMegaBytes(self):
+        """总流量，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalUsedFlowMegaBytes
 
     @TotalUsedFlowMegaBytes.setter
@@ -6523,6 +7713,10 @@ class FleetStatisticFlows(AbstractModel):
 
     @property
     def BeginTime(self):
+        """统计开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -6562,6 +7756,10 @@ class FleetStatisticTimes(AbstractModel):
 
     @property
     def BeginTime(self):
+        """统计开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -6570,6 +7768,10 @@ class FleetStatisticTimes(AbstractModel):
 
     @property
     def TotalUsedTimeSeconds(self):
+        """统计总时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TotalUsedTimeSeconds
 
     @TotalUsedTimeSeconds.setter
@@ -6621,6 +7823,10 @@ class FleetUtilization(AbstractModel):
 
     @property
     def ActiveGameServerSessionCount(self):
+        """游戏会话数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActiveGameServerSessionCount
 
     @ActiveGameServerSessionCount.setter
@@ -6629,6 +7835,10 @@ class FleetUtilization(AbstractModel):
 
     @property
     def ActiveServerProcessCount(self):
+        """活跃进程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActiveServerProcessCount
 
     @ActiveServerProcessCount.setter
@@ -6637,6 +7847,10 @@ class FleetUtilization(AbstractModel):
 
     @property
     def CurrentPlayerSessionCount(self):
+        """当前游戏玩家数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CurrentPlayerSessionCount
 
     @CurrentPlayerSessionCount.setter
@@ -6645,6 +7859,10 @@ class FleetUtilization(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务部署 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -6653,6 +7871,10 @@ class FleetUtilization(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
+        """最大玩家会话数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaximumPlayerSessionCount
 
     @MaximumPlayerSessionCount.setter
@@ -6693,6 +7915,9 @@ class GameProperty(AbstractModel):
 
     @property
     def Key(self):
+        """属性名称，最大长度不超过32个ASCII字符
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6701,6 +7926,9 @@ class GameProperty(AbstractModel):
 
     @property
     def Value(self):
+        """属性值，最大长度不超过96个ASCII字符
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6812,6 +8040,9 @@ class GameServerSession(AbstractModel):
 
     @property
     def CreationTime(self):
+        """游戏服务器会话创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -6820,6 +8051,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def CreatorId(self):
+        """创建者ID，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatorId
 
     @CreatorId.setter
@@ -6828,6 +8063,9 @@ class GameServerSession(AbstractModel):
 
     @property
     def CurrentPlayerSessionCount(self):
+        """当前玩家数量，最小值不小于0
+        :rtype: int
+        """
         return self._CurrentPlayerSessionCount
 
     @CurrentPlayerSessionCount.setter
@@ -6836,6 +8074,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def DnsName(self):
+        """CVM的DNS标识符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -6844,6 +8086,9 @@ class GameServerSession(AbstractModel):
 
     @property
     def FleetId(self):
+        """舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -6852,6 +8097,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def GameProperties(self):
+        """游戏属性，最大长度不超过16组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GameProperty
+        """
         return self._GameProperties
 
     @GameProperties.setter
@@ -6860,6 +8109,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def GameServerSessionData(self):
+        """游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GameServerSessionData
 
     @GameServerSessionData.setter
@@ -6868,6 +8121,9 @@ class GameServerSession(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -6876,6 +8132,9 @@ class GameServerSession(AbstractModel):
 
     @property
     def IpAddress(self):
+        """CVM IP地址
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -6884,6 +8143,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def MatchmakerData(self):
+        """对战进程详情，最大长度不超过400000个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MatchmakerData
 
     @MatchmakerData.setter
@@ -6892,6 +8155,9 @@ class GameServerSession(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
+        """最大玩家数量，最小值不小于0
+        :rtype: int
+        """
         return self._MaximumPlayerSessionCount
 
     @MaximumPlayerSessionCount.setter
@@ -6900,6 +8166,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def Name(self):
+        """游戏服务器会话名称，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6908,6 +8178,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def PlayerSessionCreationPolicy(self):
+        """玩家会话创建策略（ACCEPT_ALL,DENY_ALL）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlayerSessionCreationPolicy
 
     @PlayerSessionCreationPolicy.setter
@@ -6916,6 +8190,9 @@ class GameServerSession(AbstractModel):
 
     @property
     def Port(self):
+        """端口号，最小值不小于1，最大值不超过60000
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -6924,6 +8201,9 @@ class GameServerSession(AbstractModel):
 
     @property
     def Status(self):
+        """游戏服务器会话状态（ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR）
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6932,6 +8212,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def StatusReason(self):
+        """游戏服务器会话状态附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusReason
 
     @StatusReason.setter
@@ -6940,6 +8224,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def TerminationTime(self):
+        """终止的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TerminationTime
 
     @TerminationTime.setter
@@ -6948,6 +8236,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例类型，最大长度不超过128个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -6956,6 +8248,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def CurrentCustomCount(self):
+        """当前自定义数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CurrentCustomCount
 
     @CurrentCustomCount.setter
@@ -6964,6 +8260,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def MaxCustomCount(self):
+        """最大自定义数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxCustomCount
 
     @MaxCustomCount.setter
@@ -6972,6 +8272,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def Weight(self):
+        """权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -6980,6 +8284,10 @@ class GameServerSession(AbstractModel):
 
     @property
     def AvailabilityStatus(self):
+        """会话可用性状态，是否被屏蔽（Enable,Disable）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AvailabilityStatus
 
     @AvailabilityStatus.setter
@@ -7043,6 +8351,9 @@ class GameServerSessionDetail(AbstractModel):
 
     @property
     def GameServerSession(self):
+        """游戏服务器会话
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
+        """
         return self._GameServerSession
 
     @GameServerSession.setter
@@ -7051,6 +8362,10 @@ class GameServerSessionDetail(AbstractModel):
 
     @property
     def ProtectionPolicy(self):
+        """保护策略，可选（NoProtection,FullProtection）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProtectionPolicy
 
     @ProtectionPolicy.setter
@@ -7147,6 +8462,9 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def PlacementId(self):
+        """部署Id
+        :rtype: str
+        """
         return self._PlacementId
 
     @PlacementId.setter
@@ -7155,6 +8473,9 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def GameServerSessionQueueName(self):
+        """服务部署组名称
+        :rtype: str
+        """
         return self._GameServerSessionQueueName
 
     @GameServerSessionQueueName.setter
@@ -7163,6 +8484,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def PlayerLatencies(self):
+        """玩家延迟
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PlayerLatency
+        """
         return self._PlayerLatencies
 
     @PlayerLatencies.setter
@@ -7171,6 +8496,9 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def Status(self):
+        """服务部署状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7179,6 +8507,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def DnsName(self):
+        """分配给正在运行游戏会话的实例的DNS标识符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -7187,6 +8519,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏会话Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -7195,6 +8531,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def GameServerSessionName(self):
+        """游戏会话名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GameServerSessionName
 
     @GameServerSessionName.setter
@@ -7203,6 +8543,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def GameServerSessionRegion(self):
+        """服务部署区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GameServerSessionRegion
 
     @GameServerSessionRegion.setter
@@ -7211,6 +8555,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def GameProperties(self):
+        """游戏属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GameProperty
+        """
         return self._GameProperties
 
     @GameProperties.setter
@@ -7219,6 +8567,9 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
+        """游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
+        :rtype: int
+        """
         return self._MaximumPlayerSessionCount
 
     @MaximumPlayerSessionCount.setter
@@ -7227,6 +8578,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def GameServerSessionData(self):
+        """游戏会话数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GameServerSessionData
 
     @GameServerSessionData.setter
@@ -7235,6 +8590,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def IpAddress(self):
+        """运行游戏会话的实例的IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -7243,6 +8602,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def Port(self):
+        """运行游戏会话的实例的端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -7251,6 +8614,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def MatchmakerData(self):
+        """游戏匹配数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MatchmakerData
 
     @MatchmakerData.setter
@@ -7259,6 +8626,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def PlacedPlayerSessions(self):
+        """部署的玩家游戏数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PlacedPlayerSession
+        """
         return self._PlacedPlayerSessions
 
     @PlacedPlayerSessions.setter
@@ -7267,6 +8638,9 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7275,6 +8649,10 @@ class GameServerSessionPlacement(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7357,6 +8735,9 @@ class GameServerSessionQueue(AbstractModel):
 
     @property
     def Name(self):
+        """服务部署组名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7365,6 +8746,9 @@ class GameServerSessionQueue(AbstractModel):
 
     @property
     def GameServerSessionQueueArn(self):
+        """服务部署组资源
+        :rtype: str
+        """
         return self._GameServerSessionQueueArn
 
     @GameServerSessionQueueArn.setter
@@ -7373,6 +8757,10 @@ class GameServerSessionQueue(AbstractModel):
 
     @property
     def Destinations(self):
+        """目的fleet（可为别名）列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GameServerSessionQueueDestination
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -7381,6 +8769,10 @@ class GameServerSessionQueue(AbstractModel):
 
     @property
     def PlayerLatencyPolicies(self):
+        """延迟策略集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PlayerLatencyPolicy
+        """
         return self._PlayerLatencyPolicies
 
     @PlayerLatencyPolicies.setter
@@ -7389,6 +8781,9 @@ class GameServerSessionQueue(AbstractModel):
 
     @property
     def TimeoutInSeconds(self):
+        """超时时间
+        :rtype: int
+        """
         return self._TimeoutInSeconds
 
     @TimeoutInSeconds.setter
@@ -7397,6 +8792,10 @@ class GameServerSessionQueue(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，最大长度50组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7455,6 +8854,10 @@ class GameServerSessionQueueDestination(AbstractModel):
 
     @property
     def DestinationArn(self):
+        """服务部署组目的的资源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DestinationArn
 
     @DestinationArn.setter
@@ -7463,6 +8866,10 @@ class GameServerSessionQueueDestination(AbstractModel):
 
     @property
     def FleetStatus(self):
+        """服务部署组目的的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetStatus
 
     @FleetStatus.setter
@@ -7509,6 +8916,9 @@ class GetGameServerInstanceLogUrlRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """游戏舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -7517,6 +8927,9 @@ class GetGameServerInstanceLogUrlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7525,6 +8938,9 @@ class GetGameServerInstanceLogUrlRequest(AbstractModel):
 
     @property
     def ServerIp(self):
+        """实例IP
+        :rtype: str
+        """
         return self._ServerIp
 
     @ServerIp.setter
@@ -7533,6 +8949,9 @@ class GetGameServerInstanceLogUrlRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7541,6 +8960,9 @@ class GetGameServerInstanceLogUrlRequest(AbstractModel):
 
     @property
     def Size(self):
+        """每次条数
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -7588,6 +9010,10 @@ class GetGameServerInstanceLogUrlResponse(AbstractModel):
 
     @property
     def PresignedUrls(self):
+        """日志下载URL的数组，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PresignedUrls
 
     @PresignedUrls.setter
@@ -7596,6 +9022,9 @@ class GetGameServerInstanceLogUrlResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -7604,6 +9033,9 @@ class GetGameServerInstanceLogUrlResponse(AbstractModel):
 
     @property
     def HasNext(self):
+        """是否还有没拉取完的
+        :rtype: bool
+        """
         return self._HasNext
 
     @HasNext.setter
@@ -7612,6 +9044,9 @@ class GetGameServerInstanceLogUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7640,6 +9075,9 @@ class GetGameServerSessionLogUrlRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -7677,6 +9115,10 @@ class GetGameServerSessionLogUrlResponse(AbstractModel):
 
     @property
     def PreSignedUrl(self):
+        """日志下载URL，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PreSignedUrl
 
     @PreSignedUrl.setter
@@ -7685,6 +9127,9 @@ class GetGameServerSessionLogUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7714,6 +9159,9 @@ class GetInstanceAccessRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -7722,6 +9170,9 @@ class GetInstanceAccessRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7759,6 +9210,9 @@ class GetInstanceAccessResponse(AbstractModel):
 
     @property
     def InstanceAccess(self):
+        """实例登录所需要的凭据
+        :rtype: :class:`tencentcloud.gse.v20191112.models.InstanceAccess`
+        """
         return self._InstanceAccess
 
     @InstanceAccess.setter
@@ -7767,6 +9221,9 @@ class GetInstanceAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7798,6 +9255,9 @@ class GetUploadCredentialsRequest(AbstractModel):
 
     @property
     def AssetRegion(self):
+        """生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :rtype: str
+        """
         return self._AssetRegion
 
     @AssetRegion.setter
@@ -7806,6 +9266,9 @@ class GetUploadCredentialsRequest(AbstractModel):
 
     @property
     def BucketKey(self):
+        """生成包的ZIP包名，例如：server.zip
+        :rtype: str
+        """
         return self._BucketKey
 
     @BucketKey.setter
@@ -7849,6 +9312,9 @@ class GetUploadCredentialsResponse(AbstractModel):
 
     @property
     def BucketAuth(self):
+        """上传文件授权信息Auth
+        :rtype: str
+        """
         return self._BucketAuth
 
     @BucketAuth.setter
@@ -7857,6 +9323,9 @@ class GetUploadCredentialsResponse(AbstractModel):
 
     @property
     def BucketName(self):
+        """Bucket名字
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -7865,6 +9334,9 @@ class GetUploadCredentialsResponse(AbstractModel):
 
     @property
     def AssetRegion(self):
+        """生成包所在地域
+        :rtype: str
+        """
         return self._AssetRegion
 
     @AssetRegion.setter
@@ -7873,6 +9345,9 @@ class GetUploadCredentialsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7913,6 +9388,9 @@ class GetUploadFederationTokenResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """临时证书的过期时间，Unix 时间戳，精确到秒
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -7921,6 +9399,9 @@ class GetUploadFederationTokenResponse(AbstractModel):
 
     @property
     def AssetCredentials(self):
+        """临时证书
+        :rtype: :class:`tencentcloud.gse.v20191112.models.AssetCredentials`
+        """
         return self._AssetCredentials
 
     @AssetCredentials.setter
@@ -7929,6 +9410,9 @@ class GetUploadFederationTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7967,6 +9451,9 @@ class InboundPermission(AbstractModel):
 
     @property
     def FromPort(self):
+        """起始端口号，最小值1025
+        :rtype: int
+        """
         return self._FromPort
 
     @FromPort.setter
@@ -7975,6 +9462,9 @@ class InboundPermission(AbstractModel):
 
     @property
     def IpRange(self):
+        """IP 段范围，合法的 CIDR 地址类型，如所有IPv4来源：0.0.0.0/0
+        :rtype: str
+        """
         return self._IpRange
 
     @IpRange.setter
@@ -7983,6 +9473,9 @@ class InboundPermission(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议类型：TCP或者UDP
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -7991,6 +9484,9 @@ class InboundPermission(AbstractModel):
 
     @property
     def ToPort(self):
+        """终止端口号，最大值60000
+        :rtype: int
+        """
         return self._ToPort
 
     @ToPort.setter
@@ -8036,6 +9532,9 @@ class InboundPermissionAuthorization(AbstractModel):
 
     @property
     def FromPort(self):
+        """起始端口号
+        :rtype: int
+        """
         return self._FromPort
 
     @FromPort.setter
@@ -8044,6 +9543,9 @@ class InboundPermissionAuthorization(AbstractModel):
 
     @property
     def IpRange(self):
+        """IP 端范围，CIDR方式划分
+        :rtype: str
+        """
         return self._IpRange
 
     @IpRange.setter
@@ -8052,6 +9554,9 @@ class InboundPermissionAuthorization(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议类型
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -8060,6 +9565,9 @@ class InboundPermissionAuthorization(AbstractModel):
 
     @property
     def ToPort(self):
+        """终止端口号
+        :rtype: int
+        """
         return self._ToPort
 
     @ToPort.setter
@@ -8105,6 +9613,9 @@ class InboundPermissionRevocations(AbstractModel):
 
     @property
     def FromPort(self):
+        """起始端口号
+        :rtype: int
+        """
         return self._FromPort
 
     @FromPort.setter
@@ -8113,6 +9624,9 @@ class InboundPermissionRevocations(AbstractModel):
 
     @property
     def IpRange(self):
+        """IP 端范围，CIDR 方式换分
+        :rtype: str
+        """
         return self._IpRange
 
     @IpRange.setter
@@ -8121,6 +9635,9 @@ class InboundPermissionRevocations(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议类型：UDP或者TCP
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -8129,6 +9646,9 @@ class InboundPermissionRevocations(AbstractModel):
 
     @property
     def ToPort(self):
+        """终止端口号
+        :rtype: int
+        """
         return self._ToPort
 
     @ToPort.setter
@@ -8206,6 +9726,10 @@ class Instance(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务部署ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -8214,6 +9738,10 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8222,6 +9750,10 @@ class Instance(AbstractModel):
 
     @property
     def IpAddress(self):
+        """IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -8230,6 +9762,10 @@ class Instance(AbstractModel):
 
     @property
     def DnsName(self):
+        """dns
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -8238,6 +9774,10 @@ class Instance(AbstractModel):
 
     @property
     def OperatingSystem(self):
+        """操作系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OperatingSystem
 
     @OperatingSystem.setter
@@ -8246,6 +9786,10 @@ class Instance(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8254,6 +9798,10 @@ class Instance(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8262,6 +9810,10 @@ class Instance(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8270,6 +9822,10 @@ class Instance(AbstractModel):
 
     @property
     def Weight(self):
+        """实例权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -8278,6 +9834,10 @@ class Instance(AbstractModel):
 
     @property
     def ReserveValue(self):
+        """实例是否保留, 1-保留，0-不保留,默认
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReserveValue
 
     @ReserveValue.setter
@@ -8286,6 +9846,10 @@ class Instance(AbstractModel):
 
     @property
     def PrivateIpAddress(self):
+        """实例的私有IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -8341,6 +9905,9 @@ class InstanceAccess(AbstractModel):
 
     @property
     def Credentials(self):
+        """访问实例所需要的凭据
+        :rtype: :class:`tencentcloud.gse.v20191112.models.Credentials`
+        """
         return self._Credentials
 
     @Credentials.setter
@@ -8349,6 +9916,9 @@ class InstanceAccess(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务部署Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -8357,6 +9927,9 @@ class InstanceAccess(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8365,6 +9938,9 @@ class InstanceAccess(AbstractModel):
 
     @property
     def IpAddress(self):
+        """实例公网IP
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -8373,6 +9949,9 @@ class InstanceAccess(AbstractModel):
 
     @property
     def OperatingSystem(self):
+        """操作系统
+        :rtype: str
+        """
         return self._OperatingSystem
 
     @OperatingSystem.setter
@@ -8437,6 +10016,10 @@ class InstanceCounts(AbstractModel):
 
     @property
     def Active(self):
+        """活跃的服务器实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Active
 
     @Active.setter
@@ -8445,6 +10028,10 @@ class InstanceCounts(AbstractModel):
 
     @property
     def Desired(self):
+        """期望的服务器实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Desired
 
     @Desired.setter
@@ -8453,6 +10040,10 @@ class InstanceCounts(AbstractModel):
 
     @property
     def Idle(self):
+        """空闲的服务器实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Idle
 
     @Idle.setter
@@ -8461,6 +10052,10 @@ class InstanceCounts(AbstractModel):
 
     @property
     def MaxiNum(self):
+        """服务器实例数最大限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxiNum
 
     @MaxiNum.setter
@@ -8469,6 +10064,10 @@ class InstanceCounts(AbstractModel):
 
     @property
     def MiniNum(self):
+        """服务器实例数最小限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MiniNum
 
     @MiniNum.setter
@@ -8477,6 +10076,10 @@ class InstanceCounts(AbstractModel):
 
     @property
     def Pending(self):
+        """已开始创建，但未激活的服务器实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Pending
 
     @Pending.setter
@@ -8485,6 +10088,10 @@ class InstanceCounts(AbstractModel):
 
     @property
     def Terminating(self):
+        """结束中的服务器实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Terminating
 
     @Terminating.setter
@@ -8553,6 +10160,10 @@ class InstanceExtend(AbstractModel):
 
     @property
     def Instance(self):
+        """实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.Instance`
+        """
         return self._Instance
 
     @Instance.setter
@@ -8561,6 +10172,10 @@ class InstanceExtend(AbstractModel):
 
     @property
     def State(self):
+        """实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -8569,6 +10184,10 @@ class InstanceExtend(AbstractModel):
 
     @property
     def HealthyProcessCnt(self):
+        """健康进程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HealthyProcessCnt
 
     @HealthyProcessCnt.setter
@@ -8577,6 +10196,10 @@ class InstanceExtend(AbstractModel):
 
     @property
     def ActiveProcessCnt(self):
+        """活跃进程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActiveProcessCnt
 
     @ActiveProcessCnt.setter
@@ -8585,6 +10208,10 @@ class InstanceExtend(AbstractModel):
 
     @property
     def GameSessionCnt(self):
+        """当前游戏会话总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GameSessionCnt
 
     @GameSessionCnt.setter
@@ -8593,6 +10220,10 @@ class InstanceExtend(AbstractModel):
 
     @property
     def MaxGameSessionCnt(self):
+        """最大游戏会话数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxGameSessionCnt
 
     @MaxGameSessionCnt.setter
@@ -8601,6 +10232,10 @@ class InstanceExtend(AbstractModel):
 
     @property
     def PlayerSessionCnt(self):
+        """当前玩家会话数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PlayerSessionCnt
 
     @PlayerSessionCnt.setter
@@ -8609,6 +10244,10 @@ class InstanceExtend(AbstractModel):
 
     @property
     def MaxPlayerSessionCnt(self):
+        """最大玩家会话数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxPlayerSessionCnt
 
     @MaxPlayerSessionCnt.setter
@@ -8663,6 +10302,9 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def TypeName(self):
+        """类型名，例如“标准型SA1”
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -8671,6 +10313,9 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def InstanceType(self):
+        """类型，例如"SA1.SMALL1"
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -8679,6 +10324,9 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def Cpu(self):
+        """CPU，例如1核就是1
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -8687,6 +10335,9 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def Memory(self):
+        """内存，例如2G就是2
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -8695,6 +10346,9 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def NetworkCard(self):
+        """网络收到包,例如25万PPS就是25
+        :rtype: int
+        """
         return self._NetworkCard
 
     @NetworkCard.setter
@@ -8738,6 +10392,9 @@ class JoinGameServerSessionBatchRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -8746,6 +10403,9 @@ class JoinGameServerSessionBatchRequest(AbstractModel):
 
     @property
     def PlayerIds(self):
+        """玩家ID列表，最小1组，最大25组
+        :rtype: list of str
+        """
         return self._PlayerIds
 
     @PlayerIds.setter
@@ -8754,6 +10414,9 @@ class JoinGameServerSessionBatchRequest(AbstractModel):
 
     @property
     def PlayerDataMap(self):
+        """玩家自定义数据
+        :rtype: :class:`tencentcloud.gse.v20191112.models.PlayerDataMap`
+        """
         return self._PlayerDataMap
 
     @PlayerDataMap.setter
@@ -8795,6 +10458,10 @@ class JoinGameServerSessionBatchResponse(AbstractModel):
 
     @property
     def PlayerSessions(self):
+        """玩家会话列表，最大25组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PlayerSession
+        """
         return self._PlayerSessions
 
     @PlayerSessions.setter
@@ -8803,6 +10470,9 @@ class JoinGameServerSessionBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8840,6 +10510,9 @@ class JoinGameServerSessionRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -8848,6 +10521,9 @@ class JoinGameServerSessionRequest(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家ID，最大长度1024个ASCII字符
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -8856,6 +10532,9 @@ class JoinGameServerSessionRequest(AbstractModel):
 
     @property
     def PlayerData(self):
+        """玩家自定义数据，最大长度2048个ASCII字符
+        :rtype: str
+        """
         return self._PlayerData
 
     @PlayerData.setter
@@ -8895,6 +10574,10 @@ class JoinGameServerSessionResponse(AbstractModel):
 
     @property
     def PlayerSession(self):
+        """玩家会话
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.PlayerSession`
+        """
         return self._PlayerSession
 
     @PlayerSession.setter
@@ -8903,6 +10586,9 @@ class JoinGameServerSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8949,6 +10635,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名字，长度不小于1字符不超过1024字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8957,6 +10646,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def RoutingStrategyType(self):
+        """路由策略类型，有效值常规别名(SIMPLE)、终止别名(TERMINAL)
+        :rtype: str
+        """
         return self._RoutingStrategyType
 
     @RoutingStrategyType.setter
@@ -8965,6 +10657,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """要返回的最大结果数，最小值1
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8973,6 +10668,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8981,6 +10679,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """排序字段，例如CreationTime
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -8989,6 +10690,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def OrderWay(self):
+        """排序方式，有效值asc|desc
+        :rtype: str
+        """
         return self._OrderWay
 
     @OrderWay.setter
@@ -8997,6 +10701,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（舰队当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -9048,6 +10755,10 @@ class ListAliasesResponse(AbstractModel):
 
     @property
     def Aliases(self):
+        """别名对象数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Alias
+        """
         return self._Aliases
 
     @Aliases.setter
@@ -9056,6 +10767,9 @@ class ListAliasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9064,6 +10778,9 @@ class ListAliasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9105,6 +10822,9 @@ class ListFleetsRequest(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包 Id
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -9113,6 +10833,9 @@ class ListFleetsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """结果返回最大值，暂未使用
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9121,6 +10844,9 @@ class ListFleetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """结果返回偏移，暂未使用
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9129,6 +10855,9 @@ class ListFleetsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -9177,6 +10906,10 @@ class ListFleetsResponse(AbstractModel):
 
     @property
     def FleetIds(self):
+        """服务器舰队 Id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._FleetIds
 
     @FleetIds.setter
@@ -9185,6 +10918,9 @@ class ListFleetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """服务器舰队 Id 总数，最小值0
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9193,6 +10929,9 @@ class ListFleetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9223,6 +10962,9 @@ class PlacedPlayerSession(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家Id
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -9231,6 +10973,9 @@ class PlacedPlayerSession(AbstractModel):
 
     @property
     def PlayerSessionId(self):
+        """玩家会话Id
+        :rtype: str
+        """
         return self._PlayerSessionId
 
     @PlayerSessionId.setter
@@ -9268,6 +11013,9 @@ class PlayerDataMap(AbstractModel):
 
     @property
     def Key(self):
+        """玩家自定义数据键，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -9276,6 +11024,9 @@ class PlayerDataMap(AbstractModel):
 
     @property
     def Value(self):
+        """玩家自定义数据值，最小长度不小于1个ASCII字符，最大长度不超过2048个ASCII字符
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -9318,6 +11069,10 @@ class PlayerLatency(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -9326,6 +11081,10 @@ class PlayerLatency(AbstractModel):
 
     @property
     def RegionIdentifier(self):
+        """延迟对应的区域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionIdentifier
 
     @RegionIdentifier.setter
@@ -9334,6 +11093,9 @@ class PlayerLatency(AbstractModel):
 
     @property
     def LatencyInMilliseconds(self):
+        """毫秒级延迟
+        :rtype: int
+        """
         return self._LatencyInMilliseconds
 
     @LatencyInMilliseconds.setter
@@ -9374,6 +11136,10 @@ class PlayerLatencyPolicy(AbstractModel):
 
     @property
     def MaximumIndividualPlayerLatencyMilliseconds(self):
+        """任意player允许的最大延迟，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaximumIndividualPlayerLatencyMilliseconds
 
     @MaximumIndividualPlayerLatencyMilliseconds.setter
@@ -9382,6 +11148,10 @@ class PlayerLatencyPolicy(AbstractModel):
 
     @property
     def PolicyDurationSeconds(self):
+        """放置新GameServerSession时强制实施策略的时间长度，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PolicyDurationSeconds
 
     @PolicyDurationSeconds.setter
@@ -9450,6 +11220,9 @@ class PlayerSession(AbstractModel):
 
     @property
     def CreationTime(self):
+        """玩家会话创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -9458,6 +11231,10 @@ class PlayerSession(AbstractModel):
 
     @property
     def DnsName(self):
+        """游戏服务器会话运行的DNS标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -9466,6 +11243,9 @@ class PlayerSession(AbstractModel):
 
     @property
     def FleetId(self):
+        """舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -9474,6 +11254,9 @@ class PlayerSession(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -9482,6 +11265,9 @@ class PlayerSession(AbstractModel):
 
     @property
     def IpAddress(self):
+        """游戏服务器会话运行的CVM地址
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -9490,6 +11276,10 @@ class PlayerSession(AbstractModel):
 
     @property
     def PlayerData(self):
+        """玩家自定义数据，最大长度2048个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlayerData
 
     @PlayerData.setter
@@ -9498,6 +11288,10 @@ class PlayerSession(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家ID，最大长度1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -9506,6 +11300,9 @@ class PlayerSession(AbstractModel):
 
     @property
     def PlayerSessionId(self):
+        """玩家会话ID
+        :rtype: str
+        """
         return self._PlayerSessionId
 
     @PlayerSessionId.setter
@@ -9514,6 +11311,9 @@ class PlayerSession(AbstractModel):
 
     @property
     def Port(self):
+        """端口号，最小值不小于1，最大值不超过60000
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -9522,6 +11322,9 @@ class PlayerSession(AbstractModel):
 
     @property
     def Status(self):
+        """玩家会话的状态（RESERVED = 1,ACTIVE = 2,COMPLETED = 3,TIMEDOUT = 4）
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9530,6 +11333,10 @@ class PlayerSession(AbstractModel):
 
     @property
     def TerminationTime(self):
+        """玩家会话终止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TerminationTime
 
     @TerminationTime.setter
@@ -9603,6 +11410,9 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def FleetId(self):
+        """扩缩容配置服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -9611,6 +11421,9 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def Name(self):
+        """扩缩容策略名称，最小长度为1，最大长度为1024
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9619,6 +11432,10 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def ScalingAdjustment(self):
+        """扩缩容调整值，ScalingAdjustmentType取值PercentChangeInCapacity时，取值范围-99~99
+ScalingAdjustmentType取值ChangeInCapacity或ExactCapacity时，最小值要缩容的最多CVM个数，最大值为实际最大的CVM个数限额
+        :rtype: int
+        """
         return self._ScalingAdjustment
 
     @ScalingAdjustment.setter
@@ -9627,6 +11444,9 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def ScalingAdjustmentType(self):
+        """扩缩容调整类型，取值（ChangeInCapacity，ExactCapacity，PercentChangeInCapacity）
+        :rtype: str
+        """
         return self._ScalingAdjustmentType
 
     @ScalingAdjustmentType.setter
@@ -9635,6 +11455,9 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def Threshold(self):
+        """扩缩容指标阈值
+        :rtype: float
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -9643,6 +11466,9 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def ComparisonOperator(self):
+        """扩缩容策略比较符，取值：>,>=,<,<=
+        :rtype: str
+        """
         return self._ComparisonOperator
 
     @ComparisonOperator.setter
@@ -9651,6 +11477,9 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def EvaluationPeriods(self):
+        """单个策略持续时间长度（分钟）
+        :rtype: int
+        """
         return self._EvaluationPeriods
 
     @EvaluationPeriods.setter
@@ -9659,6 +11488,11 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def MetricName(self):
+        """扩缩容参与计算的指标名称，PolicyType取值RuleBased，
+MetricName取值（AvailableGameServerSessions，AvailableCustomCount，PercentAvailableCustomCount，ActiveInstances，IdleInstances，CurrentPlayerSessions和PercentIdleInstances）；
+PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -9667,6 +11501,9 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def PolicyType(self):
+        """策略类型，取值：TargetBased表示基于目标的策略；RuleBased表示基于规则的策略
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -9675,6 +11512,9 @@ PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
 
     @property
     def TargetConfiguration(self):
+        """扩缩容目标值配置，只有TargetBased类型的策略生效
+        :rtype: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
+        """
         return self._TargetConfiguration
 
     @TargetConfiguration.setter
@@ -9723,6 +11563,10 @@ class PutScalingPolicyResponse(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9731,6 +11575,9 @@ class PutScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9757,6 +11604,9 @@ class PutTimerScalingPolicyRequest(AbstractModel):
 
     @property
     def TimerScalingPolicy(self):
+        """定时器策略消息
+        :rtype: :class:`tencentcloud.gse.v20191112.models.TimerScalingPolicy`
+        """
         return self._TimerScalingPolicy
 
     @TimerScalingPolicy.setter
@@ -9792,6 +11642,9 @@ class PutTimerScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9830,6 +11683,10 @@ class QuotaResource(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型，1生成包、2服务部署、3别名、4游戏服务器队列、5实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -9838,6 +11695,10 @@ class QuotaResource(AbstractModel):
 
     @property
     def HardLimit(self):
+        """总额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HardLimit
 
     @HardLimit.setter
@@ -9846,6 +11707,10 @@ class QuotaResource(AbstractModel):
 
     @property
     def Remaining(self):
+        """剩余额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Remaining
 
     @Remaining.setter
@@ -9854,6 +11719,10 @@ class QuotaResource(AbstractModel):
 
     @property
     def ExtraInfo(self):
+        """额外信息，可能为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtraInfo
 
     @ExtraInfo.setter
@@ -9896,6 +11765,9 @@ class RelatedCcnInfo(AbstractModel):
 
     @property
     def AccountId(self):
+        """云联网所属账号
+        :rtype: str
+        """
         return self._AccountId
 
     @AccountId.setter
@@ -9904,6 +11776,9 @@ class RelatedCcnInfo(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网 ID
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -9912,6 +11787,9 @@ class RelatedCcnInfo(AbstractModel):
 
     @property
     def AttachType(self):
+        """关联云联网状态
+        :rtype: str
+        """
         return self._AttachType
 
     @AttachType.setter
@@ -9947,6 +11825,9 @@ class ResolveAliasRequest(AbstractModel):
 
     @property
     def AliasId(self):
+        """要获取fleetId的别名ID
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -9984,6 +11865,10 @@ class ResolveAliasResponse(AbstractModel):
 
     @property
     def FleetId(self):
+        """别名指向的fleet的唯一标识符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -9992,6 +11877,9 @@ class ResolveAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10021,6 +11909,9 @@ class ResourceCreationLimitPolicy(AbstractModel):
 
     @property
     def NewGameServerSessionsPerCreator(self):
+        """创建数量，最小值1，默认2
+        :rtype: int
+        """
         return self._NewGameServerSessionsPerCreator
 
     @NewGameServerSessionsPerCreator.setter
@@ -10029,6 +11920,9 @@ class ResourceCreationLimitPolicy(AbstractModel):
 
     @property
     def PolicyPeriodInMinutes(self):
+        """单位时间，最小值1，默认3，单位分钟
+        :rtype: int
+        """
         return self._PolicyPeriodInMinutes
 
     @PolicyPeriodInMinutes.setter
@@ -10071,6 +11965,9 @@ class RoutingStrategy(AbstractModel):
 
     @property
     def Type(self):
+        """别名的路由策略的类型，有效值常规别名(SIMPLE)、终止别名(TERMINAL)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10079,6 +11976,10 @@ class RoutingStrategy(AbstractModel):
 
     @property
     def FleetId(self):
+        """别名指向的队列的唯一标识符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -10087,6 +11988,10 @@ class RoutingStrategy(AbstractModel):
 
     @property
     def Message(self):
+        """与终端路由策略一起使用的消息文本，长度不小于1字符不超过1024字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -10128,6 +12033,9 @@ class RuntimeConfiguration(AbstractModel):
 
     @property
     def GameServerSessionActivationTimeoutSeconds(self):
+        """游戏会话进程超时，最小值1，最大值600，单位秒
+        :rtype: int
+        """
         return self._GameServerSessionActivationTimeoutSeconds
 
     @GameServerSessionActivationTimeoutSeconds.setter
@@ -10136,6 +12044,9 @@ class RuntimeConfiguration(AbstractModel):
 
     @property
     def MaxConcurrentGameServerSessionActivations(self):
+        """最大游戏会话数，最小值1，最大值2147483647
+        :rtype: int
+        """
         return self._MaxConcurrentGameServerSessionActivations
 
     @MaxConcurrentGameServerSessionActivations.setter
@@ -10144,6 +12055,9 @@ class RuntimeConfiguration(AbstractModel):
 
     @property
     def ServerProcesses(self):
+        """服务进程配置，至少有一个进程配置
+        :rtype: list of ServerProcesse
+        """
         return self._ServerProcesses
 
     @ServerProcesses.setter
@@ -10225,6 +12139,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务部署ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -10233,6 +12151,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10241,6 +12163,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10249,6 +12175,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def ScalingAdjustment(self):
+        """保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScalingAdjustment
 
     @ScalingAdjustment.setter
@@ -10257,6 +12187,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def ScalingAdjustmentType(self):
+        """保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScalingAdjustmentType
 
     @ScalingAdjustmentType.setter
@@ -10265,6 +12199,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def ComparisonOperator(self):
+        """保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ComparisonOperator
 
     @ComparisonOperator.setter
@@ -10273,6 +12211,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def Threshold(self):
+        """保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -10281,6 +12223,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def EvaluationPeriods(self):
+        """保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EvaluationPeriods
 
     @EvaluationPeriods.setter
@@ -10289,6 +12235,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def MetricName(self):
+        """保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -10297,6 +12247,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def PolicyType(self):
+        """策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -10305,6 +12259,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def TargetConfiguration(self):
+        """基于规则的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
+        """
         return self._TargetConfiguration
 
     @TargetConfiguration.setter
@@ -10407,6 +12365,9 @@ playerSessionCount 当前玩家会话数 Number
 
     @property
     def AliasId(self):
+        """别名ID
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -10415,6 +12376,9 @@ playerSessionCount 当前玩家会话数 Number
 
     @property
     def FleetId(self):
+        """舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -10423,6 +12387,9 @@ playerSessionCount 当前玩家会话数 Number
 
     @property
     def Limit(self):
+        """单次查询记录数上限
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10431,6 +12398,9 @@ playerSessionCount 当前玩家会话数 Number
 
     @property
     def NextToken(self):
+        """页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -10439,6 +12409,45 @@ playerSessionCount 当前玩家会话数 Number
 
     @property
     def FilterExpression(self):
+        """搜索条件表达式，支持如下变量
+gameServerSessionName 游戏会话名称 String
+gameServerSessionId 游戏会话ID String
+maximumSessions 最大的玩家会话数 Number
+creationTimeMillis 创建时间，单位：毫秒 Number
+playerSessionCount 当前玩家会话数 Number
+hasAvailablePlayerSessions 是否有可用玩家数 String 取值true或false
+gameServerSessionProperties 游戏会话属性 String
+
+表达式String类型 等于=，不等于<>判断
+表示Number类型支持 =,<>,>,>=,<,<=
+
+例如：
+FilterExpression取值
+playerSessionCount>=2 AND hasAvailablePlayerSessions=true"
+表示查找至少有两个玩家，而且有可用玩家会话的游戏会话。
+FilterExpression取值
+gameServerSessionProperties.K1 = 'V1' AND gameServerSessionProperties.K2 = 'V2' OR gameServerSessionProperties.K3 = 'V3'
+
+表示
+查询满足如下游戏服务器会话属性的游戏会话
+{
+    "GameProperties":[
+        {
+            "Key":"K1",
+            "Value":"V1"
+        },
+        {
+            "Key":"K2",
+            "Value":"V2"
+        },
+        {
+            "Key":"K3",
+            "Value":"V3"
+        }
+    ]
+}
+        :rtype: str
+        """
         return self._FilterExpression
 
     @FilterExpression.setter
@@ -10447,6 +12456,15 @@ playerSessionCount 当前玩家会话数 Number
 
     @property
     def SortExpression(self):
+        """排序条件关键字
+支持排序字段
+gameServerSessionName 游戏会话名称 String
+gameServerSessionId 游戏会话ID String
+maximumSessions 最大的玩家会话数 Number
+creationTimeMillis 创建时间，单位：毫秒 Number
+playerSessionCount 当前玩家会话数 Number
+        :rtype: str
+        """
         return self._SortExpression
 
     @SortExpression.setter
@@ -10493,6 +12511,10 @@ class SearchGameServerSessionsResponse(AbstractModel):
 
     @property
     def GameServerSessions(self):
+        """游戏服务器会话列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GameServerSession
+        """
         return self._GameServerSessions
 
     @GameServerSessions.setter
@@ -10501,6 +12523,10 @@ class SearchGameServerSessionsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -10509,6 +12535,9 @@ class SearchGameServerSessionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10547,6 +12576,9 @@ class ServerProcesse(AbstractModel):
 
     @property
     def ConcurrentExecutions(self):
+        """并发执行数量，所有进程并发执行总数最小值1，最大值50
+        :rtype: int
+        """
         return self._ConcurrentExecutions
 
     @ConcurrentExecutions.setter
@@ -10555,6 +12587,9 @@ class ServerProcesse(AbstractModel):
 
     @property
     def LaunchPath(self):
+        """启动路径：Linux路径/local/game/ 或WIndows路径C:\game\，最小长度1，最大长度1024
+        :rtype: str
+        """
         return self._LaunchPath
 
     @LaunchPath.setter
@@ -10563,6 +12598,9 @@ class ServerProcesse(AbstractModel):
 
     @property
     def Parameters(self):
+        """启动参数，最小长度0，最大长度1024
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -10604,6 +12642,9 @@ class SetServerReservedRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """扩缩容配置服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -10612,6 +12653,9 @@ class SetServerReservedRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10620,6 +12664,9 @@ class SetServerReservedRequest(AbstractModel):
 
     @property
     def ReserveValue(self):
+        """实例是否保留, 1-保留，0-不保留,默认
+        :rtype: int
+        """
         return self._ReserveValue
 
     @ReserveValue.setter
@@ -10655,6 +12702,9 @@ class SetServerReservedResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10686,6 +12736,9 @@ class SetServerWeightRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -10694,6 +12747,9 @@ class SetServerWeightRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10702,6 +12758,9 @@ class SetServerWeightRequest(AbstractModel):
 
     @property
     def Weight(self):
+        """权重，最小值0，最大值10，默认值5
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -10737,6 +12796,9 @@ class SetServerWeightResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10765,6 +12827,9 @@ class StartFleetActionsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -10773,6 +12838,9 @@ class StartFleetActionsRequest(AbstractModel):
 
     @property
     def Actions(self):
+        """服务器舰队扩展策略，值为["AUTO_SCALING"]
+        :rtype: list of str
+        """
         return self._Actions
 
     @Actions.setter
@@ -10811,6 +12879,10 @@ class StartFleetActionsResponse(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -10819,6 +12891,9 @@ class StartFleetActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10866,6 +12941,9 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def PlacementId(self):
+        """开始部署游戏服务器会话的唯一标识符，最大值48个ASCII字符，模式：[a-zA-Z0-9-]+
+        :rtype: str
+        """
         return self._PlacementId
 
     @PlacementId.setter
@@ -10874,6 +12952,9 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def GameServerSessionQueueName(self):
+        """游戏服务器会话队列名称
+        :rtype: str
+        """
         return self._GameServerSessionQueueName
 
     @GameServerSessionQueueName.setter
@@ -10882,6 +12963,9 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
+        """游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
+        :rtype: int
+        """
         return self._MaximumPlayerSessionCount
 
     @MaximumPlayerSessionCount.setter
@@ -10890,6 +12974,9 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def DesiredPlayerSessions(self):
+        """玩家游戏会话信息
+        :rtype: list of DesiredPlayerSession
+        """
         return self._DesiredPlayerSessions
 
     @DesiredPlayerSessions.setter
@@ -10898,6 +12985,9 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def GameProperties(self):
+        """玩家游戏会话属性
+        :rtype: list of GameProperty
+        """
         return self._GameProperties
 
     @GameProperties.setter
@@ -10906,6 +12996,9 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def GameServerSessionData(self):
+        """游戏服务器会话数据，最大长度不超过4096个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionData
 
     @GameServerSessionData.setter
@@ -10914,6 +13007,9 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def GameServerSessionName(self):
+        """游戏服务器会话名称，最大长度不超过4096个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionName
 
     @GameServerSessionName.setter
@@ -10922,6 +13018,9 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def PlayerLatencies(self):
+        """玩家延迟
+        :rtype: list of PlayerLatency
+        """
         return self._PlayerLatencies
 
     @PlayerLatencies.setter
@@ -10980,6 +13079,9 @@ class StartGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def GameServerSessionPlacement(self):
+        """游戏服务器会话放置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
+        """
         return self._GameServerSessionPlacement
 
     @GameServerSessionPlacement.setter
@@ -10988,6 +13090,9 @@ class StartGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11019,6 +13124,9 @@ class StopFleetActionsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -11027,6 +13135,9 @@ class StopFleetActionsRequest(AbstractModel):
 
     @property
     def Actions(self):
+        """服务器舰队扩展策略，值为["AUTO_SCALING"]
+        :rtype: list of str
+        """
         return self._Actions
 
     @Actions.setter
@@ -11065,6 +13176,10 @@ class StopFleetActionsResponse(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -11073,6 +13188,9 @@ class StopFleetActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11099,6 +13217,9 @@ class StopGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def PlacementId(self):
+        """游戏服务器会话放置的唯一标识符
+        :rtype: str
+        """
         return self._PlacementId
 
     @PlacementId.setter
@@ -11135,6 +13256,9 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def GameServerSessionPlacement(self):
+        """游戏服务器会话放置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
+        """
         return self._GameServerSessionPlacement
 
     @GameServerSessionPlacement.setter
@@ -11143,6 +13267,9 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11174,6 +13301,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键，最大长度127字节
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -11182,6 +13312,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值，最大长度255字节
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -11217,6 +13350,10 @@ class TargetConfiguration(AbstractModel):
 
     @property
     def TargetValue(self):
+        """预留存率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TargetValue
 
     @TargetValue.setter
@@ -11263,6 +13400,10 @@ class TimerConfiguration(AbstractModel):
 
     @property
     def TimerType(self):
+        """定时器重复周期类型（未定义0，单次1、按天2、按月3、按周4）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimerType
 
     @TimerType.setter
@@ -11271,6 +13412,10 @@ class TimerConfiguration(AbstractModel):
 
     @property
     def TimerValue(self):
+        """定时器取值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.TimerValue`
+        """
         return self._TimerValue
 
     @TimerValue.setter
@@ -11279,6 +13424,10 @@ class TimerConfiguration(AbstractModel):
 
     @property
     def BeginTime(self):
+        """定时器开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -11287,6 +13436,10 @@ class TimerConfiguration(AbstractModel):
 
     @property
     def EndTime(self):
+        """定时器结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11350,6 +13503,10 @@ class TimerFleetCapacity(AbstractModel):
 
     @property
     def FleetId(self):
+        """扩缩容配置服务器舰队ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -11358,6 +13515,10 @@ class TimerFleetCapacity(AbstractModel):
 
     @property
     def DesiredInstances(self):
+        """期望实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DesiredInstances
 
     @DesiredInstances.setter
@@ -11366,6 +13527,10 @@ class TimerFleetCapacity(AbstractModel):
 
     @property
     def MinSize(self):
+        """最小实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -11374,6 +13539,10 @@ class TimerFleetCapacity(AbstractModel):
 
     @property
     def MaxSize(self):
+        """最大实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -11382,6 +13551,10 @@ class TimerFleetCapacity(AbstractModel):
 
     @property
     def ScalingInterval(self):
+        """伸缩容间隔，单位：分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ScalingInterval
 
     @ScalingInterval.setter
@@ -11390,6 +13563,10 @@ class TimerFleetCapacity(AbstractModel):
 
     @property
     def ScalingType(self):
+        """扩缩容类型（手动1，自动2、未定义0）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ScalingType
 
     @ScalingType.setter
@@ -11398,6 +13575,10 @@ class TimerFleetCapacity(AbstractModel):
 
     @property
     def TargetConfiguration(self):
+        """基于目标的扩展策略的设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
+        """
         return self._TargetConfiguration
 
     @TargetConfiguration.setter
@@ -11456,6 +13637,10 @@ class TimerScalingPolicy(AbstractModel):
 
     @property
     def TimerId(self):
+        """定时器ID，进行encode，填写时更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimerId
 
     @TimerId.setter
@@ -11464,6 +13649,10 @@ class TimerScalingPolicy(AbstractModel):
 
     @property
     def TimerName(self):
+        """定时器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimerName
 
     @TimerName.setter
@@ -11472,6 +13661,10 @@ class TimerScalingPolicy(AbstractModel):
 
     @property
     def TimerStatus(self):
+        """定时器状态(未定义0、未生效1、生效中2、已停止3、已过期4)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimerStatus
 
     @TimerStatus.setter
@@ -11480,6 +13673,10 @@ class TimerScalingPolicy(AbstractModel):
 
     @property
     def TimerFleetCapacity(self):
+        """定时器弹性伸缩策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.TimerFleetCapacity`
+        """
         return self._TimerFleetCapacity
 
     @TimerFleetCapacity.setter
@@ -11488,6 +13685,10 @@ class TimerScalingPolicy(AbstractModel):
 
     @property
     def TimerConfiguration(self):
+        """重复周期配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.TimerConfiguration`
+        """
         return self._TimerConfiguration
 
     @TimerConfiguration.setter
@@ -11542,6 +13743,10 @@ class TimerValue(AbstractModel):
 
     @property
     def Day(self):
+        """每X天，执行一次(重复周期-按天/单次)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Day
 
     @Day.setter
@@ -11550,6 +13755,10 @@ class TimerValue(AbstractModel):
 
     @property
     def FromDay(self):
+        """每月从第x天，执行一次(重复周期-按月)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FromDay
 
     @FromDay.setter
@@ -11558,6 +13767,10 @@ class TimerValue(AbstractModel):
 
     @property
     def ToDay(self):
+        """每月到第x天，执行一次(重复周期-按月)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ToDay
 
     @ToDay.setter
@@ -11566,6 +13779,10 @@ class TimerValue(AbstractModel):
 
     @property
     def WeekDays(self):
+        """重复周期-按周，周几（多个值,取值周一(1,2,3,4,5,6,7)周日）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._WeekDays
 
     @WeekDays.setter
@@ -11611,6 +13828,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def AliasId(self):
+        """要更新的别名的唯一标识符
+        :rtype: str
+        """
         return self._AliasId
 
     @AliasId.setter
@@ -11619,6 +13839,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名字，长度不小于1字符不超过1024字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11627,6 +13850,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Description(self):
+        """别名的可读说明，长度不小于1字符不超过1024字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11635,6 +13861,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def RoutingStrategy(self):
+        """别名的路由配置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.RoutingStrategy`
+        """
         return self._RoutingStrategy
 
     @RoutingStrategy.setter
@@ -11677,6 +13906,10 @@ class UpdateAliasResponse(AbstractModel):
 
     @property
     def Alias(self):
+        """别名对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.Alias`
+        """
         return self._Alias
 
     @Alias.setter
@@ -11685,6 +13918,9 @@ class UpdateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11719,6 +13955,9 @@ class UpdateAssetRequest(AbstractModel):
 
     @property
     def AssetId(self):
+        """生成包ID
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -11727,6 +13966,9 @@ class UpdateAssetRequest(AbstractModel):
 
     @property
     def AssetName(self):
+        """生成包名字，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -11735,6 +13977,9 @@ class UpdateAssetRequest(AbstractModel):
 
     @property
     def AssetVersion(self):
+        """生成包版本，最小长度为1，最大长度为64
+        :rtype: str
+        """
         return self._AssetVersion
 
     @AssetVersion.setter
@@ -11770,6 +14015,9 @@ class UpdateAssetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11795,6 +14043,9 @@ class UpdateBucketAccelerateOptRequest(AbstractModel):
 
     @property
     def Allowed(self):
+        """true为开启全球加速，false为关闭
+        :rtype: bool
+        """
         return self._Allowed
 
     @Allowed.setter
@@ -11828,6 +14079,9 @@ class UpdateBucketAccelerateOptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11865,6 +14119,9 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def AllowedOrigins(self):
+        """允许的访问来源;具体参见 [cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :rtype: list of str
+        """
         return self._AllowedOrigins
 
     @AllowedOrigins.setter
@@ -11873,6 +14130,9 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def AllowedMethods(self):
+        """允许的 HTTP 操作方法;可以配置多个:PUT、GET、POST、HEAD。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :rtype: list of str
+        """
         return self._AllowedMethods
 
     @AllowedMethods.setter
@@ -11881,6 +14141,9 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def AllowedHeaders(self):
+        """用于指定允许浏览器发送 CORS 请求时携带的自定义 HTTP 请求头部;可以配置*，代表允许所有头部，为了避免遗漏，推荐配置为*。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :rtype: list of str
+        """
         return self._AllowedHeaders
 
     @AllowedHeaders.setter
@@ -11889,6 +14152,9 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def MaxAgeSeconds(self):
+        """跨域资源共享配置的有效时间，单位为秒。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :rtype: int
+        """
         return self._MaxAgeSeconds
 
     @MaxAgeSeconds.setter
@@ -11897,6 +14163,9 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def ExposeHeaders(self):
+        """允许浏览器获取的 CORS 请求响应中的头部，不区分大小写；默认情况下浏览器只能访问简单响应头部：Cache-Control、Content-Type、Expires、Last-Modified，如果需要访问其他响应头部，需要添加 ExposeHeader 配置。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :rtype: list of str
+        """
         return self._ExposeHeaders
 
     @ExposeHeaders.setter
@@ -11934,6 +14203,9 @@ class UpdateBucketCORSOptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11974,6 +14246,9 @@ class UpdateFleetAttributesRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -11982,6 +14257,9 @@ class UpdateFleetAttributesRequest(AbstractModel):
 
     @property
     def Description(self):
+        """服务器舰队描述，最小长度0，最大长度100
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11990,6 +14268,9 @@ class UpdateFleetAttributesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """服务器舰队名称，最小长度1，最大长度50
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11998,6 +14279,9 @@ class UpdateFleetAttributesRequest(AbstractModel):
 
     @property
     def NewGameSessionProtectionPolicy(self):
+        """保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+        :rtype: str
+        """
         return self._NewGameSessionProtectionPolicy
 
     @NewGameSessionProtectionPolicy.setter
@@ -12006,6 +14290,9 @@ class UpdateFleetAttributesRequest(AbstractModel):
 
     @property
     def ResourceCreationLimitPolicy(self):
+        """资源创建限制策略
+        :rtype: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
+        """
         return self._ResourceCreationLimitPolicy
 
     @ResourceCreationLimitPolicy.setter
@@ -12014,6 +14301,9 @@ class UpdateFleetAttributesRequest(AbstractModel):
 
     @property
     def GameServerSessionProtectionTimeLimit(self):
+        """时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+        :rtype: int
+        """
         return self._GameServerSessionProtectionTimeLimit
 
     @GameServerSessionProtectionTimeLimit.setter
@@ -12058,6 +14348,10 @@ class UpdateFleetAttributesResponse(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -12066,6 +14360,9 @@ class UpdateFleetAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12104,6 +14401,9 @@ class UpdateFleetCapacityRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -12112,6 +14412,9 @@ class UpdateFleetCapacityRequest(AbstractModel):
 
     @property
     def DesiredInstances(self):
+        """期望的服务器实例数
+        :rtype: int
+        """
         return self._DesiredInstances
 
     @DesiredInstances.setter
@@ -12120,6 +14423,9 @@ class UpdateFleetCapacityRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """服务器实例数最小限制，最小值0，最大值不超过最高配额查看各地区最高配额减1
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -12128,6 +14434,9 @@ class UpdateFleetCapacityRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """服务器实例数最大限制，最小值1，最大值不超过最高配额查看各地区最高配额
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -12136,6 +14445,9 @@ class UpdateFleetCapacityRequest(AbstractModel):
 
     @property
     def ScalingInterval(self):
+        """服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
+        :rtype: int
+        """
         return self._ScalingInterval
 
     @ScalingInterval.setter
@@ -12177,6 +14489,10 @@ class UpdateFleetCapacityResponse(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -12185,6 +14501,9 @@ class UpdateFleetCapacityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12214,6 +14533,9 @@ class UpdateFleetNameRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -12222,6 +14544,9 @@ class UpdateFleetNameRequest(AbstractModel):
 
     @property
     def Name(self):
+        """服务器舰队名称，最小长度1，最大长度50
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12256,6 +14581,9 @@ class UpdateFleetNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12287,6 +14615,9 @@ class UpdateFleetPortSettingsRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队 Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -12295,6 +14626,9 @@ class UpdateFleetPortSettingsRequest(AbstractModel):
 
     @property
     def InboundPermissionAuthorizations(self):
+        """新增安全组
+        :rtype: list of InboundPermissionAuthorization
+        """
         return self._InboundPermissionAuthorizations
 
     @InboundPermissionAuthorizations.setter
@@ -12303,6 +14637,9 @@ class UpdateFleetPortSettingsRequest(AbstractModel):
 
     @property
     def InboundPermissionRevocations(self):
+        """移除安全组
+        :rtype: list of InboundPermissionRevocations
+        """
         return self._InboundPermissionRevocations
 
     @InboundPermissionRevocations.setter
@@ -12352,6 +14689,10 @@ class UpdateFleetPortSettingsResponse(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务部署 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -12360,6 +14701,9 @@ class UpdateFleetPortSettingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12395,6 +14739,9 @@ class UpdateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def Name(self):
+        """游戏服务器会话队列名字，长度1~128
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12403,6 +14750,9 @@ class UpdateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def Destinations(self):
+        """目的服务器舰队（可为别名）列表
+        :rtype: list of GameServerSessionQueueDestination
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -12411,6 +14761,9 @@ class UpdateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def PlayerLatencyPolicies(self):
+        """延迟策略集合
+        :rtype: list of PlayerLatencyPolicy
+        """
         return self._PlayerLatencyPolicies
 
     @PlayerLatencyPolicies.setter
@@ -12419,6 +14772,9 @@ class UpdateGameServerSessionQueueRequest(AbstractModel):
 
     @property
     def TimeoutInSeconds(self):
+        """超时时间
+        :rtype: int
+        """
         return self._TimeoutInSeconds
 
     @TimeoutInSeconds.setter
@@ -12468,6 +14824,9 @@ class UpdateGameServerSessionQueueResponse(AbstractModel):
 
     @property
     def GameServerSessionQueue(self):
+        """部署服务组对象
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSessionQueue`
+        """
         return self._GameServerSessionQueue
 
     @GameServerSessionQueue.setter
@@ -12476,6 +14835,9 @@ class UpdateGameServerSessionQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12516,6 +14878,9 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
+        """游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+        :rtype: str
+        """
         return self._GameServerSessionId
 
     @GameServerSessionId.setter
@@ -12524,6 +14889,9 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
+        """最大玩家数量，最小值不小于0
+        :rtype: int
+        """
         return self._MaximumPlayerSessionCount
 
     @MaximumPlayerSessionCount.setter
@@ -12532,6 +14900,9 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def Name(self):
+        """游戏服务器会话名称，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12540,6 +14911,9 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def PlayerSessionCreationPolicy(self):
+        """玩家会话创建策略，包括允许所有玩家加入和禁止所有玩家加入（ACCEPT_ALL,DENY_ALL）
+        :rtype: str
+        """
         return self._PlayerSessionCreationPolicy
 
     @PlayerSessionCreationPolicy.setter
@@ -12548,6 +14922,9 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def ProtectionPolicy(self):
+        """保护策略，包括不保护、时限保护和完全保护(NoProtection,TimeLimitProtection,FullProtection)
+        :rtype: str
+        """
         return self._ProtectionPolicy
 
     @ProtectionPolicy.setter
@@ -12588,6 +14965,9 @@ class UpdateGameServerSessionResponse(AbstractModel):
 
     @property
     def GameServerSession(self):
+        """更新后的游戏会话
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
+        """
         return self._GameServerSession
 
     @GameServerSession.setter
@@ -12596,6 +14976,9 @@ class UpdateGameServerSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12627,6 +15010,9 @@ class UpdateRuntimeConfigurationRequest(AbstractModel):
 
     @property
     def FleetId(self):
+        """服务器舰队Id
+        :rtype: str
+        """
         return self._FleetId
 
     @FleetId.setter
@@ -12635,6 +15021,9 @@ class UpdateRuntimeConfigurationRequest(AbstractModel):
 
     @property
     def RuntimeConfiguration(self):
+        """服务器舰队配置
+        :rtype: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
+        """
         return self._RuntimeConfiguration
 
     @RuntimeConfiguration.setter
@@ -12675,6 +15064,10 @@ class UpdateRuntimeConfigurationResponse(AbstractModel):
 
     @property
     def RuntimeConfiguration(self):
+        """服务器舰队配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
+        """
         return self._RuntimeConfiguration
 
     @RuntimeConfiguration.setter
@@ -12683,6 +15076,9 @@ class UpdateRuntimeConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

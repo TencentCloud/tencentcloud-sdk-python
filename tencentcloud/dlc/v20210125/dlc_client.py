@@ -2165,6 +2165,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTasksAnalysis(self, request):
+        """该接口用于洞察分析列表
+
+        :param request: Request instance for DescribeTasksAnalysis.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksAnalysisRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksAnalysisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTasksAnalysis", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTasksAnalysisResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTasksCostInfo(self, request):
         """该接口（DescribeTasksCostInfo）用于查询任务消耗
 

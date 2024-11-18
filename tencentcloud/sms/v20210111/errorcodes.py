@@ -179,7 +179,7 @@ INVALIDPARAMETERVALUE_MARKETINGTEMPLATEWITHOUTUNSUBSCRIBE = 'InvalidParameterVal
 # 参数 Offset 校验失败。
 INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = 'InvalidParameterValue.OffsetVerifyFail'
 
-# 禁止在模板变量中使用 URL。
+# 禁止在模板变量中使用 URL。您可以参考正文模板审核标准下关于 [变量规范](https://cloud.tencent.com/document/product/382/39023#.E5.8F.98.E9.87.8F.E8.A7.84.E8.8C.83.5B.5D(id.3Avariable)) 的描述
 INVALIDPARAMETERVALUE_PROHIBITEDUSEURLINTEMPLATEPARAMETER = 'InvalidParameterValue.ProhibitedUseUrlInTemplateParameter'
 
 # SdkAppId 不存在。
@@ -266,8 +266,8 @@ UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = 'UnauthorizedOperation.Servic
 # SmsSdkAppId 校验失败，请检查 [SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage) 是否属于 [云API密钥](https://console.cloud.tencent.com/cam/capi) 的关联账户。
 UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = 'UnauthorizedOperation.SmsSdkAppIdVerifyFail'
 
-# 不支持该请求。
-UNSUPPORTEDOPERATION_ = 'UnsupportedOperation.'
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # 国内短信模板不支持发送国际/港澳台手机号。发送国际/港澳台手机号请使用国际/港澳台短信正文模板。
 UNSUPPORTEDOPERATION_CHINESEMAINLANDTEMPLATETOGLOBALPHONE = 'UnsupportedOperation.ChineseMainlandTemplateToGlobalPhone'

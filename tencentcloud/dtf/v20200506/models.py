@@ -53,6 +53,9 @@ class DescribeTransactionsRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """事务分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -61,6 +64,9 @@ class DescribeTransactionsRequest(AbstractModel):
 
     @property
     def TransactionBeginFrom(self):
+        """事务开始时间查询起始时间戳，UTC，精确到毫秒
+        :rtype: int
+        """
         return self._TransactionBeginFrom
 
     @TransactionBeginFrom.setter
@@ -69,6 +75,9 @@ class DescribeTransactionsRequest(AbstractModel):
 
     @property
     def TransactionBeginTo(self):
+        """事务开始时间查询截止时间戳，UTC，精确到毫秒
+        :rtype: int
+        """
         return self._TransactionBeginTo
 
     @TransactionBeginTo.setter
@@ -77,6 +86,9 @@ class DescribeTransactionsRequest(AbstractModel):
 
     @property
     def SearchError(self):
+        """仅查询异常状态的事务，true：仅查询异常，false或不传入：查询所有
+        :rtype: bool
+        """
         return self._SearchError
 
     @SearchError.setter
@@ -85,6 +97,9 @@ class DescribeTransactionsRequest(AbstractModel):
 
     @property
     def TransactionId(self):
+        """主事务ID，不传入时查询全量，高优先级
+        :rtype: int
+        """
         return self._TransactionId
 
     @TransactionId.setter
@@ -93,6 +108,9 @@ class DescribeTransactionsRequest(AbstractModel):
 
     @property
     def TransactionIdList(self):
+        """主事务ID列表，不传入时查询全量，低优先级
+        :rtype: list of int
+        """
         return self._TransactionIdList
 
     @TransactionIdList.setter
@@ -101,6 +119,9 @@ class DescribeTransactionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -109,6 +130,9 @@ class DescribeTransactionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """起始偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -152,6 +176,9 @@ class DescribeTransactionsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """主事务分页列表
+        :rtype: :class:`tencentcloud.dtf.v20200506.models.PagedTransaction`
+        """
         return self._Result
 
     @Result.setter
@@ -160,6 +187,9 @@ class DescribeTransactionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -192,6 +222,10 @@ class PagedTransaction(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数，特定在该接口中总是会返回null
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -200,6 +234,9 @@ class PagedTransaction(AbstractModel):
 
     @property
     def Content(self):
+        """主事务分组列表
+        :rtype: list of Transaction
+        """
         return self._Content
 
     @Content.setter
@@ -296,6 +333,10 @@ class Transaction(AbstractModel):
 
     @property
     def TransactionId(self):
+        """主事务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransactionId
 
     @TransactionId.setter
@@ -304,6 +345,10 @@ class Transaction(AbstractModel):
 
     @property
     def TransactionBegin(self):
+        """主事务开始时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransactionBegin
 
     @TransactionBegin.setter
@@ -312,6 +357,10 @@ class Transaction(AbstractModel):
 
     @property
     def TransactionEnd(self):
+        """主事务结束时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransactionEnd
 
     @TransactionEnd.setter
@@ -320,6 +369,10 @@ class Transaction(AbstractModel):
 
     @property
     def TransactionCommit(self):
+        """主事务提交时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransactionCommit
 
     @TransactionCommit.setter
@@ -328,6 +381,10 @@ class Transaction(AbstractModel):
 
     @property
     def TransactionRollback(self):
+        """主事务回滚时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransactionRollback
 
     @TransactionRollback.setter
@@ -336,6 +393,10 @@ class Transaction(AbstractModel):
 
     @property
     def TransactionError(self):
+        """主事务异常停止时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransactionError
 
     @TransactionError.setter
@@ -344,6 +405,10 @@ class Transaction(AbstractModel):
 
     @property
     def Timeout(self):
+        """主事务超时时长，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -352,6 +417,10 @@ class Transaction(AbstractModel):
 
     @property
     def Status(self):
+        """主事务状态：0:Trying, 1:Confirming, 2: Confirmed, 3:Canceling, 4: Canceled
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -360,6 +429,10 @@ class Transaction(AbstractModel):
 
     @property
     def EndFlag(self):
+        """主事务结束标识：0:运行中, 1: 已结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndFlag
 
     @EndFlag.setter
@@ -368,6 +441,10 @@ class Transaction(AbstractModel):
 
     @property
     def TimeoutFlag(self):
+        """主事务超时标识：0:运行中, 1: 已超时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimeoutFlag
 
     @TimeoutFlag.setter
@@ -376,6 +453,10 @@ class Transaction(AbstractModel):
 
     @property
     def Comment(self):
+        """异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -384,6 +465,10 @@ class Transaction(AbstractModel):
 
     @property
     def GroupId(self):
+        """事务分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -392,6 +477,10 @@ class Transaction(AbstractModel):
 
     @property
     def Server(self):
+        """主事务来源服务标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Server
 
     @Server.setter
@@ -400,6 +489,10 @@ class Transaction(AbstractModel):
 
     @property
     def BranchQuantity(self):
+        """分支事务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BranchQuantity
 
     @BranchQuantity.setter
@@ -408,6 +501,10 @@ class Transaction(AbstractModel):
 
     @property
     def RetryFlag(self):
+        """重试标识：true：可以重试；false：不可重试
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RetryFlag
 
     @RetryFlag.setter

@@ -25,19 +25,19 @@ class SubmitTaskEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountId: 用户ID
+        :param _AccountId: 用户唯一标识，最大长度为64
         :type AccountId: str
-        :param _DeviceId: 设备ID
+        :param _DeviceId: 用户设备ID，最大长度为64
         :type DeviceId: str
-        :param _OrderId: 订单ID
+        :param _OrderId: 任务的唯一订单号，只能是数字、大小写字母，且在同一个产品ID下唯一，最大长度为64
         :type OrderId: str
-        :param _Code: 任务事件Code
+        :param _Code: 任务事件Code，在腾讯安心用户运营平台下的任务事件列表中设置并获取
         :type Code: str
-        :param _Async: 同步异步方式：0为同步、1位异步
+        :param _Async: 任务结果是否异步通知。0表示任务结果在返回信息中同步返回；1表示任务结果通过回调结果异步通知。
         :type Async: int
-        :param _ProductId: 产品ID
+        :param _ProductId: 产品ID，可在腾讯安心用户运营平台的企业管理中获取
         :type ProductId: int
-        :param _NotifyURL: 回调地址
+        :param _NotifyURL: 异步接收任务结果通知的回调地址。在Async为1的时候，会将任务结果通过该回调地址进行通知。
         :type NotifyURL: str
         """
         self._AccountId = None
@@ -50,6 +50,9 @@ class SubmitTaskEventRequest(AbstractModel):
 
     @property
     def AccountId(self):
+        """用户唯一标识，最大长度为64
+        :rtype: str
+        """
         return self._AccountId
 
     @AccountId.setter
@@ -58,6 +61,9 @@ class SubmitTaskEventRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """用户设备ID，最大长度为64
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -66,6 +72,9 @@ class SubmitTaskEventRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """任务的唯一订单号，只能是数字、大小写字母，且在同一个产品ID下唯一，最大长度为64
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -74,6 +83,9 @@ class SubmitTaskEventRequest(AbstractModel):
 
     @property
     def Code(self):
+        """任务事件Code，在腾讯安心用户运营平台下的任务事件列表中设置并获取
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -82,6 +94,9 @@ class SubmitTaskEventRequest(AbstractModel):
 
     @property
     def Async(self):
+        """任务结果是否异步通知。0表示任务结果在返回信息中同步返回；1表示任务结果通过回调结果异步通知。
+        :rtype: int
+        """
         return self._Async
 
     @Async.setter
@@ -90,6 +105,9 @@ class SubmitTaskEventRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID，可在腾讯安心用户运营平台的企业管理中获取
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -98,6 +116,9 @@ class SubmitTaskEventRequest(AbstractModel):
 
     @property
     def NotifyURL(self):
+        """异步接收任务结果通知的回调地址。在Async为1的时候，会将任务结果通过该回调地址进行通知。
+        :rtype: str
+        """
         return self._NotifyURL
 
     @NotifyURL.setter
@@ -130,13 +151,13 @@ class SubmitTaskEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderId: 订单ID
+        :param _OrderId: 任务的唯一订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
-        :param _Code: 信息码
+        :param _Code: 信息码。0表示成功，-1标识失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
-        :param _Message: success
+        :param _Message: 提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Data: 任务处理结果列表
@@ -153,6 +174,10 @@ class SubmitTaskEventResponse(AbstractModel):
 
     @property
     def OrderId(self):
+        """任务的唯一订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -161,6 +186,10 @@ class SubmitTaskEventResponse(AbstractModel):
 
     @property
     def Code(self):
+        """信息码。0表示成功，-1标识失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -169,6 +198,10 @@ class SubmitTaskEventResponse(AbstractModel):
 
     @property
     def Message(self):
+        """提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -177,6 +210,10 @@ class SubmitTaskEventResponse(AbstractModel):
 
     @property
     def Data(self):
+        """任务处理结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskEventData
+        """
         return self._Data
 
     @Data.setter
@@ -185,6 +222,9 @@ class SubmitTaskEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -212,7 +252,7 @@ class TaskEventData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 状态码
+        :param _Code: 状态码，0为成功，-1为失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 提示信息
@@ -221,22 +261,22 @@ class TaskEventData(AbstractModel):
         :param _TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
-        :param _TaskOrderId: 当前完成或正在完成的任务订单ID
+        :param _TaskOrderId: 当前完成或正在完成的安心用户运营平台的任务订单ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskOrderId: str
-        :param _TaskCode: 当前任务订单状态码
+        :param _TaskCode: 当前任务订单状态码。1代表未完成；2代表已完成但未提交任务；3表示已完成，且已提交获得积分任务；4表示过期任务，提交后不获得积分。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCode: int
-        :param _TaskCoinNumber: 获得积分数/成长值
+        :param _TaskCoinNumber: 获得积分数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCoinNumber: int
         :param _TaskType: 任务类型后台代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: int
-        :param _TotalCoin: 当前积分
+        :param _TotalCoin: 用户的当前积分
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCoin: int
-        :param _Attach: 用户透传的代码块
+        :param _Attach: 用户透传的附加数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Attach: str
         :param _DoneTimes: 计次任务当前完成次数
@@ -248,7 +288,7 @@ class TaskEventData(AbstractModel):
         :param _TaskName: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _GrowScore: 当前成长值
+        :param _GrowScore: 用户当前成长值
 注意：此字段可能返回 null，表示取不到有效值。
         :type GrowScore: int
         """
@@ -268,6 +308,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def Code(self):
+        """状态码，0为成功，-1为失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -276,6 +320,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def Message(self):
+        """提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -284,6 +332,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -292,6 +344,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def TaskOrderId(self):
+        """当前完成或正在完成的安心用户运营平台的任务订单ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskOrderId
 
     @TaskOrderId.setter
@@ -300,6 +356,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def TaskCode(self):
+        """当前任务订单状态码。1代表未完成；2代表已完成但未提交任务；3表示已完成，且已提交获得积分任务；4表示过期任务，提交后不获得积分。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskCode
 
     @TaskCode.setter
@@ -308,6 +368,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def TaskCoinNumber(self):
+        """获得积分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskCoinNumber
 
     @TaskCoinNumber.setter
@@ -316,6 +380,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型后台代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -324,6 +392,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def TotalCoin(self):
+        """用户的当前积分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCoin
 
     @TotalCoin.setter
@@ -332,6 +404,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def Attach(self):
+        """用户透传的附加数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Attach
 
     @Attach.setter
@@ -340,6 +416,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def DoneTimes(self):
+        """计次任务当前完成次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DoneTimes
 
     @DoneTimes.setter
@@ -348,6 +428,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def TotalTimes(self):
+        """计次任务当前所需完成次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalTimes
 
     @TotalTimes.setter
@@ -356,6 +440,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -364,6 +452,10 @@ class TaskEventData(AbstractModel):
 
     @property
     def GrowScore(self):
+        """用户当前成长值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GrowScore
 
     @GrowScore.setter

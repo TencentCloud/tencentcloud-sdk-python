@@ -35,6 +35,9 @@ class CheckAppidExistRequest(AbstractModel):
 
     @property
     def SDKAppid(self):
+        """业务的appid
+        :rtype: str
+        """
         return self._SDKAppid
 
     @SDKAppid.setter
@@ -43,6 +46,9 @@ class CheckAppidExistRequest(AbstractModel):
 
     @property
     def Type(self):
+        """sub product code
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -86,6 +92,9 @@ class CheckAppidExistResponse(AbstractModel):
 
     @property
     def Exist(self):
+        """appid是否存在
+        :rtype: bool
+        """
         return self._Exist
 
     @Exist.setter
@@ -94,6 +103,9 @@ class CheckAppidExistResponse(AbstractModel):
 
     @property
     def HasError(self):
+        """请求是否成功
+        :rtype: bool
+        """
         return self._HasError
 
     @HasError.setter
@@ -102,6 +114,9 @@ class CheckAppidExistResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """出错消息
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -110,6 +125,9 @@ class CheckAppidExistResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -151,6 +169,10 @@ class GoodsDetail(AbstractModel):
 
     @property
     def ProductCode(self):
+        """按照四层接入的产品需要传入产品标签,例如:p_cvm
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductCode
 
     @ProductCode.setter
@@ -159,6 +181,10 @@ class GoodsDetail(AbstractModel):
 
     @property
     def SubProductCode(self):
+        """四层定义的子产品标签,例如:sp_cvm_s1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubProductCode
 
     @SubProductCode.setter
@@ -167,6 +193,10 @@ class GoodsDetail(AbstractModel):
 
     @property
     def Type(self):
+        """资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Type
 
     @Type.setter
@@ -175,6 +205,10 @@ class GoodsDetail(AbstractModel):
 
     @property
     def GoodsNum(self):
+        """资源数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -211,6 +245,9 @@ class QueryResourceInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -248,6 +285,10 @@ class QueryResourceInfoResponse(AbstractModel):
 
     @property
     def Resource(self):
+        """资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.anicloud.v20220923.models.Resource`
+        """
         return self._Resource
 
     @Resource.setter
@@ -256,6 +297,9 @@ class QueryResourceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -290,6 +334,9 @@ class QueryResourceRequest(AbstractModel):
 
     @property
     def Type(self):
+        """0: sdk 1:material
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -298,6 +345,9 @@ class QueryResourceRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页起始页
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -306,6 +356,9 @@ class QueryResourceRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -349,6 +402,10 @@ class QueryResourceResponse(AbstractModel):
 
     @property
     def Resources(self):
+        """资源信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Resource
+        """
         return self._Resources
 
     @Resources.setter
@@ -357,6 +414,10 @@ class QueryResourceResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -365,6 +426,9 @@ class QueryResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -474,6 +538,10 @@ class Resource(AbstractModel):
 
     @property
     def UIN(self):
+        """资源拥有者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UIN
 
     @UIN.setter
@@ -482,6 +550,10 @@ class Resource(AbstractModel):
 
     @property
     def AppId(self):
+        """云平台应用ID，一般来说与uin存在一一对应的关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -490,6 +562,10 @@ class Resource(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id，会展示到通知内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -498,6 +574,10 @@ class Resource(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -506,6 +586,10 @@ class Resource(AbstractModel):
 
     @property
     def Status(self):
+        """资源状态，1正常，2隔离，3销毁(如果资源已经删除或销毁，不需要返回)，4冻结/封禁
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -514,6 +598,10 @@ class Resource(AbstractModel):
 
     @property
     def IsolatedTimestamp(self):
+        """资源隔离时间，未隔离传"0000-00-00 00:00:00"，资源由隔离变回正常传"0000-00-00 00:00:00"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsolatedTimestamp
 
     @IsolatedTimestamp.setter
@@ -522,6 +610,10 @@ class Resource(AbstractModel):
 
     @property
     def CreateTime(self):
+        """资源创建时间，用于更新新购订单的资源开始时间，按时长退费时的资源结束时间取自订单的资源结束时间，
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -530,6 +622,10 @@ class Resource(AbstractModel):
 
     @property
     def PayMode(self):
+        """0后付费 1预付费 2预留实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -538,6 +634,10 @@ class Resource(AbstractModel):
 
     @property
     def Alias(self):
+        """资源名称，账单中资源别名，生命周期通知中的资源名称，不返回则通知中展示为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -546,6 +646,10 @@ class Resource(AbstractModel):
 
     @property
     def GoodsDetail(self):
+        """购买详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.anicloud.v20220923.models.GoodsDetail`
+        """
         return self._GoodsDetail
 
     @GoodsDetail.setter
@@ -554,6 +658,10 @@ class Resource(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """预付费必填 ，自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -562,6 +670,10 @@ class Resource(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """（仅预付费）资源到期时间，无到期概念传"0000-00-00 00:00:00"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -570,6 +682,10 @@ class Resource(AbstractModel):
 
     @property
     def Region(self):
+        """地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Region
 
     @Region.setter
@@ -578,6 +694,10 @@ class Resource(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """sdk appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -586,6 +706,10 @@ class Resource(AbstractModel):
 
     @property
     def AppName(self):
+        """app名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -594,6 +718,10 @@ class Resource(AbstractModel):
 
     @property
     def PackageName(self):
+        """app的package名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackageName
 
     @PackageName.setter
@@ -602,6 +730,10 @@ class Resource(AbstractModel):
 
     @property
     def URL(self):
+        """资源链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -610,6 +742,10 @@ class Resource(AbstractModel):
 
     @property
     def Entry(self):
+        """app的entry
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Entry
 
     @Entry.setter
@@ -618,6 +754,10 @@ class Resource(AbstractModel):
 
     @property
     def InstType(self):
+        """0：sdk 1：素材
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InstType
 
     @InstType.setter
@@ -626,6 +766,10 @@ class Resource(AbstractModel):
 
     @property
     def Key(self):
+        """license的秘钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter

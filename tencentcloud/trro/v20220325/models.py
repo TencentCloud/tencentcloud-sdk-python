@@ -35,6 +35,9 @@ class BatchDeleteDevicesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """目标删除设备所属项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -43,6 +46,9 @@ class BatchDeleteDevicesRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
+        """目标删除设备的设备ID数组
+        :rtype: list of str
+        """
         return self._DeviceIds
 
     @DeviceIds.setter
@@ -71,7 +77,6 @@ class BatchDeleteDevicesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedDeviceIds: 删除失败的设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedDeviceIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -81,6 +86,9 @@ class BatchDeleteDevicesResponse(AbstractModel):
 
     @property
     def FailedDeviceIds(self):
+        """删除失败的设备ID列表
+        :rtype: list of str
+        """
         return self._FailedDeviceIds
 
     @FailedDeviceIds.setter
@@ -89,6 +97,9 @@ class BatchDeleteDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -121,6 +132,9 @@ class BatchDeletePolicyRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """删除权限配置的项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -129,6 +143,9 @@ class BatchDeletePolicyRequest(AbstractModel):
 
     @property
     def RemoteDeviceIds(self):
+        """删除权限配置的远端设备ID列表
+        :rtype: list of str
+        """
         return self._RemoteDeviceIds
 
     @RemoteDeviceIds.setter
@@ -137,6 +154,9 @@ class BatchDeletePolicyRequest(AbstractModel):
 
     @property
     def PolicyMode(self):
+        """删除权限配置的权限模式, black为黑名单，white为白名单
+        :rtype: str
+        """
         return self._PolicyMode
 
     @PolicyMode.setter
@@ -175,6 +195,9 @@ class BatchDeletePolicyResponse(AbstractModel):
 
     @property
     def FailedRemoteDeviceIds(self):
+        """删除权限配置失败的远端设备ID列表
+        :rtype: list of str
+        """
         return self._FailedRemoteDeviceIds
 
     @FailedRemoteDeviceIds.setter
@@ -183,6 +206,9 @@ class BatchDeletePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -215,6 +241,9 @@ class BoundLicensesRequest(AbstractModel):
 
     @property
     def Count(self):
+        """license数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -223,6 +252,9 @@ class BoundLicensesRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -231,6 +263,9 @@ class BoundLicensesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -266,6 +301,9 @@ class BoundLicensesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -303,6 +341,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """创建设备所归属的项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -311,6 +352,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过18
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -319,6 +363,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -327,6 +374,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型，field为现场设备（受控设备），remote为远端设备（操控设备），不填默认为field
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -335,6 +385,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceToken(self):
+        """设备认证口令，由大小写英文字母和数字构成，须为16位
+        :rtype: str
+        """
         return self._DeviceToken
 
     @DeviceToken.setter
@@ -372,6 +425,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -403,6 +459,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称，长度不超过24个字符
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -411,6 +470,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ProjectDescription(self):
+        """项目描述，长度不超过120个字符，不填默认为空
+        :rtype: str
+        """
         return self._ProjectDescription
 
     @ProjectDescription.setter
@@ -419,6 +481,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def PolicyMode(self):
+        """权限模式，black为黑名单，white为白名单，不填默认为black
+        :rtype: str
+        """
         return self._PolicyMode
 
     @PolicyMode.setter
@@ -457,6 +522,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID，长度为16位
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -465,6 +533,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -491,6 +562,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -524,6 +598,9 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -552,6 +629,9 @@ class DescribeDeviceInfoRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """目标设备所属项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -560,6 +640,9 @@ class DescribeDeviceInfoRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """目标设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -609,6 +692,9 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -617,6 +703,9 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型，field为现场设备（被控方），remote为远端设备（操控方）
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -625,6 +714,9 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
     @property
     def DeviceStatus(self):
+        """设备状态，offline为离线，ready为在线准备，connected为会话中
+        :rtype: str
+        """
         return self._DeviceStatus
 
     @DeviceStatus.setter
@@ -633,6 +725,9 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
     @property
     def LastReportTime(self):
+        """设备状态最后更新时间
+        :rtype: str
+        """
         return self._LastReportTime
 
     @LastReportTime.setter
@@ -641,6 +736,9 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """设备信息最后修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -649,6 +747,9 @@ class DescribeDeviceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -694,6 +795,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """设备所属项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -702,6 +806,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型筛选，不填默认为全部设备类型
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -710,6 +817,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def SearchWords(self):
+        """对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配
+        :rtype: str
+        """
         return self._SearchWords
 
     @SearchWords.setter
@@ -718,6 +828,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页返回的最大设备数，不填默认为10
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -726,6 +839,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页码，不填默认为1（首页）
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -734,6 +850,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceStatus(self):
+        """设备状态筛选，不填默认为不过滤。取值：["ready","connected","online"]，online代表ready或connected
+        :rtype: str
+        """
         return self._DeviceStatus
 
     @DeviceStatus.setter
@@ -781,6 +900,9 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Devices(self):
+        """设备信息列表
+        :rtype: list of DeviceInfo
+        """
         return self._Devices
 
     @Devices.setter
@@ -789,6 +911,9 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """设备总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -797,6 +922,9 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Num(self):
+        """本次返回的设备数
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -805,6 +933,9 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -838,6 +969,9 @@ class DescribeDeviceSessionDetailsRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -874,6 +1008,9 @@ class DescribeDeviceSessionDetailsResponse(AbstractModel):
 
     @property
     def Details(self):
+        """按设备区分的会话详细数据
+        :rtype: list of SessionDeviceDetail
+        """
         return self._Details
 
     @Details.setter
@@ -882,6 +1019,9 @@ class DescribeDeviceSessionDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -928,6 +1068,9 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -936,6 +1079,9 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，从1开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -944,6 +1090,9 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页个数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -952,6 +1101,9 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -960,6 +1112,9 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -968,6 +1123,9 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1015,6 +1173,9 @@ class DescribeDeviceSessionListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总个数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1023,6 +1184,9 @@ class DescribeDeviceSessionListResponse(AbstractModel):
 
     @property
     def DeviceSessionList(self):
+        """会话列表
+        :rtype: list of SessionInfo
+        """
         return self._DeviceSessionList
 
     @DeviceSessionList.setter
@@ -1031,6 +1195,9 @@ class DescribeDeviceSessionListResponse(AbstractModel):
 
     @property
     def Num(self):
+        """本页数量
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -1039,6 +1206,9 @@ class DescribeDeviceSessionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1087,6 +1257,9 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """查看权限的项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1095,6 +1268,9 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def PolicyMode(self):
+        """查看的权限模式，black为黑名单，white为白名单，不填默认为当前项目生效的权限模式
+        :rtype: str
+        """
         return self._PolicyMode
 
     @PolicyMode.setter
@@ -1103,6 +1279,9 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def SearchMode(self):
+        """模糊匹配模式，remoteMatch为远端设备ID匹配，fieldMatch为现场ID匹配，不填默认为remoteMatch
+        :rtype: str
+        """
         return self._SearchMode
 
     @SearchMode.setter
@@ -1111,6 +1290,9 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def SearchWords(self):
+        """模糊匹配关键字，不填默认不进行模糊匹配
+        :rtype: str
+        """
         return self._SearchWords
 
     @SearchWords.setter
@@ -1119,6 +1301,9 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页返回的最大数量，不填默认为10
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1127,6 +1312,9 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页码，不填默认为1（首页）
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1180,6 +1368,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def PolicyMode(self):
+        """权限模式
+        :rtype: str
+        """
         return self._PolicyMode
 
     @PolicyMode.setter
@@ -1188,6 +1379,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def PolicyEnabled(self):
+        """返回的权限模式是否为当前生效的权限模式
+        :rtype: bool
+        """
         return self._PolicyEnabled
 
     @PolicyEnabled.setter
@@ -1196,6 +1390,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def PolicyInfo(self):
+        """权限信息列表
+        :rtype: list of PolicyInfo
+        """
         return self._PolicyInfo
 
     @PolicyInfo.setter
@@ -1204,6 +1401,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def Num(self):
+        """本次返回的权限信息数量
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -1212,6 +1412,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def Total(self):
+        """权限信息总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1220,6 +1423,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1255,6 +1461,9 @@ class DescribeProjectInfoRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """目标项目ID，必填参数
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1300,6 +1509,9 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -1308,6 +1520,9 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def ProjectDescription(self):
+        """项目描述
+        :rtype: str
+        """
         return self._ProjectDescription
 
     @ProjectDescription.setter
@@ -1316,6 +1531,9 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def PolicyMode(self):
+        """项目权限模式，black为黑名单，white为白名单
+        :rtype: str
+        """
         return self._PolicyMode
 
     @PolicyMode.setter
@@ -1324,6 +1542,9 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """项目信息修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -1332,6 +1553,9 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1364,6 +1588,9 @@ class DescribeProjectListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页返回的最大项目数量，不填默认为10
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1372,6 +1599,9 @@ class DescribeProjectListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页码，不填默认为1（首页）
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1415,6 +1645,9 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def Projects(self):
+        """项目信息数组
+        :rtype: list of ProjectInfo
+        """
         return self._Projects
 
     @Projects.setter
@@ -1423,6 +1656,9 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """项目总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1431,6 +1667,9 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def Num(self):
+        """本次返回的项目数
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -1439,6 +1678,9 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1487,6 +1729,9 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1495,6 +1740,9 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，从1开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1503,6 +1751,9 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页个数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1511,6 +1762,9 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID，支持过滤远端设备或现场设备
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1519,6 +1773,9 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1527,6 +1784,9 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1574,6 +1834,9 @@ class DescribeRecentSessionListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总个数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1582,6 +1845,9 @@ class DescribeRecentSessionListResponse(AbstractModel):
 
     @property
     def RecentSessionList(self):
+        """会话列表
+        :rtype: list of RecentSessionInfo
+        """
         return self._RecentSessionList
 
     @RecentSessionList.setter
@@ -1590,6 +1856,9 @@ class DescribeRecentSessionListResponse(AbstractModel):
 
     @property
     def Num(self):
+        """本页数量
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -1598,6 +1867,9 @@ class DescribeRecentSessionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1643,6 +1915,9 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1651,6 +1926,9 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def StatisticInterval(self):
+        """统计时间间隔：hour|day|month
+        :rtype: str
+        """
         return self._StatisticInterval
 
     @StatisticInterval.setter
@@ -1659,6 +1937,9 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1667,6 +1948,9 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，单位：秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1675,6 +1959,9 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1715,6 +2002,9 @@ class DescribeSessionStatisticsByIntervalResponse(AbstractModel):
 
     @property
     def SessionStatistics(self):
+        """各时间段的会话统计数据
+        :rtype: list of SessionIntervalStatistic
+        """
         return self._SessionStatistics
 
     @SessionStatistics.setter
@@ -1723,6 +2013,9 @@ class DescribeSessionStatisticsByIntervalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1763,6 +2056,9 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1771,6 +2067,9 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1779,6 +2078,9 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，单位：秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1787,6 +2089,9 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1838,6 +2143,9 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def SessionNum(self):
+        """会话数量
+        :rtype: int
+        """
         return self._SessionNum
 
     @SessionNum.setter
@@ -1846,6 +2154,9 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def TotalDuration(self):
+        """通话时长，单位：分钟
+        :rtype: int
+        """
         return self._TotalDuration
 
     @TotalDuration.setter
@@ -1854,6 +2165,9 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def ActiveFieldDeviceNum(self):
+        """活跃现场设备数
+        :rtype: int
+        """
         return self._ActiveFieldDeviceNum
 
     @ActiveFieldDeviceNum.setter
@@ -1862,6 +2176,9 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def ActiveRemoteDeviceNum(self):
+        """活跃远端设备数
+        :rtype: int
+        """
         return self._ActiveRemoteDeviceNum
 
     @ActiveRemoteDeviceNum.setter
@@ -1870,6 +2187,9 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def NotBadSessionRatio(self):
+        """优良会话占比，单位：%
+        :rtype: int
+        """
         return self._NotBadSessionRatio
 
     @NotBadSessionRatio.setter
@@ -1878,6 +2198,9 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1937,6 +2260,10 @@ class Device(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1945,6 +2272,10 @@ class Device(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -1953,6 +2284,10 @@ class Device(AbstractModel):
 
     @property
     def LicenseCount(self):
+        """已经绑定license数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LicenseCount
 
     @LicenseCount.setter
@@ -1961,6 +2296,10 @@ class Device(AbstractModel):
 
     @property
     def RemainDay(self):
+        """剩余天数：天
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RemainDay
 
     @RemainDay.setter
@@ -1969,6 +2308,10 @@ class Device(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间：s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1977,6 +2320,10 @@ class Device(AbstractModel):
 
     @property
     def Duration(self):
+        """服务时长：s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -1985,6 +2332,10 @@ class Device(AbstractModel):
 
     @property
     def LicenseIds(self):
+        """已经绑定licenseId列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._LicenseIds
 
     @LicenseIds.setter
@@ -1993,6 +2344,10 @@ class Device(AbstractModel):
 
     @property
     def MonthlyRemainTime(self):
+        """每月license的限定时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MonthlyRemainTime
 
     @MonthlyRemainTime.setter
@@ -2051,6 +2406,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -2059,6 +2417,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -2067,6 +2428,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def DeviceStatus(self):
+        """设备状态，offline为离线，ready为在线准备，connected为会话中
+        :rtype: str
+        """
         return self._DeviceStatus
 
     @DeviceStatus.setter
@@ -2075,6 +2439,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型，field为现场设备（受控方），remote为远端设备（操控方）
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -2083,6 +2450,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """设备信息最近修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -2091,6 +2461,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def LastReportTime(self):
+        """设备状态最近更新时间
+        :rtype: str
+        """
         return self._LastReportTime
 
     @LastReportTime.setter
@@ -2099,6 +2472,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """设备所属项目Id
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2141,6 +2517,9 @@ class GetDeviceLicenseRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """目标设备所属项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2149,6 +2528,9 @@ class GetDeviceLicenseRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """目标设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -2186,6 +2568,9 @@ class GetDeviceLicenseResponse(AbstractModel):
 
     @property
     def AvailableCount(self):
+        """指定设备已经绑定的可用license数量
+        :rtype: int
+        """
         return self._AvailableCount
 
     @AvailableCount.setter
@@ -2194,6 +2579,9 @@ class GetDeviceLicenseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2229,6 +2617,9 @@ class GetDevicesRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -2237,6 +2628,9 @@ class GetDevicesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页面数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2245,6 +2639,9 @@ class GetDevicesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2253,6 +2650,9 @@ class GetDevicesRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -2295,6 +2695,9 @@ class GetDevicesResponse(AbstractModel):
 
     @property
     def Devices(self):
+        """设备授权列表
+        :rtype: list of Device
+        """
         return self._Devices
 
     @Devices.setter
@@ -2303,6 +2706,9 @@ class GetDevicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """列表数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2311,6 +2717,9 @@ class GetDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2364,6 +2773,9 @@ class GetLicenseStatResponse(AbstractModel):
 
     @property
     def Valid(self):
+        """有效授权
+        :rtype: int
+        """
         return self._Valid
 
     @Valid.setter
@@ -2372,6 +2784,9 @@ class GetLicenseStatResponse(AbstractModel):
 
     @property
     def Bound(self):
+        """已绑定授权
+        :rtype: int
+        """
         return self._Bound
 
     @Bound.setter
@@ -2380,6 +2795,9 @@ class GetLicenseStatResponse(AbstractModel):
 
     @property
     def UnBound(self):
+        """未绑定授权
+        :rtype: int
+        """
         return self._UnBound
 
     @UnBound.setter
@@ -2388,6 +2806,9 @@ class GetLicenseStatResponse(AbstractModel):
 
     @property
     def Expire(self):
+        """过期授权
+        :rtype: int
+        """
         return self._Expire
 
     @Expire.setter
@@ -2396,6 +2817,9 @@ class GetLicenseStatResponse(AbstractModel):
 
     @property
     def MonthlyExpire(self):
+        """当月用量超时授权个数
+        :rtype: int
+        """
         return self._MonthlyExpire
 
     @MonthlyExpire.setter
@@ -2404,6 +2828,9 @@ class GetLicenseStatResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2446,6 +2873,9 @@ class GetLicensesRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -2454,6 +2884,9 @@ class GetLicensesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页面数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2462,6 +2895,9 @@ class GetLicensesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """projectId
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2470,6 +2906,9 @@ class GetLicensesRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """DeviceId
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -2478,6 +2917,9 @@ class GetLicensesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2521,6 +2963,9 @@ class GetLicensesResponse(AbstractModel):
 
     @property
     def Licenses(self):
+        """license列表
+        :rtype: list of License
+        """
         return self._Licenses
 
     @Licenses.setter
@@ -2529,6 +2974,9 @@ class GetLicensesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """license列表项数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2537,6 +2985,9 @@ class GetLicensesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2563,22 +3014,16 @@ class License(AbstractModel):
     def __init__(self):
         r"""
         :param _Count: 该类型的license个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Status: license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _ExpireTime: 到期时间戳：s
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _Duration: 服务时长：s
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
         :param _RemainDay: 剩余天数：天
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainDay: int
         :param _LicenseIds: 该类型的licenseId列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseIds: list of str
         """
         self._Count = None
@@ -2590,6 +3035,9 @@ class License(AbstractModel):
 
     @property
     def Count(self):
+        """该类型的license个数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -2598,6 +3046,9 @@ class License(AbstractModel):
 
     @property
     def Status(self):
+        """license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2606,6 +3057,9 @@ class License(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """到期时间戳：s
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -2614,6 +3068,9 @@ class License(AbstractModel):
 
     @property
     def Duration(self):
+        """服务时长：s
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -2622,6 +3079,9 @@ class License(AbstractModel):
 
     @property
     def RemainDay(self):
+        """剩余天数：天
+        :rtype: int
+        """
         return self._RemainDay
 
     @RemainDay.setter
@@ -2630,6 +3090,9 @@ class License(AbstractModel):
 
     @property
     def LicenseIds(self):
+        """该类型的licenseId列表
+        :rtype: list of str
+        """
         return self._LicenseIds
 
     @LicenseIds.setter
@@ -2677,6 +3140,9 @@ class ModifyDeviceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """要修改设备归属项目的项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2685,6 +3151,9 @@ class ModifyDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """要修改设备的设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -2693,6 +3162,9 @@ class ModifyDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """修改后的设备名称，不填则不修改
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -2701,6 +3173,9 @@ class ModifyDeviceRequest(AbstractModel):
 
     @property
     def DeviceToken(self):
+        """修改后的设备认证口令，不填则不修改
+        :rtype: str
+        """
         return self._DeviceToken
 
     @DeviceToken.setter
@@ -2737,6 +3212,9 @@ class ModifyDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2774,6 +3252,9 @@ class ModifyPolicyRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """修改权限配置的项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2782,6 +3263,9 @@ class ModifyPolicyRequest(AbstractModel):
 
     @property
     def RemoteDeviceId(self):
+        """修改权限配置的远端设备ID
+        :rtype: str
+        """
         return self._RemoteDeviceId
 
     @RemoteDeviceId.setter
@@ -2790,6 +3274,9 @@ class ModifyPolicyRequest(AbstractModel):
 
     @property
     def FieldDeviceIds(self):
+        """权限修改涉及的现场设备ID数组
+        :rtype: list of str
+        """
         return self._FieldDeviceIds
 
     @FieldDeviceIds.setter
@@ -2798,6 +3285,9 @@ class ModifyPolicyRequest(AbstractModel):
 
     @property
     def PolicyMode(self):
+        """修改的目标权限模式，black为黑名单，white为白名单
+        :rtype: str
+        """
         return self._PolicyMode
 
     @PolicyMode.setter
@@ -2806,6 +3296,9 @@ class ModifyPolicyRequest(AbstractModel):
 
     @property
     def ModifyMode(self):
+        """修改模式，add为新增（添加现场设备I关联），remove为删除（解除现场设备关联），set为设置（更新现场设备关联）
+        :rtype: str
+        """
         return self._ModifyMode
 
     @ModifyMode.setter
@@ -2837,10 +3330,8 @@ class ModifyPolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedInsertIds: 添加关联失败的现场设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedInsertIds: list of str
         :param _FailedDeleteIds: 解除关联失败的现场设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedDeleteIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2851,6 +3342,9 @@ class ModifyPolicyResponse(AbstractModel):
 
     @property
     def FailedInsertIds(self):
+        """添加关联失败的现场设备ID列表
+        :rtype: list of str
+        """
         return self._FailedInsertIds
 
     @FailedInsertIds.setter
@@ -2859,6 +3353,9 @@ class ModifyPolicyResponse(AbstractModel):
 
     @property
     def FailedDeleteIds(self):
+        """解除关联失败的现场设备ID列表
+        :rtype: list of str
+        """
         return self._FailedDeleteIds
 
     @FailedDeleteIds.setter
@@ -2867,6 +3364,9 @@ class ModifyPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2903,6 +3403,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """目标修改项目的项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2911,6 +3414,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectName(self):
+        """修改后的项目名称，不填则不修改
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -2919,6 +3425,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectDescription(self):
+        """修改后的项目描述，不填则不修改
+        :rtype: str
+        """
         return self._ProjectDescription
 
     @ProjectDescription.setter
@@ -2927,6 +3436,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def PolicyMode(self):
+        """修改后的权限模式，black为黑名单，white为白名单,不填则不修改
+        :rtype: str
+        """
         return self._PolicyMode
 
     @PolicyMode.setter
@@ -2963,6 +3475,9 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2982,22 +3497,16 @@ class MultiNet(AbstractModel):
     def __init__(self):
         r"""
         :param _NetId: 网卡序号
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetId: int
         :param _NetIp: 网卡IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetIp: str
         :param _Rtt: 时延，单位ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rtt: list of int
         :param _Lost: 丢包率，单位%
-注意：此字段可能返回 null，表示取不到有效值。
         :type Lost: list of int
         :param _SendBps: 发送bps，单位kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type SendBps: list of int
         :param _RecvBps: 接收bps，单位kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecvBps: list of int
         """
         self._NetId = None
@@ -3009,6 +3518,9 @@ class MultiNet(AbstractModel):
 
     @property
     def NetId(self):
+        """网卡序号
+        :rtype: int
+        """
         return self._NetId
 
     @NetId.setter
@@ -3017,6 +3529,9 @@ class MultiNet(AbstractModel):
 
     @property
     def NetIp(self):
+        """网卡IP
+        :rtype: str
+        """
         return self._NetIp
 
     @NetIp.setter
@@ -3025,6 +3540,9 @@ class MultiNet(AbstractModel):
 
     @property
     def Rtt(self):
+        """时延，单位ms
+        :rtype: list of int
+        """
         return self._Rtt
 
     @Rtt.setter
@@ -3033,6 +3551,9 @@ class MultiNet(AbstractModel):
 
     @property
     def Lost(self):
+        """丢包率，单位%
+        :rtype: list of int
+        """
         return self._Lost
 
     @Lost.setter
@@ -3041,6 +3562,9 @@ class MultiNet(AbstractModel):
 
     @property
     def SendBps(self):
+        """发送bps，单位kbps
+        :rtype: list of int
+        """
         return self._SendBps
 
     @SendBps.setter
@@ -3049,6 +3573,9 @@ class MultiNet(AbstractModel):
 
     @property
     def RecvBps(self):
+        """接收bps，单位kbps
+        :rtype: list of int
+        """
         return self._RecvBps
 
     @RecvBps.setter
@@ -3093,6 +3620,9 @@ class PolicyInfo(AbstractModel):
 
     @property
     def RemoteDeviceId(self):
+        """远端设备ID
+        :rtype: str
+        """
         return self._RemoteDeviceId
 
     @RemoteDeviceId.setter
@@ -3101,6 +3631,9 @@ class PolicyInfo(AbstractModel):
 
     @property
     def FieldDeviceIds(self):
+        """关联的现场设备ID
+        :rtype: list of str
+        """
         return self._FieldDeviceIds
 
     @FieldDeviceIds.setter
@@ -3109,6 +3642,9 @@ class PolicyInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """最近添加时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -3156,6 +3692,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3164,6 +3703,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -3172,6 +3714,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectDescription(self):
+        """项目描述
+        :rtype: str
+        """
         return self._ProjectDescription
 
     @ProjectDescription.setter
@@ -3180,6 +3725,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def PolicyMode(self):
+        """项目权限模式，black为黑名单，white为白名单
+        :rtype: str
+        """
         return self._PolicyMode
 
     @PolicyMode.setter
@@ -3188,6 +3736,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """项目信息修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -3240,6 +3791,9 @@ class RecentSessionInfo(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -3248,6 +3802,9 @@ class RecentSessionInfo(AbstractModel):
 
     @property
     def RemoteDeviceId(self):
+        """远端设备ID
+        :rtype: str
+        """
         return self._RemoteDeviceId
 
     @RemoteDeviceId.setter
@@ -3256,6 +3813,9 @@ class RecentSessionInfo(AbstractModel):
 
     @property
     def FieldDeviceId(self):
+        """现场设备ID
+        :rtype: str
+        """
         return self._FieldDeviceId
 
     @FieldDeviceId.setter
@@ -3264,6 +3824,9 @@ class RecentSessionInfo(AbstractModel):
 
     @property
     def Resolution(self):
+        """分辨率
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -3272,6 +3835,9 @@ class RecentSessionInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """会话开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3280,6 +3846,9 @@ class RecentSessionInfo(AbstractModel):
 
     @property
     def LatestUpdateTime(self):
+        """最后更新时间
+        :rtype: int
+        """
         return self._LatestUpdateTime
 
     @LatestUpdateTime.setter
@@ -3445,6 +4014,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型：field或remote
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -3453,6 +4025,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始点位时间，单位：秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3461,6 +4036,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束点位时间，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3469,6 +4047,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -3477,6 +4058,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Rate(self):
+        """码率，单位：kbps
+        :rtype: list of int
+        """
         return self._Rate
 
     @Rate.setter
@@ -3485,6 +4069,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率
+        :rtype: list of int
+        """
         return self._Fps
 
     @Fps.setter
@@ -3493,6 +4080,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Lost(self):
+        """丢包率，单位：%
+        :rtype: list of float
+        """
         return self._Lost
 
     @Lost.setter
@@ -3501,6 +4091,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def NetworkLatency(self):
+        """网络时延，单位：ms
+        :rtype: list of int
+        """
         return self._NetworkLatency
 
     @NetworkLatency.setter
@@ -3509,6 +4102,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def VideoLatency(self):
+        """视频时延，单位：ms
+        :rtype: list of int
+        """
         return self._VideoLatency
 
     @VideoLatency.setter
@@ -3517,6 +4113,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def CpuUsed(self):
+        """CPU使用率，单位：%
+        :rtype: list of float
+        """
         return self._CpuUsed
 
     @CpuUsed.setter
@@ -3525,6 +4124,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def MemUsed(self):
+        """内存使用率，单位：%
+        :rtype: list of float
+        """
         return self._MemUsed
 
     @MemUsed.setter
@@ -3533,6 +4135,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def TimeOffset(self):
+        """时间偏移量，单位：秒
+        :rtype: list of int non-negative
+        """
         return self._TimeOffset
 
     @TimeOffset.setter
@@ -3541,6 +4146,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3549,6 +4157,9 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -3557,6 +4168,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Ver(self):
+        """sdk版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ver
 
     @Ver.setter
@@ -3565,6 +4180,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def SdkMode(self):
+        """模式(p2p/server)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SdkMode
 
     @SdkMode.setter
@@ -3573,6 +4192,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def DecodeCost(self):
+        """解码耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._DecodeCost
 
     @DecodeCost.setter
@@ -3583,6 +4206,10 @@ class SessionDeviceDetail(AbstractModel):
     def RenderConst(self):
         warnings.warn("parameter `RenderConst` is deprecated", DeprecationWarning) 
 
+        """【已废弃，使用RenderCost】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._RenderConst
 
     @RenderConst.setter
@@ -3593,6 +4220,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def K100(self):
+        """卡顿k100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._K100
 
     @K100.setter
@@ -3601,6 +4232,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def K150(self):
+        """卡顿k150
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._K150
 
     @K150.setter
@@ -3609,6 +4244,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def NACK(self):
+        """nack请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._NACK
 
     @NACK.setter
@@ -3617,6 +4256,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def BitRateEstimate(self):
+        """服务端调控码率,单位：kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._BitRateEstimate
 
     @BitRateEstimate.setter
@@ -3625,6 +4268,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Width(self):
+        """宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -3633,6 +4280,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Height(self):
+        """高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -3641,6 +4292,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def EncodeCost(self):
+        """编码耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._EncodeCost
 
     @EncodeCost.setter
@@ -3649,6 +4304,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def CaptureCost(self):
+        """采集耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._CaptureCost
 
     @CaptureCost.setter
@@ -3657,6 +4316,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def RenderCost(self):
+        """渲染耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._RenderCost
 
     @RenderCost.setter
@@ -3665,6 +4328,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def ConfigWidth(self):
+        """配置宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ConfigWidth
 
     @ConfigWidth.setter
@@ -3673,6 +4340,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def ConfigHeight(self):
+        """配置高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ConfigHeight
 
     @ConfigHeight.setter
@@ -3681,6 +4352,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def FrameDelta(self):
+        """平均帧间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._FrameDelta
 
     @FrameDelta.setter
@@ -3689,6 +4364,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def MaxFrameDelta(self):
+        """最大帧间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._MaxFrameDelta
 
     @MaxFrameDelta.setter
@@ -3697,6 +4376,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def TotalBitrateEstimate(self):
+        """总码率评估,单位：kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._TotalBitrateEstimate
 
     @TotalBitrateEstimate.setter
@@ -3705,6 +4388,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Lag100Duration(self):
+        """帧间隔大于100ms的卡顿时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Lag100Duration
 
     @Lag100Duration.setter
@@ -3713,6 +4400,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Lag150Duration(self):
+        """帧间隔大于150ms的卡顿时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Lag150Duration
 
     @Lag150Duration.setter
@@ -3721,6 +4412,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def MultiMode(self):
+        """是否开启多网：0 单网，1 多网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MultiMode
 
     @MultiMode.setter
@@ -3729,6 +4424,10 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def MultiNet(self):
+        """多网卡信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MultiNet
+        """
         return self._MultiNet
 
     @MultiNet.setter
@@ -3820,6 +4519,9 @@ class SessionInfo(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -3828,6 +4530,9 @@ class SessionInfo(AbstractModel):
 
     @property
     def RemoteDeviceId(self):
+        """远端设备ID
+        :rtype: str
+        """
         return self._RemoteDeviceId
 
     @RemoteDeviceId.setter
@@ -3836,6 +4541,9 @@ class SessionInfo(AbstractModel):
 
     @property
     def FieldDeviceId(self):
+        """现场设备ID
+        :rtype: str
+        """
         return self._FieldDeviceId
 
     @FieldDeviceId.setter
@@ -3844,6 +4552,9 @@ class SessionInfo(AbstractModel):
 
     @property
     def Resolution(self):
+        """分辨率
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -3852,6 +4563,9 @@ class SessionInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """会话开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3860,6 +4574,9 @@ class SessionInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """会话结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3868,6 +4585,9 @@ class SessionInfo(AbstractModel):
 
     @property
     def Quality(self):
+        """通话质量：good|normal|bad，对应优良差
+        :rtype: str
+        """
         return self._Quality
 
     @Quality.setter
@@ -3925,6 +4645,9 @@ class SessionIntervalStatistic(AbstractModel):
 
     @property
     def ActiveFieldDeviceNum(self):
+        """活跃现场设备数
+        :rtype: int
+        """
         return self._ActiveFieldDeviceNum
 
     @ActiveFieldDeviceNum.setter
@@ -3933,6 +4656,9 @@ class SessionIntervalStatistic(AbstractModel):
 
     @property
     def ActiveRemoteDeviceNum(self):
+        """活跃远端设备数
+        :rtype: int
+        """
         return self._ActiveRemoteDeviceNum
 
     @ActiveRemoteDeviceNum.setter
@@ -3941,6 +4667,9 @@ class SessionIntervalStatistic(AbstractModel):
 
     @property
     def SessionNum(self):
+        """会话数量
+        :rtype: int
+        """
         return self._SessionNum
 
     @SessionNum.setter
@@ -3949,6 +4678,9 @@ class SessionIntervalStatistic(AbstractModel):
 
     @property
     def TotalDuration(self):
+        """会话时长，单位：分钟
+        :rtype: int
+        """
         return self._TotalDuration
 
     @TotalDuration.setter
@@ -3957,6 +4689,9 @@ class SessionIntervalStatistic(AbstractModel):
 
     @property
     def StartTime(self):
+        """时间戳，单位：秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3965,6 +4700,9 @@ class SessionIntervalStatistic(AbstractModel):
 
     @property
     def EndTime(self):
+        """时间戳，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3973,6 +4711,9 @@ class SessionIntervalStatistic(AbstractModel):
 
     @property
     def NotBadSessionRatio(self):
+        """优良会话占比，单位：%
+        :rtype: int
+        """
         return self._NotBadSessionRatio
 
     @NotBadSessionRatio.setter

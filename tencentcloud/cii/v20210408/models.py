@@ -35,6 +35,9 @@ class AddSubStructureTasksRequest(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务id
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -43,6 +46,9 @@ class AddSubStructureTasksRequest(AbstractModel):
 
     @property
     def TaskInfos(self):
+        """子任务信息数组
+        :rtype: list of CreateStructureTaskInfo
+        """
         return self._TaskInfos
 
     @TaskInfos.setter
@@ -85,6 +91,9 @@ class AddSubStructureTasksResponse(AbstractModel):
 
     @property
     def SubTaskIds(self):
+        """增量子任务id数组
+        :rtype: list of str
+        """
         return self._SubTaskIds
 
     @SubTaskIds.setter
@@ -93,6 +102,9 @@ class AddSubStructureTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -122,6 +134,9 @@ class ClassifiedReports(AbstractModel):
 
     @property
     def ReportType(self):
+        """报告类型
+        :rtype: str
+        """
         return self._ReportType
 
     @ReportType.setter
@@ -130,6 +145,9 @@ class ClassifiedReports(AbstractModel):
 
     @property
     def FileList(self):
+        """文件列表
+        :rtype: list of str
+        """
         return self._FileList
 
     @FileList.setter
@@ -179,6 +197,9 @@ class ClassifyInfo(AbstractModel):
 
     @property
     def FirstClass(self):
+        """一级分类
+        :rtype: str
+        """
         return self._FirstClass
 
     @FirstClass.setter
@@ -187,6 +208,9 @@ class ClassifyInfo(AbstractModel):
 
     @property
     def SecondClass(self):
+        """二级分类
+        :rtype: str
+        """
         return self._SecondClass
 
     @SecondClass.setter
@@ -195,6 +219,9 @@ class ClassifyInfo(AbstractModel):
 
     @property
     def ThirdClass(self):
+        """三级分类
+        :rtype: str
+        """
         return self._ThirdClass
 
     @ThirdClass.setter
@@ -203,6 +230,9 @@ class ClassifyInfo(AbstractModel):
 
     @property
     def FirstClassId(self):
+        """一级分类序号
+        :rtype: int
+        """
         return self._FirstClassId
 
     @FirstClassId.setter
@@ -211,6 +241,9 @@ class ClassifyInfo(AbstractModel):
 
     @property
     def SecondClassId(self):
+        """二级分类序号
+        :rtype: int
+        """
         return self._SecondClassId
 
     @SecondClassId.setter
@@ -219,6 +252,9 @@ class ClassifyInfo(AbstractModel):
 
     @property
     def ThirdClassId(self):
+        """三级分类序号
+        :rtype: int
+        """
         return self._ThirdClassId
 
     @ThirdClassId.setter
@@ -278,6 +314,10 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def ShortStructAccuracy(self):
+        """短文准确率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShortStructAccuracy
 
     @ShortStructAccuracy.setter
@@ -286,6 +326,10 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def ShortStructRecall(self):
+        """短文召回率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShortStructRecall
 
     @ShortStructRecall.setter
@@ -294,6 +338,10 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def LongStructAccuracy(self):
+        """长文结构化准确率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LongStructAccuracy
 
     @LongStructAccuracy.setter
@@ -302,6 +350,10 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def LongStructRecall(self):
+        """长文结构化召回率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LongStructRecall
 
     @LongStructRecall.setter
@@ -310,6 +362,10 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def LongContentAccuracy(self):
+        """长文提取准确率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LongContentAccuracy
 
     @LongContentAccuracy.setter
@@ -318,6 +374,10 @@ class CompareMetricsData(AbstractModel):
 
     @property
     def LongContentRecall(self):
+        """长文提取召回率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LongContentRecall
 
     @LongContentRecall.setter
@@ -365,6 +425,9 @@ class CreateAutoClassifyStructureTaskInfo(AbstractModel):
 
     @property
     def FileList(self):
+        """报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
+        :rtype: list of str
+        """
         return self._FileList
 
     @FileList.setter
@@ -373,6 +436,9 @@ class CreateAutoClassifyStructureTaskInfo(AbstractModel):
 
     @property
     def CustomerId(self):
+        """客户号
+        :rtype: str
+        """
         return self._CustomerId
 
     @CustomerId.setter
@@ -381,6 +447,9 @@ class CreateAutoClassifyStructureTaskInfo(AbstractModel):
 
     @property
     def CustomerName(self):
+        """客户姓名
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -389,6 +458,9 @@ class CreateAutoClassifyStructureTaskInfo(AbstractModel):
 
     @property
     def ImageList(self):
+        """报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
+        :rtype: list of str
+        """
         return self._ImageList
 
     @ImageList.setter
@@ -447,6 +519,11 @@ AccidentInsurance：意外险
 
     @property
     def ServiceType(self):
+        """服务类型
+Structured 仅结构化
+Underwrite 结构化+核保
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -455,6 +532,9 @@ AccidentInsurance：意外险
 
     @property
     def TaskInfos(self):
+        """创建任务时可以上传多个报告，后台生成多个识别子任务，子任务的详细信息
+        :rtype: list of CreateAutoClassifyStructureTaskInfo
+        """
         return self._TaskInfos
 
     @TaskInfos.setter
@@ -463,6 +543,9 @@ AccidentInsurance：意外险
 
     @property
     def PolicyId(self):
+        """保单号
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -471,6 +554,11 @@ AccidentInsurance：意外险
 
     @property
     def TriggerType(self):
+        """核保触发方式
+Auto 自动
+Manual 手动
+        :rtype: str
+        """
         return self._TriggerType
 
     @TriggerType.setter
@@ -479,6 +567,12 @@ AccidentInsurance：意外险
 
     @property
     def InsuranceTypes(self):
+        """险种，如果是体检报告类型，此参数是必填，类型说明如下：
+CriticalDiseaseInsurance:重疾险
+LifeInsurance：寿险
+AccidentInsurance：意外险
+        :rtype: list of str
+        """
         return self._InsuranceTypes
 
     @InsuranceTypes.setter
@@ -487,6 +581,9 @@ AccidentInsurance：意外险
 
     @property
     def CallbackUrl(self):
+        """回调地址，接收Post请求传送结果
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -533,6 +630,9 @@ class CreateAutoClassifyStructureTaskResponse(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """创建的主任务号，用于查询结果
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -541,6 +641,9 @@ class CreateAutoClassifyStructureTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -582,6 +685,9 @@ class CreateStructureTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -590,6 +696,9 @@ class CreateStructureTaskInfo(AbstractModel):
 
     @property
     def FileList(self):
+        """报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
+        :rtype: list of str
+        """
         return self._FileList
 
     @FileList.setter
@@ -598,6 +707,9 @@ class CreateStructureTaskInfo(AbstractModel):
 
     @property
     def CustomerId(self):
+        """客户号
+        :rtype: str
+        """
         return self._CustomerId
 
     @CustomerId.setter
@@ -606,6 +718,9 @@ class CreateStructureTaskInfo(AbstractModel):
 
     @property
     def CustomerName(self):
+        """客户姓名
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -614,6 +729,9 @@ class CreateStructureTaskInfo(AbstractModel):
 
     @property
     def ImageList(self):
+        """报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
+        :rtype: list of str
+        """
         return self._ImageList
 
     @ImageList.setter
@@ -622,6 +740,9 @@ class CreateStructureTaskInfo(AbstractModel):
 
     @property
     def Year(self):
+        """报告年份
+        :rtype: str
+        """
         return self._Year
 
     @Year.setter
@@ -682,6 +803,11 @@ AccidentInsurance：意外险
 
     @property
     def ServiceType(self):
+        """服务类型
+Structured 仅结构化
+Underwrite 结构化+核保
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -690,6 +816,9 @@ AccidentInsurance：意外险
 
     @property
     def TaskInfos(self):
+        """创建任务时可以上传多个报告，后台生成多个识别子任务，子任务的详细信息
+        :rtype: list of CreateStructureTaskInfo
+        """
         return self._TaskInfos
 
     @TaskInfos.setter
@@ -698,6 +827,9 @@ AccidentInsurance：意外险
 
     @property
     def PolicyId(self):
+        """保单号
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -706,6 +838,11 @@ AccidentInsurance：意外险
 
     @property
     def TriggerType(self):
+        """核保触发方式
+Auto 自动
+Manual 手动
+        :rtype: str
+        """
         return self._TriggerType
 
     @TriggerType.setter
@@ -714,6 +851,12 @@ AccidentInsurance：意外险
 
     @property
     def InsuranceTypes(self):
+        """险种，如果是体检报告类型，此参数是必填，类型说明如下：
+CriticalDiseaseInsurance:重疾险
+LifeInsurance：寿险
+AccidentInsurance：意外险
+        :rtype: list of str
+        """
         return self._InsuranceTypes
 
     @InsuranceTypes.setter
@@ -722,6 +865,9 @@ AccidentInsurance：意外险
 
     @property
     def CallbackUrl(self):
+        """回调地址，接收Post请求传送结果
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -768,6 +914,9 @@ class CreateStructureTaskResponse(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """创建的主任务号，用于查询结果
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -776,6 +925,9 @@ class CreateStructureTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -805,6 +957,9 @@ class CreateUnderwriteTaskByIdRequest(AbstractModel):
 
     @property
     def MainTaskIds(self):
+        """主任务ID数组，
+        :rtype: list of str
+        """
         return self._MainTaskIds
 
     @MainTaskIds.setter
@@ -813,6 +968,9 @@ class CreateUnderwriteTaskByIdRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """回调地址，可不传（提供轮询机制）。
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -850,6 +1008,9 @@ class CreateUnderwriteTaskByIdResponse(AbstractModel):
 
     @property
     def UnderwriteTaskIds(self):
+        """核保任务ID数据
+        :rtype: list of str
+        """
         return self._UnderwriteTaskIds
 
     @UnderwriteTaskIds.setter
@@ -858,6 +1019,9 @@ class CreateUnderwriteTaskByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -884,6 +1048,9 @@ class DescribeMachineUnderwriteRequest(AbstractModel):
 
     @property
     def UnderwriteTaskId(self):
+        """核保任务ID
+        :rtype: str
+        """
         return self._UnderwriteTaskId
 
     @UnderwriteTaskId.setter
@@ -941,6 +1108,9 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """腾讯云主账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -949,6 +1119,9 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
 
     @property
     def SubAccountUin(self):
+        """操作人子账户ID
+        :rtype: str
+        """
         return self._SubAccountUin
 
     @SubAccountUin.setter
@@ -957,6 +1130,9 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """保单ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -965,6 +1141,9 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务ID
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -973,6 +1152,9 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
 
     @property
     def UnderwriteTaskId(self):
+        """核保任务ID
+        :rtype: str
+        """
         return self._UnderwriteTaskId
 
     @UnderwriteTaskId.setter
@@ -981,6 +1163,12 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
 
     @property
     def Status(self):
+        """结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -989,6 +1177,9 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
 
     @property
     def UnderwriteResults(self):
+        """机器核保结果
+        :rtype: list of MachineUnderwriteOutput
+        """
         return self._UnderwriteResults
 
     @UnderwriteResults.setter
@@ -997,6 +1188,9 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1034,6 +1228,9 @@ class DescribeQualityScoreRequest(AbstractModel):
 
     @property
     def File(self):
+        """文件二进制数据
+        :rtype: binary
+        """
         return self._File
 
     @File.setter
@@ -1070,6 +1267,9 @@ class DescribeQualityScoreResponse(AbstractModel):
 
     @property
     def QualityScore(self):
+        """质量分
+        :rtype: float
+        """
         return self._QualityScore
 
     @QualityScore.setter
@@ -1078,6 +1278,9 @@ class DescribeQualityScoreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1109,6 +1312,11 @@ Underwrite 结构化+核保
 
     @property
     def ServiceType(self):
+        """服务类型
+Structured 仅结构化
+Underwrite 结构化+核保
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -1117,6 +1325,9 @@ Underwrite 结构化+核保
 
     @property
     def FileList(self):
+        """文件地址数组
+        :rtype: list of str
+        """
         return self._FileList
 
     @FileList.setter
@@ -1154,6 +1365,9 @@ class DescribeReportClassifyResponse(AbstractModel):
 
     @property
     def Reports(self):
+        """报告分类结果
+        :rtype: list of ClassifiedReports
+        """
         return self._Reports
 
     @Reports.setter
@@ -1162,6 +1376,9 @@ class DescribeReportClassifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1196,6 +1413,9 @@ class DescribeStructCompareDataRequest(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务号
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -1204,6 +1424,9 @@ class DescribeStructCompareDataRequest(AbstractModel):
 
     @property
     def SubTaskId(self):
+        """子任务号
+        :rtype: str
+        """
         return self._SubTaskId
 
     @SubTaskId.setter
@@ -1279,6 +1502,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """保单号
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -1287,6 +1513,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务号
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -1295,6 +1524,10 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def CustomerId(self):
+        """客户号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CustomerId
 
     @CustomerId.setter
@@ -1303,6 +1536,10 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def CustomerName(self):
+        """客户姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -1311,6 +1548,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def ReviewTime(self):
+        """复核时间
+        :rtype: str
+        """
         return self._ReviewTime
 
     @ReviewTime.setter
@@ -1319,6 +1559,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def MachineResult(self):
+        """算法识别结果
+        :rtype: str
+        """
         return self._MachineResult
 
     @MachineResult.setter
@@ -1327,6 +1570,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def ManualResult(self):
+        """人工复核结果
+        :rtype: str
+        """
         return self._ManualResult
 
     @ManualResult.setter
@@ -1335,6 +1581,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def Metrics(self):
+        """结构化对比指标数据
+        :rtype: :class:`tencentcloud.cii.v20210408.models.CompareMetricsData`
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -1343,6 +1592,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def NewItems(self):
+        """新增项
+        :rtype: str
+        """
         return self._NewItems
 
     @NewItems.setter
@@ -1351,6 +1603,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def ModifyItems(self):
+        """修改项
+        :rtype: str
+        """
         return self._ModifyItems
 
     @ModifyItems.setter
@@ -1359,6 +1614,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def SubTaskId(self):
+        """子任务号
+        :rtype: str
+        """
         return self._SubTaskId
 
     @SubTaskId.setter
@@ -1367,6 +1625,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def AllTasks(self):
+        """所有的子任务
+        :rtype: list of ReviewDataTaskInfo
+        """
         return self._AllTasks
 
     @AllTasks.setter
@@ -1375,6 +1636,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -1383,6 +1647,9 @@ class DescribeStructCompareDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1431,6 +1698,9 @@ class DescribeStructureDifferenceRequest(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务号
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -1439,6 +1709,9 @@ class DescribeStructureDifferenceRequest(AbstractModel):
 
     @property
     def SubTaskId(self):
+        """子任务号
+        :rtype: str
+        """
         return self._SubTaskId
 
     @SubTaskId.setter
@@ -1486,6 +1759,9 @@ class DescribeStructureDifferenceResponse(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务号
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -1494,6 +1770,13 @@ class DescribeStructureDifferenceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1502,6 +1785,9 @@ class DescribeStructureDifferenceResponse(AbstractModel):
 
     @property
     def Results(self):
+        """差异的结果数组
+        :rtype: list of PerStructDifference
+        """
         return self._Results
 
     @Results.setter
@@ -1510,6 +1796,9 @@ class DescribeStructureDifferenceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1543,6 +1832,9 @@ class DescribeStructureResultRequest(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """创建任务时返回的主任务ID
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -1588,6 +1880,12 @@ class DescribeStructureResultResponse(AbstractModel):
 
     @property
     def Status(self):
+        """结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1596,6 +1894,9 @@ class DescribeStructureResultResponse(AbstractModel):
 
     @property
     def Results(self):
+        """结构化结果
+        :rtype: list of StructureResultObject
+        """
         return self._Results
 
     @Results.setter
@@ -1604,6 +1905,9 @@ class DescribeStructureResultResponse(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务ID
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -1612,6 +1916,9 @@ class DescribeStructureResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1645,6 +1952,9 @@ class DescribeStructureTaskResultRequest(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """结构化任务ID
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -1688,6 +1998,12 @@ class DescribeStructureTaskResultResponse(AbstractModel):
 
     @property
     def Status(self):
+        """结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1696,6 +2012,10 @@ class DescribeStructureTaskResultResponse(AbstractModel):
 
     @property
     def Results(self):
+        """结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResultObject
+        """
         return self._Results
 
     @Results.setter
@@ -1704,6 +2024,9 @@ class DescribeStructureTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1736,6 +2059,9 @@ class DescribeUnderwriteTaskRequest(AbstractModel):
 
     @property
     def UnderwriteTaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._UnderwriteTaskId
 
     @UnderwriteTaskId.setter
@@ -1793,6 +2119,9 @@ class DescribeUnderwriteTaskResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """腾讯云主账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -1801,6 +2130,9 @@ class DescribeUnderwriteTaskResponse(AbstractModel):
 
     @property
     def SubAccountUin(self):
+        """操作人子账户ID
+        :rtype: str
+        """
         return self._SubAccountUin
 
     @SubAccountUin.setter
@@ -1809,6 +2141,9 @@ class DescribeUnderwriteTaskResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """保单ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -1817,6 +2152,9 @@ class DescribeUnderwriteTaskResponse(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务ID
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -1825,6 +2163,9 @@ class DescribeUnderwriteTaskResponse(AbstractModel):
 
     @property
     def UnderwriteTaskId(self):
+        """核保任务ID
+        :rtype: str
+        """
         return self._UnderwriteTaskId
 
     @UnderwriteTaskId.setter
@@ -1833,6 +2174,12 @@ class DescribeUnderwriteTaskResponse(AbstractModel):
 
     @property
     def Status(self):
+        """结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1841,6 +2188,9 @@ class DescribeUnderwriteTaskResponse(AbstractModel):
 
     @property
     def UnderwriteResults(self):
+        """核保结果
+        :rtype: list of UnderwriteOutput
+        """
         return self._UnderwriteResults
 
     @UnderwriteResults.setter
@@ -1849,6 +2199,9 @@ class DescribeUnderwriteTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1889,6 +2242,9 @@ class InsuranceResult(AbstractModel):
 
     @property
     def InsuranceType(self):
+        """险种:CriticalDiseaseInsurance(重疾险);LifeInsurance(寿险);AccidentInsurance(意外险);MedicalInsurance(医疗险)
+        :rtype: str
+        """
         return self._InsuranceType
 
     @InsuranceType.setter
@@ -1897,6 +2253,9 @@ class InsuranceResult(AbstractModel):
 
     @property
     def Result(self):
+        """对应险种的机器核保结果
+        :rtype: list of MachinePredict
+        """
         return self._Result
 
     @Result.setter
@@ -1936,6 +2295,9 @@ class Location(AbstractModel):
 
     @property
     def Points(self):
+        """位置信息
+        :rtype: list of Point
+        """
         return self._Points
 
     @Points.setter
@@ -1986,6 +2348,9 @@ class MachinePredict(AbstractModel):
 
     @property
     def Title(self):
+        """核保引擎名称
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -1994,6 +2359,9 @@ class MachinePredict(AbstractModel):
 
     @property
     def Conclusion(self):
+        """核保结论：加费、承保、拒保、延期、除外、加费+除外
+        :rtype: str
+        """
         return self._Conclusion
 
     @Conclusion.setter
@@ -2002,6 +2370,9 @@ class MachinePredict(AbstractModel):
 
     @property
     def Explanation(self):
+        """AI决策树解释
+        :rtype: list of UnderwriteItem
+        """
         return self._Explanation
 
     @Explanation.setter
@@ -2010,6 +2381,9 @@ class MachinePredict(AbstractModel):
 
     @property
     def Disease(self):
+        """疾病指标
+        :rtype: list of UnderwriteItem
+        """
         return self._Disease
 
     @Disease.setter
@@ -2018,6 +2392,9 @@ class MachinePredict(AbstractModel):
 
     @property
     def Laboratory(self):
+        """检查异常
+        :rtype: list of UnderwriteItem
+        """
         return self._Laboratory
 
     @Laboratory.setter
@@ -2076,6 +2453,9 @@ class MachineUnderwriteOutput(AbstractModel):
 
     @property
     def CustomerId(self):
+        """客户号
+        :rtype: str
+        """
         return self._CustomerId
 
     @CustomerId.setter
@@ -2084,6 +2464,9 @@ class MachineUnderwriteOutput(AbstractModel):
 
     @property
     def CustomerName(self):
+        """客户姓名
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -2092,6 +2475,9 @@ class MachineUnderwriteOutput(AbstractModel):
 
     @property
     def Results(self):
+        """各个险种的结果
+        :rtype: list of InsuranceResult
+        """
         return self._Results
 
     @Results.setter
@@ -2144,6 +2530,9 @@ class OcrRecognise(AbstractModel):
 
     @property
     def OriginalField(self):
+        """原文字段
+        :rtype: str
+        """
         return self._OriginalField
 
     @OriginalField.setter
@@ -2152,6 +2541,9 @@ class OcrRecognise(AbstractModel):
 
     @property
     def Value(self):
+        """识别结果
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2160,6 +2552,9 @@ class OcrRecognise(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2168,6 +2563,9 @@ class OcrRecognise(AbstractModel):
 
     @property
     def Location(self):
+        """位置信息
+        :rtype: :class:`tencentcloud.cii.v20210408.models.Location`
+        """
         return self._Location
 
     @Location.setter
@@ -2176,6 +2574,9 @@ class OcrRecognise(AbstractModel):
 
     @property
     def Field(self):
+        """字段名
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -2227,6 +2628,9 @@ class PerStructDifference(AbstractModel):
 
     @property
     def SubTaskId(self):
+        """子任务ID
+        :rtype: str
+        """
         return self._SubTaskId
 
     @SubTaskId.setter
@@ -2235,6 +2639,9 @@ class PerStructDifference(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2243,6 +2650,9 @@ class PerStructDifference(AbstractModel):
 
     @property
     def ModifyItems(self):
+        """修改的项
+        :rtype: list of StructureModifyItem
+        """
         return self._ModifyItems
 
     @ModifyItems.setter
@@ -2251,6 +2661,9 @@ class PerStructDifference(AbstractModel):
 
     @property
     def NewItems(self):
+        """新增的项
+        :rtype: list of StructureOneItem
+        """
         return self._NewItems
 
     @NewItems.setter
@@ -2259,6 +2672,9 @@ class PerStructDifference(AbstractModel):
 
     @property
     def RemoveItems(self):
+        """删除的项
+        :rtype: list of StructureOneItem
+        """
         return self._RemoveItems
 
     @RemoveItems.setter
@@ -2317,6 +2733,9 @@ class Point(AbstractModel):
 
     @property
     def XCoordinate(self):
+        """x坐标
+        :rtype: int
+        """
         return self._XCoordinate
 
     @XCoordinate.setter
@@ -2325,6 +2744,9 @@ class Point(AbstractModel):
 
     @property
     def YCoordinate(self):
+        """y坐标
+        :rtype: int
+        """
         return self._YCoordinate
 
     @YCoordinate.setter
@@ -2333,6 +2755,9 @@ class Point(AbstractModel):
 
     @property
     def Page(self):
+        """页码
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -2375,6 +2800,9 @@ class ResultObject(AbstractModel):
 
     @property
     def Quality(self):
+        """图片质量分
+        :rtype: float
+        """
         return self._Quality
 
     @Quality.setter
@@ -2383,6 +2811,9 @@ class ResultObject(AbstractModel):
 
     @property
     def StructureResult(self):
+        """由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议
+        :rtype: str
+        """
         return self._StructureResult
 
     @StructureResult.setter
@@ -2391,6 +2822,10 @@ class ResultObject(AbstractModel):
 
     @property
     def ReportType(self):
+        """报告分类信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClassifyInfo
+        """
         return self._ReportType
 
     @ReportType.setter
@@ -2440,6 +2875,9 @@ class ReviewDataTaskInfo(AbstractModel):
 
     @property
     def MainTaskId(self):
+        """主任务号
+        :rtype: str
+        """
         return self._MainTaskId
 
     @MainTaskId.setter
@@ -2448,6 +2886,9 @@ class ReviewDataTaskInfo(AbstractModel):
 
     @property
     def SubTaskId(self):
+        """子任务号
+        :rtype: str
+        """
         return self._SubTaskId
 
     @SubTaskId.setter
@@ -2456,6 +2897,9 @@ class ReviewDataTaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -2464,6 +2908,9 @@ class ReviewDataTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2509,6 +2956,10 @@ class StructureModifyItem(AbstractModel):
 
     @property
     def Path(self):
+        """修改的字段的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -2517,6 +2968,10 @@ class StructureModifyItem(AbstractModel):
 
     @property
     def Machine(self):
+        """机器结果的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Machine
 
     @Machine.setter
@@ -2525,6 +2980,10 @@ class StructureModifyItem(AbstractModel):
 
     @property
     def Manual(self):
+        """人工结果的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Manual
 
     @Manual.setter
@@ -2565,6 +3024,10 @@ class StructureOneItem(AbstractModel):
 
     @property
     def Path(self):
+        """新字段的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -2573,6 +3036,10 @@ class StructureOneItem(AbstractModel):
 
     @property
     def Value(self):
+        """字段的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2623,6 +3090,9 @@ class StructureResultObject(AbstractModel):
 
     @property
     def Code(self):
+        """0表示正常返回；1代表结果未生成；2代表任务执行失败
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -2631,6 +3101,9 @@ class StructureResultObject(AbstractModel):
 
     @property
     def TaskType(self):
+        """报告类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2639,6 +3112,9 @@ class StructureResultObject(AbstractModel):
 
     @property
     def StructureResult(self):
+        """结构化结果
+        :rtype: str
+        """
         return self._StructureResult
 
     @StructureResult.setter
@@ -2647,6 +3123,9 @@ class StructureResultObject(AbstractModel):
 
     @property
     def SubTaskId(self):
+        """子任务ID
+        :rtype: str
+        """
         return self._SubTaskId
 
     @SubTaskId.setter
@@ -2655,6 +3134,9 @@ class StructureResultObject(AbstractModel):
 
     @property
     def TaskFiles(self):
+        """任务文件列表
+        :rtype: list of str
+        """
         return self._TaskFiles
 
     @TaskFiles.setter
@@ -2663,6 +3145,10 @@ class StructureResultObject(AbstractModel):
 
     @property
     def ResultFields(self):
+        """结构化字段结果数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OcrRecognise
+        """
         return self._ResultFields
 
     @ResultFields.setter
@@ -2712,6 +3198,9 @@ class UnderwriteConclusion(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2720,6 +3209,9 @@ class UnderwriteConclusion(AbstractModel):
 
     @property
     def Conclusion(self):
+        """结论
+        :rtype: str
+        """
         return self._Conclusion
 
     @Conclusion.setter
@@ -2728,6 +3220,9 @@ class UnderwriteConclusion(AbstractModel):
 
     @property
     def Explanation(self):
+        """解释
+        :rtype: str
+        """
         return self._Explanation
 
     @Explanation.setter
@@ -2797,6 +3292,9 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def Name(self):
+        """字段名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2805,6 +3303,9 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def Result(self):
+        """结果
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2813,6 +3314,9 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def Value(self):
+        """风险值或者说明
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2821,6 +3325,10 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def Range(self):
+        """参考范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Range
 
     @Range.setter
@@ -2829,6 +3337,10 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def ReportDate(self):
+        """报告时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ReportDate
 
     @ReportDate.setter
@@ -2837,6 +3349,10 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def FileType(self):
+        """文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -2845,6 +3361,10 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def InspectProject(self):
+        """检查项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InspectProject
 
     @InspectProject.setter
@@ -2853,6 +3373,10 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def Unit(self):
+        """单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -2861,6 +3385,10 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def OriginName(self):
+        """原名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginName
 
     @OriginName.setter
@@ -2869,6 +3397,10 @@ class UnderwriteItem(AbstractModel):
 
     @property
     def YinYang(self):
+        """阴阳性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._YinYang
 
     @YinYang.setter
@@ -2923,6 +3455,9 @@ class UnderwriteOutput(AbstractModel):
 
     @property
     def CustomerId(self):
+        """客户ID
+        :rtype: str
+        """
         return self._CustomerId
 
     @CustomerId.setter
@@ -2931,6 +3466,9 @@ class UnderwriteOutput(AbstractModel):
 
     @property
     def CustomerName(self):
+        """客户姓名
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -2939,6 +3477,9 @@ class UnderwriteOutput(AbstractModel):
 
     @property
     def Results(self):
+        """结果
+        :rtype: list of InsuranceResult
+        """
         return self._Results
 
     @Results.setter
@@ -2947,6 +3488,9 @@ class UnderwriteOutput(AbstractModel):
 
     @property
     def ReviewTime(self):
+        """复核时间
+        :rtype: str
+        """
         return self._ReviewTime
 
     @ReviewTime.setter
@@ -2955,6 +3499,9 @@ class UnderwriteOutput(AbstractModel):
 
     @property
     def ManualDetail(self):
+        """人工复核结果
+        :rtype: list of UnderwriteConclusion
+        """
         return self._ManualDetail
 
     @ManualDetail.setter
@@ -3005,6 +3552,9 @@ class UploadMedicalFileRequest(AbstractModel):
 
     @property
     def File(self):
+        """文件的字节内容。File与FileURL有一个不为空即可，若FileURL参数也存在，会只取File的内容。
+        :rtype: binary
+        """
         return self._File
 
     @File.setter
@@ -3013,6 +3563,9 @@ class UploadMedicalFileRequest(AbstractModel):
 
     @property
     def FileURL(self):
+        """文件的URL地址。File与FileURL不能同时为空，若File参数也存在，会只取File的内容。
+        :rtype: str
+        """
         return self._FileURL
 
     @FileURL.setter
@@ -3051,6 +3604,10 @@ class UploadMedicalFileResponse(AbstractModel):
 
     @property
     def FileKey(self):
+        """文件存储的key，可以用来创建结构化任务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileKey
 
     @FileKey.setter
@@ -3059,6 +3616,9 @@ class UploadMedicalFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

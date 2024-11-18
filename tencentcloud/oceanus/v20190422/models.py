@@ -38,6 +38,9 @@ class CCN(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络 ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -46,6 +49,9 @@ class CCN(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网 ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -54,6 +60,9 @@ class CCN(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网 ID，如 ccn-rahigzjd
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -101,6 +110,9 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业 id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -109,6 +121,9 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def SerialId(self):
+        """快照资源 id
+        :rtype: str
+        """
         return self._SerialId
 
     @SerialId.setter
@@ -117,6 +132,9 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def RecordType(self):
+        """快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+        :rtype: int
+        """
         return self._RecordType
 
     @RecordType.setter
@@ -125,6 +143,9 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def SavepointPath(self):
+        """快照路径，目前只支持 cos 路径
+        :rtype: str
+        """
         return self._SavepointPath
 
     @SavepointPath.setter
@@ -133,6 +154,9 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 id
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -176,6 +200,9 @@ class CheckSavepointResponse(AbstractModel):
 
     @property
     def SerialId(self):
+        """资源 id
+        :rtype: str
+        """
         return self._SerialId
 
     @SerialId.setter
@@ -184,6 +211,9 @@ class CheckSavepointResponse(AbstractModel):
 
     @property
     def SavepointStatus(self):
+        """1=可用，2=不可用
+        :rtype: int
+        """
         return self._SavepointStatus
 
     @SavepointStatus.setter
@@ -192,6 +222,9 @@ class CheckSavepointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -227,6 +260,10 @@ class ClazzLevel(AbstractModel):
 
     @property
     def Clazz(self):
+        """java类全路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Clazz
 
     @Clazz.setter
@@ -235,6 +272,10 @@ class ClazzLevel(AbstractModel):
 
     @property
     def Level(self):
+        """日志级别  TRACE，DEBUG、INFO、WARN、ERROR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -437,6 +478,9 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -445,6 +489,9 @@ class Cluster(AbstractModel):
 
     @property
     def Name(self):
+        """集群名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -453,6 +500,9 @@ class Cluster(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -461,6 +511,9 @@ class Cluster(AbstractModel):
 
     @property
     def AppId(self):
+        """用户 AppID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -469,6 +522,9 @@ class Cluster(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """主账号 UIN
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -477,6 +533,9 @@ class Cluster(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建者 UIN
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -485,6 +544,9 @@ class Cluster(AbstractModel):
 
     @property
     def Status(self):
+        """集群状态, 1 未初始化,，3 初始化中，2 运行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -493,6 +555,9 @@ class Cluster(AbstractModel):
 
     @property
     def Remark(self):
+        """描述
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -501,6 +566,9 @@ class Cluster(AbstractModel):
 
     @property
     def CreateTime(self):
+        """集群创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -509,6 +577,9 @@ class Cluster(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后一次操作集群的时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -517,6 +588,9 @@ class Cluster(AbstractModel):
 
     @property
     def CuNum(self):
+        """CU 数量
+        :rtype: int
+        """
         return self._CuNum
 
     @CuNum.setter
@@ -525,6 +599,9 @@ class Cluster(AbstractModel):
 
     @property
     def CuMem(self):
+        """CU 内存规格
+        :rtype: int
+        """
         return self._CuMem
 
     @CuMem.setter
@@ -533,6 +610,9 @@ class Cluster(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -541,6 +621,9 @@ class Cluster(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """状态描述
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -549,6 +632,9 @@ class Cluster(AbstractModel):
 
     @property
     def CCNs(self):
+        """网络
+        :rtype: list of CCN
+        """
         return self._CCNs
 
     @CCNs.setter
@@ -557,6 +643,9 @@ class Cluster(AbstractModel):
 
     @property
     def NetEnvironmentType(self):
+        """网络
+        :rtype: int
+        """
         return self._NetEnvironmentType
 
     @NetEnvironmentType.setter
@@ -565,6 +654,9 @@ class Cluster(AbstractModel):
 
     @property
     def FreeCuNum(self):
+        """空闲 CU
+        :rtype: int
+        """
         return self._FreeCuNum
 
     @FreeCuNum.setter
@@ -573,6 +665,10 @@ class Cluster(AbstractModel):
 
     @property
     def Tags(self):
+        """集群绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -581,6 +677,10 @@ class Cluster(AbstractModel):
 
     @property
     def IsolatedTime(self):
+        """集群隔离时间; 没隔离时间，则为 -
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsolatedTime
 
     @IsolatedTime.setter
@@ -589,6 +689,10 @@ class Cluster(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """集群过期时间; 没过期概念，则为 -
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -597,6 +701,10 @@ class Cluster(AbstractModel):
 
     @property
     def SecondsUntilExpiry(self):
+        """距离过期还有多少秒; 没过期概念，则为 -
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SecondsUntilExpiry
 
     @SecondsUntilExpiry.setter
@@ -605,6 +713,10 @@ class Cluster(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -613,6 +725,10 @@ class Cluster(AbstractModel):
 
     @property
     def DefaultCOSBucket(self):
+        """集群的默认 COS 存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DefaultCOSBucket
 
     @DefaultCOSBucket.setter
@@ -621,6 +737,10 @@ class Cluster(AbstractModel):
 
     @property
     def CLSLogSet(self):
+        """集群的CLS 日志集 LogSet
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CLSLogSet
 
     @CLSLogSet.setter
@@ -629,6 +749,10 @@ class Cluster(AbstractModel):
 
     @property
     def CLSTopicId(self):
+        """集群的CLS 日志主题 TopicId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CLSTopicId
 
     @CLSTopicId.setter
@@ -637,6 +761,10 @@ class Cluster(AbstractModel):
 
     @property
     def CLSLogName(self):
+        """集群的CLS 日志集  名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CLSLogName
 
     @CLSLogName.setter
@@ -645,6 +773,10 @@ class Cluster(AbstractModel):
 
     @property
     def CLSTopicName(self):
+        """集群的CLS 日志主题  名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CLSTopicName
 
     @CLSTopicName.setter
@@ -653,6 +785,10 @@ class Cluster(AbstractModel):
 
     @property
     def Version(self):
+        """集群的版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ClusterVersion`
+        """
         return self._Version
 
     @Version.setter
@@ -661,6 +797,10 @@ class Cluster(AbstractModel):
 
     @property
     def FreeCu(self):
+        """细粒度资源下的空闲CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._FreeCu
 
     @FreeCu.setter
@@ -669,6 +809,10 @@ class Cluster(AbstractModel):
 
     @property
     def DefaultLogCollectConf(self):
+        """集群的默认日志采集配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DefaultLogCollectConf
 
     @DefaultLogCollectConf.setter
@@ -677,6 +821,10 @@ class Cluster(AbstractModel):
 
     @property
     def CustomizedDNSEnabled(self):
+        """取值：0-没有设置，1-已设置，2-不允许设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CustomizedDNSEnabled
 
     @CustomizedDNSEnabled.setter
@@ -685,6 +833,10 @@ class Cluster(AbstractModel):
 
     @property
     def Correlations(self):
+        """空间信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WorkSpaceClusterItem
+        """
         return self._Correlations
 
     @Correlations.setter
@@ -693,6 +845,10 @@ class Cluster(AbstractModel):
 
     @property
     def RunningCu(self):
+        """运行CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._RunningCu
 
     @RunningCu.setter
@@ -701,6 +857,10 @@ class Cluster(AbstractModel):
 
     @property
     def PayMode(self):
+        """0 后付费,1 预付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -709,6 +869,10 @@ class Cluster(AbstractModel):
 
     @property
     def IsNeedManageNode(self):
+        """前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsNeedManageNode
 
     @IsNeedManageNode.setter
@@ -717,6 +881,10 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterSessions(self):
+        """session集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClusterSession
+        """
         return self._ClusterSessions
 
     @ClusterSessions.setter
@@ -725,6 +893,10 @@ class Cluster(AbstractModel):
 
     @property
     def ArchGeneration(self):
+        """V3版本 = 2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ArchGeneration
 
     @ArchGeneration.setter
@@ -733,6 +905,10 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterType(self):
+        """0:TKE, 1:EKS
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -741,6 +917,10 @@ class Cluster(AbstractModel):
 
     @property
     def Orders(self):
+        """订单信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Order
+        """
         return self._Orders
 
     @Orders.setter
@@ -749,6 +929,10 @@ class Cluster(AbstractModel):
 
     @property
     def SqlGateways(self):
+        """Gateway信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SqlGatewayItem
+        """
         return self._SqlGateways
 
     @SqlGateways.setter
@@ -757,6 +941,10 @@ class Cluster(AbstractModel):
 
     @property
     def WebUIType(self):
+        """0 公网访问 // 1 内网访问	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WebUIType
 
     @WebUIType.setter
@@ -765,6 +953,10 @@ class Cluster(AbstractModel):
 
     @property
     def Type(self):
+        """2 独享集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -773,6 +965,10 @@ class Cluster(AbstractModel):
 
     @property
     def SubEks(self):
+        """子eks集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.SubEks`
+        """
         return self._SubEks
 
     @SubEks.setter
@@ -781,6 +977,10 @@ class Cluster(AbstractModel):
 
     @property
     def AgentSerialId(self):
+        """上级集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AgentSerialId
 
     @AgentSerialId.setter
@@ -789,6 +989,10 @@ class Cluster(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -797,6 +1001,10 @@ class Cluster(AbstractModel):
 
     @property
     def BillingResourceMode(self):
+        """集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BillingResourceMode
 
     @BillingResourceMode.setter
@@ -805,6 +1013,10 @@ class Cluster(AbstractModel):
 
     @property
     def MemRatio(self):
+        """Cu比例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MemRatio
 
     @MemRatio.setter
@@ -980,6 +1192,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def ClusterId(self):
+        """clusterGroup 的 SerialId
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -988,6 +1203,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def Name(self):
+        """集群名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -996,6 +1214,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1004,6 +1225,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def Zone(self):
+        """区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1012,6 +1236,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def AppId(self):
+        """账号 APPID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -1020,6 +1247,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """主账号 UIN
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -1028,6 +1258,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建账号 UIN
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -1036,6 +1269,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def CuNum(self):
+        """CU 数量
+        :rtype: int
+        """
         return self._CuNum
 
     @CuNum.setter
@@ -1044,6 +1280,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def CuMem(self):
+        """CU 内存规格
+        :rtype: int
+        """
         return self._CuMem
 
     @CuMem.setter
@@ -1052,6 +1291,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def Status(self):
+        """集群状态, 1 未初始化,，3 初始化中，2 运行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1060,6 +1302,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """状态描述
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -1068,6 +1313,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """集群创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1076,6 +1324,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后一次操作集群的时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1084,6 +1335,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def Remark(self):
+        """描述
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1092,6 +1346,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def NetEnvironmentType(self):
+        """网络
+        :rtype: int
+        """
         return self._NetEnvironmentType
 
     @NetEnvironmentType.setter
@@ -1100,6 +1357,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def FreeCuNum(self):
+        """空闲 CU
+        :rtype: int
+        """
         return self._FreeCuNum
 
     @FreeCuNum.setter
@@ -1108,6 +1368,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def FreeCu(self):
+        """细粒度资源下的空闲CU
+        :rtype: float
+        """
         return self._FreeCu
 
     @FreeCu.setter
@@ -1116,6 +1379,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def RunningCu(self):
+        """运行中CU
+        :rtype: float
+        """
         return self._RunningCu
 
     @RunningCu.setter
@@ -1124,6 +1390,9 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1132,6 +1401,10 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def SubEks(self):
+        """弹性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.SubEks`
+        """
         return self._SubEks
 
     @SubEks.setter
@@ -1140,6 +1413,10 @@ class ClusterGroupSetItem(AbstractModel):
 
     @property
     def BillingResourceMode(self):
+        """默认 "" 包销模式 "exclusiveSale"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BillingResourceMode
 
     @BillingResourceMode.setter
@@ -1211,6 +1488,9 @@ class ClusterSession(AbstractModel):
         :param _Properties: session集群高级参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
+        :param _ResourceRefs: 引用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRefs: list of SessionClusterRefItem
         :param _JobManagerCuSpec: JobManager的规格
         :type JobManagerCuSpec: float
         :param _TaskManagerCuSpec: TaskManager的规格
@@ -1221,6 +1501,14 @@ class ClusterSession(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 更新时间
         :type UpdateTime: str
+        :param _JobManagerCpu: JobManagerCpu
+        :type JobManagerCpu: float
+        :param _JobManagerMem: JobManagerMem
+        :type JobManagerMem: float
+        :param _TaskManagerCpu: TaskManagerCpu
+        :type TaskManagerCpu: float
+        :param _TaskManagerMem: TaskManagerMem
+        :type TaskManagerMem: float
         """
         self._ClusterGroupSerialId = None
         self._AppId = None
@@ -1233,14 +1521,22 @@ class ClusterSession(AbstractModel):
         self._FlinkVersion = None
         self._WebUIUrl = None
         self._Properties = None
+        self._ResourceRefs = None
         self._JobManagerCuSpec = None
         self._TaskManagerCuSpec = None
         self._TaskManagerNum = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._JobManagerCpu = None
+        self._JobManagerMem = None
+        self._TaskManagerCpu = None
+        self._TaskManagerMem = None
 
     @property
     def ClusterGroupSerialId(self):
+        """集群SerialId
+        :rtype: str
+        """
         return self._ClusterGroupSerialId
 
     @ClusterGroupSerialId.setter
@@ -1249,6 +1545,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def AppId(self):
+        """创建者appId
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -1257,6 +1556,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """创建者主账号
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -1265,6 +1567,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建者账号
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -1273,6 +1578,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def Region(self):
+        """区域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1281,6 +1589,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def Zone(self):
+        """zone
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1289,6 +1600,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def Status(self):
+        """Session集群状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1297,6 +1611,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def CuNum(self):
+        """Session集群消耗的cu数量
+        :rtype: float
+        """
         return self._CuNum
 
     @CuNum.setter
@@ -1305,6 +1622,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def FlinkVersion(self):
+        """Session集群的Flink版本
+        :rtype: str
+        """
         return self._FlinkVersion
 
     @FlinkVersion.setter
@@ -1313,6 +1633,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def WebUIUrl(self):
+        """session集群FlinkUi地址
+        :rtype: str
+        """
         return self._WebUIUrl
 
     @WebUIUrl.setter
@@ -1321,6 +1644,10 @@ class ClusterSession(AbstractModel):
 
     @property
     def Properties(self):
+        """session集群高级参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Property
+        """
         return self._Properties
 
     @Properties.setter
@@ -1328,7 +1655,22 @@ class ClusterSession(AbstractModel):
         self._Properties = Properties
 
     @property
+    def ResourceRefs(self):
+        """引用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SessionClusterRefItem
+        """
+        return self._ResourceRefs
+
+    @ResourceRefs.setter
+    def ResourceRefs(self, ResourceRefs):
+        self._ResourceRefs = ResourceRefs
+
+    @property
     def JobManagerCuSpec(self):
+        """JobManager的规格
+        :rtype: float
+        """
         return self._JobManagerCuSpec
 
     @JobManagerCuSpec.setter
@@ -1337,6 +1679,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def TaskManagerCuSpec(self):
+        """TaskManager的规格
+        :rtype: float
+        """
         return self._TaskManagerCuSpec
 
     @TaskManagerCuSpec.setter
@@ -1345,6 +1690,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def TaskManagerNum(self):
+        """TaskManager启动的数量
+        :rtype: int
+        """
         return self._TaskManagerNum
 
     @TaskManagerNum.setter
@@ -1353,6 +1701,9 @@ class ClusterSession(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1361,11 +1712,58 @@ class ClusterSession(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def JobManagerCpu(self):
+        """JobManagerCpu
+        :rtype: float
+        """
+        return self._JobManagerCpu
+
+    @JobManagerCpu.setter
+    def JobManagerCpu(self, JobManagerCpu):
+        self._JobManagerCpu = JobManagerCpu
+
+    @property
+    def JobManagerMem(self):
+        """JobManagerMem
+        :rtype: float
+        """
+        return self._JobManagerMem
+
+    @JobManagerMem.setter
+    def JobManagerMem(self, JobManagerMem):
+        self._JobManagerMem = JobManagerMem
+
+    @property
+    def TaskManagerCpu(self):
+        """TaskManagerCpu
+        :rtype: float
+        """
+        return self._TaskManagerCpu
+
+    @TaskManagerCpu.setter
+    def TaskManagerCpu(self, TaskManagerCpu):
+        self._TaskManagerCpu = TaskManagerCpu
+
+    @property
+    def TaskManagerMem(self):
+        """TaskManagerMem
+        :rtype: float
+        """
+        return self._TaskManagerMem
+
+    @TaskManagerMem.setter
+    def TaskManagerMem(self, TaskManagerMem):
+        self._TaskManagerMem = TaskManagerMem
 
 
     def _deserialize(self, params):
@@ -1385,11 +1783,21 @@ class ClusterSession(AbstractModel):
                 obj = Property()
                 obj._deserialize(item)
                 self._Properties.append(obj)
+        if params.get("ResourceRefs") is not None:
+            self._ResourceRefs = []
+            for item in params.get("ResourceRefs"):
+                obj = SessionClusterRefItem()
+                obj._deserialize(item)
+                self._ResourceRefs.append(obj)
         self._JobManagerCuSpec = params.get("JobManagerCuSpec")
         self._TaskManagerCuSpec = params.get("TaskManagerCuSpec")
         self._TaskManagerNum = params.get("TaskManagerNum")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._JobManagerCpu = params.get("JobManagerCpu")
+        self._JobManagerMem = params.get("JobManagerMem")
+        self._TaskManagerCpu = params.get("TaskManagerCpu")
+        self._TaskManagerMem = params.get("TaskManagerMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1419,6 +1827,10 @@ class ClusterVersion(AbstractModel):
 
     @property
     def Flink(self):
+        """集群的Flink版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Flink
 
     @Flink.setter
@@ -1427,6 +1839,10 @@ class ClusterVersion(AbstractModel):
 
     @property
     def SupportedFlink(self):
+        """集群支持的Flink版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SupportedFlink
 
     @SupportedFlink.setter
@@ -1476,6 +1892,9 @@ class CopyJobItem(AbstractModel):
 
     @property
     def SourceId(self):
+        """需要复制的作业serial id
+        :rtype: str
+        """
         return self._SourceId
 
     @SourceId.setter
@@ -1484,6 +1903,9 @@ class CopyJobItem(AbstractModel):
 
     @property
     def TargetClusterId(self):
+        """目标集群的cluster serial id
+        :rtype: str
+        """
         return self._TargetClusterId
 
     @TargetClusterId.setter
@@ -1492,6 +1914,9 @@ class CopyJobItem(AbstractModel):
 
     @property
     def SourceName(self):
+        """需要复制的作业名称
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -1500,6 +1925,9 @@ class CopyJobItem(AbstractModel):
 
     @property
     def TargetName(self):
+        """新作业的名称
+        :rtype: str
+        """
         return self._TargetName
 
     @TargetName.setter
@@ -1508,6 +1936,9 @@ class CopyJobItem(AbstractModel):
 
     @property
     def TargetFolderId(self):
+        """新作业的目录id
+        :rtype: str
+        """
         return self._TargetFolderId
 
     @TargetFolderId.setter
@@ -1516,6 +1947,9 @@ class CopyJobItem(AbstractModel):
 
     @property
     def JobType(self):
+        """源作业类型
+        :rtype: int
+        """
         return self._JobType
 
     @JobType.setter
@@ -1587,6 +2021,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def JobId(self):
+        """原作业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1595,6 +2033,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def JobName(self):
+        """原作业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -1603,6 +2045,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def TargetJobName(self):
+        """新作业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TargetJobName
 
     @TargetJobName.setter
@@ -1611,6 +2057,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def TargetJobId(self):
+        """新作业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TargetJobId
 
     @TargetJobId.setter
@@ -1619,6 +2069,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def Message(self):
+        """失败时候的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1627,6 +2081,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def Result(self):
+        """0 成功  -1 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -1635,6 +2093,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def ClusterName(self):
+        """目标集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -1643,6 +2105,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def ClusterId(self):
+        """目标集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1651,6 +2117,10 @@ class CopyJobResult(AbstractModel):
 
     @property
     def JobType(self):
+        """作业类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JobType
 
     @JobType.setter
@@ -1698,6 +2168,9 @@ class CopyJobsRequest(AbstractModel):
 
     @property
     def JobItems(self):
+        """复制明细列表
+        :rtype: list of CopyJobItem
+        """
         return self._JobItems
 
     @JobItems.setter
@@ -1706,6 +2179,9 @@ class CopyJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -1714,6 +2190,9 @@ class CopyJobsRequest(AbstractModel):
 
     @property
     def TargetWorkspaceId(self):
+        """目标工作空间 SerialId
+        :rtype: str
+        """
         return self._TargetWorkspaceId
 
     @TargetWorkspaceId.setter
@@ -1766,6 +2245,10 @@ class CopyJobsResponse(AbstractModel):
 
     @property
     def SuccessCount(self):
+        """成功条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccessCount
 
     @SuccessCount.setter
@@ -1774,6 +2257,10 @@ class CopyJobsResponse(AbstractModel):
 
     @property
     def FailCount(self):
+        """失败条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FailCount
 
     @FailCount.setter
@@ -1782,6 +2269,10 @@ class CopyJobsResponse(AbstractModel):
 
     @property
     def CopyJobsResults(self):
+        """结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CopyJobResult
+        """
         return self._CopyJobsResults
 
     @CopyJobsResults.setter
@@ -1790,6 +2281,9 @@ class CopyJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1832,6 +2326,9 @@ class CreateFolderRequest(AbstractModel):
 
     @property
     def FolderName(self):
+        """新建文件夹名
+        :rtype: str
+        """
         return self._FolderName
 
     @FolderName.setter
@@ -1840,6 +2337,9 @@ class CreateFolderRequest(AbstractModel):
 
     @property
     def ParentId(self):
+        """新建文件夹的父目录ID（根目录为"root"）
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -1848,6 +2348,9 @@ class CreateFolderRequest(AbstractModel):
 
     @property
     def FolderType(self):
+        """文件夹类型，0是任务文件夹，1是依赖文件夹
+        :rtype: int
+        """
         return self._FolderType
 
     @FolderType.setter
@@ -1856,6 +2359,9 @@ class CreateFolderRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -1895,6 +2401,9 @@ class CreateFolderResponse(AbstractModel):
 
     @property
     def FolderId(self):
+        """新建文件夹的唯一ID
+        :rtype: str
+        """
         return self._FolderId
 
     @FolderId.setter
@@ -1903,6 +2412,9 @@ class CreateFolderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2013,6 +2525,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业Id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2021,6 +2536,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def EntrypointClass(self):
+        """主类
+        :rtype: str
+        """
         return self._EntrypointClass
 
     @EntrypointClass.setter
@@ -2029,6 +2547,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ProgramArgs(self):
+        """主类入参
+        :rtype: str
+        """
         return self._ProgramArgs
 
     @ProgramArgs.setter
@@ -2037,6 +2558,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2045,6 +2569,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ResourceRefs(self):
+        """资源引用数组
+        :rtype: list of ResourceRef
+        """
         return self._ResourceRefs
 
     @ResourceRefs.setter
@@ -2053,6 +2580,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def DefaultParallelism(self):
+        """作业默认并行度
+        :rtype: int
+        """
         return self._DefaultParallelism
 
     @DefaultParallelism.setter
@@ -2061,6 +2591,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def Properties(self):
+        """系统参数
+        :rtype: list of Property
+        """
         return self._Properties
 
     @Properties.setter
@@ -2069,6 +2602,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def AutoDelete(self):
+        """1: 作业配置达到上限之后，自动删除可删除的最早版本
+        :rtype: int
+        """
         return self._AutoDelete
 
     @AutoDelete.setter
@@ -2077,6 +2613,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def COSBucket(self):
+        """作业使用的 COS 存储桶名
+        :rtype: str
+        """
         return self._COSBucket
 
     @COSBucket.setter
@@ -2085,6 +2624,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def LogCollect(self):
+        """是否采集作业日志
+        :rtype: bool
+        """
         return self._LogCollect
 
     @LogCollect.setter
@@ -2093,6 +2635,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def JobManagerSpec(self):
+        """JobManager规格
+        :rtype: float
+        """
         return self._JobManagerSpec
 
     @JobManagerSpec.setter
@@ -2101,6 +2646,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def TaskManagerSpec(self):
+        """TaskManager规格
+        :rtype: float
+        """
         return self._TaskManagerSpec
 
     @TaskManagerSpec.setter
@@ -2109,6 +2657,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ClsLogsetId(self):
+        """CLS日志集ID
+        :rtype: str
+        """
         return self._ClsLogsetId
 
     @ClsLogsetId.setter
@@ -2117,6 +2668,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ClsTopicId(self):
+        """CLS日志主题ID
+        :rtype: str
+        """
         return self._ClsTopicId
 
     @ClsTopicId.setter
@@ -2125,6 +2679,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def LogCollectType(self):
+        """日志采集类型 2：CLS；3：COS
+        :rtype: int
+        """
         return self._LogCollectType
 
     @LogCollectType.setter
@@ -2133,6 +2690,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def PythonVersion(self):
+        """pyflink作业运行时使用的python版本
+        :rtype: str
+        """
         return self._PythonVersion
 
     @PythonVersion.setter
@@ -2141,6 +2701,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -2149,6 +2712,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def LogLevel(self):
+        """日志级别
+        :rtype: str
+        """
         return self._LogLevel
 
     @LogLevel.setter
@@ -2157,6 +2723,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def AutoRecover(self):
+        """Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+        :rtype: int
+        """
         return self._AutoRecover
 
     @AutoRecover.setter
@@ -2165,6 +2734,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ClazzLevels(self):
+        """类日志级别
+        :rtype: list of ClazzLevel
+        """
         return self._ClazzLevels
 
     @ClazzLevels.setter
@@ -2173,6 +2745,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ExpertModeOn(self):
+        """是否打开专家模式
+        :rtype: bool
+        """
         return self._ExpertModeOn
 
     @ExpertModeOn.setter
@@ -2181,6 +2756,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ExpertModeConfiguration(self):
+        """专家模式的配置
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ExpertModeConfiguration`
+        """
         return self._ExpertModeConfiguration
 
     @ExpertModeConfiguration.setter
@@ -2189,6 +2767,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def TraceModeOn(self):
+        """trace链路
+        :rtype: bool
+        """
         return self._TraceModeOn
 
     @TraceModeOn.setter
@@ -2197,6 +2778,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def TraceModeConfiguration(self):
+        """trace链路配置
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.TraceModeConfiguration`
+        """
         return self._TraceModeConfiguration
 
     @TraceModeConfiguration.setter
@@ -2205,6 +2789,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def CheckpointRetainedNum(self):
+        """checkpoint保留个数
+        :rtype: int
+        """
         return self._CheckpointRetainedNum
 
     @CheckpointRetainedNum.setter
@@ -2213,6 +2800,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def JobGraph(self):
+        """算子拓扑图
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
+        """
         return self._JobGraph
 
     @JobGraph.setter
@@ -2221,6 +2811,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def EsServerlessIndex(self):
+        """es索引名称
+        :rtype: str
+        """
         return self._EsServerlessIndex
 
     @EsServerlessIndex.setter
@@ -2229,6 +2822,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def EsServerlessSpace(self):
+        """es索引空间
+        :rtype: str
+        """
         return self._EsServerlessSpace
 
     @EsServerlessSpace.setter
@@ -2237,6 +2833,9 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def FlinkVersion(self):
+        """flink版本
+        :rtype: str
+        """
         return self._FlinkVersion
 
     @FlinkVersion.setter
@@ -2322,6 +2921,9 @@ class CreateJobConfigResponse(AbstractModel):
 
     @property
     def Version(self):
+        """作业配置版本号
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -2330,6 +2932,9 @@ class CreateJobConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2386,6 +2991,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Name(self):
+        """作业名称，允许输入长度小于50个字符的中文、英文、数字、-（横线）、_（下划线）、.（点），且符号必须半角字符。注意作业名不能和现有作业同名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2394,6 +3002,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def JobType(self):
+        """作业的类型，1 表示 SQL 作业，2 表示 JAR 作业
+        :rtype: int
+        """
         return self._JobType
 
     @JobType.setter
@@ -2402,6 +3013,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群的类型，1 表示共享集群，2 表示独享集群
+        :rtype: int
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -2410,6 +3024,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """当 ClusterType=2 时，必选，用来指定该作业提交的独享集群 ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2418,6 +3035,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def CuMem(self):
+        """设置每 CU 的内存规格，单位为 GB，支持 2、4、8、16（需申请开通白名单后使用）。默认为 4，即 1 CU 对应 4 GB 的运行内存
+        :rtype: int
+        """
         return self._CuMem
 
     @CuMem.setter
@@ -2426,6 +3046,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """作业的备注信息，可以随意设置
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2434,6 +3057,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def FolderId(self):
+        """作业名所属文件夹ID，根目录为"root"
+        :rtype: str
+        """
         return self._FolderId
 
     @FolderId.setter
@@ -2442,6 +3068,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def FlinkVersion(self):
+        """作业运行的Flink版本
+        :rtype: str
+        """
         return self._FlinkVersion
 
     @FlinkVersion.setter
@@ -2450,6 +3079,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -2458,6 +3090,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """作业标签
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2466,6 +3101,9 @@ class CreateJobRequest(AbstractModel):
 
     @property
     def Description(self):
+        """作业描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2517,6 +3155,9 @@ class CreateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """作业Id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2525,6 +3166,9 @@ class CreateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2563,6 +3207,9 @@ class CreateResourceConfigRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2571,6 +3218,9 @@ class CreateResourceConfigRequest(AbstractModel):
 
     @property
     def ResourceLoc(self):
+        """位置信息
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        """
         return self._ResourceLoc
 
     @ResourceLoc.setter
@@ -2579,6 +3229,9 @@ class CreateResourceConfigRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """资源描述信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2587,6 +3240,9 @@ class CreateResourceConfigRequest(AbstractModel):
 
     @property
     def AutoDelete(self):
+        """1： 资源版本达到上限，自动删除最早可删除的版本
+        :rtype: int
+        """
         return self._AutoDelete
 
     @AutoDelete.setter
@@ -2595,6 +3251,9 @@ class CreateResourceConfigRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -2637,6 +3296,9 @@ class CreateResourceConfigResponse(AbstractModel):
 
     @property
     def Version(self):
+        """资源版本ID
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -2645,6 +3307,9 @@ class CreateResourceConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2689,6 +3354,9 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def ResourceLoc(self):
+        """资源位置
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        """
         return self._ResourceLoc
 
     @ResourceLoc.setter
@@ -2697,6 +3365,9 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型。目前只支持 JAR，取值为 1
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -2705,6 +3376,9 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """资源描述
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2713,6 +3387,9 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def Name(self):
+        """资源名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2721,6 +3398,9 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def ResourceConfigRemark(self):
+        """资源版本描述
+        :rtype: str
+        """
         return self._ResourceConfigRemark
 
     @ResourceConfigRemark.setter
@@ -2729,6 +3409,9 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def FolderId(self):
+        """目录ID
+        :rtype: str
+        """
         return self._FolderId
 
     @FolderId.setter
@@ -2737,6 +3420,9 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -2784,6 +3470,9 @@ class CreateResourceResponse(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2792,6 +3481,9 @@ class CreateResourceResponse(AbstractModel):
 
     @property
     def Version(self):
+        """资源版本
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -2800,6 +3492,9 @@ class CreateResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2830,6 +3525,9 @@ class CreateWorkSpaceRequest(AbstractModel):
 
     @property
     def WorkSpaceName(self):
+        """工作空间名称
+        :rtype: str
+        """
         return self._WorkSpaceName
 
     @WorkSpaceName.setter
@@ -2838,6 +3536,9 @@ class CreateWorkSpaceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """项目空间备注
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2875,6 +3576,9 @@ class CreateWorkSpaceResponse(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -2883,6 +3587,9 @@ class CreateWorkSpaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2915,6 +3622,9 @@ class DeleteFoldersRequest(AbstractModel):
 
     @property
     def FolderIds(self):
+        """需删除的文件夹唯一ID
+        :rtype: list of str
+        """
         return self._FolderIds
 
     @FolderIds.setter
@@ -2923,6 +3633,9 @@ class DeleteFoldersRequest(AbstractModel):
 
     @property
     def FolderType(self):
+        """文件夹类型，0是任务文件夹，1是依赖文件夹
+        :rtype: int
+        """
         return self._FolderType
 
     @FolderType.setter
@@ -2931,6 +3644,9 @@ class DeleteFoldersRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -2966,6 +3682,9 @@ class DeleteFoldersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2997,6 +3716,9 @@ class DeleteJobConfigsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3005,6 +3727,9 @@ class DeleteJobConfigsRequest(AbstractModel):
 
     @property
     def JobConfigVersions(self):
+        """作业配置版本数组
+        :rtype: list of int
+        """
         return self._JobConfigVersions
 
     @JobConfigVersions.setter
@@ -3013,6 +3738,9 @@ class DeleteJobConfigsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3048,6 +3776,9 @@ class DeleteJobConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3079,6 +3810,9 @@ class DeleteJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
+        """作业Id列表
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -3087,6 +3821,9 @@ class DeleteJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间Id
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3095,6 +3832,9 @@ class DeleteJobsRequest(AbstractModel):
 
     @property
     def JobNames(self):
+        """作业名称列表
+        :rtype: list of str
+        """
         return self._JobNames
 
     @JobNames.setter
@@ -3130,6 +3870,9 @@ class DeleteJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3161,6 +3904,9 @@ class DeleteResourceConfigsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -3169,6 +3915,9 @@ class DeleteResourceConfigsRequest(AbstractModel):
 
     @property
     def ResourceConfigVersions(self):
+        """资源版本数组
+        :rtype: list of int
+        """
         return self._ResourceConfigVersions
 
     @ResourceConfigVersions.setter
@@ -3177,6 +3926,9 @@ class DeleteResourceConfigsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3212,6 +3964,9 @@ class DeleteResourceConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3240,6 +3995,9 @@ class DeleteResourcesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """待删除资源ID列表
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -3248,6 +4006,9 @@ class DeleteResourcesRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3282,6 +4043,9 @@ class DeleteResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3316,6 +4080,9 @@ class DeleteTableConfigRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3324,6 +4091,9 @@ class DeleteTableConfigRequest(AbstractModel):
 
     @property
     def DebugId(self):
+        """调试作业ID
+        :rtype: int
+        """
         return self._DebugId
 
     @DebugId.setter
@@ -3332,6 +4102,9 @@ class DeleteTableConfigRequest(AbstractModel):
 
     @property
     def TableName(self):
+        """表名
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -3340,6 +4113,9 @@ class DeleteTableConfigRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3376,6 +4152,9 @@ class DeleteTableConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3401,6 +4180,9 @@ class DeleteWorkSpaceRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3437,6 +4219,9 @@ class DeleteWorkSpaceResponse(AbstractModel):
 
     @property
     def Delete(self):
+        """是否删除
+        :rtype: bool
+        """
         return self._Delete
 
     @Delete.setter
@@ -3445,6 +4230,9 @@ class DeleteWorkSpaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3486,6 +4274,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
+        """按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+        :rtype: list of str
+        """
         return self._ClusterIds
 
     @ClusterIds.setter
@@ -3494,6 +4285,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3502,6 +4296,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """请求的集群数量，默认 20，最大值 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3510,6 +4307,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -3518,6 +4318,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤规则
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3526,6 +4329,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3575,6 +4381,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """集群总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3583,6 +4392,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def ClusterSet(self):
+        """集群列表
+        :rtype: list of Cluster
+        """
         return self._ClusterSet
 
     @ClusterSet.setter
@@ -3591,6 +4403,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3630,6 +4445,9 @@ class DescribeFolderRequest(AbstractModel):
 
     @property
     def FolderId(self):
+        """folder id
+        :rtype: str
+        """
         return self._FolderId
 
     @FolderId.setter
@@ -3638,6 +4456,9 @@ class DescribeFolderRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """workspace id
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3646,6 +4467,10 @@ class DescribeFolderRequest(AbstractModel):
 
     @property
     def FolderType(self):
+        """1:资源文件夹
+其他:作业文件夹
+        :rtype: int
+        """
         return self._FolderType
 
     @FolderType.setter
@@ -3700,6 +4525,9 @@ class DescribeFolderResponse(AbstractModel):
 
     @property
     def FolderId(self):
+        """folder id
+        :rtype: str
+        """
         return self._FolderId
 
     @FolderId.setter
@@ -3708,6 +4536,9 @@ class DescribeFolderResponse(AbstractModel):
 
     @property
     def FolderName(self):
+        """folder name
+        :rtype: str
+        """
         return self._FolderName
 
     @FolderName.setter
@@ -3716,6 +4547,9 @@ class DescribeFolderResponse(AbstractModel):
 
     @property
     def ParentId(self):
+        """父文件夹id
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -3724,6 +4558,9 @@ class DescribeFolderResponse(AbstractModel):
 
     @property
     def FolderType(self):
+        """文件夹类型
+        :rtype: int
+        """
         return self._FolderType
 
     @FolderType.setter
@@ -3732,6 +4569,9 @@ class DescribeFolderResponse(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """workspace id
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3740,6 +4580,10 @@ class DescribeFolderResponse(AbstractModel):
 
     @property
     def SubFolderInfo(self):
+        """子文件夹信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SubFolderInfo
+        """
         return self._SubFolderInfo
 
     @SubFolderInfo.setter
@@ -3748,6 +4592,9 @@ class DescribeFolderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3802,6 +4649,9 @@ class DescribeJobConfigsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业Id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3810,6 +4660,9 @@ class DescribeJobConfigsRequest(AbstractModel):
 
     @property
     def JobConfigVersions(self):
+        """作业配置版本
+        :rtype: list of int non-negative
+        """
         return self._JobConfigVersions
 
     @JobConfigVersions.setter
@@ -3818,6 +4671,9 @@ class DescribeJobConfigsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3826,6 +4682,9 @@ class DescribeJobConfigsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页大小，默认20，最大100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3834,6 +4693,9 @@ class DescribeJobConfigsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3842,6 +4704,9 @@ class DescribeJobConfigsRequest(AbstractModel):
 
     @property
     def OnlyDraft(self):
+        """true 表示只展示草稿
+        :rtype: bool
+        """
         return self._OnlyDraft
 
     @OnlyDraft.setter
@@ -3850,6 +4715,9 @@ class DescribeJobConfigsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -3900,6 +4768,9 @@ class DescribeJobConfigsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总的配置版本数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3908,6 +4779,9 @@ class DescribeJobConfigsResponse(AbstractModel):
 
     @property
     def JobConfigSet(self):
+        """作业配置列表
+        :rtype: list of JobConfig
+        """
         return self._JobConfigSet
 
     @JobConfigSet.setter
@@ -3916,6 +4790,9 @@ class DescribeJobConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3963,6 +4840,9 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业的 ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3971,6 +4851,9 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
+        """筛选条件：起始 Unix 时间戳（秒）
+        :rtype: int
+        """
         return self._StartTimestamp
 
     @StartTimestamp.setter
@@ -3979,6 +4862,9 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
+        """筛选条件：结束 Unix 时间戳（秒）
+        :rtype: int
+        """
         return self._EndTimestamp
 
     @EndTimestamp.setter
@@ -3987,6 +4873,9 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def Types(self):
+        """事件类型。如果不传则返回所有类型的数据
+        :rtype: list of str
+        """
         return self._Types
 
     @Types.setter
@@ -3995,6 +4884,9 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def RunningOrderIds(self):
+        """运行实例 ID 数组
+        :rtype: list of int non-negative
+        """
         return self._RunningOrderIds
 
     @RunningOrderIds.setter
@@ -4003,6 +4895,9 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -4053,6 +4948,10 @@ class DescribeJobEventsResponse(AbstractModel):
 
     @property
     def Events(self):
+        """该作业指定范围内的事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of JobEvent
+        """
         return self._Events
 
     @Events.setter
@@ -4061,6 +4960,10 @@ class DescribeJobEventsResponse(AbstractModel):
 
     @property
     def RunningOrderIds(self):
+        """该作业指定范围内运行实例 ID 数组，仅当入参没有传入 RunningOrderIds 参数时才会返回。倒序输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
         return self._RunningOrderIds
 
     @RunningOrderIds.setter
@@ -4069,6 +4972,10 @@ class DescribeJobEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """事件的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4077,6 +4984,9 @@ class DescribeJobEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4093,6 +5003,120 @@ class DescribeJobEventsResponse(AbstractModel):
                 self._Events.append(obj)
         self._RunningOrderIds = params.get("RunningOrderIds")
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobRuntimeInfoRequest(AbstractModel):
+    """DescribeJobRuntimeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业ID
+        :type JobId: str
+        :param _WorkSpaceId: 工作空间ID
+        :type WorkSpaceId: str
+        :param _IncludeInfo: 作业运行信息 key
+        :type IncludeInfo: list of str
+        """
+        self._JobId = None
+        self._WorkSpaceId = None
+        self._IncludeInfo = None
+
+    @property
+    def JobId(self):
+        """作业ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def WorkSpaceId(self):
+        """工作空间ID
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def IncludeInfo(self):
+        """作业运行信息 key
+        :rtype: list of str
+        """
+        return self._IncludeInfo
+
+    @IncludeInfo.setter
+    def IncludeInfo(self, IncludeInfo):
+        self._IncludeInfo = IncludeInfo
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._IncludeInfo = params.get("IncludeInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobRuntimeInfoResponse(AbstractModel):
+    """DescribeJobRuntimeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobRuntimeInfo: 作业运行时信息
+        :type JobRuntimeInfo: list of JobRuntimeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobRuntimeInfo = None
+        self._RequestId = None
+
+    @property
+    def JobRuntimeInfo(self):
+        """作业运行时信息
+        :rtype: list of JobRuntimeInfo
+        """
+        return self._JobRuntimeInfo
+
+    @JobRuntimeInfo.setter
+    def JobRuntimeInfo(self, JobRuntimeInfo):
+        self._JobRuntimeInfo = JobRuntimeInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("JobRuntimeInfo") is not None:
+            self._JobRuntimeInfo = []
+            for item in params.get("JobRuntimeInfo"):
+                obj = JobRuntimeInfo()
+                obj._deserialize(item)
+                self._JobRuntimeInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4124,6 +5148,9 @@ class DescribeJobSavepointRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业 SerialId
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -4132,6 +5159,9 @@ class DescribeJobSavepointRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数，单页总数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4140,6 +5170,9 @@ class DescribeJobSavepointRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数，偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4148,6 +5181,9 @@ class DescribeJobSavepointRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -4156,6 +5192,11 @@ class DescribeJobSavepointRequest(AbstractModel):
 
     @property
     def RecordTypes(self):
+        """2 是checkpoint
+1 是触发savepoint
+3 停止触发的savepoint
+        :rtype: list of int
+        """
         return self._RecordTypes
 
     @RecordTypes.setter
@@ -4209,6 +5250,10 @@ class DescribeJobSavepointResponse(AbstractModel):
 
     @property
     def TotalNumber(self):
+        """快照列表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalNumber
 
     @TotalNumber.setter
@@ -4217,6 +5262,10 @@ class DescribeJobSavepointResponse(AbstractModel):
 
     @property
     def Savepoint(self):
+        """快照列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Savepoint
+        """
         return self._Savepoint
 
     @Savepoint.setter
@@ -4225,6 +5274,10 @@ class DescribeJobSavepointResponse(AbstractModel):
 
     @property
     def RunningSavepoint(self):
+        """进行中的快照列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Savepoint
+        """
         return self._RunningSavepoint
 
     @RunningSavepoint.setter
@@ -4233,6 +5286,10 @@ class DescribeJobSavepointResponse(AbstractModel):
 
     @property
     def RunningTotalNumber(self):
+        """进行中的快照列表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RunningTotalNumber
 
     @RunningTotalNumber.setter
@@ -4241,6 +5298,9 @@ class DescribeJobSavepointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4301,6 +5361,9 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID，例如：cql-6v1jkxrn
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -4309,6 +5372,9 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，unix时间戳，毫秒级，例如：1611754219108
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4317,6 +5383,9 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，unix时间戳，毫秒级，例如：1611754219108
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4325,6 +5394,9 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def RunningOrderId(self):
+        """作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志
+        :rtype: int
+        """
         return self._RunningOrderId
 
     @RunningOrderId.setter
@@ -4333,6 +5405,9 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """日志搜索的关键词，默认为空
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -4341,6 +5416,9 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """日志搜索的游标，可透传上次返回的值，默认为空
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -4349,6 +5427,9 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """时间戳排序规则，asc - 升序，desc - 降序。默认为升序
+        :rtype: str
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -4357,6 +5438,9 @@ class DescribeJobSubmissionLogRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """搜索的日志条数上限值，最大为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4419,6 +5503,9 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def Cursor(self):
+        """日志搜索的游标，需要搜索更多时透传这个值
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -4427,6 +5514,9 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def ListOver(self):
+        """是否返回了所有的日志记录
+        :rtype: bool
+        """
         return self._ListOver
 
     @ListOver.setter
@@ -4435,6 +5525,10 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def JobRequestId(self):
+        """作业启动的requestId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobRequestId
 
     @JobRequestId.setter
@@ -4443,6 +5537,10 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def JobInstanceList(self):
+        """该时间段内符合关键字的所有的作业实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of JobInstanceForSubmissionLog
+        """
         return self._JobInstanceList
 
     @JobInstanceList.setter
@@ -4451,6 +5549,10 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def LogList(self):
+        """废弃，请使用LogContentList
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._LogList
 
     @LogList.setter
@@ -4459,6 +5561,10 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def LogContentList(self):
+        """日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogContent
+        """
         return self._LogContentList
 
     @LogContentList.setter
@@ -4467,6 +5573,9 @@ class DescribeJobSubmissionLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4523,6 +5632,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
+        """按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -4531,6 +5643,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4539,6 +5654,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4547,6 +5665,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页大小，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4555,6 +5676,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -4563,6 +5687,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def ExtraResult(self):
+        """查询额外的作业信息,例如 JobEventInfo	
+        :rtype: list of str
+        """
         return self._ExtraResult
 
     @ExtraResult.setter
@@ -4612,6 +5739,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """作业总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4620,6 +5750,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def JobSet(self):
+        """作业列表
+        :rtype: list of JobV1
+        """
         return self._JobSet
 
     @JobSet.setter
@@ -4628,6 +5761,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4678,6 +5814,9 @@ class DescribeResourceConfigsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4686,6 +5825,9 @@ class DescribeResourceConfigsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，仅当设置 Limit 时该参数有效
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4694,6 +5836,9 @@ class DescribeResourceConfigsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回值大小，不填则返回全量数据
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4702,6 +5847,9 @@ class DescribeResourceConfigsRequest(AbstractModel):
 
     @property
     def ResourceConfigVersions(self):
+        """资源配置Versions集合
+        :rtype: list of int
+        """
         return self._ResourceConfigVersions
 
     @ResourceConfigVersions.setter
@@ -4710,6 +5858,9 @@ class DescribeResourceConfigsRequest(AbstractModel):
 
     @property
     def JobConfigVersion(self):
+        """作业配置版本
+        :rtype: int
+        """
         return self._JobConfigVersion
 
     @JobConfigVersion.setter
@@ -4718,6 +5869,9 @@ class DescribeResourceConfigsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -4726,6 +5880,9 @@ class DescribeResourceConfigsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -4771,6 +5928,9 @@ class DescribeResourceConfigsResponse(AbstractModel):
 
     @property
     def ResourceConfigSet(self):
+        """资源配置描述数组
+        :rtype: list of ResourceConfigItem
+        """
         return self._ResourceConfigSet
 
     @ResourceConfigSet.setter
@@ -4779,6 +5939,9 @@ class DescribeResourceConfigsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """资源配置数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4787,6 +5950,9 @@ class DescribeResourceConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4834,6 +6000,9 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4842,6 +6011,9 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
 
     @property
     def DESCByJobConfigCreateTime(self):
+        """默认0;   1： 按照作业版本创建时间降序
+        :rtype: int
+        """
         return self._DESCByJobConfigCreateTime
 
     @DESCByJobConfigCreateTime.setter
@@ -4850,6 +6022,9 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4858,6 +6033,9 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页大小，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4866,6 +6044,9 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
 
     @property
     def ResourceConfigVersion(self):
+        """资源版本号
+        :rtype: int
+        """
         return self._ResourceConfigVersion
 
     @ResourceConfigVersion.setter
@@ -4874,6 +6055,9 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -4918,6 +6102,9 @@ class DescribeResourceRelatedJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4926,6 +6113,9 @@ class DescribeResourceRelatedJobsResponse(AbstractModel):
 
     @property
     def RefJobInfos(self):
+        """关联作业信息
+        :rtype: list of ResourceRefJobInfo
+        """
         return self._RefJobInfos
 
     @RefJobInfos.setter
@@ -4934,6 +6124,9 @@ class DescribeResourceRelatedJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4979,6 +6172,9 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """需要查询的资源ID数组，数量不超过100个。如果填写了该参数则忽略Filters参数。
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -4987,6 +6183,9 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，仅当设置 Limit 参数时有效
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4995,6 +6194,9 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数限制。如果不填，默认返回 20 条
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5003,6 +6205,10 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<li><strong>ResourceName</strong></li>
+<p style="padding-left: 30px;">按照资源名字过滤，支持模糊过滤。传入的过滤名字不超过5个</p><p style="padding-left: 30px;">类型: String</p><p style="padding-left: 30px;">必选: 否</p>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5011,6 +6217,9 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -5059,6 +6268,9 @@ class DescribeResourcesResponse(AbstractModel):
 
     @property
     def ResourceSet(self):
+        """资源详细信息集合
+        :rtype: list of ResourceItem
+        """
         return self._ResourceSet
 
     @ResourceSet.setter
@@ -5067,6 +6279,9 @@ class DescribeResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5075,6 +6290,9 @@ class DescribeResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5122,6 +6340,9 @@ class DescribeSystemResourcesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """需要查询的资源ID数组
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -5130,6 +6351,9 @@ class DescribeSystemResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，仅当设置 Limit 参数时有效
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5138,6 +6362,9 @@ class DescribeSystemResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数限制，默认返回 20 条
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5146,6 +6373,9 @@ class DescribeSystemResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询资源配置列表， 如果不填写，返回该 ResourceIds.N 下所有作业配置列表
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5154,6 +6384,9 @@ class DescribeSystemResourcesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5162,6 +6395,9 @@ class DescribeSystemResourcesRequest(AbstractModel):
 
     @property
     def FlinkVersion(self):
+        """查询对应Flink版本的内置connector
+        :rtype: str
+        """
         return self._FlinkVersion
 
     @FlinkVersion.setter
@@ -5211,6 +6447,9 @@ class DescribeSystemResourcesResponse(AbstractModel):
 
     @property
     def ResourceSet(self):
+        """资源详细信息集合
+        :rtype: list of SystemResourceItem
+        """
         return self._ResourceSet
 
     @ResourceSet.setter
@@ -5219,6 +6458,9 @@ class DescribeSystemResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5227,6 +6469,9 @@ class DescribeSystemResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5262,6 +6507,9 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """筛选条件字段
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5270,6 +6518,9 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 Serialid
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -5329,6 +6580,10 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def ParentId(self):
+        """父节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -5337,6 +6592,10 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def Id(self):
+        """当前文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5345,6 +6604,10 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def Name(self):
+        """当前文件夹名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5353,6 +6616,10 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def JobSet(self):
+        """当前文件夹下的作业列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TreeJobSets
+        """
         return self._JobSet
 
     @JobSet.setter
@@ -5361,6 +6628,10 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def Children(self):
+        """迭代子目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeTreeJobsRsp
+        """
         return self._Children
 
     @Children.setter
@@ -5369,6 +6640,9 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5430,6 +6704,10 @@ class DescribeTreeJobsRsp(AbstractModel):
 
     @property
     def ParentId(self):
+        """父节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -5438,6 +6716,10 @@ class DescribeTreeJobsRsp(AbstractModel):
 
     @property
     def Id(self):
+        """当前文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5446,6 +6728,10 @@ class DescribeTreeJobsRsp(AbstractModel):
 
     @property
     def Name(self):
+        """当前文件夹名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5454,6 +6740,10 @@ class DescribeTreeJobsRsp(AbstractModel):
 
     @property
     def JobSet(self):
+        """当前文件夹下的作业集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TreeJobSets
+        """
         return self._JobSet
 
     @JobSet.setter
@@ -5462,6 +6752,10 @@ class DescribeTreeJobsRsp(AbstractModel):
 
     @property
     def Children(self):
+        """迭代子目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeTreeJobsRsp
+        """
         return self._Children
 
     @Children.setter
@@ -5470,6 +6764,10 @@ class DescribeTreeJobsRsp(AbstractModel):
 
     @property
     def RequestId(self):
+        """请求ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5527,6 +6825,9 @@ class DescribeTreeResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """筛选条件字段
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5535,6 +6836,9 @@ class DescribeTreeResourcesRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -5543,6 +6847,9 @@ class DescribeTreeResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页游标
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5551,6 +6858,9 @@ class DescribeTreeResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单页显示数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5616,6 +6926,10 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     @property
     def ParentId(self):
+        """父节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -5624,6 +6938,10 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     @property
     def Id(self):
+        """文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5632,6 +6950,10 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     @property
     def Name(self):
+        """文件夹名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5640,6 +6962,10 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TreeResourceItem
+        """
         return self._Items
 
     @Items.setter
@@ -5648,6 +6974,10 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     @property
     def Children(self):
+        """子目录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeTreeResourcesRsp
+        """
         return self._Children
 
     @Children.setter
@@ -5656,6 +6986,10 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """资源总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5664,6 +6998,9 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5723,6 +7060,9 @@ class DescribeTreeResourcesRsp(AbstractModel):
 
     @property
     def ParentId(self):
+        """父节点ID
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -5731,6 +7071,9 @@ class DescribeTreeResourcesRsp(AbstractModel):
 
     @property
     def Id(self):
+        """文件夹ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5739,6 +7082,9 @@ class DescribeTreeResourcesRsp(AbstractModel):
 
     @property
     def Name(self):
+        """文件夹名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5747,6 +7093,10 @@ class DescribeTreeResourcesRsp(AbstractModel):
 
     @property
     def Items(self):
+        """文件夹下资源数字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TreeResourceItem
+        """
         return self._Items
 
     @Items.setter
@@ -5755,6 +7105,10 @@ class DescribeTreeResourcesRsp(AbstractModel):
 
     @property
     def Children(self):
+        """子节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeTreeResourcesRsp
+        """
         return self._Children
 
     @Children.setter
@@ -5763,6 +7117,10 @@ class DescribeTreeResourcesRsp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """资源总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5820,6 +7178,9 @@ class DescribeWorkSpacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5828,6 +7189,9 @@ class DescribeWorkSpacesRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """1 按照创建时间降序排序(默认) 2.按照创建时间升序排序，3. 按照状态降序排序 4. 按照状态升序排序 默认为0
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -5836,6 +7200,9 @@ class DescribeWorkSpacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """请求的集群数量，默认 20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5844,6 +7211,9 @@ class DescribeWorkSpacesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤规则
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5892,6 +7262,10 @@ class DescribeWorkSpacesResponse(AbstractModel):
 
     @property
     def WorkSpaceSetItem(self):
+        """空间详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WorkSpaceSetItem
+        """
         return self._WorkSpaceSetItem
 
     @WorkSpaceSetItem.setter
@@ -5900,6 +7274,9 @@ class DescribeWorkSpacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """空间总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5908,6 +7285,9 @@ class DescribeWorkSpacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5949,6 +7329,10 @@ class ExpertModeConfiguration(AbstractModel):
 
     @property
     def JobGraph(self):
+        """Job graph
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
+        """
         return self._JobGraph
 
     @JobGraph.setter
@@ -5957,6 +7341,10 @@ class ExpertModeConfiguration(AbstractModel):
 
     @property
     def NodeConfig(self):
+        """Node configuration
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeConfig
+        """
         return self._NodeConfig
 
     @NodeConfig.setter
@@ -5965,6 +7353,10 @@ class ExpertModeConfiguration(AbstractModel):
 
     @property
     def SlotSharingGroups(self):
+        """Slot sharing groups
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SlotSharingGroup
+        """
         return self._SlotSharingGroups
 
     @SlotSharingGroups.setter
@@ -6021,6 +7413,9 @@ class FetchSqlGatewayStatementResultRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6029,6 +7424,9 @@ class FetchSqlGatewayStatementResultRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """Sql Gateway会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -6037,6 +7435,9 @@ class FetchSqlGatewayStatementResultRequest(AbstractModel):
 
     @property
     def OperationHandleId(self):
+        """sql的查询id
+        :rtype: str
+        """
         return self._OperationHandleId
 
     @OperationHandleId.setter
@@ -6045,6 +7446,9 @@ class FetchSqlGatewayStatementResultRequest(AbstractModel):
 
     @property
     def ResultUri(self):
+        """下一条结果的获取url，首次获取执行结果时可以为空，当获取下一批查询结果时需要传递
+        :rtype: str
+        """
         return self._ResultUri
 
     @ResultUri.setter
@@ -6105,6 +7509,10 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -6113,6 +7521,10 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
     @property
     def ResultType(self):
+        """返回类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResultType
 
     @ResultType.setter
@@ -6121,6 +7533,10 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
     @property
     def IsQueryResult(self):
+        """是否DQL结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsQueryResult
 
     @IsQueryResult.setter
@@ -6129,6 +7545,10 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
     @property
     def ResultKind(self):
+        """结果类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResultKind
 
     @ResultKind.setter
@@ -6137,6 +7557,10 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
     @property
     def Results(self):
+        """结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.StatementResult`
+        """
         return self._Results
 
     @Results.setter
@@ -6145,6 +7569,10 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
     @property
     def NextResultUri(self):
+        """下一次请求的uri
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextResultUri
 
     @NextResultUri.setter
@@ -6153,6 +7581,9 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6189,6 +7620,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """要过滤的字段
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6197,6 +7631,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """字段的过滤值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -6244,6 +7681,10 @@ class GatewayRefItem(AbstractModel):
 
     @property
     def WorkspaceId(self):
+        """空间唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WorkspaceId
 
     @WorkspaceId.setter
@@ -6252,6 +7693,10 @@ class GatewayRefItem(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -6260,6 +7705,10 @@ class GatewayRefItem(AbstractModel):
 
     @property
     def Version(self):
+        """版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -6268,6 +7717,10 @@ class GatewayRefItem(AbstractModel):
 
     @property
     def Type(self):
+        """引用类型，0:用户资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -6313,6 +7766,9 @@ class GetMetaTableRequest(AbstractModel):
 
     @property
     def Catalog(self):
+        """目录名
+        :rtype: str
+        """
         return self._Catalog
 
     @Catalog.setter
@@ -6321,6 +7777,9 @@ class GetMetaTableRequest(AbstractModel):
 
     @property
     def Database(self):
+        """库名
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -6329,6 +7788,9 @@ class GetMetaTableRequest(AbstractModel):
 
     @property
     def Table(self):
+        """表名
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -6337,6 +7799,9 @@ class GetMetaTableRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """空间唯一标识
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -6393,6 +7858,9 @@ Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBT
 
     @property
     def SerialId(self):
+        """元数据表唯一标识
+        :rtype: str
+        """
         return self._SerialId
 
     @SerialId.setter
@@ -6401,6 +7869,9 @@ Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBT
 
     @property
     def Catalog(self):
+        """目录名
+        :rtype: str
+        """
         return self._Catalog
 
     @Catalog.setter
@@ -6409,6 +7880,9 @@ Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBT
 
     @property
     def Database(self):
+        """库名
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -6417,6 +7891,9 @@ Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBT
 
     @property
     def Table(self):
+        """表名
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -6425,6 +7902,11 @@ Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBT
 
     @property
     def DDL(self):
+        """建表语句,使用 Base64 编码。
+例如
+Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBTVFJJTkcgCikgV0lUSCAoCidjb25uZWN0b3InPSdkYXRhZ2VuJywKJ3Jvd3MtcGVyLXNlY29uZCcgPSAnMScKKTs=
+        :rtype: str
+        """
         return self._DDL
 
     @DDL.setter
@@ -6433,6 +7915,9 @@ Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBT
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6441,6 +7926,9 @@ Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBT
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6598,6 +8086,9 @@ class JobConfig(AbstractModel):
 
     @property
     def JobId(self):
+        """作业Id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -6606,6 +8097,10 @@ class JobConfig(AbstractModel):
 
     @property
     def EntrypointClass(self):
+        """主类
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EntrypointClass
 
     @EntrypointClass.setter
@@ -6614,6 +8109,10 @@ class JobConfig(AbstractModel):
 
     @property
     def ProgramArgs(self):
+        """主类入参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProgramArgs
 
     @ProgramArgs.setter
@@ -6622,6 +8121,10 @@ class JobConfig(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -6630,6 +8133,9 @@ class JobConfig(AbstractModel):
 
     @property
     def CreateTime(self):
+        """作业配置创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6638,6 +8144,9 @@ class JobConfig(AbstractModel):
 
     @property
     def Version(self):
+        """作业配置的版本号
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -6646,6 +8155,10 @@ class JobConfig(AbstractModel):
 
     @property
     def DefaultParallelism(self):
+        """作业默认并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DefaultParallelism
 
     @DefaultParallelism.setter
@@ -6654,6 +8167,10 @@ class JobConfig(AbstractModel):
 
     @property
     def Properties(self):
+        """系统参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Property
+        """
         return self._Properties
 
     @Properties.setter
@@ -6662,6 +8179,10 @@ class JobConfig(AbstractModel):
 
     @property
     def ResourceRefDetails(self):
+        """引用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceRefDetail
+        """
         return self._ResourceRefDetails
 
     @ResourceRefDetails.setter
@@ -6670,6 +8191,10 @@ class JobConfig(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建者uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -6678,6 +8203,10 @@ class JobConfig(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """作业配置上次启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -6686,6 +8215,10 @@ class JobConfig(AbstractModel):
 
     @property
     def COSBucket(self):
+        """作业绑定的存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._COSBucket
 
     @COSBucket.setter
@@ -6694,6 +8227,10 @@ class JobConfig(AbstractModel):
 
     @property
     def LogCollect(self):
+        """是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LogCollect
 
     @LogCollect.setter
@@ -6702,6 +8239,10 @@ class JobConfig(AbstractModel):
 
     @property
     def MaxParallelism(self):
+        """作业的最大并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxParallelism
 
     @MaxParallelism.setter
@@ -6710,6 +8251,10 @@ class JobConfig(AbstractModel):
 
     @property
     def JobManagerSpec(self):
+        """JobManager规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._JobManagerSpec
 
     @JobManagerSpec.setter
@@ -6718,6 +8263,10 @@ class JobConfig(AbstractModel):
 
     @property
     def TaskManagerSpec(self):
+        """TaskManager规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TaskManagerSpec
 
     @TaskManagerSpec.setter
@@ -6726,6 +8275,10 @@ class JobConfig(AbstractModel):
 
     @property
     def ClsLogsetId(self):
+        """CLS日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClsLogsetId
 
     @ClsLogsetId.setter
@@ -6734,6 +8287,10 @@ class JobConfig(AbstractModel):
 
     @property
     def ClsTopicId(self):
+        """CLS日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClsTopicId
 
     @ClsTopicId.setter
@@ -6742,6 +8299,10 @@ class JobConfig(AbstractModel):
 
     @property
     def PythonVersion(self):
+        """pyflink作业运行的python版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PythonVersion
 
     @PythonVersion.setter
@@ -6750,6 +8311,10 @@ class JobConfig(AbstractModel):
 
     @property
     def AutoRecover(self):
+        """Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRecover
 
     @AutoRecover.setter
@@ -6758,6 +8323,10 @@ class JobConfig(AbstractModel):
 
     @property
     def LogLevel(self):
+        """日志级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogLevel
 
     @LogLevel.setter
@@ -6766,6 +8335,10 @@ class JobConfig(AbstractModel):
 
     @property
     def ClazzLevels(self):
+        """类日志级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClazzLevel
+        """
         return self._ClazzLevels
 
     @ClazzLevels.setter
@@ -6774,6 +8347,10 @@ class JobConfig(AbstractModel):
 
     @property
     def ExpertModeOn(self):
+        """是否开启专家模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ExpertModeOn
 
     @ExpertModeOn.setter
@@ -6782,6 +8359,10 @@ class JobConfig(AbstractModel):
 
     @property
     def ExpertModeConfiguration(self):
+        """专家模式的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ExpertModeConfiguration`
+        """
         return self._ExpertModeConfiguration
 
     @ExpertModeConfiguration.setter
@@ -6790,6 +8371,10 @@ class JobConfig(AbstractModel):
 
     @property
     def TraceModeOn(self):
+        """trace链路
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._TraceModeOn
 
     @TraceModeOn.setter
@@ -6798,6 +8383,10 @@ class JobConfig(AbstractModel):
 
     @property
     def TraceModeConfiguration(self):
+        """trace链路配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.TraceModeConfiguration`
+        """
         return self._TraceModeConfiguration
 
     @TraceModeConfiguration.setter
@@ -6806,6 +8395,10 @@ class JobConfig(AbstractModel):
 
     @property
     def CheckpointRetainedNum(self):
+        """checkpoint保留个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CheckpointRetainedNum
 
     @CheckpointRetainedNum.setter
@@ -6814,6 +8407,10 @@ class JobConfig(AbstractModel):
 
     @property
     def JobGraph(self):
+        """算子拓扑图
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
+        """
         return self._JobGraph
 
     @JobGraph.setter
@@ -6822,6 +8419,10 @@ class JobConfig(AbstractModel):
 
     @property
     def EsServerlessIndex(self):
+        """es索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EsServerlessIndex
 
     @EsServerlessIndex.setter
@@ -6830,6 +8431,10 @@ class JobConfig(AbstractModel):
 
     @property
     def EsServerlessSpace(self):
+        """es空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EsServerlessSpace
 
     @EsServerlessSpace.setter
@@ -6838,6 +8443,10 @@ class JobConfig(AbstractModel):
 
     @property
     def IndexName(self):
+        """es索引中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexName
 
     @IndexName.setter
@@ -6846,6 +8455,10 @@ class JobConfig(AbstractModel):
 
     @property
     def WorkspaceName(self):
+        """es空间中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WorkspaceName
 
     @WorkspaceName.setter
@@ -6854,6 +8467,10 @@ class JobConfig(AbstractModel):
 
     @property
     def FlinkVersion(self):
+        """flink 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlinkVersion
 
     @FlinkVersion.setter
@@ -6958,6 +8575,9 @@ class JobEvent(AbstractModel):
 
     @property
     def Type(self):
+        """内部定义的事件类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6966,6 +8586,9 @@ class JobEvent(AbstractModel):
 
     @property
     def Description(self):
+        """事件类型的说明文字
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6974,6 +8597,9 @@ class JobEvent(AbstractModel):
 
     @property
     def Timestamp(self):
+        """事件发生的 Unix 时间戳（秒）
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -6982,6 +8608,10 @@ class JobEvent(AbstractModel):
 
     @property
     def RunningOrderId(self):
+        """事件发生时的运行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RunningOrderId
 
     @RunningOrderId.setter
@@ -6990,6 +8620,10 @@ class JobEvent(AbstractModel):
 
     @property
     def Message(self):
+        """事件的一些可选说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6998,6 +8632,10 @@ class JobEvent(AbstractModel):
 
     @property
     def SolutionLink(self):
+        """异常事件的排查手册链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SolutionLink
 
     @SolutionLink.setter
@@ -7037,6 +8675,10 @@ class JobEventInfo(AbstractModel):
 
     @property
     def ErrorEventTotal(self):
+        """异常事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ErrorEventTotal
 
     @ErrorEventTotal.setter
@@ -7075,6 +8717,10 @@ class JobGraph(AbstractModel):
 
     @property
     def Nodes(self):
+        """运行图的点集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of JobGraphNode
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -7083,6 +8729,10 @@ class JobGraph(AbstractModel):
 
     @property
     def Edges(self):
+        """运行图的边集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of JobGraphEdge
+        """
         return self._Edges
 
     @Edges.setter
@@ -7132,6 +8782,10 @@ class JobGraphEdge(AbstractModel):
 
     @property
     def Source(self):
+        """边的起始节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -7140,6 +8794,10 @@ class JobGraphEdge(AbstractModel):
 
     @property
     def Target(self):
+        """边的目标节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Target
 
     @Target.setter
@@ -7187,6 +8845,10 @@ class JobGraphNode(AbstractModel):
 
     @property
     def Id(self):
+        """节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -7195,6 +8857,10 @@ class JobGraphNode(AbstractModel):
 
     @property
     def Description(self):
+        """节点描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7203,6 +8869,10 @@ class JobGraphNode(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7211,6 +8881,10 @@ class JobGraphNode(AbstractModel):
 
     @property
     def Parallelism(self):
+        """节点并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Parallelism
 
     @Parallelism.setter
@@ -7253,6 +8927,9 @@ class JobInstanceForSubmissionLog(AbstractModel):
 
     @property
     def RunningOrderId(self):
+        """实例的Id, 按照启动的时间顺序，从1开始
+        :rtype: int
+        """
         return self._RunningOrderId
 
     @RunningOrderId.setter
@@ -7261,6 +8938,9 @@ class JobInstanceForSubmissionLog(AbstractModel):
 
     @property
     def JobInstanceStartTime(self):
+        """作业实例的启动时间
+        :rtype: str
+        """
         return self._JobInstanceStartTime
 
     @JobInstanceStartTime.setter
@@ -7269,6 +8949,9 @@ class JobInstanceForSubmissionLog(AbstractModel):
 
     @property
     def StartingMillis(self):
+        """作业实例启动的时间（毫秒）
+        :rtype: int
+        """
         return self._StartingMillis
 
     @StartingMillis.setter
@@ -7280,6 +8963,61 @@ class JobInstanceForSubmissionLog(AbstractModel):
         self._RunningOrderId = params.get("RunningOrderId")
         self._JobInstanceStartTime = params.get("JobInstanceStartTime")
         self._StartingMillis = params.get("StartingMillis")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobRuntimeInfo(AbstractModel):
+    """作业运行时信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 运行信息的key，目前支持：TaskManagers：taskmanager pod 列表； StreamGraph：作业对应的 StreamGraph；SubTasks：作业的 subtask 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 运行信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """运行信息的key，目前支持：TaskManagers：taskmanager pod 列表； StreamGraph：作业对应的 StreamGraph；SubTasks：作业的 subtask 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """运行信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7399,6 +9137,16 @@ class JobV1(AbstractModel):
         :param _Description: 描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _ScalingType: 0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScalingType: int
+        :param _RunningCpu: 使用CPU数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningCpu: float
+        :param _RunningMem: 使用内存数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningMem: float
         """
         self._JobId = None
         self._Region = None
@@ -7434,9 +9182,16 @@ class JobV1(AbstractModel):
         self._Tags = None
         self._EventInfo = None
         self._Description = None
+        self._ScalingType = None
+        self._RunningCpu = None
+        self._RunningMem = None
 
     @property
     def JobId(self):
+        """作业ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -7445,6 +9200,10 @@ class JobV1(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -7453,6 +9212,10 @@ class JobV1(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -7461,6 +9224,10 @@ class JobV1(AbstractModel):
 
     @property
     def AppId(self):
+        """用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -7469,6 +9236,10 @@ class JobV1(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -7477,6 +9248,10 @@ class JobV1(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建者UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -7485,6 +9260,10 @@ class JobV1(AbstractModel):
 
     @property
     def Name(self):
+        """作业名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7493,6 +9272,10 @@ class JobV1(AbstractModel):
 
     @property
     def JobType(self):
+        """作业类型，1：sql作业，2：Jar作业
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JobType
 
     @JobType.setter
@@ -7501,6 +9284,10 @@ class JobV1(AbstractModel):
 
     @property
     def Status(self):
+        """作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7509,6 +9296,10 @@ class JobV1(AbstractModel):
 
     @property
     def CreateTime(self):
+        """作业创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7517,6 +9308,10 @@ class JobV1(AbstractModel):
 
     @property
     def StartTime(self):
+        """作业启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7525,6 +9320,10 @@ class JobV1(AbstractModel):
 
     @property
     def StopTime(self):
+        """作业停止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StopTime
 
     @StopTime.setter
@@ -7533,6 +9332,10 @@ class JobV1(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """作业更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -7541,6 +9344,10 @@ class JobV1(AbstractModel):
 
     @property
     def TotalRunMillis(self):
+        """作业累计运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalRunMillis
 
     @TotalRunMillis.setter
@@ -7549,6 +9356,10 @@ class JobV1(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -7557,6 +9368,10 @@ class JobV1(AbstractModel):
 
     @property
     def LastOpResult(self):
+        """操作错误提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastOpResult
 
     @LastOpResult.setter
@@ -7565,6 +9380,10 @@ class JobV1(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -7573,6 +9392,10 @@ class JobV1(AbstractModel):
 
     @property
     def LatestJobConfigVersion(self):
+        """最新配置版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LatestJobConfigVersion
 
     @LatestJobConfigVersion.setter
@@ -7581,6 +9404,10 @@ class JobV1(AbstractModel):
 
     @property
     def PublishedJobConfigVersion(self):
+        """已发布的配置版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PublishedJobConfigVersion
 
     @PublishedJobConfigVersion.setter
@@ -7589,6 +9416,10 @@ class JobV1(AbstractModel):
 
     @property
     def RunningCuNum(self):
+        """运行的CU数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RunningCuNum
 
     @RunningCuNum.setter
@@ -7597,6 +9428,10 @@ class JobV1(AbstractModel):
 
     @property
     def CuMem(self):
+        """作业内存规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CuMem
 
     @CuMem.setter
@@ -7605,6 +9440,10 @@ class JobV1(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """作业状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -7613,6 +9452,10 @@ class JobV1(AbstractModel):
 
     @property
     def CurrentRunMillis(self):
+        """运行状态时表示单次运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CurrentRunMillis
 
     @CurrentRunMillis.setter
@@ -7621,6 +9464,10 @@ class JobV1(AbstractModel):
 
     @property
     def ClusterId(self):
+        """作业所在的集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -7629,6 +9476,10 @@ class JobV1(AbstractModel):
 
     @property
     def WebUIUrl(self):
+        """作业管理WEB UI 入口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebUIUrl
 
     @WebUIUrl.setter
@@ -7637,6 +9488,10 @@ class JobV1(AbstractModel):
 
     @property
     def SchedulerType(self):
+        """作业所在集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SchedulerType
 
     @SchedulerType.setter
@@ -7645,6 +9500,10 @@ class JobV1(AbstractModel):
 
     @property
     def ClusterStatus(self):
+        """作业所在集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ClusterStatus
 
     @ClusterStatus.setter
@@ -7653,6 +9512,10 @@ class JobV1(AbstractModel):
 
     @property
     def RunningCu(self):
+        """细粒度下的运行的CU数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._RunningCu
 
     @RunningCu.setter
@@ -7661,6 +9524,10 @@ class JobV1(AbstractModel):
 
     @property
     def FlinkVersion(self):
+        """作业运行的 Flink 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlinkVersion
 
     @FlinkVersion.setter
@@ -7669,6 +9536,10 @@ class JobV1(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -7677,6 +9548,10 @@ class JobV1(AbstractModel):
 
     @property
     def WorkSpaceName(self):
+        """工作空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WorkSpaceName
 
     @WorkSpaceName.setter
@@ -7685,6 +9560,10 @@ class JobV1(AbstractModel):
 
     @property
     def Tags(self):
+        """作业标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7693,6 +9572,10 @@ class JobV1(AbstractModel):
 
     @property
     def EventInfo(self):
+        """作业异常事件信息	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobEventInfo`
+        """
         return self._EventInfo
 
     @EventInfo.setter
@@ -7701,11 +9584,52 @@ class JobV1(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
     def Description(self, Description):
         self._Description = Description
+
+    @property
+    def ScalingType(self):
+        """0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScalingType
+
+    @ScalingType.setter
+    def ScalingType(self, ScalingType):
+        self._ScalingType = ScalingType
+
+    @property
+    def RunningCpu(self):
+        """使用CPU数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._RunningCpu
+
+    @RunningCpu.setter
+    def RunningCpu(self, RunningCpu):
+        self._RunningCpu = RunningCpu
+
+    @property
+    def RunningMem(self):
+        """使用内存数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._RunningMem
+
+    @RunningMem.setter
+    def RunningMem(self, RunningMem):
+        self._RunningMem = RunningMem
 
 
     def _deserialize(self, params):
@@ -7750,6 +9674,9 @@ class JobV1(AbstractModel):
             self._EventInfo = JobEventInfo()
             self._EventInfo._deserialize(params.get("EventInfo"))
         self._Description = params.get("Description")
+        self._ScalingType = params.get("ScalingType")
+        self._RunningCpu = params.get("RunningCpu")
+        self._RunningMem = params.get("RunningMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7790,6 +9717,10 @@ class LogContent(AbstractModel):
 
     @property
     def Log(self):
+        """日志内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Log
 
     @Log.setter
@@ -7798,6 +9729,10 @@ class LogContent(AbstractModel):
 
     @property
     def Time(self):
+        """毫秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -7806,6 +9741,10 @@ class LogContent(AbstractModel):
 
     @property
     def PkgId(self):
+        """日志组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PkgId
 
     @PkgId.setter
@@ -7814,6 +9753,9 @@ class LogContent(AbstractModel):
 
     @property
     def PkgLogId(self):
+        """日志Id，在日志组范围里唯一
+        :rtype: int
+        """
         return self._PkgLogId
 
     @PkgLogId.setter
@@ -7822,6 +9764,10 @@ class LogContent(AbstractModel):
 
     @property
     def ContainerName(self):
+        """日志所属的容器名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -7868,6 +9814,10 @@ class LogicalType(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -7876,6 +9826,10 @@ class LogicalType(AbstractModel):
 
     @property
     def NullAble(self):
+        """是否允许为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._NullAble
 
     @NullAble.setter
@@ -7884,6 +9838,10 @@ class LogicalType(AbstractModel):
 
     @property
     def Length(self):
+        """长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -7934,6 +9892,9 @@ class ModifyFolderRequest(AbstractModel):
 
     @property
     def SourceFolderId(self):
+        """文件夹ID（必填）
+        :rtype: str
+        """
         return self._SourceFolderId
 
     @SourceFolderId.setter
@@ -7942,6 +9903,9 @@ class ModifyFolderRequest(AbstractModel):
 
     @property
     def TargetFolderId(self):
+        """如需拖拽文件夹，需传入目标文件夹ID
+        :rtype: str
+        """
         return self._TargetFolderId
 
     @TargetFolderId.setter
@@ -7950,6 +9914,9 @@ class ModifyFolderRequest(AbstractModel):
 
     @property
     def FolderName(self):
+        """如需修改文件夹名，需传入FolderName字段
+        :rtype: str
+        """
         return self._FolderName
 
     @FolderName.setter
@@ -7958,6 +9925,9 @@ class ModifyFolderRequest(AbstractModel):
 
     @property
     def FolderType(self):
+        """文件夹类型，0是任务文件夹，1是依赖文件夹
+        :rtype: int
+        """
         return self._FolderType
 
     @FolderType.setter
@@ -7966,6 +9936,9 @@ class ModifyFolderRequest(AbstractModel):
 
     @property
     def SourceJobIds(self):
+        """批量移动的作业serial id 列表
+        :rtype: list of str
+        """
         return self._SourceJobIds
 
     @SourceJobIds.setter
@@ -7974,6 +9947,9 @@ class ModifyFolderRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -8012,6 +9988,9 @@ class ModifyFolderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8052,6 +10031,9 @@ class ModifyJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业Id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8060,6 +10042,9 @@ class ModifyJobRequest(AbstractModel):
 
     @property
     def Name(self):
+        """作业名称，支持长度小于50的中文/英文/数字/”-”/”_”/”.”，不能重名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8068,6 +10053,9 @@ class ModifyJobRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """描述
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8076,6 +10064,9 @@ class ModifyJobRequest(AbstractModel):
 
     @property
     def TargetFolderId(self):
+        """拖拽文件需传入此参数
+        :rtype: str
+        """
         return self._TargetFolderId
 
     @TargetFolderId.setter
@@ -8084,6 +10075,9 @@ class ModifyJobRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -8092,6 +10086,9 @@ class ModifyJobRequest(AbstractModel):
 
     @property
     def Description(self):
+        """作业描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8130,6 +10127,9 @@ class ModifyJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8161,6 +10161,9 @@ class ModifyWorkSpaceRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -8169,6 +10172,9 @@ class ModifyWorkSpaceRequest(AbstractModel):
 
     @property
     def WorkSpaceName(self):
+        """待修改的工作空间名称
+        :rtype: str
+        """
         return self._WorkSpaceName
 
     @WorkSpaceName.setter
@@ -8177,6 +10183,9 @@ class ModifyWorkSpaceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """待修改的工作空间备注
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8212,6 +10221,9 @@ class ModifyWorkSpaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8254,6 +10266,10 @@ class NodeConfig(AbstractModel):
 
     @property
     def Id(self):
+        """Node ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8262,6 +10278,10 @@ class NodeConfig(AbstractModel):
 
     @property
     def Parallelism(self):
+        """Node parallelism
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Parallelism
 
     @Parallelism.setter
@@ -8270,6 +10290,10 @@ class NodeConfig(AbstractModel):
 
     @property
     def SlotSharingGroup(self):
+        """Slot sharing group
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SlotSharingGroup
 
     @SlotSharingGroup.setter
@@ -8278,6 +10302,10 @@ class NodeConfig(AbstractModel):
 
     @property
     def Configuration(self):
+        """Configuration properties
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Property
+        """
         return self._Configuration
 
     @Configuration.setter
@@ -8286,6 +10314,10 @@ class NodeConfig(AbstractModel):
 
     @property
     def StateTTL(self):
+        """节点的状态ttl配置, 多个用 ; 分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StateTTL
 
     @StateTTL.setter
@@ -8345,6 +10377,10 @@ class Order(AbstractModel):
 
     @property
     def Type(self):
+        """创建、续费、扩缩容 1 2 3
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -8353,6 +10389,10 @@ class Order(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -8361,6 +10401,10 @@ class Order(AbstractModel):
 
     @property
     def OperateUin(self):
+        """操作人的UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OperateUin
 
     @OperateUin.setter
@@ -8369,6 +10413,10 @@ class Order(AbstractModel):
 
     @property
     def ComputeCu(self):
+        """最终集群的CU数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ComputeCu
 
     @ComputeCu.setter
@@ -8377,6 +10425,10 @@ class Order(AbstractModel):
 
     @property
     def OrderTime(self):
+        """订单的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrderTime
 
     @OrderTime.setter
@@ -8417,6 +10469,9 @@ class Property(AbstractModel):
 
     @property
     def Key(self):
+        """系统配置的Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -8425,6 +10480,9 @@ class Property(AbstractModel):
 
     @property
     def Value(self):
+        """系统配置的Value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -8464,6 +10522,10 @@ class RefJobStatusCountItem(AbstractModel):
 
     @property
     def JobStatus(self):
+        """作业状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JobStatus
 
     @JobStatus.setter
@@ -8472,6 +10534,10 @@ class RefJobStatusCountItem(AbstractModel):
 
     @property
     def Count(self):
+        """作业数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -8545,6 +10611,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -8553,6 +10622,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -8561,6 +10633,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def Region(self):
+        """资源所属地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -8569,6 +10644,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def AppId(self):
+        """资源所属AppId
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -8577,6 +10655,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """主账号Uin
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -8585,6 +10666,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """子账号Uin
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -8593,6 +10677,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def ResourceLoc(self):
+        """资源位置描述
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        """
         return self._ResourceLoc
 
     @ResourceLoc.setter
@@ -8601,6 +10688,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """资源创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8609,6 +10699,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def Version(self):
+        """资源版本
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -8617,6 +10710,9 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def Remark(self):
+        """资源描述
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8625,6 +10721,10 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def Status(self):
+        """资源状态：0: 资源同步中，1:资源已就绪
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8633,6 +10733,10 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def RefJobCount(self):
+        """关联作业个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RefJobCount
 
     @RefJobCount.setter
@@ -8641,6 +10745,10 @@ class ResourceConfigItem(AbstractModel):
 
     @property
     def RefJobStatusCountSet(self):
+        """分状态统计关联作业数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RefJobStatusCountItem
+        """
         return self._RefJobStatusCountSet
 
     @RefJobStatusCountSet.setter
@@ -8751,6 +10859,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -8759,6 +10870,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def Name(self):
+        """资源名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8767,6 +10881,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -8775,6 +10892,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def ResourceLoc(self):
+        """资源位置
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        """
         return self._ResourceLoc
 
     @ResourceLoc.setter
@@ -8783,6 +10903,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def Region(self):
+        """资源地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -8791,6 +10914,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def AppId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -8799,6 +10925,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """主账号Uin
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -8807,6 +10936,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """子账号Uin
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -8815,6 +10947,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """资源创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8823,6 +10958,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """资源最后更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8831,6 +10969,9 @@ class ResourceItem(AbstractModel):
 
     @property
     def LatestResourceConfigVersion(self):
+        """资源的资源版本ID
+        :rtype: int
+        """
         return self._LatestResourceConfigVersion
 
     @LatestResourceConfigVersion.setter
@@ -8839,6 +10980,10 @@ class ResourceItem(AbstractModel):
 
     @property
     def Remark(self):
+        """资源备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8847,6 +10992,10 @@ class ResourceItem(AbstractModel):
 
     @property
     def VersionCount(self):
+        """版本个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VersionCount
 
     @VersionCount.setter
@@ -8855,6 +11004,10 @@ class ResourceItem(AbstractModel):
 
     @property
     def RefJobCount(self):
+        """关联作业数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RefJobCount
 
     @RefJobCount.setter
@@ -8863,6 +11016,10 @@ class ResourceItem(AbstractModel):
 
     @property
     def IsJobRun(self):
+        """作业运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsJobRun
 
     @IsJobRun.setter
@@ -8871,6 +11028,10 @@ class ResourceItem(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -8879,6 +11040,10 @@ class ResourceItem(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -8887,6 +11052,10 @@ class ResourceItem(AbstractModel):
 
     @property
     def RefJobStatusCountSet(self):
+        """分状态统计关联作业数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RefJobStatusCountItem
+        """
         return self._RefJobStatusCountSet
 
     @RefJobStatusCountSet.setter
@@ -8947,6 +11116,9 @@ class ResourceLoc(AbstractModel):
 
     @property
     def StorageType(self):
+        """资源位置的存储类型，目前只支持1:COS
+        :rtype: int
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -8955,6 +11127,9 @@ class ResourceLoc(AbstractModel):
 
     @property
     def Param(self):
+        """描述资源位置的json
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ResourceLocParam`
+        """
         return self._Param
 
     @Param.setter
@@ -8998,6 +11173,9 @@ class ResourceLocParam(AbstractModel):
 
     @property
     def Bucket(self):
+        """资源bucket
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -9006,6 +11184,9 @@ class ResourceLocParam(AbstractModel):
 
     @property
     def Path(self):
+        """资源路径
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -9014,6 +11195,10 @@ class ResourceLocParam(AbstractModel):
 
     @property
     def Region(self):
+        """资源所在地域，如果不填，则使用Resource的Region
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9055,6 +11240,9 @@ class ResourceRef(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -9063,6 +11251,9 @@ class ResourceRef(AbstractModel):
 
     @property
     def Version(self):
+        """资源版本ID，-1表示使用最新版本
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -9071,6 +11262,9 @@ class ResourceRef(AbstractModel):
 
     @property
     def Type(self):
+        """引用资源类型，例如主资源设置为1，代表main class所在的jar包
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9118,6 +11312,9 @@ class ResourceRefDetail(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -9126,6 +11323,9 @@ class ResourceRefDetail(AbstractModel):
 
     @property
     def Version(self):
+        """资源版本，-1表示使用最新版本
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -9134,6 +11334,9 @@ class ResourceRefDetail(AbstractModel):
 
     @property
     def Name(self):
+        """资源名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9142,6 +11345,9 @@ class ResourceRefDetail(AbstractModel):
 
     @property
     def Type(self):
+        """1: 主资源
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9150,6 +11356,9 @@ class ResourceRefDetail(AbstractModel):
 
     @property
     def SystemProvide(self):
+        """1: 系统内置资源
+        :rtype: int
+        """
         return self._SystemProvide
 
     @SystemProvide.setter
@@ -9193,6 +11402,9 @@ class ResourceRefJobInfo(AbstractModel):
 
     @property
     def JobId(self):
+        """Job id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9201,6 +11413,9 @@ class ResourceRefJobInfo(AbstractModel):
 
     @property
     def JobConfigVersion(self):
+        """Job配置版本
+        :rtype: int
+        """
         return self._JobConfigVersion
 
     @JobConfigVersion.setter
@@ -9209,6 +11424,9 @@ class ResourceRefJobInfo(AbstractModel):
 
     @property
     def ResourceVersion(self):
+        """资源版本
+        :rtype: int
+        """
         return self._ResourceVersion
 
     @ResourceVersion.setter
@@ -9253,6 +11471,10 @@ class ResultColumn(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9261,6 +11483,10 @@ class ResultColumn(AbstractModel):
 
     @property
     def LogicalType(self):
+        """本地类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.LogicalType`
+        """
         return self._LogicalType
 
     @LogicalType.setter
@@ -9269,6 +11495,10 @@ class ResultColumn(AbstractModel):
 
     @property
     def Comment(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -9311,6 +11541,10 @@ class ResultData(AbstractModel):
 
     @property
     def Kind(self):
+        """操作类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -9319,6 +11553,10 @@ class ResultData(AbstractModel):
 
     @property
     def Fields(self):
+        """结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Fields
 
     @Fields.setter
@@ -9389,6 +11627,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def AppId(self):
+        """用户 AppID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -9397,6 +11638,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def WorkSpaceSerialId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceSerialId
 
     @WorkSpaceSerialId.setter
@@ -9405,6 +11649,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """主账号 UIN
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -9413,6 +11660,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建者 UIN
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -9421,6 +11671,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def AuthSubAccountUin(self):
+        """绑定授权的 UIN
+        :rtype: str
+        """
         return self._AuthSubAccountUin
 
     @AuthSubAccountUin.setter
@@ -9429,6 +11682,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def Permission(self):
+        """对应 role表的id
+        :rtype: int
+        """
         return self._Permission
 
     @Permission.setter
@@ -9437,6 +11693,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9445,6 +11704,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后一次操作时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -9453,6 +11715,9 @@ class RoleAuth(AbstractModel):
 
     @property
     def Status(self):
+        """2 启用 1 停用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9461,6 +11726,10 @@ class RoleAuth(AbstractModel):
 
     @property
     def Id(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9469,6 +11738,10 @@ class RoleAuth(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -9477,6 +11750,10 @@ class RoleAuth(AbstractModel):
 
     @property
     def RoleName(self):
+        """权限名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RoleName
 
     @RoleName.setter
@@ -9547,6 +11824,9 @@ class RunJobDescription(AbstractModel):
 
     @property
     def JobId(self):
+        """作业Id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9555,6 +11835,9 @@ class RunJobDescription(AbstractModel):
 
     @property
     def RunType(self):
+        """运行类型，1：启动，2：恢复
+        :rtype: int
+        """
         return self._RunType
 
     @RunType.setter
@@ -9563,6 +11846,10 @@ class RunJobDescription(AbstractModel):
 
     @property
     def StartMode(self):
+        """兼容旧版 SQL 类型作业启动参数：指定数据源消费起始时间点（建议传值）
+保证参数为 LATEST、EARLIEST、T+Timestamp （例:T1557394288000）
+        :rtype: str
+        """
         return self._StartMode
 
     @StartMode.setter
@@ -9571,6 +11858,10 @@ class RunJobDescription(AbstractModel):
 
     @property
     def JobConfigVersion(self):
+        """当前作业的某个版本
+（不传默认为非草稿的作业版本）
+        :rtype: int
+        """
         return self._JobConfigVersion
 
     @JobConfigVersion.setter
@@ -9579,6 +11870,9 @@ class RunJobDescription(AbstractModel):
 
     @property
     def SavepointPath(self):
+        """Savepoint路径
+        :rtype: str
+        """
         return self._SavepointPath
 
     @SavepointPath.setter
@@ -9587,6 +11881,9 @@ class RunJobDescription(AbstractModel):
 
     @property
     def SavepointId(self):
+        """Savepoint的Id
+        :rtype: str
+        """
         return self._SavepointId
 
     @SavepointId.setter
@@ -9595,6 +11892,9 @@ class RunJobDescription(AbstractModel):
 
     @property
     def UseOldSystemConnector(self):
+        """使用历史版本系统依赖
+        :rtype: bool
+        """
         return self._UseOldSystemConnector
 
     @UseOldSystemConnector.setter
@@ -9603,6 +11903,9 @@ class RunJobDescription(AbstractModel):
 
     @property
     def CustomTimestamp(self):
+        """自定义时间戳
+        :rtype: int
+        """
         return self._CustomTimestamp
 
     @CustomTimestamp.setter
@@ -9611,6 +11914,9 @@ class RunJobDescription(AbstractModel):
 
     @property
     def KafkaScanMode(self):
+        """timestamp; latest-offset;  earliest-offset; 任选一种
+        :rtype: str
+        """
         return self._KafkaScanMode
 
     @KafkaScanMode.setter
@@ -9655,6 +11961,9 @@ class RunJobsRequest(AbstractModel):
 
     @property
     def RunJobDescriptions(self):
+        """批量启动作业的描述信息
+        :rtype: list of RunJobDescription
+        """
         return self._RunJobDescriptions
 
     @RunJobDescriptions.setter
@@ -9663,6 +11972,9 @@ class RunJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -9702,6 +12014,9 @@ class RunJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9733,6 +12048,9 @@ class RunSqlGatewayStatementRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -9741,6 +12059,9 @@ class RunSqlGatewayStatementRequest(AbstractModel):
 
     @property
     def Sql(self):
+        """需要执行的sql，该sql会被Sql Gateway执行，当前支持的是paimon修改需求，因此主要是DDL语句
+        :rtype: str
+        """
         return self._Sql
 
     @Sql.setter
@@ -9749,6 +12070,9 @@ class RunSqlGatewayStatementRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -9794,6 +12118,10 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -9802,6 +12130,9 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -9810,6 +12141,9 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     @property
     def OperationHandleId(self):
+        """返回执行id，可以根据该执行id和会话id获取执行结果
+        :rtype: str
+        """
         return self._OperationHandleId
 
     @OperationHandleId.setter
@@ -9818,6 +12152,9 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9899,6 +12236,10 @@ class Savepoint(AbstractModel):
 
     @property
     def Id(self):
+        """主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9907,6 +12248,10 @@ class Savepoint(AbstractModel):
 
     @property
     def VersionId(self):
+        """版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -9915,6 +12260,10 @@ class Savepoint(AbstractModel):
 
     @property
     def Status(self):
+        """状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9923,6 +12272,10 @@ class Savepoint(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9931,6 +12284,10 @@ class Savepoint(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -9939,6 +12296,10 @@ class Savepoint(AbstractModel):
 
     @property
     def Path(self):
+        """路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -9947,6 +12308,10 @@ class Savepoint(AbstractModel):
 
     @property
     def Size(self):
+        """大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -9955,6 +12320,10 @@ class Savepoint(AbstractModel):
 
     @property
     def RecordType(self):
+        """快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordType
 
     @RecordType.setter
@@ -9963,6 +12332,10 @@ class Savepoint(AbstractModel):
 
     @property
     def JobRuntimeId(self):
+        """运行作业实例的顺序 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JobRuntimeId
 
     @JobRuntimeId.setter
@@ -9971,6 +12344,10 @@ class Savepoint(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -9979,6 +12356,10 @@ class Savepoint(AbstractModel):
 
     @property
     def Timeout(self):
+        """固定超时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -9987,6 +12368,10 @@ class Savepoint(AbstractModel):
 
     @property
     def SerialId(self):
+        """快照 serialId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SerialId
 
     @SerialId.setter
@@ -9995,6 +12380,10 @@ class Savepoint(AbstractModel):
 
     @property
     def TimeConsuming(self):
+        """耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimeConsuming
 
     @TimeConsuming.setter
@@ -10003,6 +12392,10 @@ class Savepoint(AbstractModel):
 
     @property
     def PathStatus(self):
+        """快照路径状态 1：可用；2：不可用；
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PathStatus
 
     @PathStatus.setter
@@ -10025,6 +12418,95 @@ class Savepoint(AbstractModel):
         self._SerialId = params.get("SerialId")
         self._TimeConsuming = params.get("TimeConsuming")
         self._PathStatus = params.get("PathStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionClusterRefItem(AbstractModel):
+    """session集群引用资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 空间唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceId: str
+        :param _ResourceId: 资源唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _Version: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
+        :param _Type: 引用类型，0:用户资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        """
+        self._WorkspaceId = None
+        self._ResourceId = None
+        self._Version = None
+        self._Type = None
+
+    @property
+    def WorkspaceId(self):
+        """空间唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def ResourceId(self):
+        """资源唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Version(self):
+        """版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Type(self):
+        """引用类型，0:用户资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._ResourceId = params.get("ResourceId")
+        self._Version = params.get("Version")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10062,6 +12544,10 @@ class SlotSharingGroup(AbstractModel):
 
     @property
     def Name(self):
+        """SlotSharingGroup的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10070,6 +12556,10 @@ class SlotSharingGroup(AbstractModel):
 
     @property
     def Spec(self):
+        """SlotSharingGroup的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.SlotSharingGroupSpec`
+        """
         return self._Spec
 
     @Spec.setter
@@ -10078,6 +12568,10 @@ class SlotSharingGroup(AbstractModel):
 
     @property
     def Description(self):
+        """SlotSharingGroup的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10086,6 +12580,10 @@ class SlotSharingGroup(AbstractModel):
 
     @property
     def Configuration(self):
+        """SlotSharingGroup的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Property
+        """
         return self._Configuration
 
     @Configuration.setter
@@ -10142,6 +12640,10 @@ class SlotSharingGroupSpec(AbstractModel):
 
     @property
     def CPU(self):
+        """适用的cpu
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._CPU
 
     @CPU.setter
@@ -10150,6 +12652,10 @@ class SlotSharingGroupSpec(AbstractModel):
 
     @property
     def HeapMemory(self):
+        """默认为b, 支持单位有 b, kb, mb, gb
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HeapMemory
 
     @HeapMemory.setter
@@ -10158,6 +12664,10 @@ class SlotSharingGroupSpec(AbstractModel):
 
     @property
     def OffHeapMemory(self):
+        """默认为b, 支持单位有 b, kb, mb, gb
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OffHeapMemory
 
     @OffHeapMemory.setter
@@ -10166,6 +12676,10 @@ class SlotSharingGroupSpec(AbstractModel):
 
     @property
     def ManagedMemory(self):
+        """默认为b, 支持单位有 b, kb, mb, gb
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ManagedMemory
 
     @ManagedMemory.setter
@@ -10235,6 +12749,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def SerialId(self):
+        """唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SerialId
 
     @SerialId.setter
@@ -10243,6 +12761,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def FlinkVersion(self):
+        """Flink内核版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlinkVersion
 
     @FlinkVersion.setter
@@ -10251,6 +12773,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def Status(self):
+        """状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10259,6 +12785,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -10267,6 +12797,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def ResourceRefs(self):
+        """引用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GatewayRefItem
+        """
         return self._ResourceRefs
 
     @ResourceRefs.setter
@@ -10275,6 +12809,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def CuSpec(self):
+        """Cu规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._CuSpec
 
     @CuSpec.setter
@@ -10283,6 +12821,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10291,6 +12833,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10299,6 +12845,10 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def Properties(self):
+        """配置参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Property
+        """
         return self._Properties
 
     @Properties.setter
@@ -10359,6 +12909,10 @@ class StatementResult(AbstractModel):
 
     @property
     def Columns(self):
+        """返回结果列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResultColumn
+        """
         return self._Columns
 
     @Columns.setter
@@ -10367,6 +12921,10 @@ class StatementResult(AbstractModel):
 
     @property
     def RowFormat(self):
+        """格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RowFormat
 
     @RowFormat.setter
@@ -10375,6 +12933,10 @@ class StatementResult(AbstractModel):
 
     @property
     def Data(self):
+        """结果值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResultData
+        """
         return self._Data
 
     @Data.setter
@@ -10423,6 +12985,9 @@ class StopJobDescription(AbstractModel):
 
     @property
     def JobId(self):
+        """作业Id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -10431,6 +12996,9 @@ class StopJobDescription(AbstractModel):
 
     @property
     def StopType(self):
+        """停止类型，1 停止 2 暂停
+        :rtype: int
+        """
         return self._StopType
 
     @StopType.setter
@@ -10468,6 +13036,9 @@ class StopJobsRequest(AbstractModel):
 
     @property
     def StopJobDescriptions(self):
+        """批量停止作业的描述信息
+        :rtype: list of StopJobDescription
+        """
         return self._StopJobDescriptions
 
     @StopJobDescriptions.setter
@@ -10476,6 +13047,9 @@ class StopJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -10515,6 +13089,9 @@ class StopJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10557,6 +13134,10 @@ class SubEks(AbstractModel):
 
     @property
     def SerialId(self):
+        """集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SerialId
 
     @SerialId.setter
@@ -10565,6 +13146,10 @@ class SubEks(AbstractModel):
 
     @property
     def CuNum(self):
+        """cu数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CuNum
 
     @CuNum.setter
@@ -10573,6 +13158,10 @@ class SubEks(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10581,6 +13170,10 @@ class SubEks(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -10589,6 +13182,10 @@ class SubEks(AbstractModel):
 
     @property
     def RunningCu(self):
+        """运行cu
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._RunningCu
 
     @RunningCu.setter
@@ -10629,6 +13226,9 @@ class SubFolderInfo(AbstractModel):
 
     @property
     def FolderId(self):
+        """folder id
+        :rtype: str
+        """
         return self._FolderId
 
     @FolderId.setter
@@ -10637,6 +13237,9 @@ class SubFolderInfo(AbstractModel):
 
     @property
     def FolderName(self):
+        """folder name
+        :rtype: str
+        """
         return self._FolderName
 
     @FolderName.setter
@@ -10686,6 +13289,9 @@ class SystemResourceItem(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -10694,6 +13300,9 @@ class SystemResourceItem(AbstractModel):
 
     @property
     def Name(self):
+        """资源名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10702,6 +13311,9 @@ class SystemResourceItem(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型。1 表示 JAR 包，目前只支持该值。
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -10710,6 +13322,9 @@ class SystemResourceItem(AbstractModel):
 
     @property
     def Remark(self):
+        """资源备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -10718,6 +13333,9 @@ class SystemResourceItem(AbstractModel):
 
     @property
     def Region(self):
+        """资源所属地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -10726,6 +13344,9 @@ class SystemResourceItem(AbstractModel):
 
     @property
     def LatestResourceConfigVersion(self):
+        """资源的最新版本
+        :rtype: int
+        """
         return self._LatestResourceConfigVersion
 
     @LatestResourceConfigVersion.setter
@@ -10769,6 +13390,10 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -10777,6 +13402,10 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -10821,6 +13450,10 @@ class TraceModeConfiguration(AbstractModel):
 
     @property
     def Rate(self):
+        """如1%转换为0.01
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Rate
 
     @Rate.setter
@@ -10829,6 +13462,10 @@ class TraceModeConfiguration(AbstractModel):
 
     @property
     def Operator(self):
+        """按照算子ID顺序配置，可以对每个算子配置IN、OUT、IN_AND_OUT三个值，分别表示采集输入数据、采集输出数据、同时采集输入和输出数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -10880,6 +13517,10 @@ class TreeJobSets(AbstractModel):
 
     @property
     def JobId(self):
+        """作业Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -10888,6 +13529,10 @@ class TreeJobSets(AbstractModel):
 
     @property
     def Name(self):
+        """作业名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10896,6 +13541,10 @@ class TreeJobSets(AbstractModel):
 
     @property
     def JobType(self):
+        """作业类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JobType
 
     @JobType.setter
@@ -10904,6 +13553,10 @@ class TreeJobSets(AbstractModel):
 
     @property
     def RunningCu(self):
+        """作业占用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._RunningCu
 
     @RunningCu.setter
@@ -10912,6 +13565,10 @@ class TreeJobSets(AbstractModel):
 
     @property
     def Status(self):
+        """作业状态 启动或者停止或者暂停
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10972,6 +13629,9 @@ class TreeResourceItem(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -10980,6 +13640,10 @@ class TreeResourceItem(AbstractModel):
 
     @property
     def Name(self):
+        """资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10988,6 +13652,9 @@ class TreeResourceItem(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -10996,6 +13663,10 @@ class TreeResourceItem(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -11004,6 +13675,10 @@ class TreeResourceItem(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -11012,6 +13687,10 @@ class TreeResourceItem(AbstractModel):
 
     @property
     def FolderId(self):
+        """目录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FolderId
 
     @FolderId.setter
@@ -11020,6 +13699,10 @@ class TreeResourceItem(AbstractModel):
 
     @property
     def RefJobStatusCountSet(self):
+        """分状态统计关联作业数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RefJobStatusCountItem
+        """
         return self._RefJobStatusCountSet
 
     @RefJobStatusCountSet.setter
@@ -11070,6 +13753,9 @@ class TriggerJobSavepointRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业 SerialId
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -11078,6 +13764,9 @@ class TriggerJobSavepointRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11086,6 +13775,9 @@ class TriggerJobSavepointRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -11136,6 +13828,9 @@ class TriggerJobSavepointResponse(AbstractModel):
 
     @property
     def SavepointTrigger(self):
+        """是否成功
+        :rtype: bool
+        """
         return self._SavepointTrigger
 
     @SavepointTrigger.setter
@@ -11144,6 +13839,10 @@ class TriggerJobSavepointResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -11152,6 +13851,10 @@ class TriggerJobSavepointResponse(AbstractModel):
 
     @property
     def FinalSavepointPath(self):
+        """快照路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinalSavepointPath
 
     @FinalSavepointPath.setter
@@ -11160,6 +13863,10 @@ class TriggerJobSavepointResponse(AbstractModel):
 
     @property
     def SavepointId(self):
+        """快照 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SavepointId
 
     @SavepointId.setter
@@ -11168,6 +13875,9 @@ class TriggerJobSavepointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11219,6 +13929,9 @@ class WorkSpaceClusterItem(AbstractModel):
 
     @property
     def ClusterGroupId(self):
+        """集群 ID
+        :rtype: int
+        """
         return self._ClusterGroupId
 
     @ClusterGroupId.setter
@@ -11227,6 +13940,9 @@ class WorkSpaceClusterItem(AbstractModel):
 
     @property
     def ClusterGroupSerialId(self):
+        """集群 SerialId
+        :rtype: str
+        """
         return self._ClusterGroupSerialId
 
     @ClusterGroupSerialId.setter
@@ -11235,6 +13951,9 @@ class WorkSpaceClusterItem(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名称
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -11243,6 +13962,9 @@ class WorkSpaceClusterItem(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -11251,6 +13973,9 @@ class WorkSpaceClusterItem(AbstractModel):
 
     @property
     def WorkSpaceName(self):
+        """工作空间名称
+        :rtype: str
+        """
         return self._WorkSpaceName
 
     @WorkSpaceName.setter
@@ -11259,6 +13984,9 @@ class WorkSpaceClusterItem(AbstractModel):
 
     @property
     def Status(self):
+        """绑定状态  2 绑定 1  解除绑定
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -11267,6 +13995,9 @@ class WorkSpaceClusterItem(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -11275,6 +14006,10 @@ class WorkSpaceClusterItem(AbstractModel):
 
     @property
     def ProjectIdStr(self):
+        """项目ID string类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectIdStr
 
     @ProjectIdStr.setter
@@ -11358,6 +14093,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def SerialId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._SerialId
 
     @SerialId.setter
@@ -11366,6 +14104,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def AppId(self):
+        """用户 APPID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -11374,6 +14115,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """主账号 UIN
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -11382,6 +14126,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建者 UIN
+        :rtype: str
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -11390,6 +14137,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def WorkSpaceName(self):
+        """工作空间名称
+        :rtype: str
+        """
         return self._WorkSpaceName
 
     @WorkSpaceName.setter
@@ -11398,6 +14148,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def Region(self):
+        """区域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -11406,6 +14159,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11414,6 +14170,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -11422,6 +14181,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def Status(self):
+        """1 未初始化 2 可用  -1 已删除
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -11430,6 +14192,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def Description(self):
+        """工作空间描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11438,6 +14203,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def ClusterGroupSetItem(self):
+        """工作空间包含集群信息
+        :rtype: list of ClusterGroupSetItem
+        """
         return self._ClusterGroupSetItem
 
     @ClusterGroupSetItem.setter
@@ -11446,6 +14214,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def RoleAuth(self):
+        """工作空间角色的信息
+        :rtype: list of RoleAuth
+        """
         return self._RoleAuth
 
     @RoleAuth.setter
@@ -11454,6 +14225,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def RoleAuthCount(self):
+        """工作空间成员数量
+        :rtype: int
+        """
         return self._RoleAuthCount
 
     @RoleAuthCount.setter
@@ -11462,6 +14236,9 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def WorkSpaceId(self):
+        """工作空间 SerialId
+        :rtype: str
+        """
         return self._WorkSpaceId
 
     @WorkSpaceId.setter
@@ -11470,6 +14247,10 @@ class WorkSpaceSetItem(AbstractModel):
 
     @property
     def JobsCount(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JobsCount
 
     @JobsCount.setter

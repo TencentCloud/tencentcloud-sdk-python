@@ -38,6 +38,9 @@ class ChangeRoomPlayerProfileRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏资源Id。
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -46,6 +49,9 @@ class ChangeRoomPlayerProfileRequest(AbstractModel):
 
     @property
     def PlayerId(self):
+        """发起修改的玩家Id。
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -54,6 +60,9 @@ class ChangeRoomPlayerProfileRequest(AbstractModel):
 
     @property
     def CustomProfile(self):
+        """需要修改的玩家自定义属性。
+        :rtype: str
+        """
         return self._CustomProfile
 
     @CustomProfile.setter
@@ -92,6 +101,9 @@ class ChangeRoomPlayerProfileResponse(AbstractModel):
 
     @property
     def Room(self):
+        """房间信息。
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        """
         return self._Room
 
     @Room.setter
@@ -100,6 +112,9 @@ class ChangeRoomPlayerProfileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -134,6 +149,9 @@ class ChangeRoomPlayerStatusRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏资源Id。
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -142,6 +160,9 @@ class ChangeRoomPlayerStatusRequest(AbstractModel):
 
     @property
     def CustomStatus(self):
+        """玩家自定义状态。
+        :rtype: int
+        """
         return self._CustomStatus
 
     @CustomStatus.setter
@@ -150,6 +171,9 @@ class ChangeRoomPlayerStatusRequest(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家id。
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -188,6 +212,9 @@ class ChangeRoomPlayerStatusResponse(AbstractModel):
 
     @property
     def Room(self):
+        """房间信息
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        """
         return self._Room
 
     @Room.setter
@@ -196,6 +223,9 @@ class ChangeRoomPlayerStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -230,6 +260,9 @@ class DescribePlayerRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏资源Id。
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -238,6 +271,9 @@ class DescribePlayerRequest(AbstractModel):
 
     @property
     def OpenId(self):
+        """玩家OpenId。
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -246,6 +282,9 @@ class DescribePlayerRequest(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家PlayerId，由后台分配，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -284,6 +323,9 @@ class DescribePlayerResponse(AbstractModel):
 
     @property
     def Player(self):
+        """玩家信息。
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.Player`
+        """
         return self._Player
 
     @Player.setter
@@ -292,6 +334,9 @@ class DescribePlayerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -326,6 +371,9 @@ class DescribeRoomRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏资源Id。
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -334,6 +382,9 @@ class DescribeRoomRequest(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家Id。当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，优先按照房间Id查询房间信息。
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -342,6 +393,9 @@ class DescribeRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间Id。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -380,6 +434,9 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def Room(self):
+        """房间信息。
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        """
         return self._Room
 
     @Room.setter
@@ -388,6 +445,9 @@ class DescribeRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -419,6 +479,9 @@ class DismissRoomRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -427,6 +490,9 @@ class DismissRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """表示游戏房间唯一ID。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -461,6 +527,9 @@ class DismissRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -516,6 +585,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏资源Id。
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -524,6 +596,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间ID。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -532,6 +607,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def PlayerId(self):
+        """发起者的PlayerId。
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -540,6 +618,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def ChangeRoomOptionList(self):
+        """需要修改的房间选项，0表示房间名称，1表示房主，2表示是否允许观战，3表示是否支持邀请码/密码，4表示是否私有，5表示是否自定义房间属性，6表示是否禁止加人。
+        :rtype: list of int
+        """
         return self._ChangeRoomOptionList
 
     @ChangeRoomOptionList.setter
@@ -548,6 +629,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def RoomName(self):
+        """房间名称。
+        :rtype: str
+        """
         return self._RoomName
 
     @RoomName.setter
@@ -556,6 +640,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def Owner(self):
+        """变更房主。
+        :rtype: str
+        """
         return self._Owner
 
     @Owner.setter
@@ -564,6 +651,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def IsViewed(self):
+        """是否支持观战。
+        :rtype: bool
+        """
         return self._IsViewed
 
     @IsViewed.setter
@@ -572,6 +662,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def IsInvited(self):
+        """是否支持邀请码/密码。
+        :rtype: bool
+        """
         return self._IsInvited
 
     @IsInvited.setter
@@ -580,6 +673,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def IsPrivate(self):
+        """是否私有。
+        :rtype: bool
+        """
         return self._IsPrivate
 
     @IsPrivate.setter
@@ -588,6 +684,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def CustomProperties(self):
+        """自定义房间属性。
+        :rtype: str
+        """
         return self._CustomProperties
 
     @CustomProperties.setter
@@ -596,6 +695,9 @@ class ModifyRoomRequest(AbstractModel):
 
     @property
     def IsForbidJoin(self):
+        """房间是否禁止加人。
+        :rtype: bool
+        """
         return self._IsForbidJoin
 
     @IsForbidJoin.setter
@@ -642,6 +744,9 @@ class ModifyRoomResponse(AbstractModel):
 
     @property
     def Room(self):
+        """房间信息
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        """
         return self._Room
 
     @Room.setter
@@ -650,6 +755,9 @@ class ModifyRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -696,6 +804,9 @@ class Player(AbstractModel):
 
     @property
     def OpenId(self):
+        """玩家 OpenId。最长不超过64个字符。
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -704,6 +815,9 @@ class Player(AbstractModel):
 
     @property
     def Name(self):
+        """玩家昵称。最长不超过32个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -712,6 +826,9 @@ class Player(AbstractModel):
 
     @property
     def TeamId(self):
+        """队伍 ID。最长不超过16个字符。
+        :rtype: str
+        """
         return self._TeamId
 
     @TeamId.setter
@@ -720,6 +837,9 @@ class Player(AbstractModel):
 
     @property
     def IsRobot(self):
+        """是否为机器人。
+        :rtype: bool
+        """
         return self._IsRobot
 
     @IsRobot.setter
@@ -728,6 +848,9 @@ class Player(AbstractModel):
 
     @property
     def PlayerId(self):
+        """玩家 PlayerId。出参使用，由后端返回。
+        :rtype: str
+        """
         return self._PlayerId
 
     @PlayerId.setter
@@ -736,6 +859,9 @@ class Player(AbstractModel):
 
     @property
     def CustomPlayerStatus(self):
+        """自定义玩家状态。非负数，最大不超过4294967295。默认为0。
+        :rtype: int
+        """
         return self._CustomPlayerStatus
 
     @CustomPlayerStatus.setter
@@ -744,6 +870,9 @@ class Player(AbstractModel):
 
     @property
     def CustomProfile(self):
+        """自定义玩家属性。最长不超过256个字符。默认为空字符串。
+        :rtype: str
+        """
         return self._CustomProfile
 
     @CustomProfile.setter
@@ -786,6 +915,9 @@ class RemoveRoomPlayerRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """游戏资源Id。
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -794,6 +926,9 @@ class RemoveRoomPlayerRequest(AbstractModel):
 
     @property
     def RemovePlayerId(self):
+        """被踢出房间的玩家Id。
+        :rtype: str
+        """
         return self._RemovePlayerId
 
     @RemovePlayerId.setter
@@ -831,6 +966,9 @@ class RemoveRoomPlayerResponse(AbstractModel):
 
     @property
     def Room(self):
+        """房间信息
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        """
         return self._Room
 
     @Room.setter
@@ -839,6 +977,9 @@ class RemoveRoomPlayerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -915,6 +1056,9 @@ class Room(AbstractModel):
 
     @property
     def Name(self):
+        """表示房间名称。最长不超过32个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -923,6 +1067,9 @@ class Room(AbstractModel):
 
     @property
     def MaxPlayers(self):
+        """表示房间最大玩家数量。最大不超过100人。
+        :rtype: int
+        """
         return self._MaxPlayers
 
     @MaxPlayers.setter
@@ -931,6 +1078,9 @@ class Room(AbstractModel):
 
     @property
     def OwnerOpenId(self):
+        """表示房主OpenId。最长不超过16个字符。
+        :rtype: str
+        """
         return self._OwnerOpenId
 
     @OwnerOpenId.setter
@@ -939,6 +1089,9 @@ class Room(AbstractModel):
 
     @property
     def IsPrivate(self):
+        """表示是否私有，私有指的是不允许其他玩家通过匹配加入房间。
+        :rtype: bool
+        """
         return self._IsPrivate
 
     @IsPrivate.setter
@@ -947,6 +1100,9 @@ class Room(AbstractModel):
 
     @property
     def Players(self):
+        """表示玩家详情列表。
+        :rtype: list of Player
+        """
         return self._Players
 
     @Players.setter
@@ -955,6 +1111,9 @@ class Room(AbstractModel):
 
     @property
     def Teams(self):
+        """表示团队属性列表。
+        :rtype: list of Team
+        """
         return self._Teams
 
     @Teams.setter
@@ -963,6 +1122,9 @@ class Room(AbstractModel):
 
     @property
     def Id(self):
+        """表示房间 ID。出参用，由后端返回。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -971,6 +1133,9 @@ class Room(AbstractModel):
 
     @property
     def Type(self):
+        """表示房间类型。最长不超过32个字符。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -979,6 +1144,9 @@ class Room(AbstractModel):
 
     @property
     def CreateType(self):
+        """表示创建方式：0.单人主动发起创建房间请求；1.多人在线匹配请求分配房间；2. 直接创建满员房间。调用云API的创房请求默认为3，目前通过云API调用只支持第3种方式。
+        :rtype: int
+        """
         return self._CreateType
 
     @CreateType.setter
@@ -987,6 +1155,9 @@ class Room(AbstractModel):
 
     @property
     def CustomProperties(self):
+        """表示自定义房间属性，不传为空字符串。最长不超过1024个字符。
+        :rtype: str
+        """
         return self._CustomProperties
 
     @CustomProperties.setter
@@ -995,6 +1166,9 @@ class Room(AbstractModel):
 
     @property
     def FrameSyncState(self):
+        """表示房间帧同步状态。0表示未开始帧同步，1表示已开始帧同步，用于出参。
+        :rtype: int
+        """
         return self._FrameSyncState
 
     @FrameSyncState.setter
@@ -1003,6 +1177,9 @@ class Room(AbstractModel):
 
     @property
     def FrameRate(self):
+        """表示帧率。由控制台设置，用于出参。
+        :rtype: int
+        """
         return self._FrameRate
 
     @FrameRate.setter
@@ -1011,6 +1188,9 @@ class Room(AbstractModel):
 
     @property
     def RouteId(self):
+        """表示路由ID。用于出参。
+        :rtype: str
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -1019,6 +1199,9 @@ class Room(AbstractModel):
 
     @property
     def CreateTime(self):
+        """表示房间创建的时间戳（单位：秒）。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1027,6 +1210,9 @@ class Room(AbstractModel):
 
     @property
     def StartGameTime(self):
+        """表示开始帧同步时的时间戳（单位：秒）,未开始帧同步时返回为0。
+        :rtype: int
+        """
         return self._StartGameTime
 
     @StartGameTime.setter
@@ -1035,6 +1221,9 @@ class Room(AbstractModel):
 
     @property
     def IsForbidJoin(self):
+        """表示是否禁止加入房间。出参使用，默认为False，通过SDK的ChangeRoom接口可以修改。
+        :rtype: bool
+        """
         return self._IsForbidJoin
 
     @IsForbidJoin.setter
@@ -1043,6 +1232,9 @@ class Room(AbstractModel):
 
     @property
     def Owner(self):
+        """表示房主PlayerId。
+        :rtype: str
+        """
         return self._Owner
 
     @Owner.setter
@@ -1111,6 +1303,9 @@ class Team(AbstractModel):
 
     @property
     def Id(self):
+        """队伍ID。最长不超过16个字符。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1119,6 +1314,9 @@ class Team(AbstractModel):
 
     @property
     def Name(self):
+        """队伍名称。最长不超过32个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1127,6 +1325,9 @@ class Team(AbstractModel):
 
     @property
     def MinPlayers(self):
+        """队伍最小人数。最大不超过100人。
+        :rtype: int
+        """
         return self._MinPlayers
 
     @MinPlayers.setter
@@ -1135,6 +1336,9 @@ class Team(AbstractModel):
 
     @property
     def MaxPlayers(self):
+        """队伍最大人数。最大不超过100人。
+        :rtype: int
+        """
         return self._MaxPlayers
 
     @MaxPlayers.setter

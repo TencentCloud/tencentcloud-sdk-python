@@ -35,6 +35,9 @@ class ApplyDiskBackupRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """云硬盘ID，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -43,6 +46,9 @@ class ApplyDiskBackupRequest(AbstractModel):
 
     @property
     def DiskBackupId(self):
+        """云硬盘备份点ID，可通过[DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
+        :rtype: str
+        """
         return self._DiskBackupId
 
     @DiskBackupId.setter
@@ -77,6 +83,9 @@ class ApplyDiskBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -105,6 +114,9 @@ class ApplyFirewallTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -113,6 +125,9 @@ class ApplyFirewallTemplateRequest(AbstractModel):
 
     @property
     def ApplyInstances(self):
+        """应用防火墙模板的实例列表。列表长度最大值是100。
+        :rtype: list of InstanceIdentifier
+        """
         return self._ApplyInstances
 
     @ApplyInstances.setter
@@ -155,6 +170,9 @@ class ApplyFirewallTemplateResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -163,6 +181,9 @@ class ApplyFirewallTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -192,6 +213,9 @@ class ApplyInstanceSnapshotRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/product/1207/47573) 接口返回值中的 InstanceId	获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -200,6 +224,9 @@ class ApplyInstanceSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """快照 ID。可通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/1207/54388) 接口返回值中的 SnapshotId		获取。
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -234,6 +261,9 @@ class ApplyInstanceSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -262,6 +292,9 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥对 ID 列表，每次请求批量密钥对的上限为 100。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -270,6 +303,9 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -304,6 +340,9 @@ class AssociateInstancesKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -329,6 +368,9 @@ class AttachCcnRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网实例ID。可通过[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)接口返回值中的CcnId获取。
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -362,6 +404,9 @@ class AttachCcnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -393,6 +438,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -401,6 +449,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def AttachedDiskCount(self):
+        """实例已挂载弹性云盘数量
+        :rtype: int
+        """
         return self._AttachedDiskCount
 
     @AttachedDiskCount.setter
@@ -409,6 +460,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def MaxAttachCount(self):
+        """可挂载弹性云盘数量
+        :rtype: int
+        """
         return self._MaxAttachCount
 
     @MaxAttachCount.setter
@@ -454,6 +508,9 @@ NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。 NOTIFY_AND_MANUAL_RENEW�
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -462,6 +519,9 @@ NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。 NOTIFY_AND_MANUAL_RENEW�
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -470,6 +530,13 @@ NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。 NOTIFY_AND_MANUAL_RENEW�
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：
+
+NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费。 DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知。
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云盘到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -505,6 +572,9 @@ class AttachDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -536,6 +606,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def InstanceId(self):
+        """待挂载的实例ID。指定的实例必须与指定的数据盘处于同一可用区，实例状态必须处于“运行中”状态，且实例必须支持[自动化助手](https://cloud.tencent.com/document/product/1340/50752)。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -544,6 +617,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def MountPoint(self):
+        """实例内的挂载点。仅Linux操作系统的实例可传入该参数, 不传则默认挂载在“/data/disk”路径下。
+        :rtype: str
+        """
         return self._MountPoint
 
     @MountPoint.setter
@@ -552,6 +628,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def FileSystemType(self):
+        """文件系统类型。取值: “ext4”、“xfs”。仅Linux操作系统的实例可传入该参数, 不传则默认为“ext4”。
+        :rtype: str
+        """
         return self._FileSystemType
 
     @FileSystemType.setter
@@ -653,6 +732,9 @@ class Blueprint(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """镜像 ID  ，是 Blueprint 的唯一标识。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -661,6 +743,9 @@ class Blueprint(AbstractModel):
 
     @property
     def DisplayTitle(self):
+        """镜像对外展示标题。
+        :rtype: str
+        """
         return self._DisplayTitle
 
     @DisplayTitle.setter
@@ -669,6 +754,9 @@ class Blueprint(AbstractModel):
 
     @property
     def DisplayVersion(self):
+        """镜像对外展示版本。
+        :rtype: str
+        """
         return self._DisplayVersion
 
     @DisplayVersion.setter
@@ -677,6 +765,10 @@ class Blueprint(AbstractModel):
 
     @property
     def Description(self):
+        """镜像描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -685,6 +777,9 @@ class Blueprint(AbstractModel):
 
     @property
     def OsName(self):
+        """操作系统名称。
+        :rtype: str
+        """
         return self._OsName
 
     @OsName.setter
@@ -693,6 +788,9 @@ class Blueprint(AbstractModel):
 
     @property
     def Platform(self):
+        """操作系统平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -701,6 +799,9 @@ class Blueprint(AbstractModel):
 
     @property
     def PlatformType(self):
+        """操作系统平台类型，如 LINUX_UNIX、WINDOWS。
+        :rtype: str
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -709,6 +810,9 @@ class Blueprint(AbstractModel):
 
     @property
     def BlueprintType(self):
+        """镜像类型，如 APP_OS、PURE_OS、PRIVATE。
+        :rtype: str
+        """
         return self._BlueprintType
 
     @BlueprintType.setter
@@ -717,6 +821,9 @@ class Blueprint(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """镜像图片 URL。
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -725,6 +832,9 @@ class Blueprint(AbstractModel):
 
     @property
     def RequiredSystemDiskSize(self):
+        """镜像所需系统盘大小，单位 GB。
+        :rtype: int
+        """
         return self._RequiredSystemDiskSize
 
     @RequiredSystemDiskSize.setter
@@ -733,6 +843,9 @@ class Blueprint(AbstractModel):
 
     @property
     def BlueprintState(self):
+        """镜像状态。
+        :rtype: str
+        """
         return self._BlueprintState
 
     @BlueprintState.setter
@@ -741,6 +854,11 @@ class Blueprint(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -749,6 +867,9 @@ class Blueprint(AbstractModel):
 
     @property
     def BlueprintName(self):
+        """镜像名称。
+        :rtype: str
+        """
         return self._BlueprintName
 
     @BlueprintName.setter
@@ -757,6 +878,9 @@ class Blueprint(AbstractModel):
 
     @property
     def SupportAutomationTools(self):
+        """镜像是否支持自动化助手。
+        :rtype: bool
+        """
         return self._SupportAutomationTools
 
     @SupportAutomationTools.setter
@@ -765,6 +889,9 @@ class Blueprint(AbstractModel):
 
     @property
     def RequiredMemorySize(self):
+        """镜像所需内存大小, 单位: GB
+        :rtype: int
+        """
         return self._RequiredMemorySize
 
     @RequiredMemorySize.setter
@@ -773,6 +900,10 @@ class Blueprint(AbstractModel):
 
     @property
     def ImageId(self):
+        """CVM镜像共享到轻量应用服务器轻量应用服务器后的CVM镜像ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -781,6 +912,9 @@ class Blueprint(AbstractModel):
 
     @property
     def CommunityUrl(self):
+        """官方网站Url。
+        :rtype: str
+        """
         return self._CommunityUrl
 
     @CommunityUrl.setter
@@ -789,6 +923,9 @@ class Blueprint(AbstractModel):
 
     @property
     def GuideUrl(self):
+        """指导文章Url。
+        :rtype: str
+        """
         return self._GuideUrl
 
     @GuideUrl.setter
@@ -797,6 +934,10 @@ class Blueprint(AbstractModel):
 
     @property
     def SceneIdSet(self):
+        """镜像关联使用场景Id列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SceneIdSet
 
     @SceneIdSet.setter
@@ -805,6 +946,10 @@ class Blueprint(AbstractModel):
 
     @property
     def DockerVersion(self):
+        """Docker版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DockerVersion
 
     @DockerVersion.setter
@@ -813,6 +958,9 @@ class Blueprint(AbstractModel):
 
     @property
     def BlueprintShared(self):
+        """镜像是否已共享。
+        :rtype: bool
+        """
         return self._BlueprintShared
 
     @BlueprintShared.setter
@@ -872,6 +1020,9 @@ class BlueprintInstance(AbstractModel):
 
     @property
     def Blueprint(self):
+        """镜像信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Blueprint`
+        """
         return self._Blueprint
 
     @Blueprint.setter
@@ -880,6 +1031,9 @@ class BlueprintInstance(AbstractModel):
 
     @property
     def SoftwareSet(self):
+        """软件列表。
+        :rtype: list of Software
+        """
         return self._SoftwareSet
 
     @SoftwareSet.setter
@@ -888,6 +1042,9 @@ class BlueprintInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -939,6 +1096,9 @@ class BlueprintPrice(AbstractModel):
 
     @property
     def OriginalBlueprintPrice(self):
+        """镜像单价，原价。单位元。
+        :rtype: float
+        """
         return self._OriginalBlueprintPrice
 
     @OriginalBlueprintPrice.setter
@@ -947,6 +1107,9 @@ class BlueprintPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """镜像总价，原价。单位元。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -955,6 +1118,9 @@ class BlueprintPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -963,6 +1129,9 @@ class BlueprintPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """镜像折扣后总价。单位元。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -1057,6 +1226,9 @@ class Bundle(AbstractModel):
 
     @property
     def BundleId(self):
+        """套餐 ID。
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -1065,6 +1237,9 @@ class Bundle(AbstractModel):
 
     @property
     def Memory(self):
+        """内存大小，单位 GB。
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -1073,6 +1248,11 @@ class Bundle(AbstractModel):
 
     @property
     def SystemDiskType(self):
+        """系统盘类型。
+取值范围： 
+<li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
+        :rtype: str
+        """
         return self._SystemDiskType
 
     @SystemDiskType.setter
@@ -1081,6 +1261,9 @@ class Bundle(AbstractModel):
 
     @property
     def SystemDiskSize(self):
+        """系统盘大小。单位GB。
+        :rtype: int
+        """
         return self._SystemDiskSize
 
     @SystemDiskSize.setter
@@ -1089,6 +1272,9 @@ class Bundle(AbstractModel):
 
     @property
     def MonthlyTraffic(self):
+        """每月网络流量，单位 GB。
+        :rtype: int
+        """
         return self._MonthlyTraffic
 
     @MonthlyTraffic.setter
@@ -1097,6 +1283,9 @@ class Bundle(AbstractModel):
 
     @property
     def SupportLinuxUnixPlatform(self):
+        """是否支持 Linux/Unix 平台。
+        :rtype: bool
+        """
         return self._SupportLinuxUnixPlatform
 
     @SupportLinuxUnixPlatform.setter
@@ -1105,6 +1294,9 @@ class Bundle(AbstractModel):
 
     @property
     def SupportWindowsPlatform(self):
+        """是否支持 Windows 平台。
+        :rtype: bool
+        """
         return self._SupportWindowsPlatform
 
     @SupportWindowsPlatform.setter
@@ -1113,6 +1305,9 @@ class Bundle(AbstractModel):
 
     @property
     def Price(self):
+        """套餐当前单位价格信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -1121,6 +1316,9 @@ class Bundle(AbstractModel):
 
     @property
     def CPU(self):
+        """CPU 核数。
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -1129,6 +1327,9 @@ class Bundle(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """峰值带宽，单位 Mbps。
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -1137,6 +1338,9 @@ class Bundle(AbstractModel):
 
     @property
     def InternetChargeType(self):
+        """网络计费类型。
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -1145,6 +1349,9 @@ class Bundle(AbstractModel):
 
     @property
     def BundleSalesState(self):
+        """套餐售卖状态,取值:‘AVAILABLE’(可用) , ‘SOLD_OUT’(售罄)
+        :rtype: str
+        """
         return self._BundleSalesState
 
     @BundleSalesState.setter
@@ -1153,6 +1360,18 @@ class Bundle(AbstractModel):
 
     @property
     def BundleType(self):
+        """套餐类型。
+取值范围：
+<li>STARTER_BUNDLE：入门型</li>
+<li>GENERAL_BUNDLE：通用型</li>
+<li>ENTERPRISE_BUNDLE：企业型</li>
+<li>STORAGE_BUNDLE：存储型</li>
+<li>EXCLUSIVE_BUNDLE：专属型</li>
+<li>HK_EXCLUSIVE_BUNDLE：香港专属型 </li>
+<li>CAREFREE_BUNDLE：无忧型</li>
+<li>BEFAST_BUNDLE：蜂驰型 </li>
+        :rtype: str
+        """
         return self._BundleType
 
     @BundleType.setter
@@ -1161,6 +1380,10 @@ class Bundle(AbstractModel):
 
     @property
     def BundleTypeDescription(self):
+        """套餐类型描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BundleTypeDescription
 
     @BundleTypeDescription.setter
@@ -1169,6 +1392,13 @@ class Bundle(AbstractModel):
 
     @property
     def BundleDisplayLabel(self):
+        """套餐展示标签.
+取值范围:
+"ACTIVITY": 活动套餐,
+"NORMAL": 普通套餐
+"CAREFREE": 无忧套餐
+        :rtype: str
+        """
         return self._BundleDisplayLabel
 
     @BundleDisplayLabel.setter
@@ -1221,6 +1451,9 @@ class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -1229,6 +1462,9 @@ class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def AccountIds(self):
+        """接收共享镜像的账号ID列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+        :rtype: list of str
+        """
         return self._AccountIds
 
     @AccountIds.setter
@@ -1263,6 +1499,9 @@ class CancelShareBlueprintAcrossAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1311,6 +1550,9 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网ID。
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -1319,6 +1561,9 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """关联实例CIDR。
+        :rtype: list of str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -1327,6 +1572,19 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def State(self):
+        """关联实例状态：
+
+•  PENDING：申请中
+•  ACTIVE：已连接
+•  EXPIRED：已过期
+•  REJECTED：已拒绝
+•  DELETED：已删除
+•  FAILED：失败的（2小时后将异步强制解关联）
+•  ATTACHING：关联中
+•  DETACHING：解关联中
+•  DETACHFAILED：解关联失败（2小时后将异步强制解关联）
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -1335,6 +1593,10 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def AttachedTime(self):
+        """关联时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AttachedTime
 
     @AttachedTime.setter
@@ -1343,6 +1605,9 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def Description(self):
+        """备注
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1390,6 +1655,9 @@ class Command(AbstractModel):
 
     @property
     def Content(self):
+        """Base64编码后的命令内容，长度不可超过64KB。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -1398,6 +1666,9 @@ class Command(AbstractModel):
 
     @property
     def Timeout(self):
+        """命令超时时间，默认60秒。取值范围[1, 86400]。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -1406,6 +1677,9 @@ class Command(AbstractModel):
 
     @property
     def WorkingDirectory(self):
+        """命令执行路径，对于 SHELL 命令默认为 /root，对于 POWERSHELL 命令默认为 C:\Program Files\qcloud\tat_agent\workdir。
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -1414,6 +1688,10 @@ class Command(AbstractModel):
 
     @property
     def Username(self):
+        """在 Lighthouse 实例中执行命令的用户名称。
+默认情况下，在 Linux 实例中以 root 用户执行命令；在Windows 实例中以 System 用户执行命令。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -1453,6 +1731,9 @@ class ContainerEnv(AbstractModel):
 
     @property
     def Key(self):
+        """环境变量Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1461,6 +1742,9 @@ class ContainerEnv(AbstractModel):
 
     @property
     def Value(self):
+        """环境变量值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1509,6 +1793,9 @@ False：表示开机状态制作镜像
 
     @property
     def BlueprintName(self):
+        """镜像名称。最大长度60。
+        :rtype: str
+        """
         return self._BlueprintName
 
     @BlueprintName.setter
@@ -1517,6 +1804,9 @@ False：表示开机状态制作镜像
 
     @property
     def Description(self):
+        """镜像描述。最大长度60。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1525,6 +1815,9 @@ False：表示开机状态制作镜像
 
     @property
     def InstanceId(self):
+        """需要制作镜像的实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1533,6 +1826,14 @@ False：表示开机状态制作镜像
 
     @property
     def ForcePowerOff(self):
+        """是否执行强制关机以制作镜像。
+取值范围：
+True：表示关机之后制作镜像
+False：表示开机状态制作镜像
+默认取值：True
+开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
+        :rtype: bool
+        """
         return self._ForcePowerOff
 
     @ForcePowerOff.setter
@@ -1572,6 +1873,9 @@ class CreateBlueprintResponse(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """自定义镜像ID。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -1580,6 +1884,9 @@ class CreateBlueprintResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1609,6 +1916,9 @@ class CreateDiskBackupRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """云硬盘ID，可通过 [DescribeDisks](https://cloud.tencent.com/document/api/1207/66093) 接口返回值中的 DiskId 获取。 
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -1617,6 +1927,9 @@ class CreateDiskBackupRequest(AbstractModel):
 
     @property
     def DiskBackupName(self):
+        """云硬盘备份点名称，最大长度为 90 。
+        :rtype: str
+        """
         return self._DiskBackupName
 
     @DiskBackupName.setter
@@ -1654,6 +1967,9 @@ class CreateDiskBackupResponse(AbstractModel):
 
     @property
     def DiskBackupId(self):
+        """备份点ID。
+        :rtype: str
+        """
         return self._DiskBackupId
 
     @DiskBackupId.setter
@@ -1662,6 +1978,9 @@ class CreateDiskBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1712,6 +2031,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区。可通过[DescribeZones](https://cloud.tencent.com/document/product/1207/57513)返回值中的Zone获取。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1720,6 +2042,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """云硬盘大小, 单位: GB。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -1728,6 +2053,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """云硬盘介质类型。取值: "CLOUD_PREMIUM"(高性能云盘), "CLOUD_SSD"(SSD云硬盘)。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -1736,6 +2064,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
+        """云硬盘包年包月相关参数设置。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
+        """
         return self._DiskChargePrepaid
 
     @DiskChargePrepaid.setter
@@ -1744,6 +2075,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskName(self):
+        """云硬盘名称。最大长度60。
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -1752,6 +2086,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskCount(self):
+        """云硬盘个数。取值范围: [1, 30]。默认值: 1。
+        :rtype: int
+        """
         return self._DiskCount
 
     @DiskCount.setter
@@ -1760,6 +2097,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """指定云硬盘备份点配额，取值范围: [0, 500]。不传时默认为不带备份点配额。
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -1768,6 +2108,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
+        """是否自动使用代金券。默认不使用。
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -1776,6 +2119,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def AutoMountConfiguration(self):
+        """自动挂载并初始化数据盘。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.AutoMountConfiguration`
+        """
         return self._AutoMountConfiguration
 
     @AutoMountConfiguration.setter
@@ -1826,6 +2172,11 @@ class CreateDisksResponse(AbstractModel):
 
     @property
     def DiskIdSet(self):
+        """当通过本接口来创建云硬盘时会返回该参数，表示一个或多个云硬盘ID。返回云硬盘ID列表并不代表云硬盘创建成功。
+
+可根据 [DescribeDisks](https://cloud.tencent.com/document/product/1207/66093) 接口查询返回的DiskSet中对应云硬盘的ID的状态来判断创建是否完成；如果云硬盘状态由“PENDING”变为“UNATTACHED”或“ATTACHED”，则为创建成功。
+        :rtype: list of str
+        """
         return self._DiskIdSet
 
     @DiskIdSet.setter
@@ -1834,6 +2185,9 @@ class CreateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1866,6 +2220,9 @@ class CreateFirewallRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1874,6 +2231,9 @@ class CreateFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallRules(self):
+        """防火墙规则列表。
+        :rtype: list of FirewallRule
+        """
         return self._FirewallRules
 
     @FirewallRules.setter
@@ -1882,6 +2242,9 @@ class CreateFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -1922,6 +2285,9 @@ class CreateFirewallRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1950,6 +2316,9 @@ class CreateFirewallTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -1958,6 +2327,9 @@ class CreateFirewallTemplateRequest(AbstractModel):
 
     @property
     def TemplateRules(self):
+        """防火墙规则列表。
+        :rtype: list of FirewallRule
+        """
         return self._TemplateRules
 
     @TemplateRules.setter
@@ -2000,6 +2372,9 @@ class CreateFirewallTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2008,6 +2383,9 @@ class CreateFirewallTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2037,6 +2415,9 @@ class CreateFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2045,6 +2426,9 @@ class CreateFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateRules(self):
+        """防火墙模板规则列表。
+        :rtype: list of FirewallRule
+        """
         return self._TemplateRules
 
     @TemplateRules.setter
@@ -2087,6 +2471,9 @@ class CreateFirewallTemplateRulesResponse(AbstractModel):
 
     @property
     def TemplateRuleIdSet(self):
+        """规则ID列表。
+        :rtype: list of str
+        """
         return self._TemplateRuleIdSet
 
     @TemplateRuleIdSet.setter
@@ -2095,6 +2482,9 @@ class CreateFirewallTemplateRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2124,6 +2514,9 @@ class CreateInstanceSnapshotRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """需要创建快照的实例 ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/product/1207/47573) 接口返回值中的 InstanceId	获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2132,6 +2525,9 @@ class CreateInstanceSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """快照名称，最长为 60 个字符。
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -2169,6 +2565,9 @@ class CreateInstanceSnapshotResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """快照 ID。
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -2177,6 +2576,9 @@ class CreateInstanceSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2251,6 +2653,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def BundleId(self):
+        """套餐ID。可以通过调用 [DescribeBundles](https://cloud.tencent.com/document/api/1207/47575) 接口获取。
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -2259,6 +2664,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def BlueprintId(self):
+        """镜像ID。可以通过调用 [DescribeBlueprints](https://cloud.tencent.com/document/api/1207/47689) 接口获取。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -2267,6 +2675,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InstanceChargePrepaid(self):
+        """当前实例仅支持预付费模式，即包年包月相关参数设置，单位（月）。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。该参数必传。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -2275,6 +2686,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InstanceName(self):
+        """实例显示名称。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2283,6 +2697,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InstanceCount(self):
+        """购买实例数量。包年包月实例取值范围：[1，30]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -2291,6 +2708,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Zones(self):
+        """可用区列表。
+不填此参数，表示为随机可用区。
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -2299,6 +2720,13 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def DryRun(self):
+        """是否只预检此次请求。
+true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和库存。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId.
+false（默认）：发送正常请求，通过检查后直接创建实例
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -2307,6 +2735,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ClientToken(self):
+        """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -2315,6 +2746,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def LoginConfiguration(self):
+        """实例登录密码信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
+        """
         return self._LoginConfiguration
 
     @LoginConfiguration.setter
@@ -2323,6 +2757,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Containers(self):
+        """要创建的容器配置列表。
+        :rtype: list of DockerContainerConfiguration
+        """
         return self._Containers
 
     @Containers.setter
@@ -2331,6 +2768,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def AutoVoucher(self):
+        """是否自动使用代金券。默认不使用。
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -2339,6 +2779,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def FirewallTemplateId(self):
+        """防火墙模板ID。若不指定该参数，则使用默认防火墙策略。
+        :rtype: str
+        """
         return self._FirewallTemplateId
 
     @FirewallTemplateId.setter
@@ -2347,6 +2790,13 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def Tags(self):
+        """标签键和标签值。
+如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。
+同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。
+如果标签不存在会为您自动创建标签。
+数组最多支持10个元素。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2355,6 +2805,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def InitCommand(self):
+        """创建实例后自动执行的命令。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Command`
+        """
         return self._InitCommand
 
     @InitCommand.setter
@@ -2422,6 +2875,11 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def InstanceIdSet(self):
+        """当通过本接口来创建实例时会返回该参数，表示一个或多个实例ID。返回实例ID列表并不代表实例创建成功。
+
+可根据 DescribeInstances 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -2430,6 +2888,9 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2456,6 +2917,9 @@ class CreateKeyPairRequest(AbstractModel):
 
     @property
     def KeyName(self):
+        """密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
+        :rtype: str
+        """
         return self._KeyName
 
     @KeyName.setter
@@ -2492,6 +2956,9 @@ class CreateKeyPairResponse(AbstractModel):
 
     @property
     def KeyPair(self):
+        """密钥对信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.KeyPair`
+        """
         return self._KeyPair
 
     @KeyPair.setter
@@ -2500,6 +2967,9 @@ class CreateKeyPairResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2544,6 +3014,9 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def DiskId(self):
+        """云硬盘ID。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -2552,6 +3025,9 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def OriginalDiskPrice(self):
+        """云硬盘单价。
+        :rtype: float
+        """
         return self._OriginalDiskPrice
 
     @OriginalDiskPrice.setter
@@ -2560,6 +3036,9 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """云硬盘总价。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -2568,6 +3047,9 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -2576,6 +3058,9 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """折后总价。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -2584,6 +3069,10 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def InstanceId(self):
+        """数据盘挂载的实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2622,6 +3111,9 @@ class DeleteBlueprintsRequest(AbstractModel):
 
     @property
     def BlueprintIds(self):
+        """镜像ID列表。镜像ID，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
+        :rtype: list of str
+        """
         return self._BlueprintIds
 
     @BlueprintIds.setter
@@ -2655,6 +3147,9 @@ class DeleteBlueprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2680,6 +3175,9 @@ class DeleteDiskBackupsRequest(AbstractModel):
 
     @property
     def DiskBackupIds(self):
+        """云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
+        :rtype: list of str
+        """
         return self._DiskBackupIds
 
     @DiskBackupIds.setter
@@ -2713,6 +3211,9 @@ class DeleteDiskBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2744,6 +3245,9 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2752,6 +3256,9 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallRules(self):
+        """防火墙规则列表。
+        :rtype: list of FirewallRule
+        """
         return self._FirewallRules
 
     @FirewallRules.setter
@@ -2760,6 +3267,9 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -2800,6 +3310,9 @@ class DeleteFirewallRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2825,6 +3338,9 @@ class DeleteFirewallTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2858,6 +3374,9 @@ class DeleteFirewallTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2887,6 +3406,9 @@ class DeleteFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2895,6 +3417,10 @@ class DeleteFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateRuleIds(self):
+        """防火墙模板规则ID列表。可通过[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875)接口返回值字段TemplateRuleSet获取。
+
+        :rtype: list of str
+        """
         return self._TemplateRuleIds
 
     @TemplateRuleIds.setter
@@ -2929,6 +3455,9 @@ class DeleteFirewallTemplateRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2954,6 +3483,9 @@ class DeleteKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥对 ID 列表，每次请求批量密钥对的上限为 10。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -2987,6 +3519,9 @@ class DeleteKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3012,6 +3547,9 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """要删除的快照 ID 列表，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -3045,6 +3583,9 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3076,6 +3617,9 @@ class DeniedAction(AbstractModel):
 
     @property
     def Action(self):
+        """限制操作名。
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -3084,6 +3628,9 @@ class DeniedAction(AbstractModel):
 
     @property
     def Code(self):
+        """限制操作消息码。
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -3092,6 +3639,9 @@ class DeniedAction(AbstractModel):
 
     @property
     def Message(self):
+        """限制操作消息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3133,6 +3683,9 @@ class DescribeAllScenesRequest(AbstractModel):
 
     @property
     def SceneIds(self):
+        """使用场景ID列表。可通过[DescribeAllScenes](https://cloud.tencent.com/document/product/1207/83513)接口返回值中的SceneId获取。
+        :rtype: list of str
+        """
         return self._SceneIds
 
     @SceneIds.setter
@@ -3141,6 +3694,9 @@ class DescribeAllScenesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3149,6 +3705,9 @@ class DescribeAllScenesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3190,6 +3749,9 @@ class DescribeAllScenesResponse(AbstractModel):
 
     @property
     def SceneInfoSet(self):
+        """使用场景详细信息列表。
+        :rtype: list of SceneInfo
+        """
         return self._SceneInfoSet
 
     @SceneInfoSet.setter
@@ -3198,6 +3760,9 @@ class DescribeAllScenesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """使用场景详细信息总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3206,6 +3771,9 @@ class DescribeAllScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3238,6 +3806,9 @@ class DescribeBlueprintInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。 当前最多支持1个。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3277,6 +3848,9 @@ class DescribeBlueprintInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的镜像实例数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3285,6 +3859,9 @@ class DescribeBlueprintInstancesResponse(AbstractModel):
 
     @property
     def BlueprintInstanceSet(self):
+        """镜像实例列表信息。
+        :rtype: list of BlueprintInstance
+        """
         return self._BlueprintInstanceSet
 
     @BlueprintInstanceSet.setter
@@ -3293,6 +3870,9 @@ class DescribeBlueprintInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3356,6 +3936,9 @@ class DescribeBlueprintsRequest(AbstractModel):
 
     @property
     def BlueprintIds(self):
+        """镜像 ID 列表。
+        :rtype: list of str
+        """
         return self._BlueprintIds
 
     @BlueprintIds.setter
@@ -3364,6 +3947,9 @@ class DescribeBlueprintsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3372,6 +3958,9 @@ class DescribeBlueprintsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3380,6 +3969,31 @@ class DescribeBlueprintsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>blueprint-id</li>按照【镜像 ID】进行过滤。
+类型：String
+必选：否
+<li>blueprint-type</li>按照【镜像类型】进行过滤。
+取值：APP_OS（应用镜像 ）；PURE_OS（系统镜像）；DOCKER（Docker容器镜像）；PRIVATE（自定义镜像）；SHARED（共享镜像）。
+类型：String
+必选：否
+<li>platform-type</li>按照【镜像平台类型】进行过滤。
+取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
+类型：String
+必选：否
+<li>blueprint-name</li>按照【镜像名称】进行过滤。
+类型：String
+必选：否
+<li>blueprint-state</li>按照【镜像状态】进行过滤。
+类型：String
+必选：否
+<li>scene-id</li>按照【使用场景Id】进行过滤。
+类型：String
+必选：否
+
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds 和 Filters 。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3427,6 +4041,9 @@ class DescribeBlueprintsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的镜像数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3435,6 +4052,9 @@ class DescribeBlueprintsResponse(AbstractModel):
 
     @property
     def BlueprintSet(self):
+        """镜像详细信息列表。
+        :rtype: list of Blueprint
+        """
         return self._BlueprintSet
 
     @BlueprintSet.setter
@@ -3443,6 +4063,9 @@ class DescribeBlueprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3475,6 +4098,9 @@ class DescribeBundleDiscountRequest(AbstractModel):
 
     @property
     def BundleId(self):
+        """套餐 ID。可通过[DescribeBundles](https://cloud.tencent.com/document/product/1207/47575)接口返回值中的BundleId获取。
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -3514,6 +4140,9 @@ class DescribeBundleDiscountResponse(AbstractModel):
 
     @property
     def Currency(self):
+        """币种：CNY人民币，USD 美元。
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -3522,6 +4151,9 @@ class DescribeBundleDiscountResponse(AbstractModel):
 
     @property
     def DiscountDetail(self):
+        """折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
+        :rtype: list of DiscountDetail
+        """
         return self._DiscountDetail
 
     @DiscountDetail.setter
@@ -3530,6 +4162,9 @@ class DescribeBundleDiscountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3590,6 +4225,9 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def BundleIds(self):
+        """套餐 ID 列表。可通过[DescribeBundles](https://cloud.tencent.com/document/product/1207/47575)接口返回值中的BundleId获取。
+        :rtype: list of str
+        """
         return self._BundleIds
 
     @BundleIds.setter
@@ -3598,6 +4236,9 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3606,6 +4247,9 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3614,6 +4258,25 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>bundle-id</li>按照【套餐 ID】进行过滤。
+类型：String
+必选：否
+<li>support-platform-type</li>按照【系统类型】进行过滤。
+取值： LINUX_UNIX(Linux/Unix系统) ;WINDOWS(Windows 系统)
+类型：String
+必选：否
+<li>bundle-type</li>按照 【套餐类型进行过滤】。
+取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);
+类型：String
+必选：否
+<li>bundle-state</li>按照【套餐状态】进行过滤。
+取值: ONLINE(在线); OFFLINE(下线);
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3622,6 +4285,9 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区列表。默认为全部可用区。
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -3670,6 +4336,9 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def BundleSet(self):
+        """套餐详细信息列表。
+        :rtype: list of Bundle
+        """
         return self._BundleSet
 
     @BundleSet.setter
@@ -3678,6 +4347,9 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合要求的套餐总数，用于分页展示。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3686,6 +4358,9 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3728,6 +4403,10 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
 
     @property
     def CcnAttachedInstanceSet(self):
+        """云联网关联的实例列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CcnAttachedInstance
+        """
         return self._CcnAttachedInstanceSet
 
     @CcnAttachedInstanceSet.setter
@@ -3736,6 +4415,9 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3767,6 +4449,9 @@ class DescribeDiskBackupsDeniedActionsRequest(AbstractModel):
 
     @property
     def DiskBackupIds(self):
+        """云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。
+        :rtype: list of str
+        """
         return self._DiskBackupIds
 
     @DiskBackupIds.setter
@@ -3803,6 +4488,9 @@ class DescribeDiskBackupsDeniedActionsResponse(AbstractModel):
 
     @property
     def DiskBackupDeniedActionSet(self):
+        """云硬盘备份点操作限制列表详细信息。
+        :rtype: list of DiskBackupDeniedActions
+        """
         return self._DiskBackupDeniedActionSet
 
     @DiskBackupDeniedActionSet.setter
@@ -3811,6 +4499,9 @@ class DescribeDiskBackupsDeniedActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3867,6 +4558,9 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def DiskBackupIds(self):
+        """查询的云硬盘备份点ID列表。最大支持 100 个。参数不支持同时指定 DiskBackupIds 和 Filters。
+        :rtype: list of str
+        """
         return self._DiskBackupIds
 
     @DiskBackupIds.setter
@@ -3875,6 +4569,25 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>disk-backup-id</li>按照【云硬盘备份点 ID】进行过滤。
+类型：String
+必选：否
+<li>disk-id</li>按照【云硬盘 ID】进行过滤。
+类型：String
+必选：否
+<li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
+类型：String
+必选：否
+取值：参考数据结构 
+<a href="https://cloud.tencent.com/document/product/1207/47576#DiskBackup">DescribeSnapshots</a> 下的DiskBackupState取值。
+<li>disk-usage</li>按照【云硬盘类型】进行过滤。
+类型：String
+必选：否
+取值：SYSTEM_DISK或DATA_DISK
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3883,6 +4596,9 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3891,6 +4607,9 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3938,6 +4657,9 @@ class DescribeDiskBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """云硬盘备份点的数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3946,6 +4668,9 @@ class DescribeDiskBackupsResponse(AbstractModel):
 
     @property
     def DiskBackupSet(self):
+        """云硬盘备份点信息列表。
+        :rtype: list of DiskBackup
+        """
         return self._DiskBackupSet
 
     @DiskBackupSet.setter
@@ -3954,6 +4679,9 @@ class DescribeDiskBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3989,6 +4717,12 @@ class DescribeDiskConfigsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>zone</li>按照【可用区】进行过滤。
+类型：String
+必选：否
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4030,6 +4764,9 @@ class DescribeDiskConfigsResponse(AbstractModel):
 
     @property
     def DiskConfigSet(self):
+        """云硬盘配置列表。
+        :rtype: list of DiskConfig
+        """
         return self._DiskConfigSet
 
     @DiskConfigSet.setter
@@ -4038,6 +4775,9 @@ class DescribeDiskConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4075,6 +4815,9 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """云硬盘类型, 取值范围: CLOUD_PREMIUM: 高性能云硬盘，CLOUD_SSD: SSD云硬盘
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -4083,6 +4826,9 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """云硬盘大小, 单位: GB。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -4091,6 +4837,9 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -4132,6 +4881,9 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     @property
     def Currency(self):
+        """币种：CNY人民币，USD 美元。
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -4140,6 +4892,9 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     @property
     def DiscountDetail(self):
+        """折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
+        :rtype: list of DiscountDetail
+        """
         return self._DiscountDetail
 
     @DiscountDetail.setter
@@ -4148,6 +4903,9 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4180,6 +4938,9 @@ class DescribeDisksDeniedActionsRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -4216,6 +4977,9 @@ class DescribeDisksDeniedActionsResponse(AbstractModel):
 
     @property
     def DiskDeniedActionSet(self):
+        """云硬盘操作限制列表详细信息。
+        :rtype: list of DiskDeniedActions
+        """
         return self._DiskDeniedActionSet
 
     @DiskDeniedActionSet.setter
@@ -4224,6 +4988,9 @@ class DescribeDisksDeniedActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4297,6 +5064,9 @@ disk-state
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。每次批量请求云硬盘的上限为 100。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -4305,6 +5075,36 @@ disk-state
 
     @property
     def Filters(self):
+        """过滤器列表。
+disk-id
+按照【云硬盘 ID】进行过滤。
+类型：String
+必选：否
+instance-id
+按照【实例ID】进行过滤。
+类型：String
+必选：否
+disk-name
+按照【云硬盘名称】进行过滤。
+类型：String
+必选：否
+zone
+按照【可用区】进行过滤。
+类型：String
+必选：否
+disk-usage
+按照【云硬盘类型】进行过滤。
+类型：String
+必选：否
+取值：SYSTEM_DISK或DATA_DISK
+disk-state
+按照【云硬盘状态】进行过滤。
+类型：String
+必选：否
+取值：参考数据结构[Disk](https://cloud.tencent.com/document/api/1207/47576#Disk)中DiskState取值。
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 DiskIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4313,6 +5113,9 @@ disk-state
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4321,6 +5124,9 @@ disk-state
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4329,6 +5135,9 @@ disk-state
 
     @property
     def OrderField(self):
+        """云硬盘列表排序的依据字段。取值范围："CREATED_TIME"：依据云硬盘的创建时间排序。 "EXPIRED_TIME"：依据云硬盘的到期时间排序。"DISK_SIZE"：依据云硬盘的大小排序。默认按云硬盘创建时间排序。
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -4337,6 +5146,9 @@ disk-state
 
     @property
     def Order(self):
+        """输出云硬盘列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4386,6 +5198,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def DiskSet(self):
+        """云硬盘信息列表。
+        :rtype: list of Disk
+        """
         return self._DiskSet
 
     @DiskSet.setter
@@ -4394,6 +5209,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的云硬盘信息数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4402,6 +5220,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4440,6 +5261,9 @@ class DescribeDisksReturnableRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。每次批量请求云硬盘的上限为 10。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -4448,6 +5272,9 @@ class DescribeDisksReturnableRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4456,6 +5283,9 @@ class DescribeDisksReturnableRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4497,6 +5327,9 @@ class DescribeDisksReturnableResponse(AbstractModel):
 
     @property
     def DiskReturnableSet(self):
+        """可退还云硬盘详细信息列表。
+        :rtype: list of DiskReturnable
+        """
         return self._DiskReturnableSet
 
     @DiskReturnableSet.setter
@@ -4505,6 +5338,9 @@ class DescribeDisksReturnableResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的云硬盘数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4513,6 +5349,9 @@ class DescribeDisksReturnableResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4560,6 +5399,9 @@ class DescribeDockerActivitiesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4568,6 +5410,9 @@ class DescribeDockerActivitiesRequest(AbstractModel):
 
     @property
     def ActivityIds(self):
+        """Docker活动ID列表。可通过[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口返回值中的ActivityId获取。
+        :rtype: list of str
+        """
         return self._ActivityIds
 
     @ActivityIds.setter
@@ -4576,6 +5421,9 @@ class DescribeDockerActivitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4584,6 +5432,9 @@ class DescribeDockerActivitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4592,6 +5443,9 @@ class DescribeDockerActivitiesRequest(AbstractModel):
 
     @property
     def CreatedTimeBegin(self):
+        """活动创建时间的起始值，时间戳秒数。
+        :rtype: int
+        """
         return self._CreatedTimeBegin
 
     @CreatedTimeBegin.setter
@@ -4600,6 +5454,9 @@ class DescribeDockerActivitiesRequest(AbstractModel):
 
     @property
     def CreatedTimeEnd(self):
+        """活动创建时间的结束值，时间戳秒数。
+        :rtype: int
+        """
         return self._CreatedTimeEnd
 
     @CreatedTimeEnd.setter
@@ -4644,6 +5501,9 @@ class DescribeDockerActivitiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4652,6 +5512,9 @@ class DescribeDockerActivitiesResponse(AbstractModel):
 
     @property
     def DockerActivitySet(self):
+        """Docker活动列表。
+        :rtype: list of DockerActivity
+        """
         return self._DockerActivitySet
 
     @DockerActivitySet.setter
@@ -4660,6 +5523,9 @@ class DescribeDockerActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4695,6 +5561,9 @@ class DescribeDockerContainerConfigurationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4703,6 +5572,9 @@ class DescribeDockerContainerConfigurationRequest(AbstractModel):
 
     @property
     def ContainerId(self):
+        """容器ID。
+        :rtype: str
+        """
         return self._ContainerId
 
     @ContainerId.setter
@@ -4740,6 +5612,9 @@ class DescribeDockerContainerConfigurationResponse(AbstractModel):
 
     @property
     def ContainerConfiguration(self):
+        """Docker容器配置信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DockerContainerConfiguration`
+        """
         return self._ContainerConfiguration
 
     @ContainerConfiguration.setter
@@ -4748,6 +5623,9 @@ class DescribeDockerContainerConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4779,6 +5657,9 @@ class DescribeDockerContainerDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4787,6 +5668,9 @@ class DescribeDockerContainerDetailRequest(AbstractModel):
 
     @property
     def ContainerId(self):
+        """容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: str
+        """
         return self._ContainerId
 
     @ContainerId.setter
@@ -4824,6 +5708,9 @@ class DescribeDockerContainerDetailResponse(AbstractModel):
 
     @property
     def ContainerDetail(self):
+        """Docker容器详情，json字符串base64编码。
+        :rtype: str
+        """
         return self._ContainerDetail
 
     @ContainerDetail.setter
@@ -4832,6 +5719,9 @@ class DescribeDockerContainerDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4877,6 +5767,9 @@ class DescribeDockerContainersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4885,6 +5778,9 @@ class DescribeDockerContainersRequest(AbstractModel):
 
     @property
     def ContainerIds(self):
+        """容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: list of str
+        """
         return self._ContainerIds
 
     @ContainerIds.setter
@@ -4893,6 +5789,9 @@ class DescribeDockerContainersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4901,6 +5800,9 @@ class DescribeDockerContainersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4909,6 +5811,16 @@ class DescribeDockerContainersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>container-id</li>按照【容器ID】进行过滤。
+类型：String
+必选：否
+<li>container-name</li>按照【容器名称】进行过滤。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 ContainerIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4957,6 +5869,9 @@ class DescribeDockerContainersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4965,6 +5880,9 @@ class DescribeDockerContainersResponse(AbstractModel):
 
     @property
     def DockerContainerSet(self):
+        """容器列表。
+        :rtype: list of DockerContainer
+        """
         return self._DockerContainerSet
 
     @DockerContainerSet.setter
@@ -4973,6 +5891,9 @@ class DescribeDockerContainersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5011,6 +5932,9 @@ class DescribeFirewallRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5019,6 +5943,9 @@ class DescribeFirewallRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5027,6 +5954,9 @@ class DescribeFirewallRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5071,6 +6001,9 @@ class DescribeFirewallRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的防火墙规则数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5079,6 +6012,9 @@ class DescribeFirewallRulesResponse(AbstractModel):
 
     @property
     def FirewallRuleSet(self):
+        """防火墙规则详细信息列表。
+        :rtype: list of FirewallRuleInfo
+        """
         return self._FirewallRuleSet
 
     @FirewallRuleSet.setter
@@ -5087,6 +6023,9 @@ class DescribeFirewallRulesResponse(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """防火墙版本号。
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -5095,6 +6034,9 @@ class DescribeFirewallRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5140,6 +6082,9 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的防火墙规则数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5148,6 +6093,9 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
 
     @property
     def FirewallRuleSet(self):
+        """防火墙规则详细信息列表。
+        :rtype: list of FirewallRuleInfo
+        """
         return self._FirewallRuleSet
 
     @FirewallRuleSet.setter
@@ -5156,6 +6104,9 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5191,6 +6142,9 @@ class DescribeFirewallTemplateApplyRecordsRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5199,6 +6153,9 @@ class DescribeFirewallTemplateApplyRecordsRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """应用防火墙模板任务ID列表。可通过[ApplyFirewallTemplate](https://cloud.tencent.com/document/product/1207/96883)接口返回值TaskId字段获取。
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -5236,6 +6193,9 @@ class DescribeFirewallTemplateApplyRecordsResponse(AbstractModel):
 
     @property
     def ApplyRecordSet(self):
+        """防火墙模板应用记录列表。
+        :rtype: list of FirewallTemplateApplyRecord
+        """
         return self._ApplyRecordSet
 
     @ApplyRecordSet.setter
@@ -5244,6 +6204,9 @@ class DescribeFirewallTemplateApplyRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5287,6 +6250,9 @@ class DescribeFirewallTemplateQuotaResponse(AbstractModel):
 
     @property
     def Available(self):
+        """当前可用配额。
+        :rtype: int
+        """
         return self._Available
 
     @Available.setter
@@ -5295,6 +6261,9 @@ class DescribeFirewallTemplateQuotaResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总配额。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5303,6 +6272,9 @@ class DescribeFirewallTemplateQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5330,6 +6302,9 @@ class DescribeFirewallTemplateRuleQuotaRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5369,6 +6344,9 @@ class DescribeFirewallTemplateRuleQuotaResponse(AbstractModel):
 
     @property
     def Available(self):
+        """当前可用配额。
+        :rtype: int
+        """
         return self._Available
 
     @Available.setter
@@ -5377,6 +6355,9 @@ class DescribeFirewallTemplateRuleQuotaResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总配额。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5385,6 +6366,9 @@ class DescribeFirewallTemplateRuleQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5421,6 +6405,9 @@ class DescribeFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5429,6 +6416,9 @@ class DescribeFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateRuleIds(self):
+        """防火墙模板规则ID列表。
+        :rtype: list of str
+        """
         return self._TemplateRuleIds
 
     @TemplateRuleIds.setter
@@ -5437,6 +6427,9 @@ class DescribeFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5445,6 +6438,9 @@ class DescribeFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5487,6 +6483,9 @@ class DescribeFirewallTemplateRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """防火墙模板规则总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5495,6 +6494,9 @@ class DescribeFirewallTemplateRulesResponse(AbstractModel):
 
     @property
     def TemplateRuleSet(self):
+        """防火墙模板规则信息列表。
+        :rtype: list of FirewallTemplateRuleInfo
+        """
         return self._TemplateRuleSet
 
     @TemplateRuleSet.setter
@@ -5503,6 +6505,9 @@ class DescribeFirewallTemplateRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5554,6 +6559,9 @@ class DescribeFirewallTemplatesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
+        """防火墙模板ID列表。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。列表长度最大值为100。
+        :rtype: list of str
+        """
         return self._TemplateIds
 
     @TemplateIds.setter
@@ -5562,6 +6570,19 @@ class DescribeFirewallTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>template-id</li>按照【防火墙模板所属的ID】进行过滤。
+类型：String
+必选：否
+<li>template-name</li>按照【防火墙模板所属的名称】进行过滤。
+类型：String
+必选：否
+<li>template-type</li>按照【防火墙模板的类型】进行过滤。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 TemplateIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5570,6 +6591,9 @@ class DescribeFirewallTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5578,6 +6602,9 @@ class DescribeFirewallTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5625,6 +6652,9 @@ class DescribeFirewallTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """模板总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5633,6 +6663,9 @@ class DescribeFirewallTemplatesResponse(AbstractModel):
 
     @property
     def TemplateSet(self):
+        """防火墙模板列表。
+        :rtype: list of FirewallTemplate
+        """
         return self._TemplateSet
 
     @TemplateSet.setter
@@ -5641,6 +6674,9 @@ class DescribeFirewallTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5687,6 +6723,23 @@ class DescribeGeneralResourceQuotasRequest(AbstractModel):
 
     @property
     def ResourceNames(self):
+        """资源名列表，可取值:
+- GENERAL_BUNDLE_INSTANCE 通用型套餐实例
+- STORAGE_BUNDLE_INSTANCE 存储型套餐实例 
+- ENTERPRISE_BUNDLE_INSTANCE 企业型套餐实例 
+- EXCLUSIVE_BUNDLE_INSTANCE 专属型套餐实例
+- BEFAST_BUNDLE_INSTANCE 蜂驰型套餐实例
+- STARTER_BUNDLE_INSTANCE 入门型套餐实例
+- HK_EXCLUSIVE_BUNDLE_INSTANCE 中国香港专属型套餐实例
+- CAREFREE_BUNDLE_INSTANCE 无忧型套餐实例
+- USER_KEY_PAIR 密钥对
+- SNAPSHOT 快照
+- BLUEPRINT 自定义镜像
+- FREE_BLUEPRINT 免费自定义镜像
+- DATA_DISK 数据盘
+- FIREWALL_RULE 防火墙规则
+        :rtype: list of str
+        """
         return self._ResourceNames
 
     @ResourceNames.setter
@@ -5723,6 +6776,9 @@ class DescribeGeneralResourceQuotasResponse(AbstractModel):
 
     @property
     def GeneralResourceQuotaSet(self):
+        """通用资源配额详细信息列表。
+        :rtype: list of GeneralResourceQuota
+        """
         return self._GeneralResourceQuotaSet
 
     @GeneralResourceQuotaSet.setter
@@ -5731,6 +6787,9 @@ class DescribeGeneralResourceQuotasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5762,6 +6821,9 @@ class DescribeInstanceLoginKeyPairAttributeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5798,6 +6860,9 @@ class DescribeInstanceLoginKeyPairAttributeResponse(AbstractModel):
 
     @property
     def PermitLogin(self):
+        """是否允许使用默认密钥对登录，YES：允许登录 NO：禁止登录。
+        :rtype: str
+        """
         return self._PermitLogin
 
     @PermitLogin.setter
@@ -5806,6 +6871,9 @@ class DescribeInstanceLoginKeyPairAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5832,6 +6900,9 @@ class DescribeInstanceVncUrlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5868,6 +6939,9 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
 
     @property
     def InstanceVncUrl(self):
+        """实例的管理终端地址。
+        :rtype: str
+        """
         return self._InstanceVncUrl
 
     @InstanceVncUrl.setter
@@ -5876,6 +6950,9 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5902,6 +6979,9 @@ class DescribeInstancesDeniedActionsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -5938,6 +7018,9 @@ class DescribeInstancesDeniedActionsResponse(AbstractModel):
 
     @property
     def InstanceDeniedActionSet(self):
+        """实例操作限制列表详细信息。
+        :rtype: list of InstanceDeniedActions
+        """
         return self._InstanceDeniedActionSet
 
     @InstanceDeniedActionSet.setter
@@ -5946,6 +7029,9 @@ class DescribeInstancesDeniedActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5978,6 +7064,10 @@ class DescribeInstancesDiskNumRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID列表。每次请求批量实例的上限为 100。
+可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -6017,6 +7107,9 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def AttachDetailSet(self):
+        """挂载信息列表
+        :rtype: list of AttachDetail
+        """
         return self._AttachDetailSet
 
     @AttachDetailSet.setter
@@ -6025,6 +7118,9 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """挂载信息数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6033,6 +7129,9 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6109,6 +7208,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -6117,6 +7219,34 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>instance-name</li>按照【实例名称】进行过滤。
+类型：String
+必选：否
+<li>private-ip-address</li>按照【实例主网卡的内网 IP】进行过滤。
+类型：String
+必选：否
+<li>public-ip-address</li>按照【实例主网卡的公网 IP】进行过滤。
+类型：String
+必选：否
+<li>zone</li>按照【可用区】进行过滤。
+类型：String
+必选：否
+<li>instance-state</li>按照【实例状态】进行过滤。
+类型：String
+必选：否
+<li>tag-key</li>按照【标签键】进行过滤。
+类型：String
+必选：否
+<li>tag-value</li>按照【标签值】进行过滤。
+类型：String
+必选：否
+<li> tag:tag-key</li>按照【标签键值对】进行过滤。 tag-key使用具体的标签键进行替换。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 InstanceIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6125,6 +7255,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6133,6 +7266,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6141,6 +7277,10 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """指定排序字段 。取值范围： "EXPIRED_TIME"：依据实例的到期时间排序。 
+ 不传入此字段时, 优先返回实例状态为“待回收”的实例, 其余实例以“创建时间”倒序返回。
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -6149,6 +7289,12 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """输出实例列表的排列顺序。取值范围：
+"ASC"：升序排列。
+"DESC"：降序排列。
+默认按升序排序。当传入该字段时，必须指定OrderField。
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6198,6 +7344,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的实例数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6206,6 +7355,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """实例详细信息列表。
+        :rtype: list of Instance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -6214,6 +7366,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6252,6 +7407,9 @@ class DescribeInstancesReturnableRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -6260,6 +7418,9 @@ class DescribeInstancesReturnableRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6268,6 +7429,9 @@ class DescribeInstancesReturnableRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6309,6 +7473,9 @@ class DescribeInstancesReturnableResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的实例数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6317,6 +7484,9 @@ class DescribeInstancesReturnableResponse(AbstractModel):
 
     @property
     def InstanceReturnableSet(self):
+        """可退还实例详细信息列表。
+        :rtype: list of InstanceReturnable
+        """
         return self._InstanceReturnableSet
 
     @InstanceReturnableSet.setter
@@ -6325,6 +7495,9 @@ class DescribeInstancesReturnableResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6363,6 +7536,9 @@ class DescribeInstancesTrafficPackagesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -6371,6 +7547,9 @@ class DescribeInstancesTrafficPackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6379,6 +7558,9 @@ class DescribeInstancesTrafficPackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6420,6 +7602,9 @@ class DescribeInstancesTrafficPackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的实例流量包详情数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6428,6 +7613,9 @@ class DescribeInstancesTrafficPackagesResponse(AbstractModel):
 
     @property
     def InstanceTrafficPackageSet(self):
+        """实例流量包详情列表。
+        :rtype: list of InstanceTrafficPackage
+        """
         return self._InstanceTrafficPackageSet
 
     @InstanceTrafficPackageSet.setter
@@ -6436,6 +7624,9 @@ class DescribeInstancesTrafficPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6484,6 +7675,9 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥对 ID 列表，每次请求批量密钥对的上限为 100。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -6492,6 +7686,9 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6500,6 +7697,9 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6508,6 +7708,16 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>key-id</li>按照【密钥对ID】进行过滤。
+类型：String
+必选：否
+<li>key-name</li>按照【密钥对名称】进行过滤（支持模糊匹配）。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 KeyIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6555,6 +7765,9 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的密钥对数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6563,6 +7776,9 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def KeyPairSet(self):
+        """密钥对详细信息列表。
+        :rtype: list of KeyPair
+        """
         return self._KeyPairSet
 
     @KeyPairSet.setter
@@ -6571,6 +7787,9 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6629,6 +7848,9 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6637,6 +7859,26 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>bundle-id</li>按照【套餐 ID】进行过滤。
+类型：String
+必选：否
+可通过<a href="https://cloud.tencent.com/document/product/1207/47575"> DescribeBundles </a>接口返回值中的 BundleId 获取。
+<li>support-platform-type</li>按照【系统类型】进行过滤。
+取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）
+类型：String
+必选：否
+<li>bundle-type</li>按照 【套餐类型进行过滤】。
+取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
+类型：String
+必选：否
+<li>bundle-state</li>按照【套餐状态】进行过滤。
+取值: ‘ONLINE’(在线); ‘OFFLINE’(下线);
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6645,6 +7887,9 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6653,6 +7898,9 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6700,6 +7948,9 @@ class DescribeModifyInstanceBundlesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的套餐数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6708,6 +7959,9 @@ class DescribeModifyInstanceBundlesResponse(AbstractModel):
 
     @property
     def ModifyBundleSet(self):
+        """变更套餐详细信息。
+        :rtype: list of ModifyBundle
+        """
         return self._ModifyBundleSet
 
     @ModifyBundleSet.setter
@@ -6716,6 +7970,9 @@ class DescribeModifyInstanceBundlesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6760,6 +8017,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """地域数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6768,6 +8028,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
+        """地域信息列表。
+        :rtype: list of RegionInfo
+        """
         return self._RegionSet
 
     @RegionSet.setter
@@ -6776,6 +8039,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6839,6 +8105,9 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6847,6 +8116,9 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6855,6 +8127,9 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6863,6 +8138,31 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>blueprint-id</li>按照【镜像 ID】进行过滤。
+类型：String
+必选：否
+可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintId 获取。
+<li>blueprint-type</li>按照【镜像类型】进行过滤。
+取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）。
+类型：String
+必选：否
+<li>platform-type</li>按照【镜像平台类型】进行过滤。
+取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
+类型：String
+必选：否
+<li>blueprint-name</li>按照【镜像名称】进行过滤。
+类型：String
+必选：否
+可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintName 获取。
+<li>blueprint-state</li>按照【镜像状态】进行过滤。
+类型：String
+必选：否
+可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintState 获取。
+
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6910,6 +8210,9 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的镜像数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6918,6 +8221,9 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
 
     @property
     def ResetInstanceBlueprintSet(self):
+        """镜像重置信息列表
+        :rtype: list of ResetInstanceBlueprint
+        """
         return self._ResetInstanceBlueprintSet
 
     @ResetInstanceBlueprintSet.setter
@@ -6926,6 +8232,9 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6964,6 +8273,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def SceneIds(self):
+        """使用场景ID列表。可通过[DescribeScenes](https://cloud.tencent.com/document/product/1207/83512)接口返回值中的SceneId获取。
+        :rtype: list of str
+        """
         return self._SceneIds
 
     @SceneIds.setter
@@ -6972,6 +8284,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6980,6 +8295,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7021,6 +8339,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def SceneSet(self):
+        """使用场景列表。
+        :rtype: list of Scene
+        """
         return self._SceneSet
 
     @SceneSet.setter
@@ -7029,6 +8350,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """使用场景总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7037,6 +8361,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7069,6 +8396,9 @@ class DescribeSnapshotsDeniedActionsRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """快照 ID 列表, 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -7105,6 +8435,9 @@ class DescribeSnapshotsDeniedActionsResponse(AbstractModel):
 
     @property
     def SnapshotDeniedActionSet(self):
+        """快照操作限制列表详细信息。
+        :rtype: list of SnapshotDeniedActions
+        """
         return self._SnapshotDeniedActionSet
 
     @SnapshotDeniedActionSet.setter
@@ -7113,6 +8446,9 @@ class DescribeSnapshotsDeniedActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7175,6 +8511,11 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """要查询快照的 ID 列表。每次请求批量快照的上限为 100。 
+可通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/1207/54388) 接口返回值中的 SnapshotId		获取。
+参数不支持同时指定 SnapshotIds 和 Filters。
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -7183,6 +8524,29 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+<li>snapshot-id</li>按照【快照 ID】进行过滤。
+类型：String
+必选：否
+可通过 <a href="https://cloud.tencent.com/document/product/1207/54388">DescribeSnapshots</a> 接口返回值中的 SnapshotId 获取。
+
+<li>disk-id</li>按照【磁盘 ID】进行过滤。
+类型：String
+必选：否
+可通过 <a href="https://cloud.tencent.com/document/product/1207/66093">DescribeDisks</a> 接口返回值中的 DiskId 获取。
+
+<li>snapshot-name</li>按照【快照名称】进行过滤。
+类型：String
+必选：否
+可通过 <a href="https://cloud.tencent.com/document/product/1207/54388">DescribeSnapshots</a> 接口返回值中的 SnapshotName 获取。
+<li>instance-id</li>按照【实例 ID 】进行过滤。
+类型：String
+必选：否
+可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
+
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7191,6 +8555,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7199,6 +8566,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7246,6 +8616,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """快照的数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7254,6 +8627,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def SnapshotSet(self):
+        """快照的详情列表。
+        :rtype: list of Snapshot
+        """
         return self._SnapshotSet
 
     @SnapshotSet.setter
@@ -7262,6 +8638,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7303,6 +8682,12 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """可用区列表排序的依据字段。取值范围：
+<li>ZONE：依据可用区排序。</li>
+<li>INSTANCE_DISPLAY_LABEL：依据可用区展示标签排序，可用区展示标签包括：HIDDEN（隐藏）、NORMAL（普通）、SELECTED（默认选中），默认采用的升序排列为：['HIDDEN', 'NORMAL', 'SELECTED']。
+默认按可用区排序。</li>
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -7311,6 +8696,12 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """输出可用区列表的排列顺序。取值范围：
+<li>ASC：升序排列。 </li>
+<li>DESC：降序排列。</li>
+默认按升序排列。
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -7351,6 +8742,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """可用区数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7359,6 +8753,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def ZoneInfoSet(self):
+        """可用区详细信息列表
+        :rtype: list of ZoneInfo
+        """
         return self._ZoneInfoSet
 
     @ZoneInfoSet.setter
@@ -7367,6 +8764,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7399,6 +8799,9 @@ class DetachCcnRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -7432,6 +8835,9 @@ class DetachCcnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7457,6 +8863,9 @@ class DetachDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -7490,6 +8899,9 @@ class DetachDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7529,6 +8941,11 @@ class DetailPrice(AbstractModel):
 
     @property
     def PriceName(self):
+        """描述计费项目名称，目前取值
+<li>"DiskSpace"代表云硬盘空间收费项。</li>
+<li>"DiskBackupQuota"代表云硬盘备份点配额收费项。</li>
+        :rtype: str
+        """
         return self._PriceName
 
     @PriceName.setter
@@ -7537,6 +8954,9 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginUnitPrice(self):
+        """云硬盘计费项维度单价。
+        :rtype: float
+        """
         return self._OriginUnitPrice
 
     @OriginUnitPrice.setter
@@ -7545,6 +8965,9 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """云硬盘计费项维度总价。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -7553,6 +8976,9 @@ class DetailPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """云硬盘在计费项维度折扣。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -7561,6 +8987,9 @@ class DetailPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """云硬盘在计费项维度折后总价。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -7601,6 +9030,9 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥对 ID 列表，每次请求批量密钥对的上限为 100。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -7609,6 +9041,9 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -7643,6 +9078,9 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7683,6 +9121,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """计费时长。
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -7691,6 +9132,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """计费单元。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -7699,6 +9143,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TotalCost(self):
+        """总价。
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -7707,6 +9154,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def RealTotalCost(self):
+        """折后总价。
+        :rtype: float
+        """
         return self._RealTotalCost
 
     @RealTotalCost.setter
@@ -7715,6 +9165,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -7723,6 +9176,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def PolicyDetail(self):
+        """具体折扣详情。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
+        """
         return self._PolicyDetail
 
     @PolicyDetail.setter
@@ -7836,6 +9292,9 @@ class Disk(AbstractModel):
 
     @property
     def DiskId(self):
+        """磁盘ID
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -7844,6 +9303,9 @@ class Disk(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7852,6 +9314,9 @@ class Disk(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -7860,6 +9325,9 @@ class Disk(AbstractModel):
 
     @property
     def DiskName(self):
+        """磁盘名称
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -7868,6 +9336,9 @@ class Disk(AbstractModel):
 
     @property
     def DiskUsage(self):
+        """磁盘类型
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -7876,6 +9347,9 @@ class Disk(AbstractModel):
 
     @property
     def DiskType(self):
+        """磁盘介质类型
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -7884,6 +9358,9 @@ class Disk(AbstractModel):
 
     @property
     def DiskChargeType(self):
+        """磁盘付费类型
+        :rtype: str
+        """
         return self._DiskChargeType
 
     @DiskChargeType.setter
@@ -7892,6 +9369,9 @@ class Disk(AbstractModel):
 
     @property
     def DiskSize(self):
+        """磁盘大小
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -7900,6 +9380,9 @@ class Disk(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """续费标识
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -7908,6 +9391,19 @@ class Disk(AbstractModel):
 
     @property
     def DiskState(self):
+        """磁盘状态，取值范围：
+<li>PENDING：创建中。 </li>
+<li>UNATTACHED：未挂载。</li>
+<li>ATTACHING：挂载中。</li>
+<li>ATTACHED：已挂载。</li>
+<li>DETACHING：卸载中。 </li>
+<li> SHUTDOWN：已隔离。</li>
+<li> CREATED_FAILED：创建失败。</li>
+<li>TERMINATING：销毁中。</li>
+<li> DELETING：删除中。</li>
+<li> FREEZING：冻结中。</li>
+        :rtype: str
+        """
         return self._DiskState
 
     @DiskState.setter
@@ -7916,6 +9412,9 @@ class Disk(AbstractModel):
 
     @property
     def Attached(self):
+        """磁盘挂载状态
+        :rtype: bool
+        """
         return self._Attached
 
     @Attached.setter
@@ -7924,6 +9423,9 @@ class Disk(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
+        """是否随实例释放
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -7932,6 +9434,9 @@ class Disk(AbstractModel):
 
     @property
     def LatestOperation(self):
+        """上一次操作
+        :rtype: str
+        """
         return self._LatestOperation
 
     @LatestOperation.setter
@@ -7940,6 +9445,9 @@ class Disk(AbstractModel):
 
     @property
     def LatestOperationState(self):
+        """上一次操作状态
+        :rtype: str
+        """
         return self._LatestOperationState
 
     @LatestOperationState.setter
@@ -7948,6 +9456,9 @@ class Disk(AbstractModel):
 
     @property
     def LatestOperationRequestId(self):
+        """上一次请求ID
+        :rtype: str
+        """
         return self._LatestOperationRequestId
 
     @LatestOperationRequestId.setter
@@ -7956,6 +9467,11 @@ class Disk(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -7964,6 +9480,11 @@ class Disk(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -7972,6 +9493,11 @@ class Disk(AbstractModel):
 
     @property
     def IsolatedTime(self):
+        """隔离时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsolatedTime
 
     @IsolatedTime.setter
@@ -7980,6 +9506,9 @@ class Disk(AbstractModel):
 
     @property
     def DiskBackupCount(self):
+        """云硬盘的已有备份点数量。
+        :rtype: int
+        """
         return self._DiskBackupCount
 
     @DiskBackupCount.setter
@@ -7988,6 +9517,9 @@ class Disk(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """云硬盘的备份点配额数量。
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -8078,6 +9610,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskBackupId(self):
+        """云硬盘备份点ID。
+        :rtype: str
+        """
         return self._DiskBackupId
 
     @DiskBackupId.setter
@@ -8086,6 +9621,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskUsage(self):
+        """创建此云硬盘备份点的云硬盘类型。取值：<li>DATA_DISK：数据盘</li>
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -8094,6 +9632,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskId(self):
+        """创建此云硬盘备份点的云硬盘 ID。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -8102,6 +9643,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskSize(self):
+        """创建此云硬盘备份点的云硬盘大小，单位 GB。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -8110,6 +9654,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskBackupName(self):
+        """云硬盘备份点名称，用户自定义的云硬盘备份点别名。
+        :rtype: str
+        """
         return self._DiskBackupName
 
     @DiskBackupName.setter
@@ -8118,6 +9665,13 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskBackupState(self):
+        """云硬盘备份点的状态。取值范围：
+<li>NORMAL：正常。 </li>
+<li>CREATING：创建中。</li>
+<li>ROLLBACKING：回滚中。</li>
+<li>DELETING：删除中。</li>
+        :rtype: str
+        """
         return self._DiskBackupState
 
     @DiskBackupState.setter
@@ -8126,6 +9680,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def Percent(self):
+        """创建或回滚云硬盘备份点进度百分比，成功后此字段取值为 100。
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -8134,6 +9691,10 @@ class DiskBackup(AbstractModel):
 
     @property
     def LatestOperation(self):
+        """上一次操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperation
 
     @LatestOperation.setter
@@ -8142,6 +9703,10 @@ class DiskBackup(AbstractModel):
 
     @property
     def LatestOperationState(self):
+        """上一次操作状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperationState
 
     @LatestOperationState.setter
@@ -8150,6 +9715,10 @@ class DiskBackup(AbstractModel):
 
     @property
     def LatestOperationRequestId(self):
+        """上一次请求ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperationRequestId
 
     @LatestOperationRequestId.setter
@@ -8158,6 +9727,10 @@ class DiskBackup(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -8204,6 +9777,9 @@ class DiskBackupDeniedActions(AbstractModel):
 
     @property
     def DiskBackupId(self):
+        """云硬盘备份点ID。
+        :rtype: str
+        """
         return self._DiskBackupId
 
     @DiskBackupId.setter
@@ -8212,6 +9788,9 @@ class DiskBackupDeniedActions(AbstractModel):
 
     @property
     def DeniedActions(self):
+        """操作限制列表。
+        :rtype: list of DeniedAction
+        """
         return self._DeniedActions
 
     @DeniedActions.setter
@@ -8257,6 +9836,9 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """新购周期。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -8265,6 +9847,9 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -8273,6 +9858,9 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """新购单位. 默认值: "m"。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -8323,6 +9911,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -8331,6 +9922,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskType(self):
+        """云硬盘类型。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -8339,6 +9933,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskSalesState(self):
+        """云硬盘可售卖状态。
+        :rtype: str
+        """
         return self._DiskSalesState
 
     @DiskSalesState.setter
@@ -8347,6 +9944,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def MaxDiskSize(self):
+        """最大云硬盘大小。
+        :rtype: int
+        """
         return self._MaxDiskSize
 
     @MaxDiskSize.setter
@@ -8355,6 +9955,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def MinDiskSize(self):
+        """最小云硬盘大小。
+        :rtype: int
+        """
         return self._MinDiskSize
 
     @MinDiskSize.setter
@@ -8363,6 +9966,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskStepSize(self):
+        """云硬盘步长。
+        :rtype: int
+        """
         return self._DiskStepSize
 
     @DiskStepSize.setter
@@ -8404,6 +10010,9 @@ class DiskDeniedActions(AbstractModel):
 
     @property
     def DiskId(self):
+        """云硬盘ID。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -8412,6 +10021,9 @@ class DiskDeniedActions(AbstractModel):
 
     @property
     def DeniedActions(self):
+        """操作限制列表。
+        :rtype: list of DeniedAction
+        """
         return self._DeniedActions
 
     @DeniedActions.setter
@@ -8463,6 +10075,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def OriginalDiskPrice(self):
+        """云硬盘单价。
+        :rtype: float
+        """
         return self._OriginalDiskPrice
 
     @OriginalDiskPrice.setter
@@ -8471,6 +10086,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """云硬盘总价。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -8479,6 +10097,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -8487,6 +10108,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """折后总价。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -8495,6 +10119,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def DetailPrices(self):
+        """计费项目明细列表。
+        :rtype: list of DetailPrice
+        """
         return self._DetailPrices
 
     @DetailPrices.setter
@@ -8546,6 +10173,9 @@ class DiskReturnable(AbstractModel):
 
     @property
     def DiskId(self):
+        """云硬盘ID。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -8554,6 +10184,9 @@ class DiskReturnable(AbstractModel):
 
     @property
     def IsReturnable(self):
+        """云硬盘是否可退还。
+        :rtype: bool
+        """
         return self._IsReturnable
 
     @IsReturnable.setter
@@ -8562,6 +10195,9 @@ class DiskReturnable(AbstractModel):
 
     @property
     def ReturnFailCode(self):
+        """云硬盘退还失败错误码。
+        :rtype: int
+        """
         return self._ReturnFailCode
 
     @ReturnFailCode.setter
@@ -8570,6 +10206,9 @@ class DiskReturnable(AbstractModel):
 
     @property
     def ReturnFailMessage(self):
+        """云硬盘退还失败错误信息。
+        :rtype: str
+        """
         return self._ReturnFailMessage
 
     @ReturnFailMessage.setter
@@ -8629,6 +10268,9 @@ class DockerActivity(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动ID。
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -8637,6 +10279,9 @@ class DockerActivity(AbstractModel):
 
     @property
     def ActivityName(self):
+        """活动名称。
+        :rtype: str
+        """
         return self._ActivityName
 
     @ActivityName.setter
@@ -8645,6 +10290,13 @@ class DockerActivity(AbstractModel):
 
     @property
     def ActivityState(self):
+        """活动状态。取值范围： 
+<li>INIT：表示初始化，活动尚未执行</li>
+<li>OPERATING：表示活动执行中</li>
+<li>SUCCESS：表示活动执行成功</li>
+<li>FAILED：表示活动执行失败</li>
+        :rtype: str
+        """
         return self._ActivityState
 
     @ActivityState.setter
@@ -8653,6 +10305,9 @@ class DockerActivity(AbstractModel):
 
     @property
     def ActivityCommandOutput(self):
+        """活动执行的命令输出，以base64编码。
+        :rtype: str
+        """
         return self._ActivityCommandOutput
 
     @ActivityCommandOutput.setter
@@ -8661,6 +10316,9 @@ class DockerActivity(AbstractModel):
 
     @property
     def ContainerIds(self):
+        """容器ID列表。
+        :rtype: list of str
+        """
         return self._ContainerIds
 
     @ContainerIds.setter
@@ -8669,6 +10327,9 @@ class DockerActivity(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -8677,6 +10338,10 @@ class DockerActivity(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8740,6 +10405,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def ContainerId(self):
+        """容器ID
+        :rtype: str
+        """
         return self._ContainerId
 
     @ContainerId.setter
@@ -8748,6 +10416,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def ContainerName(self):
+        """容器名称
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -8756,6 +10427,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def ContainerImage(self):
+        """容器镜像地址
+        :rtype: str
+        """
         return self._ContainerImage
 
     @ContainerImage.setter
@@ -8764,6 +10438,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def Command(self):
+        """容器Command
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -8772,6 +10449,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def Status(self):
+        """容器状态描述
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8780,6 +10460,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def State(self):
+        """容器状态，和docker的容器状态保持一致，当前取值有：created, restarting, running, removing, paused, exited, or dead
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -8788,6 +10471,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def PublishPortSet(self):
+        """容器端口主机端口映射列表
+        :rtype: list of DockerContainerPublishPort
+        """
         return self._PublishPortSet
 
     @PublishPortSet.setter
@@ -8796,6 +10482,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def VolumeSet(self):
+        """容器挂载本地卷列表
+        :rtype: list of DockerContainerVolume
+        """
         return self._VolumeSet
 
     @VolumeSet.setter
@@ -8804,6 +10493,9 @@ class DockerContainer(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -8873,6 +10565,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def ContainerImage(self):
+        """容器镜像地址
+        :rtype: str
+        """
         return self._ContainerImage
 
     @ContainerImage.setter
@@ -8881,6 +10576,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def ContainerName(self):
+        """容器名称
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -8889,6 +10587,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def Envs(self):
+        """环境变量列表
+        :rtype: list of ContainerEnv
+        """
         return self._Envs
 
     @Envs.setter
@@ -8897,6 +10598,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def PublishPorts(self):
+        """容器端口主机端口映射列表
+        :rtype: list of DockerContainerPublishPort
+        """
         return self._PublishPorts
 
     @PublishPorts.setter
@@ -8905,6 +10609,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def Volumes(self):
+        """容器加载本地卷列表
+        :rtype: list of DockerContainerVolume
+        """
         return self._Volumes
 
     @Volumes.setter
@@ -8913,6 +10620,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def Command(self):
+        """运行的命令
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -8921,6 +10631,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def RestartPolicy(self):
+        """容器重启策略
+        :rtype: str
+        """
         return self._RestartPolicy
 
     @RestartPolicy.setter
@@ -8986,6 +10699,9 @@ class DockerContainerPublishPort(AbstractModel):
 
     @property
     def HostPort(self):
+        """主机端口
+        :rtype: int
+        """
         return self._HostPort
 
     @HostPort.setter
@@ -8994,6 +10710,9 @@ class DockerContainerPublishPort(AbstractModel):
 
     @property
     def ContainerPort(self):
+        """容器端口
+        :rtype: int
+        """
         return self._ContainerPort
 
     @ContainerPort.setter
@@ -9002,6 +10721,10 @@ class DockerContainerPublishPort(AbstractModel):
 
     @property
     def Ip(self):
+        """对外绑定IP，默认0.0.0.0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -9010,6 +10733,10 @@ class DockerContainerPublishPort(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议，默认tcp，支持tcp/udp/sctp
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -9049,6 +10776,9 @@ class DockerContainerVolume(AbstractModel):
 
     @property
     def ContainerPath(self):
+        """容器路径
+        :rtype: str
+        """
         return self._ContainerPath
 
     @ContainerPath.setter
@@ -9057,6 +10787,9 @@ class DockerContainerVolume(AbstractModel):
 
     @property
     def HostPath(self):
+        """主机路径
+        :rtype: str
+        """
         return self._HostPath
 
     @HostPath.setter
@@ -9104,6 +10837,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9112,6 +10848,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -9161,6 +10900,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议，取值：TCP，UDP，ICMP，ALL。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -9169,6 +10911,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def Port(self):
+        """端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -9177,6 +10922,12 @@ class FirewallRule(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """IPv4网段或 IPv4地址(互斥)。
+示例值：0.0.0.0/0。
+
+和Ipv6CidrBlock互斥，两者都不指定时，如果Protocol不是ICMPv6，则取默认值0.0.0.0/0。
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -9185,6 +10936,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def Action(self):
+        """取值：ACCEPT，DROP。默认为 ACCEPT。
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -9193,6 +10947,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def FirewallRuleDescription(self):
+        """防火墙规则描述。
+        :rtype: str
+        """
         return self._FirewallRuleDescription
 
     @FirewallRuleDescription.setter
@@ -9248,6 +11005,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def AppType(self):
+        """应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，ALL。
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -9256,6 +11016,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议，取值：TCP，UDP，ICMP，ALL。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -9264,6 +11027,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def Port(self):
+        """端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -9272,6 +11038,12 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """IPv4网段或 IPv4地址(互斥)。
+示例值：0.0.0.0/0。
+
+和Ipv6CidrBlock互斥，两者都不指定时，如果Protocol不是ICMPv6，则取默认值0.0.0.0/0。
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -9280,6 +11052,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def Action(self):
+        """取值：ACCEPT，DROP。默认为 ACCEPT。
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -9288,6 +11063,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def FirewallRuleDescription(self):
+        """防火墙规则描述。
+        :rtype: str
+        """
         return self._FirewallRuleDescription
 
     @FirewallRuleDescription.setter
@@ -9338,6 +11116,9 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板Id。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -9346,6 +11127,9 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -9354,6 +11138,9 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def TemplateType(self):
+        """模板类型。
+        :rtype: str
+        """
         return self._TemplateType
 
     @TemplateType.setter
@@ -9362,6 +11149,9 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def TemplateState(self):
+        """模板状态。
+        :rtype: str
+        """
         return self._TemplateState
 
     @TemplateState.setter
@@ -9370,6 +11160,9 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """模板创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -9428,6 +11221,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9436,6 +11232,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
 
     @property
     def ApplyTime(self):
+        """应用模板的时间。
+        :rtype: str
+        """
         return self._ApplyTime
 
     @ApplyTime.setter
@@ -9444,6 +11243,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
 
     @property
     def TemplateRuleSet(self):
+        """模板规则列表。
+        :rtype: list of FirewallTemplateRule
+        """
         return self._TemplateRuleSet
 
     @TemplateRuleSet.setter
@@ -9452,6 +11254,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
 
     @property
     def ApplyState(self):
+        """应用模板的执行状态。
+        :rtype: str
+        """
         return self._ApplyState
 
     @ApplyState.setter
@@ -9460,6 +11265,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
 
     @property
     def SuccessCount(self):
+        """应用成功的实例数量。
+        :rtype: int
+        """
         return self._SuccessCount
 
     @SuccessCount.setter
@@ -9468,6 +11276,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
 
     @property
     def FailedCount(self):
+        """应用失败的实例数量。
+        :rtype: int
+        """
         return self._FailedCount
 
     @FailedCount.setter
@@ -9476,6 +11287,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
 
     @property
     def RunningCount(self):
+        """正在应用中的实例数量。
+        :rtype: int
+        """
         return self._RunningCount
 
     @RunningCount.setter
@@ -9484,6 +11298,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
 
     @property
     def ApplyDetailSet(self):
+        """应用模板的执行细节。
+        :rtype: list of FirewallTemplateApplyRecordDetail
+        """
         return self._ApplyDetailSet
 
     @ApplyDetailSet.setter
@@ -9540,6 +11357,9 @@ class FirewallTemplateApplyRecordDetail(AbstractModel):
 
     @property
     def Instance(self):
+        """实例标识信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceIdentifier`
+        """
         return self._Instance
 
     @Instance.setter
@@ -9548,6 +11368,9 @@ class FirewallTemplateApplyRecordDetail(AbstractModel):
 
     @property
     def ApplyState(self):
+        """防火墙模板应用状态。
+        :rtype: str
+        """
         return self._ApplyState
 
     @ApplyState.setter
@@ -9556,6 +11379,9 @@ class FirewallTemplateApplyRecordDetail(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """防火墙模板应用错误信息。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -9596,6 +11422,9 @@ class FirewallTemplateRule(AbstractModel):
 
     @property
     def TemplateRuleId(self):
+        """防火墙模板规则ID。
+        :rtype: str
+        """
         return self._TemplateRuleId
 
     @TemplateRuleId.setter
@@ -9604,6 +11433,9 @@ class FirewallTemplateRule(AbstractModel):
 
     @property
     def FirewallRule(self):
+        """防火墙规则。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRule`
+        """
         return self._FirewallRule
 
     @FirewallRule.setter
@@ -9643,6 +11475,9 @@ class FirewallTemplateRuleInfo(AbstractModel):
 
     @property
     def TemplateRuleId(self):
+        """防火墙模板规则ID。
+        :rtype: str
+        """
         return self._TemplateRuleId
 
     @TemplateRuleId.setter
@@ -9651,6 +11486,9 @@ class FirewallTemplateRuleInfo(AbstractModel):
 
     @property
     def FirewallRuleInfo(self):
+        """防火墙规则信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRuleInfo`
+        """
         return self._FirewallRuleInfo
 
     @FirewallRuleInfo.setter
@@ -9694,6 +11532,9 @@ class GeneralResourceQuota(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -9702,6 +11543,9 @@ class GeneralResourceQuota(AbstractModel):
 
     @property
     def ResourceQuotaAvailable(self):
+        """资源当前可用数量。
+        :rtype: int
+        """
         return self._ResourceQuotaAvailable
 
     @ResourceQuotaAvailable.setter
@@ -9710,6 +11554,9 @@ class GeneralResourceQuota(AbstractModel):
 
     @property
     def ResourceQuotaTotal(self):
+        """资源总数量。
+        :rtype: int
+        """
         return self._ResourceQuotaTotal
 
     @ResourceQuotaTotal.setter
@@ -9748,6 +11595,9 @@ class ImportKeyPairRequest(AbstractModel):
 
     @property
     def KeyName(self):
+        """密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
+        :rtype: str
+        """
         return self._KeyName
 
     @KeyName.setter
@@ -9756,6 +11606,9 @@ class ImportKeyPairRequest(AbstractModel):
 
     @property
     def PublicKey(self):
+        """密钥对的公钥内容， OpenSSH RSA 格式。
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -9793,6 +11646,9 @@ class ImportKeyPairResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """密钥对 ID。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -9801,6 +11657,9 @@ class ImportKeyPairResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9827,6 +11686,9 @@ class InquirePriceCreateBlueprintRequest(AbstractModel):
 
     @property
     def BlueprintCount(self):
+        """自定义镜像的个数。默认值为1。
+        :rtype: int
+        """
         return self._BlueprintCount
 
     @BlueprintCount.setter
@@ -9863,6 +11725,9 @@ class InquirePriceCreateBlueprintResponse(AbstractModel):
 
     @property
     def BlueprintPrice(self):
+        """自定义镜像的价格参数。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.BlueprintPrice`
+        """
         return self._BlueprintPrice
 
     @BlueprintPrice.setter
@@ -9871,6 +11736,9 @@ class InquirePriceCreateBlueprintResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9911,6 +11779,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """云硬盘大小, 单位: GB。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -9919,6 +11790,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """云硬盘介质类型。取值: "CLOUD_PREMIUM"(高性能云盘), "CLOUD_SSD"(SSD云硬盘)。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -9927,6 +11801,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
+        """新购云硬盘包年包月相关参数设置。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
+        """
         return self._DiskChargePrepaid
 
     @DiskChargePrepaid.setter
@@ -9935,6 +11812,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskCount(self):
+        """云硬盘个数, 默认值: 1。
+        :rtype: int
+        """
         return self._DiskCount
 
     @DiskCount.setter
@@ -9943,6 +11823,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -9985,6 +11868,9 @@ class InquirePriceCreateDisksResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """云硬盘价格。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -9993,6 +11879,9 @@ class InquirePriceCreateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10030,6 +11919,9 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def BundleId(self):
+        """实例的套餐 ID。可以通过调用[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口获取。
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -10038,6 +11930,9 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -10046,6 +11941,9 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """创建数量，默认为 1。
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -10054,6 +11952,9 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """应用镜像 ID，使用收费应用镜像时必填。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -10095,6 +11996,9 @@ class InquirePriceCreateInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
+        """询价信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -10103,6 +12007,9 @@ class InquirePriceCreateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10134,6 +12041,9 @@ class InquirePriceRenewDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。每次批量请求云硬盘的上限为 1。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -10142,6 +12052,9 @@ class InquirePriceRenewDisksRequest(AbstractModel):
 
     @property
     def RenewDiskChargePrepaid(self):
+        """续费云硬盘包年包月相关参数设置。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
+        """
         return self._RenewDiskChargePrepaid
 
     @RenewDiskChargePrepaid.setter
@@ -10181,6 +12094,9 @@ class InquirePriceRenewDisksResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """云硬盘价格。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -10189,6 +12105,9 @@ class InquirePriceRenewDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10226,6 +12145,9 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """待续费的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573 )接口返回值中的InstanceId获取。每次请求批量实例的上限为50。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -10234,6 +12156,9 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -10242,6 +12167,9 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def RenewDataDisk(self):
+        """是否续费数据盘。默认值: false, 即不续费。
+        :rtype: bool
+        """
         return self._RenewDataDisk
 
     @RenewDataDisk.setter
@@ -10250,6 +12178,9 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def AlignInstanceExpiredTime(self):
+        """数据盘是否对齐实例到期时间。默认值: false, 即不对齐。
+        :rtype: bool
+        """
         return self._AlignInstanceExpiredTime
 
     @AlignInstanceExpiredTime.setter
@@ -10302,6 +12233,9 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
+        """询价信息。默认为列表中第一个实例的价格信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -10310,6 +12244,10 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
 
     @property
     def DataDiskPriceSet(self):
+        """数据盘价格信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataDiskPrice
+        """
         return self._DataDiskPriceSet
 
     @DataDiskPriceSet.setter
@@ -10318,6 +12256,10 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
 
     @property
     def InstancePriceDetailSet(self):
+        """待续费实例价格列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstancePriceDetail
+        """
         return self._InstancePriceDetailSet
 
     @InstancePriceDetailSet.setter
@@ -10326,6 +12268,9 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
 
     @property
     def TotalPrice(self):
+        """总计价格。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.TotalPrice`
+        """
         return self._TotalPrice
 
     @TotalPrice.setter
@@ -10334,6 +12279,9 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10447,6 +12395,9 @@ FAILED：表示操作失败
         :type InstanceRestrictState: str
         :param _InitInvocationId: 创建实例后自动执行TAT命令的调用ID。
         :type InitInvocationId: str
+        :param _InstanceViolationDetail: 实例违规详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceViolationDetail: :class:`tencentcloud.lighthouse.v20200324.models.InstanceViolationDetail`
         """
         self._InstanceId = None
         self._BundleId = None
@@ -10477,9 +12428,13 @@ FAILED：表示操作失败
         self._Tags = None
         self._InstanceRestrictState = None
         self._InitInvocationId = None
+        self._InstanceViolationDetail = None
 
     @property
     def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10488,6 +12443,9 @@ FAILED：表示操作失败
 
     @property
     def BundleId(self):
+        """套餐 ID。
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -10496,6 +12454,9 @@ FAILED：表示操作失败
 
     @property
     def BlueprintId(self):
+        """镜像 ID。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -10504,6 +12465,9 @@ FAILED：表示操作失败
 
     @property
     def CPU(self):
+        """实例的 CPU 核数，单位：核。
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -10512,6 +12476,9 @@ FAILED：表示操作失败
 
     @property
     def Memory(self):
+        """实例内存容量，单位：GB 。
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -10520,6 +12487,9 @@ FAILED：表示操作失败
 
     @property
     def InstanceName(self):
+        """实例名称。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -10528,6 +12498,10 @@ FAILED：表示操作失败
 
     @property
     def InstanceChargeType(self):
+        """实例计费模式。取值范围： 
+PREPAID：表示预付费，即包年包月。
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -10536,6 +12510,9 @@ FAILED：表示操作失败
 
     @property
     def SystemDisk(self):
+        """实例系统盘信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -10544,6 +12521,10 @@ FAILED：表示操作失败
 
     @property
     def PrivateAddresses(self):
+        """实例主网卡的内网 IP。 
+注意：此字段可能返回 空，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PrivateAddresses
 
     @PrivateAddresses.setter
@@ -10552,6 +12533,10 @@ FAILED：表示操作失败
 
     @property
     def PublicAddresses(self):
+        """实例主网卡的公网 IP。 
+注意：此字段可能返回 空，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PublicAddresses
 
     @PublicAddresses.setter
@@ -10560,6 +12545,9 @@ FAILED：表示操作失败
 
     @property
     def InternetAccessible(self):
+        """实例带宽信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -10568,6 +12556,11 @@ FAILED：表示操作失败
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围： 
+NOTIFY_AND_MANUAL_RENEW：表示通知即将过期，但不自动续费  
+NOTIFY_AND_AUTO_RENEW：表示通知即将过期，而且自动续费 。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -10576,6 +12569,9 @@ FAILED：表示操作失败
 
     @property
     def LoginSettings(self):
+        """实例登录设置。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -10584,6 +12580,10 @@ FAILED：表示操作失败
 
     @property
     def InstanceState(self):
+        """实例状态。取值范围： 
+<li>PENDING：表示创建中</li><li>LAUNCH_FAILED：表示创建失败</li><li>RUNNING：表示运行中</li><li>STOPPED：表示关机</li><li>STARTING：表示开机中</li><li>STOPPING：表示关机中</li><li>REBOOTING：表示重启中</li><li>SHUTDOWN：表示停止待销毁</li><li>TERMINATING：表示销毁中</li><li>DELETING：表示删除中</li><li>FREEZING：表示冻结中</li><li>ENTER_RESCUE_MODE：表示进入救援模式中</li><li>RESCUE_MODE：表示救援模式</li><li>EXIT_RESCUE_MODE：表示退出救援模式中</li>
+        :rtype: str
+        """
         return self._InstanceState
 
     @InstanceState.setter
@@ -10592,6 +12592,9 @@ FAILED：表示操作失败
 
     @property
     def Uuid(self):
+        """实例全局唯一 ID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -10600,6 +12603,9 @@ FAILED：表示操作失败
 
     @property
     def LatestOperation(self):
+        """实例的最新操作。例：StopInstances、ResetInstance。注意：此字段可能返回 空值，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperation
 
     @LatestOperation.setter
@@ -10608,6 +12614,13 @@ FAILED：表示操作失败
 
     @property
     def LatestOperationState(self):
+        """实例的最新操作状态。取值范围： 
+SUCCESS：表示操作成功 
+OPERATING：表示操作执行中 
+FAILED：表示操作失败 
+注意：此字段可能返回 空值，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperationState
 
     @LatestOperationState.setter
@@ -10616,6 +12629,10 @@ FAILED：表示操作失败
 
     @property
     def LatestOperationRequestId(self):
+        """实例最新操作的唯一请求 ID。 
+注意：此字段可能返回 空值，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperationRequestId
 
     @LatestOperationRequestId.setter
@@ -10624,6 +12641,10 @@ FAILED：表示操作失败
 
     @property
     def LatestOperationStartedTime(self):
+        """实例最新操作的开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperationStartedTime
 
     @LatestOperationStartedTime.setter
@@ -10632,6 +12653,11 @@ FAILED：表示操作失败
 
     @property
     def IsolatedTime(self):
+        """隔离时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsolatedTime
 
     @IsolatedTime.setter
@@ -10640,6 +12666,11 @@ FAILED：表示操作失败
 
     @property
     def CreatedTime(self):
+        """创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -10648,6 +12679,11 @@ FAILED：表示操作失败
 
     @property
     def ExpiredTime(self):
+        """到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -10656,6 +12692,9 @@ FAILED：表示操作失败
 
     @property
     def PlatformType(self):
+        """操作系统平台类型，如 LINUX_UNIX、WINDOWS。
+        :rtype: str
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -10664,6 +12703,9 @@ FAILED：表示操作失败
 
     @property
     def Platform(self):
+        """操作系统平台。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -10672,6 +12714,9 @@ FAILED：表示操作失败
 
     @property
     def OsName(self):
+        """操作系统名称。
+        :rtype: str
+        """
         return self._OsName
 
     @OsName.setter
@@ -10680,6 +12725,9 @@ FAILED：表示操作失败
 
     @property
     def Zone(self):
+        """可用区。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -10688,6 +12736,9 @@ FAILED：表示操作失败
 
     @property
     def Tags(self):
+        """实例绑定的标签列表。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -10696,6 +12747,10 @@ FAILED：表示操作失败
 
     @property
     def InstanceRestrictState(self):
+        """实例封禁状态。取值范围：
+<li>NORMAL实例正常。</li><li>NETWORK_RESTRICT：网络封禁。</li>
+        :rtype: str
+        """
         return self._InstanceRestrictState
 
     @InstanceRestrictState.setter
@@ -10704,11 +12759,26 @@ FAILED：表示操作失败
 
     @property
     def InitInvocationId(self):
+        """创建实例后自动执行TAT命令的调用ID。
+        :rtype: str
+        """
         return self._InitInvocationId
 
     @InitInvocationId.setter
     def InitInvocationId(self, InitInvocationId):
         self._InitInvocationId = InitInvocationId
+
+    @property
+    def InstanceViolationDetail(self):
+        """实例违规详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceViolationDetail`
+        """
+        return self._InstanceViolationDetail
+
+    @InstanceViolationDetail.setter
+    def InstanceViolationDetail(self, InstanceViolationDetail):
+        self._InstanceViolationDetail = InstanceViolationDetail
 
 
     def _deserialize(self, params):
@@ -10752,6 +12822,9 @@ FAILED：表示操作失败
                 self._Tags.append(obj)
         self._InstanceRestrictState = params.get("InstanceRestrictState")
         self._InitInvocationId = params.get("InitInvocationId")
+        if params.get("InstanceViolationDetail") is not None:
+            self._InstanceViolationDetail = InstanceViolationDetail()
+            self._InstanceViolationDetail._deserialize(params.get("InstanceViolationDetail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10779,6 +12852,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -10787,6 +12863,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知</li><br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -10825,6 +12904,10 @@ class InstanceDeniedActions(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10833,6 +12916,9 @@ class InstanceDeniedActions(AbstractModel):
 
     @property
     def DeniedActions(self):
+        """操作限制列表。
+        :rtype: list of DeniedAction
+        """
         return self._DeniedActions
 
     @DeniedActions.setter
@@ -10875,6 +12961,9 @@ class InstanceIdentifier(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10883,6 +12972,9 @@ class InstanceIdentifier(AbstractModel):
 
     @property
     def Region(self):
+        """实例地域。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -10930,6 +13022,9 @@ class InstancePrice(AbstractModel):
 
     @property
     def OriginalBundlePrice(self):
+        """套餐单价原价。
+        :rtype: float
+        """
         return self._OriginalBundlePrice
 
     @OriginalBundlePrice.setter
@@ -10938,6 +13033,9 @@ class InstancePrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """原价。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -10946,6 +13044,9 @@ class InstancePrice(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -10954,6 +13055,9 @@ class InstancePrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """折后价。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -10962,6 +13066,10 @@ class InstancePrice(AbstractModel):
 
     @property
     def Currency(self):
+        """价格货币单位。取值范围CNY:人民币。USD:美元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -11008,6 +13116,10 @@ class InstancePriceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11016,6 +13128,10 @@ class InstancePriceDetail(AbstractModel):
 
     @property
     def InstancePrice(self):
+        """询价信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
+        """
         return self._InstancePrice
 
     @InstancePrice.setter
@@ -11024,6 +13140,10 @@ class InstancePriceDetail(AbstractModel):
 
     @property
     def DiscountDetail(self):
+        """折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DiscountDetail
+        """
         return self._DiscountDetail
 
     @DiscountDetail.setter
@@ -11075,6 +13195,9 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11083,6 +13206,9 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def IsReturnable(self):
+        """实例是否可退还。
+        :rtype: bool
+        """
         return self._IsReturnable
 
     @IsReturnable.setter
@@ -11091,6 +13217,9 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def ReturnFailCode(self):
+        """实例退还失败错误码。
+        :rtype: int
+        """
         return self._ReturnFailCode
 
     @ReturnFailCode.setter
@@ -11099,6 +13228,9 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def ReturnFailMessage(self):
+        """实例退还失败错误信息。
+        :rtype: str
+        """
         return self._ReturnFailMessage
 
     @ReturnFailMessage.setter
@@ -11138,6 +13270,9 @@ class InstanceTrafficPackage(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11146,6 +13281,9 @@ class InstanceTrafficPackage(AbstractModel):
 
     @property
     def TrafficPackageSet(self):
+        """流量包详情列表。
+        :rtype: list of TrafficPackage
+        """
         return self._TrafficPackageSet
 
     @TrafficPackageSet.setter
@@ -11161,6 +13299,95 @@ class InstanceTrafficPackage(AbstractModel):
                 obj = TrafficPackage()
                 obj._deserialize(item)
                 self._TrafficPackageSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceViolationDetail(AbstractModel):
+    """实例违规详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source:  来源：RESTRICT：封禁、FREEZW：冻结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _State: 是否允许自助解封：1是，2否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _Reason: 违规类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _Content: 违规内容（URL、关联域名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self._Source = None
+        self._State = None
+        self._Reason = None
+        self._Content = None
+
+    @property
+    def Source(self):
+        """ 来源：RESTRICT：封禁、FREEZW：冻结
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def State(self):
+        """是否允许自助解封：1是，2否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Reason(self):
+        """违规类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Content(self):
+        """违规内容（URL、关联域名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._State = params.get("State")
+        self._Reason = params.get("Reason")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11193,6 +13420,11 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetChargeType(self):
+        """网络计费类型，取值范围：
+<li>按流量包付费：TRAFFIC_POSTPAID_BY_HOUR</li>
+<li>按带宽付费： BANDWIDTH_POSTPAID_BY_HOUR</li>
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -11201,6 +13433,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """公网出带宽上限，单位：Mbps。
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -11209,6 +13444,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def PublicIpAssigned(self):
+        """是否分配公网 IP。
+        :rtype: bool
+        """
         return self._PublicIpAssigned
 
     @PublicIpAssigned.setter
@@ -11244,6 +13482,9 @@ class IsolateDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。一个或多个待操作的云硬盘ID。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。每次请求退还数据盘数量总计上限为20。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -11277,6 +13518,9 @@ class IsolateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11308,6 +13552,9 @@ FALSE：表示退还实例同时不再退还其挂载的数据盘。
 
     @property
     def InstanceIds(self):
+        """实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求退还实例和数据盘数量总计上限为20。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -11316,6 +13563,12 @@ FALSE：表示退还实例同时不再退还其挂载的数据盘。
 
     @property
     def IsolateDataDisk(self):
+        """是否退还挂载的数据盘。取值范围：
+TRUE：表示退还实例同时退还其挂载的数据盘。
+FALSE：表示退还实例同时不再退还其挂载的数据盘。
+默认取值：TRUE。
+        :rtype: bool
+        """
         return self._IsolateDataDisk
 
     @IsolateDataDisk.setter
@@ -11350,6 +13603,9 @@ class IsolateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11393,6 +13649,9 @@ class KeyPair(AbstractModel):
 
     @property
     def KeyId(self):
+        """密钥对 ID ，是密钥对的唯一标识。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -11401,6 +13660,9 @@ class KeyPair(AbstractModel):
 
     @property
     def KeyName(self):
+        """密钥对名称。
+        :rtype: str
+        """
         return self._KeyName
 
     @KeyName.setter
@@ -11409,6 +13671,9 @@ class KeyPair(AbstractModel):
 
     @property
     def PublicKey(self):
+        """密钥对的纯文本公钥。
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -11417,6 +13682,10 @@ class KeyPair(AbstractModel):
 
     @property
     def AssociatedInstanceIds(self):
+        """密钥对关联的实例 ID 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssociatedInstanceIds
 
     @AssociatedInstanceIds.setter
@@ -11425,6 +13694,10 @@ class KeyPair(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -11433,6 +13706,10 @@ class KeyPair(AbstractModel):
 
     @property
     def PrivateKey(self):
+        """密钥对私钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -11480,6 +13757,10 @@ class LoginConfiguration(AbstractModel):
 
     @property
     def AutoGeneratePassword(self):
+        """<li>"YES"代表选择自动生成密码，这时不指定Password字段。</li>
+<li>"NO"代表选择自定义密码，这时要指定Password字段。</li>
+        :rtype: str
+        """
         return self._AutoGeneratePassword
 
     @AutoGeneratePassword.setter
@@ -11488,6 +13769,11 @@ class LoginConfiguration(AbstractModel):
 
     @property
     def Password(self):
+        """实例登录密码。具体按照操作系统的复杂度要求。 
+`LINUX_UNIX` 实例密码必须 8-30 位，推荐使用 12 位以上密码，不能包含空格, 不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字：0-9<br><li>特殊字符： ()\`\~!@#$%^&\*-+=\_|{}[]:;' <>,.?/</li>
+`WINDOWS` 实例密码必须 12-30 位，不能包含空格, 不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字： 0-9<br><li>特殊字符：()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -11496,6 +13782,9 @@ class LoginConfiguration(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥ID列表，最多同时指定5个密钥。关联密钥后，就可以通过对应的私钥来访问实例。密钥与密码不能同时指定，同时WINDOWS操作系统不支持指定密钥。密钥ID列表可以通过[DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540)接口获取。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -11531,6 +13820,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥 ID 列表。关联密钥后，就可以通过对应的私钥来访问实例。注意：此字段可能返回 []，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -11570,6 +13862,9 @@ class ModifyBlueprintAttributeRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -11578,6 +13873,9 @@ class ModifyBlueprintAttributeRequest(AbstractModel):
 
     @property
     def BlueprintName(self):
+        """设置新的镜像名称。最大长度60。
+        :rtype: str
+        """
         return self._BlueprintName
 
     @BlueprintName.setter
@@ -11586,6 +13884,9 @@ class ModifyBlueprintAttributeRequest(AbstractModel):
 
     @property
     def Description(self):
+        """设置新的镜像描述。最大长度60。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11621,6 +13922,9 @@ class ModifyBlueprintAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11659,6 +13963,9 @@ class ModifyBundle(AbstractModel):
 
     @property
     def ModifyPrice(self):
+        """更改实例套餐后需要补的差价。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
         return self._ModifyPrice
 
     @ModifyPrice.setter
@@ -11667,6 +13974,12 @@ class ModifyBundle(AbstractModel):
 
     @property
     def ModifyBundleState(self):
+        """变更套餐状态。取值：
+<li>SOLD_OUT：套餐售罄</li>
+<li>AVAILABLE：支持套餐变更</li>
+<li>UNAVAILABLE：暂不支持套餐变更</li>
+        :rtype: str
+        """
         return self._ModifyBundleState
 
     @ModifyBundleState.setter
@@ -11675,6 +13988,9 @@ class ModifyBundle(AbstractModel):
 
     @property
     def Bundle(self):
+        """套餐信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Bundle`
+        """
         return self._Bundle
 
     @Bundle.setter
@@ -11683,6 +13999,10 @@ class ModifyBundle(AbstractModel):
 
     @property
     def NotSupportModifyMessage(self):
+        """不支持套餐变更原因信息。变更套餐状态为"AVAILABLE"时, 该信息为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NotSupportModifyMessage
 
     @NotSupportModifyMessage.setter
@@ -11726,6 +14046,9 @@ class ModifyDiskBackupsAttributeRequest(AbstractModel):
 
     @property
     def DiskBackupIds(self):
+        """云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。
+        :rtype: list of str
+        """
         return self._DiskBackupIds
 
     @DiskBackupIds.setter
@@ -11734,6 +14057,9 @@ class ModifyDiskBackupsAttributeRequest(AbstractModel):
 
     @property
     def DiskBackupName(self):
+        """云硬盘备份点名称，最大长度 90 。
+        :rtype: str
+        """
         return self._DiskBackupName
 
     @DiskBackupName.setter
@@ -11768,6 +14094,9 @@ class ModifyDiskBackupsAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11796,6 +14125,9 @@ class ModifyDisksAttributeRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -11804,6 +14136,9 @@ class ModifyDisksAttributeRequest(AbstractModel):
 
     @property
     def DiskName(self):
+        """云硬盘名称。
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -11838,6 +14173,9 @@ class ModifyDisksAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11866,6 +14204,9 @@ class ModifyDisksBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -11874,6 +14215,9 @@ class ModifyDisksBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须不小于已存在的备份点数量。
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -11908,6 +14252,9 @@ class ModifyDisksBackupQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11942,6 +14289,9 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -11950,6 +14300,15 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：
+
+- NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+- NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+- DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+
+若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -11984,6 +14343,9 @@ class ModifyDisksRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12033,6 +14395,9 @@ unless-stopped: 始终重新启动容器，包括在守护进程启动时，除�
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12041,6 +14406,9 @@ unless-stopped: 始终重新启动容器，包括在守护进程启动时，除�
 
     @property
     def ContainerId(self):
+        """容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: str
+        """
         return self._ContainerId
 
     @ContainerId.setter
@@ -12049,6 +14417,9 @@ unless-stopped: 始终重新启动容器，包括在守护进程启动时，除�
 
     @property
     def Envs(self):
+        """环境变量列表
+        :rtype: list of ContainerEnv
+        """
         return self._Envs
 
     @Envs.setter
@@ -12057,6 +14428,9 @@ unless-stopped: 始终重新启动容器，包括在守护进程启动时，除�
 
     @property
     def PublishPorts(self):
+        """容器端口主机端口映射列表
+        :rtype: list of DockerContainerPublishPort
+        """
         return self._PublishPorts
 
     @PublishPorts.setter
@@ -12065,6 +14439,9 @@ unless-stopped: 始终重新启动容器，包括在守护进程启动时，除�
 
     @property
     def Volumes(self):
+        """容器加载本地卷列表
+        :rtype: list of DockerContainerVolume
+        """
         return self._Volumes
 
     @Volumes.setter
@@ -12073,6 +14450,9 @@ unless-stopped: 始终重新启动容器，包括在守护进程启动时，除�
 
     @property
     def Command(self):
+        """运行的命令
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -12081,6 +14461,15 @@ unless-stopped: 始终重新启动容器，包括在守护进程启动时，除�
 
     @property
     def RestartPolicy(self):
+        """容器重启策略，对应docker "--restart"参数。
+
+枚举值:
+no: 不自动重启。默认策略。
+on-failure[:max-retries]: 当容器退出码非0时重启容器。使用max-retries限制重启次数，比如on-failure:10，限制最多重启10次。
+always: 只要容器退出就重启。
+unless-stopped: 始终重新启动容器，包括在守护进程启动时，除非容器在 Docker 守护进程停止之前进入停止状态。
+        :rtype: str
+        """
         return self._RestartPolicy
 
     @RestartPolicy.setter
@@ -12138,6 +14527,9 @@ class ModifyDockerContainerResponse(AbstractModel):
 
     @property
     def DockerActivityId(self):
+        """Docker活动ID。
+        :rtype: str
+        """
         return self._DockerActivityId
 
     @DockerActivityId.setter
@@ -12146,6 +14538,9 @@ class ModifyDockerContainerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12178,6 +14573,9 @@ class ModifyFirewallRuleDescriptionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12186,6 +14584,9 @@ class ModifyFirewallRuleDescriptionRequest(AbstractModel):
 
     @property
     def FirewallRule(self):
+        """防火墙规则。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRule`
+        """
         return self._FirewallRule
 
     @FirewallRule.setter
@@ -12194,6 +14595,9 @@ class ModifyFirewallRuleDescriptionRequest(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -12231,6 +14635,9 @@ class ModifyFirewallRuleDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12262,6 +14669,9 @@ class ModifyFirewallRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。实例的ID可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12270,6 +14680,9 @@ class ModifyFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallRules(self):
+        """防火墙规则列表。列表长度最大值是100。
+        :rtype: list of FirewallRule
+        """
         return self._FirewallRules
 
     @FirewallRules.setter
@@ -12278,6 +14691,9 @@ class ModifyFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -12318,6 +14734,9 @@ class ModifyFirewallRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12346,6 +14765,9 @@ class ModifyFirewallTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -12354,6 +14776,9 @@ class ModifyFirewallTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """防火墙模板名称。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -12388,6 +14813,9 @@ class ModifyFirewallTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12416,6 +14844,9 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -12424,6 +14855,9 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称。可任意命名，但不得超过 60 个字符。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -12458,6 +14892,9 @@ class ModifyInstancesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12492,6 +14929,9 @@ false：表示不自动抵扣代金券
 
     @property
     def InstanceIds(self):
+        """实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为15。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -12500,6 +14940,9 @@ false：表示不自动抵扣代金券
 
     @property
     def BundleId(self):
+        """待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -12508,6 +14951,12 @@ false：表示不自动抵扣代金券
 
     @property
     def AutoVoucher(self):
+        """是否自动抵扣代金券。取值范围：
+true：表示自动抵扣代金券
+false：表示不自动抵扣代金券
+默认取值：false。
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -12543,6 +14992,9 @@ class ModifyInstancesBundleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12571,6 +15023,9 @@ class ModifyInstancesLoginKeyPairAttributeRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -12579,6 +15034,9 @@ class ModifyInstancesLoginKeyPairAttributeRequest(AbstractModel):
 
     @property
     def PermitLogin(self):
+        """是否允许使用默认密钥对登录，YES：允许登录；NO：禁止登录
+        :rtype: str
+        """
         return self._PermitLogin
 
     @PermitLogin.setter
@@ -12613,6 +15071,9 @@ class ModifyInstancesLoginKeyPairAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12647,6 +15108,9 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -12655,6 +15119,15 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：
+
+- NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+- NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+- DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+
+若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -12689,6 +15162,9 @@ class ModifyInstancesRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12717,6 +15193,9 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """快照 ID, 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388">DescribeSnapshots</a> 查询。
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -12725,6 +15204,9 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """新的快照名称，最长为 60 个字符。
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -12759,6 +15241,9 @@ class ModifySnapshotAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12799,6 +15284,9 @@ user：用户折扣; common：官网折扣; activity：活动折扣。 取值为
 
     @property
     def UserDiscount(self):
+        """用户折扣。
+        :rtype: float
+        """
         return self._UserDiscount
 
     @UserDiscount.setter
@@ -12807,6 +15295,9 @@ user：用户折扣; common：官网折扣; activity：活动折扣。 取值为
 
     @property
     def CommonDiscount(self):
+        """公共折扣。
+        :rtype: float
+        """
         return self._CommonDiscount
 
     @CommonDiscount.setter
@@ -12815,6 +15306,9 @@ user：用户折扣; common：官网折扣; activity：活动折扣。 取值为
 
     @property
     def FinalDiscount(self):
+        """最终折扣。
+        :rtype: float
+        """
         return self._FinalDiscount
 
     @FinalDiscount.setter
@@ -12823,6 +15317,10 @@ user：用户折扣; common：官网折扣; activity：活动折扣。 取值为
 
     @property
     def ActivityDiscount(self):
+        """活动折扣。取值为null，表示无有效值，即没有折扣。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._ActivityDiscount
 
     @ActivityDiscount.setter
@@ -12831,6 +15329,11 @@ user：用户折扣; common：官网折扣; activity：活动折扣。 取值为
 
     @property
     def DiscountType(self):
+        """折扣类型。
+user：用户折扣; common：官网折扣; activity：活动折扣。 取值为null，表示无有效值，即没有折扣。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiscountType
 
     @DiscountType.setter
@@ -12868,6 +15371,9 @@ class Price(AbstractModel):
 
     @property
     def InstancePrice(self):
+        """实例价格。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
+        """
         return self._InstancePrice
 
     @InstancePrice.setter
@@ -12903,6 +15409,9 @@ class RebootInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -12936,6 +15445,9 @@ class RebootInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12970,6 +15482,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地域名称，例如，ap-guangzhou。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -12978,6 +15493,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域描述，例如，华南地区(广州)。
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -12986,6 +15504,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
+        """地域是否可用状态，取值仅为AVAILABLE。
+        :rtype: str
+        """
         return self._RegionState
 
     @RegionState.setter
@@ -12994,6 +15515,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def IsChinaMainland(self):
+        """是否中国大陆地域
+        :rtype: bool
+        """
         return self._IsChinaMainland
 
     @IsChinaMainland.setter
@@ -13033,6 +15557,9 @@ class RemoveDockerContainersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -13041,6 +15568,9 @@ class RemoveDockerContainersRequest(AbstractModel):
 
     @property
     def ContainerIds(self):
+        """容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: list of str
+        """
         return self._ContainerIds
 
     @ContainerIds.setter
@@ -13078,6 +15608,9 @@ class RemoveDockerContainersResponse(AbstractModel):
 
     @property
     def DockerActivityId(self):
+        """Docker活动ID。
+        :rtype: str
+        """
         return self._DockerActivityId
 
     @DockerActivityId.setter
@@ -13086,6 +15619,9 @@ class RemoveDockerContainersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13118,6 +15654,9 @@ class RenameDockerContainerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -13126,6 +15665,9 @@ class RenameDockerContainerRequest(AbstractModel):
 
     @property
     def ContainerId(self):
+        """容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: str
+        """
         return self._ContainerId
 
     @ContainerId.setter
@@ -13134,6 +15676,9 @@ class RenameDockerContainerRequest(AbstractModel):
 
     @property
     def ContainerName(self):
+        """容器新的名称。
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -13172,6 +15717,9 @@ class RenameDockerContainerResponse(AbstractModel):
 
     @property
     def DockerActivityId(self):
+        """Docker活动ID。
+        :rtype: str
+        """
         return self._DockerActivityId
 
     @DockerActivityId.setter
@@ -13180,6 +15728,9 @@ class RenameDockerContainerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13215,6 +15766,9 @@ class RenewDiskChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """续费周期。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -13223,6 +15777,9 @@ class RenewDiskChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -13231,6 +15788,9 @@ class RenewDiskChargePrepaid(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """周期单位。取值范围：“m”(月)。默认值: "m"。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -13239,6 +15799,9 @@ class RenewDiskChargePrepaid(AbstractModel):
 
     @property
     def CurInstanceDeadline(self):
+        """当前实例到期时间。如“2018-01-01 00:00:00”。指定该参数即可对齐云硬盘所挂载的实例到期时间。该参数与Period必须指定其一，且不支持同时指定。
+        :rtype: str
+        """
         return self._CurInstanceDeadline
 
     @CurInstanceDeadline.setter
@@ -13281,6 +15844,9 @@ class RenewDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。一个或多个待操作的云硬盘ID。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。每次请求续费数据盘数量总计上限为50。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -13289,6 +15855,9 @@ class RenewDisksRequest(AbstractModel):
 
     @property
     def RenewDiskChargePrepaid(self):
+        """续费云硬盘包年包月相关参数设置。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
+        """
         return self._RenewDiskChargePrepaid
 
     @RenewDiskChargePrepaid.setter
@@ -13297,6 +15866,9 @@ class RenewDisksRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
+        """是否自动使用代金券。默认不使用。
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -13334,6 +15906,9 @@ class RenewDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13374,6 +15949,9 @@ FALSE：表示不自动抵扣代金券
 
     @property
     def InstanceIds(self):
+        """实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -13382,6 +15960,9 @@ FALSE：表示不自动抵扣代金券
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -13390,6 +15971,12 @@ FALSE：表示不自动抵扣代金券
 
     @property
     def RenewDataDisk(self):
+        """是否续费弹性数据盘。取值范围：
+TRUE：表示续费实例同时续费其挂载的数据盘
+FALSE：表示续费实例同时不再续费其挂载的数据盘
+默认取值：TRUE。
+        :rtype: bool
+        """
         return self._RenewDataDisk
 
     @RenewDataDisk.setter
@@ -13398,6 +15985,12 @@ FALSE：表示不自动抵扣代金券
 
     @property
     def AutoVoucher(self):
+        """是否自动抵扣代金券。取值范围：
+TRUE：表示自动抵扣代金券
+FALSE：表示不自动抵扣代金券
+默认取值：FALSE。
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -13436,6 +16029,9 @@ class RenewInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13467,6 +16063,9 @@ class ReplaceFirewallTemplateRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过 [DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874) 接口返回值中的 TemplateId 获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -13475,6 +16074,9 @@ class ReplaceFirewallTemplateRuleRequest(AbstractModel):
 
     @property
     def TemplateRuleId(self):
+        """防火墙模板规则ID。可通过 [DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875) 接口返回值中的 TemplateRuleId 获取。
+        :rtype: str
+        """
         return self._TemplateRuleId
 
     @TemplateRuleId.setter
@@ -13483,6 +16085,9 @@ class ReplaceFirewallTemplateRuleRequest(AbstractModel):
 
     @property
     def TemplateRule(self):
+        """替换后的防火墙模板规则。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRule`
+        """
         return self._TemplateRule
 
     @TemplateRule.setter
@@ -13520,6 +16125,9 @@ class ReplaceFirewallTemplateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13551,6 +16159,9 @@ class RerunDockerContainerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -13559,6 +16170,9 @@ class RerunDockerContainerRequest(AbstractModel):
 
     @property
     def ContainerConfiguration(self):
+        """重新创建的容器配置。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DockerContainerConfiguration`
+        """
         return self._ContainerConfiguration
 
     @ContainerConfiguration.setter
@@ -13567,6 +16181,9 @@ class RerunDockerContainerRequest(AbstractModel):
 
     @property
     def ContainerId(self):
+        """容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: str
+        """
         return self._ContainerId
 
     @ContainerId.setter
@@ -13607,6 +16224,9 @@ class RerunDockerContainerResponse(AbstractModel):
 
     @property
     def DockerActivityId(self):
+        """Docker活动ID。
+        :rtype: str
+        """
         return self._DockerActivityId
 
     @DockerActivityId.setter
@@ -13615,6 +16235,9 @@ class RerunDockerContainerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13641,6 +16264,9 @@ class ResetAttachCcnRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """云联网实例ID。可通过[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)接口返回值中的CcnId获取。
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -13674,6 +16300,9 @@ class ResetAttachCcnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13702,6 +16331,9 @@ class ResetFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """防火墙模板ID。可通过 [DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874) 接口返回值中的 TemplateId	获取。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -13710,6 +16342,9 @@ class ResetFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateRules(self):
+        """重置后的防火墙模板规则列表。每次请求批量防火墙规则的上限为 100。
+        :rtype: list of FirewallRule
+        """
         return self._TemplateRules
 
     @TemplateRules.setter
@@ -13752,6 +16387,9 @@ class ResetFirewallTemplateRulesResponse(AbstractModel):
 
     @property
     def TemplateRuleIdSet(self):
+        """重置后的规则ID列表。
+        :rtype: list of str
+        """
         return self._TemplateRuleIdSet
 
     @TemplateRuleIdSet.setter
@@ -13760,6 +16398,9 @@ class ResetFirewallTemplateRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13792,6 +16433,9 @@ class ResetInstanceBlueprint(AbstractModel):
 
     @property
     def BlueprintInfo(self):
+        """镜像详细信息
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Blueprint`
+        """
         return self._BlueprintInfo
 
     @BlueprintInfo.setter
@@ -13800,6 +16444,9 @@ class ResetInstanceBlueprint(AbstractModel):
 
     @property
     def IsResettable(self):
+        """实例镜像是否可重置为目标镜像
+        :rtype: bool
+        """
         return self._IsResettable
 
     @IsResettable.setter
@@ -13808,6 +16455,9 @@ class ResetInstanceBlueprint(AbstractModel):
 
     @property
     def NonResettableMessage(self):
+        """不可重置信息.当镜像可重置时为""
+        :rtype: str
+        """
         return self._NonResettableMessage
 
     @NonResettableMessage.setter
@@ -13854,6 +16504,9 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -13862,6 +16515,9 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -13870,6 +16526,9 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def Containers(self):
+        """要创建的容器配置列表。
+        :rtype: list of DockerContainerConfiguration
+        """
         return self._Containers
 
     @Containers.setter
@@ -13878,6 +16537,9 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def LoginConfiguration(self):
+        """实例登录信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码或绑定密钥。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
+        """
         return self._LoginConfiguration
 
     @LoginConfiguration.setter
@@ -13921,6 +16583,9 @@ class ResetInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13952,6 +16617,9 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过 <a href="https://cloud.tencent.com/document/product/1207/47573">DescribeInstances</a> 接口返回值中的 InstanceId 获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -13960,6 +16628,9 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
+        """实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：</br> `LINUX_UNIX` 实例密码必须 8-30 位，推荐使用 12 位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：</br> <li>小写字母：[a-z]</br></li> <li>大写字母：[A-Z]</br></li> <li>数字：0-9</br></li> <li>特殊字符： ()\`\~!@#$%^&\*-+=\_|{}[]:;' <>,.?/</li></br> `WINDOWS` 实例密码必须 12-30 位，不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符</br> <li>小写字母：[a-z]</br></li> <li>大写字母：[A-Z]</br></li> <li>数字： 0-9</br></li> <li>特殊字符：()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/</br></li> <li>如果实例即包含 `LINUX_UNIX` 实例又包含 `WINDOWS` 实例，则密码复杂度限制按照 `WINDOWS` 实例的限制。</li>
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -13968,6 +16639,9 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """待重置密码的实例操作系统用户名。不得超过 64 个字符。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -14003,6 +16677,9 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14031,6 +16708,9 @@ class ResizeDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -14039,6 +16719,9 @@ class ResizeDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """扩容后的云硬盘大小。单位: GB。高性能云硬盘大小取值范围：[10, 4000] ,SSD云硬盘大小取值范围：[20, 4000]。扩容后的云硬盘大小必须大于当前云硬盘大小。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -14073,6 +16756,9 @@ class ResizeDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14101,6 +16787,9 @@ class RestartDockerContainersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -14109,6 +16798,9 @@ class RestartDockerContainersRequest(AbstractModel):
 
     @property
     def ContainerIds(self):
+        """容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: list of str
+        """
         return self._ContainerIds
 
     @ContainerIds.setter
@@ -14146,6 +16838,9 @@ class RestartDockerContainersResponse(AbstractModel):
 
     @property
     def DockerActivityId(self):
+        """Docker活动ID。
+        :rtype: str
+        """
         return self._DockerActivityId
 
     @DockerActivityId.setter
@@ -14154,6 +16849,9 @@ class RestartDockerContainersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14183,6 +16881,9 @@ class RunDockerContainersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -14191,6 +16892,9 @@ class RunDockerContainersRequest(AbstractModel):
 
     @property
     def Containers(self):
+        """要创建的容器列表。
+        :rtype: list of DockerContainerConfiguration
+        """
         return self._Containers
 
     @Containers.setter
@@ -14233,6 +16937,9 @@ class RunDockerContainersResponse(AbstractModel):
 
     @property
     def DockerActivitySet(self):
+        """Docker活动ID列表。
+        :rtype: list of str
+        """
         return self._DockerActivitySet
 
     @DockerActivitySet.setter
@@ -14241,6 +16948,9 @@ class RunDockerContainersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14273,6 +16983,9 @@ class Scene(AbstractModel):
 
     @property
     def SceneId(self):
+        """使用场景Id
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -14281,6 +16994,9 @@ class Scene(AbstractModel):
 
     @property
     def DisplayName(self):
+        """使用场景展示名称
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -14289,6 +17005,9 @@ class Scene(AbstractModel):
 
     @property
     def Description(self):
+        """使用场景描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14330,6 +17049,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneId(self):
+        """使用场景Id。
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -14338,6 +17060,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def DisplayName(self):
+        """使用场景展示名称。
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -14346,6 +17071,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def Description(self):
+        """使用场景描述信息。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14384,6 +17112,9 @@ class ShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -14392,6 +17123,9 @@ class ShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def AccountIds(self):
+        """接收共享镜像的账号Id列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+        :rtype: list of str
+        """
         return self._AccountIds
 
     @AccountIds.setter
@@ -14426,6 +17160,9 @@ class ShareBlueprintAcrossAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14493,6 +17230,9 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """快照 ID。
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -14501,6 +17241,9 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskUsage(self):
+        """创建此快照的磁盘类型。取值：<li>SYSTEM_DISK：系统盘</li>
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -14509,6 +17252,9 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskId(self):
+        """创建此快照的磁盘 ID。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -14517,6 +17263,9 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskSize(self):
+        """创建此快照的磁盘大小，单位 GB。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -14525,6 +17274,9 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """快照名称，用户自定义的快照别名。
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -14533,6 +17285,12 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotState(self):
+        """快照的状态。取值范围：
+<li>NORMAL：正常 </li>
+<li>CREATING：创建中</li>
+<li>ROLLBACKING：回滚中。</li>
+        :rtype: str
+        """
         return self._SnapshotState
 
     @SnapshotState.setter
@@ -14541,6 +17299,9 @@ class Snapshot(AbstractModel):
 
     @property
     def Percent(self):
+        """创建或回滚快照进度百分比，成功后此字段取值为 100。
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -14549,6 +17310,11 @@ class Snapshot(AbstractModel):
 
     @property
     def LatestOperation(self):
+        """快照的最新操作，只有创建、回滚快照时记录。
+取值如 CreateInstanceSnapshot，RollbackInstanceSnapshot。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperation
 
     @LatestOperation.setter
@@ -14557,6 +17323,14 @@ class Snapshot(AbstractModel):
 
     @property
     def LatestOperationState(self):
+        """快照的最新操作状态，只有创建、回滚快照时记录。
+取值范围：
+<li>SUCCESS：表示操作成功</li>
+<li>OPERATING：表示操作执行中</li>
+<li>FAILED：表示操作失败</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperationState
 
     @LatestOperationState.setter
@@ -14565,6 +17339,10 @@ class Snapshot(AbstractModel):
 
     @property
     def LatestOperationRequestId(self):
+        """快照最新操作的唯一请求 ID，只有创建、回滚快照时记录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperationRequestId
 
     @LatestOperationRequestId.setter
@@ -14573,6 +17351,10 @@ class Snapshot(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """快照的创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -14619,6 +17401,9 @@ class SnapshotDeniedActions(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """快照 ID。
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -14627,6 +17412,9 @@ class SnapshotDeniedActions(AbstractModel):
 
     @property
     def DeniedActions(self):
+        """操作限制列表。
+        :rtype: list of DeniedAction
+        """
         return self._DeniedActions
 
     @DeniedActions.setter
@@ -14678,6 +17466,9 @@ class Software(AbstractModel):
 
     @property
     def Name(self):
+        """软件名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14686,6 +17477,9 @@ class Software(AbstractModel):
 
     @property
     def Version(self):
+        """软件版本。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -14694,6 +17488,9 @@ class Software(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """软件图片 URL。
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -14702,6 +17499,9 @@ class Software(AbstractModel):
 
     @property
     def InstallDir(self):
+        """软件安装目录。
+        :rtype: str
+        """
         return self._InstallDir
 
     @InstallDir.setter
@@ -14710,6 +17510,9 @@ class Software(AbstractModel):
 
     @property
     def DetailSet(self):
+        """软件详情列表。
+        :rtype: list of SoftwareDetail
+        """
         return self._DetailSet
 
     @DetailSet.setter
@@ -14758,6 +17561,9 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Key(self):
+        """详情唯一键。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -14766,6 +17572,9 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Title(self):
+        """详情标题。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -14774,6 +17583,9 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Value(self):
+        """详情值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -14812,6 +17624,9 @@ class StartDockerContainersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -14820,6 +17635,9 @@ class StartDockerContainersRequest(AbstractModel):
 
     @property
     def ContainerIds(self):
+        """容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: list of str
+        """
         return self._ContainerIds
 
     @ContainerIds.setter
@@ -14857,6 +17675,9 @@ class StartDockerContainersResponse(AbstractModel):
 
     @property
     def DockerActivityId(self):
+        """Docker活动ID。
+        :rtype: str
+        """
         return self._DockerActivityId
 
     @DockerActivityId.setter
@@ -14865,6 +17686,9 @@ class StartDockerContainersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14891,6 +17715,9 @@ class StartInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -14924,6 +17751,9 @@ class StartInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14952,6 +17782,9 @@ class StopDockerContainersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -14960,6 +17793,9 @@ class StopDockerContainersRequest(AbstractModel):
 
     @property
     def ContainerIds(self):
+        """容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :rtype: list of str
+        """
         return self._ContainerIds
 
     @ContainerIds.setter
@@ -14997,6 +17833,9 @@ class StopDockerContainersResponse(AbstractModel):
 
     @property
     def DockerActivityId(self):
+        """Docker活动ID。
+        :rtype: str
+        """
         return self._DockerActivityId
 
     @DockerActivityId.setter
@@ -15005,6 +17844,9 @@ class StopDockerContainersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15031,6 +17873,9 @@ class StopInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -15064,6 +17909,9 @@ class StopInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15098,6 +17946,11 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
+        """系统盘类型。
+取值范围： 
+<li> LOCAL_BASIC：本地硬盘</li><li> LOCAL_SSD：本地 SSD 硬盘</li><li> CLOUD_BASIC：普通云硬盘</li><li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -15106,6 +17959,9 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
+        """系统盘大小，单位：GB。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -15114,6 +17970,10 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskId(self):
+        """系统盘ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -15152,6 +18012,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -15160,6 +18023,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -15194,6 +18060,9 @@ class TerminateDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -15227,6 +18096,9 @@ class TerminateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15252,6 +18124,9 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -15285,6 +18160,9 @@ class TerminateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15315,6 +18193,10 @@ class TotalPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """原始总计价格。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -15323,6 +18205,10 @@ class TotalPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """折扣总计价格。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -15389,6 +18275,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def TrafficPackageId(self):
+        """流量包ID。
+        :rtype: str
+        """
         return self._TrafficPackageId
 
     @TrafficPackageId.setter
@@ -15397,6 +18286,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def TrafficUsed(self):
+        """流量包生效周期内已使用流量，单位字节。
+        :rtype: int
+        """
         return self._TrafficUsed
 
     @TrafficUsed.setter
@@ -15405,6 +18297,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def TrafficPackageTotal(self):
+        """流量包生效周期内的总流量，单位字节。
+        :rtype: int
+        """
         return self._TrafficPackageTotal
 
     @TrafficPackageTotal.setter
@@ -15413,6 +18308,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def TrafficPackageRemaining(self):
+        """流量包生效周期内的剩余流量，单位字节。
+        :rtype: int
+        """
         return self._TrafficPackageRemaining
 
     @TrafficPackageRemaining.setter
@@ -15421,6 +18319,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def TrafficOverflow(self):
+        """流量包生效周期内超出流量包额度的流量，单位字节。
+        :rtype: int
+        """
         return self._TrafficOverflow
 
     @TrafficOverflow.setter
@@ -15429,6 +18330,11 @@ class TrafficPackage(AbstractModel):
 
     @property
     def StartTime(self):
+        """流量包生效周期开始时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -15437,6 +18343,11 @@ class TrafficPackage(AbstractModel):
 
     @property
     def EndTime(self):
+        """流量包生效周期结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -15445,6 +18356,11 @@ class TrafficPackage(AbstractModel):
 
     @property
     def Deadline(self):
+        """流量包到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -15453,6 +18369,11 @@ class TrafficPackage(AbstractModel):
 
     @property
     def Status(self):
+        """流量包状态：
+<li>NETWORK_NORMAL：正常</li>
+<li>OVERDUE_NETWORK_DISABLED：欠费断网</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -15500,6 +18421,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -15508,6 +18432,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
+        """可用区中文名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -15516,6 +18443,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def InstanceDisplayLabel(self):
+        """实例购买页可用区展示标签
+        :rtype: str
+        """
         return self._InstanceDisplayLabel
 
     @InstanceDisplayLabel.setter

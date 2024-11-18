@@ -374,6 +374,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLoadBalancer(self, request):
+        """创建负载均衡实例。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223)。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+
+        :param request: Request instance for CreateLoadBalancer.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOriginGroup(self, request):
         """创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
 
@@ -809,6 +832,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteL4ProxyRules", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteL4ProxyRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLoadBalancer(self, request):
+        """删除负载均衡实例，若负载均衡示例被其他服务（例如：四层代理等）引用的时候，示例无法被删除，需要先解除引用关系。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+
+        :param request: Request instance for DeleteLoadBalancer.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLoadBalancerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1508,6 +1554,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLoadBalancerList(self, request):
+        """查询负载均衡实例列表。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+
+        :param request: Request instance for DescribeLoadBalancerList.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLoadBalancerListRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeLoadBalancerListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLoadBalancerList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLoadBalancerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOriginGroup(self, request):
         """获取源站组列表
 
@@ -1522,6 +1591,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeOriginGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOriginGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOriginGroupHealthStatus(self, request):
+        """查询负载均衡实例下源站组健康状态。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+
+        :param request: Request instance for DescribeOriginGroupHealthStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupHealthStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupHealthStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginGroupHealthStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOriginGroupHealthStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1788,7 +1880,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7AnalysisData(self, request):
-        """本接口（DescribeTimingL7AnalysisData）查询七层数据分析类时序数据。
+        """本接口查询七层域名业务的时序数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
 
         :param request: Request instance for DescribeTimingL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7AnalysisDataRequest`
@@ -1811,7 +1903,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7CacheData(self, request):
-        """本接口（DescribeTimingL7CacheData）用于查询七层缓存分析时序类流量数据。
+        """本接口用于查询七层缓存分析时序类流量数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80648">DescribeTimingL7AnalysisData</a> 接口。
 
         :param request: Request instance for DescribeTimingL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7CacheDataRequest`
@@ -1834,7 +1926,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7AnalysisData(self, request):
-        """本接口（DescribeTopL7AnalysisData）用于查询七层流量前topN的数据。
+        """本接口用于查询七层域名业务按照指定维度的 topN 数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
 
         :param request: Request instance for DescribeTopL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7AnalysisDataRequest`
@@ -1857,7 +1949,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7CacheData(self, request):
-        """本接口（DescribeTopL7CacheData）用于查询七层缓存分析topN流量数据。
+        """本接口用于查询七层缓存分析 topN 数据。此接口待废弃，请使用 <a href="https://cloud.tencent.com/document/product/1552/80646"> DescribeTopL7AnalysisData</a> 接口。
 
         :param request: Request instance for DescribeTopL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7CacheDataRequest`
@@ -2459,6 +2551,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyL4ProxyStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyL4ProxyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLoadBalancer(self, request):
+        """修改负载均衡实例配置。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
+
+        :param request: Request instance for ModifyLoadBalancer.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLoadBalancerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

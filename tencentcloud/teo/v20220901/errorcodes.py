@@ -20,10 +20,10 @@ DRYRUNOPERATION = 'DryRunOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
-# 证书已过期，暂不支持下发过期证书。
+# 边缘HTTPS证书已过期，暂不支持下发过期证书。
 FAILEDOPERATION_CERTIFICATEHASEXPIRED = 'FailedOperation.CertificateHasExpired'
 
-# 证书不存在。
+# 边缘HTTPS证书不存在。
 FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
 
 # 配置文件Condition表达式语法错误。
@@ -62,6 +62,9 @@ FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = 'FailedOperation.CreateClsLogTopic
 # 创建自定义推送任务认证失败, 请检查推送地址是否正确。
 FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = 'FailedOperation.CreateLogTopicTaskAuthFailure'
 
+# 边缘客户端证书已过期，暂不支持下发过期证书。
+FAILEDOPERATION_EDGECLIENTCERTIFICATEHASEXPIRED = 'FailedOperation.EdgeClientCertificateHasExpired'
+
 # 有其他任务正在部署中，请稍后重试。
 FAILEDOPERATION_FUNCTIONDEPLOYING = 'FailedOperation.FunctionDeploying'
 
@@ -88,6 +91,9 @@ FAILEDOPERATION_RULEOPERATIONCONFLICT = 'FailedOperation.RuleOperationConflict'
 
 # 未知的配置组类型。
 FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType'
+
+# 回源客户端证书已过期，暂不支持下发过期证书。
+FAILEDOPERATION_UPSTREAMCLIENTCERTIFICATEHASEXPIRED = 'FailedOperation.UpstreamClientCertificateHasExpired'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -137,6 +143,9 @@ INVALIDPARAMETER_ACCESSREDIRECTREGEXERROR = 'InvalidParameter.AccessRedirectRege
 # 操作频繁，请稍后重试。
 INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
 
+# 别称域名不支持配无私钥证书。
+INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTKEYLESS = 'InvalidParameter.AliasDomainNotSupportKeyless'
+
 # 别称域名不支持配置国密证书。
 INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTSMCERT = 'InvalidParameter.AliasDomainNotSupportSMCert'
 
@@ -152,17 +161,20 @@ INVALIDPARAMETER_CACHEKEYQUERYSTRINGREQUIRESFULLURLCACHEOFF = 'InvalidParameter.
 # 查询字符串规则超过了限制。
 INVALIDPARAMETER_CACHEKEYQUERYSTRINGTOOMANYVALUE = 'InvalidParameter.CacheKeyQueryStringTooManyValue'
 
-# HTTPS证书和域名不匹配。
+# 无效的边缘HTTPS证书配置，证书与域名不匹配。
 INVALIDPARAMETER_CERTNOTMATCHDOMAIN = 'InvalidParameter.CertNotMatchDomain'
 
 # 内部错误。
 INVALIDPARAMETER_CERTSYSTEMERROR = 'InvalidParameter.CertSystemError'
 
-# HTTPS证书即将过期。
+# 边缘HTTPS证书即将过期。
 INVALIDPARAMETER_CERTTOEXPIRE = 'InvalidParameter.CertToExpire'
 
-# 证书错误。
+# 无效的边缘HTTPS证书配置，密钥长度不符合最短要求RSA>=2048,DSA>=2048,DH>=2048,EC>=225。
 INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = 'InvalidParameter.CertTooShortKeySize'
+
+# 待变更域名未绑定证书或 keyless 服务端，请先绑定后再操作。
+INVALIDPARAMETER_CERTIFICATECONFLICTWITHKEYLESSSERVER = 'InvalidParameter.CertificateConflictWithKeylessServer'
 
 # IPv6 访问与客户端 IP 地理位置功能冲突。
 INVALIDPARAMETER_CLIENTIPCOUNTRYCONFLICTSWITHIPV6 = 'InvalidParameter.ClientIpCountryConflictsWithIpv6'
@@ -187,6 +199,9 @@ INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = 'InvalidParameter.DomainOnTrafficSc
 
 # 重复规则。
 INVALIDPARAMETER_DUPLICATERULE = 'InvalidParameter.DuplicateRule'
+
+# 无效的边缘客户端证书配置。
+INVALIDPARAMETER_EDGECLIENTCERTCHECKERROR = 'InvalidParameter.EdgeClientCertCheckError'
 
 # 操作不支持条件。
 INVALIDPARAMETER_ERRACTIONUNSUPPORTTARGET = 'InvalidParameter.ErrActionUnsupportTarget'
@@ -356,7 +371,7 @@ INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = 'InvalidParameter.InvalidCacheOnlyOn
 # 无效的节点缓存时间。
 INVALIDPARAMETER_INVALIDCACHETIME = 'InvalidParameter.InvalidCacheTime'
 
-# 证书信息错误。
+# 无效的边缘HTTPS证书信息。
 INVALIDPARAMETER_INVALIDCERTINFO = 'InvalidParameter.InvalidCertInfo'
 
 # 无效的客户端IP地理位置配置，HeaderName由1-100个字母或数字组成的，不能以"-"开头或结尾。
@@ -395,7 +410,7 @@ INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = 'InvalidParameter.InvalidForceRedire
 # 无效的HTTPS。
 INVALIDPARAMETER_INVALIDHTTPS = 'InvalidParameter.InvalidHttps'
 
-# 无效的HTTPS证书。
+# 无效的边缘HTTPS证书配置，证书内容无效。
 INVALIDPARAMETER_INVALIDHTTPSCERTINFO = 'InvalidParameter.InvalidHttpsCertInfo'
 
 # 加密套件与TLS版本不匹配。
@@ -557,6 +572,24 @@ INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = 'InvalidParameter.LengthExceedsLimit'
 # 修改源站操作中负载均衡实例Id必填。
 INVALIDPARAMETER_LOADBALANCEINSTANCEIDISREQUIRED = 'InvalidParameter.LoadBalanceInstanceIdIsRequired'
 
+# 引用负载均衡的4层代理服务正在部署中，请稍后再编辑。
+INVALIDPARAMETER_LOADBALANCERBINDL4NOTINSTABLESTATUS = 'InvalidParameter.LoadBalancerBindL4NotInStableStatus'
+
+# 引用负载均衡的7层域名服务正在部署中，请稍后再编辑。
+INVALIDPARAMETER_LOADBALANCERBINDL7NOTINSTABLESTATUS = 'InvalidParameter.LoadBalancerBindL7NotInStableStatus'
+
+# 同一站点下的负载均衡名称不可以重复。
+INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = 'InvalidParameter.LoadBalancerNameRepeated'
+
+# 负载均衡实例存在被四层实例引用，不允许删除。
+INVALIDPARAMETER_LOADBALANCERUSEDINL4PROXY = 'InvalidParameter.LoadBalancerUsedInL4Proxy'
+
+# 负载均衡实例存在被七层域名引用，不允许删除。
+INVALIDPARAMETER_LOADBALANCERUSEDINL7DOMAIN = 'InvalidParameter.LoadBalancerUsedInL7Domain'
+
+# 负载均衡实例存在被规则引擎引用，不允许删除。
+INVALIDPARAMETER_LOADBALANCERUSEDINRULEENGINE = 'InvalidParameter.LoadBalancerUsedInRuleEngine'
+
 # 修改参数缺失。
 INVALIDPARAMETER_MODIFYPARAMETERSMISSING = 'InvalidParameter.ModifyParametersMissing'
 
@@ -568,6 +601,9 @@ INVALIDPARAMETER_NOTSUPPORTTHISPRESET = 'InvalidParameter.NotSupportThisPreset'
 
 # 域名处于直接回源架构，需要保持智能加速功能的开启。
 INVALIDPARAMETER_OCDIRECTORIGINREQUIRESSMARTROUTING = 'InvalidParameter.OCDirectOriginRequiresSmartRouting'
+
+# 源站组类型与负载均衡器类型不匹配。
+INVALIDPARAMETER_ORIGINGROUPTYPECANNOTMATCHLBTYPE = 'InvalidParameter.OriginGroupTypeCanNotMatchLBType'
 
 # 源站是内网IP。
 INVALIDPARAMETER_ORIGINISINNERIP = 'InvalidParameter.OriginIsInnerIp'
@@ -656,6 +692,9 @@ INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 # 配置项参数错误。
 INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 
+# 一些绑定的源站组不存在。
+INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = 'InvalidParameter.SomeOriginGroupNotExist'
+
 # Shield Space 未绑定源站，请先绑定源站后重试。
 INVALIDPARAMETER_SPACENOTBINDORIGIN = 'InvalidParameter.SpaceNotBindOrigin'
 
@@ -683,6 +722,9 @@ INVALIDPARAMETER_TOOMANYFILTERS = 'InvalidParameter.TooManyFilters'
 # 文件上传链接存在问题。
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
+# 无效的回源客户端证书配置。
+INVALIDPARAMETER_UPSTREAMCLIENTCERTCHECKERROR = 'InvalidParameter.UpstreamClientCertCheckError'
+
 # 站点已被绑定。
 INVALIDPARAMETER_ZONEHASBEENBOUND = 'InvalidParameter.ZoneHasBeenBound'
 
@@ -704,11 +746,26 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 该站点域名已被禁用。
 INVALIDPARAMETERVALUE_ACCESSBLACKLIST = 'InvalidParameterValue.AccessBlacklist'
 
+# 别称域名暂不支持配置边缘双向认证。
+INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTEDGEMTLS = 'InvalidParameterValue.AliasDomainNotSupportEdgeMTLS'
+
+# 别称域名暂不支持配置回源双向认证。
+INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTUPSTREAMMTLS = 'InvalidParameterValue.AliasDomainNotSupportUpstreamMTLS'
+
 # 边缘双向认证配置中的客户端证书必须是CA证书。
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTMUSTCA = 'InvalidParameterValue.CertificateVerifyClientMustCa'
 
 # 边缘双向认证配置至少需要配置一本证书。
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyClientNeedCert'
+
+# 当前回源双向认证的证书仅支持 RSA或 ECC 算法证书，暂不支持国密 SM2 算法证书。
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTRSAORECC = 'InvalidParameterValue.CertificateVerifyUpstreamClientMustRSAorECC'
+
+# 回源双向认证的证书类型不正确，不支持配置为 CA 证书。
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTSVR = 'InvalidParameterValue.CertificateVerifyUpstreamClientMustSVR'
+
+# 回源双向认证配置至少需要配置一本证书。
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyUpstreamClientNeedCert'
 
 # 边缘双向认证配置中的客户端 CA 证书最多允许配置20本。
 INVALIDPARAMETERVALUE_CLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.ClientCertInfoQuotaLimit'
@@ -718,6 +775,9 @@ INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
 
 # DNS 记录与 DNSSEC 功能冲突。
 INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = 'InvalidParameterValue.ConflictWithDNSSEC'
+
+# DNS 记录与 加速域名 记录冲突。
+INVALIDPARAMETERVALUE_CONFLICTWITHDOMAIN = 'InvalidParameterValue.ConflictWithDomain'
 
 # DNS 记录与 NS 记录冲突。
 INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = 'InvalidParameterValue.ConflictWithNSRecord'
@@ -758,6 +818,9 @@ INVALIDPARAMETERVALUE_INVALIDDOMAINNAME = 'InvalidParameterValue.InvalidDomainNa
 # 加速域名状态不符合要求。
 INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = 'InvalidParameterValue.InvalidDomainStatus'
 
+# 无效的 keyless 服务端 Id。
+INVALIDPARAMETERVALUE_INVALIDKEYLESSSERVERID = 'InvalidParameterValue.InvalidKeylessServerId'
+
 # DNS 代理域名源站错误。
 INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOrigin'
 
@@ -785,10 +848,10 @@ INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = 'InvalidParameterValue.PageNameAlre
 # 不符合指定的正则表达式。
 INVALIDPARAMETERVALUE_REGEXMISMATCH = 'InvalidParameterValue.RegExMismatch'
 
-# 已开启双向认证，客户端使用 RSA 或者 ECC 算法证书时，HTTPS 证书必须也配置有相同算法证书。
+# 已开启边缘双向认证，客户端使用 RSA 或者 ECC 算法证书时，边缘 HTTPS 证书必须也配置有相同算法证书。
 INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINRSAORECC = 'InvalidParameterValue.ServerCertInfoNeedContainRSAorECC'
 
-# 已开启双向认证，客户端使用国密算法 CA 证书时，HTTPS 证书必须也配置有国密证书。
+# 已开启边缘双向认证，客户端使用国密算法 CA 证书时，边缘 HTTPS 证书必须也配置有国密证书。
 INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINSM2 = 'InvalidParameterValue.ServerCertInfoNeedContainSM2'
 
 # 请输入合法的共享 CNAME 前缀，最大支持50个字符。
@@ -799,6 +862,9 @@ INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevel
 
 # 配置项错误。
 INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.UnrecognizableValue'
+
+# 回源双向认证配置中的客户端证书最多允许配置1本。
+INVALIDPARAMETERVALUE_UPSTREAMCLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.UpstreamClientCertInfoQuotaLimit'
 
 # 站点名称格式不正确，请输入正确的域名格式。
 INVALIDPARAMETERVALUE_ZONENAMEINVALID = 'InvalidParameterValue.ZoneNameInvalid'
@@ -826,6 +892,9 @@ LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
 
 # 函数数量达到限制。
 LIMITEXCEEDED_FUNCTIONLIMITEXCEEDED = 'LimitExceeded.FunctionLimitExceeded'
+
+# 负载均衡数量超过限制。
+LIMITEXCEEDED_LOADBALANCINGCOUNTLIMITEXCEEDED = 'LimitExceeded.LoadBalancingCountLimitExceeded'
 
 # 计费套餐不支持。
 LIMITEXCEEDED_PACKNOTALLOW = 'LimitExceeded.PackNotAllow'
@@ -868,6 +937,9 @@ OPERATIONDENIED_ACCELERATEMAINLANDMULTIPLYLAYERCONFLICT = 'OperationDenied.Accel
 
 # 引用源站组的7层域名服务正在部署中，请稍后再编辑。
 OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'
+
+# 当前仅无私钥证书模式允许证书私钥为空。
+OPERATIONDENIED_CERTIFICATEPRIVATEKEYISEMPTY = 'OperationDenied.CertificatePrivateKeyIsEmpty'
 
 # 合规封禁中。
 OPERATIONDENIED_COMPLIANCEFORBIDDEN = 'OperationDenied.ComplianceForbidden'
@@ -914,6 +986,15 @@ OPERATIONDENIED_ENVNOTREADY = 'OperationDenied.EnvNotReady'
 # 站点处于停用状态，请开启后重试。
 OPERATIONDENIED_ERRZONEISALREADYPAUSED = 'OperationDenied.ErrZoneIsAlreadyPaused'
 
+# 待变更域名边缘双向认证证书不一致，请确认变更域名证书一致后重试。
+OPERATIONDENIED_HOSTSCLIENTCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsClientCertificateInconsistency'
+
+# 待变更域名 keyless 服务端不一致，请确认变更域名 keyless 服务端一致后重试。
+OPERATIONDENIED_HOSTSKEYLESSSERVERINCONSISTENCY = 'OperationDenied.HostsKeylessServerInconsistency'
+
+# 待变更域名回源双向认证证书不一致，请确认变更域名证书一致后重试。
+OPERATIONDENIED_HOSTSUPSTREAMCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsUpstreamCertificateInconsistency'
+
 # 开启高防时必须保证安全是开启状态。
 OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdvancedDefenseSecurityType'
 
@@ -925,6 +1006,12 @@ OPERATIONDENIED_IPV6ADVANCEDCONFLICT = 'OperationDenied.Ipv6AdvancedConflict'
 
 # ipv6功能和固定ip无法同时开启。
 OPERATIONDENIED_IPV6STATICIPCONFLICT = 'OperationDenied.Ipv6StaticIpConflict'
+
+# 待变更域名存在不同的证书或 keyless 服务端，请确认边缘 HTTPS 证书或 keyless 服务端一致后重试。
+OPERATIONDENIED_KEYLESSCERTSWITCHTOFREECERTCONFLICT = 'OperationDenied.KeylessCertSwitchToFreeCertConflict'
+
+# 当前无私钥证书模式要求证书私钥为空。
+OPERATIONDENIED_KEYLESSMODECERTIFICATEPRIVATEKEYNEEDEMPTY = 'OperationDenied.KeylessModeCertificatePrivateKeyNeedEmpty'
 
 # 四层实例资源售卖火爆，已售罄，正在加紧补货中，当前无法新增四层代理，请您耐心等待。
 OPERATIONDENIED_L4LACKOFRESOURCES = 'OperationDenied.L4LackOfResources'
@@ -973,6 +1060,12 @@ OPERATIONDENIED_NODOMAINACCESSZONEONLYALLOWMODIFIEDTOCNAME = 'OperationDenied.No
 
 # 无域名接入站点不支持除切换为CNAME接入类型以外的任何修改动作。
 OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = 'OperationDenied.NoDomainAccessZoneOnlySupportModifyType'
+
+# 当前无私钥证书功能仅针对白名单用户开放。
+OPERATIONDENIED_NOTINKEYLESSWHITELIST = 'OperationDenied.NotInKeylessWhiteList'
+
+# 当前回源双向认证功能仅针对白名单用户开放。
+OPERATIONDENIED_NOTINUPSTREAMMTLSWHITELIST = 'OperationDenied.NotInUpstreamMTLSWhiteList'
 
 # 用户不在版本管理的白名单内。
 OPERATIONDENIED_NOTINVERSIONCONTROLWHITELIST = 'OperationDenied.NotInVersionControlWhiteList'
@@ -1030,6 +1123,12 @@ OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsuppo
 
 # 该实例地域无法开启固定IP。
 OPERATIONDENIED_STATICIPAREACONFLICT = 'OperationDenied.StaticIpAreaConflict'
+
+# 当前并不支持关闭回源双向认证，如需关闭，请通过将边缘 HTTPS 证书更改为不配置来关闭。
+OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = 'OperationDenied.UnSupportToCloseUpstreamMTLS'
+
+# 如需启用回源双向认证，请先配置边缘 HTTPS 证书。
+OPERATIONDENIED_USEUPSTREAMMTLSNEEDOPENHTTPS = 'OperationDenied.UseUpstreamMTLSNeedOpenHttps'
 
 # 存在使用中的测试版本，请将测试版本发布现网或者回滚测试版本再重试。
 OPERATIONDENIED_VERSIONCONTROLISGRAYING = 'OperationDenied.VersionControlIsGraying'

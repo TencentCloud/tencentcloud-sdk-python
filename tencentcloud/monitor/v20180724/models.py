@@ -41,6 +41,10 @@ class AlarmConditionFilter(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -49,6 +53,10 @@ class AlarmConditionFilter(AbstractModel):
 
     @property
     def Expression(self):
+        """表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Expression
 
     @Expression.setter
@@ -57,6 +65,10 @@ class AlarmConditionFilter(AbstractModel):
 
     @property
     def Dimensions(self):
+        """过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -98,6 +110,9 @@ class AlarmEvent(AbstractModel):
 
     @property
     def EventName(self):
+        """事件名
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -106,6 +121,9 @@ class AlarmEvent(AbstractModel):
 
     @property
     def Description(self):
+        """展示的事件名
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -114,6 +132,9 @@ class AlarmEvent(AbstractModel):
 
     @property
     def Namespace(self):
+        """告警策略类型
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -154,6 +175,10 @@ class AlarmGroupByItem(AbstractModel):
 
     @property
     def Id(self):
+        """Item Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -162,6 +187,10 @@ class AlarmGroupByItem(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -205,6 +234,10 @@ class AlarmHierarchicalNotice(AbstractModel):
 
     @property
     def NoticeId(self):
+        """通知模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NoticeId
 
     @NoticeId.setter
@@ -213,6 +246,10 @@ class AlarmHierarchicalNotice(AbstractModel):
 
     @property
     def Classification(self):
+        """通知等级列表，["Remind","Serious"]表示该通知模板仅接收提醒和严重类别的告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Classification
 
     @Classification.setter
@@ -221,6 +258,10 @@ class AlarmHierarchicalNotice(AbstractModel):
 
     @property
     def PolicyId(self):
+        """模板对应的策略id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -265,6 +306,10 @@ class AlarmHierarchicalValue(AbstractModel):
 
     @property
     def Remind(self):
+        """提醒等级阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remind
 
     @Remind.setter
@@ -273,6 +318,10 @@ class AlarmHierarchicalValue(AbstractModel):
 
     @property
     def Warn(self):
+        """警告等级阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Warn
 
     @Warn.setter
@@ -281,6 +330,10 @@ class AlarmHierarchicalValue(AbstractModel):
 
     @property
     def Serious(self):
+        """严重等级阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Serious
 
     @Serious.setter
@@ -386,6 +439,9 @@ class AlarmHistory(AbstractModel):
         :param _MetricName: 指标名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricName: str
+        :param _PolicyPermissions: 策略是否有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyPermissions: int
         """
         self._AlarmId = None
         self._MonitorType = None
@@ -420,9 +476,13 @@ class AlarmHistory(AbstractModel):
         self._AlarmShieldReason = None
         self._InternalDimensions = None
         self._MetricName = None
+        self._PolicyPermissions = None
 
     @property
     def AlarmId(self):
+        """告警历史Id
+        :rtype: str
+        """
         return self._AlarmId
 
     @AlarmId.setter
@@ -431,6 +491,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def MonitorType(self):
+        """监控类型
+        :rtype: str
+        """
         return self._MonitorType
 
     @MonitorType.setter
@@ -439,6 +502,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def Namespace(self):
+        """策略类型
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -447,6 +513,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmObject(self):
+        """告警对象
+        :rtype: str
+        """
         return self._AlarmObject
 
     @AlarmObject.setter
@@ -455,6 +524,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def Content(self):
+        """告警内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -463,6 +535,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def FirstOccurTime(self):
+        """时间戳，首次出现时间
+        :rtype: int
+        """
         return self._FirstOccurTime
 
     @FirstOccurTime.setter
@@ -471,6 +546,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def LastOccurTime(self):
+        """时间戳，最后出现时间
+        :rtype: int
+        """
         return self._LastOccurTime
 
     @LastOccurTime.setter
@@ -479,6 +557,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmStatus(self):
+        """告警状态，ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足
+        :rtype: str
+        """
         return self._AlarmStatus
 
     @AlarmStatus.setter
@@ -487,6 +568,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 Id
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -495,6 +579,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -503,6 +590,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def VPC(self):
+        """基础产品告警的告警对象所属网络
+        :rtype: str
+        """
         return self._VPC
 
     @VPC.setter
@@ -511,6 +601,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -519,6 +612,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名字
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -527,6 +623,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def InstanceGroup(self):
+        """告警对象所属实例组
+        :rtype: list of InstanceGroups
+        """
         return self._InstanceGroup
 
     @InstanceGroup.setter
@@ -535,6 +634,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def ReceiverUids(self):
+        """接收人列表
+        :rtype: list of int
+        """
         return self._ReceiverUids
 
     @ReceiverUids.setter
@@ -543,6 +645,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def ReceiverGroups(self):
+        """接收组列表
+        :rtype: list of int
+        """
         return self._ReceiverGroups
 
     @ReceiverGroups.setter
@@ -551,6 +656,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def NoticeWays(self):
+        """告警渠道列表 SMS=短信 EMAIL=邮件 CALL=电话 WECHAT=微信
+        :rtype: list of str
+        """
         return self._NoticeWays
 
     @NoticeWays.setter
@@ -559,6 +667,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def OriginId(self):
+        """可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
+        :rtype: str
+        """
         return self._OriginId
 
     @OriginId.setter
@@ -567,6 +678,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmType(self):
+        """告警类型
+        :rtype: str
+        """
         return self._AlarmType
 
     @AlarmType.setter
@@ -575,6 +689,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def EventId(self):
+        """事件Id
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -583,6 +700,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -591,6 +711,9 @@ class AlarmHistory(AbstractModel):
 
     @property
     def PolicyExists(self):
+        """策略是否存在 0=不存在 1=存在
+        :rtype: int
+        """
         return self._PolicyExists
 
     @PolicyExists.setter
@@ -599,6 +722,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def MetricsInfo(self):
+        """指标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmHistoryMetric
+        """
         return self._MetricsInfo
 
     @MetricsInfo.setter
@@ -607,6 +734,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def Dimensions(self):
+        """告警实例的维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -615,6 +746,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmLevel(self):
+        """告警等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmLevel
 
     @AlarmLevel.setter
@@ -623,6 +758,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def ShieldFlag(self):
+        """是否有配置告警屏蔽规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ShieldFlag
 
     @ShieldFlag.setter
@@ -631,6 +770,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmShieldingType(self):
+        """屏蔽类型（英文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmShieldingType
 
     @AlarmShieldingType.setter
@@ -639,6 +782,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmShieldingTime(self):
+        """屏蔽时间（英文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmShieldingTime
 
     @AlarmShieldingTime.setter
@@ -647,6 +794,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmShieldingShowType(self):
+        """屏蔽类型（中文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmShieldingShowType
 
     @AlarmShieldingShowType.setter
@@ -655,6 +806,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmShieldingShowTime(self):
+        """屏蔽时间（中文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmShieldingShowTime
 
     @AlarmShieldingShowTime.setter
@@ -663,6 +818,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def AlarmShieldReason(self):
+        """屏蔽原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmShieldReason
 
     @AlarmShieldReason.setter
@@ -671,6 +830,10 @@ class AlarmHistory(AbstractModel):
 
     @property
     def InternalDimensions(self):
+        """告警实例的维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InternalDimensions
 
     @InternalDimensions.setter
@@ -679,11 +842,27 @@ class AlarmHistory(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
     def MetricName(self, MetricName):
         self._MetricName = MetricName
+
+    @property
+    def PolicyPermissions(self):
+        """策略是否有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PolicyPermissions
+
+    @PolicyPermissions.setter
+    def PolicyPermissions(self, PolicyPermissions):
+        self._PolicyPermissions = PolicyPermissions
 
 
     def _deserialize(self, params):
@@ -730,6 +909,7 @@ class AlarmHistory(AbstractModel):
         self._AlarmShieldReason = params.get("AlarmShieldReason")
         self._InternalDimensions = params.get("InternalDimensions")
         self._MetricName = params.get("MetricName")
+        self._PolicyPermissions = params.get("PolicyPermissions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -766,6 +946,9 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def QceNamespace(self):
+        """云产品监控类型查询数据使用的命名空间
+        :rtype: str
+        """
         return self._QceNamespace
 
     @QceNamespace.setter
@@ -774,6 +957,9 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -782,6 +968,9 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def Period(self):
+        """统计周期
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -790,6 +979,9 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def Value(self):
+        """触发告警的数值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -798,6 +990,9 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def Description(self):
+        """指标的展示名
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -884,6 +1079,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def Id(self):
+        """告警通知模板 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -892,6 +1091,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def Name(self):
+        """告警通知模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -900,6 +1103,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """上次修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -908,6 +1115,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UpdatedBy(self):
+        """上次修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedBy
 
     @UpdatedBy.setter
@@ -916,6 +1127,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def NoticeType(self):
+        """告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NoticeType
 
     @NoticeType.setter
@@ -924,6 +1139,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UserNotices(self):
+        """用户通知列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserNotice
+        """
         return self._UserNotices
 
     @UserNotices.setter
@@ -932,6 +1151,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def URLNotices(self):
+        """回调通知列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of URLNotice
+        """
         return self._URLNotices
 
     @URLNotices.setter
@@ -940,6 +1163,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def IsPreset(self):
+        """是否是系统预设通知模板 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsPreset
 
     @IsPreset.setter
@@ -948,6 +1175,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def NoticeLanguage(self):
+        """通知语言 zh-CN=中文 en-US=英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NoticeLanguage
 
     @NoticeLanguage.setter
@@ -956,6 +1187,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def PolicyIds(self):
+        """告警通知模板绑定的告警策略ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PolicyIds
 
     @PolicyIds.setter
@@ -964,6 +1199,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def AMPConsumerId(self):
+        """后台 amp consumer id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AMPConsumerId
 
     @AMPConsumerId.setter
@@ -972,6 +1211,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def CLSNotices(self):
+        """推送cls渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CLSNotice
+        """
         return self._CLSNotices
 
     @CLSNotices.setter
@@ -980,6 +1223,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def Tags(self):
+        """通知模板绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1201,6 +1448,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -1209,6 +1460,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def PolicyName(self):
+        """告警策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -1217,6 +1472,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1225,6 +1484,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def MonitorType(self):
+        """监控类型 MT_QCE=云产品监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MonitorType
 
     @MonitorType.setter
@@ -1233,6 +1496,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Enable(self):
+        """启停状态 0=停用 1=启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -1241,6 +1508,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def UseSum(self):
+        """策略组绑定的实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UseSum
 
     @UseSum.setter
@@ -1249,6 +1520,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id -1=无项目 0=默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1257,6 +1532,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -1265,6 +1544,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Namespace(self):
+        """告警策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1273,6 +1556,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def ConditionTemplateId(self):
+        """触发条件模板 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConditionTemplateId
 
     @ConditionTemplateId.setter
@@ -1281,6 +1568,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Condition(self):
+        """指标触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -1289,6 +1580,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def EventCondition(self):
+        """事件触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
         return self._EventCondition
 
     @EventCondition.setter
@@ -1297,6 +1592,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def NoticeIds(self):
+        """通知规则 id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NoticeIds
 
     @NoticeIds.setter
@@ -1305,6 +1604,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Notices(self):
+        """通知规则 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmNotice
+        """
         return self._Notices
 
     @Notices.setter
@@ -1313,6 +1616,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def TriggerTasks(self):
+        """触发任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmPolicyTriggerTask
+        """
         return self._TriggerTasks
 
     @TriggerTasks.setter
@@ -1321,6 +1628,11 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def ConditionsTemp(self):
+        """模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ConditionsTemp`
+        """
         return self._ConditionsTemp
 
     @ConditionsTemp.setter
@@ -1329,6 +1641,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def LastEditUin(self):
+        """最后编辑的用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastEditUin
 
     @LastEditUin.setter
@@ -1337,6 +1653,11 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1345,6 +1666,11 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -1353,6 +1679,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Region
 
     @Region.setter
@@ -1361,6 +1691,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def NamespaceShowName(self):
+        """namespace显示名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NamespaceShowName
 
     @NamespaceShowName.setter
@@ -1369,6 +1703,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否默认策略，1是，0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -1377,6 +1715,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def CanSetDefault(self):
+        """能否设置默认策略，1是，0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CanSetDefault
 
     @CanSetDefault.setter
@@ -1385,6 +1727,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -1393,6 +1739,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def InstanceSum(self):
+        """实例分组总实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InstanceSum
 
     @InstanceSum.setter
@@ -1401,6 +1751,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def InstanceGroupName(self):
+        """实例分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceGroupName
 
     @InstanceGroupName.setter
@@ -1409,6 +1763,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def RuleType(self):
+        """触发条件类型 STATIC=静态阈值 DYNAMIC=动态类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleType
 
     @RuleType.setter
@@ -1417,6 +1775,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def OriginId(self):
+        """用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginId
 
     @OriginId.setter
@@ -1425,6 +1787,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def TagInstances(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInstance
+        """
         return self._TagInstances
 
     @TagInstances.setter
@@ -1433,6 +1799,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmConditionFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -1441,6 +1811,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def GroupBy(self):
+        """聚合条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmGroupByItem
+        """
         return self._GroupBy
 
     @GroupBy.setter
@@ -1449,6 +1823,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def FilterDimensionsParam(self):
+        """策略关联的过滤维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FilterDimensionsParam
 
     @FilterDimensionsParam.setter
@@ -1457,6 +1835,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def IsOneClick(self):
+        """是否为一键告警策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsOneClick
 
     @IsOneClick.setter
@@ -1465,6 +1847,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def OneClickStatus(self):
+        """一键告警策略是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OneClickStatus
 
     @OneClickStatus.setter
@@ -1473,6 +1859,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def AdvancedMetricNumber(self):
+        """高级指标数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AdvancedMetricNumber
 
     @AdvancedMetricNumber.setter
@@ -1481,6 +1871,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def IsBindAll(self):
+        """策略是否是全部对象策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsBindAll
 
     @IsBindAll.setter
@@ -1489,6 +1883,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Tags(self):
+        """策略标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1497,6 +1895,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def IsSupportAlarmTag(self):
+        """是否支持告警标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsSupportAlarmTag
 
     @IsSupportAlarmTag.setter
@@ -1505,6 +1907,10 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def TagOperation(self):
+        """多标签交/并集关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagOperation
 
     @TagOperation.setter
@@ -1618,6 +2024,10 @@ class AlarmPolicyCondition(AbstractModel):
 
     @property
     def IsUnionRule(self):
+        """告警触发条件的判断方式. 0: 任意; 1: 全部; 2: 复合. 当取值为2的时候为复合告警，与参数 ComplexExpression 配合使用.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsUnionRule
 
     @IsUnionRule.setter
@@ -1626,6 +2036,10 @@ class AlarmPolicyCondition(AbstractModel):
 
     @property
     def Rules(self):
+        """告警触发条件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmPolicyRule
+        """
         return self._Rules
 
     @Rules.setter
@@ -1634,6 +2048,10 @@ class AlarmPolicyCondition(AbstractModel):
 
     @property
     def ComplexExpression(self):
+        """复合告警触发条件的判断表达式，当 IsUnionRule 取值为2的时候有效. 其作用是描述多个触发条件需要满足表达式求值为True时才算是满足告警条件.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ComplexExpression
 
     @ComplexExpression.setter
@@ -1675,6 +2093,10 @@ class AlarmPolicyEventCondition(AbstractModel):
 
     @property
     def Rules(self):
+        """告警触发条件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmPolicyRule
+        """
         return self._Rules
 
     @Rules.setter
@@ -1718,6 +2140,10 @@ class AlarmPolicyFilter(AbstractModel):
 
     @property
     def Type(self):
+        """过滤条件类型 DIMENSION=使用 Dimensions 做过滤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1726,6 +2152,10 @@ class AlarmPolicyFilter(AbstractModel):
 
     @property
     def Dimensions(self):
+        """AlarmPolicyDimension 二维数组序列化后的json字符串，一维数组之间互为或关系，一维数组内的元素互为与关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -1847,6 +2277,10 @@ re=正则匹配
 
     @property
     def MetricName(self):
+        """指标名或事件名，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -1855,6 +2289,10 @@ re=正则匹配
 
     @property
     def Period(self):
+        """秒数 统计周期，支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -1863,6 +2301,28 @@ re=正则匹配
 
     @property
     def Operator(self):
+        """英文运算符
+intelligent=无阈值智能检测
+eq=等于
+ge=大于等于
+gt=大于
+le=小于等于
+lt=小于
+ne=不等于
+day_increase=天同比增长
+day_decrease=天同比下降
+day_wave=天同比波动
+week_increase=周同比增长
+week_decrease=周同比下降
+week_wave=周同比波动
+cycle_increase=环比增长
+cycle_decrease=环比下降
+cycle_wave=环比波动
+re=正则匹配
+支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -1871,6 +2331,10 @@ re=正则匹配
 
     @property
     def Value(self):
+        """阈值，支持的范围可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1879,6 +2343,10 @@ re=正则匹配
 
     @property
     def ContinuePeriod(self):
+        """周期数 持续通知周期 1=持续1个周期 2=持续2个周期...，支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ContinuePeriod
 
     @ContinuePeriod.setter
@@ -1887,6 +2355,10 @@ re=正则匹配
 
     @property
     def NoticeFrequency(self):
+        """秒数 告警间隔  0=不重复 300=每5分钟告警一次 600=每10分钟告警一次 900=每15分钟告警一次 1800=每30分钟告警一次 3600=每1小时告警一次 7200=每2小时告警一次 10800=每3小时告警一次 21600=每6小时告警一次 43200=每12小时告警一次 86400=每1天告警一次
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NoticeFrequency
 
     @NoticeFrequency.setter
@@ -1895,6 +2367,10 @@ re=正则匹配
 
     @property
     def IsPowerNotice(self):
+        """告警频率是否指数增长 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsPowerNotice
 
     @IsPowerNotice.setter
@@ -1903,6 +2379,10 @@ re=正则匹配
 
     @property
     def Filter(self):
+        """对于单个触发规则的过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -1911,6 +2391,10 @@ re=正则匹配
 
     @property
     def Description(self):
+        """指标展示名，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1919,6 +2403,10 @@ re=正则匹配
 
     @property
     def Unit(self):
+        """单位，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -1927,6 +2415,10 @@ re=正则匹配
 
     @property
     def RuleType(self):
+        """触发条件类型 STATIC=静态阈值 DYNAMIC=动态阈值。创建或编辑策略时，如不填则默认为 STATIC。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleType
 
     @RuleType.setter
@@ -1935,6 +2427,10 @@ re=正则匹配
 
     @property
     def IsAdvanced(self):
+        """是否为高级指标，0否，1是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsAdvanced
 
     @IsAdvanced.setter
@@ -1943,6 +2439,10 @@ re=正则匹配
 
     @property
     def IsOpen(self):
+        """高级指标是否开通，0否，1是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsOpen
 
     @IsOpen.setter
@@ -1951,6 +2451,10 @@ re=正则匹配
 
     @property
     def ProductId(self):
+        """集成中心产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1959,6 +2463,10 @@ re=正则匹配
 
     @property
     def ValueMax(self):
+        """最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._ValueMax
 
     @ValueMax.setter
@@ -1967,6 +2475,10 @@ re=正则匹配
 
     @property
     def ValueMin(self):
+        """最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._ValueMin
 
     @ValueMin.setter
@@ -1975,6 +2487,10 @@ re=正则匹配
 
     @property
     def HierarchicalValue(self):
+        """告警分级阈值配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
+        """
         return self._HierarchicalValue
 
     @HierarchicalValue.setter
@@ -1983,6 +2499,10 @@ re=正则匹配
 
     @property
     def IsLatenessMetric(self):
+        """是否延迟指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsLatenessMetric
 
     @IsLatenessMetric.setter
@@ -2042,6 +2562,10 @@ class AlarmPolicyTriggerTask(AbstractModel):
 
     @property
     def Type(self):
+        """触发任务类型 AS=弹性伸缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2050,6 +2574,10 @@ class AlarmPolicyTriggerTask(AbstractModel):
 
     @property
     def TaskConfig(self):
+        """用 json 表示配置信息 {"Key1":"Value1","Key2":"Value2"}
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskConfig
 
     @TaskConfig.setter
@@ -2087,6 +2615,9 @@ class BindPrometheusManagedGrafanaRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2095,6 +2626,9 @@ class BindPrometheusManagedGrafanaRequest(AbstractModel):
 
     @property
     def GrafanaId(self):
+        """Grafana 可视化服务实例 ID
+        :rtype: str
+        """
         return self._GrafanaId
 
     @GrafanaId.setter
@@ -2129,6 +2663,9 @@ class BindPrometheusManagedGrafanaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2165,6 +2702,9 @@ class BindingPolicyObjectDimension(AbstractModel):
 
     @property
     def Region(self):
+        """地域名
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2173,6 +2713,9 @@ class BindingPolicyObjectDimension(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -2181,6 +2724,11 @@ class BindingPolicyObjectDimension(AbstractModel):
 
     @property
     def Dimensions(self):
+        """实例的维度信息，格式为
+{"unInstanceId":"ins-00jvv9mo"}。不同云产品的维度信息不同，详见
+[指标维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -2189,6 +2737,9 @@ class BindingPolicyObjectDimension(AbstractModel):
 
     @property
     def EventDimensions(self):
+        """事件维度信息
+        :rtype: str
+        """
         return self._EventDimensions
 
     @EventDimensions.setter
@@ -2243,6 +2794,9 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Module(self):
+        """必填。固定值"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -2251,6 +2805,9 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id，例如 4739573。逐渐弃用，建议使用 PolicyId 参数
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2259,6 +2816,9 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略ID，例如“policy-gh892hg0”。PolicyId 参数与 GroupId 参数至少要填一个，否则会报参数错误，建议使用该参数。若两者同时存在则以该参数为准
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -2267,6 +2827,9 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例分组ID
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -2275,6 +2838,9 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Dimensions(self):
+        """需要绑定的对象维度信息
+        :rtype: list of BindingPolicyObjectDimension
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -2283,6 +2849,9 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbSubject(self):
+        """事件配置的告警
+        :rtype: str
+        """
         return self._EbSubject
 
     @EbSubject.setter
@@ -2291,6 +2860,9 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbEventFlag(self):
+        """是否配置了事件告警
+        :rtype: int
+        """
         return self._EbEventFlag
 
     @EbEventFlag.setter
@@ -2335,6 +2907,9 @@ class BindingPolicyObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2387,6 +2962,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定取值 monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -2395,6 +2973,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -2403,6 +2984,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2411,6 +2995,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def ServiceType(self):
+        """产品类型
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -2419,6 +3006,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """策略标签
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PolicyTag`
+        """
         return self._Tag
 
     @Tag.setter
@@ -2427,6 +3017,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例分组ID
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -2435,6 +3028,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def BatchTag(self):
+        """批量绑定标签
+        :rtype: list of PolicyTag
+        """
         return self._BatchTag
 
     @BatchTag.setter
@@ -2443,6 +3039,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def EbEventFlag(self):
+        """是否同步eb
+        :rtype: int
+        """
         return self._EbEventFlag
 
     @EbEventFlag.setter
@@ -2451,6 +3050,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def EbSubject(self):
+        """事件配置的告警
+        :rtype: str
+        """
         return self._EbSubject
 
     @EbSubject.setter
@@ -2459,6 +3061,9 @@ class BindingPolicyTagRequest(AbstractModel):
 
     @property
     def TagOperation(self):
+        """标识标签取交/并集关系
+        :rtype: str
+        """
         return self._TagOperation
 
     @TagOperation.setter
@@ -2508,6 +3113,9 @@ class BindingPolicyTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2542,6 +3150,9 @@ class CLSNotice(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2550,6 +3161,9 @@ class CLSNotice(AbstractModel):
 
     @property
     def LogSetId(self):
+        """日志集Id
+        :rtype: str
+        """
         return self._LogSetId
 
     @LogSetId.setter
@@ -2558,6 +3172,9 @@ class CLSNotice(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题Id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -2566,6 +3183,9 @@ class CLSNotice(AbstractModel):
 
     @property
     def Enable(self):
+        """启停状态，可不传，默认启用。0=停用，1=启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -2602,6 +3222,9 @@ class CleanGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2635,6 +3258,9 @@ class CleanGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2681,6 +3307,9 @@ class CommonNamespace(AbstractModel):
 
     @property
     def Id(self):
+        """命名空间标示
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2689,6 +3318,9 @@ class CommonNamespace(AbstractModel):
 
     @property
     def Name(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2697,6 +3329,9 @@ class CommonNamespace(AbstractModel):
 
     @property
     def Value(self):
+        """命名空间值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2705,6 +3340,9 @@ class CommonNamespace(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品名称
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -2713,6 +3351,9 @@ class CommonNamespace(AbstractModel):
 
     @property
     def Config(self):
+        """配置信息
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -2721,6 +3362,9 @@ class CommonNamespace(AbstractModel):
 
     @property
     def AvailableRegions(self):
+        """支持地域列表
+        :rtype: list of str
+        """
         return self._AvailableRegions
 
     @AvailableRegions.setter
@@ -2729,6 +3373,9 @@ class CommonNamespace(AbstractModel):
 
     @property
     def SortId(self):
+        """排序Id
+        :rtype: int
+        """
         return self._SortId
 
     @SortId.setter
@@ -2737,6 +3384,9 @@ class CommonNamespace(AbstractModel):
 
     @property
     def DashboardId(self):
+        """Dashboard中的唯一表示
+        :rtype: str
+        """
         return self._DashboardId
 
     @DashboardId.setter
@@ -2786,6 +3436,9 @@ class CommonNamespaceNew(AbstractModel):
 
     @property
     def Id(self):
+        """命名空间标示
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2794,6 +3447,9 @@ class CommonNamespaceNew(AbstractModel):
 
     @property
     def Name(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2802,6 +3458,9 @@ class CommonNamespaceNew(AbstractModel):
 
     @property
     def MonitorType(self):
+        """监控类型
+        :rtype: str
+        """
         return self._MonitorType
 
     @MonitorType.setter
@@ -2810,6 +3469,9 @@ class CommonNamespaceNew(AbstractModel):
 
     @property
     def Dimensions(self):
+        """维度信息
+        :rtype: list of DimensionNew
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -2895,6 +3557,9 @@ class Condition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
+        """告警通知频率
+        :rtype: int
+        """
         return self._AlarmNotifyPeriod
 
     @AlarmNotifyPeriod.setter
@@ -2903,6 +3568,9 @@ class Condition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
+        """重复通知策略预定义（0 - 只告警一次， 1 - 指数告警，2 - 连接告警）
+        :rtype: int
+        """
         return self._AlarmNotifyType
 
     @AlarmNotifyType.setter
@@ -2911,6 +3579,10 @@ class Condition(AbstractModel):
 
     @property
     def CalcType(self):
+        """检测方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CalcType
 
     @CalcType.setter
@@ -2919,6 +3591,10 @@ class Condition(AbstractModel):
 
     @property
     def CalcValue(self):
+        """检测值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CalcValue
 
     @CalcValue.setter
@@ -2927,6 +3603,10 @@ class Condition(AbstractModel):
 
     @property
     def ContinueTime(self):
+        """持续时间，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContinueTime
 
     @ContinueTime.setter
@@ -2935,6 +3615,9 @@ class Condition(AbstractModel):
 
     @property
     def MetricID(self):
+        """指标ID
+        :rtype: int
+        """
         return self._MetricID
 
     @MetricID.setter
@@ -2943,6 +3626,9 @@ class Condition(AbstractModel):
 
     @property
     def MetricDisplayName(self):
+        """指标展示名称（对外）
+        :rtype: str
+        """
         return self._MetricDisplayName
 
     @MetricDisplayName.setter
@@ -2951,6 +3637,9 @@ class Condition(AbstractModel):
 
     @property
     def Period(self):
+        """周期
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -2959,6 +3648,9 @@ class Condition(AbstractModel):
 
     @property
     def RuleID(self):
+        """规则ID
+        :rtype: int
+        """
         return self._RuleID
 
     @RuleID.setter
@@ -2967,6 +3659,9 @@ class Condition(AbstractModel):
 
     @property
     def Unit(self):
+        """指标单位
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -2975,6 +3670,9 @@ class Condition(AbstractModel):
 
     @property
     def IsAdvanced(self):
+        """是否为高级指标，0：否；1：是
+        :rtype: int
+        """
         return self._IsAdvanced
 
     @IsAdvanced.setter
@@ -2983,6 +3681,9 @@ class Condition(AbstractModel):
 
     @property
     def IsOpen(self):
+        """是否开通高级指标，0：否；1：是
+        :rtype: int
+        """
         return self._IsOpen
 
     @IsOpen.setter
@@ -2991,6 +3692,10 @@ class Condition(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2999,6 +3704,10 @@ class Condition(AbstractModel):
 
     @property
     def HierarchicalValue(self):
+        """告警分级阈值配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
+        """
         return self._HierarchicalValue
 
     @HierarchicalValue.setter
@@ -3056,6 +3765,10 @@ class ConditionsTemp(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -3064,6 +3777,10 @@ class ConditionsTemp(AbstractModel):
 
     @property
     def Condition(self):
+        """指标触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -3072,6 +3789,10 @@ class ConditionsTemp(AbstractModel):
 
     @property
     def EventCondition(self):
+        """事件触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
         return self._EventCondition
 
     @EventCondition.setter
@@ -3132,6 +3853,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -3140,6 +3864,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """通知模板名称 60字符以内
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3148,6 +3875,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeType(self):
+        """通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        :rtype: str
+        """
         return self._NoticeType
 
     @NoticeType.setter
@@ -3156,6 +3886,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeLanguage(self):
+        """通知语言 zh-CN=中文 en-US=英文
+        :rtype: str
+        """
         return self._NoticeLanguage
 
     @NoticeLanguage.setter
@@ -3164,6 +3897,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def UserNotices(self):
+        """用户通知 最多5个
+        :rtype: list of UserNotice
+        """
         return self._UserNotices
 
     @UserNotices.setter
@@ -3172,6 +3908,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def URLNotices(self):
+        """回调通知 最多6个
+        :rtype: list of URLNotice
+        """
         return self._URLNotices
 
     @URLNotices.setter
@@ -3180,6 +3919,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def CLSNotices(self):
+        """推送CLS日志服务的操作 最多1个
+        :rtype: list of CLSNotice
+        """
         return self._CLSNotices
 
     @CLSNotices.setter
@@ -3188,6 +3930,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """模板绑定的标签
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3251,6 +3996,9 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
     @property
     def NoticeId(self):
+        """告警通知模板ID
+        :rtype: str
+        """
         return self._NoticeId
 
     @NoticeId.setter
@@ -3259,6 +4007,9 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3339,6 +4090,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -3347,6 +4101,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名称，不超过60字符
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -3355,6 +4112,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def MonitorType(self):
+        """监控类型 MT_QCE=云产品监控
+        :rtype: str
+        """
         return self._MonitorType
 
     @MonitorType.setter
@@ -3363,6 +4123,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """告警策略类型，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3371,6 +4134,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注，不超过100字符，仅支持中英文、数字、下划线、-
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -3379,6 +4145,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """是否启用 0=停用 1=启用，可不传 默认为1
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -3387,6 +4156,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3395,6 +4167,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def ConditionTemplateId(self):
+        """触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250) 接口获取。
+        :rtype: int
+        """
         return self._ConditionTemplateId
 
     @ConditionTemplateId.setter
@@ -3403,6 +4178,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Condition(self):
+        """指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -3411,6 +4189,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def EventCondition(self):
+        """事件触发条件，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
         return self._EventCondition
 
     @EventCondition.setter
@@ -3419,6 +4200,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
+        """通知规则 Id 列表，由 [DescribeAlarmNotices](https://cloud.tencent.com/document/product/248/51280) 获得
+        :rtype: list of str
+        """
         return self._NoticeIds
 
     @NoticeIds.setter
@@ -3427,6 +4211,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def TriggerTasks(self):
+        """触发任务列表
+        :rtype: list of AlarmPolicyTriggerTask
+        """
         return self._TriggerTasks
 
     @TriggerTasks.setter
@@ -3435,6 +4222,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """全局过滤条件
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -3443,6 +4233,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def GroupBy(self):
+        """聚合维度列表，指定按哪些维度 key 来做 group by
+        :rtype: list of str
+        """
         return self._GroupBy
 
     @GroupBy.setter
@@ -3451,6 +4244,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """模板绑定的标签
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3459,6 +4255,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def LogAlarmReqInfo(self):
+        """日志告警信息
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
+        """
         return self._LogAlarmReqInfo
 
     @LogAlarmReqInfo.setter
@@ -3467,6 +4266,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def HierarchicalNotices(self):
+        """告警分级通知规则配置
+        :rtype: list of AlarmHierarchicalNotice
+        """
         return self._HierarchicalNotices
 
     @HierarchicalNotices.setter
@@ -3475,6 +4277,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def MigrateFlag(self):
+        """迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
+        :rtype: int
+        """
         return self._MigrateFlag
 
     @MigrateFlag.setter
@@ -3483,6 +4288,9 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def EbSubject(self):
+        """事件配置的告警
+        :rtype: str
+        """
         return self._EbSubject
 
     @EbSubject.setter
@@ -3563,6 +4371,9 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -3571,6 +4382,9 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     @property
     def OriginId(self):
+        """可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
+        :rtype: str
+        """
         return self._OriginId
 
     @OriginId.setter
@@ -3579,6 +4393,9 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3634,6 +4451,9 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID，例如：prom-abcd1234
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3642,6 +4462,9 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -3650,6 +4473,9 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def Expr(self):
+        """规则表达式，可参考<a href="https://cloud.tencent.com/document/product/1416/56008">告警规则说明</a>
+        :rtype: str
+        """
         return self._Expr
 
     @Expr.setter
@@ -3658,6 +4484,9 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def Receivers(self):
+        """告警通知模板 ID 列表
+        :rtype: list of str
+        """
         return self._Receivers
 
     @Receivers.setter
@@ -3666,6 +4495,11 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码，取值如下：
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -3674,6 +4508,9 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """规则报警持续时间
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -3682,6 +4519,9 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def Labels(self):
+        """标签列表
+        :rtype: list of PrometheusRuleKV
+        """
         return self._Labels
 
     @Labels.setter
@@ -3690,6 +4530,11 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def Annotations(self):
+        """注释列表。
+
+告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
+        :rtype: list of PrometheusRuleKV
+        """
         return self._Annotations
 
     @Annotations.setter
@@ -3698,6 +4543,9 @@ class CreateAlertRuleRequest(AbstractModel):
 
     @property
     def Type(self):
+        """报警策略模板分类
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3753,6 +4601,10 @@ class CreateAlertRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -3761,6 +4613,9 @@ class CreateAlertRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3802,6 +4657,9 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3810,6 +4668,9 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
+        """类型(可通过 DescribePrometheusIntegrations 接口获取，取每一项中的 ExporterType 字段)
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -3818,6 +4679,9 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """集成配置
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -3826,6 +4690,12 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def KubeType(self):
+        """Kubernetes 集群类型，可不填，取值如下：
+<li> 1= 容器集群(TKE) </li>
+<li> 2=弹性集群(EKS) </li>
+<li> 3= Prometheus管理的弹性集群(MEKS) </li>
+        :rtype: int
+        """
         return self._KubeType
 
     @KubeType.setter
@@ -3834,6 +4704,9 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群 ID，可不填
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3874,6 +4747,9 @@ class CreateExporterIntegrationResponse(AbstractModel):
 
     @property
     def Names(self):
+        """返回创建成功的集成名称列表
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -3882,6 +4758,9 @@ class CreateExporterIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3926,6 +4805,9 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -3934,6 +4816,9 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID (私有网络 ID)
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3942,6 +4827,9 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """子网 ID 数组(VPC ID下的子网 ID，只取第一个)
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -3950,6 +4838,9 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def EnableInternet(self):
+        """是否启用外网
+        :rtype: bool
+        """
         return self._EnableInternet
 
     @EnableInternet.setter
@@ -3958,6 +4849,9 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def GrafanaInitPassword(self):
+        """Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)
+        :rtype: str
+        """
         return self._GrafanaInitPassword
 
     @GrafanaInitPassword.setter
@@ -3966,6 +4860,9 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """标签
+        :rtype: list of PrometheusTag
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -3974,6 +4871,9 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
+        """是否自动选择代金券，默认为 false
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -4021,6 +4921,9 @@ class CreateGrafanaInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例名
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4029,6 +4932,9 @@ class CreateGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4061,6 +4967,9 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4069,6 +4978,9 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
+        """集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -4077,6 +4989,9 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """集成配置
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -4116,6 +5031,10 @@ class CreateGrafanaIntegrationResponse(AbstractModel):
 
     @property
     def IntegrationId(self):
+        """集成 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IntegrationId
 
     @IntegrationId.setter
@@ -4124,6 +5043,9 @@ class CreateGrafanaIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4165,6 +5087,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4173,6 +5098,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """告警通道名称，例如：test
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -4181,6 +5109,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def Receivers(self):
+        """接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
+        :rtype: list of str
+        """
         return self._Receivers
 
     @Receivers.setter
@@ -4189,6 +5120,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def OrgId(self):
+        """默认为1，建议使用 OrganizationIds
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -4197,6 +5131,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ExtraOrgIds(self):
+        """额外组织 ID 数组，已废弃，请使用 OrganizationIds
+        :rtype: list of str
+        """
         return self._ExtraOrgIds
 
     @ExtraOrgIds.setter
@@ -4205,6 +5142,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def OrganizationIds(self):
+        """生效的所有组织 ID 数组，默认为 ["1"]
+        :rtype: list of str
+        """
         return self._OrganizationIds
 
     @OrganizationIds.setter
@@ -4247,6 +5187,10 @@ class CreateGrafanaNotificationChannelResponse(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -4255,6 +5199,9 @@ class CreateGrafanaNotificationChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4302,6 +5249,9 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def MetricId(self):
+        """指标Id
+        :rtype: int
+        """
         return self._MetricId
 
     @MetricId.setter
@@ -4310,6 +5260,9 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
+        """告警发送收敛类型。0连续告警，1指数告警
+        :rtype: int
+        """
         return self._AlarmNotifyType
 
     @AlarmNotifyType.setter
@@ -4318,6 +5271,9 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
+        """告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :rtype: int
+        """
         return self._AlarmNotifyPeriod
 
     @AlarmNotifyPeriod.setter
@@ -4326,6 +5282,9 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def CalcType(self):
+        """比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等。如果指标有配置默认比较类型值可以不填。
+        :rtype: int
+        """
         return self._CalcType
 
     @CalcType.setter
@@ -4334,6 +5293,9 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def CalcValue(self):
+        """比较的值，如果指标不必须CalcValue可不填
+        :rtype: float
+        """
         return self._CalcValue
 
     @CalcValue.setter
@@ -4342,6 +5304,9 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def CalcPeriod(self):
+        """数据聚合周期(单位秒)，若指标有默认值可不填
+        :rtype: int
+        """
         return self._CalcPeriod
 
     @CalcPeriod.setter
@@ -4350,6 +5315,9 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def ContinuePeriod(self):
+        """持续几个检测周期触发规则会告警
+        :rtype: int
+        """
         return self._ContinuePeriod
 
     @ContinuePeriod.setter
@@ -4358,6 +5326,9 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def RuleId(self):
+        """如果通过模板创建，需要传入模板中该指标的对应RuleId
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -4407,6 +5378,9 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
     @property
     def EventId(self):
+        """告警事件的Id
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -4415,6 +5389,9 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
+        """告警发送收敛类型。0连续告警，1指数告警
+        :rtype: int
+        """
         return self._AlarmNotifyType
 
     @AlarmNotifyType.setter
@@ -4423,6 +5400,9 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
+        """告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :rtype: int
+        """
         return self._AlarmNotifyPeriod
 
     @AlarmNotifyPeriod.setter
@@ -4431,6 +5411,9 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
     @property
     def RuleId(self):
+        """如果通过模板创建，需要传入模板中该指标的对应RuleId
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -4500,6 +5483,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """组策略名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -4508,6 +5494,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -4516,6 +5505,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def ViewName(self):
+        """策略组所属视图的名称，若通过模板创建，可不传入
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -4524,6 +5516,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """策略组所属项目Id，会进行鉴权操作
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4532,6 +5527,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def ConditionTempGroupId(self):
+        """模板策略组Id, 通过模板创建时才需要传
+        :rtype: int
+        """
         return self._ConditionTempGroupId
 
     @ConditionTempGroupId.setter
@@ -4540,6 +5538,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def IsShielded(self):
+        """是否屏蔽策略组，0表示不屏蔽，1表示屏蔽。不填默认为0
+        :rtype: int
+        """
         return self._IsShielded
 
     @IsShielded.setter
@@ -4548,6 +5549,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """策略组的备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -4556,6 +5560,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def InsertTime(self):
+        """插入时间，戳格式为Unix时间戳，不填则按后台处理时间填充
+        :rtype: int
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -4564,6 +5571,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def Conditions(self):
+        """策略组中的阈值告警规则
+        :rtype: list of CreatePolicyGroupCondition
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -4572,6 +5582,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def EventConditions(self):
+        """策略组中的事件告警规则
+        :rtype: list of CreatePolicyGroupEventCondition
+        """
         return self._EventConditions
 
     @EventConditions.setter
@@ -4580,6 +5593,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def BackEndCall(self):
+        """是否为后端调用。当且仅当值为1时，后台拉取策略模板中的规则填充入Conditions以及EventConditions字段
+        :rtype: int
+        """
         return self._BackEndCall
 
     @BackEndCall.setter
@@ -4588,6 +5604,9 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def IsUnionRule(self):
+        """指标告警规则的且或关系，0表示或规则(满足任意规则就告警)，1表示且规则(满足所有规则才告警)
+        :rtype: int
+        """
         return self._IsUnionRule
 
     @IsUnionRule.setter
@@ -4645,6 +5664,9 @@ class CreatePolicyGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """创建成功的策略组Id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -4653,6 +5675,9 @@ class CreatePolicyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4682,6 +5707,9 @@ class CreatePrometheusAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4690,6 +5718,9 @@ class CreatePrometheusAgentRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Agent 名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4727,6 +5758,9 @@ class CreatePrometheusAgentResponse(AbstractModel):
 
     @property
     def AgentId(self):
+        """创建成功的 Agent Id
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -4735,6 +5769,9 @@ class CreatePrometheusAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4783,6 +5820,9 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """prometheus实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4791,6 +5831,9 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """告警分组名称，不能与其他告警分组重名
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -4799,6 +5842,13 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def GroupState(self):
+        """告警分组状态：
+2 -- 启用
+3 -- 禁用
+不为空时会覆盖 `Rules`字段下所有告警规则状态
+
+        :rtype: int
+        """
         return self._GroupState
 
     @GroupState.setter
@@ -4807,6 +5857,9 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def AMPReceivers(self):
+        """云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+        :rtype: list of str
+        """
         return self._AMPReceivers
 
     @AMPReceivers.setter
@@ -4815,6 +5868,9 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def CustomReceiver(self):
+        """自定义告警通知模板
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        """
         return self._CustomReceiver
 
     @CustomReceiver.setter
@@ -4823,6 +5879,9 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def RepeatInterval(self):
+        """告警通知周期（收敛时间），为空默认1h
+        :rtype: str
+        """
         return self._RepeatInterval
 
     @RepeatInterval.setter
@@ -4831,6 +5890,9 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """要创建的告警规则列表
+        :rtype: list of PrometheusAlertGroupRuleSet
+        """
         return self._Rules
 
     @Rules.setter
@@ -4880,6 +5942,9 @@ class CreatePrometheusAlertGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """创建的告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -4888,6 +5953,9 @@ class CreatePrometheusAlertGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4917,6 +5985,9 @@ class CreatePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4925,6 +5996,9 @@ class CreatePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def AlertRule(self):
+        """告警配置
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertPolicyItem`
+        """
         return self._AlertRule
 
     @AlertRule.setter
@@ -4964,6 +6038,9 @@ class CreatePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def Id(self):
+        """告警id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4972,6 +6049,9 @@ class CreatePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5001,6 +6081,9 @@ class CreatePrometheusClusterAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5009,6 +6092,9 @@ class CreatePrometheusClusterAgentRequest(AbstractModel):
 
     @property
     def Agents(self):
+        """agent列表
+        :rtype: list of PrometheusClusterAgentBasic
+        """
         return self._Agents
 
     @Agents.setter
@@ -5048,6 +6134,9 @@ class CreatePrometheusClusterAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5088,6 +6177,9 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5096,6 +6188,9 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -5104,6 +6199,9 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5112,6 +6210,9 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def ServiceMonitors(self):
+        """ServiceMonitors配置
+        :rtype: list of PrometheusConfigItem
+        """
         return self._ServiceMonitors
 
     @ServiceMonitors.setter
@@ -5120,6 +6221,9 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def PodMonitors(self):
+        """PodMonitors配置
+        :rtype: list of PrometheusConfigItem
+        """
         return self._PodMonitors
 
     @PodMonitors.setter
@@ -5128,6 +6232,9 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def RawJobs(self):
+        """prometheus原生Job配置
+        :rtype: list of PrometheusConfigItem
+        """
         return self._RawJobs
 
     @RawJobs.setter
@@ -5181,6 +6288,9 @@ class CreatePrometheusConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5209,6 +6319,9 @@ class CreatePrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID(可通过 DescribePrometheusInstances 接口获取)
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5217,6 +6330,9 @@ class CreatePrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def Notification(self):
+        """告警通知渠道
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
+        """
         return self._Notification
 
     @Notification.setter
@@ -5257,6 +6373,10 @@ class CreatePrometheusGlobalNotificationResponse(AbstractModel):
 
     @property
     def Id(self):
+        """全局告警通知渠道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5265,6 +6385,9 @@ class CreatePrometheusGlobalNotificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5309,6 +6432,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -5317,6 +6443,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5325,6 +6454,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网 ID(可通过 vpc:DescribeSubnets 接口获取)
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5333,6 +6465,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def DataRetentionTime(self):
+        """数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+        :rtype: int
+        """
         return self._DataRetentionTime
 
     @DataRetentionTime.setter
@@ -5341,6 +6476,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区(与子网同可用区)
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5349,6 +6487,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """实例的标签
+        :rtype: list of PrometheusTag
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -5357,6 +6498,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def GrafanaInstanceId(self):
+        """需要关联的 Grafana 实例
+        :rtype: str
+        """
         return self._GrafanaInstanceId
 
     @GrafanaInstanceId.setter
@@ -5404,6 +6548,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5412,6 +6559,9 @@ class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5444,6 +6594,9 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5452,6 +6605,9 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Content(self):
+        """yaml的内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -5460,6 +6616,9 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5495,6 +6654,9 @@ class CreatePrometheusRecordRuleYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5526,6 +6688,9 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5534,6 +6699,9 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def AgentId(self):
+        """Agent ID(可通过DescribePrometheusAgents 接口获取)
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -5542,6 +6710,9 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def Config(self):
+        """抓取任务配置
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -5580,6 +6751,9 @@ class CreatePrometheusScrapeJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """成功创建抓取任务 Id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -5588,6 +6762,9 @@ class CreatePrometheusScrapeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5614,6 +6791,9 @@ class CreatePrometheusTempRequest(AbstractModel):
 
     @property
     def Template(self):
+        """模板设置
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusTemp`
+        """
         return self._Template
 
     @Template.setter
@@ -5652,6 +6832,9 @@ class CreatePrometheusTempResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板Id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5660,6 +6843,9 @@ class CreatePrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5699,6 +6885,9 @@ class CreateRecordingRuleRequest(AbstractModel):
 
     @property
     def Name(self):
+        """聚合规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5707,6 +6896,9 @@ class CreateRecordingRuleRequest(AbstractModel):
 
     @property
     def Group(self):
+        """聚合规则组内容，格式为 yaml，通过 base64 进行编码。
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -5715,6 +6907,9 @@ class CreateRecordingRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5723,6 +6918,13 @@ class CreateRecordingRuleRequest(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码，取值如下：
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+默认状态码为 2 启用。
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -5763,6 +6965,10 @@ class CreateRecordingRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -5771,6 +6977,9 @@ class CreateRecordingRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5806,6 +7015,9 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5814,6 +7026,9 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户账号 ID ，例如：10000000
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5822,6 +7037,9 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def Role(self):
+        """权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)
+        :rtype: list of GrafanaAccountRole
+        """
         return self._Role
 
     @Role.setter
@@ -5830,6 +7048,9 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def Notes(self):
+        """备注
+        :rtype: str
+        """
         return self._Notes
 
     @Notes.setter
@@ -5874,6 +7095,9 @@ class CreateSSOAccountResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """已添加的用户 UIN
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5882,6 +7106,9 @@ class CreateSSOAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5924,6 +7151,9 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5932,6 +7162,9 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeClusterId(self):
+        """<li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
+        :rtype: str
+        """
         return self._KubeClusterId
 
     @KubeClusterId.setter
@@ -5940,6 +7173,10 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeType(self):
+        """用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :rtype: int
+        """
         return self._KubeType
 
     @KubeType.setter
@@ -5948,6 +7185,12 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def Type(self):
+        """服务发现类型，取值如下：
+<li> 1 = ServiceMonitor</li>
+<li> 2 = PodMonitor</li>
+<li> 3 = JobMonitor</li>
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -5956,6 +7199,9 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def Yaml(self):
+        """服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -5996,6 +7242,9 @@ class CreateServiceDiscoveryResponse(AbstractModel):
 
     @property
     def ServiceDiscovery(self):
+        """创建成功之后，返回对应服务发现信息
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
+        """
         return self._ServiceDiscovery
 
     @ServiceDiscovery.setter
@@ -6004,6 +7253,9 @@ class CreateServiceDiscoveryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6050,6 +7302,9 @@ class DataPoint(AbstractModel):
 
     @property
     def Dimensions(self):
+        """实例对象维度组合
+        :rtype: list of Dimension
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -6058,6 +7313,9 @@ class DataPoint(AbstractModel):
 
     @property
     def Timestamps(self):
+        """时间戳数组，表示那些时间点有数据，缺失的时间戳，没有数据点，可以理解为掉点了
+        :rtype: list of float
+        """
         return self._Timestamps
 
     @Timestamps.setter
@@ -6066,6 +7324,9 @@ class DataPoint(AbstractModel):
 
     @property
     def Values(self):
+        """监控值数组，该数组和Timestamps一一对应
+        :rtype: list of float
+        """
         return self._Values
 
     @Values.setter
@@ -6074,6 +7335,10 @@ class DataPoint(AbstractModel):
 
     @property
     def MaxValues(self):
+        """监控值数组，该数组和Timestamps一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._MaxValues
 
     @MaxValues.setter
@@ -6082,6 +7347,10 @@ class DataPoint(AbstractModel):
 
     @property
     def MinValues(self):
+        """监控值数组，该数组和Timestamps一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._MinValues
 
     @MinValues.setter
@@ -6090,6 +7359,10 @@ class DataPoint(AbstractModel):
 
     @property
     def AvgValues(self):
+        """监控值数组，该数组和Timestamps一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._AvgValues
 
     @AvgValues.setter
@@ -6139,6 +7412,9 @@ class DeleteAlarmNoticesRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -6147,6 +7423,9 @@ class DeleteAlarmNoticesRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
+        """告警通知模板id列表
+        :rtype: list of str
+        """
         return self._NoticeIds
 
     @NoticeIds.setter
@@ -6155,6 +7434,9 @@ class DeleteAlarmNoticesRequest(AbstractModel):
 
     @property
     def NoticeBindPolicys(self):
+        """通知模板与策略绑定关系
+        :rtype: list of NoticeBindPolicys
+        """
         return self._NoticeBindPolicys
 
     @NoticeBindPolicys.setter
@@ -6195,6 +7477,9 @@ class DeleteAlarmNoticesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6226,6 +7511,9 @@ class DeleteAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定值 monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -6234,6 +7522,9 @@ class DeleteAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
+        """告警策略 ID 列表
+        :rtype: list of str
+        """
         return self._PolicyIds
 
     @PolicyIds.setter
@@ -6242,6 +7533,9 @@ class DeleteAlarmPolicyRequest(AbstractModel):
 
     @property
     def PromInsIds(self):
+        """prom的实例id
+        :rtype: list of str
+        """
         return self._PromInsIds
 
     @PromInsIds.setter
@@ -6277,6 +7571,9 @@ class DeleteAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6305,6 +7602,9 @@ class DeleteAlertRulesRequest(AbstractModel):
 
     @property
     def RuleIds(self):
+        """规则 ID 列表
+        :rtype: list of str
+        """
         return self._RuleIds
 
     @RuleIds.setter
@@ -6313,6 +7613,9 @@ class DeleteAlertRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6347,6 +7650,9 @@ class DeleteAlertRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6387,6 +7693,9 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6395,6 +7704,9 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
+        """类型(可通过 DescribeExporterIntegrations获取)
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -6403,6 +7715,9 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6411,6 +7726,12 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def KubeType(self):
+        """Kubernetes 集群类型，取值如下：
+<li> 1= 容器集群(TKE) </li>
+<li> 2=弹性集群(EKS) </li>
+<li> 3= Prometheus管理的弹性集群(MEKS) </li>
+        :rtype: int
+        """
         return self._KubeType
 
     @KubeType.setter
@@ -6419,6 +7740,9 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群 ID，可不填
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6456,6 +7780,9 @@ class DeleteExporterIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6481,6 +7808,9 @@ class DeleteGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceIDs(self):
+        """实例ID数组
+        :rtype: list of str
+        """
         return self._InstanceIDs
 
     @InstanceIDs.setter
@@ -6514,6 +7844,9 @@ class DeleteGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6542,6 +7875,9 @@ class DeleteGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6550,6 +7886,9 @@ class DeleteGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def IntegrationId(self):
+        """集成 ID，可在实例详情-云产品集成-集成列表查看。例如：integration-abcd1234
+        :rtype: str
+        """
         return self._IntegrationId
 
     @IntegrationId.setter
@@ -6584,6 +7923,9 @@ class DeleteGrafanaIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6612,6 +7954,9 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelIDs(self):
+        """通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取
+        :rtype: list of str
+        """
         return self._ChannelIDs
 
     @ChannelIDs.setter
@@ -6620,6 +7965,9 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6654,6 +8002,9 @@ class DeleteGrafanaNotificationChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6682,6 +8033,9 @@ class DeletePolicyGroupRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -6690,6 +8044,9 @@ class DeletePolicyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id,即1.0的告警策略id,可以从策略详情获取
+        :rtype: list of int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -6724,6 +8081,9 @@ class DeletePolicyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6752,6 +8112,9 @@ class DeletePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """prometheus实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6760,6 +8123,9 @@ class DeletePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def GroupIds(self):
+        """需要删除的告警分组ID，形如alert-xxxxx
+        :rtype: list of str
+        """
         return self._GroupIds
 
     @GroupIds.setter
@@ -6794,6 +8160,9 @@ class DeletePrometheusAlertGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6825,6 +8194,9 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID(可通过 DescribePrometheusInstances 接口获取)
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6833,6 +8205,9 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def AlertIds(self):
+        """告警策略ID列表(可通过 DescribePrometheusAlertPolicy 接口获取)
+        :rtype: list of str
+        """
         return self._AlertIds
 
     @AlertIds.setter
@@ -6841,6 +8216,9 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def Names(self):
+        """告警策略名称(可通过 DescribePrometheusAlertPolicy 接口获取)，名称完全相同的告警策略才会删除
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -6876,6 +8254,9 @@ class DeletePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6904,6 +8285,9 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
 
     @property
     def Agents(self):
+        """agent列表
+        :rtype: list of PrometheusAgentInfo
+        """
         return self._Agents
 
     @Agents.setter
@@ -6912,6 +8296,9 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6951,6 +8338,9 @@ class DeletePrometheusClusterAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6991,6 +8381,9 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6999,6 +8392,9 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -7007,6 +8403,9 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -7015,6 +8414,9 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def ServiceMonitors(self):
+        """要删除的ServiceMonitor名字列表
+        :rtype: list of str
+        """
         return self._ServiceMonitors
 
     @ServiceMonitors.setter
@@ -7023,6 +8425,9 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def PodMonitors(self):
+        """要删除的PodMonitor名字列表
+        :rtype: list of str
+        """
         return self._PodMonitors
 
     @PodMonitors.setter
@@ -7031,6 +8436,9 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def RawJobs(self):
+        """要删除的RawJobs名字列表
+        :rtype: list of str
+        """
         return self._RawJobs
 
     @RawJobs.setter
@@ -7069,6 +8477,9 @@ class DeletePrometheusConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7097,6 +8508,9 @@ class DeletePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7105,6 +8519,9 @@ class DeletePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Names(self):
+        """聚合规则列表
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -7139,6 +8556,9 @@ class DeletePrometheusRecordRuleYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7170,6 +8590,9 @@ class DeletePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7178,6 +8601,9 @@ class DeletePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def AgentId(self):
+        """Agent ID(可通过 DescribePrometheusAgents 接口获取)
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -7186,6 +8612,9 @@ class DeletePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
+        """任务 ID 列表(可通过 DescribePrometheusScrapeJobs 接口获取)
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -7221,6 +8650,9 @@ class DeletePrometheusScrapeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7246,6 +8678,9 @@ class DeletePrometheusTempRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -7279,6 +8714,9 @@ class DeletePrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7307,6 +8745,9 @@ class DeletePrometheusTempSyncRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -7315,6 +8756,9 @@ class DeletePrometheusTempSyncRequest(AbstractModel):
 
     @property
     def Targets(self):
+        """取消同步的对象列表
+        :rtype: list of PrometheusTemplateSyncTarget
+        """
         return self._Targets
 
     @Targets.setter
@@ -7354,6 +8798,9 @@ class DeletePrometheusTempSyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7382,6 +8829,9 @@ class DeleteRecordingRulesRequest(AbstractModel):
 
     @property
     def RuleIds(self):
+        """规则 ID 列表(规则 ID 可通过 DescribeRecordingRules 接口获取)
+        :rtype: list of str
+        """
         return self._RuleIds
 
     @RuleIds.setter
@@ -7390,6 +8840,9 @@ class DeleteRecordingRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7424,6 +8877,9 @@ class DeleteRecordingRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7452,6 +8908,9 @@ class DeleteSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7460,6 +8919,9 @@ class DeleteSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户账号 ID ，例如：10000000
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7494,6 +8956,9 @@ class DeleteSSOAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7535,6 +9000,9 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID，例如：prom-sdfk2342a
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7543,6 +9011,9 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeClusterId(self):
+        """<li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :rtype: str
+        """
         return self._KubeClusterId
 
     @KubeClusterId.setter
@@ -7551,6 +9022,10 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeType(self):
+        """用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :rtype: int
+        """
         return self._KubeType
 
     @KubeType.setter
@@ -7559,6 +9034,12 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
 
     @property
     def Type(self):
+        """服务发现类型，取值如下：
+<li> 1 = ServiceMonitor</li>
+<li> 2 = PodMonitor</li>
+<li> 3 = PodMonitor</li>
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -7567,6 +9048,9 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
 
     @property
     def Yaml(self):
+        """服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -7604,6 +9088,9 @@ class DeleteServiceDiscoveryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7658,6 +9145,10 @@ class DescribeAccidentEventListAlarms(AbstractModel):
 
     @property
     def BusinessTypeDesc(self):
+        """事件分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessTypeDesc
 
     @BusinessTypeDesc.setter
@@ -7666,6 +9157,10 @@ class DescribeAccidentEventListAlarms(AbstractModel):
 
     @property
     def AccidentTypeDesc(self):
+        """事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccidentTypeDesc
 
     @AccidentTypeDesc.setter
@@ -7674,6 +9169,10 @@ class DescribeAccidentEventListAlarms(AbstractModel):
 
     @property
     def BusinessID(self):
+        """事件分类的ID，1表示服务问题，2表示其他订阅
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BusinessID
 
     @BusinessID.setter
@@ -7682,6 +9181,10 @@ class DescribeAccidentEventListAlarms(AbstractModel):
 
     @property
     def EventStatus(self):
+        """事件状态的ID，0表示已恢复，1表示未恢复
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EventStatus
 
     @EventStatus.setter
@@ -7690,6 +9193,10 @@ class DescribeAccidentEventListAlarms(AbstractModel):
 
     @property
     def AffectResource(self):
+        """影响的对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AffectResource
 
     @AffectResource.setter
@@ -7698,6 +9205,10 @@ class DescribeAccidentEventListAlarms(AbstractModel):
 
     @property
     def Region(self):
+        """事件的地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -7706,6 +9217,10 @@ class DescribeAccidentEventListAlarms(AbstractModel):
 
     @property
     def OccurTime(self):
+        """事件发生的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OccurTime
 
     @OccurTime.setter
@@ -7714,6 +9229,10 @@ class DescribeAccidentEventListAlarms(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -7787,6 +9306,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """接口模块名，当前接口取值monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -7795,6 +9317,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，默认一天前的时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7803,6 +9328,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，默认当前时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7811,6 +9339,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数，每页返回的数量，取值1~100，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7819,6 +9350,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数，页偏移量，从0开始计数，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7827,6 +9361,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def UpdateTimeOrder(self):
+        """根据UpdateTime排序的规则，取值asc或desc
+        :rtype: str
+        """
         return self._UpdateTimeOrder
 
     @UpdateTimeOrder.setter
@@ -7835,6 +9372,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def OccurTimeOrder(self):
+        """根据OccurTime排序的规则，取值asc或desc（优先根据UpdateTimeOrder排序）
+        :rtype: str
+        """
         return self._OccurTimeOrder
 
     @OccurTimeOrder.setter
@@ -7843,6 +9383,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AccidentType(self):
+        """根据事件类型过滤，1表示服务问题，2表示其他订阅
+        :rtype: list of int
+        """
         return self._AccidentType
 
     @AccidentType.setter
@@ -7851,6 +9394,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AccidentEvent(self):
+        """根据事件过滤，1表示云服务器存储问题，2表示云服务器网络连接问题，3表示云服务器运行异常，202表示运营商网络抖动
+        :rtype: list of int
+        """
         return self._AccidentEvent
 
     @AccidentEvent.setter
@@ -7859,6 +9405,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AccidentStatus(self):
+        """根据事件状态过滤，0表示已恢复，1表示未恢复
+        :rtype: list of int
+        """
         return self._AccidentStatus
 
     @AccidentStatus.setter
@@ -7867,6 +9416,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AccidentRegion(self):
+        """根据事件地域过滤，gz表示广州，sh表示上海等
+        :rtype: list of str
+        """
         return self._AccidentRegion
 
     @AccidentRegion.setter
@@ -7875,6 +9427,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AffectResource(self):
+        """根据影响资源过滤，比如ins-19a06bka
+        :rtype: str
+        """
         return self._AffectResource
 
     @AffectResource.setter
@@ -7927,6 +9482,10 @@ class DescribeAccidentEventListResponse(AbstractModel):
 
     @property
     def Alarms(self):
+        """平台事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeAccidentEventListAlarms
+        """
         return self._Alarms
 
     @Alarms.setter
@@ -7935,6 +9494,10 @@ class DescribeAccidentEventListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """平台事件的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -7943,6 +9506,9 @@ class DescribeAccidentEventListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7981,6 +9547,9 @@ class DescribeAlarmEventsRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定值 monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -7989,6 +9558,9 @@ class DescribeAlarmEventsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7997,6 +9569,9 @@ class DescribeAlarmEventsRequest(AbstractModel):
 
     @property
     def MonitorType(self):
+        """监控类型，如 MT_QCE。如果不填默认为 MT_QCE。
+        :rtype: str
+        """
         return self._MonitorType
 
     @MonitorType.setter
@@ -8035,6 +9610,9 @@ class DescribeAlarmEventsResponse(AbstractModel):
 
     @property
     def Events(self):
+        """告警事件列表
+        :rtype: list of AlarmEvent
+        """
         return self._Events
 
     @Events.setter
@@ -8043,6 +9621,9 @@ class DescribeAlarmEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8110,6 +9691,8 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type AlarmLevels: list of str
         :param _ConvergenceHistoryIDs: 收敛历史的唯一id
         :type ConvergenceHistoryIDs: list of str
+        :param _AlarmTypes: 告警类型
+        :type AlarmTypes: list of str
         """
         self._Module = None
         self._PageNumber = None
@@ -8131,9 +9714,13 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._PolicyIds = None
         self._AlarmLevels = None
         self._ConvergenceHistoryIDs = None
+        self._AlarmTypes = None
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -8142,6 +9729,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页数，从 1 开始计数，默认 1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -8150,6 +9740,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页的数量，取值1~100，默认20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8158,6 +9751,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """默认按首次出现时间倒序排列 "ASC"=正序 "DESC"=逆序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -8166,6 +9762,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，默认一天前的时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 晚于 `StartTime` 才可能被搜索到。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8174,6 +9773,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，默认当前时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 早于 `EndTime` 才可能被搜索到。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8182,6 +9784,10 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def MonitorTypes(self):
+        """根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能监控；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测，"MT_TRTC"=实时音视频，
+"MT_RUMAPP"=终端性能监控
+        :rtype: list of str
+        """
         return self._MonitorTypes
 
     @MonitorTypes.setter
@@ -8190,6 +9796,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def AlarmObject(self):
+        """根据告警对象过滤 字符串模糊搜索
+        :rtype: str
+        """
         return self._AlarmObject
 
     @AlarmObject.setter
@@ -8198,6 +9807,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def AlarmStatus(self):
+        """根据告警状态过滤 ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足，不选默认查所有
+        :rtype: list of str
+        """
         return self._AlarmStatus
 
     @AlarmStatus.setter
@@ -8206,6 +9818,10 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
+        """根据项目ID过滤，-1=无项目 0=默认项目
+可在此页面查询 [项目管理](https://console.cloud.tencent.com/project)
+        :rtype: list of int
+        """
         return self._ProjectIds
 
     @ProjectIds.setter
@@ -8214,6 +9830,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def InstanceGroupIds(self):
+        """根据实例组ID过滤
+        :rtype: list of int
+        """
         return self._InstanceGroupIds
 
     @InstanceGroupIds.setter
@@ -8222,6 +9841,10 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def Namespaces(self):
+        """根据策略类型过滤，策略类型是监控类型之下的概念，在这里两者都需要传入，例如 `[{"MonitorType": "MT_QCE", "Namespace": "cvm_device"}]`
+可使用 [查询所有名字空间 DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 接口查询
+        :rtype: list of MonitorTypeNamespace
+        """
         return self._Namespaces
 
     @Namespaces.setter
@@ -8230,6 +9853,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def MetricNames(self):
+        """根据指标名过滤
+        :rtype: list of str
+        """
         return self._MetricNames
 
     @MetricNames.setter
@@ -8238,6 +9864,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """根据策略名称模糊搜索,不支持大小写区分
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -8246,6 +9875,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def Content(self):
+        """根据告警内容模糊搜索
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -8254,6 +9886,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def ReceiverUids(self):
+        """根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段
+        :rtype: list of int
+        """
         return self._ReceiverUids
 
     @ReceiverUids.setter
@@ -8262,6 +9897,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def ReceiverGroups(self):
+        """根据接收组搜索，可以使用“访问管理”的 [查询用户组列表 ListGroups](https://cloud.tencent.com/document/product/598/34589) 接口获取用户组列表 或 [列出用户关联的用户组 ListGroupsForUser](https://cloud.tencent.com/document/product/598/34588) 查询某个子用户所在的用户组列表 ，此处填入返回结果中的 `GroupId ` 字段
+        :rtype: list of int
+        """
         return self._ReceiverGroups
 
     @ReceiverGroups.setter
@@ -8270,6 +9908,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
+        """根据告警策略 Id 列表搜索
+        :rtype: list of str
+        """
         return self._PolicyIds
 
     @PolicyIds.setter
@@ -8278,6 +9919,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def AlarmLevels(self):
+        """告警等级,取值范围：Remind、Serious、Warn
+        :rtype: list of str
+        """
         return self._AlarmLevels
 
     @AlarmLevels.setter
@@ -8286,11 +9930,25 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def ConvergenceHistoryIDs(self):
+        """收敛历史的唯一id
+        :rtype: list of str
+        """
         return self._ConvergenceHistoryIDs
 
     @ConvergenceHistoryIDs.setter
     def ConvergenceHistoryIDs(self, ConvergenceHistoryIDs):
         self._ConvergenceHistoryIDs = ConvergenceHistoryIDs
+
+    @property
+    def AlarmTypes(self):
+        """告警类型
+        :rtype: list of str
+        """
+        return self._AlarmTypes
+
+    @AlarmTypes.setter
+    def AlarmTypes(self, AlarmTypes):
+        self._AlarmTypes = AlarmTypes
 
 
     def _deserialize(self, params):
@@ -8319,6 +9977,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._PolicyIds = params.get("PolicyIds")
         self._AlarmLevels = params.get("AlarmLevels")
         self._ConvergenceHistoryIDs = params.get("ConvergenceHistoryIDs")
+        self._AlarmTypes = params.get("AlarmTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8349,6 +10008,9 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8357,6 +10019,9 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
 
     @property
     def Histories(self):
+        """告警历史列表
+        :rtype: list of AlarmHistory
+        """
         return self._Histories
 
     @Histories.setter
@@ -8365,6 +10030,9 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8403,6 +10071,9 @@ class DescribeAlarmMetricsRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -8411,6 +10082,9 @@ class DescribeAlarmMetricsRequest(AbstractModel):
 
     @property
     def MonitorType(self):
+        """监控类型过滤 "MT_QCE"=云产品监控
+        :rtype: str
+        """
         return self._MonitorType
 
     @MonitorType.setter
@@ -8419,6 +10093,9 @@ class DescribeAlarmMetricsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8457,6 +10134,9 @@ class DescribeAlarmMetricsResponse(AbstractModel):
 
     @property
     def Metrics(self):
+        """告警指标列表
+        :rtype: list of Metric
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -8465,6 +10145,9 @@ class DescribeAlarmMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8496,6 +10179,9 @@ class DescribeAlarmNoticeCallbacksRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -8533,6 +10219,10 @@ class DescribeAlarmNoticeCallbacksResponse(AbstractModel):
 
     @property
     def URLNotices(self):
+        """告警回调通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of URLNotice
+        """
         return self._URLNotices
 
     @URLNotices.setter
@@ -8541,6 +10231,9 @@ class DescribeAlarmNoticeCallbacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8575,6 +10268,9 @@ class DescribeAlarmNoticeRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -8583,6 +10279,9 @@ class DescribeAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeId(self):
+        """告警通知模板 id
+        :rtype: str
+        """
         return self._NoticeId
 
     @NoticeId.setter
@@ -8620,6 +10319,9 @@ class DescribeAlarmNoticeResponse(AbstractModel):
 
     @property
     def Notice(self):
+        """告警通知模板详细信息
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmNotice`
+        """
         return self._Notice
 
     @Notice.setter
@@ -8628,6 +10330,9 @@ class DescribeAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8689,6 +10394,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -8697,6 +10405,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码 最小为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -8705,6 +10416,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页大小 1～200
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8713,6 +10427,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """按更新时间排序方式 ASC=正序 DESC=倒序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -8721,6 +10438,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def OwnerUid(self):
+        """主账号 uid 用于创建预设通知
+        :rtype: int
+        """
         return self._OwnerUid
 
     @OwnerUid.setter
@@ -8729,6 +10449,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """告警通知模板名称 用来模糊搜索
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8737,6 +10460,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def ReceiverType(self):
+        """根据接收人过滤告警通知模板需要选定通知用户类型 USER=用户 GROUP=用户组 传空=不按接收人过滤
+        :rtype: str
+        """
         return self._ReceiverType
 
     @ReceiverType.setter
@@ -8745,6 +10471,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """接收对象列表
+        :rtype: list of int
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -8753,6 +10482,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def GroupIds(self):
+        """接收组列表
+        :rtype: list of int
+        """
         return self._GroupIds
 
     @GroupIds.setter
@@ -8761,6 +10493,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
+        """根据通知模板 id 过滤，空数组/不传则不过滤
+        :rtype: list of str
+        """
         return self._NoticeIds
 
     @NoticeIds.setter
@@ -8769,6 +10504,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """模板根据标签过滤
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -8777,6 +10515,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def OnCallFormIDs(self):
+        """值班列表
+        :rtype: list of str
+        """
         return self._OnCallFormIDs
 
     @OnCallFormIDs.setter
@@ -8832,6 +10573,9 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """告警通知模板总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8840,6 +10584,9 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def Notices(self):
+        """告警通知模板列表
+        :rtype: list of AlarmNotice
+        """
         return self._Notices
 
     @Notices.setter
@@ -8848,6 +10595,9 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8964,6 +10714,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -8972,6 +10725,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页数，从 1 开始计数，默认 1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -8980,6 +10736,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页的数量，取值1~100，默认20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8988,6 +10747,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """按策略名称模糊搜索
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -8996,6 +10758,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def MonitorTypes(self):
+        """根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控,当Dimension不为空时，该项为必填项
+        :rtype: list of str
+        """
         return self._MonitorTypes
 
     @MonitorTypes.setter
@@ -9004,6 +10769,10 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def Namespaces(self):
+        """根据命名空间过滤，不同策略类型的值详见
+[策略类型列表](https://cloud.tencent.com/document/product/248/50397)当Dimension不为空时，该项为必填项
+        :rtype: list of str
+        """
         return self._Namespaces
 
     @Namespaces.setter
@@ -9012,6 +10781,15 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def Dimensions(self):
+        """告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：
+`[ {"Dimensions": {"unInstanceId": "ins-qr8d555g"}}, {"Dimensions": {"unInstanceId": "ins-qr8d555h"}} ]`
+具体也可以参考下方的示例 2。
+
+不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
+
+注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -9020,6 +10798,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def ReceiverUids(self):
+        """根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段
+        :rtype: list of int
+        """
         return self._ReceiverUids
 
     @ReceiverUids.setter
@@ -9028,6 +10809,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def ReceiverGroups(self):
+        """根据接收组搜索，可以使用“访问管理”的 [查询用户组列表 ListGroups](https://cloud.tencent.com/document/product/598/34589) 接口获取用户组列表 或 [列出用户关联的用户组 ListGroupsForUser](https://cloud.tencent.com/document/product/598/34588) 查询某个子用户所在的用户组列表 ，此处填入返回结果中的 `GroupId ` 字段
+        :rtype: list of int
+        """
         return self._ReceiverGroups
 
     @ReceiverGroups.setter
@@ -9036,6 +10820,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """根据默认策略筛选 不传展示全部策略 DEFAULT=展示默认策略 NOT_DEFAULT=展示非默认策略
+        :rtype: list of str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -9044,6 +10831,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def Field(self):
+        """排序字段，例如按照最后修改时间排序，Field: "UpdateTime"
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -9052,6 +10842,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序顺序：升序：ASC  降序：DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -9060,6 +10853,10 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
+        """策略所属项目的id数组，可在此页面查看
+[项目管理](https://console.cloud.tencent.com/project)
+        :rtype: list of int
+        """
         return self._ProjectIds
 
     @ProjectIds.setter
@@ -9068,6 +10865,10 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
+        """通知模板的id列表，可查询通知模板列表获取。
+可使用 [查询通知模板列表](https://cloud.tencent.com/document/product/248/51280) 接口查询。
+        :rtype: list of str
+        """
         return self._NoticeIds
 
     @NoticeIds.setter
@@ -9076,6 +10877,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def RuleTypes(self):
+        """根据触发条件筛选 不传展示全部策略 STATIC=展示静态阈值策略 DYNAMIC=展示动态阈值策略
+        :rtype: list of str
+        """
         return self._RuleTypes
 
     @RuleTypes.setter
@@ -9084,6 +10888,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """告警启停筛选，[1]：启用   [0]：停止，全部[0, 1]
+        :rtype: list of int
+        """
         return self._Enable
 
     @Enable.setter
@@ -9092,6 +10899,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def NotBindingNoticeRule(self):
+        """传 1 查询未配置通知规则的告警策略；不传或传其他数值，查询所有策略。
+        :rtype: int
+        """
         return self._NotBindingNoticeRule
 
     @NotBindingNoticeRule.setter
@@ -9100,6 +10910,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例分组id
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -9108,6 +10921,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def NeedCorrespondence(self):
+        """是否需要策略与入参过滤维度参数的对应关系，1：是  0：否，默认为0
+        :rtype: int
+        """
         return self._NeedCorrespondence
 
     @NeedCorrespondence.setter
@@ -9116,6 +10932,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def TriggerTasks(self):
+        """按照触发任务（例如弹性伸缩）过滤策略。最多10个
+        :rtype: list of AlarmPolicyTriggerTask
+        """
         return self._TriggerTasks
 
     @TriggerTasks.setter
@@ -9124,6 +10943,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def OneClickPolicyType(self):
+        """根据一键告警策略筛选 不传展示全部策略 ONECLICK=展示一键告警策略 NOT_ONECLICK=展示非一键告警策略
+        :rtype: list of str
+        """
         return self._OneClickPolicyType
 
     @OneClickPolicyType.setter
@@ -9132,6 +10954,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def NotBindAll(self):
+        """返回结果过滤掉绑定全部对象的策略，1代表需要过滤，0则无需过滤
+        :rtype: int
+        """
         return self._NotBindAll
 
     @NotBindAll.setter
@@ -9140,6 +10965,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def NotInstanceGroup(self):
+        """返回结果过滤掉关联实例为实例分组的策略，1代表需要过滤，0则无需过滤
+        :rtype: int
+        """
         return self._NotInstanceGroup
 
     @NotInstanceGroup.setter
@@ -9148,6 +10976,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """策略根据标签过滤
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -9156,6 +10987,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def PromInsId(self):
+        """prom实例id，自定义指标策略时会用到
+        :rtype: str
+        """
         return self._PromInsId
 
     @PromInsId.setter
@@ -9164,6 +10998,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def ReceiverOnCallFormIDs(self):
+        """根据排班表搜索
+        :rtype: list of str
+        """
         return self._ReceiverOnCallFormIDs
 
     @ReceiverOnCallFormIDs.setter
@@ -9238,6 +11075,9 @@ class DescribeAlarmPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """策略总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9246,6 +11086,9 @@ class DescribeAlarmPoliciesResponse(AbstractModel):
 
     @property
     def Policies(self):
+        """策略数组
+        :rtype: list of AlarmPolicy
+        """
         return self._Policies
 
     @Policies.setter
@@ -9254,6 +11097,9 @@ class DescribeAlarmPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9289,6 +11135,9 @@ class DescribeAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -9297,6 +11146,9 @@ class DescribeAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -9334,6 +11186,9 @@ class DescribeAlarmPolicyResponse(AbstractModel):
 
     @property
     def Policy(self):
+        """策略详情
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicy`
+        """
         return self._Policy
 
     @Policy.setter
@@ -9342,6 +11197,9 @@ class DescribeAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9382,6 +11240,9 @@ class DescribeAlarmSmsQuotaQuota(AbstractModel):
 
     @property
     def Type(self):
+        """配额类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9390,6 +11251,9 @@ class DescribeAlarmSmsQuotaQuota(AbstractModel):
 
     @property
     def Name(self):
+        """配额名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9398,6 +11262,9 @@ class DescribeAlarmSmsQuotaQuota(AbstractModel):
 
     @property
     def FreeLeft(self):
+        """免费配额剩余量
+        :rtype: int
+        """
         return self._FreeLeft
 
     @FreeLeft.setter
@@ -9406,6 +11273,9 @@ class DescribeAlarmSmsQuotaQuota(AbstractModel):
 
     @property
     def PurchaseLeft(self):
+        """付费配额剩余量
+        :rtype: int
+        """
         return self._PurchaseLeft
 
     @PurchaseLeft.setter
@@ -9414,6 +11284,9 @@ class DescribeAlarmSmsQuotaQuota(AbstractModel):
 
     @property
     def Used(self):
+        """已使用量
+        :rtype: int
+        """
         return self._Used
 
     @Used.setter
@@ -9451,6 +11324,9 @@ class DescribeAlarmSmsQuotaRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -9494,6 +11370,9 @@ class DescribeAlarmSmsQuotaResponse(AbstractModel):
 
     @property
     def Total(self):
+        """配额总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -9502,6 +11381,9 @@ class DescribeAlarmSmsQuotaResponse(AbstractModel):
 
     @property
     def Used(self):
+        """总使用量
+        :rtype: int
+        """
         return self._Used
 
     @Used.setter
@@ -9510,6 +11392,10 @@ class DescribeAlarmSmsQuotaResponse(AbstractModel):
 
     @property
     def QuotaList(self):
+        """短信配额信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeAlarmSmsQuotaQuota
+        """
         return self._QuotaList
 
     @QuotaList.setter
@@ -9518,6 +11404,9 @@ class DescribeAlarmSmsQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9571,6 +11460,9 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9579,6 +11471,9 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9587,6 +11482,9 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9595,6 +11493,9 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -9603,6 +11504,11 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码，取值如下：
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -9611,6 +11517,9 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -9619,6 +11528,9 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """报警策略模板分类
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9665,6 +11577,9 @@ class DescribeAlertRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """报警规则数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9673,6 +11588,10 @@ class DescribeAlertRulesResponse(AbstractModel):
 
     @property
     def AlertRuleSet(self):
+        """报警规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusRuleSet
+        """
         return self._AlertRuleSet
 
     @AlertRuleSet.setter
@@ -9681,6 +11600,9 @@ class DescribeAlertRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9722,6 +11644,9 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     @property
     def SceneType(self):
+        """根据使用场景过滤 目前仅有"ST_ALARM"=告警类型
+        :rtype: str
+        """
         return self._SceneType
 
     @SceneType.setter
@@ -9730,6 +11655,9 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -9738,6 +11666,9 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     @property
     def MonitorTypes(self):
+        """根据监控类型过滤 不填默认查所有类型 "MT_QCE"=云产品监控
+        :rtype: list of str
+        """
         return self._MonitorTypes
 
     @MonitorTypes.setter
@@ -9746,6 +11677,9 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """根据namespace的Id过滤 不填默认查询所有
+        :rtype: list of str
+        """
         return self._Ids
 
     @Ids.setter
@@ -9798,6 +11732,9 @@ class DescribeAllNamespacesResponse(AbstractModel):
 
     @property
     def QceNamespaces(self):
+        """云产品的告警策略类型，已废弃
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
+        """
         return self._QceNamespaces
 
     @QceNamespaces.setter
@@ -9806,6 +11743,9 @@ class DescribeAllNamespacesResponse(AbstractModel):
 
     @property
     def CustomNamespaces(self):
+        """其他告警策略类型，已废弃
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
+        """
         return self._CustomNamespaces
 
     @CustomNamespaces.setter
@@ -9814,6 +11754,9 @@ class DescribeAllNamespacesResponse(AbstractModel):
 
     @property
     def QceNamespacesNew(self):
+        """云产品的告警策略类型
+        :rtype: list of CommonNamespace
+        """
         return self._QceNamespacesNew
 
     @QceNamespacesNew.setter
@@ -9822,6 +11765,9 @@ class DescribeAllNamespacesResponse(AbstractModel):
 
     @property
     def CustomNamespacesNew(self):
+        """其他告警策略类型，暂不支持
+        :rtype: list of CommonNamespace
+        """
         return self._CustomNamespacesNew
 
     @CustomNamespacesNew.setter
@@ -9830,6 +11776,10 @@ class DescribeAllNamespacesResponse(AbstractModel):
 
     @property
     def CommonNamespaces(self):
+        """通用告警策略类型(包括：应用性能监控，前端性能监控，云拨测)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonNamespaceNew
+        """
         return self._CommonNamespaces
 
     @CommonNamespaces.setter
@@ -9838,6 +11788,9 @@ class DescribeAllNamespacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9893,6 +11846,9 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """业务命名空间，各个云产品的业务命名空间不同。如需获取业务命名空间，请前往各产品监控指标文档，例如云服务器的命名空间，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -9901,6 +11857,9 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名，各个云产品的指标名不同。如需获取指标名，请前往各产品监控指标文档，例如云服务器的指标名，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -9909,6 +11868,9 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
     @property
     def Dimensions(self):
+        """可选参数，按照维度过滤
+        :rtype: list of str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -9947,6 +11909,9 @@ class DescribeBaseMetricsResponse(AbstractModel):
 
     @property
     def MetricSet(self):
+        """查询得到的指标描述列表
+        :rtype: list of MetricSet
+        """
         return self._MetricSet
 
     @MetricSet.setter
@@ -9955,6 +11920,9 @@ class DescribeBaseMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10070,6 +12038,9 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def Id(self):
+        """该条告警的ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -10078,6 +12049,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10086,6 +12061,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -10094,6 +12073,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def Status(self):
+        """告警状态ID，0表示未恢复；1表示已恢复；2,3,5表示数据不足；4表示已失效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10102,6 +12085,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def AlarmStatus(self):
+        """告警状态，ALARM表示未恢复；OK表示已恢复；NO_DATA表示数据不足；NO_CONF表示已失效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmStatus
 
     @AlarmStatus.setter
@@ -10110,6 +12097,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -10118,6 +12109,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def GroupName(self):
+        """策略组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -10126,6 +12121,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def FirstOccurTime(self):
+        """发生时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FirstOccurTime
 
     @FirstOccurTime.setter
@@ -10134,6 +12133,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def Duration(self):
+        """持续时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -10142,6 +12145,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def LastOccurTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastOccurTime
 
     @LastOccurTime.setter
@@ -10150,6 +12157,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def Content(self):
+        """告警内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -10158,6 +12169,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def ObjName(self):
+        """告警对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ObjName
 
     @ObjName.setter
@@ -10166,6 +12181,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def ObjId(self):
+        """告警对象ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ObjId
 
     @ObjId.setter
@@ -10174,6 +12193,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def ViewName(self):
+        """策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -10182,6 +12205,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def Vpc(self):
+        """VPC，只有CVM有
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Vpc
 
     @Vpc.setter
@@ -10190,6 +12217,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def MetricId(self):
+        """指标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MetricId
 
     @MetricId.setter
@@ -10198,6 +12229,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -10206,6 +12241,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def AlarmType(self):
+        """告警类型，0表示指标告警，2表示产品事件告警，3表示平台事件告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AlarmType
 
     @AlarmType.setter
@@ -10214,6 +12253,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -10222,6 +12265,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def Dimensions(self):
+        """告警对象维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -10230,6 +12277,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def NotifyWay(self):
+        """通知方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NotifyWay
 
     @NotifyWay.setter
@@ -10238,6 +12289,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
 
     @property
     def InstanceGroup(self):
+        """所属实例组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceGroup
+        """
         return self._InstanceGroup
 
     @InstanceGroup.setter
@@ -10330,6 +12385,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """接口模块名，当前取值monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -10338,6 +12396,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，默认一天前的时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10346,6 +12407,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，默认当前时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10354,6 +12418,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数，每页返回的数量，取值1~100，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10362,6 +12429,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数，页偏移量，从0开始计数，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10370,6 +12440,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def OccurTimeOrder(self):
+        """根据发生时间排序，取值ASC或DESC
+        :rtype: str
+        """
         return self._OccurTimeOrder
 
     @OccurTimeOrder.setter
@@ -10378,6 +12451,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
+        """根据项目ID过滤
+        :rtype: list of int
+        """
         return self._ProjectIds
 
     @ProjectIds.setter
@@ -10386,6 +12462,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def ViewNames(self):
+        """根据策略类型过滤
+        :rtype: list of str
+        """
         return self._ViewNames
 
     @ViewNames.setter
@@ -10394,6 +12473,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def AlarmStatus(self):
+        """根据告警状态过滤
+        :rtype: list of int
+        """
         return self._AlarmStatus
 
     @AlarmStatus.setter
@@ -10402,6 +12484,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def ObjLike(self):
+        """根据告警对象过滤
+        :rtype: str
+        """
         return self._ObjLike
 
     @ObjLike.setter
@@ -10410,6 +12495,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def InstanceGroupIds(self):
+        """根据实例组ID过滤
+        :rtype: list of int
+        """
         return self._InstanceGroupIds
 
     @InstanceGroupIds.setter
@@ -10418,6 +12506,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def MetricNames(self):
+        """根据指标名过滤
+        :rtype: list of str
+        """
         return self._MetricNames
 
     @MetricNames.setter
@@ -10474,6 +12565,10 @@ class DescribeBasicAlarmListResponse(AbstractModel):
 
     @property
     def Alarms(self):
+        """告警列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeBasicAlarmListAlarms
+        """
         return self._Alarms
 
     @Alarms.setter
@@ -10482,6 +12577,10 @@ class DescribeBasicAlarmListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -10490,6 +12589,10 @@ class DescribeBasicAlarmListResponse(AbstractModel):
 
     @property
     def Warning(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Warning
 
     @Warning.setter
@@ -10498,6 +12601,9 @@ class DescribeBasicAlarmListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10540,6 +12646,9 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域id
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -10548,6 +12657,9 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
     @property
     def Region(self):
+        """地域简称
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -10556,6 +12668,9 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
     @property
     def Dimensions(self):
+        """维度组合json字符串
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -10564,6 +12679,9 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
     @property
     def EventDimensions(self):
+        """事件维度组合json字符串
+        :rtype: str
+        """
         return self._EventDimensions
 
     @EventDimensions.setter
@@ -10609,6 +12727,9 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
     @property
     def UniqueId(self):
+        """对象唯一id
+        :rtype: str
+        """
         return self._UniqueId
 
     @UniqueId.setter
@@ -10617,6 +12738,9 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
     @property
     def Dimensions(self):
+        """表示对象实例的维度集合，jsonObj字符串
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -10625,6 +12749,9 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
     @property
     def IsShielded(self):
+        """对象是否被屏蔽，0表示未屏蔽，1表示被屏蔽
+        :rtype: int
+        """
         return self._IsShielded
 
     @IsShielded.setter
@@ -10633,6 +12760,9 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
     @property
     def Region(self):
+        """对象所在的地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -10691,6 +12821,9 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例分组id
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -10699,6 +12832,9 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
 
     @property
     def ViewName(self):
+        """告警策略类型名称
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -10707,6 +12843,9 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
 
     @property
     def LastEditUin(self):
+        """最后编辑uin
+        :rtype: str
+        """
         return self._LastEditUin
 
     @LastEditUin.setter
@@ -10715,6 +12854,9 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
 
     @property
     def GroupName(self):
+        """实例分组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -10723,6 +12865,9 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
 
     @property
     def InstanceSum(self):
+        """实例数量
+        :rtype: int
+        """
         return self._InstanceSum
 
     @InstanceSum.setter
@@ -10731,6 +12876,9 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10739,6 +12887,9 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -10747,6 +12898,10 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
 
     @property
     def Regions(self):
+        """实例所在的地域集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -10802,6 +12957,9 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -10810,6 +12968,9 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id，如果有形如 policy-xxxx 的 id，请填到 PolicyId 字段中，本字段填 0
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -10818,6 +12979,9 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略id，形如 policy-xxxx，如果填入，则GroupId可以填0
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -10826,6 +12990,9 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每次返回的数量，取值1~100，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10834,6 +13001,9 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，从0开始计数，默认0。举例来说，参数 Offset=0&Limit=20 返回第 0 到 19 项，Offset=20&Limit=20 返回第 20 到 39 项，以此类推
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10842,6 +13012,9 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def Dimensions(self):
+        """筛选对象的维度信息
+        :rtype: list of DescribeBindingPolicyObjectListDimension
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -10899,6 +13072,10 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
 
     @property
     def List(self):
+        """绑定的对象实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeBindingPolicyObjectListInstance
+        """
         return self._List
 
     @List.setter
@@ -10907,6 +13084,9 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """绑定的对象实例总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -10915,6 +13095,9 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
 
     @property
     def NoShieldedSum(self):
+        """未屏蔽的对象实例数
+        :rtype: int
+        """
         return self._NoShieldedSum
 
     @NoShieldedSum.setter
@@ -10923,6 +13106,10 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
 
     @property
     def InstanceGroup(self):
+        """绑定的实例分组信息，没有绑定实例分组则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListInstanceGroup`
+        """
         return self._InstanceGroup
 
     @InstanceGroup.setter
@@ -10931,6 +13118,9 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10973,6 +13163,9 @@ class DescribeClusterAgentCreatingProgressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11019,6 +13212,9 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -11027,6 +13223,9 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def ViewName(self):
+        """视图名，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -11035,6 +13234,9 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """根据触发条件模板名称过滤查询
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -11043,6 +13245,9 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def GroupID(self):
+        """根据触发条件模板ID过滤查询
+        :rtype: str
+        """
         return self._GroupID
 
     @GroupID.setter
@@ -11051,6 +13256,9 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数，每页返回的数量，取值1~100，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11059,6 +13267,9 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数，页偏移量，从0开始计数，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11067,6 +13278,9 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def UpdateTimeOrder(self):
+        """指定按更新时间的排序方式，asc=升序, desc=降序
+        :rtype: str
+        """
         return self._UpdateTimeOrder
 
     @UpdateTimeOrder.setter
@@ -11075,6 +13289,9 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def PolicyCountOrder(self):
+        """指定按绑定策略数目的排序方式，asc=升序, desc=降序
+        :rtype: str
+        """
         return self._PolicyCountOrder
 
     @PolicyCountOrder.setter
@@ -11122,6 +13339,9 @@ class DescribeConditionsTemplateListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """模板总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -11130,6 +13350,10 @@ class DescribeConditionsTemplateListResponse(AbstractModel):
 
     @property
     def TemplateGroupList(self):
+        """模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TemplateGroup
+        """
         return self._TemplateGroupList
 
     @TemplateGroupList.setter
@@ -11138,6 +13362,9 @@ class DescribeConditionsTemplateListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11170,6 +13397,9 @@ class DescribeDNSConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11206,6 +13436,9 @@ class DescribeDNSConfigResponse(AbstractModel):
 
     @property
     def NameServers(self):
+        """DNS 服务器数组
+        :rtype: list of str
+        """
         return self._NameServers
 
     @NameServers.setter
@@ -11214,6 +13447,9 @@ class DescribeDNSConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11255,6 +13491,9 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11263,6 +13502,12 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def KubeType(self):
+        """Kubernetes 集群类型，可不填。取值如下：
+<li> 1= 容器集群(TKE) </li>
+<li> 2=弹性集群(EKS) </li>
+<li> 3= Prometheus管理的弹性集群(MEKS) </li>
+        :rtype: int
+        """
         return self._KubeType
 
     @KubeType.setter
@@ -11271,6 +13516,9 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群 ID，可不填
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -11279,6 +13527,9 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def Kind(self):
+        """类型(不填返回全部集成。可通过 DescribePrometheusIntegrations 接口获取，取每一项中的 ExporterType 字段)
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -11287,6 +13538,9 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11327,6 +13581,9 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
 
     @property
     def IntegrationSet(self):
+        """集成配置列表
+        :rtype: list of IntegrationConfiguration
+        """
         return self._IntegrationSet
 
     @IntegrationSet.setter
@@ -11335,6 +13592,9 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11381,6 +13641,9 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11389,6 +13652,9 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11397,6 +13663,9 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11405,6 +13674,9 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """告警通道名称，例如：test
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -11413,6 +13685,9 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelIds(self):
+        """告警通道 ID，例如：nchannel-abcd1234
+        :rtype: list of str
+        """
         return self._ChannelIds
 
     @ChannelIds.setter
@@ -11421,6 +13696,9 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelState(self):
+        """告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)
+        :rtype: int
+        """
         return self._ChannelState
 
     @ChannelState.setter
@@ -11462,6 +13740,9 @@ class DescribeGrafanaChannelsResponse(AbstractModel):
 
     @property
     def NotificationChannelSet(self):
+        """告警通道数组
+        :rtype: list of GrafanaChannel
+        """
         return self._NotificationChannelSet
 
     @NotificationChannelSet.setter
@@ -11470,6 +13751,9 @@ class DescribeGrafanaChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11501,6 +13785,9 @@ class DescribeGrafanaConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11537,6 +13824,9 @@ class DescribeGrafanaConfigResponse(AbstractModel):
 
     @property
     def Config(self):
+        """JSON 编码后的字符串
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -11545,6 +13835,9 @@ class DescribeGrafanaConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11571,6 +13864,9 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11607,6 +13903,9 @@ class DescribeGrafanaEnvironmentsResponse(AbstractModel):
 
     @property
     def Envs(self):
+        """环境变量字符串
+        :rtype: str
+        """
         return self._Envs
 
     @Envs.setter
@@ -11615,6 +13914,9 @@ class DescribeGrafanaEnvironmentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11656,6 +13958,9 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11664,6 +13969,9 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11672,6 +13980,9 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Grafana 实例 ID 数组
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -11680,6 +13991,9 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Grafana 实例名，支持前缀模糊搜索
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -11688,6 +14002,9 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """查询状态
+        :rtype: list of int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -11696,6 +14013,9 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤数组
+        :rtype: list of PrometheusTag
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -11748,6 +14068,9 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """已废弃，请使用 Instances
+        :rtype: list of GrafanaInstanceInfo
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -11756,6 +14079,9 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件的实例总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11764,6 +14090,9 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """实例列表
+        :rtype: list of GrafanaInstanceInfo
+        """
         return self._Instances
 
     @Instances.setter
@@ -11772,6 +14101,9 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11816,6 +14148,9 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11824,6 +14159,9 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def IntegrationId(self):
+        """集成 ID
+        :rtype: str
+        """
         return self._IntegrationId
 
     @IntegrationId.setter
@@ -11832,6 +14170,9 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def Kind(self):
+        """类型
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -11870,6 +14211,9 @@ class DescribeGrafanaIntegrationsResponse(AbstractModel):
 
     @property
     def IntegrationSet(self):
+        """集成数组
+        :rtype: list of GrafanaIntegrationConfig
+        """
         return self._IntegrationSet
 
     @IntegrationSet.setter
@@ -11878,6 +14222,9 @@ class DescribeGrafanaIntegrationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11924,6 +14271,9 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11932,6 +14282,9 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11940,6 +14293,9 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11948,6 +14304,9 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """告警通道名称，例如：test
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -11956,6 +14315,9 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelIDs(self):
+        """告警通道 ID，例如：nchannel-abcd1234
+        :rtype: list of str
+        """
         return self._ChannelIDs
 
     @ChannelIDs.setter
@@ -11964,6 +14326,9 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelState(self):
+        """告警通道状态
+        :rtype: int
+        """
         return self._ChannelState
 
     @ChannelState.setter
@@ -12005,6 +14370,9 @@ class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
 
     @property
     def NotificationChannelSet(self):
+        """告警通道数组
+        :rtype: list of GrafanaNotificationChannel
+        """
         return self._NotificationChannelSet
 
     @NotificationChannelSet.setter
@@ -12013,6 +14381,9 @@ class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12044,6 +14415,9 @@ class DescribeGrafanaWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12080,6 +14454,9 @@ class DescribeGrafanaWhiteListResponse(AbstractModel):
 
     @property
     def WhiteList(self):
+        """数组
+        :rtype: list of str
+        """
         return self._WhiteList
 
     @WhiteList.setter
@@ -12088,6 +14465,9 @@ class DescribeGrafanaWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12117,6 +14497,9 @@ class DescribeInstalledPluginsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-kleu3gt0
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12125,6 +14508,9 @@ class DescribeInstalledPluginsRequest(AbstractModel):
 
     @property
     def PluginId(self):
+        """按插件 ID 过滤，例如：grafana-piechart-panel，可通过接口 DescribeInstalledPlugins 查看已安装的插件 ID
+        :rtype: str
+        """
         return self._PluginId
 
     @PluginId.setter
@@ -12162,6 +14548,9 @@ class DescribeInstalledPluginsResponse(AbstractModel):
 
     @property
     def PluginSet(self):
+        """插件列表
+        :rtype: list of GrafanaPlugin
+        """
         return self._PluginSet
 
     @PluginSet.setter
@@ -12170,6 +14559,9 @@ class DescribeInstalledPluginsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12219,6 +14611,9 @@ class DescribeMonitorResourceInfoResponse(AbstractModel):
 
     @property
     def PhoneAlarmNumber(self):
+        """电话告警数量
+        :rtype: int
+        """
         return self._PhoneAlarmNumber
 
     @PhoneAlarmNumber.setter
@@ -12227,6 +14622,9 @@ class DescribeMonitorResourceInfoResponse(AbstractModel):
 
     @property
     def AdvancedMetricNumber(self):
+        """高级指标数量
+        :rtype: int
+        """
         return self._AdvancedMetricNumber
 
     @AdvancedMetricNumber.setter
@@ -12235,6 +14633,9 @@ class DescribeMonitorResourceInfoResponse(AbstractModel):
 
     @property
     def APIUsageNumber(self):
+        """API调用量
+        :rtype: int
+        """
         return self._APIUsageNumber
 
     @APIUsageNumber.setter
@@ -12243,6 +14644,9 @@ class DescribeMonitorResourceInfoResponse(AbstractModel):
 
     @property
     def AlarmSMSNumber(self):
+        """告警短信数量
+        :rtype: int
+        """
         return self._AlarmSMSNumber
 
     @AlarmSMSNumber.setter
@@ -12251,6 +14655,9 @@ class DescribeMonitorResourceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12280,6 +14687,9 @@ class DescribeMonitorTypesRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定值 monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -12319,6 +14729,9 @@ class DescribeMonitorTypesResponse(AbstractModel):
 
     @property
     def MonitorTypes(self):
+        """监控类型，云产品监控为 MT_QCE
+        :rtype: list of str
+        """
         return self._MonitorTypes
 
     @MonitorTypes.setter
@@ -12327,6 +14740,9 @@ class DescribeMonitorTypesResponse(AbstractModel):
 
     @property
     def MonitorTypeInfos(self):
+        """监控类型详情
+        :rtype: list of MonitorTypeInfo
+        """
         return self._MonitorTypeInfos
 
     @MonitorTypeInfos.setter
@@ -12335,6 +14751,9 @@ class DescribeMonitorTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12370,6 +14789,9 @@ class DescribePhoneAlarmFlowTotalCountRequest(AbstractModel):
 
     @property
     def Module(self):
+        """默认monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -12378,6 +14800,9 @@ class DescribePhoneAlarmFlowTotalCountRequest(AbstractModel):
 
     @property
     def QueryTime(self):
+        """unix时间戳，单位：s
+        :rtype: int
+        """
         return self._QueryTime
 
     @QueryTime.setter
@@ -12415,6 +14840,9 @@ class DescribePhoneAlarmFlowTotalCountResponse(AbstractModel):
 
     @property
     def Count(self):
+        """电话流水总数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -12423,6 +14851,9 @@ class DescribePhoneAlarmFlowTotalCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12458,6 +14889,9 @@ class DescribePluginOverviewsResponse(AbstractModel):
 
     @property
     def PluginSet(self):
+        """插件列表
+        :rtype: list of GrafanaPlugin
+        """
         return self._PluginSet
 
     @PluginSet.setter
@@ -12466,6 +14900,9 @@ class DescribePluginOverviewsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12525,6 +14962,9 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def PolicyViewName(self):
+        """策略视图名称
+        :rtype: str
+        """
         return self._PolicyViewName
 
     @PolicyViewName.setter
@@ -12533,6 +14973,10 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def EventMetrics(self):
+        """事件告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyConditionListEventMetric
+        """
         return self._EventMetrics
 
     @EventMetrics.setter
@@ -12541,6 +14985,9 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def IsSupportMultiRegion(self):
+        """是否支持多地域
+        :rtype: bool
+        """
         return self._IsSupportMultiRegion
 
     @IsSupportMultiRegion.setter
@@ -12549,6 +14996,10 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def Metrics(self):
+        """指标告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyConditionListMetric
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -12557,6 +15008,9 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def Name(self):
+        """策略类型名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12565,6 +15019,9 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def SortId(self):
+        """排序id
+        :rtype: int
+        """
         return self._SortId
 
     @SortId.setter
@@ -12573,6 +15030,9 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def SupportDefault(self):
+        """是否支持默认策略
+        :rtype: bool
+        """
         return self._SupportDefault
 
     @SupportDefault.setter
@@ -12581,6 +15041,10 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def SupportRegions(self):
+        """支持该策略类型的地域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SupportRegions
 
     @SupportRegions.setter
@@ -12589,6 +15053,10 @@ class DescribePolicyConditionListCondition(AbstractModel):
 
     @property
     def DeprecatingInfo(self):
+        """弃用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListResponseDeprecatingInfo`
+        """
         return self._DeprecatingInfo
 
     @DeprecatingInfo.setter
@@ -12663,6 +15131,10 @@ class DescribePolicyConditionListConfigManual(AbstractModel):
 
     @property
     def CalcType(self):
+        """检测方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcType`
+        """
         return self._CalcType
 
     @CalcType.setter
@@ -12671,6 +15143,10 @@ class DescribePolicyConditionListConfigManual(AbstractModel):
 
     @property
     def CalcValue(self):
+        """检测阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcValue`
+        """
         return self._CalcValue
 
     @CalcValue.setter
@@ -12679,6 +15155,10 @@ class DescribePolicyConditionListConfigManual(AbstractModel):
 
     @property
     def ContinueTime(self):
+        """持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualContinueTime`
+        """
         return self._ContinueTime
 
     @ContinueTime.setter
@@ -12687,6 +15167,10 @@ class DescribePolicyConditionListConfigManual(AbstractModel):
 
     @property
     def Period(self):
+        """数据周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriod`
+        """
         return self._Period
 
     @Period.setter
@@ -12695,6 +15179,10 @@ class DescribePolicyConditionListConfigManual(AbstractModel):
 
     @property
     def PeriodNum(self):
+        """持续周期个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriodNum`
+        """
         return self._PeriodNum
 
     @PeriodNum.setter
@@ -12703,6 +15191,10 @@ class DescribePolicyConditionListConfigManual(AbstractModel):
 
     @property
     def StatType(self):
+        """聚合方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualStatType`
+        """
         return self._StatType
 
     @StatType.setter
@@ -12757,6 +15249,10 @@ class DescribePolicyConditionListConfigManualCalcType(AbstractModel):
 
     @property
     def Keys(self):
+        """CalcType 取值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Keys
 
     @Keys.setter
@@ -12765,6 +15261,9 @@ class DescribePolicyConditionListConfigManualCalcType(AbstractModel):
 
     @property
     def Need(self):
+        """是否必须
+        :rtype: bool
+        """
         return self._Need
 
     @Need.setter
@@ -12815,6 +15314,10 @@ class DescribePolicyConditionListConfigManualCalcValue(AbstractModel):
 
     @property
     def Default(self):
+        """默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Default
 
     @Default.setter
@@ -12823,6 +15326,10 @@ class DescribePolicyConditionListConfigManualCalcValue(AbstractModel):
 
     @property
     def Fixed(self):
+        """固定值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Fixed
 
     @Fixed.setter
@@ -12831,6 +15338,10 @@ class DescribePolicyConditionListConfigManualCalcValue(AbstractModel):
 
     @property
     def Max(self):
+        """最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Max
 
     @Max.setter
@@ -12839,6 +15350,10 @@ class DescribePolicyConditionListConfigManualCalcValue(AbstractModel):
 
     @property
     def Min(self):
+        """最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Min
 
     @Min.setter
@@ -12847,6 +15362,9 @@ class DescribePolicyConditionListConfigManualCalcValue(AbstractModel):
 
     @property
     def Need(self):
+        """是否必须
+        :rtype: bool
+        """
         return self._Need
 
     @Need.setter
@@ -12892,6 +15410,10 @@ class DescribePolicyConditionListConfigManualContinueTime(AbstractModel):
 
     @property
     def Default(self):
+        """默认持续时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Default
 
     @Default.setter
@@ -12900,6 +15422,10 @@ class DescribePolicyConditionListConfigManualContinueTime(AbstractModel):
 
     @property
     def Keys(self):
+        """可选持续时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Keys
 
     @Keys.setter
@@ -12908,6 +15434,9 @@ class DescribePolicyConditionListConfigManualContinueTime(AbstractModel):
 
     @property
     def Need(self):
+        """是否必须
+        :rtype: bool
+        """
         return self._Need
 
     @Need.setter
@@ -12951,6 +15480,10 @@ class DescribePolicyConditionListConfigManualPeriod(AbstractModel):
 
     @property
     def Default(self):
+        """默认周期，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Default
 
     @Default.setter
@@ -12959,6 +15492,10 @@ class DescribePolicyConditionListConfigManualPeriod(AbstractModel):
 
     @property
     def Keys(self):
+        """可选周期，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Keys
 
     @Keys.setter
@@ -12967,6 +15504,9 @@ class DescribePolicyConditionListConfigManualPeriod(AbstractModel):
 
     @property
     def Need(self):
+        """是否必须
+        :rtype: bool
+        """
         return self._Need
 
     @Need.setter
@@ -13010,6 +15550,10 @@ class DescribePolicyConditionListConfigManualPeriodNum(AbstractModel):
 
     @property
     def Default(self):
+        """默认周期数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Default
 
     @Default.setter
@@ -13018,6 +15562,10 @@ class DescribePolicyConditionListConfigManualPeriodNum(AbstractModel):
 
     @property
     def Keys(self):
+        """可选周期数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Keys
 
     @Keys.setter
@@ -13026,6 +15574,9 @@ class DescribePolicyConditionListConfigManualPeriodNum(AbstractModel):
 
     @property
     def Need(self):
+        """是否必须
+        :rtype: bool
+        """
         return self._Need
 
     @Need.setter
@@ -13090,6 +15641,10 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
 
     @property
     def P5(self):
+        """数据聚合方式，周期5秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._P5
 
     @P5.setter
@@ -13098,6 +15653,10 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
 
     @property
     def P10(self):
+        """数据聚合方式，周期10秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._P10
 
     @P10.setter
@@ -13106,6 +15665,10 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
 
     @property
     def P60(self):
+        """数据聚合方式，周期1分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._P60
 
     @P60.setter
@@ -13114,6 +15677,10 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
 
     @property
     def P300(self):
+        """数据聚合方式，周期5分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._P300
 
     @P300.setter
@@ -13122,6 +15689,10 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
 
     @property
     def P600(self):
+        """数据聚合方式，周期10分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._P600
 
     @P600.setter
@@ -13130,6 +15701,10 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
 
     @property
     def P1800(self):
+        """数据聚合方式，周期30分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._P1800
 
     @P1800.setter
@@ -13138,6 +15713,10 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
 
     @property
     def P3600(self):
+        """数据聚合方式，周期1小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._P3600
 
     @P3600.setter
@@ -13146,6 +15725,10 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
 
     @property
     def P86400(self):
+        """数据聚合方式，周期1天
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._P86400
 
     @P86400.setter
@@ -13195,6 +15778,9 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
     @property
     def EventId(self):
+        """事件id
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -13203,6 +15789,9 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
     @property
     def EventShowName(self):
+        """事件名称
+        :rtype: str
+        """
         return self._EventShowName
 
     @EventShowName.setter
@@ -13211,6 +15800,9 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
     @property
     def NeedRecovered(self):
+        """是否需要恢复
+        :rtype: bool
+        """
         return self._NeedRecovered
 
     @NeedRecovered.setter
@@ -13219,6 +15811,9 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
     @property
     def Type(self):
+        """事件类型，预留字段，当前固定取值为2
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -13265,6 +15860,10 @@ class DescribePolicyConditionListMetric(AbstractModel):
 
     @property
     def ConfigManual(self):
+        """指标配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManual`
+        """
         return self._ConfigManual
 
     @ConfigManual.setter
@@ -13273,6 +15872,9 @@ class DescribePolicyConditionListMetric(AbstractModel):
 
     @property
     def MetricId(self):
+        """指标id
+        :rtype: int
+        """
         return self._MetricId
 
     @MetricId.setter
@@ -13281,6 +15883,9 @@ class DescribePolicyConditionListMetric(AbstractModel):
 
     @property
     def MetricShowName(self):
+        """指标名称
+        :rtype: str
+        """
         return self._MetricShowName
 
     @MetricShowName.setter
@@ -13289,6 +15894,9 @@ class DescribePolicyConditionListMetric(AbstractModel):
 
     @property
     def MetricUnit(self):
+        """指标单位
+        :rtype: str
+        """
         return self._MetricUnit
 
     @MetricUnit.setter
@@ -13327,6 +15935,9 @@ class DescribePolicyConditionListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -13363,6 +15974,9 @@ class DescribePolicyConditionListResponse(AbstractModel):
 
     @property
     def Conditions(self):
+        """告警策略条件列表
+        :rtype: list of DescribePolicyConditionListCondition
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -13371,6 +15985,9 @@ class DescribePolicyConditionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13411,6 +16028,10 @@ class DescribePolicyConditionListResponseDeprecatingInfo(AbstractModel):
 
     @property
     def Hidden(self):
+        """是否隐藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Hidden
 
     @Hidden.setter
@@ -13419,6 +16040,10 @@ class DescribePolicyConditionListResponseDeprecatingInfo(AbstractModel):
 
     @property
     def NewViewNames(self):
+        """新视图名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NewViewNames
 
     @NewViewNames.setter
@@ -13427,6 +16052,10 @@ class DescribePolicyConditionListResponseDeprecatingInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13468,6 +16097,9 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """用户回调接口地址
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -13476,6 +16108,9 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
     @property
     def ValidFlag(self):
+        """用户回调接口状态，0表示未验证，1表示已验证，2表示存在url但没有通过验证
+        :rtype: int
+        """
         return self._ValidFlag
 
     @ValidFlag.setter
@@ -13484,6 +16119,9 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """用户回调接口验证码
+        :rtype: str
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -13553,6 +16191,9 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def MetricShowName(self):
+        """指标名称
+        :rtype: str
+        """
         return self._MetricShowName
 
     @MetricShowName.setter
@@ -13561,6 +16202,9 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def Period(self):
+        """数据聚合周期(单位秒)
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -13569,6 +16213,9 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def MetricId(self):
+        """指标id
+        :rtype: int
+        """
         return self._MetricId
 
     @MetricId.setter
@@ -13577,6 +16224,9 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def RuleId(self):
+        """阈值规则id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -13585,6 +16235,9 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def Unit(self):
+        """指标单位
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -13593,6 +16246,9 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
+        """告警发送收敛类型。0连续告警，1指数告警
+        :rtype: int
+        """
         return self._AlarmNotifyType
 
     @AlarmNotifyType.setter
@@ -13601,6 +16257,9 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
+        """告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :rtype: int
+        """
         return self._AlarmNotifyPeriod
 
     @AlarmNotifyPeriod.setter
@@ -13609,6 +16268,10 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def CalcType(self):
+        """比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等，7表示日同比上涨，8表示日同比下降，9表示周同比上涨，10表示周同比下降，11表示周期环比上涨，12表示周期环比下降
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CalcType
 
     @CalcType.setter
@@ -13617,6 +16280,10 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def CalcValue(self):
+        """检测阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CalcValue
 
     @CalcValue.setter
@@ -13625,6 +16292,10 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def ContinueTime(self):
+        """持续多长时间触发规则会告警(单位秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ContinueTime
 
     @ContinueTime.setter
@@ -13633,6 +16304,10 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def MetricName(self):
+        """告警指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -13700,6 +16375,9 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -13708,6 +16386,9 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
 
     @property
     def GroupName(self):
+        """策略组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -13716,6 +16397,9 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
 
     @property
     def ViewName(self):
+        """策略类型
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -13724,6 +16408,9 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
 
     @property
     def Remark(self):
+        """策略组说明
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -13732,6 +16419,9 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
 
     @property
     def LastEditUin(self):
+        """最后编辑的用户uin
+        :rtype: str
+        """
         return self._LastEditUin
 
     @LastEditUin.setter
@@ -13740,6 +16430,10 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13748,6 +16442,10 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -13756,6 +16454,10 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
 
     @property
     def IsUnionRule(self):
+        """是否且规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsUnionRule
 
     @IsUnionRule.setter
@@ -13808,6 +16510,9 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def EventId(self):
+        """事件id
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -13816,6 +16521,9 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def RuleId(self):
+        """事件告警规则id
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -13824,6 +16532,9 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def EventShowName(self):
+        """事件名称
+        :rtype: str
+        """
         return self._EventShowName
 
     @EventShowName.setter
@@ -13832,6 +16543,9 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
+        """告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :rtype: int
+        """
         return self._AlarmNotifyPeriod
 
     @AlarmNotifyPeriod.setter
@@ -13840,6 +16554,9 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
+        """告警发送收敛类型。0连续告警，1指数告警
+        :rtype: int
+        """
         return self._AlarmNotifyType
 
     @AlarmNotifyType.setter
@@ -13918,6 +16635,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def ReceiverGroupList(self):
+        """告警接收组id列表
+        :rtype: list of int
+        """
         return self._ReceiverGroupList
 
     @ReceiverGroupList.setter
@@ -13926,6 +16646,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def ReceiverUserList(self):
+        """告警接收人id列表
+        :rtype: list of int
+        """
         return self._ReceiverUserList
 
     @ReceiverUserList.setter
@@ -13934,6 +16657,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -13942,6 +16668,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """告警时间段结束时间。含义同StartTime
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -13950,6 +16679,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def ReceiverType(self):
+        """接收类型。“group”(接收组)或“user”(接收人)
+        :rtype: str
+        """
         return self._ReceiverType
 
     @ReceiverType.setter
@@ -13958,6 +16690,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def NotifyWay(self):
+        """告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
+        :rtype: list of str
+        """
         return self._NotifyWay
 
     @NotifyWay.setter
@@ -13966,6 +16701,10 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def UidList(self):
+        """电话告警接收者uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._UidList
 
     @UidList.setter
@@ -13974,6 +16713,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def RoundNumber(self):
+        """电话告警轮数
+        :rtype: int
+        """
         return self._RoundNumber
 
     @RoundNumber.setter
@@ -13982,6 +16724,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def RoundInterval(self):
+        """电话告警每轮间隔（秒）
+        :rtype: int
+        """
         return self._RoundInterval
 
     @RoundInterval.setter
@@ -13990,6 +16735,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def PersonInterval(self):
+        """电话告警对个人间隔（秒）
+        :rtype: int
+        """
         return self._PersonInterval
 
     @PersonInterval.setter
@@ -13998,6 +16746,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def NeedSendNotice(self):
+        """是否需要电话告警触达提示。0不需要，1需要
+        :rtype: int
+        """
         return self._NeedSendNotice
 
     @NeedSendNotice.setter
@@ -14006,6 +16757,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def SendFor(self):
+        """电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+        :rtype: list of str
+        """
         return self._SendFor
 
     @SendFor.setter
@@ -14014,6 +16768,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def RecoverNotify(self):
+        """恢复通知方式。可选"SMS"
+        :rtype: list of str
+        """
         return self._RecoverNotify
 
     @RecoverNotify.setter
@@ -14022,6 +16779,10 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
 
     @property
     def ReceiveLanguage(self):
+        """告警发送语言
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReceiveLanguage
 
     @ReceiveLanguage.setter
@@ -14071,6 +16832,9 @@ class DescribePolicyGroupInfoRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -14079,6 +16843,9 @@ class DescribePolicyGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -14170,6 +16937,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def GroupName(self):
+        """策略组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -14178,6 +16948,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """策略组所属的项目id
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -14186,6 +16959,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否为默认策略，0表示非默认策略，1表示默认策略
+        :rtype: int
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -14194,6 +16970,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def ViewName(self):
+        """策略类型
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -14202,6 +16981,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """策略说明
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -14210,6 +16992,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def ShowName(self):
+        """策略类型名称
+        :rtype: str
+        """
         return self._ShowName
 
     @ShowName.setter
@@ -14218,6 +17003,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def LastEditUin(self):
+        """最近编辑的用户uin
+        :rtype: str
+        """
         return self._LastEditUin
 
     @LastEditUin.setter
@@ -14226,6 +17014,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最近编辑时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14234,6 +17025,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def Region(self):
+        """该策略支持的地域
+        :rtype: list of str
+        """
         return self._Region
 
     @Region.setter
@@ -14242,6 +17036,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def DimensionGroup(self):
+        """策略类型的维度列表
+        :rtype: list of str
+        """
         return self._DimensionGroup
 
     @DimensionGroup.setter
@@ -14250,6 +17047,10 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def ConditionsConfig(self):
+        """阈值规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyGroupInfoCondition
+        """
         return self._ConditionsConfig
 
     @ConditionsConfig.setter
@@ -14258,6 +17059,10 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def EventConfig(self):
+        """产品事件规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyGroupInfoEventCondition
+        """
         return self._EventConfig
 
     @EventConfig.setter
@@ -14266,6 +17071,10 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def ReceiverInfos(self):
+        """用户接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyGroupInfoReceiverInfo
+        """
         return self._ReceiverInfos
 
     @ReceiverInfos.setter
@@ -14274,6 +17083,10 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def Callback(self):
+        """用户回调信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoCallback`
+        """
         return self._Callback
 
     @Callback.setter
@@ -14282,6 +17095,10 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def ConditionsTemp(self):
+        """模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
+        """
         return self._ConditionsTemp
 
     @ConditionsTemp.setter
@@ -14290,6 +17107,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def CanSetDefault(self):
+        """是否可以设置成默认策略
+        :rtype: bool
+        """
         return self._CanSetDefault
 
     @CanSetDefault.setter
@@ -14298,6 +17118,10 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def IsUnionRule(self):
+        """是否且规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsUnionRule
 
     @IsUnionRule.setter
@@ -14306,6 +17130,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14430,6 +17257,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -14438,6 +17268,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def GroupName(self):
+        """策略组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -14446,6 +17279,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def IsOpen(self):
+        """是否开启
+        :rtype: bool
+        """
         return self._IsOpen
 
     @IsOpen.setter
@@ -14454,6 +17290,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def ViewName(self):
+        """策略视图名称
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -14462,6 +17301,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def LastEditUin(self):
+        """最近编辑的用户uin
+        :rtype: str
+        """
         return self._LastEditUin
 
     @LastEditUin.setter
@@ -14470,6 +17312,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后修改时间
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14478,6 +17323,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -14486,6 +17334,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def UseSum(self):
+        """策略组绑定的实例数
+        :rtype: int
+        """
         return self._UseSum
 
     @UseSum.setter
@@ -14494,6 +17345,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def NoShieldedSum(self):
+        """策略组绑定的未屏蔽实例数
+        :rtype: int
+        """
         return self._NoShieldedSum
 
     @NoShieldedSum.setter
@@ -14502,6 +17356,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否为默认策略，0表示非默认策略，1表示默认策略
+        :rtype: int
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -14510,6 +17367,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def CanSetDefault(self):
+        """是否可以设置成默认策略
+        :rtype: bool
+        """
         return self._CanSetDefault
 
     @CanSetDefault.setter
@@ -14518,6 +17378,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def ParentGroupId(self):
+        """父策略组id
+        :rtype: int
+        """
         return self._ParentGroupId
 
     @ParentGroupId.setter
@@ -14526,6 +17389,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def Remark(self):
+        """策略组备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -14534,6 +17400,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def ProjectId(self):
+        """策略组所属项目id
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -14542,6 +17411,10 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def Conditions(self):
+        """阈值规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyGroupInfoCondition
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -14550,6 +17423,10 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def EventConditions(self):
+        """产品事件规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyGroupInfoEventCondition
+        """
         return self._EventConditions
 
     @EventConditions.setter
@@ -14558,6 +17435,10 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def ReceiverInfos(self):
+        """用户接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyGroupInfoReceiverInfo
+        """
         return self._ReceiverInfos
 
     @ReceiverInfos.setter
@@ -14566,6 +17447,10 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def ConditionsTemp(self):
+        """模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
+        """
         return self._ConditionsTemp
 
     @ConditionsTemp.setter
@@ -14574,6 +17459,10 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def InstanceGroup(self):
+        """策略组绑定的实例组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListGroupInstanceGroup`
+        """
         return self._InstanceGroup
 
     @InstanceGroup.setter
@@ -14582,6 +17471,10 @@ class DescribePolicyGroupListGroup(AbstractModel):
 
     @property
     def IsUnionRule(self):
+        """且或规则标识, 0表示或规则(任意一条规则满足阈值条件就告警), 1表示且规则(所有规则都满足阈值条件才告警)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsUnionRule
 
     @IsUnionRule.setter
@@ -14671,6 +17564,9 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例分组名称id
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -14679,6 +17575,9 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def ViewName(self):
+        """策略类型视图名称
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -14687,6 +17586,9 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def LastEditUin(self):
+        """最近编辑的用户uin
+        :rtype: str
+        """
         return self._LastEditUin
 
     @LastEditUin.setter
@@ -14695,6 +17597,9 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def GroupName(self):
+        """实例分组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -14703,6 +17608,9 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def InstanceSum(self):
+        """实例数量
+        :rtype: int
+        """
         return self._InstanceSum
 
     @InstanceSum.setter
@@ -14711,6 +17619,9 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14719,6 +17630,9 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -14800,6 +17714,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -14808,6 +17725,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页参数，每页返回的数量，取值1~100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14816,6 +17736,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页参数，页偏移量，从0开始计数
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14824,6 +17747,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Like(self):
+        """按策略名搜索
+        :rtype: str
+        """
         return self._Like
 
     @Like.setter
@@ -14832,6 +17758,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例分组id
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -14840,6 +17769,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def UpdateTimeOrder(self):
+        """按更新时间排序, asc 或者 desc
+        :rtype: str
+        """
         return self._UpdateTimeOrder
 
     @UpdateTimeOrder.setter
@@ -14848,6 +17780,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
+        """项目id列表
+        :rtype: list of int
+        """
         return self._ProjectIds
 
     @ProjectIds.setter
@@ -14856,6 +17791,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ViewNames(self):
+        """告警策略类型列表
+        :rtype: list of str
+        """
         return self._ViewNames
 
     @ViewNames.setter
@@ -14864,6 +17802,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def FilterUnuseReceiver(self):
+        """是否过滤无接收人策略组, 1表示过滤, 0表示不过滤
+        :rtype: int
+        """
         return self._FilterUnuseReceiver
 
     @FilterUnuseReceiver.setter
@@ -14872,6 +17813,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Receivers(self):
+        """过滤条件, 接收组列表
+        :rtype: list of str
+        """
         return self._Receivers
 
     @Receivers.setter
@@ -14880,6 +17824,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ReceiverUserList(self):
+        """过滤条件, 接收人列表
+        :rtype: list of str
+        """
         return self._ReceiverUserList
 
     @ReceiverUserList.setter
@@ -14888,6 +17835,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Dimensions(self):
+        """维度组合字段(json字符串), 例如[[{"name":"unInstanceId","value":"ins-6e4b2aaa"}]]
+        :rtype: str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -14896,6 +17846,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ConditionTempGroupId(self):
+        """模板策略组id, 多个id用逗号分隔
+        :rtype: str
+        """
         return self._ConditionTempGroupId
 
     @ConditionTempGroupId.setter
@@ -14904,6 +17857,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ReceiverType(self):
+        """过滤条件, 接收人或者接收组, user表示接收人, group表示接收组
+        :rtype: str
+        """
         return self._ReceiverType
 
     @ReceiverType.setter
@@ -14912,6 +17868,9 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def IsOpen(self):
+        """过滤条件，告警策略是否已启动或停止
+        :rtype: bool
+        """
         return self._IsOpen
 
     @IsOpen.setter
@@ -14970,6 +17929,10 @@ class DescribePolicyGroupListResponse(AbstractModel):
 
     @property
     def GroupList(self):
+        """策略组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribePolicyGroupListGroup
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -14978,6 +17941,9 @@ class DescribePolicyGroupListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """策略组总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -14986,6 +17952,10 @@ class DescribePolicyGroupListResponse(AbstractModel):
 
     @property
     def Warning(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Warning
 
     @Warning.setter
@@ -14994,6 +17964,9 @@ class DescribePolicyGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15030,6 +18003,9 @@ class DescribeProductEventListDimensions(AbstractModel):
 
     @property
     def Name(self):
+        """维度名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15038,6 +18014,9 @@ class DescribeProductEventListDimensions(AbstractModel):
 
     @property
     def Value(self):
+        """维度值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -15153,6 +18132,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def EventId(self):
+        """事件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -15161,6 +18144,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def EventCName(self):
+        """事件中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventCName
 
     @EventCName.setter
@@ -15169,6 +18156,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def EventEName(self):
+        """事件英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventEName
 
     @EventEName.setter
@@ -15177,6 +18168,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def EventName(self):
+        """事件简称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -15185,6 +18180,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def ProductCName(self):
+        """产品中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductCName
 
     @ProductCName.setter
@@ -15193,6 +18192,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def ProductEName(self):
+        """产品英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductEName
 
     @ProductEName.setter
@@ -15201,6 +18204,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品简称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -15209,6 +18216,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -15217,6 +18228,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -15225,6 +18240,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -15233,6 +18252,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -15241,6 +18264,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -15249,6 +18276,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def SupportAlarm(self):
+        """是否支持告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SupportAlarm
 
     @SupportAlarm.setter
@@ -15257,6 +18288,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def Type(self):
+        """事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15265,6 +18300,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -15273,6 +18312,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -15281,6 +18324,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def Dimensions(self):
+        """实例对象信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeProductEventListEventsDimensions
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -15289,6 +18336,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def AdditionMsg(self):
+        """实例对象附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeProductEventListEventsDimensions
+        """
         return self._AdditionMsg
 
     @AdditionMsg.setter
@@ -15297,6 +18348,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def IsAlarmConfig(self):
+        """是否配置告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsAlarmConfig
 
     @IsAlarmConfig.setter
@@ -15305,6 +18360,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def GroupInfo(self):
+        """策略信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeProductEventListEventsGroupInfo
+        """
         return self._GroupInfo
 
     @GroupInfo.setter
@@ -15313,6 +18372,10 @@ class DescribeProductEventListEvents(AbstractModel):
 
     @property
     def ViewName(self):
+        """显示名称ViewName
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -15390,6 +18453,10 @@ class DescribeProductEventListEventsDimensions(AbstractModel):
 
     @property
     def Key(self):
+        """维度名（英文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -15398,6 +18465,10 @@ class DescribeProductEventListEventsDimensions(AbstractModel):
 
     @property
     def Name(self):
+        """维度名（中文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15406,6 +18477,10 @@ class DescribeProductEventListEventsDimensions(AbstractModel):
 
     @property
     def Value(self):
+        """维度值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -15446,6 +18521,10 @@ class DescribeProductEventListEventsGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -15454,6 +18533,10 @@ class DescribeProductEventListEventsGroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
+        """策略名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -15501,6 +18584,10 @@ class DescribeProductEventListOverView(AbstractModel):
 
     @property
     def StatusChangeAmount(self):
+        """状态变更的事件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StatusChangeAmount
 
     @StatusChangeAmount.setter
@@ -15509,6 +18596,10 @@ class DescribeProductEventListOverView(AbstractModel):
 
     @property
     def UnConfigAlarmAmount(self):
+        """告警状态未配置的事件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UnConfigAlarmAmount
 
     @UnConfigAlarmAmount.setter
@@ -15517,6 +18608,10 @@ class DescribeProductEventListOverView(AbstractModel):
 
     @property
     def UnNormalEventAmount(self):
+        """异常事件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UnNormalEventAmount
 
     @UnNormalEventAmount.setter
@@ -15525,6 +18620,10 @@ class DescribeProductEventListOverView(AbstractModel):
 
     @property
     def UnRecoverAmount(self):
+        """未恢复的事件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UnRecoverAmount
 
     @UnRecoverAmount.setter
@@ -15603,6 +18702,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """接口模块名，固定值"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -15611,6 +18713,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品类型过滤，例如"cvm"表示云服务器
+        :rtype: list of str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -15619,6 +18724,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def EventName(self):
+        """事件名称过滤，例如"guest_reboot"表示机器重启
+        :rtype: list of str
+        """
         return self._EventName
 
     @EventName.setter
@@ -15627,6 +18735,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """影响对象，例如"ins-19708ino"
+        :rtype: list of str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -15635,6 +18746,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Dimensions(self):
+        """维度过滤，例如外网IP:10.0.0.1
+        :rtype: list of DescribeProductEventListDimensions
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -15643,6 +18757,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def RegionList(self):
+        """产品事件地域过滤参数，例如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
+        :rtype: list of str
+        """
         return self._RegionList
 
     @RegionList.setter
@@ -15651,6 +18768,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Type(self):
+        """事件类型过滤，取值范围["status_change","abnormal"]，分别表示状态变更、异常事件
+        :rtype: list of str
+        """
         return self._Type
 
     @Type.setter
@@ -15659,6 +18779,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """事件状态过滤，取值范围["recover","alarm","-"]，分别表示已恢复、未恢复、无状态
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -15667,6 +18790,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Project(self):
+        """项目ID过滤
+        :rtype: list of str
+        """
         return self._Project
 
     @Project.setter
@@ -15675,6 +18801,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def IsAlarmConfig(self):
+        """告警状态配置过滤，1表示已配置，0表示未配置
+        :rtype: int
+        """
         return self._IsAlarmConfig
 
     @IsAlarmConfig.setter
@@ -15683,6 +18812,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def TimeOrder(self):
+        """按更新时间排序，ASC表示升序，DESC表示降序，默认DESC
+        :rtype: str
+        """
         return self._TimeOrder
 
     @TimeOrder.setter
@@ -15691,6 +18823,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，默认一天前的时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -15699,6 +18834,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，默认当前时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -15707,6 +18845,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15715,6 +18856,9 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页返回的数量，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15778,6 +18922,10 @@ class DescribeProductEventListResponse(AbstractModel):
 
     @property
     def Events(self):
+        """事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeProductEventListEvents
+        """
         return self._Events
 
     @Events.setter
@@ -15786,6 +18934,9 @@ class DescribeProductEventListResponse(AbstractModel):
 
     @property
     def OverView(self):
+        """事件统计
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListOverView`
+        """
         return self._OverView
 
     @OverView.setter
@@ -15794,6 +18945,10 @@ class DescribeProductEventListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -15802,6 +18957,9 @@ class DescribeProductEventListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15846,6 +19004,9 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定传值monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -15854,6 +19015,9 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式：DESC/ASC（区分大小写），默认值DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -15862,6 +19026,9 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询的偏移量，默认值0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15870,6 +19037,9 @@ class DescribeProductListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询的每页数据量，默认值20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15914,6 +19084,10 @@ class DescribeProductListResponse(AbstractModel):
 
     @property
     def ProductList(self):
+        """产品信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ProductSimple
+        """
         return self._ProductList
 
     @ProductList.setter
@@ -15922,6 +19096,10 @@ class DescribeProductListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """产品总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15930,6 +19108,9 @@ class DescribeProductListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15963,6 +19144,10 @@ class DescribePrometheusAgentInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+可以是tke, eks, edge的集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -16000,6 +19185,10 @@ class DescribePrometheusAgentInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """关联该集群的实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Instances
 
     @Instances.setter
@@ -16008,6 +19197,9 @@ class DescribePrometheusAgentInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16046,6 +19238,9 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16054,6 +19249,9 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Agent 名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16062,6 +19260,9 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def AgentIds(self):
+        """Agent ID 列表
+        :rtype: list of str
+        """
         return self._AgentIds
 
     @AgentIds.setter
@@ -16070,6 +19271,9 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16078,6 +19282,9 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16122,6 +19329,10 @@ class DescribePrometheusAgentsResponse(AbstractModel):
 
     @property
     def AgentSet(self):
+        """Agent 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusAgent
+        """
         return self._AgentSet
 
     @AgentSet.setter
@@ -16130,6 +19341,9 @@ class DescribePrometheusAgentsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Agent 总量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16138,6 +19352,9 @@ class DescribePrometheusAgentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16184,6 +19401,9 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16192,6 +19412,9 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16200,6 +19423,9 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16208,6 +19434,10 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """告警分组ID，形如alert-xxxx。
+查询给定ID的告警分组
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -16216,6 +19446,10 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """告警分组名称。
+查询名称中包含给定字符串的告警分组
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -16261,6 +19495,10 @@ class DescribePrometheusAlertGroupsResponse(AbstractModel):
 
     @property
     def AlertGroupSet(self):
+        """告警分组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusAlertGroupSet
+        """
         return self._AlertGroupSet
 
     @AlertGroupSet.setter
@@ -16269,6 +19507,10 @@ class DescribePrometheusAlertGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """告警分组总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16277,6 +19519,9 @@ class DescribePrometheusAlertGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16322,6 +19567,9 @@ class DescribePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16330,6 +19578,9 @@ class DescribePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认为0。 示例值：1
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16338,6 +19589,9 @@ class DescribePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16346,6 +19600,13 @@ class DescribePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """仅支持按Name, Values字段过滤:
+- Name = Name 
+  按照给定的告警规则名称列表匹配
+- Name = ID
+  按照给定的告警规则ID列表匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -16394,6 +19655,10 @@ class DescribePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def AlertRules(self):
+        """告警详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusAlertPolicyItem
+        """
         return self._AlertRules
 
     @AlertRules.setter
@@ -16402,6 +19667,9 @@ class DescribePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -16410,6 +19678,9 @@ class DescribePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16457,6 +19728,9 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16465,6 +19739,9 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16473,6 +19750,9 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16481,6 +19761,9 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
+        """用于通过集群id过滤被绑定集群
+        :rtype: list of str
+        """
         return self._ClusterIds
 
     @ClusterIds.setter
@@ -16489,6 +19772,9 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def ClusterTypes(self):
+        """用于通过集群类型过滤被绑定集群
+        :rtype: list of str
+        """
         return self._ClusterTypes
 
     @ClusterTypes.setter
@@ -16497,6 +19783,9 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def ClusterName(self):
+        """用于通过名称搜索被绑定集群
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -16547,6 +19836,9 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def Agents(self):
+        """被关联集群信息
+        :rtype: list of PrometheusAgentOverview
+        """
         return self._Agents
 
     @Agents.setter
@@ -16555,6 +19847,9 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """被关联集群总量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -16563,6 +19858,9 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def IsFirstBind(self):
+        """是否为首次绑定，如果是首次绑定则需要安装预聚合规则
+        :rtype: bool
+        """
         return self._IsFirstBind
 
     @IsFirstBind.setter
@@ -16571,6 +19869,9 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def ImageNeedUpdate(self):
+        """实例组件是否需要更新镜像版本
+        :rtype: bool
+        """
         return self._ImageNeedUpdate
 
     @ImageNeedUpdate.setter
@@ -16579,6 +19880,9 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16619,6 +19923,9 @@ class DescribePrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16627,6 +19934,9 @@ class DescribePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -16635,6 +19945,9 @@ class DescribePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -16688,6 +20001,9 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def Config(self):
+        """全局配置
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -16696,6 +20012,9 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def ServiceMonitors(self):
+        """ServiceMonitor配置
+        :rtype: list of PrometheusConfigItem
+        """
         return self._ServiceMonitors
 
     @ServiceMonitors.setter
@@ -16704,6 +20023,9 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def PodMonitors(self):
+        """PodMonitor配置
+        :rtype: list of PrometheusConfigItem
+        """
         return self._PodMonitors
 
     @PodMonitors.setter
@@ -16712,6 +20034,9 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def RawJobs(self):
+        """原生Job
+        :rtype: list of PrometheusConfigItem
+        """
         return self._RawJobs
 
     @RawJobs.setter
@@ -16720,6 +20045,9 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def Probes(self):
+        """Probes
+        :rtype: list of PrometheusConfigItem
+        """
         return self._Probes
 
     @Probes.setter
@@ -16728,6 +20056,9 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def ImageNeedUpdate(self):
+        """实例组件是否需要升级
+        :rtype: bool
+        """
         return self._ImageNeedUpdate
 
     @ImageNeedUpdate.setter
@@ -16736,6 +20067,9 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16790,6 +20124,9 @@ class DescribePrometheusGlobalConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例级别抓取配置
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16798,6 +20135,9 @@ class DescribePrometheusGlobalConfigRequest(AbstractModel):
 
     @property
     def DisableStatistics(self):
+        """是否禁用统计
+        :rtype: bool
+        """
         return self._DisableStatistics
 
     @DisableStatistics.setter
@@ -16851,6 +20191,9 @@ class DescribePrometheusGlobalConfigResponse(AbstractModel):
 
     @property
     def Config(self):
+        """配置内容
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -16859,6 +20202,10 @@ class DescribePrometheusGlobalConfigResponse(AbstractModel):
 
     @property
     def ServiceMonitors(self):
+        """ServiceMonitors列表以及对应targets信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._ServiceMonitors
 
     @ServiceMonitors.setter
@@ -16867,6 +20214,10 @@ class DescribePrometheusGlobalConfigResponse(AbstractModel):
 
     @property
     def PodMonitors(self):
+        """PodMonitors列表以及对应targets信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._PodMonitors
 
     @PodMonitors.setter
@@ -16875,6 +20226,10 @@ class DescribePrometheusGlobalConfigResponse(AbstractModel):
 
     @property
     def RawJobs(self):
+        """RawJobs列表以及对应targets信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._RawJobs
 
     @RawJobs.setter
@@ -16883,6 +20238,10 @@ class DescribePrometheusGlobalConfigResponse(AbstractModel):
 
     @property
     def Probes(self):
+        """Probes列表以及对应targets信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._Probes
 
     @Probes.setter
@@ -16891,6 +20250,9 @@ class DescribePrometheusGlobalConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16941,6 +20303,9 @@ class DescribePrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16978,6 +20343,10 @@ class DescribePrometheusGlobalNotificationResponse(AbstractModel):
 
     @property
     def Notification(self):
+        """全局告警通知渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
+        """
         return self._Notification
 
     @Notification.setter
@@ -16986,6 +20355,9 @@ class DescribePrometheusGlobalNotificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17014,6 +20386,9 @@ class DescribePrometheusInstanceDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -17117,6 +20492,9 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -17125,6 +20503,9 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -17133,6 +20514,9 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -17141,6 +20525,9 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网 ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -17149,6 +20536,18 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """实例业务状态。取值范围：
+
+1：正在创建
+2：运行中
+3：异常
+4：重建中
+5：销毁中
+6：已停服
+8：欠费停服中
+9：欠费已停服
+        :rtype: int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -17157,6 +20556,16 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def ChargeStatus(self):
+        """计费状态
+
+1：正常
+2：过期
+3：销毁
+4：分配中
+5：分配失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChargeStatus
 
     @ChargeStatus.setter
@@ -17165,6 +20574,11 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def EnableGrafana(self):
+        """是否开启 Grafana
+0：不开启
+1：开启
+        :rtype: int
+        """
         return self._EnableGrafana
 
     @EnableGrafana.setter
@@ -17173,6 +20587,10 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def GrafanaURL(self):
+        """Grafana 面板 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GrafanaURL
 
     @GrafanaURL.setter
@@ -17181,6 +20599,12 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例计费模式。取值范围：
+
+2：包年包月
+3：按量
+        :rtype: int
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -17189,6 +20613,10 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def SpecName(self):
+        """规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpecName
 
     @SpecName.setter
@@ -17197,6 +20625,10 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def DataRetentionTime(self):
+        """存储周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataRetentionTime
 
     @DataRetentionTime.setter
@@ -17205,6 +20637,10 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """购买的实例过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -17213,6 +20649,15 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标记
+
+0：不自动续费
+1：开启自动续费
+2：禁止自动续费
+-1：无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -17221,6 +20666,9 @@ class DescribePrometheusInstanceDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17259,6 +20707,9 @@ class DescribePrometheusInstanceInitStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -17311,6 +20762,13 @@ running 初始化完成，运行中
 
     @property
     def Status(self):
+        """实例初始化状态，取值：
+uninitialized 未初始化 
+initializing 初始化中
+running 初始化完成，运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -17319,6 +20777,10 @@ running 初始化完成，运行中
 
     @property
     def Steps(self):
+        """初始化任务步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskStepInfo
+        """
         return self._Steps
 
     @Steps.setter
@@ -17327,6 +20789,10 @@ running 初始化完成，运行中
 
     @property
     def EksClusterId(self):
+        """实例eks集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EksClusterId
 
     @EksClusterId.setter
@@ -17335,6 +20801,10 @@ running 初始化完成，运行中
 
     @property
     def SecurityGroupId(self):
+        """eks集群内pod的安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -17343,6 +20813,9 @@ running 初始化完成，运行中
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17383,6 +20856,9 @@ class DescribePrometheusInstanceUsageRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -17391,6 +20867,9 @@ class DescribePrometheusInstanceUsageRequest(AbstractModel):
 
     @property
     def StartCalcDate(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartCalcDate
 
     @StartCalcDate.setter
@@ -17399,6 +20878,9 @@ class DescribePrometheusInstanceUsageRequest(AbstractModel):
 
     @property
     def EndCalcDate(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndCalcDate
 
     @EndCalcDate.setter
@@ -17438,6 +20920,10 @@ class DescribePrometheusInstanceUsageResponse(AbstractModel):
 
     @property
     def UsageSet(self):
+        """用量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusInstanceTenantUsage
+        """
         return self._UsageSet
 
     @UsageSet.setter
@@ -17446,6 +20932,9 @@ class DescribePrometheusInstanceUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17485,6 +20974,9 @@ Name: 通过实例名称来过滤
 
     @property
     def Offset(self):
+        """分页偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17493,6 +20985,9 @@ Name: 通过实例名称来过滤
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17501,6 +20996,11 @@ Name: 通过实例名称来过滤
 
     @property
     def Filters(self):
+        """过滤实例，目前支持：
+ID: 通过实例ID来过滤 
+Name: 通过实例名称来过滤
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -17548,6 +21048,9 @@ class DescribePrometheusInstancesOverviewResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """实例列表
+        :rtype: list of PrometheusInstancesOverview
+        """
         return self._Instances
 
     @Instances.setter
@@ -17556,6 +21059,10 @@ class DescribePrometheusInstancesOverviewResponse(AbstractModel):
 
     @property
     def Total(self):
+        """实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -17564,6 +21071,9 @@ class DescribePrometheusInstancesOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17632,6 +21142,9 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -17640,6 +21153,19 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """按照【实例状态】进行过滤。
+<ul>
+<li>1：正在创建</li>
+<li>2：运行中</li>
+<li>3：异常</li>
+<li>4：重建中</li>
+<li>5：销毁中</li>
+<li>6：已停服</li>
+<li>8：欠费停服中</li>
+<li>9：欠费已停服</li>
+</ul>
+        :rtype: list of int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -17648,6 +21174,9 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """按照【实例名称】进行过滤。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -17656,6 +21185,9 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """按照【可用区】进行过滤。可用区形如：ap-guangzhou-1。
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -17664,6 +21196,9 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """按照【标签键值对】进行过滤。tag-key使用具体的标签键进行替换。
+        :rtype: list of PrometheusTag
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -17672,6 +21207,9 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def IPv4Address(self):
+        """按照【实例的IPv4地址】进行过滤。
+        :rtype: list of str
+        """
         return self._IPv4Address
 
     @IPv4Address.setter
@@ -17680,6 +21218,9 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17688,6 +21229,9 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17696,6 +21240,11 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """按照【计费类型】进行过滤。
+<li>2：包年包月</li>
+<li>3：按量</li>
+        :rtype: int
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -17749,6 +21298,10 @@ class DescribePrometheusInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """实例详细信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusInstancesItem
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -17757,6 +21310,9 @@ class DescribePrometheusInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的实例数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17765,6 +21321,9 @@ class DescribePrometheusInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17806,6 +21365,9 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -17814,6 +21376,9 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17822,6 +21387,9 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17830,6 +21398,9 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """仅支持按Name, Values字段过滤。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -17877,6 +21448,9 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
 
     @property
     def Records(self):
+        """聚合规则
+        :rtype: list of PrometheusRecordRuleYamlItem
+        """
         return self._Records
 
     @Records.setter
@@ -17885,6 +21459,9 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -17893,6 +21470,9 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17925,6 +21505,9 @@ class DescribePrometheusRegionsRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """1-预付费，2-后付费，3-全地域（不填默认全地域）
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -17961,6 +21544,9 @@ class DescribePrometheusRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
+        """区域列表
+        :rtype: list of PrometheusRegionItem
+        """
         return self._RegionSet
 
     @RegionSet.setter
@@ -17969,6 +21555,9 @@ class DescribePrometheusRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18015,6 +21604,9 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -18023,6 +21615,9 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def AgentId(self):
+        """Agent ID
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -18031,6 +21626,9 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -18039,6 +21637,9 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
+        """任务 ID 列表
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -18047,6 +21648,9 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18055,6 +21659,9 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18100,6 +21707,10 @@ class DescribePrometheusScrapeJobsResponse(AbstractModel):
 
     @property
     def ScrapeJobSet(self):
+        """任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusScrapeJob
+        """
         return self._ScrapeJobSet
 
     @ScrapeJobSet.setter
@@ -18108,6 +21719,9 @@ class DescribePrometheusScrapeJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务总量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18116,6 +21730,9 @@ class DescribePrometheusScrapeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18164,6 +21781,9 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -18172,6 +21792,10 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集成容器服务填绑定的集群id；
+集成中心填 non-cluster
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -18180,6 +21804,9 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型(可不填)
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -18188,6 +21815,9 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件，支持Name=ServiceMonitor/PodMonitor/Probe/RawJob/Job, Value为采集配置名称；Name=Health, Value=up, down, unknown；Name=EndPoint, Value为EndPoint地址
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -18196,6 +21826,9 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """targets分页偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18204,6 +21837,9 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """targets返回数量，默认为20，最大值200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18250,6 +21886,9 @@ class DescribePrometheusTargetsTMPResponse(AbstractModel):
 
     @property
     def Jobs(self):
+        """所有Job的targets信息
+        :rtype: list of PrometheusJobTargets
+        """
         return self._Jobs
 
     @Jobs.setter
@@ -18258,6 +21897,9 @@ class DescribePrometheusTargetsTMPResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18303,6 +21945,17 @@ class DescribePrometheusTempRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """仅支持按Name, Values字段过滤:
+* Name = Name
+  按照给定的模板名称列表匹配
+* Name = ID
+  按照给定的模板ID列表匹配
+* Name = Describe
+  按照给定的模板描述列表匹配
+* Name = Level
+  按照给定的模板维度(instance, cluster)列表匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -18311,6 +21964,9 @@ class DescribePrometheusTempRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18319,6 +21975,9 @@ class DescribePrometheusTempRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18365,6 +22024,9 @@ class DescribePrometheusTempResponse(AbstractModel):
 
     @property
     def Templates(self):
+        """模板列表
+        :rtype: list of PrometheusTemp
+        """
         return self._Templates
 
     @Templates.setter
@@ -18373,6 +22035,9 @@ class DescribePrometheusTempResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -18381,6 +22046,9 @@ class DescribePrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18413,6 +22081,9 @@ class DescribePrometheusTempSyncRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -18450,6 +22121,10 @@ class DescribePrometheusTempSyncResponse(AbstractModel):
 
     @property
     def Targets(self):
+        """同步目标详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusTemplateSyncTarget
+        """
         return self._Targets
 
     @Targets.setter
@@ -18458,6 +22133,9 @@ class DescribePrometheusTempSyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18492,6 +22170,9 @@ class DescribePrometheusZonesRequest(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域 ID（RegionId 和 RegionName 只需要填一个）
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -18500,6 +22181,9 @@ class DescribePrometheusZonesRequest(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域名（RegionId 和 RegionName 只需要填一个）
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -18538,6 +22222,10 @@ class DescribePrometheusZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
+        """区域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusZoneItem
+        """
         return self._ZoneSet
 
     @ZoneSet.setter
@@ -18546,6 +22234,9 @@ class DescribePrometheusZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18595,6 +22286,9 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -18603,6 +22297,9 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18611,6 +22308,9 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18619,6 +22319,9 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -18627,6 +22330,12 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码，取值如下：
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -18635,6 +22344,9 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -18680,6 +22392,9 @@ class DescribeRecordingRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """规则组数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18688,6 +22403,10 @@ class DescribeRecordingRulesResponse(AbstractModel):
 
     @property
     def RecordingRuleSet(self):
+        """规则组详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordingRuleSet
+        """
         return self._RecordingRuleSet
 
     @RecordingRuleSet.setter
@@ -18696,6 +22415,9 @@ class DescribeRecordingRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18731,6 +22453,9 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -18739,6 +22464,9 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -18777,6 +22505,10 @@ class DescribeSSOAccountResponse(AbstractModel):
 
     @property
     def AccountSet(self):
+        """授权账号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GrafanaAccountInfo
+        """
         return self._AccountSet
 
     @AccountSet.setter
@@ -18785,6 +22517,9 @@ class DescribeSSOAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18823,6 +22558,9 @@ class DescribeServiceDiscoveryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -18831,6 +22569,9 @@ class DescribeServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeClusterId(self):
+        """<li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :rtype: str
+        """
         return self._KubeClusterId
 
     @KubeClusterId.setter
@@ -18839,6 +22580,10 @@ class DescribeServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeType(self):
+        """用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :rtype: int
+        """
         return self._KubeType
 
     @KubeType.setter
@@ -18878,6 +22623,10 @@ class DescribeServiceDiscoveryResponse(AbstractModel):
 
     @property
     def ServiceDiscoverySet(self):
+        """返回服务发现列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceDiscoveryItem
+        """
         return self._ServiceDiscoverySet
 
     @ServiceDiscoverySet.setter
@@ -18886,6 +22635,9 @@ class DescribeServiceDiscoveryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18943,6 +22695,9 @@ class DescribeStatisticDataRequest(AbstractModel):
 
     @property
     def Module(self):
+        """所属模块，固定值，为monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -18951,6 +22706,9 @@ class DescribeStatisticDataRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，目前支持QCE/TKE2(Conditions必填),QCE/KEEWIDB,QCE/CAMP
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -18959,6 +22717,9 @@ class DescribeStatisticDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
+        """指标名列表，相关指标信息可参考对应 [云产品指标文档](https://cloud.tencent.com/document/product/248/62458)
+        :rtype: list of str
+        """
         return self._MetricNames
 
     @MetricNames.setter
@@ -18967,6 +22728,9 @@ class DescribeStatisticDataRequest(AbstractModel):
 
     @property
     def Conditions(self):
+        """维度条件，操作符支持=、in，详情请参考对应 [指标维度信息](https://cloud.tencent.com/document/product/248/53821)
+        :rtype: list of MidQueryCondition
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -18975,6 +22739,14 @@ class DescribeStatisticDataRequest(AbstractModel):
 
     @property
     def Period(self):
+        """统计粒度。默认取值为300，单位为s；可选的值为60、300、3600、86400
+受存储时长限制，统计粒度与统计的时间范围有关：
+60s：EndTime-StartTime<12小时，且StartTime距当前时间不能超过15天；
+300s：EndTime-StartTime<3天，且StartTime距当前时间不能超过31天；
+3600s：EndTime-StartTime<30天，且StartTime距当前时间不能超过93天；
+86400s：EndTime-StartTime<186天，且StartTime距当前时间不能超过186天。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -18983,6 +22755,9 @@ class DescribeStatisticDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，默认为当前时间，如2020-12-08T19:51:23+08:00
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -18991,6 +22766,9 @@ class DescribeStatisticDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，默认为当前时间，如2020-12-08T19:51:23+08:00
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -18999,6 +22777,9 @@ class DescribeStatisticDataRequest(AbstractModel):
 
     @property
     def GroupBys(self):
+        """按指定维度groupBy
+        :rtype: list of str
+        """
         return self._GroupBys
 
     @GroupBys.setter
@@ -19056,6 +22837,9 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def Period(self):
+        """统计周期
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -19064,6 +22848,9 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -19072,6 +22859,9 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -19080,6 +22870,9 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """监控数据
+        :rtype: list of MetricData
+        """
         return self._Data
 
     @Data.setter
@@ -19088,6 +22881,9 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19122,6 +22918,9 @@ class DestroyPrometheusInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID，该实例必须先被 terminate
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -19155,6 +22954,9 @@ class DestroyPrometheusInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19185,6 +22987,10 @@ class Dimension(AbstractModel):
 
     @property
     def Name(self):
+        """实例维度名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -19193,6 +22999,10 @@ class Dimension(AbstractModel):
 
     @property
     def Value(self):
+        """实例维度值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -19261,6 +23071,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def Key(self):
+        """维度 key 标示，后台英文名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -19269,6 +23082,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def Name(self):
+        """维度 key 名称，中英文前台展示名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -19277,6 +23093,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def IsRequired(self):
+        """是否必选
+        :rtype: bool
+        """
         return self._IsRequired
 
     @IsRequired.setter
@@ -19285,6 +23104,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def Operators(self):
+        """支持的操作符列表
+        :rtype: list of Operator
+        """
         return self._Operators
 
     @Operators.setter
@@ -19293,6 +23115,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def IsMultiple(self):
+        """是否支持多选
+        :rtype: bool
+        """
         return self._IsMultiple
 
     @IsMultiple.setter
@@ -19301,6 +23126,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def IsMutable(self):
+        """创建后是否可以修改
+        :rtype: bool
+        """
         return self._IsMutable
 
     @IsMutable.setter
@@ -19309,6 +23137,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def IsVisible(self):
+        """是否展示给用户
+        :rtype: bool
+        """
         return self._IsVisible
 
     @IsVisible.setter
@@ -19317,6 +23148,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def CanFilterPolicy(self):
+        """能否用来过滤策略列表
+        :rtype: bool
+        """
         return self._CanFilterPolicy
 
     @CanFilterPolicy.setter
@@ -19325,6 +23159,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def CanFilterHistory(self):
+        """能否用来过滤告警历史
+        :rtype: bool
+        """
         return self._CanFilterHistory
 
     @CanFilterHistory.setter
@@ -19333,6 +23170,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def CanGroupBy(self):
+        """能否作为聚合维度
+        :rtype: bool
+        """
         return self._CanGroupBy
 
     @CanGroupBy.setter
@@ -19341,6 +23181,9 @@ class DimensionNew(AbstractModel):
 
     @property
     def MustGroupBy(self):
+        """是否必须作为聚合维度
+        :rtype: bool
+        """
         return self._MustGroupBy
 
     @MustGroupBy.setter
@@ -19349,6 +23192,10 @@ class DimensionNew(AbstractModel):
 
     @property
     def ShowValueReplace(self):
+        """前端翻译要替换的 key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShowValueReplace
 
     @ShowValueReplace.setter
@@ -19398,6 +23245,9 @@ class DimensionsDesc(AbstractModel):
 
     @property
     def Dimensions(self):
+        """维度名数组
+        :rtype: list of str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -19434,6 +23284,9 @@ class EnableGrafanaInternetRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Grafana 实例 ID，例如：grafana-kleu3gt0
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -19442,6 +23295,9 @@ class EnableGrafanaInternetRequest(AbstractModel):
 
     @property
     def EnableInternet(self):
+        """开启或关闭公网访问，true为开启，false 为不开启
+        :rtype: bool
+        """
         return self._EnableInternet
 
     @EnableInternet.setter
@@ -19476,6 +23332,9 @@ class EnableGrafanaInternetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19504,6 +23363,9 @@ class EnableGrafanaSSORequest(AbstractModel):
 
     @property
     def EnableSSO(self):
+        """是否开启 SSO，true为开启，false 为不开启
+        :rtype: bool
+        """
         return self._EnableSSO
 
     @EnableSSO.setter
@@ -19512,6 +23374,9 @@ class EnableGrafanaSSORequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -19546,6 +23411,9 @@ class EnableGrafanaSSOResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19574,6 +23442,9 @@ class EnableSSOCamCheckRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -19582,6 +23453,9 @@ class EnableSSOCamCheckRequest(AbstractModel):
 
     @property
     def EnableSSOCamCheck(self):
+        """是否开启 cam 鉴权，true为开启，false 为不开启
+        :rtype: bool
+        """
         return self._EnableSSOCamCheck
 
     @EnableSSOCamCheck.setter
@@ -19616,6 +23490,9 @@ class EnableSSOCamCheckResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19659,6 +23536,10 @@ class EventCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
+        """告警通知频率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmNotifyPeriod
 
     @AlarmNotifyPeriod.setter
@@ -19667,6 +23548,10 @@ class EventCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
+        """重复通知策略预定义（0 - 只告警一次， 1 - 指数告警，2 - 连接告警）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmNotifyType
 
     @AlarmNotifyType.setter
@@ -19675,6 +23560,9 @@ class EventCondition(AbstractModel):
 
     @property
     def EventID(self):
+        """事件ID
+        :rtype: str
+        """
         return self._EventID
 
     @EventID.setter
@@ -19683,6 +23571,9 @@ class EventCondition(AbstractModel):
 
     @property
     def EventDisplayName(self):
+        """事件展示名称（对外）
+        :rtype: str
+        """
         return self._EventDisplayName
 
     @EventDisplayName.setter
@@ -19691,6 +23582,9 @@ class EventCondition(AbstractModel):
 
     @property
     def RuleID(self):
+        """规则ID
+        :rtype: str
+        """
         return self._RuleID
 
     @RuleID.setter
@@ -19699,6 +23593,10 @@ class EventCondition(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -19749,6 +23647,9 @@ class Filter(AbstractModel):
 
     @property
     def Type(self):
+        """过滤方式（=, !=, in）
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19757,6 +23658,9 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
+        """过滤维度名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -19765,6 +23669,9 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
+        """过滤值，in过滤方式用逗号分割多个值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -19773,6 +23680,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤条件名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -19781,6 +23691,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤条件取值范围
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -19836,6 +23749,9 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -19844,6 +23760,9 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名称，如CPUUsage，仅支持单指标拉取。各个云产品的详细指标说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的指标英文名即为MetricName
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -19852,6 +23771,9 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """实例对象的维度组合，格式为key-value键值对形式的集合。不同类型的实例字段完全不同，如CVM为[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]，Ckafka为[{"Name":"instanceId","Value":"ckafka-l49k54dd"}]，COS为[{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}]。各个云产品的维度请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的维度列即为维度组合的key，value为key对应的值。单请求最多支持批量拉取10个实例的监控数据。
+        :rtype: list of Instance
+        """
         return self._Instances
 
     @Instances.setter
@@ -19860,6 +23782,9 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def Period(self):
+        """监控统计周期，如60。默认为取值为300，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的统计周期列即为支持的统计周期。单请求的数据点数限制为1440个。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -19868,6 +23793,9 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间，如2018-09-22T19:51:23+08:00
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -19876,6 +23804,9 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -19884,6 +23815,9 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def SpecifyStatistics(self):
+        """返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合
+        :rtype: int
+        """
         return self._SpecifyStatistics
 
     @SpecifyStatistics.setter
@@ -19946,6 +23880,9 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def Period(self):
+        """统计周期
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -19954,6 +23891,9 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -19962,6 +23902,9 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def DataPoints(self):
+        """数据点数组
+        :rtype: list of DataPoint
+        """
         return self._DataPoints
 
     @DataPoints.setter
@@ -19970,6 +23913,9 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -19978,6 +23924,9 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -19986,6 +23935,9 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """返回信息
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -19994,6 +23946,9 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20033,6 +23988,9 @@ class GetPrometheusAgentManagementCommandRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20041,6 +23999,9 @@ class GetPrometheusAgentManagementCommandRequest(AbstractModel):
 
     @property
     def AgentId(self):
+        """Prometheus Agent ID
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -20078,6 +24039,9 @@ class GetPrometheusAgentManagementCommandResponse(AbstractModel):
 
     @property
     def Command(self):
+        """Agent 管理命令
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ManagementCommand`
+        """
         return self._Command
 
     @Command.setter
@@ -20086,6 +24050,9 @@ class GetPrometheusAgentManagementCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20130,6 +24097,9 @@ class GrafanaAccountInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户账号ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -20138,6 +24108,9 @@ class GrafanaAccountInfo(AbstractModel):
 
     @property
     def Role(self):
+        """用户权限
+        :rtype: list of GrafanaAccountRole
+        """
         return self._Role
 
     @Role.setter
@@ -20146,6 +24119,9 @@ class GrafanaAccountInfo(AbstractModel):
 
     @property
     def Notes(self):
+        """备注
+        :rtype: str
+        """
         return self._Notes
 
     @Notes.setter
@@ -20154,6 +24130,9 @@ class GrafanaAccountInfo(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -20162,6 +24141,10 @@ class GrafanaAccountInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20170,6 +24153,9 @@ class GrafanaAccountInfo(AbstractModel):
 
     @property
     def Uin(self):
+        """用户主账号 UIN
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -20216,6 +24202,9 @@ class GrafanaAccountRole(AbstractModel):
 
     @property
     def Organization(self):
+        """组织
+        :rtype: str
+        """
         return self._Organization
 
     @Organization.setter
@@ -20224,6 +24213,9 @@ class GrafanaAccountRole(AbstractModel):
 
     @property
     def Role(self):
+        """权限(Admin、Editor、Viewer)
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -20274,6 +24266,9 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def ChannelId(self):
+        """渠道 ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -20282,6 +24277,9 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def ChannelName(self):
+        """渠道名
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -20290,6 +24288,9 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def Receivers(self):
+        """告警通道模板 ID 数组
+        :rtype: list of str
+        """
         return self._Receivers
 
     @Receivers.setter
@@ -20298,6 +24299,9 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -20306,6 +24310,9 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -20314,6 +24321,10 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def OrganizationIds(self):
+        """告警渠道的所有生效组织
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._OrganizationIds
 
     @OrganizationIds.setter
@@ -20407,6 +24418,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -20415,6 +24429,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20423,6 +24440,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -20431,6 +24451,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -20439,6 +24462,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """子网 ID 数组
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -20447,6 +24473,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def InternetUrl(self):
+        """Grafana 公网地址
+        :rtype: str
+        """
         return self._InternetUrl
 
     @InternetUrl.setter
@@ -20455,6 +24484,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def InternalUrl(self):
+        """Grafana 内网地址
+        :rtype: str
+        """
         return self._InternalUrl
 
     @InternalUrl.setter
@@ -20463,6 +24495,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -20471,6 +24506,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """运行状态（1:正在创建；2:运行中；3:异常；4:重启中；5:停机中； 6:已停机； 7: 已删除）
+        :rtype: int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -20479,6 +24517,10 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """实例的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusTag
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -20487,6 +24529,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
+        """实例的可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -20495,6 +24540,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """计费模式（1:包年包月）
+        :rtype: int
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -20503,6 +24551,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def VpcName(self):
+        """VPC 名称
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -20511,6 +24562,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def SubnetName(self):
+        """子网名称
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -20519,6 +24573,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域 ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -20527,6 +24584,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def RootUrl(self):
+        """可访问此实例的完整 URL
+        :rtype: str
+        """
         return self._RootUrl
 
     @RootUrl.setter
@@ -20535,6 +24595,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def EnableSSO(self):
+        """是否开启 SSO
+        :rtype: bool
+        """
         return self._EnableSSO
 
     @EnableSSO.setter
@@ -20543,6 +24606,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def Version(self):
+        """版本号
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -20551,6 +24617,9 @@ class GrafanaInstanceInfo(AbstractModel):
 
     @property
     def EnableSSOCamCheck(self):
+        """SSO登录时是否开启cam鉴权
+        :rtype: bool
+        """
         return self._EnableSSOCamCheck
 
     @EnableSSOCamCheck.setter
@@ -20620,6 +24689,9 @@ class GrafanaIntegrationConfig(AbstractModel):
 
     @property
     def IntegrationId(self):
+        """集成 ID
+        :rtype: str
+        """
         return self._IntegrationId
 
     @IntegrationId.setter
@@ -20628,6 +24700,9 @@ class GrafanaIntegrationConfig(AbstractModel):
 
     @property
     def Kind(self):
+        """集成类型
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -20636,6 +24711,9 @@ class GrafanaIntegrationConfig(AbstractModel):
 
     @property
     def Content(self):
+        """集成内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -20644,6 +24722,9 @@ class GrafanaIntegrationConfig(AbstractModel):
 
     @property
     def Description(self):
+        """集成描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -20652,6 +24733,10 @@ class GrafanaIntegrationConfig(AbstractModel):
 
     @property
     def GrafanaURL(self):
+        """Grafana 跳转地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GrafanaURL
 
     @GrafanaURL.setter
@@ -20716,6 +24801,9 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def ChannelId(self):
+        """渠道 ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -20724,6 +24812,9 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def ChannelName(self):
+        """渠道名
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -20732,6 +24823,9 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def Receivers(self):
+        """告警通道模板 ID 数组
+        :rtype: list of str
+        """
         return self._Receivers
 
     @Receivers.setter
@@ -20740,6 +24834,9 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -20748,6 +24845,9 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -20756,6 +24856,9 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def OrgId(self):
+        """默认生效组织，已废弃，请使用 OrganizationIds
+        :rtype: str
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -20764,6 +24867,10 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def ExtraOrgIds(self):
+        """额外生效组织，已废弃，请使用 OrganizationIds
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ExtraOrgIds
 
     @ExtraOrgIds.setter
@@ -20772,6 +24879,10 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def OrgIds(self):
+        """生效组织，已废弃，请使用 OrganizationIds
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._OrgIds
 
     @OrgIds.setter
@@ -20780,6 +24891,10 @@ class GrafanaNotificationChannel(AbstractModel):
 
     @property
     def OrganizationIds(self):
+        """告警渠道的所有生效组织
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._OrganizationIds
 
     @OrganizationIds.setter
@@ -20825,6 +24940,9 @@ class GrafanaPlugin(AbstractModel):
 
     @property
     def PluginId(self):
+        """Grafana 插件 ID
+        :rtype: str
+        """
         return self._PluginId
 
     @PluginId.setter
@@ -20833,6 +24951,10 @@ class GrafanaPlugin(AbstractModel):
 
     @property
     def Version(self):
+        """Grafana 插件版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -20870,6 +24992,9 @@ class InstallPluginsRequest(AbstractModel):
 
     @property
     def Plugins(self):
+        """插件信息(可通过 DescribePluginOverviews 接口获取)
+        :rtype: list of GrafanaPlugin
+        """
         return self._Plugins
 
     @Plugins.setter
@@ -20878,6 +25003,9 @@ class InstallPluginsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20921,6 +25049,10 @@ class InstallPluginsResponse(AbstractModel):
 
     @property
     def PluginIds(self):
+        """已安装插件 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PluginIds
 
     @PluginIds.setter
@@ -20929,6 +25061,9 @@ class InstallPluginsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20955,6 +25090,9 @@ class Instance(AbstractModel):
 
     @property
     def Dimensions(self):
+        """实例的维度组合
+        :rtype: list of Dimension
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -20998,6 +25136,10 @@ class InstanceGroup(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -21006,6 +25148,10 @@ class InstanceGroup(AbstractModel):
 
     @property
     def InstanceGroupName(self):
+        """实例组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceGroupName
 
     @InstanceGroupName.setter
@@ -21043,6 +25189,9 @@ class InstanceGroups(AbstractModel):
 
     @property
     def Id(self):
+        """实例组 Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -21051,6 +25200,9 @@ class InstanceGroups(AbstractModel):
 
     @property
     def Name(self):
+        """实例组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21103,6 +25255,9 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21111,6 +25266,9 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Kind(self):
+        """类型
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -21119,6 +25277,9 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Content(self):
+        """内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -21127,6 +25288,9 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -21135,6 +25299,9 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Category(self):
+        """实例类型
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -21143,6 +25310,9 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def InstanceDesc(self):
+        """实例描述
+        :rtype: str
+        """
         return self._InstanceDesc
 
     @InstanceDesc.setter
@@ -21151,6 +25321,9 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def GrafanaDashboardURL(self):
+        """dashboard 的 URL
+        :rtype: str
+        """
         return self._GrafanaDashboardURL
 
     @GrafanaDashboardURL.setter
@@ -21193,6 +25366,9 @@ class Label(AbstractModel):
 
     @property
     def Name(self):
+        """map表中的Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21201,6 +25377,9 @@ class Label(AbstractModel):
 
     @property
     def Value(self):
+        """map表中的Value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -21244,6 +25423,9 @@ class LogAlarmReq(AbstractModel):
 
     @property
     def InstanceId(self):
+        """apm实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -21252,6 +25434,9 @@ class LogAlarmReq(AbstractModel):
 
     @property
     def Filter(self):
+        """检索条件信息
+        :rtype: list of LogFilterInfo
+        """
         return self._Filter
 
     @Filter.setter
@@ -21260,6 +25445,9 @@ class LogAlarmReq(AbstractModel):
 
     @property
     def AlarmMerge(self):
+        """告警合并开启/暂停
+        :rtype: str
+        """
         return self._AlarmMerge
 
     @AlarmMerge.setter
@@ -21268,6 +25456,9 @@ class LogAlarmReq(AbstractModel):
 
     @property
     def AlarmMergeTime(self):
+        """告警合并时间
+        :rtype: str
+        """
         return self._AlarmMergeTime
 
     @AlarmMergeTime.setter
@@ -21315,6 +25506,9 @@ class LogFilterInfo(AbstractModel):
 
     @property
     def Key(self):
+        """字段名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -21323,6 +25517,9 @@ class LogFilterInfo(AbstractModel):
 
     @property
     def Operator(self):
+        """比较符号
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -21331,6 +25528,9 @@ class LogFilterInfo(AbstractModel):
 
     @property
     def Value(self):
+        """字段值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -21383,6 +25583,10 @@ class ManagementCommand(AbstractModel):
 
     @property
     def Install(self):
+        """Agent 安装命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Install
 
     @Install.setter
@@ -21391,6 +25595,10 @@ class ManagementCommand(AbstractModel):
 
     @property
     def Restart(self):
+        """Agent 重启命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Restart
 
     @Restart.setter
@@ -21399,6 +25607,10 @@ class ManagementCommand(AbstractModel):
 
     @property
     def Stop(self):
+        """Agent 停止命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Stop
 
     @Stop.setter
@@ -21407,6 +25619,10 @@ class ManagementCommand(AbstractModel):
 
     @property
     def StatusCheck(self):
+        """Agent 状态检测命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusCheck
 
     @StatusCheck.setter
@@ -21415,6 +25631,10 @@ class ManagementCommand(AbstractModel):
 
     @property
     def LogCheck(self):
+        """Agent 日志检测命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogCheck
 
     @LogCheck.setter
@@ -21498,6 +25718,9 @@ class Metric(AbstractModel):
 
     @property
     def Namespace(self):
+        """告警策略类型
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -21506,6 +25729,9 @@ class Metric(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -21514,6 +25740,9 @@ class Metric(AbstractModel):
 
     @property
     def Description(self):
+        """指标展示名
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -21522,6 +25751,9 @@ class Metric(AbstractModel):
 
     @property
     def Min(self):
+        """最小值
+        :rtype: float
+        """
         return self._Min
 
     @Min.setter
@@ -21530,6 +25762,9 @@ class Metric(AbstractModel):
 
     @property
     def Max(self):
+        """最大值
+        :rtype: float
+        """
         return self._Max
 
     @Max.setter
@@ -21538,6 +25773,9 @@ class Metric(AbstractModel):
 
     @property
     def Dimensions(self):
+        """维度列表
+        :rtype: list of str
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -21546,6 +25784,9 @@ class Metric(AbstractModel):
 
     @property
     def Unit(self):
+        """单位
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -21554,6 +25795,10 @@ class Metric(AbstractModel):
 
     @property
     def MetricConfig(self):
+        """指标配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.MetricConfig`
+        """
         return self._MetricConfig
 
     @MetricConfig.setter
@@ -21562,6 +25807,10 @@ class Metric(AbstractModel):
 
     @property
     def IsAdvanced(self):
+        """是否为高级指标。1是 0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsAdvanced
 
     @IsAdvanced.setter
@@ -21570,6 +25819,10 @@ class Metric(AbstractModel):
 
     @property
     def IsOpen(self):
+        """高级指标是否开通。1是 0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsOpen
 
     @IsOpen.setter
@@ -21578,6 +25831,10 @@ class Metric(AbstractModel):
 
     @property
     def ProductId(self):
+        """集成中心产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -21586,6 +25843,10 @@ class Metric(AbstractModel):
 
     @property
     def Operators(self):
+        """匹配运算符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Operator
+        """
         return self._Operators
 
     @Operators.setter
@@ -21594,6 +25855,10 @@ class Metric(AbstractModel):
 
     @property
     def Periods(self):
+        """指标触发
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Periods
 
     @Periods.setter
@@ -21602,6 +25867,10 @@ class Metric(AbstractModel):
 
     @property
     def IsLatenessMetric(self):
+        """是否延迟指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsLatenessMetric
 
     @IsLatenessMetric.setter
@@ -21661,6 +25930,9 @@ class MetricConfig(AbstractModel):
 
     @property
     def Operator(self):
+        """允许使用的运算符
+        :rtype: list of str
+        """
         return self._Operator
 
     @Operator.setter
@@ -21669,6 +25941,9 @@ class MetricConfig(AbstractModel):
 
     @property
     def Period(self):
+        """允许配置的数据周期，以秒为单位
+        :rtype: list of int
+        """
         return self._Period
 
     @Period.setter
@@ -21677,6 +25952,9 @@ class MetricConfig(AbstractModel):
 
     @property
     def ContinuePeriod(self):
+        """允许配置的持续周期个数
+        :rtype: list of int
+        """
         return self._ContinuePeriod
 
     @ContinuePeriod.setter
@@ -21715,6 +25993,9 @@ class MetricData(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -21723,6 +26004,9 @@ class MetricData(AbstractModel):
 
     @property
     def Points(self):
+        """监控数据点
+        :rtype: list of MetricDataPoint
+        """
         return self._Points
 
     @Points.setter
@@ -21765,6 +26049,9 @@ class MetricDataPoint(AbstractModel):
 
     @property
     def Dimensions(self):
+        """实例对象维度组合
+        :rtype: list of Dimension
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -21773,6 +26060,9 @@ class MetricDataPoint(AbstractModel):
 
     @property
     def Values(self):
+        """数据点列表
+        :rtype: list of Point
+        """
         return self._Values
 
     @Values.setter
@@ -21820,6 +26110,9 @@ class MetricObjectMeaning(AbstractModel):
 
     @property
     def En(self):
+        """指标英文解释
+        :rtype: str
+        """
         return self._En
 
     @En.setter
@@ -21828,6 +26121,9 @@ class MetricObjectMeaning(AbstractModel):
 
     @property
     def Zh(self):
+        """指标中文解释
+        :rtype: str
+        """
         return self._Zh
 
     @Zh.setter
@@ -21891,6 +26187,9 @@ class MetricSet(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，每个云产品会有一个命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -21899,6 +26198,9 @@ class MetricSet(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名称
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -21907,6 +26209,9 @@ class MetricSet(AbstractModel):
 
     @property
     def Unit(self):
+        """指标使用的单位
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -21915,6 +26220,9 @@ class MetricSet(AbstractModel):
 
     @property
     def UnitCname(self):
+        """指标使用的单位
+        :rtype: str
+        """
         return self._UnitCname
 
     @UnitCname.setter
@@ -21923,6 +26231,9 @@ class MetricSet(AbstractModel):
 
     @property
     def Period(self):
+        """指标支持的统计周期，单位是秒，如60、300
+        :rtype: list of int
+        """
         return self._Period
 
     @Period.setter
@@ -21931,6 +26242,9 @@ class MetricSet(AbstractModel):
 
     @property
     def Periods(self):
+        """统计周期内指标方式
+        :rtype: list of PeriodsSt
+        """
         return self._Periods
 
     @Periods.setter
@@ -21939,6 +26253,9 @@ class MetricSet(AbstractModel):
 
     @property
     def Meaning(self):
+        """统计指标含义解释
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.MetricObjectMeaning`
+        """
         return self._Meaning
 
     @Meaning.setter
@@ -21947,6 +26264,9 @@ class MetricSet(AbstractModel):
 
     @property
     def Dimensions(self):
+        """维度描述信息
+        :rtype: list of DimensionsDesc
+        """
         return self._Dimensions
 
     @Dimensions.setter
@@ -21955,6 +26275,10 @@ class MetricSet(AbstractModel):
 
     @property
     def MetricCName(self):
+        """指标中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetricCName
 
     @MetricCName.setter
@@ -21963,6 +26287,10 @@ class MetricSet(AbstractModel):
 
     @property
     def MetricEName(self):
+        """指标英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MetricEName
 
     @MetricEName.setter
@@ -22023,6 +26351,9 @@ class MidQueryCondition(AbstractModel):
 
     @property
     def Key(self):
+        """维度
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -22031,6 +26362,9 @@ class MidQueryCondition(AbstractModel):
 
     @property
     def Operator(self):
+        """操作符，支持等于(eq)、不等于(ne)，以及in
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -22039,6 +26373,9 @@ class MidQueryCondition(AbstractModel):
 
     @property
     def Value(self):
+        """维度值，当Op是eq、ne时，只使用第一个元素
+        :rtype: list of str
+        """
         return self._Value
 
     @Value.setter
@@ -22098,6 +26435,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -22106,6 +26446,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """告警通知规则名称 60字符以内
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -22114,6 +26457,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeType(self):
+        """通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        :rtype: str
+        """
         return self._NoticeType
 
     @NoticeType.setter
@@ -22122,6 +26468,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeLanguage(self):
+        """通知语言 zh-CN=中文 en-US=英文
+        :rtype: str
+        """
         return self._NoticeLanguage
 
     @NoticeLanguage.setter
@@ -22130,6 +26479,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeId(self):
+        """告警通知模板 ID
+        :rtype: str
+        """
         return self._NoticeId
 
     @NoticeId.setter
@@ -22138,6 +26490,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def UserNotices(self):
+        """用户通知 最多5个
+        :rtype: list of UserNotice
+        """
         return self._UserNotices
 
     @UserNotices.setter
@@ -22146,6 +26501,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def URLNotices(self):
+        """回调通知 最多6个
+        :rtype: list of URLNotice
+        """
         return self._URLNotices
 
     @URLNotices.setter
@@ -22154,6 +26512,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def CLSNotices(self):
+        """告警通知推送到CLS服务 最多1个
+        :rtype: list of CLSNotice
+        """
         return self._CLSNotices
 
     @CLSNotices.setter
@@ -22162,6 +26523,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
+        """告警通知模板绑定的告警策略ID列表
+        :rtype: list of str
+        """
         return self._PolicyIds
 
     @PolicyIds.setter
@@ -22218,6 +26582,9 @@ class ModifyAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22276,6 +26643,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定值 monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -22284,6 +26654,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -22292,6 +26665,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def ConditionTemplateId(self):
+        """触发条件模板 Id，可不传
+        :rtype: int
+        """
         return self._ConditionTemplateId
 
     @ConditionTemplateId.setter
@@ -22300,6 +26676,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def Condition(self):
+        """指标触发条件
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -22308,6 +26687,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def EventCondition(self):
+        """事件触发条件
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
         return self._EventCondition
 
     @EventCondition.setter
@@ -22316,6 +26698,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """全局过滤条件
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -22324,6 +26709,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def GroupBy(self):
+        """聚合维度列表，指定按哪些维度 key 来做 group by
+        :rtype: list of str
+        """
         return self._GroupBy
 
     @GroupBy.setter
@@ -22332,6 +26720,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def LogAlarmReqInfo(self):
+        """日志告警创建请求参数信息
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
+        """
         return self._LogAlarmReqInfo
 
     @LogAlarmReqInfo.setter
@@ -22340,6 +26731,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
+        """模板id，专供prom使用
+        :rtype: list of str
+        """
         return self._NoticeIds
 
     @NoticeIds.setter
@@ -22348,6 +26742,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """启停状态，0=停用，1=启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -22356,6 +26753,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """专供prom策略名称
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -22364,6 +26764,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def EbSubject(self):
+        """事件配置的告警
+        :rtype: str
+        """
         return self._EbSubject
 
     @EbSubject.setter
@@ -22416,6 +26819,9 @@ class ModifyAlarmPolicyConditionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22450,6 +26856,9 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -22458,6 +26867,9 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -22466,6 +26878,9 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
     @property
     def Key(self):
+        """要修改的字段 NAME=策略名称 REMARK=策略备注
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -22474,6 +26889,9 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
     @property
     def Value(self):
+        """修改后的值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -22510,6 +26928,9 @@ class ModifyAlarmPolicyInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22547,6 +26968,9 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”。
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -22555,6 +26979,9 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 ID，如果该参数与PolicyIds参数同时存在，则以PolicyIds为准。
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -22563,6 +26990,9 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
+        """告警通知模板 ID 列表。
+        :rtype: list of str
+        """
         return self._NoticeIds
 
     @NoticeIds.setter
@@ -22571,6 +27001,9 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
+        """告警策略ID数组，支持给多个告警策略批量绑定通知模板。最多30个。
+        :rtype: list of str
+        """
         return self._PolicyIds
 
     @PolicyIds.setter
@@ -22579,6 +27012,9 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def HierarchicalNotices(self):
+        """告警分级通知规则配置
+        :rtype: list of AlarmHierarchicalNotice
+        """
         return self._HierarchicalNotices
 
     @HierarchicalNotices.setter
@@ -22621,6 +27057,9 @@ class ModifyAlarmPolicyNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22652,6 +27091,9 @@ class ModifyAlarmPolicyStatusRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定值 monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -22660,6 +27102,9 @@ class ModifyAlarmPolicyStatusRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -22668,6 +27113,9 @@ class ModifyAlarmPolicyStatusRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """启停状态 0=停用 1=启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -22703,6 +27151,9 @@ class ModifyAlarmPolicyStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22734,6 +27185,9 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，这里填“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -22742,6 +27196,9 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -22750,6 +27207,9 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
 
     @property
     def TriggerTasks(self):
+        """告警策略触发任务列表，空数据代表解绑
+        :rtype: list of AlarmPolicyTriggerTask
+        """
         return self._TriggerTasks
 
     @TriggerTasks.setter
@@ -22790,6 +27250,9 @@ class ModifyAlarmPolicyTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22821,6 +27284,9 @@ class ModifyAlarmReceiversRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """需要修改接收人的策略组Id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -22829,6 +27295,9 @@ class ModifyAlarmReceiversRequest(AbstractModel):
 
     @property
     def Module(self):
+        """必填。固定为“monitor”
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -22837,6 +27306,9 @@ class ModifyAlarmReceiversRequest(AbstractModel):
 
     @property
     def ReceiverInfos(self):
+        """新接收人信息, 没有填写则删除所有接收人
+        :rtype: list of ReceiverInfo
+        """
         return self._ReceiverInfos
 
     @ReceiverInfos.setter
@@ -22877,6 +27349,9 @@ class ModifyAlarmReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22905,6 +27380,9 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -22913,6 +27391,9 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Grafana 实例名称，例如：test
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -22947,6 +27428,9 @@ class ModifyGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22993,6 +27477,9 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def MetricId(self):
+        """指标id
+        :rtype: int
+        """
         return self._MetricId
 
     @MetricId.setter
@@ -23001,6 +27488,9 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def CalcType(self):
+        """比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等
+        :rtype: int
+        """
         return self._CalcType
 
     @CalcType.setter
@@ -23009,6 +27499,9 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def CalcValue(self):
+        """检测阈值
+        :rtype: str
+        """
         return self._CalcValue
 
     @CalcValue.setter
@@ -23017,6 +27510,9 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def CalcPeriod(self):
+        """检测指标的数据周期
+        :rtype: int
+        """
         return self._CalcPeriod
 
     @CalcPeriod.setter
@@ -23025,6 +27521,9 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def ContinuePeriod(self):
+        """持续周期个数
+        :rtype: int
+        """
         return self._ContinuePeriod
 
     @ContinuePeriod.setter
@@ -23033,6 +27532,9 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
+        """告警发送收敛类型。0连续告警，1指数告警
+        :rtype: int
+        """
         return self._AlarmNotifyType
 
     @AlarmNotifyType.setter
@@ -23041,6 +27543,9 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
+        """告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :rtype: int
+        """
         return self._AlarmNotifyPeriod
 
     @AlarmNotifyPeriod.setter
@@ -23049,6 +27554,9 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id，不填表示新增，填写了ruleId表示在已存在的规则基础上进行修改
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -23098,6 +27606,9 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
     @property
     def EventId(self):
+        """事件id
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -23106,6 +27617,9 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
+        """告警发送收敛类型。0连续告警，1指数告警
+        :rtype: int
+        """
         return self._AlarmNotifyType
 
     @AlarmNotifyType.setter
@@ -23114,6 +27628,9 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
+        """告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :rtype: int
+        """
         return self._AlarmNotifyPeriod
 
     @AlarmNotifyPeriod.setter
@@ -23122,6 +27639,9 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则id，不填表示新增，填写了ruleId表示在已存在的规则基础上进行修改
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -23179,6 +27699,9 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -23187,6 +27710,9 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -23195,6 +27721,9 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def ViewName(self):
+        """告警类型
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -23203,6 +27732,9 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """策略组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -23211,6 +27743,9 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def IsUnionRule(self):
+        """指标告警条件的且或关系，1表示且告警，所有指标告警条件都达到才告警，0表示或告警，任意指标告警条件达到都告警
+        :rtype: int
+        """
         return self._IsUnionRule
 
     @IsUnionRule.setter
@@ -23219,6 +27754,9 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def Conditions(self):
+        """指标告警条件规则，不填表示删除已有的所有指标告警条件规则
+        :rtype: list of ModifyPolicyGroupCondition
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -23227,6 +27765,9 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def EventConditions(self):
+        """事件告警条件，不填表示删除已有的事件告警条件
+        :rtype: list of ModifyPolicyGroupEventCondition
+        """
         return self._EventConditions
 
     @EventConditions.setter
@@ -23235,6 +27776,9 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def ConditionTempGroupId(self):
+        """模板策略组id
+        :rtype: int
+        """
         return self._ConditionTempGroupId
 
     @ConditionTempGroupId.setter
@@ -23288,6 +27832,9 @@ class ModifyPolicyGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -23296,6 +27843,9 @@ class ModifyPolicyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23328,6 +27878,9 @@ class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -23336,6 +27889,9 @@ class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -23344,6 +27900,9 @@ class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
 
     @property
     def ExternalLabels(self):
+        """新的external_labels
+        :rtype: list of Label
+        """
         return self._ExternalLabels
 
     @ExternalLabels.setter
@@ -23384,6 +27943,9 @@ class ModifyPrometheusAgentExternalLabelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23412,6 +27974,9 @@ class ModifyPrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -23420,6 +27985,9 @@ class ModifyPrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def AlertRule(self):
+        """告警配置，[具体参考](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertPolicyItem)
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertPolicyItem`
+        """
         return self._AlertRule
 
     @AlertRule.setter
@@ -23456,6 +28024,9 @@ class ModifyPrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23500,6 +28071,9 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -23508,6 +28082,9 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -23516,6 +28093,9 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -23524,6 +28104,9 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ServiceMonitors(self):
+        """ServiceMonitors配置
+        :rtype: list of PrometheusConfigItem
+        """
         return self._ServiceMonitors
 
     @ServiceMonitors.setter
@@ -23532,6 +28115,9 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def PodMonitors(self):
+        """PodMonitors配置
+        :rtype: list of PrometheusConfigItem
+        """
         return self._PodMonitors
 
     @PodMonitors.setter
@@ -23540,6 +28126,9 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def RawJobs(self):
+        """prometheus原生Job配置
+        :rtype: list of PrometheusConfigItem
+        """
         return self._RawJobs
 
     @RawJobs.setter
@@ -23548,6 +28137,10 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def UpdateImage(self):
+        """0: 更新实例组件镜像版本；
+1: 不更新实例组件镜像版本
+        :rtype: int
+        """
         return self._UpdateImage
 
     @UpdateImage.setter
@@ -23602,6 +28195,9 @@ class ModifyPrometheusConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23630,6 +28226,9 @@ class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -23638,6 +28237,9 @@ class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def Notification(self):
+        """告警通知渠道
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
+        """
         return self._Notification
 
     @Notification.setter
@@ -23674,6 +28276,9 @@ class ModifyPrometheusGlobalNotificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23705,6 +28310,9 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -23713,6 +28321,9 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -23721,6 +28332,9 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def DataRetentionTime(self):
+        """数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+        :rtype: int
+        """
         return self._DataRetentionTime
 
     @DataRetentionTime.setter
@@ -23756,6 +28370,9 @@ class ModifyPrometheusInstanceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23787,6 +28404,9 @@ class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -23795,6 +28415,9 @@ class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Name(self):
+        """聚合实例名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -23803,6 +28426,9 @@ class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Content(self):
+        """新的内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -23838,6 +28464,9 @@ class ModifyPrometheusRecordRuleYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23866,6 +28495,9 @@ class ModifyPrometheusTempRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -23874,6 +28506,9 @@ class ModifyPrometheusTempRequest(AbstractModel):
 
     @property
     def Template(self):
+        """修改内容
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusTempModify`
+        """
         return self._Template
 
     @Template.setter
@@ -23910,6 +28545,9 @@ class ModifyPrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23941,6 +28579,9 @@ class MonitorTypeInfo(AbstractModel):
 
     @property
     def Id(self):
+        """监控类型ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -23949,6 +28590,9 @@ class MonitorTypeInfo(AbstractModel):
 
     @property
     def Name(self):
+        """监控类型
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -23957,6 +28601,9 @@ class MonitorTypeInfo(AbstractModel):
 
     @property
     def SortId(self):
+        """排列顺序
+        :rtype: int
+        """
         return self._SortId
 
     @SortId.setter
@@ -23995,6 +28642,9 @@ class MonitorTypeNamespace(AbstractModel):
 
     @property
     def MonitorType(self):
+        """监控类型
+        :rtype: str
+        """
         return self._MonitorType
 
     @MonitorType.setter
@@ -24003,6 +28653,9 @@ class MonitorTypeNamespace(AbstractModel):
 
     @property
     def Namespace(self):
+        """策略类型值
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -24040,6 +28693,9 @@ class NoticeBindPolicys(AbstractModel):
 
     @property
     def NoticeId(self):
+        """告警通知模板 ID
+        :rtype: str
+        """
         return self._NoticeId
 
     @NoticeId.setter
@@ -24048,6 +28704,9 @@ class NoticeBindPolicys(AbstractModel):
 
     @property
     def PolicyIds(self):
+        """告警通知模板绑定的告警策略ID列表
+        :rtype: list of str
+        """
         return self._PolicyIds
 
     @PolicyIds.setter
@@ -24085,6 +28744,9 @@ class Operator(AbstractModel):
 
     @property
     def Id(self):
+        """运算符标识
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -24093,6 +28755,9 @@ class Operator(AbstractModel):
 
     @property
     def Name(self):
+        """运算符展示名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -24130,6 +28795,9 @@ class PeriodsSt(AbstractModel):
 
     @property
     def Period(self):
+        """周期
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -24138,6 +28806,9 @@ class PeriodsSt(AbstractModel):
 
     @property
     def StatType(self):
+        """统计方式
+        :rtype: list of str
+        """
         return self._StatType
 
     @StatType.setter
@@ -24176,6 +28847,9 @@ class Point(AbstractModel):
 
     @property
     def Timestamp(self):
+        """该监控数据点生成的时间点
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -24184,6 +28858,10 @@ class Point(AbstractModel):
 
     @property
     def Value(self):
+        """监控数据点的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -24264,6 +28942,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def CanSetDefault(self):
+        """是否可设为默认告警策略
+        :rtype: bool
+        """
         return self._CanSetDefault
 
     @CanSetDefault.setter
@@ -24272,6 +28953,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def GroupID(self):
+        """告警策略组ID
+        :rtype: int
+        """
         return self._GroupID
 
     @GroupID.setter
@@ -24280,6 +28964,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def GroupName(self):
+        """告警策略组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -24288,6 +28975,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -24296,6 +28986,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否为默认告警策略
+        :rtype: int
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -24304,6 +28997,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def Enable(self):
+        """告警策略启用状态
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -24312,6 +29008,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def LastEditUin(self):
+        """最后修改人UIN
+        :rtype: int
+        """
         return self._LastEditUin
 
     @LastEditUin.setter
@@ -24320,6 +29019,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def NoShieldedInstanceCount(self):
+        """未屏蔽的实例数
+        :rtype: int
+        """
         return self._NoShieldedInstanceCount
 
     @NoShieldedInstanceCount.setter
@@ -24328,6 +29030,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def ParentGroupID(self):
+        """父策略组ID
+        :rtype: int
+        """
         return self._ParentGroupID
 
     @ParentGroupID.setter
@@ -24336,6 +29041,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def ProjectID(self):
+        """所属项目ID
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -24344,6 +29052,10 @@ class PolicyGroup(AbstractModel):
 
     @property
     def ReceiverInfos(self):
+        """告警接收对象信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PolicyGroupReceiverInfo
+        """
         return self._ReceiverInfos
 
     @ReceiverInfos.setter
@@ -24352,6 +29064,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -24360,6 +29075,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改时间
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -24368,6 +29086,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def TotalInstanceCount(self):
+        """总绑定实例数
+        :rtype: int
+        """
         return self._TotalInstanceCount
 
     @TotalInstanceCount.setter
@@ -24376,6 +29097,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def ViewName(self):
+        """视图
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -24384,6 +29108,9 @@ class PolicyGroup(AbstractModel):
 
     @property
     def IsUnionRule(self):
+        """是否为与关系规则
+        :rtype: int
+        """
         return self._IsUnionRule
 
     @IsUnionRule.setter
@@ -24479,6 +29206,9 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """有效时段结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -24487,6 +29217,9 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def NeedSendNotice(self):
+        """是否需要发送通知
+        :rtype: int
+        """
         return self._NeedSendNotice
 
     @NeedSendNotice.setter
@@ -24495,6 +29228,10 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def NotifyWay(self):
+        """告警接收渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NotifyWay
 
     @NotifyWay.setter
@@ -24503,6 +29240,9 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def PersonInterval(self):
+        """电话告警对个人间隔（秒）
+        :rtype: int
+        """
         return self._PersonInterval
 
     @PersonInterval.setter
@@ -24511,6 +29251,10 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def ReceiverGroupList(self):
+        """消息接收组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._ReceiverGroupList
 
     @ReceiverGroupList.setter
@@ -24519,6 +29263,9 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def ReceiverType(self):
+        """接受者类型
+        :rtype: str
+        """
         return self._ReceiverType
 
     @ReceiverType.setter
@@ -24527,6 +29274,10 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def ReceiverUserList(self):
+        """接收人列表。通过平台接口查询到的接收人id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._ReceiverUserList
 
     @ReceiverUserList.setter
@@ -24535,6 +29286,10 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def RecoverNotify(self):
+        """告警恢复通知方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._RecoverNotify
 
     @RecoverNotify.setter
@@ -24543,6 +29298,9 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def RoundInterval(self):
+        """电话告警每轮间隔（秒）
+        :rtype: int
+        """
         return self._RoundInterval
 
     @RoundInterval.setter
@@ -24551,6 +29309,9 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def RoundNumber(self):
+        """电话告警轮数
+        :rtype: int
+        """
         return self._RoundNumber
 
     @RoundNumber.setter
@@ -24559,6 +29320,10 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def SendFor(self):
+        """电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SendFor
 
     @SendFor.setter
@@ -24567,6 +29332,9 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """有效时段开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -24575,6 +29343,10 @@ class PolicyGroupReceiverInfo(AbstractModel):
 
     @property
     def UIDList(self):
+        """电话告警接收者uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._UIDList
 
     @UIDList.setter
@@ -24623,6 +29395,9 @@ class PolicyTag(AbstractModel):
 
     @property
     def Key(self):
+        """标签Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -24631,6 +29406,9 @@ class PolicyTag(AbstractModel):
 
     @property
     def Value(self):
+        """标签Value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -24672,6 +29450,9 @@ class ProductSimple(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -24680,6 +29461,9 @@ class ProductSimple(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品中文名称
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -24688,6 +29472,10 @@ class ProductSimple(AbstractModel):
 
     @property
     def ProductEnName(self):
+        """产品英文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductEnName
 
     @ProductEnName.setter
@@ -24749,6 +29537,10 @@ class PrometheusAgent(AbstractModel):
 
     @property
     def Name(self):
+        """Agent 名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -24757,6 +29549,9 @@ class PrometheusAgent(AbstractModel):
 
     @property
     def AgentId(self):
+        """Agent ID
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -24765,6 +29560,9 @@ class PrometheusAgent(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -24773,6 +29571,10 @@ class PrometheusAgent(AbstractModel):
 
     @property
     def Ipv4(self):
+        """Agent IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ipv4
 
     @Ipv4.setter
@@ -24781,6 +29583,10 @@ class PrometheusAgent(AbstractModel):
 
     @property
     def HeartbeatTime(self):
+        """心跳时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HeartbeatTime
 
     @HeartbeatTime.setter
@@ -24789,6 +29595,10 @@ class PrometheusAgent(AbstractModel):
 
     @property
     def LastError(self):
+        """最近一次错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastError
 
     @LastError.setter
@@ -24797,6 +29607,10 @@ class PrometheusAgent(AbstractModel):
 
     @property
     def AgentVersion(self):
+        """Agent 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AgentVersion
 
     @AgentVersion.setter
@@ -24805,6 +29619,9 @@ class PrometheusAgent(AbstractModel):
 
     @property
     def Status(self):
+        """Agent 状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -24851,6 +29668,9 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -24859,6 +29679,9 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集成容器服务中关联的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -24867,6 +29690,9 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def Describe(self):
+        """该参数未使用，不需要填写
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -24946,6 +29772,9 @@ abnormal = 异常
 
     @property
     def ClusterType(self):
+        """集群类型
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -24954,6 +29783,9 @@ abnormal = 异常
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -24962,6 +29794,11 @@ abnormal = 异常
 
     @property
     def Status(self):
+        """agent状态
+normal = 正常
+abnormal = 异常
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -24970,6 +29807,9 @@ abnormal = 异常
 
     @property
     def ClusterName(self):
+        """集群名称
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -24978,6 +29818,11 @@ abnormal = 异常
 
     @property
     def ExternalLabels(self):
+        """额外labels
+本集群的所有指标都会带上这几个label
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Label
+        """
         return self._ExternalLabels
 
     @ExternalLabels.setter
@@ -24986,6 +29831,10 @@ abnormal = 异常
 
     @property
     def Region(self):
+        """集群所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -24994,6 +29843,10 @@ abnormal = 异常
 
     @property
     def VpcId(self):
+        """集群所在VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -25002,6 +29855,10 @@ abnormal = 异常
 
     @property
     def FailedReason(self):
+        """记录关联等操作的失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailedReason
 
     @FailedReason.setter
@@ -25010,6 +29867,10 @@ abnormal = 异常
 
     @property
     def Name(self):
+        """agent名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -25018,6 +29879,10 @@ abnormal = 异常
 
     @property
     def EnableExternal(self):
+        """是否已开启公网访问，true 开启，false 未开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._EnableExternal
 
     @EnableExternal.setter
@@ -25026,6 +29891,10 @@ abnormal = 异常
 
     @property
     def DesiredAgentNum(self):
+        """采集agent期望pod数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DesiredAgentNum
 
     @DesiredAgentNum.setter
@@ -25034,6 +29903,10 @@ abnormal = 异常
 
     @property
     def ReadyAgentNum(self):
+        """采集agent已正常启动pod数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReadyAgentNum
 
     @ReadyAgentNum.setter
@@ -25088,6 +29961,10 @@ class PrometheusAlertAllowTimeRange(AbstractModel):
 
     @property
     def Start(self):
+        """从0点开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Start
 
     @Start.setter
@@ -25096,6 +29973,10 @@ class PrometheusAlertAllowTimeRange(AbstractModel):
 
     @property
     def End(self):
+        """从0点开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._End
 
     @End.setter
@@ -25149,6 +30030,12 @@ webhook -- vpc内webhook地址
 
     @property
     def Type(self):
+        """自定义通知类型
+alertmanager -- vpc内自建alertmanager
+webhook -- vpc内webhook地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -25157,6 +30044,10 @@ webhook -- vpc内webhook地址
 
     @property
     def Url(self):
+        """alertmanager/webhook地址。（prometheus实例同vpc内ip）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -25165,6 +30056,10 @@ webhook -- vpc内webhook地址
 
     @property
     def AllowedTimeRanges(self):
+        """允许发送告警的时间范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusAlertAllowTimeRange
+        """
         return self._AllowedTimeRanges
 
     @AllowedTimeRanges.setter
@@ -25173,6 +30068,10 @@ webhook -- vpc内webhook地址
 
     @property
     def ClusterId(self):
+        """alertmanager所在的内网集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -25181,6 +30080,10 @@ webhook -- vpc内webhook地址
 
     @property
     def ClusterType(self):
+        """alertmanager所在的内网集群类型(tke/eks/tdcc)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -25249,6 +30152,10 @@ class PrometheusAlertGroupRuleSet(AbstractModel):
 
     @property
     def RuleName(self):
+        """告警规则名称，同一告警分组下不允许重名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -25257,6 +30164,10 @@ class PrometheusAlertGroupRuleSet(AbstractModel):
 
     @property
     def Labels(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusRuleKV
+        """
         return self._Labels
 
     @Labels.setter
@@ -25265,6 +30176,12 @@ class PrometheusAlertGroupRuleSet(AbstractModel):
 
     @property
     def Annotations(self):
+        """注释列表
+
+告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusRuleKV
+        """
         return self._Annotations
 
     @Annotations.setter
@@ -25273,6 +30190,10 @@ class PrometheusAlertGroupRuleSet(AbstractModel):
 
     @property
     def Duration(self):
+        """规则报警持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -25281,6 +30202,10 @@ class PrometheusAlertGroupRuleSet(AbstractModel):
 
     @property
     def Expr(self):
+        """规则表达式，可参考<a href="https://cloud.tencent.com/document/product/1416/56008">告警规则说明</a>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Expr
 
     @Expr.setter
@@ -25289,6 +30214,13 @@ class PrometheusAlertGroupRuleSet(AbstractModel):
 
     @property
     def State(self):
+        """告警规则状态:
+2-启用
+3-禁用
+为空默认启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -25370,6 +30302,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def GroupId(self):
+        """告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -25378,6 +30314,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def GroupName(self):
+        """告警分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -25386,6 +30326,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def AMPReceivers(self):
+        """云监控告警模板ID ，返回告警模板转换后的notice ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AMPReceivers
 
     @AMPReceivers.setter
@@ -25394,6 +30338,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def CustomReceiver(self):
+        """自定义告警模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        """
         return self._CustomReceiver
 
     @CustomReceiver.setter
@@ -25402,6 +30350,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def RepeatInterval(self):
+        """告警通知间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RepeatInterval
 
     @RepeatInterval.setter
@@ -25410,6 +30362,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def TemplateId(self):
+        """若告警分组通过模板创建，则返回模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -25418,6 +30374,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def Rules(self):
+        """分组内告警规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusAlertGroupRuleSet
+        """
         return self._Rules
 
     @Rules.setter
@@ -25426,6 +30386,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """分组创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -25434,6 +30398,10 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """分组更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -25490,6 +30458,9 @@ class PrometheusAlertManagerConfig(AbstractModel):
 
     @property
     def Url(self):
+        """alertmanager url
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -25498,6 +30469,10 @@ class PrometheusAlertManagerConfig(AbstractModel):
 
     @property
     def ClusterType(self):
+        """alertmanager部署所在集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -25506,6 +30481,10 @@ class PrometheusAlertManagerConfig(AbstractModel):
 
     @property
     def ClusterId(self):
+        """alertmanager部署所在集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -25564,6 +30543,9 @@ class PrometheusAlertPolicyItem(AbstractModel):
 
     @property
     def Name(self):
+        """策略名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -25572,6 +30554,9 @@ class PrometheusAlertPolicyItem(AbstractModel):
 
     @property
     def Rules(self):
+        """规则列表
+        :rtype: list of PrometheusAlertRule
+        """
         return self._Rules
 
     @Rules.setter
@@ -25580,6 +30565,10 @@ class PrometheusAlertPolicyItem(AbstractModel):
 
     @property
     def Id(self):
+        """告警策略 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -25588,6 +30577,10 @@ class PrometheusAlertPolicyItem(AbstractModel):
 
     @property
     def TemplateId(self):
+        """如果该告警来自模板下发，则TemplateId为模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -25596,6 +30589,10 @@ class PrometheusAlertPolicyItem(AbstractModel):
 
     @property
     def Notification(self):
+        """告警渠道，模板中使用可能返回null
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
+        """
         return self._Notification
 
     @Notification.setter
@@ -25604,6 +30601,10 @@ class PrometheusAlertPolicyItem(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -25612,6 +30613,10 @@ class PrometheusAlertPolicyItem(AbstractModel):
 
     @property
     def ClusterId(self):
+        """如果告警策略来源于用户集群CRD资源定义，则ClusterId为所属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -25682,6 +30687,9 @@ class PrometheusAlertRule(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -25690,6 +30698,9 @@ class PrometheusAlertRule(AbstractModel):
 
     @property
     def Rule(self):
+        """prometheus语句
+        :rtype: str
+        """
         return self._Rule
 
     @Rule.setter
@@ -25698,6 +30709,9 @@ class PrometheusAlertRule(AbstractModel):
 
     @property
     def Labels(self):
+        """额外标签
+        :rtype: list of Label
+        """
         return self._Labels
 
     @Labels.setter
@@ -25706,6 +30720,9 @@ class PrometheusAlertRule(AbstractModel):
 
     @property
     def Template(self):
+        """告警发送模板
+        :rtype: str
+        """
         return self._Template
 
     @Template.setter
@@ -25714,6 +30731,9 @@ class PrometheusAlertRule(AbstractModel):
 
     @property
     def For(self):
+        """持续时间
+        :rtype: str
+        """
         return self._For
 
     @For.setter
@@ -25722,6 +30742,10 @@ class PrometheusAlertRule(AbstractModel):
 
     @property
     def Describe(self):
+        """该条规则的描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -25730,6 +30754,10 @@ class PrometheusAlertRule(AbstractModel):
 
     @property
     def Annotations(self):
+        """参考prometheus rule中的annotations
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Label
+        """
         return self._Annotations
 
     @Annotations.setter
@@ -25738,6 +30766,10 @@ class PrometheusAlertRule(AbstractModel):
 
     @property
     def RuleState(self):
+        """告警规则状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -25812,6 +30844,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -25820,6 +30855,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -25828,6 +30866,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -25836,6 +30877,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def EnableExternal(self):
+        """是否开启公网CLB
+        :rtype: bool
+        """
         return self._EnableExternal
 
     @EnableExternal.setter
@@ -25844,6 +30888,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def InClusterPodConfig(self):
+        """集群内部署组件的pod配置
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusClusterAgentPodConfig`
+        """
         return self._InClusterPodConfig
 
     @InClusterPodConfig.setter
@@ -25852,6 +30899,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ExternalLabels(self):
+        """该集群采集的所有指标都会带上这些labels
+        :rtype: list of Label
+        """
         return self._ExternalLabels
 
     @ExternalLabels.setter
@@ -25860,6 +30910,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def NotInstallBasicScrape(self):
+        """是否安装默认采集配置
+        :rtype: bool
+        """
         return self._NotInstallBasicScrape
 
     @NotInstallBasicScrape.setter
@@ -25868,6 +30921,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def NotScrape(self):
+        """是否采集指标，true代表drop所有指标，false代表采集默认指标
+        :rtype: bool
+        """
         return self._NotScrape
 
     @NotScrape.setter
@@ -25876,6 +30932,9 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def OpenDefaultRecord(self):
+        """是否开启默认预聚合规则
+        :rtype: bool
+        """
         return self._OpenDefaultRecord
 
     @OpenDefaultRecord.setter
@@ -25930,6 +30989,9 @@ class PrometheusClusterAgentPodConfig(AbstractModel):
 
     @property
     def HostNet(self):
+        """是否使用HostNetWork
+        :rtype: bool
+        """
         return self._HostNet
 
     @HostNet.setter
@@ -25938,6 +31000,9 @@ class PrometheusClusterAgentPodConfig(AbstractModel):
 
     @property
     def NodeSelector(self):
+        """指定pod运行节点
+        :rtype: list of Label
+        """
         return self._NodeSelector
 
     @NodeSelector.setter
@@ -25946,6 +31011,9 @@ class PrometheusClusterAgentPodConfig(AbstractModel):
 
     @property
     def Tolerations(self):
+        """容忍污点
+        :rtype: list of Toleration
+        """
         return self._Tolerations
 
     @Tolerations.setter
@@ -26002,6 +31070,9 @@ class PrometheusConfigItem(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26010,6 +31081,9 @@ class PrometheusConfigItem(AbstractModel):
 
     @property
     def Config(self):
+        """配置内容
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -26018,6 +31092,10 @@ class PrometheusConfigItem(AbstractModel):
 
     @property
     def TemplateId(self):
+        """用于出参，如果该配置来至模板，则为模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -26026,6 +31104,10 @@ class PrometheusConfigItem(AbstractModel):
 
     @property
     def Targets(self):
+        """目标数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.Targets`
+        """
         return self._Targets
 
     @Targets.setter
@@ -26079,6 +31161,9 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasChargeOperation(self):
+        """是否有计费操作权限(1=有，2=无)
+        :rtype: int
+        """
         return self._HasChargeOperation
 
     @HasChargeOperation.setter
@@ -26087,6 +31172,9 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasVpcDisplay(self):
+        """是否显示VPC信息的权限(1=有，2=无)
+        :rtype: int
+        """
         return self._HasVpcDisplay
 
     @HasVpcDisplay.setter
@@ -26095,6 +31183,9 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasGrafanaStatusChange(self):
+        """是否可修改Grafana的状态(1=有，2=无)
+        :rtype: int
+        """
         return self._HasGrafanaStatusChange
 
     @HasGrafanaStatusChange.setter
@@ -26103,6 +31194,9 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasAgentManage(self):
+        """是否有管理agent的权限(1=有，2=无)
+        :rtype: int
+        """
         return self._HasAgentManage
 
     @HasAgentManage.setter
@@ -26111,6 +31205,9 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasTkeManage(self):
+        """是否有管理TKE集成的权限(1=有，2=无)
+        :rtype: int
+        """
         return self._HasTkeManage
 
     @HasTkeManage.setter
@@ -26119,6 +31216,9 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasApiOperation(self):
+        """是否显示API等信息(1=有, 2=无)
+        :rtype: int
+        """
         return self._HasApiOperation
 
     @HasApiOperation.setter
@@ -26174,6 +31274,10 @@ class PrometheusInstanceTenantUsage(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -26182,6 +31286,10 @@ class PrometheusInstanceTenantUsage(AbstractModel):
 
     @property
     def CalcDate(self):
+        """计费周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CalcDate
 
     @CalcDate.setter
@@ -26190,6 +31298,10 @@ class PrometheusInstanceTenantUsage(AbstractModel):
 
     @property
     def Total(self):
+        """总用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Total
 
     @Total.setter
@@ -26198,6 +31310,10 @@ class PrometheusInstanceTenantUsage(AbstractModel):
 
     @property
     def Basic(self):
+        """基础指标用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Basic
 
     @Basic.setter
@@ -26206,6 +31322,10 @@ class PrometheusInstanceTenantUsage(AbstractModel):
 
     @property
     def Fee(self):
+        """付费指标用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Fee
 
     @Fee.setter
@@ -26392,6 +31512,9 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -26400,6 +31523,9 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -26408,6 +31534,13 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例计费模式。取值范围：
+<ul>
+<li>2：包年包月</li>
+<li>3：按量</li>
+</ul>
+        :rtype: int
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -26416,6 +31549,9 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域 ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -26424,6 +31560,9 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -26432,6 +31571,9 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -26440,6 +31582,9 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网 ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -26448,6 +31593,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def DataRetentionTime(self):
+        """存储周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataRetentionTime
 
     @DataRetentionTime.setter
@@ -26456,6 +31605,19 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """实例业务状态。取值范围：
+<ul>
+<li>1：正在创建</li>
+<li>2：运行中</li>
+<li>3：异常</li>
+<li>4：重建中</li>
+<li>5：销毁中</li>
+<li>6：已停服</li>
+<li>8：欠费停服中</li>
+<li>9：欠费已停服</li>
+</ul>
+        :rtype: int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -26464,6 +31626,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def GrafanaURL(self):
+        """Grafana 面板 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GrafanaURL
 
     @GrafanaURL.setter
@@ -26472,6 +31638,9 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -26480,6 +31649,11 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def EnableGrafana(self):
+        """是否开启 Grafana
+<li>0：不开启</li>
+<li>1：开启</li>
+        :rtype: int
+        """
         return self._EnableGrafana
 
     @EnableGrafana.setter
@@ -26488,6 +31662,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def IPv4Address(self):
+        """实例IPV4地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IPv4Address
 
     @IPv4Address.setter
@@ -26496,6 +31674,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def TagSpecification(self):
+        """实例关联的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusTag
+        """
         return self._TagSpecification
 
     @TagSpecification.setter
@@ -26504,6 +31686,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """购买的实例过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -26512,6 +31698,17 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def ChargeStatus(self):
+        """计费状态
+<ul>
+<li>1：正常</li>
+<li>2：过期</li>
+<li>3：销毁</li>
+<li>4：分配中</li>
+<li>5：分配失败</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChargeStatus
 
     @ChargeStatus.setter
@@ -26520,6 +31717,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def SpecName(self):
+        """规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpecName
 
     @SpecName.setter
@@ -26528,6 +31729,16 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标记
+<ul>
+<li>0：不自动续费</li>
+<li>1：开启自动续费</li>
+<li>2：禁止自动续费</li>
+<li>-1：无效</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -26536,6 +31747,14 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def IsNearExpire(self):
+        """是否快过期
+<ul>
+<li>0：否</li>
+<li>1：快过期</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsNearExpire
 
     @IsNearExpire.setter
@@ -26544,6 +31763,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def AuthToken(self):
+        """数据写入需要的 Token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AuthToken
 
     @AuthToken.setter
@@ -26552,6 +31775,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def RemoteWrite(self):
+        """Prometheus Remote Write 的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RemoteWrite
 
     @RemoteWrite.setter
@@ -26560,6 +31787,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def ApiRootPath(self):
+        """Prometheus HTTP Api 根地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApiRootPath
 
     @ApiRootPath.setter
@@ -26568,6 +31799,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def ProxyAddress(self):
+        """Proxy 的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProxyAddress
 
     @ProxyAddress.setter
@@ -26576,6 +31811,19 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def GrafanaStatus(self):
+        """Grafana 运行状态
+<ul>
+<li>1：正在创建</li>
+<li>2：运行中</li>
+<li>3：异常</li>
+<li>4：重启中</li>
+<li>5：销毁中</li>
+<li>6：已停机</li>
+<li>7：已删除</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GrafanaStatus
 
     @GrafanaStatus.setter
@@ -26584,6 +31832,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def GrafanaIpWhiteList(self):
+        """Grafana IP 白名单列表，使用英文分号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GrafanaIpWhiteList
 
     @GrafanaIpWhiteList.setter
@@ -26592,6 +31844,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def Grant(self):
+        """实例的授权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusInstanceGrantInfo`
+        """
         return self._Grant
 
     @Grant.setter
@@ -26600,6 +31856,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def GrafanaInstanceId(self):
+        """绑定的 Grafana 实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GrafanaInstanceId
 
     @GrafanaInstanceId.setter
@@ -26608,6 +31868,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def AlertRuleLimit(self):
+        """告警规则限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AlertRuleLimit
 
     @AlertRuleLimit.setter
@@ -26616,6 +31880,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def RecordingRuleLimit(self):
+        """预聚合规则限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordingRuleLimit
 
     @RecordingRuleLimit.setter
@@ -26624,6 +31892,10 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def MigrationType(self):
+        """迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MigrationType
 
     @MigrationType.setter
@@ -26749,6 +32021,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -26757,6 +32032,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -26765,6 +32043,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -26773,6 +32054,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -26781,6 +32065,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """运行状态（1:正在创建；2:运行中；3:异常；4:重启中；5:销毁中； 6:已停机； 7: 已删除）
+        :rtype: int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -26789,6 +32076,10 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def ChargeStatus(self):
+        """计费状态（1:正常；2:过期; 3:销毁; 4:分配中; 5:分配失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChargeStatus
 
     @ChargeStatus.setter
@@ -26797,6 +32088,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def EnableGrafana(self):
+        """是否开启 Grafana（0:不开启，1:开启）
+        :rtype: int
+        """
         return self._EnableGrafana
 
     @EnableGrafana.setter
@@ -26805,6 +32099,10 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def GrafanaURL(self):
+        """Grafana 面板 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GrafanaURL
 
     @GrafanaURL.setter
@@ -26813,6 +32111,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例付费类型（1:试用版；2:预付费）
+        :rtype: int
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -26821,6 +32122,10 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def SpecName(self):
+        """规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpecName
 
     @SpecName.setter
@@ -26829,6 +32134,10 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def DataRetentionTime(self):
+        """存储周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataRetentionTime
 
     @DataRetentionTime.setter
@@ -26837,6 +32146,10 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """购买的实例过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -26845,6 +32158,10 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标记(0:不自动续费；1:开启自动续费；2:禁止自动续费；-1:无效)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -26853,6 +32170,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def BoundTotal(self):
+        """绑定集群总数
+        :rtype: int
+        """
         return self._BoundTotal
 
     @BoundTotal.setter
@@ -26861,6 +32181,9 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def BoundNormal(self):
+        """绑定集群正常状态总数
+        :rtype: int
+        """
         return self._BoundNormal
 
     @BoundNormal.setter
@@ -26869,6 +32192,10 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def ResourcePackageStatus(self):
+        """资源包状态，0-无可用资源包，1-有可用资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResourcePackageStatus
 
     @ResourcePackageStatus.setter
@@ -26877,6 +32204,10 @@ class PrometheusInstancesOverview(AbstractModel):
 
     @property
     def ResourcePackageSpecName(self):
+        """资源包规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourcePackageSpecName
 
     @ResourcePackageSpecName.setter
@@ -26935,6 +32266,9 @@ class PrometheusJobTargets(AbstractModel):
 
     @property
     def Targets(self):
+        """该Job的targets列表
+        :rtype: list of PrometheusTarget
+        """
         return self._Targets
 
     @Targets.setter
@@ -26943,6 +32277,9 @@ class PrometheusJobTargets(AbstractModel):
 
     @property
     def JobName(self):
+        """job的名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -26951,6 +32288,9 @@ class PrometheusJobTargets(AbstractModel):
 
     @property
     def Total(self):
+        """targets总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -26959,6 +32299,9 @@ class PrometheusJobTargets(AbstractModel):
 
     @property
     def Up(self):
+        """健康的target总数
+        :rtype: int
+        """
         return self._Up
 
     @Up.setter
@@ -27056,6 +32399,9 @@ alertmanager
 
     @property
     def Enabled(self):
+        """是否启用
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -27064,6 +32410,12 @@ alertmanager
 
     @property
     def Type(self):
+        """通道类型，默认为amp，支持以下
+amp
+webhook
+alertmanager
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -27072,6 +32424,10 @@ alertmanager
 
     @property
     def WebHook(self):
+        """如果Type为webhook, 则该字段为必填项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebHook
 
     @WebHook.setter
@@ -27080,6 +32436,10 @@ alertmanager
 
     @property
     def AlertManager(self):
+        """如果Type为alertmanager, 则该字段为必填项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertManagerConfig`
+        """
         return self._AlertManager
 
     @AlertManager.setter
@@ -27088,6 +32448,9 @@ alertmanager
 
     @property
     def RepeatInterval(self):
+        """收敛时间
+        :rtype: str
+        """
         return self._RepeatInterval
 
     @RepeatInterval.setter
@@ -27096,6 +32459,9 @@ alertmanager
 
     @property
     def TimeRangeStart(self):
+        """生效起始时间
+        :rtype: str
+        """
         return self._TimeRangeStart
 
     @TimeRangeStart.setter
@@ -27104,6 +32470,9 @@ alertmanager
 
     @property
     def TimeRangeEnd(self):
+        """生效结束时间
+        :rtype: str
+        """
         return self._TimeRangeEnd
 
     @TimeRangeEnd.setter
@@ -27112,6 +32481,10 @@ alertmanager
 
     @property
     def NotifyWay(self):
+        """告警通知方式。目前有SMS、EMAIL、CALL、WECHAT方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NotifyWay
 
     @NotifyWay.setter
@@ -27120,6 +32493,10 @@ alertmanager
 
     @property
     def ReceiverGroups(self):
+        """告警接收组（用户组）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ReceiverGroups
 
     @ReceiverGroups.setter
@@ -27128,6 +32505,11 @@ alertmanager
 
     @property
     def PhoneNotifyOrder(self):
+        """电话告警顺序。
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
         return self._PhoneNotifyOrder
 
     @PhoneNotifyOrder.setter
@@ -27136,6 +32518,11 @@ alertmanager
 
     @property
     def PhoneCircleTimes(self):
+        """电话告警次数。
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PhoneCircleTimes
 
     @PhoneCircleTimes.setter
@@ -27144,6 +32531,11 @@ alertmanager
 
     @property
     def PhoneInnerInterval(self):
+        """电话告警轮内间隔。单位：秒
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PhoneInnerInterval
 
     @PhoneInnerInterval.setter
@@ -27152,6 +32544,11 @@ alertmanager
 
     @property
     def PhoneCircleInterval(self):
+        """电话告警轮外间隔。单位：秒
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PhoneCircleInterval
 
     @PhoneCircleInterval.setter
@@ -27160,6 +32557,11 @@ alertmanager
 
     @property
     def PhoneArriveNotice(self):
+        """电话告警触达通知
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._PhoneArriveNotice
 
     @PhoneArriveNotice.setter
@@ -27234,6 +32636,9 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def Name(self):
+        """实例名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -27242,6 +32647,9 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最近更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -27250,6 +32658,9 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Yaml内容
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -27258,6 +32669,10 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def Content(self):
+        """如果该聚合规则来至模板，则TemplateId为模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -27266,6 +32681,10 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def ClusterId(self):
+        """该聚合规则如果来源于用户集群crd资源定义，则ClusterId为所属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -27274,6 +32693,10 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -27282,6 +32705,10 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def Id(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -27290,6 +32717,10 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def Count(self):
+        """规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -27348,6 +32779,9 @@ class PrometheusRegionItem(AbstractModel):
 
     @property
     def Region(self):
+        """区域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -27356,6 +32790,9 @@ class PrometheusRegionItem(AbstractModel):
 
     @property
     def RegionId(self):
+        """区域 ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -27364,6 +32801,9 @@ class PrometheusRegionItem(AbstractModel):
 
     @property
     def RegionState(self):
+        """区域状态( 0: 不可用；1: 可用)
+        :rtype: int
+        """
         return self._RegionState
 
     @RegionState.setter
@@ -27372,6 +32812,9 @@ class PrometheusRegionItem(AbstractModel):
 
     @property
     def RegionName(self):
+        """区域名(中文)
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -27380,6 +32823,9 @@ class PrometheusRegionItem(AbstractModel):
 
     @property
     def RegionShortName(self):
+        """区域名(英文缩写)
+        :rtype: str
+        """
         return self._RegionShortName
 
     @RegionShortName.setter
@@ -27388,6 +32834,9 @@ class PrometheusRegionItem(AbstractModel):
 
     @property
     def Area(self):
+        """区域所在大区名
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -27396,6 +32845,9 @@ class PrometheusRegionItem(AbstractModel):
 
     @property
     def RegionPayMode(self):
+        """1-仅支持预付费，2-仅支持后付费，3-支持两种计费模式实例
+        :rtype: int
+        """
         return self._RegionPayMode
 
     @RegionPayMode.setter
@@ -27438,6 +32890,9 @@ class PrometheusRuleKV(AbstractModel):
 
     @property
     def Key(self):
+        """键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -27446,6 +32901,9 @@ class PrometheusRuleKV(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -27525,6 +32983,9 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -27533,6 +32994,9 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -27541,6 +33005,9 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -27549,6 +33016,10 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def Type(self):
+        """规则类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -27557,6 +33028,10 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def Labels(self):
+        """规则标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusRuleKV
+        """
         return self._Labels
 
     @Labels.setter
@@ -27565,6 +33040,10 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def Annotations(self):
+        """规则注释列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusRuleKV
+        """
         return self._Annotations
 
     @Annotations.setter
@@ -27573,6 +33052,10 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def Expr(self):
+        """规则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Expr
 
     @Expr.setter
@@ -27581,6 +33064,10 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def Duration(self):
+        """规则报警持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -27589,6 +33076,10 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def Receivers(self):
+        """报警接收组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Receivers
 
     @Receivers.setter
@@ -27597,6 +33088,13 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def Health(self):
+        """规则运行健康状态，取值如下：
+<li>unknown 未知状态</li>
+<li>pending 加载中</li>
+<li>ok 运行正常</li>
+<li>err 运行错误</li>
+        :rtype: str
+        """
         return self._Health
 
     @Health.setter
@@ -27605,6 +33103,10 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """规则创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -27613,6 +33115,10 @@ class PrometheusRuleSet(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """规则更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -27678,6 +33184,10 @@ class PrometheusScrapeJob(AbstractModel):
 
     @property
     def Name(self):
+        """任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -27686,6 +33196,9 @@ class PrometheusScrapeJob(AbstractModel):
 
     @property
     def AgentId(self):
+        """Agent ID
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -27694,6 +33207,9 @@ class PrometheusScrapeJob(AbstractModel):
 
     @property
     def JobId(self):
+        """任务 ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -27702,6 +33218,10 @@ class PrometheusScrapeJob(AbstractModel):
 
     @property
     def Config(self):
+        """配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -27742,6 +33262,9 @@ class PrometheusTag(AbstractModel):
 
     @property
     def Key(self):
+        """标签的健值
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -27750,6 +33273,10 @@ class PrometheusTag(AbstractModel):
 
     @property
     def Value(self):
+        """标签对应的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -27844,6 +33371,9 @@ cluster 集群级别
 
     @property
     def Name(self):
+        """模板名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -27852,6 +33382,11 @@ cluster 集群级别
 
     @property
     def Level(self):
+        """模板维度，支持以下类型
+instance 实例级别
+cluster 集群级别
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -27860,6 +33395,10 @@ cluster 集群级别
 
     @property
     def Describe(self):
+        """模板描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -27868,6 +33407,11 @@ cluster 集群级别
 
     @property
     def RecordRules(self):
+        """当Level为instance时有效，
+模板中的聚合规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._RecordRules
 
     @RecordRules.setter
@@ -27876,6 +33420,11 @@ cluster 集群级别
 
     @property
     def ServiceMonitors(self):
+        """当Level为cluster时有效，
+模板中的ServiceMonitor规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._ServiceMonitors
 
     @ServiceMonitors.setter
@@ -27884,6 +33433,11 @@ cluster 集群级别
 
     @property
     def PodMonitors(self):
+        """当Level为cluster时有效，
+模板中的PodMonitors规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._PodMonitors
 
     @PodMonitors.setter
@@ -27892,6 +33446,11 @@ cluster 集群级别
 
     @property
     def RawJobs(self):
+        """当Level为cluster时有效，
+模板中的RawJobs规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._RawJobs
 
     @RawJobs.setter
@@ -27900,6 +33459,10 @@ cluster 集群级别
 
     @property
     def TemplateId(self):
+        """模板的ID, 用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -27908,6 +33471,10 @@ cluster 集群级别
 
     @property
     def UpdateTime(self):
+        """最近更新时间，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -27916,6 +33483,10 @@ cluster 集群级别
 
     @property
     def Version(self):
+        """当前版本，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -27924,6 +33495,10 @@ cluster 集群级别
 
     @property
     def IsDefault(self):
+        """是否系统提供的默认模板，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -27932,6 +33507,11 @@ cluster 集群级别
 
     @property
     def AlertDetailRules(self):
+        """当Level为instance时有效，
+模板中的告警配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusAlertPolicyItem
+        """
         return self._AlertDetailRules
 
     @AlertDetailRules.setter
@@ -27940,6 +33520,10 @@ cluster 集群级别
 
     @property
     def TargetsTotal(self):
+        """关联实例数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TargetsTotal
 
     @TargetsTotal.setter
@@ -28038,6 +33622,9 @@ class PrometheusTempModify(AbstractModel):
 
     @property
     def Name(self):
+        """修改名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -28046,6 +33633,10 @@ class PrometheusTempModify(AbstractModel):
 
     @property
     def Describe(self):
+        """修改描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -28054,6 +33645,11 @@ class PrometheusTempModify(AbstractModel):
 
     @property
     def ServiceMonitors(self):
+        """当Level为cluster时有效，
+模板中的ServiceMonitor规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._ServiceMonitors
 
     @ServiceMonitors.setter
@@ -28062,6 +33658,11 @@ class PrometheusTempModify(AbstractModel):
 
     @property
     def PodMonitors(self):
+        """当Level为cluster时有效，
+模板中的PodMonitors规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._PodMonitors
 
     @PodMonitors.setter
@@ -28070,6 +33671,11 @@ class PrometheusTempModify(AbstractModel):
 
     @property
     def RawJobs(self):
+        """当Level为cluster时有效，
+模板中的RawJobs规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._RawJobs
 
     @RawJobs.setter
@@ -28078,6 +33684,11 @@ class PrometheusTempModify(AbstractModel):
 
     @property
     def RecordRules(self):
+        """当Level为instance时有效，
+模板中的聚合规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusConfigItem
+        """
         return self._RecordRules
 
     @RecordRules.setter
@@ -28086,6 +33697,10 @@ class PrometheusTempModify(AbstractModel):
 
     @property
     def AlertDetailRules(self):
+        """修改内容，只有当模板类型是Alert时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusAlertPolicyItem
+        """
         return self._AlertDetailRules
 
     @AlertDetailRules.setter
@@ -28177,6 +33792,9 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     @property
     def Region(self):
+        """目标所在地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -28185,6 +33803,9 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     @property
     def InstanceId(self):
+        """目标实例
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -28193,6 +33814,10 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id，只有当采集模板的Level为cluster的时候需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -28201,6 +33826,10 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     @property
     def SyncTime(self):
+        """最后一次同步时间， 用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SyncTime
 
     @SyncTime.setter
@@ -28209,6 +33838,10 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     @property
     def Version(self):
+        """当前使用的模板版本，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -28217,6 +33850,10 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型，只有当采集模板的Level为cluster的时候需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -28225,6 +33862,10 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     @property
     def InstanceName(self):
+        """用于出参，实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -28233,6 +33874,10 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     @property
     def ClusterName(self):
+        """用于出参，集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -28289,6 +33934,9 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -28297,6 +33945,9 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def ZoneId(self):
+        """可用区 ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -28305,6 +33956,9 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def ZoneState(self):
+        """可用区状态( 0: 不可用；1: 可用)
+        :rtype: int
+        """
         return self._ZoneState
 
     @ZoneState.setter
@@ -28313,6 +33967,9 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域 ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -28321,6 +33978,9 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def ZoneName(self):
+        """可用区名（目前为中文）
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -28329,6 +33989,10 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def ZoneResourceState(self):
+        """可用区资源状态(0:资源不足，不可使用；1:资源足够)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ZoneResourceState
 
     @ZoneResourceState.setter
@@ -28409,6 +34073,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -28417,6 +34084,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """告警时间段结束时间。含义同StartTime
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -28425,6 +34095,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def NotifyWay(self):
+        """告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
+        :rtype: list of str
+        """
         return self._NotifyWay
 
     @NotifyWay.setter
@@ -28433,6 +34106,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def ReceiverType(self):
+        """接收人类型。“group” 或 “user”
+        :rtype: str
+        """
         return self._ReceiverType
 
     @ReceiverType.setter
@@ -28441,6 +34117,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def Id(self):
+        """ReceiverId
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -28449,6 +34128,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def SendFor(self):
+        """电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+        :rtype: list of str
+        """
         return self._SendFor
 
     @SendFor.setter
@@ -28457,6 +34139,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def UidList(self):
+        """电话告警接收者 UID
+        :rtype: list of int
+        """
         return self._UidList
 
     @UidList.setter
@@ -28465,6 +34150,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def RoundNumber(self):
+        """电话告警轮数
+        :rtype: int
+        """
         return self._RoundNumber
 
     @RoundNumber.setter
@@ -28473,6 +34161,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def PersonInterval(self):
+        """电话告警对个人间隔（秒）
+        :rtype: int
+        """
         return self._PersonInterval
 
     @PersonInterval.setter
@@ -28481,6 +34172,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def RoundInterval(self):
+        """电话告警每轮间隔（秒）
+        :rtype: int
+        """
         return self._RoundInterval
 
     @RoundInterval.setter
@@ -28489,6 +34183,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def RecoverNotify(self):
+        """恢复通知方式。可选"SMS"
+        :rtype: list of str
+        """
         return self._RecoverNotify
 
     @RecoverNotify.setter
@@ -28497,6 +34194,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def NeedSendNotice(self):
+        """是否需要电话告警触达提示。0不需要，1需要
+        :rtype: int
+        """
         return self._NeedSendNotice
 
     @NeedSendNotice.setter
@@ -28505,6 +34205,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def ReceiverGroupList(self):
+        """接收组列表。通过平台接口查询到的接收组 ID 列表
+        :rtype: list of int
+        """
         return self._ReceiverGroupList
 
     @ReceiverGroupList.setter
@@ -28513,6 +34216,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def ReceiverUserList(self):
+        """接收人列表。通过平台接口查询到的接收人 ID 列表
+        :rtype: list of int
+        """
         return self._ReceiverUserList
 
     @ReceiverUserList.setter
@@ -28521,6 +34227,9 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def ReceiveLanguage(self):
+        """告警接收语言，枚举值（zh-CN，en-US）
+        :rtype: str
+        """
         return self._ReceiveLanguage
 
     @ReceiveLanguage.setter
@@ -28590,6 +34299,9 @@ class RecordingRuleSet(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -28598,6 +34310,9 @@ class RecordingRuleSet(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -28606,6 +34321,9 @@ class RecordingRuleSet(AbstractModel):
 
     @property
     def Name(self):
+        """分组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -28614,6 +34332,9 @@ class RecordingRuleSet(AbstractModel):
 
     @property
     def Group(self):
+        """规则内容组
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -28622,6 +34343,9 @@ class RecordingRuleSet(AbstractModel):
 
     @property
     def Total(self):
+        """规则数量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -28630,6 +34354,9 @@ class RecordingRuleSet(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """规则创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -28638,6 +34365,9 @@ class RecordingRuleSet(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """规则最近更新时间
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -28646,6 +34376,10 @@ class RecordingRuleSet(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -28686,6 +34420,9 @@ class ResumeGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -28719,6 +34456,9 @@ class ResumeGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28747,6 +34487,9 @@ class RunPrometheusInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -28755,6 +34498,9 @@ class RunPrometheusInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网ID，默认使用实例所用子网初始化，也可通过该参数传递新的子网ID初始化
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -28789,6 +34535,9 @@ class RunPrometheusInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28835,6 +34584,9 @@ class ServiceDiscoveryItem(AbstractModel):
 
     @property
     def Name(self):
+        """服务发现名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -28843,6 +34595,9 @@ class ServiceDiscoveryItem(AbstractModel):
 
     @property
     def Namespace(self):
+        """服务发现属于的 Namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -28851,6 +34606,9 @@ class ServiceDiscoveryItem(AbstractModel):
 
     @property
     def Kind(self):
+        """服务发现类型: ServiceMonitor/PodMonitor
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -28859,6 +34617,10 @@ class ServiceDiscoveryItem(AbstractModel):
 
     @property
     def NamespaceSelector(self):
+        """Namespace 选取方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NamespaceSelector
 
     @NamespaceSelector.setter
@@ -28867,6 +34629,10 @@ class ServiceDiscoveryItem(AbstractModel):
 
     @property
     def Selector(self):
+        """Label 选取方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Selector
 
     @Selector.setter
@@ -28875,6 +34641,9 @@ class ServiceDiscoveryItem(AbstractModel):
 
     @property
     def Endpoints(self):
+        """Endpoints 信息（PodMonitor 不含该参数）
+        :rtype: str
+        """
         return self._Endpoints
 
     @Endpoints.setter
@@ -28883,6 +34652,10 @@ class ServiceDiscoveryItem(AbstractModel):
 
     @property
     def Yaml(self):
+        """服务发现对应的配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -28925,6 +34698,9 @@ class SetDefaultAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定值 monitor
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -28933,6 +34709,9 @@ class SetDefaultAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略 ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -28967,6 +34746,9 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28995,6 +34777,9 @@ class SyncPrometheusTempRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """实例id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -29003,6 +34788,9 @@ class SyncPrometheusTempRequest(AbstractModel):
 
     @property
     def Targets(self):
+        """同步目标
+        :rtype: list of PrometheusTemplateSyncTarget
+        """
         return self._Targets
 
     @Targets.setter
@@ -29042,6 +34830,9 @@ class SyncPrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -29070,6 +34861,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -29078,6 +34872,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -29137,6 +34934,10 @@ class TagInstance(AbstractModel):
 
     @property
     def Key(self):
+        """标签Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -29145,6 +34946,10 @@ class TagInstance(AbstractModel):
 
     @property
     def Value(self):
+        """标签Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -29153,6 +34958,10 @@ class TagInstance(AbstractModel):
 
     @property
     def InstanceSum(self):
+        """实例个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InstanceSum
 
     @InstanceSum.setter
@@ -29161,6 +34970,10 @@ class TagInstance(AbstractModel):
 
     @property
     def ServiceType(self):
+        """产品类型，如：cvm
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -29169,6 +34982,10 @@ class TagInstance(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -29177,6 +34994,10 @@ class TagInstance(AbstractModel):
 
     @property
     def BindingStatus(self):
+        """绑定状态，2：绑定成功，1：绑定中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BindingStatus
 
     @BindingStatus.setter
@@ -29185,6 +35006,10 @@ class TagInstance(AbstractModel):
 
     @property
     def TagStatus(self):
+        """标签状态，2：标签存在，1：标签不存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TagStatus
 
     @TagStatus.setter
@@ -29237,6 +35062,10 @@ class Targets(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -29245,6 +35074,10 @@ class Targets(AbstractModel):
 
     @property
     def Up(self):
+        """在线数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Up
 
     @Up.setter
@@ -29253,6 +35086,10 @@ class Targets(AbstractModel):
 
     @property
     def Down(self):
+        """不在线数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Down
 
     @Down.setter
@@ -29261,6 +35098,10 @@ class Targets(AbstractModel):
 
     @property
     def Unknown(self):
+        """未知状态数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Unknown
 
     @Unknown.setter
@@ -29316,6 +35157,9 @@ failed: 步骤失败
 
     @property
     def Step(self):
+        """步骤名称
+        :rtype: str
+        """
         return self._Step
 
     @Step.setter
@@ -29324,6 +35168,13 @@ failed: 步骤失败
 
     @property
     def LifeState(self):
+        """生命周期
+pending : 步骤未开始
+running: 步骤执行中
+success: 步骤成功完成
+failed: 步骤失败
+        :rtype: str
+        """
         return self._LifeState
 
     @LifeState.setter
@@ -29332,6 +35183,10 @@ failed: 步骤失败
 
     @property
     def StartAt(self):
+        """步骤开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartAt
 
     @StartAt.setter
@@ -29340,6 +35195,10 @@ failed: 步骤失败
 
     @property
     def EndAt(self):
+        """步骤结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndAt
 
     @EndAt.setter
@@ -29348,6 +35207,10 @@ failed: 步骤失败
 
     @property
     def FailedMsg(self):
+        """若步骤生命周期为failed,则此字段显示错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailedMsg
 
     @FailedMsg.setter
@@ -29418,6 +35281,10 @@ class TemplateGroup(AbstractModel):
 
     @property
     def Conditions(self):
+        """指标告警规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Condition
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -29426,6 +35293,10 @@ class TemplateGroup(AbstractModel):
 
     @property
     def EventConditions(self):
+        """事件告警规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventCondition
+        """
         return self._EventConditions
 
     @EventConditions.setter
@@ -29434,6 +35305,10 @@ class TemplateGroup(AbstractModel):
 
     @property
     def PolicyGroups(self):
+        """关联告警策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PolicyGroup
+        """
         return self._PolicyGroups
 
     @PolicyGroups.setter
@@ -29442,6 +35317,9 @@ class TemplateGroup(AbstractModel):
 
     @property
     def GroupID(self):
+        """模板策略组ID
+        :rtype: int
+        """
         return self._GroupID
 
     @GroupID.setter
@@ -29450,6 +35328,9 @@ class TemplateGroup(AbstractModel):
 
     @property
     def GroupName(self):
+        """模板策略组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -29458,6 +35339,9 @@ class TemplateGroup(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -29466,6 +35350,9 @@ class TemplateGroup(AbstractModel):
 
     @property
     def LastEditUin(self):
+        """最后修改人UIN
+        :rtype: int
+        """
         return self._LastEditUin
 
     @LastEditUin.setter
@@ -29474,6 +35361,9 @@ class TemplateGroup(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -29482,6 +35372,9 @@ class TemplateGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -29490,6 +35383,9 @@ class TemplateGroup(AbstractModel):
 
     @property
     def ViewName(self):
+        """视图
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -29498,6 +35394,9 @@ class TemplateGroup(AbstractModel):
 
     @property
     def IsUnionRule(self):
+        """是否为与关系
+        :rtype: int
+        """
         return self._IsUnionRule
 
     @IsUnionRule.setter
@@ -29556,6 +35455,9 @@ class TerminatePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID 列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -29589,6 +35491,9 @@ class TerminatePrometheusInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -29620,6 +35525,9 @@ class Toleration(AbstractModel):
 
     @property
     def Key(self):
+        """容忍应用到的 taint key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -29628,6 +35536,9 @@ class Toleration(AbstractModel):
 
     @property
     def Operator(self):
+        """键与值的关系
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -29636,6 +35547,9 @@ class Toleration(AbstractModel):
 
     @property
     def Effect(self):
+        """要匹配的污点效果
+        :rtype: str
+        """
         return self._Effect
 
     @Effect.setter
@@ -29692,6 +35606,10 @@ class URLNotice(AbstractModel):
 
     @property
     def URL(self):
+        """回调 url（限长256字符）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -29700,6 +35618,10 @@ class URLNotice(AbstractModel):
 
     @property
     def IsValid(self):
+        """是否通过验证 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsValid
 
     @IsValid.setter
@@ -29708,6 +35630,10 @@ class URLNotice(AbstractModel):
 
     @property
     def ValidationCode(self):
+        """验证码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValidationCode
 
     @ValidationCode.setter
@@ -29716,6 +35642,10 @@ class URLNotice(AbstractModel):
 
     @property
     def StartTime(self):
+        """通知开始时间 一天开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -29724,6 +35654,10 @@ class URLNotice(AbstractModel):
 
     @property
     def EndTime(self):
+        """通知结束时间 一天开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -29732,6 +35666,10 @@ class URLNotice(AbstractModel):
 
     @property
     def Weekday(self):
+        """通知周期 1-7表示周一到周日
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Weekday
 
     @Weekday.setter
@@ -29782,6 +35720,9 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -29790,6 +35731,9 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id，如传入 PolicyId 则该字段被忽略可传入任意值如 0
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -29798,6 +35742,9 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略ID，使用此字段时 GroupId 会被忽略
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -29806,6 +35753,9 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def EbSubject(self):
+        """事件配置的告警
+        :rtype: str
+        """
         return self._EbSubject
 
     @EbSubject.setter
@@ -29814,6 +35764,9 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def EbEventFlag(self):
+        """是否配置了事件告警
+        :rtype: int
+        """
         return self._EbEventFlag
 
     @EbEventFlag.setter
@@ -29851,6 +35804,9 @@ class UnBindingAllPolicyObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -29894,6 +35850,9 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Module(self):
+        """固定值，为"monitor"
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -29902,6 +35861,9 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """策略组id，如传入 PolicyId 则该字段被忽略可传入任意值如 0
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -29910,6 +35872,9 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def UniqueId(self):
+        """待删除对象实例的唯一id列表，UniqueId从调用[获取已绑定对象列表接口](https://cloud.tencent.com/document/api/248/40570)的出参的List中得到
+        :rtype: list of str
+        """
         return self._UniqueId
 
     @UniqueId.setter
@@ -29918,6 +35883,9 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
+        """实例分组id，如果按实例分组删除的话UniqueId参数是无效的
+        :rtype: int
+        """
         return self._InstanceGroupId
 
     @InstanceGroupId.setter
@@ -29926,6 +35894,9 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """告警策略ID，使用此字段时 GroupId 会被忽略
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -29934,6 +35905,9 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbSubject(self):
+        """事件配置的告警
+        :rtype: str
+        """
         return self._EbSubject
 
     @EbSubject.setter
@@ -29942,6 +35916,9 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbEventFlag(self):
+        """是否配置了事件告警
+        :rtype: int
+        """
         return self._EbEventFlag
 
     @EbEventFlag.setter
@@ -29981,6 +35958,9 @@ class UnBindingPolicyObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30009,6 +35989,9 @@ class UnbindPrometheusManagedGrafanaRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30017,6 +36000,9 @@ class UnbindPrometheusManagedGrafanaRequest(AbstractModel):
 
     @property
     def GrafanaId(self):
+        """Grafana 实例 ID
+        :rtype: str
+        """
         return self._GrafanaId
 
     @GrafanaId.setter
@@ -30051,6 +36037,9 @@ class UnbindPrometheusManagedGrafanaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30096,6 +36085,9 @@ class UninstallGrafanaDashboardRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30104,6 +36096,26 @@ class UninstallGrafanaDashboardRequest(AbstractModel):
 
     @property
     def IntegrationCodes(self):
+        """Prometheus 集成项 Code，删除对应的 Dashboard，Code 如下：
+<li>spring_mvc</li>
+<li>mysql</li>
+<li>go</li>
+<li>redis</li>
+<li>jvm</li>
+<li>pgsql</li>
+<li>mongo</li>
+<li>kafka</li>
+<li>es</li>
+<li>flink</li>
+<li>blackbox</li>
+<li>consule</li>
+<li>memcached</li>
+<li>zk</li>
+<li>tps</li>
+<li>istio</li>
+<li>etcd</li>
+        :rtype: list of str
+        """
         return self._IntegrationCodes
 
     @IntegrationCodes.setter
@@ -30138,6 +36150,9 @@ class UninstallGrafanaDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30166,6 +36181,9 @@ class UninstallGrafanaPluginsRequest(AbstractModel):
 
     @property
     def PluginIds(self):
+        """插件 ID 数组，例如"PluginIds": [ "grafana-clock-panel" ]，可通过 DescribePluginOverviews 获取 PluginId
+        :rtype: list of str
+        """
         return self._PluginIds
 
     @PluginIds.setter
@@ -30174,6 +36192,9 @@ class UninstallGrafanaPluginsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefg
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30208,6 +36229,9 @@ class UninstallGrafanaPluginsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30266,6 +36290,9 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Prometheus 高警规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -30274,6 +36301,9 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30282,6 +36312,13 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码，取值如下：
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+默认状态码为 2 启用。
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -30290,6 +36327,9 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """告警规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -30298,6 +36338,9 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def Expr(self):
+        """告警规则表达式
+        :rtype: str
+        """
         return self._Expr
 
     @Expr.setter
@@ -30306,6 +36349,9 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """告警规则持续时间
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -30314,6 +36360,9 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def Receivers(self):
+        """告警规则接收组列表(当前规则绑定的接收组列表可通过 DescribeAlertRules 接口获取；用户已有的接收组列表可通过 DescribeAlarmNotices 接口获取)
+        :rtype: list of str
+        """
         return self._Receivers
 
     @Receivers.setter
@@ -30322,6 +36371,9 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def Labels(self):
+        """报警规则标签列表
+        :rtype: list of PrometheusRuleKV
+        """
         return self._Labels
 
     @Labels.setter
@@ -30330,6 +36382,11 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def Annotations(self):
+        """报警规则注释列表。
+
+告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
+        :rtype: list of PrometheusRuleKV
+        """
         return self._Annotations
 
     @Annotations.setter
@@ -30338,6 +36395,9 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     @property
     def Type(self):
+        """报警策略模板分类(自定义，可不填)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -30393,6 +36453,9 @@ class UpdateAlertRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -30401,6 +36464,9 @@ class UpdateAlertRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30436,6 +36502,9 @@ class UpdateAlertRuleStateRequest(AbstractModel):
 
     @property
     def RuleIds(self):
+        """规则 ID 列表
+        :rtype: list of str
+        """
         return self._RuleIds
 
     @RuleIds.setter
@@ -30444,6 +36513,9 @@ class UpdateAlertRuleStateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30452,6 +36524,12 @@ class UpdateAlertRuleStateRequest(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码，取值如下：
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+默认状态码为 2 启用。
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -30487,6 +36565,9 @@ class UpdateAlertRuleStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30515,6 +36596,9 @@ class UpdateDNSConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30523,6 +36607,9 @@ class UpdateDNSConfigRequest(AbstractModel):
 
     @property
     def NameServers(self):
+        """DNS 数组
+        :rtype: list of str
+        """
         return self._NameServers
 
     @NameServers.setter
@@ -30557,6 +36644,9 @@ class UpdateDNSConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30597,6 +36687,9 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30605,6 +36698,9 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
+        """类型(可通过 DescribeExporterIntegrations 获取对应集成的 Kind)
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -30613,6 +36709,9 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """配置内容(可通过 DescribeExporterIntegrations 接口获取对应集成的 Content，并在此基础上做修改)
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -30621,6 +36720,12 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def KubeType(self):
+        """Kubernetes 集群类型，可不填。取值如下：
+<li> 1= 容器集群(TKE) </li>
+<li> 2=弹性集群(EKS) </li>
+<li> 3= Prometheus管理的弹性集群(MEKS) </li>
+        :rtype: int
+        """
         return self._KubeType
 
     @KubeType.setter
@@ -30629,6 +36734,9 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群 ID，可不填
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -30666,6 +36774,9 @@ class UpdateExporterIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30694,6 +36805,9 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30702,6 +36816,9 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     @property
     def Config(self):
+        """JSON 编码后的字符串，如 "{"server":{"root_url":"http://custom.domain"}}"
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -30736,6 +36853,9 @@ class UpdateGrafanaConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30765,6 +36885,9 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30773,6 +36896,10 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
     @property
     def Envs(self):
+        """JSON 序列化后的环境变量字符串，如 "{\"key1\":\"key2\"}"
+
+        :rtype: str
+        """
         return self._Envs
 
     @Envs.setter
@@ -30807,6 +36934,9 @@ class UpdateGrafanaEnvironmentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30841,6 +36971,9 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def IntegrationId(self):
+        """集成 ID，可在实例详情-云产品集成-集成列表查看。例如：integration-abcd1234
+        :rtype: str
+        """
         return self._IntegrationId
 
     @IntegrationId.setter
@@ -30849,6 +36982,9 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30857,6 +36993,9 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
+        """集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -30865,6 +37004,9 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """集成内容，请查看示例
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -30901,6 +37043,9 @@ class UpdateGrafanaIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30941,6 +37086,9 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道 ID，例如：nchannel-abcd1234
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -30949,6 +37097,9 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30957,6 +37108,9 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def Receivers(self):
+        """接受告警通道 ID 数组
+        :rtype: list of str
+        """
         return self._Receivers
 
     @Receivers.setter
@@ -30965,6 +37119,9 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """告警通道名称，已废弃，名称不可修改。
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -30973,6 +37130,9 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ExtraOrgIds(self):
+        """已废弃，请使用 OrganizationIds
+        :rtype: list of str
+        """
         return self._ExtraOrgIds
 
     @ExtraOrgIds.setter
@@ -30981,6 +37141,9 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def OrganizationIds(self):
+        """生效的组织 ID 数组
+        :rtype: list of str
+        """
         return self._OrganizationIds
 
     @OrganizationIds.setter
@@ -31019,6 +37182,9 @@ class UpdateGrafanaNotificationChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31048,6 +37214,9 @@ class UpdateGrafanaWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31056,6 +37225,10 @@ class UpdateGrafanaWhiteListRequest(AbstractModel):
 
     @property
     def Whitelist(self):
+        """白名单数组，输入白名单 IP 或 CIDR，如：127.0.0.1或127.0.0.1/24
+如有多个 IP 可换行输入
+        :rtype: list of str
+        """
         return self._Whitelist
 
     @Whitelist.setter
@@ -31090,6 +37263,9 @@ class UpdateGrafanaWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31123,6 +37299,9 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31131,6 +37310,9 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     @property
     def AgentIds(self):
+        """Agent ID 列表，例如：agent-abcd1234，可在控制台 Agent 管理中获取
+        :rtype: list of str
+        """
         return self._AgentIds
 
     @AgentIds.setter
@@ -31139,6 +37321,11 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """要更新的状态
+<li> 1= 开启 </li>
+<li> 2= 关闭 </li>
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -31174,6 +37361,9 @@ class UpdatePrometheusAgentStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31223,6 +37413,9 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """prometheus实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31231,6 +37424,9 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """告警分组ID，形如alert-xxxx
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -31239,6 +37435,9 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """告警分组名称，不能与其他告警分组重名
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -31247,6 +37446,12 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def GroupState(self):
+        """告警分组状态：
+2 -- 启用
+3 -- 禁用
+不为空时会覆盖 `Rules`字段下所有告警规则状态
+        :rtype: int
+        """
         return self._GroupState
 
     @GroupState.setter
@@ -31255,6 +37460,9 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def AMPReceivers(self):
+        """云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+        :rtype: list of str
+        """
         return self._AMPReceivers
 
     @AMPReceivers.setter
@@ -31263,6 +37471,9 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def CustomReceiver(self):
+        """自定义告警通知模板
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        """
         return self._CustomReceiver
 
     @CustomReceiver.setter
@@ -31271,6 +37482,9 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def RepeatInterval(self):
+        """告警通知周期（收敛时间），为空默认1h
+        :rtype: str
+        """
         return self._RepeatInterval
 
     @RepeatInterval.setter
@@ -31279,6 +37493,9 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """要创建的告警规则列表
+        :rtype: list of PrometheusAlertGroupRuleSet
+        """
         return self._Rules
 
     @Rules.setter
@@ -31329,6 +37546,9 @@ class UpdatePrometheusAlertGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """更新的告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -31337,6 +37557,9 @@ class UpdatePrometheusAlertGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31371,6 +37594,9 @@ class UpdatePrometheusAlertGroupStateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31379,6 +37605,9 @@ class UpdatePrometheusAlertGroupStateRequest(AbstractModel):
 
     @property
     def GroupIds(self):
+        """告警分组ID列表，形如alert-xxxx
+        :rtype: list of str
+        """
         return self._GroupIds
 
     @GroupIds.setter
@@ -31387,6 +37616,11 @@ class UpdatePrometheusAlertGroupStateRequest(AbstractModel):
 
     @property
     def GroupState(self):
+        """告警分组状态
+2 -- 启用
+3 -- 禁用
+        :rtype: int
+        """
         return self._GroupState
 
     @GroupState.setter
@@ -31422,6 +37656,9 @@ class UpdatePrometheusAlertGroupStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31456,6 +37693,9 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID(可通过 DescribePrometheusInstances 接口获取)
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31464,6 +37704,9 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def AgentId(self):
+        """Agent ID(可通过DescribePrometheusAgents 接口获取)
+        :rtype: str
+        """
         return self._AgentId
 
     @AgentId.setter
@@ -31472,6 +37715,9 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """抓取任务 ID(可通过 DescribePrometheusScrapeJobs 接口获取)
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -31480,6 +37726,9 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def Config(self):
+        """抓取任务配置
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -31516,6 +37765,9 @@ class UpdatePrometheusScrapeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31557,6 +37809,9 @@ class UpdateRecordingRuleRequest(AbstractModel):
 
     @property
     def Name(self):
+        """聚合规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -31565,6 +37820,9 @@ class UpdateRecordingRuleRequest(AbstractModel):
 
     @property
     def Group(self):
+        """聚合规则组内容，格式为 yaml，通过 base64 进行编码。
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -31573,6 +37831,9 @@ class UpdateRecordingRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID(可通过 DescribePrometheusInstances 接口获取)
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31581,6 +37842,9 @@ class UpdateRecordingRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Prometheus 聚合规则 ID(可通过 DescribeRecordingRules 接口获取)
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -31589,6 +37853,13 @@ class UpdateRecordingRuleRequest(AbstractModel):
 
     @property
     def RuleState(self):
+        """规则状态码，取值如下：
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+默认状态码为 2 启用。
+        :rtype: int
+        """
         return self._RuleState
 
     @RuleState.setter
@@ -31630,6 +37901,10 @@ class UpdateRecordingRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -31638,6 +37913,9 @@ class UpdateRecordingRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31673,6 +37951,9 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-abcdefgh
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31681,6 +37962,9 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户账号 ID ，例如：10000000
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -31689,6 +37973,9 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     @property
     def Role(self):
+        """权限
+        :rtype: list of GrafanaAccountRole
+        """
         return self._Role
 
     @Role.setter
@@ -31697,6 +37984,9 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     @property
     def Notes(self):
+        """备注
+        :rtype: str
+        """
         return self._Notes
 
     @Notes.setter
@@ -31738,6 +38028,9 @@ class UpdateSSOAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31779,6 +38072,9 @@ class UpdateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Prometheus 实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31787,6 +38083,9 @@ class UpdateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeClusterId(self):
+        """<li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :rtype: str
+        """
         return self._KubeClusterId
 
     @KubeClusterId.setter
@@ -31795,6 +38094,10 @@ class UpdateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeType(self):
+        """用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :rtype: int
+        """
         return self._KubeType
 
     @KubeType.setter
@@ -31803,6 +38106,12 @@ class UpdateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def Type(self):
+        """服务发现类型，取值如下：
+<li> 1 = ServiceMonitor</li>
+<li> 2 = PodMonitor</li>
+<li> 3 = JobMonitor</li>
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -31811,6 +38120,9 @@ class UpdateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def Yaml(self):
+        """服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -31851,6 +38163,9 @@ class UpdateServiceDiscoveryResponse(AbstractModel):
 
     @property
     def ServiceDiscovery(self):
+        """更新成功之后，返回对应服务发现的信息
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
+        """
         return self._ServiceDiscovery
 
     @ServiceDiscovery.setter
@@ -31859,6 +38174,9 @@ class UpdateServiceDiscoveryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31890,6 +38208,9 @@ class UpgradeGrafanaDashboardRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31898,6 +38219,9 @@ class UpgradeGrafanaDashboardRequest(AbstractModel):
 
     @property
     def IntegrationCodes(self):
+        """Prometheus 集成项 Code，升级对应的 Dashboard，取值如下：<li>qcloud</li><li>cvm_process_exporter</li><li>cvm_node_exporter</li><li>cvm</li><li>tps</li><li>nginx-ingress</li><li>nvidia-gpu</li><li>cdwch</li><li>emr</li><li>apache</li><li>rocketmq</li><li>rabbitmq</li><li>spring_mvc</li><li>mysql</li><li>mssql</li><li>go</li><li>redis</li><li>jvm</li><li>pgsql</li><li>ceph</li><li>docker</li><li>nginx</li><li>oracledb</li><li>mongo</li><li>kafka</li><li>es</li><li>flink</li><li>blackbox</li><li>consule</li><li>memcached</li><li>zk</li><li>tps</li><li>istio</li><li>etcd</li><li>pts</li><li>kong</li>
+        :rtype: list of str
+        """
         return self._IntegrationCodes
 
     @IntegrationCodes.setter
@@ -31932,6 +38256,9 @@ class UpgradeGrafanaDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31960,6 +38287,9 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Grafana 实例 ID，例如：grafana-12345678
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -31968,6 +38298,9 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """版本别名，目前固定为 v9.1.5
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -32002,6 +38335,9 @@ class UpgradeGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -32084,6 +38420,10 @@ class UserNotice(AbstractModel):
 
     @property
     def ReceiverType(self):
+        """接收者类型 USER=用户 GROUP=用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReceiverType
 
     @ReceiverType.setter
@@ -32092,6 +38432,10 @@ class UserNotice(AbstractModel):
 
     @property
     def StartTime(self):
+        """通知开始时间 00:00:00 开始的秒数（取值范围0-86399）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -32100,6 +38444,10 @@ class UserNotice(AbstractModel):
 
     @property
     def EndTime(self):
+        """通知结束时间 00:00:00 开始的秒数（取值范围0-86399）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -32108,6 +38456,10 @@ class UserNotice(AbstractModel):
 
     @property
     def NoticeWay(self):
+        """通知渠道列表 EMAIL=邮件 SMS=短信 CALL=电话 WECHAT=微信 RTX=企业微信
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NoticeWay
 
     @NoticeWay.setter
@@ -32116,6 +38468,10 @@ class UserNotice(AbstractModel):
 
     @property
     def UserIds(self):
+        """用户 uid 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -32124,6 +38480,10 @@ class UserNotice(AbstractModel):
 
     @property
     def GroupIds(self):
+        """用户组 group id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._GroupIds
 
     @GroupIds.setter
@@ -32132,6 +38492,10 @@ class UserNotice(AbstractModel):
 
     @property
     def PhoneOrder(self):
+        """电话轮询列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._PhoneOrder
 
     @PhoneOrder.setter
@@ -32140,6 +38504,10 @@ class UserNotice(AbstractModel):
 
     @property
     def PhoneCircleTimes(self):
+        """电话轮询次数 （取值范围1-5）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PhoneCircleTimes
 
     @PhoneCircleTimes.setter
@@ -32148,6 +38516,10 @@ class UserNotice(AbstractModel):
 
     @property
     def PhoneInnerInterval(self):
+        """单次轮询内拨打间隔 秒数 （取值范围60-900）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PhoneInnerInterval
 
     @PhoneInnerInterval.setter
@@ -32156,6 +38528,10 @@ class UserNotice(AbstractModel):
 
     @property
     def PhoneCircleInterval(self):
+        """两次轮询间隔 秒数（取值范围60-900）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PhoneCircleInterval
 
     @PhoneCircleInterval.setter
@@ -32164,6 +38540,10 @@ class UserNotice(AbstractModel):
 
     @property
     def NeedPhoneArriveNotice(self):
+        """是否需要触达通知 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NeedPhoneArriveNotice
 
     @NeedPhoneArriveNotice.setter
@@ -32172,6 +38552,10 @@ class UserNotice(AbstractModel):
 
     @property
     def PhoneCallType(self):
+        """电话拨打类型 SYNC=同时拨打 CIRCLE=轮询拨打 不指定时默认是轮询
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneCallType
 
     @PhoneCallType.setter
@@ -32180,6 +38564,10 @@ class UserNotice(AbstractModel):
 
     @property
     def Weekday(self):
+        """通知周期 1-7表示周一到周日
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Weekday
 
     @Weekday.setter
@@ -32188,6 +38576,10 @@ class UserNotice(AbstractModel):
 
     @property
     def OnCallFormIDs(self):
+        """值班表id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._OnCallFormIDs
 
     @OnCallFormIDs.setter
@@ -32196,6 +38588,10 @@ class UserNotice(AbstractModel):
 
     @property
     def VoiceConfirmKey(self):
+        """电话按键确认
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VoiceConfirmKey
 
     @VoiceConfirmKey.setter

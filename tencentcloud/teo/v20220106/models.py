@@ -43,6 +43,9 @@ http://www.example.com/example.txt
 
     @property
     def ZoneId(self):
+        """Zone ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -51,6 +54,10 @@ http://www.example.com/example.txt
 
     @property
     def Targets(self):
+        """要预热的资源列表，每个元素格式类似如下:
+http://www.example.com/example.txt
+        :rtype: list of str
+        """
         return self._Targets
 
     @Targets.setter
@@ -59,6 +66,10 @@ http://www.example.com/example.txt
 
     @property
     def EncodeUrl(self):
+        """是否对url进行encode
+若内容含有非 ASCII 字符集的字符，请开启此开关，编码转换（编码规则遵循 RFC3986）
+        :rtype: bool
+        """
         return self._EncodeUrl
 
     @EncodeUrl.setter
@@ -67,6 +78,9 @@ http://www.example.com/example.txt
 
     @property
     def Headers(self):
+        """附带的http头部信息
+        :rtype: list of Header
+        """
         return self._Headers
 
     @Headers.setter
@@ -115,6 +129,9 @@ class CreatePrefetchTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -123,6 +140,10 @@ class CreatePrefetchTaskResponse(AbstractModel):
 
     @property
     def FailedList(self):
+        """失败的任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FailReason
+        """
         return self._FailedList
 
     @FailedList.setter
@@ -131,6 +152,9 @@ class CreatePrefetchTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -185,6 +209,9 @@ Targets可为空，不需要填写
 
     @property
     def ZoneId(self):
+        """Zone ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -193,6 +220,13 @@ Targets可为空，不需要填写
 
     @property
     def Type(self):
+        """类型，当前支持的类型：
+- purge_url：URL
+- purge_prefix：前缀
+- purge_host：Hostname
+- purge_all：全部缓存
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -201,6 +235,17 @@ Targets可为空，不需要填写
 
     @property
     def Targets(self):
+        """要刷新的资源列表，每个元素格式依据Type而定
+1) Type = purge_host 时
+形如：www.example.com 或 foo.bar.example.com
+2) Type = purge_prefix 时
+形如：http://www.example.com/example
+3) Type = purge_url 时
+形如：https://www.example.com/example.jpg
+4）Type = purge_all 时
+Targets可为空，不需要填写
+        :rtype: list of str
+        """
         return self._Targets
 
     @Targets.setter
@@ -209,6 +254,10 @@ Targets可为空，不需要填写
 
     @property
     def EncodeUrl(self):
+        """若有编码转换，仅清除编码转换后匹配的资源
+若内容含有非 ASCII 字符集的字符，请开启此开关，编码转换（编码规则遵循 RFC3986）
+        :rtype: bool
+        """
         return self._EncodeUrl
 
     @EncodeUrl.setter
@@ -252,6 +301,9 @@ class CreatePurgeTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -260,6 +312,10 @@ class CreatePurgeTaskResponse(AbstractModel):
 
     @property
     def FailedList(self):
+        """失败的任务列表及原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FailReason
+        """
         return self._FailedList
 
     @FailedList.setter
@@ -268,6 +324,9 @@ class CreatePurgeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -325,6 +384,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -333,6 +395,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询起始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -341,6 +406,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -349,6 +417,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询起始偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -357,6 +428,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询最大返回的结果条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -365,6 +439,10 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Statuses(self):
+        """查询的状态
+允许的值为：processing、success、failed、timeout、invalid
+        :rtype: list of str
+        """
         return self._Statuses
 
     @Statuses.setter
@@ -373,6 +451,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """zone id
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -381,6 +462,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Domains(self):
+        """查询的域名列表
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -389,6 +473,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Target(self):
+        """查询的资源
+        :rtype: str
+        """
         return self._Target
 
     @Target.setter
@@ -436,6 +523,9 @@ class DescribePrefetchTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该查询条件总共条目数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -444,6 +534,9 @@ class DescribePrefetchTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务结果列表
+        :rtype: list of Task
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -452,6 +545,9 @@ class DescribePrefetchTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -512,6 +608,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -520,6 +619,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -528,6 +630,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询起始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -536,6 +641,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -544,6 +652,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询起始偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -552,6 +663,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询最大返回的结果条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -560,6 +674,10 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Statuses(self):
+        """查询的状态
+允许的值为：processing、success、failed、timeout、invalid
+        :rtype: list of str
+        """
         return self._Statuses
 
     @Statuses.setter
@@ -568,6 +686,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """zone id
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -576,6 +697,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Domains(self):
+        """查询的域名列表
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -584,6 +708,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Target(self):
+        """查询内容
+        :rtype: str
+        """
         return self._Target
 
     @Target.setter
@@ -632,6 +759,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该查询条件总共条目数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -640,6 +770,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务结果列表
+        :rtype: list of Task
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -648,6 +781,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -686,6 +822,9 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询偏移量。默认值：0，最小值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -694,6 +833,9 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询限制数目。默认值：1000，最大值：1000。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -702,6 +844,9 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询条件过滤器，复杂类型。
+        :rtype: list of ZoneFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -748,6 +893,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的站点个数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -756,6 +904,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def Zones(self):
+        """站点详细信息列表。
+        :rtype: list of Zone
+        """
         return self._Zones
 
     @Zones.setter
@@ -764,6 +915,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -800,6 +954,9 @@ class FailReason(AbstractModel):
 
     @property
     def Reason(self):
+        """失败原因
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -808,6 +965,10 @@ class FailReason(AbstractModel):
 
     @property
     def Targets(self):
+        """处理失败的资源列表。
+该列表元素来源于输入参数中的Targets，因此格式和入参中的Targets保持一致
+        :rtype: list of str
+        """
         return self._Targets
 
     @Targets.setter
@@ -845,6 +1006,9 @@ class Header(AbstractModel):
 
     @property
     def Name(self):
+        """HTTP头部
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -853,6 +1017,9 @@ class Header(AbstractModel):
 
     @property
     def Value(self):
+        """HTTP头部值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -923,6 +1090,9 @@ class Resource(AbstractModel):
 
     @property
     def Id(self):
+        """资源 ID。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -931,6 +1101,10 @@ class Resource(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式，取值有：
+<li>0：后付费。</li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -939,6 +1113,9 @@ class Resource(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -947,6 +1124,9 @@ class Resource(AbstractModel):
 
     @property
     def EnableTime(self):
+        """生效时间。
+        :rtype: str
+        """
         return self._EnableTime
 
     @EnableTime.setter
@@ -955,6 +1135,9 @@ class Resource(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """失效时间。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -963,6 +1146,12 @@ class Resource(AbstractModel):
 
     @property
     def Status(self):
+        """套餐状态，取值有：
+<li>normal：正常；</li>
+<li>isolated：隔离；</li>
+<li>destroyed：销毁。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -971,6 +1160,9 @@ class Resource(AbstractModel):
 
     @property
     def Sv(self):
+        """询价参数。
+        :rtype: list of Sv
+        """
         return self._Sv
 
     @Sv.setter
@@ -979,6 +1171,12 @@ class Resource(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """是否自动续费，取值有：
+<li>0：默认状态；</li>
+<li>1：自动续费；</li>
+<li>2：不自动续费。</li>
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -987,6 +1185,9 @@ class Resource(AbstractModel):
 
     @property
     def PlanId(self):
+        """套餐关联资源 ID。
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -995,6 +1196,11 @@ class Resource(AbstractModel):
 
     @property
     def Area(self):
+        """地域，取值有：
+<li>mainland：国内；</li>
+<li>overseas：海外。</li>
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1045,6 +1251,9 @@ class Sv(AbstractModel):
 
     @property
     def Key(self):
+        """询价参数键。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1053,6 +1262,9 @@ class Sv(AbstractModel):
 
     @property
     def Value(self):
+        """询价参数值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1092,6 +1304,10 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -1100,6 +1316,10 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -1149,6 +1369,9 @@ class Task(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1157,6 +1380,9 @@ class Task(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1165,6 +1391,9 @@ class Task(AbstractModel):
 
     @property
     def Target(self):
+        """资源
+        :rtype: str
+        """
         return self._Target
 
     @Target.setter
@@ -1173,6 +1402,9 @@ class Task(AbstractModel):
 
     @property
     def Type(self):
+        """任务类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1181,6 +1413,9 @@ class Task(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1189,6 +1424,9 @@ class Task(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """任务完成时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1279,6 +1517,9 @@ class Zone(AbstractModel):
 
     @property
     def Id(self):
+        """站点ID。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1287,6 +1528,9 @@ class Zone(AbstractModel):
 
     @property
     def Name(self):
+        """站点名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1295,6 +1539,9 @@ class Zone(AbstractModel):
 
     @property
     def OriginalNameServers(self):
+        """站点当前使用的 NS 列表。
+        :rtype: list of str
+        """
         return self._OriginalNameServers
 
     @OriginalNameServers.setter
@@ -1303,6 +1550,9 @@ class Zone(AbstractModel):
 
     @property
     def NameServers(self):
+        """腾讯云分配的 NS 列表。
+        :rtype: list of str
+        """
         return self._NameServers
 
     @NameServers.setter
@@ -1311,6 +1561,13 @@ class Zone(AbstractModel):
 
     @property
     def Status(self):
+        """站点状态，取值有：
+<li> active：NS 已切换； </li>
+<li> pending：NS 未切换；</li>
+<li> moved：NS 已切走；</li>
+<li> deactivated：被封禁。 </li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1319,6 +1576,11 @@ class Zone(AbstractModel):
 
     @property
     def Type(self):
+        """站点接入方式，取值有
+<li> full：NS 接入； </li>
+<li> partial：CNAME 接入。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1327,6 +1589,9 @@ class Zone(AbstractModel):
 
     @property
     def Paused(self):
+        """站点是否关闭。
+        :rtype: bool
+        """
         return self._Paused
 
     @Paused.setter
@@ -1335,6 +1600,11 @@ class Zone(AbstractModel):
 
     @property
     def CnameSpeedUp(self):
+        """是否开启cname加速，取值有：
+<li> enabled：开启；</li>
+<li> disabled：关闭。</li>
+        :rtype: str
+        """
         return self._CnameSpeedUp
 
     @CnameSpeedUp.setter
@@ -1343,6 +1613,11 @@ class Zone(AbstractModel):
 
     @property
     def CnameStatus(self):
+        """cname 接入状态，取值有：
+<li> finished：站点已验证；</li>
+<li> pending：站点验证中。</li>
+        :rtype: str
+        """
         return self._CnameStatus
 
     @CnameStatus.setter
@@ -1351,6 +1626,9 @@ class Zone(AbstractModel):
 
     @property
     def Tags(self):
+        """资源标签列表。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1359,6 +1637,9 @@ class Zone(AbstractModel):
 
     @property
     def Resources(self):
+        """计费资源列表。
+        :rtype: list of Resource
+        """
         return self._Resources
 
     @Resources.setter
@@ -1367,6 +1648,9 @@ class Zone(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """站点创建时间。
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -1375,6 +1659,9 @@ class Zone(AbstractModel):
 
     @property
     def ModifiedOn(self):
+        """站点修改时间。
+        :rtype: str
+        """
         return self._ModifiedOn
 
     @ModifiedOn.setter
@@ -1383,6 +1670,12 @@ class Zone(AbstractModel):
 
     @property
     def Area(self):
+        """站点接入地域，取值为：
+<li> global：全球；</li>
+<li> mainland：中国大陆；</li>
+<li> overseas：境外区域。</li>
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1449,6 +1742,13 @@ class ZoneFilter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤字段名，支持的列表如下：
+<li> name：站点名；</li>
+<li> status：站点状态；</li>
+<li> tagKey：标签键；</li>
+<li> tagValue: 标签值。</li>
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1457,6 +1757,9 @@ class ZoneFilter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤字段值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -1465,6 +1768,9 @@ class ZoneFilter(AbstractModel):
 
     @property
     def Fuzzy(self):
+        """是否启用模糊查询，仅支持过滤字段名为name。模糊查询时，Values长度最大为1。默认为false。
+        :rtype: bool
+        """
         return self._Fuzzy
 
     @Fuzzy.setter

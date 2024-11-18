@@ -119,8 +119,14 @@ INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = 'InvalidParameterValue.ApplyIDNotExist'
 # 公司信息已经存在。
 INVALIDPARAMETERVALUE_COMPANYEXIST = 'InvalidParameterValue.CompanyExist'
 
+# 审核单状态错误。
+INVALIDPARAMETERVALUE_ERRORAPPLYSTATUS = 'InvalidParameterValue.ErrorApplyStatus'
+
 # 实例不存在。
 INVALIDPARAMETERVALUE_INSTANCENOTEXIST = 'InvalidParameterValue.InstanceNotExist'
+
+# 号码状态无效。
+INVALIDPARAMETERVALUE_PHONENUMINVALID = 'InvalidParameterValue.PhoneNumInvalid'
 
 # 号码已经绑定别的账号。
 INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = 'InvalidParameterValue.PhoneNumIsBoundOtherAccount'
@@ -146,11 +152,17 @@ LIMITEXCEEDED_BASEPACKAGEEXPIRED = 'LimitExceeded.BasePackageExpired'
 # 超出数量限制。
 LIMITEXCEEDED_OUTOFCOUNTLIMIT = 'LimitExceeded.OutOfCountLimit'
 
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
 # 不在白名单中。
 OPERATIONDENIED_NOTINWHITELIST = 'OperationDenied.NotInWhiteList'
 
 # 账号已被禁用。
 OPERATIONDENIED_UINDISABLED = 'OperationDenied.UinDisabled'
+
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

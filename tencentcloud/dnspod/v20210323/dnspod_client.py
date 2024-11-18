@@ -98,6 +98,8 @@ class DnspodClient(AbstractClient):
     def CreateDomain(self, request):
         """添加域名
 
+        备注：该接口不支持添加子域名。
+
         :param request: Request instance for CreateDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainRequest`
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainResponse`
@@ -210,6 +212,52 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLineGroup(self, request):
+        """创建域名的线路分组
+
+        :param request: Request instance for CreateLineGroup.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateLineGroupRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateLineGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLineGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLineGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLineGroupCopy(self, request):
+        """复制域名的线路分组
+
+        :param request: Request instance for CreateLineGroupCopy.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateLineGroupCopyRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateLineGroupCopyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLineGroupCopy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLineGroupCopyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRecord(self, request):
         """添加记录
         备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
@@ -303,6 +351,30 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTXTRecord(self, request):
+        """添加TXT记录
+        备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
+
+        :param request: Request instance for CreateTXTRecord.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateTXTRecordRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateTXTRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTXTRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTXTRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDomain(self, request):
         """删除域名
 
@@ -386,6 +458,29 @@ class DnspodClient(AbstractClient):
             body = self.call("DeleteDomainCustomLine", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDomainCustomLineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLineGroup(self, request):
+        """删除域名的线路分组
+
+        :param request: Request instance for DeleteLineGroup.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteLineGroupRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DeleteLineGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLineGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLineGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -825,6 +920,29 @@ class DnspodClient(AbstractClient):
             body = self.call("DescribeDomainWhois", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDomainWhoisResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLineGroupList(self, request):
+        """获取域名的线路分组列表
+
+        :param request: Request instance for DescribeLineGroupList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeLineGroupListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeLineGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLineGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLineGroupListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1438,6 +1556,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLineGroup(self, request):
+        """修改域名的线路分组
+
+        :param request: Request instance for ModifyLineGroup.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyLineGroupRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ModifyLineGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLineGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLineGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyPackageAutoRenew(self, request):
         """DNS 解析套餐自动续费设置
 
@@ -1659,6 +1800,29 @@ class DnspodClient(AbstractClient):
             body = self.call("ModifySubdomainStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySubdomainStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTXTRecord(self, request):
+        """修改TXT记录
+
+        :param request: Request instance for ModifyTXTRecord.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyTXTRecordRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ModifyTXTRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTXTRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTXTRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

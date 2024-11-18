@@ -61,6 +61,9 @@ class Activity(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -69,6 +72,9 @@ class Activity(AbstractModel):
 
     @property
     def ComputeNodeId(self):
+        """计算节点ID
+        :rtype: str
+        """
         return self._ComputeNodeId
 
     @ComputeNodeId.setter
@@ -77,6 +83,9 @@ class Activity(AbstractModel):
 
     @property
     def ComputeNodeActivityType(self):
+        """计算节点活动类型，创建或者销毁
+        :rtype: str
+        """
         return self._ComputeNodeActivityType
 
     @ComputeNodeActivityType.setter
@@ -85,6 +94,9 @@ class Activity(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -93,6 +105,9 @@ class Activity(AbstractModel):
 
     @property
     def Cause(self):
+        """起因
+        :rtype: str
+        """
         return self._Cause
 
     @Cause.setter
@@ -101,6 +116,9 @@ class Activity(AbstractModel):
 
     @property
     def ActivityState(self):
+        """活动状态
+        :rtype: str
+        """
         return self._ActivityState
 
     @ActivityState.setter
@@ -109,6 +127,9 @@ class Activity(AbstractModel):
 
     @property
     def StateReason(self):
+        """状态原因
+        :rtype: str
+        """
         return self._StateReason
 
     @StateReason.setter
@@ -117,6 +138,9 @@ class Activity(AbstractModel):
 
     @property
     def StartTime(self):
+        """活动开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -125,6 +149,10 @@ class Activity(AbstractModel):
 
     @property
     def EndTime(self):
+        """活动结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -133,6 +161,10 @@ class Activity(AbstractModel):
 
     @property
     def InstanceId(self):
+        """云服务器实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -181,6 +213,9 @@ class AgentRunningMode(AbstractModel):
 
     @property
     def Scene(self):
+        """场景类型，支持WINDOWS
+        :rtype: str
+        """
         return self._Scene
 
     @Scene.setter
@@ -189,6 +224,9 @@ class AgentRunningMode(AbstractModel):
 
     @property
     def User(self):
+        """运行Agent的User
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -197,6 +235,9 @@ class AgentRunningMode(AbstractModel):
 
     @property
     def Session(self):
+        """运行Agent的Session
+        :rtype: str
+        """
         return self._Session
 
     @Session.setter
@@ -241,6 +282,9 @@ class AnonymousComputeEnv(AbstractModel):
 
     @property
     def EnvType(self):
+        """计算环境管理类型
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -249,6 +293,9 @@ class AnonymousComputeEnv(AbstractModel):
 
     @property
     def EnvData(self):
+        """计算环境具体参数
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -257,6 +304,9 @@ class AnonymousComputeEnv(AbstractModel):
 
     @property
     def MountDataDisks(self):
+        """数据盘挂载选项
+        :rtype: list of MountDataDisk
+        """
         return self._MountDataDisks
 
     @MountDataDisks.setter
@@ -265,6 +315,9 @@ class AnonymousComputeEnv(AbstractModel):
 
     @property
     def AgentRunningMode(self):
+        """agent运行模式，适用于Windows系统
+        :rtype: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
+        """
         return self._AgentRunningMode
 
     @AgentRunningMode.setter
@@ -327,6 +380,10 @@ class Application(AbstractModel):
 
     @property
     def DeliveryForm(self):
+        """应用程序的交付方式，包括PACKAGE、LOCAL 两种取值，分别指远程存储的软件包、计算环境本地。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeliveryForm
 
     @DeliveryForm.setter
@@ -335,6 +392,10 @@ class Application(AbstractModel):
 
     @property
     def Command(self):
+        """任务执行命令。与Commands不能同时指定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -343,6 +404,10 @@ class Application(AbstractModel):
 
     @property
     def PackagePath(self):
+        """应用程序软件包的远程存储路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackagePath
 
     @PackagePath.setter
@@ -351,6 +416,10 @@ class Application(AbstractModel):
 
     @property
     def Docker(self):
+        """应用使用Docker的相关配置。在使用Docker配置的情况下，DeliveryForm 为 LOCAL 表示直接使用Docker镜像内部的应用软件，通过Docker方式运行；DeliveryForm 为 PACKAGE，表示将远程应用包注入到Docker镜像后，通过Docker方式运行。为避免Docker不同版本的兼容性问题，Docker安装包及相关依赖由Batch统一负责，对于已安装Docker的自定义镜像，请卸载后再使用Docker特性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Docker`
+        """
         return self._Docker
 
     @Docker.setter
@@ -359,6 +428,10 @@ class Application(AbstractModel):
 
     @property
     def Commands(self):
+        """任务执行命令信息。与Command不能同时指定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommandLine
+        """
         return self._Commands
 
     @Commands.setter
@@ -406,6 +479,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -414,6 +490,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """加入计算环境实例列表
+        :rtype: list of Instance
+        """
         return self._Instances
 
     @Instances.setter
@@ -453,6 +532,9 @@ class AttachInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -484,6 +566,9 @@ class Authentication(AbstractModel):
 
     @property
     def Scene(self):
+        """授权场景，例如COS
+        :rtype: str
+        """
         return self._Scene
 
     @Scene.setter
@@ -492,6 +577,9 @@ class Authentication(AbstractModel):
 
     @property
     def SecretId(self):
+        """SecretId
+        :rtype: str
+        """
         return self._SecretId
 
     @SecretId.setter
@@ -500,6 +588,9 @@ class Authentication(AbstractModel):
 
     @property
     def SecretKey(self):
+        """SecretKey
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -536,6 +627,10 @@ class CommandLine(AbstractModel):
 
     @property
     def Command(self):
+        """任务执行命令。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -606,6 +701,9 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境 ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -614,6 +712,10 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def EnvName(self):
+        """计算环境名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -622,6 +724,10 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def EnvDescription(self):
+        """计算环境描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -630,6 +736,9 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def EnvType(self):
+        """计算环境类型，仅支持“MANAGED”类型
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -638,6 +747,9 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def EnvData(self):
+        """计算环境参数
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -646,6 +758,10 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def MountDataDisks(self):
+        """数据盘挂载选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MountDataDisk
+        """
         return self._MountDataDisks
 
     @MountDataDisks.setter
@@ -654,6 +770,10 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def InputMappings(self):
+        """输入映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -662,6 +782,10 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def Authentications(self):
+        """授权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -670,6 +794,10 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def Notifications(self):
+        """通知信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Notification
+        """
         return self._Notifications
 
     @Notifications.setter
@@ -678,6 +806,9 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def DesiredComputeNodeCount(self):
+        """计算节点期望个数
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -686,6 +817,10 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """计算环境标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -756,6 +891,9 @@ class ComputeEnvData(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """CVM实例类型列表
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -820,6 +958,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -828,6 +969,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def EnvName(self):
+        """计算环境名称
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -836,6 +980,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def Placement(self):
+        """位置信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -844,6 +991,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -852,6 +1002,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def ComputeNodeMetrics(self):
+        """计算节点统计指标
+        :rtype: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
+        """
         return self._ComputeNodeMetrics
 
     @ComputeNodeMetrics.setter
@@ -860,6 +1013,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def EnvType(self):
+        """计算环境类型
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -868,6 +1024,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def DesiredComputeNodeCount(self):
+        """计算节点期望个数
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -876,6 +1035,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def ResourceType(self):
+        """计算环境资源类型，当前为CVM和CPM（黑石）
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -884,6 +1046,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def NextAction(self):
+        """下一步动作
+        :rtype: str
+        """
         return self._NextAction
 
     @NextAction.setter
@@ -892,6 +1057,9 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def AttachedComputeNodeCount(self):
+        """用户添加到计算环境中的计算节点个数
+        :rtype: int
+        """
         return self._AttachedComputeNodeCount
 
     @AttachedComputeNodeCount.setter
@@ -900,6 +1068,10 @@ class ComputeEnvView(AbstractModel):
 
     @property
     def Tags(self):
+        """计算环境绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -986,6 +1158,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def ComputeNodeId(self):
+        """计算节点ID
+        :rtype: str
+        """
         return self._ComputeNodeId
 
     @ComputeNodeId.setter
@@ -994,6 +1169,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def ComputeNodeInstanceId(self):
+        """计算节点实例ID，对于CVM场景，即为CVM的InstanceId
+        :rtype: str
+        """
         return self._ComputeNodeInstanceId
 
     @ComputeNodeInstanceId.setter
@@ -1002,6 +1180,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def ComputeNodeState(self):
+        """计算节点状态
+        :rtype: str
+        """
         return self._ComputeNodeState
 
     @ComputeNodeState.setter
@@ -1010,6 +1191,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def Cpu(self):
+        """CPU核数
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -1018,6 +1202,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def Mem(self):
+        """内存容量，单位GiB
+        :rtype: int
+        """
         return self._Mem
 
     @Mem.setter
@@ -1026,6 +1213,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def ResourceCreatedTime(self):
+        """资源创建完成时间
+        :rtype: str
+        """
         return self._ResourceCreatedTime
 
     @ResourceCreatedTime.setter
@@ -1034,6 +1224,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def TaskInstanceNumAvailable(self):
+        """计算节点运行  TaskInstance 可用容量。0表示计算节点忙碌。
+        :rtype: int
+        """
         return self._TaskInstanceNumAvailable
 
     @TaskInstanceNumAvailable.setter
@@ -1042,6 +1235,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def AgentVersion(self):
+        """Batch Agent 版本
+        :rtype: str
+        """
         return self._AgentVersion
 
     @AgentVersion.setter
@@ -1050,6 +1246,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def PrivateIpAddresses(self):
+        """实例内网IP
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -1058,6 +1257,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def PublicIpAddresses(self):
+        """实例公网IP
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -1066,6 +1268,9 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def ResourceType(self):
+        """计算环境资源类型，当前为CVM和CPM（黑石）
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -1074,6 +1279,10 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def ResourceOrigin(self):
+        """计算环境资源来源。<br>BATCH_CREATED：由批量计算创建的实例资源。<br>
+USER_ATTACHED：用户添加到计算环境中的实例资源。
+        :rtype: str
+        """
         return self._ResourceOrigin
 
     @ResourceOrigin.setter
@@ -1136,6 +1345,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def SubmittedCount(self):
+        """已经完成提交的计算节点数量
+        :rtype: int
+        """
         return self._SubmittedCount
 
     @SubmittedCount.setter
@@ -1144,6 +1356,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def CreatingCount(self):
+        """创建中的计算节点数量
+        :rtype: int
+        """
         return self._CreatingCount
 
     @CreatingCount.setter
@@ -1152,6 +1367,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def CreationFailedCount(self):
+        """创建失败的计算节点数量
+        :rtype: int
+        """
         return self._CreationFailedCount
 
     @CreationFailedCount.setter
@@ -1160,6 +1378,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def CreatedCount(self):
+        """完成创建的计算节点数量
+        :rtype: int
+        """
         return self._CreatedCount
 
     @CreatedCount.setter
@@ -1168,6 +1389,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def RunningCount(self):
+        """运行中的计算节点数量
+        :rtype: int
+        """
         return self._RunningCount
 
     @RunningCount.setter
@@ -1176,6 +1400,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def DeletingCount(self):
+        """销毁中的计算节点数量
+        :rtype: int
+        """
         return self._DeletingCount
 
     @DeletingCount.setter
@@ -1184,6 +1411,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def AbnormalCount(self):
+        """异常的计算节点数量
+        :rtype: int
+        """
         return self._AbnormalCount
 
     @AbnormalCount.setter
@@ -1226,6 +1456,9 @@ class CpmVirtualPrivateCloud(AbstractModel):
 
     @property
     def VpcId(self):
+        """黑石私有网络ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1234,6 +1467,9 @@ class CpmVirtualPrivateCloud(AbstractModel):
 
     @property
     def SubnetId(self):
+        """黑石子网ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1274,6 +1510,9 @@ class CreateComputeEnvRequest(AbstractModel):
 
     @property
     def ComputeEnv(self):
+        """计算环境信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.NamedComputeEnv`
+        """
         return self._ComputeEnv
 
     @ComputeEnv.setter
@@ -1282,6 +1521,9 @@ class CreateComputeEnvRequest(AbstractModel):
 
     @property
     def Placement(self):
+        """位置信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -1290,6 +1532,9 @@ class CreateComputeEnvRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """用于保证请求幂等性的字符串。该字符串由用户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -1332,6 +1577,9 @@ class CreateComputeEnvResponse(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1340,6 +1588,9 @@ class CreateComputeEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1372,6 +1623,9 @@ class CreateCpmComputeEnvRequest(AbstractModel):
 
     @property
     def ComputeEnv(self):
+        """计算环境信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.NamedCpmComputeEnv`
+        """
         return self._ComputeEnv
 
     @ComputeEnv.setter
@@ -1380,6 +1634,9 @@ class CreateCpmComputeEnvRequest(AbstractModel):
 
     @property
     def Placement(self):
+        """位置信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -1388,6 +1645,9 @@ class CreateCpmComputeEnvRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """用于保证请求幂等性的字符串。该字符串由用户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -1430,6 +1690,9 @@ class CreateCpmComputeEnvResponse(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1438,6 +1701,9 @@ class CreateCpmComputeEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1473,6 +1739,9 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateName(self):
+        """任务模板名称
+        :rtype: str
+        """
         return self._TaskTemplateName
 
     @TaskTemplateName.setter
@@ -1481,6 +1750,9 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateInfo(self):
+        """任务模板内容，参数要求与任务一致
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Task`
+        """
         return self._TaskTemplateInfo
 
     @TaskTemplateInfo.setter
@@ -1489,6 +1761,9 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateDescription(self):
+        """任务模板描述
+        :rtype: str
+        """
         return self._TaskTemplateDescription
 
     @TaskTemplateDescription.setter
@@ -1497,6 +1772,9 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表。通过指定该参数可以支持绑定标签到任务模板。每个任务模板最多绑定10个标签。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1543,6 +1821,9 @@ class CreateTaskTemplateResponse(AbstractModel):
 
     @property
     def TaskTemplateId(self):
+        """任务模板ID
+        :rtype: str
+        """
         return self._TaskTemplateId
 
     @TaskTemplateId.setter
@@ -1551,6 +1832,9 @@ class CreateTaskTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1658,6 +1942,9 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
+        """数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -1666,6 +1953,39 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskType(self):
+        """数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br />
+<li>
+  LOCAL_BASIC：本地硬盘<br />
+  <li>
+    LOCAL_SSD：本地SSD硬盘<br />
+    <li>
+      LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br />
+      <li>
+        LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br />
+        <li>
+          CLOUD_BASIC：普通云硬盘<br />
+          <li>
+            CLOUD_PREMIUM：高性能云硬盘<br />
+            <li>
+              CLOUD_SSD：SSD云硬盘<br />
+              <li>
+                CLOUD_HSSD：增强型SSD云硬盘<br />
+                <li>
+                  CLOUD_TSSD：极速型SSD云硬盘<br />
+                  <li>
+                    CLOUD_BSSD：通用型SSD云硬盘<br /><br />默认取值：LOCAL_BASIC。<br /><br />该参数对`ResizeInstanceDisk`接口无效。
+                  </li>
+                </li>
+              </li>
+            </li>
+          </li>
+        </li>
+      </li>
+    </li>
+  </li>
+</li>
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -1674,6 +1994,10 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskId(self):
+        """数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID，暂时不支持该参数。
+该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -1682,6 +2006,16 @@ class DataDisk(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
+        """数据盘是否随子机销毁。取值范围：
+<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
+<li>
+  FALSE：子机销毁时，保留数据盘<br />
+  默认取值：TRUE<br />
+  该参数目前仅用于 `RunInstances` 接口。
+</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -1690,6 +2024,10 @@ class DataDisk(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -1698,6 +2036,16 @@ class DataDisk(AbstractModel):
 
     @property
     def Encrypt(self):
+        """数据盘是加密。取值范围：
+<li>true：加密</li>
+<li>
+  false：不加密<br />
+  默认取值：false<br />
+  该参数目前仅用于 `RunInstances` 接口。
+</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -1706,6 +2054,12 @@ class DataDisk(AbstractModel):
 
     @property
     def KmsKeyId(self):
+        """自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
+
+该参数目前仅用于 `RunInstances` 接口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -1714,6 +2068,10 @@ class DataDisk(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
+        """云硬盘性能，单位：MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -1722,6 +2080,10 @@ class DataDisk(AbstractModel):
 
     @property
     def CdcId(self):
+        """所属的独享集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -1730,6 +2092,12 @@ class DataDisk(AbstractModel):
 
     @property
     def BurstPerformance(self):
+        """突发性能
+
+ <b>注：内测中。</b>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._BurstPerformance
 
     @BurstPerformance.setter
@@ -1772,6 +2140,9 @@ class DeleteComputeEnvRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1805,6 +2176,9 @@ class DeleteComputeEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1830,6 +2204,9 @@ class DeleteJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1863,6 +2240,9 @@ class DeleteJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1888,6 +2268,9 @@ class DeleteTaskTemplatesRequest(AbstractModel):
 
     @property
     def TaskTemplateIds(self):
+        """用于删除任务模板信息
+        :rtype: list of str
+        """
         return self._TaskTemplateIds
 
     @TaskTemplateIds.setter
@@ -1921,6 +2304,9 @@ class DeleteTaskTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1949,6 +2335,9 @@ class Dependence(AbstractModel):
 
     @property
     def StartTask(self):
+        """依赖关系的起点任务名称
+        :rtype: str
+        """
         return self._StartTask
 
     @StartTask.setter
@@ -1957,6 +2346,9 @@ class Dependence(AbstractModel):
 
     @property
     def EndTask(self):
+        """依赖关系的终点任务名称
+        :rtype: str
+        """
         return self._EndTask
 
     @EndTask.setter
@@ -1993,6 +2385,11 @@ class DescribeAvailableCvmInstanceTypesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2034,6 +2431,9 @@ class DescribeAvailableCvmInstanceTypesResponse(AbstractModel):
 
     @property
     def InstanceTypeConfigSet(self):
+        """机型配置数组
+        :rtype: list of InstanceTypeConfig
+        """
         return self._InstanceTypeConfigSet
 
     @InstanceTypeConfigSet.setter
@@ -2042,6 +2442,9 @@ class DescribeAvailableCvmInstanceTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2083,6 +2486,9 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2091,6 +2497,9 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2099,6 +2508,9 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2107,6 +2519,10 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+<li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Filter`
+        """
         return self._Filters
 
     @Filters.setter
@@ -2151,6 +2567,9 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
 
     @property
     def ActivitySet(self):
+        """计算环境中的活动列表
+        :rtype: list of Activity
+        """
         return self._ActivitySet
 
     @ActivitySet.setter
@@ -2159,6 +2578,9 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """活动数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2167,6 +2589,9 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2199,6 +2624,9 @@ class DescribeComputeEnvCreateInfoRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2267,6 +2695,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境 ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2275,6 +2706,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def EnvName(self):
+        """计算环境名称
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -2283,6 +2717,10 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def EnvDescription(self):
+        """计算环境描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -2291,6 +2729,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def EnvType(self):
+        """计算环境类型，仅支持“MANAGED”类型
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -2299,6 +2740,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def EnvData(self):
+        """计算环境参数
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -2307,6 +2751,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def MountDataDisks(self):
+        """数据盘挂载选项
+        :rtype: list of MountDataDisk
+        """
         return self._MountDataDisks
 
     @MountDataDisks.setter
@@ -2315,6 +2762,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def InputMappings(self):
+        """输入映射
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -2323,6 +2773,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def Authentications(self):
+        """授权信息
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -2331,6 +2784,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def Notifications(self):
+        """通知信息
+        :rtype: list of Notification
+        """
         return self._Notifications
 
     @Notifications.setter
@@ -2339,6 +2795,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def DesiredComputeNodeCount(self):
+        """计算节点期望个数
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -2347,6 +2806,10 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """计算环境绑定的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2355,6 +2818,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2431,6 +2897,9 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     @property
     def EnvIds(self):
+        """计算环境ID列表，与Filters参数不能同时指定。
+        :rtype: list of str
+        """
         return self._EnvIds
 
     @EnvIds.setter
@@ -2439,6 +2908,13 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
+<li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
+与EnvIds参数不能同时指定。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2447,6 +2923,9 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2455,6 +2934,9 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2502,6 +2984,9 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """计算环境数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2510,6 +2995,9 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
 
     @property
     def ComputeEnvCreateInfoSet(self):
+        """计算环境创建信息列表
+        :rtype: list of ComputeEnvCreateInfo
+        """
         return self._ComputeEnvCreateInfoSet
 
     @ComputeEnvCreateInfoSet.setter
@@ -2518,6 +3006,9 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2550,6 +3041,9 @@ class DescribeComputeEnvRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2620,6 +3114,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2628,6 +3125,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def EnvName(self):
+        """计算环境名称
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -2636,6 +3136,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def Placement(self):
+        """位置信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -2644,6 +3147,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """计算环境创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2652,6 +3158,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def ComputeNodeSet(self):
+        """计算节点列表信息
+        :rtype: list of ComputeNode
+        """
         return self._ComputeNodeSet
 
     @ComputeNodeSet.setter
@@ -2660,6 +3169,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def ComputeNodeMetrics(self):
+        """计算节点统计指标
+        :rtype: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
+        """
         return self._ComputeNodeMetrics
 
     @ComputeNodeMetrics.setter
@@ -2668,6 +3180,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def DesiredComputeNodeCount(self):
+        """计算节点期望个数
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -2676,6 +3191,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def EnvType(self):
+        """计算环境类型
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -2684,6 +3202,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def ResourceType(self):
+        """计算环境资源类型，当前为CVM和CPM（黑石）
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -2692,6 +3213,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def NextAction(self):
+        """下一步动作
+        :rtype: str
+        """
         return self._NextAction
 
     @NextAction.setter
@@ -2700,6 +3224,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def AttachedComputeNodeCount(self):
+        """用户添加到计算环境中的计算节点个数
+        :rtype: int
+        """
         return self._AttachedComputeNodeCount
 
     @AttachedComputeNodeCount.setter
@@ -2708,6 +3235,10 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """计算环境绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2716,6 +3247,9 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2784,6 +3318,9 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     @property
     def EnvIds(self):
+        """计算环境ID列表，与Filters参数不能同时指定。
+        :rtype: list of str
+        """
         return self._EnvIds
 
     @EnvIds.setter
@@ -2792,6 +3329,17 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
+<li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
+<li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
+与EnvIds参数不能同时指定。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2800,6 +3348,9 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2808,6 +3359,9 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2855,6 +3409,9 @@ class DescribeComputeEnvsResponse(AbstractModel):
 
     @property
     def ComputeEnvSet(self):
+        """计算环境列表
+        :rtype: list of ComputeEnvView
+        """
         return self._ComputeEnvSet
 
     @ComputeEnvSet.setter
@@ -2863,6 +3420,9 @@ class DescribeComputeEnvsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """计算环境数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2871,6 +3431,9 @@ class DescribeComputeEnvsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2903,6 +3466,9 @@ class DescribeCpmOsInfoRequest(AbstractModel):
 
     @property
     def DeviceClassCode(self):
+        """黑石设备类型代号。 可以从[DescribeDeviceClass](https://cloud.tencent.com/document/api/386/32911)查询设备类型列表。
+        :rtype: str
+        """
         return self._DeviceClassCode
 
     @DeviceClassCode.setter
@@ -2939,6 +3505,9 @@ class DescribeCpmOsInfoResponse(AbstractModel):
 
     @property
     def OsInfoSet(self):
+        """操作系统信息列表。
+        :rtype: list of OsInfo
+        """
         return self._OsInfoSet
 
     @OsInfoSet.setter
@@ -2947,6 +3516,9 @@ class DescribeCpmOsInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2982,6 +3554,13 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+<li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。</li>
+<li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 ( POSTPAID_BY_HOUR：表示后付费，即按量计费机型 | SPOTPAID：表示竞价付费机型。 )  </li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3023,6 +3602,9 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
 
     @property
     def InstanceTypeQuotaSet(self):
+        """可用区机型配置列表。
+        :rtype: list of InstanceTypeQuotaItem
+        """
         return self._InstanceTypeQuotaSet
 
     @InstanceTypeQuotaSet.setter
@@ -3031,6 +3613,9 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3071,6 +3656,9 @@ class DescribeInstanceCategoriesResponse(AbstractModel):
 
     @property
     def InstanceCategorySet(self):
+        """CVM实例分类列表
+        :rtype: list of InstanceCategoryItem
+        """
         return self._InstanceCategorySet
 
     @InstanceCategorySet.setter
@@ -3079,6 +3667,9 @@ class DescribeInstanceCategoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3110,6 +3701,9 @@ class DescribeJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业标识
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3187,6 +3781,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3195,6 +3792,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def JobName(self):
+        """作业名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -3203,6 +3803,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区信息
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -3211,6 +3814,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def Priority(self):
+        """作业优先级
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -3219,6 +3825,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def JobState(self):
+        """作业状态
+        :rtype: str
+        """
         return self._JobState
 
     @JobState.setter
@@ -3227,6 +3836,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3235,6 +3847,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3243,6 +3858,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def TaskSet(self):
+        """任务视图信息
+        :rtype: list of TaskView
+        """
         return self._TaskSet
 
     @TaskSet.setter
@@ -3251,6 +3869,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def DependenceSet(self):
+        """任务间依赖信息
+        :rtype: list of Dependence
+        """
         return self._DependenceSet
 
     @DependenceSet.setter
@@ -3259,6 +3880,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def TaskMetrics(self):
+        """任务统计指标
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
+        """
         return self._TaskMetrics
 
     @TaskMetrics.setter
@@ -3267,6 +3891,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def TaskInstanceMetrics(self):
+        """任务实例统计指标
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
+        """
         return self._TaskInstanceMetrics
 
     @TaskInstanceMetrics.setter
@@ -3275,6 +3902,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def StateReason(self):
+        """作业失败原因
+        :rtype: str
+        """
         return self._StateReason
 
     @StateReason.setter
@@ -3283,6 +3913,10 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """作业绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3291,6 +3925,10 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def NextAction(self):
+        """下一步动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextAction
 
     @NextAction.setter
@@ -3299,6 +3937,9 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3357,6 +3998,9 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3412,6 +4056,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3420,6 +4067,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def JobName(self):
+        """作业名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -3428,6 +4078,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def JobDescription(self):
+        """作业描述
+        :rtype: str
+        """
         return self._JobDescription
 
     @JobDescription.setter
@@ -3436,6 +4089,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def Priority(self):
+        """作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -3444,6 +4100,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务信息
+        :rtype: list of Task
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -3452,6 +4111,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def Dependences(self):
+        """依赖信息
+        :rtype: list of Dependence
+        """
         return self._Dependences
 
     @Dependences.setter
@@ -3460,6 +4122,10 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """作业绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3468,6 +4134,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3532,6 +4201,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
+        """作业ID列表，与Filters参数不能同时指定。
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -3540,6 +4212,17 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+<li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
+<li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
+<li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
+与JobIds参数不能同时指定。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3548,6 +4231,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3556,6 +4242,9 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3603,6 +4292,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def JobSet(self):
+        """作业列表
+        :rtype: list of JobView
+        """
         return self._JobSet
 
     @JobSet.setter
@@ -3611,6 +4303,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的作业数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3619,6 +4314,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3663,6 +4361,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3671,6 +4372,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -3679,6 +4383,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def TaskInstanceIndexes(self):
+        """任务实例集合
+        :rtype: list of int non-negative
+        """
         return self._TaskInstanceIndexes
 
     @TaskInstanceIndexes.setter
@@ -3687,6 +4394,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """起始任务实例
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3695,6 +4405,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """最大任务实例数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3738,6 +4451,9 @@ class DescribeTaskLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务实例总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3746,6 +4462,9 @@ class DescribeTaskLogsResponse(AbstractModel):
 
     @property
     def TaskInstanceLogSet(self):
+        """任务实例日志详情集合
+        :rtype: list of TaskInstanceLog
+        """
         return self._TaskInstanceLogSet
 
     @TaskInstanceLogSet.setter
@@ -3754,6 +4473,9 @@ class DescribeTaskLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3799,6 +4521,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3807,6 +4532,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -3815,6 +4543,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3823,6 +4554,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量。默认取值100，最大取值1000。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3831,6 +4565,10 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件，详情如下：
+<li> task-instance-type - String - 是否必填： 否 - 按照任务实例状态进行过滤（SUBMITTED：已提交；PENDING：等待中；RUNNABLE：可运行；STARTING：启动中；RUNNING：运行中；SUCCEED：成功；FAILED：失败；FAILED_INTERRUPTED：失败后保留实例）。</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3897,6 +4635,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3905,6 +4646,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -3913,6 +4657,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskState(self):
+        """任务状态
+        :rtype: str
+        """
         return self._TaskState
 
     @TaskState.setter
@@ -3921,6 +4668,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3929,6 +4679,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3937,6 +4690,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskInstanceTotalCount(self):
+        """任务实例总数
+        :rtype: int
+        """
         return self._TaskInstanceTotalCount
 
     @TaskInstanceTotalCount.setter
@@ -3945,6 +4701,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskInstanceSet(self):
+        """任务实例信息
+        :rtype: list of TaskInstanceView
+        """
         return self._TaskInstanceSet
 
     @TaskInstanceSet.setter
@@ -3953,6 +4712,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskInstanceMetrics(self):
+        """任务实例统计指标
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
+        """
         return self._TaskInstanceMetrics
 
     @TaskInstanceMetrics.setter
@@ -3961,6 +4723,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4015,6 +4780,9 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     @property
     def TaskTemplateIds(self):
+        """任务模板ID列表，与Filters参数不能同时指定。
+        :rtype: list of str
+        """
         return self._TaskTemplateIds
 
     @TaskTemplateIds.setter
@@ -4023,6 +4791,14 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+<li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
+与TaskTemplateIds参数不能同时指定。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4031,6 +4807,9 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4039,6 +4818,9 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4086,6 +4868,9 @@ class DescribeTaskTemplatesResponse(AbstractModel):
 
     @property
     def TaskTemplateSet(self):
+        """任务模板列表
+        :rtype: list of TaskTemplateView
+        """
         return self._TaskTemplateSet
 
     @TaskTemplateSet.setter
@@ -4094,6 +4879,9 @@ class DescribeTaskTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务模板数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4102,6 +4890,9 @@ class DescribeTaskTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4137,6 +4928,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -4145,6 +4939,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4179,6 +4976,9 @@ class DetachInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4223,6 +5023,9 @@ class Docker(AbstractModel):
 
     @property
     def User(self):
+        """Docker Hub 用户名或 Tencent Registry 用户名
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -4231,6 +5034,9 @@ class Docker(AbstractModel):
 
     @property
     def Password(self):
+        """Docker Hub 密码或 Tencent Registry 密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -4239,6 +5045,9 @@ class Docker(AbstractModel):
 
     @property
     def Image(self):
+        """Docker Hub填写“[user/repo]:[tag]”，Tencent Registry填写“ccr.ccs.tencentyun.com/[namespace/repo]:[tag]”
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -4247,6 +5056,9 @@ class Docker(AbstractModel):
 
     @property
     def Server(self):
+        """Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
+        :rtype: str
+        """
         return self._Server
 
     @Server.setter
@@ -4255,6 +5067,9 @@ class Docker(AbstractModel):
 
     @property
     def MaxRetryCount(self):
+        """拉取Docker镜像重试次数。默认值：0。
+        :rtype: int
+        """
         return self._MaxRetryCount
 
     @MaxRetryCount.setter
@@ -4263,6 +5078,9 @@ class Docker(AbstractModel):
 
     @property
     def DelayOnRetry(self):
+        """拉取Docker镜像失败时延迟时间。单位：秒。
+        :rtype: int
+        """
         return self._DelayOnRetry
 
     @DelayOnRetry.setter
@@ -4271,6 +5089,10 @@ class Docker(AbstractModel):
 
     @property
     def DockerRunOption(self):
+        """Docker命令运行参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DockerRunOption
 
     @DockerRunOption.setter
@@ -4316,6 +5138,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def SecurityService(self):
+        """开启云安全服务。若不指定该参数，则默认开启云安全服务。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RunSecurityServiceEnabled`
+        """
         return self._SecurityService
 
     @SecurityService.setter
@@ -4324,6 +5149,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def MonitorService(self):
+        """开启云监控服务。若不指定该参数，则默认开启云监控服务。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RunMonitorServiceEnabled`
+        """
         return self._MonitorService
 
     @MonitorService.setter
@@ -4332,6 +5160,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def AutomationService(self):
+        """开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，则公共镜像默认开启云自动化助手服务，其他镜像默认不开启云自动化助手服务。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RunAutomationServiceEnabled`
+        """
         return self._AutomationService
 
     @AutomationService.setter
@@ -4418,6 +5249,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceType(self):
+        """CVM实例类型，不能与InstanceTypes和InstanceTypeOptions同时出现。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -4426,6 +5260,9 @@ class EnvData(AbstractModel):
 
     @property
     def ImageId(self):
+        """CVM镜像ID
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -4434,6 +5271,9 @@ class EnvData(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """实例系统盘配置信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -4442,6 +5282,9 @@ class EnvData(AbstractModel):
 
     @property
     def DataDisks(self):
+        """实例数据盘配置信息
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -4450,6 +5293,9 @@ class EnvData(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
+        """私有网络相关信息配置，与Zones和VirtualPrivateClouds不能同时指定。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.VirtualPrivateCloud`
+        """
         return self._VirtualPrivateCloud
 
     @VirtualPrivateCloud.setter
@@ -4458,6 +5304,9 @@ class EnvData(AbstractModel):
 
     @property
     def InternetAccessible(self):
+        """公网带宽相关信息设置
+        :rtype: :class:`tencentcloud.batch.v20170312.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -4466,6 +5315,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceName(self):
+        """CVM实例显示名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -4474,6 +5326,9 @@ class EnvData(AbstractModel):
 
     @property
     def LoginSettings(self):
+        """实例登录设置
+        :rtype: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -4482,6 +5337,9 @@ class EnvData(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """实例所属安全组
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -4490,6 +5348,9 @@ class EnvData(AbstractModel):
 
     @property
     def EnhancedService(self):
+        """增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -4498,6 +5359,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """CVM实例计费类型<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -4506,6 +5370,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceMarketOptions(self):
+        """实例的市场相关选项，如竞价实例相关参数
+        :rtype: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -4514,6 +5381,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """CVM实例类型列表，不能与InstanceType和InstanceTypeOptions同时出现。指定该字段后，计算节点按照机型先后顺序依次尝试创建，直到实例创建成功，结束遍历过程。最多支持10个机型。
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -4522,6 +5392,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceTypeOptions(self):
+        """CVM实例机型配置。不能与InstanceType和InstanceTypes同时出现。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.InstanceTypeOptions`
+        """
         return self._InstanceTypeOptions
 
     @InstanceTypeOptions.setter
@@ -4530,6 +5403,9 @@ class EnvData(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区列表，支持跨可用区创建CVM实例。与VirtualPrivateCloud和VirtualPrivateClouds不能同时指定。
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -4538,6 +5414,9 @@ class EnvData(AbstractModel):
 
     @property
     def VirtualPrivateClouds(self):
+        """私有网络列表，支持跨私有网络创建CVM实例。与VirtualPrivateCloud和Zones不能同时指定。
+        :rtype: list of VirtualPrivateCloud
+        """
         return self._VirtualPrivateClouds
 
     @VirtualPrivateClouds.setter
@@ -4670,6 +5549,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def Zones(self):
+        """黑石可用区名称列表。如ap-guangzhou-bls-1, 可通过黑石接口[DescribeRegions]( https://cloud.tencent.com/document/api/386/33564)接口获取。不是Batch可用区名称。目前仅支持一个可用区名称。
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -4678,6 +5560,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """购买的机型ID。通过黑石接口[DescribeDeviceClass]( https://cloud.tencent.com/document/api/386/32911)查询设备型号，获取机型信息。
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -4686,6 +5571,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """购买时长单位，取值：m(月)。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -4694,6 +5582,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """购买时长。
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -4702,6 +5593,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def RaidId(self):
+        """RAID类型ID。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取RAID信息。
+        :rtype: int
+        """
         return self._RaidId
 
     @RaidId.setter
@@ -4710,6 +5604,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def OsTypeId(self):
+        """部署服务器的操作系统ID。通过批量计算接口DescribeCpmOsInfo查询操作系统信息。
+        :rtype: int
+        """
         return self._OsTypeId
 
     @OsTypeId.setter
@@ -4718,6 +5615,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def VirtualPrivateClouds(self):
+        """黑石VPC列表，目前仅支持一个VPC。
+        :rtype: list of CpmVirtualPrivateCloud
+        """
         return self._VirtualPrivateClouds
 
     @VirtualPrivateClouds.setter
@@ -4726,6 +5626,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def NeedSecurityAgent(self):
+        """是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0。
+        :rtype: int
+        """
         return self._NeedSecurityAgent
 
     @NeedSecurityAgent.setter
@@ -4734,6 +5637,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def NeedMonitorAgent(self):
+        """是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0。
+        :rtype: int
+        """
         return self._NeedMonitorAgent
 
     @NeedMonitorAgent.setter
@@ -4742,6 +5648,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -4750,6 +5659,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def IsZoning(self):
+        """数据盘是否格式化，取值：1(格式化) 0(不格式化)，默认取值为1。
+        :rtype: int
+        """
         return self._IsZoning
 
     @IsZoning.setter
@@ -4758,6 +5670,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def FileSystem(self):
+        """指定数据盘的文件系统格式，当前支持 ext4和xfs选项， 默认为ext4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效。
+        :rtype: str
+        """
         return self._FileSystem
 
     @FileSystem.setter
@@ -4766,6 +5681,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def Password(self):
+        """设置Linux root或Windows Administrator的密码。若不设置此参数，默认情况下会随机生成密码，并以站内信方式通知到用户。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -4774,6 +5692,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def ApplyEip(self):
+        """是否分配弹性公网IP，取值：1(分配) 0(不分配)，默认取值0。
+        :rtype: int
+        """
         return self._ApplyEip
 
     @ApplyEip.setter
@@ -4782,6 +5703,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def EipPayMode(self):
+        """弹性公网IP计费模式，取值：flow(按流量计费) bandwidth(按带宽计费)，默认取值flow。
+        :rtype: str
+        """
         return self._EipPayMode
 
     @EipPayMode.setter
@@ -4790,6 +5714,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def EipBandwidth(self):
+        """弹性公网IP带宽限制，单位Mb。
+        :rtype: int
+        """
         return self._EipBandwidth
 
     @EipBandwidth.setter
@@ -4798,6 +5725,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def ImageId(self):
+        """自定义镜像ID，取值生效时用自定义镜像部署物理机。
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -4806,6 +5736,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def SysRootSpace(self):
+        """系统盘根分区大小，单位为G，默认取值10G。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取根分区信息。
+        :rtype: int
+        """
         return self._SysRootSpace
 
     @SysRootSpace.setter
@@ -4814,6 +5747,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def SysDataSpace(self):
+        """/data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）。
+        :rtype: int
+        """
         return self._SysDataSpace
 
     @SysDataSpace.setter
@@ -4822,6 +5758,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def HyperThreading(self):
+        """是否开启超线程，取值：1(开启) 0(关闭)，默认取值1。
+        :rtype: int
+        """
         return self._HyperThreading
 
     @HyperThreading.setter
@@ -4830,6 +5769,9 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def LanIps(self):
+        """指定的内网IP列表，不指定时自动分配。
+        :rtype: list of str
+        """
         return self._LanIps
 
     @LanIps.setter
@@ -4891,6 +5833,9 @@ class EnvVar(AbstractModel):
 
     @property
     def Name(self):
+        """环境变量名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4899,6 +5844,9 @@ class EnvVar(AbstractModel):
 
     @property
     def Value(self):
+        """环境变量取值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -4936,6 +5884,9 @@ class EventConfig(AbstractModel):
 
     @property
     def EventName(self):
+        """事件类型，包括：<br/><li>“JOB_RUNNING”：作业运行，适用于"SubmitJob"。</li><li>“JOB_SUCCEED”：作业成功，适用于"SubmitJob"。</li><li>“JOB_FAILED”：作业失败，适用于"SubmitJob"。</li><li>“JOB_FAILED_INTERRUPTED”：作业失败，保留实例，适用于"SubmitJob"。</li><li>“TASK_RUNNING”：任务运行，适用于"SubmitJob"。</li><li>“TASK_SUCCEED”：任务成功，适用于"SubmitJob"。</li><li>“TASK_FAILED”：任务失败，适用于"SubmitJob"。</li><li>“TASK_FAILED_INTERRUPTED”：任务失败，保留实例，适用于"SubmitJob"。</li><li>“TASK_INSTANCE_RUNNING”：任务实例运行，适用于"SubmitJob"。</li><li>“TASK_INSTANCE_SUCCEED”：任务实例成功，适用于"SubmitJob"。</li><li>“TASK_INSTANCE_FAILED”：任务实例失败，适用于"SubmitJob"。</li><li>“TASK_INSTANCE_FAILED_INTERRUPTED”：任务实例失败，保留实例，适用于"SubmitJob"。</li><li>“COMPUTE_ENV_CREATED”：计算环境已创建，适用于"CreateComputeEnv"。</li><li>“COMPUTE_ENV_DELETED”：计算环境已删除，适用于"CreateComputeEnv"。</li><li>“COMPUTE_NODE_CREATED”：计算节点已创建，适用于"CreateComputeEnv"和"SubmitJob"。</li><li>“COMPUTE_NODE_CREATION_FAILED”：计算节点创建失败，适用于"CreateComputeEnv"和"SubmitJob"。</li><li>“COMPUTE_NODE_RUNNING”：计算节点运行中，适用于"CreateComputeEnv"和"SubmitJob"。</li><li>“COMPUTE_NODE_ABNORMAL”：计算节点异常，适用于"CreateComputeEnv"和"SubmitJob"。</li><li>“COMPUTE_NODE_DELETING”：计算节点已删除，适用于"CreateComputeEnv"和"SubmitJob"。</li>
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -4944,6 +5895,9 @@ class EventConfig(AbstractModel):
 
     @property
     def EventVars(self):
+        """自定义键值对
+        :rtype: list of EventVar
+        """
         return self._EventVars
 
     @EventVars.setter
@@ -4986,6 +5940,9 @@ class EventVar(AbstractModel):
 
     @property
     def Name(self):
+        """自定义键
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4994,6 +5951,9 @@ class EventVar(AbstractModel):
 
     @property
     def Value(self):
+        """自定义值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -5037,6 +5997,10 @@ class Externals(AbstractModel):
 
     @property
     def ReleaseAddress(self):
+        """释放地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ReleaseAddress
 
     @ReleaseAddress.setter
@@ -5045,6 +6009,10 @@ class Externals(AbstractModel):
 
     @property
     def UnsupportNetworks(self):
+        """不支持的网络类型，取值范围：<br><li>BASIC：基础网络<br><li>VPC1.0：私有网络VPC1.0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._UnsupportNetworks
 
     @UnsupportNetworks.setter
@@ -5053,6 +6021,10 @@ class Externals(AbstractModel):
 
     @property
     def StorageBlockAttr(self):
+        """HDD本地存储属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.StorageBlock`
+        """
         return self._StorageBlockAttr
 
     @StorageBlockAttr.setter
@@ -5104,6 +6076,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5112,6 +6087,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -5152,6 +6130,9 @@ class InputMapping(AbstractModel):
 
     @property
     def SourcePath(self):
+        """源端路径
+        :rtype: str
+        """
         return self._SourcePath
 
     @SourcePath.setter
@@ -5160,6 +6141,9 @@ class InputMapping(AbstractModel):
 
     @property
     def DestinationPath(self):
+        """目的端路径
+        :rtype: str
+        """
         return self._DestinationPath
 
     @DestinationPath.setter
@@ -5168,6 +6152,9 @@ class InputMapping(AbstractModel):
 
     @property
     def MountOptionParameter(self):
+        """挂载配置项参数
+        :rtype: str
+        """
         return self._MountOptionParameter
 
     @MountOptionParameter.setter
@@ -5209,6 +6196,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5217,6 +6207,9 @@ class Instance(AbstractModel):
 
     @property
     def ImageId(self):
+        """镜像ID
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -5225,6 +6218,9 @@ class Instance(AbstractModel):
 
     @property
     def LoginSettings(self):
+        """实例登录设置。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -5265,6 +6261,9 @@ class InstanceCategoryItem(AbstractModel):
 
     @property
     def InstanceCategory(self):
+        """实例类型名
+        :rtype: str
+        """
         return self._InstanceCategory
 
     @InstanceCategory.setter
@@ -5273,6 +6272,9 @@ class InstanceCategoryItem(AbstractModel):
 
     @property
     def InstanceFamilySet(self):
+        """实例族列表
+        :rtype: list of str
+        """
         return self._InstanceFamilySet
 
     @InstanceFamilySet.setter
@@ -5312,6 +6314,10 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     @property
     def SpotOptions(self):
+        """竞价相关选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
+        """
         return self._SpotOptions
 
     @SpotOptions.setter
@@ -5320,6 +6326,10 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     @property
     def MarketType(self):
+        """市场选项类型，当前只支持取值：spot
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MarketType
 
     @MarketType.setter
@@ -5368,6 +6378,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def Mem(self):
+        """内存容量，单位：`GB`。
+        :rtype: int
+        """
         return self._Mem
 
     @Mem.setter
@@ -5376,6 +6389,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def Cpu(self):
+        """CPU核数，单位：核。
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -5384,6 +6400,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例机型。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -5392,6 +6411,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5400,6 +6422,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def InstanceFamily(self):
+        """实例机型系列。
+        :rtype: str
+        """
         return self._InstanceFamily
 
     @InstanceFamily.setter
@@ -5443,6 +6468,9 @@ class InstanceTypeOptions(AbstractModel):
 
     @property
     def CPU(self):
+        """CPU核数。
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -5451,6 +6479,9 @@ class InstanceTypeOptions(AbstractModel):
 
     @property
     def Memory(self):
+        """内存值，单位GB。
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -5459,6 +6490,9 @@ class InstanceTypeOptions(AbstractModel):
 
     @property
     def InstanceCategories(self):
+        """实例机型类别，可选参数：“ALL”、“GENERAL”、“GENERAL_2”、“GENERAL_3”、“COMPUTE”、“COMPUTE_2”和“COMPUTE_3”。默认值“ALL”。
+        :rtype: list of str
+        """
         return self._InstanceCategories
 
     @InstanceCategories.setter
@@ -5567,6 +6601,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5575,6 +6612,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例机型。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -5583,6 +6623,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li>`SPOTPAID`：表示竞价实例付费。
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -5591,6 +6634,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def NetworkCard(self):
+        """网卡类型，例如：25代表25G网卡
+        :rtype: int
+        """
         return self._NetworkCard
 
     @NetworkCard.setter
@@ -5599,6 +6645,10 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Externals(self):
+        """扩展属性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Externals`
+        """
         return self._Externals
 
     @Externals.setter
@@ -5607,6 +6657,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Cpu(self):
+        """实例的CPU核数，单位：核。
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -5615,6 +6668,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Memory(self):
+        """实例内存容量，单位：`GB`。
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -5623,6 +6679,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def InstanceFamily(self):
+        """实例机型系列。
+        :rtype: str
+        """
         return self._InstanceFamily
 
     @InstanceFamily.setter
@@ -5631,6 +6690,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def TypeName(self):
+        """机型名称。
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -5639,6 +6701,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def LocalDiskTypeList(self):
+        """本地磁盘规格列表。当该参数返回为空值时，表示当前情况下无法创建本地盘。
+        :rtype: list of LocalDiskType
+        """
         return self._LocalDiskTypeList
 
     @LocalDiskTypeList.setter
@@ -5647,6 +6712,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Status(self):
+        """实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li>SOLD_OUT：表示实例已售罄。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5655,6 +6723,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Price(self):
+        """实例的售卖价格。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
+        """
         return self._Price
 
     @Price.setter
@@ -5663,6 +6734,10 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def SoldOutReason(self):
+        """售罄原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SoldOutReason
 
     @SoldOutReason.setter
@@ -5671,6 +6746,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def InstanceBandwidth(self):
+        """内网带宽，单位Gbps。
+        :rtype: float
+        """
         return self._InstanceBandwidth
 
     @InstanceBandwidth.setter
@@ -5679,6 +6757,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def InstancePps(self):
+        """网络收发包能力，单位万PPS。
+        :rtype: int
+        """
         return self._InstancePps
 
     @InstancePps.setter
@@ -5687,6 +6768,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def StorageBlockAmount(self):
+        """本地存储块数量。
+        :rtype: int
+        """
         return self._StorageBlockAmount
 
     @StorageBlockAmount.setter
@@ -5695,6 +6779,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def CpuType(self):
+        """处理器型号。
+        :rtype: str
+        """
         return self._CpuType
 
     @CpuType.setter
@@ -5703,6 +6790,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Gpu(self):
+        """实例的GPU数量。
+        :rtype: int
+        """
         return self._Gpu
 
     @Gpu.setter
@@ -5711,6 +6801,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Fpga(self):
+        """实例的FPGA数量。
+        :rtype: int
+        """
         return self._Fpga
 
     @Fpga.setter
@@ -5719,6 +6812,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Remark(self):
+        """实例备注信息。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -5727,6 +6823,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def GpuCount(self):
+        """实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。
+        :rtype: float
+        """
         return self._GpuCount
 
     @GpuCount.setter
@@ -5735,6 +6834,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Frequency(self):
+        """实例的CPU主频信息
+        :rtype: str
+        """
         return self._Frequency
 
     @Frequency.setter
@@ -5743,6 +6845,14 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def StatusCategory(self):
+        """描述库存情况。取值范围：
+<li> EnoughStock：表示对应库存非常充足</li> 
+<li>NormalStock：表示对应库存供应有保障</li>
+<li> UnderStock：表示对应库存即将售罄</li> 
+<li>WithoutStock：表示对应库存已经售罄</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusCategory
 
     @StatusCategory.setter
@@ -5816,6 +6926,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetChargeType(self):
+        """网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算</li><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li><li>BANDWIDTH_PACKAGE：带宽包用户</li>默认取值：非带宽包用户默认与子机付费类型保持一致，比如子机付费类型为预付费，网络计费类型默认为预付费；子机付费类型为后付费，网络计费类型默认为后付费。
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -5824,6 +6937,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](https://cloud.tencent.com/document/product/213/12523)。
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -5832,6 +6948,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def PublicIpAssigned(self):
+        """是否分配公网IP。取值范围：<br><li>true：表示分配公网IP</li><li>false：表示不分配公网IP</li><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。该参数仅在RunInstances接口中作为入参使用。
+        :rtype: bool
+        """
         return self._PublicIpAssigned
 
     @PublicIpAssigned.setter
@@ -5840,6 +6959,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -5958,6 +7080,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPrice(self):
+        """后续合计费用的原价，后付费模式使用，单位：元。<br><li>如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -5966,6 +7092,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def ChargeUnit(self):
+        """后续计价单元，后付费模式使用，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：</li><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeUnit
 
     @ChargeUnit.setter
@@ -5974,6 +7104,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """预支合计费用的原价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -5982,6 +7116,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """预支合计费用的折扣价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -5990,6 +7128,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -5998,6 +7140,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPriceDiscount(self):
+        """后续合计费用的折扣价，后付费模式使用，单位：元<br><li>如返回了其他时间区间项，如UnitPriceDiscountSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -6006,6 +7152,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPriceSecondStep(self):
+        """使用时间区间在(96, 360)小时的后续合计费用的原价，后付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPriceSecondStep
 
     @UnitPriceSecondStep.setter
@@ -6014,6 +7164,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPriceDiscountSecondStep(self):
+        """使用时间区间在(96, 360)小时的后续合计费用的折扣价，后付费模式使用，单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPriceDiscountSecondStep
 
     @UnitPriceDiscountSecondStep.setter
@@ -6022,6 +7176,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPriceThirdStep(self):
+        """使用时间区间在(360, ∞)小时的后续合计费用的原价，后付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPriceThirdStep
 
     @UnitPriceThirdStep.setter
@@ -6030,6 +7188,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPriceDiscountThirdStep(self):
+        """使用时间区间在(360, ∞)小时的后续合计费用的折扣价，后付费模式使用，单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPriceDiscountThirdStep
 
     @UnitPriceDiscountThirdStep.setter
@@ -6038,6 +7200,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def OriginalPriceThreeYear(self):
+        """预支三年合计费用的原价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OriginalPriceThreeYear
 
     @OriginalPriceThreeYear.setter
@@ -6046,6 +7213,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountPriceThreeYear(self):
+        """预支三年合计费用的折扣价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountPriceThreeYear
 
     @DiscountPriceThreeYear.setter
@@ -6054,6 +7226,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountThreeYear(self):
+        """预支三年应用的折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountThreeYear
 
     @DiscountThreeYear.setter
@@ -6062,6 +7239,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def OriginalPriceFiveYear(self):
+        """预支五年合计费用的原价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OriginalPriceFiveYear
 
     @OriginalPriceFiveYear.setter
@@ -6070,6 +7252,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountPriceFiveYear(self):
+        """预支五年合计费用的折扣价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountPriceFiveYear
 
     @DiscountPriceFiveYear.setter
@@ -6078,6 +7265,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountFiveYear(self):
+        """预支五年应用的折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountFiveYear
 
     @DiscountFiveYear.setter
@@ -6086,6 +7278,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def OriginalPriceOneYear(self):
+        """预支一年合计费用的原价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OriginalPriceOneYear
 
     @OriginalPriceOneYear.setter
@@ -6094,6 +7291,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountPriceOneYear(self):
+        """预支一年合计费用的折扣价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountPriceOneYear
 
     @DiscountPriceOneYear.setter
@@ -6102,6 +7304,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountOneYear(self):
+        """预支一年应用的折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountOneYear
 
     @DiscountOneYear.setter
@@ -6183,6 +7390,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Tasks(self):
+        """任务信息
+        :rtype: list of Task
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -6191,6 +7401,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def JobName(self):
+        """作业名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -6199,6 +7412,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def JobDescription(self):
+        """作业描述
+        :rtype: str
+        """
         return self._JobDescription
 
     @JobDescription.setter
@@ -6207,6 +7423,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Priority(self):
+        """作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -6215,6 +7434,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Dependences(self):
+        """依赖信息
+        :rtype: list of Dependence
+        """
         return self._Dependences
 
     @Dependences.setter
@@ -6223,6 +7445,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Notifications(self):
+        """通知信息
+        :rtype: list of Notification
+        """
         return self._Notifications
 
     @Notifications.setter
@@ -6231,6 +7456,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def TaskExecutionDependOn(self):
+        """对于存在依赖关系的任务中，后序任务执行对于前序任务的依赖条件。取值范围包括 PRE_TASK_SUCCEED，PRE_TASK_AT_LEAST_PARTLY_SUCCEED，PRE_TASK_FINISHED，默认值为PRE_TASK_SUCCEED。
+        :rtype: str
+        """
         return self._TaskExecutionDependOn
 
     @TaskExecutionDependOn.setter
@@ -6239,6 +7467,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def StateIfCreateCvmFailed(self):
+        """表示创建 CVM 失败按照何种策略处理。取值范围包括 FAILED，RUNNABLE。FAILED 表示创建 CVM 失败按照一次执行失败处理，RUNNABLE 表示创建 CVM 失败按照继续等待处理。默认值为FAILED。StateIfCreateCvmFailed对于提交的指定计算环境的作业无效。
+        :rtype: str
+        """
         return self._StateIfCreateCvmFailed
 
     @StateIfCreateCvmFailed.setter
@@ -6247,6 +7478,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Tags(self):
+        """标签列表。通过指定该参数可以支持绑定标签到作业。每个作业最多绑定10个标签。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6255,6 +7489,12 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def NotificationTarget(self):
+        """表示通知信息的通知目标类型。
+取值范围：CMQ，TDMQ_CMQ。
+CMQ:表示向腾讯云CMQ发送消息。
+TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>注：腾讯云计划于2022年6月前正式下线消息队列 CMQ，建议使用TDMQ_CMQ。参考文档：[CMQ迁移到TDMQ_CMQ](https://cloud.tencent.com/document/product/406/60860)
+        :rtype: str
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -6344,6 +7584,9 @@ class JobView(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -6352,6 +7595,9 @@ class JobView(AbstractModel):
 
     @property
     def JobName(self):
+        """作业名称
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -6360,6 +7606,9 @@ class JobView(AbstractModel):
 
     @property
     def JobState(self):
+        """作业状态
+        :rtype: str
+        """
         return self._JobState
 
     @JobState.setter
@@ -6368,6 +7617,9 @@ class JobView(AbstractModel):
 
     @property
     def Priority(self):
+        """作业优先级
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -6376,6 +7628,10 @@ class JobView(AbstractModel):
 
     @property
     def Placement(self):
+        """位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -6384,6 +7640,9 @@ class JobView(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6392,6 +7651,10 @@ class JobView(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6400,6 +7663,9 @@ class JobView(AbstractModel):
 
     @property
     def TaskMetrics(self):
+        """任务统计指标
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
+        """
         return self._TaskMetrics
 
     @TaskMetrics.setter
@@ -6408,6 +7674,10 @@ class JobView(AbstractModel):
 
     @property
     def Tags(self):
+        """作业绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6470,6 +7740,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def Type(self):
+        """本地磁盘类型。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6478,6 +7751,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def PartitionType(self):
+        """本地磁盘属性。
+        :rtype: str
+        """
         return self._PartitionType
 
     @PartitionType.setter
@@ -6486,6 +7762,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def MinSize(self):
+        """本地磁盘最小值。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -6494,6 +7773,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def MaxSize(self):
+        """本地磁盘最大值。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -6502,6 +7784,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def Required(self):
+        """购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选<br><li>OPTIONAL：表示可选。
+        :rtype: str
+        """
         return self._Required
 
     @Required.setter
@@ -6545,6 +7830,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def Password(self):
+        """实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? \/ ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? \/]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -6553,6 +7841,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -6561,6 +7852,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeepImageLogin(self):
+        """保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+        :rtype: str
+        """
         return self._KeepImageLogin
 
     @KeepImageLogin.setter
@@ -6608,6 +7902,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -6616,6 +7913,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def DesiredComputeNodeCount(self):
+        """计算节点期望个数
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -6624,6 +7924,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvName(self):
+        """计算环境名称
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -6632,6 +7935,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvDescription(self):
+        """计算环境描述
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -6640,6 +7946,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvData(self):
+        """计算环境属性数据
+        :rtype: :class:`tencentcloud.batch.v20170312.models.ComputeEnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -6679,6 +7988,9 @@ class ModifyComputeEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6713,6 +8025,9 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateId(self):
+        """任务模板ID
+        :rtype: str
+        """
         return self._TaskTemplateId
 
     @TaskTemplateId.setter
@@ -6721,6 +8036,9 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateName(self):
+        """任务模板名称
+        :rtype: str
+        """
         return self._TaskTemplateName
 
     @TaskTemplateName.setter
@@ -6729,6 +8047,9 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateDescription(self):
+        """任务模板描述
+        :rtype: str
+        """
         return self._TaskTemplateDescription
 
     @TaskTemplateDescription.setter
@@ -6737,6 +8058,9 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateInfo(self):
+        """任务模板信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Task`
+        """
         return self._TaskTemplateInfo
 
     @TaskTemplateInfo.setter
@@ -6775,6 +8099,9 @@ class ModifyTaskTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6803,6 +8130,9 @@ class MountDataDisk(AbstractModel):
 
     @property
     def LocalPath(self):
+        """挂载点，Linux系统合法路径，或Windows系统盘符,比如"H:\\"
+        :rtype: str
+        """
         return self._LocalPath
 
     @LocalPath.setter
@@ -6811,6 +8141,9 @@ class MountDataDisk(AbstractModel):
 
     @property
     def FileSystemType(self):
+        """文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
+        :rtype: str
+        """
         return self._FileSystemType
 
     @FileSystemType.setter
@@ -6887,6 +8220,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvName(self):
+        """计算环境名称
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -6895,6 +8231,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def DesiredComputeNodeCount(self):
+        """计算节点期望个数
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -6903,6 +8242,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvDescription(self):
+        """计算环境描述
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -6911,6 +8253,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvType(self):
+        """计算环境管理类型
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -6919,6 +8264,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvData(self):
+        """计算环境具体参数
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -6927,6 +8275,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def MountDataDisks(self):
+        """数据盘挂载选项
+        :rtype: list of MountDataDisk
+        """
         return self._MountDataDisks
 
     @MountDataDisks.setter
@@ -6935,6 +8286,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Authentications(self):
+        """授权信息
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -6943,6 +8297,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def InputMappings(self):
+        """输入映射信息
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -6951,6 +8308,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def AgentRunningMode(self):
+        """agent运行模式，适用于Windows系统
+        :rtype: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
+        """
         return self._AgentRunningMode
 
     @AgentRunningMode.setter
@@ -6959,6 +8319,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Notifications(self):
+        """通知信息
+        :rtype: list of Notification
+        """
         return self._Notifications
 
     @Notifications.setter
@@ -6967,6 +8330,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def ActionIfComputeNodeInactive(self):
+        """非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
+        :rtype: str
+        """
         return self._ActionIfComputeNodeInactive
 
     @ActionIfComputeNodeInactive.setter
@@ -6975,6 +8341,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def ResourceMaxRetryCount(self):
+        """对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值100，如果不设置的话，系统会设置一个默认值，当前为7
+        :rtype: int
+        """
         return self._ResourceMaxRetryCount
 
     @ResourceMaxRetryCount.setter
@@ -6983,6 +8352,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Tags(self):
+        """标签列表。通过指定该参数可以支持绑定标签到计算环境。每个计算环境最多绑定10个标签。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6991,6 +8363,12 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def NotificationTarget(self):
+        """表示通知信息的通知目标类型。
+取值范围：CMQ，TDMQ_CMQ。
+CMQ:表示向腾讯云CMQ发送消息。
+TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>注：腾讯云计划于2022年6月前正式下线消息队列 CMQ，建议使用TDMQ_CMQ。参考文档：[CMQ迁移到TDMQ_CMQ](https://cloud.tencent.com/document/product/406/60860)
+        :rtype: str
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -7102,6 +8480,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvName(self):
+        """计算环境名称
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -7110,6 +8491,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvData(self):
+        """计算环境具体参数
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvDataCpm`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -7118,6 +8502,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def DesiredComputeNodeCount(self):
+        """计算节点期望个数
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -7126,6 +8513,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvDescription(self):
+        """计算环境描述
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -7134,6 +8524,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvType(self):
+        """计算环境管理类型， 取值MANAGED。
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -7142,6 +8535,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Authentications(self):
+        """授权信息
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -7150,6 +8546,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def InputMappings(self):
+        """输入映射信息
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -7158,6 +8557,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Notifications(self):
+        """通知信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Notification`
+        """
         return self._Notifications
 
     @Notifications.setter
@@ -7166,6 +8568,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def ActionIfComputeNodeInactive(self):
+        """非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
+        :rtype: str
+        """
         return self._ActionIfComputeNodeInactive
 
     @ActionIfComputeNodeInactive.setter
@@ -7174,6 +8579,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def ResourceMaxRetryCount(self):
+        """对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值100，如果不设置的话，系统会设置一个默认值，当前为7。
+        :rtype: int
+        """
         return self._ResourceMaxRetryCount
 
     @ResourceMaxRetryCount.setter
@@ -7182,6 +8590,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Tags(self):
+        """标签列表。通过指定该参数可以支持绑定标签到黑石计算环境。每个黑石计算环境最多绑定10个标签。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7190,6 +8601,12 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def NotificationTarget(self):
+        """表示通知信息的通知目标类型。
+取值范围：CMQ，TDMQ_CMQ。
+CMQ:表示向腾讯云CMQ发送消息。
+TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>注：腾讯云计划于2022年6月前正式下线消息队列 CMQ，建议使用TDMQ_CMQ。参考文档：[CMQ迁移到TDMQ_CMQ](https://cloud.tencent.com/document/product/406/60860)
+        :rtype: str
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -7256,6 +8673,9 @@ class Notification(AbstractModel):
 
     @property
     def TopicName(self):
+        """CMQ主题名字，要求主题名有效且关联订阅
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -7264,6 +8684,9 @@ class Notification(AbstractModel):
 
     @property
     def EventConfigs(self):
+        """事件配置
+        :rtype: list of EventConfig
+        """
         return self._EventConfigs
 
     @EventConfigs.setter
@@ -7321,6 +8744,9 @@ class OsInfo(AbstractModel):
 
     @property
     def OsTypeId(self):
+        """操作系统ID。
+        :rtype: int
+        """
         return self._OsTypeId
 
     @OsTypeId.setter
@@ -7329,6 +8755,9 @@ class OsInfo(AbstractModel):
 
     @property
     def OsName(self):
+        """操作系统名称。
+        :rtype: str
+        """
         return self._OsName
 
     @OsName.setter
@@ -7337,6 +8766,9 @@ class OsInfo(AbstractModel):
 
     @property
     def OsDescription(self):
+        """操作系统名称描述。
+        :rtype: str
+        """
         return self._OsDescription
 
     @OsDescription.setter
@@ -7345,6 +8777,9 @@ class OsInfo(AbstractModel):
 
     @property
     def OsEnglishDescription(self):
+        """操作系统英文名称。
+        :rtype: str
+        """
         return self._OsEnglishDescription
 
     @OsEnglishDescription.setter
@@ -7353,6 +8788,9 @@ class OsInfo(AbstractModel):
 
     @property
     def OsClass(self):
+        """操作系统的分类，如CentOs Debian。
+        :rtype: str
+        """
         return self._OsClass
 
     @OsClass.setter
@@ -7361,6 +8799,9 @@ class OsInfo(AbstractModel):
 
     @property
     def ImageTag(self):
+        """标识镜像分类。public:公共镜像; private: 专属镜像。
+        :rtype: str
+        """
         return self._ImageTag
 
     @ImageTag.setter
@@ -7369,6 +8810,9 @@ class OsInfo(AbstractModel):
 
     @property
     def MaxPartitionSize(self):
+        """操作系统，ext4文件下所支持的最大的磁盘大小。单位为T。
+        :rtype: int
+        """
         return self._MaxPartitionSize
 
     @MaxPartitionSize.setter
@@ -7415,6 +8859,9 @@ class OutputMapping(AbstractModel):
 
     @property
     def SourcePath(self):
+        """源端路径
+        :rtype: str
+        """
         return self._SourcePath
 
     @SourcePath.setter
@@ -7423,6 +8870,9 @@ class OutputMapping(AbstractModel):
 
     @property
     def DestinationPath(self):
+        """目的端路径
+        :rtype: str
+        """
         return self._DestinationPath
 
     @DestinationPath.setter
@@ -7431,6 +8881,10 @@ class OutputMapping(AbstractModel):
 
     @property
     def OutputMappingOption(self):
+        """输出映射选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.OutputMappingOption`
+        """
         return self._OutputMappingOption
 
     @OutputMappingOption.setter
@@ -7474,6 +8928,9 @@ class OutputMappingConfig(AbstractModel):
 
     @property
     def Scene(self):
+        """存储类型，仅支持COS
+        :rtype: str
+        """
         return self._Scene
 
     @Scene.setter
@@ -7482,6 +8939,9 @@ class OutputMappingConfig(AbstractModel):
 
     @property
     def WorkerNum(self):
+        """并行worker数量
+        :rtype: int
+        """
         return self._WorkerNum
 
     @WorkerNum.setter
@@ -7490,6 +8950,9 @@ class OutputMappingConfig(AbstractModel):
 
     @property
     def WorkerPartSize(self):
+        """worker分块大小，单位MB
+        :rtype: int
+        """
         return self._WorkerPartSize
 
     @WorkerPartSize.setter
@@ -7528,6 +8991,12 @@ GLOBAL_WORKSPACE: 工作空间为实例操作系统空间。
 
     @property
     def Workspace(self):
+        """容器场景下,输出选项从实例映射到容器内的实例侧的工作空间。
+BATCH_WORKSPACE: 工作空间为BATCH在实例内定义的工作空间，BATCH侧保证作业之间的隔离。（默认）
+GLOBAL_WORKSPACE: 工作空间为实例操作系统空间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Workspace
 
     @Workspace.setter
@@ -7570,6 +9039,9 @@ class Placement(AbstractModel):
 
     @property
     def Zone(self):
+        """实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -7578,6 +9050,9 @@ class Placement(AbstractModel):
 
     @property
     def ProjectId(self):
+        """实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -7586,6 +9061,9 @@ class Placement(AbstractModel):
 
     @property
     def HostIds(self):
+        """实例所属的专用宿主机ID列表，仅用于入参。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
+        :rtype: list of str
+        """
         return self._HostIds
 
     @HostIds.setter
@@ -7594,6 +9072,9 @@ class Placement(AbstractModel):
 
     @property
     def HostId(self):
+        """实例所属的专用宿主机ID，仅用于出参。
+        :rtype: str
+        """
         return self._HostId
 
     @HostId.setter
@@ -7639,6 +9120,9 @@ class RedirectInfo(AbstractModel):
 
     @property
     def StdoutRedirectPath(self):
+        """标准输出重定向路径
+        :rtype: str
+        """
         return self._StdoutRedirectPath
 
     @StdoutRedirectPath.setter
@@ -7647,6 +9131,9 @@ class RedirectInfo(AbstractModel):
 
     @property
     def StderrRedirectPath(self):
+        """标准错误重定向路径
+        :rtype: str
+        """
         return self._StderrRedirectPath
 
     @StderrRedirectPath.setter
@@ -7655,6 +9142,9 @@ class RedirectInfo(AbstractModel):
 
     @property
     def StdoutRedirectFileName(self):
+        """标准输出重定向文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
+        :rtype: str
+        """
         return self._StdoutRedirectFileName
 
     @StdoutRedirectFileName.setter
@@ -7663,6 +9153,9 @@ class RedirectInfo(AbstractModel):
 
     @property
     def StderrRedirectFileName(self):
+        """标准错误重定向文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
+        :rtype: str
+        """
         return self._StderrRedirectFileName
 
     @StderrRedirectFileName.setter
@@ -7708,6 +9201,9 @@ class RedirectLocalInfo(AbstractModel):
 
     @property
     def StdoutLocalPath(self):
+        """标准输出重定向本地路径
+        :rtype: str
+        """
         return self._StdoutLocalPath
 
     @StdoutLocalPath.setter
@@ -7716,6 +9212,9 @@ class RedirectLocalInfo(AbstractModel):
 
     @property
     def StderrLocalPath(self):
+        """标准错误重定向本地路径
+        :rtype: str
+        """
         return self._StderrLocalPath
 
     @StderrLocalPath.setter
@@ -7724,6 +9223,9 @@ class RedirectLocalInfo(AbstractModel):
 
     @property
     def StdoutLocalFileName(self):
+        """标准输出重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
+        :rtype: str
+        """
         return self._StdoutLocalFileName
 
     @StdoutLocalFileName.setter
@@ -7732,6 +9234,9 @@ class RedirectLocalInfo(AbstractModel):
 
     @property
     def StderrLocalFileName(self):
+        """标准错误重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
+        :rtype: str
+        """
         return self._StderrLocalFileName
 
     @StderrLocalFileName.setter
@@ -7768,6 +9273,9 @@ class RetryJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
+        """作业ID列表。
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -7801,6 +9309,9 @@ class RetryJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7826,6 +9337,9 @@ class RunAutomationServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否开启云自动化助手。取值范围：<br><li>true：表示开启云自动化助手服务<br><li>false：表示不开启云自动化助手服务<br><br>默认取值：false。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -7860,6 +9374,10 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务<br><li>false：表示不开启云监控服务<br><br>默认取值：true。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -7893,6 +9411,9 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否开启[云安全](/document/product/296)服务。取值范围：<br><li>true：表示开启云安全服务<br><li>false：表示不开启云安全服务<br><br>默认取值：true。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -7931,6 +9452,10 @@ class SpotMarketOptions(AbstractModel):
 
     @property
     def MaxPrice(self):
+        """竞价出价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MaxPrice
 
     @MaxPrice.setter
@@ -7939,6 +9464,10 @@ class SpotMarketOptions(AbstractModel):
 
     @property
     def SpotInstanceType(self):
+        """竞价请求类型，当前仅支持类型：one-time
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpotInstanceType
 
     @SpotInstanceType.setter
@@ -7982,6 +9511,10 @@ class StorageBlock(AbstractModel):
 
     @property
     def Type(self):
+        """HDD本地存储类型，值为：LOCAL_PRO.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -7990,6 +9523,10 @@ class StorageBlock(AbstractModel):
 
     @property
     def MinSize(self):
+        """HDD本地存储的最小容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -7998,6 +9535,10 @@ class StorageBlock(AbstractModel):
 
     @property
     def MaxSize(self):
+        """HDD本地存储的最大容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -8039,6 +9580,9 @@ class SubmitJobRequest(AbstractModel):
 
     @property
     def Placement(self):
+        """作业所提交的位置信息。通过该参数可以指定作业关联CVM所属可用区等信息。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -8047,6 +9591,9 @@ class SubmitJobRequest(AbstractModel):
 
     @property
     def Job(self):
+        """作业信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Job`
+        """
         return self._Job
 
     @Job.setter
@@ -8055,6 +9602,9 @@ class SubmitJobRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """用于保证请求幂等性的字符串。该字符串由用户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -8097,6 +9647,9 @@ class SubmitJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """当通过本接口来提交作业时会返回该参数，表示一个作业ID。返回作业ID列表并不代表作业解析/运行成功，可根据 DescribeJob 接口查询其状态。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8105,6 +9658,9 @@ class SubmitJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8124,7 +9680,16 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_BSSD：通用性SSD云硬盘<br><li>CLOUD_HSSD：增强型SSD云硬盘<br><li>CLOUD_TSSD：极速型SSD云硬盘<br><br>默认取值：当前有库存的硬盘类型。
+        :param _DiskType: 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br>
+<li>LOCAL_BASIC：本地硬盘</li>
+<li>LOCAL_SSD：本地SSD硬盘</li>
+<li>CLOUD_BASIC：普通云硬盘</li>
+<li>CLOUD_SSD：SSD云硬盘</li>
+<li>CLOUD_PREMIUM：高性能云硬盘</li>
+<li>CLOUD_BSSD：通用性SSD云硬盘</li>
+<li>CLOUD_HSSD：增强型SSD云硬盘</li>
+<li>CLOUD_TSSD：极速型SSD云硬盘</li><br>
+默认取值：当前有库存的硬盘类型。
         :type DiskType: str
         :param _DiskId: 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
@@ -8142,6 +9707,18 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
+        """系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br>
+<li>LOCAL_BASIC：本地硬盘</li>
+<li>LOCAL_SSD：本地SSD硬盘</li>
+<li>CLOUD_BASIC：普通云硬盘</li>
+<li>CLOUD_SSD：SSD云硬盘</li>
+<li>CLOUD_PREMIUM：高性能云硬盘</li>
+<li>CLOUD_BSSD：通用性SSD云硬盘</li>
+<li>CLOUD_HSSD：增强型SSD云硬盘</li>
+<li>CLOUD_TSSD：极速型SSD云硬盘</li><br>
+默认取值：当前有库存的硬盘类型。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -8150,6 +9727,10 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskId(self):
+        """系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
+该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -8158,6 +9739,9 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
+        """系统盘大小，单位：GB。默认值为 50
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -8166,6 +9750,10 @@ class SystemDisk(AbstractModel):
 
     @property
     def CdcId(self):
+        """所属的独享集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -8207,6 +9795,10 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -8215,6 +9807,10 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -8246,7 +9842,7 @@ class Task(AbstractModel):
         :type Application: :class:`tencentcloud.batch.v20170312.models.Application`
         :param _TaskName: 任务名称，在一个作业内部唯一
         :type TaskName: str
-        :param _TaskInstanceNum: 任务实例运行个数
+        :param _TaskInstanceNum: 任务实例运行个数，默认为1
         :type TaskInstanceNum: int
         :param _ComputeEnv: 运行环境信息，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
         :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.AnonymousComputeEnv`
@@ -8277,6 +9873,13 @@ class Task(AbstractModel):
         :param _RestartComputeNode: 任务完成后，重启计算节点。适用于指定计算环境执行任务。
         :type RestartComputeNode: bool
         :param _ResourceMaxRetryCount: 启动任务过程中，创建计算资源如CVM失败后的最大重试次数，默认为0。最大值100。
+计算资源创建重试的等待时间间隔策略设置如下：
+[1, 3]: 等待600 s发起重试；
+[4, 10]: 等待900 s发起重试；
+[11, 50]: 等待1800 s发起重试；
+[51, 100]: 等待3600 s发起重试；
+[a, b]表示重试次数区间，每次重试的等待时间随着重试次数的增加而递增。
+例如，计算资源创建重试8次的耗时为：3*600 + 5*900 = 6300 s
         :type ResourceMaxRetryCount: int
         """
         self._Application = None
@@ -8300,6 +9903,9 @@ class Task(AbstractModel):
 
     @property
     def Application(self):
+        """应用程序信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Application`
+        """
         return self._Application
 
     @Application.setter
@@ -8308,6 +9914,9 @@ class Task(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称，在一个作业内部唯一
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -8316,6 +9925,9 @@ class Task(AbstractModel):
 
     @property
     def TaskInstanceNum(self):
+        """任务实例运行个数，默认为1
+        :rtype: int
+        """
         return self._TaskInstanceNum
 
     @TaskInstanceNum.setter
@@ -8324,6 +9936,9 @@ class Task(AbstractModel):
 
     @property
     def ComputeEnv(self):
+        """运行环境信息，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.AnonymousComputeEnv`
+        """
         return self._ComputeEnv
 
     @ComputeEnv.setter
@@ -8332,6 +9947,9 @@ class Task(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -8340,6 +9958,9 @@ class Task(AbstractModel):
 
     @property
     def RedirectInfo(self):
+        """重定向信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
+        """
         return self._RedirectInfo
 
     @RedirectInfo.setter
@@ -8348,6 +9969,9 @@ class Task(AbstractModel):
 
     @property
     def RedirectLocalInfo(self):
+        """重定向本地信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RedirectLocalInfo`
+        """
         return self._RedirectLocalInfo
 
     @RedirectLocalInfo.setter
@@ -8356,6 +9980,9 @@ class Task(AbstractModel):
 
     @property
     def InputMappings(self):
+        """输入映射
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -8364,6 +9991,9 @@ class Task(AbstractModel):
 
     @property
     def OutputMappings(self):
+        """输出映射
+        :rtype: list of OutputMapping
+        """
         return self._OutputMappings
 
     @OutputMappings.setter
@@ -8372,6 +10002,9 @@ class Task(AbstractModel):
 
     @property
     def OutputMappingConfigs(self):
+        """输出映射配置
+        :rtype: list of OutputMappingConfig
+        """
         return self._OutputMappingConfigs
 
     @OutputMappingConfigs.setter
@@ -8380,6 +10013,9 @@ class Task(AbstractModel):
 
     @property
     def EnvVars(self):
+        """自定义环境变量
+        :rtype: list of EnvVar
+        """
         return self._EnvVars
 
     @EnvVars.setter
@@ -8388,6 +10024,9 @@ class Task(AbstractModel):
 
     @property
     def Authentications(self):
+        """授权信息
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -8396,6 +10035,9 @@ class Task(AbstractModel):
 
     @property
     def FailedAction(self):
+        """TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
+        :rtype: str
+        """
         return self._FailedAction
 
     @FailedAction.setter
@@ -8404,6 +10046,9 @@ class Task(AbstractModel):
 
     @property
     def MaxRetryCount(self):
+        """任务失败后的最大重试次数，默认为0
+        :rtype: int
+        """
         return self._MaxRetryCount
 
     @MaxRetryCount.setter
@@ -8412,6 +10057,9 @@ class Task(AbstractModel):
 
     @property
     def Timeout(self):
+        """任务启动后的超时时间，单位秒，默认为86400秒
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -8420,6 +10068,9 @@ class Task(AbstractModel):
 
     @property
     def MaxConcurrentNum(self):
+        """任务最大并发数限制，默认没有限制。
+        :rtype: int
+        """
         return self._MaxConcurrentNum
 
     @MaxConcurrentNum.setter
@@ -8428,6 +10079,9 @@ class Task(AbstractModel):
 
     @property
     def RestartComputeNode(self):
+        """任务完成后，重启计算节点。适用于指定计算环境执行任务。
+        :rtype: bool
+        """
         return self._RestartComputeNode
 
     @RestartComputeNode.setter
@@ -8436,6 +10090,16 @@ class Task(AbstractModel):
 
     @property
     def ResourceMaxRetryCount(self):
+        """启动任务过程中，创建计算资源如CVM失败后的最大重试次数，默认为0。最大值100。
+计算资源创建重试的等待时间间隔策略设置如下：
+[1, 3]: 等待600 s发起重试；
+[4, 10]: 等待900 s发起重试；
+[11, 50]: 等待1800 s发起重试；
+[51, 100]: 等待3600 s发起重试；
+[a, b]表示重试次数区间，每次重试的等待时间随着重试次数的增加而递增。
+例如，计算资源创建重试8次的耗时为：3*600 + 5*900 = 6300 s
+        :rtype: int
+        """
         return self._ResourceMaxRetryCount
 
     @ResourceMaxRetryCount.setter
@@ -8543,6 +10207,9 @@ class TaskInstanceLog(AbstractModel):
 
     @property
     def TaskInstanceIndex(self):
+        """任务实例
+        :rtype: int
+        """
         return self._TaskInstanceIndex
 
     @TaskInstanceIndex.setter
@@ -8551,6 +10218,10 @@ class TaskInstanceLog(AbstractModel):
 
     @property
     def StdoutLog(self):
+        """标准输出日志（Base64编码，解码后最大日志长度2048字节）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StdoutLog
 
     @StdoutLog.setter
@@ -8559,6 +10230,10 @@ class TaskInstanceLog(AbstractModel):
 
     @property
     def StderrLog(self):
+        """标准错误日志（Base64编码，解码后最大日志长度2048字节）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StderrLog
 
     @StderrLog.setter
@@ -8567,6 +10242,10 @@ class TaskInstanceLog(AbstractModel):
 
     @property
     def StdoutRedirectPath(self):
+        """标准输出重定向路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StdoutRedirectPath
 
     @StdoutRedirectPath.setter
@@ -8575,6 +10254,10 @@ class TaskInstanceLog(AbstractModel):
 
     @property
     def StderrRedirectPath(self):
+        """标准错误重定向路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StderrRedirectPath
 
     @StderrRedirectPath.setter
@@ -8583,6 +10266,10 @@ class TaskInstanceLog(AbstractModel):
 
     @property
     def StdoutRedirectFileName(self):
+        """标准输出重定向文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StdoutRedirectFileName
 
     @StdoutRedirectFileName.setter
@@ -8591,6 +10278,10 @@ class TaskInstanceLog(AbstractModel):
 
     @property
     def StderrRedirectFileName(self):
+        """标准错误重定向文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StderrRedirectFileName
 
     @StderrRedirectFileName.setter
@@ -8651,6 +10342,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def SubmittedCount(self):
+        """Submitted个数
+        :rtype: int
+        """
         return self._SubmittedCount
 
     @SubmittedCount.setter
@@ -8659,6 +10353,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def PendingCount(self):
+        """Pending个数
+        :rtype: int
+        """
         return self._PendingCount
 
     @PendingCount.setter
@@ -8667,6 +10364,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def RunnableCount(self):
+        """Runnable个数
+        :rtype: int
+        """
         return self._RunnableCount
 
     @RunnableCount.setter
@@ -8675,6 +10375,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def StartingCount(self):
+        """Starting个数
+        :rtype: int
+        """
         return self._StartingCount
 
     @StartingCount.setter
@@ -8683,6 +10386,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def RunningCount(self):
+        """Running个数
+        :rtype: int
+        """
         return self._RunningCount
 
     @RunningCount.setter
@@ -8691,6 +10397,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def SucceedCount(self):
+        """Succeed个数
+        :rtype: int
+        """
         return self._SucceedCount
 
     @SucceedCount.setter
@@ -8699,6 +10408,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def FailedInterruptedCount(self):
+        """FailedInterrupted个数
+        :rtype: int
+        """
         return self._FailedInterruptedCount
 
     @FailedInterruptedCount.setter
@@ -8707,6 +10419,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def FailedCount(self):
+        """Failed个数
+        :rtype: int
+        """
         return self._FailedCount
 
     @FailedCount.setter
@@ -8782,6 +10497,9 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def TaskInstanceIndex(self):
+        """任务实例索引
+        :rtype: int
+        """
         return self._TaskInstanceIndex
 
     @TaskInstanceIndex.setter
@@ -8790,6 +10508,9 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def TaskInstanceState(self):
+        """任务实例状态
+        :rtype: str
+        """
         return self._TaskInstanceState
 
     @TaskInstanceState.setter
@@ -8798,6 +10519,10 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def ExitCode(self):
+        """应用程序执行结束的exit code
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ExitCode
 
     @ExitCode.setter
@@ -8806,6 +10531,9 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def StateReason(self):
+        """任务实例状态原因，任务实例失败时，会记录失败原因
+        :rtype: str
+        """
         return self._StateReason
 
     @StateReason.setter
@@ -8814,6 +10542,10 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def ComputeNodeInstanceId(self):
+        """任务实例运行时所在计算节点（例如CVM）的InstanceId。任务实例未运行或者完结时，本字段为空。任务实例重试时，本字段会随之变化
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ComputeNodeInstanceId
 
     @ComputeNodeInstanceId.setter
@@ -8822,6 +10554,9 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8830,6 +10565,10 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def LaunchTime(self):
+        """启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LaunchTime
 
     @LaunchTime.setter
@@ -8838,6 +10577,10 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def RunningTime(self):
+        """开始运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RunningTime
 
     @RunningTime.setter
@@ -8846,6 +10589,10 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8854,6 +10601,9 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def RedirectInfo(self):
+        """重定向信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
+        """
         return self._RedirectInfo
 
     @RedirectInfo.setter
@@ -8862,6 +10612,9 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def StateDetailedReason(self):
+        """任务实例状态原因详情，任务实例失败时，会记录失败原因
+        :rtype: str
+        """
         return self._StateDetailedReason
 
     @StateDetailedReason.setter
@@ -8928,6 +10681,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def SubmittedCount(self):
+        """Submitted个数
+        :rtype: int
+        """
         return self._SubmittedCount
 
     @SubmittedCount.setter
@@ -8936,6 +10692,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def PendingCount(self):
+        """Pending个数
+        :rtype: int
+        """
         return self._PendingCount
 
     @PendingCount.setter
@@ -8944,6 +10703,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def RunnableCount(self):
+        """Runnable个数
+        :rtype: int
+        """
         return self._RunnableCount
 
     @RunnableCount.setter
@@ -8952,6 +10714,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def StartingCount(self):
+        """Starting个数
+        :rtype: int
+        """
         return self._StartingCount
 
     @StartingCount.setter
@@ -8960,6 +10725,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def RunningCount(self):
+        """Running个数
+        :rtype: int
+        """
         return self._RunningCount
 
     @RunningCount.setter
@@ -8968,6 +10736,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def SucceedCount(self):
+        """Succeed个数
+        :rtype: int
+        """
         return self._SucceedCount
 
     @SucceedCount.setter
@@ -8976,6 +10747,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def FailedInterruptedCount(self):
+        """FailedInterrupted个数
+        :rtype: int
+        """
         return self._FailedInterruptedCount
 
     @FailedInterruptedCount.setter
@@ -8984,6 +10758,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def FailedCount(self):
+        """Failed个数
+        :rtype: int
+        """
         return self._FailedCount
 
     @FailedCount.setter
@@ -9040,6 +10817,9 @@ class TaskTemplateView(AbstractModel):
 
     @property
     def TaskTemplateId(self):
+        """任务模板ID
+        :rtype: str
+        """
         return self._TaskTemplateId
 
     @TaskTemplateId.setter
@@ -9048,6 +10828,9 @@ class TaskTemplateView(AbstractModel):
 
     @property
     def TaskTemplateName(self):
+        """任务模板名称
+        :rtype: str
+        """
         return self._TaskTemplateName
 
     @TaskTemplateName.setter
@@ -9056,6 +10839,9 @@ class TaskTemplateView(AbstractModel):
 
     @property
     def TaskTemplateDescription(self):
+        """任务模板描述
+        :rtype: str
+        """
         return self._TaskTemplateDescription
 
     @TaskTemplateDescription.setter
@@ -9064,6 +10850,9 @@ class TaskTemplateView(AbstractModel):
 
     @property
     def TaskTemplateInfo(self):
+        """任务模板信息
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Task`
+        """
         return self._TaskTemplateInfo
 
     @TaskTemplateInfo.setter
@@ -9072,6 +10861,9 @@ class TaskTemplateView(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9080,6 +10872,10 @@ class TaskTemplateView(AbstractModel):
 
     @property
     def Tags(self):
+        """任务模板绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -9135,6 +10931,9 @@ class TaskView(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -9143,6 +10942,9 @@ class TaskView(AbstractModel):
 
     @property
     def TaskState(self):
+        """任务状态
+        :rtype: str
+        """
         return self._TaskState
 
     @TaskState.setter
@@ -9151,6 +10953,9 @@ class TaskView(AbstractModel):
 
     @property
     def CreateTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9159,6 +10964,10 @@ class TaskView(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9198,6 +11007,9 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -9206,6 +11018,9 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     @property
     def ComputeNodeId(self):
+        """计算节点ID
+        :rtype: str
+        """
         return self._ComputeNodeId
 
     @ComputeNodeId.setter
@@ -9240,6 +11055,9 @@ class TerminateComputeNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9268,6 +11086,9 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """计算环境ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -9276,6 +11097,9 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     @property
     def ComputeNodeIds(self):
+        """计算节点ID列表
+        :rtype: list of str
+        """
         return self._ComputeNodeIds
 
     @ComputeNodeIds.setter
@@ -9310,6 +11134,9 @@ class TerminateComputeNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9335,6 +11162,9 @@ class TerminateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9368,6 +11198,9 @@ class TerminateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9399,6 +11232,9 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """作业ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9407,6 +11243,9 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -9415,6 +11254,9 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskInstanceIndex(self):
+        """任务实例索引
+        :rtype: int
+        """
         return self._TaskInstanceIndex
 
     @TaskInstanceIndex.setter
@@ -9450,6 +11292,9 @@ class TerminateTaskInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9487,6 +11332,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。若在创建子机时VpcId与SubnetId同时传入`DEFAULT`，则强制使用默认vpc网络。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -9495,6 +11343,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def SubnetId(self):
+        """私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -9503,6 +11354,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def AsVpcGateway(self):
+        """是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<li>true：表示用作公网网关</li><li>false：表示不作为公网网关</li>默认取值：false。
+        :rtype: bool
+        """
         return self._AsVpcGateway
 
     @AsVpcGateway.setter
@@ -9511,6 +11365,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -9519,6 +11376,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def Ipv6AddressCount(self):
+        """为弹性网卡指定随机生成的 IPv6 地址数量。
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter

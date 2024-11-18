@@ -257,6 +257,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOnlineDDLJob(self, request):
+        """创建在线DDL任务
+
+        :param request: Request instance for CreateOnlineDDLJob.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateOnlineDDLJobRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.CreateOnlineDDLJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOnlineDDLJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOnlineDDLJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTmpDCDBInstance(self, request):
         """回档TDSQL实例
 

@@ -41,6 +41,10 @@ class AsrTimestamps(AbstractModel):
 
     @property
     def Text(self):
+        """文本片段	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -49,6 +53,10 @@ class AsrTimestamps(AbstractModel):
 
     @property
     def StartMs(self):
+        """开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartMs
 
     @StartMs.setter
@@ -57,6 +65,10 @@ class AsrTimestamps(AbstractModel):
 
     @property
     def EndMs(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndMs
 
     @EndMs.setter
@@ -95,6 +107,9 @@ class ConfirmVideoTranslateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """视频翻译任务 ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -103,6 +118,9 @@ class ConfirmVideoTranslateJobRequest(AbstractModel):
 
     @property
     def TranslateResults(self):
+        """待确认文本
+        :rtype: list of TranslateResult
+        """
         return self._TranslateResults
 
     @TranslateResults.setter
@@ -157,6 +175,9 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """视频翻译任务 ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -165,6 +186,9 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """音频转换任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -173,6 +197,9 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """音频翻译结果确认 session	
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -181,6 +208,9 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def Status(self):
+        """视频转译任务状态	
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -189,6 +219,9 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def Message(self):
+        """视频转译任务信息	
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -197,6 +230,9 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -227,6 +263,9 @@ class DescribeImageAnimateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -261,6 +300,8 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         :type ErrorMessage: str
         :param _ResultVideoUrl: 结果视频URL。有效期 24 小时。
         :type ResultVideoUrl: str
+        :param _MaskVideoUrl: 掩码视频链接
+        :type MaskVideoUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -268,10 +309,14 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         self._ErrorCode = None
         self._ErrorMessage = None
         self._ResultVideoUrl = None
+        self._MaskVideoUrl = None
         self._RequestId = None
 
     @property
     def Status(self):
+        """任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -280,6 +325,9 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """错误码。
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -288,6 +336,9 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -296,6 +347,9 @@ class DescribeImageAnimateJobResponse(AbstractModel):
 
     @property
     def ResultVideoUrl(self):
+        """结果视频URL。有效期 24 小时。
+        :rtype: str
+        """
         return self._ResultVideoUrl
 
     @ResultVideoUrl.setter
@@ -303,7 +357,21 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         self._ResultVideoUrl = ResultVideoUrl
 
     @property
+    def MaskVideoUrl(self):
+        """掩码视频链接
+        :rtype: str
+        """
+        return self._MaskVideoUrl
+
+    @MaskVideoUrl.setter
+    def MaskVideoUrl(self, MaskVideoUrl):
+        self._MaskVideoUrl = MaskVideoUrl
+
+    @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -316,6 +384,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._ErrorMessage = params.get("ErrorMessage")
         self._ResultVideoUrl = params.get("ResultVideoUrl")
+        self._MaskVideoUrl = params.get("MaskVideoUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -333,6 +402,9 @@ class DescribePortraitSingJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -369,8 +441,11 @@ class DescribePortraitSingJobResponse(AbstractModel):
         :type StatusCode: str
         :param _StatusMsg: 任务状态信息
         :type StatusMsg: str
-        :param _ResultVideoUrl: 生成视频的URL地址
-有效期24小时
+        :param _ErrorCode: 任务执行错误码。当任务状态不为FAIL时，该值为""。
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为FAIL时，该值为""。
+        :type ErrorMessage: str
+        :param _ResultVideoUrl: 生成视频的URL地址。有效期24小时。
         :type ResultVideoUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -378,11 +453,16 @@ class DescribePortraitSingJobResponse(AbstractModel):
         self._JobId = None
         self._StatusCode = None
         self._StatusMsg = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
         self._ResultVideoUrl = None
         self._RequestId = None
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -391,6 +471,13 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def StatusCode(self):
+        """任务状态码
+—RUN：处理中
+—FAIL：处理失败
+—STOP：处理终止
+—DONE：处理完成
+        :rtype: str
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -399,6 +486,9 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def StatusMsg(self):
+        """任务状态信息
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -406,7 +496,32 @@ class DescribePortraitSingJobResponse(AbstractModel):
         self._StatusMsg = StatusMsg
 
     @property
+    def ErrorCode(self):
+        """任务执行错误码。当任务状态不为FAIL时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        """任务执行错误信息。当任务状态不为FAIL时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
     def ResultVideoUrl(self):
+        """生成视频的URL地址。有效期24小时。
+        :rtype: str
+        """
         return self._ResultVideoUrl
 
     @ResultVideoUrl.setter
@@ -415,6 +530,9 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -426,6 +544,8 @@ class DescribePortraitSingJobResponse(AbstractModel):
         self._JobId = params.get("JobId")
         self._StatusCode = params.get("StatusCode")
         self._StatusMsg = params.get("StatusMsg")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
         self._ResultVideoUrl = params.get("ResultVideoUrl")
         self._RequestId = params.get("RequestId")
 
@@ -444,6 +564,9 @@ class DescribeVideoStylizationJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -494,6 +617,9 @@ JobSuccess: "处理完成"。
 
     @property
     def JobId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -502,6 +628,14 @@ JobSuccess: "处理完成"。
 
     @property
     def StatusCode(self):
+        """任务状态码：
+JobInit:  "初始化中"
+JobModerationFailed: "审核失败",
+JobRunning: "处理中",
+JobFailed: "处理失败",
+JobSuccess: "处理完成"。
+        :rtype: str
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -510,6 +644,9 @@ JobSuccess: "处理完成"。
 
     @property
     def StatusMsg(self):
+        """任务状态描述。
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -518,6 +655,9 @@ JobSuccess: "处理完成"。
 
     @property
     def ResultVideoUrl(self):
+        """处理结果视频Url。URL有效期为24小时。
+        :rtype: str
+        """
         return self._ResultVideoUrl
 
     @ResultVideoUrl.setter
@@ -526,6 +666,9 @@ JobSuccess: "处理完成"。
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -555,6 +698,9 @@ class DescribeVideoTranslateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """视频转译任务 ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -627,6 +773,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobStatus(self):
+        """任务状态。 1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。	
+        :rtype: int
+        """
         return self._JobStatus
 
     @JobStatus.setter
@@ -635,6 +784,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
+        """任务错误码。	
+        :rtype: str
+        """
         return self._JobErrorCode
 
     @JobErrorCode.setter
@@ -643,6 +795,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
+        """任务错误信息。	
+        :rtype: str
+        """
         return self._JobErrorMsg
 
     @JobErrorMsg.setter
@@ -651,6 +806,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def ResultVideoUrl(self):
+        """视频翻译结果。	
+        :rtype: str
+        """
         return self._ResultVideoUrl
 
     @ResultVideoUrl.setter
@@ -659,6 +817,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def TranslateResults(self):
+        """音频翻译结果。	
+        :rtype: list of TranslateResult
+        """
         return self._TranslateResults
 
     @TranslateResults.setter
@@ -667,6 +828,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobConfirm(self):
+        """是否需要确认翻译结果。0：不需要，1：需要	
+        :rtype: int
+        """
         return self._JobConfirm
 
     @JobConfirm.setter
@@ -675,6 +839,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobAudioTaskId(self):
+        """音频任务 ID	
+        :rtype: str
+        """
         return self._JobAudioTaskId
 
     @JobAudioTaskId.setter
@@ -683,6 +850,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobVideoModerationId(self):
+        """视频审核任务ID	
+        :rtype: str
+        """
         return self._JobVideoModerationId
 
     @JobVideoModerationId.setter
@@ -691,6 +861,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobAudioModerationId(self):
+        """音频审核任务 ID	
+        :rtype: str
+        """
         return self._JobAudioModerationId
 
     @JobAudioModerationId.setter
@@ -699,6 +872,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobVideoId(self):
+        """口型驱动任务 ID	
+        :rtype: str
+        """
         return self._JobVideoId
 
     @JobVideoId.setter
@@ -707,6 +883,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def OriginalVideoUrl(self):
+        """视频素材原始 URL	
+        :rtype: str
+        """
         return self._OriginalVideoUrl
 
     @OriginalVideoUrl.setter
@@ -715,6 +894,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def AsrTimestamps(self):
+        """文本片段及其时间戳	
+        :rtype: list of AsrTimestamps
+        """
         return self._AsrTimestamps
 
     @AsrTimestamps.setter
@@ -723,6 +905,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobSubmitReqId(self):
+        """提交视频翻译任务时的 requestId	
+        :rtype: str
+        """
         return self._JobSubmitReqId
 
     @JobSubmitReqId.setter
@@ -731,6 +916,9 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -765,6 +953,155 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LogoParam(AbstractModel):
+    """logo参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogoUrl: 水印 Url
+        :type LogoUrl: str
+        :param _LogoImage: 水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
+        :type LogoImage: str
+        :param _LogoRect: 水印图片位于生成结果图中的坐标及宽高，将按照坐标对标识图片进行位置和大小的拉伸匹配。
+        :type LogoRect: :class:`tencentcloud.vclm.v20240523.models.LogoRect`
+        """
+        self._LogoUrl = None
+        self._LogoImage = None
+        self._LogoRect = None
+
+    @property
+    def LogoUrl(self):
+        """水印 Url
+        :rtype: str
+        """
+        return self._LogoUrl
+
+    @LogoUrl.setter
+    def LogoUrl(self, LogoUrl):
+        self._LogoUrl = LogoUrl
+
+    @property
+    def LogoImage(self):
+        """水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
+        :rtype: str
+        """
+        return self._LogoImage
+
+    @LogoImage.setter
+    def LogoImage(self, LogoImage):
+        self._LogoImage = LogoImage
+
+    @property
+    def LogoRect(self):
+        """水印图片位于生成结果图中的坐标及宽高，将按照坐标对标识图片进行位置和大小的拉伸匹配。
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoRect`
+        """
+        return self._LogoRect
+
+    @LogoRect.setter
+    def LogoRect(self, LogoRect):
+        self._LogoRect = LogoRect
+
+
+    def _deserialize(self, params):
+        self._LogoUrl = params.get("LogoUrl")
+        self._LogoImage = params.get("LogoImage")
+        if params.get("LogoRect") is not None:
+            self._LogoRect = LogoRect()
+            self._LogoRect._deserialize(params.get("LogoRect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogoRect(AbstractModel):
+    """水印图输入框
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: 水印图框X坐标值。当值大于0时，坐标轴原点位于原图左侧，方向指右；当值小于0时，坐标轴原点位于原图右侧，方向指左。
+        :type X: int
+        :param _Y: 水印图框Y坐标值。当值大于0时，坐标轴原点位于原图上侧，方向指下；当值小于0时，坐标轴原点位于原图下侧，方向指上。
+        :type Y: int
+        :param _Width: 水印图框宽度。
+        :type Width: int
+        :param _Height: 水印图框高度。
+        :type Height: int
+        """
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        """水印图框X坐标值。当值大于0时，坐标轴原点位于原图左侧，方向指右；当值小于0时，坐标轴原点位于原图右侧，方向指左。
+        :rtype: int
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        """水印图框Y坐标值。当值大于0时，坐标轴原点位于原图上侧，方向指下；当值小于0时，坐标轴原点位于原图下侧，方向指上。
+        :rtype: int
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        """水印图框宽度。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """水印图框高度。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubmitImageAnimateJobRequest(AbstractModel):
     """SubmitImageAnimateJob请求参数结构体
 
@@ -786,15 +1123,36 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         :type EnableAudio: bool
         :param _EnableBodyJoins: 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
         :type EnableBodyJoins: bool
+        :param _EnableSegment: 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+
+        :type EnableSegment: bool
+        :param _LogoAdd: 为生成视频添加标识的开关，默认为0。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
         self._ImageUrl = None
         self._ImageBase64 = None
         self._TemplateId = None
         self._EnableAudio = None
         self._EnableBodyJoins = None
+        self._EnableSegment = None
+        self._LogoAdd = None
+        self._LogoParam = None
 
     @property
     def ImageUrl(self):
+        """图片格式：支持PNG、JPG、JPEG格式；
+图片分辨率：长边分辨率不超过2056；
+图片大小：不超过10M；
+图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -803,6 +1161,9 @@ class SubmitImageAnimateJobRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
+        """图片base64数据。图片格式：支持PNG、JPG、JPEG格式；图片分辨率：长边分辨率不超过2056；图片大小：不超过10M；图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+        :rtype: str
+        """
         return self._ImageBase64
 
     @ImageBase64.setter
@@ -811,6 +1172,10 @@ class SubmitImageAnimateJobRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """动作模板ID。取值说明：ke3 科目三；tuziwu 兔子舞；huajiangwu 划桨舞。
+
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -819,6 +1184,9 @@ class SubmitImageAnimateJobRequest(AbstractModel):
 
     @property
     def EnableAudio(self):
+        """结果视频是否保留模板音频。默认为true
+        :rtype: bool
+        """
         return self._EnableAudio
 
     @EnableAudio.setter
@@ -827,11 +1195,53 @@ class SubmitImageAnimateJobRequest(AbstractModel):
 
     @property
     def EnableBodyJoins(self):
+        """是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+        :rtype: bool
+        """
         return self._EnableBodyJoins
 
     @EnableBodyJoins.setter
     def EnableBodyJoins(self, EnableBodyJoins):
         self._EnableBodyJoins = EnableBodyJoins
+
+    @property
+    def EnableSegment(self):
+        """最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+
+        :rtype: bool
+        """
+        return self._EnableSegment
+
+    @EnableSegment.setter
+    def EnableSegment(self, EnableSegment):
+        self._EnableSegment = EnableSegment
+
+    @property
+    def LogoAdd(self):
+        """为生成视频添加标识的开关，默认为0。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        """标识内容设置。
+默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
 
 
     def _deserialize(self, params):
@@ -840,6 +1250,11 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         self._TemplateId = params.get("TemplateId")
         self._EnableAudio = params.get("EnableAudio")
         self._EnableBodyJoins = params.get("EnableBodyJoins")
+        self._EnableSegment = params.get("EnableSegment")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -867,6 +1282,9 @@ class SubmitImageAnimateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -875,6 +1293,9 @@ class SubmitImageAnimateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -894,26 +1315,54 @@ class SubmitPortraitSingJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AudioUrl: 传入音频URL地址。音频要求：
-—音频时长：不超过60秒
-—音频格式：mp3、wav、m4a
+        :param _AudioUrl: 传入音频URL地址，音频要求：
+- 音频时长：2秒 - 60秒
+- 音频格式：mp3、wav、m4a
         :type AudioUrl: str
         :param _ImageUrl: 传入图片URL地址，图片要求：
-—图片格式：jpg、jpeg、png
-—图片分辨率：长边不超过2560
-—图片大小：不超过6M
-—图片宽高比：图片【宽：高】在1:2到2:1范围内
+- 图片格式：jpg、jpeg、png、bmp、webp
+- 图片分辨率：192～4096
+- 图片大小：不超过10M
+- 图片宽高比：图片【宽：高】在1:2到2:1范围内
+- 图片内容：避免上传无人脸、无宠物脸或脸部过小、不完整、不清晰、偏转角度过大、嘴部被遮挡的图片。
         :type ImageUrl: str
-        :param _ImageBase64: 传入图片Base64编码。
-—图片Base64编码与URL地址必传其一
+        :param _ImageBase64: 传入图片Base64编码，编码后请求体大小不超过10M。
+图片Base64编码与URL地址必传其一，如果都传以ImageBase64为准。
         :type ImageBase64: str
+        :param _Mode: 唱演模式，默认使用人像模式。
+Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
+Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
+        :type Mode: str
+        :param _Resolution: 生成视频尺寸。可选取值："512:512"。
+
+人像模式下，如果不传该参数，默认生成视频的短边分辨率为512，长边分辨率不固定、由模型根据生成效果自动适配得到。如需固定生成分辨率可传入512:512。
+
+宠物模式下，如果不传该参数，默认将脸部唱演视频回贴原图，生成视频分辨率与原图一致。如不需要脸部回贴，仅保留脸部唱演视频，可传入512:512。
+        :type Resolution: str
+        :param _LogoAdd: 为生成视频添加标识的开关，默认为0。 
+1：添加标识；
+ 0：不添加标识；
+其他数值：默认按1处理。 
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
         self._AudioUrl = None
         self._ImageUrl = None
         self._ImageBase64 = None
+        self._Mode = None
+        self._Resolution = None
+        self._LogoAdd = None
+        self._LogoParam = None
 
     @property
     def AudioUrl(self):
+        """传入音频URL地址，音频要求：
+- 音频时长：2秒 - 60秒
+- 音频格式：mp3、wav、m4a
+        :rtype: str
+        """
         return self._AudioUrl
 
     @AudioUrl.setter
@@ -922,6 +1371,14 @@ class SubmitPortraitSingJobRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """传入图片URL地址，图片要求：
+- 图片格式：jpg、jpeg、png、bmp、webp
+- 图片分辨率：192～4096
+- 图片大小：不超过10M
+- 图片宽高比：图片【宽：高】在1:2到2:1范围内
+- 图片内容：避免上传无人脸、无宠物脸或脸部过小、不完整、不清晰、偏转角度过大、嘴部被遮挡的图片。
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -930,17 +1387,81 @@ class SubmitPortraitSingJobRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
+        """传入图片Base64编码，编码后请求体大小不超过10M。
+图片Base64编码与URL地址必传其一，如果都传以ImageBase64为准。
+        :rtype: str
+        """
         return self._ImageBase64
 
     @ImageBase64.setter
     def ImageBase64(self, ImageBase64):
         self._ImageBase64 = ImageBase64
 
+    @property
+    def Mode(self):
+        """唱演模式，默认使用人像模式。
+Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
+Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Resolution(self):
+        """生成视频尺寸。可选取值："512:512"。
+
+人像模式下，如果不传该参数，默认生成视频的短边分辨率为512，长边分辨率不固定、由模型根据生成效果自动适配得到。如需固定生成分辨率可传入512:512。
+
+宠物模式下，如果不传该参数，默认将脸部唱演视频回贴原图，生成视频分辨率与原图一致。如不需要脸部回贴，仅保留脸部唱演视频，可传入512:512。
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def LogoAdd(self):
+        """为生成视频添加标识的开关，默认为0。 
+1：添加标识；
+ 0：不添加标识；
+其他数值：默认按1处理。 
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        """标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
 
     def _deserialize(self, params):
         self._AudioUrl = params.get("AudioUrl")
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
+        self._Mode = params.get("Mode")
+        self._Resolution = params.get("Resolution")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -958,7 +1479,7 @@ class SubmitPortraitSingJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID
+        :param _JobId: 任务ID。任务有效期为48小时。
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -968,6 +1489,9 @@ class SubmitPortraitSingJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID。任务有效期为48小时。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -976,6 +1500,9 @@ class SubmitPortraitSingJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1015,6 +1542,9 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
     @property
     def StyleId(self):
+        """风格ID，取值说明：2d_anime 2D动漫；3d_cartoon 3D卡通；3d_china 3D国潮；pixel_art	像素风。
+        :rtype: str
+        """
         return self._StyleId
 
     @StyleId.setter
@@ -1023,6 +1553,14 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
     @property
     def VideoUrl(self):
+        """输入视频URL。视频要求：
+- 视频格式：mp4、mov；
+- 视频时长：1～60秒；
+- 视频分辨率：540P~2056P，即长宽像素数均在540px～2056px范围内；
+- 视频大小：不超过200M；
+- 视频FPS：15～60fps。
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -1031,6 +1569,11 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
     @property
     def StyleStrength(self):
+        """风格化强度 可选参数["low","medium","high"] 
+"low":风格化强度弱,"medium":"风格化强度中等","high":"风格化强度强" 
+默认为medium
+        :rtype: str
+        """
         return self._StyleStrength
 
     @StyleStrength.setter
@@ -1069,6 +1612,9 @@ class SubmitVideoStylizationJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1077,6 +1623,9 @@ class SubmitVideoStylizationJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1098,42 +1647,61 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
         r"""
         :param _VideoUrl: 视频地址URL。
 格式要求：支持 mp4、mov 。
-时长要求：【10-300】秒。
+时长要求：【5-600】秒。
 fps 要求：【15-60】fps
-分辨率要求：单边像素要求在 【540~1920】 之间。
+分辨率要求：单边像素要求在 【360~4096】 之间。
+大小要求：不超过500Mb
 
         :type VideoUrl: str
-        :param _SrcLang: 源语言：zh(中文), en(英文)
+        :param _SrcLang: 输入视频中音频语种
+目前支持语种范围：zh(中文), en(英文)
         :type SrcLang: str
-        :param _DstLang: 目标语种：
-zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
-        :type DstLang: str
-        :param _AudioUrl: 当音频 URL 不为空时，默认以音频驱动视频任务口型。
+        :param _AudioUrl: 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
 格式要求：支持 mp3、m4a、acc、wav 格式。
-时长要求：【10~300】秒
-大小要求：不超过 100M。
+时长要求：【5~600】秒，音频时长要匹配视频时长。
+大小要求：不超过 100Mb。
         :type AudioUrl: str
-        :param _Confirm: 是否需要确认翻译结果0：不需要，1：需要
-        :type Confirm: int
-        :param _LipSync: 是否开启口型驱动，0：不开启，1：开启。默认开启。
-        :type LipSync: int
-        :param _VoiceType: 音色种别：一种音色种别对应一种不同区域的音色
-1）目标语种为小语种(非zh,en)时，该项为必填
-2）目标语种为zh,en时，该项为非必填，若填入，则对应填入的音色
+        :param _DstLang: 输出视频中翻译语种
+目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
+        :type DstLang: str
+        :param _VoiceType: 翻译语种匹配音色种别，其他说明如下：
+1）默认不填代表克隆输入视频中音频音色；
+2）翻译语种非中英（即zh、en），该项必填；
 
-具体音色包含请见“支持音色种别列表”
+具体音色种别详见说明“支持音色种别列表”，每个音色都支持 15 个目标语种。
+
         :type VoiceType: str
+        :param _Confirm: 是否需要纠正视频中音频识别与翻译内容，取值范围：0-不需要，1-需要，默认0。
+
+        :type Confirm: int
+        :param _RemoveVocal: 是否需要去除VideoUrl或AudioUrl中背景音，取值范围：0-不需要，1-需要，默认0 。
+        :type RemoveVocal: int
+        :param _LipSync: 是否开启口型驱动，0-不开启，1-开启。默认0。
+        :type LipSync: int
+        :param _VideoLoop: 当 AudioUrl 字段有输入音频时，如果输入音频时长大于输入视频时长，会拼接视频（ 0-正向拼接、1-反向拼接 ）对齐音频时长。默认 0。
+        :type VideoLoop: int
         """
         self._VideoUrl = None
         self._SrcLang = None
-        self._DstLang = None
         self._AudioUrl = None
-        self._Confirm = None
-        self._LipSync = None
+        self._DstLang = None
         self._VoiceType = None
+        self._Confirm = None
+        self._RemoveVocal = None
+        self._LipSync = None
+        self._VideoLoop = None
 
     @property
     def VideoUrl(self):
+        """视频地址URL。
+格式要求：支持 mp4、mov 。
+时长要求：【5-600】秒。
+fps 要求：【15-60】fps
+分辨率要求：单边像素要求在 【360~4096】 之间。
+大小要求：不超过500Mb
+
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -1142,6 +1710,10 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
 
     @property
     def SrcLang(self):
+        """输入视频中音频语种
+目前支持语种范围：zh(中文), en(英文)
+        :rtype: str
+        """
         return self._SrcLang
 
     @SrcLang.setter
@@ -1149,15 +1721,13 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._SrcLang = SrcLang
 
     @property
-    def DstLang(self):
-        return self._DstLang
-
-    @DstLang.setter
-    def DstLang(self, DstLang):
-        self._DstLang = DstLang
-
-    @property
     def AudioUrl(self):
+        """当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
+格式要求：支持 mp3、m4a、acc、wav 格式。
+时长要求：【5~600】秒，音频时长要匹配视频时长。
+大小要求：不超过 100Mb。
+        :rtype: str
+        """
         return self._AudioUrl
 
     @AudioUrl.setter
@@ -1165,7 +1735,39 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._AudioUrl = AudioUrl
 
     @property
+    def DstLang(self):
+        """输出视频中翻译语种
+目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
+        :rtype: str
+        """
+        return self._DstLang
+
+    @DstLang.setter
+    def DstLang(self, DstLang):
+        self._DstLang = DstLang
+
+    @property
+    def VoiceType(self):
+        """翻译语种匹配音色种别，其他说明如下：
+1）默认不填代表克隆输入视频中音频音色；
+2）翻译语种非中英（即zh、en），该项必填；
+
+具体音色种别详见说明“支持音色种别列表”，每个音色都支持 15 个目标语种。
+
+        :rtype: str
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
     def Confirm(self):
+        """是否需要纠正视频中音频识别与翻译内容，取值范围：0-不需要，1-需要，默认0。
+
+        :rtype: int
+        """
         return self._Confirm
 
     @Confirm.setter
@@ -1173,7 +1775,21 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._Confirm = Confirm
 
     @property
+    def RemoveVocal(self):
+        """是否需要去除VideoUrl或AudioUrl中背景音，取值范围：0-不需要，1-需要，默认0 。
+        :rtype: int
+        """
+        return self._RemoveVocal
+
+    @RemoveVocal.setter
+    def RemoveVocal(self, RemoveVocal):
+        self._RemoveVocal = RemoveVocal
+
+    @property
     def LipSync(self):
+        """是否开启口型驱动，0-不开启，1-开启。默认0。
+        :rtype: int
+        """
         return self._LipSync
 
     @LipSync.setter
@@ -1181,22 +1797,27 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._LipSync = LipSync
 
     @property
-    def VoiceType(self):
-        return self._VoiceType
+    def VideoLoop(self):
+        """当 AudioUrl 字段有输入音频时，如果输入音频时长大于输入视频时长，会拼接视频（ 0-正向拼接、1-反向拼接 ）对齐音频时长。默认 0。
+        :rtype: int
+        """
+        return self._VideoLoop
 
-    @VoiceType.setter
-    def VoiceType(self, VoiceType):
-        self._VoiceType = VoiceType
+    @VideoLoop.setter
+    def VideoLoop(self, VideoLoop):
+        self._VideoLoop = VideoLoop
 
 
     def _deserialize(self, params):
         self._VideoUrl = params.get("VideoUrl")
         self._SrcLang = params.get("SrcLang")
-        self._DstLang = params.get("DstLang")
         self._AudioUrl = params.get("AudioUrl")
-        self._Confirm = params.get("Confirm")
-        self._LipSync = params.get("LipSync")
+        self._DstLang = params.get("DstLang")
         self._VoiceType = params.get("VoiceType")
+        self._Confirm = params.get("Confirm")
+        self._RemoveVocal = params.get("RemoveVocal")
+        self._LipSync = params.get("LipSync")
+        self._VideoLoop = params.get("VideoLoop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1214,7 +1835,7 @@ class SubmitVideoTranslateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 视频转译任务的Job id
+        :param _JobId: 视频转译任务的ID
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1224,6 +1845,9 @@ class SubmitVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """视频转译任务的ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1232,6 +1856,9 @@ class SubmitVideoTranslateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1263,6 +1890,10 @@ class TranslateResult(AbstractModel):
 
     @property
     def SourceText(self):
+        """翻译源文字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SourceText
 
     @SourceText.setter
@@ -1271,6 +1902,10 @@ class TranslateResult(AbstractModel):
 
     @property
     def TargetText(self):
+        """翻译后文字。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TargetText
 
     @TargetText.setter

@@ -45,6 +45,9 @@ class SendCodeVoiceRequest(AbstractModel):
 
     @property
     def CodeMessage(self):
+        """验证码，仅支持填写数字，实际播报语音时，会自动在数字前补充语音文本"您的验证码是"。
+        :rtype: str
+        """
         return self._CodeMessage
 
     @CodeMessage.setter
@@ -53,6 +56,10 @@ class SendCodeVoiceRequest(AbstractModel):
 
     @property
     def CalledNumber(self):
+        """被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
+例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :rtype: str
+        """
         return self._CalledNumber
 
     @CalledNumber.setter
@@ -61,6 +68,9 @@ class SendCodeVoiceRequest(AbstractModel):
 
     @property
     def VoiceSdkAppid(self):
+        """在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。
+        :rtype: str
+        """
         return self._VoiceSdkAppid
 
     @VoiceSdkAppid.setter
@@ -69,6 +79,9 @@ class SendCodeVoiceRequest(AbstractModel):
 
     @property
     def PlayTimes(self):
+        """播放次数，可选，最多3次，默认2次。
+        :rtype: int
+        """
         return self._PlayTimes
 
     @PlayTimes.setter
@@ -77,6 +90,9 @@ class SendCodeVoiceRequest(AbstractModel):
 
     @property
     def SessionContext(self):
+        """用户的 session 内容，腾讯 server 回包中会原样返回。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -117,6 +133,9 @@ class SendCodeVoiceResponse(AbstractModel):
 
     @property
     def SendStatus(self):
+        """语音验证码发送状态。
+        :rtype: :class:`tencentcloud.vms.v20200902.models.SendStatus`
+        """
         return self._SendStatus
 
     @SendStatus.setter
@@ -125,6 +144,9 @@ class SendCodeVoiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -157,6 +179,9 @@ class SendStatus(AbstractModel):
 
     @property
     def CallId(self):
+        """标识本次发送 ID，标识一次下发记录。
+        :rtype: str
+        """
         return self._CallId
 
     @CallId.setter
@@ -165,6 +190,10 @@ class SendStatus(AbstractModel):
 
     @property
     def SessionContext(self):
+        """用户的 session 内容，腾讯 server 回包中会原样返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -216,6 +245,9 @@ class SendTtsVoiceRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板 ID，在控制台审核通过的模板 ID。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -224,6 +256,10 @@ class SendTtsVoiceRequest(AbstractModel):
 
     @property
     def CalledNumber(self):
+        """被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
+例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :rtype: str
+        """
         return self._CalledNumber
 
     @CalledNumber.setter
@@ -232,6 +268,9 @@ class SendTtsVoiceRequest(AbstractModel):
 
     @property
     def VoiceSdkAppid(self):
+        """在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。
+        :rtype: str
+        """
         return self._VoiceSdkAppid
 
     @VoiceSdkAppid.setter
@@ -240,6 +279,10 @@ class SendTtsVoiceRequest(AbstractModel):
 
     @property
     def TemplateParamSet(self):
+        """模板参数，若模板没有参数，请提供为空数组。
+注：语音消息的内容长度不超过350字。
+        :rtype: list of str
+        """
         return self._TemplateParamSet
 
     @TemplateParamSet.setter
@@ -248,6 +291,9 @@ class SendTtsVoiceRequest(AbstractModel):
 
     @property
     def PlayTimes(self):
+        """播放次数，可选，最多3次，默认2次。
+        :rtype: int
+        """
         return self._PlayTimes
 
     @PlayTimes.setter
@@ -256,6 +302,9 @@ class SendTtsVoiceRequest(AbstractModel):
 
     @property
     def SessionContext(self):
+        """用户的 session 内容，腾讯 server 回包中会原样返回。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -297,6 +346,9 @@ class SendTtsVoiceResponse(AbstractModel):
 
     @property
     def SendStatus(self):
+        """语音通知发送状态。
+        :rtype: :class:`tencentcloud.vms.v20200902.models.SendStatus`
+        """
         return self._SendStatus
 
     @SendStatus.setter
@@ -305,6 +357,9 @@ class SendTtsVoiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

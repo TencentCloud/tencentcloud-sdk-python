@@ -32,6 +32,9 @@ class CHPRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """电话号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -76,6 +79,17 @@ class CHPResponse(AbstractModel):
 
     @property
     def TagType(self):
+        """标记类型
+ 0: 无标记
+ 50:骚扰电话
+ 51:房产中介
+ 52:保险理财
+ 53:广告推销
+ 54:诈骗电话
+ 55:快递电话
+ 56:出租车专车
+        :rtype: int
+        """
         return self._TagType
 
     @TagType.setter
@@ -84,6 +98,9 @@ class CHPResponse(AbstractModel):
 
     @property
     def TagCount(self):
+        """标记次数
+        :rtype: int
+        """
         return self._TagCount
 
     @TagCount.setter
@@ -121,6 +138,9 @@ class DescribeSmpnChpRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """客户用于计费的资源Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -129,6 +149,9 @@ class DescribeSmpnChpRequest(AbstractModel):
 
     @property
     def RequestData(self):
+        """终端骚扰保护请求
+        :rtype: :class:`tencentcloud.smpn.v20190822.models.CHPRequest`
+        """
         return self._RequestData
 
     @RequestData.setter
@@ -168,6 +191,9 @@ class DescribeSmpnChpResponse(AbstractModel):
 
     @property
     def ResponseData(self):
+        """终端骚扰保护回应
+        :rtype: :class:`tencentcloud.smpn.v20190822.models.CHPResponse`
+        """
         return self._ResponseData
 
     @ResponseData.setter
@@ -176,6 +202,9 @@ class DescribeSmpnChpResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -207,6 +236,9 @@ class DescribeSmpnFnrRequest(AbstractModel):
 
     @property
     def RequestData(self):
+        """虚假号码识别请求内容
+        :rtype: :class:`tencentcloud.smpn.v20190822.models.FNRRequest`
+        """
         return self._RequestData
 
     @RequestData.setter
@@ -215,6 +247,9 @@ class DescribeSmpnFnrRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """用于计费的资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -254,6 +289,9 @@ class DescribeSmpnFnrResponse(AbstractModel):
 
     @property
     def ResponseData(self):
+        """虚假号码识别回应内容
+        :rtype: :class:`tencentcloud.smpn.v20190822.models.FNRResponse`
+        """
         return self._ResponseData
 
     @ResponseData.setter
@@ -262,6 +300,9 @@ class DescribeSmpnFnrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -290,6 +331,9 @@ class FNRRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """电话号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -323,6 +367,9 @@ class FNRResponse(AbstractModel):
 
     @property
     def Status(self):
+        """虚假号码描述
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter

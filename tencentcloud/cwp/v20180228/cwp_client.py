@@ -325,31 +325,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCloudProtectServiceOrderRecord(self, request):
-        """云护航计费产品已下线
-
-        云护航服务使用完成后，该接口可以确认收货
-
-        :param request: Request instance for CreateCloudProtectServiceOrderRecord.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateCloudProtectServiceOrderRecordRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateCloudProtectServiceOrderRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCloudProtectServiceOrderRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateCloudProtectServiceOrderRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateEmergencyVulScan(self, request):
         """创建应急漏洞扫描任务
 
@@ -2815,7 +2790,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackLogs(self, request):
-        """按分页形式展示网络攻击日志列表
+        """DescribeAttackEvents 代替
+
+        按分页形式展示网络攻击日志列表
 
         :param request: Request instance for DescribeAttackLogs.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogsRequest`
@@ -2838,7 +2815,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackSource(self, request):
-        """查询攻击溯源
+        """已废弃
+
+        查询攻击溯源
 
         :param request: Request instance for DescribeAttackSource.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceRequest`
@@ -2861,7 +2840,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackSourceEvents(self, request):
-        """查询攻击溯源事件
+        """已废弃
+
+        查询攻击溯源事件
 
         :param request: Request instance for DescribeAttackSourceEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceEventsRequest`
@@ -4033,33 +4014,10 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCloudProtectServiceOrderList(self, request):
-        """云护航计费产品已下线
-
-        查询云护航服务订单列表
-
-        :param request: Request instance for DescribeCloudProtectServiceOrderList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeCloudProtectServiceOrderListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeCloudProtectServiceOrderListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudProtectServiceOrderList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudProtectServiceOrderListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeComponentStatistics(self, request):
-        """本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
+        """接口已无效
+
+        本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
 
         :param request: Request instance for DescribeComponentStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsRequest`

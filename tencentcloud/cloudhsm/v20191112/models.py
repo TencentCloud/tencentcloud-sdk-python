@@ -47,6 +47,9 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Uin(self):
+        """用户账号
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -55,6 +58,9 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Event(self):
+        """告警事件
+        :rtype: str
+        """
         return self._Event
 
     @Event.setter
@@ -63,6 +69,9 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Limit(self):
+        """告警阈值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -71,6 +80,9 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def Status(self):
+        """告警策略是否生效，0：停用，1：启用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -79,6 +91,9 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def BeginTime(self):
+        """在这个时间后才允许发送告警
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -87,6 +102,9 @@ class AlarmPolicy(AbstractModel):
 
     @property
     def EndTime(self):
+        """在这个时间前才允许发送告警
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -125,6 +143,9 @@ class DescribeHSMBySubnetIdRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet标识符
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -164,6 +185,9 @@ class DescribeHSMBySubnetIdResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """HSM数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -172,6 +196,9 @@ class DescribeHSMBySubnetIdResponse(AbstractModel):
 
     @property
     def SubnetId(self):
+        """作为查询条件的SubnetId
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -180,6 +207,9 @@ class DescribeHSMBySubnetIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -207,6 +237,9 @@ class DescribeHSMByVpcIdRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC标识符
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -246,6 +279,9 @@ class DescribeHSMByVpcIdResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """HSM数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -254,6 +290,9 @@ class DescribeHSMByVpcIdResponse(AbstractModel):
 
     @property
     def VpcId(self):
+        """作为查询条件的VpcId
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -262,6 +301,9 @@ class DescribeHSMByVpcIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -298,6 +340,9 @@ class DescribeSubnetRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量。Limit需要在[1, 100]之间。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -306,6 +351,9 @@ class DescribeSubnetRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。偏移量最小为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -314,6 +362,9 @@ class DescribeSubnetRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """查询指定VpcId下的子网信息。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -322,6 +373,9 @@ class DescribeSubnetRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """查找关键字
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -365,6 +419,9 @@ class DescribeSubnetResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回的子网数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -373,6 +430,10 @@ class DescribeSubnetResponse(AbstractModel):
 
     @property
     def SubnetList(self):
+        """返回的子网实例列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Subnet
+        """
         return self._SubnetList
 
     @SubnetList.setter
@@ -381,6 +442,9 @@ class DescribeSubnetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -413,6 +477,9 @@ class DescribeSupportedHsmRequest(AbstractModel):
 
     @property
     def HsmType(self):
+        """Hsm类型，可选值all、virtulization、GHSM、EHSM、SHSM
+        :rtype: str
+        """
         return self._HsmType
 
     @HsmType.setter
@@ -450,6 +517,10 @@ class DescribeSupportedHsmResponse(AbstractModel):
 
     @property
     def DeviceTypes(self):
+        """当前地域所支持的设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceInfo
+        """
         return self._DeviceTypes
 
     @DeviceTypes.setter
@@ -458,6 +529,9 @@ class DescribeSupportedHsmResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -495,6 +569,9 @@ class DescribeUsgRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -503,6 +580,9 @@ class DescribeUsgRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -511,6 +591,9 @@ class DescribeUsgRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """搜索关键字
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -553,6 +636,10 @@ class DescribeUsgResponse(AbstractModel):
 
     @property
     def SgList(self):
+        """用户的安全组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SgUnit
+        """
         return self._SgList
 
     @SgList.setter
@@ -561,6 +648,9 @@ class DescribeUsgResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回的安全组数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -569,6 +659,9 @@ class DescribeUsgResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -601,6 +694,9 @@ class DescribeUsgRuleRequest(AbstractModel):
 
     @property
     def SgIds(self):
+        """根据安全组Id获取安全组详情
+        :rtype: list of str
+        """
         return self._SgIds
 
     @SgIds.setter
@@ -642,6 +738,10 @@ class DescribeUsgRuleResponse(AbstractModel):
 
     @property
     def SgRules(self):
+        """安全组详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UsgRuleDetail
+        """
         return self._SgRules
 
     @SgRules.setter
@@ -650,6 +750,10 @@ class DescribeUsgRuleResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """安全组详情数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -658,6 +762,9 @@ class DescribeUsgRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -696,6 +803,9 @@ class DescribeVpcRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回偏移量。Offset最小为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -704,6 +814,9 @@ class DescribeVpcRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量。Limit需要在[1, 100]之间。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -712,6 +825,9 @@ class DescribeVpcRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """搜索关键字
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -754,6 +870,9 @@ class DescribeVpcResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """可查询到的所有Vpc实例总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -762,6 +881,10 @@ class DescribeVpcResponse(AbstractModel):
 
     @property
     def VpcList(self):
+        """Vpc对象列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Vpc
+        """
         return self._VpcList
 
     @VpcList.setter
@@ -770,6 +893,9 @@ class DescribeVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -802,6 +928,9 @@ class DescribeVsmAttributesRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -916,6 +1045,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -924,6 +1056,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -932,6 +1067,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Status(self):
+        """资源状态，1表示资源为正常，2表示资源处于隔离状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -940,6 +1078,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Vip(self):
+        """资源IP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -948,6 +1089,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def VpcId(self):
+        """资源所属Vpc
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -956,6 +1100,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SubnetId(self):
+        """资源所属子网
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -964,6 +1111,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Model(self):
+        """资源所属HSM的规格
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -972,6 +1122,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def VsmType(self):
+        """资源类型，17表示EVSM，33表示GVSM，49表示SVSM
+        :rtype: int
+        """
         return self._VsmType
 
     @VsmType.setter
@@ -980,6 +1133,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域Id，返回腾讯云地域代码，如广州为1，北京为8
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -988,6 +1144,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域Id，返回腾讯云每个地域的可用区代码
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -996,6 +1155,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """资源过期时间，以时间戳形式展示。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1004,6 +1166,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SgList(self):
+        """安全组详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UsgRuleDetail
+        """
         return self._SgList
 
     @SgList.setter
@@ -1012,6 +1178,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SubnetName(self):
+        """子网名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -1020,6 +1190,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -1028,6 +1202,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -1036,6 +1214,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Expired(self):
+        """实例是否已经过期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Expired
 
     @Expired.setter
@@ -1044,6 +1226,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RemainSeconds(self):
+        """为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RemainSeconds
 
     @RemainSeconds.setter
@@ -1052,6 +1238,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def VpcName(self):
+        """私有虚拟网络名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -1060,6 +1250,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
+        """VPC的IPv4 CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcCidrBlock
 
     @VpcCidrBlock.setter
@@ -1068,6 +1262,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SubnetCidrBlock(self):
+        """子网的CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetCidrBlock
 
     @SubnetCidrBlock.setter
@@ -1076,6 +1274,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """资源所关联的Tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1084,6 +1286,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -1092,6 +1298,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Manufacturer(self):
+        """厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Manufacturer
 
     @Manufacturer.setter
@@ -1100,6 +1310,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1173,6 +1386,9 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1181,6 +1397,9 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """最大数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1189,6 +1408,9 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """资源ID或者资源名字模糊查询的关键字
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -1197,6 +1419,9 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤条件
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1205,6 +1430,9 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def Manufacturer(self):
+        """设备所属的厂商名称，根据厂商来进行筛选
+        :rtype: str
+        """
         return self._Manufacturer
 
     @Manufacturer.setter
@@ -1213,6 +1441,9 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def HsmType(self):
+        """Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+        :rtype: str
+        """
         return self._HsmType
 
     @HsmType.setter
@@ -1263,6 +1494,9 @@ class DescribeVsmsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """获取实例的总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1271,6 +1505,10 @@ class DescribeVsmsResponse(AbstractModel):
 
     @property
     def VsmList(self):
+        """资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceInfo
+        """
         return self._VsmList
 
     @VsmList.setter
@@ -1279,6 +1517,9 @@ class DescribeVsmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1314,6 +1555,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def Manufacturer(self):
+        """厂商名称
+        :rtype: str
+        """
         return self._Manufacturer
 
     @Manufacturer.setter
@@ -1322,6 +1566,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def HsmTypes(self):
+        """此厂商旗下的设备信息列表
+        :rtype: list of HsmInfo
+        """
         return self._HsmTypes
 
     @HsmTypes.setter
@@ -1371,6 +1618,10 @@ class GetAlarmEventResponse(AbstractModel):
 
     @property
     def AlarmConfig(self):
+        """用户所有的告警策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmPolicy
+        """
         return self._AlarmConfig
 
     @AlarmConfig.setter
@@ -1379,6 +1630,9 @@ class GetAlarmEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1413,6 +1667,9 @@ class GetVsmMonitorInfoRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -1421,6 +1678,9 @@ class GetVsmMonitorInfoRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -1458,6 +1718,9 @@ class GetVsmMonitorInfoResponse(AbstractModel):
 
     @property
     def MonitorInfo(self):
+        """VSM监控信息
+        :rtype: list of str
+        """
         return self._MonitorInfo
 
     @MonitorInfo.setter
@@ -1466,6 +1729,9 @@ class GetVsmMonitorInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1498,6 +1764,9 @@ class HsmInfo(AbstractModel):
 
     @property
     def Model(self):
+        """加密机型号
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -1506,6 +1775,9 @@ class HsmInfo(AbstractModel):
 
     @property
     def VsmTypes(self):
+        """此类型的加密机所支持的VSM类型列表
+        :rtype: list of VsmInfo
+        """
         return self._VsmTypes
 
     @VsmTypes.setter
@@ -1514,6 +1786,9 @@ class HsmInfo(AbstractModel):
 
     @property
     def HsmType(self):
+        """加密机母机类型：virtualization、GHSM、EHSM、SHSM
+        :rtype: str
+        """
         return self._HsmType
 
     @HsmType.setter
@@ -1572,6 +1847,9 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
+        """需购买实例的数量
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -1580,6 +1858,9 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式：0表示按需计费/后付费，1表示预付费
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1588,6 +1869,9 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
+        :rtype: str
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -1596,6 +1880,9 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """商品的时间单位，m表示月，y表示年
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -1604,6 +1891,9 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
 
     @property
     def Currency(self):
+        """货币类型，默认为CNY
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -1612,6 +1902,9 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
 
     @property
     def Type(self):
+        """默认为CREATE，可选RENEW
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1620,6 +1913,9 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
 
     @property
     def HsmType(self):
+        """Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
+        :rtype: str
+        """
         return self._HsmType
 
     @HsmType.setter
@@ -1679,6 +1975,10 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     @property
     def TotalCost(self):
+        """原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -1687,6 +1987,10 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     @property
     def GoodsNum(self):
+        """购买的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -1695,6 +1999,10 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -1703,6 +2011,10 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """商品的时间单位，m表示月，y表示年
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -1711,6 +2023,10 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     @property
     def OriginalCost(self):
+        """应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OriginalCost
 
     @OriginalCost.setter
@@ -1719,6 +2035,9 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1761,6 +2080,9 @@ class ModifyAlarmEventRequest(AbstractModel):
 
     @property
     def Event(self):
+        """告警事件，支持CPU、MEM、TCP
+        :rtype: str
+        """
         return self._Event
 
     @Event.setter
@@ -1769,6 +2091,9 @@ class ModifyAlarmEventRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """告警阈值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1777,6 +2102,9 @@ class ModifyAlarmEventRequest(AbstractModel):
 
     @property
     def Status(self):
+        """告警状态，0表示停用，1表示启动
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1785,6 +2113,9 @@ class ModifyAlarmEventRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """告警开始时间，只有在这个时间后才会发送告警，当跟EndTime同时为空时表示全天告警
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -1793,6 +2124,9 @@ class ModifyAlarmEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """告警结束时间，只有在这个时间前才会发送告警，当跟BeginTime同时为空时表示全天告警
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1830,6 +2164,9 @@ class ModifyAlarmEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1876,6 +2213,9 @@ Default-默认不修改
 
     @property
     def ResourceId(self):
+        """资源Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -1884,6 +2224,12 @@ Default-默认不修改
 
     @property
     def Type(self):
+        """UpdateResourceName-修改资源名称,
+UpdateSgIds-修改安全组名称,
+UpdateNetWork-修改网络,
+Default-默认不修改
+        :rtype: list of str
+        """
         return self._Type
 
     @Type.setter
@@ -1892,6 +2238,9 @@ Default-默认不修改
 
     @property
     def ResourceName(self):
+        """资源名称
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -1900,6 +2249,9 @@ Default-默认不修改
 
     @property
     def SgIds(self):
+        """安全组Id
+        :rtype: list of str
+        """
         return self._SgIds
 
     @SgIds.setter
@@ -1908,6 +2260,9 @@ Default-默认不修改
 
     @property
     def VpcId(self):
+        """虚拟专网Id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1916,6 +2271,9 @@ Default-默认不修改
 
     @property
     def SubnetId(self):
+        """子网Id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1924,6 +2282,9 @@ Default-默认不修改
 
     @property
     def AlarmStatus(self):
+        """告警开关，0表示关闭告警，1表示启用告警
+        :rtype: int
+        """
         return self._AlarmStatus
 
     @AlarmStatus.setter
@@ -1963,6 +2324,9 @@ class ModifyVsmAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2077,6 +2441,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2085,6 +2453,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -2093,6 +2465,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """资源状态，1-正常，2-隔离，3-销毁
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2101,6 +2477,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Vip(self):
+        """资源IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -2109,6 +2489,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """资源所属Vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2117,6 +2501,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """资源所属子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -2125,6 +2513,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Model(self):
+        """资源所属HSM规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -2133,6 +2525,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def VsmType(self):
+        """云加密机类型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VsmType
 
     @VsmType.setter
@@ -2141,6 +2537,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -2149,6 +2549,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2157,6 +2561,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间（Epoch Unix Timestamp）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -2165,6 +2573,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -2173,6 +2585,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -2181,6 +2597,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def SgList(self):
+        """实例的安全组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SgUnit
+        """
         return self._SgList
 
     @SgList.setter
@@ -2189,6 +2609,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def SubnetName(self):
+        """子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -2197,6 +2621,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Expired(self):
+        """当前实例是否已经过期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Expired
 
     @Expired.setter
@@ -2205,6 +2633,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def RemainSeconds(self):
+        """为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RemainSeconds
 
     @RemainSeconds.setter
@@ -2213,6 +2645,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def VpcName(self):
+        """Vpc名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -2221,6 +2657,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def CreateUin(self):
+        """创建者Uin账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -2229,6 +2669,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -2237,6 +2681,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2245,6 +2693,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Manufacturer(self):
+        """厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Manufacturer
 
     @Manufacturer.setter
@@ -2253,6 +2705,10 @@ class ResourceInfo(AbstractModel):
 
     @property
     def AlarmStatus(self):
+        """告警状态，0：停用，1：启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AlarmStatus
 
     @AlarmStatus.setter
@@ -2331,6 +2787,10 @@ class SgUnit(AbstractModel):
 
     @property
     def SgId(self):
+        """安全组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SgId
 
     @SgId.setter
@@ -2339,6 +2799,10 @@ class SgUnit(AbstractModel):
 
     @property
     def SgName(self):
+        """安全组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SgName
 
     @SgName.setter
@@ -2347,6 +2811,10 @@ class SgUnit(AbstractModel):
 
     @property
     def SgRemark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SgRemark
 
     @SgRemark.setter
@@ -2355,6 +2823,10 @@ class SgUnit(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2424,6 +2896,10 @@ class Subnet(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2432,6 +2908,10 @@ class Subnet(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网实例ID，例如：subnet-bthucmmy。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -2440,6 +2920,10 @@ class Subnet(AbstractModel):
 
     @property
     def SubnetName(self):
+        """子网名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -2448,6 +2932,10 @@ class Subnet(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """子网的 IPv4 CIDR。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -2456,6 +2944,10 @@ class Subnet(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -2464,6 +2956,10 @@ class Subnet(AbstractModel):
 
     @property
     def AvailableIpAddressCount(self):
+        """可用IP数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AvailableIpAddressCount
 
     @AvailableIpAddressCount.setter
@@ -2472,6 +2968,10 @@ class Subnet(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
+        """子网的 IPv6 CIDR。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ipv6CidrBlock
 
     @Ipv6CidrBlock.setter
@@ -2480,6 +2980,10 @@ class Subnet(AbstractModel):
 
     @property
     def TotalIpAddressCount(self):
+        """总IP数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalIpAddressCount
 
     @TotalIpAddressCount.setter
@@ -2488,6 +2992,10 @@ class Subnet(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否为默认Subnet
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -2532,6 +3040,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2540,6 +3051,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -2577,6 +3091,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2585,6 +3102,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: list of str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -2648,6 +3168,10 @@ class UsgPolicy(AbstractModel):
 
     @property
     def Ip(self):
+        """cidr格式地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -2656,6 +3180,10 @@ class UsgPolicy(AbstractModel):
 
     @property
     def Id(self):
+        """安全组id代表的地址集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2664,6 +3192,10 @@ class UsgPolicy(AbstractModel):
 
     @property
     def AddressModule(self):
+        """地址组id代表的地址集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddressModule
 
     @AddressModule.setter
@@ -2672,6 +3204,10 @@ class UsgPolicy(AbstractModel):
 
     @property
     def Proto(self):
+        """协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Proto
 
     @Proto.setter
@@ -2680,6 +3216,10 @@ class UsgPolicy(AbstractModel):
 
     @property
     def Port(self):
+        """端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -2688,6 +3228,10 @@ class UsgPolicy(AbstractModel):
 
     @property
     def ServiceModule(self):
+        """服务组id代表的协议和端口集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceModule
 
     @ServiceModule.setter
@@ -2696,6 +3240,10 @@ class UsgPolicy(AbstractModel):
 
     @property
     def Desc(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -2704,6 +3252,10 @@ class UsgPolicy(AbstractModel):
 
     @property
     def Action(self):
+        """匹配后行为:ACCEPT/DROP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -2769,6 +3321,10 @@ class UsgRuleDetail(AbstractModel):
 
     @property
     def InBound(self):
+        """入站规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UsgPolicy
+        """
         return self._InBound
 
     @InBound.setter
@@ -2777,6 +3333,10 @@ class UsgRuleDetail(AbstractModel):
 
     @property
     def OutBound(self):
+        """出站规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UsgPolicy
+        """
         return self._OutBound
 
     @OutBound.setter
@@ -2785,6 +3345,10 @@ class UsgRuleDetail(AbstractModel):
 
     @property
     def SgId(self):
+        """安全组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SgId
 
     @SgId.setter
@@ -2793,6 +3357,10 @@ class UsgRuleDetail(AbstractModel):
 
     @property
     def SgName(self):
+        """安全组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SgName
 
     @SgName.setter
@@ -2801,6 +3369,10 @@ class UsgRuleDetail(AbstractModel):
 
     @property
     def SgRemark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SgRemark
 
     @SgRemark.setter
@@ -2809,6 +3381,10 @@ class UsgRuleDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2817,6 +3393,10 @@ class UsgRuleDetail(AbstractModel):
 
     @property
     def Version(self):
+        """版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -2879,6 +3459,10 @@ class Vpc(AbstractModel):
 
     @property
     def VpcName(self):
+        """Vpc名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -2887,6 +3471,10 @@ class Vpc(AbstractModel):
 
     @property
     def VpcId(self):
+        """VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2895,6 +3483,10 @@ class Vpc(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -2903,6 +3495,10 @@ class Vpc(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否为默认VPC
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -2942,6 +3538,9 @@ class VsmInfo(AbstractModel):
 
     @property
     def TypeName(self):
+        """VSM类型名称
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -2950,6 +3549,9 @@ class VsmInfo(AbstractModel):
 
     @property
     def TypeID(self):
+        """VSM类型值
+        :rtype: int
+        """
         return self._TypeID
 
     @TypeID.setter

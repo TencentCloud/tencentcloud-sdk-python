@@ -134,6 +134,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def RegisterIp(self):
+        """注册来源的外网 IP。
+        :rtype: str
+        """
         return self._RegisterIp
 
     @RegisterIp.setter
@@ -142,6 +145,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def Uid(self):
+        """用户 ID 不同的 accountType 对应不同的用户 ID。如果是 QQ，则填入对应的 openid，微信用户则填入对应的 openid/unionid，手机号则填入对应真实用户手机号（如13123456789）。
+        :rtype: str
+        """
         return self._Uid
 
     @Uid.setter
@@ -150,6 +156,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def RegisterTime(self):
+        """注册时间戳，单位：秒。
+        :rtype: str
+        """
         return self._RegisterTime
 
     @RegisterTime.setter
@@ -158,6 +167,14 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def AccountType(self):
+        """用户账号类型（QQ 开放帐号、微信开放账号需要 提交工单 由腾讯云进行资格审核）：
+1：QQ 开放帐号。
+2：微信开放账号。
+4：手机号。
+0：其他。
+10004：手机号 MD5。
+        :rtype: str
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -166,6 +183,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def AppIdU(self):
+        """accountType 是 QQ 或微信开放账号时，该参数必填，表示 QQ 或微信分配给网站或应用的 AppID，用来唯一标识网站或应用。
+        :rtype: str
+        """
         return self._AppIdU
 
     @AppIdU.setter
@@ -174,6 +194,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def AssociateAccount(self):
+        """accountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号 ID。
+        :rtype: str
+        """
         return self._AssociateAccount
 
     @AssociateAccount.setter
@@ -182,6 +205,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def NickName(self):
+        """昵称，UTF-8 编码。
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -190,6 +216,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号：国家代码-手机号， 如0086-15912345687（0086前不需要+号）。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -198,6 +227,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
+        """用户邮箱地址（非系统自动生成）。
+        :rtype: str
+        """
         return self._EmailAddress
 
     @EmailAddress.setter
@@ -206,6 +238,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def Address(self):
+        """地址。
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -214,6 +249,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def CookieHash(self):
+        """用户 HTTP 请求中的 cookie 进行2次 hash 的值，只要保证相同 cookie 的 hash 值一致即可。
+        :rtype: str
+        """
         return self._CookieHash
 
     @CookieHash.setter
@@ -222,6 +260,14 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def RegisterSource(self):
+        """注册来源：
+0：其他。
+1：PC 网页。
+2：移动页面。
+3：App。
+4：微信公众号。
+        :rtype: str
+        """
         return self._RegisterSource
 
     @RegisterSource.setter
@@ -230,6 +276,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def Referer(self):
+        """用户 HTTP 请求的 referer 值。
+        :rtype: str
+        """
         return self._Referer
 
     @Referer.setter
@@ -238,6 +287,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def JumpUrl(self):
+        """注册成功后跳转页面。
+        :rtype: str
+        """
         return self._JumpUrl
 
     @JumpUrl.setter
@@ -246,6 +298,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def UserAgent(self):
+        """用户 HTTP 请求的 userAgent。
+        :rtype: str
+        """
         return self._UserAgent
 
     @UserAgent.setter
@@ -254,6 +309,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def XForwardedFor(self):
+        """用户 HTTP 请求中的 x_forward_for。
+        :rtype: str
+        """
         return self._XForwardedFor
 
     @XForwardedFor.setter
@@ -262,6 +320,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def MouseClickCount(self):
+        """用户操作过程中鼠标单击次数。
+        :rtype: str
+        """
         return self._MouseClickCount
 
     @MouseClickCount.setter
@@ -270,6 +331,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def KeyboardClickCount(self):
+        """用户操作过程中键盘单击次数。
+        :rtype: str
+        """
         return self._KeyboardClickCount
 
     @KeyboardClickCount.setter
@@ -278,6 +342,11 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def Result(self):
+        """注册结果：
+0：失败。
+1：成功。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -286,6 +355,13 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def Reason(self):
+        """失败原因：
+0：其他。
+1：参数错误。
+2：帐号冲突。
+3：验证错误。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -294,6 +370,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def RegisterSpend(self):
+        """登录耗时，单位：秒。
+        :rtype: str
+        """
         return self._RegisterSpend
 
     @RegisterSpend.setter
@@ -302,6 +381,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def MacAddress(self):
+        """MAC 地址或设备唯一标识。
+        :rtype: str
+        """
         return self._MacAddress
 
     @MacAddress.setter
@@ -310,6 +392,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def VendorId(self):
+        """手机制造商 ID，如果手机注册，请带上此信息。
+        :rtype: str
+        """
         return self._VendorId
 
     @VendorId.setter
@@ -318,6 +403,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def AppVersion(self):
+        """App 客户端版本。
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -326,6 +414,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def Imei(self):
+        """手机设备号。
+        :rtype: str
+        """
         return self._Imei
 
     @Imei.setter
@@ -334,6 +425,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务 ID 网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -342,6 +436,10 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def WxSubType(self):
+        """1：微信公众号。
+2：微信小程序。
+        :rtype: str
+        """
         return self._WxSubType
 
     @WxSubType.setter
@@ -350,6 +448,9 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def RandNum(self):
+        """Token 签名随机数，微信小程序必填，建议16个字符。
+        :rtype: str
+        """
         return self._RandNum
 
     @RandNum.setter
@@ -358,6 +459,10 @@ class QueryRegisterProtectionRequest(AbstractModel):
 
     @property
     def WxToken(self):
+        """如果是微信小程序，该字段为以 ssesion_key 为 key 去签名随机数 radnNum 得到的值（hmac_sha256签名算法）。
+如果是微信公众号或第三方登录，则为授权的 access_token（注意：不是普通 access_token，具体看 微信官方文档）。
+        :rtype: str
+        """
         return self._WxToken
 
     @WxToken.setter
@@ -446,6 +551,10 @@ class QueryRegisterProtectionResponse(AbstractModel):
 
     @property
     def CodeDesc(self):
+        """业务侧错误码，成功时返回 Success，错误时返回具体业务错误原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CodeDesc
 
     @CodeDesc.setter
@@ -454,6 +563,10 @@ class QueryRegisterProtectionResponse(AbstractModel):
 
     @property
     def AssociateAccount(self):
+        """accountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssociateAccount
 
     @AssociateAccount.setter
@@ -462,6 +575,10 @@ class QueryRegisterProtectionResponse(AbstractModel):
 
     @property
     def RegisterTime(self):
+        """注册时间戳，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegisterTime
 
     @RegisterTime.setter
@@ -470,6 +587,10 @@ class QueryRegisterProtectionResponse(AbstractModel):
 
     @property
     def Uid(self):
+        """用户 ID 不同的 accountType 对应不同的用户 ID。如果是 QQ，则填入对应的 openid，微信用户则填入对应的 openid/unionid，手机号则填入对应真实用户手机号（如13123456789）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uid
 
     @Uid.setter
@@ -478,6 +599,10 @@ class QueryRegisterProtectionResponse(AbstractModel):
 
     @property
     def RegisterIp(self):
+        """注册来源的外网 IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegisterIp
 
     @RegisterIp.setter
@@ -486,6 +611,10 @@ class QueryRegisterProtectionResponse(AbstractModel):
 
     @property
     def Level(self):
+        """0：表示无恶意。
+1 - 4：恶意等级由低到高。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -494,6 +623,9 @@ class QueryRegisterProtectionResponse(AbstractModel):
 
     @property
     def RiskType(self):
+        """风险类型。
+        :rtype: list of int
+        """
         return self._RiskType
 
     @RiskType.setter
@@ -502,6 +634,9 @@ class QueryRegisterProtectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

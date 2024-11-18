@@ -43,6 +43,10 @@ class Annotation(AbstractModel):
 
     @property
     def Configuration(self):
+        """资源当前实际配置。长度为0~256位字符，即资源不合规配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Configuration
 
     @Configuration.setter
@@ -51,6 +55,10 @@ class Annotation(AbstractModel):
 
     @property
     def DesiredValue(self):
+        """资源期望配置。长度为0~256位字符，即资源合规配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DesiredValue
 
     @DesiredValue.setter
@@ -59,6 +67,9 @@ class Annotation(AbstractModel):
 
     @property
     def Operator(self):
+        """资源当前配置和期望配置之间的比较运算符。长度为0~16位字符，自定义规则上报评估结果此字段可能为空
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -67,6 +78,9 @@ class Annotation(AbstractModel):
 
     @property
     def Property(self):
+        """当前配置在资源属性结构体中的JSON路径。长度为0~256位字符，自定义规则上报评估结果此字段可能为空
+        :rtype: str
+        """
         return self._Property
 
     @Property.setter
@@ -221,6 +235,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Identifier(self):
+        """规则标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Identifier
 
     @Identifier.setter
@@ -229,6 +247,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def RuleName(self):
+        """规则名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -237,6 +259,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def InputParameter(self):
+        """规则参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InputParameter
+        """
         return self._InputParameter
 
     @InputParameter.setter
@@ -245,6 +271,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def SourceCondition(self):
+        """规则触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SourceConditionForManage
+        """
         return self._SourceCondition
 
     @SourceCondition.setter
@@ -253,6 +283,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ResourceType(self):
+        """规则支持的资源类型，规则仅对指定资源类型的资源生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -261,6 +295,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Labels(self):
+        """规则所属标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Labels
 
     @Labels.setter
@@ -269,6 +307,13 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def RiskLevel(self):
+        """规则风险等级
+1:低风险
+2:中风险
+3:高风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -277,6 +322,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ServiceFunction(self):
+        """规则对应的函数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceFunction
 
     @ServiceFunction.setter
@@ -285,6 +334,11 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def CreateTime(self):
+        """创建时间
+格式：YYYY-MM-DD h:i:s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -293,6 +347,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Description(self):
+        """规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -301,6 +359,11 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Status(self):
+        """ACTIVE：启用
+NO_ACTIVE：停止
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -309,6 +372,12 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ComplianceResult(self):
+        """合规： 'COMPLIANT'
+不合规： 'NON_COMPLIANT'
+无法应用规则： 'NOT_APPLICABLE'
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ComplianceResult
 
     @ComplianceResult.setter
@@ -317,6 +386,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def Annotation(self):
+        """["",""]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.config.v20220802.models.Annotation`
+        """
         return self._Annotation
 
     @Annotation.setter
@@ -325,6 +398,12 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ConfigRuleInvokedTime(self):
+        """规则评估时间
+格式：YYYY-MM-DD h:i:s
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConfigRuleInvokedTime
 
     @ConfigRuleInvokedTime.setter
@@ -333,6 +412,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ConfigRuleId(self):
+        """规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConfigRuleId
 
     @ConfigRuleId.setter
@@ -341,6 +424,11 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def IdentifierType(self):
+        """CUSTOMIZE：自定义规则、
+SYSTEM：托管规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentifierType
 
     @IdentifierType.setter
@@ -349,6 +437,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def CompliancePackId(self):
+        """合规包ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CompliancePackId
 
     @CompliancePackId.setter
@@ -357,6 +449,12 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def TriggerType(self):
+        """触发类型
+ScheduledNotification：周期触发、
+ConfigurationItemChangeNotification：变更触发
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerType
+        """
         return self._TriggerType
 
     @TriggerType.setter
@@ -365,6 +463,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ManageInputParameter(self):
+        """参数详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InputParameterForManage
+        """
         return self._ManageInputParameter
 
     @ManageInputParameter.setter
@@ -373,6 +475,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def CompliancePackName(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CompliancePackName
 
     @CompliancePackName.setter
@@ -381,6 +487,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def RegionsScope(self):
+        """关联地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._RegionsScope
 
     @RegionsScope.setter
@@ -389,6 +499,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def TagsScope(self):
+        """关联标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._TagsScope
 
     @TagsScope.setter
@@ -397,6 +511,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ExcludeResourceIdsScope(self):
+        """ 规则对指定资源ID无效，即不对该资源执行评估。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ExcludeResourceIdsScope
 
     @ExcludeResourceIdsScope.setter
@@ -405,6 +523,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def AccountGroupId(self):
+        """账号组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccountGroupId
 
     @AccountGroupId.setter
@@ -413,6 +535,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def AccountGroupName(self):
+        """账号组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccountGroupName
 
     @AccountGroupName.setter
@@ -421,6 +547,10 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def RuleOwnerId(self):
+        """规则所属用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuleOwnerId
 
     @RuleOwnerId.setter
@@ -429,6 +559,11 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def ManageTriggerType(self):
+        """预设规则支持的触发方式
+ScheduledNotification：周期触发
+ConfigurationItemChangeNotification：变更触发
+        :rtype: list of str
+        """
         return self._ManageTriggerType
 
     @ManageTriggerType.setter
@@ -532,6 +667,9 @@ NON_COMPLIANT：不合规
 
     @property
     def ComplianceResourceId(self):
+        """已评估资源ID。长度为0~256个字符
+        :rtype: str
+        """
         return self._ComplianceResourceId
 
     @ComplianceResourceId.setter
@@ -540,6 +678,11 @@ NON_COMPLIANT：不合规
 
     @property
     def ComplianceResourceType(self):
+        """已评估资源类型。
+支持:
+QCS::CVM::Instance、 QCS::CBS::Disk、QCS::VPC::Vpc、QCS::VPC::Subnet、QCS::VPC::SecurityGroup、 QCS::CAM::User、QCS::CAM::Group、QCS::CAM::Policy、QCS::CAM::Role、QCS::COS::Bucket
+        :rtype: str
+        """
         return self._ComplianceResourceType
 
     @ComplianceResourceType.setter
@@ -548,6 +691,10 @@ NON_COMPLIANT：不合规
 
     @property
     def ComplianceRegion(self):
+        """已评估资源地域。
+长度为0~32个字符
+        :rtype: str
+        """
         return self._ComplianceRegion
 
     @ComplianceRegion.setter
@@ -556,6 +703,11 @@ NON_COMPLIANT：不合规
 
     @property
     def ComplianceType(self):
+        """合规类型。取值：
+COMPLIANT：合规、
+NON_COMPLIANT：不合规
+        :rtype: str
+        """
         return self._ComplianceType
 
     @ComplianceType.setter
@@ -564,6 +716,9 @@ NON_COMPLIANT：不合规
 
     @property
     def Annotation(self):
+        """不合规资源的补充信息。
+        :rtype: :class:`tencentcloud.config.v20220802.models.Annotation`
+        """
         return self._Annotation
 
     @Annotation.setter
@@ -610,6 +765,9 @@ class InputParameter(AbstractModel):
 
     @property
     def ParameterKey(self):
+        """参数名
+        :rtype: str
+        """
         return self._ParameterKey
 
     @ParameterKey.setter
@@ -618,6 +776,9 @@ class InputParameter(AbstractModel):
 
     @property
     def Type(self):
+        """参数类型。必填类型：Require，可选类型：Optional。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -626,6 +787,10 @@ class InputParameter(AbstractModel):
 
     @property
     def Value(self):
+        """参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -678,6 +843,10 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def ValueType(self):
+        """值类型。数值：Integer， 字符串：String
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValueType
 
     @ValueType.setter
@@ -686,6 +855,10 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def ParameterKey(self):
+        """参数Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParameterKey
 
     @ParameterKey.setter
@@ -694,6 +867,10 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def Type(self):
+        """参数类型。必填类型：Require，可选类型：Optional。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -702,6 +879,10 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def DefaultValue(self):
+        """默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DefaultValue
 
     @DefaultValue.setter
@@ -710,6 +891,10 @@ class InputParameterForManage(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -774,6 +959,9 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -782,6 +970,9 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -790,6 +981,9 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
+        """账号组ID
+        :rtype: str
+        """
         return self._AccountGroupId
 
     @AccountGroupId.setter
@@ -798,6 +992,9 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """排序类型, 倒序：desc，顺序：asc
+        :rtype: str
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -806,6 +1003,12 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """风险等级
+1：高风险。
+2：中风险。
+3：低风险。
+        :rtype: list of int non-negative
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -814,6 +1017,9 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def State(self):
+        """规则状态
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -822,6 +1028,9 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
+        """评估结果
+        :rtype: list of str
+        """
         return self._ComplianceResult
 
     @ComplianceResult.setter
@@ -830,6 +1039,9 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -838,6 +1050,9 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RuleOwnerId(self):
+        """规则所属账号ID
+        :rtype: int
+        """
         return self._RuleOwnerId
 
     @RuleOwnerId.setter
@@ -885,6 +1100,9 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -893,6 +1111,9 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """详情
+        :rtype: list of ConfigRule
+        """
         return self._Items
 
     @Items.setter
@@ -901,6 +1122,9 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -954,6 +1178,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -962,6 +1189,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -970,6 +1200,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """排序类型, 倒序：desc，顺序：asc
+        :rtype: str
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -978,6 +1211,12 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """风险等级
+1：高风险。
+2：中风险。
+3：低风险。
+        :rtype: list of int non-negative
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -986,6 +1225,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def State(self):
+        """规则状态
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -994,6 +1236,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
+        """评估结果
+        :rtype: list of str
+        """
         return self._ComplianceResult
 
     @ComplianceResult.setter
@@ -1002,6 +1247,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -1047,6 +1295,9 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1055,6 +1306,9 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """详情
+        :rtype: list of ConfigRule
+        """
         return self._Items
 
     @Items.setter
@@ -1063,6 +1317,9 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1098,6 +1355,9 @@ class PutEvaluationsRequest(AbstractModel):
 
     @property
     def ResultToken(self):
+        """回调令牌。从自定义规则所选的scf云函数Context中取参数ResultToken值
+        :rtype: str
+        """
         return self._ResultToken
 
     @ResultToken.setter
@@ -1106,6 +1366,9 @@ class PutEvaluationsRequest(AbstractModel):
 
     @property
     def Evaluations(self):
+        """自定义规则评估结果信息。
+        :rtype: list of Evaluation
+        """
         return self._Evaluations
 
     @Evaluations.setter
@@ -1145,6 +1408,9 @@ class PutEvaluationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1187,6 +1453,10 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def EmptyAs(self):
+        """条件为空，合规：COMPLIANT，不合规：NON_COMPLIANT，无法应用：NOT_APPLICABLE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EmptyAs
 
     @EmptyAs.setter
@@ -1195,6 +1465,10 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def SelectPath(self):
+        """配置路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SelectPath
 
     @SelectPath.setter
@@ -1203,6 +1477,10 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def Operator(self):
+        """操作运算符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -1211,6 +1489,10 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def Required(self):
+        """是否必须
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Required
 
     @Required.setter
@@ -1219,6 +1501,10 @@ class SourceConditionForManage(AbstractModel):
 
     @property
     def DesiredValue(self):
+        """期望值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DesiredValue
 
     @DesiredValue.setter
@@ -1261,6 +1547,10 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -1269,6 +1559,10 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -1307,6 +1601,9 @@ class TriggerType(AbstractModel):
 
     @property
     def MessageType(self):
+        """触发类型
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -1315,6 +1612,10 @@ class TriggerType(AbstractModel):
 
     @property
     def MaximumExecutionFrequency(self):
+        """触发时间周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MaximumExecutionFrequency
 
     @MaximumExecutionFrequency.setter

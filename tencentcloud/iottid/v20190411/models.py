@@ -32,6 +32,9 @@ class AuthTestTidRequest(AbstractModel):
 
     @property
     def Data(self):
+        """设备端SDK填入测试TID参数后生成的加密数据串
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -68,6 +71,9 @@ class AuthTestTidResponse(AbstractModel):
 
     @property
     def Pass(self):
+        """认证结果
+        :rtype: bool
+        """
         return self._Pass
 
     @Pass.setter
@@ -76,6 +82,9 @@ class AuthTestTidResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -105,6 +114,9 @@ class BurnTidNotifyRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单编号
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -113,6 +125,9 @@ class BurnTidNotifyRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """TID编号
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -150,6 +165,9 @@ class BurnTidNotifyResponse(AbstractModel):
 
     @property
     def Tid(self):
+        """接收回执成功的TID
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -158,6 +176,9 @@ class BurnTidNotifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -187,6 +208,9 @@ class DeliverTidNotifyRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单编号
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -195,6 +219,9 @@ class DeliverTidNotifyRequest(AbstractModel):
 
     @property
     def Tid(self):
+        """TID编号
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -238,6 +265,9 @@ class DeliverTidNotifyResponse(AbstractModel):
 
     @property
     def RemaindCount(self):
+        """剩余空发数量
+        :rtype: int
+        """
         return self._RemaindCount
 
     @RemaindCount.setter
@@ -246,6 +276,9 @@ class DeliverTidNotifyResponse(AbstractModel):
 
     @property
     def Tid(self):
+        """已回执的TID编码
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -254,6 +287,9 @@ class DeliverTidNotifyResponse(AbstractModel):
 
     @property
     def ProductKey(self):
+        """产品公钥
+        :rtype: str
+        """
         return self._ProductKey
 
     @ProductKey.setter
@@ -262,6 +298,9 @@ class DeliverTidNotifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -293,6 +332,9 @@ class DeliverTidsRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单ID
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -301,6 +343,9 @@ class DeliverTidsRequest(AbstractModel):
 
     @property
     def Quantity(self):
+        """数量，1~100
+        :rtype: int
+        """
         return self._Quantity
 
     @Quantity.setter
@@ -342,6 +387,10 @@ class DeliverTidsResponse(AbstractModel):
 
     @property
     def TidSet(self):
+        """空发的TID信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TidKeysInfo
+        """
         return self._TidSet
 
     @TidSet.setter
@@ -350,6 +399,9 @@ class DeliverTidsResponse(AbstractModel):
 
     @property
     def ProductKey(self):
+        """产品公钥
+        :rtype: str
+        """
         return self._ProductKey
 
     @ProductKey.setter
@@ -358,6 +410,9 @@ class DeliverTidsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -390,6 +445,9 @@ class DescribeAvailableLibCountRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单编号
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -426,6 +484,9 @@ class DescribeAvailableLibCountResponse(AbstractModel):
 
     @property
     def Quantity(self):
+        """可空发的白盒密钥数量
+        :rtype: int
+        """
         return self._Quantity
 
     @Quantity.setter
@@ -434,6 +495,9 @@ class DescribeAvailableLibCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -475,6 +539,9 @@ class DescribePermissionResponse(AbstractModel):
 
     @property
     def EnterpriseUser(self):
+        """企业用户
+        :rtype: bool
+        """
         return self._EnterpriseUser
 
     @EnterpriseUser.setter
@@ -483,6 +550,9 @@ class DescribePermissionResponse(AbstractModel):
 
     @property
     def DownloadPermission(self):
+        """下载控制台权限
+        :rtype: str
+        """
         return self._DownloadPermission
 
     @DownloadPermission.setter
@@ -491,6 +561,9 @@ class DescribePermissionResponse(AbstractModel):
 
     @property
     def UsePermission(self):
+        """使用控制台权限
+        :rtype: str
+        """
         return self._UsePermission
 
     @UsePermission.setter
@@ -499,6 +572,9 @@ class DescribePermissionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -530,6 +606,9 @@ class DownloadTidsRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单编号
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -538,6 +617,9 @@ class DownloadTidsRequest(AbstractModel):
 
     @property
     def Quantity(self):
+        """下载数量：1~10
+        :rtype: int
+        """
         return self._Quantity
 
     @Quantity.setter
@@ -576,6 +658,10 @@ class DownloadTidsResponse(AbstractModel):
 
     @property
     def TidSet(self):
+        """下载的TID信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TidKeysInfo
+        """
         return self._TidSet
 
     @TidSet.setter
@@ -584,6 +670,9 @@ class DownloadTidsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -630,6 +719,9 @@ class TidKeysInfo(AbstractModel):
 
     @property
     def Tid(self):
+        """TID号码
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -638,6 +730,9 @@ class TidKeysInfo(AbstractModel):
 
     @property
     def PublicKey(self):
+        """公钥
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -646,6 +741,9 @@ class TidKeysInfo(AbstractModel):
 
     @property
     def PrivateKey(self):
+        """私钥
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -654,6 +752,9 @@ class TidKeysInfo(AbstractModel):
 
     @property
     def Psk(self):
+        """共享密钥
+        :rtype: str
+        """
         return self._Psk
 
     @Psk.setter
@@ -662,6 +763,9 @@ class TidKeysInfo(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """软加固白盒密钥下载地址
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -670,6 +774,9 @@ class TidKeysInfo(AbstractModel):
 
     @property
     def DeviceCode(self):
+        """软加固设备标识码
+        :rtype: str
+        """
         return self._DeviceCode
 
     @DeviceCode.setter
@@ -711,6 +818,9 @@ class UploadDeviceUniqueCodeRequest(AbstractModel):
 
     @property
     def CodeSet(self):
+        """硬件唯一标识码
+        :rtype: list of str
+        """
         return self._CodeSet
 
     @CodeSet.setter
@@ -719,6 +829,9 @@ class UploadDeviceUniqueCodeRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """硬件标识码绑定的申请编号
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -767,6 +880,9 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
 
     @property
     def Count(self):
+        """本次已上传数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -775,6 +891,10 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
 
     @property
     def ExistedCodeSet(self):
+        """重复的硬件唯一标识码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ExistedCodeSet
 
     @ExistedCodeSet.setter
@@ -783,6 +903,9 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
 
     @property
     def LeftQuantity(self):
+        """剩余可上传数量
+        :rtype: int
+        """
         return self._LeftQuantity
 
     @LeftQuantity.setter
@@ -791,6 +914,10 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
 
     @property
     def IllegalCodeSet(self):
+        """错误的硬件唯一标识码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._IllegalCodeSet
 
     @IllegalCodeSet.setter
@@ -799,6 +926,9 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -828,6 +958,9 @@ class VerifyChipBurnInfoRequest(AbstractModel):
 
     @property
     def Data(self):
+        """验证数据
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -870,6 +1003,9 @@ class VerifyChipBurnInfoResponse(AbstractModel):
 
     @property
     def Pass(self):
+        """验证结果
+        :rtype: bool
+        """
         return self._Pass
 
     @Pass.setter
@@ -878,6 +1014,9 @@ class VerifyChipBurnInfoResponse(AbstractModel):
 
     @property
     def VerifiedTimes(self):
+        """已验证次数
+        :rtype: int
+        """
         return self._VerifiedTimes
 
     @VerifiedTimes.setter
@@ -886,6 +1025,9 @@ class VerifyChipBurnInfoResponse(AbstractModel):
 
     @property
     def LeftTimes(self):
+        """剩余验证次数
+        :rtype: int
+        """
         return self._LeftTimes
 
     @LeftTimes.setter
@@ -894,6 +1036,9 @@ class VerifyChipBurnInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

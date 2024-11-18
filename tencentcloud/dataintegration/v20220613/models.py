@@ -35,6 +35,9 @@ class BatchContent(AbstractModel):
 
     @property
     def Body(self):
+        """消息体
+        :rtype: str
+        """
         return self._Body
 
     @Body.setter
@@ -43,6 +46,9 @@ class BatchContent(AbstractModel):
 
     @property
     def Key(self):
+        """消息的键名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -80,6 +86,9 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def DataHubId(self):
+        """接入资源ID
+        :rtype: str
+        """
         return self._DataHubId
 
     @DataHubId.setter
@@ -88,6 +97,9 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def Message(self):
+        """批量消息
+        :rtype: list of BatchContent
+        """
         return self._Message
 
     @Message.setter
@@ -130,6 +142,9 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def MessageId(self):
+        """消息ID
+        :rtype: list of str
+        """
         return self._MessageId
 
     @MessageId.setter
@@ -138,6 +153,9 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

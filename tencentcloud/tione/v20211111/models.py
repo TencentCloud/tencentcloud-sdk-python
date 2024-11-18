@@ -33,6 +33,10 @@ class CBSConfig(AbstractModel):
 
     @property
     def VolumeSizeInGB(self):
+        """存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VolumeSizeInGB
 
     @VolumeSizeInGB.setter
@@ -77,6 +81,9 @@ class CFSConfig(AbstractModel):
 
     @property
     def Id(self):
+        """cfs的实例的ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -85,6 +92,9 @@ class CFSConfig(AbstractModel):
 
     @property
     def Path(self):
+        """存储的路径
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -93,6 +103,10 @@ class CFSConfig(AbstractModel):
 
     @property
     def MountType(self):
+        """cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MountType
 
     @MountType.setter
@@ -101,6 +115,10 @@ class CFSConfig(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议 1: NFS, 2: TURBO
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -142,6 +160,10 @@ class CFSTurbo(AbstractModel):
 
     @property
     def Id(self):
+        """CFSTurbo实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -150,6 +172,10 @@ class CFSTurbo(AbstractModel):
 
     @property
     def Path(self):
+        """CFSTurbo路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -197,6 +223,10 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def Model(self):
+        """对话的目标模型ID。
+自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -205,6 +235,9 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def Messages(self):
+        """输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
+        :rtype: list of Message
+        """
         return self._Messages
 
     @Messages.setter
@@ -213,6 +246,9 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def Temperature(self):
+        """仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+        :rtype: float
+        """
         return self._Temperature
 
     @Temperature.setter
@@ -221,6 +257,9 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def TopP(self):
+        """仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+        :rtype: float
+        """
         return self._TopP
 
     @TopP.setter
@@ -229,6 +268,9 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def MaxTokens(self):
+        """仅当模型为自行部署的开源大模型时生效。最大生成的token数目。默认为无限大。
+        :rtype: int
+        """
         return self._MaxTokens
 
     @MaxTokens.setter
@@ -285,6 +327,9 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Model(self):
+        """部署好的服务Id
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -293,6 +338,9 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Choices(self):
+        """本次问答的答案。
+        :rtype: list of Choice
+        """
         return self._Choices
 
     @Choices.setter
@@ -301,6 +349,10 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Id(self):
+        """会话Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -309,6 +361,10 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Usage(self):
+        """token统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Usage`
+        """
         return self._Usage
 
     @Usage.setter
@@ -317,6 +373,9 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -360,6 +419,10 @@ class Choice(AbstractModel):
 
     @property
     def Message(self):
+        """对话结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Message`
+        """
         return self._Message
 
     @Message.setter
@@ -368,6 +431,9 @@ class Choice(AbstractModel):
 
     @property
     def FinishReason(self):
+        """结束理由: stop, length, content_filter, null
+        :rtype: str
+        """
         return self._FinishReason
 
     @FinishReason.setter
@@ -376,6 +442,9 @@ class Choice(AbstractModel):
 
     @property
     def Index(self):
+        """序号
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -426,6 +495,10 @@ class Container(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -434,6 +507,10 @@ class Container(AbstractModel):
 
     @property
     def ContainerId(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContainerId
 
     @ContainerId.setter
@@ -442,6 +519,10 @@ class Container(AbstractModel):
 
     @property
     def Image(self):
+        """镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -450,6 +531,10 @@ class Container(AbstractModel):
 
     @property
     def Status(self):
+        """容器状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ContainerStatus`
+        """
         return self._Status
 
     @Status.setter
@@ -505,6 +590,10 @@ class ContainerStatus(AbstractModel):
 
     @property
     def RestartCount(self):
+        """重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RestartCount
 
     @RestartCount.setter
@@ -513,6 +602,10 @@ class ContainerStatus(AbstractModel):
 
     @property
     def State(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -521,6 +614,10 @@ class ContainerStatus(AbstractModel):
 
     @property
     def Ready(self):
+        """是否就绪
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Ready
 
     @Ready.setter
@@ -529,6 +626,10 @@ class ContainerStatus(AbstractModel):
 
     @property
     def Reason(self):
+        """状态原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -537,6 +638,10 @@ class ContainerStatus(AbstractModel):
 
     @property
     def Message(self):
+        """容器的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -583,6 +688,10 @@ class CosPathInfo(AbstractModel):
 
     @property
     def Bucket(self):
+        """存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -591,6 +700,10 @@ class CosPathInfo(AbstractModel):
 
     @property
     def Region(self):
+        """所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -599,6 +712,10 @@ class CosPathInfo(AbstractModel):
 
     @property
     def Paths(self):
+        """路径列表，目前只支持单个
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Paths
 
     @Paths.setter
@@ -678,6 +795,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def DatasetName(self):
+        """数据集名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :rtype: str
+        """
         return self._DatasetName
 
     @DatasetName.setter
@@ -686,6 +806,13 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def DatasetType(self):
+        """数据集类型:
+TYPE_DATASET_TEXT，文本
+TYPE_DATASET_IMAGE，图片
+TYPE_DATASET_TABLE，表格
+TYPE_DATASET_OTHER，其他
+        :rtype: str
+        """
         return self._DatasetType
 
     @DatasetType.setter
@@ -694,6 +821,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def StorageDataPath(self):
+        """数据源cos路径
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._StorageDataPath
 
     @StorageDataPath.setter
@@ -702,6 +832,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def StorageLabelPath(self):
+        """数据集标签cos存储路径
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._StorageLabelPath
 
     @StorageLabelPath.setter
@@ -710,6 +843,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def DatasetTags(self):
+        """数据集标签
+        :rtype: list of Tag
+        """
         return self._DatasetTags
 
     @DatasetTags.setter
@@ -718,6 +854,11 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def AnnotationStatus(self):
+        """数据集标注状态:
+STATUS_NON_ANNOTATED，未标注
+STATUS_ANNOTATED，已标注
+        :rtype: str
+        """
         return self._AnnotationStatus
 
     @AnnotationStatus.setter
@@ -726,6 +867,13 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def AnnotationType(self):
+        """标注类型:
+ANNOTATION_TYPE_CLASSIFICATION，图片分类
+ANNOTATION_TYPE_DETECTION，目标检测
+ANNOTATION_TYPE_SEGMENTATION，图片分割
+ANNOTATION_TYPE_TRACKING，目标跟踪
+        :rtype: str
+        """
         return self._AnnotationType
 
     @AnnotationType.setter
@@ -734,6 +882,13 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def AnnotationFormat(self):
+        """标注格式:
+ANNOTATION_FORMAT_TI，TI平台格式
+ANNOTATION_FORMAT_PASCAL，Pascal Voc
+ANNOTATION_FORMAT_COCO，COCO
+ANNOTATION_FORMAT_FILE，文件目录结构
+        :rtype: str
+        """
         return self._AnnotationFormat
 
     @AnnotationFormat.setter
@@ -742,6 +897,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def SchemaInfos(self):
+        """表头信息
+        :rtype: list of SchemaInfo
+        """
         return self._SchemaInfos
 
     @SchemaInfos.setter
@@ -750,6 +908,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def IsSchemaExisted(self):
+        """数据是否存在表头
+        :rtype: bool
+        """
         return self._IsSchemaExisted
 
     @IsSchemaExisted.setter
@@ -758,6 +919,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def ContentType(self):
+        """导入文件粒度，按行或者按文件
+        :rtype: str
+        """
         return self._ContentType
 
     @ContentType.setter
@@ -819,6 +983,10 @@ class CreateDatasetResponse(AbstractModel):
 
     @property
     def DatasetId(self):
+        """数据集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetId
 
     @DatasetId.setter
@@ -827,6 +995,9 @@ class CreateDatasetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -972,6 +1143,9 @@ HYBRID_PAID:
 
     @property
     def ServiceGroupId(self):
+        """新增版本时需要填写
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -980,6 +1154,9 @@ HYBRID_PAID:
 
     @property
     def ServiceGroupName(self):
+        """不超过60个字，仅支持英文、数字、下划线"_"、短横"-"，只能以英文、数字开头
+        :rtype: str
+        """
         return self._ServiceGroupName
 
     @ServiceGroupName.setter
@@ -988,6 +1165,9 @@ HYBRID_PAID:
 
     @property
     def ServiceDescription(self):
+        """模型服务的描述
+        :rtype: str
+        """
         return self._ServiceDescription
 
     @ServiceDescription.setter
@@ -996,6 +1176,9 @@ HYBRID_PAID:
 
     @property
     def ChargeType(self):
+        """付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -1004,6 +1187,9 @@ HYBRID_PAID:
 
     @property
     def ResourceGroupId(self):
+        """预付费模式下所属的资源组id，同服务组下唯一
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -1012,6 +1198,9 @@ HYBRID_PAID:
 
     @property
     def ModelInfo(self):
+        """模型信息，需要挂载模型时填写
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        """
         return self._ModelInfo
 
     @ModelInfo.setter
@@ -1020,6 +1209,9 @@ HYBRID_PAID:
 
     @property
     def ImageInfo(self):
+        """镜像信息，配置服务运行所需的镜像地址等信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ImageInfo
 
     @ImageInfo.setter
@@ -1028,6 +1220,9 @@ HYBRID_PAID:
 
     @property
     def Env(self):
+        """环境变量，可选参数，用于配置容器中的环境变量
+        :rtype: list of EnvVar
+        """
         return self._Env
 
     @Env.setter
@@ -1036,6 +1231,9 @@ HYBRID_PAID:
 
     @property
     def Resources(self):
+        """资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        """
         return self._Resources
 
     @Resources.setter
@@ -1044,6 +1242,26 @@ HYBRID_PAID:
 
     @property
     def InstanceType(self):
+        """使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
+TI.S.MEDIUM.POST	2C4G
+TI.S.LARGE.POST	4C8G
+TI.S.2XLARGE16.POST	8C16G
+TI.S.2XLARGE32.POST	8C32G
+TI.S.4XLARGE32.POST	16C32G
+TI.S.4XLARGE64.POST	16C64G
+TI.S.6XLARGE48.POST	24C48G
+TI.S.6XLARGE96.POST	24C96G
+TI.S.8XLARGE64.POST	32C64G
+TI.S.8XLARGE128.POST 32C128G
+TI.GN7.LARGE20.POST	4C20G T4*1/4
+TI.GN7.2XLARGE40.POST	10C40G T4*1/2
+TI.GN7.2XLARGE32.POST	8C32G T4*1
+TI.GN7.5XLARGE80.POST	20C80G T4*1
+TI.GN7.8XLARGE128.POST	32C128G T4*1
+TI.GN7.10XLARGE160.POST	40C160G T4*2
+TI.GN7.20XLARGE320.POST	80C320G T4*4
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -1052,6 +1270,9 @@ HYBRID_PAID:
 
     @property
     def ScaleMode(self):
+        """扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL",默认为MANUAL
+        :rtype: str
+        """
         return self._ScaleMode
 
     @ScaleMode.setter
@@ -1060,6 +1281,15 @@ HYBRID_PAID:
 
     @property
     def Replicas(self):
+        """实例数量, 不同计费模式和调节模式下对应关系如下
+PREPAID 和 POSTPAID_BY_HOUR:
+手动调节模式下对应 实例数量
+自动调节模式下对应 基于时间的默认策略的实例数量
+HYBRID_PAID:
+后付费实例手动调节模式下对应 实例数量
+后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -1068,6 +1298,9 @@ HYBRID_PAID:
 
     @property
     def HorizontalPodAutoscaler(self):
+        """自动伸缩信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
+        """
         return self._HorizontalPodAutoscaler
 
     @HorizontalPodAutoscaler.setter
@@ -1076,6 +1309,9 @@ HYBRID_PAID:
 
     @property
     def LogEnable(self):
+        """是否开启日志投递，开启后需填写配置投递到指定cls
+        :rtype: bool
+        """
         return self._LogEnable
 
     @LogEnable.setter
@@ -1084,6 +1320,9 @@ HYBRID_PAID:
 
     @property
     def LogConfig(self):
+        """日志配置，需要投递服务日志到指定cls时填写
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
         return self._LogConfig
 
     @LogConfig.setter
@@ -1092,6 +1331,9 @@ HYBRID_PAID:
 
     @property
     def AuthorizationEnable(self):
+        """是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权
+        :rtype: bool
+        """
         return self._AuthorizationEnable
 
     @AuthorizationEnable.setter
@@ -1100,6 +1342,9 @@ HYBRID_PAID:
 
     @property
     def Tags(self):
+        """腾讯云标签
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1108,6 +1353,9 @@ HYBRID_PAID:
 
     @property
     def NewVersion(self):
+        """是否新增版本
+        :rtype: bool
+        """
         return self._NewVersion
 
     @NewVersion.setter
@@ -1116,6 +1364,9 @@ HYBRID_PAID:
 
     @property
     def CronScaleJobs(self):
+        """定时任务配置，使用定时策略时填写
+        :rtype: list of CronScaleJob
+        """
         return self._CronScaleJobs
 
     @CronScaleJobs.setter
@@ -1124,6 +1375,9 @@ HYBRID_PAID:
 
     @property
     def ScaleStrategy(self):
+        """自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+        :rtype: str
+        """
         return self._ScaleStrategy
 
     @ScaleStrategy.setter
@@ -1132,6 +1386,9 @@ HYBRID_PAID:
 
     @property
     def HybridBillingPrepaidReplicas(self):
+        """计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数
+        :rtype: int
+        """
         return self._HybridBillingPrepaidReplicas
 
     @HybridBillingPrepaidReplicas.setter
@@ -1140,6 +1397,9 @@ HYBRID_PAID:
 
     @property
     def CreateSource(self):
+        """[AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]
+        :rtype: str
+        """
         return self._CreateSource
 
     @CreateSource.setter
@@ -1148,6 +1408,9 @@ HYBRID_PAID:
 
     @property
     def ModelHotUpdateEnable(self):
+        """是否开启模型的热更新。默认不开启
+        :rtype: bool
+        """
         return self._ModelHotUpdateEnable
 
     @ModelHotUpdateEnable.setter
@@ -1156,6 +1419,9 @@ HYBRID_PAID:
 
     @property
     def ScheduledAction(self):
+        """定时停止配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        """
         return self._ScheduledAction
 
     @ScheduledAction.setter
@@ -1164,6 +1430,9 @@ HYBRID_PAID:
 
     @property
     def VolumeMount(self):
+        """挂载配置，目前只支持CFS
+        :rtype: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        """
         return self._VolumeMount
 
     @VolumeMount.setter
@@ -1172,6 +1441,9 @@ HYBRID_PAID:
 
     @property
     def ServiceLimit(self):
+        """服务限速限流相关配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        """
         return self._ServiceLimit
 
     @ServiceLimit.setter
@@ -1180,6 +1452,9 @@ HYBRID_PAID:
 
     @property
     def CallbackUrl(self):
+        """回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -1188,6 +1463,9 @@ HYBRID_PAID:
 
     @property
     def ModelTurboEnable(self):
+        """是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+        :rtype: bool
+        """
         return self._ModelTurboEnable
 
     @ModelTurboEnable.setter
@@ -1196,6 +1474,9 @@ HYBRID_PAID:
 
     @property
     def ServiceCategory(self):
+        """服务分类
+        :rtype: str
+        """
         return self._ServiceCategory
 
     @ServiceCategory.setter
@@ -1204,6 +1485,9 @@ HYBRID_PAID:
 
     @property
     def Command(self):
+        """服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -1212,6 +1496,9 @@ HYBRID_PAID:
 
     @property
     def ServiceEIP(self):
+        """是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
+        """
         return self._ServiceEIP
 
     @ServiceEIP.setter
@@ -1220,6 +1507,9 @@ HYBRID_PAID:
 
     @property
     def CommandBase64(self):
+        """服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
+        :rtype: str
+        """
         return self._CommandBase64
 
     @CommandBase64.setter
@@ -1228,6 +1518,9 @@ HYBRID_PAID:
 
     @property
     def ServicePort(self):
+        """服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+        :rtype: int
+        """
         return self._ServicePort
 
     @ServicePort.setter
@@ -1330,6 +1623,10 @@ class CreateModelServiceResponse(AbstractModel):
 
     @property
     def Service(self):
+        """生成的模型服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Service`
+        """
         return self._Service
 
     @Service.setter
@@ -1338,6 +1635,9 @@ class CreateModelServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1443,6 +1743,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def Name(self):
+        """名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1451,6 +1754,11 @@ GooseFSx：GooseFSx存储
 
     @property
     def ChargeType(self):
+        """计算资源付费模式 ，可选值为：
+PREPAID：预付费，即包年包月
+POSTPAID_BY_HOUR：按小时后付费
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -1459,6 +1767,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def ResourceConf(self):
+        """计算资源配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceConf`
+        """
         return self._ResourceConf
 
     @ResourceConf.setter
@@ -1467,6 +1778,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def LogEnable(self):
+        """是否上报日志
+        :rtype: bool
+        """
         return self._LogEnable
 
     @LogEnable.setter
@@ -1475,6 +1789,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def RootAccess(self):
+        """是否ROOT权限
+        :rtype: bool
+        """
         return self._RootAccess
 
     @RootAccess.setter
@@ -1483,6 +1800,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def AutoStopping(self):
+        """是否自动停止
+        :rtype: bool
+        """
         return self._AutoStopping
 
     @AutoStopping.setter
@@ -1491,6 +1811,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def DirectInternetAccess(self):
+        """是否访问公网
+        :rtype: bool
+        """
         return self._DirectInternetAccess
 
     @DirectInternetAccess.setter
@@ -1499,6 +1822,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def ResourceGroupId(self):
+        """资源组ID(for预付费)
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -1507,6 +1833,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def VpcId(self):
+        """Vpc-Id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1515,6 +1844,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def SubnetId(self):
+        """子网Id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1523,6 +1855,15 @@ GooseFSx：GooseFSx存储
 
     @property
     def VolumeSourceType(self):
+        """存储的类型。取值包含： 
+FREE：预付费的免费存储
+CLOUD_PREMIUM：高性能云硬盘
+CLOUD_SSD：SSD云硬盘
+CFS：CFS存储
+CFS_TURBO：CFS Turbo存储
+GooseFSx：GooseFSx存储
+        :rtype: str
+        """
         return self._VolumeSourceType
 
     @VolumeSourceType.setter
@@ -1531,6 +1872,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def VolumeSizeInGB(self):
+        """云硬盘存储卷大小，单位GB
+        :rtype: int
+        """
         return self._VolumeSizeInGB
 
     @VolumeSizeInGB.setter
@@ -1539,6 +1883,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def VolumeSourceCFS(self):
+        """CFS存储的配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
         return self._VolumeSourceCFS
 
     @VolumeSourceCFS.setter
@@ -1547,6 +1894,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def LogConfig(self):
+        """日志配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
         return self._LogConfig
 
     @LogConfig.setter
@@ -1555,6 +1905,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def LifecycleScriptId(self):
+        """生命周期脚本的ID
+        :rtype: str
+        """
         return self._LifecycleScriptId
 
     @LifecycleScriptId.setter
@@ -1563,6 +1916,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def DefaultCodeRepoId(self):
+        """默认GIT存储库的ID
+        :rtype: str
+        """
         return self._DefaultCodeRepoId
 
     @DefaultCodeRepoId.setter
@@ -1571,6 +1927,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def AdditionalCodeRepoIds(self):
+        """其他GIT存储库的ID，最多3个
+        :rtype: list of str
+        """
         return self._AdditionalCodeRepoIds
 
     @AdditionalCodeRepoIds.setter
@@ -1579,6 +1938,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def AutomaticStopTime(self):
+        """自动停止时间，单位小时
+        :rtype: int
+        """
         return self._AutomaticStopTime
 
     @AutomaticStopTime.setter
@@ -1587,6 +1949,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def Tags(self):
+        """标签配置
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1595,6 +1960,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def DataConfigs(self):
+        """数据配置，只支持WEDATA_HDFS存储类型
+        :rtype: list of DataConfig
+        """
         return self._DataConfigs
 
     @DataConfigs.setter
@@ -1603,6 +1971,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def ImageInfo(self):
+        """镜像信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ImageInfo
 
     @ImageInfo.setter
@@ -1611,6 +1982,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def ImageType(self):
+        """镜像类型，包括SYSTEM、TCR、CCR
+        :rtype: str
+        """
         return self._ImageType
 
     @ImageType.setter
@@ -1619,6 +1993,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def SSHConfig(self):
+        """SSH配置信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        """
         return self._SSHConfig
 
     @SSHConfig.setter
@@ -1627,6 +2004,9 @@ GooseFSx：GooseFSx存储
 
     @property
     def VolumeSourceGooseFS(self):
+        """GooseFS存储配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        """
         return self._VolumeSourceGooseFS
 
     @VolumeSourceGooseFS.setter
@@ -1708,6 +2088,9 @@ class CreateNotebookResponse(AbstractModel):
 
     @property
     def Id(self):
+        """notebook标志
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1716,6 +2099,9 @@ class CreateNotebookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1742,6 +2128,9 @@ class CreatePresignedNotebookUrlRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Notebook ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1778,6 +2167,9 @@ class CreatePresignedNotebookUrlResponse(AbstractModel):
 
     @property
     def AuthorizedUrl(self):
+        """携带认证TOKEN的URL
+        :rtype: str
+        """
         return self._AuthorizedUrl
 
     @AuthorizedUrl.setter
@@ -1786,6 +2178,9 @@ class CreatePresignedNotebookUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1892,6 +2287,12 @@ EXIST：导入现有版本
 
     @property
     def ImportMethod(self):
+        """导入方式
+MODEL：导入新模型
+VERSION：导入新版本
+EXIST：导入现有版本
+        :rtype: str
+        """
         return self._ImportMethod
 
     @ImportMethod.setter
@@ -1900,6 +2301,9 @@ EXIST：导入现有版本
 
     @property
     def ReasoningEnvironmentSource(self):
+        """推理环境来源（SYSTEM/CUSTOM）
+        :rtype: str
+        """
         return self._ReasoningEnvironmentSource
 
     @ReasoningEnvironmentSource.setter
@@ -1908,6 +2312,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingModelName(self):
+        """模型名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :rtype: str
+        """
         return self._TrainingModelName
 
     @TrainingModelName.setter
@@ -1916,6 +2323,9 @@ EXIST：导入现有版本
 
     @property
     def Tags(self):
+        """标签配置
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1924,6 +2334,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingJobName(self):
+        """训练任务名称
+        :rtype: str
+        """
         return self._TrainingJobName
 
     @TrainingJobName.setter
@@ -1932,6 +2345,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingModelCosPath(self):
+        """模型来源cos目录，以/结尾
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._TrainingModelCosPath
 
     @TrainingModelCosPath.setter
@@ -1940,6 +2356,9 @@ EXIST：导入现有版本
 
     @property
     def AlgorithmFramework(self):
+        """算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
+        :rtype: str
+        """
         return self._AlgorithmFramework
 
     @AlgorithmFramework.setter
@@ -1948,6 +2367,9 @@ EXIST：导入现有版本
 
     @property
     def ReasoningEnvironment(self):
+        """推理环境
+        :rtype: str
+        """
         return self._ReasoningEnvironment
 
     @ReasoningEnvironment.setter
@@ -1956,6 +2378,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingModelIndex(self):
+        """训练指标，最多支持1000字符
+        :rtype: str
+        """
         return self._TrainingModelIndex
 
     @TrainingModelIndex.setter
@@ -1964,6 +2389,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingModelVersion(self):
+        """模型版本
+        :rtype: str
+        """
         return self._TrainingModelVersion
 
     @TrainingModelVersion.setter
@@ -1972,6 +2400,9 @@ EXIST：导入现有版本
 
     @property
     def ReasoningImageInfo(self):
+        """自定义推理环境
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ReasoningImageInfo
 
     @ReasoningImageInfo.setter
@@ -1980,6 +2411,9 @@ EXIST：导入现有版本
 
     @property
     def ModelMoveMode(self):
+        """模型移动方式（CUT/COPY）
+        :rtype: str
+        """
         return self._ModelMoveMode
 
     @ModelMoveMode.setter
@@ -1988,6 +2422,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingJobId(self):
+        """训练任务ID
+        :rtype: str
+        """
         return self._TrainingJobId
 
     @TrainingJobId.setter
@@ -1996,6 +2433,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingModelId(self):
+        """模型ID（导入新模型不需要，导入新版本需要）
+        :rtype: str
+        """
         return self._TrainingModelId
 
     @TrainingModelId.setter
@@ -2004,6 +2444,9 @@ EXIST：导入现有版本
 
     @property
     def ModelOutputPath(self):
+        """模型存储cos目录
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._ModelOutputPath
 
     @ModelOutputPath.setter
@@ -2012,6 +2455,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingModelSource(self):
+        """模型来源 （JOB/COS）
+        :rtype: str
+        """
         return self._TrainingModelSource
 
     @TrainingModelSource.setter
@@ -2020,6 +2466,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingPreference(self):
+        """模型偏好
+        :rtype: str
+        """
         return self._TrainingPreference
 
     @TrainingPreference.setter
@@ -2028,6 +2477,9 @@ EXIST：导入现有版本
 
     @property
     def AutoMLTaskId(self):
+        """自动学习任务ID（已废弃）
+        :rtype: str
+        """
         return self._AutoMLTaskId
 
     @AutoMLTaskId.setter
@@ -2036,6 +2488,9 @@ EXIST：导入现有版本
 
     @property
     def TrainingJobVersion(self):
+        """任务版本
+        :rtype: str
+        """
         return self._TrainingJobVersion
 
     @TrainingJobVersion.setter
@@ -2044,6 +2499,11 @@ EXIST：导入现有版本
 
     @property
     def ModelVersionType(self):
+        """模型版本类型；
+枚举值：NORMAL(通用)  ACCELERATE(加速)
+注意:  默认为NORMAL
+        :rtype: str
+        """
         return self._ModelVersionType
 
     @ModelVersionType.setter
@@ -2052,6 +2512,9 @@ EXIST：导入现有版本
 
     @property
     def ModelFormat(self):
+        """模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE）
+        :rtype: str
+        """
         return self._ModelFormat
 
     @ModelFormat.setter
@@ -2060,6 +2523,9 @@ EXIST：导入现有版本
 
     @property
     def ReasoningEnvironmentId(self):
+        """推理镜像ID
+        :rtype: str
+        """
         return self._ReasoningEnvironmentId
 
     @ReasoningEnvironmentId.setter
@@ -2068,6 +2534,9 @@ EXIST：导入现有版本
 
     @property
     def AutoClean(self):
+        """模型自动清理开关(true/false)，当前版本仅支持SAVED_MODEL格式模型
+        :rtype: str
+        """
         return self._AutoClean
 
     @AutoClean.setter
@@ -2076,6 +2545,9 @@ EXIST：导入现有版本
 
     @property
     def MaxReservedModels(self):
+        """模型数量保留上限(默认值为24个，上限为24，下限为1，步长为1)
+        :rtype: int
+        """
         return self._MaxReservedModels
 
     @MaxReservedModels.setter
@@ -2084,6 +2556,9 @@ EXIST：导入现有版本
 
     @property
     def ModelCleanPeriod(self):
+        """模型清理周期(默认值为1分钟，上限为1440，下限为1分钟，步长为1)
+        :rtype: int
+        """
         return self._ModelCleanPeriod
 
     @ModelCleanPeriod.setter
@@ -2092,6 +2567,9 @@ EXIST：导入现有版本
 
     @property
     def IsQAT(self):
+        """是否QAT模型
+        :rtype: bool
+        """
         return self._IsQAT
 
     @IsQAT.setter
@@ -2167,6 +2645,9 @@ class CreateTrainingModelResponse(AbstractModel):
 
     @property
     def Id(self):
+        """模型ID，TrainingModel ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2175,6 +2656,9 @@ class CreateTrainingModelResponse(AbstractModel):
 
     @property
     def TrainingModelVersionId(self):
+        """模型版本ID
+        :rtype: str
+        """
         return self._TrainingModelVersionId
 
     @TrainingModelVersionId.setter
@@ -2183,6 +2667,9 @@ class CreateTrainingModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2230,6 +2717,9 @@ class CronScaleJob(AbstractModel):
 
     @property
     def Schedule(self):
+        """Cron表达式，标识任务的执行时间，精确到分钟级
+        :rtype: str
+        """
         return self._Schedule
 
     @Schedule.setter
@@ -2238,6 +2728,10 @@ class CronScaleJob(AbstractModel):
 
     @property
     def Name(self):
+        """定时任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2246,6 +2740,10 @@ class CronScaleJob(AbstractModel):
 
     @property
     def TargetReplicas(self):
+        """目标实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TargetReplicas
 
     @TargetReplicas.setter
@@ -2254,6 +2752,10 @@ class CronScaleJob(AbstractModel):
 
     @property
     def MinReplicas(self):
+        """目标min
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MinReplicas
 
     @MinReplicas.setter
@@ -2262,6 +2764,10 @@ class CronScaleJob(AbstractModel):
 
     @property
     def MaxReplicas(self):
+        """目标max
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxReplicas
 
     @MaxReplicas.setter
@@ -2270,6 +2776,10 @@ class CronScaleJob(AbstractModel):
 
     @property
     def ExcludeDates(self):
+        """例外时间，Cron表达式，在对应时间内不执行任务。最多支持3条。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ExcludeDates
 
     @ExcludeDates.setter
@@ -2313,6 +2823,10 @@ class CrossTenantENIInfo(AbstractModel):
 
     @property
     def PrimaryIP(self):
+        """Pod IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrimaryIP
 
     @PrimaryIP.setter
@@ -2321,6 +2835,10 @@ class CrossTenantENIInfo(AbstractModel):
 
     @property
     def Port(self):
+        """Pod Port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -2391,6 +2909,9 @@ class DataConfig(AbstractModel):
 
     @property
     def MappingPath(self):
+        """映射路径
+        :rtype: str
+        """
         return self._MappingPath
 
     @MappingPath.setter
@@ -2399,6 +2920,10 @@ class DataConfig(AbstractModel):
 
     @property
     def DataSourceType(self):
+        """DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceType
 
     @DataSourceType.setter
@@ -2407,6 +2932,10 @@ class DataConfig(AbstractModel):
 
     @property
     def DataSetSource(self):
+        """来自数据集的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DataSetConfig`
+        """
         return self._DataSetSource
 
     @DataSetSource.setter
@@ -2415,6 +2944,10 @@ class DataConfig(AbstractModel):
 
     @property
     def COSSource(self):
+        """来自cos的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._COSSource
 
     @COSSource.setter
@@ -2423,6 +2956,10 @@ class DataConfig(AbstractModel):
 
     @property
     def CFSSource(self):
+        """来自CFS的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
         return self._CFSSource
 
     @CFSSource.setter
@@ -2431,6 +2968,10 @@ class DataConfig(AbstractModel):
 
     @property
     def HDFSSource(self):
+        """来自HDFS的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HDFSConfig`
+        """
         return self._HDFSSource
 
     @HDFSSource.setter
@@ -2439,6 +2980,10 @@ class DataConfig(AbstractModel):
 
     @property
     def GooseFSSource(self):
+        """配置GooseFS的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        """
         return self._GooseFSSource
 
     @GooseFSSource.setter
@@ -2447,6 +2992,10 @@ class DataConfig(AbstractModel):
 
     @property
     def CFSTurboSource(self):
+        """配置TurboFS的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSTurbo`
+        """
         return self._CFSTurboSource
 
     @CFSTurboSource.setter
@@ -2455,6 +3004,10 @@ class DataConfig(AbstractModel):
 
     @property
     def LocalDiskSource(self):
+        """来自本地磁盘的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LocalDisk`
+        """
         return self._LocalDiskSource
 
     @LocalDiskSource.setter
@@ -2463,6 +3016,10 @@ class DataConfig(AbstractModel):
 
     @property
     def CBSSource(self):
+        """CBS配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CBSConfig`
+        """
         return self._CBSSource
 
     @CBSSource.setter
@@ -2524,6 +3081,9 @@ class DataPoint(AbstractModel):
 
     @property
     def Name(self):
+        """指标名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2532,6 +3092,9 @@ class DataPoint(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -2566,6 +3129,9 @@ class DataSetConfig(AbstractModel):
 
     @property
     def Id(self):
+        """数据集ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2700,6 +3266,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetId(self):
+        """数据集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetId
 
     @DatasetId.setter
@@ -2708,6 +3278,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetName(self):
+        """数据集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetName
 
     @DatasetName.setter
@@ -2716,6 +3290,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def Creator(self):
+        """创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Creator
 
     @Creator.setter
@@ -2724,6 +3302,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetVersion(self):
+        """数据集版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetVersion
 
     @DatasetVersion.setter
@@ -2732,6 +3314,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetType(self):
+        """数据集类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetType
 
     @DatasetType.setter
@@ -2740,6 +3326,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetTags(self):
+        """数据集标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._DatasetTags
 
     @DatasetTags.setter
@@ -2748,6 +3338,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetAnnotationTaskName(self):
+        """数据集标注任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetAnnotationTaskName
 
     @DatasetAnnotationTaskName.setter
@@ -2756,6 +3350,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetAnnotationTaskId(self):
+        """数据集标注任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetAnnotationTaskId
 
     @DatasetAnnotationTaskId.setter
@@ -2764,6 +3362,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def Process(self):
+        """处理进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Process
 
     @Process.setter
@@ -2772,6 +3374,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetStatus(self):
+        """数据集状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetStatus
 
     @DatasetStatus.setter
@@ -2780,6 +3386,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -2788,6 +3398,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2796,6 +3410,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -2804,6 +3422,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def ExternalTaskType(self):
+        """外部关联TASKType
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExternalTaskType
 
     @ExternalTaskType.setter
@@ -2812,6 +3434,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetSize(self):
+        """数据集大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetSize
 
     @DatasetSize.setter
@@ -2820,6 +3446,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def FileNum(self):
+        """数据集数据量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileNum
 
     @FileNum.setter
@@ -2828,6 +3458,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def StorageDataPath(self):
+        """数据集源COS路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._StorageDataPath
 
     @StorageDataPath.setter
@@ -2836,6 +3470,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def StorageLabelPath(self):
+        """数据集标签存储路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._StorageLabelPath
 
     @StorageLabelPath.setter
@@ -2844,6 +3482,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetVersions(self):
+        """数据集版本聚合详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatasetInfo
+        """
         return self._DatasetVersions
 
     @DatasetVersions.setter
@@ -2852,6 +3494,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def AnnotationStatus(self):
+        """数据集标注状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnnotationStatus
 
     @AnnotationStatus.setter
@@ -2860,6 +3506,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def AnnotationType(self):
+        """数据集类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnnotationType
 
     @AnnotationType.setter
@@ -2868,6 +3518,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def AnnotationFormat(self):
+        """数据集标注格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnnotationFormat
 
     @AnnotationFormat.setter
@@ -2876,6 +3530,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def DatasetScope(self):
+        """数据集范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetScope
 
     @DatasetScope.setter
@@ -2884,6 +3542,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def OcrScene(self):
+        """数据集OCR子场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OcrScene
 
     @OcrScene.setter
@@ -2892,6 +3554,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def AnnotationKeyStatus(self):
+        """数据集字典修改状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnnotationKeyStatus
 
     @AnnotationKeyStatus.setter
@@ -2900,6 +3566,10 @@ class DatasetGroup(AbstractModel):
 
     @property
     def ContentType(self):
+        """文本数据集导入方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContentType
 
     @ContentType.setter
@@ -3065,6 +3735,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetId(self):
+        """数据集id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetId
 
     @DatasetId.setter
@@ -3073,6 +3747,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetName(self):
+        """数据集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetName
 
     @DatasetName.setter
@@ -3081,6 +3759,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def Creator(self):
+        """数据集创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Creator
 
     @Creator.setter
@@ -3089,6 +3771,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetVersion(self):
+        """数据集版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetVersion
 
     @DatasetVersion.setter
@@ -3097,6 +3783,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetType(self):
+        """数据集类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetType
 
     @DatasetType.setter
@@ -3105,6 +3795,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetTags(self):
+        """数据集标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._DatasetTags
 
     @DatasetTags.setter
@@ -3113,6 +3807,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetAnnotationTaskName(self):
+        """数据集对应标注任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetAnnotationTaskName
 
     @DatasetAnnotationTaskName.setter
@@ -3121,6 +3819,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetAnnotationTaskId(self):
+        """数据集对应标注任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetAnnotationTaskId
 
     @DatasetAnnotationTaskId.setter
@@ -3129,6 +3831,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def Process(self):
+        """处理进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Process
 
     @Process.setter
@@ -3137,6 +3843,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetStatus(self):
+        """数据集状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetStatus
 
     @DatasetStatus.setter
@@ -3145,6 +3855,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -3153,6 +3867,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """数据集创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3161,6 +3879,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """数据集更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -3169,6 +3891,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def ExternalTaskType(self):
+        """外部任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExternalTaskType
 
     @ExternalTaskType.setter
@@ -3177,6 +3903,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetSize(self):
+        """数据集存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetSize
 
     @DatasetSize.setter
@@ -3185,6 +3915,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def FileNum(self):
+        """数据集数据数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileNum
 
     @FileNum.setter
@@ -3193,6 +3927,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def StorageDataPath(self):
+        """数据集源cos 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._StorageDataPath
 
     @StorageDataPath.setter
@@ -3201,6 +3939,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def StorageLabelPath(self):
+        """数据集输出cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._StorageLabelPath
 
     @StorageLabelPath.setter
@@ -3209,6 +3951,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def AnnotationStatus(self):
+        """数据集标注状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnnotationStatus
 
     @AnnotationStatus.setter
@@ -3217,6 +3963,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def AnnotationType(self):
+        """数据集类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnnotationType
 
     @AnnotationType.setter
@@ -3225,6 +3975,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def AnnotationFormat(self):
+        """数据集标注格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnnotationFormat
 
     @AnnotationFormat.setter
@@ -3233,6 +3987,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def DatasetScope(self):
+        """数据集范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatasetScope
 
     @DatasetScope.setter
@@ -3241,6 +3999,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def OcrScene(self):
+        """数据集OCR子场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OcrScene
 
     @OcrScene.setter
@@ -3249,6 +4011,10 @@ class DatasetInfo(AbstractModel):
 
     @property
     def AnnotationKeyStatus(self):
+        """数据集字典修改状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnnotationKeyStatus
 
     @AnnotationKeyStatus.setter
@@ -3319,6 +4085,10 @@ class DefaultInnerCallInfo(AbstractModel):
 
     @property
     def VpcIds(self):
+        """可以进行调用的VPC-ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._VpcIds
 
     @VpcIds.setter
@@ -3327,6 +4097,10 @@ class DefaultInnerCallInfo(AbstractModel):
 
     @property
     def InnerHttpAddr(self):
+        """默认内网调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InnerHttpAddr
 
     @InnerHttpAddr.setter
@@ -3362,6 +4136,10 @@ class DefaultNginxGatewayCallInfo(AbstractModel):
 
     @property
     def Host(self):
+        """host
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -3398,6 +4176,9 @@ class DeleteDatasetRequest(AbstractModel):
 
     @property
     def DatasetId(self):
+        """数据集id
+        :rtype: str
+        """
         return self._DatasetId
 
     @DatasetId.setter
@@ -3406,6 +4187,9 @@ class DeleteDatasetRequest(AbstractModel):
 
     @property
     def DeleteLabelEnable(self):
+        """是否删除cos标签文件
+        :rtype: bool
+        """
         return self._DeleteLabelEnable
 
     @DeleteLabelEnable.setter
@@ -3443,6 +4227,9 @@ class DeleteDatasetResponse(AbstractModel):
 
     @property
     def DatasetId(self):
+        """删除的datasetId
+        :rtype: str
+        """
         return self._DatasetId
 
     @DatasetId.setter
@@ -3451,6 +4238,9 @@ class DeleteDatasetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3477,6 +4267,9 @@ class DeleteModelServiceGroupRequest(AbstractModel):
 
     @property
     def ServiceGroupId(self):
+        """服务id
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -3510,6 +4303,9 @@ class DeleteModelServiceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3538,6 +4334,9 @@ class DeleteModelServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
+        """服务id
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -3546,6 +4345,9 @@ class DeleteModelServiceRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        """服务分类
+        :rtype: str
+        """
         return self._ServiceCategory
 
     @ServiceCategory.setter
@@ -3580,6 +4382,9 @@ class DeleteModelServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3605,6 +4410,9 @@ class DeleteNotebookRequest(AbstractModel):
 
     @property
     def Id(self):
+        """notebook id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -3638,6 +4446,9 @@ class DeleteNotebookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3669,6 +4480,9 @@ class DeleteTrainingModelRequest(AbstractModel):
 
     @property
     def TrainingModelId(self):
+        """模型ID
+        :rtype: str
+        """
         return self._TrainingModelId
 
     @TrainingModelId.setter
@@ -3677,6 +4491,9 @@ class DeleteTrainingModelRequest(AbstractModel):
 
     @property
     def EnableDeleteCos(self):
+        """是否同步清理cos
+        :rtype: bool
+        """
         return self._EnableDeleteCos
 
     @EnableDeleteCos.setter
@@ -3685,6 +4502,9 @@ class DeleteTrainingModelRequest(AbstractModel):
 
     @property
     def ModelVersionType(self):
+        """删除模型类型，枚举值：NORMAL 普通，ACCELERATE 加速，不传则删除所有
+        :rtype: str
+        """
         return self._ModelVersionType
 
     @ModelVersionType.setter
@@ -3720,6 +4540,9 @@ class DeleteTrainingModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3748,6 +4571,9 @@ class DeleteTrainingModelVersionRequest(AbstractModel):
 
     @property
     def TrainingModelVersionId(self):
+        """模型版本ID
+        :rtype: str
+        """
         return self._TrainingModelVersionId
 
     @TrainingModelVersionId.setter
@@ -3756,6 +4582,9 @@ class DeleteTrainingModelVersionRequest(AbstractModel):
 
     @property
     def EnableDeleteCos(self):
+        """是否同步清理cos
+        :rtype: bool
+        """
         return self._EnableDeleteCos
 
     @EnableDeleteCos.setter
@@ -3790,6 +4619,9 @@ class DeleteTrainingModelVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3836,6 +4668,9 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def ResourceGroupId(self):
+        """资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -3844,6 +4679,15 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+注意: 
+1. Filter.Name 只支持以下枚举值:
+    InstanceId (资源组节点id)
+    InstanceStatus (资源组节点状态)
+2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
+3. 每次请求的Filters的上限为10，Filter.Values的上限为100
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3852,6 +4696,9 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3860,6 +4707,9 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询每页大小，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3868,6 +4718,9 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序方向; 枚举值: ASC | DESC；默认DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -3876,6 +4729,9 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3930,6 +4786,10 @@ class DescribeBillingResourceGroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3938,6 +4798,10 @@ class DescribeBillingResourceGroupResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """资源组节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Instance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -3946,6 +4810,9 @@ class DescribeBillingResourceGroupResponse(AbstractModel):
 
     @property
     def ResourceGroupSWType(self):
+        """资源组纳管类型
+        :rtype: str
+        """
         return self._ResourceGroupSWType
 
     @ResourceGroupSWType.setter
@@ -3954,6 +4821,9 @@ class DescribeBillingResourceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4012,6 +4882,11 @@ true: 不展示，false 展示；
 
     @property
     def Type(self):
+        """资源组类型;
+枚举值:
+空: 通用, TRAIN: 训练, INFERENCE: 推理
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4020,6 +4895,12 @@ true: 不展示，false 展示；
 
     @property
     def Filters(self):
+        """Filter.Name: 枚举值: ResourceGroupId (资源组id列表)
+                    ResourceGroupName (资源组名称列表)
+Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
+每次请求的Filters的上限为5，Filter.Values的上限为100
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4028,6 +4909,9 @@ true: 不展示，false 展示；
 
     @property
     def TagFilters(self):
+        """标签过滤
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -4036,6 +4920,9 @@ true: 不展示，false 展示；
 
     @property
     def Offset(self):
+        """偏移量，默认为0；分页查询起始位置，如：Limit为100，第一页Offset为0，第二页OffSet为100....即每页左边为闭区间
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4044,6 +4931,9 @@ true: 不展示，false 展示；
 
     @property
     def Limit(self):
+        """分页查询每页大小，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4052,6 +4942,9 @@ true: 不展示，false 展示；
 
     @property
     def SearchWord(self):
+        """支持模糊查找资源组id和资源组名
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -4060,6 +4953,11 @@ true: 不展示，false 展示；
 
     @property
     def DontShowInstanceSet(self):
+        """是否不展示节点列表; 
+true: 不展示，false 展示；
+默认为false
+        :rtype: bool
+        """
         return self._DontShowInstanceSet
 
     @DontShowInstanceSet.setter
@@ -4116,6 +5014,9 @@ class DescribeBillingResourceGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """资源组总数； 注意接口是分页拉取的，total是指资源组总数，不是本次返回中ResourceGroupSet数组的大小
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4124,6 +5025,10 @@ class DescribeBillingResourceGroupsResponse(AbstractModel):
 
     @property
     def ResourceGroupSet(self):
+        """资源组详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceGroup
+        """
         return self._ResourceGroupSet
 
     @ResourceGroupSet.setter
@@ -4132,6 +5037,9 @@ class DescribeBillingResourceGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4167,6 +5075,9 @@ class DescribeBillingResourceInstanceRunningJobsRequest(AbstractModel):
 
     @property
     def ResourceGroupId(self):
+        """资源组id
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -4175,6 +5086,9 @@ class DescribeBillingResourceInstanceRunningJobsRequest(AbstractModel):
 
     @property
     def ResourceInstanceId(self):
+        """资源组节点id
+        :rtype: str
+        """
         return self._ResourceInstanceId
 
     @ResourceInstanceId.setter
@@ -4213,6 +5127,10 @@ class DescribeBillingResourceInstanceRunningJobsResponse(AbstractModel):
 
     @property
     def ResourceInstanceRunningJobInfos(self):
+        """资源组节点运行中的任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceInstanceRunningJobInfo
+        """
         return self._ResourceInstanceRunningJobInfos
 
     @ResourceInstanceRunningJobInfos.setter
@@ -4221,6 +5139,9 @@ class DescribeBillingResourceInstanceRunningJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4252,6 +5173,9 @@ class DescribeBuildInImagesRequest(AbstractModel):
 
     @property
     def ImageFilters(self):
+        """镜像过滤器
+        :rtype: list of ImageFIlter
+        """
         return self._ImageFilters
 
     @ImageFilters.setter
@@ -4293,6 +5217,9 @@ class DescribeBuildInImagesResponse(AbstractModel):
 
     @property
     def BuildInImageInfos(self):
+        """内置镜像详情列表
+        :rtype: list of ImageInfo
+        """
         return self._BuildInImageInfos
 
     @BuildInImageInfos.setter
@@ -4301,6 +5228,9 @@ class DescribeBuildInImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4352,6 +5282,9 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def DatasetIds(self):
+        """数据集id列表
+        :rtype: list of str
+        """
         return self._DatasetIds
 
     @DatasetIds.setter
@@ -4360,6 +5293,11 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def Filters(self):
+        """数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String
+DatasetName，数据集名称
+DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4368,6 +5306,9 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def TagFilters(self):
+        """标签过滤条件
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -4376,6 +5317,9 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def Order(self):
+        """排序值，支持Asc或Desc，默认Desc
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4384,6 +5328,9 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def OrderField(self):
+        """排序字段，支持CreateTime或UpdateTime，默认CreateTime
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -4392,6 +5339,9 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def Offset(self):
+        """偏移值
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4400,6 +5350,9 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def Limit(self):
+        """返回数据个数，默认20，最大支持200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4461,6 +5414,10 @@ class DescribeDatasetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数据集总量（名称维度）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4469,6 +5426,10 @@ class DescribeDatasetsResponse(AbstractModel):
 
     @property
     def DatasetGroups(self):
+        """数据集按照数据集名称聚合的分组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatasetGroup
+        """
         return self._DatasetGroups
 
     @DatasetGroups.setter
@@ -4477,6 +5438,10 @@ class DescribeDatasetsResponse(AbstractModel):
 
     @property
     def DatasetIdNums(self):
+        """数据集ID总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DatasetIdNums
 
     @DatasetIdNums.setter
@@ -4485,6 +5450,9 @@ class DescribeDatasetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4528,6 +5496,10 @@ class DescribeInferTemplatesResponse(AbstractModel):
 
     @property
     def FrameworkTemplates(self):
+        """模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InferTemplateGroup
+        """
         return self._FrameworkTemplates
 
     @FrameworkTemplates.setter
@@ -4536,6 +5508,9 @@ class DescribeInferTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4567,6 +5542,9 @@ class DescribeModelAccelerateTaskRequest(AbstractModel):
 
     @property
     def ModelAccTaskId(self):
+        """模型加速任务ID
+        :rtype: str
+        """
         return self._ModelAccTaskId
 
     @ModelAccTaskId.setter
@@ -4616,6 +5594,10 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccelerateTask(self):
+        """模型加速任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModelAccelerateTask`
+        """
         return self._ModelAccelerateTask
 
     @ModelAccelerateTask.setter
@@ -4624,6 +5606,10 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccRuntimeInSecond(self):
+        """模型加速时长，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ModelAccRuntimeInSecond
 
     @ModelAccRuntimeInSecond.setter
@@ -4632,6 +5618,10 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccStartTime(self):
+        """模型加速任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelAccStartTime
 
     @ModelAccStartTime.setter
@@ -4640,6 +5630,10 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccEndTime(self):
+        """模型加速任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelAccEndTime
 
     @ModelAccEndTime.setter
@@ -4648,6 +5642,9 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4697,6 +5694,12 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+    Filter.Name: 枚举值: ModelJobName (任务名称)|TrainingModelVersionId (模型版本id)
+    Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
+每次请求的Filters的上限为10，Filter.Values的上限为100
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4705,6 +5708,9 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序字段; 枚举值: CreateTime (创建时间) ；默认CreateTime
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -4713,6 +5719,9 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序方向; 枚举值: ASC | DESC；默认DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4721,6 +5730,9 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询起始位置，如：Limit为100，第一页Offset为0，第二页Offset为100....即每页左边为闭区间; 默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4729,6 +5741,9 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询每页大小，最大20000; 默认10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4737,6 +5752,9 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
     @property
     def TrainingModelId(self):
+        """模型ID
+        :rtype: str
+        """
         return self._TrainingModelId
 
     @TrainingModelId.setter
@@ -4789,6 +5807,11 @@ class DescribeModelAccelerateVersionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """优化模型总数； 注意接口是分页拉取的，total是指优化模型节点总数，不是本次返回中ModelAccelerateVersions数组的大小
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4797,6 +5820,10 @@ class DescribeModelAccelerateVersionsResponse(AbstractModel):
 
     @property
     def ModelAccelerateVersions(self):
+        """优化模型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ModelAccelerateVersion
+        """
         return self._ModelAccelerateVersions
 
     @ModelAccelerateVersions.setter
@@ -4805,6 +5832,9 @@ class DescribeModelAccelerateVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4840,6 +5870,9 @@ class DescribeModelServiceCallInfoRequest(AbstractModel):
 
     @property
     def ServiceGroupId(self):
+        """服务组id
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -4848,6 +5881,9 @@ class DescribeModelServiceCallInfoRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        """服务分类
+        :rtype: str
+        """
         return self._ServiceCategory
 
     @ServiceCategory.setter
@@ -4906,6 +5942,10 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
 
     @property
     def ServiceCallInfo(self):
+        """服务调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceCallInfo`
+        """
         return self._ServiceCallInfo
 
     @ServiceCallInfo.setter
@@ -4914,6 +5954,10 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
 
     @property
     def InferGatewayCallInfo(self):
+        """升级网关调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.InferGatewayCallInfo`
+        """
         return self._InferGatewayCallInfo
 
     @InferGatewayCallInfo.setter
@@ -4922,6 +5966,10 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
 
     @property
     def DefaultNginxGatewayCallInfo(self):
+        """默认nginx网关的调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DefaultNginxGatewayCallInfo`
+        """
         return self._DefaultNginxGatewayCallInfo
 
     @DefaultNginxGatewayCallInfo.setter
@@ -4930,6 +5978,10 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
 
     @property
     def TJCallInfo(self):
+        """太极服务的调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.TJCallInfo`
+        """
         return self._TJCallInfo
 
     @TJCallInfo.setter
@@ -4938,6 +5990,10 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
 
     @property
     def IntranetCallInfo(self):
+        """内网调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.IntranetCallInfo`
+        """
         return self._IntranetCallInfo
 
     @IntranetCallInfo.setter
@@ -4946,6 +6002,10 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
 
     @property
     def ServiceCallInfoV2(self):
+        """基于新网关的服务调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceCallInfoV2`
+        """
         return self._ServiceCallInfoV2
 
     @ServiceCallInfoV2.setter
@@ -4954,6 +6014,9 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5000,6 +6063,9 @@ class DescribeModelServiceGroupRequest(AbstractModel):
 
     @property
     def ServiceGroupId(self):
+        """服务组ID
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -5008,6 +6074,9 @@ class DescribeModelServiceGroupRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        """服务分类
+        :rtype: str
+        """
         return self._ServiceCategory
 
     @ServiceCategory.setter
@@ -5046,6 +6115,10 @@ class DescribeModelServiceGroupResponse(AbstractModel):
 
     @property
     def ServiceGroup(self):
+        """服务组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceGroup`
+        """
         return self._ServiceGroup
 
     @ServiceGroup.setter
@@ -5054,6 +6127,9 @@ class DescribeModelServiceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5101,6 +6177,9 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5109,6 +6188,9 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5117,6 +6199,9 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5125,6 +6210,9 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -5133,6 +6221,10 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """分页参数，支持的分页过滤Name包括：
+["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelVersionId"]
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5141,6 +6233,9 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤参数
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -5149,6 +6244,9 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        """服务分类
+        :rtype: str
+        """
         return self._ServiceCategory
 
     @ServiceCategory.setter
@@ -5206,6 +6304,10 @@ class DescribeModelServiceGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """推理服务组数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5214,6 +6316,10 @@ class DescribeModelServiceGroupsResponse(AbstractModel):
 
     @property
     def ServiceGroups(self):
+        """服务组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceGroup
+        """
         return self._ServiceGroups
 
     @ServiceGroups.setter
@@ -5222,6 +6328,9 @@ class DescribeModelServiceGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5260,6 +6369,9 @@ class DescribeModelServiceHotUpdatedRequest(AbstractModel):
 
     @property
     def ImageInfo(self):
+        """镜像信息，配置服务运行所需的镜像地址等信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ImageInfo
 
     @ImageInfo.setter
@@ -5268,6 +6380,9 @@ class DescribeModelServiceHotUpdatedRequest(AbstractModel):
 
     @property
     def ModelInfo(self):
+        """模型信息，需要挂载模型时填写
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        """
         return self._ModelInfo
 
     @ModelInfo.setter
@@ -5276,6 +6391,9 @@ class DescribeModelServiceHotUpdatedRequest(AbstractModel):
 
     @property
     def VolumeMount(self):
+        """挂载信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        """
         return self._VolumeMount
 
     @VolumeMount.setter
@@ -5320,6 +6438,9 @@ class DescribeModelServiceHotUpdatedResponse(AbstractModel):
 
     @property
     def ModelTurboFlag(self):
+        """模型加速标志位.Allowed 允许模型加速. Forbidden 禁止模型加速
+        :rtype: str
+        """
         return self._ModelTurboFlag
 
     @ModelTurboFlag.setter
@@ -5328,6 +6449,9 @@ class DescribeModelServiceHotUpdatedResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5357,6 +6481,9 @@ class DescribeModelServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
+        """服务id
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -5365,6 +6492,9 @@ class DescribeModelServiceRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        """服务分类
+        :rtype: str
+        """
         return self._ServiceCategory
 
     @ServiceCategory.setter
@@ -5402,6 +6532,9 @@ class DescribeModelServiceResponse(AbstractModel):
 
     @property
     def Service(self):
+        """服务信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Service`
+        """
         return self._Service
 
     @Service.setter
@@ -5410,6 +6543,9 @@ class DescribeModelServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5438,6 +6574,9 @@ class DescribeNotebookRequest(AbstractModel):
 
     @property
     def Id(self):
+        """notebook id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5474,6 +6613,9 @@ class DescribeNotebookResponse(AbstractModel):
 
     @property
     def NotebookDetail(self):
+        """详情
+        :rtype: :class:`tencentcloud.tione.v20211111.models.NotebookDetail`
+        """
         return self._NotebookDetail
 
     @NotebookDetail.setter
@@ -5482,6 +6624,9 @@ class DescribeNotebookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5536,6 +6681,9 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5544,6 +6692,9 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def Limit(self):
+        """每页返回的实例数，默认为10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5552,6 +6703,9 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def Order(self):
+        """输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5560,6 +6714,9 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def OrderField(self):
+        """根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -5568,6 +6725,20 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def Filters(self):
+        """过滤器，eg：[{ "Name": "Id", "Values": ["nb-123456789"] }]
+
+取值范围
+Name（名称）：notebook1
+Id（notebook ID）：nb-123456789
+Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
+Creator（创建者 uin）：100014761913
+ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
+DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
+AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789
+LifecycleScriptId（生命周期ID）：ls-12312312311312
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5576,6 +6747,9 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def TagFilters(self):
+        """标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -5632,6 +6806,10 @@ class DescribeNotebooksResponse(AbstractModel):
 
     @property
     def NotebookSet(self):
+        """详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NotebookSetItem
+        """
         return self._NotebookSet
 
     @NotebookSet.setter
@@ -5640,6 +6818,10 @@ class DescribeNotebooksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5648,6 +6830,9 @@ class DescribeNotebooksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5680,6 +6865,9 @@ class DescribeTrainingModelVersionRequest(AbstractModel):
 
     @property
     def TrainingModelVersionId(self):
+        """模型版本ID
+        :rtype: str
+        """
         return self._TrainingModelVersionId
 
     @TrainingModelVersionId.setter
@@ -5716,6 +6904,9 @@ class DescribeTrainingModelVersionResponse(AbstractModel):
 
     @property
     def TrainingModelVersion(self):
+        """模型版本
+        :rtype: :class:`tencentcloud.tione.v20211111.models.TrainingModelVersionDTO`
+        """
         return self._TrainingModelVersion
 
     @TrainingModelVersion.setter
@@ -5724,6 +6915,9 @@ class DescribeTrainingModelVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5763,6 +6957,9 @@ Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
 
     @property
     def TrainingModelId(self):
+        """模型ID
+        :rtype: str
+        """
         return self._TrainingModelId
 
     @TrainingModelId.setter
@@ -5771,6 +6968,17 @@ Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
 
     @property
     def Filters(self):
+        """过滤条件
+Filter.Name: 枚举值:
+    TrainingModelVersionId (模型版本ID)
+    ModelVersionType (模型版本类型) 其值支持: NORMAL(通用) ACCELERATE (加速)
+    ModelFormat（模型格式）其值Filter.Values支持：
+TORCH_SCRIPT/PYTORCH/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML
+    AlgorithmFramework (算法框架) 其值Filter.Values支持：TENSORFLOW/PYTORCH/DETECTRON2
+Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
+每次请求的Filters的上限为10，Filter.Values的上限为100
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5813,6 +7021,9 @@ class DescribeTrainingModelVersionsResponse(AbstractModel):
 
     @property
     def TrainingModelVersions(self):
+        """模型版本列表
+        :rtype: list of TrainingModelVersionDTO
+        """
         return self._TrainingModelVersions
 
     @TrainingModelVersions.setter
@@ -5821,6 +7032,9 @@ class DescribeTrainingModelVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5852,6 +7066,9 @@ class DescribeTrainingTaskPodsRequest(AbstractModel):
 
     @property
     def Id(self):
+        """训练任务ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5894,6 +7111,9 @@ class DescribeTrainingTaskPodsResponse(AbstractModel):
 
     @property
     def PodNames(self):
+        """pod名称列表
+        :rtype: list of str
+        """
         return self._PodNames
 
     @PodNames.setter
@@ -5902,6 +7122,9 @@ class DescribeTrainingTaskPodsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5910,6 +7133,9 @@ class DescribeTrainingTaskPodsResponse(AbstractModel):
 
     @property
     def PodInfoList(self):
+        """pod详细信息
+        :rtype: list of PodInfo
+        """
         return self._PodInfoList
 
     @PodInfoList.setter
@@ -5918,6 +7144,9 @@ class DescribeTrainingTaskPodsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5951,6 +7180,9 @@ class DescribeTrainingTaskRequest(AbstractModel):
 
     @property
     def Id(self):
+        """训练任务ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5987,6 +7219,9 @@ class DescribeTrainingTaskResponse(AbstractModel):
 
     @property
     def TrainingTaskDetail(self):
+        """训练任务详情
+        :rtype: :class:`tencentcloud.tione.v20211111.models.TrainingTaskDetail`
+        """
         return self._TrainingTaskDetail
 
     @TrainingTaskDetail.setter
@@ -5995,6 +7230,9 @@ class DescribeTrainingTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6047,6 +7285,18 @@ CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（�
 
     @property
     def Filters(self):
+        """过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
+
+取值范围：
+Name（名称）：task1
+Id（task ID）：train-23091792777383936
+Status（状态）：SUBMITTING/PENDING/STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+ResourceGroupId（资源组 Id）：trsg-kvvfrwl7
+Creator（创建者 uin）：100014761913
+ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6055,6 +7305,9 @@ CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（�
 
     @property
     def TagFilters(self):
+        """标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -6063,6 +7316,9 @@ CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（�
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6071,6 +7327,9 @@ CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（�
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大为50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6079,6 +7338,9 @@ CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（�
 
     @property
     def Order(self):
+        """输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6087,6 +7349,9 @@ CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（�
 
     @property
     def OrderField(self):
+        """排序的依据字段， 取值范围 "CreateTime" 、"UpdateTime"、"StartTime"，默认为UpdateTime
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -6141,6 +7406,9 @@ class DescribeTrainingTasksResponse(AbstractModel):
 
     @property
     def TrainingTaskSet(self):
+        """训练任务集
+        :rtype: list of TrainingTaskSetItem
+        """
         return self._TrainingTaskSet
 
     @TrainingTaskSet.setter
@@ -6149,6 +7417,9 @@ class DescribeTrainingTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6157,6 +7428,9 @@ class DescribeTrainingTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6194,6 +7468,10 @@ class EnvVar(AbstractModel):
 
     @property
     def Name(self):
+        """环境变量key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6202,6 +7480,10 @@ class EnvVar(AbstractModel):
 
     @property
     def Value(self):
+        """环境变量value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6245,6 +7527,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤字段名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6253,6 +7538,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤字段取值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -6261,6 +7549,9 @@ class Filter(AbstractModel):
 
     @property
     def Negative(self):
+        """是否开启反向查询
+        :rtype: bool
+        """
         return self._Negative
 
     @Negative.setter
@@ -6269,6 +7560,9 @@ class Filter(AbstractModel):
 
     @property
     def Fuzzy(self):
+        """是否开启模糊匹配
+        :rtype: bool
+        """
         return self._Fuzzy
 
     @Fuzzy.setter
@@ -6318,6 +7612,10 @@ class GooseFS(AbstractModel):
 
     @property
     def Id(self):
+        """goosefs实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6326,6 +7624,10 @@ class GooseFS(AbstractModel):
 
     @property
     def Type(self):
+        """GooseFS类型，包括GooseFS和GooseFSx
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6334,6 +7636,10 @@ class GooseFS(AbstractModel):
 
     @property
     def Path(self):
+        """GooseFSx实例需要挂载的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -6342,6 +7648,10 @@ class GooseFS(AbstractModel):
 
     @property
     def NameSpace(self):
+        """GooseFS命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NameSpace
 
     @NameSpace.setter
@@ -6383,6 +7693,10 @@ class GpuDetail(AbstractModel):
 
     @property
     def Name(self):
+        """GPU 显卡类型；枚举值: V100 A100 T4
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6391,6 +7705,10 @@ class GpuDetail(AbstractModel):
 
     @property
     def Value(self):
+        """GPU 显卡数；单位为1/100卡，比如100代表1卡
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -6436,6 +7754,9 @@ class GroupResource(AbstractModel):
 
     @property
     def Cpu(self):
+        """CPU核数; 单位为1/1000核，比如100表示0.1核
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -6444,6 +7765,9 @@ class GroupResource(AbstractModel):
 
     @property
     def Memory(self):
+        """内存；单位为MB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -6452,6 +7776,10 @@ class GroupResource(AbstractModel):
 
     @property
     def Gpu(self):
+        """总卡数；GPUDetail 显卡数之和；单位为1/100卡，比如100代表1卡
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Gpu
 
     @Gpu.setter
@@ -6460,6 +7788,10 @@ class GroupResource(AbstractModel):
 
     @property
     def GpuDetailSet(self):
+        """Gpu详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GpuDetail
+        """
         return self._GpuDetailSet
 
     @GpuDetailSet.setter
@@ -6504,6 +7836,9 @@ class HDFSConfig(AbstractModel):
 
     @property
     def Id(self):
+        """集群实例ID,实例ID形如: emr-xxxxxxxx
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6512,6 +7847,9 @@ class HDFSConfig(AbstractModel):
 
     @property
     def Path(self):
+        """路径
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -6557,6 +7895,10 @@ class HorizontalPodAutoscaler(AbstractModel):
 
     @property
     def MinReplicas(self):
+        """最小实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MinReplicas
 
     @MinReplicas.setter
@@ -6565,6 +7907,10 @@ class HorizontalPodAutoscaler(AbstractModel):
 
     @property
     def MaxReplicas(self):
+        """最大实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxReplicas
 
     @MaxReplicas.setter
@@ -6573,6 +7919,12 @@ class HorizontalPodAutoscaler(AbstractModel):
 
     @property
     def HpaMetrics(self):
+        """支持：
+"gpu-util": GPU利用率。范围{10, 100}      "cpu-util": CPU利用率。范围{10, 100}	      "memory-util": 内存利用率。范围{10, 100}      "service-qps": 单个实例QPS值。范围{1, 5000}
+"concurrency-util":单个实例请求数量值。范围{1,100000}
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Option
+        """
         return self._HpaMetrics
 
     @HpaMetrics.setter
@@ -6646,6 +7998,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def MaxNNZ(self):
+        """最大nnz数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MaxNNZ
 
     @MaxNNZ.setter
@@ -6654,6 +8010,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def SlotNum(self):
+        """slot数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SlotNum
 
     @SlotNum.setter
@@ -6662,6 +8022,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def CpuCachePercentage(self):
+        """gpu cache 使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CpuCachePercentage
 
     @CpuCachePercentage.setter
@@ -6670,6 +8034,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def GpuCachePercentage(self):
+        """cpu cache 使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GpuCachePercentage
 
     @GpuCachePercentage.setter
@@ -6678,6 +8046,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def EnableDistributed(self):
+        """是否开启分布式模式(true/false)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnableDistributed
 
     @EnableDistributed.setter
@@ -6686,6 +8058,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def MinBlockSizePt(self):
+        """TORCH_SCRIPT、MMDETECTION、DETECTRON2、HUGGINGFACE格式在进行优化时切分子图的最小算子数目，一般无需进行改动，默认为3
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MinBlockSizePt
 
     @MinBlockSizePt.setter
@@ -6694,6 +8070,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def MinBlockSizeTf(self):
+        """FROZEN_GRAPH、SAVED_MODEL格式在进行优化时切分子图的最小算子数目，一般无需进行改动，默认为10
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MinBlockSizeTf
 
     @MinBlockSizeTf.setter
@@ -6702,6 +8082,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def PipelineArgs(self):
+        """Stable Diffusion 模型优化参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PipelineArgs
 
     @PipelineArgs.setter
@@ -6710,6 +8094,10 @@ class HyperParameter(AbstractModel):
 
     @property
     def LoraScale(self):
+        """Stable Diffusion 模型优化参数，控制Lora模型的影响效果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LoraScale
 
     @LoraScale.setter
@@ -6757,6 +8145,9 @@ class ImageFIlter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤字段名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6765,6 +8156,9 @@ class ImageFIlter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -6773,6 +8167,9 @@ class ImageFIlter(AbstractModel):
 
     @property
     def Negative(self):
+        """是否反选
+        :rtype: bool
+        """
         return self._Negative
 
     @Negative.setter
@@ -6835,6 +8232,9 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageType(self):
+        """镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像
+        :rtype: str
+        """
         return self._ImageType
 
     @ImageType.setter
@@ -6843,6 +8243,9 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """镜像地址
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -6851,6 +8254,10 @@ class ImageInfo(AbstractModel):
 
     @property
     def RegistryRegion(self):
+        """TCR镜像对应的地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegistryRegion
 
     @RegistryRegion.setter
@@ -6859,6 +8266,10 @@ class ImageInfo(AbstractModel):
 
     @property
     def RegistryId(self):
+        """TCR镜像对应的实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -6867,6 +8278,10 @@ class ImageInfo(AbstractModel):
 
     @property
     def AllowSaveAllContent(self):
+        """是否允许导出全部内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AllowSaveAllContent
 
     @AllowSaveAllContent.setter
@@ -6875,6 +8290,10 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageName(self):
+        """镜像名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ImageName
 
     @ImageName.setter
@@ -6883,6 +8302,10 @@ class ImageInfo(AbstractModel):
 
     @property
     def SupportDataPipeline(self):
+        """是否支持数据构建
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SupportDataPipeline
 
     @SupportDataPipeline.setter
@@ -6891,6 +8314,10 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageSecret(self):
+        """镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageSecret`
+        """
         return self._ImageSecret
 
     @ImageSecret.setter
@@ -6942,6 +8369,10 @@ class ImageSecret(AbstractModel):
 
     @property
     def KeyId(self):
+        """用于加密密码的KMS公钥ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -6950,6 +8381,10 @@ class ImageSecret(AbstractModel):
 
     @property
     def Username(self):
+        """用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -6958,6 +8393,10 @@ class ImageSecret(AbstractModel):
 
     @property
     def Password(self):
+        """密码,base64编码； 当keyId不为空时，密码是加密后的
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -6994,6 +8433,10 @@ class InferCodeInfo(AbstractModel):
 
     @property
     def CosPathInfo(self):
+        """推理代码所在的cos详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._CosPathInfo
 
     @CosPathInfo.setter
@@ -7046,6 +8489,10 @@ class InferGatewayCallInfo(AbstractModel):
 
     @property
     def VpcHttpAddr(self):
+        """内网http调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcHttpAddr
 
     @VpcHttpAddr.setter
@@ -7054,6 +8501,10 @@ class InferGatewayCallInfo(AbstractModel):
 
     @property
     def VpcHttpsAddr(self):
+        """内网https调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcHttpsAddr
 
     @VpcHttpsAddr.setter
@@ -7062,6 +8513,10 @@ class InferGatewayCallInfo(AbstractModel):
 
     @property
     def VpcGrpcTlsAddr(self):
+        """内网grpc调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcGrpcTlsAddr
 
     @VpcGrpcTlsAddr.setter
@@ -7070,6 +8525,10 @@ class InferGatewayCallInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """可访问的vpcid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -7078,6 +8537,10 @@ class InferGatewayCallInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """后端ip对应的子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -7118,6 +8581,9 @@ class InferTemplate(AbstractModel):
 
     @property
     def InferTemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._InferTemplateId
 
     @InferTemplateId.setter
@@ -7126,6 +8592,9 @@ class InferTemplate(AbstractModel):
 
     @property
     def InferTemplateImage(self):
+        """模板镜像
+        :rtype: str
+        """
         return self._InferTemplateImage
 
     @InferTemplateImage.setter
@@ -7173,6 +8642,10 @@ class InferTemplateGroup(AbstractModel):
 
     @property
     def Framework(self):
+        """算法框架
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Framework
 
     @Framework.setter
@@ -7181,6 +8654,10 @@ class InferTemplateGroup(AbstractModel):
 
     @property
     def FrameworkVersion(self):
+        """版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FrameworkVersion
 
     @FrameworkVersion.setter
@@ -7189,6 +8666,10 @@ class InferTemplateGroup(AbstractModel):
 
     @property
     def Groups(self):
+        """支持的训练框架集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Groups
 
     @Groups.setter
@@ -7197,6 +8678,10 @@ class InferTemplateGroup(AbstractModel):
 
     @property
     def InferTemplates(self):
+        """镜像模板参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InferTemplate
+        """
         return self._InferTemplates
 
     @InferTemplates.setter
@@ -7255,6 +8740,10 @@ class IngressPrivateLinkInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """用户VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -7263,6 +8752,10 @@ class IngressPrivateLinkInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """用户子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -7271,6 +8764,10 @@ class IngressPrivateLinkInfo(AbstractModel):
 
     @property
     def InnerHttpAddr(self):
+        """内网http调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._InnerHttpAddr
 
     @InnerHttpAddr.setter
@@ -7279,6 +8776,10 @@ class IngressPrivateLinkInfo(AbstractModel):
 
     @property
     def InnerHttpsAddr(self):
+        """内网https调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._InnerHttpsAddr
 
     @InnerHttpsAddr.setter
@@ -7287,6 +8788,10 @@ class IngressPrivateLinkInfo(AbstractModel):
 
     @property
     def State(self):
+        """私有连接状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -7387,6 +8892,9 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def InstanceId(self):
+        """资源组节点id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7395,6 +8903,10 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def UsedResource(self):
+        """节点已用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        """
         return self._UsedResource
 
     @UsedResource.setter
@@ -7403,6 +8915,10 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def TotalResource(self):
+        """节点总资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        """
         return self._TotalResource
 
     @TotalResource.setter
@@ -7411,6 +8927,18 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def InstanceStatus(self):
+        """节点状态 
+注意：此字段为枚举值
+说明: 
+DEPLOYING: 部署中
+RUNNING: 运行中 
+DEPLOY_FAILED: 部署失败
+ RELEASING 释放中 
+RELEASED：已释放 
+EXCEPTION：异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -7419,6 +8947,9 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def SubUin(self):
+        """创建人
+        :rtype: str
+        """
         return self._SubUin
 
     @SubUin.setter
@@ -7427,6 +8958,11 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def CreateTime(self):
+        """创建时间: 
+注意：北京时间，比如: 2021-12-01 12:00:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7435,6 +8971,11 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def ExpireTime(self):
+        """到期时间
+注意：北京时间，比如：2021-12-11 12:00:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -7443,6 +8984,15 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标识
+注意：此字段为枚举值
+说明：
+NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期通知
+NOTIFY_AND_AUTO_RENEW：自动续费且到期通知
+DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -7451,6 +9001,9 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def SpecId(self):
+        """计费项ID
+        :rtype: str
+        """
         return self._SpecId
 
     @SpecId.setter
@@ -7459,6 +9012,9 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def SpecAlias(self):
+        """计费项别名
+        :rtype: str
+        """
         return self._SpecAlias
 
     @SpecAlias.setter
@@ -7467,6 +9023,10 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def SpecFeatures(self):
+        """计费项特性列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SpecFeatures
 
     @SpecFeatures.setter
@@ -7475,6 +9035,9 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def CvmInstanceId(self):
+        """纳管cvmid
+        :rtype: str
+        """
         return self._CvmInstanceId
 
     @CvmInstanceId.setter
@@ -7483,6 +9046,10 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def ErrCode(self):
+        """部署失败错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7491,6 +9058,10 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 
     @property
     def ErrMsg(self):
+        """部署失败错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -7558,6 +9129,10 @@ class IntranetCallInfo(AbstractModel):
 
     @property
     def IngressPrivateLinkInfo(self):
+        """私有连接通道信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.IngressPrivateLinkInfo`
+        """
         return self._IngressPrivateLinkInfo
 
     @IngressPrivateLinkInfo.setter
@@ -7566,6 +9141,10 @@ class IntranetCallInfo(AbstractModel):
 
     @property
     def ServiceEIPInfo(self):
+        """共享弹性网卡信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceEIPInfo
+        """
         return self._ServiceEIPInfo
 
     @ServiceEIPInfo.setter
@@ -7574,6 +9153,10 @@ class IntranetCallInfo(AbstractModel):
 
     @property
     def DefaultInnerCallInfos(self):
+        """默认内网调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DefaultInnerCallInfo
+        """
         return self._DefaultInnerCallInfos
 
     @DefaultInnerCallInfos.setter
@@ -7582,6 +9165,10 @@ class IntranetCallInfo(AbstractModel):
 
     @property
     def PrivateLinkInfos(self):
+        """私有连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrivateLinkInfo
+        """
         return self._PrivateLinkInfos
 
     @PrivateLinkInfos.setter
@@ -7590,6 +9177,10 @@ class IntranetCallInfo(AbstractModel):
 
     @property
     def PrivateLinkInfosV2(self):
+        """基于新网关的私有连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrivateLinkInfo
+        """
         return self._PrivateLinkInfosV2
 
     @PrivateLinkInfosV2.setter
@@ -7654,6 +9245,10 @@ class LocalDisk(AbstractModel):
 
     @property
     def InstanceId(self):
+        """节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7662,6 +9257,10 @@ class LocalDisk(AbstractModel):
 
     @property
     def LocalPath(self):
+        """本地路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LocalPath
 
     @LocalPath.setter
@@ -7701,6 +9300,10 @@ class LogConfig(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志需要投递到cls的日志集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -7709,6 +9312,10 @@ class LogConfig(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志需要投递到cls的主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -7748,6 +9355,10 @@ class Message(AbstractModel):
 
     @property
     def Role(self):
+        """角色名。支持三个角色：system、user、assistant，其中system仅开头可出现一次，也可忽略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -7756,6 +9367,10 @@ class Message(AbstractModel):
 
     @property
     def Content(self):
+        """对话输入内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -7814,6 +9429,9 @@ class MetricData(AbstractModel):
 
     @property
     def TaskId(self):
+        """训练任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7822,6 +9440,10 @@ class MetricData(AbstractModel):
 
     @property
     def Timestamp(self):
+        """时间戳.unix timestamp,单位为秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -7830,6 +9452,10 @@ class MetricData(AbstractModel):
 
     @property
     def Uin(self):
+        """用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -7838,6 +9464,10 @@ class MetricData(AbstractModel):
 
     @property
     def Epoch(self):
+        """本次上报数据所处的训练周期数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Epoch
 
     @Epoch.setter
@@ -7846,6 +9476,10 @@ class MetricData(AbstractModel):
 
     @property
     def Step(self):
+        """本次上报数据所处的训练迭代次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Step
 
     @Step.setter
@@ -7854,6 +9488,10 @@ class MetricData(AbstractModel):
 
     @property
     def TotalSteps(self):
+        """训练停止所需的迭代总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalSteps
 
     @TotalSteps.setter
@@ -7862,6 +9500,10 @@ class MetricData(AbstractModel):
 
     @property
     def Points(self):
+        """数据点。数组元素为不同指标的数据。数组长度不超过10。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataPoint
+        """
         return self._Points
 
     @Points.setter
@@ -8019,6 +9661,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelAccTaskId(self):
+        """模型加速任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelAccTaskId
 
     @ModelAccTaskId.setter
@@ -8027,6 +9673,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelAccTaskName(self):
+        """模型加速任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelAccTaskName
 
     @ModelAccTaskName.setter
@@ -8035,6 +9685,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelId(self):
+        """模型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelId
 
     @ModelId.setter
@@ -8043,6 +9697,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelName(self):
+        """模型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelName
 
     @ModelName.setter
@@ -8051,6 +9709,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelVersion(self):
+        """模型版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelVersion
 
     @ModelVersion.setter
@@ -8059,6 +9721,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelSource(self):
+        """模型来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelSource
 
     @ModelSource.setter
@@ -8067,6 +9733,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def OptimizationLevel(self):
+        """优化级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OptimizationLevel
 
     @OptimizationLevel.setter
@@ -8075,6 +9745,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -8083,6 +9757,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelInputNum(self):
+        """input节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ModelInputNum
 
     @ModelInputNum.setter
@@ -8091,6 +9769,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelInputInfos(self):
+        """input节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ModelInputInfo
+        """
         return self._ModelInputInfos
 
     @ModelInputInfos.setter
@@ -8099,6 +9781,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def GPUType(self):
+        """GPU型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GPUType
 
     @GPUType.setter
@@ -8107,6 +9793,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ChargeType(self):
+        """计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -8115,6 +9805,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def Speedup(self):
+        """加速比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Speedup
 
     @Speedup.setter
@@ -8123,6 +9817,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelInputPath(self):
+        """模型输入cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._ModelInputPath
 
     @ModelInputPath.setter
@@ -8131,6 +9829,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelOutputPath(self):
+        """模型输出cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._ModelOutputPath
 
     @ModelOutputPath.setter
@@ -8139,6 +9841,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -8147,6 +9853,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def AlgorithmFramework(self):
+        """算法框架
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlgorithmFramework
 
     @AlgorithmFramework.setter
@@ -8155,6 +9865,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def WaitNumber(self):
+        """排队个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WaitNumber
 
     @WaitNumber.setter
@@ -8163,6 +9877,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8171,6 +9889,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def TaskProgress(self):
+        """任务进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskProgress
 
     @TaskProgress.setter
@@ -8179,6 +9901,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelFormat(self):
+        """模型格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelFormat
 
     @ModelFormat.setter
@@ -8187,6 +9913,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def TensorInfos(self):
+        """模型Tensor信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._TensorInfos
 
     @TensorInfos.setter
@@ -8195,6 +9925,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def HyperParameter(self):
+        """模型专业参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HyperParameter`
+        """
         return self._HyperParameter
 
     @HyperParameter.setter
@@ -8203,6 +9937,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def AccEngineVersion(self):
+        """加速引擎版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccEngineVersion
 
     @AccEngineVersion.setter
@@ -8211,6 +9949,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -8219,6 +9961,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def IsSaved(self):
+        """优化模型是否已保存到模型仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsSaved
 
     @IsSaved.setter
@@ -8227,6 +9973,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def ModelSignature(self):
+        """SAVED_MODEL保存时配置的签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelSignature
 
     @ModelSignature.setter
@@ -8235,6 +9985,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def QATModel(self):
+        """是否是QAT模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._QATModel
 
     @QATModel.setter
@@ -8243,6 +9997,10 @@ class ModelAccelerateTask(AbstractModel):
 
     @property
     def FrameworkVersion(self):
+        """加速引擎对应的框架版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FrameworkVersion
 
     @FrameworkVersion.setter
@@ -8377,6 +10135,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ModelId(self):
+        """模型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelId
 
     @ModelId.setter
@@ -8385,6 +10147,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ModelVersionId(self):
+        """优化模型版本id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelVersionId
 
     @ModelVersionId.setter
@@ -8393,6 +10159,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ModelJobId(self):
+        """优化任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelJobId
 
     @ModelJobId.setter
@@ -8401,6 +10171,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ModelJobName(self):
+        """优化任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelJobName
 
     @ModelJobName.setter
@@ -8409,6 +10183,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ModelVersion(self):
+        """优化后模型版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelVersion
 
     @ModelVersion.setter
@@ -8417,6 +10195,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def SpeedUp(self):
+        """加速比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpeedUp
 
     @SpeedUp.setter
@@ -8425,6 +10207,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ModelSource(self):
+        """模型来源/任务名称/任务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModelSource`
+        """
         return self._ModelSource
 
     @ModelSource.setter
@@ -8433,6 +10219,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def CosPathInfo(self):
+        """模型cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._CosPathInfo
 
     @CosPathInfo.setter
@@ -8441,6 +10231,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8449,6 +10243,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ModelFormat(self):
+        """模型规范
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelFormat
 
     @ModelFormat.setter
@@ -8457,6 +10255,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8465,6 +10267,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def Progress(self):
+        """进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -8473,6 +10279,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -8481,6 +10291,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def GPUType(self):
+        """GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GPUType
 
     @GPUType.setter
@@ -8489,6 +10303,10 @@ class ModelAccelerateVersion(AbstractModel):
 
     @property
     def ModelCosPath(self):
+        """模型cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._ModelCosPath
 
     @ModelCosPath.setter
@@ -8574,6 +10392,10 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelVersionId(self):
+        """模型版本id, DescribeTrainingModelVersion查询模型接口时的id
+自动学习类型的模型填写自动学习的任务id
+        :rtype: str
+        """
         return self._ModelVersionId
 
     @ModelVersionId.setter
@@ -8582,6 +10404,9 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelId(self):
+        """模型id
+        :rtype: str
+        """
         return self._ModelId
 
     @ModelId.setter
@@ -8590,6 +10415,9 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelName(self):
+        """模型名
+        :rtype: str
+        """
         return self._ModelName
 
     @ModelName.setter
@@ -8598,6 +10426,9 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelVersion(self):
+        """模型版本
+        :rtype: str
+        """
         return self._ModelVersion
 
     @ModelVersion.setter
@@ -8606,6 +10437,9 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelSource(self):
+        """模型来源
+        :rtype: str
+        """
         return self._ModelSource
 
     @ModelSource.setter
@@ -8614,6 +10448,9 @@ class ModelInfo(AbstractModel):
 
     @property
     def CosPathInfo(self):
+        """cos路径信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._CosPathInfo
 
     @CosPathInfo.setter
@@ -8622,6 +10459,10 @@ class ModelInfo(AbstractModel):
 
     @property
     def AlgorithmFramework(self):
+        """模型对应的算法框架，预留
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlgorithmFramework
 
     @AlgorithmFramework.setter
@@ -8630,6 +10471,10 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelType(self):
+        """默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelType
 
     @ModelType.setter
@@ -8638,6 +10483,10 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelFormat(self):
+        """模型格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelFormat
 
     @ModelFormat.setter
@@ -8646,6 +10495,10 @@ class ModelInfo(AbstractModel):
 
     @property
     def IsPrivateModel(self):
+        """是否为私有化大模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsPrivateModel
 
     @IsPrivateModel.setter
@@ -8697,6 +10550,12 @@ RANGE：浮动
 
     @property
     def ModelInputType(self):
+        """input数据类型
+FIXED：固定
+RANGE：浮动
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelInputType
 
     @ModelInputType.setter
@@ -8705,6 +10564,10 @@ RANGE：浮动
 
     @property
     def ModelInputDimension(self):
+        """input数据尺寸
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ModelInputDimension
 
     @ModelInputDimension.setter
@@ -8780,6 +10643,10 @@ class ModelSource(AbstractModel):
 
     @property
     def Source(self):
+        """来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -8788,6 +10655,10 @@ class ModelSource(AbstractModel):
 
     @property
     def JobName(self):
+        """来源任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -8796,6 +10667,10 @@ class ModelSource(AbstractModel):
 
     @property
     def JobVersion(self):
+        """来源任务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobVersion
 
     @JobVersion.setter
@@ -8804,6 +10679,10 @@ class ModelSource(AbstractModel):
 
     @property
     def JobId(self):
+        """来源任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8812,6 +10691,10 @@ class ModelSource(AbstractModel):
 
     @property
     def ModelName(self):
+        """模型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelName
 
     @ModelName.setter
@@ -8820,6 +10703,10 @@ class ModelSource(AbstractModel):
 
     @property
     def AlgorithmFramework(self):
+        """算法框架
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlgorithmFramework
 
     @AlgorithmFramework.setter
@@ -8828,6 +10715,10 @@ class ModelSource(AbstractModel):
 
     @property
     def TrainingPreference(self):
+        """训练偏好
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingPreference
 
     @TrainingPreference.setter
@@ -8836,6 +10727,10 @@ class ModelSource(AbstractModel):
 
     @property
     def ReasoningEnvironmentSource(self):
+        """推理环境来源，SYSTEM/CUSTOM
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReasoningEnvironmentSource
 
     @ReasoningEnvironmentSource.setter
@@ -8844,6 +10739,10 @@ class ModelSource(AbstractModel):
 
     @property
     def ReasoningEnvironment(self):
+        """推理环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReasoningEnvironment
 
     @ReasoningEnvironment.setter
@@ -8852,6 +10751,10 @@ class ModelSource(AbstractModel):
 
     @property
     def ReasoningEnvironmentId(self):
+        """推理环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReasoningEnvironmentId
 
     @ReasoningEnvironmentId.setter
@@ -8860,6 +10763,10 @@ class ModelSource(AbstractModel):
 
     @property
     def ReasoningImageInfo(self):
+        """自定义推理环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ReasoningImageInfo
 
     @ReasoningImageInfo.setter
@@ -9000,6 +10907,9 @@ HYBRID_PAID:
 
     @property
     def ServiceId(self):
+        """服务id
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -9008,6 +10918,9 @@ HYBRID_PAID:
 
     @property
     def ModelInfo(self):
+        """模型信息，需要挂载模型时填写
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        """
         return self._ModelInfo
 
     @ModelInfo.setter
@@ -9016,6 +10929,9 @@ HYBRID_PAID:
 
     @property
     def ImageInfo(self):
+        """镜像信息，配置服务运行所需的镜像地址等信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ImageInfo
 
     @ImageInfo.setter
@@ -9024,6 +10940,9 @@ HYBRID_PAID:
 
     @property
     def Env(self):
+        """环境变量，可选参数，用于配置容器中的环境变量
+        :rtype: list of EnvVar
+        """
         return self._Env
 
     @Env.setter
@@ -9032,6 +10951,9 @@ HYBRID_PAID:
 
     @property
     def Resources(self):
+        """资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        """
         return self._Resources
 
     @Resources.setter
@@ -9040,6 +10962,26 @@ HYBRID_PAID:
 
     @property
     def InstanceType(self):
+        """使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
+TI.S.MEDIUM.POST	2C4G
+TI.S.LARGE.POST	4C8G
+TI.S.2XLARGE16.POST	8C16G
+TI.S.2XLARGE32.POST	8C32G
+TI.S.4XLARGE32.POST	16C32G
+TI.S.4XLARGE64.POST	16C64G
+TI.S.6XLARGE48.POST	24C48G
+TI.S.6XLARGE96.POST	24C96G
+TI.S.8XLARGE64.POST	32C64G
+TI.S.8XLARGE128.POST 32C128G
+TI.GN7.LARGE20.POST	4C20G T4*1/4
+TI.GN7.2XLARGE40.POST	10C40G T4*1/2
+TI.GN7.2XLARGE32.POST	8C32G T4*1
+TI.GN7.5XLARGE80.POST	20C80G T4*1
+TI.GN7.8XLARGE128.POST	32C128G T4*1
+TI.GN7.10XLARGE160.POST	40C160G T4*2
+TI.GN7.20XLARGE320.POST	80C320G T4*4
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -9048,6 +10990,9 @@ HYBRID_PAID:
 
     @property
     def ScaleMode(self):
+        """扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL"
+        :rtype: str
+        """
         return self._ScaleMode
 
     @ScaleMode.setter
@@ -9056,6 +11001,15 @@ HYBRID_PAID:
 
     @property
     def Replicas(self):
+        """实例数量, 不同计费模式和调节模式下对应关系如下
+PREPAID 和 POSTPAID_BY_HOUR:
+手动调节模式下对应 实例数量
+自动调节模式下对应 基于时间的默认策略的实例数量
+HYBRID_PAID:
+后付费实例手动调节模式下对应 实例数量
+后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -9064,6 +11018,9 @@ HYBRID_PAID:
 
     @property
     def HorizontalPodAutoscaler(self):
+        """自动伸缩信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
+        """
         return self._HorizontalPodAutoscaler
 
     @HorizontalPodAutoscaler.setter
@@ -9072,6 +11029,9 @@ HYBRID_PAID:
 
     @property
     def LogEnable(self):
+        """是否开启日志投递，开启后需填写配置投递到指定cls
+        :rtype: bool
+        """
         return self._LogEnable
 
     @LogEnable.setter
@@ -9080,6 +11040,9 @@ HYBRID_PAID:
 
     @property
     def LogConfig(self):
+        """日志配置，需要投递服务日志到指定cls时填写
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
         return self._LogConfig
 
     @LogConfig.setter
@@ -9088,6 +11051,9 @@ HYBRID_PAID:
 
     @property
     def ServiceAction(self):
+        """特殊更新行为： "STOP": 停止, "RESUME": 重启, "SCALE": 扩缩容, 存在这些特殊更新行为时，会忽略其他更新字段
+        :rtype: str
+        """
         return self._ServiceAction
 
     @ServiceAction.setter
@@ -9096,6 +11062,9 @@ HYBRID_PAID:
 
     @property
     def ServiceDescription(self):
+        """服务的描述
+        :rtype: str
+        """
         return self._ServiceDescription
 
     @ServiceDescription.setter
@@ -9104,6 +11073,9 @@ HYBRID_PAID:
 
     @property
     def ScaleStrategy(self):
+        """自动伸缩策略
+        :rtype: str
+        """
         return self._ScaleStrategy
 
     @ScaleStrategy.setter
@@ -9112,6 +11084,9 @@ HYBRID_PAID:
 
     @property
     def CronScaleJobs(self):
+        """自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+        :rtype: list of CronScaleJob
+        """
         return self._CronScaleJobs
 
     @CronScaleJobs.setter
@@ -9120,6 +11095,9 @@ HYBRID_PAID:
 
     @property
     def HybridBillingPrepaidReplicas(self):
+        """计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+        :rtype: int
+        """
         return self._HybridBillingPrepaidReplicas
 
     @HybridBillingPrepaidReplicas.setter
@@ -9128,6 +11106,9 @@ HYBRID_PAID:
 
     @property
     def ModelHotUpdateEnable(self):
+        """是否开启模型的热更新。默认不开启
+        :rtype: bool
+        """
         return self._ModelHotUpdateEnable
 
     @ModelHotUpdateEnable.setter
@@ -9136,6 +11117,9 @@ HYBRID_PAID:
 
     @property
     def ScheduledAction(self):
+        """定时停止配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        """
         return self._ScheduledAction
 
     @ScheduledAction.setter
@@ -9144,6 +11128,9 @@ HYBRID_PAID:
 
     @property
     def ServiceLimit(self):
+        """服务限速限流相关配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        """
         return self._ServiceLimit
 
     @ServiceLimit.setter
@@ -9152,6 +11139,9 @@ HYBRID_PAID:
 
     @property
     def VolumeMount(self):
+        """挂载配置，目前只支持CFS
+        :rtype: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        """
         return self._VolumeMount
 
     @VolumeMount.setter
@@ -9160,6 +11150,9 @@ HYBRID_PAID:
 
     @property
     def ModelTurboEnable(self):
+        """是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
+        :rtype: bool
+        """
         return self._ModelTurboEnable
 
     @ModelTurboEnable.setter
@@ -9168,6 +11161,9 @@ HYBRID_PAID:
 
     @property
     def Command(self):
+        """服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -9176,6 +11172,9 @@ HYBRID_PAID:
 
     @property
     def ServiceEIP(self):
+        """是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
+        """
         return self._ServiceEIP
 
     @ServiceEIP.setter
@@ -9184,6 +11183,9 @@ HYBRID_PAID:
 
     @property
     def CommandBase64(self):
+        """服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
+        :rtype: str
+        """
         return self._CommandBase64
 
     @CommandBase64.setter
@@ -9192,6 +11194,9 @@ HYBRID_PAID:
 
     @property
     def ServicePort(self):
+        """服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+        :rtype: int
+        """
         return self._ServicePort
 
     @ServicePort.setter
@@ -9281,6 +11286,10 @@ class ModifyModelServiceResponse(AbstractModel):
 
     @property
     def Service(self):
+        """生成的模型服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Service`
+        """
         return self._Service
 
     @Service.setter
@@ -9289,6 +11298,9 @@ class ModifyModelServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9462,6 +11474,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def Id(self):
+        """notebook  ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9470,6 +11485,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def Name(self):
+        """notebook 名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9478,6 +11496,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def LifecycleScriptId(self):
+        """生命周期脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LifecycleScriptId
 
     @LifecycleScriptId.setter
@@ -9486,6 +11508,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def PodName(self):
+        """Pod-Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -9494,6 +11520,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """Update-Time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -9502,6 +11531,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def DirectInternetAccess(self):
+        """是否访问公网
+        :rtype: bool
+        """
         return self._DirectInternetAccess
 
     @DirectInternetAccess.setter
@@ -9510,6 +11542,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def ResourceGroupId(self):
+        """预付费专用资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -9518,6 +11554,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def Tags(self):
+        """标签配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -9526,6 +11566,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def AutoStopping(self):
+        """是否自动停止
+        :rtype: bool
+        """
         return self._AutoStopping
 
     @AutoStopping.setter
@@ -9534,6 +11577,11 @@ class NotebookDetail(AbstractModel):
 
     @property
     def AdditionalCodeRepoIds(self):
+        """其他GIT存储库，最多3个，单个
+长度不超过512字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AdditionalCodeRepoIds
 
     @AdditionalCodeRepoIds.setter
@@ -9542,6 +11590,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def AutomaticStopTime(self):
+        """自动停止时间，单位小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutomaticStopTime
 
     @AutomaticStopTime.setter
@@ -9550,6 +11602,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def ResourceConf(self):
+        """资源配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceConf`
+        """
         return self._ResourceConf
 
     @ResourceConf.setter
@@ -9558,6 +11613,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def DefaultCodeRepoId(self):
+        """默认GIT存储库，长度不超过512字符
+        :rtype: str
+        """
         return self._DefaultCodeRepoId
 
     @DefaultCodeRepoId.setter
@@ -9566,6 +11624,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def EndTime(self):
+        """训练输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9574,6 +11636,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def LogEnable(self):
+        """是否上报日志
+        :rtype: bool
+        """
         return self._LogEnable
 
     @LogEnable.setter
@@ -9582,6 +11647,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def LogConfig(self):
+        """日志配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
         return self._LogConfig
 
     @LogConfig.setter
@@ -9590,6 +11659,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -9598,6 +11671,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -9606,6 +11683,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9614,6 +11694,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def RuntimeInSeconds(self):
+        """运行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuntimeInSeconds
 
     @RuntimeInSeconds.setter
@@ -9622,6 +11706,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9630,6 +11717,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def StartTime(self):
+        """训练开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9638,6 +11729,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def ChargeStatus(self):
+        """计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeStatus
 
     @ChargeStatus.setter
@@ -9646,6 +11741,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def RootAccess(self):
+        """是否ROOT权限
+        :rtype: bool
+        """
         return self._RootAccess
 
     @RootAccess.setter
@@ -9654,6 +11752,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def BillingInfos(self):
+        """计贺金额信息，eg:2.00元/小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._BillingInfos
 
     @BillingInfos.setter
@@ -9662,6 +11764,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def VolumeSizeInGB(self):
+        """存储卷大小 （单位时GB，最小10GB，必须是10G的倍数）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VolumeSizeInGB
 
     @VolumeSizeInGB.setter
@@ -9670,6 +11776,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def FailureReason(self):
+        """失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -9678,6 +11788,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def ChargeType(self):
+        """计算资源付费模式 (- PREPAID：预付费，即包年包月 - POSTPAID_BY_HOUR：按小时后付费)
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -9686,6 +11799,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def InstanceTypeAlias(self):
+        """后付费资源规格说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceTypeAlias
 
     @InstanceTypeAlias.setter
@@ -9694,6 +11811,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def ResourceGroupName(self):
+        """预付费资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupName
 
     @ResourceGroupName.setter
@@ -9702,6 +11823,14 @@ class NotebookDetail(AbstractModel):
 
     @property
     def VolumeSourceType(self):
+        """存储的类型。取值包含： 
+    FREE:        预付费的免费存储
+    CLOUD_PREMIUM： 高性能云硬盘
+    CLOUD_SSD： SSD云硬盘
+    CFS:     CFS存储，包含NFS和turbo
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VolumeSourceType
 
     @VolumeSourceType.setter
@@ -9710,6 +11839,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def VolumeSourceCFS(self):
+        """CFS存储的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
         return self._VolumeSourceCFS
 
     @VolumeSourceCFS.setter
@@ -9718,6 +11851,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def DataConfigs(self):
+        """数据配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataConfig
+        """
         return self._DataConfigs
 
     @DataConfigs.setter
@@ -9726,6 +11863,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def Message(self):
+        """notebook 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -9734,6 +11875,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def DataSource(self):
+        """数据源来源，eg：WeData_HDFS
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSource
 
     @DataSource.setter
@@ -9742,6 +11887,9 @@ class NotebookDetail(AbstractModel):
 
     @property
     def ImageInfo(self):
+        """镜像信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ImageInfo
 
     @ImageInfo.setter
@@ -9750,6 +11898,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def ImageType(self):
+        """镜像类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ImageType
 
     @ImageType.setter
@@ -9758,6 +11910,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def SSHConfig(self):
+        """SSH配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        """
         return self._SSHConfig
 
     @SSHConfig.setter
@@ -9766,6 +11922,10 @@ class NotebookDetail(AbstractModel):
 
     @property
     def VolumeSourceGooseFS(self):
+        """GooseFS存储配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        """
         return self._VolumeSourceGooseFS
 
     @VolumeSourceGooseFS.setter
@@ -9960,6 +12120,9 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def Id(self):
+        """notebook ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9968,6 +12131,9 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def Name(self):
+        """notebook 名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9976,6 +12142,9 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def ChargeType(self):
+        """计费模式
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -9984,6 +12153,9 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def ResourceConf(self):
+        """资源配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceConf`
+        """
         return self._ResourceConf
 
     @ResourceConf.setter
@@ -9992,6 +12164,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def ResourceGroupId(self):
+        """预付费资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -10000,6 +12176,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def VolumeSizeInGB(self):
+        """存储卷大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VolumeSizeInGB
 
     @VolumeSizeInGB.setter
@@ -10008,6 +12188,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def BillingInfos(self):
+        """计费金额信息，eg：2.00元/小时 (for后付费)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._BillingInfos
 
     @BillingInfos.setter
@@ -10016,6 +12200,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def Tags(self):
+        """标签配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -10024,6 +12212,9 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10032,6 +12223,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def StartTime(self):
+        """启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10040,6 +12235,9 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10048,6 +12246,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def RuntimeInSeconds(self):
+        """运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuntimeInSeconds
 
     @RuntimeInSeconds.setter
@@ -10056,6 +12258,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def ChargeStatus(self):
+        """计费状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeStatus
 
     @ChargeStatus.setter
@@ -10064,6 +12270,9 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10072,6 +12281,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def FailureReason(self):
+        """错误原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -10080,6 +12293,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10088,6 +12305,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def PodName(self):
+        """Pod名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -10096,6 +12317,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def InstanceTypeAlias(self):
+        """后付费资源规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceTypeAlias
 
     @InstanceTypeAlias.setter
@@ -10104,6 +12329,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def ResourceGroupName(self):
+        """预付费资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupName
 
     @ResourceGroupName.setter
@@ -10112,6 +12341,9 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def AutoStopping(self):
+        """是否自动终止
+        :rtype: bool
+        """
         return self._AutoStopping
 
     @AutoStopping.setter
@@ -10120,6 +12352,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def AutomaticStopTime(self):
+        """自动停止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutomaticStopTime
 
     @AutomaticStopTime.setter
@@ -10128,6 +12364,14 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def VolumeSourceType(self):
+        """存储的类型。取值包含： 
+    FREE:        预付费的免费存储
+    CLOUD_PREMIUM： 高性能云硬盘
+    CLOUD_SSD： SSD云硬盘
+    CFS:     CFS存储，包含NFS和turbo
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VolumeSourceType
 
     @VolumeSourceType.setter
@@ -10136,6 +12380,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def VolumeSourceCFS(self):
+        """CFS存储的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
         return self._VolumeSourceCFS
 
     @VolumeSourceCFS.setter
@@ -10144,6 +12392,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def Message(self):
+        """notebook 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -10152,6 +12404,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def UserTypes(self):
+        """notebook用户类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._UserTypes
 
     @UserTypes.setter
@@ -10160,6 +12416,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def SSHConfig(self):
+        """SSH配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        """
         return self._SSHConfig
 
     @SSHConfig.setter
@@ -10168,6 +12428,10 @@ class NotebookSetItem(AbstractModel):
 
     @property
     def VolumeSourceGooseFS(self):
+        """GooseFS存储配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        """
         return self._VolumeSourceGooseFS
 
     @VolumeSourceGooseFS.setter
@@ -10243,6 +12507,9 @@ class Option(AbstractModel):
 
     @property
     def Name(self):
+        """指标名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10251,6 +12518,9 @@ class Option(AbstractModel):
 
     @property
     def Value(self):
+        """指标值
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -10318,6 +12588,10 @@ class Pod(AbstractModel):
 
     @property
     def Name(self):
+        """pod名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10326,6 +12600,10 @@ class Pod(AbstractModel):
 
     @property
     def Uid(self):
+        """pod的唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uid
 
     @Uid.setter
@@ -10334,6 +12612,10 @@ class Pod(AbstractModel):
 
     @property
     def ChargeType(self):
+        """服务付费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -10342,6 +12624,10 @@ class Pod(AbstractModel):
 
     @property
     def Phase(self):
+        """pod的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Phase
 
     @Phase.setter
@@ -10350,6 +12636,10 @@ class Pod(AbstractModel):
 
     @property
     def IP(self):
+        """pod的IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -10358,6 +12648,10 @@ class Pod(AbstractModel):
 
     @property
     def CreateTime(self):
+        """pod的创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10366,6 +12660,10 @@ class Pod(AbstractModel):
 
     @property
     def Containers(self):
+        """容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Container`
+        """
         return self._Containers
 
     @Containers.setter
@@ -10374,6 +12672,10 @@ class Pod(AbstractModel):
 
     @property
     def ContainerInfos(self):
+        """容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Container
+        """
         return self._ContainerInfos
 
     @ContainerInfos.setter
@@ -10382,6 +12684,10 @@ class Pod(AbstractModel):
 
     @property
     def CrossTenantENIInfo(self):
+        """容器调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CrossTenantENIInfo`
+        """
         return self._CrossTenantENIInfo
 
     @CrossTenantENIInfo.setter
@@ -10453,6 +12759,10 @@ class PodInfo(AbstractModel):
 
     @property
     def Name(self):
+        """pod名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10461,6 +12771,10 @@ class PodInfo(AbstractModel):
 
     @property
     def IP(self):
+        """pod的IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -10469,6 +12783,10 @@ class PodInfo(AbstractModel):
 
     @property
     def Status(self):
+        """pod状态。eg：SUBMITTING提交中、PENDING排队中、RUNNING运行中、SUCCEEDED已完成、FAILED异常、TERMINATING停止中、TERMINATED已停止
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10477,6 +12795,10 @@ class PodInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """pod启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10485,6 +12807,10 @@ class PodInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """pod结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10493,6 +12819,10 @@ class PodInfo(AbstractModel):
 
     @property
     def ResourceConfigInfo(self):
+        """pod资源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
+        """
         return self._ResourceConfigInfo
 
     @ResourceConfigInfo.setter
@@ -10550,6 +12880,10 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有连接所在的VPCID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -10558,6 +12892,10 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """私有连接所在的子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -10566,6 +12904,10 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def InnerHttpAddr(self):
+        """HTTP内网调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._InnerHttpAddr
 
     @InnerHttpAddr.setter
@@ -10574,6 +12916,10 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def InnerHttpsAddr(self):
+        """HTTPS内网调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._InnerHttpsAddr
 
     @InnerHttpsAddr.setter
@@ -10582,6 +12928,10 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def State(self):
+        """私有连接状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -10619,6 +12969,9 @@ class PushTrainingMetricsRequest(AbstractModel):
 
     @property
     def Data(self):
+        """指标数据
+        :rtype: list of MetricData
+        """
         return self._Data
 
     @Data.setter
@@ -10657,6 +13010,9 @@ class PushTrainingMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10683,6 +13039,10 @@ class RDMAConfig(AbstractModel):
 
     @property
     def Enable(self):
+        """是否开启RDMA
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -10749,6 +13109,10 @@ TI.GN7.20XLARGE320.POST: 80C320G T4*4
 
     @property
     def Cpu(self):
+        """cpu 处理器资源, 单位为1/1000核 (for预付费)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -10757,6 +13121,10 @@ TI.GN7.20XLARGE320.POST: 80C320G T4*4
 
     @property
     def Memory(self):
+        """memory 内存资源, 单位为1M (for预付费)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -10765,6 +13133,10 @@ TI.GN7.20XLARGE320.POST: 80C320G T4*4
 
     @property
     def Gpu(self):
+        """gpu Gpu卡资源，单位为1/100卡，例如GpuType=T4时，1 Gpu = 1/100 T4卡 (for预付费)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Gpu
 
     @Gpu.setter
@@ -10773,6 +13145,10 @@ TI.GN7.20XLARGE320.POST: 80C320G T4*4
 
     @property
     def GpuType(self):
+        """GpuType 卡类型，参考资源组上对应的卡类型。eg: H800,A800,A100,T4,P4,V100等 (for预付费)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GpuType
 
     @GpuType.setter
@@ -10781,6 +13157,26 @@ TI.GN7.20XLARGE320.POST: 80C320G T4*4
 
     @property
     def InstanceType(self):
+        """计算规格 (for后付费)，可选值如下：
+TI.S.LARGE.POST: 4C8G 
+TI.S.2XLARGE16.POST:  8C16G 
+TI.S.2XLARGE32.POST:  8C32G 
+TI.S.4XLARGE32.POST:  16C32G
+TI.S.4XLARGE64.POST:  16C64G
+TI.S.6XLARGE48.POST:  24C48G
+TI.S.6XLARGE96.POST:  24C96G
+TI.S.8XLARGE64.POST:  32C64G
+TI.S.8XLARGE128.POST : 32C128G
+TI.GN10.2XLARGE40.POST: 8C40G V100*1 
+TI.GN10.5XLARGE80.POST:  18C80G V100*2 
+TI.GN10.10XLARGE160.POST :  32C160G V100*4
+TI.GN10.20XLARGE320.POST :  72C320G V100*8
+TI.GN7.8XLARGE128.POST: 32C128G T4*1 
+TI.GN7.10XLARGE160.POST: 40C160G T4*2 
+TI.GN7.20XLARGE320.POST: 80C320G T4*4
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -10877,6 +13273,9 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def Role(self):
+        """角色，eg：PS、WORKER、DRIVER、EXECUTOR
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -10885,6 +13284,9 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def Cpu(self):
+        """cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -10893,6 +13295,9 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def Memory(self):
+        """内存，使用资源组时需配置。单位为MB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -10901,6 +13306,9 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def GpuType(self):
+        """gpu卡类型，使用资源组时需配置
+        :rtype: str
+        """
         return self._GpuType
 
     @GpuType.setter
@@ -10909,6 +13317,9 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def Gpu(self):
+        """gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡
+        :rtype: int
+        """
         return self._Gpu
 
     @Gpu.setter
@@ -10917,6 +13328,26 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def InstanceType(self):
+        """算力规格ID
+计算规格 (for后付费)，可选值如下：
+TI.S.LARGE.POST: 4C8G 
+TI.S.2XLARGE16.POST:  8C16G 
+TI.S.2XLARGE32.POST:  8C32G 
+TI.S.4XLARGE32.POST:  16C32G
+TI.S.4XLARGE64.POST:  16C64G
+TI.S.6XLARGE48.POST:  24C48G
+TI.S.6XLARGE96.POST:  24C96G
+TI.S.8XLARGE64.POST:  32C64G
+TI.S.8XLARGE128.POST : 32C128G
+TI.GN10.2XLARGE40.POST: 8C40G V100*1 
+TI.GN10.5XLARGE80.POST:  18C80G V100*2 
+TI.GN10.10XLARGE160.POST :  32C160G V100*4
+TI.GN10.20XLARGE320.POST :  72C320G V100*8
+TI.GN7.8XLARGE128.POST: 32C128G T4*1 
+TI.GN7.10XLARGE160.POST: 40C160G T4*2 
+TI.GN7.20XLARGE320.POST: 80C32
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -10925,6 +13356,9 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def InstanceNum(self):
+        """计算节点数
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -10933,6 +13367,26 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def InstanceTypeAlias(self):
+        """算力规格名称
+计算规格 (for后付费)，可选值如下：
+4C8G 
+8C16G 
+8C32G 
+16C32G
+6C64G
+24C48G
+24C96G
+32C64G
+32C128G
+8C40G V100*1 
+8C80G V100*2 
+32C160G V100*4
+72C320G V100*8
+32C128G T4*1 
+40C160G T4*2 
+80C32
+        :rtype: str
+        """
         return self._InstanceTypeAlias
 
     @InstanceTypeAlias.setter
@@ -10941,6 +13395,10 @@ TI.GN7.20XLARGE320.POST: 80C32
 
     @property
     def RDMAConfig(self):
+        """RDMA配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.RDMAConfig`
+        """
         return self._RDMAConfig
 
     @RDMAConfig.setter
@@ -11009,6 +13467,9 @@ class ResourceGroup(AbstractModel):
 
     @property
     def ResourceGroupId(self):
+        """资源组id
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -11017,6 +13478,9 @@ class ResourceGroup(AbstractModel):
 
     @property
     def ResourceGroupName(self):
+        """资源组名称
+        :rtype: str
+        """
         return self._ResourceGroupName
 
     @ResourceGroupName.setter
@@ -11025,6 +13489,9 @@ class ResourceGroup(AbstractModel):
 
     @property
     def FreeInstance(self):
+        """可用节点个数(运行中的节点)
+        :rtype: int
+        """
         return self._FreeInstance
 
     @FreeInstance.setter
@@ -11033,6 +13500,9 @@ class ResourceGroup(AbstractModel):
 
     @property
     def TotalInstance(self):
+        """总节点个数(所有节点)
+        :rtype: int
+        """
         return self._TotalInstance
 
     @TotalInstance.setter
@@ -11041,6 +13511,10 @@ class ResourceGroup(AbstractModel):
 
     @property
     def UsedResource(self):
+        """资资源组已用的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GroupResource`
+        """
         return self._UsedResource
 
     @UsedResource.setter
@@ -11049,6 +13523,10 @@ class ResourceGroup(AbstractModel):
 
     @property
     def TotalResource(self):
+        """资源组总资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GroupResource`
+        """
         return self._TotalResource
 
     @TotalResource.setter
@@ -11057,6 +13535,10 @@ class ResourceGroup(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Instance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -11065,6 +13547,10 @@ class ResourceGroup(AbstractModel):
 
     @property
     def TagSet(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -11143,6 +13629,10 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def Cpu(self):
+        """处理器资源, 单位为1/1000核
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -11151,6 +13641,10 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def Memory(self):
+        """内存资源, 单位为1M
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -11159,6 +13653,13 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def Gpu(self):
+        """Gpu卡个数资源, 单位为0.01单位的GpuType.
+Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能是虚拟化后的1/4卡, 也有可能是整张卡. 取决于实例的机型
+例1 实例的机型带有1张虚拟gpu卡, 每张虚拟gpu卡对应1/4张实际T4卡, 则此时 GpuType=T4, Gpu=100, RealGpu=25.
+例2 实例的机型带有4张gpu整卡, 每张卡对应1张实际T4卡, 则 此时 GpuType=T4, Gpu=400, RealGpu=400.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Gpu
 
     @Gpu.setter
@@ -11167,6 +13668,10 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def GpuType(self):
+        """Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GpuType
 
     @GpuType.setter
@@ -11175,6 +13680,11 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def RealGpu(self):
+        """创建或更新时无需填写，仅展示需要关注
+后付费非整卡实例对应的实际的Gpu卡资源, 表示gpu资源对应实际的gpu卡个数.
+RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.
+        :rtype: int
+        """
         return self._RealGpu
 
     @RealGpu.setter
@@ -11183,6 +13693,9 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def RealGpuDetailSet(self):
+        """创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
+        :rtype: list of GpuDetail
+        """
         return self._RealGpuDetailSet
 
     @RealGpuDetailSet.setter
@@ -11239,6 +13752,10 @@ class ResourceInstanceRunningJobInfo(AbstractModel):
 
     @property
     def PodName(self):
+        """pod名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -11247,6 +13764,10 @@ class ResourceInstanceRunningJobInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -11255,6 +13776,10 @@ class ResourceInstanceRunningJobInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11263,6 +13788,10 @@ class ResourceInstanceRunningJobInfo(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务自定义名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -11312,6 +13841,10 @@ class SSHConfig(AbstractModel):
 
     @property
     def Enable(self):
+        """是否开启ssh
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -11320,6 +13853,10 @@ class SSHConfig(AbstractModel):
 
     @property
     def PublicKey(self):
+        """公钥信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -11328,6 +13865,10 @@ class SSHConfig(AbstractModel):
 
     @property
     def Port(self):
+        """端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -11336,6 +13877,10 @@ class SSHConfig(AbstractModel):
 
     @property
     def LoginCommand(self):
+        """登录命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LoginCommand
 
     @LoginCommand.setter
@@ -11375,6 +13920,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def ScheduleStop(self):
+        """是否要定时停止服务，true or false。true 则 ScheduleStopTime 必填， false 则 ScheduleStopTime 不生效
+        :rtype: bool
+        """
         return self._ScheduleStop
 
     @ScheduleStop.setter
@@ -11383,6 +13931,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def ScheduleStopTime(self):
+        """要执行定时停止的时间，格式：“2022-01-26T19:46:22+08:00”
+        :rtype: str
+        """
         return self._ScheduleStopTime
 
     @ScheduleStopTime.setter
@@ -11420,6 +13971,9 @@ class SchemaInfo(AbstractModel):
 
     @property
     def Name(self):
+        """长度30字符内
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11428,6 +13982,9 @@ class SchemaInfo(AbstractModel):
 
     @property
     def Type(self):
+        """数据类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11481,6 +14038,9 @@ class SendChatMessageRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话id，标识一组对话的唯一id，id变更则重置会话
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -11489,6 +14049,9 @@ class SendChatMessageRequest(AbstractModel):
 
     @property
     def Question(self):
+        """问题描述
+        :rtype: str
+        """
         return self._Question
 
     @Question.setter
@@ -11497,6 +14060,11 @@ class SendChatMessageRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
+        """会话模型版本。
+金融大模型：填写sn-finllm-13b-chat-v1。
+默认为sn-finllm-13b-chat-v1，即金融大模型。
+        :rtype: str
+        """
         return self._ModelVersion
 
     @ModelVersion.setter
@@ -11505,6 +14073,13 @@ class SendChatMessageRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """使用模式。
+通用问答：填写General。
+搜索增强问答：填写WithSearchPlugin。
+默认为General，即通用问答。
+当前可体验模型仅支持General。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -11513,6 +14088,10 @@ class SendChatMessageRequest(AbstractModel):
 
     @property
     def SearchSource(self):
+        """搜索来源。仅当Mode为WithSearchPlugin时生效。
+预置文稿库：填写Preset。自定义：填写Custom。
+        :rtype: str
+        """
         return self._SearchSource
 
     @SearchSource.setter
@@ -11556,6 +14135,9 @@ class SendChatMessageResponse(AbstractModel):
 
     @property
     def Answer(self):
+        """答案
+        :rtype: str
+        """
         return self._Answer
 
     @Answer.setter
@@ -11564,6 +14146,9 @@ class SendChatMessageResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话id,返回请求的会话id
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -11572,6 +14157,9 @@ class SendChatMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11723,6 +14311,9 @@ DEFAULT: 其他来源
 
     @property
     def ServiceGroupId(self):
+        """服务组id
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -11731,6 +14322,9 @@ DEFAULT: 其他来源
 
     @property
     def ServiceId(self):
+        """服务id
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -11739,6 +14333,9 @@ DEFAULT: 其他来源
 
     @property
     def ServiceGroupName(self):
+        """服务组名
+        :rtype: str
+        """
         return self._ServiceGroupName
 
     @ServiceGroupName.setter
@@ -11747,6 +14344,10 @@ DEFAULT: 其他来源
 
     @property
     def ServiceDescription(self):
+        """服务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceDescription
 
     @ServiceDescription.setter
@@ -11755,6 +14356,10 @@ DEFAULT: 其他来源
 
     @property
     def ServiceInfo(self):
+        """服务的详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceInfo`
+        """
         return self._ServiceInfo
 
     @ServiceInfo.setter
@@ -11763,6 +14368,10 @@ DEFAULT: 其他来源
 
     @property
     def ClusterId(self):
+        """集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -11771,6 +14380,10 @@ DEFAULT: 其他来源
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -11779,6 +14392,10 @@ DEFAULT: 其他来源
 
     @property
     def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -11787,6 +14404,10 @@ DEFAULT: 其他来源
 
     @property
     def ChargeType(self):
+        """付费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -11795,6 +14416,10 @@ DEFAULT: 其他来源
 
     @property
     def ResourceGroupId(self):
+        """包年包月服务的资源组id，按量计费的服务为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -11803,6 +14428,10 @@ DEFAULT: 其他来源
 
     @property
     def ResourceGroupName(self):
+        """包年包月服务对应的资源组名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupName
 
     @ResourceGroupName.setter
@@ -11811,6 +14440,10 @@ DEFAULT: 其他来源
 
     @property
     def Tags(self):
+        """服务的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -11819,6 +14452,10 @@ DEFAULT: 其他来源
 
     @property
     def IngressName(self):
+        """服务所在的 ingress 的 name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IngressName
 
     @IngressName.setter
@@ -11827,6 +14464,10 @@ DEFAULT: 其他来源
 
     @property
     def CreatedBy(self):
+        """创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedBy
 
     @CreatedBy.setter
@@ -11835,6 +14476,10 @@ DEFAULT: 其他来源
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11843,6 +14488,10 @@ DEFAULT: 其他来源
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -11851,6 +14500,10 @@ DEFAULT: 其他来源
 
     @property
     def Uin(self):
+        """主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -11859,6 +14512,10 @@ DEFAULT: 其他来源
 
     @property
     def SubUin(self):
+        """子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubUin
 
     @SubUin.setter
@@ -11867,6 +14524,10 @@ DEFAULT: 其他来源
 
     @property
     def AppId(self):
+        """app_id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -11875,6 +14536,10 @@ DEFAULT: 其他来源
 
     @property
     def BusinessStatus(self):
+        """服务的业务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessStatus
 
     @BusinessStatus.setter
@@ -11885,6 +14550,10 @@ DEFAULT: 其他来源
     def ServiceLimit(self):
         warnings.warn("parameter `ServiceLimit` is deprecated", DeprecationWarning) 
 
+        """已废弃,以ServiceInfo中的对应为准
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        """
         return self._ServiceLimit
 
     @ServiceLimit.setter
@@ -11897,6 +14566,10 @@ DEFAULT: 其他来源
     def ScheduledAction(self):
         warnings.warn("parameter `ScheduledAction` is deprecated", DeprecationWarning) 
 
+        """已废弃,以ServiceInfo中的对应为准
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        """
         return self._ScheduledAction
 
     @ScheduledAction.setter
@@ -11907,6 +14580,10 @@ DEFAULT: 其他来源
 
     @property
     def CreateFailedReason(self):
+        """服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateFailedReason
 
     @CreateFailedReason.setter
@@ -11915,6 +14592,18 @@ DEFAULT: 其他来源
 
     @property
     def Status(self):
+        """服务状态
+CREATING 创建中
+CREATE_FAILED 创建失败
+Normal	正常运行中
+Stopped  已停止
+Stopping 停止中
+Abnormal 异常
+Pending 启动中
+Waiting 就绪中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11923,6 +14612,10 @@ DEFAULT: 其他来源
 
     @property
     def BillingInfo(self):
+        """费用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BillingInfo
 
     @BillingInfo.setter
@@ -11931,6 +14624,10 @@ DEFAULT: 其他来源
 
     @property
     def Weight(self):
+        """模型权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -11939,6 +14636,12 @@ DEFAULT: 其他来源
 
     @property
     def CreateSource(self):
+        """服务的创建来源
+AUTO_ML: 来自自动学习的一键发布
+DEFAULT: 其他来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateSource
 
     @CreateSource.setter
@@ -11947,6 +14650,10 @@ DEFAULT: 其他来源
 
     @property
     def Version(self):
+        """版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -11955,6 +14662,10 @@ DEFAULT: 其他来源
 
     @property
     def LatestVersion(self):
+        """服务组下服务的最高版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestVersion
 
     @LatestVersion.setter
@@ -11963,6 +14674,10 @@ DEFAULT: 其他来源
 
     @property
     def ResourceGroupSWType(self):
+        """资源组类别 托管 NORMAL，纳管 SW
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupSWType
 
     @ResourceGroupSWType.setter
@@ -12065,6 +14780,10 @@ class ServiceCallInfo(AbstractModel):
 
     @property
     def ServiceGroupId(self):
+        """服务组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -12073,6 +14792,10 @@ class ServiceCallInfo(AbstractModel):
 
     @property
     def InnerHttpAddr(self):
+        """内网http调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InnerHttpAddr
 
     @InnerHttpAddr.setter
@@ -12081,6 +14804,10 @@ class ServiceCallInfo(AbstractModel):
 
     @property
     def InnerHttpsAddr(self):
+        """内网https调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InnerHttpsAddr
 
     @InnerHttpsAddr.setter
@@ -12089,6 +14816,10 @@ class ServiceCallInfo(AbstractModel):
 
     @property
     def OuterHttpAddr(self):
+        """内网http调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OuterHttpAddr
 
     @OuterHttpAddr.setter
@@ -12097,6 +14828,10 @@ class ServiceCallInfo(AbstractModel):
 
     @property
     def OuterHttpsAddr(self):
+        """内网https调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OuterHttpsAddr
 
     @OuterHttpsAddr.setter
@@ -12105,6 +14840,10 @@ class ServiceCallInfo(AbstractModel):
 
     @property
     def AppKey(self):
+        """调用key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppKey
 
     @AppKey.setter
@@ -12113,6 +14852,10 @@ class ServiceCallInfo(AbstractModel):
 
     @property
     def AppSecret(self):
+        """调用secret
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppSecret
 
     @AppSecret.setter
@@ -12121,6 +14864,10 @@ class ServiceCallInfo(AbstractModel):
 
     @property
     def AuthorizationEnable(self):
+        """鉴权是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AuthorizationEnable
 
     @AuthorizationEnable.setter
@@ -12174,6 +14921,10 @@ class ServiceCallInfoV2(AbstractModel):
 
     @property
     def ServiceGroupId(self):
+        """服务组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -12182,6 +14933,10 @@ class ServiceCallInfoV2(AbstractModel):
 
     @property
     def InternetEndpoint(self):
+        """服务的公网调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InternetEndpoint
 
     @InternetEndpoint.setter
@@ -12190,6 +14945,10 @@ class ServiceCallInfoV2(AbstractModel):
 
     @property
     def AuthorizationEnable(self):
+        """鉴权是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AuthorizationEnable
 
     @AuthorizationEnable.setter
@@ -12198,6 +14957,10 @@ class ServiceCallInfoV2(AbstractModel):
 
     @property
     def AuthToken(self):
+        """鉴权token，仅当AuthorizationEnable为true时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AuthToken
 
     @AuthToken.setter
@@ -12243,6 +15006,10 @@ class ServiceEIP(AbstractModel):
 
     @property
     def EnableEIP(self):
+        """是否开启TIONE内网到外部的访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._EnableEIP
 
     @EnableEIP.setter
@@ -12251,6 +15018,10 @@ class ServiceEIP(AbstractModel):
 
     @property
     def VpcId(self):
+        """用户VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -12259,6 +15030,10 @@ class ServiceEIP(AbstractModel):
 
     @property
     def SubnetId(self):
+        """用户subnetId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -12303,6 +15078,10 @@ class ServiceEIPInfo(AbstractModel):
 
     @property
     def ServiceId(self):
+        """服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -12311,6 +15090,10 @@ class ServiceEIPInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """用户VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -12319,6 +15102,10 @@ class ServiceEIPInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """用户子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -12434,6 +15221,9 @@ UPDATING 更新中
 
     @property
     def ServiceGroupId(self):
+        """服务组id
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -12442,6 +15232,9 @@ UPDATING 更新中
 
     @property
     def ServiceGroupName(self):
+        """服务组名
+        :rtype: str
+        """
         return self._ServiceGroupName
 
     @ServiceGroupName.setter
@@ -12450,6 +15243,9 @@ UPDATING 更新中
 
     @property
     def CreatedBy(self):
+        """创建者
+        :rtype: str
+        """
         return self._CreatedBy
 
     @CreatedBy.setter
@@ -12458,6 +15254,9 @@ UPDATING 更新中
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12466,6 +15265,9 @@ UPDATING 更新中
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -12474,6 +15276,9 @@ UPDATING 更新中
 
     @property
     def Uin(self):
+        """主账号
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -12482,6 +15287,10 @@ UPDATING 更新中
 
     @property
     def ServiceCount(self):
+        """服务组下服务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ServiceCount
 
     @ServiceCount.setter
@@ -12490,6 +15299,10 @@ UPDATING 更新中
 
     @property
     def RunningServiceCount(self):
+        """服务组下在运行的服务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RunningServiceCount
 
     @RunningServiceCount.setter
@@ -12498,6 +15311,10 @@ UPDATING 更新中
 
     @property
     def Services(self):
+        """服务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Service
+        """
         return self._Services
 
     @Services.setter
@@ -12506,6 +15323,18 @@ UPDATING 更新中
 
     @property
     def Status(self):
+        """服务组状态，与服务一致
+ CREATING 创建中
+     CREATE_FAILED 创建失败
+     Normal	正常运行中
+     Stopped  已停止
+     Stopping 停止中
+     Abnormal 异常
+     Pending 启动中
+     Waiting 就绪中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12514,6 +15343,10 @@ UPDATING 更新中
 
     @property
     def Tags(self):
+        """服务组标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -12522,6 +15355,10 @@ UPDATING 更新中
 
     @property
     def LatestVersion(self):
+        """服务组下最高版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestVersion
 
     @LatestVersion.setter
@@ -12530,6 +15367,16 @@ UPDATING 更新中
 
     @property
     def BusinessStatus(self):
+        """服务的业务状态
+CREATING 创建中
+     CREATE_FAILED 创建失败
+     ARREARS_STOP 因欠费被强制停止
+     BILLING 计费中
+     WHITELIST_USING 白名单试用中
+     WHITELIST_STOP 白名单额度不足
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessStatus
 
     @BusinessStatus.setter
@@ -12538,6 +15385,10 @@ UPDATING 更新中
 
     @property
     def BillingInfo(self):
+        """服务的计费信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BillingInfo
 
     @BillingInfo.setter
@@ -12546,6 +15397,10 @@ UPDATING 更新中
 
     @property
     def CreateSource(self):
+        """服务的创建来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateSource
 
     @CreateSource.setter
@@ -12554,6 +15409,13 @@ UPDATING 更新中
 
     @property
     def WeightUpdateStatus(self):
+        """服务组的权重更新状态 
+UPDATING 更新中
+     UPDATED 更新成功
+     UPDATE_FAILED 更新失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WeightUpdateStatus
 
     @WeightUpdateStatus.setter
@@ -12562,6 +15424,10 @@ UPDATING 更新中
 
     @property
     def ReplicasCount(self):
+        """服务组下运行的pod数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReplicasCount
 
     @ReplicasCount.setter
@@ -12570,6 +15436,10 @@ UPDATING 更新中
 
     @property
     def AvailableReplicasCount(self):
+        """服务组下期望的pod数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AvailableReplicasCount
 
     @AvailableReplicasCount.setter
@@ -12759,6 +15629,17 @@ HYBRID_PAID:
 
     @property
     def Replicas(self):
+        """期望运行的Pod数量，停止状态是0
+不同计费模式和调节模式下对应关系如下
+PREPAID 和 POSTPAID_BY_HOUR:
+手动调节模式下对应 实例数量
+自动调节模式下对应 基于时间的默认策略的实例数量
+HYBRID_PAID:
+后付费实例手动调节模式下对应 实例数量
+后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -12767,6 +15648,10 @@ HYBRID_PAID:
 
     @property
     def ImageInfo(self):
+        """镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ImageInfo
 
     @ImageInfo.setter
@@ -12775,6 +15660,10 @@ HYBRID_PAID:
 
     @property
     def Env(self):
+        """环境变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EnvVar
+        """
         return self._Env
 
     @Env.setter
@@ -12783,6 +15672,10 @@ HYBRID_PAID:
 
     @property
     def Resources(self):
+        """资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        """
         return self._Resources
 
     @Resources.setter
@@ -12791,6 +15684,10 @@ HYBRID_PAID:
 
     @property
     def InstanceType(self):
+        """后付费实例对应的机型规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -12799,6 +15696,10 @@ HYBRID_PAID:
 
     @property
     def ModelInfo(self):
+        """模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        """
         return self._ModelInfo
 
     @ModelInfo.setter
@@ -12807,6 +15708,10 @@ HYBRID_PAID:
 
     @property
     def LogEnable(self):
+        """是否启用日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._LogEnable
 
     @LogEnable.setter
@@ -12815,6 +15720,10 @@ HYBRID_PAID:
 
     @property
     def LogConfig(self):
+        """日志配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
         return self._LogConfig
 
     @LogConfig.setter
@@ -12823,6 +15732,10 @@ HYBRID_PAID:
 
     @property
     def AuthorizationEnable(self):
+        """是否开启鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AuthorizationEnable
 
     @AuthorizationEnable.setter
@@ -12831,6 +15744,10 @@ HYBRID_PAID:
 
     @property
     def HorizontalPodAutoscaler(self):
+        """hpa配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
+        """
         return self._HorizontalPodAutoscaler
 
     @HorizontalPodAutoscaler.setter
@@ -12839,6 +15756,10 @@ HYBRID_PAID:
 
     @property
     def Status(self):
+        """服务的状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.WorkloadStatus`
+        """
         return self._Status
 
     @Status.setter
@@ -12847,6 +15768,10 @@ HYBRID_PAID:
 
     @property
     def Weight(self):
+        """权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -12855,6 +15780,10 @@ HYBRID_PAID:
 
     @property
     def ResourceTotal(self):
+        """资源总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        """
         return self._ResourceTotal
 
     @ResourceTotal.setter
@@ -12863,6 +15792,10 @@ HYBRID_PAID:
 
     @property
     def OldReplicas(self):
+        """历史实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OldReplicas
 
     @OldReplicas.setter
@@ -12871,6 +15804,10 @@ HYBRID_PAID:
 
     @property
     def HybridBillingPrepaidReplicas(self):
+        """计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HybridBillingPrepaidReplicas
 
     @HybridBillingPrepaidReplicas.setter
@@ -12879,6 +15816,10 @@ HYBRID_PAID:
 
     @property
     def OldHybridBillingPrepaidReplicas(self):
+        """历史 HYBRID_PAID 时的实例数，用户恢复服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OldHybridBillingPrepaidReplicas
 
     @OldHybridBillingPrepaidReplicas.setter
@@ -12887,6 +15828,10 @@ HYBRID_PAID:
 
     @property
     def ModelHotUpdateEnable(self):
+        """是否开启模型的热更新。默认不开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ModelHotUpdateEnable
 
     @ModelHotUpdateEnable.setter
@@ -12895,6 +15840,11 @@ HYBRID_PAID:
 
     @property
     def ScaleMode(self):
+        """实例数量调节方式,默认为手动
+支持：自动 - "AUTO", 手动 - "MANUAL"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScaleMode
 
     @ScaleMode.setter
@@ -12903,6 +15853,10 @@ HYBRID_PAID:
 
     @property
     def CronScaleJobs(self):
+        """定时伸缩任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CronScaleJob
+        """
         return self._CronScaleJobs
 
     @CronScaleJobs.setter
@@ -12911,6 +15865,10 @@ HYBRID_PAID:
 
     @property
     def ScaleStrategy(self):
+        """定时伸缩策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScaleStrategy
 
     @ScaleStrategy.setter
@@ -12919,6 +15877,10 @@ HYBRID_PAID:
 
     @property
     def ScheduledAction(self):
+        """定时停止的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScheduledAction
 
     @ScheduledAction.setter
@@ -12929,6 +15891,10 @@ HYBRID_PAID:
     def PodList(self):
         warnings.warn("parameter `PodList` is deprecated", DeprecationWarning) 
 
+        """实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PodList
 
     @PodList.setter
@@ -12941,6 +15907,10 @@ HYBRID_PAID:
     def Pods(self):
         warnings.warn("parameter `Pods` is deprecated", DeprecationWarning) 
 
+        """Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Pod`
+        """
         return self._Pods
 
     @Pods.setter
@@ -12951,6 +15921,10 @@ HYBRID_PAID:
 
     @property
     def PodInfos(self):
+        """Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Pod
+        """
         return self._PodInfos
 
     @PodInfos.setter
@@ -12959,6 +15933,10 @@ HYBRID_PAID:
 
     @property
     def ServiceLimit(self):
+        """服务限速限流相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        """
         return self._ServiceLimit
 
     @ServiceLimit.setter
@@ -12967,6 +15945,10 @@ HYBRID_PAID:
 
     @property
     def ModelTurboEnable(self):
+        """是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ModelTurboEnable
 
     @ModelTurboEnable.setter
@@ -12975,6 +15957,10 @@ HYBRID_PAID:
 
     @property
     def VolumeMount(self):
+        """挂载
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        """
         return self._VolumeMount
 
     @VolumeMount.setter
@@ -12983,6 +15969,10 @@ HYBRID_PAID:
 
     @property
     def InferCodeInfo(self):
+        """推理代码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.InferCodeInfo`
+        """
         return self._InferCodeInfo
 
     @InferCodeInfo.setter
@@ -12991,6 +15981,10 @@ HYBRID_PAID:
 
     @property
     def Command(self):
+        """服务的启动命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -12999,6 +15993,10 @@ HYBRID_PAID:
 
     @property
     def ServiceEIP(self):
+        """开启TIONE内网访问外部设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
+        """
         return self._ServiceEIP
 
     @ServiceEIP.setter
@@ -13007,6 +16005,10 @@ HYBRID_PAID:
 
     @property
     def ServicePort(self):
+        """服务端口，默认为8501
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ServicePort
 
     @ServicePort.setter
@@ -13118,6 +16120,9 @@ class ServiceLimit(AbstractModel):
 
     @property
     def EnableInstanceRpsLimit(self):
+        """是否开启实例层面限流限速，true or false。true 则 InstanceRpsLimit 必填， false 则 InstanceRpsLimit 不生效
+        :rtype: bool
+        """
         return self._EnableInstanceRpsLimit
 
     @EnableInstanceRpsLimit.setter
@@ -13126,6 +16131,9 @@ class ServiceLimit(AbstractModel):
 
     @property
     def InstanceRpsLimit(self):
+        """每个服务实例的 request per second 限速, 0 为不限流
+        :rtype: int
+        """
         return self._InstanceRpsLimit
 
     @InstanceRpsLimit.setter
@@ -13134,6 +16142,9 @@ class ServiceLimit(AbstractModel):
 
     @property
     def EnableInstanceReqLimit(self):
+        """是否开启单实例最大并发数限制，true or false。true 则 InstanceReqLimit 必填， false 则 InstanceReqLimit 不生效
+        :rtype: bool
+        """
         return self._EnableInstanceReqLimit
 
     @EnableInstanceReqLimit.setter
@@ -13142,6 +16153,9 @@ class ServiceLimit(AbstractModel):
 
     @property
     def InstanceReqLimit(self):
+        """每个服务实例的最大并发
+        :rtype: int
+        """
         return self._InstanceReqLimit
 
     @InstanceReqLimit.setter
@@ -13184,6 +16198,9 @@ class StartCmdInfo(AbstractModel):
 
     @property
     def StartCmd(self):
+        """启动命令
+        :rtype: str
+        """
         return self._StartCmd
 
     @StartCmd.setter
@@ -13192,6 +16209,9 @@ class StartCmdInfo(AbstractModel):
 
     @property
     def PsStartCmd(self):
+        """ps启动命令
+        :rtype: str
+        """
         return self._PsStartCmd
 
     @PsStartCmd.setter
@@ -13200,6 +16220,9 @@ class StartCmdInfo(AbstractModel):
 
     @property
     def WorkerStartCmd(self):
+        """worker启动命令
+        :rtype: str
+        """
         return self._WorkerStartCmd
 
     @WorkerStartCmd.setter
@@ -13235,6 +16258,9 @@ class StartNotebookRequest(AbstractModel):
 
     @property
     def Id(self):
+        """notebook id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -13268,6 +16294,9 @@ class StartNotebookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13314,6 +16343,10 @@ class StatefulSetCondition(AbstractModel):
 
     @property
     def Message(self):
+        """信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -13322,6 +16355,10 @@ class StatefulSetCondition(AbstractModel):
 
     @property
     def Reason(self):
+        """原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -13330,6 +16367,10 @@ class StatefulSetCondition(AbstractModel):
 
     @property
     def Status(self):
+        """Status of the condition, one of True, False, Unknown.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13338,6 +16379,10 @@ class StatefulSetCondition(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -13346,6 +16391,10 @@ class StatefulSetCondition(AbstractModel):
 
     @property
     def LastTransitionTime(self):
+        """上次更新的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastTransitionTime
 
     @LastTransitionTime.setter
@@ -13354,6 +16403,10 @@ class StatefulSetCondition(AbstractModel):
 
     @property
     def LastUpdateTime(self):
+        """上次更新的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastUpdateTime
 
     @LastUpdateTime.setter
@@ -13392,6 +16445,9 @@ class StopModelAccelerateTaskRequest(AbstractModel):
 
     @property
     def ModelAccTaskId(self):
+        """模型加速任务ID
+        :rtype: str
+        """
         return self._ModelAccTaskId
 
     @ModelAccTaskId.setter
@@ -13433,6 +16489,10 @@ class StopModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccTaskId(self):
+        """模型加速任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModelAccTaskId
 
     @ModelAccTaskId.setter
@@ -13441,6 +16501,10 @@ class StopModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def AsyncTaskId(self):
+        """异步任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AsyncTaskId
 
     @AsyncTaskId.setter
@@ -13449,6 +16513,9 @@ class StopModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13476,6 +16543,9 @@ class StopNotebookRequest(AbstractModel):
 
     @property
     def Id(self):
+        """notebook id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -13509,6 +16579,9 @@ class StopNotebookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13543,6 +16616,10 @@ class TJCallInfo(AbstractModel):
 
     @property
     def HttpAddr(self):
+        """调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HttpAddr
 
     @HttpAddr.setter
@@ -13551,6 +16628,10 @@ class TJCallInfo(AbstractModel):
 
     @property
     def Token(self):
+        """token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Token
 
     @Token.setter
@@ -13559,6 +16640,10 @@ class TJCallInfo(AbstractModel):
 
     @property
     def CallExample(self):
+        """调用示例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CallExample
 
     @CallExample.setter
@@ -13599,6 +16684,10 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -13607,6 +16696,10 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -13644,6 +16737,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -13652,6 +16748,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValues(self):
+        """多个标签值
+        :rtype: list of str
+        """
         return self._TagValues
 
     @TagValues.setter
@@ -13792,6 +16891,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelId(self):
+        """模型id
+        :rtype: str
+        """
         return self._TrainingModelId
 
     @TrainingModelId.setter
@@ -13800,6 +16902,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelVersionId(self):
+        """模型版本id
+        :rtype: str
+        """
         return self._TrainingModelVersionId
 
     @TrainingModelVersionId.setter
@@ -13808,6 +16913,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelVersion(self):
+        """模型版本
+        :rtype: str
+        """
         return self._TrainingModelVersion
 
     @TrainingModelVersion.setter
@@ -13816,6 +16924,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelSource(self):
+        """模型来源
+        :rtype: str
+        """
         return self._TrainingModelSource
 
     @TrainingModelSource.setter
@@ -13824,6 +16935,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelCreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._TrainingModelCreateTime
 
     @TrainingModelCreateTime.setter
@@ -13832,6 +16946,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelCreator(self):
+        """创建人uin
+        :rtype: str
+        """
         return self._TrainingModelCreator
 
     @TrainingModelCreator.setter
@@ -13840,6 +16957,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def AlgorithmFramework(self):
+        """算法框架
+        :rtype: str
+        """
         return self._AlgorithmFramework
 
     @AlgorithmFramework.setter
@@ -13848,6 +16968,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def ReasoningEnvironment(self):
+        """推理环境
+        :rtype: str
+        """
         return self._ReasoningEnvironment
 
     @ReasoningEnvironment.setter
@@ -13856,6 +16979,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def ReasoningEnvironmentSource(self):
+        """推理环境来源
+        :rtype: str
+        """
         return self._ReasoningEnvironmentSource
 
     @ReasoningEnvironmentSource.setter
@@ -13864,6 +16990,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelIndex(self):
+        """模型指标
+        :rtype: str
+        """
         return self._TrainingModelIndex
 
     @TrainingModelIndex.setter
@@ -13872,6 +17001,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingJobName(self):
+        """训练任务名称
+        :rtype: str
+        """
         return self._TrainingJobName
 
     @TrainingJobName.setter
@@ -13880,6 +17012,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelCosPath(self):
+        """模型cos路径
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._TrainingModelCosPath
 
     @TrainingModelCosPath.setter
@@ -13888,6 +17023,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelName(self):
+        """模型名称
+        :rtype: str
+        """
         return self._TrainingModelName
 
     @TrainingModelName.setter
@@ -13896,6 +17034,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingJobId(self):
+        """训练任务id
+        :rtype: str
+        """
         return self._TrainingJobId
 
     @TrainingJobId.setter
@@ -13904,6 +17045,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def ReasoningImageInfo(self):
+        """自定义推理环境
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ReasoningImageInfo
 
     @ReasoningImageInfo.setter
@@ -13912,6 +17056,9 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def CreateTime(self):
+        """模型版本创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13920,6 +17067,11 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelStatus(self):
+        """模型处理状态
+STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING：导入中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingModelStatus
 
     @TrainingModelStatus.setter
@@ -13928,6 +17080,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelProgress(self):
+        """模型处理进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TrainingModelProgress
 
     @TrainingModelProgress.setter
@@ -13936,6 +17092,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelErrorMsg(self):
+        """模型错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingModelErrorMsg
 
     @TrainingModelErrorMsg.setter
@@ -13944,6 +17104,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingModelFormat(self):
+        """模型格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingModelFormat
 
     @TrainingModelFormat.setter
@@ -13952,6 +17116,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def VersionType(self):
+        """模型版本类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VersionType
 
     @VersionType.setter
@@ -13960,6 +17128,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def GPUType(self):
+        """GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GPUType
 
     @GPUType.setter
@@ -13968,6 +17140,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def AutoClean(self):
+        """模型自动清理开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AutoClean
 
     @AutoClean.setter
@@ -13976,6 +17152,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def ModelCleanPeriod(self):
+        """模型清理周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ModelCleanPeriod
 
     @ModelCleanPeriod.setter
@@ -13984,6 +17164,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def MaxReservedModels(self):
+        """模型数量保留上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxReservedModels
 
     @MaxReservedModels.setter
@@ -13992,6 +17176,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def ModelHotUpdatePath(self):
+        """模型热更新目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._ModelHotUpdatePath
 
     @ModelHotUpdatePath.setter
@@ -14000,6 +17188,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def ReasoningEnvironmentId(self):
+        """推理环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReasoningEnvironmentId
 
     @ReasoningEnvironmentId.setter
@@ -14008,6 +17200,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingJobVersion(self):
+        """训练任务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingJobVersion
 
     @TrainingJobVersion.setter
@@ -14016,6 +17212,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def TrainingPreference(self):
+        """训练偏好
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingPreference
 
     @TrainingPreference.setter
@@ -14024,6 +17224,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def AutoMLTaskId(self):
+        """自动学习任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AutoMLTaskId
 
     @AutoMLTaskId.setter
@@ -14032,6 +17236,10 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
 
     @property
     def IsQAT(self):
+        """是否QAT模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsQAT
 
     @IsQAT.setter
@@ -14239,6 +17447,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Id(self):
+        """训练任务ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14247,6 +17458,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Name(self):
+        """训练任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14255,6 +17469,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Uin(self):
+        """主账号uin
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -14263,6 +17480,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def SubUin(self):
+        """子账号uin
+        :rtype: str
+        """
         return self._SubUin
 
     @SubUin.setter
@@ -14271,6 +17491,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -14279,6 +17502,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def FrameworkName(self):
+        """训练框架名称，eg：SPARK、PYSARK、TENSORFLOW、PYTORCH
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FrameworkName
 
     @FrameworkName.setter
@@ -14287,6 +17514,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def FrameworkVersion(self):
+        """训练框架版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FrameworkVersion
 
     @FrameworkVersion.setter
@@ -14295,6 +17526,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def FrameworkEnvironment(self):
+        """框架运行环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FrameworkEnvironment
 
     @FrameworkEnvironment.setter
@@ -14303,6 +17538,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def ChargeType(self):
+        """计费模式
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -14311,6 +17549,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def ResourceGroupId(self):
+        """预付费专用资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -14319,6 +17561,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def ResourceConfigInfos(self):
+        """资源配置
+        :rtype: list of ResourceConfigInfo
+        """
         return self._ResourceConfigInfos
 
     @ResourceConfigInfos.setter
@@ -14327,6 +17572,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -14335,6 +17584,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def TrainingMode(self):
+        """训练模式，eg：PS_WORKER、DDP、MPI、HOROVOD
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingMode
 
     @TrainingMode.setter
@@ -14343,6 +17596,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def CodePackagePath(self):
+        """代码包
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._CodePackagePath
 
     @CodePackagePath.setter
@@ -14351,6 +17607,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def StartCmdInfo(self):
+        """启动命令信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
+        """
         return self._StartCmdInfo
 
     @StartCmdInfo.setter
@@ -14359,6 +17618,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def DataSource(self):
+        """数据来源，eg：DATASET、COS
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSource
 
     @DataSource.setter
@@ -14367,6 +17630,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def DataConfigs(self):
+        """数据配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataConfig
+        """
         return self._DataConfigs
 
     @DataConfigs.setter
@@ -14375,6 +17642,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def TuningParameters(self):
+        """调优参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TuningParameters
 
     @TuningParameters.setter
@@ -14383,6 +17654,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Output(self):
+        """训练输出
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._Output
 
     @Output.setter
@@ -14391,6 +17665,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def LogEnable(self):
+        """是否上报日志
+        :rtype: bool
+        """
         return self._LogEnable
 
     @LogEnable.setter
@@ -14399,6 +17676,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def LogConfig(self):
+        """日志配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
         return self._LogConfig
 
     @LogConfig.setter
@@ -14407,6 +17688,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -14415,6 +17700,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -14423,6 +17712,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def ImageInfo(self):
+        """自定义镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ImageInfo
 
     @ImageInfo.setter
@@ -14431,6 +17724,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def RuntimeInSeconds(self):
+        """运行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuntimeInSeconds
 
     @RuntimeInSeconds.setter
@@ -14439,6 +17736,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -14447,6 +17747,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def StartTime(self):
+        """训练开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -14455,6 +17759,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def ChargeStatus(self):
+        """计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+        :rtype: str
+        """
         return self._ChargeStatus
 
     @ChargeStatus.setter
@@ -14463,6 +17770,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def LatestInstanceId(self):
+        """最近一次实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestInstanceId
 
     @LatestInstanceId.setter
@@ -14471,6 +17782,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def TensorBoardId(self):
+        """TensorBoard ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TensorBoardId
 
     @TensorBoardId.setter
@@ -14479,6 +17794,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -14487,6 +17806,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def FailureReason(self):
+        """失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -14495,6 +17818,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14503,6 +17829,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def EndTime(self):
+        """训练结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -14511,6 +17841,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def BillingInfo(self):
+        """计费金额信息，eg：2.00元/小时 (按量计费)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BillingInfo
 
     @BillingInfo.setter
@@ -14519,6 +17853,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def ResourceGroupName(self):
+        """预付费专用资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupName
 
     @ResourceGroupName.setter
@@ -14527,6 +17865,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Message(self):
+        """任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -14535,6 +17877,9 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -14543,6 +17888,10 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """回调地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -14722,6 +18071,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Id(self):
+        """训练任务ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14730,6 +18082,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Name(self):
+        """训练任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14738,6 +18093,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def FrameworkName(self):
+        """框架名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FrameworkName
 
     @FrameworkName.setter
@@ -14746,6 +18105,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def FrameworkVersion(self):
+        """训练框架版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FrameworkVersion
 
     @FrameworkVersion.setter
@@ -14754,6 +18117,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def FrameworkEnvironment(self):
+        """框架运行环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FrameworkEnvironment
 
     @FrameworkEnvironment.setter
@@ -14762,6 +18129,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ChargeType(self):
+        """计费模式
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -14770,6 +18140,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ChargeStatus(self):
+        """计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+        :rtype: str
+        """
         return self._ChargeStatus
 
     @ChargeStatus.setter
@@ -14778,6 +18151,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ResourceGroupId(self):
+        """预付费专用资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceGroupId
 
     @ResourceGroupId.setter
@@ -14786,6 +18163,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ResourceConfigInfos(self):
+        """资源配置
+        :rtype: list of ResourceConfigInfo
+        """
         return self._ResourceConfigInfos
 
     @ResourceConfigInfos.setter
@@ -14794,6 +18174,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def TrainingMode(self):
+        """训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingMode
 
     @TrainingMode.setter
@@ -14802,6 +18186,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Status(self):
+        """任务状态，eg：SUBMITTING提交中、PENDING排队中、
+STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -14810,6 +18198,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def RuntimeInSeconds(self):
+        """运行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuntimeInSeconds
 
     @RuntimeInSeconds.setter
@@ -14818,6 +18210,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -14826,6 +18221,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def StartTime(self):
+        """训练开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -14834,6 +18233,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def EndTime(self):
+        """训练结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -14842,6 +18245,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Output(self):
+        """训练输出
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
         return self._Output
 
     @Output.setter
@@ -14850,6 +18256,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def FailureReason(self):
+        """失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -14858,6 +18268,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14866,6 +18279,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def BillingInfo(self):
+        """计费金额信息，eg：2.00元/小时 (按量计费)
+        :rtype: str
+        """
         return self._BillingInfo
 
     @BillingInfo.setter
@@ -14874,6 +18290,9 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ResourceGroupName(self):
+        """预付费专用资源组名称
+        :rtype: str
+        """
         return self._ResourceGroupName
 
     @ResourceGroupName.setter
@@ -14882,6 +18301,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ImageInfo(self):
+        """自定义镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
         return self._ImageInfo
 
     @ImageInfo.setter
@@ -14890,6 +18313,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Message(self):
+        """任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -14898,6 +18325,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Tags(self):
+        """标签配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -14906,6 +18337,10 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def CallbackUrl(self):
+        """回调地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -14985,6 +18420,10 @@ class Usage(AbstractModel):
 
     @property
     def CompletionTokens(self):
+        """生成的token数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CompletionTokens
 
     @CompletionTokens.setter
@@ -14993,6 +18432,10 @@ class Usage(AbstractModel):
 
     @property
     def PromptTokens(self):
+        """输入的token数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PromptTokens
 
     @PromptTokens.setter
@@ -15001,6 +18444,10 @@ class Usage(AbstractModel):
 
     @property
     def TotalTokens(self):
+        """总共token数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalTokens
 
     @TotalTokens.setter
@@ -15039,6 +18486,9 @@ class VolumeMount(AbstractModel):
 
     @property
     def CFSConfig(self):
+        """cfs的配置信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
         return self._CFSConfig
 
     @CFSConfig.setter
@@ -15047,6 +18497,9 @@ class VolumeMount(AbstractModel):
 
     @property
     def VolumeSourceType(self):
+        """挂载源类型，CFS、COS，默认为CFS
+        :rtype: str
+        """
         return self._VolumeSourceType
 
     @VolumeSourceType.setter
@@ -15113,6 +18566,9 @@ Stopping 停止中
 
     @property
     def Replicas(self):
+        """当前实例数
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -15121,6 +18577,9 @@ Stopping 停止中
 
     @property
     def UpdatedReplicas(self):
+        """更新的实例数
+        :rtype: int
+        """
         return self._UpdatedReplicas
 
     @UpdatedReplicas.setter
@@ -15129,6 +18588,9 @@ Stopping 停止中
 
     @property
     def ReadyReplicas(self):
+        """就绪的实例数
+        :rtype: int
+        """
         return self._ReadyReplicas
 
     @ReadyReplicas.setter
@@ -15137,6 +18599,9 @@ Stopping 停止中
 
     @property
     def AvailableReplicas(self):
+        """可用的实例数
+        :rtype: int
+        """
         return self._AvailableReplicas
 
     @AvailableReplicas.setter
@@ -15145,6 +18610,9 @@ Stopping 停止中
 
     @property
     def UnavailableReplicas(self):
+        """不可用的实例数
+        :rtype: int
+        """
         return self._UnavailableReplicas
 
     @UnavailableReplicas.setter
@@ -15153,6 +18621,14 @@ Stopping 停止中
 
     @property
     def Status(self):
+        """Normal	正常运行中
+Abnormal	服务异常，例如容器启动失败等
+Waiting	服务等待中，例如容器下载镜像过程等
+Stopped   已停止 
+Pending 启动中
+Stopping 停止中
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -15163,6 +18639,9 @@ Stopping 停止中
     def StatefulSetCondition(self):
         warnings.warn("parameter `StatefulSetCondition` is deprecated", DeprecationWarning) 
 
+        """工作负载的状况信息
+        :rtype: list of StatefulSetCondition
+        """
         return self._StatefulSetCondition
 
     @StatefulSetCondition.setter
@@ -15173,6 +18652,9 @@ Stopping 停止中
 
     @property
     def Conditions(self):
+        """工作负载历史的状况信息
+        :rtype: list of StatefulSetCondition
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -15181,6 +18663,10 @@ Stopping 停止中
 
     @property
     def Reason(self):
+        """状态异常时，展示原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
