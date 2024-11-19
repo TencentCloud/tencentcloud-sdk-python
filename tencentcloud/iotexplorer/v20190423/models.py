@@ -25,7 +25,7 @@ class ActivateTWeCallLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PkgType: TWecall类型： 0-测试激活码； 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+        :param _PkgType: TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
         :type PkgType: int
         :param _MiniProgramAppId: appId
         :type MiniProgramAppId: str
@@ -38,7 +38,7 @@ class ActivateTWeCallLicenseRequest(AbstractModel):
 
     @property
     def PkgType(self):
-        """TWecall类型： 0-测试激活码； 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+        """TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
         :rtype: int
         """
         return self._PkgType
@@ -12370,7 +12370,7 @@ class DeviceActiveResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelId: 模版ID
+        :param _ModelId: 模板ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         :param _Sn: SN信息
@@ -12390,7 +12390,7 @@ class DeviceActiveResult(AbstractModel):
 
     @property
     def ModelId(self):
-        """模版ID
+        """模板ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21235,7 +21235,7 @@ class ProductEntry(AbstractModel):
         :type ProductName: str
         :param _CategoryId: 产品分组模板ID
         :type CategoryId: int
-        :param _EncryptionType: 加密类型。1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+        :param _EncryptionType: 加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
         :type EncryptionType: str
         :param _NetType: 连接类型。如：
 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
@@ -21337,7 +21337,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def EncryptionType(self):
-        """加密类型。1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+        """加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
         :rtype: str
         """
         return self._EncryptionType
@@ -25297,7 +25297,7 @@ class WXIoTDeviceInfo(AbstractModel):
         :param _SNTicket: 票据
 注意：此字段可能返回 null，表示取不到有效值。
         :type SNTicket: str
-        :param _ModelId: 模版ID
+        :param _ModelId: 模板ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         """
@@ -25331,7 +25331,7 @@ class WXIoTDeviceInfo(AbstractModel):
 
     @property
     def ModelId(self):
-        """模版ID
+        """模板ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

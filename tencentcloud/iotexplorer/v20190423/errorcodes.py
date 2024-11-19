@@ -485,7 +485,7 @@ UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = 'UnauthorizedOperation.NoPer
 # 无权操作该房间
 UNAUTHORIZEDOPERATION_NOPERMISSIONTOTRTCROOM = 'UnauthorizedOperation.NoPermissionToTRTCRoom'
 
-# 您的帐号未实名认证，请登录腾讯云进行实名认证
+# 您的账号未实名认证，请登录腾讯云进行实名认证
 UNAUTHORIZEDOPERATION_NOVERIFIED = 'UnauthorizedOperation.NoVerified'
 
 # 没有权限。

@@ -26,35 +26,27 @@ class ApplicationVersion(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 版本类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _ApplicationVersionId: 版本ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationVersionId: str
         :param _Name: 发布名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 发布描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Entrypoint: 入口文件。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Entrypoint: str
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _CreatorName: 创建者名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorName: str
         :param _CreatorId: 创建者ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorId: str
         :param _GitInfo: Git信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GitInfo: str
         :param _GitSource: Git信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GitSource: :class:`tencentcloud.omics.v20221128.models.GitInfo`
+        :param _CosSource: COS信息。
+        :type CosSource: :class:`tencentcloud.omics.v20221128.models.CosFileInfo`
         """
         self._Type = None
         self._ApplicationVersionId = None
@@ -66,11 +58,11 @@ class ApplicationVersion(AbstractModel):
         self._CreatorId = None
         self._GitInfo = None
         self._GitSource = None
+        self._CosSource = None
 
     @property
     def Type(self):
         """版本类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -82,7 +74,6 @@ class ApplicationVersion(AbstractModel):
     @property
     def ApplicationVersionId(self):
         """版本ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationVersionId
@@ -94,7 +85,6 @@ class ApplicationVersion(AbstractModel):
     @property
     def Name(self):
         """发布名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -106,7 +96,6 @@ class ApplicationVersion(AbstractModel):
     @property
     def Description(self):
         """发布描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -118,7 +107,6 @@ class ApplicationVersion(AbstractModel):
     @property
     def Entrypoint(self):
         """入口文件。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Entrypoint
@@ -130,7 +118,6 @@ class ApplicationVersion(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -142,7 +129,6 @@ class ApplicationVersion(AbstractModel):
     @property
     def CreatorName(self):
         """创建者名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatorName
@@ -154,7 +140,6 @@ class ApplicationVersion(AbstractModel):
     @property
     def CreatorId(self):
         """创建者ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatorId
@@ -168,7 +153,6 @@ class ApplicationVersion(AbstractModel):
         warnings.warn("parameter `GitInfo` is deprecated", DeprecationWarning) 
 
         """Git信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GitInfo
@@ -182,7 +166,6 @@ class ApplicationVersion(AbstractModel):
     @property
     def GitSource(self):
         """Git信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.omics.v20221128.models.GitInfo`
         """
         return self._GitSource
@@ -190,6 +173,17 @@ class ApplicationVersion(AbstractModel):
     @GitSource.setter
     def GitSource(self, GitSource):
         self._GitSource = GitSource
+
+    @property
+    def CosSource(self):
+        """COS信息。
+        :rtype: :class:`tencentcloud.omics.v20221128.models.CosFileInfo`
+        """
+        return self._CosSource
+
+    @CosSource.setter
+    def CosSource(self, CosSource):
+        self._CosSource = CosSource
 
 
     def _deserialize(self, params):
@@ -205,6 +199,9 @@ class ApplicationVersion(AbstractModel):
         if params.get("GitSource") is not None:
             self._GitSource = GitInfo()
             self._GitSource._deserialize(params.get("GitSource"))
+        if params.get("CosSource") is not None:
+            self._CosSource = CosFileInfo()
+            self._CosSource._deserialize(params.get("CosSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -274,13 +271,10 @@ class CacheInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CacheClearDelay: 缓存清理时间(小时)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CacheClearDelay: int
         :param _CacheClearTime: 缓存清理计划时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CacheClearTime: str
         :param _CacheCleared: 缓存是否已被清理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CacheCleared: bool
         """
         self._CacheClearDelay = None
@@ -290,7 +284,6 @@ class CacheInfo(AbstractModel):
     @property
     def CacheClearDelay(self):
         """缓存清理时间(小时)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CacheClearDelay
@@ -302,7 +295,6 @@ class CacheInfo(AbstractModel):
     @property
     def CacheClearTime(self):
         """缓存清理计划时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CacheClearTime
@@ -314,7 +306,6 @@ class CacheInfo(AbstractModel):
     @property
     def CacheCleared(self):
         """缓存是否已被清理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CacheCleared
@@ -430,6 +421,72 @@ class ClusterOption(AbstractModel):
         if params.get("LimitRange") is not None:
             self._LimitRange = LimitRange()
             self._LimitRange._deserialize(params.get("LimitRange"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosFileInfo(AbstractModel):
+    """COS 文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: 存储桶。
+        :type Bucket: str
+        :param _Uri: COS文件地址。
+        :type Uri: str
+        :param _Region: 地域。
+        :type Region: str
+        """
+        self._Bucket = None
+        self._Uri = None
+        self._Region = None
+
+    @property
+    def Bucket(self):
+        """存储桶。
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Uri(self):
+        """COS文件地址。
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def Region(self):
+        """地域。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Uri = params.get("Uri")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -871,7 +928,7 @@ class DeleteVolumeDataRequest(AbstractModel):
         r"""
         :param _VolumeId: 缓存卷ID。
         :type VolumeId: str
-        :param _Path: 需要删除的路径
+        :param _Path: 需要删除的路径。
         :type Path: str
         """
         self._VolumeId = None
@@ -890,7 +947,7 @@ class DeleteVolumeDataRequest(AbstractModel):
 
     @property
     def Path(self):
-        """需要删除的路径
+        """需要删除的路径。
         :rtype: str
         """
         return self._Path
@@ -2306,13 +2363,10 @@ class ExecutionTime(AbstractModel):
     def __init__(self):
         r"""
         :param _SubmitTime: 提交时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubmitTime: str
         :param _StartTime: 开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._SubmitTime = None
@@ -2322,7 +2376,6 @@ class ExecutionTime(AbstractModel):
     @property
     def SubmitTime(self):
         """提交时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubmitTime
@@ -2334,7 +2387,6 @@ class ExecutionTime(AbstractModel):
     @property
     def StartTime(self):
         """开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -2346,7 +2398,6 @@ class ExecutionTime(AbstractModel):
     @property
     def EndTime(self):
         """结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -2670,7 +2721,6 @@ class GetRunMetadataFileResponse(AbstractModel):
         :param _CosSignedUrl: 文件预签名链接，一分钟内有效。
         :type CosSignedUrl: str
         :param _CosSignedUrls: 批量文件预签名链接，一分钟内有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosSignedUrls: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2693,7 +2743,6 @@ class GetRunMetadataFileResponse(AbstractModel):
     @property
     def CosSignedUrls(self):
         """批量文件预签名链接，一分钟内有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CosSignedUrls
@@ -2826,19 +2875,14 @@ class GitInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _GitHttpPath: Git地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GitHttpPath: str
         :param _GitUserName: Git用户名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GitUserName: str
         :param _GitTokenOrPassword: Git密码或者Token。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GitTokenOrPassword: str
         :param _Branch: 分支。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Branch: str
         :param _Tag: 标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         """
         self._GitHttpPath = None
@@ -2850,7 +2894,6 @@ class GitInfo(AbstractModel):
     @property
     def GitHttpPath(self):
         """Git地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GitHttpPath
@@ -2862,7 +2905,6 @@ class GitInfo(AbstractModel):
     @property
     def GitUserName(self):
         """Git用户名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GitUserName
@@ -2874,7 +2916,6 @@ class GitInfo(AbstractModel):
     @property
     def GitTokenOrPassword(self):
         """Git密码或者Token。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GitTokenOrPassword
@@ -2886,7 +2927,6 @@ class GitInfo(AbstractModel):
     @property
     def Branch(self):
         """分支。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Branch
@@ -2898,7 +2938,6 @@ class GitInfo(AbstractModel):
     @property
     def Tag(self):
         """标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Tag
@@ -3216,24 +3255,18 @@ class NFOption(AbstractModel):
     def __init__(self):
         r"""
         :param _Config: Config。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Config: str
         :param _Profile: Profile。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Profile: str
         :param _Report: Report。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Report: bool
         :param _Resume: Resume。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resume: bool
         :param _NFVersion: Nextflow引擎版本，取值范围：
 - 22.10.7
 - 23.10.1
-注意：此字段可能返回 null，表示取不到有效值。
         :type NFVersion: str
         :param _LaunchDir: 启动路径。可填写指定缓存卷内的绝对路径，nextflow run 命令将在此路径执行。当WorkDir为COS路径时必填；当WorkDir为缓存卷路径时选填，不填默认使用WorkDir作为LaunchDir。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchDir: str
         """
         self._Config = None
@@ -3246,7 +3279,6 @@ class NFOption(AbstractModel):
     @property
     def Config(self):
         """Config。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Config
@@ -3258,7 +3290,6 @@ class NFOption(AbstractModel):
     @property
     def Profile(self):
         """Profile。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Profile
@@ -3270,7 +3301,6 @@ class NFOption(AbstractModel):
     @property
     def Report(self):
         """Report。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Report
@@ -3282,7 +3312,6 @@ class NFOption(AbstractModel):
     @property
     def Resume(self):
         """Resume。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Resume
@@ -3296,7 +3325,6 @@ class NFOption(AbstractModel):
         """Nextflow引擎版本，取值范围：
 - 22.10.7
 - 23.10.1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NFVersion
@@ -3308,7 +3336,6 @@ class NFOption(AbstractModel):
     @property
     def LaunchDir(self):
         """启动路径。可填写指定缓存卷内的绝对路径，nextflow run 命令将在此路径执行。当WorkDir为COS路径时必填；当WorkDir为缓存卷路径时选填，不填默认使用WorkDir作为LaunchDir。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LaunchDir
@@ -3658,7 +3685,6 @@ class RetryRunsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RunGroupId: 新的任务批次ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunGroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3669,7 +3695,6 @@ class RetryRunsResponse(AbstractModel):
     @property
     def RunGroupId(self):
         """新的任务批次ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RunGroupId
@@ -3713,13 +3738,10 @@ class Run(AbstractModel):
         :param _EnvironmentId: 环境ID。
         :type EnvironmentId: str
         :param _UserDefinedId: 用户定义ID，单例运行为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefinedId: str
         :param _TableId: 表格ID，单例运行为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableId: str
         :param _TableRowUuid: 表格行UUID，单例运行为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableRowUuid: str
         :param _Status: 任务状态。
         :type Status: str
@@ -3730,7 +3752,6 @@ class Run(AbstractModel):
         :param _ExecutionTime: 执行时间。
         :type ExecutionTime: :class:`tencentcloud.omics.v20221128.models.ExecutionTime`
         :param _Cache: 缓存信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cache: :class:`tencentcloud.omics.v20221128.models.CacheInfo`
         :param _ErrorMessage: 错误信息。
         :type ErrorMessage: str
@@ -3814,7 +3835,6 @@ class Run(AbstractModel):
     @property
     def UserDefinedId(self):
         """用户定义ID，单例运行为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserDefinedId
@@ -3826,7 +3846,6 @@ class Run(AbstractModel):
     @property
     def TableId(self):
         """表格ID，单例运行为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableId
@@ -3838,7 +3857,6 @@ class Run(AbstractModel):
     @property
     def TableRowUuid(self):
         """表格行UUID，单例运行为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableRowUuid
@@ -3898,7 +3916,6 @@ class Run(AbstractModel):
     @property
     def Cache(self):
         """缓存信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.omics.v20221128.models.CacheInfo`
         """
         return self._Cache
@@ -4306,19 +4323,16 @@ class RunGroup(AbstractModel):
         :param _ApplicationType: 应用类型。
         :type ApplicationType: str
         :param _ApplicationVersion: 应用版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationVersion: :class:`tencentcloud.omics.v20221128.models.ApplicationVersion`
         :param _AccessMode: 应用访问类型：
 - PRIVATE 私有应用
 - PUBLIC 公共应用
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessMode: str
         :param _EnvironmentId: 环境ID。
         :type EnvironmentId: str
         :param _EnvironmentName: 环境名称。
         :type EnvironmentName: str
         :param _TableId: 表格ID，单例运行为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableId: str
         :param _Name: 任务名称。
         :type Name: str
@@ -4329,10 +4343,8 @@ class RunGroup(AbstractModel):
         :param _Type: 任务批次类型 ：
 - WDL
 - NEXTFLOW
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _WorkDir: 工作目录。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkDir: str
         :param _Input: 任务输入。
         :type Input: str
@@ -4340,21 +4352,16 @@ class RunGroup(AbstractModel):
 - JSON: 导入JSON
 - MANUAL: 手动输入
 - COS: COS文件
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputType: str
         :param _InputCosUri: 输入COS地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputCosUri: str
         :param _InputTemplateId: 输入模版ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputTemplateId: str
         :param _Option: WDL运行选项。
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
         :param _NFOption: Nextflow运行选项。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
         :param _Volumes: 使用的缓存卷。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Volumes: list of VolumeInfo
         :param _TotalRun: 任务总数量。
         :type TotalRun: int
@@ -4365,17 +4372,14 @@ class RunGroup(AbstractModel):
         :param _ErrorMessage: 错误信息。
         :type ErrorMessage: str
         :param _ResultNotify: 运行结果通知方式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultNotify: str
         :param _CreateTime: 创建时间。
         :type CreateTime: str
         :param _UpdateTime: 更新时间。
         :type UpdateTime: str
         :param _Creator: 创建者。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
         :param _CreatorId: 创建者ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorId: str
         """
         self._RunGroupId = None
@@ -4480,7 +4484,6 @@ class RunGroup(AbstractModel):
     @property
     def ApplicationVersion(self):
         """应用版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.omics.v20221128.models.ApplicationVersion`
         """
         return self._ApplicationVersion
@@ -4494,7 +4497,6 @@ class RunGroup(AbstractModel):
         """应用访问类型：
 - PRIVATE 私有应用
 - PUBLIC 公共应用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessMode
@@ -4528,7 +4530,6 @@ class RunGroup(AbstractModel):
     @property
     def TableId(self):
         """表格ID，单例运行为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableId
@@ -4575,7 +4576,6 @@ class RunGroup(AbstractModel):
         """任务批次类型 ：
 - WDL
 - NEXTFLOW
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -4587,7 +4587,6 @@ class RunGroup(AbstractModel):
     @property
     def WorkDir(self):
         """工作目录。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkDir
@@ -4613,7 +4612,6 @@ class RunGroup(AbstractModel):
 - JSON: 导入JSON
 - MANUAL: 手动输入
 - COS: COS文件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputType
@@ -4625,7 +4623,6 @@ class RunGroup(AbstractModel):
     @property
     def InputCosUri(self):
         """输入COS地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputCosUri
@@ -4637,7 +4634,6 @@ class RunGroup(AbstractModel):
     @property
     def InputTemplateId(self):
         """输入模版ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputTemplateId
@@ -4660,7 +4656,6 @@ class RunGroup(AbstractModel):
     @property
     def NFOption(self):
         """Nextflow运行选项。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         return self._NFOption
@@ -4672,7 +4667,6 @@ class RunGroup(AbstractModel):
     @property
     def Volumes(self):
         """使用的缓存卷。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VolumeInfo
         """
         return self._Volumes
@@ -4728,7 +4722,6 @@ class RunGroup(AbstractModel):
     @property
     def ResultNotify(self):
         """运行结果通知方式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultNotify
@@ -4762,7 +4755,6 @@ class RunGroup(AbstractModel):
     @property
     def Creator(self):
         """创建者。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Creator
@@ -4774,7 +4766,6 @@ class RunGroup(AbstractModel):
     @property
     def CreatorId(self):
         """创建者ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatorId
@@ -4853,70 +4844,48 @@ class RunMetadata(AbstractModel):
     def __init__(self):
         r"""
         :param _RunType: 任务类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunType: str
         :param _RunId: 任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunId: str
         :param _ParentId: 父层ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: str
         :param _JobId: 作业ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _CallName: 作业名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallName: str
         :param _ScatterIndex: Scatter索引。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScatterIndex: str
         :param _Input: 输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: str
         :param _Output: 输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _ErrorMessage: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _SubmitTime: 提交时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubmitTime: str
         :param _EndTime: 结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Command: 命令行。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Command: str
         :param _Runtime: 运行时。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Runtime: str
         :param _Preprocess: 预处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Preprocess: bool
         :param _PostProcess: 后处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostProcess: bool
         :param _CallCached: Cache命中
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallCached: bool
         :param _WorkDir: 工作目录。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkDir: str
         :param _Stdout: 标准输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stdout: str
         :param _Stderr: 错误输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stderr: str
         :param _Meta: 其他信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Meta: str
         """
         self._RunType = None
@@ -4945,7 +4914,6 @@ class RunMetadata(AbstractModel):
     @property
     def RunType(self):
         """任务类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RunType
@@ -4957,7 +4925,6 @@ class RunMetadata(AbstractModel):
     @property
     def RunId(self):
         """任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RunId
@@ -4969,7 +4936,6 @@ class RunMetadata(AbstractModel):
     @property
     def ParentId(self):
         """父层ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentId
@@ -4981,7 +4947,6 @@ class RunMetadata(AbstractModel):
     @property
     def JobId(self):
         """作业ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -4993,7 +4958,6 @@ class RunMetadata(AbstractModel):
     @property
     def CallName(self):
         """作业名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CallName
@@ -5005,7 +4969,6 @@ class RunMetadata(AbstractModel):
     @property
     def ScatterIndex(self):
         """Scatter索引。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScatterIndex
@@ -5017,7 +4980,6 @@ class RunMetadata(AbstractModel):
     @property
     def Input(self):
         """输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Input
@@ -5029,7 +4991,6 @@ class RunMetadata(AbstractModel):
     @property
     def Output(self):
         """输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Output
@@ -5041,7 +5002,6 @@ class RunMetadata(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -5053,7 +5013,6 @@ class RunMetadata(AbstractModel):
     @property
     def ErrorMessage(self):
         """错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMessage
@@ -5065,7 +5024,6 @@ class RunMetadata(AbstractModel):
     @property
     def StartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -5077,7 +5035,6 @@ class RunMetadata(AbstractModel):
     @property
     def SubmitTime(self):
         """提交时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubmitTime
@@ -5089,7 +5046,6 @@ class RunMetadata(AbstractModel):
     @property
     def EndTime(self):
         """结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -5101,7 +5057,6 @@ class RunMetadata(AbstractModel):
     @property
     def Command(self):
         """命令行。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Command
@@ -5113,7 +5068,6 @@ class RunMetadata(AbstractModel):
     @property
     def Runtime(self):
         """运行时。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Runtime
@@ -5125,7 +5079,6 @@ class RunMetadata(AbstractModel):
     @property
     def Preprocess(self):
         """预处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Preprocess
@@ -5137,7 +5090,6 @@ class RunMetadata(AbstractModel):
     @property
     def PostProcess(self):
         """后处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._PostProcess
@@ -5149,7 +5101,6 @@ class RunMetadata(AbstractModel):
     @property
     def CallCached(self):
         """Cache命中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CallCached
@@ -5161,7 +5112,6 @@ class RunMetadata(AbstractModel):
     @property
     def WorkDir(self):
         """工作目录。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkDir
@@ -5173,7 +5123,6 @@ class RunMetadata(AbstractModel):
     @property
     def Stdout(self):
         """标准输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Stdout
@@ -5185,7 +5134,6 @@ class RunMetadata(AbstractModel):
     @property
     def Stderr(self):
         """错误输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Stderr
@@ -5197,7 +5145,6 @@ class RunMetadata(AbstractModel):
     @property
     def Meta(self):
         """其他信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Meta
@@ -5256,13 +5203,10 @@ class RunOption(AbstractModel):
         :param _UseErrorOnHold: 是否使用错误挂起功能。
         :type UseErrorOnHold: bool
         :param _FinalWorkflowOutputsDir: 输出归档COS路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinalWorkflowOutputsDir: str
         :param _UseRelativeOutputPaths: 是否使用相对目录归档输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UseRelativeOutputPaths: bool
         :param _AddRunInfoToOutputDir: 是否添加运行信息到输出目录中
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddRunInfoToOutputDir: bool
         """
         self._FailureMode = None
@@ -5310,7 +5254,6 @@ class RunOption(AbstractModel):
     @property
     def FinalWorkflowOutputsDir(self):
         """输出归档COS路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinalWorkflowOutputsDir
@@ -5322,7 +5265,6 @@ class RunOption(AbstractModel):
     @property
     def UseRelativeOutputPaths(self):
         """是否使用相对目录归档输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._UseRelativeOutputPaths
@@ -5334,7 +5276,6 @@ class RunOption(AbstractModel):
     @property
     def AddRunInfoToOutputDir(self):
         """是否添加运行信息到输出目录中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AddRunInfoToOutputDir
@@ -5794,26 +5735,21 @@ class Table(AbstractModel):
     def __init__(self):
         r"""
         :param _TableId: 表格ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableId: str
         :param _ProjectId: 关联项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _Name: 表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 表格描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Columns: 表格列
-注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of TableColumn
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Creator: 创建人
-注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
+        :param _CreatorId: 创建人ID
+        :type CreatorId: str
         """
         self._TableId = None
         self._ProjectId = None
@@ -5822,11 +5758,11 @@ class Table(AbstractModel):
         self._Columns = None
         self._CreateTime = None
         self._Creator = None
+        self._CreatorId = None
 
     @property
     def TableId(self):
         """表格ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableId
@@ -5838,7 +5774,6 @@ class Table(AbstractModel):
     @property
     def ProjectId(self):
         """关联项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -5850,7 +5785,6 @@ class Table(AbstractModel):
     @property
     def Name(self):
         """表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5862,7 +5796,6 @@ class Table(AbstractModel):
     @property
     def Description(self):
         """表格描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -5874,7 +5807,6 @@ class Table(AbstractModel):
     @property
     def Columns(self):
         """表格列
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableColumn
         """
         return self._Columns
@@ -5886,7 +5818,6 @@ class Table(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -5898,7 +5829,6 @@ class Table(AbstractModel):
     @property
     def Creator(self):
         """创建人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Creator
@@ -5906,6 +5836,17 @@ class Table(AbstractModel):
     @Creator.setter
     def Creator(self, Creator):
         self._Creator = Creator
+
+    @property
+    def CreatorId(self):
+        """创建人ID
+        :rtype: str
+        """
+        return self._CreatorId
+
+    @CreatorId.setter
+    def CreatorId(self, CreatorId):
+        self._CreatorId = CreatorId
 
 
     def _deserialize(self, params):
@@ -5921,6 +5862,7 @@ class Table(AbstractModel):
                 self._Columns.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._Creator = params.get("Creator")
+        self._CreatorId = params.get("CreatorId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5939,10 +5881,8 @@ class TableColumn(AbstractModel):
     def __init__(self):
         r"""
         :param _Header: 列名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Header: str
         :param _DataType: 列数据类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataType: str
         """
         self._Header = None
@@ -5951,7 +5891,6 @@ class TableColumn(AbstractModel):
     @property
     def Header(self):
         """列名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Header
@@ -5963,7 +5902,6 @@ class TableColumn(AbstractModel):
     @property
     def DataType(self):
         """列数据类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataType
@@ -5994,10 +5932,8 @@ class TableRow(AbstractModel):
     def __init__(self):
         r"""
         :param _TableRowUuid: 表格行UUID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableRowUuid: str
         :param _Content: 表格行内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of str
         """
         self._TableRowUuid = None
@@ -6006,7 +5942,6 @@ class TableRow(AbstractModel):
     @property
     def TableRowUuid(self):
         """表格行UUID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableRowUuid
@@ -6018,7 +5953,6 @@ class TableRow(AbstractModel):
     @property
     def Content(self):
         """表格行内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Content
@@ -6439,13 +6373,10 @@ class VolumeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _VolumeId: 缓存卷ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeId: str
         :param _Name: 名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _MountPath: 挂载路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MountPath: str
         """
         self._VolumeId = None
@@ -6455,7 +6386,6 @@ class VolumeInfo(AbstractModel):
     @property
     def VolumeId(self):
         """缓存卷ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VolumeId
@@ -6467,7 +6397,6 @@ class VolumeInfo(AbstractModel):
     @property
     def Name(self):
         """名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6479,7 +6408,6 @@ class VolumeInfo(AbstractModel):
     @property
     def MountPath(self):
         """挂载路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MountPath

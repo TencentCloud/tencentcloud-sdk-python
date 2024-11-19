@@ -3859,6 +3859,12 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         :type IVRId: int
         :param _RetryTimes: 呼叫重试次数，0 - 2
         :type RetryTimes: int
+        :param _Variables: 自定义变量
+        :type Variables: list of Variable
+        :param _UUI: UUI
+        :type UUI: str
+        :param _CalleeAttributes: 被叫属性
+        :type CalleeAttributes: list of CalleeAttribute
         """
         self._SdkAppId = None
         self._Name = None
@@ -3873,6 +3879,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         self._EndTime = None
         self._IVRId = None
         self._RetryTimes = None
+        self._Variables = None
+        self._UUI = None
+        self._CalleeAttributes = None
 
     @property
     def SdkAppId(self):
@@ -4017,6 +4026,39 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
     def RetryTimes(self, RetryTimes):
         self._RetryTimes = RetryTimes
 
+    @property
+    def Variables(self):
+        """自定义变量
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+    @property
+    def UUI(self):
+        """UUI
+        :rtype: str
+        """
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+    @property
+    def CalleeAttributes(self):
+        """被叫属性
+        :rtype: list of CalleeAttribute
+        """
+        return self._CalleeAttributes
+
+    @CalleeAttributes.setter
+    def CalleeAttributes(self, CalleeAttributes):
+        self._CalleeAttributes = CalleeAttributes
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4032,6 +4074,19 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._IVRId = params.get("IVRId")
         self._RetryTimes = params.get("RetryTimes")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        self._UUI = params.get("UUI")
+        if params.get("CalleeAttributes") is not None:
+            self._CalleeAttributes = []
+            for item in params.get("CalleeAttributes"):
+                obj = CalleeAttribute()
+                obj._deserialize(item)
+                self._CalleeAttributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14504,6 +14559,12 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
         :type IVRId: int
         :param _RetryTimes: 呼叫重试次数，0 - 2
         :type RetryTimes: int
+        :param _Variables: 自定义变量
+        :type Variables: list of Variable
+        :param _UUI: 	UUI
+        :type UUI: str
+        :param _CalleeAttributes: 被叫属性
+        :type CalleeAttributes: list of CalleeAttribute
         """
         self._SdkAppId = None
         self._CampaignId = None
@@ -14519,6 +14580,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
         self._EndTime = None
         self._IVRId = None
         self._RetryTimes = None
+        self._Variables = None
+        self._UUI = None
+        self._CalleeAttributes = None
 
     @property
     def SdkAppId(self):
@@ -14674,6 +14738,39 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
     def RetryTimes(self, RetryTimes):
         self._RetryTimes = RetryTimes
 
+    @property
+    def Variables(self):
+        """自定义变量
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+    @property
+    def UUI(self):
+        """	UUI
+        :rtype: str
+        """
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+    @property
+    def CalleeAttributes(self):
+        """被叫属性
+        :rtype: list of CalleeAttribute
+        """
+        return self._CalleeAttributes
+
+    @CalleeAttributes.setter
+    def CalleeAttributes(self, CalleeAttributes):
+        self._CalleeAttributes = CalleeAttributes
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -14690,6 +14787,19 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._IVRId = params.get("IVRId")
         self._RetryTimes = params.get("RetryTimes")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        self._UUI = params.get("UUI")
+        if params.get("CalleeAttributes") is not None:
+            self._CalleeAttributes = []
+            for item in params.get("CalleeAttributes"):
+                obj = CalleeAttribute()
+                obj._deserialize(item)
+                self._CalleeAttributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

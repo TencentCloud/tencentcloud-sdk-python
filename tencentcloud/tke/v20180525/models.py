@@ -5455,7 +5455,7 @@ class CreateClusterEndpointRequest(AbstractModel):
         :type IsExtranet: bool
         :param _Domain: 设置域名
         :type Domain: str
-        :param _SecurityGroup: 使用的安全组，只有外网访问需要传递（开启外网访问时必传）
+        :param _SecurityGroup: 使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）
         :type SecurityGroup: str
         :param _ExtensiveParameters: 创建lb参数，只有外网访问需要设置，是一个json格式化后的字符串：{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":200},"VipIsp":"","BandwidthPackageId":""}。
 各个参数意义：
@@ -5518,7 +5518,7 @@ BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式
 
     @property
     def SecurityGroup(self):
-        """使用的安全组，只有外网访问需要传递（开启外网访问时必传）
+        """使用的安全组，只有外网访问需要传递（开启外网访问且不使用已有clb时必传）
         :rtype: str
         """
         return self._SecurityGroup

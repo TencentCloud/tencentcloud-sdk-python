@@ -79098,10 +79098,10 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
         :type CloudappId: str
         :param _AppCamRole: 数语的CAM角色
         :type AppCamRole: str
-        :param _Vip: 数语的ip
-        :type Vip: str
-        :param _Vport: 数语的端口
-        :type Vport: int
+        :param _Ip: 数语的ip
+        :type Ip: str
+        :param _Port: 数语的端口
+        :type Port: int
         :param _AppCamRoleId: 数语的CAM角色id
         :type AppCamRoleId: str
         :param _Provider: 服务提供方
@@ -79113,8 +79113,8 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
         """
         self._CloudappId = None
         self._AppCamRole = None
-        self._Vip = None
-        self._Vport = None
+        self._Ip = None
+        self._Port = None
         self._AppCamRoleId = None
         self._Provider = None
         self._TenantId = None
@@ -79143,26 +79143,26 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
         self._AppCamRole = AppCamRole
 
     @property
-    def Vip(self):
+    def Ip(self):
         """数语的ip
         :rtype: str
         """
-        return self._Vip
+        return self._Ip
 
-    @Vip.setter
-    def Vip(self, Vip):
-        self._Vip = Vip
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
 
     @property
-    def Vport(self):
+    def Port(self):
         """数语的端口
         :rtype: int
         """
-        return self._Vport
+        return self._Port
 
-    @Vport.setter
-    def Vport(self, Vport):
-        self._Vport = Vport
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
     @property
     def AppCamRoleId(self):
@@ -79212,8 +79212,8 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self._CloudappId = params.get("CloudappId")
         self._AppCamRole = params.get("AppCamRole")
-        self._Vip = params.get("Vip")
-        self._Vport = params.get("Vport")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         self._AppCamRoleId = params.get("AppCamRoleId")
         self._Provider = params.get("Provider")
         self._TenantId = params.get("TenantId")

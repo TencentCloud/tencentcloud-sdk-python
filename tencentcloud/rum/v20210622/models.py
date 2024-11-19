@@ -8626,10 +8626,13 @@ class DescribeReleaseFileSignRequest(AbstractModel):
         :type FileType: int
         :param _Site: 获取临时签名的bucket是国内站还是国际站（1表示国际站，其它表示国内站）
         :type Site: int
+        :param _ID: ProjectID
+        :type ID: int
         """
         self._Timeout = None
         self._FileType = None
         self._Site = None
+        self._ID = None
 
     @property
     def Timeout(self):
@@ -8664,11 +8667,23 @@ class DescribeReleaseFileSignRequest(AbstractModel):
     def Site(self, Site):
         self._Site = Site
 
+    @property
+    def ID(self):
+        """ProjectID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
 
     def _deserialize(self, params):
         self._Timeout = params.get("Timeout")
         self._FileType = params.get("FileType")
         self._Site = params.get("Site")
+        self._ID = params.get("ID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5393,9 +5393,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _InstanceName: ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type InstanceName: str
-        :param _VpcId: 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
+        :param _VpcId: 私有网络Id 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
         :type VpcId: str
         :param _SubnetId: 子网id。创建实例默认接入点所在的子网对应的子网 id
         :type SubnetId: str
@@ -5431,6 +5431,8 @@ class CreateInstancePostRequest(AbstractModel):
         :type PublicNetworkMonthly: int
         :param _Tags: 标签
         :type Tags: list of Tag
+        :param _ElasticBandwidthSwitch: 弹性带宽开关 0不开启  1开启（0默认）
+        :type ElasticBandwidthSwitch: int
         """
         self._InstanceName = None
         self._VpcId = None
@@ -5451,10 +5453,11 @@ class CreateInstancePostRequest(AbstractModel):
         self._InstanceNum = None
         self._PublicNetworkMonthly = None
         self._Tags = None
+        self._ElasticBandwidthSwitch = None
 
     @property
     def InstanceName(self):
-        """实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        """ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :rtype: str
         """
         return self._InstanceName
@@ -5465,7 +5468,7 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
+        """私有网络Id 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
         :rtype: str
         """
         return self._VpcId
@@ -5661,6 +5664,17 @@ class CreateInstancePostRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def ElasticBandwidthSwitch(self):
+        """弹性带宽开关 0不开启  1开启（0默认）
+        :rtype: int
+        """
+        return self._ElasticBandwidthSwitch
+
+    @ElasticBandwidthSwitch.setter
+    def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
+        self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5687,6 +5701,7 @@ class CreateInstancePostRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5825,7 +5840,7 @@ class CreateInstancePreData(AbstractModel):
         :param _DealNames: 订单号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
-        :param _InstanceId: 实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+        :param _InstanceId: ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _DealNameInstanceIdMapping: 订单和购买实例对应映射列表
@@ -5863,7 +5878,7 @@ class CreateInstancePreData(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+        """ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5913,7 +5928,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _InstanceName: ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type InstanceName: str
         :param _ZoneId: 可用区。当购买多可用区实例时，当前参数为主可用区。需要保证传入的参数和 SubnetId 所在子网属于同一个可用区
         :type ZoneId: int
@@ -5921,7 +5936,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type Period: str
         :param _InstanceType: 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
         :type InstanceType: int
-        :param _VpcId: vpcId，必填
+        :param _VpcId: 私有网络Id，必填
         :type VpcId: str
         :param _SubnetId: 子网id，必填
         :type SubnetId: str
@@ -5937,7 +5952,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type SpecificationsType: str
         :param _DiskSize: 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
         :type DiskSize: int
-        :param _BandWidth: 带宽，如果跟控制台规格配比不相符，则无法创建成功
+        :param _BandWidth: 实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
         :type BandWidth: int
         :param _Partition: 分区大小，如果跟控制台规格配比不相符，则无法创建成功
         :type Partition: int
@@ -5955,6 +5970,8 @@ class CreateInstancePreRequest(AbstractModel):
         :type InstanceNum: int
         :param _AutoVoucher: 是否自动选择代金券:1-是;0否。默认为0
         :type AutoVoucher: int
+        :param _ElasticBandwidthSwitch: 弹性带宽开关 0不开启  1开启（0默认）
+        :type ElasticBandwidthSwitch: int
         """
         self._InstanceName = None
         self._ZoneId = None
@@ -5977,10 +5994,11 @@ class CreateInstancePreRequest(AbstractModel):
         self._PublicNetworkMonthly = None
         self._InstanceNum = None
         self._AutoVoucher = None
+        self._ElasticBandwidthSwitch = None
 
     @property
     def InstanceName(self):
-        """实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        """ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :rtype: str
         """
         return self._InstanceName
@@ -6024,7 +6042,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpcId，必填
+        """私有网络Id，必填
         :rtype: str
         """
         return self._VpcId
@@ -6112,7 +6130,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        """带宽，如果跟控制台规格配比不相符，则无法创建成功
+        """实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
         :rtype: int
         """
         return self._BandWidth
@@ -6209,6 +6227,17 @@ class CreateInstancePreRequest(AbstractModel):
     def AutoVoucher(self, AutoVoucher):
         self._AutoVoucher = AutoVoucher
 
+    @property
+    def ElasticBandwidthSwitch(self):
+        """弹性带宽开关 0不开启  1开启（0默认）
+        :rtype: int
+        """
+        return self._ElasticBandwidthSwitch
+
+    @ElasticBandwidthSwitch.setter
+    def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
+        self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -6237,6 +6266,7 @@ class CreateInstancePreRequest(AbstractModel):
         self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
         self._InstanceNum = params.get("InstanceNum")
         self._AutoVoucher = params.get("AutoVoucher")
+        self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26782,7 +26812,7 @@ class OperateResponseData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: FlowId11
+        :param _FlowId: 流程Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
         :param _RouteDTO: RouteIdDto
@@ -26794,7 +26824,7 @@ class OperateResponseData(AbstractModel):
 
     @property
     def FlowId(self):
-        """FlowId11
+        """流程Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28642,7 +28672,7 @@ class RouteDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RouteId: RouteId11
+        :param _RouteId: 路由Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteId: int
         """
@@ -28650,7 +28680,7 @@ class RouteDTO(AbstractModel):
 
     @property
     def RouteId(self):
-        """RouteId11
+        """路由Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

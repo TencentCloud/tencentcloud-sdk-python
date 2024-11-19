@@ -164,6 +164,29 @@ class RceClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserUsageCnt(self, request):
+        """RCE控制台预付费和后付费次数展示
+
+        :param request: Request instance for DescribeUserUsageCnt.
+        :type request: :class:`tencentcloud.rce.v20201103.models.DescribeUserUsageCntRequest`
+        :rtype: :class:`tencentcloud.rce.v20201103.models.DescribeUserUsageCntResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserUsageCnt", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserUsageCntResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImportNameListData(self, request):
         """新增黑白名单数据，所有黑白名单数据总量上限为10000
 

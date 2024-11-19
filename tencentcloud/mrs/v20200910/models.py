@@ -13340,10 +13340,8 @@ class ImageToObjectResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Template: 报告结构化结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.mrs.v20200910.models.Template`
         :param _TextTypeList: 多级分类结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextTypeList: list of TextType
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13355,7 +13353,6 @@ class ImageToObjectResponse(AbstractModel):
     @property
     def Template(self):
         """报告结构化结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Template`
         """
         return self._Template
@@ -13367,7 +13364,6 @@ class ImageToObjectResponse(AbstractModel):
     @property
     def TextTypeList(self):
         """多级分类结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -16226,10 +16222,10 @@ class LymphTotal(AbstractModel):
         :type Name: str
         :param _TransferNum: 转移数量
 注意：此字段可能返回 null，表示取不到有效值。
-        :type TransferNum: str
+        :type TransferNum: int
         :param _Total: 总数量
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Total: str
+        :type Total: int
         :param _Src: 原文
 注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
@@ -16263,7 +16259,7 @@ class LymphTotal(AbstractModel):
     def TransferNum(self):
         """转移数量
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
+        :rtype: int
         """
         return self._TransferNum
 
@@ -16275,7 +16271,7 @@ class LymphTotal(AbstractModel):
     def Total(self):
         """总数量
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
+        :rtype: int
         """
         return self._Total
 

@@ -269,7 +269,7 @@ class FileTranslateResponse(AbstractModel):
 
 
 class GetFileTranslateData(AbstractModel):
-    """查询文件翻译任务
+    """文件翻译任务结果
 
     """
 
@@ -277,7 +277,12 @@ class GetFileTranslateData(AbstractModel):
         r"""
         :param _TaskId: 任务ID
         :type TaskId: str
-        :param _Status: 状态
+        :param _Status: 任务状态
+
+- init：任务已初始化
+- wait：任务等待执行
+- success：任务执行成功
+- fail：任务执行失败
         :type Status: str
         :param _FileData: 文件数据，目标文件必须小于50M，否则请通过回调方式请求文件翻译接口
 注意：此字段可能返回 null，表示取不到有效值。
@@ -285,14 +290,17 @@ class GetFileTranslateData(AbstractModel):
         :param _Message: 错误提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param _Progress: 翻译进度
+        :param _Progress: 任务进度
         :type Progress: int
+        :param _UsedAmount: 本次翻译消耗的字符数	
+        :type UsedAmount: int
         """
         self._TaskId = None
         self._Status = None
         self._FileData = None
         self._Message = None
         self._Progress = None
+        self._UsedAmount = None
 
     @property
     def TaskId(self):
@@ -307,7 +315,12 @@ class GetFileTranslateData(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        """任务状态
+
+- init：任务已初始化
+- wait：任务等待执行
+- success：任务执行成功
+- fail：任务执行失败
         :rtype: str
         """
         return self._Status
@@ -342,7 +355,7 @@ class GetFileTranslateData(AbstractModel):
 
     @property
     def Progress(self):
-        """翻译进度
+        """任务进度
         :rtype: int
         """
         return self._Progress
@@ -351,6 +364,17 @@ class GetFileTranslateData(AbstractModel):
     def Progress(self, Progress):
         self._Progress = Progress
 
+    @property
+    def UsedAmount(self):
+        """本次翻译消耗的字符数	
+        :rtype: int
+        """
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -358,6 +382,7 @@ class GetFileTranslateData(AbstractModel):
         self._FileData = params.get("FileData")
         self._Message = params.get("Message")
         self._Progress = params.get("Progress")
+        self._UsedAmount = params.get("UsedAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1489,12 +1514,15 @@ class TextTranslateBatchResponse(AbstractModel):
         :type Target: str
         :param _TargetTextList: 翻译后的文本列表
         :type TargetTextList: list of str
+        :param _UsedAmount: 本次翻译消耗的字符数
+        :type UsedAmount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Source = None
         self._Target = None
         self._TargetTextList = None
+        self._UsedAmount = None
         self._RequestId = None
 
     @property
@@ -1531,6 +1559,17 @@ class TextTranslateBatchResponse(AbstractModel):
         self._TargetTextList = TargetTextList
 
     @property
+    def UsedAmount(self):
+        """本次翻译消耗的字符数
+        :rtype: int
+        """
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1546,6 +1585,7 @@ class TextTranslateBatchResponse(AbstractModel):
         self._Source = params.get("Source")
         self._Target = params.get("Target")
         self._TargetTextList = params.get("TargetTextList")
+        self._UsedAmount = params.get("UsedAmount")
         self._RequestId = params.get("RequestId")
 
 
@@ -1764,12 +1804,15 @@ class TextTranslateResponse(AbstractModel):
         :type Source: str
         :param _Target: 目标语言，详见入参Target
         :type Target: str
+        :param _UsedAmount: 本次翻译消耗的字符数
+        :type UsedAmount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TargetText = None
         self._Source = None
         self._Target = None
+        self._UsedAmount = None
         self._RequestId = None
 
     @property
@@ -1806,6 +1849,17 @@ class TextTranslateResponse(AbstractModel):
         self._Target = Target
 
     @property
+    def UsedAmount(self):
+        """本次翻译消耗的字符数
+        :rtype: int
+        """
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1821,4 +1875,5 @@ class TextTranslateResponse(AbstractModel):
         self._TargetText = params.get("TargetText")
         self._Source = params.get("Source")
         self._Target = params.get("Target")
+        self._UsedAmount = params.get("UsedAmount")
         self._RequestId = params.get("RequestId")

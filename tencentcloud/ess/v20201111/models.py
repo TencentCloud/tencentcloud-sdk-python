@@ -10413,6 +10413,9 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type ApproverComponentLimitTypes: list of ApproverComponentLimitType
         :param _ForbidPersonalMultipleSign: 禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
         :type ForbidPersonalMultipleSign: bool
+        :param _FlowNameAppendScannerInfo: 合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。
+例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
+        :type FlowNameAppendScannerInfo: bool
         """
         self._Operator = None
         self._TemplateId = None
@@ -10427,6 +10430,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._ApproverRestrictions = None
         self._ApproverComponentLimitTypes = None
         self._ForbidPersonalMultipleSign = None
+        self._FlowNameAppendScannerInfo = None
 
     @property
     def Operator(self):
@@ -10593,6 +10597,18 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
     def ForbidPersonalMultipleSign(self, ForbidPersonalMultipleSign):
         self._ForbidPersonalMultipleSign = ForbidPersonalMultipleSign
 
+    @property
+    def FlowNameAppendScannerInfo(self):
+        """合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。
+例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
+        :rtype: bool
+        """
+        return self._FlowNameAppendScannerInfo
+
+    @FlowNameAppendScannerInfo.setter
+    def FlowNameAppendScannerInfo(self, FlowNameAppendScannerInfo):
+        self._FlowNameAppendScannerInfo = FlowNameAppendScannerInfo
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -10624,6 +10640,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ApproverComponentLimitTypes.append(obj)
         self._ForbidPersonalMultipleSign = params.get("ForbidPersonalMultipleSign")
+        self._FlowNameAppendScannerInfo = params.get("FlowNameAppendScannerInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

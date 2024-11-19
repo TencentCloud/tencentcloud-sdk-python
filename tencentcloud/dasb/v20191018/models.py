@@ -1852,6 +1852,8 @@ class Command(AbstractModel):
         :type DeviceDepartmentName: str
         :param _Size: 会话大小
         :type Size: int
+        :param _SignValue: 签名值
+        :type SignValue: str
         """
         self._Cmd = None
         self._Time = None
@@ -1870,6 +1872,7 @@ class Command(AbstractModel):
         self._DeviceDepartmentId = None
         self._DeviceDepartmentName = None
         self._Size = None
+        self._SignValue = None
 
     @property
     def Cmd(self):
@@ -2062,6 +2065,17 @@ class Command(AbstractModel):
     def Size(self, Size):
         self._Size = Size
 
+    @property
+    def SignValue(self):
+        """签名值
+        :rtype: str
+        """
+        return self._SignValue
+
+    @SignValue.setter
+    def SignValue(self, SignValue):
+        self._SignValue = SignValue
+
 
     def _deserialize(self, params):
         self._Cmd = params.get("Cmd")
@@ -2081,6 +2095,7 @@ class Command(AbstractModel):
         self._DeviceDepartmentId = params.get("DeviceDepartmentId")
         self._DeviceDepartmentName = params.get("DeviceDepartmentName")
         self._Size = params.get("Size")
+        self._SignValue = params.get("SignValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10806,6 +10821,8 @@ class OperationEvent(AbstractModel):
         :type Operation: str
         :param _Result: 操作结果，1-成功，2-失败
         :type Result: int
+        :param _SignValue: 签名值
+        :type SignValue: str
         """
         self._UserName = None
         self._RealName = None
@@ -10814,6 +10831,7 @@ class OperationEvent(AbstractModel):
         self._Kind = None
         self._Operation = None
         self._Result = None
+        self._SignValue = None
 
     @property
     def UserName(self):
@@ -10892,6 +10910,17 @@ class OperationEvent(AbstractModel):
     def Result(self, Result):
         self._Result = Result
 
+    @property
+    def SignValue(self):
+        """签名值
+        :rtype: str
+        """
+        return self._SignValue
+
+    @SignValue.setter
+    def SignValue(self, SignValue):
+        self._SignValue = SignValue
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -10901,6 +10930,7 @@ class OperationEvent(AbstractModel):
         self._Kind = params.get("Kind")
         self._Operation = params.get("Operation")
         self._Result = params.get("Result")
+        self._SignValue = params.get("SignValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11182,7 +11212,7 @@ class Resource(AbstractModel):
         :type LogDelivery: str
         :param _DeployModel: 部署模式
         :type DeployModel: int
-        :param _IntranetAccess: 0 默认值，非内网访问，1 内网访问
+        :param _IntranetAccess: 0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中
         :type IntranetAccess: int
         :param _IntranetPrivateIpSet: 内网访问的ip
         :type IntranetPrivateIpSet: list of str
@@ -11630,7 +11660,7 @@ class Resource(AbstractModel):
 
     @property
     def IntranetAccess(self):
-        """0 默认值，非内网访问，1 内网访问
+        """0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中
         :rtype: int
         """
         return self._IntranetAccess
@@ -12529,6 +12559,8 @@ class SearchCommandResult(AbstractModel):
         :type DeviceDepartmentName: str
         :param _Size: 会话大小
         :type Size: int
+        :param _SignValue: 签名值
+        :type SignValue: str
         """
         self._Time = None
         self._UserName = None
@@ -12551,6 +12583,7 @@ class SearchCommandResult(AbstractModel):
         self._DeviceDepartmentId = None
         self._DeviceDepartmentName = None
         self._Size = None
+        self._SignValue = None
 
     @property
     def Time(self):
@@ -12787,6 +12820,17 @@ class SearchCommandResult(AbstractModel):
     def Size(self, Size):
         self._Size = Size
 
+    @property
+    def SignValue(self):
+        """签名值
+        :rtype: str
+        """
+        return self._SignValue
+
+    @SignValue.setter
+    def SignValue(self, SignValue):
+        self._SignValue = SignValue
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -12810,6 +12854,7 @@ class SearchCommandResult(AbstractModel):
         self._DeviceDepartmentId = params.get("DeviceDepartmentId")
         self._DeviceDepartmentName = params.get("DeviceDepartmentName")
         self._Size = params.get("Size")
+        self._SignValue = params.get("SignValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13035,6 +13080,8 @@ class SearchFileBySidResult(AbstractModel):
         :type Size: int
         :param _Action: 堡垒机拦截情况, 1-已执行，  2-被阻断
         :type Action: int
+        :param _SignValue: 签名值
+        :type SignValue: str
         """
         self._Time = None
         self._Method = None
@@ -13043,6 +13090,7 @@ class SearchFileBySidResult(AbstractModel):
         self._FileNew = None
         self._Size = None
         self._Action = None
+        self._SignValue = None
 
     @property
     def Time(self):
@@ -13121,6 +13169,17 @@ class SearchFileBySidResult(AbstractModel):
     def Action(self, Action):
         self._Action = Action
 
+    @property
+    def SignValue(self):
+        """签名值
+        :rtype: str
+        """
+        return self._SignValue
+
+    @SignValue.setter
+    def SignValue(self, SignValue):
+        self._SignValue = SignValue
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -13130,6 +13189,7 @@ class SearchFileBySidResult(AbstractModel):
         self._FileNew = params.get("FileNew")
         self._Size = params.get("Size")
         self._Action = params.get("Action")
+        self._SignValue = params.get("SignValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13448,6 +13508,8 @@ class SearchFileResult(AbstractModel):
         :type FileCurr: str
         :param _FileNew: 上传或新建文件（夹）路径及名称
         :type FileNew: str
+        :param _SignValue: 签名值
+        :type SignValue: str
         """
         self._Time = None
         self._UserName = None
@@ -13460,6 +13522,7 @@ class SearchFileResult(AbstractModel):
         self._Method = None
         self._FileCurr = None
         self._FileNew = None
+        self._SignValue = None
 
     @property
     def Time(self):
@@ -13582,6 +13645,17 @@ class SearchFileResult(AbstractModel):
     def FileNew(self, FileNew):
         self._FileNew = FileNew
 
+    @property
+    def SignValue(self):
+        """签名值
+        :rtype: str
+        """
+        return self._SignValue
+
+    @SignValue.setter
+    def SignValue(self, SignValue):
+        self._SignValue = SignValue
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -13595,6 +13669,7 @@ class SearchFileResult(AbstractModel):
         self._Method = params.get("Method")
         self._FileCurr = params.get("FileCurr")
         self._FileNew = params.get("FileNew")
+        self._SignValue = params.get("SignValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14711,6 +14786,8 @@ class User(AbstractModel):
         :type ActiveStatus: int
         :param _LockStatus: 锁定状态 0 - 未锁定 1 - 锁定
         :type LockStatus: int
+        :param _UKeyStatus: ukey绑定状态 0 - 未绑定 1 - 已绑定
+        :type UKeyStatus: int
         :param _Status: 状态 与Filter中一致
         :type Status: str
         :param _AclVersion: 权限版本
@@ -14730,6 +14807,7 @@ class User(AbstractModel):
         self._DepartmentId = None
         self._ActiveStatus = None
         self._LockStatus = None
+        self._UKeyStatus = None
         self._Status = None
         self._AclVersion = None
 
@@ -14890,6 +14968,17 @@ class User(AbstractModel):
         self._LockStatus = LockStatus
 
     @property
+    def UKeyStatus(self):
+        """ukey绑定状态 0 - 未绑定 1 - 已绑定
+        :rtype: int
+        """
+        return self._UKeyStatus
+
+    @UKeyStatus.setter
+    def UKeyStatus(self, UKeyStatus):
+        self._UKeyStatus = UKeyStatus
+
+    @property
     def Status(self):
         """状态 与Filter中一致
         :rtype: str
@@ -14934,6 +15023,7 @@ class User(AbstractModel):
         self._DepartmentId = params.get("DepartmentId")
         self._ActiveStatus = params.get("ActiveStatus")
         self._LockStatus = params.get("LockStatus")
+        self._UKeyStatus = params.get("UKeyStatus")
         self._Status = params.get("Status")
         self._AclVersion = params.get("AclVersion")
         memeber_set = set(params.keys())

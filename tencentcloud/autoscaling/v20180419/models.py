@@ -2528,6 +2528,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 <li>POSTPAID_BY_HOUR：按小时后付费</li>
 <li>SPOTPAID：竞价付费</li>
 <li>PREPAID：预付费，即包年包月</li>
+<li>CDCPAID：专用集群付费</li>
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
@@ -2567,6 +2568,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type DisasterRecoverGroupIds: list of str
         :param _ImageFamily: 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。
         :type ImageFamily: str
+        :param _DedicatedClusterId: 本地专用集群ID。
+        :type DedicatedClusterId: str
         """
         self._LaunchConfigurationName = None
         self._ImageId = None
@@ -2594,6 +2597,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self._IPv6InternetAccessible = None
         self._DisasterRecoverGroupIds = None
         self._ImageFamily = None
+        self._DedicatedClusterId = None
 
     @property
     def LaunchConfigurationName(self):
@@ -2724,6 +2728,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 <li>POSTPAID_BY_HOUR：按小时后付费</li>
 <li>SPOTPAID：竞价付费</li>
 <li>PREPAID：预付费，即包年包月</li>
+<li>CDCPAID：专用集群付费</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -2896,6 +2901,17 @@ class CreateLaunchConfigurationRequest(AbstractModel):
     def ImageFamily(self, ImageFamily):
         self._ImageFamily = ImageFamily
 
+    @property
+    def DedicatedClusterId(self):
+        """本地专用集群ID。
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationName = params.get("LaunchConfigurationName")
@@ -2957,6 +2973,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
             self._IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         self._ImageFamily = params.get("ImageFamily")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8160,6 +8177,8 @@ class LaunchConfiguration(AbstractModel):
         :param _ImageFamily: 镜像族名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageFamily: str
+        :param _DedicatedClusterId: 本地专用集群 ID。
+        :type DedicatedClusterId: str
         """
         self._ProjectId = None
         self._LaunchConfigurationId = None
@@ -8193,6 +8212,7 @@ class LaunchConfiguration(AbstractModel):
         self._IPv6InternetAccessible = None
         self._DisasterRecoverGroupIds = None
         self._ImageFamily = None
+        self._DedicatedClusterId = None
 
     @property
     def ProjectId(self):
@@ -8551,6 +8571,17 @@ class LaunchConfiguration(AbstractModel):
     def ImageFamily(self, ImageFamily):
         self._ImageFamily = ImageFamily
 
+    @property
+    def DedicatedClusterId(self):
+        """本地专用集群 ID。
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -8623,6 +8654,7 @@ class LaunchConfiguration(AbstractModel):
             self._IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         self._ImageFamily = params.get("ImageFamily")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9869,6 +9901,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 <li>POSTPAID_BY_HOUR：按小时后付费</li>
 <li>SPOTPAID：竞价付费</li>
 <li>PREPAID：预付费，即包年包月</li>
+<li>CDCPAID：专用集群付费</li>
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
@@ -9916,6 +9949,8 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         :type InstanceTags: list of InstanceTag
         :param _ImageFamily: 镜像族名称。
         :type ImageFamily: str
+        :param _DedicatedClusterId: 本地专用集群ID。
+        :type DedicatedClusterId: str
         """
         self._LaunchConfigurationId = None
         self._ImageId = None
@@ -9941,6 +9976,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         self._LoginSettings = None
         self._InstanceTags = None
         self._ImageFamily = None
+        self._DedicatedClusterId = None
 
     @property
     def LaunchConfigurationId(self):
@@ -10043,6 +10079,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 <li>POSTPAID_BY_HOUR：按小时后付费</li>
 <li>SPOTPAID：竞价付费</li>
 <li>PREPAID：预付费，即包年包月</li>
+<li>CDCPAID：专用集群付费</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -10232,6 +10269,17 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
     def ImageFamily(self, ImageFamily):
         self._ImageFamily = ImageFamily
 
+    @property
+    def DedicatedClusterId(self):
+        """本地专用集群ID。
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -10286,6 +10334,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
                 obj._deserialize(item)
                 self._InstanceTags.append(obj)
         self._ImageFamily = params.get("ImageFamily")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

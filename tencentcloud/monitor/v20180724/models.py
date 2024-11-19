@@ -3539,6 +3539,9 @@ class Condition(AbstractModel):
         :param _HierarchicalValue: 告警分级阈值配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type HierarchicalValue: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
+        :param _RuleType: 指标类型，用于区分动态指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
         """
         self._AlarmNotifyPeriod = None
         self._AlarmNotifyType = None
@@ -3554,6 +3557,7 @@ class Condition(AbstractModel):
         self._IsOpen = None
         self._ProductId = None
         self._HierarchicalValue = None
+        self._RuleType = None
 
     @property
     def AlarmNotifyPeriod(self):
@@ -3714,6 +3718,18 @@ class Condition(AbstractModel):
     def HierarchicalValue(self, HierarchicalValue):
         self._HierarchicalValue = HierarchicalValue
 
+    @property
+    def RuleType(self):
+        """指标类型，用于区分动态指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
 
     def _deserialize(self, params):
         self._AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
@@ -3732,6 +3748,7 @@ class Condition(AbstractModel):
         if params.get("HierarchicalValue") is not None:
             self._HierarchicalValue = AlarmHierarchicalValue()
             self._HierarchicalValue._deserialize(params.get("HierarchicalValue"))
+        self._RuleType = params.get("RuleType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

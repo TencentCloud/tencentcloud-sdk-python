@@ -4241,22 +4241,16 @@ class RebateInfoElem(AbstractModel):
     def __init__(self):
         r"""
         :param _Uin: 代理商账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _RebateMonth: 返佣月份，如2018-02
-注意：此字段可能返回 null，表示取不到有效值。
         :type RebateMonth: str
         :param _Amt: 返佣金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Amt: int
         :param _MonthSales: 月度业绩，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonthSales: int
         :param _QuarterSales: 季度业绩，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :type QuarterSales: int
         :param _ExceptionFlag: NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionFlag: str
         """
         self._Uin = None
@@ -4269,7 +4263,6 @@ class RebateInfoElem(AbstractModel):
     @property
     def Uin(self):
         """代理商账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -4281,7 +4274,6 @@ class RebateInfoElem(AbstractModel):
     @property
     def RebateMonth(self):
         """返佣月份，如2018-02
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RebateMonth
@@ -4293,7 +4285,6 @@ class RebateInfoElem(AbstractModel):
     @property
     def Amt(self):
         """返佣金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Amt
@@ -4305,7 +4296,6 @@ class RebateInfoElem(AbstractModel):
     @property
     def MonthSales(self):
         """月度业绩，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonthSales
@@ -4317,7 +4307,6 @@ class RebateInfoElem(AbstractModel):
     @property
     def QuarterSales(self):
         """季度业绩，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._QuarterSales
@@ -4329,7 +4318,6 @@ class RebateInfoElem(AbstractModel):
     @property
     def ExceptionFlag(self):
         """NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExceptionFlag

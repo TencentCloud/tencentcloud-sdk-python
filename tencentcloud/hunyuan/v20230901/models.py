@@ -666,10 +666,13 @@ tool_calls 标识函数调用。
         :param _Message: 返回值，非流式调用时使用该字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: :class:`tencentcloud.hunyuan.v20230901.models.Message`
+        :param _Index: 索引值，流式调用时使用该字段。
+        :type Index: int
         """
         self._FinishReason = None
         self._Delta = None
         self._Message = None
+        self._Index = None
 
     @property
     def FinishReason(self):
@@ -709,6 +712,17 @@ tool_calls 标识函数调用。
     def Message(self, Message):
         self._Message = Message
 
+    @property
+    def Index(self):
+        """索引值，流式调用时使用该字段。
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
 
     def _deserialize(self, params):
         self._FinishReason = params.get("FinishReason")
@@ -718,6 +732,7 @@ tool_calls 标识函数调用。
         if params.get("Message") is not None:
             self._Message = Message()
             self._Message._deserialize(params.get("Message"))
+        self._Index = params.get("Index")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4466,6 +4481,8 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 算法将根据输入的文本智能生成与之相关的图像。 
 不能为空，推荐使用中文。最多可传1024个 utf-8 字符。
         :type Prompt: str
+        :param _NegativePrompt: 反向提示词。 推荐使用中文。最多可传1024个 utf-8 字符。
+        :type NegativePrompt: str
         :param _Style: 绘画风格。
 请在 [混元生图风格列表](https://cloud.tencent.com/document/product/1729/105846) 中选择期望的风格，传入风格编号。
 不传默认不指定风格。
@@ -4496,6 +4513,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
         :type LogoParam: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
         """
         self._Prompt = None
+        self._NegativePrompt = None
         self._Style = None
         self._Resolution = None
         self._Num = None
@@ -4516,6 +4534,17 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
     @Prompt.setter
     def Prompt(self, Prompt):
         self._Prompt = Prompt
+
+    @property
+    def NegativePrompt(self):
+        """反向提示词。 推荐使用中文。最多可传1024个 utf-8 字符。
+        :rtype: str
+        """
+        return self._NegativePrompt
+
+    @NegativePrompt.setter
+    def NegativePrompt(self, NegativePrompt):
+        self._NegativePrompt = NegativePrompt
 
     @property
     def Style(self):
@@ -4611,6 +4640,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
+        self._NegativePrompt = params.get("NegativePrompt")
         self._Style = params.get("Style")
         self._Resolution = params.get("Resolution")
         self._Num = params.get("Num")

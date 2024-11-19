@@ -210,6 +210,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchOperateUserSignatureRules(self, request):
+        """批量操作tiga子规则
+
+        :param request: Request instance for BatchOperateUserSignatureRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.BatchOperateUserSignatureRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BatchOperateUserSignatureRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchOperateUserSignatureRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchOperateUserSignatureRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccessExport(self, request):
         """本接口用于创建访问日志导出
 
@@ -1889,6 +1912,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserSignatureClass(self, request):
+        """查询Tiga引擎规则类型及状态
+
+        :param request: Request instance for DescribeUserSignatureClass.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureClassRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserSignatureClass", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserSignatureClassResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserSignatureRule(self, request):
         """获取用户特征规则列表
 
@@ -1903,6 +1949,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeUserSignatureRule", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserSignatureRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserSignatureRuleV2(self, request):
+        """获取用户特征规则列表
+
+        :param request: Request instance for DescribeUserSignatureRuleV2.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureRuleV2Request`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureRuleV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserSignatureRuleV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserSignatureRuleV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

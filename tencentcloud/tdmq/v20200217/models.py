@@ -4580,7 +4580,7 @@ class CreateRabbitMQBindingRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例Id
         :type InstanceId: str
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: Vhost名称
         :type VirtualHost: str
         :param _Source: 源exchange
         :type Source: str
@@ -4588,7 +4588,7 @@ class CreateRabbitMQBindingRequest(AbstractModel):
         :type DestinationType: str
         :param _Destination: 目标
         :type Destination: str
-        :param _RoutingKey: 绑定key
+        :param _RoutingKey: 路由键
         :type RoutingKey: str
         """
         self._InstanceId = None
@@ -4611,7 +4611,7 @@ class CreateRabbitMQBindingRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        """Vhost名称
         :rtype: str
         """
         return self._VirtualHost
@@ -4655,7 +4655,7 @@ class CreateRabbitMQBindingRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
-        """绑定key
+        """路由键
         :rtype: str
         """
         return self._RoutingKey
@@ -4692,7 +4692,7 @@ class CreateRabbitMQBindingResponse(AbstractModel):
         :param _InstanceId: 实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _VirtualHost: vhost参数
+        :param _VirtualHost: vhost名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHost: str
         :param _BindingId: 路由关系Id
@@ -4720,7 +4720,7 @@ class CreateRabbitMQBindingResponse(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost参数
+        """vhost名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7678,7 +7678,7 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 队列名称
+        :param _InstanceId: 实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _VirtualHost: vhost参数
@@ -7697,7 +7697,7 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """队列名称
+        """实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12726,7 +12726,7 @@ class DescribeRabbitMQBindingsRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例Id
         :type InstanceId: str
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: Vhost名称
         :type VirtualHost: str
         :param _Offset: 分页offset
         :type Offset: int
@@ -12763,7 +12763,7 @@ class DescribeRabbitMQBindingsRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        """Vhost名称
         :rtype: str
         """
         return self._VirtualHost
@@ -27298,6 +27298,8 @@ class RabbitMQClusterInfo(AbstractModel):
         :param _PayMode: 计费模式，0-后付费，1-预付费
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
+        :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
+        :type InstanceType: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -27322,6 +27324,7 @@ class RabbitMQClusterInfo(AbstractModel):
         self._MessageConsumeRate = None
         self._ClusterVersion = None
         self._PayMode = None
+        self._InstanceType = None
 
     @property
     def ClusterId(self):
@@ -27584,6 +27587,17 @@ class RabbitMQClusterInfo(AbstractModel):
     def PayMode(self, PayMode):
         self._PayMode = PayMode
 
+    @property
+    def InstanceType(self):
+        """实例类型，0 专享版、1 Serverless 版
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -27614,6 +27628,7 @@ class RabbitMQClusterInfo(AbstractModel):
         self._MessageConsumeRate = params.get("MessageConsumeRate")
         self._ClusterVersion = params.get("ClusterVersion")
         self._PayMode = params.get("PayMode")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28887,6 +28902,8 @@ class RabbitMQVipInstance(AbstractModel):
         :param _CreateTime: 创建时间，毫秒为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
+        :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
+        :type InstanceType: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -28907,6 +28924,7 @@ class RabbitMQVipInstance(AbstractModel):
         self._PublicAccessEndpoint = None
         self._Vpcs = None
         self._CreateTime = None
+        self._InstanceType = None
 
     @property
     def InstanceId(self):
@@ -29124,6 +29142,17 @@ class RabbitMQVipInstance(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def InstanceType(self):
+        """实例类型，0 专享版、1 Serverless 版
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -29150,6 +29179,7 @@ class RabbitMQVipInstance(AbstractModel):
                 obj._deserialize(item)
                 self._Vpcs.append(obj)
         self._CreateTime = params.get("CreateTime")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

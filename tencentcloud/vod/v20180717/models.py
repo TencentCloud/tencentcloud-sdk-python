@@ -14275,14 +14275,14 @@ class ComplexAdaptiveDynamicStreamingTaskStreamPara(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 自适应码流模版 ID。
+        :param _Definition: 自适应码流模板 ID。
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        """自适应码流模版 ID。
+        """自适应码流模板 ID。
         :rtype: int
         """
         return self._Definition

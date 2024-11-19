@@ -4147,6 +4147,167 @@ class BatchIpAccessControlItem(AbstractModel):
         
 
 
+class BatchOperateUserSignatureRulesRequest(AbstractModel):
+    """BatchOperateUserSignatureRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Status: 0:关闭，1:开启，2:仅观察
+        :type Status: str
+        :param _RuleIds: 如果SelectedAll为true，则表示反选的规则，否则表示手动选择的规则ID
+        :type RuleIds: list of str
+        :param _Reason: 仅观察原因
+        :type Reason: int
+        :param _SelectedAll: 是否全选
+        :type SelectedAll: bool
+        :param _Filters: 过滤
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Status = None
+        self._RuleIds = None
+        self._Reason = None
+        self._SelectedAll = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Status(self):
+        """0:关闭，1:开启，2:仅观察
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleIds(self):
+        """如果SelectedAll为true，则表示反选的规则，否则表示手动选择的规则ID
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def Reason(self):
+        """仅观察原因
+        :rtype: int
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def SelectedAll(self):
+        """是否全选
+        :rtype: bool
+        """
+        return self._SelectedAll
+
+    @SelectedAll.setter
+    def SelectedAll(self, SelectedAll):
+        self._SelectedAll = SelectedAll
+
+    @property
+    def Filters(self):
+        """过滤
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Status = params.get("Status")
+        self._RuleIds = params.get("RuleIds")
+        self._Reason = params.get("Reason")
+        self._SelectedAll = params.get("SelectedAll")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchOperateUserSignatureRulesResponse(AbstractModel):
+    """BatchOperateUserSignatureRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CommonRsp: 操作结果
+        :type CommonRsp: :class:`tencentcloud.waf.v20180125.models.CommonRspData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CommonRsp = None
+        self._RequestId = None
+
+    @property
+    def CommonRsp(self):
+        """操作结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CommonRspData`
+        """
+        return self._CommonRsp
+
+    @CommonRsp.setter
+    def CommonRsp(self, CommonRsp):
+        self._CommonRsp = CommonRsp
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CommonRsp") is not None:
+            self._CommonRsp = CommonRspData()
+            self._CommonRsp._deserialize(params.get("CommonRsp"))
+        self._RequestId = params.get("RequestId")
+
+
 class BotPkg(AbstractModel):
     """Bot资源信息
 
@@ -6125,6 +6286,57 @@ class ClbWafRegionItem(AbstractModel):
         self._Text = params.get("Text")
         self._Value = params.get("Value")
         self._Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonRspData(AbstractModel):
+    """通用返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 操作结果
+        :type Code: int
+        :param _Msg: 输出信息
+        :type Msg: str
+        """
+        self._Code = None
+        self._Msg = None
+
+    @property
+    def Code(self):
+        """操作结果
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        """输出信息
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17956,6 +18168,105 @@ class DescribeUserLevelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserSignatureClassRequest(AbstractModel):
+    """DescribeUserSignatureClass请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 查询域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        """查询域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserSignatureClassResponse(AbstractModel):
+    """DescribeUserSignatureClass返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 规则类型数量
+        :type Total: int
+        :param _RuleTypeList: 规则类型列表及信息
+        :type RuleTypeList: list of RuleType
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._RuleTypeList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """规则类型数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RuleTypeList(self):
+        """规则类型列表及信息
+        :rtype: list of RuleType
+        """
+        return self._RuleTypeList
+
+    @RuleTypeList.setter
+    def RuleTypeList(self, RuleTypeList):
+        self._RuleTypeList = RuleTypeList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("RuleTypeList") is not None:
+            self._RuleTypeList = []
+            for item in params.get("RuleTypeList"):
+                obj = RuleType()
+                obj._deserialize(item)
+                self._RuleTypeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserSignatureRuleRequest(AbstractModel):
     """DescribeUserSignatureRule请求参数结构体
 
@@ -18074,6 +18385,185 @@ class DescribeUserSignatureRuleRequest(AbstractModel):
 
 class DescribeUserSignatureRuleResponse(AbstractModel):
     """DescribeUserSignatureRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 规则总数
+        :type Total: int
+        :param _Rules: 规则列表
+        :type Rules: list of UserSignatureRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """规则总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Rules(self):
+        """规则列表
+        :rtype: list of UserSignatureRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = UserSignatureRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserSignatureRuleV2Request(AbstractModel):
+    """DescribeUserSignatureRuleV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要查询的域名
+        :type Domain: str
+        :param _Offset: 分页
+        :type Offset: int
+        :param _Limit: 每页容量
+        :type Limit: int
+        :param _By: 排序字段，支持 signature_id, modify_time
+        :type By: str
+        :param _Order: 排序方式
+        :type Order: str
+        :param _Filters: 筛选条件，支持 MainClassName，SubClassID ,CveID, Status, ID;  ID为规则id
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        """需要查询的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        """分页
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页容量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        """排序字段，支持 signature_id, modify_time
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        """排序方式
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        """筛选条件，支持 MainClassName，SubClassID ,CveID, Status, ID;  ID为规则id
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserSignatureRuleV2Response(AbstractModel):
+    """DescribeUserSignatureRuleV2返回参数结构体
 
     """
 
@@ -32775,6 +33265,119 @@ class RuleList(AbstractModel):
         self._Time = params.get("Time")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleType(AbstractModel):
+    """Tiga规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TypeID: 规则ID
+        :type TypeID: str
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Desc: 规则类型描述
+
+        :type Desc: str
+        :param _RuleTypeStatus: 规则类型状态，即类型生效开关，0：关闭，1：开启
+        :type RuleTypeStatus: int
+        :param _ActiveRuleCount: 类型下生效的规则数量
+        :type ActiveRuleCount: int
+        :param _TotalRuleCount: 类型下的规则总数量
+        :type TotalRuleCount: int
+        """
+        self._TypeID = None
+        self._Name = None
+        self._Desc = None
+        self._RuleTypeStatus = None
+        self._ActiveRuleCount = None
+        self._TotalRuleCount = None
+
+    @property
+    def TypeID(self):
+        """规则ID
+        :rtype: str
+        """
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
+
+    @property
+    def Name(self):
+        """规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        """规则类型描述
+
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def RuleTypeStatus(self):
+        """规则类型状态，即类型生效开关，0：关闭，1：开启
+        :rtype: int
+        """
+        return self._RuleTypeStatus
+
+    @RuleTypeStatus.setter
+    def RuleTypeStatus(self, RuleTypeStatus):
+        self._RuleTypeStatus = RuleTypeStatus
+
+    @property
+    def ActiveRuleCount(self):
+        """类型下生效的规则数量
+        :rtype: int
+        """
+        return self._ActiveRuleCount
+
+    @ActiveRuleCount.setter
+    def ActiveRuleCount(self, ActiveRuleCount):
+        self._ActiveRuleCount = ActiveRuleCount
+
+    @property
+    def TotalRuleCount(self):
+        """类型下的规则总数量
+        :rtype: int
+        """
+        return self._TotalRuleCount
+
+    @TotalRuleCount.setter
+    def TotalRuleCount(self, TotalRuleCount):
+        self._TotalRuleCount = TotalRuleCount
+
+
+    def _deserialize(self, params):
+        self._TypeID = params.get("TypeID")
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._RuleTypeStatus = params.get("RuleTypeStatus")
+        self._ActiveRuleCount = params.get("ActiveRuleCount")
+        self._TotalRuleCount = params.get("TotalRuleCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9348,11 +9348,14 @@ class CreateDhcpIpRequest(AbstractModel):
         :type DhcpIpName: str
         :param _SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数。总数不能超过64个，为了兼容性，当前参数必填。
         :type SecondaryPrivateIpAddressCount: int
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._VpcId = None
         self._SubnetId = None
         self._DhcpIpName = None
         self._SecondaryPrivateIpAddressCount = None
+        self._Tags = None
 
     @property
     def VpcId(self):
@@ -9398,12 +9401,29 @@ class CreateDhcpIpRequest(AbstractModel):
     def SecondaryPrivateIpAddressCount(self, SecondaryPrivateIpAddressCount):
         self._SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._DhcpIpName = params.get("DhcpIpName")
         self._SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10486,10 +10506,13 @@ class CreateLocalGatewayRequest(AbstractModel):
         :type VpcId: str
         :param _CdcId: CDC实例ID。
         :type CdcId: str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._LocalGatewayName = None
         self._VpcId = None
         self._CdcId = None
+        self._Tags = None
 
     @property
     def LocalGatewayName(self):
@@ -10524,11 +10547,28 @@ class CreateLocalGatewayRequest(AbstractModel):
     def CdcId(self, CdcId):
         self._CdcId = CdcId
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._LocalGatewayName = params.get("LocalGatewayName")
         self._VpcId = params.get("VpcId")
         self._CdcId = params.get("CdcId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11075,6 +11115,8 @@ NONEXTHOP：无下一跳；
         :type NextHopDestination: str
         :param _NetDetectDescription: 网络探测描述。
         :type NetDetectDescription: str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._VpcId = None
         self._SubnetId = None
@@ -11083,6 +11125,7 @@ NONEXTHOP：无下一跳；
         self._NextHopType = None
         self._NextHopDestination = None
         self._NetDetectDescription = None
+        self._Tags = None
 
     @property
     def VpcId(self):
@@ -11175,6 +11218,17 @@ NONEXTHOP：无下一跳；
     def NetDetectDescription(self, NetDetectDescription):
         self._NetDetectDescription = NetDetectDescription
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -11184,6 +11238,12 @@ NONEXTHOP：无下一跳；
         self._NextHopType = params.get("NextHopType")
         self._NextHopDestination = params.get("NextHopDestination")
         self._NetDetectDescription = params.get("NetDetectDescription")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11548,6 +11608,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :param _NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
         :type NetworkInterfaceDescription: str
         :param _SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
+配额数查询：[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)。
         :type SecondaryPrivateIpAddressCount: int
         :param _QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
         :type QosLevel: str
@@ -11621,6 +11682,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
     @property
     def SecondaryPrivateIpAddressCount(self):
         """新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
+配额数查询：[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)。
         :rtype: int
         """
         return self._SecondaryPrivateIpAddressCount
@@ -22817,6 +22879,8 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         :type UniformSocialCreditCode: str
         :param _LegalPerson: （模糊查询）法定代表人。
         :type LegalPerson: str
+        :param _LegalPersonId: （精确查询）法人身份证号。
+        :type LegalPersonId: str
         :param _IssuingAuthority: （模糊查询）发证机关。
         :type IssuingAuthority: str
         :param _BusinessAddress: （模糊查询）营业执照住所。
@@ -22849,6 +22913,7 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         self._Company = None
         self._UniformSocialCreditCode = None
         self._LegalPerson = None
+        self._LegalPersonId = None
         self._IssuingAuthority = None
         self._BusinessAddress = None
         self._PostCode = None
@@ -22917,6 +22982,17 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
     @LegalPerson.setter
     def LegalPerson(self, LegalPerson):
         self._LegalPerson = LegalPerson
+
+    @property
+    def LegalPersonId(self):
+        """（精确查询）法人身份证号。
+        :rtype: str
+        """
+        return self._LegalPersonId
+
+    @LegalPersonId.setter
+    def LegalPersonId(self, LegalPersonId):
+        self._LegalPersonId = LegalPersonId
 
     @property
     def IssuingAuthority(self):
@@ -23068,6 +23144,7 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         self._Company = params.get("Company")
         self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
         self._LegalPerson = params.get("LegalPerson")
+        self._LegalPersonId = params.get("LegalPersonId")
         self._IssuingAuthority = params.get("IssuingAuthority")
         self._BusinessAddress = params.get("BusinessAddress")
         self._PostCode = params.get("PostCode")
@@ -25555,7 +25632,7 @@ class DescribeIp6TranslatorsRequest(AbstractModel):
 <li> ip6-translator-id - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的唯一ID过滤,形如ip6-xxxxxxx。</li>
 <li> ip6-translator-vip6 - String - 是否必填：否 - （过滤条件）按照IPV6地址过滤。不支持模糊过滤。</li>
 <li> ip6-translator-name - String - 是否必填：否 - （过滤条件）按照IPV6转换实例名称过滤。不支持模糊过滤。</li>
-<li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"
+<li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
         :type Offset: int
@@ -25584,7 +25661,7 @@ class DescribeIp6TranslatorsRequest(AbstractModel):
 <li> ip6-translator-id - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的唯一ID过滤,形如ip6-xxxxxxx。</li>
 <li> ip6-translator-vip6 - String - 是否必填：否 - （过滤条件）按照IPV6地址过滤。不支持模糊过滤。</li>
 <li> ip6-translator-name - String - 是否必填：否 - （过滤条件）按照IPV6转换实例名称过滤。不支持模糊过滤。</li>
-<li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"
+<li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -35230,6 +35307,9 @@ class DhcpIp(AbstractModel):
         :type State: str
         :param _CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._DhcpIpId = None
         self._VpcId = None
@@ -35241,6 +35321,7 @@ class DhcpIp(AbstractModel):
         self._InstanceId = None
         self._State = None
         self._CreatedTime = None
+        self._TagSet = None
 
     @property
     def DhcpIpId(self):
@@ -35354,6 +35435,18 @@ class DhcpIp(AbstractModel):
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
 
+    @property
+    def TagSet(self):
+        """标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._DhcpIpId = params.get("DhcpIpId")
@@ -35366,6 +35459,12 @@ class DhcpIp(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._State = params.get("State")
         self._CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48171,7 +48270,7 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
         :type VpcId: str
         :param _EndPointServiceName: 终端节点服务名称。
         :type EndPointServiceName: str
-        :param _AutoAcceptFlag: 是否自动接受终端节点的连接请求。<ui><li>true：自动接受<li>false：不自动接受</ul>
+        :param _AutoAcceptFlag: 是否自动接受终端节点的连接请求。<ul><li>true：自动接受</li><li>false：不自动接受</li></ul>
         :type AutoAcceptFlag: bool
         :param _ServiceInstanceId: 后端服务的ID，比如lb-xxx。
         :type ServiceInstanceId: str
@@ -48217,7 +48316,7 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
 
     @property
     def AutoAcceptFlag(self):
-        """是否自动接受终端节点的连接请求。<ui><li>true：自动接受<li>false：不自动接受</ul>
+        """是否自动接受终端节点的连接请求。<ul><li>true：自动接受</li><li>false：不自动接受</li></ul>
         :rtype: bool
         """
         return self._AutoAcceptFlag
