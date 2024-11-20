@@ -129,6 +129,11 @@ def test_import_bda():
     from tencentcloud.bda.v20200324 import models
 
 
+def test_import_bh():
+    from tencentcloud.bh.v20230418 import bh_client
+    from tencentcloud.bh.v20230418 import models
+
+
 def test_import_bi():
     from tencentcloud.bi.v20220105 import bi_client
     from tencentcloud.bi.v20220105 import models

@@ -50,7 +50,9 @@ class BillingClient(AbstractClient):
 
 
     def CreateSavingPlanOrder(self, request):
-        """创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
+        """接口迁移到其他业务
+
+        创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
 
         :param request: Request instance for CreateSavingPlanOrder.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateSavingPlanOrderRequest`
@@ -931,7 +933,9 @@ class BillingClient(AbstractClient):
 
 
     def DescribeSavingPlanOverview(self, request):
-        """查用当前用户明细节省计划总览查询时段内的使用情况
+        """接口迁移到其他业务
+
+        查用当前用户明细节省计划总览查询时段内的使用情况
 
         :param request: Request instance for DescribeSavingPlanOverview.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanOverviewRequest`
@@ -977,7 +981,9 @@ class BillingClient(AbstractClient):
 
 
     def DescribeSavingPlanUsage(self, request):
-        """查用当前用户明细节省计划查询时段内的使用情况
+        """接口迁移到其他业务
+
+        查用当前用户明细节省计划查询时段内的使用情况
 
         :param request: Request instance for DescribeSavingPlanUsage.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanUsageRequest`

@@ -1266,6 +1266,75 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCasterList(self, request):
+        """该接口用来查询账号下所有的导播台列表
+
+        :param request: Request instance for DescribeCasterList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCasterTransitionTypes(self, request):
+        """该接口用来获取所有的转场名称及其对应的素材url。
+
+        :param request: Request instance for DescribeCasterTransitionTypes.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterTransitionTypesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterTransitionTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterTransitionTypes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterTransitionTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCasterUserStatus(self, request):
+        """本接口用来查询当前APPID导播台业务状态
+
+        :param request: Request instance for DescribeCasterUserStatus.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterUserStatusRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterUserStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterUserStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterUserStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConcurrentRecordStreamNum(self, request):
         """查询并发录制路数，对慢直播和普通直播适用。
 

@@ -1731,6 +1731,190 @@ class CancelCommonMixStreamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CasterBriefInfo(AbstractModel):
+    """导播台简略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _CasterName: 导播台名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CasterName: str
+        :param _Description: 导播台的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _StartBillingTime: 开始计费时间，值为unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartBillingTime: int
+        :param _StopBillingTime: 结束计费时间，值为unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StopBillingTime: int
+        :param _CreateTime: 创建时间，值为unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _Status: 导播台状态
+0：停止状态，无预监，无输出
+1：无预监，有输出状态（非法状态）
+2：有预监，无输出状态
+3：有预监，有输出状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _ExpireTime: 导播台的过期时间，值为-1或unix时间戳。
+当值为-1时，代表永不过期。
+当值为特定unix时间戳时，代表过期时间为对应的时间，导播台在该时间自动停止。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _FeeType: 计费字段，该字段暂无作用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeType: int
+        """
+        self._CasterId = None
+        self._CasterName = None
+        self._Description = None
+        self._StartBillingTime = None
+        self._StopBillingTime = None
+        self._CreateTime = None
+        self._Status = None
+        self._ExpireTime = None
+        self._FeeType = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def CasterName(self):
+        """导播台名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CasterName
+
+    @CasterName.setter
+    def CasterName(self, CasterName):
+        self._CasterName = CasterName
+
+    @property
+    def Description(self):
+        """导播台的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def StartBillingTime(self):
+        """开始计费时间，值为unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StartBillingTime
+
+    @StartBillingTime.setter
+    def StartBillingTime(self, StartBillingTime):
+        self._StartBillingTime = StartBillingTime
+
+    @property
+    def StopBillingTime(self):
+        """结束计费时间，值为unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StopBillingTime
+
+    @StopBillingTime.setter
+    def StopBillingTime(self, StopBillingTime):
+        self._StopBillingTime = StopBillingTime
+
+    @property
+    def CreateTime(self):
+        """创建时间，值为unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        """导播台状态
+0：停止状态，无预监，无输出
+1：无预监，有输出状态（非法状态）
+2：有预监，无输出状态
+3：有预监，有输出状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpireTime(self):
+        """导播台的过期时间，值为-1或unix时间戳。
+当值为-1时，代表永不过期。
+当值为特定unix时间戳时，代表过期时间为对应的时间，导播台在该时间自动停止。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def FeeType(self):
+        """计费字段，该字段暂无作用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._CasterName = params.get("CasterName")
+        self._Description = params.get("Description")
+        self._StartBillingTime = params.get("StartBillingTime")
+        self._StopBillingTime = params.get("StopBillingTime")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._ExpireTime = params.get("ExpireTime")
+        self._FeeType = params.get("FeeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CdnPlayStatData(AbstractModel):
     """下行播放统计指标
 
@@ -9764,6 +9948,203 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._TotalNum = params.get("TotalNum")
         self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCasterListRequest(AbstractModel):
+    """DescribeCasterList请求参数结构体
+
+    """
+
+
+class DescribeCasterListResponse(AbstractModel):
+    """DescribeCasterList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterList: 用户对应的导播台简要信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CasterList: list of CasterBriefInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CasterList = None
+        self._RequestId = None
+
+    @property
+    def CasterList(self):
+        """用户对应的导播台简要信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CasterBriefInfo
+        """
+        return self._CasterList
+
+    @CasterList.setter
+    def CasterList(self, CasterList):
+        self._CasterList = CasterList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CasterList") is not None:
+            self._CasterList = []
+            for item in params.get("CasterList"):
+                obj = CasterBriefInfo()
+                obj._deserialize(item)
+                self._CasterList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCasterTransitionTypesRequest(AbstractModel):
+    """DescribeCasterTransitionTypes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterTransitionTypesResponse(AbstractModel):
+    """DescribeCasterTransitionTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransitionTypes: 转场信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransitionTypes: list of TransitionTypeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TransitionTypes = None
+        self._RequestId = None
+
+    @property
+    def TransitionTypes(self):
+        """转场信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TransitionTypeInfo
+        """
+        return self._TransitionTypes
+
+    @TransitionTypes.setter
+    def TransitionTypes(self, TransitionTypes):
+        self._TransitionTypes = TransitionTypes
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TransitionTypes") is not None:
+            self._TransitionTypes = []
+            for item in params.get("TransitionTypes"):
+                obj = TransitionTypeInfo()
+                obj._deserialize(item)
+                self._TransitionTypes.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCasterUserStatusRequest(AbstractModel):
+    """DescribeCasterUserStatus请求参数结构体
+
+    """
+
+
+class DescribeCasterUserStatusResponse(AbstractModel):
+    """DescribeCasterUserStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserStatus: 0: 未开通导播台
+1:开通了导播台，且处于正常状态
+2:开通了导播台，但处于欠费状态
+3:开通了导播台，但处于封禁状态
+        :type UserStatus: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserStatus = None
+        self._RequestId = None
+
+    @property
+    def UserStatus(self):
+        """0: 未开通导播台
+1:开通了导播台，且处于正常状态
+2:开通了导播台，但处于欠费状态
+3:开通了导播台，但处于封禁状态
+        :rtype: int
+        """
+        return self._UserStatus
+
+    @UserStatus.setter
+    def UserStatus(self, UserStatus):
+        self._UserStatus = UserStatus
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserStatus = params.get("UserStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -32656,6 +33037,78 @@ topspeed_H265 =》极速高清-H265。
         self._Duration = params.get("Duration")
         self._ModuleCodec = params.get("ModuleCodec")
         self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransitionTypeInfo(AbstractModel):
+    """转场信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransitionType: 转场名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransitionType: str
+        :param _SourceUrl: 素材url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceUrl: str
+        :param _Index: 转场的下标，可用来排序，从1开始递增
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: int
+        """
+        self._TransitionType = None
+        self._SourceUrl = None
+        self._Index = None
+
+    @property
+    def TransitionType(self):
+        """转场名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TransitionType
+
+    @TransitionType.setter
+    def TransitionType(self, TransitionType):
+        self._TransitionType = TransitionType
+
+    @property
+    def SourceUrl(self):
+        """素材url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceUrl
+
+    @SourceUrl.setter
+    def SourceUrl(self, SourceUrl):
+        self._SourceUrl = SourceUrl
+
+    @property
+    def Index(self):
+        """转场的下标，可用来排序，从1开始递增
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._TransitionType = params.get("TransitionType")
+        self._SourceUrl = params.get("SourceUrl")
+        self._Index = params.get("Index")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

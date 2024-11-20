@@ -2122,7 +2122,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyReplicationGroup(self, request):
-        """修改复制组信息
+        """本接口（ModifyReplicationGroup）用于修改复制组信息。
 
         :param request: Request instance for ModifyReplicationGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyReplicationGroupRequest`

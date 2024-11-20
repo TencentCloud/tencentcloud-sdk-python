@@ -16855,7 +16855,7 @@ class DescribeDBPriceRequest(AbstractModel):
         :type PayType: str
         :param _ProtectMode: 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
         :type ProtectMode: int
-        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - 单节点云盘版实例。 不指定则默认为通用型实例。
+        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - 单节点云盘版实例。 "CLOUD_NATIVE_CLUSTER" - 集群版标准型， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。   不指定则默认为通用型实例。
         :type DeviceType: str
         :param _InstanceNodes: 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要询价三节点实例， 请将该值设置为3。其余主实例该值默认为2。
         :type InstanceNodes: int
@@ -16865,6 +16865,8 @@ class DescribeDBPriceRequest(AbstractModel):
         :type InstanceId: str
         :param _Ladder: 按量计费阶梯。仅PayType=HOUR_PAID有效，支持值包括：1，2，3。阶梯时长见https://cloud.tencent.com/document/product/236/18335。
         :type Ladder: int
+        :param _DiskType: 磁盘类型，查询集群版、单节点云盘版实例价格可以指定该参数。支持值包括： "CLOUD_SSD" - SSD云硬盘， "CLOUD_HSSD" - 增强型SSD云硬盘。  默认为 SSD云硬盘。
+        :type DiskType: str
         """
         self._Period = None
         self._Zone = None
@@ -16879,6 +16881,7 @@ class DescribeDBPriceRequest(AbstractModel):
         self._Cpu = None
         self._InstanceId = None
         self._Ladder = None
+        self._DiskType = None
 
     @property
     def Period(self):
@@ -16970,7 +16973,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - 单节点云盘版实例。 不指定则默认为通用型实例。
+        """实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - 单节点云盘版实例。 "CLOUD_NATIVE_CLUSTER" - 集群版标准型， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。   不指定则默认为通用型实例。
         :rtype: str
         """
         return self._DeviceType
@@ -17023,6 +17026,17 @@ class DescribeDBPriceRequest(AbstractModel):
     def Ladder(self, Ladder):
         self._Ladder = Ladder
 
+    @property
+    def DiskType(self):
+        """磁盘类型，查询集群版、单节点云盘版实例价格可以指定该参数。支持值包括： "CLOUD_SSD" - SSD云硬盘， "CLOUD_HSSD" - 增强型SSD云硬盘。  默认为 SSD云硬盘。
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
 
     def _deserialize(self, params):
         self._Period = params.get("Period")
@@ -17038,6 +17052,7 @@ class DescribeDBPriceRequest(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._InstanceId = params.get("InstanceId")
         self._Ladder = params.get("Ladder")
+        self._DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

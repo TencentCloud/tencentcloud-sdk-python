@@ -828,32 +828,27 @@ class FusionUltraParam(AbstractModel):
 取值范围：0-1之间。默认取值0.7。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarpRadio: float
         :param _EnhanceRadio: 人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
 取值范围：0-1之间。默认取值1。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnhanceRadio: float
         :param _MpRadio: 磨皮强度。当生成脸的图像面部显脏时，可进行设置。
 取值范围：0-1之间。默认取值1。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type MpRadio: float
         :param _BlurRadio: 人脸模糊开关（暂不支持）
 当生成人脸比较清晰时，将人脸模糊到接近模板的清晰度的程度
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlurRadio: float
         :param _TeethEnhanceRadio: 牙齿增强开关，默认取值为1
 牙齿增强，修复牙齿。当生成牙齿不好（如牙齿裂开）可以打开此开关
 0：牙齿增强关闭
 1：牙齿增强打开
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type TeethEnhanceRadio: float
         """
         self._WarpRadio = None
@@ -868,7 +863,6 @@ class FusionUltraParam(AbstractModel):
 取值范围：0-1之间。默认取值0.7。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._WarpRadio
@@ -883,7 +877,6 @@ class FusionUltraParam(AbstractModel):
 取值范围：0-1之间。默认取值1。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._EnhanceRadio
@@ -898,7 +891,6 @@ class FusionUltraParam(AbstractModel):
 取值范围：0-1之间。默认取值1。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MpRadio
@@ -913,7 +905,6 @@ class FusionUltraParam(AbstractModel):
 当生成人脸比较清晰时，将人脸模糊到接近模板的清晰度的程度
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BlurRadio
@@ -929,7 +920,6 @@ class FusionUltraParam(AbstractModel):
 0：牙齿增强关闭
 1：牙齿增强打开
 该参数仅对SwapModelType（模型类型）取值1-5生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TeethEnhanceRadio
@@ -1339,7 +1329,6 @@ class PublicMaterialInfos(AbstractModel):
         :param _MaterialName: 素材名
         :type MaterialName: str
         :param _AuditResult: 审核原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuditResult: str
         """
         self._MaterialId = None
@@ -1432,7 +1421,6 @@ class PublicMaterialInfos(AbstractModel):
     @property
     def AuditResult(self):
         """审核原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuditResult

@@ -5109,6 +5109,106 @@ class NodePool(AbstractModel):
         
 
 
+class RebootMachinesRequest(AbstractModel):
+    """RebootMachines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _MachineNames: 节点名字列表，一次请求，传入节点数量上限为100个
+        :type MachineNames: list of str
+        :param _StopType: 实例的关闭模式。取值范围：
+soft_first：表示在正常关闭失败后进行强制关闭
+hard：直接强制关闭
+soft：仅软关机默认取值：soft。
+        :type StopType: str
+        """
+        self._ClusterId = None
+        self._MachineNames = None
+        self._StopType = None
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MachineNames(self):
+        """节点名字列表，一次请求，传入节点数量上限为100个
+        :rtype: list of str
+        """
+        return self._MachineNames
+
+    @MachineNames.setter
+    def MachineNames(self, MachineNames):
+        self._MachineNames = MachineNames
+
+    @property
+    def StopType(self):
+        """实例的关闭模式。取值范围：
+soft_first：表示在正常关闭失败后进行强制关闭
+hard：直接强制关闭
+soft：仅软关机默认取值：soft。
+        :rtype: str
+        """
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MachineNames = params.get("MachineNames")
+        self._StopType = params.get("StopType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebootMachinesResponse(AbstractModel):
+    """RebootMachines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RegularNodeInfo(AbstractModel):
     """普通节点信息
 
@@ -5459,6 +5559,185 @@ class SortBy(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartMachinesRequest(AbstractModel):
+    """StartMachines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _MachineNames: 节点名字列表，一次请求，传入节点数量上限为100个
+        :type MachineNames: list of str
+        """
+        self._ClusterId = None
+        self._MachineNames = None
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MachineNames(self):
+        """节点名字列表，一次请求，传入节点数量上限为100个
+        :rtype: list of str
+        """
+        return self._MachineNames
+
+    @MachineNames.setter
+    def MachineNames(self, MachineNames):
+        self._MachineNames = MachineNames
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MachineNames = params.get("MachineNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartMachinesResponse(AbstractModel):
+    """StartMachines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopMachinesRequest(AbstractModel):
+    """StopMachines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _MachineNames: 节点名字列表，一次请求，传入节点数量上限为100个
+        :type MachineNames: list of str
+        :param _StopType: 实例的关闭模式。取值范围：
+soft_first：表示在正常关闭失败后进行强制关闭
+hard：直接强制关闭
+soft：仅软关机
+        :type StopType: str
+        """
+        self._ClusterId = None
+        self._MachineNames = None
+        self._StopType = None
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MachineNames(self):
+        """节点名字列表，一次请求，传入节点数量上限为100个
+        :rtype: list of str
+        """
+        return self._MachineNames
+
+    @MachineNames.setter
+    def MachineNames(self, MachineNames):
+        self._MachineNames = MachineNames
+
+    @property
+    def StopType(self):
+        """实例的关闭模式。取值范围：
+soft_first：表示在正常关闭失败后进行强制关闭
+hard：直接强制关闭
+soft：仅软关机
+        :rtype: str
+        """
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MachineNames = params.get("MachineNames")
+        self._StopType = params.get("StopType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopMachinesResponse(AbstractModel):
+    """StopMachines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SuperNodeInfo(AbstractModel):

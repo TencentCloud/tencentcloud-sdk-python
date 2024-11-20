@@ -27,7 +27,7 @@ class AddClusterStorageOptionRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID。
         :type ClusterId: str
-        :param _StorageOption: 集群存储选项。
+        :param _StorageOption: 集群存储选项；集群已存在的节点和新增节点都会挂载此存储。
         :type StorageOption: :class:`tencentcloud.thpc.v20230321.models.StorageOption`
         """
         self._ClusterId = None
@@ -46,7 +46,7 @@ class AddClusterStorageOptionRequest(AbstractModel):
 
     @property
     def StorageOption(self):
-        """集群存储选项。
+        """集群存储选项；集群已存在的节点和新增节点都会挂载此存储。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.StorageOption`
         """
         return self._StorageOption

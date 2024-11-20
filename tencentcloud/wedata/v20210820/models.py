@@ -12545,15 +12545,18 @@ class CreateTaskFolderRequest(AbstractModel):
         :type ProjectId: str
         :param _FolderName: 文件夹名称
         :type FolderName: str
-        :param _WorkflowId: 工作量ID
+        :param _WorkflowId: 工作流ID
         :type WorkflowId: str
         :param _ParentFolderId: 父文件夹ID
         :type ParentFolderId: str
+        :param _TaskNodeType: 目录分类
+        :type TaskNodeType: str
         """
         self._ProjectId = None
         self._FolderName = None
         self._WorkflowId = None
         self._ParentFolderId = None
+        self._TaskNodeType = None
 
     @property
     def ProjectId(self):
@@ -12579,7 +12582,7 @@ class CreateTaskFolderRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
-        """工作量ID
+        """工作流ID
         :rtype: str
         """
         return self._WorkflowId
@@ -12599,12 +12602,24 @@ class CreateTaskFolderRequest(AbstractModel):
     def ParentFolderId(self, ParentFolderId):
         self._ParentFolderId = ParentFolderId
 
+    @property
+    def TaskNodeType(self):
+        """目录分类
+        :rtype: str
+        """
+        return self._TaskNodeType
+
+    @TaskNodeType.setter
+    def TaskNodeType(self, TaskNodeType):
+        self._TaskNodeType = TaskNodeType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._FolderName = params.get("FolderName")
         self._WorkflowId = params.get("WorkflowId")
         self._ParentFolderId = params.get("ParentFolderId")
+        self._TaskNodeType = params.get("TaskNodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

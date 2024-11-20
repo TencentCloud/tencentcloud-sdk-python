@@ -7508,8 +7508,10 @@ class ClassicLinkInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: VPC实例ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _InstanceId: 云服务器实例唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         """
         self._VpcId = None
@@ -7518,6 +7520,7 @@ class ClassicLinkInstance(AbstractModel):
     @property
     def VpcId(self):
         """VPC实例ID
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -7529,6 +7532,7 @@ class ClassicLinkInstance(AbstractModel):
     @property
     def InstanceId(self):
         """云服务器实例唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -9163,14 +9167,14 @@ class CreateDefaultSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+        :param _ProjectId: 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
         :type ProjectId: str
         """
         self._ProjectId = None
 
     @property
     def ProjectId(self):
-        """项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+        """项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
         :rtype: str
         """
         return self._ProjectId
@@ -29235,11 +29239,14 @@ LOCAL_GATEWAY：本地网关。
         :type Offset: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
+        :param _NeedRouterInfo: 是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+        :type NeedRouterInfo: bool
         """
         self._Filters = None
         self._RouteTableIds = None
         self._Offset = None
         self._Limit = None
+        self._NeedRouterInfo = None
 
     @property
     def Filters(self):
@@ -29305,6 +29312,17 @@ LOCAL_GATEWAY：本地网关。
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def NeedRouterInfo(self):
+        """是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+        :rtype: bool
+        """
+        return self._NeedRouterInfo
+
+    @NeedRouterInfo.setter
+    def NeedRouterInfo(self, NeedRouterInfo):
+        self._NeedRouterInfo = NeedRouterInfo
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -29316,6 +29334,7 @@ LOCAL_GATEWAY：本地网关。
         self._RouteTableIds = params.get("RouteTableIds")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._NeedRouterInfo = params.get("NeedRouterInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31836,10 +31855,7 @@ class DescribeTrafficPackagesRequest(AbstractModel):
         r"""
         :param _TrafficPackageIds: 共享流量包ID，支持批量
         :type TrafficPackageIds: list of str
-        :param _Filters: 每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：
-<li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li>
-<li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li>
-<li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
+        :param _Filters: 每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：<li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li><li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li><li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
         :type Filters: list of Filter
         :param _Offset: 分页参数
         :type Offset: int
@@ -31864,10 +31880,7 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：
-<li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li>
-<li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li>
-<li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
+        """每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：<li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li><li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li><li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -33538,7 +33551,7 @@ class DescribeVpcsRequest(AbstractModel):
 <li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>
   **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
 <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-<li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调。</li>
+<li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: str
@@ -33573,7 +33586,7 @@ class DescribeVpcsRequest(AbstractModel):
 <li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>
   **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
 <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-<li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调。</li>
+<li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -47560,7 +47573,7 @@ class ModifyServiceTemplateAttributeRequest(AbstractModel):
         :type ServiceTemplateId: str
         :param _ServiceTemplateName: 协议端口模板名称。
         :type ServiceTemplateName: str
-        :param _Services: 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
+        :param _Services: 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。协议后面的端口部分长度不能超过128个字符。
         :type Services: list of str
         :param _ServicesExtra: 支持添加备注的协议端口信息，支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
         :type ServicesExtra: list of ServicesInfo
@@ -47594,7 +47607,7 @@ class ModifyServiceTemplateAttributeRequest(AbstractModel):
 
     @property
     def Services(self):
-        """支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
+        """支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。协议后面的端口部分长度不能超过128个字符。
         :rtype: list of str
         """
         return self._Services
@@ -57152,8 +57165,10 @@ class RouteTableAssociation(AbstractModel):
     def __init__(self):
         r"""
         :param _SubnetId: 子网实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _RouteTableId: 路由表实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableId: str
         """
         self._SubnetId = None
@@ -57162,6 +57177,7 @@ class RouteTableAssociation(AbstractModel):
     @property
     def SubnetId(self):
         """子网实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -57173,6 +57189,7 @@ class RouteTableAssociation(AbstractModel):
     @property
     def RouteTableId(self):
         """路由表实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RouteTableId
