@@ -7227,8 +7227,11 @@ class TieringDetailInfo(AbstractModel):
         :param _TieringSizeInBytes: 低频存储容量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TieringSizeInBytes: int
+        :param _SecondaryTieringSizeInBytes: 冷存储容量
+        :type SecondaryTieringSizeInBytes: int
         """
         self._TieringSizeInBytes = None
+        self._SecondaryTieringSizeInBytes = None
 
     @property
     def TieringSizeInBytes(self):
@@ -7242,9 +7245,21 @@ class TieringDetailInfo(AbstractModel):
     def TieringSizeInBytes(self, TieringSizeInBytes):
         self._TieringSizeInBytes = TieringSizeInBytes
 
+    @property
+    def SecondaryTieringSizeInBytes(self):
+        """冷存储容量
+        :rtype: int
+        """
+        return self._SecondaryTieringSizeInBytes
+
+    @SecondaryTieringSizeInBytes.setter
+    def SecondaryTieringSizeInBytes(self, SecondaryTieringSizeInBytes):
+        self._SecondaryTieringSizeInBytes = SecondaryTieringSizeInBytes
+
 
     def _deserialize(self, params):
         self._TieringSizeInBytes = params.get("TieringSizeInBytes")
+        self._SecondaryTieringSizeInBytes = params.get("SecondaryTieringSizeInBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

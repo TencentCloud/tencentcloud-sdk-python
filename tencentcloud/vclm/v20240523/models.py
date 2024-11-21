@@ -97,7 +97,7 @@ class ConfirmVideoTranslateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 视频翻译任务 ID
+        :param _JobId: 视频转译任务 ID
         :type JobId: str
         :param _TranslateResults: 待确认文本
         :type TranslateResults: list of TranslateResult
@@ -107,7 +107,7 @@ class ConfirmVideoTranslateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """视频翻译任务 ID
+        """视频转译任务 ID
         :rtype: str
         """
         return self._JobId
@@ -153,15 +153,15 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 视频翻译任务 ID
+        :param _JobId: 视频转译任务 ID。
         :type JobId: str
-        :param _TaskId: 音频转换任务 ID
+        :param _TaskId: 音频转译任务 ID。
         :type TaskId: str
-        :param _SessionId: 音频翻译结果确认 session	
+        :param _SessionId: 音频转译结果确认 session。	
         :type SessionId: str
-        :param _Status: 视频转译任务状态	
+        :param _Status: 该字段与 DescribeVideoTranslateJob 接口的 Status 功能相同，均表示任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
         :type Status: int
-        :param _Message: 视频转译任务信息	
+        :param _Message: 视频转译任务信息。	
         :type Message: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -175,7 +175,7 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """视频翻译任务 ID
+        """视频转译任务 ID。
         :rtype: str
         """
         return self._JobId
@@ -186,7 +186,7 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """音频转换任务 ID
+        """音频转译任务 ID。
         :rtype: str
         """
         return self._TaskId
@@ -197,7 +197,7 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """音频翻译结果确认 session	
+        """音频转译结果确认 session。	
         :rtype: str
         """
         return self._SessionId
@@ -208,7 +208,7 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def Status(self):
-        """视频转译任务状态	
+        """该字段与 DescribeVideoTranslateJob 接口的 Status 功能相同，均表示任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
         :rtype: int
         """
         return self._Status
@@ -219,7 +219,7 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def Message(self):
-        """视频转译任务信息	
+        """视频转译任务信息。	
         :rtype: str
         """
         return self._Message
@@ -595,14 +595,19 @@ class DescribeVideoStylizationJobResponse(AbstractModel):
         r"""
         :param _JobId: 任务ID。
         :type JobId: str
-        :param _StatusCode: 任务状态码：
-JobInit:  "初始化中"
-JobModerationFailed: "审核失败",
-JobRunning: "处理中",
-JobFailed: "处理失败",
+        :param _StatusCode: 任务状态码。取值说明：
+JobInit:  "初始化中"；
+JobModerationFailed: "审核失败"；
+JobRunning: "处理中"；
+JobFailed: "处理失败"；
 JobSuccess: "处理完成"。
         :type StatusCode: str
-        :param _StatusMsg: 任务状态描述。
+        :param _StatusMsg: 任务状态描述。取值说明：
+JobInit:  "初始化中"；
+JobModerationFailed: "审核失败"；
+JobRunning: "处理中"；
+JobFailed: "处理失败"；
+JobSuccess: "处理完成"。
         :type StatusMsg: str
         :param _ResultVideoUrl: 处理结果视频Url。URL有效期为24小时。
         :type ResultVideoUrl: str
@@ -628,11 +633,11 @@ JobSuccess: "处理完成"。
 
     @property
     def StatusCode(self):
-        """任务状态码：
-JobInit:  "初始化中"
-JobModerationFailed: "审核失败",
-JobRunning: "处理中",
-JobFailed: "处理失败",
+        """任务状态码。取值说明：
+JobInit:  "初始化中"；
+JobModerationFailed: "审核失败"；
+JobRunning: "处理中"；
+JobFailed: "处理失败"；
 JobSuccess: "处理完成"。
         :rtype: str
         """
@@ -644,7 +649,12 @@ JobSuccess: "处理完成"。
 
     @property
     def StatusMsg(self):
-        """任务状态描述。
+        """任务状态描述。取值说明：
+JobInit:  "初始化中"；
+JobModerationFailed: "审核失败"；
+JobRunning: "处理中"；
+JobFailed: "处理失败"；
+JobSuccess: "处理完成"。
         :rtype: str
         """
         return self._StatusMsg
@@ -727,31 +737,32 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobStatus: 任务状态。 1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。	
+        :param _JobStatus: 任务状态。0: 任务初始化。 1：音频转译中。 2：音频转译失败。 3：音频转译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频转译中。 7：视频转译失败。 8：视频转译成功。	
         :type JobStatus: int
-        :param _JobErrorCode: 任务错误码。	
+        :param _JobErrorCode: 本次任务出错的错误码，用来定位问题原因。
         :type JobErrorCode: str
-        :param _JobErrorMsg: 任务错误信息。	
+        :param _JobErrorMsg: 任务错误信息，错误码出现的原因。
         :type JobErrorMsg: str
-        :param _ResultVideoUrl: 视频翻译结果。	
+        :param _ResultVideoUrl: 视频转译生成结果视频url，有效期1天。当JobStatus为8时，该字段返回视频Url。
         :type ResultVideoUrl: str
-        :param _TranslateResults: 音频翻译结果。	
+        :param _TranslateResults: 音频转译后分句翻译内容，包含分句起始时间、源识别文本以及翻译后文本。
+当JobStatus为3、4时，该字段返回分句翻译数据。
         :type TranslateResults: list of TranslateResult
-        :param _JobConfirm: 是否需要确认翻译结果。0：不需要，1：需要	
+        :param _JobConfirm: 是否需要确认翻译结果。0：不需要，1：需要。	
         :type JobConfirm: int
-        :param _JobAudioTaskId: 音频任务 ID	
+        :param _JobAudioTaskId: 音频任务 ID。	
         :type JobAudioTaskId: str
-        :param _JobVideoModerationId: 视频审核任务ID	
+        :param _JobVideoModerationId: 视频审核任务ID。
         :type JobVideoModerationId: str
-        :param _JobAudioModerationId: 音频审核任务 ID	
+        :param _JobAudioModerationId: 音频审核任务 ID。
         :type JobAudioModerationId: str
-        :param _JobVideoId: 口型驱动任务 ID	
+        :param _JobVideoId: 口型驱动任务 ID。
         :type JobVideoId: str
-        :param _OriginalVideoUrl: 视频素材原始 URL	
+        :param _OriginalVideoUrl: 视频素材原始 URL。
         :type OriginalVideoUrl: str
-        :param _AsrTimestamps: 文本片段及其时间戳	
+        :param _AsrTimestamps: 文本片段及其时间戳。
         :type AsrTimestamps: list of AsrTimestamps
-        :param _JobSubmitReqId: 提交视频翻译任务时的 requestId	
+        :param _JobSubmitReqId: 提交视频转译任务时的 requestId。
         :type JobSubmitReqId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -773,7 +784,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobStatus(self):
-        """任务状态。 1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。	
+        """任务状态。0: 任务初始化。 1：音频转译中。 2：音频转译失败。 3：音频转译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频转译中。 7：视频转译失败。 8：视频转译成功。	
         :rtype: int
         """
         return self._JobStatus
@@ -784,7 +795,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobErrorCode(self):
-        """任务错误码。	
+        """本次任务出错的错误码，用来定位问题原因。
         :rtype: str
         """
         return self._JobErrorCode
@@ -795,7 +806,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobErrorMsg(self):
-        """任务错误信息。	
+        """任务错误信息，错误码出现的原因。
         :rtype: str
         """
         return self._JobErrorMsg
@@ -806,7 +817,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def ResultVideoUrl(self):
-        """视频翻译结果。	
+        """视频转译生成结果视频url，有效期1天。当JobStatus为8时，该字段返回视频Url。
         :rtype: str
         """
         return self._ResultVideoUrl
@@ -817,7 +828,8 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def TranslateResults(self):
-        """音频翻译结果。	
+        """音频转译后分句翻译内容，包含分句起始时间、源识别文本以及翻译后文本。
+当JobStatus为3、4时，该字段返回分句翻译数据。
         :rtype: list of TranslateResult
         """
         return self._TranslateResults
@@ -828,7 +840,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobConfirm(self):
-        """是否需要确认翻译结果。0：不需要，1：需要	
+        """是否需要确认翻译结果。0：不需要，1：需要。	
         :rtype: int
         """
         return self._JobConfirm
@@ -839,7 +851,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobAudioTaskId(self):
-        """音频任务 ID	
+        """音频任务 ID。	
         :rtype: str
         """
         return self._JobAudioTaskId
@@ -850,7 +862,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobVideoModerationId(self):
-        """视频审核任务ID	
+        """视频审核任务ID。
         :rtype: str
         """
         return self._JobVideoModerationId
@@ -861,7 +873,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobAudioModerationId(self):
-        """音频审核任务 ID	
+        """音频审核任务 ID。
         :rtype: str
         """
         return self._JobAudioModerationId
@@ -872,7 +884,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobVideoId(self):
-        """口型驱动任务 ID	
+        """口型驱动任务 ID。
         :rtype: str
         """
         return self._JobVideoId
@@ -883,7 +895,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def OriginalVideoUrl(self):
-        """视频素材原始 URL	
+        """视频素材原始 URL。
         :rtype: str
         """
         return self._OriginalVideoUrl
@@ -894,7 +906,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def AsrTimestamps(self):
-        """文本片段及其时间戳	
+        """文本片段及其时间戳。
         :rtype: list of AsrTimestamps
         """
         return self._AsrTimestamps
@@ -905,7 +917,7 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobSubmitReqId(self):
-        """提交视频翻译任务时的 requestId	
+        """提交视频转译任务时的 requestId。
         :rtype: str
         """
         return self._JobSubmitReqId
@@ -1522,7 +1534,11 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StyleId: 风格ID，取值说明：2d_anime 2D动漫；3d_cartoon 3D卡通；3d_china 3D国潮；pixel_art	像素风。
+        :param _StyleId: 风格ID。取值说明：
+2d_anime：2D动漫；
+3d_cartoon：3D卡通；
+3d_china：3D国潮；
+pixel_art：像素风。
         :type StyleId: str
         :param _VideoUrl: 输入视频URL。视频要求：
 - 视频格式：mp4、mov；
@@ -1531,9 +1547,11 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 - 视频大小：不超过200M；
 - 视频FPS：15～60fps。
         :type VideoUrl: str
-        :param _StyleStrength: 风格化强度 可选参数["low","medium","high"] 
-"low":风格化强度弱,"medium":"风格化强度中等","high":"风格化强度强" 
-默认为medium
+        :param _StyleStrength: 风格化强度。取值说明：
+low：风格化强度弱；
+medium：风格化强度中等；
+high：风格化强度强。
+默认值为medium。
         :type StyleStrength: str
         """
         self._StyleId = None
@@ -1542,7 +1560,11 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
     @property
     def StyleId(self):
-        """风格ID，取值说明：2d_anime 2D动漫；3d_cartoon 3D卡通；3d_china 3D国潮；pixel_art	像素风。
+        """风格ID。取值说明：
+2d_anime：2D动漫；
+3d_cartoon：3D卡通；
+3d_china：3D国潮；
+pixel_art：像素风。
         :rtype: str
         """
         return self._StyleId
@@ -1569,9 +1591,11 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 
     @property
     def StyleStrength(self):
-        """风格化强度 可选参数["low","medium","high"] 
-"low":风格化强度弱,"medium":"风格化强度中等","high":"风格化强度强" 
-默认为medium
+        """风格化强度。取值说明：
+low：风格化强度弱；
+medium：风格化强度中等；
+high：风格化强度强。
+默认值为medium。
         :rtype: str
         """
         return self._StyleStrength
@@ -1602,7 +1626,7 @@ class SubmitVideoStylizationJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID
+        :param _JobId: 任务ID。任务有效期为48小时。
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1612,7 +1636,7 @@ class SubmitVideoStylizationJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID
+        """任务ID。任务有效期为48小时。
         :rtype: str
         """
         return self._JobId
@@ -1657,7 +1681,7 @@ fps 要求：【15-60】fps
 目前支持语种范围：zh(中文), en(英文)
         :type SrcLang: str
         :param _AudioUrl: 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
-格式要求：支持 mp3、m4a、acc、wav 格式。
+格式要求：支持 mp3、m4a、aac、wav 格式。
 时长要求：【5~600】秒，音频时长要匹配视频时长。
 大小要求：不超过 100Mb。
         :type AudioUrl: str
@@ -1723,7 +1747,7 @@ fps 要求：【15-60】fps
     @property
     def AudioUrl(self):
         """当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
-格式要求：支持 mp3、m4a、acc、wav 格式。
+格式要求：支持 mp3、m4a、aac、wav 格式。
 时长要求：【5~600】秒，音频时长要匹配视频时长。
 大小要求：不超过 100Mb。
         :rtype: str

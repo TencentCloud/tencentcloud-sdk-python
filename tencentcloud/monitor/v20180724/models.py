@@ -30834,18 +30834,20 @@ class PrometheusClusterAgentBasic(AbstractModel):
         :type Region: str
         :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
         :type ClusterType: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param _EnableExternal: 是否开启公网CLB
+        :param _EnableExternal: 是否开启公网 CLB
         :type EnableExternal: bool
-        :param _InClusterPodConfig: 集群内部署组件的pod配置
+        :param _InClusterPodConfig: 集群内部署组件的pod 配置
         :type InClusterPodConfig: :class:`tencentcloud.monitor.v20180724.models.PrometheusClusterAgentPodConfig`
         :param _ExternalLabels: 该集群采集的所有指标都会带上这些labels
         :type ExternalLabels: list of Label
-        :param _NotInstallBasicScrape: 是否安装默认采集配置
+        :param _NotInstallBasicScrape: 是否安装默认采集 exporter 和采集配置
         :type NotInstallBasicScrape: bool
-        :param _NotScrape: 是否采集指标，true代表drop所有指标，false代表采集默认指标
+        :param _NotScrape: 是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置
         :type NotScrape: bool
+        :param _DropAll: 是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标
+        :type DropAll: bool
         :param _OpenDefaultRecord: 是否开启默认预聚合规则
         :type OpenDefaultRecord: bool
         """
@@ -30857,6 +30859,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self._ExternalLabels = None
         self._NotInstallBasicScrape = None
         self._NotScrape = None
+        self._DropAll = None
         self._OpenDefaultRecord = None
 
     @property
@@ -30883,7 +30886,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -30894,7 +30897,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def EnableExternal(self):
-        """是否开启公网CLB
+        """是否开启公网 CLB
         :rtype: bool
         """
         return self._EnableExternal
@@ -30905,7 +30908,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def InClusterPodConfig(self):
-        """集群内部署组件的pod配置
+        """集群内部署组件的pod 配置
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusClusterAgentPodConfig`
         """
         return self._InClusterPodConfig
@@ -30927,7 +30930,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def NotInstallBasicScrape(self):
-        """是否安装默认采集配置
+        """是否安装默认采集 exporter 和采集配置
         :rtype: bool
         """
         return self._NotInstallBasicScrape
@@ -30938,7 +30941,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def NotScrape(self):
-        """是否采集指标，true代表drop所有指标，false代表采集默认指标
+        """是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置
         :rtype: bool
         """
         return self._NotScrape
@@ -30946,6 +30949,17 @@ class PrometheusClusterAgentBasic(AbstractModel):
     @NotScrape.setter
     def NotScrape(self, NotScrape):
         self._NotScrape = NotScrape
+
+    @property
+    def DropAll(self):
+        """是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标
+        :rtype: bool
+        """
+        return self._DropAll
+
+    @DropAll.setter
+    def DropAll(self, DropAll):
+        self._DropAll = DropAll
 
     @property
     def OpenDefaultRecord(self):
@@ -30975,6 +30989,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
                 self._ExternalLabels.append(obj)
         self._NotInstallBasicScrape = params.get("NotInstallBasicScrape")
         self._NotScrape = params.get("NotScrape")
+        self._DropAll = params.get("DropAll")
         self._OpenDefaultRecord = params.get("OpenDefaultRecord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

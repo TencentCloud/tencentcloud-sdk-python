@@ -35,5 +35,5 @@ INVALIDPARAMETER_IDNOTEXIST = 'InvalidParameter.IdNotExist'
 # 非法流程节点。
 INVALIDPARAMETER_ILLEGALNODE = 'InvalidParameter.IllegalNode'
 
-# 没有权限审批。
+# 没有权限操作。
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'

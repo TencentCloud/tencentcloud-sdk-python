@@ -4026,6 +4026,12 @@ class NativeNodeInfo(AbstractModel):
         :param _OsImage: OS的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type OsImage: str
+        :param _InstanceId: **原生节点对应的实例 ID**
+
+- ins-q47ofw6 表示这个实例是一个 CVM 的实例
+- eks-f8mvyaep 表示这个实例是一个 CXM 的实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self._MachineName = None
         self._MachineState = None
@@ -4049,6 +4055,7 @@ class NativeNodeInfo(AbstractModel):
         self._VpcId = None
         self._SubnetId = None
         self._OsImage = None
+        self._InstanceId = None
 
     @property
     def MachineName(self):
@@ -4301,6 +4308,21 @@ class NativeNodeInfo(AbstractModel):
     def OsImage(self, OsImage):
         self._OsImage = OsImage
 
+    @property
+    def InstanceId(self):
+        """**原生节点对应的实例 ID**
+
+- ins-q47ofw6 表示这个实例是一个 CVM 的实例
+- eks-f8mvyaep 表示这个实例是一个 CXM 的实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._MachineName = params.get("MachineName")
@@ -4327,6 +4349,7 @@ class NativeNodeInfo(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._OsImage = params.get("OsImage")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

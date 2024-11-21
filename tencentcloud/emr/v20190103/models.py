@@ -6091,9 +6091,9 @@ class DescribeClusterNodesRequest(AbstractModel):
         :type HardwareResourceType: str
         :param _SearchFields: 支持搜索的字段
         :type SearchFields: list of SearchItem
-        :param _OrderField: 无
+        :param _OrderField: 排序字段
         :type OrderField: str
-        :param _Asc: 无
+        :param _Asc: 是否升序，1:升序，0:降序
         :type Asc: int
         """
         self._InstanceId = None
@@ -6196,7 +6196,7 @@ class DescribeClusterNodesRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        """无
+        """排序字段
         :rtype: str
         """
         return self._OrderField
@@ -6207,7 +6207,7 @@ class DescribeClusterNodesRequest(AbstractModel):
 
     @property
     def Asc(self):
-        """无
+        """是否升序，1:升序，0:降序
         :rtype: int
         """
         return self._Asc
@@ -9586,13 +9586,7 @@ class DescribeServiceNodeInfosRequest(AbstractModel):
         :type HealthStateId: str
         :param _ServiceName: 服务组件名称，都是大写例如YARN
         :type ServiceName: str
-        :param _NodeTypeName: 节点名称
-master
-core
-task
-common
-router
-
+        :param _NodeTypeName: 节点名称master,core,task,common,router
         :type NodeTypeName: str
         :param _DataNodeMaintenanceId: 过滤条件：dn是否处于维护状态
 0代表所有状态
@@ -9728,13 +9722,7 @@ router
 
     @property
     def NodeTypeName(self):
-        """节点名称
-master
-core
-task
-common
-router
-
+        """节点名称master,core,task,common,router
         :rtype: str
         """
         return self._NodeTypeName
@@ -14679,11 +14667,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
         :param _ProductId: 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：<li>2：表示EMR-V2.0.1</li><li>16：表示EMR-V2.3.0</li><li>20：表示EMR-V2.5.0</li><li>30：表示EMR-V2.6.0</li><li>38：表示EMR-V2.7.0</li><li>57：表示EMR-V2.8.0</li><li>7：表示EMR-V3.0.0</li><li>25：表示EMR-V3.1.0</li><li>31：表示EMR-V3.1.1</li><li>28：表示EMR-V3.2.0</li><li>33：表示EMR-V3.2.1</li><li>34：表示EMR-V3.3.0</li><li>37：表示EMR-V3.4.0</li><li>44：表示EMR-V3.5.0</li><li>53：表示EMR-V3.6.0</li><li>58：表示EMR-V3.6.1</li><li>47：表示EMR-V4.0.0</li>
         :type ProductId: int
-        :param _SceneName: 场景化取值：
-Hadoop-Kudu
-Hadoop-Zookeeper
-Hadoop-Presto
-Hadoop-Hbase
+        :param _SceneName: 场景化取值：Hadoop-Kudu，Hadoop-Zookeeper，Hadoop-Presto，Hadoop-Hbase
         :type SceneName: str
         :param _ExternalService: 共用组件信息
         :type ExternalService: list of ExternalService
@@ -14867,11 +14851,7 @@ Hadoop-Hbase
 
     @property
     def SceneName(self):
-        """场景化取值：
-Hadoop-Kudu
-Hadoop-Zookeeper
-Hadoop-Presto
-Hadoop-Hbase
+        """场景化取值：Hadoop-Kudu，Hadoop-Zookeeper，Hadoop-Presto，Hadoop-Hbase
         :rtype: str
         """
         return self._SceneName

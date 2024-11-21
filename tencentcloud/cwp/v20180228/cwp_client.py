@@ -7124,7 +7124,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityProtectionStat(self, request):
-        """获取安全防护状态汇总
+        """接口已无效
+
+        获取安全防护状态汇总
 
         :param request: Request instance for DescribeSecurityProtectionStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityProtectionStatRequest`

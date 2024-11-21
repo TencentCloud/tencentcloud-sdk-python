@@ -11921,6 +11921,8 @@ class StartStreamIngestRequest(AbstractModel):
         :type RepeatNum: int
         :param _MaxDuration: 循环播放最大时长,仅支持RepeatNum设置-1时生效，取值范围[1, 10080]，单位分钟。
         :type MaxDuration: int
+        :param _Volume: 音量，取值范围[0, 100]，默认100，表示原音量。
+        :type Volume: int
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -11936,6 +11938,7 @@ class StartStreamIngestRequest(AbstractModel):
         self._AutoPush = None
         self._RepeatNum = None
         self._MaxDuration = None
+        self._Volume = None
 
     @property
     def SdkAppId(self):
@@ -12109,6 +12112,17 @@ class StartStreamIngestRequest(AbstractModel):
     def MaxDuration(self, MaxDuration):
         self._MaxDuration = MaxDuration
 
+    @property
+    def Volume(self):
+        """音量，取值范围[0, 100]，默认100，表示原音量。
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -12129,6 +12143,7 @@ class StartStreamIngestRequest(AbstractModel):
         self._AutoPush = params.get("AutoPush")
         self._RepeatNum = params.get("RepeatNum")
         self._MaxDuration = params.get("MaxDuration")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14131,12 +14146,15 @@ class UpdateStreamIngestRequest(AbstractModel):
         :type SdkAppId: int
         :param _TaskId: 任务的唯一Id，在启动任务成功后会返回。
         :type TaskId: str
-        :param _StreamUrl: 源流URL【必填】。
+        :param _StreamUrl: 源流URL。
         :type StreamUrl: str
+        :param _Volume: 音量，取值范围[0, 100]，默认100，表示原音量。
+        :type Volume: int
         """
         self._SdkAppId = None
         self._TaskId = None
         self._StreamUrl = None
+        self._Volume = None
 
     @property
     def SdkAppId(self):
@@ -14162,7 +14180,7 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def StreamUrl(self):
-        """源流URL【必填】。
+        """源流URL。
         :rtype: str
         """
         return self._StreamUrl
@@ -14171,11 +14189,23 @@ class UpdateStreamIngestRequest(AbstractModel):
     def StreamUrl(self, StreamUrl):
         self._StreamUrl = StreamUrl
 
+    @property
+    def Volume(self):
+        """音量，取值范围[0, 100]，默认100，表示原音量。
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._TaskId = params.get("TaskId")
         self._StreamUrl = params.get("StreamUrl")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

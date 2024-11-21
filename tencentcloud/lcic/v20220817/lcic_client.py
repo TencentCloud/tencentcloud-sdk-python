@@ -787,6 +787,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRecord(self, request):
+        """查询录制信息
+
+        :param request: Request instance for DescribeRecord.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRecordRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRecordStream(self, request):
         """录制流查询
 
@@ -1387,6 +1410,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartRecord(self, request):
+        """开始录制
+
+        :param request: Request instance for StartRecord.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.StartRecordRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.StartRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartRoom(self, request):
         """开始房间的直播。 说明：开始房间接口调用之前需要有用户进入课堂初始化课堂信息。
 
@@ -1401,6 +1447,29 @@ class LcicClient(AbstractClient):
             body = self.call("StartRoom", params, headers=headers)
             response = json.loads(body)
             model = models.StartRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopRecord(self, request):
+        """停止录制
+
+        :param request: Request instance for StopRecord.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.StopRecordRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.StopRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

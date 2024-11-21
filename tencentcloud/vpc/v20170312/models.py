@@ -27127,7 +27127,7 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最小值为1，最大值为100。
         :type Limit: int
-        :param _Filters: 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+        :param _Filters: 过滤条件，参数不支持同时指定`NetworkAclId`和`Filters`。
 <li>protocol - String - 协议，形如：`TCP`。</li>
 <li>description - String - 描述。</li>
 <li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
@@ -27177,7 +27177,7 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+        """过滤条件，参数不支持同时指定`NetworkAclId`和`Filters`。
 <li>protocol - String - 协议，形如：`TCP`。</li>
 <li>description - String - 描述。</li>
 <li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
@@ -32672,8 +32672,7 @@ class DescribeVpcInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件，参数不支持同时指定RouteTableIds和Filters。
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+        :param _Filters: <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 <li>instance-id - String - （过滤条件）云主机实例ID。</li>
 <li>instance-name - String - （过滤条件）云主机名称。</li>
         :type Filters: list of Filter
@@ -32688,8 +32687,7 @@ class DescribeVpcInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，参数不支持同时指定RouteTableIds和Filters。
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+        """<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 <li>instance-id - String - （过滤条件）云主机实例ID。</li>
 <li>instance-name - String - （过滤条件）云主机名称。</li>
         :rtype: list of Filter

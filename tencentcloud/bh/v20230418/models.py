@@ -918,7 +918,7 @@ class BindDeviceAccountPrivateKeyRequest(AbstractModel):
         r"""
         :param _Id: 主机账号ID
         :type Id: int
-        :param _PrivateKey: 主机账号私钥，最新长度128字节，最大长度8192字节
+        :param _PrivateKey: 主机账号私钥，最小长度128字节，最大长度8192字节
         :type PrivateKey: str
         :param _PrivateKeyPassword: 主机账号私钥口令，最大长度256字节
         :type PrivateKeyPassword: str
@@ -940,7 +940,7 @@ class BindDeviceAccountPrivateKeyRequest(AbstractModel):
 
     @property
     def PrivateKey(self):
-        """主机账号私钥，最新长度128字节，最大长度8192字节
+        """主机账号私钥，最小长度128字节，最大长度8192字节
         :rtype: str
         """
         return self._PrivateKey

@@ -2493,25 +2493,47 @@ class Ckafka(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: Ckafka 的 InstanceId
+        :type InstanceId: str
+        :param _TopicName: Ckafka 的 TopicName
+        :type TopicName: str
         :param _Vip: Ckafka 的 Vip
         :type Vip: str
         :param _Vport: Ckafka 的 Vport
         :type Vport: str
-        :param _InstanceId: Ckafka 的 InstanceId
-        :type InstanceId: str
         :param _InstanceName: Ckafka 的 InstanceName
         :type InstanceName: str
         :param _TopicId: Ckafka 的 TopicId
         :type TopicId: str
-        :param _TopicName: Ckafka 的 TopicName
-        :type TopicName: str
         """
+        self._InstanceId = None
+        self._TopicName = None
         self._Vip = None
         self._Vport = None
-        self._InstanceId = None
         self._InstanceName = None
         self._TopicId = None
-        self._TopicName = None
+
+    @property
+    def InstanceId(self):
+        """Ckafka 的 InstanceId
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TopicName(self):
+        """Ckafka 的 TopicName
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
 
     @property
     def Vip(self):
@@ -2536,17 +2558,6 @@ class Ckafka(AbstractModel):
         self._Vport = Vport
 
     @property
-    def InstanceId(self):
-        """Ckafka 的 InstanceId
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
     def InstanceName(self):
         """Ckafka 的 InstanceName
         :rtype: str
@@ -2568,25 +2579,14 @@ class Ckafka(AbstractModel):
     def TopicId(self, TopicId):
         self._TopicId = TopicId
 
-    @property
-    def TopicName(self):
-        """Ckafka 的 TopicName
-        :rtype: str
-        """
-        return self._TopicName
-
-    @TopicName.setter
-    def TopicName(self, TopicName):
-        self._TopicName = TopicName
-
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TopicName = params.get("TopicName")
         self._Vip = params.get("Vip")
         self._Vport = params.get("Vport")
-        self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
         self._TopicId = params.get("TopicId")
-        self._TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

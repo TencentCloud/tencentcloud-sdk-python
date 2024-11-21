@@ -15956,7 +15956,7 @@ class CreateInput(AbstractModel):
         r"""
         :param _InputName: 输入名称，可填大小写、数字和下划线，长度为[1, 32]。
         :type InputName: str
-        :param _Protocol: 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+        :param _Protocol: 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
         :type Protocol: str
         :param _Description: 输入描述，长度为[0, 255]。
         :type Description: str
@@ -15980,6 +15980,10 @@ class CreateInput(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Zones: 可用区，非必填，如果开启容灾必须输入两个不同的可用区，否则最多只允许输入一个可用区。	
         :type Zones: list of str
+        :param _RISTSettings: 输入的RIST配置信息。
+        :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRISTSettings`
+        :param _InputRegion: 输入节点的地区
+        :type InputRegion: str
         """
         self._InputName = None
         self._Protocol = None
@@ -15994,6 +15998,8 @@ class CreateInput(AbstractModel):
         self._ResilientStream = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._RISTSettings = None
+        self._InputRegion = None
 
     @property
     def InputName(self):
@@ -16008,7 +16014,7 @@ class CreateInput(AbstractModel):
 
     @property
     def Protocol(self):
-        """输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+        """输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
         :rtype: str
         """
         return self._Protocol
@@ -16138,6 +16144,28 @@ class CreateInput(AbstractModel):
     def Zones(self, Zones):
         self._Zones = Zones
 
+    @property
+    def RISTSettings(self):
+        """输入的RIST配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputRISTSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
+    @property
+    def InputRegion(self):
+        """输入节点的地区
+        :rtype: str
+        """
+        return self._InputRegion
+
+    @InputRegion.setter
+    def InputRegion(self, InputRegion):
+        self._InputRegion = InputRegion
+
 
     def _deserialize(self, params):
         self._InputName = params.get("InputName")
@@ -16165,6 +16193,10 @@ class CreateInput(AbstractModel):
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = CreateInputRISTSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
+        self._InputRegion = params.get("InputRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16206,6 +16238,72 @@ class CreateInputHLSPullSettings(AbstractModel):
                 obj = HLSPullSourceAddress()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputRISTSettings(AbstractModel):
+    """创建的输入RIST的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: RIST模式，可选[LISTENER]，默认为LISTENER。
+        :type Mode: str
+        :param _Profile: RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+        :type Profile: str
+        :param _Buffer: RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+        :type Buffer: int
+        """
+        self._Mode = None
+        self._Profile = None
+        self._Buffer = None
+
+    @property
+    def Mode(self):
+        """RIST模式，可选[LISTENER]，默认为LISTENER。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Profile(self):
+        """RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+        :rtype: str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Buffer(self):
+        """RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+        :rtype: int
+        """
+        return self._Buffer
+
+    @Buffer.setter
+    def Buffer(self, Buffer):
+        self._Buffer = Buffer
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Profile = params.get("Profile")
+        self._Buffer = params.get("Buffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16521,7 +16619,7 @@ class CreateOutputInfo(AbstractModel):
         :type OutputName: str
         :param _Description: 输出描述。
         :type Description: str
-        :param _Protocol: 输出协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+        :param _Protocol: 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
         :type Protocol: str
         :param _OutputRegion: 输出地区。
         :type OutputRegion: str
@@ -16540,6 +16638,10 @@ class CreateOutputInfo(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Zones: 可用区，output最多只支持输入一个可用区。	
         :type Zones: list of str
+        :param _OutputType: 输出类型：Internet/TencentCSS/StreamLive
+        :type OutputType: str
+        :param _RISTSettings: 输出的RIST的配置。
+        :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
         """
         self._OutputName = None
         self._Description = None
@@ -16552,6 +16654,8 @@ class CreateOutputInfo(AbstractModel):
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._OutputType = None
+        self._RISTSettings = None
 
     @property
     def OutputName(self):
@@ -16577,7 +16681,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """输出协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+        """输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
         :rtype: str
         """
         return self._Protocol
@@ -16675,6 +16779,28 @@ class CreateOutputInfo(AbstractModel):
     def Zones(self, Zones):
         self._Zones = Zones
 
+    @property
+    def OutputType(self):
+        """输出类型：Internet/TencentCSS/StreamLive
+        :rtype: str
+        """
+        return self._OutputType
+
+    @OutputType.setter
+    def OutputType(self, OutputType):
+        self._OutputType = OutputType
+
+    @property
+    def RISTSettings(self):
+        """输出的RIST的配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
 
     def _deserialize(self, params):
         self._OutputName = params.get("OutputName")
@@ -16694,6 +16820,10 @@ class CreateOutputInfo(AbstractModel):
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        self._OutputType = params.get("OutputType")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = CreateOutputRistSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16872,6 +17002,72 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOutputRistSettings(AbstractModel):
+    """创建媒体传输流的输出的RIST配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+        :type Mode: str
+        :param _Profile: RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+        :type Profile: str
+        :param _Buffer: RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+        :type Buffer: int
+        """
+        self._Mode = None
+        self._Profile = None
+        self._Buffer = None
+
+    @property
+    def Mode(self):
+        """RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Profile(self):
+        """RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+        :rtype: str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Buffer(self):
+        """RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+        :rtype: int
+        """
+        return self._Buffer
+
+    @Buffer.setter
+    def Buffer(self, Buffer):
+        self._Buffer = Buffer
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Profile = params.get("Profile")
+        self._Buffer = params.get("Buffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22074,6 +22270,9 @@ class DescribeInput(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Zones: 可用区配置，开启容灾情况下最多有两个，顺序和pipeline 0、1对应，否则最多只有一个可用区。	
         :type Zones: list of str
+        :param _RISTSettings: 输入的RIST配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputRISTSettings`
         """
         self._InputId = None
         self._InputName = None
@@ -22092,6 +22291,7 @@ class DescribeInput(AbstractModel):
         self._ResilientStream = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._RISTSettings = None
 
     @property
     def InputId(self):
@@ -22289,6 +22489,18 @@ class DescribeInput(AbstractModel):
     def Zones(self, Zones):
         self._Zones = Zones
 
+    @property
+    def RISTSettings(self):
+        """输入的RIST配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeInputRISTSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -22327,6 +22539,9 @@ class DescribeInput(AbstractModel):
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = DescribeInputRISTSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22368,6 +22583,72 @@ class DescribeInputHLSPullSettings(AbstractModel):
                 obj = DescribeHLSPullSourceAddress()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRISTSettings(AbstractModel):
+    """查询输入的RIST配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+        :type Mode: str
+        :param _Profile: RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+        :type Profile: str
+        :param _Buffer: RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+        :type Buffer: int
+        """
+        self._Mode = None
+        self._Profile = None
+        self._Buffer = None
+
+    @property
+    def Mode(self):
+        """RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Profile(self):
+        """RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+        :rtype: str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Buffer(self):
+        """RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+        :rtype: int
+        """
+        return self._Buffer
+
+    @Buffer.setter
+    def Buffer(self, Buffer):
+        self._Buffer = Buffer
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Profile = params.get("Profile")
+        self._Buffer = params.get("Buffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22866,6 +23147,9 @@ class DescribeOutput(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Zones: 可用区，output目前最多只支持一个。	
         :type Zones: list of str
+        :param _RISTSettings: 输出的RIST配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRISTSettings`
         """
         self._OutputId = None
         self._OutputName = None
@@ -22884,6 +23168,7 @@ class DescribeOutput(AbstractModel):
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._RISTSettings = None
 
     @property
     def OutputId(self):
@@ -23083,6 +23368,18 @@ class DescribeOutput(AbstractModel):
     def Zones(self, Zones):
         self._Zones = Zones
 
+    @property
+    def RISTSettings(self):
+        """输出的RIST配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRISTSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -23119,6 +23416,9 @@ class DescribeOutput(AbstractModel):
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = DescribeOutputRISTSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23198,6 +23498,94 @@ class DescribeOutputHLSPullSettings(AbstractModel):
                 obj = DescribeOutputHLSPullServerUrl()
                 obj._deserialize(item)
                 self._ServerUrls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRISTSettings(AbstractModel):
+    """查询输出的RIST拉流配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+        :type Mode: str
+        :param _Profile: RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+        :type Profile: str
+        :param _Buffer: RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+        :type Buffer: int
+        :param _SourceAddresses: 服务器监听地址，RIST模式为LISTENER时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceAddresses: list of OutputRISTSourceAddressResp
+        """
+        self._Mode = None
+        self._Profile = None
+        self._Buffer = None
+        self._SourceAddresses = None
+
+    @property
+    def Mode(self):
+        """RIST模式，可选[LISTENER|CALLER]，默认为LISTENER。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Profile(self):
+        """RIST配置方案，可选[MAIN|SIMPLE]，默认为MAIN。
+        :rtype: str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Buffer(self):
+        """RIST缓冲区大小，单位为毫秒。最小值为50毫秒，最大值为5000毫秒。默认值：120
+        :rtype: int
+        """
+        return self._Buffer
+
+    @Buffer.setter
+    def Buffer(self, Buffer):
+        self._Buffer = Buffer
+
+    @property
+    def SourceAddresses(self):
+        """服务器监听地址，RIST模式为LISTENER时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OutputRISTSourceAddressResp
+        """
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Profile = params.get("Profile")
+        self._Buffer = params.get("Buffer")
+        if params.get("SourceAddresses") is not None:
+            self._SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = OutputRISTSourceAddressResp()
+                obj._deserialize(item)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40163,7 +40551,7 @@ class ModifyInput(AbstractModel):
         :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputSRTSettings`
         :param _RTPSettings: RTP的配置信息。
         :type RTPSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTPSettings`
-        :param _Protocol: 输入的协议，可选[SRT|RTP|RTMP]。
+        :param _Protocol: 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
 当输出包含RTP时，输入只能是RTP。
 当输出包含RTMP时，输入可以是SRT/RTMP。
 当输出包含SRT时，输入只能是SRT。
@@ -40182,6 +40570,10 @@ class ModifyInput(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Zones: 可用区，非必填，最多支持输入两个可用区，对于需改接口，只要第二个可用区会参与到资源分配。如果input开启容灾或者涉及RTSP_PULL协议切换时有效(会重新分配地址)。	
         :type Zones: list of str
+        :param _RISTSettings: RIST的配置信息。
+        :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRISTSettings`
+        :param _InputRegion: 输入节点的地区
+        :type InputRegion: str
         """
         self._InputId = None
         self._InputName = None
@@ -40197,6 +40589,8 @@ class ModifyInput(AbstractModel):
         self._ResilientStream = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._RISTSettings = None
+        self._InputRegion = None
 
     @property
     def InputId(self):
@@ -40266,7 +40660,7 @@ class ModifyInput(AbstractModel):
 
     @property
     def Protocol(self):
-        """输入的协议，可选[SRT|RTP|RTMP]。
+        """输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
 当输出包含RTP时，输入只能是RTP。
 当输出包含RTMP时，输入可以是SRT/RTMP。
 当输出包含SRT时，输入只能是SRT。
@@ -40355,6 +40749,28 @@ class ModifyInput(AbstractModel):
     def Zones(self, Zones):
         self._Zones = Zones
 
+    @property
+    def RISTSettings(self):
+        """RIST的配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputRISTSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
+    @property
+    def InputRegion(self):
+        """输入节点的地区
+        :rtype: str
+        """
+        return self._InputRegion
+
+    @InputRegion.setter
+    def InputRegion(self, InputRegion):
+        self._InputRegion = InputRegion
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -40383,6 +40799,10 @@ class ModifyInput(AbstractModel):
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = CreateInputRISTSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
+        self._InputRegion = params.get("InputRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40406,7 +40826,7 @@ class ModifyOutputInfo(AbstractModel):
         :type OutputName: str
         :param _Description: 输出的描述。
         :type Description: str
-        :param _Protocol: 输出的转推协议，支持SRT|RTP|RTMP。
+        :param _Protocol: 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
         :type Protocol: str
         :param _SRTSettings: 转推SRT的配置。
         :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputSRTSettings`
@@ -40423,6 +40843,8 @@ class ModifyOutputInfo(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Zones: 可用区
         :type Zones: list of str
+        :param _RISTSettings: 转推RIST的配置。
+        :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
         """
         self._OutputId = None
         self._OutputName = None
@@ -40435,6 +40857,7 @@ class ModifyOutputInfo(AbstractModel):
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._RISTSettings = None
 
     @property
     def OutputId(self):
@@ -40471,7 +40894,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """输出的转推协议，支持SRT|RTP|RTMP。
+        """输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
         :rtype: str
         """
         return self._Protocol
@@ -40558,6 +40981,17 @@ class ModifyOutputInfo(AbstractModel):
     def Zones(self, Zones):
         self._Zones = Zones
 
+    @property
+    def RISTSettings(self):
+        """转推RIST的配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -40577,6 +41011,9 @@ class ModifyOutputInfo(AbstractModel):
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = CreateOutputRistSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42905,6 +43342,61 @@ class OutputAddress(AbstractModel):
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputRISTSourceAddressResp(AbstractModel):
+    """RIST输出的监听地址。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: 监听IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param _Port: 监听端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        """
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        """监听IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        """监听端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

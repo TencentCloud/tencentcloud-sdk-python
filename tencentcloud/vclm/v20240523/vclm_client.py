@@ -120,7 +120,7 @@ class VclmClient(AbstractClient):
 
 
     def DescribeVideoTranslateJob(self, request):
-        """查询视频翻译任务
+        """查询视频转译任务
 
         :param request: Request instance for DescribeVideoTranslateJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoTranslateJobRequest`

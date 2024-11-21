@@ -2864,6 +2864,147 @@ class CustomMsgContent(AbstractModel):
         
 
 
+class CustomRecordInfo(AbstractModel):
+    """自定义录制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _StopTime: 结束时间
+        :type StopTime: int
+        :param _Duration: 总时长
+        :type Duration: int
+        :param _FileFormat: 文件格式
+        :type FileFormat: str
+        :param _RecordUrl: 流url
+        :type RecordUrl: str
+        :param _RecordSize: 流大小
+        :type RecordSize: int
+        :param _VideoId: 流ID
+        :type VideoId: str
+        :param _TaskId: 任务Id
+        :type TaskId: str
+        """
+        self._StartTime = None
+        self._StopTime = None
+        self._Duration = None
+        self._FileFormat = None
+        self._RecordUrl = None
+        self._RecordSize = None
+        self._VideoId = None
+        self._TaskId = None
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        """结束时间
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def Duration(self):
+        """总时长
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def FileFormat(self):
+        """文件格式
+        :rtype: str
+        """
+        return self._FileFormat
+
+    @FileFormat.setter
+    def FileFormat(self, FileFormat):
+        self._FileFormat = FileFormat
+
+    @property
+    def RecordUrl(self):
+        """流url
+        :rtype: str
+        """
+        return self._RecordUrl
+
+    @RecordUrl.setter
+    def RecordUrl(self, RecordUrl):
+        self._RecordUrl = RecordUrl
+
+    @property
+    def RecordSize(self):
+        """流大小
+        :rtype: int
+        """
+        return self._RecordSize
+
+    @RecordSize.setter
+    def RecordSize(self, RecordSize):
+        self._RecordSize = RecordSize
+
+    @property
+    def VideoId(self):
+        """流ID
+        :rtype: str
+        """
+        return self._VideoId
+
+    @VideoId.setter
+    def VideoId(self, VideoId):
+        self._VideoId = VideoId
+
+    @property
+    def TaskId(self):
+        """任务Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._Duration = params.get("Duration")
+        self._FileFormat = params.get("FileFormat")
+        self._RecordUrl = params.get("RecordUrl")
+        self._RecordSize = params.get("RecordSize")
+        self._VideoId = params.get("VideoId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAppCustomContentRequest(AbstractModel):
     """DeleteAppCustomContent请求参数结构体
 
@@ -5230,6 +5371,135 @@ class DescribeQuestionListResponse(AbstractModel):
                 obj = QuestionInfo()
                 obj._deserialize(item)
                 self._QuestionInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRecordRequest(AbstractModel):
+    """DescribeRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 学校ID
+        :type SdkAppId: int
+        :param _RoomId: 房间ID
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        """学校ID
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """房间ID
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordResponse(AbstractModel):
+    """DescribeRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SchoolId: 学校ID
+        :type SchoolId: int
+        :param _ClassId: 课堂ID
+        :type ClassId: int
+        :param _RecordInfo: 录制信息
+        :type RecordInfo: list of CustomRecordInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SchoolId = None
+        self._ClassId = None
+        self._RecordInfo = None
+        self._RequestId = None
+
+    @property
+    def SchoolId(self):
+        """学校ID
+        :rtype: int
+        """
+        return self._SchoolId
+
+    @SchoolId.setter
+    def SchoolId(self, SchoolId):
+        self._SchoolId = SchoolId
+
+    @property
+    def ClassId(self):
+        """课堂ID
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def RecordInfo(self):
+        """录制信息
+        :rtype: list of CustomRecordInfo
+        """
+        return self._RecordInfo
+
+    @RecordInfo.setter
+    def RecordInfo(self, RecordInfo):
+        self._RecordInfo = RecordInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SchoolId = params.get("SchoolId")
+        self._ClassId = params.get("ClassId")
+        if params.get("RecordInfo") is not None:
+            self._RecordInfo = []
+            for item in params.get("RecordInfo"):
+                obj = CustomRecordInfo()
+                obj._deserialize(item)
+                self._RecordInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12491,6 +12761,100 @@ class SingleStreamInfo(AbstractModel):
         
 
 
+class StartRecordRequest(AbstractModel):
+    """StartRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 学校ID
+        :type SdkAppId: int
+        :param _RoomId: 房间ID
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        """学校ID
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """房间ID
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartRecordResponse(AbstractModel):
+    """StartRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class StartRoomRequest(AbstractModel):
     """StartRoom请求参数结构体
 
@@ -12529,6 +12893,100 @@ class StartRoomRequest(AbstractModel):
 
 class StartRoomResponse(AbstractModel):
     """StartRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopRecordRequest(AbstractModel):
+    """StopRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 学校ID
+        :type SdkAppId: int
+        :param _RoomId: 房间ID
+        :type RoomId: int
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """学校ID
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """房间ID
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopRecordResponse(AbstractModel):
+    """StopRecord返回参数结构体
 
     """
 
