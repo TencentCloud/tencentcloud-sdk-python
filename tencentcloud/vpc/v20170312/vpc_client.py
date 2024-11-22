@@ -716,7 +716,7 @@ class VpcClient(AbstractClient):
 
 
     def CloneSecurityGroup(self, request):
-        """本接口（CloneSecurityGroup）用于根据存量的安全组，克隆创建出同样规则配置的安全组。仅克隆安全组及其规则信息，不会克隆安全组标签信息。
+        """本接口（CloneSecurityGroup）用于根据存量的安全组，克隆创建出同样规则配置的安全组。默认仅克隆安全组及其规则信息，可通过入参开启克隆安全组标签信息。
 
         :param request: Request instance for CloneSecurityGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CloneSecurityGroupRequest`
@@ -1518,6 +1518,29 @@ class VpcClient(AbstractClient):
             body = self.call("CreatePrivateNatGatewayTranslationNatRule", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePrivateNatGatewayTranslationNatRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateReserveIpAddresses(self, request):
+        """创建内网保留IP
+
+        :param request: Request instance for CreateReserveIpAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateReserveIpAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateReserveIpAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateReserveIpAddresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateReserveIpAddressesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2762,6 +2785,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeletePrivateNatGatewayTranslationNatRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePrivateNatGatewayTranslationNatRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteReserveIpAddresses(self, request):
+        """删除内网保留IP
+
+        :param request: Request instance for DeleteReserveIpAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteReserveIpAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteReserveIpAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteReserveIpAddresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteReserveIpAddressesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4624,6 +4670,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeProductQuota", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProductQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReserveIpAddresses(self, request):
+        """查询内网保留 IP
+
+        :param request: Request instance for DescribeReserveIpAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeReserveIpAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeReserveIpAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReserveIpAddresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReserveIpAddressesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7505,6 +7574,29 @@ class VpcClient(AbstractClient):
             body = self.call("ModifyPrivateNatGatewayTranslationNatRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPrivateNatGatewayTranslationNatRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyReserveIpAddress(self, request):
+        """修改内网保留 IP
+
+        :param request: Request instance for ModifyReserveIpAddress.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyReserveIpAddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyReserveIpAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReserveIpAddress", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReserveIpAddressResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

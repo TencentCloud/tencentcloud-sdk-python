@@ -49868,12 +49868,17 @@ class SegmentRecognitionItem(AbstractModel):
         :param _SegmentUrl: 拆条片段URL。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentUrl: str
+        :param _CovImgUrl: 拆条片段封面。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CovImgUrl: str
         :param _Title: 分段标题。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str
         :param _Summary: 分段概要。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: str
+        :param _Keywords: 分段关键词。
+        :type Keywords: list of str
         :param _BeginTime: 直播切片对应直播起始时间点，采用 ISO 日期格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
@@ -49885,8 +49890,10 @@ class SegmentRecognitionItem(AbstractModel):
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._SegmentUrl = None
+        self._CovImgUrl = None
         self._Title = None
         self._Summary = None
+        self._Keywords = None
         self._BeginTime = None
         self._EndTime = None
 
@@ -49936,6 +49943,18 @@ class SegmentRecognitionItem(AbstractModel):
         self._SegmentUrl = SegmentUrl
 
     @property
+    def CovImgUrl(self):
+        """拆条片段封面。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CovImgUrl
+
+    @CovImgUrl.setter
+    def CovImgUrl(self, CovImgUrl):
+        self._CovImgUrl = CovImgUrl
+
+    @property
     def Title(self):
         """分段标题。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -49958,6 +49977,17 @@ class SegmentRecognitionItem(AbstractModel):
     @Summary.setter
     def Summary(self, Summary):
         self._Summary = Summary
+
+    @property
+    def Keywords(self):
+        """分段关键词。
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
 
     @property
     def BeginTime(self):
@@ -49989,8 +50019,10 @@ class SegmentRecognitionItem(AbstractModel):
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._SegmentUrl = params.get("SegmentUrl")
+        self._CovImgUrl = params.get("CovImgUrl")
         self._Title = params.get("Title")
         self._Summary = params.get("Summary")
+        self._Keywords = params.get("Keywords")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())

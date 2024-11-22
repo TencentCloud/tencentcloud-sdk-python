@@ -181,9 +181,9 @@ class AddReplicationInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 复制组ID。
+        :param _GroupId: 复制组ID。请登录[Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication)页面获取复制组 ID。
         :type GroupId: str
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _InstanceRole: 给复制组添加的实例分配角色。<ul><li>rw：可读写。</li><li>r：只读。</li></ul>
         :type InstanceRole: str
@@ -194,7 +194,7 @@ class AddReplicationInstanceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """复制组ID。
+        """复制组ID。请登录[Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication)页面获取复制组 ID。
         :rtype: str
         """
         return self._GroupId
@@ -205,7 +205,7 @@ class AddReplicationInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -290,14 +290,14 @@ class AllocateWanAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -384,9 +384,9 @@ class ApplyParamsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例ID列表
+        :param _InstanceIds: 实例 ID 列表，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceIds: list of str
-        :param _TemplateId: 应用的参数模板ID
+        :param _TemplateId: 应用的参数模板ID，请通过接口[DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748)的返回参数 **TemplateId** 获取参数模板 ID。
         :type TemplateId: str
         """
         self._InstanceIds = None
@@ -394,7 +394,7 @@ class ApplyParamsTemplateRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表
+        """实例 ID 列表，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -405,7 +405,7 @@ class ApplyParamsTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """应用的参数模板ID
+        """应用的参数模板ID，请通过接口[DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748)的返回参数 **TemplateId** 获取参数模板 ID。
         :rtype: str
         """
         return self._TemplateId
@@ -480,9 +480,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
-        :param _SecurityGroupId: 要绑定的安全组ID，类似sg-efil73jd。
+        :param _SecurityGroupId: 要绑定的安全组ID，请在[控制台安全组](https://console.cloud.tencent.com/vpc/security-group)页面获取安全组 ID。
         :type SecurityGroupId: str
-        :param _InstanceIds: 被绑定的实例ID，类似ins-lesecurk，支持指定多个实例。
+        :param _InstanceIds: 被绑定的实例ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID，支持指定多个实例。
         :type InstanceIds: list of str
         """
         self._Product = None
@@ -502,7 +502,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """要绑定的安全组ID，类似sg-efil73jd。
+        """要绑定的安全组ID，请在[控制台安全组](https://console.cloud.tencent.com/vpc/security-group)页面获取安全组 ID。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -513,7 +513,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """被绑定的实例ID，类似ins-lesecurk，支持指定多个实例。
+        """被绑定的实例ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID，支持指定多个实例。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1177,11 +1177,13 @@ class ChangeInstanceRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 复制组ID
+        :param _GroupId: 复制组ID。请登录[Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication)页面获取复制组 ID。
         :type GroupId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _InstanceRole: 实例角色，rw可读写，r只读
+        :param _InstanceRole: 实例角色。
+- rw：可读写。
+- r：只读。
         :type InstanceRole: str
         """
         self._GroupId = None
@@ -1190,7 +1192,7 @@ class ChangeInstanceRoleRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """复制组ID
+        """复制组ID。请登录[Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication)页面获取复制组 ID。
         :rtype: str
         """
         return self._GroupId
@@ -1201,7 +1203,7 @@ class ChangeInstanceRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -1212,7 +1214,9 @@ class ChangeInstanceRoleRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        """实例角色，rw可读写，r只读
+        """实例角色。
+- rw：可读写。
+- r：只读。
         :rtype: str
         """
         return self._InstanceRole
@@ -1501,14 +1505,14 @@ class CleanUpInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -1580,9 +1584,11 @@ class ClearInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _Password: redis的实例密码（免密实例不需要传密码，非免密实例必传）
+        :param _Password: 实例访问密码。
+- 免密访问：无需配置。
+- 密码认证：必须配置。字符个数为[8,64]，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
         :type Password: str
         """
         self._InstanceId = None
@@ -1590,7 +1596,7 @@ class ClearInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -1601,7 +1607,9 @@ class ClearInstanceRequest(AbstractModel):
 
     @property
     def Password(self):
-        """redis的实例密码（免密实例不需要传密码，非免密实例必传）
+        """实例访问密码。
+- 免密访问：无需配置。
+- 密码认证：必须配置。字符个数为[8,64]，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
         :rtype: str
         """
         return self._Password
@@ -2075,14 +2083,14 @@ class CloseSSLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -2205,9 +2213,9 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _AccountName: 自定义访问数据库的名称。
+        :param _AccountName: 自定义的访问数据库的账号名称。
 - 仅由字母、数字、下划线、中划线组成。
 - 长度不能大于32位。
         :type AccountName: str
@@ -2237,7 +2245,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -2248,7 +2256,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """自定义访问数据库的名称。
+        """自定义的访问数据库的账号名称。
 - 仅由字母、数字、下划线、中划线组成。
 - 长度不能大于32位。
         :rtype: str
@@ -3090,9 +3098,9 @@ class CreateReplicationGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定复制组中的主实例ID。
+        :param _InstanceId: 指定复制组中的主实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _GroupName: 复制组名称。名称只支持长度为2-64个字符的中文、英文、数字、下划线_、分隔符-。
+        :param _GroupName: 配置复制组名称。仅支持长度为2-64个字符的中文、英文、数字、下划线_、分隔符-。
         :type GroupName: str
         :param _Remark: 备注信息。
         :type Remark: str
@@ -3103,7 +3111,7 @@ class CreateReplicationGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """指定复制组中的主实例ID。
+        """指定复制组中的主实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3114,7 +3122,7 @@ class CreateReplicationGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """复制组名称。名称只支持长度为2-64个字符的中文、英文、数字、下划线_、分隔符-。
+        """配置复制组名称。仅支持长度为2-64个字符的中文、英文、数字、下划线_、分隔符-。
         :rtype: str
         """
         return self._GroupName
@@ -3277,9 +3285,9 @@ class DeleteInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _AccountName: 子账号名称
+        :param _AccountName: 子账号名称。请登录[Redis控制台](https://console.cloud.tencent.com/redis)，切换至**账号管理**页面获取。具体信息，请参见[管理账号](https://cloud.tencent.com/document/product/239/36710)。
         :type AccountName: str
         """
         self._InstanceId = None
@@ -3287,7 +3295,7 @@ class DeleteInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3298,7 +3306,7 @@ class DeleteInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """子账号名称
+        """子账号名称。请登录[Redis控制台](https://console.cloud.tencent.com/redis)，切换至**账号管理**页面获取。具体信息，请参见[管理账号](https://cloud.tencent.com/document/product/239/36710)。
         :rtype: str
         """
         return self._AccountName
@@ -3435,11 +3443,13 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 复制组ID
+        :param _GroupId: 复制组ID。请登录[Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication)页面获取复制组 ID。
         :type GroupId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _SyncType: 数据同步类型，true:需要数据强同步,false:不需要强同步，仅限删除主实例
+        :param _SyncType: 数据同步类型。
+- true：需要数据强同步。
+- false：不需要强同步，仅限删除主实例。
         :type SyncType: bool
         """
         self._GroupId = None
@@ -3448,7 +3458,7 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """复制组ID
+        """复制组ID。请登录[Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication)页面获取复制组 ID。
         :rtype: str
         """
         return self._GroupId
@@ -3459,7 +3469,7 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3470,7 +3480,9 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def SyncType(self):
-        """数据同步类型，true:需要数据强同步,false:不需要强同步，仅限删除主实例
+        """数据同步类型。
+- true：需要数据强同步。
+- false：不需要强同步，仅限删除主实例。
         :rtype: bool
         """
         return self._SyncType
@@ -3683,7 +3695,7 @@ class DescribeBackupDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _BackupId: 备份 ID，可通过接口 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 返回的参数 **RedisBackupSet** 获取。
         :type BackupId: str
@@ -3693,7 +3705,7 @@ class DescribeBackupDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -4332,14 +4344,14 @@ class DescribeBandwidthRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -5254,14 +5266,14 @@ class DescribeInstanceDTSInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -6419,14 +6431,14 @@ class DescribeInstanceMonitorSIPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -6503,7 +6515,7 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _Date: 查询时间日期。
         :type Date: str
@@ -6520,7 +6532,7 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -6732,7 +6744,7 @@ class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _SpanType: 查询时间范围。
 - 1：实时。
@@ -6746,7 +6758,7 @@ class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -8831,9 +8843,12 @@ class DescribeProjectSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 0:默认项目；-1 所有项目; >0: 特定项目
+        :param _ProjectId: 指定查询的项目 ID。
+- 0：默认项目。
+- -1：所有项目。
+- 大于0：特定项目。请登录[Redis控制台的项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
         :type ProjectId: int
-        :param _SecurityGroupId: 安全组Id
+        :param _SecurityGroupId: 安全组 ID，通过接口[DescribeInstanceSecurityGroup](https://cloud.tencent.com/document/product/239/34447)的返回参数 **InstanceSecurityGroupsDetail** 的子参数 **SecurityGroupId** 获取。
         :type SecurityGroupId: str
         """
         self._ProjectId = None
@@ -8841,7 +8856,10 @@ class DescribeProjectSecurityGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """0:默认项目；-1 所有项目; >0: 特定项目
+        """指定查询的项目 ID。
+- 0：默认项目。
+- -1：所有项目。
+- 大于0：特定项目。请登录[Redis控制台的项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -8852,7 +8870,7 @@ class DescribeProjectSecurityGroupRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """安全组Id
+        """安全组 ID，通过接口[DescribeInstanceSecurityGroup](https://cloud.tencent.com/document/product/239/34447)的返回参数 **InstanceSecurityGroupsDetail** 的子参数 **SecurityGroupId** 获取。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -8932,7 +8950,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
-        :param _ProjectId: 项目 ID。
+        :param _ProjectId: 项目 ID，请登录[Redis控制台的项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
         :type ProjectId: int
         :param _Offset: 偏移量，取值为Limit的整数倍。
         :type Offset: int
@@ -8960,7 +8978,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目 ID。
+        """项目 ID，请登录[Redis控制台的项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -9265,14 +9283,16 @@ class DescribeRedisClusterOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DedicatedClusterId: 本地专用集群id
+        :param _DedicatedClusterId: 本地专用集群 ID，请登录[专用集群控制台](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1
+)实例列表获取集群 ID。
         :type DedicatedClusterId: str
         """
         self._DedicatedClusterId = None
 
     @property
     def DedicatedClusterId(self):
-        """本地专用集群id
+        """本地专用集群 ID，请登录[专用集群控制台](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1
+)实例列表获取集群 ID。
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -9359,23 +9379,31 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RedisClusterIds: Redis独享集群id
+        :param _RedisClusterIds: Redis独享集群 ID。请登录[专用集群控制台](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1
+)切换至**云服务管理**页面，在下拉框选择**云数据库 Redis**，可获取独享集群ID。
         :type RedisClusterIds: list of str
-        :param _Status: 集群状态：1-流程中，2-运行中，3-已隔离
+        :param _Status: 集群状态。
+- 1：流程。
+- 2：运行中。
+- 3：已隔离。
         :type Status: list of int
-        :param _ProjectIds: 项目ID数组
+        :param _ProjectIds: 项目ID数组。请登录[项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
         :type ProjectIds: list of int
-        :param _AutoRenewFlag: 续费模式：0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :param _AutoRenewFlag: 续费模式。
+- 0：默认状态，手动续费。
+- 1：自动续费。
+- 2：明确不自动续费。
         :type AutoRenewFlag: list of int
-        :param _ClusterName: Redis独享集群名称
+        :param _ClusterName: Redis 独享集群名称。
         :type ClusterName: str
-        :param _SearchKey: 搜索关键词：支持集群Id、集群名称
+        :param _SearchKey: 搜索关键词：支持集群 ID、集群名称。
         :type SearchKey: str
-        :param _Limit: 分页限制返回大小，不传则默认为20
+        :param _Limit: 分页限制返回大小，不传则默认为20。
         :type Limit: int
         :param _Offset: 偏移量，取Limit整数倍
         :type Offset: int
-        :param _DedicatedClusterId: 本地专用集群id
+        :param _DedicatedClusterId: 本地专用集群 ID，请登录[专用集群控制台](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1
+)实例列表获取集群 ID。
         :type DedicatedClusterId: str
         """
         self._RedisClusterIds = None
@@ -9390,7 +9418,8 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     @property
     def RedisClusterIds(self):
-        """Redis独享集群id
+        """Redis独享集群 ID。请登录[专用集群控制台](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1
+)切换至**云服务管理**页面，在下拉框选择**云数据库 Redis**，可获取独享集群ID。
         :rtype: list of str
         """
         return self._RedisClusterIds
@@ -9401,7 +9430,10 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     @property
     def Status(self):
-        """集群状态：1-流程中，2-运行中，3-已隔离
+        """集群状态。
+- 1：流程。
+- 2：运行中。
+- 3：已隔离。
         :rtype: list of int
         """
         return self._Status
@@ -9412,7 +9444,7 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
-        """项目ID数组
+        """项目ID数组。请登录[项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
         :rtype: list of int
         """
         return self._ProjectIds
@@ -9423,7 +9455,10 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """续费模式：0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        """续费模式。
+- 0：默认状态，手动续费。
+- 1：自动续费。
+- 2：明确不自动续费。
         :rtype: list of int
         """
         return self._AutoRenewFlag
@@ -9434,7 +9469,7 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        """Redis独享集群名称
+        """Redis 独享集群名称。
         :rtype: str
         """
         return self._ClusterName
@@ -9445,7 +9480,7 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """搜索关键词：支持集群Id、集群名称
+        """搜索关键词：支持集群 ID、集群名称。
         :rtype: str
         """
         return self._SearchKey
@@ -9456,7 +9491,7 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页限制返回大小，不传则默认为20
+        """分页限制返回大小，不传则默认为20。
         :rtype: int
         """
         return self._Limit
@@ -9478,7 +9513,8 @@ class DescribeRedisClustersRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """本地专用集群id
+        """本地专用集群 ID，请登录[专用集群控制台](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1
+)实例列表获取集群 ID。
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -10231,14 +10267,14 @@ class DescribeTaskInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: 任务 ID, 请通过接口[DescribeTaskList](https://cloud.tencent.com/document/product/239/39374) 的返回参数 **Tasks** 的子参数 **TaskId** 获取。
         :type TaskId: int
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务 ID。
+        """任务 ID, 请通过接口[DescribeTaskList](https://cloud.tencent.com/document/product/239/39374) 的返回参数 **Tasks** 的子参数 **TaskId** 获取。
         :rtype: int
         """
         return self._TaskId
@@ -10764,7 +10800,7 @@ class DescribeTendisSlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id：crs-ngvou0i1
+        :param _InstanceId: 实例 ID，请登录[Tendis控制台](https://console.cloud.tencent.com/tendis)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _BeginTime: 开始时间：2019-09-08 12:12:41，查询时间最大跨度30天。
         :type BeginTime: str
@@ -10786,7 +10822,7 @@ class DescribeTendisSlowLogRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id：crs-ngvou0i1
+        """实例 ID，请登录[Tendis控制台](https://console.cloud.tencent.com/tendis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -10938,14 +10974,14 @@ class DestroyPostpaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -11017,14 +11053,14 @@ class DestroyPrepaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -11096,14 +11132,14 @@ class DisableReplicaReadonlyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例序号ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例序号ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -11179,9 +11215,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
-        :param _SecurityGroupId: 安全组 ID。
+        :param _SecurityGroupId: 安全组 ID，请通过接口[DescribeInstanceSecurityGroup](https://cloud.tencent.com/document/product/239/34447)的返回参数InstanceSecurityGroupsDetail 的子参数**SecurityGroupId**获取。
         :type SecurityGroupId: str
-        :param _InstanceIds: 实例ID列表，一个或者多个实例 ID 组成的数组。
+        :param _InstanceIds: 实例ID列表，一个或者多个实例 ID 组成的数组。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceIds: list of str
         """
         self._Product = None
@@ -11201,7 +11237,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """安全组 ID。
+        """安全组 ID，请通过接口[DescribeInstanceSecurityGroup](https://cloud.tencent.com/document/product/239/34447)的返回参数InstanceSecurityGroupsDetail 的子参数**SecurityGroupId**获取。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -11212,7 +11248,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表，一个或者多个实例 ID 组成的数组。
+        """实例ID列表，一个或者多个实例 ID 组成的数组。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -11271,9 +11307,12 @@ class EnableReplicaReadonlyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例序号ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _ReadonlyPolicy: 账号路由策略：填写master或者replication，表示路由主节点，从节点；不填路由策略默认为写主节点，读从节点
+        :param _ReadonlyPolicy: 只读路由策略。
+- master：表示只读路由至主节点。
+- replication：表示只读路由至从节点。
+- 默认策略：表示写主节点，读从节点。
         :type ReadonlyPolicy: list of str
         """
         self._InstanceId = None
@@ -11281,7 +11320,7 @@ class EnableReplicaReadonlyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例序号ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -11292,7 +11331,10 @@ class EnableReplicaReadonlyRequest(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        """账号路由策略：填写master或者replication，表示路由主节点，从节点；不填路由策略默认为写主节点，读从节点
+        """只读路由策略。
+- master：表示只读路由至主节点。
+- replication：表示只读路由至从节点。
+- 默认策略：表示写主节点，读从节点。
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -12146,13 +12188,13 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _MemSize: 分片大小 单位 MB
+        :param _MemSize: 分片大小，单位：MB。
         :type MemSize: int
-        :param _RedisShardNum: 分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :param _RedisShardNum: 分片数量，Redis 2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
         :type RedisShardNum: int
-        :param _RedisReplicasNum: 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :param _RedisReplicasNum: 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
         :type RedisReplicasNum: int
         """
         self._InstanceId = None
@@ -12162,7 +12204,7 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -12173,7 +12215,7 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     @property
     def MemSize(self):
-        """分片大小 单位 MB
+        """分片大小，单位：MB。
         :rtype: int
         """
         return self._MemSize
@@ -12184,7 +12226,7 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     @property
     def RedisShardNum(self):
-        """分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        """分片数量，Redis 2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
         :rtype: int
         """
         return self._RedisShardNum
@@ -12195,7 +12237,7 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     @property
     def RedisReplicasNum(self):
-        """副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        """副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
         :rtype: int
         """
         return self._RedisReplicasNum
@@ -15209,7 +15251,7 @@ class KillMasterGroupRequest(AbstractModel):
 - 不能以"/"开头
 - 至少包含小写字母a-z、大写字母A-Z、数字0-9及其 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
         :type Password: str
-        :param _ShardIds: 分片集群的分片 ID。
+        :param _ShardIds: 分片集群的分片 ID。请通过接口[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/product/239/48603) 的返回参数 **Redis** 中的 **ClusterId** 获取。
         :type ShardIds: list of int
         """
         self._InstanceId = None
@@ -15243,7 +15285,7 @@ class KillMasterGroupRequest(AbstractModel):
 
     @property
     def ShardIds(self):
-        """分片集群的分片 ID。
+        """分片集群的分片 ID。请通过接口[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/product/239/48603) 的返回参数 **Redis** 中的 **ClusterId** 获取。
         :rtype: list of int
         """
         return self._ShardIds
@@ -15952,13 +15994,13 @@ class ModifyConnectionConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例的ID，长度在12-36之间。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _Bandwidth: 附加带宽，大于0，单位MB。
         :type Bandwidth: int
         :param _ClientLimit: 单分片的总连接数。
-未开启副本只读时，下限为10000，上限为40000；
-开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
+- 未开启副本只读时，下限为10000，上限为40000。
+- 开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
         :type ClientLimit: int
         """
         self._InstanceId = None
@@ -15967,7 +16009,7 @@ class ModifyConnectionConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例的ID，长度在12-36之间。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -15990,8 +16032,8 @@ class ModifyConnectionConfigRequest(AbstractModel):
     @property
     def ClientLimit(self):
         """单分片的总连接数。
-未开启副本只读时，下限为10000，上限为40000；
-开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
+- 未开启副本只读时，下限为10000，上限为40000。
+- 开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
         :rtype: int
         """
         return self._ClientLimit
@@ -16067,9 +16109,11 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
-        :param _SecurityGroupIds: 更换为新的安全组 ID 列表，即一个或者多个安全组 ID 组成的数组。若实例第一次配置安全组，请使用接口[AssociateSecurityGroups](https://cloud.tencent.com/document/product/239/41260)先绑定安全组。
+        :param _SecurityGroupIds: 更换为新的安全组 ID 列表，即一个或者多个安全组 ID 组成的数组。
+- 若实例第一次配置安全组，请使用接口[AssociateSecurityGroups](https://cloud.tencent.com/document/product/239/41260)先绑定安全组。
+- 更换安全组，请在[控制台安全组](https://console.cloud.tencent.com/vpc/security-group)页面获取安全组 ID。
         :type SecurityGroupIds: list of str
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._Product = None
@@ -16089,7 +16133,9 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """更换为新的安全组 ID 列表，即一个或者多个安全组 ID 组成的数组。若实例第一次配置安全组，请使用接口[AssociateSecurityGroups](https://cloud.tencent.com/document/product/239/41260)先绑定安全组。
+        """更换为新的安全组 ID 列表，即一个或者多个安全组 ID 组成的数组。
+- 若实例第一次配置安全组，请使用接口[AssociateSecurityGroups](https://cloud.tencent.com/document/product/239/41260)先绑定安全组。
+- 更换安全组，请在[控制台安全组](https://console.cloud.tencent.com/vpc/security-group)页面获取安全组 ID。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -16100,7 +16146,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -16159,19 +16205,26 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _AccountName: 子账号名称，如果要修改主账号，填root
+        :param _AccountName: 子账号名称，如果要修改主账号，填 root。
         :type AccountName: str
-        :param _AccountPassword: 子账号密码
+        :param _AccountPassword: 子账号密码。
         :type AccountPassword: str
         :param _Remark: 子账号描述信息
         :type Remark: str
-        :param _ReadonlyPolicy: 路由策略：填写master或者replication，表示主节点或者从节点
+        :param _ReadonlyPolicy: 账号读写路由策略。
+- master：表示主节点。
+- replication：表示从节点。
         :type ReadonlyPolicy: list of str
-        :param _Privilege: 子账号读写策略：填写r、w、rw，表示只读，只写，读写策略
+        :param _Privilege: 子账号读写策略。
+- r：只读。
+- w：只写。
+- rw：读写。
         :type Privilege: str
-        :param _NoAuth: true表示将主账号切换为免密账号，这里只适用于主账号，子账号不可免密。
+        :param _NoAuth: 指定是否将主账号切换为免密账号。这里只适用于主账号，子账号不可免密。
+- true：将主账号切换为免密账号。
+- false：不切换。
         :type NoAuth: bool
         """
         self._InstanceId = None
@@ -16184,7 +16237,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -16195,7 +16248,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """子账号名称，如果要修改主账号，填root
+        """子账号名称，如果要修改主账号，填 root。
         :rtype: str
         """
         return self._AccountName
@@ -16206,7 +16259,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
-        """子账号密码
+        """子账号密码。
         :rtype: str
         """
         return self._AccountPassword
@@ -16228,7 +16281,9 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        """路由策略：填写master或者replication，表示主节点或者从节点
+        """账号读写路由策略。
+- master：表示主节点。
+- replication：表示从节点。
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -16239,7 +16294,10 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def Privilege(self):
-        """子账号读写策略：填写r、w、rw，表示只读，只写，读写策略
+        """子账号读写策略。
+- r：只读。
+- w：只写。
+- rw：读写。
         :rtype: str
         """
         return self._Privilege
@@ -16250,7 +16308,9 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def NoAuth(self):
-        """true表示将主账号切换为免密账号，这里只适用于主账号，子账号不可免密。
+        """指定是否将主账号切换为免密账号。这里只适用于主账号，子账号不可免密。
+- true：将主账号切换为免密账号。
+- false：不切换。
         :rtype: bool
         """
         return self._NoAuth
@@ -16606,7 +16666,7 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _LogType: 日志类型。当前仅支持设置为slowlog，指慢查询日志。
         :type LogType: str
@@ -16614,9 +16674,9 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 - true：开启。
 - false：关闭。
         :type Enabled: bool
-        :param _LogsetId: 投递的日志集ID。
+        :param _LogsetId: 投递的日志集ID。通过接口[DescribeInstanceLogDelivery](https://cloud.tencent.com/document/product/239/110878)的返回参数 **SlowLog** 的子参数 **LogsetId** 获取。
         :type LogsetId: str
-        :param _TopicId: 投递的日志主题ID。
+        :param _TopicId: 投递的日志主题ID。请通过接口[DescribeInstanceLogDelivery](https://cloud.tencent.com/document/product/239/110878)的返回参数 **SlowLog** 的子参数 **TopicId** 获取。
         :type TopicId: str
         :param _LogsetName: 日志集名称。若**LogsetId**未指定具体的日志集ID，请配置该参数，设置日志集名称，系统会以设置的日志集名称自动创建新的日志集。
         :type LogsetName: str
@@ -16642,7 +16702,7 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -16677,7 +16737,7 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """投递的日志集ID。
+        """投递的日志集ID。通过接口[DescribeInstanceLogDelivery](https://cloud.tencent.com/document/product/239/110878)的返回参数 **SlowLog** 的子参数 **LogsetId** 获取。
         :rtype: str
         """
         return self._LogsetId
@@ -16688,7 +16748,7 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """投递的日志主题ID。
+        """投递的日志主题ID。请通过接口[DescribeInstanceLogDelivery](https://cloud.tencent.com/document/product/239/110878)的返回参数 **SlowLog** 的子参数 **TopicId** 获取。
         :rtype: str
         """
         return self._TopicId
@@ -16809,7 +16869,7 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _InstanceParams: 实例修改的参数列表。
         :type InstanceParams: list of InstanceParam
@@ -16819,7 +16879,7 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -17038,9 +17098,11 @@ class ModifyInstanceReadOnlyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _InputMode: 实例输入模式，0：读写 1：只读
+        :param _InputMode: 实例输入模式。
+- 0：读写。
+- 1：只读。
         :type InputMode: str
         """
         self._InstanceId = None
@@ -17048,7 +17110,7 @@ class ModifyInstanceReadOnlyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -17059,7 +17121,9 @@ class ModifyInstanceReadOnlyRequest(AbstractModel):
 
     @property
     def InputMode(self):
-        """实例输入模式，0：读写 1：只读
+        """实例输入模式。
+- 0：读写。
+- 1：只读。
         :rtype: str
         """
         return self._InputMode
@@ -17132,21 +17196,27 @@ class ModifyInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operation: 修改实例操作，如填写：rename-表示实例重命名；modifyProject-修改实例所属项目；modifyAutoRenew-修改实例续费标记
+        :param _Operation: 修改实例操作。如填写：
+- rename：表示实例重命名。
+- modifyProject：修改实例所属项目。
+- modifyAutoRenew：修改实例续费标记。
         :type Operation: str
-        :param _InstanceIds: 实例Id，每次请求的实例的上限为10。
+        :param _InstanceIds: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。每次请求的实例数量的上限为10。
         :type InstanceIds: list of str
-        :param _InstanceNames: 实例的新名称
+        :param _InstanceNames: 实例的新名称。
         :type InstanceNames: list of str
-        :param _ProjectId: 项目Id
+        :param _ProjectId: 项目 ID，请登录[Redis控制台的项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
         :type ProjectId: int
-        :param _AutoRenews: 自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :param _AutoRenews: 自动续费标识。
+- 0：默认状态，指手动续费。
+- 1：自动续费。
+- 2：明确不自动续费。
         :type AutoRenews: list of int
-        :param _InstanceId: 已经废弃
+        :param _InstanceId: 目前在废弃中，存量用户还可以使用，建议新用户使用 InstanceIds。
         :type InstanceId: str
         :param _InstanceName: 已经废弃
         :type InstanceName: str
-        :param _AutoRenew: 已经废弃
+        :param _AutoRenew: 已经废弃。
         :type AutoRenew: int
         """
         self._Operation = None
@@ -17160,7 +17230,10 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """修改实例操作，如填写：rename-表示实例重命名；modifyProject-修改实例所属项目；modifyAutoRenew-修改实例续费标记
+        """修改实例操作。如填写：
+- rename：表示实例重命名。
+- modifyProject：修改实例所属项目。
+- modifyAutoRenew：修改实例续费标记。
         :rtype: str
         """
         return self._Operation
@@ -17171,7 +17244,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例Id，每次请求的实例的上限为10。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。每次请求的实例数量的上限为10。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -17182,7 +17255,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
-        """实例的新名称
+        """实例的新名称。
         :rtype: list of str
         """
         return self._InstanceNames
@@ -17193,7 +17266,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目Id
+        """项目 ID，请登录[Redis控制台的项目管理](https://console.cloud.tencent.com/project)页面，在**项目名称**中复制项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -17204,7 +17277,10 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def AutoRenews(self):
-        """自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        """自动续费标识。
+- 0：默认状态，指手动续费。
+- 1：自动续费。
+- 2：明确不自动续费。
         :rtype: list of int
         """
         return self._AutoRenews
@@ -17215,7 +17291,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """已经废弃
+        """目前在废弃中，存量用户还可以使用，建议新用户使用 InstanceIds。
         :rtype: str
         """
         return self._InstanceId
@@ -17237,7 +17313,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """已经废弃
+        """已经废弃。
         :rtype: int
         """
         return self._AutoRenew
@@ -17301,11 +17377,11 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _StartTime: 维护时间窗起始时间，如：17:00
+        :param _StartTime: 维护时间窗起始时间，如：17:00。
         :type StartTime: str
-        :param _EndTime: 维护时间窗结束时间，如：19:00
+        :param _EndTime: 维护时间窗结束时间，如：19:00。
         :type EndTime: str
         """
         self._InstanceId = None
@@ -17314,7 +17390,7 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -17325,7 +17401,7 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """维护时间窗起始时间，如：17:00
+        """维护时间窗起始时间，如：17:00。
         :rtype: str
         """
         return self._StartTime
@@ -17336,7 +17412,7 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """维护时间窗结束时间，如：19:00
+        """维护时间窗结束时间，如：19:00。
         :rtype: str
         """
         return self._EndTime
@@ -17663,7 +17739,7 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 源参数模板 ID。
+        :param _TemplateId: 源参数模板 ID。 请通过接口[DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748)的返回参数 **TemplateId** 获取参数模板 ID。 
         :type TemplateId: str
         :param _Name: 参数模板修改后的新名称。
         :type Name: str
@@ -17679,7 +17755,7 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """源参数模板 ID。
+        """源参数模板 ID。 请通过接口[DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/239/58748)的返回参数 **TemplateId** 获取参数模板 ID。 
         :rtype: str
         """
         return self._TemplateId
@@ -17871,14 +17947,14 @@ class OpenSSLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -19818,14 +19894,14 @@ class ReleaseWanAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -19912,11 +19988,14 @@ class RemoveReplicationInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 复制组ID
+        :param _GroupId: 复制组 ID。例如：crs-rpl-m3zt****。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
+
         :type GroupId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _SyncType: 数据同步类型，true:需要数据强同步,false:不需要强同步，仅限删除主实例
+        :param _SyncType: 数据同步类型。
+- true：需数据强同步。
+- false：无需强同步，仅限删除主实例。
         :type SyncType: bool
         """
         self._GroupId = None
@@ -19925,7 +20004,8 @@ class RemoveReplicationInstanceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """复制组ID
+        """复制组 ID。例如：crs-rpl-m3zt****。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
+
         :rtype: str
         """
         return self._GroupId
@@ -19936,7 +20016,7 @@ class RemoveReplicationInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -19947,7 +20027,9 @@ class RemoveReplicationInstanceRequest(AbstractModel):
 
     @property
     def SyncType(self):
-        """数据同步类型，true:需要数据强同步,false:不需要强同步，仅限删除主实例
+        """数据同步类型。
+- true：需数据强同步。
+- false：无需强同步，仅限删除主实例。
         :rtype: bool
         """
         return self._SyncType
@@ -19978,7 +20060,7 @@ class RemoveReplicationInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID
+        :param _TaskId: 异步任务ID。
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19988,7 +20070,7 @@ class RemoveReplicationInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """异步任务ID
+        """异步任务ID。
         :rtype: int
         """
         return self._TaskId
@@ -20231,11 +20313,13 @@ class ResetPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Redis实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _Password: 重置的密码（切换为免密实例时，可不传；其他情况必传）
+        :param _Password: 重置的密码。若切换为免密实例时，可不配置该参数。其他情况必须配置。
         :type Password: str
-        :param _NoAuth: 是否切换免密实例，false-切换为非免密码实例，true-切换为免密码实例；默认false
+        :param _NoAuth: 是否切换免密实例。
+- false：切换为非免密码实例。
+- true：切换为免密码实例。默认 false。
         :type NoAuth: bool
         """
         self._InstanceId = None
@@ -20244,7 +20328,7 @@ class ResetPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Redis实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -20255,7 +20339,7 @@ class ResetPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """重置的密码（切换为免密实例时，可不传；其他情况必传）
+        """重置的密码。若切换为免密实例时，可不配置该参数。其他情况必须配置。
         :rtype: str
         """
         return self._Password
@@ -20266,7 +20350,9 @@ class ResetPasswordRequest(AbstractModel):
 
     @property
     def NoAuth(self):
-        """是否切换免密实例，false-切换为非免密码实例，true-切换为免密码实例；默认false
+        """是否切换免密实例。
+- false：切换为非免密码实例。
+- true：切换为免密码实例。默认 false。
         :rtype: bool
         """
         return self._NoAuth
@@ -21040,14 +21126,14 @@ class StartupInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例id
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -21185,13 +21271,15 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SrcInstanceId: 源实例ID
+        :param _SrcInstanceId: 源实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type SrcInstanceId: str
-        :param _DstInstanceId: 目标实例ID
+        :param _DstInstanceId: 目标实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type DstInstanceId: str
-        :param _TimeDelay: 单位为秒。源实例与目标实例间DTS已断开时间，如果DTS断开时间大于TimeDelay，则不切换VIP，建议尽量根据业务设置一个可接受的值。
+        :param _TimeDelay: 单位为秒。源实例与目标实例间DTS已断开时间。如果 DTS 断开时间大于TimeDelay，则不切换VIP，建议尽量根据业务设置一个可接受的值。
         :type TimeDelay: int
-        :param _ForceSwitch: 在DTS断开的情况下是否强制切换。1：强制切换，0：不强制切换
+        :param _ForceSwitch: 在 DTS 断开的情况下是否强制切换。
+- 1：强制切换。
+- 0：不强制切换。
         :type ForceSwitch: int
         :param _SwitchTime: now: 立即切换，syncComplete：等待同步完成后切换
         :type SwitchTime: str
@@ -21204,7 +21292,7 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     @property
     def SrcInstanceId(self):
-        """源实例ID
+        """源实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._SrcInstanceId
@@ -21215,7 +21303,7 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     @property
     def DstInstanceId(self):
-        """目标实例ID
+        """目标实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._DstInstanceId
@@ -21226,7 +21314,7 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     @property
     def TimeDelay(self):
-        """单位为秒。源实例与目标实例间DTS已断开时间，如果DTS断开时间大于TimeDelay，则不切换VIP，建议尽量根据业务设置一个可接受的值。
+        """单位为秒。源实例与目标实例间DTS已断开时间。如果 DTS 断开时间大于TimeDelay，则不切换VIP，建议尽量根据业务设置一个可接受的值。
         :rtype: int
         """
         return self._TimeDelay
@@ -21237,7 +21325,9 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     @property
     def ForceSwitch(self):
-        """在DTS断开的情况下是否强制切换。1：强制切换，0：不强制切换
+        """在 DTS 断开的情况下是否强制切换。
+- 1：强制切换。
+- 0：不强制切换。
         :rtype: int
         """
         return self._ForceSwitch
@@ -21324,9 +21414,9 @@ class SwitchProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _ProxyID: 实例ProxyID
+        :param _ProxyID: 实例 ProxyID，请通过接口[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/product/239/48603)的返回参数**Proxy**中的**NodeId**获取。  
         :type ProxyID: str
         """
         self._InstanceId = None
@@ -21334,7 +21424,7 @@ class SwitchProxyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -21345,7 +21435,7 @@ class SwitchProxyRequest(AbstractModel):
 
     @property
     def ProxyID(self):
-        """实例ProxyID
+        """实例 ProxyID，请通过接口[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/product/239/48603)的返回参数**Proxy**中的**NodeId**获取。  
         :rtype: str
         """
         return self._ProxyID
@@ -22327,13 +22417,15 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _CurrentProxyVersion: 当前proxy版本
+        :param _CurrentProxyVersion: 当前 Proxy 版本。
         :type CurrentProxyVersion: str
-        :param _UpgradeProxyVersion: 可升级的redis版本
+        :param _UpgradeProxyVersion: 可升级的 Redis 版本。
         :type UpgradeProxyVersion: str
-        :param _InstanceTypeUpgradeNow: 1-立即升级   0-维护时间窗口升级
+        :param _InstanceTypeUpgradeNow: 指定是否立即升级。
+- 1：立即升级。
+- 0：维护时间窗口升级。
         :type InstanceTypeUpgradeNow: int
         """
         self._InstanceId = None
@@ -22343,7 +22435,7 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -22354,7 +22446,7 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def CurrentProxyVersion(self):
-        """当前proxy版本
+        """当前 Proxy 版本。
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -22365,7 +22457,7 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def UpgradeProxyVersion(self):
-        """可升级的redis版本
+        """可升级的 Redis 版本。
         :rtype: str
         """
         return self._UpgradeProxyVersion
@@ -22376,7 +22468,9 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def InstanceTypeUpgradeNow(self):
-        """1-立即升级   0-维护时间窗口升级
+        """指定是否立即升级。
+- 1：立即升级。
+- 0：维护时间窗口升级。
         :rtype: int
         """
         return self._InstanceTypeUpgradeNow
@@ -22451,13 +22545,15 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _CurrentRedisVersion: 当前redis版本
+        :param _CurrentRedisVersion: 当前 Redis 小版本。小版本信息，请参见[升级实例版本](https://cloud.tencent.com/document/product/239/46457)。
         :type CurrentRedisVersion: str
-        :param _UpgradeRedisVersion: 可升级的redis版本
+        :param _UpgradeRedisVersion: 升级后的 Redis 小版本。小版本信息，请参见[升级实例版本](https://cloud.tencent.com/document/product/239/46457)。
         :type UpgradeRedisVersion: str
-        :param _InstanceTypeUpgradeNow: 1-立即升级   0-维护时间窗口升级
+        :param _InstanceTypeUpgradeNow: 指定是否立即升级。
+- 1：立即升级。
+- 0：维护时间窗口升级。
         :type InstanceTypeUpgradeNow: int
         """
         self._InstanceId = None
@@ -22467,7 +22563,7 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -22478,7 +22574,7 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     @property
     def CurrentRedisVersion(self):
-        """当前redis版本
+        """当前 Redis 小版本。小版本信息，请参见[升级实例版本](https://cloud.tencent.com/document/product/239/46457)。
         :rtype: str
         """
         return self._CurrentRedisVersion
@@ -22489,7 +22585,7 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     @property
     def UpgradeRedisVersion(self):
-        """可升级的redis版本
+        """升级后的 Redis 小版本。小版本信息，请参见[升级实例版本](https://cloud.tencent.com/document/product/239/46457)。
         :rtype: str
         """
         return self._UpgradeRedisVersion
@@ -22500,7 +22596,9 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     @property
     def InstanceTypeUpgradeNow(self):
-        """1-立即升级   0-维护时间窗口升级
+        """指定是否立即升级。
+- 1：立即升级。
+- 0：维护时间窗口升级。
         :rtype: int
         """
         return self._InstanceTypeUpgradeNow
@@ -22575,7 +22673,7 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _UpgradeProxyAndRedisServer: 升级多可用区之后是否支持就近访问功能。
 <ul><li>true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。</li><li>false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。</li></ul>
@@ -22586,7 +22684,7 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """实例ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId

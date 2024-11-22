@@ -7636,12 +7636,16 @@ class CloneSecurityGroupRequest(AbstractModel):
         :type ProjectId: str
         :param _RemoteRegion: 源Region,跨地域克隆安全组时，需要传入源安全组所属地域信息，例如：克隆广州的安全组到上海，则这里需要传入广州安全的地域信息：ap-guangzhou。
         :type RemoteRegion: str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+若指定Tags入参且指定IsCloneTags为true，会合并源安全组的标签和新增的标签。
+        :type Tags: :class:`tencentcloud.vpc.v20170312.models.Tag`
         """
         self._SecurityGroupId = None
         self._GroupName = None
         self._GroupDescription = None
         self._ProjectId = None
         self._RemoteRegion = None
+        self._Tags = None
 
     @property
     def SecurityGroupId(self):
@@ -7698,6 +7702,18 @@ class CloneSecurityGroupRequest(AbstractModel):
     def RemoteRegion(self, RemoteRegion):
         self._RemoteRegion = RemoteRegion
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+若指定Tags入参且指定IsCloneTags为true，会合并源安全组的标签和新增的标签。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.Tag`
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._SecurityGroupId = params.get("SecurityGroupId")
@@ -7705,6 +7721,9 @@ class CloneSecurityGroupRequest(AbstractModel):
         self._GroupDescription = params.get("GroupDescription")
         self._ProjectId = params.get("ProjectId")
         self._RemoteRegion = params.get("RemoteRegion")
+        if params.get("Tags") is not None:
+            self._Tags = Tag()
+            self._Tags._deserialize(params.get("Tags"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7723,7 +7742,6 @@ class CloneSecurityGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SecurityGroup: 安全组对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7734,7 +7752,6 @@ class CloneSecurityGroupResponse(AbstractModel):
     @property
     def SecurityGroup(self):
         """安全组对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
         """
         return self._SecurityGroup
@@ -8426,7 +8443,6 @@ class CreateAssistantCidrResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AssistantCidrSet: 辅助CIDR数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssistantCidrSet: list of AssistantCidr
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8437,7 +8453,6 @@ class CreateAssistantCidrResponse(AbstractModel):
     @property
     def AssistantCidrSet(self):
         """辅助CIDR数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssistantCidr
         """
         return self._AssistantCidrSet
@@ -12357,6 +12372,200 @@ class CreatePrivateNatGatewayTranslationNatRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateReserveIpAddressesRequest(AbstractModel):
+    """CreateReserveIpAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC唯一 ID。
+        :type VpcId: str
+        :param _IpAddresses: 指定IP申请的内网保留IP地址。
+        :type IpAddresses: list of str
+        :param _IpAddressCount: 不指定IP地址，指定个数自动分配保留内网IP。
+        :type IpAddressCount: int
+        :param _SubnetId: 子网唯一 ID。
+        :type SubnetId: str
+        :param _Name: 内网保留 IP名称。
+        :type Name: str
+        :param _Description: 内网保留 IP描述。
+        :type Description: str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        """
+        self._VpcId = None
+        self._IpAddresses = None
+        self._IpAddressCount = None
+        self._SubnetId = None
+        self._Name = None
+        self._Description = None
+        self._Tags = None
+        self._ClientToken = None
+
+    @property
+    def VpcId(self):
+        """VPC唯一 ID。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def IpAddresses(self):
+        """指定IP申请的内网保留IP地址。
+        :rtype: list of str
+        """
+        return self._IpAddresses
+
+    @IpAddresses.setter
+    def IpAddresses(self, IpAddresses):
+        self._IpAddresses = IpAddresses
+
+    @property
+    def IpAddressCount(self):
+        """不指定IP地址，指定个数自动分配保留内网IP。
+        :rtype: int
+        """
+        return self._IpAddressCount
+
+    @IpAddressCount.setter
+    def IpAddressCount(self, IpAddressCount):
+        self._IpAddressCount = IpAddressCount
+
+    @property
+    def SubnetId(self):
+        """子网唯一 ID。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Name(self):
+        """内网保留 IP名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """内网保留 IP描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ClientToken(self):
+        """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._IpAddresses = params.get("IpAddresses")
+        self._IpAddressCount = params.get("IpAddressCount")
+        self._SubnetId = params.get("SubnetId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReserveIpAddressesResponse(AbstractModel):
+    """CreateReserveIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReserveIpAddressSet: 内网保留 IP返回信息
+        :type ReserveIpAddressSet: list of ReserveIpAddressInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReserveIpAddressSet = None
+        self._RequestId = None
+
+    @property
+    def ReserveIpAddressSet(self):
+        """内网保留 IP返回信息
+        :rtype: list of ReserveIpAddressInfo
+        """
+        return self._ReserveIpAddressSet
+
+    @ReserveIpAddressSet.setter
+    def ReserveIpAddressSet(self, ReserveIpAddressSet):
+        self._ReserveIpAddressSet = ReserveIpAddressSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReserveIpAddressSet") is not None:
+            self._ReserveIpAddressSet = []
+            for item in params.get("ReserveIpAddressSet"):
+                obj = ReserveIpAddressInfo()
+                obj._deserialize(item)
+                self._ReserveIpAddressSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18799,6 +19008,85 @@ class DeletePrivateNatGatewayTranslationNatRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteReserveIpAddressesRequest(AbstractModel):
+    """DeleteReserveIpAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC唯一 ID。
+        :type VpcId: str
+        :param _ReserveIpIds: 内网保留IP地址列表。
+        :type ReserveIpIds: list of str
+        """
+        self._VpcId = None
+        self._ReserveIpIds = None
+
+    @property
+    def VpcId(self):
+        """VPC唯一 ID。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def ReserveIpIds(self):
+        """内网保留IP地址列表。
+        :rtype: list of str
+        """
+        return self._ReserveIpIds
+
+    @ReserveIpIds.setter
+    def ReserveIpIds(self, ReserveIpIds):
+        self._ReserveIpIds = ReserveIpIds
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._ReserveIpIds = params.get("ReserveIpIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReserveIpAddressesResponse(AbstractModel):
+    """DeleteReserveIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRouteTableRequest(AbstractModel):
     """DeleteRouteTable请求参数结构体
 
@@ -20935,7 +21223,6 @@ class DescribeAssistantCidrResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AssistantCidrSet: 符合条件的辅助CIDR数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssistantCidrSet: list of AssistantCidr
         :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
@@ -20949,7 +21236,6 @@ class DescribeAssistantCidrResponse(AbstractModel):
     @property
     def AssistantCidrSet(self):
         """符合条件的辅助CIDR数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssistantCidr
         """
         return self._AssistantCidrSet
@@ -24227,9 +24513,9 @@ class DescribeFlowLogsRequest(AbstractModel):
         :type CloudLogId: str
         :param _CloudLogState: 流日志存储ID状态。
         :type CloudLogState: str
-        :param _OrderField: 按某个字段排序,支持字段：flowLogName,createTime，默认按createTime。
+        :param _OrderField: 按某个字段排序,支持字段：flowLogName,createTime，默认按CreatedTime。
         :type OrderField: str
-        :param _OrderDirection: 升序（asc）还是降序（desc）,默认：desc。
+        :param _OrderDirection: 升序（ASC）还是降序（DESC）,默认：DESC。
         :type OrderDirection: str
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -24347,7 +24633,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        """按某个字段排序,支持字段：flowLogName,createTime，默认按createTime。
+        """按某个字段排序,支持字段：flowLogName,createTime，默认按CreatedTime。
         :rtype: str
         """
         return self._OrderField
@@ -24358,7 +24644,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        """升序（asc）还是降序（desc）,默认：desc。
+        """升序（ASC）还是降序（DESC）,默认：DESC。
         :rtype: str
         """
         return self._OrderDirection
@@ -26845,10 +27131,8 @@ class DescribeNetDetectStatesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _NetDetectStateSet: 符合条件的网络探测验证结果对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetDetectStateSet: list of NetDetectState
         :param _TotalCount: 符合条件的网络探测验证结果对象数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26860,7 +27144,6 @@ class DescribeNetDetectStatesResponse(AbstractModel):
     @property
     def NetDetectStateSet(self):
         """符合条件的网络探测验证结果对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetDetectState
         """
         return self._NetDetectStateSet
@@ -26872,7 +27155,6 @@ class DescribeNetDetectStatesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的网络探测验证结果对象数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -27006,10 +27288,8 @@ class DescribeNetDetectsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _NetDetectSet: 符合条件的网络探测对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetDetectSet: list of NetDetect
         :param _TotalCount: 符合条件的网络探测对象数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27021,7 +27301,6 @@ class DescribeNetDetectsResponse(AbstractModel):
     @property
     def NetDetectSet(self):
         """符合条件的网络探测对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetDetect
         """
         return self._NetDetectSet
@@ -27033,7 +27312,6 @@ class DescribeNetDetectsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的网络探测对象数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -27510,16 +27788,12 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
         :param _EniPrivateIpAddressQuantity: 每个标准型弹性网卡可以分配的IP配额。
         :type EniPrivateIpAddressQuantity: int
         :param _ExtendEniQuantity: 扩展型网卡配额。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendEniQuantity: int
         :param _ExtendEniPrivateIpAddressQuantity: 每个扩展型弹性网卡可以分配的IP配额。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendEniPrivateIpAddressQuantity: int
         :param _SubEniQuantity: 中继网卡配额。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubEniQuantity: int
         :param _SubEniPrivateIpAddressQuantity: 每个中继网卡可以分配的IP配额。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubEniPrivateIpAddressQuantity: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27557,7 +27831,6 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
     @property
     def ExtendEniQuantity(self):
         """扩展型网卡配额。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExtendEniQuantity
@@ -27569,7 +27842,6 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
     @property
     def ExtendEniPrivateIpAddressQuantity(self):
         """每个扩展型弹性网卡可以分配的IP配额。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExtendEniPrivateIpAddressQuantity
@@ -27581,7 +27853,6 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
     @property
     def SubEniQuantity(self):
         """中继网卡配额。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubEniQuantity
@@ -27593,7 +27864,6 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
     @property
     def SubEniPrivateIpAddressQuantity(self):
         """每个中继网卡可以分配的IP配额。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubEniPrivateIpAddressQuantity
@@ -28787,6 +29057,179 @@ class DescribeProductQuotaResponse(AbstractModel):
                 obj = ProductQuota()
                 obj._deserialize(item)
                 self._ProductQuotaSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReserveIpAddressesRequest(AbstractModel):
+    """DescribeReserveIpAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReserveIpIds: 内网保留IP唯一ID 列表
+        :type ReserveIpIds: list of str
+        :param _Filters: 过滤条件，参数不支持同时指定ReserveIpIds和Filters。
+
+reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。
+vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
+subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
+address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。
+ip-type - String - （过滤条件）业务类型 ipType，0。
+name - String - （过滤条件）名称。
+state - String - （过滤条件）状态，可选值：Bind， UnBind。
+resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。
+tag-key - String -（过滤条件）按照标签键进行过滤。
+tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 请求对象个数。
+        :type Limit: int
+        """
+        self._ReserveIpIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ReserveIpIds(self):
+        """内网保留IP唯一ID 列表
+        :rtype: list of str
+        """
+        return self._ReserveIpIds
+
+    @ReserveIpIds.setter
+    def ReserveIpIds(self, ReserveIpIds):
+        self._ReserveIpIds = ReserveIpIds
+
+    @property
+    def Filters(self):
+        """过滤条件，参数不支持同时指定ReserveIpIds和Filters。
+
+reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。
+vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
+subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
+address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。
+ip-type - String - （过滤条件）业务类型 ipType，0。
+name - String - （过滤条件）名称。
+state - String - （过滤条件）状态，可选值：Bind， UnBind。
+resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。
+tag-key - String -（过滤条件）按照标签键进行过滤。
+tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """偏移量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """请求对象个数。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ReserveIpIds = params.get("ReserveIpIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReserveIpAddressesResponse(AbstractModel):
+    """DescribeReserveIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReserveIpAddressSet: 内网保留 IP返回信息。
+        :type ReserveIpAddressSet: list of ReserveIpAddressInfo
+        :param _TotalCount: 返回内网保留IP的个数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReserveIpAddressSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ReserveIpAddressSet(self):
+        """内网保留 IP返回信息。
+        :rtype: list of ReserveIpAddressInfo
+        """
+        return self._ReserveIpAddressSet
+
+    @ReserveIpAddressSet.setter
+    def ReserveIpAddressSet(self, ReserveIpAddressSet):
+        self._ReserveIpAddressSet = ReserveIpAddressSet
+
+    @property
+    def TotalCount(self):
+        """返回内网保留IP的个数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReserveIpAddressSet") is not None:
+            self._ReserveIpAddressSet = []
+            for item in params.get("ReserveIpAddressSet"):
+                obj = ReserveIpAddressInfo()
+                obj._deserialize(item)
+                self._ReserveIpAddressSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -30022,7 +30465,6 @@ class DescribeSecurityGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SecurityGroupSet: 安全组对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupSet: list of SecurityGroup
         :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
@@ -30036,7 +30478,6 @@ class DescribeSecurityGroupsResponse(AbstractModel):
     @property
     def SecurityGroupSet(self):
         """安全组对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityGroup
         """
         return self._SecurityGroupSet
@@ -32119,10 +32560,8 @@ class DescribeUsedIpAddressResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IpAddressStates: 占用ip地址的资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpAddressStates: list of IpAddressStates
         :param _TotalCount: 返回占用资源的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32134,7 +32573,6 @@ class DescribeUsedIpAddressResponse(AbstractModel):
     @property
     def IpAddressStates(self):
         """占用ip地址的资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IpAddressStates
         """
         return self._IpAddressStates
@@ -32146,7 +32584,6 @@ class DescribeUsedIpAddressResponse(AbstractModel):
     @property
     def TotalCount(self):
         """返回占用资源的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -47141,6 +47578,115 @@ class ModifyPrivateNatGatewayTranslationNatRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyReserveIpAddressRequest(AbstractModel):
+    """ModifyReserveIpAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC唯一 ID。
+        :type VpcId: str
+        :param _ReserveIpId: 内网保留IP唯一ID。
+        :type ReserveIpId: str
+        :param _Name: 内网保留 IP名称。
+        :type Name: str
+        :param _Description: 内网保留 IP描述。
+        :type Description: str
+        """
+        self._VpcId = None
+        self._ReserveIpId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def VpcId(self):
+        """VPC唯一 ID。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def ReserveIpId(self):
+        """内网保留IP唯一ID。
+        :rtype: str
+        """
+        return self._ReserveIpId
+
+    @ReserveIpId.setter
+    def ReserveIpId(self, ReserveIpId):
+        self._ReserveIpId = ReserveIpId
+
+    @property
+    def Name(self):
+        """内网保留 IP名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """内网保留 IP描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._ReserveIpId = params.get("ReserveIpId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReserveIpAddressResponse(AbstractModel):
+    """ModifyReserveIpAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRouteTableAttributeRequest(AbstractModel):
     """ModifyRouteTableAttribute请求参数结构体
 
@@ -54868,6 +55414,197 @@ class ReplaceSecurityGroupPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ReserveIpAddressInfo(AbstractModel):
+    """内网保留IP数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReserveIpId: 内网保留IP唯一 ID。
+        :type ReserveIpId: str
+        :param _VpcId: VPC唯一 ID。
+        :type VpcId: str
+        :param _SubnetId: 子网唯一 ID。
+        :type SubnetId: str
+        :param _ReserveIpAddress: 内网保留IP地址。
+        :type ReserveIpAddress: str
+        :param _ResourceId: 内网保留 IP绑定的资源实例 ID。
+        :type ResourceId: str
+        :param _IpType: 产品申请的IpType。
+        :type IpType: int
+        :param _State: 绑定状态，UnBind-未绑定， Bind-绑定。
+        :type State: str
+        :param _Name: 保留 IP名称。
+        :type Name: str
+        :param _Description: 保留 IP描述。
+        :type Description: str
+        :param _CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param _TagSet: 标签键值对。
+        :type TagSet: list of Tag
+        """
+        self._ReserveIpId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._ReserveIpAddress = None
+        self._ResourceId = None
+        self._IpType = None
+        self._State = None
+        self._Name = None
+        self._Description = None
+        self._CreatedTime = None
+        self._TagSet = None
+
+    @property
+    def ReserveIpId(self):
+        """内网保留IP唯一 ID。
+        :rtype: str
+        """
+        return self._ReserveIpId
+
+    @ReserveIpId.setter
+    def ReserveIpId(self, ReserveIpId):
+        self._ReserveIpId = ReserveIpId
+
+    @property
+    def VpcId(self):
+        """VPC唯一 ID。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """子网唯一 ID。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ReserveIpAddress(self):
+        """内网保留IP地址。
+        :rtype: str
+        """
+        return self._ReserveIpAddress
+
+    @ReserveIpAddress.setter
+    def ReserveIpAddress(self, ReserveIpAddress):
+        self._ReserveIpAddress = ReserveIpAddress
+
+    @property
+    def ResourceId(self):
+        """内网保留 IP绑定的资源实例 ID。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def IpType(self):
+        """产品申请的IpType。
+        :rtype: int
+        """
+        return self._IpType
+
+    @IpType.setter
+    def IpType(self, IpType):
+        self._IpType = IpType
+
+    @property
+    def State(self):
+        """绑定状态，UnBind-未绑定， Bind-绑定。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Name(self):
+        """保留 IP名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """保留 IP描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedTime(self):
+        """创建时间。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def TagSet(self):
+        """标签键值对。
+        :rtype: list of Tag
+        """
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+
+    def _deserialize(self, params):
+        self._ReserveIpId = params.get("ReserveIpId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._ReserveIpAddress = params.get("ReserveIpAddress")
+        self._ResourceId = params.get("ResourceId")
+        self._IpType = params.get("IpType")
+        self._State = params.get("State")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResetAttachCcnInstancesRequest(AbstractModel):

@@ -1915,6 +1915,474 @@ class CasterBriefInfo(AbstractModel):
         
 
 
+class CasterDisplayInfo(AbstractModel):
+    """导播台展示信息，包括使用的布局、水印、字幕、转场、音频等信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LayoutIndex: 布局Index。
+如果使用自定义布局，为自定义布局下标。
+如果使用单输入布局，如使用输入1，则LayoutIndexType=1， 且LayoutIndex=1，以此类推。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LayoutIndex: int
+        :param _MarkPicIndexList: 使用的水印Index列表。
+注：当作为入参使用时，列表中的水印Index需要已经存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkPicIndexList: list of int non-negative
+        :param _MarkWordIndexList: 使用的文字水印Index列表。
+注：作为入参使用时，列表中的Index需要已经存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordIndexList: list of int non-negative
+        :param _TransitionType: 使用的转场类型。
+注：支持的转场类型可通过DescribeCasterTransitionTypes接口获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransitionType: str
+        :param _AudioIndexList: 使用的音频输入Index列表。
+注：当该字段非空时，表示使用布局中对应的输入源的视频，AudioIndexList中对应的输入源的音频。且这些输入源需已存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioIndexList: list of int non-negative
+        :param _InputStartType: 作为入参时，表示使用点播输入源，单画面输入时，点播文件是否从头开始播放。
+默认为0。
+有效值，0,1。
+0代表不从头播放
+1代表从头播放
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputStartType: int
+        :param _LayoutIndexType: LayoutIndex类型，
+默认值:0
+可选值[0,1]
+0:默认类型，代表普通布局
+1:单输入类型，代表单输入布局
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LayoutIndexType: int
+        """
+        self._LayoutIndex = None
+        self._MarkPicIndexList = None
+        self._MarkWordIndexList = None
+        self._TransitionType = None
+        self._AudioIndexList = None
+        self._InputStartType = None
+        self._LayoutIndexType = None
+
+    @property
+    def LayoutIndex(self):
+        """布局Index。
+如果使用自定义布局，为自定义布局下标。
+如果使用单输入布局，如使用输入1，则LayoutIndexType=1， 且LayoutIndex=1，以此类推。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LayoutIndex
+
+    @LayoutIndex.setter
+    def LayoutIndex(self, LayoutIndex):
+        self._LayoutIndex = LayoutIndex
+
+    @property
+    def MarkPicIndexList(self):
+        """使用的水印Index列表。
+注：当作为入参使用时，列表中的水印Index需要已经存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._MarkPicIndexList
+
+    @MarkPicIndexList.setter
+    def MarkPicIndexList(self, MarkPicIndexList):
+        self._MarkPicIndexList = MarkPicIndexList
+
+    @property
+    def MarkWordIndexList(self):
+        """使用的文字水印Index列表。
+注：作为入参使用时，列表中的Index需要已经存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._MarkWordIndexList
+
+    @MarkWordIndexList.setter
+    def MarkWordIndexList(self, MarkWordIndexList):
+        self._MarkWordIndexList = MarkWordIndexList
+
+    @property
+    def TransitionType(self):
+        """使用的转场类型。
+注：支持的转场类型可通过DescribeCasterTransitionTypes接口获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TransitionType
+
+    @TransitionType.setter
+    def TransitionType(self, TransitionType):
+        self._TransitionType = TransitionType
+
+    @property
+    def AudioIndexList(self):
+        """使用的音频输入Index列表。
+注：当该字段非空时，表示使用布局中对应的输入源的视频，AudioIndexList中对应的输入源的音频。且这些输入源需已存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._AudioIndexList
+
+    @AudioIndexList.setter
+    def AudioIndexList(self, AudioIndexList):
+        self._AudioIndexList = AudioIndexList
+
+    @property
+    def InputStartType(self):
+        """作为入参时，表示使用点播输入源，单画面输入时，点播文件是否从头开始播放。
+默认为0。
+有效值，0,1。
+0代表不从头播放
+1代表从头播放
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InputStartType
+
+    @InputStartType.setter
+    def InputStartType(self, InputStartType):
+        self._InputStartType = InputStartType
+
+    @property
+    def LayoutIndexType(self):
+        """LayoutIndex类型，
+默认值:0
+可选值[0,1]
+0:默认类型，代表普通布局
+1:单输入类型，代表单输入布局
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LayoutIndexType
+
+    @LayoutIndexType.setter
+    def LayoutIndexType(self, LayoutIndexType):
+        self._LayoutIndexType = LayoutIndexType
+
+
+    def _deserialize(self, params):
+        self._LayoutIndex = params.get("LayoutIndex")
+        self._MarkPicIndexList = params.get("MarkPicIndexList")
+        self._MarkWordIndexList = params.get("MarkWordIndexList")
+        self._TransitionType = params.get("TransitionType")
+        self._AudioIndexList = params.get("AudioIndexList")
+        self._InputStartType = params.get("InputStartType")
+        self._LayoutIndexType = params.get("LayoutIndexType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CasterInfo(AbstractModel):
+    """导播台信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _CasterName: 导播台名称
+        :type CasterName: str
+        :param _StartLiveTime: 导播台上一次启动pgm的时间，值为unix时间戳。
+        :type StartLiveTime: int
+        :param _Description: 导播台的描述
+        :type Description: str
+        :param _CreateTime: 导播台创建时间，值为unix时间戳。
+        :type CreateTime: int
+        :param _Status: 导播台状态 
+0：停止状态，无预监，无主监
+1：无预监，有主监
+2：有预监，无主监
+3：有预监，有主监
+        :type Status: int
+        :param _ExpireTime: 导播台的过期时间戳。值为-1或unix时间戳。 
+默认值为-1。 当值为-1时，表示该导播台永不过期。 
+当值为正常unix时间戳时，导播台将在该时间过期。 
+导播台过期后，预监与主监画面将自动停止，转推自动停止。 
+点播、直播url将停止转拉，推流url需自行停止推流。
+        :type ExpireTime: int
+        :param _DelayTime: 导播台延时播放时间，单位为秒。 
+        :type DelayTime: int
+        :param _PgmWidth: 导播台主监输出的宽度，单位为像素。
+        :type PgmWidth: int
+        :param _PgmHeight: 导播台主监输出的高度，单位为像素。
+        :type PgmHeight: int
+        :param _PgmFps: 导播台主监输出的帧率。
+        :type PgmFps: int
+        :param _PgmBitRate: 导播台主监输出的码率，单位为kbps
+        :type PgmBitRate: int
+        :param _PgmAudioBitRate: 导播台主监输出的音频码率，单位为kbps。
+        :type PgmAudioBitRate: int
+        :param _FeeType: 导播台的计费类型。 
+0 通用型 1 播单型。
+注： 本参数暂无作用。
+        :type FeeType: int
+        :param _RecordTemplateId: 录制模板id。
+        :type RecordTemplateId: int
+        :param _RecordStatus: 录制状态。 
+0：未录制 
+1：录制中
+        :type RecordStatus: int
+        :param _RecordTaskId: 录制接口返回的taskid
+        :type RecordTaskId: str
+        """
+        self._CasterId = None
+        self._CasterName = None
+        self._StartLiveTime = None
+        self._Description = None
+        self._CreateTime = None
+        self._Status = None
+        self._ExpireTime = None
+        self._DelayTime = None
+        self._PgmWidth = None
+        self._PgmHeight = None
+        self._PgmFps = None
+        self._PgmBitRate = None
+        self._PgmAudioBitRate = None
+        self._FeeType = None
+        self._RecordTemplateId = None
+        self._RecordStatus = None
+        self._RecordTaskId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def CasterName(self):
+        """导播台名称
+        :rtype: str
+        """
+        return self._CasterName
+
+    @CasterName.setter
+    def CasterName(self, CasterName):
+        self._CasterName = CasterName
+
+    @property
+    def StartLiveTime(self):
+        """导播台上一次启动pgm的时间，值为unix时间戳。
+        :rtype: int
+        """
+        return self._StartLiveTime
+
+    @StartLiveTime.setter
+    def StartLiveTime(self, StartLiveTime):
+        self._StartLiveTime = StartLiveTime
+
+    @property
+    def Description(self):
+        """导播台的描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """导播台创建时间，值为unix时间戳。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        """导播台状态 
+0：停止状态，无预监，无主监
+1：无预监，有主监
+2：有预监，无主监
+3：有预监，有主监
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpireTime(self):
+        """导播台的过期时间戳。值为-1或unix时间戳。 
+默认值为-1。 当值为-1时，表示该导播台永不过期。 
+当值为正常unix时间戳时，导播台将在该时间过期。 
+导播台过期后，预监与主监画面将自动停止，转推自动停止。 
+点播、直播url将停止转拉，推流url需自行停止推流。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DelayTime(self):
+        """导播台延时播放时间，单位为秒。 
+        :rtype: int
+        """
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def PgmWidth(self):
+        """导播台主监输出的宽度，单位为像素。
+        :rtype: int
+        """
+        return self._PgmWidth
+
+    @PgmWidth.setter
+    def PgmWidth(self, PgmWidth):
+        self._PgmWidth = PgmWidth
+
+    @property
+    def PgmHeight(self):
+        """导播台主监输出的高度，单位为像素。
+        :rtype: int
+        """
+        return self._PgmHeight
+
+    @PgmHeight.setter
+    def PgmHeight(self, PgmHeight):
+        self._PgmHeight = PgmHeight
+
+    @property
+    def PgmFps(self):
+        """导播台主监输出的帧率。
+        :rtype: int
+        """
+        return self._PgmFps
+
+    @PgmFps.setter
+    def PgmFps(self, PgmFps):
+        self._PgmFps = PgmFps
+
+    @property
+    def PgmBitRate(self):
+        """导播台主监输出的码率，单位为kbps
+        :rtype: int
+        """
+        return self._PgmBitRate
+
+    @PgmBitRate.setter
+    def PgmBitRate(self, PgmBitRate):
+        self._PgmBitRate = PgmBitRate
+
+    @property
+    def PgmAudioBitRate(self):
+        """导播台主监输出的音频码率，单位为kbps。
+        :rtype: int
+        """
+        return self._PgmAudioBitRate
+
+    @PgmAudioBitRate.setter
+    def PgmAudioBitRate(self, PgmAudioBitRate):
+        self._PgmAudioBitRate = PgmAudioBitRate
+
+    @property
+    def FeeType(self):
+        """导播台的计费类型。 
+0 通用型 1 播单型。
+注： 本参数暂无作用。
+        :rtype: int
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def RecordTemplateId(self):
+        """录制模板id。
+        :rtype: int
+        """
+        return self._RecordTemplateId
+
+    @RecordTemplateId.setter
+    def RecordTemplateId(self, RecordTemplateId):
+        self._RecordTemplateId = RecordTemplateId
+
+    @property
+    def RecordStatus(self):
+        """录制状态。 
+0：未录制 
+1：录制中
+        :rtype: int
+        """
+        return self._RecordStatus
+
+    @RecordStatus.setter
+    def RecordStatus(self, RecordStatus):
+        self._RecordStatus = RecordStatus
+
+    @property
+    def RecordTaskId(self):
+        """录制接口返回的taskid
+        :rtype: str
+        """
+        return self._RecordTaskId
+
+    @RecordTaskId.setter
+    def RecordTaskId(self, RecordTaskId):
+        self._RecordTaskId = RecordTaskId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._CasterName = params.get("CasterName")
+        self._StartLiveTime = params.get("StartLiveTime")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DelayTime = params.get("DelayTime")
+        self._PgmWidth = params.get("PgmWidth")
+        self._PgmHeight = params.get("PgmHeight")
+        self._PgmFps = params.get("PgmFps")
+        self._PgmBitRate = params.get("PgmBitRate")
+        self._PgmAudioBitRate = params.get("PgmAudioBitRate")
+        self._FeeType = params.get("FeeType")
+        self._RecordTemplateId = params.get("RecordTemplateId")
+        self._RecordStatus = params.get("RecordStatus")
+        self._RecordTaskId = params.get("RecordTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CdnPlayStatData(AbstractModel):
     """下行播放统计指标
 
@@ -2974,6 +3442,386 @@ class ConcurrentRecordStreamNum(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CopyCasterRequest(AbstractModel):
+    """CopyCaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 源导播台的ID
+        :type CasterId: int
+        :param _CasterName: 复制产生的新导播台名称
+        :type CasterName: str
+        :param _OutputStreamId: 复制产生的导播台推送到云直播的流id
+注意：该流id不能与云直播中的流id重复
+        :type OutputStreamId: str
+        """
+        self._CasterId = None
+        self._CasterName = None
+        self._OutputStreamId = None
+
+    @property
+    def CasterId(self):
+        """源导播台的ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def CasterName(self):
+        """复制产生的新导播台名称
+        :rtype: str
+        """
+        return self._CasterName
+
+    @CasterName.setter
+    def CasterName(self, CasterName):
+        self._CasterName = CasterName
+
+    @property
+    def OutputStreamId(self):
+        """复制产生的导播台推送到云直播的流id
+注意：该流id不能与云直播中的流id重复
+        :rtype: str
+        """
+        return self._OutputStreamId
+
+    @OutputStreamId.setter
+    def OutputStreamId(self, OutputStreamId):
+        self._OutputStreamId = OutputStreamId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._CasterName = params.get("CasterName")
+        self._OutputStreamId = params.get("OutputStreamId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyCasterResponse(AbstractModel):
+    """CopyCaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 复制生成的导播台ID
+        :type CasterId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CasterId = None
+        self._RequestId = None
+
+    @property
+    def CasterId(self):
+        """复制生成的导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCasterRequest(AbstractModel):
+    """CreateCaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterName: 导播台名称
+        :type CasterName: str
+        :param _Description: 导播台的描述
+最大允许长度256
+        :type Description: str
+        :param _ExpireTime: 导播台的过期时间戳。值为-1或unix时间戳。
+默认值为-1。
+当值为-1时，表示该导播台永不过期。
+当值为正常unix时间戳时，导播台将在该时间过期。
+导播台过期后，预监与主监画面将自动停止，转推自动停止。
+点播、直播url将停止转拉，推流url需自行停止推流。
+        :type ExpireTime: int
+        :param _DelayTime: 导播台延时播放时间，单位为秒。
+默认为0，最大支持300秒
+        :type DelayTime: int
+        :param _TransitionType: 导播台转场类型。
+默认为空。
+允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+        :type TransitionType: str
+        :param _PgmWidth: 导播台主监输出的宽度，单位为像素。
+默认为1280，最大允许4096。
+        :type PgmWidth: int
+        :param _PgmHeight: 导播台主监输出的高度，单位为像素。
+默认为720，最大允许2160。
+        :type PgmHeight: int
+        :param _PgmFps: 导播台主监输出的帧率。
+默认为0，表示随源输出。
+最大支持60。
+        :type PgmFps: int
+        :param _PgmBitRate: 导播台主监输出的码率，单位为kbps。
+默认为0，表示随源的码率输出。
+最大允许10000kbps。
+        :type PgmBitRate: int
+        :param _FeeType: 导播台的计费类型。
+0 通用型 
+1 播单型。
+注： 本参数暂无作用。
+        :type FeeType: int
+        :param _PgmAudioBitRate: 导播台主监输出的音频码率，单位为kbps。
+可选项：[0, 128, 192, 256]
+默认值为0，表示随源的音频码率输出。
+        :type PgmAudioBitRate: int
+        """
+        self._CasterName = None
+        self._Description = None
+        self._ExpireTime = None
+        self._DelayTime = None
+        self._TransitionType = None
+        self._PgmWidth = None
+        self._PgmHeight = None
+        self._PgmFps = None
+        self._PgmBitRate = None
+        self._FeeType = None
+        self._PgmAudioBitRate = None
+
+    @property
+    def CasterName(self):
+        """导播台名称
+        :rtype: str
+        """
+        return self._CasterName
+
+    @CasterName.setter
+    def CasterName(self, CasterName):
+        self._CasterName = CasterName
+
+    @property
+    def Description(self):
+        """导播台的描述
+最大允许长度256
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ExpireTime(self):
+        """导播台的过期时间戳。值为-1或unix时间戳。
+默认值为-1。
+当值为-1时，表示该导播台永不过期。
+当值为正常unix时间戳时，导播台将在该时间过期。
+导播台过期后，预监与主监画面将自动停止，转推自动停止。
+点播、直播url将停止转拉，推流url需自行停止推流。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DelayTime(self):
+        """导播台延时播放时间，单位为秒。
+默认为0，最大支持300秒
+        :rtype: int
+        """
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def TransitionType(self):
+        """导播台转场类型。
+默认为空。
+允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+        :rtype: str
+        """
+        return self._TransitionType
+
+    @TransitionType.setter
+    def TransitionType(self, TransitionType):
+        self._TransitionType = TransitionType
+
+    @property
+    def PgmWidth(self):
+        """导播台主监输出的宽度，单位为像素。
+默认为1280，最大允许4096。
+        :rtype: int
+        """
+        return self._PgmWidth
+
+    @PgmWidth.setter
+    def PgmWidth(self, PgmWidth):
+        self._PgmWidth = PgmWidth
+
+    @property
+    def PgmHeight(self):
+        """导播台主监输出的高度，单位为像素。
+默认为720，最大允许2160。
+        :rtype: int
+        """
+        return self._PgmHeight
+
+    @PgmHeight.setter
+    def PgmHeight(self, PgmHeight):
+        self._PgmHeight = PgmHeight
+
+    @property
+    def PgmFps(self):
+        """导播台主监输出的帧率。
+默认为0，表示随源输出。
+最大支持60。
+        :rtype: int
+        """
+        return self._PgmFps
+
+    @PgmFps.setter
+    def PgmFps(self, PgmFps):
+        self._PgmFps = PgmFps
+
+    @property
+    def PgmBitRate(self):
+        """导播台主监输出的码率，单位为kbps。
+默认为0，表示随源的码率输出。
+最大允许10000kbps。
+        :rtype: int
+        """
+        return self._PgmBitRate
+
+    @PgmBitRate.setter
+    def PgmBitRate(self, PgmBitRate):
+        self._PgmBitRate = PgmBitRate
+
+    @property
+    def FeeType(self):
+        """导播台的计费类型。
+0 通用型 
+1 播单型。
+注： 本参数暂无作用。
+        :rtype: int
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def PgmAudioBitRate(self):
+        """导播台主监输出的音频码率，单位为kbps。
+可选项：[0, 128, 192, 256]
+默认值为0，表示随源的音频码率输出。
+        :rtype: int
+        """
+        return self._PgmAudioBitRate
+
+    @PgmAudioBitRate.setter
+    def PgmAudioBitRate(self, PgmAudioBitRate):
+        self._PgmAudioBitRate = PgmAudioBitRate
+
+
+    def _deserialize(self, params):
+        self._CasterName = params.get("CasterName")
+        self._Description = params.get("Description")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DelayTime = params.get("DelayTime")
+        self._TransitionType = params.get("TransitionType")
+        self._PgmWidth = params.get("PgmWidth")
+        self._PgmHeight = params.get("PgmHeight")
+        self._PgmFps = params.get("PgmFps")
+        self._PgmBitRate = params.get("PgmBitRate")
+        self._FeeType = params.get("FeeType")
+        self._PgmAudioBitRate = params.get("PgmAudioBitRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCasterResponse(AbstractModel):
+    """CreateCaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CasterId = None
+        self._RequestId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCommonMixStreamRequest(AbstractModel):
@@ -7422,6 +8270,70 @@ class DelayInfo(AbstractModel):
         
 
 
+class DeleteCasterRequest(AbstractModel):
+    """DeleteCaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 待删除的导播台ID
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """待删除的导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCasterResponse(AbstractModel):
+    """DeleteCaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLiveCallbackRuleRequest(AbstractModel):
     """DeleteLiveCallbackRule请求参数结构体
 
@@ -9951,6 +10863,150 @@ class DescribeCallbackRecordsListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCasterDisplayInfoRequest(AbstractModel):
+    """DescribeCasterDisplayInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterDisplayInfoResponse(AbstractModel):
+    """DescribeCasterDisplayInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 导播台状态
+0：停止状态，无预监，无主监 
+1：无预监，有主监 
+2：有预监，无主监 
+3：有预监，有主监
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _PvwDisplayInfo: 预监使用的展示参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PvwDisplayInfo: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
+        :param _PgmDisplayInfo: 主监使用的展示参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PgmDisplayInfo: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
+        :param _StartLiveTime: 启动直播的时间，值为unix时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartLiveTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._PvwDisplayInfo = None
+        self._PgmDisplayInfo = None
+        self._StartLiveTime = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """导播台状态
+0：停止状态，无预监，无主监 
+1：无预监，有主监 
+2：有预监，无主监 
+3：有预监，有主监
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PvwDisplayInfo(self):
+        """预监使用的展示参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
+        """
+        return self._PvwDisplayInfo
+
+    @PvwDisplayInfo.setter
+    def PvwDisplayInfo(self, PvwDisplayInfo):
+        self._PvwDisplayInfo = PvwDisplayInfo
+
+    @property
+    def PgmDisplayInfo(self):
+        """主监使用的展示参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
+        """
+        return self._PgmDisplayInfo
+
+    @PgmDisplayInfo.setter
+    def PgmDisplayInfo(self, PgmDisplayInfo):
+        self._PgmDisplayInfo = PgmDisplayInfo
+
+    @property
+    def StartLiveTime(self):
+        """启动直播的时间，值为unix时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StartLiveTime
+
+    @StartLiveTime.setter
+    def StartLiveTime(self, StartLiveTime):
+        self._StartLiveTime = StartLiveTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        if params.get("PvwDisplayInfo") is not None:
+            self._PvwDisplayInfo = CasterDisplayInfo()
+            self._PvwDisplayInfo._deserialize(params.get("PvwDisplayInfo"))
+        if params.get("PgmDisplayInfo") is not None:
+            self._PgmDisplayInfo = CasterDisplayInfo()
+            self._PgmDisplayInfo._deserialize(params.get("PgmDisplayInfo"))
+        self._StartLiveTime = params.get("StartLiveTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCasterListRequest(AbstractModel):
     """DescribeCasterList请求参数结构体
 
@@ -10004,6 +11060,231 @@ class DescribeCasterListResponse(AbstractModel):
                 obj = CasterBriefInfo()
                 obj._deserialize(item)
                 self._CasterList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCasterPlayUrlRequest(AbstractModel):
+    """DescribeCasterPlayUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _PlayUrlType: 请求播放url的类型。
+取值范围[1，2，3]
+1：获取输入源的播放url
+2：获取pvw的播放url
+3：获取pgm的播放url
+        :type PlayUrlType: int
+        :param _PlayUrlIndex: 仅在PlayUrlType为1时生效，此时该参数表示请求的输入源Index。
+注：对应的输入源必须存在。
+        :type PlayUrlIndex: int
+        """
+        self._CasterId = None
+        self._PlayUrlType = None
+        self._PlayUrlIndex = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def PlayUrlType(self):
+        """请求播放url的类型。
+取值范围[1，2，3]
+1：获取输入源的播放url
+2：获取pvw的播放url
+3：获取pgm的播放url
+        :rtype: int
+        """
+        return self._PlayUrlType
+
+    @PlayUrlType.setter
+    def PlayUrlType(self, PlayUrlType):
+        self._PlayUrlType = PlayUrlType
+
+    @property
+    def PlayUrlIndex(self):
+        """仅在PlayUrlType为1时生效，此时该参数表示请求的输入源Index。
+注：对应的输入源必须存在。
+        :rtype: int
+        """
+        return self._PlayUrlIndex
+
+    @PlayUrlIndex.setter
+    def PlayUrlIndex(self, PlayUrlIndex):
+        self._PlayUrlIndex = PlayUrlIndex
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._PlayUrlType = params.get("PlayUrlType")
+        self._PlayUrlIndex = params.get("PlayUrlIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterPlayUrlResponse(AbstractModel):
+    """DescribeCasterPlayUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlayUrl: 播放url。
+当导播台不存在预监或主监时，若请求预监或主监的播放地址，该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlayUrl: str
+        :param _WebRTCPlayUrl: webrtc协议播放地址。
+当导播台不存在预监或主监时，若请求预监或主监的webrtc播放地址，该字段为空。
+注：webrtc协议播放地址需配合腾讯云快直播播放sdk方可使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebRTCPlayUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PlayUrl = None
+        self._WebRTCPlayUrl = None
+        self._RequestId = None
+
+    @property
+    def PlayUrl(self):
+        """播放url。
+当导播台不存在预监或主监时，若请求预监或主监的播放地址，该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PlayUrl
+
+    @PlayUrl.setter
+    def PlayUrl(self, PlayUrl):
+        self._PlayUrl = PlayUrl
+
+    @property
+    def WebRTCPlayUrl(self):
+        """webrtc协议播放地址。
+当导播台不存在预监或主监时，若请求预监或主监的webrtc播放地址，该字段为空。
+注：webrtc协议播放地址需配合腾讯云快直播播放sdk方可使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WebRTCPlayUrl
+
+    @WebRTCPlayUrl.setter
+    def WebRTCPlayUrl(self, WebRTCPlayUrl):
+        self._WebRTCPlayUrl = WebRTCPlayUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PlayUrl = params.get("PlayUrl")
+        self._WebRTCPlayUrl = params.get("WebRTCPlayUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCasterRequest(AbstractModel):
+    """DescribeCaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 需查询的导播台ID
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """需查询的导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterResponse(AbstractModel):
+    """DescribeCaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterInfo: 导播台信息
+        :type CasterInfo: :class:`tencentcloud.live.v20180801.models.CasterInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CasterInfo = None
+        self._RequestId = None
+
+    @property
+    def CasterInfo(self):
+        """导播台信息
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterInfo`
+        """
+        return self._CasterInfo
+
+    @CasterInfo.setter
+    def CasterInfo(self, CasterInfo):
+        self._CasterInfo = CasterInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CasterInfo") is not None:
+            self._CasterInfo = CasterInfo()
+            self._CasterInfo._deserialize(params.get("CasterInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -12885,10 +14166,14 @@ class DescribeLivePullStreamTasksRequest(AbstractModel):
         :param _PageSize: 分页大小，默认值：10。
 取值范围：1~20 之前的任意整数。
         :type PageSize: int
+        :param _SpecifyTaskId: 使用指定任务 ID 查询任务信息。
+注意：仅供使用指定 ID 创建的任务查询。
+        :type SpecifyTaskId: str
         """
         self._TaskId = None
         self._PageNum = None
         self._PageSize = None
+        self._SpecifyTaskId = None
 
     @property
     def TaskId(self):
@@ -12926,11 +14211,24 @@ class DescribeLivePullStreamTasksRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def SpecifyTaskId(self):
+        """使用指定任务 ID 查询任务信息。
+注意：仅供使用指定 ID 创建的任务查询。
+        :rtype: str
+        """
+        return self._SpecifyTaskId
+
+    @SpecifyTaskId.setter
+    def SpecifyTaskId(self, SpecifyTaskId):
+        self._SpecifyTaskId = SpecifyTaskId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._PageNum = params.get("PageNum")
         self._PageSize = params.get("PageSize")
+        self._SpecifyTaskId = params.get("SpecifyTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15066,6 +16364,198 @@ class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
                 obj = TimeShiftTemplate()
                 obj._deserialize(item)
                 self._Templates.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveTimeShiftWriteSizeInfoListRequest(AbstractModel):
+    """DescribeLiveTimeShiftWriteSizeInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
+        :type StartTime: str
+        :param _EndTime: 结束时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
+        :type EndTime: str
+        :param _DomainNames: 域名。
+        :type DomainNames: list of str
+        :param _Dimensions: 维度
+Area地区、Domain 域名、StorageDays 时移天数
+        :type Dimensions: list of str
+        :param _StorageDays: 时移天数。
+        :type StorageDays: list of int
+        :param _Granularity: 时间跨度（分钟）
+默认5，可选 5、60或者1440。
+        :type Granularity: int
+        :param _MainlandOrOversea: 区域
+可选Mainland、Oversea。
+        :type MainlandOrOversea: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._DomainNames = None
+        self._Dimensions = None
+        self._StorageDays = None
+        self._Granularity = None
+        self._MainlandOrOversea = None
+
+    @property
+    def StartTime(self):
+        """起始时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+支持最近六个月的查询，查询开始和结束时间跨度不支持超过31天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DomainNames(self):
+        """域名。
+        :rtype: list of str
+        """
+        return self._DomainNames
+
+    @DomainNames.setter
+    def DomainNames(self, DomainNames):
+        self._DomainNames = DomainNames
+
+    @property
+    def Dimensions(self):
+        """维度
+Area地区、Domain 域名、StorageDays 时移天数
+        :rtype: list of str
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def StorageDays(self):
+        """时移天数。
+        :rtype: list of int
+        """
+        return self._StorageDays
+
+    @StorageDays.setter
+    def StorageDays(self, StorageDays):
+        self._StorageDays = StorageDays
+
+    @property
+    def Granularity(self):
+        """时间跨度（分钟）
+默认5，可选 5、60或者1440。
+        :rtype: int
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def MainlandOrOversea(self):
+        """区域
+可选Mainland、Oversea。
+        :rtype: str
+        """
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DomainNames = params.get("DomainNames")
+        self._Dimensions = params.get("Dimensions")
+        self._StorageDays = params.get("StorageDays")
+        self._Granularity = params.get("Granularity")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveTimeShiftWriteSizeInfoListResponse(AbstractModel):
+    """DescribeLiveTimeShiftWriteSizeInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataInfoList: 直播时移写入量数据明细。
+        :type DataInfoList: list of TimeShiftWriteSizeData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        """直播时移写入量数据明细。
+        :rtype: list of TimeShiftWriteSizeData
+        """
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self._DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TimeShiftWriteSizeData()
+                obj._deserialize(item)
+                self._DataInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23172,6 +24662,332 @@ class MixPortraitSegmentParams(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyCasterRequest(AbstractModel):
+    """ModifyCaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _CasterName: 导播台名称
+        :type CasterName: str
+        :param _Description: 导播台的描述
+最大允许长度256
+        :type Description: str
+        :param _RecordTemplateId: 录制模板id。
+默认为0。
+当使用直播录制功能时，可将使用的录制模版填入。
+该接口仅保存字段，不涉及任何录制功能。
+        :type RecordTemplateId: int
+        :param _RecordStatus: 录制状态，当调用录制接口后，可通过该字段保存录制状态。
+0：未录制 
+1：录制中
+该接口仅保存字段，不涉及任何录制处理。
+        :type RecordStatus: int
+        :param _ExpireTime: 导播台的过期时间戳。值为-1或unix时间戳。
+默认值为-1。 
+当值为-1时，表示该导播台永不过期。 
+当值为正常unix时间戳时，导播台将在该时间过期。
+导播台过期后，预监与主监画面将自动停止，转推自动停止。 
+点播、直播url将停止转拉，推流url需自行停止推流。
+        :type ExpireTime: int
+        :param _DelayTime: 导播台延时播放时间，单位为秒。 
+默认为0，最大支持300秒
+        :type DelayTime: int
+        :param _TransitionType: 导播台转场类型。 
+默认为空。 
+允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+        :type TransitionType: str
+        :param _PgmWidth: 导播台主监输出的宽度，单位为像素。 
+默认为1280，最大允许4096。
+        :type PgmWidth: int
+        :param _PgmHeight: 导播台主监输出的高度，单位为像素。 
+默认为720，最大允许2160。
+        :type PgmHeight: int
+        :param _PgmFps: 导播台主监输出的帧率。 
+默认为0，表示随源输出。 最大支持60。
+        :type PgmFps: int
+        :param _PgmBitRate: 导播台主监输出的码率，单位为kbps。 
+默认为0，表示随源的码率输出。 
+最大允许10000kbps。
+        :type PgmBitRate: int
+        :param _FeeType: 导播台的计费类型。 
+0 通用型 
+1 播单型。 
+注： 本参数暂无作用。
+        :type FeeType: int
+        :param _RecordTaskId: 录制接口返回的taskid
+注：该接口只做字段保存，不涉及录制操作。
+        :type RecordTaskId: str
+        :param _PgmAudioBitRate: 导播台主监输出的音频码率，单位为kbps。 
+可选项：[0, 128, 192, 256] 
+默认值为0，表示随源的音频码率输出。
+        :type PgmAudioBitRate: int
+        """
+        self._CasterId = None
+        self._CasterName = None
+        self._Description = None
+        self._RecordTemplateId = None
+        self._RecordStatus = None
+        self._ExpireTime = None
+        self._DelayTime = None
+        self._TransitionType = None
+        self._PgmWidth = None
+        self._PgmHeight = None
+        self._PgmFps = None
+        self._PgmBitRate = None
+        self._FeeType = None
+        self._RecordTaskId = None
+        self._PgmAudioBitRate = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def CasterName(self):
+        """导播台名称
+        :rtype: str
+        """
+        return self._CasterName
+
+    @CasterName.setter
+    def CasterName(self, CasterName):
+        self._CasterName = CasterName
+
+    @property
+    def Description(self):
+        """导播台的描述
+最大允许长度256
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RecordTemplateId(self):
+        """录制模板id。
+默认为0。
+当使用直播录制功能时，可将使用的录制模版填入。
+该接口仅保存字段，不涉及任何录制功能。
+        :rtype: int
+        """
+        return self._RecordTemplateId
+
+    @RecordTemplateId.setter
+    def RecordTemplateId(self, RecordTemplateId):
+        self._RecordTemplateId = RecordTemplateId
+
+    @property
+    def RecordStatus(self):
+        """录制状态，当调用录制接口后，可通过该字段保存录制状态。
+0：未录制 
+1：录制中
+该接口仅保存字段，不涉及任何录制处理。
+        :rtype: int
+        """
+        return self._RecordStatus
+
+    @RecordStatus.setter
+    def RecordStatus(self, RecordStatus):
+        self._RecordStatus = RecordStatus
+
+    @property
+    def ExpireTime(self):
+        """导播台的过期时间戳。值为-1或unix时间戳。
+默认值为-1。 
+当值为-1时，表示该导播台永不过期。 
+当值为正常unix时间戳时，导播台将在该时间过期。
+导播台过期后，预监与主监画面将自动停止，转推自动停止。 
+点播、直播url将停止转拉，推流url需自行停止推流。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DelayTime(self):
+        """导播台延时播放时间，单位为秒。 
+默认为0，最大支持300秒
+        :rtype: int
+        """
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def TransitionType(self):
+        """导播台转场类型。 
+默认为空。 
+允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+        :rtype: str
+        """
+        return self._TransitionType
+
+    @TransitionType.setter
+    def TransitionType(self, TransitionType):
+        self._TransitionType = TransitionType
+
+    @property
+    def PgmWidth(self):
+        """导播台主监输出的宽度，单位为像素。 
+默认为1280，最大允许4096。
+        :rtype: int
+        """
+        return self._PgmWidth
+
+    @PgmWidth.setter
+    def PgmWidth(self, PgmWidth):
+        self._PgmWidth = PgmWidth
+
+    @property
+    def PgmHeight(self):
+        """导播台主监输出的高度，单位为像素。 
+默认为720，最大允许2160。
+        :rtype: int
+        """
+        return self._PgmHeight
+
+    @PgmHeight.setter
+    def PgmHeight(self, PgmHeight):
+        self._PgmHeight = PgmHeight
+
+    @property
+    def PgmFps(self):
+        """导播台主监输出的帧率。 
+默认为0，表示随源输出。 最大支持60。
+        :rtype: int
+        """
+        return self._PgmFps
+
+    @PgmFps.setter
+    def PgmFps(self, PgmFps):
+        self._PgmFps = PgmFps
+
+    @property
+    def PgmBitRate(self):
+        """导播台主监输出的码率，单位为kbps。 
+默认为0，表示随源的码率输出。 
+最大允许10000kbps。
+        :rtype: int
+        """
+        return self._PgmBitRate
+
+    @PgmBitRate.setter
+    def PgmBitRate(self, PgmBitRate):
+        self._PgmBitRate = PgmBitRate
+
+    @property
+    def FeeType(self):
+        """导播台的计费类型。 
+0 通用型 
+1 播单型。 
+注： 本参数暂无作用。
+        :rtype: int
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def RecordTaskId(self):
+        """录制接口返回的taskid
+注：该接口只做字段保存，不涉及录制操作。
+        :rtype: str
+        """
+        return self._RecordTaskId
+
+    @RecordTaskId.setter
+    def RecordTaskId(self, RecordTaskId):
+        self._RecordTaskId = RecordTaskId
+
+    @property
+    def PgmAudioBitRate(self):
+        """导播台主监输出的音频码率，单位为kbps。 
+可选项：[0, 128, 192, 256] 
+默认值为0，表示随源的音频码率输出。
+        :rtype: int
+        """
+        return self._PgmAudioBitRate
+
+    @PgmAudioBitRate.setter
+    def PgmAudioBitRate(self, PgmAudioBitRate):
+        self._PgmAudioBitRate = PgmAudioBitRate
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._CasterName = params.get("CasterName")
+        self._Description = params.get("Description")
+        self._RecordTemplateId = params.get("RecordTemplateId")
+        self._RecordStatus = params.get("RecordStatus")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DelayTime = params.get("DelayTime")
+        self._TransitionType = params.get("TransitionType")
+        self._PgmWidth = params.get("PgmWidth")
+        self._PgmHeight = params.get("PgmHeight")
+        self._PgmFps = params.get("PgmFps")
+        self._PgmBitRate = params.get("PgmBitRate")
+        self._FeeType = params.get("FeeType")
+        self._RecordTaskId = params.get("RecordTaskId")
+        self._PgmAudioBitRate = params.get("PgmAudioBitRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCasterResponse(AbstractModel):
+    """ModifyCaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLiveCallbackTemplateRequest(AbstractModel):
@@ -32632,6 +34448,102 @@ Overseas：海外及港澳台地区；
         self._Area = params.get("Area")
         self._RemoveWatermark = params.get("RemoveWatermark")
         self._TranscodeTemplateIds = params.get("TranscodeTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftWriteSizeData(AbstractModel):
+    """直播时移写入量数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Area: 区域。
+        :type Area: str
+        :param _Time: 时间，格式为：yyyy-mm-ddTHH:MM:SSZ。
+        :type Time: str
+        :param _WriteSize: 写入量（单位：字节）
+        :type WriteSize: float
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _StorageDays: 时移天数。
+        :type StorageDays: int
+        """
+        self._Area = None
+        self._Time = None
+        self._WriteSize = None
+        self._Domain = None
+        self._StorageDays = None
+
+    @property
+    def Area(self):
+        """区域。
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Time(self):
+        """时间，格式为：yyyy-mm-ddTHH:MM:SSZ。
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def WriteSize(self):
+        """写入量（单位：字节）
+        :rtype: float
+        """
+        return self._WriteSize
+
+    @WriteSize.setter
+    def WriteSize(self, WriteSize):
+        self._WriteSize = WriteSize
+
+    @property
+    def Domain(self):
+        """域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def StorageDays(self):
+        """时移天数。
+        :rtype: int
+        """
+        return self._StorageDays
+
+    @StorageDays.setter
+    def StorageDays(self, StorageDays):
+        self._StorageDays = StorageDays
+
+
+    def _deserialize(self, params):
+        self._Area = params.get("Area")
+        self._Time = params.get("Time")
+        self._WriteSize = params.get("WriteSize")
+        self._Domain = params.get("Domain")
+        self._StorageDays = params.get("StorageDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

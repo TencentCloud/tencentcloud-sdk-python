@@ -4012,6 +4012,9 @@ class ConfigFileRelease(AbstractModel):
         :param _Format: 格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
+        :param _ConfigFileId: 配置文件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileId: str
         """
         self._Id = None
         self._Name = None
@@ -4029,6 +4032,7 @@ class ConfigFileRelease(AbstractModel):
         self._ReleaseDescription = None
         self._Active = None
         self._Format = None
+        self._ConfigFileId = None
 
     @property
     def Id(self):
@@ -4222,6 +4226,18 @@ class ConfigFileRelease(AbstractModel):
     def Format(self, Format):
         self._Format = Format
 
+    @property
+    def ConfigFileId(self):
+        """配置文件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigFileId
+
+    @ConfigFileId.setter
+    def ConfigFileId(self, ConfigFileId):
+        self._ConfigFileId = ConfigFileId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -4240,6 +4256,7 @@ class ConfigFileRelease(AbstractModel):
         self._ReleaseDescription = params.get("ReleaseDescription")
         self._Active = params.get("Active")
         self._Format = params.get("Format")
+        self._ConfigFileId = params.get("ConfigFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4269,11 +4286,15 @@ class ConfigFileReleaseDeletion(AbstractModel):
         :param _ReleaseVersion: 发布版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseVersion: str
+        :param _Id: 配置发布ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
         """
         self._Namespace = None
         self._Group = None
         self._FileName = None
         self._ReleaseVersion = None
+        self._Id = None
 
     @property
     def Namespace(self):
@@ -4323,12 +4344,25 @@ class ConfigFileReleaseDeletion(AbstractModel):
     def ReleaseVersion(self, ReleaseVersion):
         self._ReleaseVersion = ReleaseVersion
 
+    @property
+    def Id(self):
+        """配置发布ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
         self._Group = params.get("Group")
         self._FileName = params.get("FileName")
         self._ReleaseVersion = params.get("ReleaseVersion")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6799,10 +6833,14 @@ class CreateConfigFileResponse(AbstractModel):
         r"""
         :param _Result: 是否创建成功
         :type Result: bool
+        :param _ConfigFileId: 创建的配置文件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
+        self._ConfigFileId = None
         self._RequestId = None
 
     @property
@@ -6815,6 +6853,18 @@ class CreateConfigFileResponse(AbstractModel):
     @Result.setter
     def Result(self, Result):
         self._Result = Result
+
+    @property
+    def ConfigFileId(self):
+        """创建的配置文件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigFileId
+
+    @ConfigFileId.setter
+    def ConfigFileId(self, ConfigFileId):
+        self._ConfigFileId = ConfigFileId
 
     @property
     def RequestId(self):
@@ -6830,6 +6880,7 @@ class CreateConfigFileResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._ConfigFileId = params.get("ConfigFileId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8026,9 +8077,12 @@ class CreateOrUpdateConfigFileAndReleaseRequest(AbstractModel):
         :type InstanceId: str
         :param _ConfigFilePublishInfo: 配置文件列表详情	
         :type ConfigFilePublishInfo: :class:`tencentcloud.tse.v20201207.models.ConfigFilePublishInfo`
+        :param _StrictEnable: 控制开启校验配置版本是否已经存在
+        :type StrictEnable: bool
         """
         self._InstanceId = None
         self._ConfigFilePublishInfo = None
+        self._StrictEnable = None
 
     @property
     def InstanceId(self):
@@ -8052,12 +8106,24 @@ class CreateOrUpdateConfigFileAndReleaseRequest(AbstractModel):
     def ConfigFilePublishInfo(self, ConfigFilePublishInfo):
         self._ConfigFilePublishInfo = ConfigFilePublishInfo
 
+    @property
+    def StrictEnable(self):
+        """控制开启校验配置版本是否已经存在
+        :rtype: bool
+        """
+        return self._StrictEnable
+
+    @StrictEnable.setter
+    def StrictEnable(self, StrictEnable):
+        self._StrictEnable = StrictEnable
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         if params.get("ConfigFilePublishInfo") is not None:
             self._ConfigFilePublishInfo = ConfigFilePublishInfo()
             self._ConfigFilePublishInfo._deserialize(params.get("ConfigFilePublishInfo"))
+        self._StrictEnable = params.get("StrictEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8077,10 +8143,18 @@ class CreateOrUpdateConfigFileAndReleaseResponse(AbstractModel):
         r"""
         :param _Result: 操作是否成功
         :type Result: bool
+        :param _ConfigFileReleaseId: 配置发布Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileReleaseId: str
+        :param _ConfigFileId: 配置文件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
+        self._ConfigFileReleaseId = None
+        self._ConfigFileId = None
         self._RequestId = None
 
     @property
@@ -8093,6 +8167,30 @@ class CreateOrUpdateConfigFileAndReleaseResponse(AbstractModel):
     @Result.setter
     def Result(self, Result):
         self._Result = Result
+
+    @property
+    def ConfigFileReleaseId(self):
+        """配置发布Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigFileReleaseId
+
+    @ConfigFileReleaseId.setter
+    def ConfigFileReleaseId(self, ConfigFileReleaseId):
+        self._ConfigFileReleaseId = ConfigFileReleaseId
+
+    @property
+    def ConfigFileId(self):
+        """配置文件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigFileId
+
+    @ConfigFileId.setter
+    def ConfigFileId(self, ConfigFileId):
+        self._ConfigFileId = ConfigFileId
 
     @property
     def RequestId(self):
@@ -8108,6 +8206,8 @@ class CreateOrUpdateConfigFileAndReleaseResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._ConfigFileReleaseId = params.get("ConfigFileReleaseId")
+        self._ConfigFileId = params.get("ConfigFileId")
         self._RequestId = params.get("RequestId")
 
 
@@ -9330,11 +9430,14 @@ class DeleteConfigFilesRequest(AbstractModel):
         :type Group: str
         :param _Name: 配置文件名称
         :type Name: str
+        :param _Id: 配置文件Id
+        :type Id: str
         """
         self._InstanceId = None
         self._Namespace = None
         self._Group = None
         self._Name = None
+        self._Id = None
 
     @property
     def InstanceId(self):
@@ -9380,12 +9483,24 @@ class DeleteConfigFilesRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Id(self):
+        """配置文件Id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Namespace = params.get("Namespace")
         self._Group = params.get("Group")
         self._Name = params.get("Name")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12836,6 +12951,8 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
         :type Name: str
         :param _EndId: 发布历史记录id，用于分页优化，一般指定 EndId，就不用指定 Offset，否则分页可能不连续
         :type EndId: int
+        :param _ConfigFileId: 配置文件ID
+        :type ConfigFileId: str
         :param _Limit: 返回数量，默认为20，最大值为100。	
         :type Limit: int
         :param _Offset: 偏移量，默认为0。	
@@ -12846,6 +12963,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
         self._Group = None
         self._Name = None
         self._EndId = None
+        self._ConfigFileId = None
         self._Limit = None
         self._Offset = None
 
@@ -12905,6 +13023,17 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
         self._EndId = EndId
 
     @property
+    def ConfigFileId(self):
+        """配置文件ID
+        :rtype: str
+        """
+        return self._ConfigFileId
+
+    @ConfigFileId.setter
+    def ConfigFileId(self, ConfigFileId):
+        self._ConfigFileId = ConfigFileId
+
+    @property
     def Limit(self):
         """返回数量，默认为20，最大值为100。	
         :rtype: int
@@ -12933,6 +13062,7 @@ class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
         self._Group = params.get("Group")
         self._Name = params.get("Name")
         self._EndId = params.get("EndId")
+        self._ConfigFileId = params.get("ConfigFileId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
@@ -13025,12 +13155,15 @@ class DescribeConfigFileReleaseRequest(AbstractModel):
         :type Name: str
         :param _ReleaseName: 配置文件发布名称
         :type ReleaseName: str
+        :param _Id: 配置文件发布Id
+        :type Id: str
         """
         self._InstanceId = None
         self._Namespace = None
         self._Group = None
         self._Name = None
         self._ReleaseName = None
+        self._Id = None
 
     @property
     def InstanceId(self):
@@ -13087,6 +13220,17 @@ class DescribeConfigFileReleaseRequest(AbstractModel):
     def ReleaseName(self, ReleaseName):
         self._ReleaseName = ReleaseName
 
+    @property
+    def Id(self):
+        """配置文件发布Id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13094,6 +13238,7 @@ class DescribeConfigFileReleaseRequest(AbstractModel):
         self._Group = params.get("Group")
         self._Name = params.get("Name")
         self._ReleaseName = params.get("ReleaseName")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13164,11 +13309,14 @@ class DescribeConfigFileReleaseVersionsRequest(AbstractModel):
         :type Group: str
         :param _FileName: 文件名称
         :type FileName: str
+        :param _ConfigFileId: 配置文件ID
+        :type ConfigFileId: str
         """
         self._InstanceId = None
         self._Namespace = None
         self._Group = None
         self._FileName = None
+        self._ConfigFileId = None
 
     @property
     def InstanceId(self):
@@ -13214,12 +13362,24 @@ class DescribeConfigFileReleaseVersionsRequest(AbstractModel):
     def FileName(self, FileName):
         self._FileName = FileName
 
+    @property
+    def ConfigFileId(self):
+        """配置文件ID
+        :rtype: str
+        """
+        return self._ConfigFileId
+
+    @ConfigFileId.setter
+    def ConfigFileId(self, ConfigFileId):
+        self._ConfigFileId = ConfigFileId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Namespace = params.get("Namespace")
         self._Group = params.get("Group")
         self._FileName = params.get("FileName")
+        self._ConfigFileId = params.get("ConfigFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13306,6 +13466,8 @@ class DescribeConfigFileReleasesRequest(AbstractModel):
         :type OrderField: str
         :param _OrderDesc: 排序，asc/desc，默认 desc
         :type OrderDesc: str
+        :param _Id: 配置发布ID
+        :type Id: str
         """
         self._InstanceId = None
         self._Limit = None
@@ -13317,6 +13479,7 @@ class DescribeConfigFileReleasesRequest(AbstractModel):
         self._ReleaseName = None
         self._OrderField = None
         self._OrderDesc = None
+        self._Id = None
 
     @property
     def InstanceId(self):
@@ -13429,6 +13592,17 @@ class DescribeConfigFileReleasesRequest(AbstractModel):
     def OrderDesc(self, OrderDesc):
         self._OrderDesc = OrderDesc
 
+    @property
+    def Id(self):
+        """配置发布ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13441,6 +13615,7 @@ class DescribeConfigFileReleasesRequest(AbstractModel):
         self._ReleaseName = params.get("ReleaseName")
         self._OrderField = params.get("OrderField")
         self._OrderDesc = params.get("OrderDesc")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13527,13 +13702,16 @@ class DescribeConfigFileRequest(AbstractModel):
         :type Namespace: str
         :param _Group: 组
         :type Group: str
-        :param _Name: 名称
+        :param _Name: 配置文件名称
         :type Name: str
+        :param _Id: 配置文件Id
+        :type Id: str
         """
         self._InstanceId = None
         self._Namespace = None
         self._Group = None
         self._Name = None
+        self._Id = None
 
     @property
     def InstanceId(self):
@@ -13570,7 +13748,7 @@ class DescribeConfigFileRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        """配置文件名称
         :rtype: str
         """
         return self._Name
@@ -13579,12 +13757,24 @@ class DescribeConfigFileRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Id(self):
+        """配置文件Id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Namespace = params.get("Namespace")
         self._Group = params.get("Group")
         self._Name = params.get("Name")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13814,7 +14004,7 @@ class DescribeConfigFilesRequest(AbstractModel):
         :type InstanceId: str
         :param _Group: 组名
         :type Group: str
-        :param _Name: 名称
+        :param _Name: 配置文件名称
         :type Name: str
         :param _Tags: 标签列表
         :type Tags: list of ConfigFileTag
@@ -13822,6 +14012,8 @@ class DescribeConfigFilesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认为0。	
         :type Offset: int
+        :param _Id: 配置文件ID
+        :type Id: str
         """
         self._Namespace = None
         self._InstanceId = None
@@ -13830,6 +14022,7 @@ class DescribeConfigFilesRequest(AbstractModel):
         self._Tags = None
         self._Limit = None
         self._Offset = None
+        self._Id = None
 
     @property
     def Namespace(self):
@@ -13866,7 +14059,7 @@ class DescribeConfigFilesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        """配置文件名称
         :rtype: str
         """
         return self._Name
@@ -13908,6 +14101,17 @@ class DescribeConfigFilesRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def Id(self):
+        """配置文件ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
@@ -13922,6 +14126,7 @@ class DescribeConfigFilesRequest(AbstractModel):
                 self._Tags.append(obj)
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26886,9 +27091,12 @@ class PublishConfigFilesRequest(AbstractModel):
         :type InstanceId: str
         :param _ConfigFileReleases: 配置文件发布
         :type ConfigFileReleases: :class:`tencentcloud.tse.v20201207.models.ConfigFileRelease`
+        :param _StrictEnable: 控制开启校验配置版本是否已经存在
+        :type StrictEnable: bool
         """
         self._InstanceId = None
         self._ConfigFileReleases = None
+        self._StrictEnable = None
 
     @property
     def InstanceId(self):
@@ -26912,12 +27120,24 @@ class PublishConfigFilesRequest(AbstractModel):
     def ConfigFileReleases(self, ConfigFileReleases):
         self._ConfigFileReleases = ConfigFileReleases
 
+    @property
+    def StrictEnable(self):
+        """控制开启校验配置版本是否已经存在
+        :rtype: bool
+        """
+        return self._StrictEnable
+
+    @StrictEnable.setter
+    def StrictEnable(self, StrictEnable):
+        self._StrictEnable = StrictEnable
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         if params.get("ConfigFileReleases") is not None:
             self._ConfigFileReleases = ConfigFileRelease()
             self._ConfigFileReleases._deserialize(params.get("ConfigFileReleases"))
+        self._StrictEnable = params.get("StrictEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26937,10 +27157,14 @@ class PublishConfigFilesResponse(AbstractModel):
         r"""
         :param _Result: 配置文件发布是否成功
         :type Result: bool
+        :param _ConfigFileReleaseId: 配置文件发布Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileReleaseId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
+        self._ConfigFileReleaseId = None
         self._RequestId = None
 
     @property
@@ -26953,6 +27177,18 @@ class PublishConfigFilesResponse(AbstractModel):
     @Result.setter
     def Result(self, Result):
         self._Result = Result
+
+    @property
+    def ConfigFileReleaseId(self):
+        """配置文件发布Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigFileReleaseId
+
+    @ConfigFileReleaseId.setter
+    def ConfigFileReleaseId(self, ConfigFileReleaseId):
+        self._ConfigFileReleaseId = ConfigFileReleaseId
 
     @property
     def RequestId(self):
@@ -26968,6 +27204,7 @@ class PublishConfigFilesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._ConfigFileReleaseId = params.get("ConfigFileReleaseId")
         self._RequestId = params.get("RequestId")
 
 
@@ -27106,19 +27343,35 @@ class ReleaseVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 名称
+        :param _Name: 配置发布的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Active: 是否生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type Active: bool
+        :param _Id: 配置发布的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Namespace: 配置发布的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Group: 配置发布的分组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _FileName: 配置发布的文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
         """
         self._Name = None
         self._Active = None
+        self._Id = None
+        self._Namespace = None
+        self._Group = None
+        self._FileName = None
 
     @property
     def Name(self):
-        """名称
+        """配置发布的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27140,10 +27393,62 @@ class ReleaseVersion(AbstractModel):
     def Active(self, Active):
         self._Active = Active
 
+    @property
+    def Id(self):
+        """配置发布的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Namespace(self):
+        """配置发布的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        """配置发布的分组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def FileName(self):
+        """配置发布的文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Active = params.get("Active")
+        self._Id = params.get("Id")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._FileName = params.get("FileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

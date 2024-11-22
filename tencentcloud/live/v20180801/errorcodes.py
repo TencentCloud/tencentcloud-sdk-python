@@ -50,6 +50,9 @@ FAILEDOPERATION_CANNOTBEDELETEDISSUED = 'FailedOperation.CannotBeDeletedIssued'
 # 免费证书申请1小时内不允许删除。
 FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = 'FailedOperation.CannotBeDeletedWithinHour'
 
+# 导播台绑定了预付费套餐包。
+FAILEDOPERATION_CASTERBINDED = 'FailedOperation.CasterBinded'
+
 # 导播台不存在。
 FAILEDOPERATION_CASTERNOTFOUND = 'FailedOperation.CasterNotFound'
 
@@ -119,6 +122,9 @@ FAILEDOPERATION_HASNOTLIVINGSTREAM = 'FailedOperation.HasNotLivingStream'
 # 域名数量超过限制(100个）。
 FAILEDOPERATION_HOSTOUTLIMIT = 'FailedOperation.HostOutLimit'
 
+# 输入源不活跃。
+FAILEDOPERATION_INPUTISNOTACTIVE = 'FailedOperation.InputIsNotActive'
+
 # 禁止监播c流。
 FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = 'FailedOperation.InputStreamMixTypeNotAccessible'
 
@@ -158,6 +164,9 @@ FAILEDOPERATION_NOREALNAMEAUTH = 'FailedOperation.NoRealNameAuth'
 # 找不到记录。
 FAILEDOPERATION_NOTFOUND = 'FailedOperation.NotFound'
 
+# 账户被停服。
+FAILEDOPERATION_OUTOFSERVICE = 'FailedOperation.OutOfService'
+
 # 父域名已添加。
 FAILEDOPERATION_PARENTDOMAINADDED = 'FailedOperation.ParentDomainAdded'
 
@@ -181,6 +190,9 @@ FAILEDOPERATION_SDKNOPACKAGE = 'FailedOperation.SdkNoPackage'
 
 # 启动监播任务失败。
 FAILEDOPERATION_STARTTASKFAILED = 'FailedOperation.StartTaskFailed'
+
+# 停止导播台主监、预监任务失败，可能是在同一时间操作了同一个导播台任务（如同时启动和停止）
+FAILEDOPERATION_STOPCASTERTASKFAILED = 'FailedOperation.StopCasterTaskFailed'
 
 # 停止监播任务失败。
 FAILEDOPERATION_STOPTASKFAILED = 'FailedOperation.StopTaskFailed'
@@ -532,6 +544,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 导播台不存在。
+RESOURCENOTFOUND_CASTERNOTEXISTS = 'ResourceNotFound.CasterNotExists'
 
 # 日志下载 URL 不存在。
 RESOURCENOTFOUND_CDNLOGEMPTY = 'ResourceNotFound.CdnLogEmpty'

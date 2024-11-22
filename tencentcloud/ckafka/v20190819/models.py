@@ -24232,7 +24232,7 @@ class ModifyInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例名称
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _DiskSize: 预计磁盘，根据磁盘步长，规格向上调整。
         :type DiskSize: int
@@ -24248,7 +24248,7 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例名称
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId

@@ -4343,16 +4343,16 @@ class FaceRect(AbstractModel):
     def __init__(self):
         r"""
         :param _X: 人脸框左上角横坐标。 
-人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
-若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
+- 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+- 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type X: int
         :param _Y: 人脸框左上角纵坐标。 
-人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
-若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
+- 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+- 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type Y: int
-        :param _Width: 人脸宽度
+        :param _Width: 人脸宽度。
         :type Width: int
-        :param _Height: 人脸高度
+        :param _Height: 人脸高度。
         :type Height: int
         """
         self._X = None
@@ -4363,8 +4363,8 @@ class FaceRect(AbstractModel):
     @property
     def X(self):
         """人脸框左上角横坐标。 
-人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
-若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
+- 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+- 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :rtype: int
         """
         return self._X
@@ -4376,8 +4376,8 @@ class FaceRect(AbstractModel):
     @property
     def Y(self):
         """人脸框左上角纵坐标。 
-人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
-若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
+- 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+- 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :rtype: int
         """
         return self._Y
@@ -4388,7 +4388,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Width(self):
-        """人脸宽度
+        """人脸宽度。
         :rtype: int
         """
         return self._Width
@@ -4399,7 +4399,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Height(self):
-        """人脸高度
+        """人脸高度。
         :rtype: int
         """
         return self._Height

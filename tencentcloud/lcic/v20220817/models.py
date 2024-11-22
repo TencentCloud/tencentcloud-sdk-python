@@ -2168,7 +2168,7 @@ class CreateRoomRequest(AbstractModel):
         :type EndTime: int
         :param _SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
-        :param _Resolution: 分辨率。可以有如下取值：
+        :param _Resolution: 头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -2317,7 +2317,7 @@ video 纯视频
 
     @property
     def Resolution(self):
-        """分辨率。可以有如下取值：
+        """头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -5818,7 +5818,7 @@ class DescribeRoomResponse(AbstractModel):
         :type SdkAppId: int
         :param _AudienceType: 观看类型。互动观看 （默认）	
         :type AudienceType: int
-        :param _Resolution: 分辨率。可以有如下取值：
+        :param _Resolution: 头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -5994,7 +5994,7 @@ video 纯视频
 
     @property
     def Resolution(self):
-        """分辨率。可以有如下取值：
+        """头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
@@ -11012,7 +11012,10 @@ class RoomInfo(AbstractModel):
         :type StartTime: int
         :param _EndTime: 预定的房间结束时间，unix时间戳。
         :type EndTime: int
-        :param _Resolution: 分辨率。可以有如下取值： 1 标清 2 高清 3 全高清
+        :param _Resolution: 头像区域，摄像头视频画面的分辨率。可以有如下取值：
+1 标清
+2 高清
+3 全高清
         :type Resolution: int
         :param _MaxMicNumber: 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
         :type MaxMicNumber: int
@@ -11131,7 +11134,10 @@ class RoomInfo(AbstractModel):
 
     @property
     def Resolution(self):
-        """分辨率。可以有如下取值： 1 标清 2 高清 3 全高清
+        """头像区域，摄像头视频画面的分辨率。可以有如下取值：
+1 标清
+2 高清
+3 全高清
         :rtype: int
         """
         return self._Resolution
