@@ -3883,19 +3883,29 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _OperateTypes: 初始化操作类型
-<ul><li>CREATE_SEAL : 创建印章</li>
+<ul>
+<li>CREATE_SEAL : 创建印章</li>
 <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
-<li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+<li>OPEN_AUTO_SIGN :开通企业自动签署</li>
+<li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权自动签</li>
+</ul>
         :type OperateTypes: list of str
         :param _OrganizationIds: 批量操作的企业Id列表，最大支持50个
         :type OrganizationIds: list of str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _AuthorizedOrganizationId: 被授权的合作方企业在电子签的企业电子签账号，当操作类型包含 PARTNER_AUTO_SIGN_AUTH （合作方企业授权自动签）时必传。
+
+企业电子签账号可在[电子签的网页端](https://qian.tencent.com/console/company-settings/company-center) ，于企业设置-企业信息菜单栏下复制获取。
+
+![企业电子签账号](https://qcloudimg.tencent-cloud.cn/raw/4e6b30ee92f00671f7f1c5bd127c27db.png)
+        :type AuthorizedOrganizationId: str
         """
         self._Operator = None
         self._OperateTypes = None
         self._OrganizationIds = None
         self._Agent = None
+        self._AuthorizedOrganizationId = None
 
     @property
     def Operator(self):
@@ -3912,9 +3922,12 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
     @property
     def OperateTypes(self):
         """初始化操作类型
-<ul><li>CREATE_SEAL : 创建印章</li>
+<ul>
+<li>CREATE_SEAL : 创建印章</li>
 <li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li>
-<li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+<li>OPEN_AUTO_SIGN :开通企业自动签署</li>
+<li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权自动签</li>
+</ul>
         :rtype: list of str
         """
         return self._OperateTypes
@@ -3945,6 +3958,21 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def AuthorizedOrganizationId(self):
+        """被授权的合作方企业在电子签的企业电子签账号，当操作类型包含 PARTNER_AUTO_SIGN_AUTH （合作方企业授权自动签）时必传。
+
+企业电子签账号可在[电子签的网页端](https://qian.tencent.com/console/company-settings/company-center) ，于企业设置-企业信息菜单栏下复制获取。
+
+![企业电子签账号](https://qcloudimg.tencent-cloud.cn/raw/4e6b30ee92f00671f7f1c5bd127c27db.png)
+        :rtype: str
+        """
+        return self._AuthorizedOrganizationId
+
+    @AuthorizedOrganizationId.setter
+    def AuthorizedOrganizationId(self, AuthorizedOrganizationId):
+        self._AuthorizedOrganizationId = AuthorizedOrganizationId
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -3955,6 +3983,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

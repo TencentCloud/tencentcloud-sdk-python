@@ -601,6 +601,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ScaleCNOutUpInstance(self, request):
+        """open-api接口提供弹性伸缩云原生集群能力
+
+        :param request: Request instance for ScaleCNOutUpInstance.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.ScaleCNOutUpInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.ScaleCNOutUpInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleCNOutUpInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleCNOutUpInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScaleOutInstance(self, request):
         """调整clickhouse节点数量
 

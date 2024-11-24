@@ -12582,15 +12582,28 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
         :param _Agent: 应用相关信息。 此接口Agent.AppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _OperateTypes: 初始化操作类型
-<ul><li>CREATE_SEAL : 创建印章</li>
-<li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+<ul>
+<li>CREATE_SEAL : 创建印章</li>
+<li>OPEN_AUTO_SIGN :开通企业自动签署</li>
+<li>PARTNER_AUTO_SIGN_AUTH :合作方企业或应用平台方授权自动签</li>
+</ul>
         :type OperateTypes: list of str
         :param _ProxyOrganizationOpenIds: 批量操作的企业列表在第三方平台的企业Id列表，即ProxyOrganizationOpenId列表,最大支持50个
         :type ProxyOrganizationOpenIds: list of str
+        :param _IsAuthorizePlatformApplication: 当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且是给应用平台方授权自动签时传true。
+![image](https://qcloudimg.tencent-cloud.cn/raw/f9aba7c999a6d79ada20b4384520e120.png)
+        :type IsAuthorizePlatformApplication: bool
+        :param _AuthorizedProxyOrganizationOpenId: 被授权的合作方企业在第三方平台子客企业标识，即ProxyOrganizationOpenId，当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且要进行合作方企业授权自动签时必传。
+
+
+
+        :type AuthorizedProxyOrganizationOpenId: str
         """
         self._Agent = None
         self._OperateTypes = None
         self._ProxyOrganizationOpenIds = None
+        self._IsAuthorizePlatformApplication = None
+        self._AuthorizedProxyOrganizationOpenId = None
 
     @property
     def Agent(self):
@@ -12606,8 +12619,11 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
     @property
     def OperateTypes(self):
         """初始化操作类型
-<ul><li>CREATE_SEAL : 创建印章</li>
-<li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+<ul>
+<li>CREATE_SEAL : 创建印章</li>
+<li>OPEN_AUTO_SIGN :开通企业自动签署</li>
+<li>PARTNER_AUTO_SIGN_AUTH :合作方企业或应用平台方授权自动签</li>
+</ul>
         :rtype: list of str
         """
         return self._OperateTypes
@@ -12627,6 +12643,32 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
     def ProxyOrganizationOpenIds(self, ProxyOrganizationOpenIds):
         self._ProxyOrganizationOpenIds = ProxyOrganizationOpenIds
 
+    @property
+    def IsAuthorizePlatformApplication(self):
+        """当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且是给应用平台方授权自动签时传true。
+![image](https://qcloudimg.tencent-cloud.cn/raw/f9aba7c999a6d79ada20b4384520e120.png)
+        :rtype: bool
+        """
+        return self._IsAuthorizePlatformApplication
+
+    @IsAuthorizePlatformApplication.setter
+    def IsAuthorizePlatformApplication(self, IsAuthorizePlatformApplication):
+        self._IsAuthorizePlatformApplication = IsAuthorizePlatformApplication
+
+    @property
+    def AuthorizedProxyOrganizationOpenId(self):
+        """被授权的合作方企业在第三方平台子客企业标识，即ProxyOrganizationOpenId，当操作类型包含 PARTNER_AUTO_SIGN_AUTH 且要进行合作方企业授权自动签时必传。
+
+
+
+        :rtype: str
+        """
+        return self._AuthorizedProxyOrganizationOpenId
+
+    @AuthorizedProxyOrganizationOpenId.setter
+    def AuthorizedProxyOrganizationOpenId(self, AuthorizedProxyOrganizationOpenId):
+        self._AuthorizedProxyOrganizationOpenId = AuthorizedProxyOrganizationOpenId
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -12634,6 +12676,8 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._OperateTypes = params.get("OperateTypes")
         self._ProxyOrganizationOpenIds = params.get("ProxyOrganizationOpenIds")
+        self._IsAuthorizePlatformApplication = params.get("IsAuthorizePlatformApplication")
+        self._AuthorizedProxyOrganizationOpenId = params.get("AuthorizedProxyOrganizationOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

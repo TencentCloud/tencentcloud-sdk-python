@@ -6602,6 +6602,181 @@ class ResourceSpec(AbstractModel):
         
 
 
+class ScaleCNOutUpInstanceRequest(AbstractModel):
+    """ScaleCNOutUpInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一ID
+        :type InstanceId: str
+        :param _VirtualCluster: warehouse名称
+        :type VirtualCluster: str
+        :param _UserSubnetID: 子网id
+        :type UserSubnetID: str
+        :param _NewCount: 新的warehouse的个数
+        :type NewCount: int
+        :param _NewSpecName: 集群的规格2X-Small、X-Small、Small
+        :type NewSpecName: str
+        """
+        self._InstanceId = None
+        self._VirtualCluster = None
+        self._UserSubnetID = None
+        self._NewCount = None
+        self._NewSpecName = None
+
+    @property
+    def InstanceId(self):
+        """实例唯一ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualCluster(self):
+        """warehouse名称
+        :rtype: str
+        """
+        return self._VirtualCluster
+
+    @VirtualCluster.setter
+    def VirtualCluster(self, VirtualCluster):
+        self._VirtualCluster = VirtualCluster
+
+    @property
+    def UserSubnetID(self):
+        """子网id
+        :rtype: str
+        """
+        return self._UserSubnetID
+
+    @UserSubnetID.setter
+    def UserSubnetID(self, UserSubnetID):
+        self._UserSubnetID = UserSubnetID
+
+    @property
+    def NewCount(self):
+        """新的warehouse的个数
+        :rtype: int
+        """
+        return self._NewCount
+
+    @NewCount.setter
+    def NewCount(self, NewCount):
+        self._NewCount = NewCount
+
+    @property
+    def NewSpecName(self):
+        """集群的规格2X-Small、X-Small、Small
+        :rtype: str
+        """
+        return self._NewSpecName
+
+    @NewSpecName.setter
+    def NewSpecName(self, NewSpecName):
+        self._NewSpecName = NewSpecName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualCluster = params.get("VirtualCluster")
+        self._UserSubnetID = params.get("UserSubnetID")
+        self._NewCount = params.get("NewCount")
+        self._NewSpecName = params.get("NewSpecName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleCNOutUpInstanceResponse(AbstractModel):
+    """ScaleCNOutUpInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._InstanceId = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        """流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ErrorMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._InstanceId = params.get("InstanceId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ScaleOutInstanceRequest(AbstractModel):
     """ScaleOutInstance请求参数结构体
 

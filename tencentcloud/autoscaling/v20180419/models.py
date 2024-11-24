@@ -13536,7 +13536,9 @@ class StartInstanceRefreshRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param _RefreshSettings: 刷新设置。
         :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
-        :param _RefreshMode: 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+        :param _RefreshMode: 刷新模式。取值范围：
+<li>ROLLING_UPDATE_RESET：重装系统进行滚动更新</li>
+<li>ROLLING_UPDATE_REPLACE：新建实例替换进行滚动更新，该模式暂不支持回滚接口</li>
         :type RefreshMode: str
         """
         self._AutoScalingGroupId = None
@@ -13567,7 +13569,9 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshMode(self):
-        """刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+        """刷新模式。取值范围：
+<li>ROLLING_UPDATE_RESET：重装系统进行滚动更新</li>
+<li>ROLLING_UPDATE_REPLACE：新建实例替换进行滚动更新，该模式暂不支持回滚接口</li>
         :rtype: str
         """
         return self._RefreshMode

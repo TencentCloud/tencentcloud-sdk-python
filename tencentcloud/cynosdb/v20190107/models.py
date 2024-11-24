@@ -4089,6 +4089,8 @@ class ClusterInstanceDetail(AbstractModel):
         :param _InstanceStorageType: 实例存储类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStorageType: str
+        :param _DbMode: 数据库类型
+        :type DbMode: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -4106,6 +4108,7 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceTasks = None
         self._InstanceDeviceType = None
         self._InstanceStorageType = None
+        self._DbMode = None
 
     @property
     def InstanceId(self):
@@ -4290,6 +4293,17 @@ class ClusterInstanceDetail(AbstractModel):
     def InstanceStorageType(self, InstanceStorageType):
         self._InstanceStorageType = InstanceStorageType
 
+    @property
+    def DbMode(self):
+        """数据库类型
+        :rtype: str
+        """
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4313,6 +4327,7 @@ class ClusterInstanceDetail(AbstractModel):
                 self._InstanceTasks.append(obj)
         self._InstanceDeviceType = params.get("InstanceDeviceType")
         self._InstanceStorageType = params.get("InstanceStorageType")
+        self._DbMode = params.get("DbMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8325,7 +8340,7 @@ pausing
         :type CreateTime: str
         :param _DbType: 数据库类型
         :type DbType: str
-        :param _DbMode: 数据库类型，normal，serverless
+        :param _DbMode: Db类型：<li>NORMAL</li><li>SERVERLESS</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
         :param _DbVersion: 数据库版本
@@ -8689,7 +8704,7 @@ pausing
 
     @property
     def DbMode(self):
-        """数据库类型，normal，serverless
+        """Db类型：<li>NORMAL</li><li>SERVERLESS</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

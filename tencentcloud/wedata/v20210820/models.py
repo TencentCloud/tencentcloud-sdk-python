@@ -79113,9 +79113,9 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
         :type CloudappId: str
         :param _AppCamRole: 数语的CAM角色
         :type AppCamRole: str
-        :param _Ip: 数语的ip
+        :param _Ip: 数语的公网访问ip
         :type Ip: str
-        :param _Port: 数语的端口
+        :param _Port: 数语的公网访问端口
         :type Port: int
         :param _AppCamRoleId: 数语的CAM角色id
         :type AppCamRoleId: str
@@ -79125,6 +79125,16 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
         :type TenantId: str
         :param _OwnId: 主账号id
         :type OwnId: str
+        :param _VpcId: VpcId
+        :type VpcId: str
+        :param _VpcRegion: Vpc地域
+        :type VpcRegion: str
+        :param _Pip: 数语的内网访问ip
+        :type Pip: str
+        :param _Pport: 数语的内网访问端口
+        :type Pport: int
+        :param _IsPublic: 是否开放公网访问数语, 1:是，0:否，默认1开放
+        :type IsPublic: int
         """
         self._CloudappId = None
         self._AppCamRole = None
@@ -79134,6 +79144,11 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
         self._Provider = None
         self._TenantId = None
         self._OwnId = None
+        self._VpcId = None
+        self._VpcRegion = None
+        self._Pip = None
+        self._Pport = None
+        self._IsPublic = None
 
     @property
     def CloudappId(self):
@@ -79159,7 +79174,7 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
 
     @property
     def Ip(self):
-        """数语的ip
+        """数语的公网访问ip
         :rtype: str
         """
         return self._Ip
@@ -79170,7 +79185,7 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
 
     @property
     def Port(self):
-        """数语的端口
+        """数语的公网访问端口
         :rtype: int
         """
         return self._Port
@@ -79223,6 +79238,61 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
     def OwnId(self, OwnId):
         self._OwnId = OwnId
 
+    @property
+    def VpcId(self):
+        """VpcId
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcRegion(self):
+        """Vpc地域
+        :rtype: str
+        """
+        return self._VpcRegion
+
+    @VpcRegion.setter
+    def VpcRegion(self, VpcRegion):
+        self._VpcRegion = VpcRegion
+
+    @property
+    def Pip(self):
+        """数语的内网访问ip
+        :rtype: str
+        """
+        return self._Pip
+
+    @Pip.setter
+    def Pip(self, Pip):
+        self._Pip = Pip
+
+    @property
+    def Pport(self):
+        """数语的内网访问端口
+        :rtype: int
+        """
+        return self._Pport
+
+    @Pport.setter
+    def Pport(self, Pport):
+        self._Pport = Pport
+
+    @property
+    def IsPublic(self):
+        """是否开放公网访问数语, 1:是，0:否，默认1开放
+        :rtype: int
+        """
+        return self._IsPublic
+
+    @IsPublic.setter
+    def IsPublic(self, IsPublic):
+        self._IsPublic = IsPublic
+
 
     def _deserialize(self, params):
         self._CloudappId = params.get("CloudappId")
@@ -79233,6 +79303,11 @@ class UpdateDataModelRegistryInfoRequest(AbstractModel):
         self._Provider = params.get("Provider")
         self._TenantId = params.get("TenantId")
         self._OwnId = params.get("OwnId")
+        self._VpcId = params.get("VpcId")
+        self._VpcRegion = params.get("VpcRegion")
+        self._Pip = params.get("Pip")
+        self._Pport = params.get("Pport")
+        self._IsPublic = params.get("IsPublic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

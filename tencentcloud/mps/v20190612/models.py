@@ -31563,6 +31563,101 @@ class HighlightSegmentItem(AbstractModel):
         
 
 
+class ImageEncodeConfig(AbstractModel):
+    """图片编码格式参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: 图片格式，取值范围：JPG、BMP、GIF、PNG、WebP，缺省为原图格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        :param _Quality: 图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quality: int
+        """
+        self._Format = None
+        self._Quality = None
+
+    @property
+    def Format(self):
+        """图片格式，取值范围：JPG、BMP、GIF、PNG、WebP，缺省为原图格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Quality(self):
+        """图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Quality
+
+    @Quality.setter
+    def Quality(self, Quality):
+        self._Quality = Quality
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._Quality = params.get("Quality")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEnhanceConfig(AbstractModel):
+    """图片增强参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuperResolution: 超分配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        """
+        self._SuperResolution = None
+
+    @property
+    def SuperResolution(self):
+        """超分配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        """
+        return self._SuperResolution
+
+    @SuperResolution.setter
+    def SuperResolution(self, SuperResolution):
+        self._SuperResolution = SuperResolution
+
+
+    def _deserialize(self, params):
+        if params.get("SuperResolution") is not None:
+            self._SuperResolution = SuperResolutionConfig()
+            self._SuperResolution._deserialize(params.get("SuperResolution"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageQualityEnhanceConfig(AbstractModel):
     """综合增强配置
 
@@ -32020,6 +32115,65 @@ class ImageSpriteTemplate(AbstractModel):
         self._FillType = params.get("FillType")
         self._Comment = params.get("Comment")
         self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageTaskInput(AbstractModel):
+    """图片任务输入参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncodeConfig: 图片编码配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncodeConfig: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
+        :param _EnhanceConfig: 图片增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
+        """
+        self._EncodeConfig = None
+        self._EnhanceConfig = None
+
+    @property
+    def EncodeConfig(self):
+        """图片编码配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
+        """
+        return self._EncodeConfig
+
+    @EncodeConfig.setter
+    def EncodeConfig(self, EncodeConfig):
+        self._EncodeConfig = EncodeConfig
+
+    @property
+    def EnhanceConfig(self):
+        """图片增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+
+    def _deserialize(self, params):
+        if params.get("EncodeConfig") is not None:
+            self._EncodeConfig = ImageEncodeConfig()
+            self._EncodeConfig._deserialize(params.get("EncodeConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = ImageEnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45357,6 +45511,136 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ProcessImageRequest(AbstractModel):
+    """ProcessImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: 图片处理的文件输入信息。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _OutputStorage: 图片处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputDir: 图片处理生成的文件输出的路径。如果不填表示与 InputInfo 中文件所在的目录一致。如果是目录，如`/image/201907/`，表示继承原文件名输出到该目录。
+        :type OutputDir: str
+        :param _ImageTask: 图片处理参数。
+        :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        self._InputInfo = None
+        self._OutputStorage = None
+        self._OutputDir = None
+        self._ImageTask = None
+
+    @property
+    def InputInfo(self):
+        """图片处理的文件输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def OutputStorage(self):
+        """图片处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputDir(self):
+        """图片处理生成的文件输出的路径。如果不填表示与 InputInfo 中文件所在的目录一致。如果是目录，如`/image/201907/`，表示继承原文件名输出到该目录。
+        :rtype: str
+        """
+        return self._OutputDir
+
+    @OutputDir.setter
+    def OutputDir(self, OutputDir):
+        self._OutputDir = OutputDir
+
+    @property
+    def ImageTask(self):
+        """图片处理参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ImageTask
+
+    @ImageTask.setter
+    def ImageTask(self, ImageTask):
+        self._ImageTask = ImageTask
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputDir = params.get("OutputDir")
+        if params.get("ImageTask") is not None:
+            self._ImageTask = ImageTaskInput()
+            self._ImageTask._deserialize(params.get("ImageTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageResponse(AbstractModel):
+    """ProcessImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ProcessLiveStreamRequest(AbstractModel):

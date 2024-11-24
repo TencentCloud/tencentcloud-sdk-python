@@ -2392,6 +2392,31 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ProcessImage(self, request):
+        """发起图片处理，功能包括：
+        1. 格式转换；
+        2. 图像增强；
+
+        :param request: Request instance for ProcessImage.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ProcessImageRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProcessImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ProcessImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ProcessImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ProcessLiveStream(self, request):
         """对直播流媒体发起处理任务，功能包括：
 
