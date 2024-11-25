@@ -1061,7 +1061,6 @@ class CdnClient(AbstractClient):
 
         注意：
         + 仅支持 90 天内数据查询，且从2021年09月20日开始有数据
-        + 本接口为beta版，尚未正式全量发布
 
         :param request: Request instance for DescribeTopData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeTopDataRequest`

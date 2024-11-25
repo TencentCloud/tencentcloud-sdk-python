@@ -10208,6 +10208,9 @@ pause
         :type MinCpu: float
         :param _MaxCpu: serverless实例cpu上限
         :type MaxCpu: float
+        :param _DbMode: Db类型:<li>NORMAL</li><li>SERVERLESS</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbMode: str
         """
         self._Uin = None
         self._AppId = None
@@ -10243,6 +10246,7 @@ pause
         self._RenewFlag = None
         self._MinCpu = None
         self._MaxCpu = None
+        self._DbMode = None
 
     @property
     def Uin(self):
@@ -10620,6 +10624,18 @@ pause
     def MaxCpu(self, MaxCpu):
         self._MaxCpu = MaxCpu
 
+    @property
+    def DbMode(self):
+        """Db类型:<li>NORMAL</li><li>SERVERLESS</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -10656,6 +10672,7 @@ pause
         self._RenewFlag = params.get("RenewFlag")
         self._MinCpu = params.get("MinCpu")
         self._MaxCpu = params.get("MaxCpu")
+        self._DbMode = params.get("DbMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

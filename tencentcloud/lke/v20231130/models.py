@@ -18539,6 +18539,57 @@ class RateMsgRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReRankDataObject(AbstractModel):
+    """重排数据, 计算2段内容的关联性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptA: 第一段内容
+        :type PromptA: str
+        :param _PromptB: 第二段内容
+        :type PromptB: str
+        """
+        self._PromptA = None
+        self._PromptB = None
+
+    @property
+    def PromptA(self):
+        """第一段内容
+        :rtype: str
+        """
+        return self._PromptA
+
+    @PromptA.setter
+    def PromptA(self, PromptA):
+        self._PromptA = PromptA
+
+    @property
+    def PromptB(self):
+        """第二段内容
+        :rtype: str
+        """
+        return self._PromptB
+
+    @PromptB.setter
+    def PromptB(self, PromptB):
+        self._PromptB = PromptB
+
+
+    def _deserialize(self, params):
+        self._PromptA = params.get("PromptA")
+        self._PromptB = params.get("PromptB")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReconstructDocumentConfig(AbstractModel):
     """ReconstructDocument配置选项
 
@@ -20194,6 +20245,175 @@ class RunNodeInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RunReRankRequest(AbstractModel):
+    """RunReRank请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Query: 模型名称, 必填，默认: lke-reranker-base
+        :type Query: str
+        :param _Docs: 文档列表，必填，最多20个
+        :type Docs: list of str
+        :param _Model: 模型名称, 非必填，默认: lke-reranker-base
+        :type Model: str
+        :param _DataList: 需要计算关联性的2段内容
+        :type DataList: list of ReRankDataObject
+        :param _Online: 是否在线, 后台异步任务使用离线, 实时任务使用在线, 默认值: false
+        :type Online: bool
+        """
+        self._Query = None
+        self._Docs = None
+        self._Model = None
+        self._DataList = None
+        self._Online = None
+
+    @property
+    def Query(self):
+        """模型名称, 必填，默认: lke-reranker-base
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def Docs(self):
+        """文档列表，必填，最多20个
+        :rtype: list of str
+        """
+        return self._Docs
+
+    @Docs.setter
+    def Docs(self, Docs):
+        self._Docs = Docs
+
+    @property
+    def Model(self):
+        """模型名称, 非必填，默认: lke-reranker-base
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def DataList(self):
+        warnings.warn("parameter `DataList` is deprecated", DeprecationWarning) 
+
+        """需要计算关联性的2段内容
+        :rtype: list of ReRankDataObject
+        """
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        warnings.warn("parameter `DataList` is deprecated", DeprecationWarning) 
+
+        self._DataList = DataList
+
+    @property
+    def Online(self):
+        warnings.warn("parameter `Online` is deprecated", DeprecationWarning) 
+
+        """是否在线, 后台异步任务使用离线, 实时任务使用在线, 默认值: false
+        :rtype: bool
+        """
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        warnings.warn("parameter `Online` is deprecated", DeprecationWarning) 
+
+        self._Online = Online
+
+
+    def _deserialize(self, params):
+        self._Query = params.get("Query")
+        self._Docs = params.get("Docs")
+        self._Model = params.get("Model")
+        if params.get("DataList") is not None:
+            self._DataList = []
+            for item in params.get("DataList"):
+                obj = ReRankDataObject()
+                obj._deserialize(item)
+                self._DataList.append(obj)
+        self._Online = params.get("Online")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunReRankResponse(AbstractModel):
+    """RunReRank返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScoreList: 相关性, 数值越大越相关
+        :type ScoreList: list of float
+        :param _Usage: 消耗量，仅返回TotalToken
+        :type Usage: :class:`tencentcloud.lke.v20231130.models.Usage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ScoreList = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def ScoreList(self):
+        """相关性, 数值越大越相关
+        :rtype: list of float
+        """
+        return self._ScoreList
+
+    @ScoreList.setter
+    def ScoreList(self, ScoreList):
+        self._ScoreList = ScoreList
+
+    @property
+    def Usage(self):
+        """消耗量，仅返回TotalToken
+        :rtype: :class:`tencentcloud.lke.v20231130.models.Usage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ScoreList = params.get("ScoreList")
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
 
 
 class SaveDocRequest(AbstractModel):

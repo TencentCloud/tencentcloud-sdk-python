@@ -25837,6 +25837,16 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 -9108 证件模糊告警
 -9109 告警能力未开通
         :type WarnCardInfos: list of int
+        :param _AdvancedInfo: 字段置信度：
+{
+    "ID": {
+        "Confidence": 0.9999
+    },
+    "ThaiName": {
+        "Confidence": 0.9996
+    }
+}
+        :type AdvancedInfo: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -25855,6 +25865,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Address = None
         self._PortraitImage = None
         self._WarnCardInfos = None
+        self._AdvancedInfo = None
         self._RequestId = None
 
     @property
@@ -26029,6 +26040,25 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._WarnCardInfos = WarnCardInfos
 
     @property
+    def AdvancedInfo(self):
+        """字段置信度：
+{
+    "ID": {
+        "Confidence": 0.9999
+    },
+    "ThaiName": {
+        "Confidence": 0.9996
+    }
+}
+        :rtype: str
+        """
+        return self._AdvancedInfo
+
+    @AdvancedInfo.setter
+    def AdvancedInfo(self, AdvancedInfo):
+        self._AdvancedInfo = AdvancedInfo
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -26056,6 +26086,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Address = params.get("Address")
         self._PortraitImage = params.get("PortraitImage")
         self._WarnCardInfos = params.get("WarnCardInfos")
+        self._AdvancedInfo = params.get("AdvancedInfo")
         self._RequestId = params.get("RequestId")
 
 

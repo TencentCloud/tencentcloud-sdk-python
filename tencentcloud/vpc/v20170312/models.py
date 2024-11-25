@@ -6772,10 +6772,8 @@ class CcnRouteTableInputPolicy(AbstractModel):
         :param _Description: 策略描述。
         :type Description: str
         :param _OperateAsPath: as-path操作
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateAsPath: str
         :param _AsPathOperateMode: as-path操作模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsPathOperateMode: str
         """
         self._RouteConditions = None
@@ -6820,7 +6818,6 @@ class CcnRouteTableInputPolicy(AbstractModel):
     @property
     def OperateAsPath(self):
         """as-path操作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperateAsPath
@@ -6832,7 +6829,6 @@ class CcnRouteTableInputPolicy(AbstractModel):
     @property
     def AsPathOperateMode(self):
         """as-path操作模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsPathOperateMode
@@ -44164,7 +44160,6 @@ class ModifyAssistantCidrResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AssistantCidrSet: 辅助CIDR数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssistantCidrSet: list of AssistantCidr
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -44175,7 +44170,6 @@ class ModifyAssistantCidrResponse(AbstractModel):
     @property
     def AssistantCidrSet(self):
         """辅助CIDR数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssistantCidr
         """
         return self._AssistantCidrSet

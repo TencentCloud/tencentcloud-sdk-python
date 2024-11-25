@@ -2013,6 +2013,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RunReRank(self, request):
+        """重排序
+
+        :param request: Request instance for RunReRank.
+        :type request: :class:`tencentcloud.lke.v20231130.models.RunReRankRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.RunReRankResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunReRank", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunReRankResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SaveDoc(self, request):
         """保存文档
 

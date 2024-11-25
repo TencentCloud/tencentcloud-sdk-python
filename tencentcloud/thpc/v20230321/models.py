@@ -114,7 +114,7 @@ class AddNodesRequest(AbstractModel):
         :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20230321.models.VirtualPrivateCloud`
         :param _Count: 添加节点数量。
         :type Count: int
-        :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
+        :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
         :type ImageId: str
         :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
@@ -224,7 +224,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ImageId(self):
-        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
+        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
         :rtype: str
         """
         return self._ImageId
@@ -1610,7 +1610,7 @@ class CreateClusterRequest(AbstractModel):
 <li>SLURM：21.08.8、23.11.7</li>
 <li>SGE：     8.1.9</li>
         :type SchedulerVersion: str
-        :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818)
+        :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
         :type ImageId: str
         :param _VirtualPrivateCloud: 私有网络相关信息配置。
         :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20230321.models.VirtualPrivateCloud`
@@ -1751,7 +1751,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def ImageId(self):
-        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818)
+        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。公共镜像请参考[镜像限制](https://cloud.tencent.com/document/product/1527/64818#.E9.95.9C.E5.83.8F)
         :rtype: str
         """
         return self._ImageId

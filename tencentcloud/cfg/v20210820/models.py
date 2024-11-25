@@ -956,6 +956,150 @@ class CreateTaskFromActionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTaskFromMultiActionRequest(AbstractModel):
+    """CreateTaskFromMultiAction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskInstances: 参与演练的实例ID
+        :type TaskInstances: list of str
+        :param _TaskTitle: 演练名称，不填则默认取动作名称
+        :type TaskTitle: str
+        :param _TaskDescription: 演练描述，不填则默认取动作描述
+        :type TaskDescription: str
+        :param _TaskPauseDuration: 演练自动暂停时间，单位分钟, 不填则默认为60
+        :type TaskPauseDuration: int
+        :param _TaskAction: 演练动作组配置
+        :type TaskAction: list of TaskGroupForAction
+        """
+        self._TaskInstances = None
+        self._TaskTitle = None
+        self._TaskDescription = None
+        self._TaskPauseDuration = None
+        self._TaskAction = None
+
+    @property
+    def TaskInstances(self):
+        """参与演练的实例ID
+        :rtype: list of str
+        """
+        return self._TaskInstances
+
+    @TaskInstances.setter
+    def TaskInstances(self, TaskInstances):
+        self._TaskInstances = TaskInstances
+
+    @property
+    def TaskTitle(self):
+        """演练名称，不填则默认取动作名称
+        :rtype: str
+        """
+        return self._TaskTitle
+
+    @TaskTitle.setter
+    def TaskTitle(self, TaskTitle):
+        self._TaskTitle = TaskTitle
+
+    @property
+    def TaskDescription(self):
+        """演练描述，不填则默认取动作描述
+        :rtype: str
+        """
+        return self._TaskDescription
+
+    @TaskDescription.setter
+    def TaskDescription(self, TaskDescription):
+        self._TaskDescription = TaskDescription
+
+    @property
+    def TaskPauseDuration(self):
+        """演练自动暂停时间，单位分钟, 不填则默认为60
+        :rtype: int
+        """
+        return self._TaskPauseDuration
+
+    @TaskPauseDuration.setter
+    def TaskPauseDuration(self, TaskPauseDuration):
+        self._TaskPauseDuration = TaskPauseDuration
+
+    @property
+    def TaskAction(self):
+        """演练动作组配置
+        :rtype: list of TaskGroupForAction
+        """
+        return self._TaskAction
+
+    @TaskAction.setter
+    def TaskAction(self, TaskAction):
+        self._TaskAction = TaskAction
+
+
+    def _deserialize(self, params):
+        self._TaskInstances = params.get("TaskInstances")
+        self._TaskTitle = params.get("TaskTitle")
+        self._TaskDescription = params.get("TaskDescription")
+        self._TaskPauseDuration = params.get("TaskPauseDuration")
+        if params.get("TaskAction") is not None:
+            self._TaskAction = []
+            for item in params.get("TaskAction"):
+                obj = TaskGroupForAction()
+                obj._deserialize(item)
+                self._TaskAction.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTaskFromMultiActionResponse(AbstractModel):
+    """CreateTaskFromMultiAction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 创建成功的演练ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """创建成功的演练ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTaskFromTemplateRequest(AbstractModel):
     """CreateTaskFromTemplate请求参数结构体
 
@@ -5049,6 +5193,72 @@ class TaskGroupConfig(AbstractModel):
                 obj = TaskGroupActionConfig()
                 obj._deserialize(item)
                 self._TaskGroupActionsConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskGroupForAction(AbstractModel):
+    """演练动作组简易配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskActionId: 动作ID
+        :type TaskActionId: int
+        :param _TaskActionGeneralConfiguration: {"ActionTimeout":1800}
+        :type TaskActionGeneralConfiguration: str
+        :param _TaskActionCustomConfiguration: {"ip": "0.0.0.0"}
+        :type TaskActionCustomConfiguration: str
+        """
+        self._TaskActionId = None
+        self._TaskActionGeneralConfiguration = None
+        self._TaskActionCustomConfiguration = None
+
+    @property
+    def TaskActionId(self):
+        """动作ID
+        :rtype: int
+        """
+        return self._TaskActionId
+
+    @TaskActionId.setter
+    def TaskActionId(self, TaskActionId):
+        self._TaskActionId = TaskActionId
+
+    @property
+    def TaskActionGeneralConfiguration(self):
+        """{"ActionTimeout":1800}
+        :rtype: str
+        """
+        return self._TaskActionGeneralConfiguration
+
+    @TaskActionGeneralConfiguration.setter
+    def TaskActionGeneralConfiguration(self, TaskActionGeneralConfiguration):
+        self._TaskActionGeneralConfiguration = TaskActionGeneralConfiguration
+
+    @property
+    def TaskActionCustomConfiguration(self):
+        """{"ip": "0.0.0.0"}
+        :rtype: str
+        """
+        return self._TaskActionCustomConfiguration
+
+    @TaskActionCustomConfiguration.setter
+    def TaskActionCustomConfiguration(self, TaskActionCustomConfiguration):
+        self._TaskActionCustomConfiguration = TaskActionCustomConfiguration
+
+
+    def _deserialize(self, params):
+        self._TaskActionId = params.get("TaskActionId")
+        self._TaskActionGeneralConfiguration = params.get("TaskActionGeneralConfiguration")
+        self._TaskActionCustomConfiguration = params.get("TaskActionCustomConfiguration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

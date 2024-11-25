@@ -4034,10 +4034,22 @@ class DescribeBackUpTablesResponse(AbstractModel):
         r"""
         :param _AvailableTables: 可备份表列表
         :type AvailableTables: list of BackupTableContent
+        :param _Msg: msg
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _IsUnknownVersion: 未知version
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnknownVersion: bool
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AvailableTables = None
+        self._Msg = None
+        self._IsUnknownVersion = None
+        self._ErrorMsg = None
         self._RequestId = None
 
     @property
@@ -4050,6 +4062,42 @@ class DescribeBackUpTablesResponse(AbstractModel):
     @AvailableTables.setter
     def AvailableTables(self, AvailableTables):
         self._AvailableTables = AvailableTables
+
+    @property
+    def Msg(self):
+        """msg
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def IsUnknownVersion(self):
+        """未知version
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsUnknownVersion
+
+    @IsUnknownVersion.setter
+    def IsUnknownVersion(self, IsUnknownVersion):
+        self._IsUnknownVersion = IsUnknownVersion
+
+    @property
+    def ErrorMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
     @property
     def RequestId(self):
@@ -4070,6 +4118,9 @@ class DescribeBackUpTablesResponse(AbstractModel):
                 obj = BackupTableContent()
                 obj._deserialize(item)
                 self._AvailableTables.append(obj)
+        self._Msg = params.get("Msg")
+        self._IsUnknownVersion = params.get("IsUnknownVersion")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -5383,6 +5434,9 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         :type TotalCount: int
         :param _SlowQueryRecords: 记录列表
         :type SlowQueryRecords: :class:`tencentcloud.cdwdoris.v20211228.models.DataBaseAuditRecord`
+        :param _Records: 记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of DataBaseAuditRecord
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
@@ -5391,6 +5445,7 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         """
         self._TotalCount = None
         self._SlowQueryRecords = None
+        self._Records = None
         self._ErrorMsg = None
         self._RequestId = None
 
@@ -5415,6 +5470,18 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
     @SlowQueryRecords.setter
     def SlowQueryRecords(self, SlowQueryRecords):
         self._SlowQueryRecords = SlowQueryRecords
+
+    @property
+    def Records(self):
+        """记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataBaseAuditRecord
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
 
     @property
     def ErrorMsg(self):
@@ -5445,6 +5512,12 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         if params.get("SlowQueryRecords") is not None:
             self._SlowQueryRecords = DataBaseAuditRecord()
             self._SlowQueryRecords._deserialize(params.get("SlowQueryRecords"))
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = DataBaseAuditRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 

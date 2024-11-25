@@ -49,6 +49,29 @@ class CfgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTaskFromMultiAction(self, request):
+        """以多个动作创建演练
+
+        :param request: Request instance for CreateTaskFromMultiAction.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromMultiActionRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromMultiActionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTaskFromMultiAction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTaskFromMultiActionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTaskFromTemplate(self, request):
         """从经验库创建演练
 
