@@ -24865,11 +24865,11 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
         :type LogLevelType: str
         :param _ExecutionFileType: 文件类型,Log/Code
         :type ExecutionFileType: str
-        :param _ExecutionJobId: 统一执行平台执行id
+        :param _ExecutionJobId: 统一执行平台执行id, 注意: ExecutionJobId 跟 "BrokerIp+OriginFileName" 必须有一个不为空
         :type ExecutionJobId: str
-        :param _BrokerIp: 服务器Ip
+        :param _BrokerIp: 服务器Ip, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
         :type BrokerIp: str
-        :param _OriginFileName: 文件Name
+        :param _OriginFileName: 文件Name, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
         :type OriginFileName: str
         :param _StartCount: 起始行
         :type StartCount: int
@@ -24950,7 +24950,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def ExecutionJobId(self):
-        """统一执行平台执行id
+        """统一执行平台执行id, 注意: ExecutionJobId 跟 "BrokerIp+OriginFileName" 必须有一个不为空
         :rtype: str
         """
         return self._ExecutionJobId
@@ -24961,7 +24961,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def BrokerIp(self):
-        """服务器Ip
+        """服务器Ip, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
         :rtype: str
         """
         return self._BrokerIp
@@ -24972,7 +24972,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def OriginFileName(self):
-        """文件Name
+        """文件Name, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
         :rtype: str
         """
         return self._OriginFileName

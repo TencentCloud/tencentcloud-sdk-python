@@ -24166,7 +24166,6 @@ class DescribeVoucherInfoResponse(AbstractModel):
         :param _TotalBalance: 总余额（微分）
         :type TotalBalance: int
         :param _VoucherInfos: 代金券相关信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherInfos: list of VoucherInfos
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24201,7 +24200,6 @@ class DescribeVoucherInfoResponse(AbstractModel):
     @property
     def VoucherInfos(self):
         """代金券相关信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VoucherInfos
         """
         return self._VoucherInfos
@@ -27913,10 +27911,8 @@ class VoucherInfos(AbstractModel):
         :param _EndTime: 有效期截止时间
         :type EndTime: str
         :param _ApplicableProducts: 适用商品信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicableProducts: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
         :param _ExcludedProducts: 不适用商品信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludedProducts: list of ExcludedProducts
         """
         self._OwnerUin = None
@@ -28033,7 +28029,6 @@ class VoucherInfos(AbstractModel):
     @property
     def ApplicableProducts(self):
         """适用商品信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
         """
         return self._ApplicableProducts
@@ -28045,7 +28040,6 @@ class VoucherInfos(AbstractModel):
     @property
     def ExcludedProducts(self):
         """不适用商品信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExcludedProducts
         """
         return self._ExcludedProducts

@@ -720,7 +720,6 @@ class DescribeSavingPlanUsageResponse(AbstractModel):
         :param _Total: 查询命中的节省计划总览明细数据总条数
         :type Total: int
         :param _Usages: 节省计划使用率数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Usages: list of SavingPlanUsageDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -743,7 +742,6 @@ class DescribeSavingPlanUsageResponse(AbstractModel):
     @property
     def Usages(self):
         """节省计划使用率数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SavingPlanUsageDetail
         """
         return self._Usages

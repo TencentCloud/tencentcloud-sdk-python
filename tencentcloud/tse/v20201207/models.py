@@ -16042,11 +16042,11 @@ class DescribeNativeGatewayServerGroupsRequest(AbstractModel):
         r"""
         :param _GatewayId: 云原生API网关实例ID。
         :type GatewayId: str
-        :param _Offset: 翻页从第几个开始获取
+        :param _Offset: 偏移量，默认为 0。
         :type Offset: int
-        :param _Limit: 翻页获取多少个
+        :param _Limit: 返回数量，默认为 20。
         :type Limit: int
-        :param _Filters: 过滤参数
+        :param _Filters: 过滤参数，支持按照分组名称、分组ID（Name、GroupId）筛选
         :type Filters: list of Filter
         """
         self._GatewayId = None
@@ -16067,7 +16067,7 @@ class DescribeNativeGatewayServerGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页从第几个开始获取
+        """偏移量，默认为 0。
         :rtype: int
         """
         return self._Offset
@@ -16078,7 +16078,7 @@ class DescribeNativeGatewayServerGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页获取多少个
+        """返回数量，默认为 20。
         :rtype: int
         """
         return self._Limit
@@ -16089,7 +16089,7 @@ class DescribeNativeGatewayServerGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数
+        """过滤参数，支持按照分组名称、分组ID（Name、GroupId）筛选
         :rtype: list of Filter
         """
         return self._Filters

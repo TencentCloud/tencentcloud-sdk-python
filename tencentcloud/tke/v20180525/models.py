@@ -20295,10 +20295,13 @@ class DescribeOpenPolicyListResponse(AbstractModel):
         :param _OpenPolicyInfoList: 策略信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenPolicyInfoList: list of OpenPolicyInfo
+        :param _GatekeeperStatus: 集群内是否安装了gatekeeper addon
+        :type GatekeeperStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OpenPolicyInfoList = None
+        self._GatekeeperStatus = None
         self._RequestId = None
 
     @property
@@ -20312,6 +20315,17 @@ class DescribeOpenPolicyListResponse(AbstractModel):
     @OpenPolicyInfoList.setter
     def OpenPolicyInfoList(self, OpenPolicyInfoList):
         self._OpenPolicyInfoList = OpenPolicyInfoList
+
+    @property
+    def GatekeeperStatus(self):
+        """集群内是否安装了gatekeeper addon
+        :rtype: int
+        """
+        return self._GatekeeperStatus
+
+    @GatekeeperStatus.setter
+    def GatekeeperStatus(self, GatekeeperStatus):
+        self._GatekeeperStatus = GatekeeperStatus
 
     @property
     def RequestId(self):
@@ -20332,6 +20346,7 @@ class DescribeOpenPolicyListResponse(AbstractModel):
                 obj = OpenPolicyInfo()
                 obj._deserialize(item)
                 self._OpenPolicyInfoList.append(obj)
+        self._GatekeeperStatus = params.get("GatekeeperStatus")
         self._RequestId = params.get("RequestId")
 
 

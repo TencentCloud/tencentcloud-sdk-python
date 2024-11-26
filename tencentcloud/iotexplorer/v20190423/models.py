@@ -23724,31 +23724,19 @@ class TWeCallInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelId: 小程序ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ModelId: str
         :param _Sn: Sn信息，SN格式：产品ID_设备名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sn: str
+        :param _ModelId: 小程序ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
         :param _ActiveNum: 激活数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveNum: int
         """
-        self._ModelId = None
         self._Sn = None
+        self._ModelId = None
         self._ActiveNum = None
-
-    @property
-    def ModelId(self):
-        """小程序ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._ModelId
-
-    @ModelId.setter
-    def ModelId(self, ModelId):
-        self._ModelId = ModelId
 
     @property
     def Sn(self):
@@ -23761,6 +23749,18 @@ class TWeCallInfo(AbstractModel):
     @Sn.setter
     def Sn(self, Sn):
         self._Sn = Sn
+
+    @property
+    def ModelId(self):
+        """小程序ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
 
     @property
     def ActiveNum(self):
@@ -23776,8 +23776,8 @@ class TWeCallInfo(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._ModelId = params.get("ModelId")
         self._Sn = params.get("Sn")
+        self._ModelId = params.get("ModelId")
         self._ActiveNum = params.get("ActiveNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

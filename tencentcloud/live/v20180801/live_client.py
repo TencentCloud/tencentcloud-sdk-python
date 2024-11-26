@@ -26,6 +26,75 @@ class LiveClient(AbstractClient):
     _service = 'live'
 
 
+    def AddCasterInputInfo(self, request):
+        """该接口用来向导播台中添加一个输入源，该输入源可以是拉流地址、或是一个文件链接
+
+        :param request: Request instance for AddCasterInputInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.AddCasterInputInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddCasterInputInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCasterInputInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCasterInputInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddCasterLayoutInfo(self, request):
+        """该接口用来增加导播台的布局参数。
+
+        :param request: Request instance for AddCasterLayoutInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.AddCasterLayoutInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddCasterLayoutInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCasterLayoutInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCasterLayoutInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddCasterOutputInfo(self, request):
+        """该接口用来新增导播台推流信息。导播台主监启动后，将会将主监画面推向该接口设置的地址。
+
+        :param request: Request instance for AddCasterOutputInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.AddCasterOutputInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddCasterOutputInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCasterOutputInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCasterOutputInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddDelayLiveStream(self, request):
         """针对大型活动直播，通过对直播流设置延时来控制现场与观众播放画面的时间间隔，避免突发状况造成影响。
 
@@ -180,6 +249,29 @@ class LiveClient(AbstractClient):
             body = self.call("CreateCaster", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCasterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCasterInputPushUrl(self, request):
+        """该接口用来生成导播台推流地址
+
+        :param request: Request instance for CreateCasterInputPushUrl.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateCasterInputPushUrlRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateCasterInputPushUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCasterInputPushUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCasterInputPushUrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -719,6 +811,76 @@ class LiveClient(AbstractClient):
             body = self.call("DeleteCaster", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCasterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCasterInputInfo(self, request):
+        """该接口用来删除导播台中的输入源信息。
+
+        :param request: Request instance for DeleteCasterInputInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterInputInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteCasterInputInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCasterInputInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCasterInputInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCasterLayoutInfo(self, request):
+        """该接口用来将布局信息从导播台中删除
+
+        :param request: Request instance for DeleteCasterLayoutInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterLayoutInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteCasterLayoutInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCasterLayoutInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCasterLayoutInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCasterOutputInfo(self, request):
+        """该接口用来删除导播台的推流信息。
+        注：若删除推流到腾讯云直播源站配置，即OutputIndex为0，OutputType为1的推流配置，在重新启动主监后，系统会自动重新生成一个推流到腾讯云直播源站配置。
+
+        :param request: Request instance for DeleteCasterOutputInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterOutputInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteCasterOutputInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCasterOutputInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCasterOutputInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1382,6 +1544,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCasterInputInfos(self, request):
+        """该接口用来查询导播台的输入源信息列表。
+
+        :param request: Request instance for DescribeCasterInputInfos.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterInputInfosRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterInputInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterInputInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterInputInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCasterLayoutInfos(self, request):
+        """该接口用来查询某个导播台的布局列表
+
+        :param request: Request instance for DescribeCasterLayoutInfos.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterLayoutInfosRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterLayoutInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterLayoutInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterLayoutInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCasterList(self, request):
         """该接口用来查询账号下所有的导播台列表
 
@@ -1396,6 +1604,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeCasterList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCasterListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCasterOutputInfos(self, request):
+        """该接口用来查询某个导播台的推流信息列表。
+
+        :param request: Request instance for DescribeCasterOutputInfos.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterOutputInfosRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterOutputInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterOutputInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterOutputInfosResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3357,6 +3588,77 @@ class LiveClient(AbstractClient):
             body = self.call("ModifyCaster", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCasterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCasterInputInfo(self, request):
+        """该接口用来修改已经设置过的输入源信息，如源地址，源类型等。
+        设置前，需保证待修改的输入源已经存在。若不存在，需使用AddCasterInputInfo接口。
+
+        :param request: Request instance for ModifyCasterInputInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyCasterInputInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyCasterInputInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCasterInputInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCasterInputInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCasterLayoutInfo(self, request):
+        """该接口用来修改布局参数
+
+        :param request: Request instance for ModifyCasterLayoutInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyCasterLayoutInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyCasterLayoutInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCasterLayoutInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCasterLayoutInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCasterOutputInfo(self, request):
+        """该接口用来修改导播台的推流信息。
+        注：只有在主监启动前设置才生效，主监启动后设置，下次推流生效。
+
+        :param request: Request instance for ModifyCasterOutputInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyCasterOutputInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyCasterOutputInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCasterOutputInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCasterOutputInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

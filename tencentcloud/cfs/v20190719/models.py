@@ -4414,8 +4414,8 @@ class DescribeUserQuotaRequest(AbstractModel):
         :param _FileSystemId: 文件系统 ID
         :type FileSystemId: str
         :param _Filters: 过滤条件。
-<br><li>UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid| Gid )
-<br><li>UserId - Array of String - 是否必填：否 -（过滤条件）按UID/GID过滤。
+UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid|Gid|Dir )
+UserId- Array of String - 是否必填：否 -（过滤条件）按id过滤。
         :type Filters: list of Filter
         :param _Offset: Offset 分页码
         :type Offset: int
@@ -4441,8 +4441,8 @@ class DescribeUserQuotaRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件。
-<br><li>UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid| Gid )
-<br><li>UserId - Array of String - 是否必填：否 -（过滤条件）按UID/GID过滤。
+UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid|Gid|Dir )
+UserId- Array of String - 是否必填：否 -（过滤条件）按id过滤。
         :rtype: list of Filter
         """
         return self._Filters

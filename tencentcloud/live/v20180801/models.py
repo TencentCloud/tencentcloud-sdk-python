@@ -18,6 +18,287 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddCasterInputInfoRequest(AbstractModel):
+    """AddCasterInputInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _InputInfo: 导播台输入源详细信息。
+        :type InputInfo: :class:`tencentcloud.live.v20180801.models.CasterInputInfo`
+        """
+        self._CasterId = None
+        self._InputInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def InputInfo(self):
+        """导播台输入源详细信息。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = CasterInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCasterInputInfoResponse(AbstractModel):
+    """AddCasterInputInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputPlayUrl: rtmp协议输入源播放地址。
+注：仅可作为预览使用，不可分发。
+        :type InputPlayUrl: str
+        :param _InputWebRTCPlayUrl: webrtc协议播放地址。
+注：
+1. 需配合使用腾讯云快直播播放SDK使用才可正常播放。
+2. 仅作为预览使用，不可分发。
+        :type InputWebRTCPlayUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InputPlayUrl = None
+        self._InputWebRTCPlayUrl = None
+        self._RequestId = None
+
+    @property
+    def InputPlayUrl(self):
+        """rtmp协议输入源播放地址。
+注：仅可作为预览使用，不可分发。
+        :rtype: str
+        """
+        return self._InputPlayUrl
+
+    @InputPlayUrl.setter
+    def InputPlayUrl(self, InputPlayUrl):
+        self._InputPlayUrl = InputPlayUrl
+
+    @property
+    def InputWebRTCPlayUrl(self):
+        """webrtc协议播放地址。
+注：
+1. 需配合使用腾讯云快直播播放SDK使用才可正常播放。
+2. 仅作为预览使用，不可分发。
+        :rtype: str
+        """
+        return self._InputWebRTCPlayUrl
+
+    @InputWebRTCPlayUrl.setter
+    def InputWebRTCPlayUrl(self, InputWebRTCPlayUrl):
+        self._InputWebRTCPlayUrl = InputWebRTCPlayUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InputPlayUrl = params.get("InputPlayUrl")
+        self._InputWebRTCPlayUrl = params.get("InputWebRTCPlayUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class AddCasterLayoutInfoRequest(AbstractModel):
+    """AddCasterLayoutInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _LayoutInfo: 导播台布局参数信息。
+        :type LayoutInfo: :class:`tencentcloud.live.v20180801.models.CasterLayoutInfo`
+        """
+        self._CasterId = None
+        self._LayoutInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def LayoutInfo(self):
+        """导播台布局参数信息。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterLayoutInfo`
+        """
+        return self._LayoutInfo
+
+    @LayoutInfo.setter
+    def LayoutInfo(self, LayoutInfo):
+        self._LayoutInfo = LayoutInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("LayoutInfo") is not None:
+            self._LayoutInfo = CasterLayoutInfo()
+            self._LayoutInfo._deserialize(params.get("LayoutInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCasterLayoutInfoResponse(AbstractModel):
+    """AddCasterLayoutInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AddCasterOutputInfoRequest(AbstractModel):
+    """AddCasterOutputInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _OutputInfo: 导播台推流参数信息。
+        :type OutputInfo: :class:`tencentcloud.live.v20180801.models.CasterOutputInfo`
+        """
+        self._CasterId = None
+        self._OutputInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def OutputInfo(self):
+        """导播台推流参数信息。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterOutputInfo`
+        """
+        return self._OutputInfo
+
+    @OutputInfo.setter
+    def OutputInfo(self, OutputInfo):
+        self._OutputInfo = OutputInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("OutputInfo") is not None:
+            self._OutputInfo = CasterOutputInfo()
+            self._OutputInfo._deserialize(params.get("OutputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCasterOutputInfoResponse(AbstractModel):
+    """AddCasterOutputInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddDelayLiveStreamRequest(AbstractModel):
     """AddDelayLiveStream请求参数结构体
 
@@ -2383,6 +2664,665 @@ class CasterInfo(AbstractModel):
         
 
 
+class CasterInputInfo(AbstractModel):
+    """导播台输入信息参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputIndex: 输入源Index。
+范围[1, 20]
+        :type InputIndex: int
+        :param _InputType: 输入源类型。
+范围[0,1,2,3,4]。
+0：推流地址。
+1：点播文件地址。
+2：直播拉流地址。
+3：图片地址。
+4：webrtc协议推流地址。
+        :type InputType: int
+        :param _InputUrl: 输入源的源地址。
+最大允许长度512。
+当InputType为0（推流地址），2（直播拉流地址），3（图片地址）,4（webrtc推流地址）这几种类型时，URL需填入该字段。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputUrl: str
+        :param _Description: 输入源描述。
+最大允许长度256字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _InputUrls: 点播地址列表。仅当input type为1（点播地址）时，将一个或多个点播地址，填入该字段。
+单个地址最大允许长度512字符。
+最多允许同时填入5个地址。
+注：此时需保持InputUrl字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputUrls: list of str
+        :param _LoopEnable: 是否启用点播无限循环播放。
+注：当前该字段未生效，默认为True。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoopEnable: bool
+        :param _LoopNumber: 点播循环次数。
+允许值-1或正整数。
+当值为-1时，表示无限循环。
+当值为其他正整数时，表示循环对应次数。
+注：该字段暂未生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoopNumber: int
+        :param _PullPushEnable: 是否启用拉取到导播台。
+注：该字段默认强制为true。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PullPushEnable: bool
+        :param _Volume: 输入源音量百分比。
+默认为100。表示音量为原始大小。
+允许值[0,200]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Volume: int
+        """
+        self._InputIndex = None
+        self._InputType = None
+        self._InputUrl = None
+        self._Description = None
+        self._InputUrls = None
+        self._LoopEnable = None
+        self._LoopNumber = None
+        self._PullPushEnable = None
+        self._Volume = None
+
+    @property
+    def InputIndex(self):
+        """输入源Index。
+范围[1, 20]
+        :rtype: int
+        """
+        return self._InputIndex
+
+    @InputIndex.setter
+    def InputIndex(self, InputIndex):
+        self._InputIndex = InputIndex
+
+    @property
+    def InputType(self):
+        """输入源类型。
+范围[0,1,2,3,4]。
+0：推流地址。
+1：点播文件地址。
+2：直播拉流地址。
+3：图片地址。
+4：webrtc协议推流地址。
+        :rtype: int
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def InputUrl(self):
+        """输入源的源地址。
+最大允许长度512。
+当InputType为0（推流地址），2（直播拉流地址），3（图片地址）,4（webrtc推流地址）这几种类型时，URL需填入该字段。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InputUrl
+
+    @InputUrl.setter
+    def InputUrl(self, InputUrl):
+        self._InputUrl = InputUrl
+
+    @property
+    def Description(self):
+        """输入源描述。
+最大允许长度256字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InputUrls(self):
+        """点播地址列表。仅当input type为1（点播地址）时，将一个或多个点播地址，填入该字段。
+单个地址最大允许长度512字符。
+最多允许同时填入5个地址。
+注：此时需保持InputUrl字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InputUrls
+
+    @InputUrls.setter
+    def InputUrls(self, InputUrls):
+        self._InputUrls = InputUrls
+
+    @property
+    def LoopEnable(self):
+        """是否启用点播无限循环播放。
+注：当前该字段未生效，默认为True。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._LoopEnable
+
+    @LoopEnable.setter
+    def LoopEnable(self, LoopEnable):
+        self._LoopEnable = LoopEnable
+
+    @property
+    def LoopNumber(self):
+        """点播循环次数。
+允许值-1或正整数。
+当值为-1时，表示无限循环。
+当值为其他正整数时，表示循环对应次数。
+注：该字段暂未生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LoopNumber
+
+    @LoopNumber.setter
+    def LoopNumber(self, LoopNumber):
+        self._LoopNumber = LoopNumber
+
+    @property
+    def PullPushEnable(self):
+        """是否启用拉取到导播台。
+注：该字段默认强制为true。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._PullPushEnable
+
+    @PullPushEnable.setter
+    def PullPushEnable(self, PullPushEnable):
+        self._PullPushEnable = PullPushEnable
+
+    @property
+    def Volume(self):
+        """输入源音量百分比。
+默认为100。表示音量为原始大小。
+允许值[0,200]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+
+    def _deserialize(self, params):
+        self._InputIndex = params.get("InputIndex")
+        self._InputType = params.get("InputType")
+        self._InputUrl = params.get("InputUrl")
+        self._Description = params.get("Description")
+        self._InputUrls = params.get("InputUrls")
+        self._LoopEnable = params.get("LoopEnable")
+        self._LoopNumber = params.get("LoopNumber")
+        self._PullPushEnable = params.get("PullPushEnable")
+        self._Volume = params.get("Volume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CasterLayoutInfo(AbstractModel):
+    """导播台布局参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LayoutIndex: 布局Index。
+        :type LayoutIndex: int
+        :param _LayoutTemplateId: 布局模板Id。
+有效值[1，20，21，31，32，41]
+当使用布局模版时，无需LayoutParams参数，导播台将使用模版布局参数。
+
+        :type LayoutTemplateId: int
+        :param _InputIndexList: 布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。
+已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。
+        :type InputIndexList: str
+        :param _LayoutParams: 详细的布局参数列表。
+        :type LayoutParams: list of CasterLayoutParam
+        :param _LayoutWidth: 布局输出的宽度，单位为像素。
+默认为1280像素。
+注：该值仅在画中画布局，且未设置PgmWidth时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LayoutWidth: int
+        :param _LayoutHeight: 布局输出的高度，单位为像素。
+注：该参数仅在画中画布局，且未设置PgmHeight时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LayoutHeight: int
+        """
+        self._LayoutIndex = None
+        self._LayoutTemplateId = None
+        self._InputIndexList = None
+        self._LayoutParams = None
+        self._LayoutWidth = None
+        self._LayoutHeight = None
+
+    @property
+    def LayoutIndex(self):
+        """布局Index。
+        :rtype: int
+        """
+        return self._LayoutIndex
+
+    @LayoutIndex.setter
+    def LayoutIndex(self, LayoutIndex):
+        self._LayoutIndex = LayoutIndex
+
+    @property
+    def LayoutTemplateId(self):
+        """布局模板Id。
+有效值[1，20，21，31，32，41]
+当使用布局模版时，无需LayoutParams参数，导播台将使用模版布局参数。
+
+        :rtype: int
+        """
+        return self._LayoutTemplateId
+
+    @LayoutTemplateId.setter
+    def LayoutTemplateId(self, LayoutTemplateId):
+        self._LayoutTemplateId = LayoutTemplateId
+
+    @property
+    def InputIndexList(self):
+        """布局绑定的输入列表。按布局LayerId从小到大，按顺序排列。
+已有两个画面的布局为例，输入1对应LayerId为1，输入2对应的LayerId为2，该字段应该填入"1|2"。
+        :rtype: str
+        """
+        return self._InputIndexList
+
+    @InputIndexList.setter
+    def InputIndexList(self, InputIndexList):
+        self._InputIndexList = InputIndexList
+
+    @property
+    def LayoutParams(self):
+        """详细的布局参数列表。
+        :rtype: list of CasterLayoutParam
+        """
+        return self._LayoutParams
+
+    @LayoutParams.setter
+    def LayoutParams(self, LayoutParams):
+        self._LayoutParams = LayoutParams
+
+    @property
+    def LayoutWidth(self):
+        """布局输出的宽度，单位为像素。
+默认为1280像素。
+注：该值仅在画中画布局，且未设置PgmWidth时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LayoutWidth
+
+    @LayoutWidth.setter
+    def LayoutWidth(self, LayoutWidth):
+        self._LayoutWidth = LayoutWidth
+
+    @property
+    def LayoutHeight(self):
+        """布局输出的高度，单位为像素。
+注：该参数仅在画中画布局，且未设置PgmHeight时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LayoutHeight
+
+    @LayoutHeight.setter
+    def LayoutHeight(self, LayoutHeight):
+        self._LayoutHeight = LayoutHeight
+
+
+    def _deserialize(self, params):
+        self._LayoutIndex = params.get("LayoutIndex")
+        self._LayoutTemplateId = params.get("LayoutTemplateId")
+        self._InputIndexList = params.get("InputIndexList")
+        if params.get("LayoutParams") is not None:
+            self._LayoutParams = []
+            for item in params.get("LayoutParams"):
+                obj = CasterLayoutParam()
+                obj._deserialize(item)
+                self._LayoutParams.append(obj)
+        self._LayoutWidth = params.get("LayoutWidth")
+        self._LayoutHeight = params.get("LayoutHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CasterLayoutParam(AbstractModel):
+    """导播台布局详细参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LayerId: 布局层ID。
+在画面最终渲染时，将按ID从小到大的顺序，由下至上渲染。
+        :type LayerId: int
+        :param _LayerWidth: 布局层宽度。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
+当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+        :type LayerWidth: float
+        :param _LayerHeight: 布局层高度.
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
+当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+        :type LayerHeight: float
+        :param _LayerLocationX: 布局层位置x坐标。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
+当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上x坐标所占的比例值。
+        :type LayerLocationX: float
+        :param _LayerLocationY: 布局层位置Y坐标。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
+当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面Y坐标上所占的比例值。
+        :type LayerLocationY: float
+        :param _UsePortraitSegment: 是否启用抠图。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsePortraitSegment: bool
+        """
+        self._LayerId = None
+        self._LayerWidth = None
+        self._LayerHeight = None
+        self._LayerLocationX = None
+        self._LayerLocationY = None
+        self._UsePortraitSegment = None
+
+    @property
+    def LayerId(self):
+        """布局层ID。
+在画面最终渲染时，将按ID从小到大的顺序，由下至上渲染。
+        :rtype: int
+        """
+        return self._LayerId
+
+    @LayerId.setter
+    def LayerId(self, LayerId):
+        self._LayerId = LayerId
+
+    @property
+    def LayerWidth(self):
+        """布局层宽度。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
+当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+        :rtype: float
+        """
+        return self._LayerWidth
+
+    @LayerWidth.setter
+    def LayerWidth(self, LayerWidth):
+        self._LayerWidth = LayerWidth
+
+    @property
+    def LayerHeight(self):
+        """布局层高度.
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
+当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+        :rtype: float
+        """
+        return self._LayerHeight
+
+    @LayerHeight.setter
+    def LayerHeight(self, LayerHeight):
+        self._LayerHeight = LayerHeight
+
+    @property
+    def LayerLocationX(self):
+        """布局层位置x坐标。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
+当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上x坐标所占的比例值。
+        :rtype: float
+        """
+        return self._LayerLocationX
+
+    @LayerLocationX.setter
+    def LayerLocationX(self, LayerLocationX):
+        self._LayerLocationX = LayerLocationX
+
+    @property
+    def LayerLocationY(self):
+        """布局层位置Y坐标。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
+当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面Y坐标上所占的比例值。
+        :rtype: float
+        """
+        return self._LayerLocationY
+
+    @LayerLocationY.setter
+    def LayerLocationY(self, LayerLocationY):
+        self._LayerLocationY = LayerLocationY
+
+    @property
+    def UsePortraitSegment(self):
+        """是否启用抠图。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._UsePortraitSegment
+
+    @UsePortraitSegment.setter
+    def UsePortraitSegment(self, UsePortraitSegment):
+        self._UsePortraitSegment = UsePortraitSegment
+
+
+    def _deserialize(self, params):
+        self._LayerId = params.get("LayerId")
+        self._LayerWidth = params.get("LayerWidth")
+        self._LayerHeight = params.get("LayerHeight")
+        self._LayerLocationX = params.get("LayerLocationX")
+        self._LayerLocationY = params.get("LayerLocationY")
+        self._UsePortraitSegment = params.get("UsePortraitSegment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CasterOutputInfo(AbstractModel):
+    """导播台推流信息。
+    当导播台主监启动后，系统将自动将主监推流到腾讯云和其他第三方平台。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputIndex: 推流信息Index。
+当OutputType为1（表示推流到腾讯云直播）时，该值固定为0。
+范围[0,10]。
+        :type OutputIndex: int
+        :param _OutputUrl: rtmp协议推流地址。
+最大允许长度512字符。
+        :type OutputUrl: str
+        :param _Description: 描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _OutputStreamId: 推流到腾讯云直播源站时，使用的流ID。
+仅当OutputType为1时生效。
+最大允许128字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStreamId: str
+        :param _OutputType: 推流类型。
+范围[1,2]
+1. 推送到腾讯云直播源站。
+2. 推送到第三方源站。
+        :type OutputType: int
+        :param _OutputDomainName: 推到腾讯云直播源站时，使用的域名。
+最大允许128字符，且域名需属于当前账号绑定的云直播推流域名。
+仅在OutputType为1时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputDomainName: str
+        :param _OutputAppName: 推到腾讯云直播源站时，使用的AppName。
+最大允许64字符。
+仅在OutputType为1时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputAppName: str
+        :param _OutputParam: 推到腾讯云直播源站时需要添加的推流参数。
+最大允许长度256字符。
+仅在OutputType为1时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputParam: str
+        """
+        self._OutputIndex = None
+        self._OutputUrl = None
+        self._Description = None
+        self._OutputStreamId = None
+        self._OutputType = None
+        self._OutputDomainName = None
+        self._OutputAppName = None
+        self._OutputParam = None
+
+    @property
+    def OutputIndex(self):
+        """推流信息Index。
+当OutputType为1（表示推流到腾讯云直播）时，该值固定为0。
+范围[0,10]。
+        :rtype: int
+        """
+        return self._OutputIndex
+
+    @OutputIndex.setter
+    def OutputIndex(self, OutputIndex):
+        self._OutputIndex = OutputIndex
+
+    @property
+    def OutputUrl(self):
+        """rtmp协议推流地址。
+最大允许长度512字符。
+        :rtype: str
+        """
+        return self._OutputUrl
+
+    @OutputUrl.setter
+    def OutputUrl(self, OutputUrl):
+        self._OutputUrl = OutputUrl
+
+    @property
+    def Description(self):
+        """描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OutputStreamId(self):
+        """推流到腾讯云直播源站时，使用的流ID。
+仅当OutputType为1时生效。
+最大允许128字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutputStreamId
+
+    @OutputStreamId.setter
+    def OutputStreamId(self, OutputStreamId):
+        self._OutputStreamId = OutputStreamId
+
+    @property
+    def OutputType(self):
+        """推流类型。
+范围[1,2]
+1. 推送到腾讯云直播源站。
+2. 推送到第三方源站。
+        :rtype: int
+        """
+        return self._OutputType
+
+    @OutputType.setter
+    def OutputType(self, OutputType):
+        self._OutputType = OutputType
+
+    @property
+    def OutputDomainName(self):
+        """推到腾讯云直播源站时，使用的域名。
+最大允许128字符，且域名需属于当前账号绑定的云直播推流域名。
+仅在OutputType为1时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutputDomainName
+
+    @OutputDomainName.setter
+    def OutputDomainName(self, OutputDomainName):
+        self._OutputDomainName = OutputDomainName
+
+    @property
+    def OutputAppName(self):
+        """推到腾讯云直播源站时，使用的AppName。
+最大允许64字符。
+仅在OutputType为1时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutputAppName
+
+    @OutputAppName.setter
+    def OutputAppName(self, OutputAppName):
+        self._OutputAppName = OutputAppName
+
+    @property
+    def OutputParam(self):
+        """推到腾讯云直播源站时需要添加的推流参数。
+最大允许长度256字符。
+仅在OutputType为1时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutputParam
+
+    @OutputParam.setter
+    def OutputParam(self, OutputParam):
+        self._OutputParam = OutputParam
+
+
+    def _deserialize(self, params):
+        self._OutputIndex = params.get("OutputIndex")
+        self._OutputUrl = params.get("OutputUrl")
+        self._Description = params.get("Description")
+        self._OutputStreamId = params.get("OutputStreamId")
+        self._OutputType = params.get("OutputType")
+        self._OutputDomainName = params.get("OutputDomainName")
+        self._OutputAppName = params.get("OutputAppName")
+        self._OutputParam = params.get("OutputParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CdnPlayStatData(AbstractModel):
     """下行播放统计指标
 
@@ -3552,6 +4492,121 @@ class CopyCasterResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._CasterId = params.get("CasterId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCasterInputPushUrlRequest(AbstractModel):
+    """CreateCasterInputPushUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _InputIndex: 请求生成推流地址的输入Index。
+允许范围[1,20]。
+        :type InputIndex: int
+        :param _Protocol: 生成推流地址协议。
+范围[rtmp,webrtc]。
+注：获取webrtc推流地址时，需配合腾讯云快直播推流sdk才可成功推流。
+        :type Protocol: str
+        """
+        self._CasterId = None
+        self._InputIndex = None
+        self._Protocol = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def InputIndex(self):
+        """请求生成推流地址的输入Index。
+允许范围[1,20]。
+        :rtype: int
+        """
+        return self._InputIndex
+
+    @InputIndex.setter
+    def InputIndex(self, InputIndex):
+        self._InputIndex = InputIndex
+
+    @property
+    def Protocol(self):
+        """生成推流地址协议。
+范围[rtmp,webrtc]。
+注：获取webrtc推流地址时，需配合腾讯云快直播推流sdk才可成功推流。
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._InputIndex = params.get("InputIndex")
+        self._Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCasterInputPushUrlResponse(AbstractModel):
+    """CreateCasterInputPushUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PushUrl: 生成可使用的推流地址。
+        :type PushUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PushUrl = None
+        self._RequestId = None
+
+    @property
+    def PushUrl(self):
+        """生成可使用的推流地址。
+        :rtype: str
+        """
+        return self._PushUrl
+
+    @PushUrl.setter
+    def PushUrl(self, PushUrl):
+        self._PushUrl = PushUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PushUrl = params.get("PushUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -8270,6 +9325,251 @@ class DelayInfo(AbstractModel):
         
 
 
+class DeleteCasterInputInfoRequest(AbstractModel):
+    """DeleteCasterInputInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _InputIndex: 导播台输入Index。
+范围[0,20]
+注：该Index对应的输入源需存在。
+        :type InputIndex: int
+        """
+        self._CasterId = None
+        self._InputIndex = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def InputIndex(self):
+        """导播台输入Index。
+范围[0,20]
+注：该Index对应的输入源需存在。
+        :rtype: int
+        """
+        return self._InputIndex
+
+    @InputIndex.setter
+    def InputIndex(self, InputIndex):
+        self._InputIndex = InputIndex
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._InputIndex = params.get("InputIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCasterInputInfoResponse(AbstractModel):
+    """DeleteCasterInputInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCasterLayoutInfoRequest(AbstractModel):
+    """DeleteCasterLayoutInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _LayoutIndex: 要删除的布局Index。
+注：待删除的Index对应的布局需存在。
+        :type LayoutIndex: int
+        """
+        self._CasterId = None
+        self._LayoutIndex = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def LayoutIndex(self):
+        """要删除的布局Index。
+注：待删除的Index对应的布局需存在。
+        :rtype: int
+        """
+        return self._LayoutIndex
+
+    @LayoutIndex.setter
+    def LayoutIndex(self, LayoutIndex):
+        self._LayoutIndex = LayoutIndex
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._LayoutIndex = params.get("LayoutIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCasterLayoutInfoResponse(AbstractModel):
+    """DeleteCasterLayoutInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCasterOutputInfoRequest(AbstractModel):
+    """DeleteCasterOutputInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _OutputIndex: 待删除的推流信息Index。
+注：删除时，该Index对应的配置需要存在。
+        :type OutputIndex: int
+        """
+        self._CasterId = None
+        self._OutputIndex = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def OutputIndex(self):
+        """待删除的推流信息Index。
+注：删除时，该Index对应的配置需要存在。
+        :rtype: int
+        """
+        return self._OutputIndex
+
+    @OutputIndex.setter
+    def OutputIndex(self, OutputIndex):
+        self._OutputIndex = OutputIndex
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._OutputIndex = params.get("OutputIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCasterOutputInfoResponse(AbstractModel):
+    """DeleteCasterOutputInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCasterRequest(AbstractModel):
     """DeleteCaster请求参数结构体
 
@@ -11007,6 +12307,174 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCasterInputInfosRequest(AbstractModel):
+    """DescribeCasterInputInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterInputInfosResponse(AbstractModel):
+    """DescribeCasterInputInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfos: 导播台输入源信息列表。
+        :type InputInfos: list of CasterInputInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InputInfos = None
+        self._RequestId = None
+
+    @property
+    def InputInfos(self):
+        """导播台输入源信息列表。
+        :rtype: list of CasterInputInfo
+        """
+        return self._InputInfos
+
+    @InputInfos.setter
+    def InputInfos(self, InputInfos):
+        self._InputInfos = InputInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfos") is not None:
+            self._InputInfos = []
+            for item in params.get("InputInfos"):
+                obj = CasterInputInfo()
+                obj._deserialize(item)
+                self._InputInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCasterLayoutInfosRequest(AbstractModel):
+    """DescribeCasterLayoutInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterLayoutInfosResponse(AbstractModel):
+    """DescribeCasterLayoutInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LayoutInfos: 导播台的布局列表。
+        :type LayoutInfos: list of CasterLayoutInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LayoutInfos = None
+        self._RequestId = None
+
+    @property
+    def LayoutInfos(self):
+        """导播台的布局列表。
+        :rtype: list of CasterLayoutInfo
+        """
+        return self._LayoutInfos
+
+    @LayoutInfos.setter
+    def LayoutInfos(self, LayoutInfos):
+        self._LayoutInfos = LayoutInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LayoutInfos") is not None:
+            self._LayoutInfos = []
+            for item in params.get("LayoutInfos"):
+                obj = CasterLayoutInfo()
+                obj._deserialize(item)
+                self._LayoutInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCasterListRequest(AbstractModel):
     """DescribeCasterList请求参数结构体
 
@@ -11060,6 +12528,92 @@ class DescribeCasterListResponse(AbstractModel):
                 obj = CasterBriefInfo()
                 obj._deserialize(item)
                 self._CasterList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCasterOutputInfosRequest(AbstractModel):
+    """DescribeCasterOutputInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterOutputInfosResponse(AbstractModel):
+    """DescribeCasterOutputInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputInfos: 导播台的推流信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputInfos: list of CasterOutputInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OutputInfos = None
+        self._RequestId = None
+
+    @property
+    def OutputInfos(self):
+        """导播台的推流信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CasterOutputInfo
+        """
+        return self._OutputInfos
+
+    @OutputInfos.setter
+    def OutputInfos(self, OutputInfos):
+        self._OutputInfos = OutputInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OutputInfos") is not None:
+            self._OutputInfos = []
+            for item in params.get("OutputInfos"):
+                obj = CasterOutputInfo()
+                obj._deserialize(item)
+                self._OutputInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -24662,6 +26216,285 @@ class MixPortraitSegmentParams(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyCasterInputInfoRequest(AbstractModel):
+    """ModifyCasterInputInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _InputInfo: 修改的导播台输入源信息
+        :type InputInfo: :class:`tencentcloud.live.v20180801.models.CasterInputInfo`
+        """
+        self._CasterId = None
+        self._InputInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def InputInfo(self):
+        """修改的导播台输入源信息
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = CasterInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCasterInputInfoResponse(AbstractModel):
+    """ModifyCasterInputInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputPlayUrl: 修改输入源后的预览地址。
+注：该地址仅作为预览使用，不可分发。
+        :type InputPlayUrl: str
+        :param _InputWebRTCPlayUrl: 修改后的输入源webrtc预览地址。
+该地址需配合腾讯云快直播播放SDK使用。
+注：该地址仅做预览使用，不可分发。
+        :type InputWebRTCPlayUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InputPlayUrl = None
+        self._InputWebRTCPlayUrl = None
+        self._RequestId = None
+
+    @property
+    def InputPlayUrl(self):
+        """修改输入源后的预览地址。
+注：该地址仅作为预览使用，不可分发。
+        :rtype: str
+        """
+        return self._InputPlayUrl
+
+    @InputPlayUrl.setter
+    def InputPlayUrl(self, InputPlayUrl):
+        self._InputPlayUrl = InputPlayUrl
+
+    @property
+    def InputWebRTCPlayUrl(self):
+        """修改后的输入源webrtc预览地址。
+该地址需配合腾讯云快直播播放SDK使用。
+注：该地址仅做预览使用，不可分发。
+        :rtype: str
+        """
+        return self._InputWebRTCPlayUrl
+
+    @InputWebRTCPlayUrl.setter
+    def InputWebRTCPlayUrl(self, InputWebRTCPlayUrl):
+        self._InputWebRTCPlayUrl = InputWebRTCPlayUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InputPlayUrl = params.get("InputPlayUrl")
+        self._InputWebRTCPlayUrl = params.get("InputWebRTCPlayUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCasterLayoutInfoRequest(AbstractModel):
+    """ModifyCasterLayoutInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _LayoutInfo: 导播台布局参数信息。
+        :type LayoutInfo: :class:`tencentcloud.live.v20180801.models.CasterLayoutInfo`
+        """
+        self._CasterId = None
+        self._LayoutInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def LayoutInfo(self):
+        """导播台布局参数信息。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterLayoutInfo`
+        """
+        return self._LayoutInfo
+
+    @LayoutInfo.setter
+    def LayoutInfo(self, LayoutInfo):
+        self._LayoutInfo = LayoutInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("LayoutInfo") is not None:
+            self._LayoutInfo = CasterLayoutInfo()
+            self._LayoutInfo._deserialize(params.get("LayoutInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCasterLayoutInfoResponse(AbstractModel):
+    """ModifyCasterLayoutInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCasterOutputInfoRequest(AbstractModel):
+    """ModifyCasterOutputInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _OutputInfo: 导播台推流参数信息。
+        :type OutputInfo: :class:`tencentcloud.live.v20180801.models.CasterOutputInfo`
+        """
+        self._CasterId = None
+        self._OutputInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def OutputInfo(self):
+        """导播台推流参数信息。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterOutputInfo`
+        """
+        return self._OutputInfo
+
+    @OutputInfo.setter
+    def OutputInfo(self, OutputInfo):
+        self._OutputInfo = OutputInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("OutputInfo") is not None:
+            self._OutputInfo = CasterOutputInfo()
+            self._OutputInfo._deserialize(params.get("OutputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCasterOutputInfoResponse(AbstractModel):
+    """ModifyCasterOutputInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCasterRequest(AbstractModel):

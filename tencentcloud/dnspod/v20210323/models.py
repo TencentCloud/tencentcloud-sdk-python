@@ -6966,7 +6966,7 @@ UPDATED_ON：解析记录更新时间
         :type SortField: str
         :param _SortType: 排序方式，升序：ASC，降序：DESC。默认值为ASC。
         :type SortType: str
-        :param _Offset: 偏移量，默认值为0。
+        :param _Offset: 偏移量，默认值为0。如果入参携带"Domain","ffset","Limit" 这3个以外的参数，记录结果限制最大3000条
         :type Offset: int
         :param _Limit: 限制数量，当前Limit最大支持3000。默认值为100。
         :type Limit: int
@@ -7134,7 +7134,7 @@ UPDATED_ON：解析记录更新时间
 
     @property
     def Offset(self):
-        """偏移量，默认值为0。
+        """偏移量，默认值为0。如果入参携带"Domain","ffset","Limit" 这3个以外的参数，记录结果限制最大3000条
         :rtype: int
         """
         return self._Offset

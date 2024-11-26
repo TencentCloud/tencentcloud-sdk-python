@@ -742,8 +742,8 @@ class DescribeGatewayLoadBalancersRequest(AbstractModel):
         :type Offset: int
         :param _Filters: 查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。
 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
-- name - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例名称过滤，如“gwlb-xxxx”。
 - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
+- Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
 
         :type Filters: list of Filter
         :param _SearchKey: 搜索字段，模糊匹配名称、VIP。
@@ -792,8 +792,8 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
     def Filters(self):
         """查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。
 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
-- name - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例名称过滤，如“gwlb-xxxx”。
 - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
+- Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
 
         :rtype: list of Filter
         """

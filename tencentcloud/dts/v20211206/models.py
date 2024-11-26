@@ -5796,7 +5796,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatabaseType: 数据库类型，如mysql
+        :param _DatabaseType: 数据库类型，如mysql,redis等
         :type DatabaseType: str
         :param _MigrateRole: 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
         :type MigrateRole: str
@@ -5830,7 +5830,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def DatabaseType(self):
-        """数据库类型，如mysql
+        """数据库类型，如mysql,redis等
         :rtype: str
         """
         return self._DatabaseType

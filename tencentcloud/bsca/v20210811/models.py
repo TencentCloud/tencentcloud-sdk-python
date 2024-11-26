@@ -1340,14 +1340,17 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
         :type VulnerabilityList: list of ComponentVulnerabilityUnion
         :param _PURL: 组件purl
         :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
-        :param _RecommendedVersion: 推荐版本，当前版本中的所有漏洞都修复了的版本
+        :param _RecommendedVersion: 推荐版本，最小无高危/严重漏洞的版本。无法升级到安全版本时的备选方案。
         :type RecommendedVersion: str
+        :param _SecureVersion: 安全版本（首选），最小无漏洞的版本。当无法升级到安全版本时可考虑使用推荐版本。
+        :type SecureVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VulnerabilityList = None
         self._PURL = None
         self._RecommendedVersion = None
+        self._SecureVersion = None
         self._RequestId = None
 
     @property
@@ -1375,7 +1378,7 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
 
     @property
     def RecommendedVersion(self):
-        """推荐版本，当前版本中的所有漏洞都修复了的版本
+        """推荐版本，最小无高危/严重漏洞的版本。无法升级到安全版本时的备选方案。
         :rtype: str
         """
         return self._RecommendedVersion
@@ -1383,6 +1386,17 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
     @RecommendedVersion.setter
     def RecommendedVersion(self, RecommendedVersion):
         self._RecommendedVersion = RecommendedVersion
+
+    @property
+    def SecureVersion(self):
+        """安全版本（首选），最小无漏洞的版本。当无法升级到安全版本时可考虑使用推荐版本。
+        :rtype: str
+        """
+        return self._SecureVersion
+
+    @SecureVersion.setter
+    def SecureVersion(self, SecureVersion):
+        self._SecureVersion = SecureVersion
 
     @property
     def RequestId(self):
@@ -1407,6 +1421,7 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
             self._PURL = PURL()
             self._PURL._deserialize(params.get("PURL"))
         self._RecommendedVersion = params.get("RecommendedVersion")
+        self._SecureVersion = params.get("SecureVersion")
         self._RequestId = params.get("RequestId")
 
 
