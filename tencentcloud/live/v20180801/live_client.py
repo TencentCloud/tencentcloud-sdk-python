@@ -281,6 +281,76 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCasterPgm(self, request):
+        """该接口用来启动主监任务，并将获取主监画面的播放地址。
+
+        :param request: Request instance for CreateCasterPgm.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateCasterPgmRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateCasterPgmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCasterPgm", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCasterPgmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCasterPgmFromPvw(self, request):
+        """该接口用来将预监画面的布局、水印、字幕等配置，复制到主监画面中。
+        该接口使用时，预监任务需处于运行状态。
+
+        :param request: Request instance for CreateCasterPgmFromPvw.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateCasterPgmFromPvwRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateCasterPgmFromPvwResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCasterPgmFromPvw", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCasterPgmFromPvwResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCasterPvw(self, request):
+        """该接口用来启动预监任务，并将获取预监画面的播放地址。
+
+        :param request: Request instance for CreateCasterPvw.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateCasterPvwRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateCasterPvwResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCasterPvw", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCasterPvwResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCommonMixStream(self, request):
         """该接口用来创建通用混流。用法与旧接口 mix_streamv2.start_mix_stream_advanced 基本一致。
         注意：当前最多支持16路混流。
@@ -4016,6 +4086,31 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReleaseCaster(self, request):
+        """调用该接口，释放导播台实例，但保留所有的配置。
+        执行该接口，预监与主监画面停止，第三方推流停止。
+        点播文件与直播地址将停止展示，客户自行推到导播台的流需要手动停止。
+
+        :param request: Request instance for ReleaseCaster.
+        :type request: :class:`tencentcloud.live.v20180801.models.ReleaseCasterRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ReleaseCasterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseCaster", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReleaseCasterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RestartLivePullStreamTask(self, request):
         """将正在运行的拉流转推任务进行重启。
         注意：
@@ -4102,6 +4197,53 @@ class LiveClient(AbstractClient):
             body = self.call("StartLiveStreamMonitor", params, headers=headers)
             response = json.loads(body)
             model = models.StartLiveStreamMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopCasterPgm(self, request):
+        """该接口用来停止导播台的主监输出。
+        停止主监后，对应的推流到腾讯云直播源站和推流到其他第三方平台均将会停止。
+
+        :param request: Request instance for StopCasterPgm.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopCasterPgmRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopCasterPgmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopCasterPgm", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopCasterPgmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopCasterPvw(self, request):
+        """该接口用来停止导播台的预监任务。
+
+        :param request: Request instance for StopCasterPvw.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopCasterPvwRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopCasterPvwResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopCasterPvw", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopCasterPvwResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

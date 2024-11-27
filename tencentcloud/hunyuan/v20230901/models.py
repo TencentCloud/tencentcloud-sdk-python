@@ -2818,12 +2818,16 @@ class Message(AbstractModel):
         :param _ToolCalls: 模型生成的工具调用，仅 hunyuan-pro 或者 hunyuan-functioncall 模型支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type ToolCalls: list of ToolCall
+        :param _FileIDs: 文件标识符。单次最大 50 个文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileIDs: list of str
         """
         self._Role = None
         self._Content = None
         self._Contents = None
         self._ToolCallId = None
         self._ToolCalls = None
+        self._FileIDs = None
 
     @property
     def Role(self):
@@ -2883,6 +2887,18 @@ class Message(AbstractModel):
     def ToolCalls(self, ToolCalls):
         self._ToolCalls = ToolCalls
 
+    @property
+    def FileIDs(self):
+        """文件标识符。单次最大 50 个文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._FileIDs
+
+    @FileIDs.setter
+    def FileIDs(self, FileIDs):
+        self._FileIDs = FileIDs
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
@@ -2900,6 +2916,7 @@ class Message(AbstractModel):
                 obj = ToolCall()
                 obj._deserialize(item)
                 self._ToolCalls.append(obj)
+        self._FileIDs = params.get("FileIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

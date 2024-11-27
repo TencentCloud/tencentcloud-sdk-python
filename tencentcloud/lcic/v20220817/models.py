@@ -6995,8 +6995,11 @@ class DescribeUserRequest(AbstractModel):
         r"""
         :param _UserId: 用户Id。
         :type UserId: str
+        :param _OriginId: 客户端用户 id,如果未指定则为用户 id。
+        :type OriginId: str
         """
         self._UserId = None
+        self._OriginId = None
 
     @property
     def UserId(self):
@@ -7009,9 +7012,21 @@ class DescribeUserRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def OriginId(self):
+        """客户端用户 id,如果未指定则为用户 id。
+        :rtype: str
+        """
+        return self._OriginId
+
+    @OriginId.setter
+    def OriginId(self, OriginId):
+        self._OriginId = OriginId
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
+        self._OriginId = params.get("OriginId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

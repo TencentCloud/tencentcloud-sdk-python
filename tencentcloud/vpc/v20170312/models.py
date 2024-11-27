@@ -28446,6 +28446,8 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数目，默认值为20。
         :type Limit: int
+        :param _Description: ACL规则描述
+        :type Description: str
         """
         self._NatGatewayId = None
         self._TranslationDirection = None
@@ -28454,6 +28456,7 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
         self._OriginalIp = None
         self._Offset = None
         self._Limit = None
+        self._Description = None
 
     @property
     def NatGatewayId(self):
@@ -28532,6 +28535,17 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Description(self):
+        """ACL规则描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -28541,6 +28555,7 @@ class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
         self._OriginalIp = params.get("OriginalIp")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61382,6 +61397,8 @@ class TranslationAclRule(AbstractModel):
         :type AclRuleId: int
         :param _Action: 是否匹配。
         :type Action: int
+        :param _Description: ACL规则描述
+        :type Description: str
         """
         self._Protocol = None
         self._SourcePort = None
@@ -61390,6 +61407,7 @@ class TranslationAclRule(AbstractModel):
         self._DestinationCidr = None
         self._AclRuleId = None
         self._Action = None
+        self._Description = None
 
     @property
     def Protocol(self):
@@ -61468,6 +61486,17 @@ class TranslationAclRule(AbstractModel):
     def Action(self, Action):
         self._Action = Action
 
+    @property
+    def Description(self):
+        """ACL规则描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Protocol = params.get("Protocol")
@@ -61477,6 +61506,7 @@ class TranslationAclRule(AbstractModel):
         self._DestinationCidr = params.get("DestinationCidr")
         self._AclRuleId = params.get("AclRuleId")
         self._Action = params.get("Action")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

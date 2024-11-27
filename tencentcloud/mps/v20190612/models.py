@@ -3706,8 +3706,12 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
         r"""
         :param _SegmentSet: 智能拆条子片段列表。
         :type SegmentSet: list of SegmentRecognitionItem
+        :param _Abstract: 视频摘要，离线场景用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Abstract: str
         """
         self._SegmentSet = None
+        self._Abstract = None
 
     @property
     def SegmentSet(self):
@@ -3720,6 +3724,18 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
     def SegmentSet(self, SegmentSet):
         self._SegmentSet = SegmentSet
 
+    @property
+    def Abstract(self):
+        """视频摘要，离线场景用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Abstract
+
+    @Abstract.setter
+    def Abstract(self, Abstract):
+        self._Abstract = Abstract
+
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -3728,6 +3744,7 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
                 obj = SegmentRecognitionItem()
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
+        self._Abstract = params.get("Abstract")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

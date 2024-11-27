@@ -328,13 +328,10 @@ class AllocationAverageData(AbstractModel):
     def __init__(self):
         r"""
         :param _BeginMonth: 起始月份
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginMonth: str
         :param _EndMonth: 结束月份
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndMonth: str
         :param _RealTotalCost: 合计费用(折后总额)平均值
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealTotalCost: str
         """
         self._BeginMonth = None
@@ -344,7 +341,6 @@ class AllocationAverageData(AbstractModel):
     @property
     def BeginMonth(self):
         """起始月份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginMonth
@@ -356,7 +352,6 @@ class AllocationAverageData(AbstractModel):
     @property
     def EndMonth(self):
         """结束月份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndMonth
@@ -368,7 +363,6 @@ class AllocationAverageData(AbstractModel):
     @property
     def RealTotalCost(self):
         """合计费用(折后总额)平均值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealTotalCost
@@ -400,13 +394,10 @@ class AllocationBillTrendDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Month: 账单月份
-注意：此字段可能返回 null，表示取不到有效值。
         :type Month: str
         :param _Name: 账单月份展示名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _RealTotalCost: 合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealTotalCost: str
         """
         self._Month = None
@@ -416,7 +407,6 @@ class AllocationBillTrendDetail(AbstractModel):
     @property
     def Month(self):
         """账单月份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Month
@@ -428,7 +418,6 @@ class AllocationBillTrendDetail(AbstractModel):
     @property
     def Name(self):
         """账单月份展示名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -440,7 +429,6 @@ class AllocationBillTrendDetail(AbstractModel):
     @property
     def RealTotalCost(self):
         """合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealTotalCost
@@ -5283,10 +5271,8 @@ class AnalyseActionTypeDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _ActionType: 交易类型code
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _ActionTypeName: 交易类型Name
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTypeName: str
         """
         self._ActionType = None
@@ -5295,7 +5281,6 @@ class AnalyseActionTypeDetail(AbstractModel):
     @property
     def ActionType(self):
         """交易类型code
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -5307,7 +5292,6 @@ class AnalyseActionTypeDetail(AbstractModel):
     @property
     def ActionTypeName(self):
         """交易类型Name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionTypeName
@@ -5338,10 +5322,8 @@ class AnalyseAmountDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 费用类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Display: 是否展示
-注意：此字段可能返回 null，表示取不到有效值。
         :type Display: int
         """
         self._Key = None
@@ -5350,7 +5332,6 @@ class AnalyseAmountDetail(AbstractModel):
     @property
     def Key(self):
         """费用类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -5362,7 +5343,6 @@ class AnalyseAmountDetail(AbstractModel):
     @property
     def Display(self):
         """是否展示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Display
@@ -5393,10 +5373,8 @@ class AnalyseBusinessDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessCode: 产品码code
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
         :param _BusinessCodeName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCodeName: str
         """
         self._BusinessCode = None
@@ -5405,7 +5383,6 @@ class AnalyseBusinessDetail(AbstractModel):
     @property
     def BusinessCode(self):
         """产品码code
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCode
@@ -5417,7 +5394,6 @@ class AnalyseBusinessDetail(AbstractModel):
     @property
     def BusinessCodeName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCodeName
@@ -5645,31 +5621,22 @@ class AnalyseConditions(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessCodes: 产品名称代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCodes: str
         :param _ProductCodes: 子产品名称代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCodes: str
         :param _ComponentCode: 组件类型代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentCode: str
         :param _ZoneIds: 可用区ID：资源所属可用区ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: str
         :param _RegionIds: 地域ID:资源所属地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionIds: str
         :param _ProjectIds: 项目ID:资源所属项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIds: str
         :param _PayModes: 计费模式 prePay(表示包年包月)/postPay(表示按量计费)
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayModes: str
         :param _ActionTypes: 交易类型，查询交易类型（请使用交易类型code入参）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTypes: str
         :param _Tags: 分账标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: str
         :param _FeeType: 费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
 cashPayAmount:现金 
@@ -5677,16 +5644,12 @@ incentivePayAmount:赠送金
 voucherPayAmount:优惠券 
 tax:税金 
 costBeforeTax:税前价
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeeType: str
         :param _PayerUins: 查询成本分析数据的用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerUins: str
         :param _OwnerUins: 使用资源的用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUins: str
         :param _ConsumptionTypes: 消耗类型，查询消耗类型（请使用消耗类型code入参）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumptionTypes: str
         """
         self._BusinessCodes = None
@@ -5706,7 +5669,6 @@ costBeforeTax:税前价
     @property
     def BusinessCodes(self):
         """产品名称代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCodes
@@ -5718,7 +5680,6 @@ costBeforeTax:税前价
     @property
     def ProductCodes(self):
         """子产品名称代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCodes
@@ -5730,7 +5691,6 @@ costBeforeTax:税前价
     @property
     def ComponentCode(self):
         """组件类型代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentCode
@@ -5742,7 +5702,6 @@ costBeforeTax:税前价
     @property
     def ZoneIds(self):
         """可用区ID：资源所属可用区ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneIds
@@ -5754,7 +5713,6 @@ costBeforeTax:税前价
     @property
     def RegionIds(self):
         """地域ID:资源所属地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionIds
@@ -5766,7 +5724,6 @@ costBeforeTax:税前价
     @property
     def ProjectIds(self):
         """项目ID:资源所属项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectIds
@@ -5778,7 +5735,6 @@ costBeforeTax:税前价
     @property
     def PayModes(self):
         """计费模式 prePay(表示包年包月)/postPay(表示按量计费)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayModes
@@ -5790,7 +5746,6 @@ costBeforeTax:税前价
     @property
     def ActionTypes(self):
         """交易类型，查询交易类型（请使用交易类型code入参）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionTypes
@@ -5802,7 +5757,6 @@ costBeforeTax:税前价
     @property
     def Tags(self):
         """分账标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Tags
@@ -5819,7 +5773,6 @@ incentivePayAmount:赠送金
 voucherPayAmount:优惠券 
 tax:税金 
 costBeforeTax:税前价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FeeType
@@ -5831,7 +5784,6 @@ costBeforeTax:税前价
     @property
     def PayerUins(self):
         """查询成本分析数据的用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayerUins
@@ -5843,7 +5795,6 @@ costBeforeTax:税前价
     @property
     def OwnerUins(self):
         """使用资源的用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUins
@@ -5855,7 +5806,6 @@ costBeforeTax:税前价
     @property
     def ConsumptionTypes(self):
         """消耗类型，查询消耗类型（请使用消耗类型code入参）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumptionTypes
@@ -5970,13 +5920,10 @@ class AnalyseHeaderDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _HeadDetail: 表头日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadDetail: list of AnalyseHeaderTimeDetail
         :param _Name: 时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Total: 总计
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: str
         """
         self._HeadDetail = None
@@ -5986,7 +5933,6 @@ class AnalyseHeaderDetail(AbstractModel):
     @property
     def HeadDetail(self):
         """表头日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AnalyseHeaderTimeDetail
         """
         return self._HeadDetail
@@ -5998,7 +5944,6 @@ class AnalyseHeaderDetail(AbstractModel):
     @property
     def Name(self):
         """时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6010,7 +5955,6 @@ class AnalyseHeaderDetail(AbstractModel):
     @property
     def Total(self):
         """总计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Total
@@ -6047,7 +5991,6 @@ class AnalyseHeaderTimeDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Name = None
@@ -6055,7 +5998,6 @@ class AnalyseHeaderTimeDetail(AbstractModel):
     @property
     def Name(self):
         """日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6085,7 +6027,6 @@ class AnalyseOwnerUinDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _OwnerUin: 使用者uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
         """
         self._OwnerUin = None
@@ -6093,7 +6034,6 @@ class AnalyseOwnerUinDetail(AbstractModel):
     @property
     def OwnerUin(self):
         """使用者uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUin
@@ -6123,10 +6063,8 @@ class AnalysePayModeDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _PayMode: 计费模式code
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
         :param _PayModeName: 计费模式Name
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayModeName: str
         """
         self._PayMode = None
@@ -6135,7 +6073,6 @@ class AnalysePayModeDetail(AbstractModel):
     @property
     def PayMode(self):
         """计费模式code
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayMode
@@ -6147,7 +6084,6 @@ class AnalysePayModeDetail(AbstractModel):
     @property
     def PayModeName(self):
         """计费模式Name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayModeName
@@ -6178,10 +6114,8 @@ class AnalyseProjectDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _ProjectId: 项目id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _ProjectName: 默认项目
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         """
         self._ProjectId = None
@@ -6190,7 +6124,6 @@ class AnalyseProjectDetail(AbstractModel):
     @property
     def ProjectId(self):
         """项目id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -6202,7 +6135,6 @@ class AnalyseProjectDetail(AbstractModel):
     @property
     def ProjectName(self):
         """默认项目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -6233,10 +6165,8 @@ class AnalyseRegionDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _RegionId: 地域id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: str
         :param _RegionName: 地域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         """
         self._RegionId = None
@@ -6245,7 +6175,6 @@ class AnalyseRegionDetail(AbstractModel):
     @property
     def RegionId(self):
         """地域id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionId
@@ -6257,7 +6186,6 @@ class AnalyseRegionDetail(AbstractModel):
     @property
     def RegionName(self):
         """地域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -6288,10 +6216,8 @@ class AnalyseTimeDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Time: 日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
         :param _Money: 金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type Money: str
         """
         self._Time = None
@@ -6300,7 +6226,6 @@ class AnalyseTimeDetail(AbstractModel):
     @property
     def Time(self):
         """日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Time
@@ -6312,7 +6237,6 @@ class AnalyseTimeDetail(AbstractModel):
     @property
     def Money(self):
         """金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Money
@@ -6343,10 +6267,8 @@ class AnalyseZoneDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _ZoneId: 可用区id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: str
         :param _ZoneName: 可用区Name
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
         """
         self._ZoneId = None
@@ -6355,7 +6277,6 @@ class AnalyseZoneDetail(AbstractModel):
     @property
     def ZoneId(self):
         """可用区id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneId
@@ -6367,7 +6288,6 @@ class AnalyseZoneDetail(AbstractModel):
     @property
     def ZoneName(self):
         """可用区Name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneName

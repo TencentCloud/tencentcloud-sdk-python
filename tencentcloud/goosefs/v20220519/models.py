@@ -1025,6 +1025,8 @@ class CreateFileSystemRequest(AbstractModel):
         :type GooseFSxBuildElements: :class:`tencentcloud.goosefs.v20220519.models.GooseFSxBuildElement`
         :param _SecurityGroupId: 客户端集群所属的安全组
         :type SecurityGroupId: str
+        :param _ClusterPort: 集群ssh通信端口，默认是22
+        :type ClusterPort: int
         """
         self._Type = None
         self._Name = None
@@ -1035,6 +1037,7 @@ class CreateFileSystemRequest(AbstractModel):
         self._Tag = None
         self._GooseFSxBuildElements = None
         self._SecurityGroupId = None
+        self._ClusterPort = None
 
     @property
     def Type(self):
@@ -1135,6 +1138,17 @@ class CreateFileSystemRequest(AbstractModel):
     def SecurityGroupId(self, SecurityGroupId):
         self._SecurityGroupId = SecurityGroupId
 
+    @property
+    def ClusterPort(self):
+        """集群ssh通信端口，默认是22
+        :rtype: int
+        """
+        return self._ClusterPort
+
+    @ClusterPort.setter
+    def ClusterPort(self, ClusterPort):
+        self._ClusterPort = ClusterPort
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1153,6 +1167,7 @@ class CreateFileSystemRequest(AbstractModel):
             self._GooseFSxBuildElements = GooseFSxBuildElement()
             self._GooseFSxBuildElements._deserialize(params.get("GooseFSxBuildElements"))
         self._SecurityGroupId = params.get("SecurityGroupId")
+        self._ClusterPort = params.get("ClusterPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -427,6 +427,8 @@ class Cluster(AbstractModel):
         :param _MemRatio: Cu比例
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemRatio: int
+        :param _CrossTenantEniMode: 是否开启跨租户弹性网卡
+        :type CrossTenantEniMode: int
         """
         self._ClusterId = None
         self._Name = None
@@ -475,6 +477,7 @@ class Cluster(AbstractModel):
         self._ResourceType = None
         self._BillingResourceMode = None
         self._MemRatio = None
+        self._CrossTenantEniMode = None
 
     @property
     def ClusterId(self):
@@ -1023,6 +1026,17 @@ class Cluster(AbstractModel):
     def MemRatio(self, MemRatio):
         self._MemRatio = MemRatio
 
+    @property
+    def CrossTenantEniMode(self):
+        """是否开启跨租户弹性网卡
+        :rtype: int
+        """
+        return self._CrossTenantEniMode
+
+    @CrossTenantEniMode.setter
+    def CrossTenantEniMode(self, CrossTenantEniMode):
+        self._CrossTenantEniMode = CrossTenantEniMode
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1106,6 +1120,7 @@ class Cluster(AbstractModel):
         self._ResourceType = params.get("ResourceType")
         self._BillingResourceMode = params.get("BillingResourceMode")
         self._MemRatio = params.get("MemRatio")
+        self._CrossTenantEniMode = params.get("CrossTenantEniMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

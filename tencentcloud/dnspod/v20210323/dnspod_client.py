@@ -351,6 +351,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSubdomainValidateTXTValue(self, request):
+        """创建添加子域名 Zone 域解析时所需要的 TXT 记录值
+
+        :param request: Request instance for CreateSubdomainValidateTXTValue.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateSubdomainValidateTXTValueRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateSubdomainValidateTXTValueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSubdomainValidateTXTValue", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSubdomainValidateTXTValueResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTXTRecord(self, request):
         """添加TXT记录
         备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
@@ -1294,6 +1317,29 @@ class DnspodClient(AbstractClient):
             body = self.call("DescribeSubdomainAnalytics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSubdomainAnalyticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSubdomainValidateStatus(self, request):
+        """查看添加子域名 Zone 域解析 TXT 记录值验证状态
+
+        :param request: Request instance for DescribeSubdomainValidateStatus.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeSubdomainValidateStatusRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeSubdomainValidateStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubdomainValidateStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubdomainValidateStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

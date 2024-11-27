@@ -3055,6 +3055,130 @@ class CreateSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSubdomainValidateTXTValueRequest(AbstractModel):
+    """CreateSubdomainValidateTXTValue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainZone: 要添加的子域名 Zone 域。
+        :type DomainZone: str
+        """
+        self._DomainZone = None
+
+    @property
+    def DomainZone(self):
+        """要添加的子域名 Zone 域。
+        :rtype: str
+        """
+        return self._DomainZone
+
+    @DomainZone.setter
+    def DomainZone(self, DomainZone):
+        self._DomainZone = DomainZone
+
+
+    def _deserialize(self, params):
+        self._DomainZone = params.get("DomainZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSubdomainValidateTXTValueResponse(AbstractModel):
+    """CreateSubdomainValidateTXTValue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要添加 TXT 记录的域名。
+        :type Domain: str
+        :param _Subdomain: 需要添加 TXT 记录的主机记录。
+        :type Subdomain: str
+        :param _RecordType: 需要添加记录类型。
+        :type RecordType: str
+        :param _Value: 需要添加 TXT 记录的记录值。
+        :type Value: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Domain = None
+        self._Subdomain = None
+        self._RecordType = None
+        self._Value = None
+        self._RequestId = None
+
+    @property
+    def Domain(self):
+        """需要添加 TXT 记录的域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Subdomain(self):
+        """需要添加 TXT 记录的主机记录。
+        :rtype: str
+        """
+        return self._Subdomain
+
+    @Subdomain.setter
+    def Subdomain(self, Subdomain):
+        self._Subdomain = Subdomain
+
+    @property
+    def RecordType(self):
+        """需要添加记录类型。
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def Value(self):
+        """需要添加 TXT 记录的记录值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Subdomain = params.get("Subdomain")
+        self._RecordType = params.get("RecordType")
+        self._Value = params.get("Value")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTXTRecordRequest(AbstractModel):
     """CreateTXTRecord请求参数结构体
 
@@ -9335,6 +9459,70 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
                 obj = SubdomainAliasAnalyticsItem()
                 obj._deserialize(item)
                 self._AliasData.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSubdomainValidateStatusRequest(AbstractModel):
+    """DescribeSubdomainValidateStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainZone: 要查看 TXT 记录校验状态的子域名 Zone 域。
+        :type DomainZone: str
+        """
+        self._DomainZone = None
+
+    @property
+    def DomainZone(self):
+        """要查看 TXT 记录校验状态的子域名 Zone 域。
+        :rtype: str
+        """
+        return self._DomainZone
+
+    @DomainZone.setter
+    def DomainZone(self, DomainZone):
+        self._DomainZone = DomainZone
+
+
+    def _deserialize(self, params):
+        self._DomainZone = params.get("DomainZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubdomainValidateStatusResponse(AbstractModel):
+    """DescribeSubdomainValidateStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

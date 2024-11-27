@@ -645,7 +645,7 @@ class AttrLabel(AbstractModel):
 
 
 class AttrLabelDetail(AbstractModel):
-    """属性标签详情
+    """标签详情
 
     """
 
@@ -666,12 +666,20 @@ class AttrLabelDetail(AbstractModel):
         :param _IsUpdating: 属性标签是否在更新中
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdating: bool
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
         """
         self._AttrBizId = None
         self._AttrKey = None
         self._AttrName = None
         self._LabelNames = None
         self._IsUpdating = None
+        self._Status = None
+        self._StatusDesc = None
 
     @property
     def AttrBizId(self):
@@ -733,6 +741,30 @@ class AttrLabelDetail(AbstractModel):
     def IsUpdating(self, IsUpdating):
         self._IsUpdating = IsUpdating
 
+    @property
+    def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        """状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
 
     def _deserialize(self, params):
         self._AttrBizId = params.get("AttrBizId")
@@ -740,6 +772,8 @@ class AttrLabelDetail(AbstractModel):
         self._AttrName = params.get("AttrName")
         self._LabelNames = params.get("LabelNames")
         self._IsUpdating = params.get("IsUpdating")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

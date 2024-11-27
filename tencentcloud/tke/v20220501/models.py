@@ -6135,7 +6135,9 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceType: 标签绑定的资源类型，当前支持类型："cluster"
+        :param _ResourceType: 标签绑定的资源类型，当前支持类型：
+1.cluster：集群相关接口，TagSpecification 的 ResourceType 传参为 cluster
+2.machine：节点池相关接口，如：CreateNodePool, DescribeNodePools 等，TagSpecification 的 ResourceType 传参为 machine
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _Tags: 标签对列表
@@ -6147,7 +6149,9 @@ class TagSpecification(AbstractModel):
 
     @property
     def ResourceType(self):
-        """标签绑定的资源类型，当前支持类型："cluster"
+        """标签绑定的资源类型，当前支持类型：
+1.cluster：集群相关接口，TagSpecification 的 ResourceType 传参为 cluster
+2.machine：节点池相关接口，如：CreateNodePool, DescribeNodePools 等，TagSpecification 的 ResourceType 传参为 machine
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

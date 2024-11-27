@@ -89,6 +89,9 @@ FAILEDOPERATION_COSBUCKETNOTPERMISSION = 'FailedOperation.CosBucketNotPermission
 # Cos 角色不存在，请前往 控制台 -> 功能配置 -> 直播截图&鉴黄 页面进行授权。
 FAILEDOPERATION_COSROLENOTEXISTS = 'FailedOperation.CosRoleNotExists'
 
+# 创建/更新导播台主监、预监任务失败，可能是并发操作了同一个主监或预监任务。
+FAILEDOPERATION_CREATECASTERTASKFAILED = 'FailedOperation.CreateCasterTaskFailed'
+
 # 数据库访问异常。
 FAILEDOPERATION_DATABASENOTACCESSIBLE = 'FailedOperation.DatabaseNotAccessible'
 
@@ -191,6 +194,9 @@ FAILEDOPERATION_MONITORNOTEXIST = 'FailedOperation.MonitorNotExist'
 # 当前 CA 机构访问繁忙，请稍后重试。
 FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetworkError'
 
+# 直播未配置推流或播放域名
+FAILEDOPERATION_NOLVBPUSHORPLAYDOMAIN = 'FailedOperation.NoLVBPushOrPlayDomain'
+
 # 您没有该项目的操作权限。
 FAILEDOPERATION_NOPROJECTPERMISSION = 'FailedOperation.NoProjectPermission'
 
@@ -223,6 +229,12 @@ FAILEDOPERATION_RELATESERVERNOTACCESSIBLE = 'FailedOperation.RelateServerNotAcce
 
 # 输入关联的运行中的监播任务超出限制。
 FAILEDOPERATION_RELATEDRUNNINGMONITORLIMITEXCEEDED = 'FailedOperation.RelatedRunningMonitorLimitExceeded'
+
+# 释放导播台失败。
+FAILEDOPERATION_RELEASECASTERFAILED = 'FailedOperation.ReleaseCasterFailed'
+
+# 启动时后台资源不足。
+FAILEDOPERATION_RESOURCENOTENOUGH = 'FailedOperation.ResourceNotEnough'
 
 # 规则已经存在。
 FAILEDOPERATION_RULEALREADYEXIST = 'FailedOperation.RuleAlreadyExist'

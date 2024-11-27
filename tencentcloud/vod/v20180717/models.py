@@ -21398,10 +21398,13 @@ class CreateVodDomainRequest(AbstractModel):
 <li>Global: 全球范围。</li>
 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
         :type AccelerateArea: str
+        :param _Type: 域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>不填默认取值为 VOD 。
+        :type Type: str
         """
         self._Domain = None
         self._SubAppId = None
         self._AccelerateArea = None
+        self._Type = None
 
     @property
     def Domain(self):
@@ -21440,11 +21443,23 @@ class CreateVodDomainRequest(AbstractModel):
     def AccelerateArea(self, AccelerateArea):
         self._AccelerateArea = AccelerateArea
 
+    @property
+    def Type(self):
+        """域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>不填默认取值为 VOD 。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._SubAppId = params.get("SubAppId")
         self._AccelerateArea = params.get("AccelerateArea")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33057,6 +33072,8 @@ class DomainDetailInfo(AbstractModel):
         :param _IPFilterPolicy: IP 访问限制配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPFilterPolicy: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
+        :param _Type: 域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>
+        :type Type: str
         """
         self._Domain = None
         self._AccelerateAreaInfos = None
@@ -33067,6 +33084,7 @@ class DomainDetailInfo(AbstractModel):
         self._CreateTime = None
         self._QUICConfig = None
         self._IPFilterPolicy = None
+        self._Type = None
 
     @property
     def Domain(self):
@@ -33177,6 +33195,17 @@ class DomainDetailInfo(AbstractModel):
     def IPFilterPolicy(self, IPFilterPolicy):
         self._IPFilterPolicy = IPFilterPolicy
 
+    @property
+    def Type(self):
+        """域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -33203,6 +33232,7 @@ class DomainDetailInfo(AbstractModel):
         if params.get("IPFilterPolicy") is not None:
             self._IPFilterPolicy = IPFilterPolicy()
             self._IPFilterPolicy._deserialize(params.get("IPFilterPolicy"))
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

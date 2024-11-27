@@ -32904,6 +32904,10 @@ class TextVehicleBack(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type FuelType: str
+        :param _AddressElectronic: 住址
+        :type AddressElectronic: str
+        :param _IssueAuthorityElectronic: 发证机关
+        :type IssueAuthorityElectronic: str
         """
         self._PlateNo = None
         self._FileNo = None
@@ -32917,6 +32921,8 @@ class TextVehicleBack(AbstractModel):
         self._TotalQuasiMass = None
         self._SubPageCode = None
         self._FuelType = None
+        self._AddressElectronic = None
+        self._IssueAuthorityElectronic = None
 
     @property
     def PlateNo(self):
@@ -33063,6 +33069,28 @@ class TextVehicleBack(AbstractModel):
     def FuelType(self, FuelType):
         self._FuelType = FuelType
 
+    @property
+    def AddressElectronic(self):
+        """住址
+        :rtype: str
+        """
+        return self._AddressElectronic
+
+    @AddressElectronic.setter
+    def AddressElectronic(self, AddressElectronic):
+        self._AddressElectronic = AddressElectronic
+
+    @property
+    def IssueAuthorityElectronic(self):
+        """发证机关
+        :rtype: str
+        """
+        return self._IssueAuthorityElectronic
+
+    @IssueAuthorityElectronic.setter
+    def IssueAuthorityElectronic(self, IssueAuthorityElectronic):
+        self._IssueAuthorityElectronic = IssueAuthorityElectronic
+
 
     def _deserialize(self, params):
         self._PlateNo = params.get("PlateNo")
@@ -33077,6 +33105,8 @@ class TextVehicleBack(AbstractModel):
         self._TotalQuasiMass = params.get("TotalQuasiMass")
         self._SubPageCode = params.get("SubPageCode")
         self._FuelType = params.get("FuelType")
+        self._AddressElectronic = params.get("AddressElectronic")
+        self._IssueAuthorityElectronic = params.get("IssueAuthorityElectronic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40084,6 +40114,8 @@ WARN_DRIVER_LICENSE_BLUR 模糊告警
 WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 注：告警信息可以同时存在多个
         :type RecognizeWarnMsg: list of str
+        :param _VehicleLicenseType: 行驶证类型 电子行驶证：Electronic 普通行驶证：Normal
+        :type VehicleLicenseType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -40091,6 +40123,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         self._BackInfo = None
         self._RecognizeWarnCode = None
         self._RecognizeWarnMsg = None
+        self._VehicleLicenseType = None
         self._RequestId = None
 
     @property
@@ -40152,6 +40185,17 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         self._RecognizeWarnMsg = RecognizeWarnMsg
 
     @property
+    def VehicleLicenseType(self):
+        """行驶证类型 电子行驶证：Electronic 普通行驶证：Normal
+        :rtype: str
+        """
+        return self._VehicleLicenseType
+
+    @VehicleLicenseType.setter
+    def VehicleLicenseType(self, VehicleLicenseType):
+        self._VehicleLicenseType = VehicleLicenseType
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -40172,6 +40216,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
             self._BackInfo._deserialize(params.get("BackInfo"))
         self._RecognizeWarnCode = params.get("RecognizeWarnCode")
         self._RecognizeWarnMsg = params.get("RecognizeWarnMsg")
+        self._VehicleLicenseType = params.get("VehicleLicenseType")
         self._RequestId = params.get("RequestId")
 
 

@@ -4610,6 +4610,418 @@ class CreateCasterInputPushUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCasterPgmFromPvwRequest(AbstractModel):
+    """CreateCasterPgmFromPvw请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCasterPgmFromPvwResponse(AbstractModel):
+    """CreateCasterPgmFromPvw返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PgmPlayUrl: 主监任务的rtmp协议预览地址。 
+注：该地址仅供预览，不可分发。
+        :type PgmPlayUrl: str
+        :param _CdnPlayUrl: 注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdnPlayUrl: str
+        :param _CdnStreamId: 主监任务在腾讯云直播侧的流ID。
+        :type CdnStreamId: str
+        :param _PgmWebRTCPlayUrl: 主监任务的webrtc协议播放地址。 
+注：
+1.该预览地址仅作为预览，不可分发。
+2.webrtc播放地址需配合腾讯云快直播播放sdk使用。
+        :type PgmWebRTCPlayUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PgmPlayUrl = None
+        self._CdnPlayUrl = None
+        self._CdnStreamId = None
+        self._PgmWebRTCPlayUrl = None
+        self._RequestId = None
+
+    @property
+    def PgmPlayUrl(self):
+        """主监任务的rtmp协议预览地址。 
+注：该地址仅供预览，不可分发。
+        :rtype: str
+        """
+        return self._PgmPlayUrl
+
+    @PgmPlayUrl.setter
+    def PgmPlayUrl(self, PgmPlayUrl):
+        self._PgmPlayUrl = PgmPlayUrl
+
+    @property
+    def CdnPlayUrl(self):
+        """注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CdnPlayUrl
+
+    @CdnPlayUrl.setter
+    def CdnPlayUrl(self, CdnPlayUrl):
+        self._CdnPlayUrl = CdnPlayUrl
+
+    @property
+    def CdnStreamId(self):
+        """主监任务在腾讯云直播侧的流ID。
+        :rtype: str
+        """
+        return self._CdnStreamId
+
+    @CdnStreamId.setter
+    def CdnStreamId(self, CdnStreamId):
+        self._CdnStreamId = CdnStreamId
+
+    @property
+    def PgmWebRTCPlayUrl(self):
+        """主监任务的webrtc协议播放地址。 
+注：
+1.该预览地址仅作为预览，不可分发。
+2.webrtc播放地址需配合腾讯云快直播播放sdk使用。
+        :rtype: str
+        """
+        return self._PgmWebRTCPlayUrl
+
+    @PgmWebRTCPlayUrl.setter
+    def PgmWebRTCPlayUrl(self, PgmWebRTCPlayUrl):
+        self._PgmWebRTCPlayUrl = PgmWebRTCPlayUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PgmPlayUrl = params.get("PgmPlayUrl")
+        self._CdnPlayUrl = params.get("CdnPlayUrl")
+        self._CdnStreamId = params.get("CdnStreamId")
+        self._PgmWebRTCPlayUrl = params.get("PgmWebRTCPlayUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCasterPgmRequest(AbstractModel):
+    """CreateCasterPgm请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PgmDisplayInfo: 导播台展示信息参数。
+        :type PgmDisplayInfo: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._PgmDisplayInfo = None
+        self._CasterId = None
+
+    @property
+    def PgmDisplayInfo(self):
+        """导播台展示信息参数。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
+        """
+        return self._PgmDisplayInfo
+
+    @PgmDisplayInfo.setter
+    def PgmDisplayInfo(self, PgmDisplayInfo):
+        self._PgmDisplayInfo = PgmDisplayInfo
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        if params.get("PgmDisplayInfo") is not None:
+            self._PgmDisplayInfo = CasterDisplayInfo()
+            self._PgmDisplayInfo._deserialize(params.get("PgmDisplayInfo"))
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCasterPgmResponse(AbstractModel):
+    """CreateCasterPgm返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PgmPlayUrl: 主监任务的rtmp协议预览地址。
+注：该地址仅供预览，不可分发。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PgmPlayUrl: str
+        :param _CdnPlayUrl: 注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdnPlayUrl: str
+        :param _CdnStreamId: 主监任务在腾讯云直播侧的流ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdnStreamId: str
+        :param _PgmWebRTCPlayUrl: 主监任务的webrtc协议播放地址。
+注：
+1. 该预览地址仅作为预览，不可分发。
+2. webrtc播放地址需配合腾讯云快直播播放sdk使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PgmWebRTCPlayUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PgmPlayUrl = None
+        self._CdnPlayUrl = None
+        self._CdnStreamId = None
+        self._PgmWebRTCPlayUrl = None
+        self._RequestId = None
+
+    @property
+    def PgmPlayUrl(self):
+        """主监任务的rtmp协议预览地址。
+注：该地址仅供预览，不可分发。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PgmPlayUrl
+
+    @PgmPlayUrl.setter
+    def PgmPlayUrl(self, PgmPlayUrl):
+        self._PgmPlayUrl = PgmPlayUrl
+
+    @property
+    def CdnPlayUrl(self):
+        """注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CdnPlayUrl
+
+    @CdnPlayUrl.setter
+    def CdnPlayUrl(self, CdnPlayUrl):
+        self._CdnPlayUrl = CdnPlayUrl
+
+    @property
+    def CdnStreamId(self):
+        """主监任务在腾讯云直播侧的流ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CdnStreamId
+
+    @CdnStreamId.setter
+    def CdnStreamId(self, CdnStreamId):
+        self._CdnStreamId = CdnStreamId
+
+    @property
+    def PgmWebRTCPlayUrl(self):
+        """主监任务的webrtc协议播放地址。
+注：
+1. 该预览地址仅作为预览，不可分发。
+2. webrtc播放地址需配合腾讯云快直播播放sdk使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PgmWebRTCPlayUrl
+
+    @PgmWebRTCPlayUrl.setter
+    def PgmWebRTCPlayUrl(self, PgmWebRTCPlayUrl):
+        self._PgmWebRTCPlayUrl = PgmWebRTCPlayUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PgmPlayUrl = params.get("PgmPlayUrl")
+        self._CdnPlayUrl = params.get("CdnPlayUrl")
+        self._CdnStreamId = params.get("CdnStreamId")
+        self._PgmWebRTCPlayUrl = params.get("PgmWebRTCPlayUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCasterPvwRequest(AbstractModel):
+    """CreateCasterPvw请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PvwDisplayInfo: 导播台预监展示信息参数
+        :type PvwDisplayInfo: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._PvwDisplayInfo = None
+        self._CasterId = None
+
+    @property
+    def PvwDisplayInfo(self):
+        """导播台预监展示信息参数
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
+        """
+        return self._PvwDisplayInfo
+
+    @PvwDisplayInfo.setter
+    def PvwDisplayInfo(self, PvwDisplayInfo):
+        self._PvwDisplayInfo = PvwDisplayInfo
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        if params.get("PvwDisplayInfo") is not None:
+            self._PvwDisplayInfo = CasterDisplayInfo()
+            self._PvwDisplayInfo._deserialize(params.get("PvwDisplayInfo"))
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCasterPvwResponse(AbstractModel):
+    """CreateCasterPvw返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PvwPlayUrl: 预监任务的画面rtmp协议预览地址。
+注：该预览地址仅供画面预览，不可分发。
+        :type PvwPlayUrl: str
+        :param _PvwWebRTCPlayUrl: 预监任务的webrtc协议预览画面。
+注：
+1. 该预览地址仅供预览，不可分发。
+2. webrtc播放地址，需配合腾讯云快直播播放sdk使用
+
+        :type PvwWebRTCPlayUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PvwPlayUrl = None
+        self._PvwWebRTCPlayUrl = None
+        self._RequestId = None
+
+    @property
+    def PvwPlayUrl(self):
+        """预监任务的画面rtmp协议预览地址。
+注：该预览地址仅供画面预览，不可分发。
+        :rtype: str
+        """
+        return self._PvwPlayUrl
+
+    @PvwPlayUrl.setter
+    def PvwPlayUrl(self, PvwPlayUrl):
+        self._PvwPlayUrl = PvwPlayUrl
+
+    @property
+    def PvwWebRTCPlayUrl(self):
+        """预监任务的webrtc协议预览画面。
+注：
+1. 该预览地址仅供预览，不可分发。
+2. webrtc播放地址，需配合腾讯云快直播播放sdk使用
+
+        :rtype: str
+        """
+        return self._PvwWebRTCPlayUrl
+
+    @PvwWebRTCPlayUrl.setter
+    def PvwWebRTCPlayUrl(self, PvwWebRTCPlayUrl):
+        self._PvwWebRTCPlayUrl = PvwWebRTCPlayUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PvwPlayUrl = params.get("PvwPlayUrl")
+        self._PvwWebRTCPlayUrl = params.get("PvwWebRTCPlayUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCasterRequest(AbstractModel):
     """CreateCaster请求参数结构体
 
@@ -10050,9 +10462,12 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
         :type TaskId: str
         :param _Operator: 操作人姓名。
         :type Operator: str
+        :param _SpecifyTaskId: 指定任务 ID。注意：用于删除使用自定义任务 ID 创建的任务。
+        :type SpecifyTaskId: str
         """
         self._TaskId = None
         self._Operator = None
+        self._SpecifyTaskId = None
 
     @property
     def TaskId(self):
@@ -10076,10 +10491,22 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def SpecifyTaskId(self):
+        """指定任务 ID。注意：用于删除使用自定义任务 ID 创建的任务。
+        :rtype: str
+        """
+        return self._SpecifyTaskId
+
+    @SpecifyTaskId.setter
+    def SpecifyTaskId(self, SpecifyTaskId):
+        self._SpecifyTaskId = SpecifyTaskId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._Operator = params.get("Operator")
+        self._SpecifyTaskId = params.get("SpecifyTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33393,6 +33820,70 @@ class RefererAuthConfig(AbstractModel):
         
 
 
+class ReleaseCasterRequest(AbstractModel):
+    """ReleaseCaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseCasterResponse(AbstractModel):
+    """ReleaseCaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RestartLivePullStreamTaskRequest(AbstractModel):
     """RestartLivePullStreamTask请求参数结构体
 
@@ -34182,6 +34673,134 @@ class StartLiveStreamMonitorRequest(AbstractModel):
 
 class StartLiveStreamMonitorResponse(AbstractModel):
     """StartLiveStreamMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopCasterPgmRequest(AbstractModel):
+    """StopCasterPgm请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopCasterPgmResponse(AbstractModel):
+    """StopCasterPgm返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopCasterPvwRequest(AbstractModel):
+    """StopCasterPvw请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopCasterPvwResponse(AbstractModel):
+    """StopCasterPvw返回参数结构体
 
     """
 
