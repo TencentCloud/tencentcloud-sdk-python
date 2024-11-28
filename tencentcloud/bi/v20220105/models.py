@@ -3945,6 +3945,157 @@ class DescribeDatasourceListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePageWidgetListRequest(AbstractModel):
+    """DescribePageWidgetList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _PageId: 页面id
+        :type PageId: str
+        """
+        self._ProjectId = None
+        self._PageId = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageId(self):
+        """页面id
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageId = params.get("PageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePageWidgetListResponse(AbstractModel):
+    """DescribePageWidgetList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: 扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Data: 返回数据结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.WidgetListVO`
+        :param _Msg: 返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """返回数据结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.WidgetListVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = WidgetListVO()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProjectInfoRequest(AbstractModel):
     """DescribeProjectInfo请求参数结构体
 
@@ -5355,6 +5506,232 @@ INFO
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExportScreenPageRequest(AbstractModel):
+    """ExportScreenPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _PageId: 页面id
+        :type PageId: str
+        :param _CanvasType: 画布类型。栅格画布：GRID；自由画布：FREE
+        :type CanvasType: str
+        :param _PicType: 图片导出类型。base64；url（有效期：1天）
+        :type PicType: str
+        :param _WidgetIds: 组件Ids。为空时，导出整个页面
+        :type WidgetIds: list of str
+        :param _AsyncRequest: 是否是异步请求
+        :type AsyncRequest: bool
+        :param _TranId: 事务id
+        :type TranId: str
+        """
+        self._ProjectId = None
+        self._PageId = None
+        self._CanvasType = None
+        self._PicType = None
+        self._WidgetIds = None
+        self._AsyncRequest = None
+        self._TranId = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageId(self):
+        """页面id
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def CanvasType(self):
+        """画布类型。栅格画布：GRID；自由画布：FREE
+        :rtype: str
+        """
+        return self._CanvasType
+
+    @CanvasType.setter
+    def CanvasType(self, CanvasType):
+        self._CanvasType = CanvasType
+
+    @property
+    def PicType(self):
+        """图片导出类型。base64；url（有效期：1天）
+        :rtype: str
+        """
+        return self._PicType
+
+    @PicType.setter
+    def PicType(self, PicType):
+        self._PicType = PicType
+
+    @property
+    def WidgetIds(self):
+        """组件Ids。为空时，导出整个页面
+        :rtype: list of str
+        """
+        return self._WidgetIds
+
+    @WidgetIds.setter
+    def WidgetIds(self, WidgetIds):
+        self._WidgetIds = WidgetIds
+
+    @property
+    def AsyncRequest(self):
+        """是否是异步请求
+        :rtype: bool
+        """
+        return self._AsyncRequest
+
+    @AsyncRequest.setter
+    def AsyncRequest(self, AsyncRequest):
+        self._AsyncRequest = AsyncRequest
+
+    @property
+    def TranId(self):
+        """事务id
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageId = params.get("PageId")
+        self._CanvasType = params.get("CanvasType")
+        self._PicType = params.get("PicType")
+        self._WidgetIds = params.get("WidgetIds")
+        self._AsyncRequest = params.get("AsyncRequest")
+        self._TranId = params.get("TranId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportScreenPageResponse(AbstractModel):
+    """ExportScreenPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: 扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Data: 返回数据结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.PageScreenListVO`
+        :param _Msg: 返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """返回数据结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.PageScreenListVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = PageScreenListVO()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
 
 
 class IdDTO(AbstractModel):
@@ -7031,6 +7408,157 @@ class ModifyUserRoleResponse(AbstractModel):
         self._Msg = params.get("Msg")
         self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
+
+
+class PageScreenListVO(AbstractModel):
+    """页面截图列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PicType: 图片导出类型。base64；url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PicType: str
+        :param _List: 图片列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of PageScreenVO
+        :param _TranId: 异步事务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param _TranStatus: 事务状态
+1: 处理中; 2: 处理成功; 3 处理失败(错误内容见外层Msg)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranStatus: int
+        """
+        self._PicType = None
+        self._List = None
+        self._TranId = None
+        self._TranStatus = None
+
+    @property
+    def PicType(self):
+        """图片导出类型。base64；url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PicType
+
+    @PicType.setter
+    def PicType(self, PicType):
+        self._PicType = PicType
+
+    @property
+    def List(self):
+        """图片列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PageScreenVO
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TranId(self):
+        """异步事务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def TranStatus(self):
+        """事务状态
+1: 处理中; 2: 处理成功; 3 处理失败(错误内容见外层Msg)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TranStatus
+
+    @TranStatus.setter
+    def TranStatus(self, TranStatus):
+        self._TranStatus = TranStatus
+
+
+    def _deserialize(self, params):
+        self._PicType = params.get("PicType")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = PageScreenVO()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TranId = params.get("TranId")
+        self._TranStatus = params.get("TranStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PageScreenVO(AbstractModel):
+    """页面截图信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 截图base64或 url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _WidgetId: 组件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WidgetId: str
+        """
+        self._Content = None
+        self._WidgetId = None
+
+    @property
+    def Content(self):
+        """截图base64或 url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def WidgetId(self):
+        """组件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WidgetId
+
+    @WidgetId.setter
+    def WidgetId(self, WidgetId):
+        self._WidgetId = WidgetId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._WidgetId = params.get("WidgetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PermissionComponent(AbstractModel):
@@ -8864,6 +9392,155 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._AppUserName = params.get("AppUserName")
         self._InValidateAppRange = params.get("InValidateAppRange")
         self._AppOpenUserId = params.get("AppOpenUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WidgetListVO(AbstractModel):
+    """页面组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpId: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _PageId: 页面id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageId: str
+        :param _WidgetList: 组件数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WidgetList: list of WidgetVO
+        """
+        self._CorpId = None
+        self._ProjectId = None
+        self._PageId = None
+        self._WidgetList = None
+
+    @property
+    def CorpId(self):
+        """uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def ProjectId(self):
+        """项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageId(self):
+        """页面id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def WidgetList(self):
+        """组件数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WidgetVO
+        """
+        return self._WidgetList
+
+    @WidgetList.setter
+    def WidgetList(self, WidgetList):
+        self._WidgetList = WidgetList
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._ProjectId = params.get("ProjectId")
+        self._PageId = params.get("PageId")
+        if params.get("WidgetList") is not None:
+            self._WidgetList = []
+            for item in params.get("WidgetList"):
+                obj = WidgetVO()
+                obj._deserialize(item)
+                self._WidgetList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WidgetVO(AbstractModel):
+    """组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WidgetId: 组件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WidgetId: str
+        :param _WidgetName: 组件name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WidgetName: str
+        """
+        self._WidgetId = None
+        self._WidgetName = None
+
+    @property
+    def WidgetId(self):
+        """组件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WidgetId
+
+    @WidgetId.setter
+    def WidgetId(self, WidgetId):
+        self._WidgetId = WidgetId
+
+    @property
+    def WidgetName(self):
+        """组件name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WidgetName
+
+    @WidgetName.setter
+    def WidgetName(self, WidgetName):
+        self._WidgetName = WidgetName
+
+
+    def _deserialize(self, params):
+        self._WidgetId = params.get("WidgetId")
+        self._WidgetName = params.get("WidgetName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

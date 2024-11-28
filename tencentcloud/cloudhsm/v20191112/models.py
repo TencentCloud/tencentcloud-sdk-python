@@ -330,7 +330,7 @@ class DescribeSubnetRequest(AbstractModel):
         :type Offset: int
         :param _VpcId: 查询指定VpcId下的子网信息。
         :type VpcId: str
-        :param _SearchWord: 查找关键字
+        :param _SearchWord: 过滤条件
         :type SearchWord: str
         """
         self._Limit = None
@@ -373,7 +373,7 @@ class DescribeSubnetRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """查找关键字
+        """过滤条件
         :rtype: str
         """
         return self._SearchWord
@@ -408,7 +408,6 @@ class DescribeSubnetResponse(AbstractModel):
         :param _TotalCount: 返回的子网数量。
         :type TotalCount: int
         :param _SubnetList: 返回的子网实例列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetList: list of Subnet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -431,7 +430,6 @@ class DescribeSubnetResponse(AbstractModel):
     @property
     def SubnetList(self):
         """返回的子网实例列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Subnet
         """
         return self._SubnetList
@@ -507,7 +505,6 @@ class DescribeSupportedHsmResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceTypes: 当前地域所支持的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypes: list of DeviceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -518,7 +515,6 @@ class DescribeSupportedHsmResponse(AbstractModel):
     @property
     def DeviceTypes(self):
         """当前地域所支持的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceInfo
         """
         return self._DeviceTypes
@@ -560,7 +556,7 @@ class DescribeUsgRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
         :type Limit: int
-        :param _SearchWord: 搜索关键字
+        :param _SearchWord: 过滤条件，支持安全组id
         :type SearchWord: str
         """
         self._Offset = None
@@ -591,7 +587,7 @@ class DescribeUsgRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索关键字
+        """过滤条件，支持安全组id
         :rtype: str
         """
         return self._SearchWord
@@ -623,7 +619,6 @@ class DescribeUsgResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SgList: 用户的安全组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgList: list of SgUnit
         :param _TotalCount: 返回的安全组数量
         :type TotalCount: int
@@ -637,7 +632,6 @@ class DescribeUsgResponse(AbstractModel):
     @property
     def SgList(self):
         """用户的安全组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SgUnit
         """
         return self._SgList
@@ -687,14 +681,14 @@ class DescribeUsgRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SgIds: 根据安全组Id获取安全组详情
+        :param _SgIds: 安全组Id列表
         :type SgIds: list of str
         """
         self._SgIds = None
 
     @property
     def SgIds(self):
-        """根据安全组Id获取安全组详情
+        """安全组Id列表
         :rtype: list of str
         """
         return self._SgIds
@@ -724,10 +718,8 @@ class DescribeUsgRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SgRules: 安全组详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgRules: list of UsgRuleDetail
         :param _TotalCount: 安全组详情数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -739,7 +731,6 @@ class DescribeUsgRuleResponse(AbstractModel):
     @property
     def SgRules(self):
         """安全组详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UsgRuleDetail
         """
         return self._SgRules
@@ -751,7 +742,6 @@ class DescribeUsgRuleResponse(AbstractModel):
     @property
     def TotalCount(self):
         """安全组详情数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -859,7 +849,6 @@ class DescribeVpcResponse(AbstractModel):
         :param _TotalCount: 可查询到的所有Vpc实例总数。
         :type TotalCount: int
         :param _VpcList: Vpc对象列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcList: list of Vpc
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -882,7 +871,6 @@ class DescribeVpcResponse(AbstractModel):
     @property
     def VpcList(self):
         """Vpc对象列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Vpc
         """
         return self._VpcList
@@ -979,41 +967,29 @@ class DescribeVsmAttributesResponse(AbstractModel):
         :type ZoneId: int
         :param _ExpireTime: 资源过期时间，以时间戳形式展示。
         :type ExpireTime: int
-        :param _SgList: 安全组详情信息
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _SgList: 安全组详情信息,如果未配置字段返回null
         :type SgList: list of UsgRuleDetail
         :param _SubnetName: 子网名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetName: str
         :param _RegionName: 地域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _ZoneName: 区域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
         :param _Expired: 实例是否已经过期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Expired: bool
         :param _RemainSeconds: 为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainSeconds: int
         :param _VpcName: 私有虚拟网络名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
         :param _VpcCidrBlock: VPC的IPv4 CIDR
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcCidrBlock: str
         :param _SubnetCidrBlock: 子网的CIDR
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetCidrBlock: str
-        :param _Tags: 资源所关联的Tag
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Tags: 资源所关联的标签Tag
         :type Tags: list of Tag
         :param _RenewFlag: 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _Manufacturer: 厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1166,8 +1142,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SgList(self):
-        """安全组详情信息
-注意：此字段可能返回 null，表示取不到有效值。
+        """安全组详情信息,如果未配置字段返回null
         :rtype: list of UsgRuleDetail
         """
         return self._SgList
@@ -1179,7 +1154,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def SubnetName(self):
         """子网名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetName
@@ -1191,7 +1165,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def RegionName(self):
         """地域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -1203,7 +1176,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def ZoneName(self):
         """区域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneName
@@ -1215,7 +1187,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def Expired(self):
         """实例是否已经过期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Expired
@@ -1227,7 +1198,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def RemainSeconds(self):
         """为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RemainSeconds
@@ -1239,7 +1209,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def VpcName(self):
         """私有虚拟网络名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcName
@@ -1251,7 +1220,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def VpcCidrBlock(self):
         """VPC的IPv4 CIDR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -1263,7 +1231,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def SubnetCidrBlock(self):
         """子网的CIDR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetCidrBlock
@@ -1274,8 +1241,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Tags(self):
-        """资源所关联的Tag
-注意：此字段可能返回 null，表示取不到有效值。
+        """资源所关联的标签Tag
         :rtype: list of Tag
         """
         return self._Tags
@@ -1287,7 +1253,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def RenewFlag(self):
         """资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RenewFlag
@@ -1299,7 +1264,6 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @property
     def Manufacturer(self):
         """厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Manufacturer
@@ -1483,7 +1447,6 @@ class DescribeVsmsResponse(AbstractModel):
         :param _TotalCount: 获取实例的总个数
         :type TotalCount: int
         :param _VsmList: 资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VsmList: list of ResourceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1506,7 +1469,6 @@ class DescribeVsmsResponse(AbstractModel):
     @property
     def VsmList(self):
         """资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceInfo
         """
         return self._VsmList
@@ -1608,7 +1570,6 @@ class GetAlarmEventResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AlarmConfig: 用户所有的告警策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmConfig: list of AlarmPolicy
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1619,7 +1580,6 @@ class GetAlarmEventResponse(AbstractModel):
     @property
     def AlarmConfig(self):
         """用户所有的告警策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmPolicy
         """
         return self._AlarmConfig
@@ -1949,19 +1909,14 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCost: 原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
         :param _GoodsNum: 购买的实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsNum: int
         :param _TimeSpan: 商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: str
         :param _TimeUnit: 商品的时间单位，m表示月，y表示年
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _OriginalCost: 应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalCost: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1976,7 +1931,6 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
     @property
     def TotalCost(self):
         """原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalCost
@@ -1988,7 +1942,6 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
     @property
     def GoodsNum(self):
         """购买的实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GoodsNum
@@ -2000,7 +1953,6 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
     @property
     def TimeSpan(self):
         """商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeSpan
@@ -2012,7 +1964,6 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
     @property
     def TimeUnit(self):
         """商品的时间单位，m表示月，y表示年
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeUnit
@@ -2024,7 +1975,6 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
     @property
     def OriginalCost(self):
         """应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._OriginalCost
@@ -2346,73 +2296,50 @@ class ResourceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _ResourceName: 资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _Status: 资源状态，1-正常，2-隔离，3-销毁
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Vip: 资源IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _VpcId: 资源所属Vpc
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 资源所属子网
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _Model: 资源所属HSM规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type Model: str
         :param _VsmType: 云加密机类型id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VsmType: int
         :param _RegionId: 地域Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _ZoneId: 区域Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _ExpireTime: 过期时间（Epoch Unix Timestamp）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         :param _RegionName: 地域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _ZoneName: 区域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
         :param _SgList: 实例的安全组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgList: list of SgUnit
         :param _SubnetName: 子网名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetName: str
         :param _Expired: 当前实例是否已经过期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Expired: bool
         :param _RemainSeconds: 为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainSeconds: int
         :param _VpcName: Vpc名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
         :param _CreateUin: 创建者Uin账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUin: str
         :param _RenewFlag: 自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _Tags: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _Manufacturer: 厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
         :param _AlarmStatus: 告警状态，0：停用，1：启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmStatus: int
         """
         self._ResourceId = None
@@ -2442,7 +2369,6 @@ class ResourceInfo(AbstractModel):
     @property
     def ResourceId(self):
         """资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -2454,7 +2380,6 @@ class ResourceInfo(AbstractModel):
     @property
     def ResourceName(self):
         """资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceName
@@ -2466,7 +2391,6 @@ class ResourceInfo(AbstractModel):
     @property
     def Status(self):
         """资源状态，1-正常，2-隔离，3-销毁
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -2478,7 +2402,6 @@ class ResourceInfo(AbstractModel):
     @property
     def Vip(self):
         """资源IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -2490,7 +2413,6 @@ class ResourceInfo(AbstractModel):
     @property
     def VpcId(self):
         """资源所属Vpc
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -2502,7 +2424,6 @@ class ResourceInfo(AbstractModel):
     @property
     def SubnetId(self):
         """资源所属子网
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -2514,7 +2435,6 @@ class ResourceInfo(AbstractModel):
     @property
     def Model(self):
         """资源所属HSM规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Model
@@ -2526,7 +2446,6 @@ class ResourceInfo(AbstractModel):
     @property
     def VsmType(self):
         """云加密机类型id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VsmType
@@ -2538,7 +2457,6 @@ class ResourceInfo(AbstractModel):
     @property
     def RegionId(self):
         """地域Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -2550,7 +2468,6 @@ class ResourceInfo(AbstractModel):
     @property
     def ZoneId(self):
         """区域Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -2562,7 +2479,6 @@ class ResourceInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """过期时间（Epoch Unix Timestamp）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpireTime
@@ -2574,7 +2490,6 @@ class ResourceInfo(AbstractModel):
     @property
     def RegionName(self):
         """地域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -2586,7 +2501,6 @@ class ResourceInfo(AbstractModel):
     @property
     def ZoneName(self):
         """区域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneName
@@ -2598,7 +2512,6 @@ class ResourceInfo(AbstractModel):
     @property
     def SgList(self):
         """实例的安全组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SgUnit
         """
         return self._SgList
@@ -2610,7 +2523,6 @@ class ResourceInfo(AbstractModel):
     @property
     def SubnetName(self):
         """子网名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetName
@@ -2622,7 +2534,6 @@ class ResourceInfo(AbstractModel):
     @property
     def Expired(self):
         """当前实例是否已经过期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Expired
@@ -2634,7 +2545,6 @@ class ResourceInfo(AbstractModel):
     @property
     def RemainSeconds(self):
         """为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RemainSeconds
@@ -2646,7 +2556,6 @@ class ResourceInfo(AbstractModel):
     @property
     def VpcName(self):
         """Vpc名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcName
@@ -2658,7 +2567,6 @@ class ResourceInfo(AbstractModel):
     @property
     def CreateUin(self):
         """创建者Uin账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateUin
@@ -2670,7 +2578,6 @@ class ResourceInfo(AbstractModel):
     @property
     def RenewFlag(self):
         """自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RenewFlag
@@ -2682,7 +2589,6 @@ class ResourceInfo(AbstractModel):
     @property
     def Tags(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -2694,7 +2600,6 @@ class ResourceInfo(AbstractModel):
     @property
     def Manufacturer(self):
         """厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Manufacturer
@@ -2706,7 +2611,6 @@ class ResourceInfo(AbstractModel):
     @property
     def AlarmStatus(self):
         """告警状态，0：停用，1：启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmStatus
@@ -2768,16 +2672,12 @@ class SgUnit(AbstractModel):
     def __init__(self):
         r"""
         :param _SgId: 安全组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgId: str
         :param _SgName: 安全组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgName: str
         :param _SgRemark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgRemark: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self._SgId = None
@@ -2788,7 +2688,6 @@ class SgUnit(AbstractModel):
     @property
     def SgId(self):
         """安全组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SgId
@@ -2800,7 +2699,6 @@ class SgUnit(AbstractModel):
     @property
     def SgName(self):
         """安全组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SgName
@@ -2812,7 +2710,6 @@ class SgUnit(AbstractModel):
     @property
     def SgRemark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SgRemark
@@ -2824,7 +2721,6 @@ class SgUnit(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -2857,31 +2753,22 @@ class Subnet(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: VPC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网实例ID，例如：subnet-bthucmmy。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _SubnetName: 子网名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetName: str
         :param _CidrBlock: 子网的 IPv4 CIDR。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CidrBlock: str
         :param _CreatedTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _AvailableIpAddressCount: 可用IP数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableIpAddressCount: int
         :param _Ipv6CidrBlock: 子网的 IPv6 CIDR。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6CidrBlock: str
         :param _TotalIpAddressCount: 总IP数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalIpAddressCount: int
         :param _IsDefault: 是否为默认Subnet
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefault: bool
         """
         self._VpcId = None
@@ -2897,7 +2784,6 @@ class Subnet(AbstractModel):
     @property
     def VpcId(self):
         """VPC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -2909,7 +2795,6 @@ class Subnet(AbstractModel):
     @property
     def SubnetId(self):
         """子网实例ID，例如：subnet-bthucmmy。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -2921,7 +2806,6 @@ class Subnet(AbstractModel):
     @property
     def SubnetName(self):
         """子网名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetName
@@ -2933,7 +2817,6 @@ class Subnet(AbstractModel):
     @property
     def CidrBlock(self):
         """子网的 IPv4 CIDR。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CidrBlock
@@ -2945,7 +2828,6 @@ class Subnet(AbstractModel):
     @property
     def CreatedTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -2957,7 +2839,6 @@ class Subnet(AbstractModel):
     @property
     def AvailableIpAddressCount(self):
         """可用IP数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AvailableIpAddressCount
@@ -2969,7 +2850,6 @@ class Subnet(AbstractModel):
     @property
     def Ipv6CidrBlock(self):
         """子网的 IPv6 CIDR。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ipv6CidrBlock
@@ -2981,7 +2861,6 @@ class Subnet(AbstractModel):
     @property
     def TotalIpAddressCount(self):
         """总IP数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalIpAddressCount
@@ -2993,7 +2872,6 @@ class Subnet(AbstractModel):
     @property
     def IsDefault(self):
         """是否为默认Subnet
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDefault
@@ -3133,28 +3011,20 @@ class UsgPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _Ip: cidr格式地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Id: 安全组id代表的地址集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _AddressModule: 地址组id代表的地址集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressModule: str
         :param _Proto: 协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Proto: str
         :param _Port: 端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: str
         :param _ServiceModule: 服务组id代表的协议和端口集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceModule: str
         :param _Desc: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _Action: 匹配后行为:ACCEPT/DROP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         """
         self._Ip = None
@@ -3169,7 +3039,6 @@ class UsgPolicy(AbstractModel):
     @property
     def Ip(self):
         """cidr格式地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -3181,7 +3050,6 @@ class UsgPolicy(AbstractModel):
     @property
     def Id(self):
         """安全组id代表的地址集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -3193,7 +3061,6 @@ class UsgPolicy(AbstractModel):
     @property
     def AddressModule(self):
         """地址组id代表的地址集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddressModule
@@ -3205,7 +3072,6 @@ class UsgPolicy(AbstractModel):
     @property
     def Proto(self):
         """协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Proto
@@ -3217,7 +3083,6 @@ class UsgPolicy(AbstractModel):
     @property
     def Port(self):
         """端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Port
@@ -3229,7 +3094,6 @@ class UsgPolicy(AbstractModel):
     @property
     def ServiceModule(self):
         """服务组id代表的协议和端口集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceModule
@@ -3241,7 +3105,6 @@ class UsgPolicy(AbstractModel):
     @property
     def Desc(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -3253,7 +3116,6 @@ class UsgPolicy(AbstractModel):
     @property
     def Action(self):
         """匹配后行为:ACCEPT/DROP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Action
@@ -3290,25 +3152,18 @@ class UsgRuleDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _InBound: 入站规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type InBound: list of UsgPolicy
         :param _OutBound: 出站规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutBound: list of UsgPolicy
         :param _SgId: 安全组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgId: str
         :param _SgName: 安全组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgName: str
         :param _SgRemark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgRemark: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Version: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: int
         """
         self._InBound = None
@@ -3322,7 +3177,6 @@ class UsgRuleDetail(AbstractModel):
     @property
     def InBound(self):
         """入站规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UsgPolicy
         """
         return self._InBound
@@ -3334,7 +3188,6 @@ class UsgRuleDetail(AbstractModel):
     @property
     def OutBound(self):
         """出站规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UsgPolicy
         """
         return self._OutBound
@@ -3346,7 +3199,6 @@ class UsgRuleDetail(AbstractModel):
     @property
     def SgId(self):
         """安全组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SgId
@@ -3358,7 +3210,6 @@ class UsgRuleDetail(AbstractModel):
     @property
     def SgName(self):
         """安全组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SgName
@@ -3370,7 +3221,6 @@ class UsgRuleDetail(AbstractModel):
     @property
     def SgRemark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SgRemark
@@ -3382,7 +3232,6 @@ class UsgRuleDetail(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -3394,7 +3243,6 @@ class UsgRuleDetail(AbstractModel):
     @property
     def Version(self):
         """版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Version
@@ -3440,16 +3288,12 @@ class Vpc(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcName: Vpc名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
         :param _VpcId: VpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _CreatedTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _IsDefault: 是否为默认VPC
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefault: bool
         """
         self._VpcName = None
@@ -3460,7 +3304,6 @@ class Vpc(AbstractModel):
     @property
     def VpcName(self):
         """Vpc名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcName
@@ -3472,7 +3315,6 @@ class Vpc(AbstractModel):
     @property
     def VpcId(self):
         """VpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -3484,7 +3326,6 @@ class Vpc(AbstractModel):
     @property
     def CreatedTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -3496,7 +3337,6 @@ class Vpc(AbstractModel):
     @property
     def IsDefault(self):
         """是否为默认VPC
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDefault

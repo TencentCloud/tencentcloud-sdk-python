@@ -5243,6 +5243,250 @@ class DescribeGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMarqueeRequest(AbstractModel):
+    """DescribeMarquee请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 学校ID
+        :type SdkAppId: int
+        :param _RoomId: 房间号
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        """学校ID
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """房间号
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMarqueeResponse(AbstractModel):
+    """DescribeMarquee返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarqueeType:  跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+        :type MarqueeType: int
+        :param _Content: 固定值内容（当MarqueeType=1或5，则展示固定值内容）
+        :type Content: str
+        :param _FontSize: 字体大小（数字，像素单位，范围：10到24）
+        :type FontSize: int
+        :param _FontWeight: 字体粗细：1为粗体，0为细体
+        :type FontWeight: int
+        :param _FontColor: 字体颜色（十六进制颜色值）
+        :type FontColor: str
+        :param _FontOpacity: 字体透明度（数字，范围 0.0 到 1.0）
+        :type FontOpacity: float
+        :param _BackgroundColor: 背景颜色（十六进制颜色值）
+        :type BackgroundColor: str
+        :param _BackgroundOpacity: 背景透明度（数字，范围 0.0 到 1.0）
+        :type BackgroundOpacity: float
+        :param _DisplayMode: 显示方式：1为滚动，2为闪烁
+        :type DisplayMode: int
+        :param _Duration: 停留时长（秒，整数，范围 1～10）
+        :type Duration: int
+        :param _MarqueeCount: 跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+        :type MarqueeCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MarqueeType = None
+        self._Content = None
+        self._FontSize = None
+        self._FontWeight = None
+        self._FontColor = None
+        self._FontOpacity = None
+        self._BackgroundColor = None
+        self._BackgroundOpacity = None
+        self._DisplayMode = None
+        self._Duration = None
+        self._MarqueeCount = None
+        self._RequestId = None
+
+    @property
+    def MarqueeType(self):
+        """ 跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+        :rtype: int
+        """
+        return self._MarqueeType
+
+    @MarqueeType.setter
+    def MarqueeType(self, MarqueeType):
+        self._MarqueeType = MarqueeType
+
+    @property
+    def Content(self):
+        """固定值内容（当MarqueeType=1或5，则展示固定值内容）
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def FontSize(self):
+        """字体大小（数字，像素单位，范围：10到24）
+        :rtype: int
+        """
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def FontWeight(self):
+        """字体粗细：1为粗体，0为细体
+        :rtype: int
+        """
+        return self._FontWeight
+
+    @FontWeight.setter
+    def FontWeight(self, FontWeight):
+        self._FontWeight = FontWeight
+
+    @property
+    def FontColor(self):
+        """字体颜色（十六进制颜色值）
+        :rtype: str
+        """
+        return self._FontColor
+
+    @FontColor.setter
+    def FontColor(self, FontColor):
+        self._FontColor = FontColor
+
+    @property
+    def FontOpacity(self):
+        """字体透明度（数字，范围 0.0 到 1.0）
+        :rtype: float
+        """
+        return self._FontOpacity
+
+    @FontOpacity.setter
+    def FontOpacity(self, FontOpacity):
+        self._FontOpacity = FontOpacity
+
+    @property
+    def BackgroundColor(self):
+        """背景颜色（十六进制颜色值）
+        :rtype: str
+        """
+        return self._BackgroundColor
+
+    @BackgroundColor.setter
+    def BackgroundColor(self, BackgroundColor):
+        self._BackgroundColor = BackgroundColor
+
+    @property
+    def BackgroundOpacity(self):
+        """背景透明度（数字，范围 0.0 到 1.0）
+        :rtype: float
+        """
+        return self._BackgroundOpacity
+
+    @BackgroundOpacity.setter
+    def BackgroundOpacity(self, BackgroundOpacity):
+        self._BackgroundOpacity = BackgroundOpacity
+
+    @property
+    def DisplayMode(self):
+        """显示方式：1为滚动，2为闪烁
+        :rtype: int
+        """
+        return self._DisplayMode
+
+    @DisplayMode.setter
+    def DisplayMode(self, DisplayMode):
+        self._DisplayMode = DisplayMode
+
+    @property
+    def Duration(self):
+        """停留时长（秒，整数，范围 1～10）
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def MarqueeCount(self):
+        """跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+        :rtype: int
+        """
+        return self._MarqueeCount
+
+    @MarqueeCount.setter
+    def MarqueeCount(self, MarqueeCount):
+        self._MarqueeCount = MarqueeCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MarqueeType = params.get("MarqueeType")
+        self._Content = params.get("Content")
+        self._FontSize = params.get("FontSize")
+        self._FontWeight = params.get("FontWeight")
+        self._FontColor = params.get("FontColor")
+        self._FontOpacity = params.get("FontOpacity")
+        self._BackgroundColor = params.get("BackgroundColor")
+        self._BackgroundOpacity = params.get("BackgroundOpacity")
+        self._DisplayMode = params.get("DisplayMode")
+        self._Duration = params.get("Duration")
+        self._MarqueeCount = params.get("MarqueeCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQuestionListRequest(AbstractModel):
     """DescribeQuestionList请求参数结构体
 
@@ -6993,9 +7237,9 @@ class DescribeUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户Id。
+        :param _UserId: 用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
         :type UserId: str
-        :param _OriginId: 客户端用户 id,如果未指定则为用户 id。
+        :param _OriginId: 用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
         :type OriginId: str
         """
         self._UserId = None
@@ -7003,7 +7247,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """用户Id。
+        """用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
         :rtype: str
         """
         return self._UserId
@@ -7014,7 +7258,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """客户端用户 id,如果未指定则为用户 id。
+        """用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
         :rtype: str
         """
         return self._OriginId
@@ -12321,6 +12565,250 @@ class SetAppCustomContentRequest(AbstractModel):
 
 class SetAppCustomContentResponse(AbstractModel):
     """SetAppCustomContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SetMarqueeRequest(AbstractModel):
+    """SetMarquee请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 学校ID
+        :type SdkAppId: int
+        :param _RoomId: 房间号
+        :type RoomId: int
+        :param _MarqueeType:  跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+        :type MarqueeType: int
+        :param _DisplayMode: 显示方式：1为滚动，2为闪烁
+        :type DisplayMode: int
+        :param _Content: 固定值内容（当MarqueeType=1或5，则展示固定值内容）
+        :type Content: str
+        :param _FontSize: 字体大小（数字，像素单位，范围：10到24）。
+        :type FontSize: int
+        :param _FontWeight: 字体粗细：1为粗体，0为细体
+        :type FontWeight: int
+        :param _FontColor: 字体颜色（十六进制颜色值，例如：#00FF00（绿色））
+        :type FontColor: str
+        :param _FontOpacity: 字体透明度（数字，范围 0.0 到 1.0）
+        :type FontOpacity: float
+        :param _BackgroundColor: 背景颜色（十六进制颜色值，例如：#FFFF00（黄色））
+        :type BackgroundColor: str
+        :param _BackgroundOpacity: 背景透明度（数字，范围 0.0 到 1.0）
+        :type BackgroundOpacity: float
+        :param _Duration: 跑马灯文字移动/闪烁指定像素所需时间，范围：1-10；数值越小，跑马灯滚动/闪烁速度越快
+        :type Duration: int
+        :param _MarqueeCount: 跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+        :type MarqueeCount: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._MarqueeType = None
+        self._DisplayMode = None
+        self._Content = None
+        self._FontSize = None
+        self._FontWeight = None
+        self._FontColor = None
+        self._FontOpacity = None
+        self._BackgroundColor = None
+        self._BackgroundOpacity = None
+        self._Duration = None
+        self._MarqueeCount = None
+
+    @property
+    def SdkAppId(self):
+        """学校ID
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """房间号
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def MarqueeType(self):
+        """ 跑马灯类型：1为固定值，2为用户昵称，3为固定值+用户昵称，4为用户ID，5为originId+固定值，6为用户昵称（originId）
+        :rtype: int
+        """
+        return self._MarqueeType
+
+    @MarqueeType.setter
+    def MarqueeType(self, MarqueeType):
+        self._MarqueeType = MarqueeType
+
+    @property
+    def DisplayMode(self):
+        """显示方式：1为滚动，2为闪烁
+        :rtype: int
+        """
+        return self._DisplayMode
+
+    @DisplayMode.setter
+    def DisplayMode(self, DisplayMode):
+        self._DisplayMode = DisplayMode
+
+    @property
+    def Content(self):
+        """固定值内容（当MarqueeType=1或5，则展示固定值内容）
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def FontSize(self):
+        """字体大小（数字，像素单位，范围：10到24）。
+        :rtype: int
+        """
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def FontWeight(self):
+        """字体粗细：1为粗体，0为细体
+        :rtype: int
+        """
+        return self._FontWeight
+
+    @FontWeight.setter
+    def FontWeight(self, FontWeight):
+        self._FontWeight = FontWeight
+
+    @property
+    def FontColor(self):
+        """字体颜色（十六进制颜色值，例如：#00FF00（绿色））
+        :rtype: str
+        """
+        return self._FontColor
+
+    @FontColor.setter
+    def FontColor(self, FontColor):
+        self._FontColor = FontColor
+
+    @property
+    def FontOpacity(self):
+        """字体透明度（数字，范围 0.0 到 1.0）
+        :rtype: float
+        """
+        return self._FontOpacity
+
+    @FontOpacity.setter
+    def FontOpacity(self, FontOpacity):
+        self._FontOpacity = FontOpacity
+
+    @property
+    def BackgroundColor(self):
+        """背景颜色（十六进制颜色值，例如：#FFFF00（黄色））
+        :rtype: str
+        """
+        return self._BackgroundColor
+
+    @BackgroundColor.setter
+    def BackgroundColor(self, BackgroundColor):
+        self._BackgroundColor = BackgroundColor
+
+    @property
+    def BackgroundOpacity(self):
+        """背景透明度（数字，范围 0.0 到 1.0）
+        :rtype: float
+        """
+        return self._BackgroundOpacity
+
+    @BackgroundOpacity.setter
+    def BackgroundOpacity(self, BackgroundOpacity):
+        self._BackgroundOpacity = BackgroundOpacity
+
+    @property
+    def Duration(self):
+        """跑马灯文字移动/闪烁指定像素所需时间，范围：1-10；数值越小，跑马灯滚动/闪烁速度越快
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def MarqueeCount(self):
+        """跑马灯个数：目前仅支持1或2, 对应显示单排或双排
+        :rtype: int
+        """
+        return self._MarqueeCount
+
+    @MarqueeCount.setter
+    def MarqueeCount(self, MarqueeCount):
+        self._MarqueeCount = MarqueeCount
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._MarqueeType = params.get("MarqueeType")
+        self._DisplayMode = params.get("DisplayMode")
+        self._Content = params.get("Content")
+        self._FontSize = params.get("FontSize")
+        self._FontWeight = params.get("FontWeight")
+        self._FontColor = params.get("FontColor")
+        self._FontOpacity = params.get("FontOpacity")
+        self._BackgroundColor = params.get("BackgroundColor")
+        self._BackgroundOpacity = params.get("BackgroundOpacity")
+        self._Duration = params.get("Duration")
+        self._MarqueeCount = params.get("MarqueeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetMarqueeResponse(AbstractModel):
+    """SetMarquee返回参数结构体
 
     """
 

@@ -6476,10 +6476,38 @@ class BillBusinessLink(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _BusinessCode: 产品编码
+        :type BusinessCode: str
+        :param _BusinessCodeName: 产品名称
+        :type BusinessCodeName: str
         :param _Children: 子产品
         :type Children: list of BillProductLink
         """
+        self._BusinessCode = None
+        self._BusinessCodeName = None
         self._Children = None
+
+    @property
+    def BusinessCode(self):
+        """产品编码
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        """产品名称
+        :rtype: str
+        """
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
 
     @property
     def Children(self):
@@ -6494,6 +6522,8 @@ class BillBusinessLink(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
         if params.get("Children") is not None:
             self._Children = []
             for item in params.get("Children"):
@@ -8756,6 +8786,77 @@ class BillProductLink(AbstractModel):
     """分账条件子产品筛选
 
     """
+
+    def __init__(self):
+        r"""
+        :param _ProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _ProductCodeName: 子产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodeName: str
+        :param _Children: 组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of BillItem
+        """
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._Children = None
+
+    @property
+    def ProductCode(self):
+        """子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        """子产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def Children(self):
+        """组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BillItem
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = BillItem()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BillProject(AbstractModel):
@@ -20925,7 +21026,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         :param _Data: 消耗按业务汇总详情
         :type Data: list of ConsumptionProjectSummaryDataItem
-        :param _RecordNum: 记录数量，NeedRecordNum为0是返回null
+        :param _RecordNum: 记录数量，NeedRecordNum为0时返回null
         :type RecordNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20971,7 +21072,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """记录数量，NeedRecordNum为0是返回null
+        """记录数量，NeedRecordNum为0时返回null
         :rtype: int
         """
         return self._RecordNum
@@ -21131,7 +21232,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         :param _Data: 消耗按地域汇总详情
         :type Data: list of ConsumptionRegionSummaryDataItem
-        :param _RecordNum: 记录数量，NeedRecordNum为0是返回null
+        :param _RecordNum: 记录数量，NeedRecordNum为0时返回null
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21178,7 +21279,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """记录数量，NeedRecordNum为0是返回null
+        """记录数量，NeedRecordNum为0时返回null
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24245,7 +24346,6 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
         :param _TotalUsedAmount: 总已用金额（微分）
         :type TotalUsedAmount: int
         :param _UsageRecords: 代金券使用记录细节
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsageRecords: list of UsageRecords
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24280,7 +24380,6 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
     @property
     def UsageRecords(self):
         """代金券使用记录细节
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UsageRecords
         """
         return self._UsageRecords
@@ -27483,34 +27582,24 @@ class UsageDetails(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductName: 商品名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _SubProductName: 商品细节
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductName: str
         :param _ProductCode: 产品码	
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param _SubProductCode: 子产品码	
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
         :param _BillingItemCode: 计费项码	
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItemCode: str
         :param _SubBillingItemCode: 计费细项码	
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubBillingItemCode: str
         :param _ProductEnName: 产品英文名	
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductEnName: str
         :param _SubProductEnName: 子产品英文名	
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductEnName: str
         :param _CalcUnit: 结算周期	
-注意：此字段可能返回 null，表示取不到有效值。
         :type CalcUnit: str
         :param _Action: payMode为prepay 且 payScene为common的情况下存在
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         """
         self._ProductName = None
@@ -27527,7 +27616,6 @@ class UsageDetails(AbstractModel):
     @property
     def ProductName(self):
         """商品名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -27539,7 +27627,6 @@ class UsageDetails(AbstractModel):
     @property
     def SubProductName(self):
         """商品细节
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubProductName
@@ -27551,7 +27638,6 @@ class UsageDetails(AbstractModel):
     @property
     def ProductCode(self):
         """产品码	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCode
@@ -27563,7 +27649,6 @@ class UsageDetails(AbstractModel):
     @property
     def SubProductCode(self):
         """子产品码	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubProductCode
@@ -27575,7 +27660,6 @@ class UsageDetails(AbstractModel):
     @property
     def BillingItemCode(self):
         """计费项码	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillingItemCode
@@ -27587,7 +27671,6 @@ class UsageDetails(AbstractModel):
     @property
     def SubBillingItemCode(self):
         """计费细项码	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubBillingItemCode
@@ -27599,7 +27682,6 @@ class UsageDetails(AbstractModel):
     @property
     def ProductEnName(self):
         """产品英文名	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductEnName
@@ -27611,7 +27693,6 @@ class UsageDetails(AbstractModel):
     @property
     def SubProductEnName(self):
         """子产品英文名	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubProductEnName
@@ -27623,7 +27704,6 @@ class UsageDetails(AbstractModel):
     @property
     def CalcUnit(self):
         """结算周期	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CalcUnit
@@ -27635,7 +27715,6 @@ class UsageDetails(AbstractModel):
     @property
     def Action(self):
         """payMode为prepay 且 payScene为common的情况下存在
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Action
@@ -27678,18 +27757,14 @@ class UsageRecords(AbstractModel):
         :param _UsedTime: 使用时间
         :type UsedTime: str
         :param _UsageDetails: 使用记录细节
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsageDetails: list of UsageDetails
         :param _PayMode: 付费模式
         :type PayMode: str
         :param _VoucherId: 查询的券id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherId: str
         :param _PayScene: 交易场景：（adjust：调账、common：正常交易场景）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayScene: str
         :param _SeqId: 唯一id,对应交易:预付费的dealName,调账/后付费的outTradeNo
-注意：此字段可能返回 null，表示取不到有效值。
         :type SeqId: str
         """
         self._UsedAmount = None
@@ -27725,7 +27800,6 @@ class UsageRecords(AbstractModel):
     @property
     def UsageDetails(self):
         """使用记录细节
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UsageDetails
         """
         return self._UsageDetails
@@ -27748,7 +27822,6 @@ class UsageRecords(AbstractModel):
     @property
     def VoucherId(self):
         """查询的券id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VoucherId
@@ -27760,7 +27833,6 @@ class UsageRecords(AbstractModel):
     @property
     def PayScene(self):
         """交易场景：（adjust：调账、common：正常交易场景）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayScene
@@ -27772,7 +27844,6 @@ class UsageRecords(AbstractModel):
     @property
     def SeqId(self):
         """唯一id,对应交易:预付费的dealName,调账/后付费的outTradeNo
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SeqId

@@ -89,7 +89,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large。
+        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large、 hunyuan-large-longcontext、 hunyuan-turbo-vision。
 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 
 注意：
@@ -192,7 +192,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large。
+        """模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large、 hunyuan-large-longcontext、 hunyuan-turbo-vision。
 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 
 注意：
@@ -2809,7 +2809,7 @@ class Message(AbstractModel):
         :type Role: str
         :param _Content: 文本内容
         :type Content: str
-        :param _Contents: 多种类型内容（目前支持图片和文本），仅 hunyuan-vision 模型支持
+        :param _Contents: 多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type Contents: list of Content
         :param _ToolCallId: 当role为tool时传入，标识具体的函数调用
@@ -2853,7 +2853,7 @@ class Message(AbstractModel):
 
     @property
     def Contents(self):
-        """多种类型内容（目前支持图片和文本），仅 hunyuan-vision 模型支持
+        """多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Content
         """

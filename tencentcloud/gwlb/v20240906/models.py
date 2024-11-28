@@ -2850,7 +2850,7 @@ class TargetGroupHealthCheck(AbstractModel):
 - PING: icmp
 - TCP: tcp
         :type Protocol: str
-        :param _Port: 健康检查端口，探测协议未tcp时，该参数必填。
+        :param _Port: 健康检查端口，探测协议为tcp时，该参数必填。
 
         :type Port: int
         :param _Timeout: 健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。
@@ -2897,7 +2897,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def Port(self):
-        """健康检查端口，探测协议未tcp时，该参数必填。
+        """健康检查端口，探测协议为tcp时，该参数必填。
 
         :rtype: int
         """

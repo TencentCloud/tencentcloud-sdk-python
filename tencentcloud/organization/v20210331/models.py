@@ -1138,13 +1138,10 @@ class AuthNode(AbstractModel):
     def __init__(self):
         r"""
         :param _RelationId: 互信主体关系ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelationId: int
         :param _AuthName: 互信主体名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthName: str
         :param _Manager: 主体管理员
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manager: :class:`tencentcloud.organization.v20210331.models.MemberMainInfo`
         """
         self._RelationId = None
@@ -1154,7 +1151,6 @@ class AuthNode(AbstractModel):
     @property
     def RelationId(self):
         """互信主体关系ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RelationId
@@ -1166,7 +1162,6 @@ class AuthNode(AbstractModel):
     @property
     def AuthName(self):
         """互信主体名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthName
@@ -1178,7 +1173,6 @@ class AuthNode(AbstractModel):
     @property
     def Manager(self):
         """主体管理员
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.organization.v20210331.models.MemberMainInfo`
         """
         return self._Manager
@@ -1212,10 +1206,8 @@ class AuthRelationFile(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 文件名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Url: 文件路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self._Name = None
@@ -1224,7 +1216,6 @@ class AuthRelationFile(AbstractModel):
     @property
     def Name(self):
         """文件名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1236,7 +1227,6 @@ class AuthRelationFile(AbstractModel):
     @property
     def Url(self):
         """文件路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -1936,7 +1926,6 @@ class CreateOrganizationIdentityResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IdentityId: 身份ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1947,7 +1936,6 @@ class CreateOrganizationIdentityResponse(AbstractModel):
     @property
     def IdentityId(self):
         """身份ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentityId
@@ -2141,7 +2129,6 @@ class CreateOrganizationMemberPolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyId: 策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2152,7 +2139,6 @@ class CreateOrganizationMemberPolicyResponse(AbstractModel):
     @property
     def PolicyId(self):
         """策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyId
@@ -2377,7 +2363,6 @@ class CreateOrganizationMemberResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Uin: 成员Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2388,7 +2373,6 @@ class CreateOrganizationMemberResponse(AbstractModel):
     @property
     def Uin(self):
         """成员Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Uin
@@ -2503,7 +2487,6 @@ class CreateOrganizationMembersPolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyId: 策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2514,7 +2497,6 @@ class CreateOrganizationMembersPolicyResponse(AbstractModel):
     @property
     def PolicyId(self):
         """策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyId
@@ -4946,7 +4928,6 @@ class DescribeEffectivePolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _EffectivePolicy: 有效策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EffectivePolicy: :class:`tencentcloud.organization.v20210331.models.EffectivePolicy`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4957,7 +4938,6 @@ class DescribeEffectivePolicyResponse(AbstractModel):
     @property
     def EffectivePolicy(self):
         """有效策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.organization.v20210331.models.EffectivePolicy`
         """
         return self._EffectivePolicy
@@ -5183,10 +5163,8 @@ class DescribeOrganizationAuthNodeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Items: 条目详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of AuthNode
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5198,7 +5176,6 @@ class DescribeOrganizationAuthNodeResponse(AbstractModel):
     @property
     def Total(self):
         """总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -5210,7 +5187,6 @@ class DescribeOrganizationAuthNodeResponse(AbstractModel):
     @property
     def Items(self):
         """条目详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuthNode
         """
         return self._Items
@@ -5361,13 +5337,10 @@ class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCost: 当月总消耗。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
         :param _Items: 成员消耗详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgMemberFinancial
         :param _Total: 总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5380,7 +5353,6 @@ class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
     @property
     def TotalCost(self):
         """当月总消耗。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalCost
@@ -5392,7 +5364,6 @@ class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
     @property
     def Items(self):
         """成员消耗详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgMemberFinancial
         """
         return self._Items
@@ -5404,7 +5375,6 @@ class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
     @property
     def Total(self):
         """总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -5526,7 +5496,6 @@ class DescribeOrganizationFinancialByMonthResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 产品消耗详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgFinancialByMonth
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5537,7 +5506,6 @@ class DescribeOrganizationFinancialByMonthResponse(AbstractModel):
     @property
     def Items(self):
         """产品消耗详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgFinancialByMonth
         """
         return self._Items
@@ -5687,13 +5655,10 @@ class DescribeOrganizationFinancialByProductResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCost: 当月总消耗。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
         :param _Items: 产品消耗详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgProductFinancial
         :param _Total: 总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5706,7 +5671,6 @@ class DescribeOrganizationFinancialByProductResponse(AbstractModel):
     @property
     def TotalCost(self):
         """当月总消耗。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalCost
@@ -5718,7 +5682,6 @@ class DescribeOrganizationFinancialByProductResponse(AbstractModel):
     @property
     def Items(self):
         """产品消耗详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgProductFinancial
         """
         return self._Items
@@ -5730,7 +5693,6 @@ class DescribeOrganizationFinancialByProductResponse(AbstractModel):
     @property
     def Total(self):
         """总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -5852,10 +5814,8 @@ class DescribeOrganizationMemberAuthAccountsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgMemberAuthAccount
         :param _Total: 总数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5867,7 +5827,6 @@ class DescribeOrganizationMemberAuthAccountsResponse(AbstractModel):
     @property
     def Items(self):
         """列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgMemberAuthAccount
         """
         return self._Items
@@ -5879,7 +5838,6 @@ class DescribeOrganizationMemberAuthAccountsResponse(AbstractModel):
     @property
     def Total(self):
         """总数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -6000,10 +5958,8 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 授权身份列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgMemberAuthIdentity
         :param _Total: 总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6015,7 +5971,6 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
     @property
     def Items(self):
         """授权身份列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgMemberAuthIdentity
         """
         return self._Items
@@ -6027,7 +5982,6 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
     @property
     def Total(self):
         """总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -6103,31 +6057,22 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BindId: 绑定ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindId: int
         :param _ApplyTime: 申请时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyTime: str
         :param _Email: 邮箱地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
         :param _Phone: 安全手机号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
         :param _BindStatus: 绑定状态。    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindStatus: str
         :param _BindTime: 绑定时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindTime: str
         :param _Description: 失败说明。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _PhoneBind: 安全手机绑定状态 。 未绑定：0，已绑定：1
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneBind: int
         :param _CountryCode: 国际区号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CountryCode: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6146,7 +6091,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def BindId(self):
         """绑定ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BindId
@@ -6158,7 +6102,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def ApplyTime(self):
         """申请时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplyTime
@@ -6170,7 +6113,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def Email(self):
         """邮箱地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Email
@@ -6182,7 +6124,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def Phone(self):
         """安全手机号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Phone
@@ -6194,7 +6135,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def BindStatus(self):
         """绑定状态。    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BindStatus
@@ -6206,7 +6146,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def BindTime(self):
         """绑定时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BindTime
@@ -6218,7 +6157,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def Description(self):
         """失败说明。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6230,7 +6168,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def PhoneBind(self):
         """安全手机绑定状态 。 未绑定：0，已绑定：1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PhoneBind
@@ -6242,7 +6179,6 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
     @property
     def CountryCode(self):
         """国际区号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CountryCode
@@ -6365,10 +6301,8 @@ class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgMemberPolicy
         :param _Total: 总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6380,7 +6314,6 @@ class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
     @property
     def Items(self):
         """列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgMemberPolicy
         """
         return self._Items
@@ -6392,7 +6325,6 @@ class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
     @property
     def Total(self):
         """总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -6697,10 +6629,8 @@ class DescribeOrganizationNodesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Items: 列表详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgNode
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6712,7 +6642,6 @@ class DescribeOrganizationNodesResponse(AbstractModel):
     @property
     def Total(self):
         """总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -6724,7 +6653,6 @@ class DescribeOrganizationNodesResponse(AbstractModel):
     @property
     def Items(self):
         """列表详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgNode
         """
         return self._Items
@@ -6815,52 +6743,36 @@ class DescribeOrganizationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OrgId: 企业组织ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgId: int
         :param _HostUin: 创建者UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostUin: int
         :param _NickName: 创建者昵称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NickName: str
         :param _OrgType: 企业组织类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgType: int
         :param _IsManager: 是否组织管理员。是：true ，否：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsManager: bool
         :param _OrgPolicyType: 策略类型。财务管理：Financial
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPolicyType: str
         :param _OrgPolicyName: 策略名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPolicyName: str
         :param _OrgPermission: 成员财务权限列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPermission: list of OrgPermission
         :param _RootNodeId: 组织根节点ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RootNodeId: int
         :param _CreateTime: 组织创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _JoinTime: 成员加入时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type JoinTime: str
         :param _IsAllowQuit: 成员是否允许退出。允许：Allow，不允许：Denied
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowQuit: str
         :param _PayUin: 代付者Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayUin: str
         :param _PayName: 代付者名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayName: str
         :param _IsAssignManager: 是否可信服务管理员。是：true，否：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAssignManager: bool
         :param _IsAuthManager: 是否实名主体管理员。是：true，否：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAuthManager: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6886,7 +6798,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def OrgId(self):
         """企业组织ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OrgId
@@ -6898,7 +6809,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def HostUin(self):
         """创建者UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HostUin
@@ -6910,7 +6820,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def NickName(self):
         """创建者昵称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NickName
@@ -6922,7 +6831,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def OrgType(self):
         """企业组织类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OrgType
@@ -6934,7 +6842,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def IsManager(self):
         """是否组织管理员。是：true ，否：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsManager
@@ -6946,7 +6853,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def OrgPolicyType(self):
         """策略类型。财务管理：Financial
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrgPolicyType
@@ -6958,7 +6864,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def OrgPolicyName(self):
         """策略名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrgPolicyName
@@ -6970,7 +6875,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def OrgPermission(self):
         """成员财务权限列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgPermission
         """
         return self._OrgPermission
@@ -6982,7 +6886,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def RootNodeId(self):
         """组织根节点ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RootNodeId
@@ -6994,7 +6897,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def CreateTime(self):
         """组织创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -7006,7 +6908,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def JoinTime(self):
         """成员加入时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JoinTime
@@ -7018,7 +6919,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def IsAllowQuit(self):
         """成员是否允许退出。允许：Allow，不允许：Denied
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsAllowQuit
@@ -7030,7 +6930,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def PayUin(self):
         """代付者Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayUin
@@ -7042,7 +6941,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def PayName(self):
         """代付者名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayName
@@ -7054,7 +6952,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def IsAssignManager(self):
         """是否可信服务管理员。是：true，否：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAssignManager
@@ -7066,7 +6963,6 @@ class DescribeOrganizationResponse(AbstractModel):
     @property
     def IsAuthManager(self):
         """是否实名主体管理员。是：true，否：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAuthManager
@@ -7459,7 +7355,6 @@ class DescribeShareAreasResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ShareArea
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7470,7 +7365,6 @@ class DescribeShareAreasResponse(AbstractModel):
     @property
     def Items(self):
         """详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ShareArea
         """
         return self._Items
@@ -7605,10 +7499,8 @@ class DescribeShareUnitMembersResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Items: 共享单元成员列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ShareUnitMember
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7620,7 +7512,6 @@ class DescribeShareUnitMembersResponse(AbstractModel):
     @property
     def Total(self):
         """总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -7632,7 +7523,6 @@ class DescribeShareUnitMembersResponse(AbstractModel):
     @property
     def Items(self):
         """共享单元成员列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ShareUnitMember
         """
         return self._Items
@@ -7783,10 +7673,8 @@ class DescribeShareUnitResourcesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Items: 共享单元资源列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ShareUnitResource
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7798,7 +7686,6 @@ class DescribeShareUnitResourcesResponse(AbstractModel):
     @property
     def Total(self):
         """总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -7810,7 +7697,6 @@ class DescribeShareUnitResourcesResponse(AbstractModel):
     @property
     def Items(self):
         """共享单元资源列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ShareUnitResource
         """
         return self._Items
@@ -7931,10 +7817,8 @@ class DescribeShareUnitsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Items: 共享单元列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ManagerShareUnit
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7946,7 +7830,6 @@ class DescribeShareUnitsResponse(AbstractModel):
     @property
     def Total(self):
         """总数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -7958,7 +7841,6 @@ class DescribeShareUnitsResponse(AbstractModel):
     @property
     def Items(self):
         """共享单元列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ManagerShareUnit
         """
         return self._Items
@@ -14242,10 +14124,8 @@ class MemberIdentity(AbstractModel):
     def __init__(self):
         r"""
         :param _IdentityId: 身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityId: int
         :param _IdentityAliasName: 身份名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityAliasName: str
         """
         self._IdentityId = None
@@ -14254,7 +14134,6 @@ class MemberIdentity(AbstractModel):
     @property
     def IdentityId(self):
         """身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentityId
@@ -14266,7 +14145,6 @@ class MemberIdentity(AbstractModel):
     @property
     def IdentityAliasName(self):
         """身份名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentityAliasName
@@ -14297,10 +14175,8 @@ class MemberMainInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _MemberUin: 成员uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberUin: int
-        :param _MemberName: 成员名称j
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _MemberName: 成员名称
         :type MemberName: str
         """
         self._MemberUin = None
@@ -14309,7 +14185,6 @@ class MemberMainInfo(AbstractModel):
     @property
     def MemberUin(self):
         """成员uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MemberUin
@@ -14320,8 +14195,7 @@ class MemberMainInfo(AbstractModel):
 
     @property
     def MemberName(self):
-        """成员名称j
-注意：此字段可能返回 null，表示取不到有效值。
+        """成员名称
         :rtype: str
         """
         return self._MemberName
@@ -14486,31 +14360,22 @@ class NotAllowReason(AbstractModel):
     def __init__(self):
         r"""
         :param _IsCreateMember: 是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCreateMember: bool
         :param _DeletionPermission: 成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeletionPermission: bool
         :param _IsAssignManager: 是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAssignManager: bool
         :param _IsAuthManager: 是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAuthManager: bool
         :param _IsShareManager: 是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsShareManager: bool
         :param _OperateProcess: 成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateProcess: bool
         :param _BillingPermission: 是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingPermission: bool
         :param _ExistResources: 存在的资源列表。账号存在资源时不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExistResources: list of str
         :param _DetectFailedResources: 检测失败的资源列表。账号有资源检测失败时不允许删除。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetectFailedResources: list of str
         """
         self._IsCreateMember = None
@@ -14526,7 +14391,6 @@ class NotAllowReason(AbstractModel):
     @property
     def IsCreateMember(self):
         """是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCreateMember
@@ -14538,7 +14402,6 @@ class NotAllowReason(AbstractModel):
     @property
     def DeletionPermission(self):
         """成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DeletionPermission
@@ -14550,7 +14413,6 @@ class NotAllowReason(AbstractModel):
     @property
     def IsAssignManager(self):
         """是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAssignManager
@@ -14562,7 +14424,6 @@ class NotAllowReason(AbstractModel):
     @property
     def IsAuthManager(self):
         """是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAuthManager
@@ -14574,7 +14435,6 @@ class NotAllowReason(AbstractModel):
     @property
     def IsShareManager(self):
         """是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsShareManager
@@ -14586,7 +14446,6 @@ class NotAllowReason(AbstractModel):
     @property
     def OperateProcess(self):
         """成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._OperateProcess
@@ -14598,7 +14457,6 @@ class NotAllowReason(AbstractModel):
     @property
     def BillingPermission(self):
         """是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._BillingPermission
@@ -14610,7 +14468,6 @@ class NotAllowReason(AbstractModel):
     @property
     def ExistResources(self):
         """存在的资源列表。账号存在资源时不允许删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ExistResources
@@ -14622,7 +14479,6 @@ class NotAllowReason(AbstractModel):
     @property
     def DetectFailedResources(self):
         """检测失败的资源列表。账号有资源检测失败时不允许删除。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DetectFailedResources
@@ -14828,22 +14684,16 @@ class OrgIdentity(AbstractModel):
     def __init__(self):
         r"""
         :param _IdentityId: 身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityId: int
         :param _IdentityAliasName: 身份名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityAliasName: str
         :param _Description: 描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _IdentityPolicy: 身份策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityPolicy: list of IdentityPolicy
         :param _IdentityType: 身份类型。 1-预设、 2-自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityType: int
         :param _UpdateTime: 更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._IdentityId = None
@@ -14856,7 +14706,6 @@ class OrgIdentity(AbstractModel):
     @property
     def IdentityId(self):
         """身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentityId
@@ -14868,7 +14717,6 @@ class OrgIdentity(AbstractModel):
     @property
     def IdentityAliasName(self):
         """身份名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentityAliasName
@@ -14880,7 +14728,6 @@ class OrgIdentity(AbstractModel):
     @property
     def Description(self):
         """描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -14892,7 +14739,6 @@ class OrgIdentity(AbstractModel):
     @property
     def IdentityPolicy(self):
         """身份策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IdentityPolicy
         """
         return self._IdentityPolicy
@@ -14904,7 +14750,6 @@ class OrgIdentity(AbstractModel):
     @property
     def IdentityType(self):
         """身份类型。 1-预设、 2-自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentityType
@@ -14916,7 +14761,6 @@ class OrgIdentity(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -14956,58 +14800,40 @@ class OrgMember(AbstractModel):
     def __init__(self):
         r"""
         :param _MemberUin: 成员Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberUin: int
         :param _Name: 成员名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _MemberType: 成员类型，邀请：Invite， 创建：Create
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberType: str
         :param _OrgPolicyType: 关系策略类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPolicyType: str
         :param _OrgPolicyName: 关系策略名
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPolicyName: str
         :param _OrgPermission: 关系策略权限
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPermission: list of OrgPermission
         :param _NodeId: 所属节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: int
         :param _NodeName: 所属节点名
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _IsAllowQuit: 是否允许成员退出。允许：Allow，不允许：Denied。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowQuit: str
         :param _PayUin: 代付者Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayUin: str
         :param _PayName: 代付者名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayName: str
         :param _OrgIdentity: 管理身份
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgIdentity: list of MemberIdentity
         :param _BindStatus: 安全信息绑定状态  未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindStatus: str
         :param _PermissionStatus: 成员权限状态 已确认：Confirmed ，待确认：UnConfirmed
-注意：此字段可能返回 null，表示取不到有效值。
         :type PermissionStatus: str
         :param _Tags: 成员标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._MemberUin = None
@@ -15032,7 +14858,6 @@ class OrgMember(AbstractModel):
     @property
     def MemberUin(self):
         """成员Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MemberUin
@@ -15044,7 +14869,6 @@ class OrgMember(AbstractModel):
     @property
     def Name(self):
         """成员名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15056,7 +14880,6 @@ class OrgMember(AbstractModel):
     @property
     def MemberType(self):
         """成员类型，邀请：Invite， 创建：Create
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemberType
@@ -15068,7 +14891,6 @@ class OrgMember(AbstractModel):
     @property
     def OrgPolicyType(self):
         """关系策略类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrgPolicyType
@@ -15080,7 +14902,6 @@ class OrgMember(AbstractModel):
     @property
     def OrgPolicyName(self):
         """关系策略名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrgPolicyName
@@ -15092,7 +14913,6 @@ class OrgMember(AbstractModel):
     @property
     def OrgPermission(self):
         """关系策略权限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgPermission
         """
         return self._OrgPermission
@@ -15104,7 +14924,6 @@ class OrgMember(AbstractModel):
     @property
     def NodeId(self):
         """所属节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NodeId
@@ -15116,7 +14935,6 @@ class OrgMember(AbstractModel):
     @property
     def NodeName(self):
         """所属节点名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeName
@@ -15128,7 +14946,6 @@ class OrgMember(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -15140,7 +14957,6 @@ class OrgMember(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -15152,7 +14968,6 @@ class OrgMember(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -15164,7 +14979,6 @@ class OrgMember(AbstractModel):
     @property
     def IsAllowQuit(self):
         """是否允许成员退出。允许：Allow，不允许：Denied。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsAllowQuit
@@ -15176,7 +14990,6 @@ class OrgMember(AbstractModel):
     @property
     def PayUin(self):
         """代付者Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayUin
@@ -15188,7 +15001,6 @@ class OrgMember(AbstractModel):
     @property
     def PayName(self):
         """代付者名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayName
@@ -15200,7 +15012,6 @@ class OrgMember(AbstractModel):
     @property
     def OrgIdentity(self):
         """管理身份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MemberIdentity
         """
         return self._OrgIdentity
@@ -15212,7 +15023,6 @@ class OrgMember(AbstractModel):
     @property
     def BindStatus(self):
         """安全信息绑定状态  未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BindStatus
@@ -15224,7 +15034,6 @@ class OrgMember(AbstractModel):
     @property
     def PermissionStatus(self):
         """成员权限状态 已确认：Confirmed ，待确认：UnConfirmed
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PermissionStatus
@@ -15236,7 +15045,6 @@ class OrgMember(AbstractModel):
     @property
     def Tags(self):
         """成员标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -15298,31 +15106,22 @@ class OrgMemberAuthAccount(AbstractModel):
     def __init__(self):
         r"""
         :param _OrgSubAccountUin: 组织子账号Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgSubAccountUin: int
         :param _PolicyId: 策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
         :param _PolicyName: 策略名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         :param _IdentityId: 身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityId: int
         :param _IdentityRoleName: 身份角色名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityRoleName: str
         :param _IdentityRoleAliasName: 身份角色别名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityRoleAliasName: str
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _OrgSubAccountName: 子账号名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgSubAccountName: str
         """
         self._OrgSubAccountUin = None
@@ -15338,7 +15137,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def OrgSubAccountUin(self):
         """组织子账号Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OrgSubAccountUin
@@ -15350,7 +15148,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def PolicyId(self):
         """策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyId
@@ -15362,7 +15159,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def PolicyName(self):
         """策略名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -15374,7 +15170,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def IdentityId(self):
         """身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentityId
@@ -15386,7 +15181,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def IdentityRoleName(self):
         """身份角色名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentityRoleName
@@ -15398,7 +15192,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def IdentityRoleAliasName(self):
         """身份角色别名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentityRoleAliasName
@@ -15410,7 +15203,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -15422,7 +15214,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -15434,7 +15225,6 @@ class OrgMemberAuthAccount(AbstractModel):
     @property
     def OrgSubAccountName(self):
         """子账号名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrgSubAccountName
@@ -15472,34 +15262,24 @@ class OrgMemberAuthIdentity(AbstractModel):
     def __init__(self):
         r"""
         :param _IdentityId: 身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityId: int
         :param _IdentityRoleName: 身份的角色名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityRoleName: str
         :param _IdentityRoleAliasName: 身份的角色别名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityRoleAliasName: str
         :param _Description: 身份描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _CreateTime: 首次配置成功的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 最后一次配置成功的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _IdentityType: 身份类型。取值： 1-预设身份  2-自定义身份
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityType: int
         :param _Status: 配置状态。取值：1-配置完成 2-需重新配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _MemberUin: 成员Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberUin: int
         :param _MemberName: 成员名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberName: str
         """
         self._IdentityId = None
@@ -15516,7 +15296,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def IdentityId(self):
         """身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentityId
@@ -15528,7 +15307,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def IdentityRoleName(self):
         """身份的角色名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentityRoleName
@@ -15540,7 +15318,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def IdentityRoleAliasName(self):
         """身份的角色别名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentityRoleAliasName
@@ -15552,7 +15329,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def Description(self):
         """身份描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -15564,7 +15340,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def CreateTime(self):
         """首次配置成功的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -15576,7 +15351,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def UpdateTime(self):
         """最后一次配置成功的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -15588,7 +15362,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def IdentityType(self):
         """身份类型。取值： 1-预设身份  2-自定义身份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentityType
@@ -15600,7 +15373,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def Status(self):
         """配置状态。取值：1-配置完成 2-需重新配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -15612,7 +15384,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def MemberUin(self):
         """成员Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MemberUin
@@ -15624,7 +15395,6 @@ class OrgMemberAuthIdentity(AbstractModel):
     @property
     def MemberName(self):
         """成员名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemberName
@@ -15663,16 +15433,12 @@ class OrgMemberFinancial(AbstractModel):
     def __init__(self):
         r"""
         :param _MemberUin: 成员Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberUin: int
         :param _MemberName: 成员名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberName: str
         :param _TotalCost: 消耗金额，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
         :param _Ratio: 占比%。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ratio: str
         """
         self._MemberUin = None
@@ -15683,7 +15449,6 @@ class OrgMemberFinancial(AbstractModel):
     @property
     def MemberUin(self):
         """成员Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MemberUin
@@ -15695,7 +15460,6 @@ class OrgMemberFinancial(AbstractModel):
     @property
     def MemberName(self):
         """成员名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemberName
@@ -15707,7 +15471,6 @@ class OrgMemberFinancial(AbstractModel):
     @property
     def TotalCost(self):
         """消耗金额，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalCost
@@ -15719,7 +15482,6 @@ class OrgMemberFinancial(AbstractModel):
     @property
     def Ratio(self):
         """占比%。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ratio
@@ -15752,28 +15514,20 @@ class OrgMemberPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyId: 策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
         :param _PolicyName: 策略名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         :param _IdentityId: 身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityId: int
         :param _IdentityRoleName: 身份角色名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityRoleName: str
         :param _IdentityRoleAliasName: 身份角色别名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityRoleAliasName: str
         :param _Description: 描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._PolicyId = None
@@ -15788,7 +15542,6 @@ class OrgMemberPolicy(AbstractModel):
     @property
     def PolicyId(self):
         """策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyId
@@ -15800,7 +15553,6 @@ class OrgMemberPolicy(AbstractModel):
     @property
     def PolicyName(self):
         """策略名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -15812,7 +15564,6 @@ class OrgMemberPolicy(AbstractModel):
     @property
     def IdentityId(self):
         """身份ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentityId
@@ -15824,7 +15575,6 @@ class OrgMemberPolicy(AbstractModel):
     @property
     def IdentityRoleName(self):
         """身份角色名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentityRoleName
@@ -15836,7 +15586,6 @@ class OrgMemberPolicy(AbstractModel):
     @property
     def IdentityRoleAliasName(self):
         """身份角色别名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentityRoleAliasName
@@ -15848,7 +15597,6 @@ class OrgMemberPolicy(AbstractModel):
     @property
     def Description(self):
         """描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -15860,7 +15608,6 @@ class OrgMemberPolicy(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -15872,7 +15619,6 @@ class OrgMemberPolicy(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -15909,25 +15655,18 @@ class OrgNode(AbstractModel):
     def __init__(self):
         r"""
         :param _NodeId: 组织节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: int
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ParentNodeId: 父节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentNodeId: int
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Tags: 成员标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._NodeId = None
@@ -15941,7 +15680,6 @@ class OrgNode(AbstractModel):
     @property
     def NodeId(self):
         """组织节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NodeId
@@ -15953,7 +15691,6 @@ class OrgNode(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15965,7 +15702,6 @@ class OrgNode(AbstractModel):
     @property
     def ParentNodeId(self):
         """父节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ParentNodeId
@@ -15977,7 +15713,6 @@ class OrgNode(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -15989,7 +15724,6 @@ class OrgNode(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -16001,7 +15735,6 @@ class OrgNode(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -16013,7 +15746,6 @@ class OrgNode(AbstractModel):
     @property
     def Tags(self):
         """成员标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -16194,44 +15926,31 @@ class OrganizationServiceAssign(AbstractModel):
     def __init__(self):
         r"""
         :param _ServiceId: 集团服务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceId: int
         :param _ProductName: 集团服务产品名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _IsAssign: 是否支持委派。取值: 1-是  2-否
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAssign: int
         :param _Description: 集团服务描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _MemberNum: 当前委派管理员数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberNum: str
         :param _Document: 帮助文档。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Document: str
         :param _ConsoleUrl: 集团服务产品控制台路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConsoleUrl: str
         :param _IsUsageStatus: 是否接入使用状态。取值: 1-是 
  2-否
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUsageStatus: int
         :param _CanAssignCount: 委派管理员数量限制。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanAssignCount: int
         :param _Product: 集团服务产品标识。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Product: str
         :param _ServiceGrant: 是否支持集团服务授权。取值 1-是、2-否
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceGrant: int
         :param _GrantStatus: 集团服务授权启用状态。ServiceGrant值为1时该字段有效 ，取值：Enabled-开启  Disabled-关闭 
-注意：此字段可能返回 null，表示取不到有效值。
         :type GrantStatus: str
         :param _IsSetManagementScope: 是否支持设置委派管理范围。取值: 1-是  2-否
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSetManagementScope: int
         """
         self._ServiceId = None
@@ -16251,7 +15970,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def ServiceId(self):
         """集团服务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ServiceId
@@ -16263,7 +15981,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def ProductName(self):
         """集团服务产品名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -16275,7 +15992,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def IsAssign(self):
         """是否支持委派。取值: 1-是  2-否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsAssign
@@ -16287,7 +16003,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def Description(self):
         """集团服务描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -16299,7 +16014,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def MemberNum(self):
         """当前委派管理员数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemberNum
@@ -16311,7 +16025,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def Document(self):
         """帮助文档。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Document
@@ -16323,7 +16036,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def ConsoleUrl(self):
         """集团服务产品控制台路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsoleUrl
@@ -16336,7 +16048,6 @@ class OrganizationServiceAssign(AbstractModel):
     def IsUsageStatus(self):
         """是否接入使用状态。取值: 1-是 
  2-否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsUsageStatus
@@ -16348,7 +16059,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def CanAssignCount(self):
         """委派管理员数量限制。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CanAssignCount
@@ -16360,7 +16070,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def Product(self):
         """集团服务产品标识。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Product
@@ -16372,7 +16081,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def ServiceGrant(self):
         """是否支持集团服务授权。取值 1-是、2-否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ServiceGrant
@@ -16384,7 +16092,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def GrantStatus(self):
         """集团服务授权启用状态。ServiceGrant值为1时该字段有效 ，取值：Enabled-开启  Disabled-关闭 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GrantStatus
@@ -16396,7 +16103,6 @@ class OrganizationServiceAssign(AbstractModel):
     @property
     def IsSetManagementScope(self):
         """是否支持设置委派管理范围。取值: 1-是  2-否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsSetManagementScope
@@ -16438,31 +16144,22 @@ class OrganizationServiceAssignMember(AbstractModel):
     def __init__(self):
         r"""
         :param _ServiceId: 集团服务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceId: int
         :param _ProductName: 集团服务产品名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _MemberUin: 委派管理员Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberUin: int
         :param _MemberName: 委派管理员名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberName: str
         :param _UsageStatus: 启用状态 。取值：0-服务无启用状态  1-已启用  2-未启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsageStatus: int
         :param _CreateTime: 委派时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ManagementScope: 委派管理员管理范围。取值: 1-全部成员  2-部分成员
-注意：此字段可能返回 null，表示取不到有效值。
         :type ManagementScope: int
         :param _ManagementScopeMembers: 管理的成员Uin列表。ManagementScope值为2时该参数有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type ManagementScopeMembers: list of MemberMainInfo
         :param _ManagementScopeNodes: 管理的部门ID列表。ManagementScope值为2时该参数有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type ManagementScopeNodes: list of NodeMainInfo
         """
         self._ServiceId = None
@@ -16478,7 +16175,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def ServiceId(self):
         """集团服务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ServiceId
@@ -16490,7 +16186,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def ProductName(self):
         """集团服务产品名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -16502,7 +16197,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def MemberUin(self):
         """委派管理员Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MemberUin
@@ -16514,7 +16208,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def MemberName(self):
         """委派管理员名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemberName
@@ -16526,7 +16219,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def UsageStatus(self):
         """启用状态 。取值：0-服务无启用状态  1-已启用  2-未启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsageStatus
@@ -16538,7 +16230,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def CreateTime(self):
         """委派时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -16550,7 +16241,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def ManagementScope(self):
         """委派管理员管理范围。取值: 1-全部成员  2-部分成员
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ManagementScope
@@ -16562,7 +16252,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def ManagementScopeMembers(self):
         """管理的成员Uin列表。ManagementScope值为2时该参数有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MemberMainInfo
         """
         return self._ManagementScopeMembers
@@ -16574,7 +16263,6 @@ class OrganizationServiceAssignMember(AbstractModel):
     @property
     def ManagementScopeNodes(self):
         """管理的部门ID列表。ManagementScope值为2时该参数有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeMainInfo
         """
         return self._ManagementScopeNodes
@@ -17282,13 +16970,10 @@ class ResourceTagMapping(AbstractModel):
         r"""
         :param _Resource: 资源六段式。腾讯云使用资源六段式描述一个资源。
 例如：qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _ComplianceDetails: 合规详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceDetails: :class:`tencentcloud.organization.v20210331.models.TagComplianceDetails`
         :param _Tags: 资源标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
         """
         self._Resource = None
@@ -17299,7 +16984,6 @@ class ResourceTagMapping(AbstractModel):
     def Resource(self):
         """资源六段式。腾讯云使用资源六段式描述一个资源。
 例如：qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -17311,7 +16995,6 @@ class ResourceTagMapping(AbstractModel):
     @property
     def ComplianceDetails(self):
         """合规详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.organization.v20210331.models.TagComplianceDetails`
         """
         return self._ComplianceDetails
@@ -17323,7 +17006,6 @@ class ResourceTagMapping(AbstractModel):
     @property
     def Tags(self):
         """资源标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tags
         """
         return self._Tags
@@ -19261,13 +18943,10 @@ class TagComplianceDetails(AbstractModel):
     def __init__(self):
         r"""
         :param _ComplianceStatus: 合规状态。true-合规，false-不合规
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceStatus: bool
         :param _KeysWithNonCompliantValues: 值不合规的标签键列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeysWithNonCompliantValues: list of str
         :param _NonCompliantKeys: 键不合规的标签键列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NonCompliantKeys: list of str
         """
         self._ComplianceStatus = None
@@ -19277,7 +18956,6 @@ class TagComplianceDetails(AbstractModel):
     @property
     def ComplianceStatus(self):
         """合规状态。true-合规，false-不合规
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ComplianceStatus
@@ -19289,7 +18967,6 @@ class TagComplianceDetails(AbstractModel):
     @property
     def KeysWithNonCompliantValues(self):
         """值不合规的标签键列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._KeysWithNonCompliantValues
@@ -19301,7 +18978,6 @@ class TagComplianceDetails(AbstractModel):
     @property
     def NonCompliantKeys(self):
         """键不合规的标签键列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._NonCompliantKeys
@@ -19333,10 +19009,8 @@ class Tags(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -19345,7 +19019,6 @@ class Tags(AbstractModel):
     @property
     def TagKey(self):
         """标签键。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -19357,7 +19030,6 @@ class Tags(AbstractModel):
     @property
     def TagValue(self):
         """标签值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

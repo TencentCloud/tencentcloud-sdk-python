@@ -6291,6 +6291,249 @@ class CreateApiRspSet(AbstractModel):
         
 
 
+class CreateExclusiveInstancesRequest(AbstractModel):
+    """CreateExclusiveInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zones: 可用区
+        :type Zones: list of str
+        :param _InstanceType: 实例类型：     
+basic：            基础版
+professional： 专业版
+enterprise：     企业版
+platium：         铂金版
+diamond：       钻石版
+        :type InstanceType: str
+        :param _NetworkConfig: 网络配置
+        :type NetworkConfig: :class:`tencentcloud.apigateway.v20180808.models.InstanceNetworkConfig`
+        :param _VpcConfig: VPC配置
+        :type VpcConfig: :class:`tencentcloud.apigateway.v20180808.models.VpcConfig`
+        :param _PayMode: 付费类型：
+POSTPAID：后付费
+PREPAID： 预付费
+        :type PayMode: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _InstanceDescription: 实例描述
+        :type InstanceDescription: str
+        :param _Tags: 标签
+        :type Tags: list of Tag
+        :param _Period: 预付费付费时长：单位是月
+        :type Period: int
+        :param _AutoRenewFlag: 预付费续费标志：
+NOTIFY_AND_MANUAL_RENEW 手动续费
+NOTIFY_AND_AUTO_RENEW 自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW 不续费
+        :type AutoRenewFlag: str
+        """
+        self._Zones = None
+        self._InstanceType = None
+        self._NetworkConfig = None
+        self._VpcConfig = None
+        self._PayMode = None
+        self._InstanceName = None
+        self._InstanceDescription = None
+        self._Tags = None
+        self._Period = None
+        self._AutoRenewFlag = None
+
+    @property
+    def Zones(self):
+        """可用区
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def InstanceType(self):
+        """实例类型：     
+basic：            基础版
+professional： 专业版
+enterprise：     企业版
+platium：         铂金版
+diamond：       钻石版
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def NetworkConfig(self):
+        """网络配置
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.InstanceNetworkConfig`
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
+    def VpcConfig(self):
+        """VPC配置
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.VpcConfig`
+        """
+        return self._VpcConfig
+
+    @VpcConfig.setter
+    def VpcConfig(self, VpcConfig):
+        self._VpcConfig = VpcConfig
+
+    @property
+    def PayMode(self):
+        """付费类型：
+POSTPAID：后付费
+PREPAID： 预付费
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def InstanceName(self):
+        """实例名
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceDescription(self):
+        """实例描述
+        :rtype: str
+        """
+        return self._InstanceDescription
+
+    @InstanceDescription.setter
+    def InstanceDescription(self, InstanceDescription):
+        self._InstanceDescription = InstanceDescription
+
+    @property
+    def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Period(self):
+        """预付费付费时长：单位是月
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def AutoRenewFlag(self):
+        """预付费续费标志：
+NOTIFY_AND_MANUAL_RENEW 手动续费
+NOTIFY_AND_AUTO_RENEW 自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW 不续费
+        :rtype: str
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+
+    def _deserialize(self, params):
+        self._Zones = params.get("Zones")
+        self._InstanceType = params.get("InstanceType")
+        if params.get("NetworkConfig") is not None:
+            self._NetworkConfig = InstanceNetworkConfig()
+            self._NetworkConfig._deserialize(params.get("NetworkConfig"))
+        if params.get("VpcConfig") is not None:
+            self._VpcConfig = VpcConfig()
+            self._VpcConfig._deserialize(params.get("VpcConfig"))
+        self._PayMode = params.get("PayMode")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceDescription = params.get("InstanceDescription")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Period = params.get("Period")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExclusiveInstancesResponse(AbstractModel):
+    """CreateExclusiveInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 实例ID
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateIPStrategyRequest(AbstractModel):
     """CreateIPStrategy请求参数结构体
 
@@ -11542,6 +11785,89 @@ class DescribeIPStrategysStatusResponse(AbstractModel):
         if params.get("Result") is not None:
             self._Result = IPStrategiesStatus()
             self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstancesNetworkConfigRequest(AbstractModel):
+    """DescribeInstancesNetworkConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为 20，最大值为 100。
+
+        :type Limit: int
+        :param _Offset: 偏移量，默认为 0。
+
+        :type Offset: int
+        """
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为 0。
+
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesNetworkConfigResponse(AbstractModel):
+    """DescribeInstancesNetworkConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -17013,6 +17339,42 @@ class InstanceInfo(AbstractModel):
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self._UniqVpcId = params.get("UniqVpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceNetworkConfig(AbstractModel):
+    """专享网络配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetMaxBandwidthOut: 公网带宽
+        :type InternetMaxBandwidthOut: int
+        """
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """公网带宽
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+
+    def _deserialize(self, params):
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

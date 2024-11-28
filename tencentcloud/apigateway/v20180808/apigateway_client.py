@@ -283,6 +283,29 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExclusiveInstances(self, request):
+        """创建专享实例
+
+        :param request: Request instance for CreateExclusiveInstances.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateExclusiveInstancesRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreateExclusiveInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExclusiveInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExclusiveInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateIPStrategy(self, request):
         """本接口（CreateIPStrategy）用于创建服务IP策略。
 
@@ -1133,6 +1156,29 @@ class ApigatewayClient(AbstractClient):
             body = self.call("DescribeIPStrategysStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIPStrategysStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstancesNetworkConfig(self, request):
+        """获取专享实例网络配置列表
+
+        :param request: Request instance for DescribeInstancesNetworkConfig.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeInstancesNetworkConfigRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeInstancesNetworkConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesNetworkConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesNetworkConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

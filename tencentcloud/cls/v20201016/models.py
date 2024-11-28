@@ -27909,8 +27909,11 @@ class SearchLogRequest(AbstractModel):
 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
 使用*或空字符串可查询所有日志
         :type Query: str
-        :param _SyntaxRule: 检索语法规则，默认值为0，推荐使用1 (CQL语法)。
-0：Lucene语法，1：CQL语法。
+        :param _SyntaxRule: 检索语法规则，默认值为0，推荐使用1 。
+
+- 0：Lucene语法
+- 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
+
 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
         :type SyntaxRule: int
         :param _TopicId: - 要检索分析的日志主题ID，仅能指定一个日志主题。
@@ -28008,8 +28011,11 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
-        """检索语法规则，默认值为0，推荐使用1 (CQL语法)。
-0：Lucene语法，1：CQL语法。
+        """检索语法规则，默认值为0，推荐使用1 。
+
+- 0：Lucene语法
+- 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
+
 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
         :rtype: int
         """

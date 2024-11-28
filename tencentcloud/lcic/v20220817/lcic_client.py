@@ -764,6 +764,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMarquee(self, request):
+        """查询跑马灯配置
+
+        :param request: Request instance for DescribeMarquee.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeMarqueeRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeMarqueeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMarquee", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMarqueeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQuestionList(self, request):
         """获取房间提问列表
 
@@ -1378,6 +1401,29 @@ class LcicClient(AbstractClient):
             body = self.call("SetAppCustomContent", params, headers=headers)
             response = json.loads(body)
             model = models.SetAppCustomContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetMarquee(self, request):
+        """设置跑马灯参数设置
+
+        :param request: Request instance for SetMarquee.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.SetMarqueeRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.SetMarqueeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetMarquee", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetMarqueeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

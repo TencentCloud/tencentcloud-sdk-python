@@ -4511,7 +4511,7 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         :param _OffsiteFlag: 异地登录保护设置
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param _PromptTrust: 1: 提示7天信任设备 0: 不提示
+        :param _PromptTrust: 是否提示信任设备：1: 提示  0: 不提示
         :type PromptTrust: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4557,7 +4557,7 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
 
     @property
     def PromptTrust(self):
-        """1: 提示7天信任设备 0: 不提示
+        """是否提示信任设备：1: 提示  0: 不提示
         :rtype: int
         """
         return self._PromptTrust

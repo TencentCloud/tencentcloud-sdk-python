@@ -302,6 +302,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePageWidgetList(self, request):
+        """查询页面组件信息
+
+        :param request: Request instance for DescribePageWidgetList.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribePageWidgetListRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribePageWidgetListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePageWidgetList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePageWidgetListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProjectInfo(self, request):
         """项目详情接口
 
@@ -408,6 +431,29 @@ class BiClient(AbstractClient):
             body = self.call("DescribeUserRoleProjectList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserRoleProjectListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportScreenPage(self, request):
+        """页面截图导出
+
+        :param request: Request instance for ExportScreenPage.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ExportScreenPageRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ExportScreenPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportScreenPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportScreenPageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -110,7 +110,7 @@ FAILEDOPERATION_NOFACEINIMAGE = 'FailedOperation.NoFaceInImage'
 # 计费开通失败。
 FAILEDOPERATION_OPENCHARGEFAILED = 'FailedOperation.OpenChargeFailed'
 
-# 人脸库中存在相似的人脸: %!s(MISSING)。
+# 人脸库中存在相似的人脸。
 FAILEDOPERATION_PERSONDUPLICATED = 'FailedOperation.PersonDuplicated'
 
 # 人脸图片不属于已知人物。
@@ -212,7 +212,7 @@ INVALIDPARAMETER_INVALIDPAGENUMBER = 'InvalidParameter.InvalidPageNumber'
 # 分页大小不合法。
 INVALIDPARAMETER_INVALIDPAGESIZE = 'InvalidParameter.InvalidPageSize'
 
-# 输入字段 %!s(MISSING) 不合法。
+# 输入字段不合法。
 INVALIDPARAMETER_INVALIDPARAM = 'InvalidParameter.InvalidParam'
 
 # 人物ID不合法。
