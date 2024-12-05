@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 
-from tencentcloud.cvm.v20170312 import cvm_client, models
+from tencentcloud.cvm.v20170312 import models
 
 
 def test_serialization():
@@ -33,7 +33,6 @@ def test_serialization():
                 "InstanceChargeType": "PREPAID",
                 "DataDisks": [
                     {
-                        "BurstPerformance": None,
                         "DeleteWithInstance": None,
                         "Encrypt": None,
                         "DiskType": "CLOUD_BASIC",
@@ -57,6 +56,7 @@ def test_serialization():
                     "ProjectId": 0,
                     "HostId": None,
                     "Zone": "ap-shanghai-2",
+                    "HostIps": None
                 },
                 "PrivateIpAddresses": [
                     "000.000.000.000"
@@ -96,8 +96,11 @@ def test_serialization():
     res.from_json_string(mocked_json)
 
     actual = json.loads(res.to_json_string())
-    for key in actual["InstanceSet"][0]:
-        if key in mocked:
-            assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
-    for key in mocked["InstanceSet"][0]:
-        assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
+
+    assert mocked["RequestId"] == actual["RequestId"]
+    assert mocked["InstanceSet"][0]["InstanceState"] == actual["InstanceSet"][0]["InstanceState"]
+    assert mocked["InstanceSet"][0]["RenewFlag"] == actual["InstanceSet"][0]["RenewFlag"]
+    assert mocked["InstanceSet"][0]["Uuid"] == actual["InstanceSet"][0]["Uuid"]
+    assert mocked["InstanceSet"][0]["IPv6Addresses"] == actual["InstanceSet"][0]["IPv6Addresses"]
+    assert mocked["InstanceSet"][0]["RestrictState"] == actual["InstanceSet"][0]["RestrictState"]
+    assert mocked["InstanceSet"][0]["CPU"] == actual["InstanceSet"][0]["CPU"]
