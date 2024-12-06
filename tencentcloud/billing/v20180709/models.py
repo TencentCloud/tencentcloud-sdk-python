@@ -6723,6 +6723,12 @@ class BillDetail(AbstractModel):
         :param _ReserveDetail: 备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReserveDetail: str
+        :param _DiscountObject: 优惠对象
+        :type DiscountObject: str
+        :param _DiscountType: 优惠类型
+        :type DiscountType: str
+        :param _DiscountContent: 优惠内容
+        :type DiscountContent: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -6758,6 +6764,9 @@ class BillDetail(AbstractModel):
         self._RegionType = None
         self._RegionTypeName = None
         self._ReserveDetail = None
+        self._DiscountObject = None
+        self._DiscountType = None
+        self._DiscountContent = None
 
     @property
     def BusinessCodeName(self):
@@ -7148,6 +7157,39 @@ class BillDetail(AbstractModel):
     def ReserveDetail(self, ReserveDetail):
         self._ReserveDetail = ReserveDetail
 
+    @property
+    def DiscountObject(self):
+        """优惠对象
+        :rtype: str
+        """
+        return self._DiscountObject
+
+    @DiscountObject.setter
+    def DiscountObject(self, DiscountObject):
+        self._DiscountObject = DiscountObject
+
+    @property
+    def DiscountType(self):
+        """优惠类型
+        :rtype: str
+        """
+        return self._DiscountType
+
+    @DiscountType.setter
+    def DiscountType(self, DiscountType):
+        self._DiscountType = DiscountType
+
+    @property
+    def DiscountContent(self):
+        """优惠内容
+        :rtype: str
+        """
+        return self._DiscountContent
+
+    @DiscountContent.setter
+    def DiscountContent(self, DiscountContent):
+        self._DiscountContent = DiscountContent
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -7196,6 +7238,9 @@ class BillDetail(AbstractModel):
         self._RegionType = params.get("RegionType")
         self._RegionTypeName = params.get("RegionTypeName")
         self._ReserveDetail = params.get("ReserveDetail")
+        self._DiscountObject = params.get("DiscountObject")
+        self._DiscountType = params.get("DiscountType")
+        self._DiscountContent = params.get("DiscountContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

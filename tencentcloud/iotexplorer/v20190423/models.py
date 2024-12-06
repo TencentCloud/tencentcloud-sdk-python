@@ -27,7 +27,7 @@ class ActivateTWeCallLicenseRequest(AbstractModel):
         r"""
         :param _PkgType: TWecall类型：1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
         :type PkgType: int
-        :param _MiniProgramAppId: appId
+        :param _MiniProgramAppId: 参数已弃用，不用传参
         :type MiniProgramAppId: str
         :param _DeviceList: 设备列表
         :type DeviceList: list of TWeCallInfo
@@ -49,13 +49,17 @@ class ActivateTWeCallLicenseRequest(AbstractModel):
 
     @property
     def MiniProgramAppId(self):
-        """appId
+        warnings.warn("parameter `MiniProgramAppId` is deprecated", DeprecationWarning) 
+
+        """参数已弃用，不用传参
         :rtype: str
         """
         return self._MiniProgramAppId
 
     @MiniProgramAppId.setter
     def MiniProgramAppId(self, MiniProgramAppId):
+        warnings.warn("parameter `MiniProgramAppId` is deprecated", DeprecationWarning) 
+
         self._MiniProgramAppId = MiniProgramAppId
 
     @property
@@ -12390,6 +12394,8 @@ class DeviceActiveResult(AbstractModel):
 
     @property
     def ModelId(self):
+        warnings.warn("parameter `ModelId` is deprecated", DeprecationWarning) 
+
         """模板ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -12398,6 +12404,8 @@ class DeviceActiveResult(AbstractModel):
 
     @ModelId.setter
     def ModelId(self, ModelId):
+        warnings.warn("parameter `ModelId` is deprecated", DeprecationWarning) 
+
         self._ModelId = ModelId
 
     @property
@@ -16616,7 +16624,7 @@ class GetTWeCallActiveStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MiniProgramAppId: appId
+        :param _MiniProgramAppId: 参数已弃用，不用传参
         :type MiniProgramAppId: str
         :param _DeviceList: 设备列表
         :type DeviceList: list of TWeCallInfo
@@ -16626,13 +16634,17 @@ class GetTWeCallActiveStatusRequest(AbstractModel):
 
     @property
     def MiniProgramAppId(self):
-        """appId
+        warnings.warn("parameter `MiniProgramAppId` is deprecated", DeprecationWarning) 
+
+        """参数已弃用，不用传参
         :rtype: str
         """
         return self._MiniProgramAppId
 
     @MiniProgramAppId.setter
     def MiniProgramAppId(self, MiniProgramAppId):
+        warnings.warn("parameter `MiniProgramAppId` is deprecated", DeprecationWarning) 
+
         self._MiniProgramAppId = MiniProgramAppId
 
     @property
@@ -16739,6 +16751,8 @@ class GetTWeCallPkgListRequest(AbstractModel):
 
     @property
     def MiniProgramAppId(self):
+        warnings.warn("parameter `MiniProgramAppId` is deprecated", DeprecationWarning) 
+
         """appId
         :rtype: str
         """
@@ -16746,6 +16760,8 @@ class GetTWeCallPkgListRequest(AbstractModel):
 
     @MiniProgramAppId.setter
     def MiniProgramAppId(self, MiniProgramAppId):
+        warnings.warn("parameter `MiniProgramAppId` is deprecated", DeprecationWarning) 
+
         self._MiniProgramAppId = MiniProgramAppId
 
     @property
@@ -17649,6 +17665,258 @@ class InstanceDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InvokeCloudStorageAIServiceTaskRequest(AbstractModel):
+    """InvokeCloudStorageAIServiceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceType: 云存 AI 服务类型。可选值：
+- `RealtimeObjectDetect`：目标检测
+- `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
+        :type ServiceType: str
+        :param _StartTime: 待分析云存的起始时间
+        :type StartTime: int
+        :param _EndTime: 待分析云存的结束时间
+        :type EndTime: int
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
+        :param _Config: 视频分析配置参数
+        :type Config: str
+        :param _ROI: 视频分析识别区域
+        :type ROI: str
+        :param _VideoURLs: 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+        :type VideoURLs: list of str
+        :param _CustomId: 自定义任务 ID
+        :type CustomId: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ChannelId = None
+        self._Config = None
+        self._ROI = None
+        self._VideoURLs = None
+        self._CustomId = None
+
+    @property
+    def ProductId(self):
+        """产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        """云存 AI 服务类型。可选值：
+- `RealtimeObjectDetect`：目标检测
+- `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def StartTime(self):
+        """待分析云存的起始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """待分析云存的结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ChannelId(self):
+        """通道 ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Config(self):
+        """视频分析配置参数
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def ROI(self):
+        """视频分析识别区域
+        :rtype: str
+        """
+        return self._ROI
+
+    @ROI.setter
+    def ROI(self, ROI):
+        self._ROI = ROI
+
+    @property
+    def VideoURLs(self):
+        """分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+        :rtype: list of str
+        """
+        return self._VideoURLs
+
+    @VideoURLs.setter
+    def VideoURLs(self, VideoURLs):
+        self._VideoURLs = VideoURLs
+
+    @property
+    def CustomId(self):
+        """自定义任务 ID
+        :rtype: str
+        """
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ChannelId = params.get("ChannelId")
+        self._Config = params.get("Config")
+        self._ROI = params.get("ROI")
+        self._VideoURLs = params.get("VideoURLs")
+        self._CustomId = params.get("CustomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeCloudStorageAIServiceTaskResponse(AbstractModel):
+    """InvokeCloudStorageAIServiceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Completed: 任务是否执行完成
+        :type Completed: bool
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        :param _TaskInfo: 任务信息
+        :type TaskInfo: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTask`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Completed = None
+        self._TaskId = None
+        self._TaskInfo = None
+        self._RequestId = None
+
+    @property
+    def Completed(self):
+        """任务是否执行完成
+        :rtype: bool
+        """
+        return self._Completed
+
+    @Completed.setter
+    def Completed(self, Completed):
+        self._Completed = Completed
+
+    @property
+    def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskInfo(self):
+        """任务信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTask`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Completed = params.get("Completed")
+        self._TaskId = params.get("TaskId")
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = CloudStorageAIServiceTask()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class InvokeExternalSourceAIServiceTaskRequest(AbstractModel):
@@ -23596,6 +23864,8 @@ class TWeCallActiveInfo(AbstractModel):
 
     @property
     def ModelId(self):
+        warnings.warn("parameter `ModelId` is deprecated", DeprecationWarning) 
+
         """小程序ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -23604,6 +23874,8 @@ class TWeCallActiveInfo(AbstractModel):
 
     @ModelId.setter
     def ModelId(self, ModelId):
+        warnings.warn("parameter `ModelId` is deprecated", DeprecationWarning) 
+
         self._ModelId = ModelId
 
     @property
@@ -23727,7 +23999,7 @@ class TWeCallInfo(AbstractModel):
         :param _Sn: Sn信息，SN格式：产品ID_设备名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sn: str
-        :param _ModelId: 小程序ID
+        :param _ModelId: 小程序ID，参数已弃用，不用传参
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         :param _ActiveNum: 激活数
@@ -23752,7 +24024,9 @@ class TWeCallInfo(AbstractModel):
 
     @property
     def ModelId(self):
-        """小程序ID
+        warnings.warn("parameter `ModelId` is deprecated", DeprecationWarning) 
+
+        """小程序ID，参数已弃用，不用传参
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23760,10 +24034,14 @@ class TWeCallInfo(AbstractModel):
 
     @ModelId.setter
     def ModelId(self, ModelId):
+        warnings.warn("parameter `ModelId` is deprecated", DeprecationWarning) 
+
         self._ModelId = ModelId
 
     @property
     def ActiveNum(self):
+        warnings.warn("parameter `ActiveNum` is deprecated", DeprecationWarning) 
+
         """激活数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -23772,6 +24050,8 @@ class TWeCallInfo(AbstractModel):
 
     @ActiveNum.setter
     def ActiveNum(self, ActiveNum):
+        warnings.warn("parameter `ActiveNum` is deprecated", DeprecationWarning) 
+
         self._ActiveNum = ActiveNum
 
 

@@ -4961,11 +4961,14 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
         :type EndTimeOffset: float
         :param _Text: 识别文本。
         :type Text: str
+        :param _Wordlist: 字词时间戳信息。
+        :type Wordlist: list of WordResult
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._Text = None
+        self._Wordlist = None
 
     @property
     def Confidence(self):
@@ -5011,12 +5014,29 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
     def Text(self, Text):
         self._Text = Text
 
+    @property
+    def Wordlist(self):
+        """字词时间戳信息。
+        :rtype: list of WordResult
+        """
+        return self._Wordlist
+
+    @Wordlist.setter
+    def Wordlist(self, Wordlist):
+        self._Wordlist = Wordlist
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._Text = params.get("Text")
+        if params.get("Wordlist") is not None:
+            self._Wordlist = []
+            for item in params.get("Wordlist"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._Wordlist.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5882,8 +5902,11 @@ class AiRecognitionTaskInput(AbstractModel):
         r"""
         :param _Definition: 视频智能识别模板 ID 。
         :type Definition: int
+        :param _UserExtPara: 用户扩展字段，一般场景不用填。
+        :type UserExtPara: str
         """
         self._Definition = None
+        self._UserExtPara = None
 
     @property
     def Definition(self):
@@ -5896,9 +5919,21 @@ class AiRecognitionTaskInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def UserExtPara(self):
+        """用户扩展字段，一般场景不用填。
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._UserExtPara = params.get("UserExtPara")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7130,12 +7165,15 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
         :type Text: str
         :param _Trans: 翻译文本。
         :type Trans: str
+        :param _Wordlist: 字词时间戳信息。
+        :type Wordlist: list of WordResult
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._Text = None
         self._Trans = None
+        self._Wordlist = None
 
     @property
     def Confidence(self):
@@ -7192,6 +7230,17 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
     def Trans(self, Trans):
         self._Trans = Trans
 
+    @property
+    def Wordlist(self):
+        """字词时间戳信息。
+        :rtype: list of WordResult
+        """
+        return self._Wordlist
+
+    @Wordlist.setter
+    def Wordlist(self, Wordlist):
+        self._Wordlist = Wordlist
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -7199,6 +7248,12 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._Text = params.get("Text")
         self._Trans = params.get("Trans")
+        if params.get("Wordlist") is not None:
+            self._Wordlist = []
+            for item in params.get("Wordlist"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._Wordlist.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27204,6 +27259,22 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         :type TranscodeType: str
         :param _Name: 转码模板标识过滤条件，长度限制：64 个字符。	
         :type Name: str
+        :param _SceneType: 视频场景化，可选值： 
+normal：通用转码场景：通用转码压缩场景。 
+pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。 
+no_config：未配置。
+        :type SceneType: str
+        :param _CompressType: 转码策略，可选值： 
+ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+no_config：未配置。
+        :type CompressType: str
         """
         self._Definitions = None
         self._Type = None
@@ -27213,6 +27284,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self._Limit = None
         self._TranscodeType = None
         self._Name = None
+        self._SceneType = None
+        self._CompressType = None
 
     @property
     def Definitions(self):
@@ -27315,6 +27388,40 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def SceneType(self):
+        """视频场景化，可选值： 
+normal：通用转码场景：通用转码压缩场景。 
+pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。 
+no_config：未配置。
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def CompressType(self):
+        """转码策略，可选值： 
+ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+no_config：未配置。
+        :rtype: str
+        """
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -27325,6 +27432,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._TranscodeType = params.get("TranscodeType")
         self._Name = params.get("Name")
+        self._SceneType = params.get("SceneType")
+        self._CompressType = params.get("CompressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35365,10 +35474,14 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotifyType: 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+        :param _NotifyType: 通知类型：
+"CMQ"：回调消息写入cmq队列； 
+"URL"： 指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同[解析直播事件通知接口](https://cloud.tencent.com/document/product/862/39229) 的输出参数
 
 <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
         :type NotifyType: str
+        :param _NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
+        :type NotifyUrl: str
         :param _CmqModel: CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
         :type CmqModel: str
         :param _CmqRegion: CMQ 的园区，如 sh，bj 等。
@@ -35377,23 +35490,23 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :type QueueName: str
         :param _TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
         :type TopicName: str
-        :param _NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
-        :type NotifyUrl: str
         :param _NotifyKey: 用于生成回调签名的 Key。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotifyKey: str
         """
         self._NotifyType = None
+        self._NotifyUrl = None
         self._CmqModel = None
         self._CmqRegion = None
         self._QueueName = None
         self._TopicName = None
-        self._NotifyUrl = None
         self._NotifyKey = None
 
     @property
     def NotifyType(self):
-        """通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+        """通知类型：
+"CMQ"：回调消息写入cmq队列； 
+"URL"： 指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同[解析直播事件通知接口](https://cloud.tencent.com/document/product/862/39229) 的输出参数
 
 <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
         :rtype: str
@@ -35403,6 +35516,17 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
     @NotifyType.setter
     def NotifyType(self, NotifyType):
         self._NotifyType = NotifyType
+
+    @property
+    def NotifyUrl(self):
+        """HTTP回调地址，NotifyType为URL时必填。
+        :rtype: str
+        """
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
 
     @property
     def CmqModel(self):
@@ -35449,17 +35573,6 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self._TopicName = TopicName
 
     @property
-    def NotifyUrl(self):
-        """HTTP回调地址，NotifyType为URL时必填。
-        :rtype: str
-        """
-        return self._NotifyUrl
-
-    @NotifyUrl.setter
-    def NotifyUrl(self, NotifyUrl):
-        self._NotifyUrl = NotifyUrl
-
-    @property
     def NotifyKey(self):
         """用于生成回调签名的 Key。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -35474,11 +35587,11 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     def _deserialize(self, params):
         self._NotifyType = params.get("NotifyType")
+        self._NotifyUrl = params.get("NotifyUrl")
         self._CmqModel = params.get("CmqModel")
         self._CmqRegion = params.get("CmqRegion")
         self._QueueName = params.get("QueueName")
         self._TopicName = params.get("TopicName")
-        self._NotifyUrl = params.get("NotifyUrl")
         self._NotifyKey = params.get("NotifyKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -53035,6 +53148,9 @@ class TranscodeTemplate(AbstractModel):
         :param _EnhanceConfig: 音视频增强配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        :param _AliasName: 转码模板别名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasName: str
         """
         self._Definition = None
         self._Container = None
@@ -53050,6 +53166,7 @@ class TranscodeTemplate(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._EnhanceConfig = None
+        self._AliasName = None
 
     @property
     def Definition(self):
@@ -53215,6 +53332,18 @@ class TranscodeTemplate(AbstractModel):
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def AliasName(self):
+        """转码模板别名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -53239,6 +53368,7 @@ class TranscodeTemplate(AbstractModel):
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = EnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        self._AliasName = params.get("AliasName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54613,6 +54743,31 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
         :param _SegmentSpecificInfo: 切片特殊配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
+        :param _ScenarioBased: 模版是否开启场景化 
+0：不开启 
+1：开启 
+默认值：0	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScenarioBased: int
+        :param _SceneType: 视频场景化，可选值： 
+normal：通用转码场景：通用转码压缩场景。
+pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。 
+默认值：normal
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneType: str
+        :param _CompressType: 转码策略，可选值： 
+ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+默认值：standard_compress 
+注：若需要在电视上观看视频，不建议使用ultra_compress策略。ultra_compress策略计费标准为极速高清转码 + 音视频增强-去毛刺。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompressType: str
         """
         self._Codec = None
         self._Fps = None
@@ -54638,6 +54793,9 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
         self._RawPts = None
         self._Compress = None
         self._SegmentSpecificInfo = None
+        self._ScenarioBased = None
+        self._SceneType = None
+        self._CompressType = None
 
     @property
     def Codec(self):
@@ -55001,6 +55159,58 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
     def SegmentSpecificInfo(self, SegmentSpecificInfo):
         self._SegmentSpecificInfo = SegmentSpecificInfo
 
+    @property
+    def ScenarioBased(self):
+        """模版是否开启场景化 
+0：不开启 
+1：开启 
+默认值：0	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScenarioBased
+
+    @ScenarioBased.setter
+    def ScenarioBased(self, ScenarioBased):
+        self._ScenarioBased = ScenarioBased
+
+    @property
+    def SceneType(self):
+        """视频场景化，可选值： 
+normal：通用转码场景：通用转码压缩场景。
+pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。 
+默认值：normal
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def CompressType(self):
+        """转码策略，可选值： 
+ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+默认值：standard_compress 
+注：若需要在电视上观看视频，不建议使用ultra_compress策略。ultra_compress策略计费标准为极速高清转码 + 音视频增强-去毛刺。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -55029,6 +55239,9 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
         if params.get("SegmentSpecificInfo") is not None:
             self._SegmentSpecificInfo = SegmentSpecificInfo()
             self._SegmentSpecificInfo._deserialize(params.get("SegmentSpecificInfo"))
+        self._ScenarioBased = params.get("ScenarioBased")
+        self._SceneType = params.get("SceneType")
+        self._CompressType = params.get("CompressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55200,6 +55413,30 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
         :param _SegmentSpecificInfo: 切片特殊配置	
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
+        :param _ScenarioBased: 模版是否开启场景化 
+0：不开启 
+1：开启 
+默认值：0	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScenarioBased: int
+        :param _SceneType: 视频场景化，可选值： 
+normal：通用转码场景：通用转码压缩场景 pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。
+默认值：normal
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneType: str
+        :param _CompressType: 转码策略，可选值： 
+ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+默认值：standard_compress 
+注：若需要在电视上观看视频，不建议使用ultra_compress策略。ultra_compress策略计费标准为极速高清转码 + 音视频增强-去毛刺。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompressType: str
         """
         self._Codec = None
         self._Fps = None
@@ -55226,6 +55463,9 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
         self._RawPts = None
         self._Compress = None
         self._SegmentSpecificInfo = None
+        self._ScenarioBased = None
+        self._SceneType = None
+        self._CompressType = None
 
     @property
     def Codec(self):
@@ -55606,6 +55846,57 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
     def SegmentSpecificInfo(self, SegmentSpecificInfo):
         self._SegmentSpecificInfo = SegmentSpecificInfo
 
+    @property
+    def ScenarioBased(self):
+        """模版是否开启场景化 
+0：不开启 
+1：开启 
+默认值：0	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScenarioBased
+
+    @ScenarioBased.setter
+    def ScenarioBased(self, ScenarioBased):
+        self._ScenarioBased = ScenarioBased
+
+    @property
+    def SceneType(self):
+        """视频场景化，可选值： 
+normal：通用转码场景：通用转码压缩场景 pgc：PGC高清影视：压缩时会注重影视剧的观看体验，根据影视剧特性进行ROI编码，同时保留高质量的视频内容和音频。 
+materials_video：高清素材：素材资源类场景，对画质要求极高，较多透明画面内容，在压缩的同时接近视觉无损。 
+ugc：UGC内容：适用于广泛的UGC/短视频场景，针对短视频的特性优化编码码率， 画质提升，提升业务QOS/QOE指标。 
+e-commerce_video：秀场/电商类：压缩时会强调细节清晰度和ROI区域提升，尤其注重保持人脸区域的画质。 
+educational_video：教育类：压缩时会强调文字和图像的清晰度和可读性，以便学生更好地理解内容，确保讲解内容清晰传达。
+默认值：normal
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def CompressType(self):
+        """转码策略，可选值： 
+ultra_compress：极致压缩：相比标准压缩，该策略能在保证一定画质的基础上最大限度压缩码率，极大节约带宽和存储成本。 
+standard_compress：综合最优：平衡压缩率与画质，在保证主观画质没有明显降低的情况下尽可能压缩文件。该策略仅收取音视频极速高清转码费用。 
+high_compress：码率优先：优先保证降低文件体积大小，可能有一定画质损失。该策略仅收取音视频极速高清转码费用。 
+low_compress：画质优先：优先保证画质，压缩出来的文件体积可能相对较大。该策略仅收取音视频极速高清转码费用。 
+默认值：standard_compress 
+注：若需要在电视上观看视频，不建议使用ultra_compress策略。ultra_compress策略计费标准为极速高清转码 + 音视频增强-去毛刺。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -55635,6 +55926,9 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
         if params.get("SegmentSpecificInfo") is not None:
             self._SegmentSpecificInfo = SegmentSpecificInfo()
             self._SegmentSpecificInfo._deserialize(params.get("SegmentSpecificInfo"))
+        self._ScenarioBased = params.get("ScenarioBased")
+        self._SceneType = params.get("SceneType")
+        self._CompressType = params.get("CompressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56191,6 +56485,72 @@ class WithdrawsWatermarkResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class WordResult(AbstractModel):
+    """字词信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Word: 字词文本。
+        :type Word: str
+        :param _Start: 字词起始时间戳，单位秒。
+        :type Start: float
+        :param _End: 字词结束时间戳，单位秒。
+        :type End: float
+        """
+        self._Word = None
+        self._Start = None
+        self._End = None
+
+    @property
+    def Word(self):
+        """字词文本。
+        :rtype: str
+        """
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def Start(self):
+        """字词起始时间戳，单位秒。
+        :rtype: float
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        """字词结束时间戳，单位秒。
+        :rtype: float
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Word = params.get("Word")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WorkflowInfo(AbstractModel):

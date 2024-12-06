@@ -2510,6 +2510,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InvokeCloudStorageAIServiceTask(self, request):
+        """同步执行设备云存 AI 分析任务
+
+        :param request: Request instance for InvokeCloudStorageAIServiceTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeCloudStorageAIServiceTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeCloudStorageAIServiceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InvokeCloudStorageAIServiceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.InvokeCloudStorageAIServiceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InvokeExternalSourceAIServiceTask(self, request):
         """创建外部视频 AI 分析任务
 

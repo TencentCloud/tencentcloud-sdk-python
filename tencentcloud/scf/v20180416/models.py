@@ -12521,7 +12521,7 @@ class UpdateCustomDomainRequest(AbstractModel):
         :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
         :param _WafConfig: web 应用防火墙配置
         :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
-        :param _EndpointsConfig: 	路由配置
+        :param _EndpointsConfig: 路由配置
         :type EndpointsConfig: list of EndpointsConf
         """
         self._Domain = None
@@ -12576,7 +12576,7 @@ class UpdateCustomDomainRequest(AbstractModel):
 
     @property
     def EndpointsConfig(self):
-        """	路由配置
+        """路由配置
         :rtype: list of EndpointsConf
         """
         return self._EndpointsConfig

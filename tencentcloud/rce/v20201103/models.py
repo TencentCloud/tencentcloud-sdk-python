@@ -246,7 +246,7 @@ class DataAuthorizationInfo(AbstractModel):
 
 示例值：https://www.*****.com/*
         :type PrivacyPolicyLink: str
-        :param _IsPersonalData: 是否是用户个人敏感数据。
+        :param _IsPersonalData: 是否是用户个人敏感数据（不推荐使用）。
 
 固定填：1。
 
@@ -370,7 +370,7 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def IsPersonalData(self):
-        """是否是用户个人敏感数据。
+        """是否是用户个人敏感数据（不推荐使用）。
 
 固定填：1。
 

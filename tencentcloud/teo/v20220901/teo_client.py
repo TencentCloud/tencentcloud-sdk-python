@@ -1971,6 +1971,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeZoneConfigImportResult(self, request):
+        """查询站点配置项导入结果接口，本接口用于站点配置导入接口（ImportZoneConfig）的结果查询。该功能仅支持标准版或企业版套餐的站点使用。
+
+        :param request: Request instance for DescribeZoneConfigImportResult.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZoneConfigImportResultRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeZoneConfigImportResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeZoneConfigImportResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeZoneConfigImportResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeZoneSetting(self, request):
         """用于查询站点的所有配置信息。
 
@@ -2093,6 +2116,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportZoneConfig(self, request):
+        """导出站点配置接口，本接口支持用户根据需要的配置项进行配置导出，导出的配置用于导入站点配置接口（ImportZoneConfig）进行配置导入。该功能仅支持标准版和企业版套餐站点使用。
+
+        :param request: Request instance for ExportZoneConfig.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ExportZoneConfigRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ExportZoneConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportZoneConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportZoneConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def HandleFunctionRuntimeEnvironment(self, request):
         """操作边缘函数运行环境，支持环境变量的相关设置。
         设置环境变量后，可在函数代码中使用，具体参考 [边缘函数引入环境变量](https://cloud.tencent.com/document/product/1552/109151#0151fd9a-8b0e-407b-ae37-54553a60ded6)。
@@ -2131,6 +2177,29 @@ class TeoClient(AbstractClient):
             body = self.call("IdentifyZone", params, headers=headers)
             response = json.loads(body)
             model = models.IdentifyZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImportZoneConfig(self, request):
+        """导入站点配置接口，本接口支持站点配置文件的快速导入，发起导入后接口会返回对应的任务 ID（TaskId），用户需通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。该功能仅支持标准版和企业版套餐站点使用。
+
+        :param request: Request instance for ImportZoneConfig.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ImportZoneConfigRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ImportZoneConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportZoneConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportZoneConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

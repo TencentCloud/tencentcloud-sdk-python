@@ -1949,9 +1949,9 @@ class DeleteMQTTTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         """
         self._InstanceId = None
@@ -1959,7 +1959,7 @@ class DeleteMQTTTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -1970,7 +1970,7 @@ class DeleteMQTTTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题
+        """主题名称
         :rtype: str
         """
         return self._Topic
@@ -4673,9 +4673,9 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         :param _StartTime: 开始时间
         :type StartTime: int
@@ -4698,7 +4698,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -4709,7 +4709,7 @@ class DescribeMQTTMessageListRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题
+        """主题名称
         :rtype: str
         """
         return self._Topic
@@ -5145,7 +5145,7 @@ class DescribeMQTTTopicListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Filters: 查询条件列表
         :type Filters: list of Filter
@@ -5161,7 +5161,7 @@ class DescribeMQTTTopicListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -5296,9 +5296,9 @@ class DescribeMQTTTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         """
         self._InstanceId = None
@@ -5306,7 +5306,7 @@ class DescribeMQTTTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """集群ID
         :rtype: str
         """
         return self._InstanceId
@@ -5317,7 +5317,7 @@ class DescribeMQTTTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题
+        """主题名称
         :rtype: str
         """
         return self._Topic
@@ -6414,7 +6414,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 过滤条件名
+        :param _Name: 过滤条件参数名
         :type Name: str
         :param _Values: 过滤条件的值
         :type Values: list of str
@@ -6424,7 +6424,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """过滤条件名
+        """过滤条件参数名
         :rtype: str
         """
         return self._Name
@@ -7405,13 +7405,13 @@ class InstanceItemExtraInfo(AbstractModel):
         :param _MaxStorage: 专享集群最大存储
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxStorage: int
-        :param _MaxRetention: 专享集群最大保留时间
+        :param _MaxRetention: 专享集群最大保留时间，单位：小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetention: int
-        :param _MinRetention: 专项集群最大保留时间
+        :param _MinRetention: 专项集群最大保留时间，单位：小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinRetention: int
-        :param _InstanceStatus: 4.0共享集群
+        :param _InstanceStatus: 4.0共享集群状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: int
         """
@@ -7499,7 +7499,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def MaxRetention(self):
-        """专享集群最大保留时间
+        """专享集群最大保留时间，单位：小时
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7511,7 +7511,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def MinRetention(self):
-        """专项集群最大保留时间
+        """专项集群最大保留时间，单位：小时
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7523,7 +7523,7 @@ class InstanceItemExtraInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """4.0共享集群
+        """4.0共享集群状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9068,7 +9068,7 @@ class ModifyMQTTInstanceCertBindingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _SSLServerCertId: 服务端证书id
         :type SSLServerCertId: str
@@ -9081,7 +9081,7 @@ class ModifyMQTTInstanceCertBindingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """集群ID
         :rtype: str
         """
         return self._InstanceId

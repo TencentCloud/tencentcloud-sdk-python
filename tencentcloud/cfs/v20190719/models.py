@@ -1937,6 +1937,8 @@ class CreateMigrationTaskRequest(AbstractModel):
         :type FsName: str
         :param _BucketPath: 源桶路径，默认为/
         :type BucketPath: str
+        :param _Direction: 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+        :type Direction: int
         """
         self._TaskName = None
         self._MigrationType = None
@@ -1953,6 +1955,7 @@ class CreateMigrationTaskRequest(AbstractModel):
         self._ListAddress = None
         self._FsName = None
         self._BucketPath = None
+        self._Direction = None
 
     @property
     def TaskName(self):
@@ -2119,6 +2122,17 @@ class CreateMigrationTaskRequest(AbstractModel):
     def BucketPath(self, BucketPath):
         self._BucketPath = BucketPath
 
+    @property
+    def Direction(self):
+        """迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -2136,6 +2150,7 @@ class CreateMigrationTaskRequest(AbstractModel):
         self._ListAddress = params.get("ListAddress")
         self._FsName = params.get("FsName")
         self._BucketPath = params.get("BucketPath")
+        self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5364,6 +5379,8 @@ class MigrationTaskInfo(AbstractModel):
         :param _BucketPath: 源桶路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketPath: str
+        :param _Direction: 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+        :type Direction: int
         """
         self._TaskName = None
         self._TaskId = None
@@ -5390,6 +5407,7 @@ class MigrationTaskInfo(AbstractModel):
         self._FileCompletedList = None
         self._FileFailedList = None
         self._BucketPath = None
+        self._Direction = None
 
     @property
     def TaskName(self):
@@ -5682,6 +5700,17 @@ class MigrationTaskInfo(AbstractModel):
     def BucketPath(self, BucketPath):
         self._BucketPath = BucketPath
 
+    @property
+    def Direction(self):
+        """迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -5709,6 +5738,7 @@ class MigrationTaskInfo(AbstractModel):
         self._FileCompletedList = params.get("FileCompletedList")
         self._FileFailedList = params.get("FileFailedList")
         self._BucketPath = params.get("BucketPath")
+        self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

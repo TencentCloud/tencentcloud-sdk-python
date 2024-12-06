@@ -1969,6 +1969,9 @@ class ClusterInstancesInfo(AbstractModel):
         :param _ConfigDetail: 集群产品配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigDetail: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigDetail`
+        :param _BindFileSystemNum: 集群绑定的文件系统数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindFileSystemNum: int
         """
         self._Id = None
         self._ClusterId = None
@@ -2014,6 +2017,7 @@ class ClusterInstancesInfo(AbstractModel):
         self._IsCvmReplace = None
         self._ClusterTitle = None
         self._ConfigDetail = None
+        self._BindFileSystemNum = None
 
     @property
     def Id(self):
@@ -2578,6 +2582,18 @@ class ClusterInstancesInfo(AbstractModel):
     def ConfigDetail(self, ConfigDetail):
         self._ConfigDetail = ConfigDetail
 
+    @property
+    def BindFileSystemNum(self):
+        """集群绑定的文件系统数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BindFileSystemNum
+
+    @BindFileSystemNum.setter
+    def BindFileSystemNum(self, BindFileSystemNum):
+        self._BindFileSystemNum = BindFileSystemNum
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2643,6 +2659,7 @@ class ClusterInstancesInfo(AbstractModel):
         if params.get("ConfigDetail") is not None:
             self._ConfigDetail = EmrProductConfigDetail()
             self._ConfigDetail._deserialize(params.get("ConfigDetail"))
+        self._BindFileSystemNum = params.get("BindFileSystemNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13224,17 +13241,17 @@ class ExternalService(AbstractModel):
         r"""
         :param _ShareType: 共用组件类型，EMR/CUSTOM
         :type ShareType: str
-        :param _CustomServiceDefineList: 自定义参数集合
-        :type CustomServiceDefineList: list of CustomServiceDefine
         :param _Service: 共用组件名
         :type Service: str
         :param _InstanceId: 共用组件集群
         :type InstanceId: str
+        :param _CustomServiceDefineList: 自定义参数集合
+        :type CustomServiceDefineList: list of CustomServiceDefine
         """
         self._ShareType = None
-        self._CustomServiceDefineList = None
         self._Service = None
         self._InstanceId = None
+        self._CustomServiceDefineList = None
 
     @property
     def ShareType(self):
@@ -13246,17 +13263,6 @@ class ExternalService(AbstractModel):
     @ShareType.setter
     def ShareType(self, ShareType):
         self._ShareType = ShareType
-
-    @property
-    def CustomServiceDefineList(self):
-        """自定义参数集合
-        :rtype: list of CustomServiceDefine
-        """
-        return self._CustomServiceDefineList
-
-    @CustomServiceDefineList.setter
-    def CustomServiceDefineList(self, CustomServiceDefineList):
-        self._CustomServiceDefineList = CustomServiceDefineList
 
     @property
     def Service(self):
@@ -13280,17 +13286,28 @@ class ExternalService(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def CustomServiceDefineList(self):
+        """自定义参数集合
+        :rtype: list of CustomServiceDefine
+        """
+        return self._CustomServiceDefineList
+
+    @CustomServiceDefineList.setter
+    def CustomServiceDefineList(self, CustomServiceDefineList):
+        self._CustomServiceDefineList = CustomServiceDefineList
+
 
     def _deserialize(self, params):
         self._ShareType = params.get("ShareType")
+        self._Service = params.get("Service")
+        self._InstanceId = params.get("InstanceId")
         if params.get("CustomServiceDefineList") is not None:
             self._CustomServiceDefineList = []
             for item in params.get("CustomServiceDefineList"):
                 obj = CustomServiceDefine()
                 obj._deserialize(item)
                 self._CustomServiceDefineList.append(obj)
-        self._Service = params.get("Service")
-        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

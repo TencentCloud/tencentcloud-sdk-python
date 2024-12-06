@@ -1222,6 +1222,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterTransparentEncryptInfo(self, request):
+        """查询集群透明加密信息
+
+        :param request: Request instance for DescribeClusterTransparentEncryptInfo.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterTransparentEncryptInfoRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterTransparentEncryptInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterTransparentEncryptInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterTransparentEncryptInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusters(self, request):
         """本接口（DescribeClusters）用于查询集群列表。
 
@@ -2846,6 +2869,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("OpenClusterReadOnlyInstanceGroupAccess", params, headers=headers)
             response = json.loads(body)
             model = models.OpenClusterReadOnlyInstanceGroupAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenClusterTransparentEncrypt(self, request):
+        """开通集群透明加密
+
+        :param request: Request instance for OpenClusterTransparentEncrypt.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterTransparentEncryptRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterTransparentEncryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenClusterTransparentEncrypt", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenClusterTransparentEncryptResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

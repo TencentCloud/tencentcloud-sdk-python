@@ -1369,6 +1369,11 @@ def test_import_vclm():
     from tencentcloud.vclm.v20240523 import models
 
 
+def test_import_vcube():
+    from tencentcloud.vcube.v20220410 import vcube_client
+    from tencentcloud.vcube.v20220410 import models
+
+
 def test_import_vdb():
     from tencentcloud.vdb.v20230616 import vdb_client
     from tencentcloud.vdb.v20230616 import models

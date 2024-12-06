@@ -808,7 +808,7 @@ class BackupTableContent(AbstractModel):
         :param _BackupErrorMsg: 备份的错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupErrorMsg: str
-        :param _IsOpenCoolDown: 改库表是否绑定降冷策略
+        :param _IsOpenCoolDown: 该库表是否绑定降冷策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsOpenCoolDown: bool
         """
@@ -894,7 +894,7 @@ class BackupTableContent(AbstractModel):
 
     @property
     def IsOpenCoolDown(self):
-        """改库表是否绑定降冷策略
+        """该库表是否绑定降冷策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """

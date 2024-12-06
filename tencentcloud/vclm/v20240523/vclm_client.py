@@ -26,6 +26,29 @@ class VclmClient(AbstractClient):
     _service = 'vclm'
 
 
+    def CheckAnimateImageJob(self, request):
+        """检查图片跳舞输入图
+
+        :param request: Request instance for CheckAnimateImageJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.CheckAnimateImageJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.CheckAnimateImageJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckAnimateImageJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckAnimateImageJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ConfirmVideoTranslateJob(self, request):
         """确认视频转译结果
 

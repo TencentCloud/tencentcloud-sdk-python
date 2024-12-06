@@ -648,7 +648,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteDatahubTopic(self, request):
-        """删除Datahub主题
+        """删除DIP主题
 
         :param request: Request instance for DeleteDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteDatahubTopicRequest`

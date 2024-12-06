@@ -16978,8 +16978,14 @@ class SubsErr(AbstractModel):
         r"""
         :param _Message: 报错信息
         :type Message: str
+        :param _Reason: 报错原因
+        :type Reason: str
+        :param _Solution: 建议的修复方案
+        :type Solution: str
         """
         self._Message = None
+        self._Reason = None
+        self._Solution = None
 
     @property
     def Message(self):
@@ -16992,9 +16998,33 @@ class SubsErr(AbstractModel):
     def Message(self, Message):
         self._Message = Message
 
+    @property
+    def Reason(self):
+        """报错原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Solution(self):
+        """建议的修复方案
+        :rtype: str
+        """
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
 
     def _deserialize(self, params):
         self._Message = params.get("Message")
+        self._Reason = params.get("Reason")
+        self._Solution = params.get("Solution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

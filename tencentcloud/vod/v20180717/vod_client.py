@@ -157,7 +157,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAIAnalysisTemplate(self, request):
-        """创建用户自定义音视频内容分析模板，数量上限：50。
+        """创建用户自定义音视频内容分析模板，数量上限：50。暂时不支持 HLS 格式。
 
         :param request: Request instance for CreateAIAnalysisTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAIAnalysisTemplateRequest`
@@ -3908,7 +3908,7 @@ class VodClient(AbstractClient):
         6. 对视频截取一张图做封面；
         7. 对视频转自适应码流（并加密）；
         8. 内容审核（令人反感的信息、不安全的信息、不适宜的信息），<font color=red>不建议</font> 使用该接口发起，推荐使用 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217)；
-        9. 内容分析（标签、分类、封面、按帧标签）；
+        9. 内容分析（标签、分类、封面、按帧标签），暂时不支持 HLS 格式；
         10. 内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 
         如使用事件通知，事件通知的类型为 [任务流状态变更](https://cloud.tencent.com/document/product/266/9636)。

@@ -17277,7 +17277,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_outFlux_referers：按 Referer 维度统计 L7 EdgeOne 响应流量指标；</li>
 <li> l7Flow_outFlux_ua_device：按设备类型维度统计 L7 EdgeOne 响应流量指标; </li>
 <li> l7Flow_outFlux_ua_browser：按浏览器类型维度统计 L7 EdgeOne 响应流量指标；</li>
-<li> l7Flow_outFlux_us_os：按操作系统类型维度统计 L7 EdgeOne 响应流量指标；</li>
+<li> l7Flow_outFlux_ua_os：按操作系统类型维度统计 L7 EdgeOne 响应流量指标；</li>
 <li> l7Flow_request_country：按国家/地区维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_province：按中国大陆境内省份维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_statusCode：按状态码维度统计 L7 访问请求数指标；</li>
@@ -17288,7 +17288,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_request_referer：按 Referer 维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_ua_device：按设备类型维度统计 L7 访问请求数指标; </li>
 <li> l7Flow_request_ua_browser：按浏览器类型维度统计 L7 访问请求数指标；</li>
-<li> l7Flow_request_us_os：按操作系统类型维度统计 L7 访问请求数指标。</li>
+<li> l7Flow_request_ua_os：按操作系统类型维度统计 L7 访问请求数指标。</li>
 
         :type MetricName: str
         :param _ZoneIds: 站点 ID 集合，此参数必填。
@@ -17370,7 +17370,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_outFlux_referers：按 Referer 维度统计 L7 EdgeOne 响应流量指标；</li>
 <li> l7Flow_outFlux_ua_device：按设备类型维度统计 L7 EdgeOne 响应流量指标; </li>
 <li> l7Flow_outFlux_ua_browser：按浏览器类型维度统计 L7 EdgeOne 响应流量指标；</li>
-<li> l7Flow_outFlux_us_os：按操作系统类型维度统计 L7 EdgeOne 响应流量指标；</li>
+<li> l7Flow_outFlux_ua_os：按操作系统类型维度统计 L7 EdgeOne 响应流量指标；</li>
 <li> l7Flow_request_country：按国家/地区维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_province：按中国大陆境内省份维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_statusCode：按状态码维度统计 L7 访问请求数指标；</li>
@@ -17381,7 +17381,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_request_referer：按 Referer 维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_ua_device：按设备类型维度统计 L7 访问请求数指标; </li>
 <li> l7Flow_request_ua_browser：按浏览器类型维度统计 L7 访问请求数指标；</li>
-<li> l7Flow_request_us_os：按操作系统类型维度统计 L7 访问请求数指标。</li>
+<li> l7Flow_request_ua_os：按操作系统类型维度统计 L7 访问请求数指标。</li>
 
         :rtype: str
         """
@@ -17804,6 +17804,160 @@ class DescribeTopL7CacheDataResponse(AbstractModel):
                 obj = TopDataRecord()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeZoneConfigImportResultRequest(AbstractModel):
+    """DescribeZoneConfigImportResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _TaskId: 表示需要查询结果的导入配置任务 Id，导入任务 Id 仅支持查询最近 7 天的导入任务。
+        :type TaskId: str
+        """
+        self._ZoneId = None
+        self._TaskId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TaskId(self):
+        """表示需要查询结果的导入配置任务 Id，导入任务 Id 仅支持查询最近 7 天的导入任务。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeZoneConfigImportResultResponse(AbstractModel):
+    """DescribeZoneConfigImportResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 本次导入任务的导入状态。取值有：  <li>success：表示配置项导入成功；</li> <li>failure：表示配置项导入失败；</li> <li>doing：表示配置项正在导入中。</li>
+        :type Status: str
+        :param _Message: 本次导入任务的状态的提示信息。当配置项导入失败时，可通过本字段查看失败原因。
+        :type Message: str
+        :param _Content: 本次导入任务的配置内容。
+        :type Content: str
+        :param _ImportTime: 本次导入任务的开始时间。
+        :type ImportTime: str
+        :param _FinishTime: 本次导入任务的结束时间。
+        :type FinishTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._Content = None
+        self._ImportTime = None
+        self._FinishTime = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """本次导入任务的导入状态。取值有：  <li>success：表示配置项导入成功；</li> <li>failure：表示配置项导入失败；</li> <li>doing：表示配置项正在导入中。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        """本次导入任务的状态的提示信息。当配置项导入失败时，可通过本字段查看失败原因。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Content(self):
+        """本次导入任务的配置内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ImportTime(self):
+        """本次导入任务的开始时间。
+        :rtype: str
+        """
+        return self._ImportTime
+
+    @ImportTime.setter
+    def ImportTime(self, ImportTime):
+        self._ImportTime = ImportTime
+
+    @property
+    def FinishTime(self):
+        """本次导入任务的结束时间。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._Content = params.get("Content")
+        self._ImportTime = params.get("ImportTime")
+        self._FinishTime = params.get("FinishTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -19966,6 +20120,102 @@ class ExceptUserRuleScope(AbstractModel):
         
 
 
+class ExportZoneConfigRequest(AbstractModel):
+    """ExportZoneConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Types: 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li>
+需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
+        :type Types: list of str
+        """
+        self._ZoneId = None
+        self._Types = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Types(self):
+        """导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li>
+需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Types = params.get("Types")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportZoneConfigResponse(AbstractModel):
+    """ExportZoneConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 导出的配置的具体内容。以 JSON 格式返回，按照 UTF-8 方式进行编码。配置内容可参考下方示例。
+        :type Content: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Content(self):
+        """导出的配置的具体内容。以 JSON 格式返回，按照 UTF-8 方式进行编码。配置内容可参考下方示例。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
+
+
 class FailReason(AbstractModel):
     """失败原因
 
@@ -21963,6 +22213,100 @@ class ImageOptimize(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ImportZoneConfigRequest(AbstractModel):
+    """ImportZoneConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Content: 待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置内容可通过站点配置导出接口（ExportZoneConfig）获取。您可以单独导入「站点加速-全局加速配置」或「站点加速-规则引擎」，传入对应的字段即可，详情可以参考下方示例。
+        :type Content: str
+        """
+        self._ZoneId = None
+        self._Content = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Content(self):
+        """待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置内容可通过站点配置导出接口（ExportZoneConfig）获取。您可以单独导入「站点加速-全局加速配置」或「站点加速-规则引擎」，传入对应的字段即可，详情可以参考下方示例。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportZoneConfigResponse(AbstractModel):
+    """ImportZoneConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 表示该次导入配置的任务 Id，通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。注意：导入任务 Id 仅支持查询最近 7 天的导入任务。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """表示该次导入配置的任务 Id，通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。注意：导入任务 Id 仅支持查询最近 7 天的导入任务。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class IncreasePlanQuotaRequest(AbstractModel):
@@ -31987,19 +32331,21 @@ class RuleCondition(AbstractModel):
 <li> exist: 存在； </li>
 <li> notexist: 不存在。</li>
         :type Operator: str
-        :param _Target: 匹配类型，取值有： <li> filename：文件名； </li> <li> extension：文件后缀； </li> <li> host：HOST； </li> <li> full_url：URL Full，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li> <li> url：URL Path，当前站点下 URL 路径的请求； </li><li>client_country：客户端国家/地区；</li> <li> query_string：查询字符串，当前站点下请求URL的查询字符串； </li> <li> request_header：HTTP请求头部。 </li><li> client_ip：客户端 IP。 </li>
+        :param _Target: 匹配类型，取值有： <li> filename：文件名； </li> <li> extension：文件后缀； </li> <li> host：HOST； </li> <li> full_url：URL Full，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li> <li> url：URL Path，当前站点下 URL 路径的请求； </li><li>client_country：客户端国家/地区；</li> <li> query_string：查询字符串，当前站点下请求 URL 的查询字符串； </li> <li> request_header：HTTP 请求头部。 </li><li> client_ip：客户端 IP。 </li><li> request_protocol：请求协议。 </li><li> request_method：HTTP 请求方法。 </li>
         :type Target: str
         :param _Values: 对应匹配类型的参数值，仅在匹配类型为查询字符串或HTTP请求头并且运算符取值为存在或不存在时允许传空数组，对应匹配类型有：
-<li> 文件后缀：jpg、txt等文件后缀；</li>
+<li> 文件后缀：jpg、txt 等文件后缀；</li>
 <li> 文件名称：例如 foo.jpg 中的 foo；</li>
-<li> 全部（站点任意请求）： all； </li>
+<li> 全部（站点任意请求）：all；</li>
 <li> HOST：当前站点下的 host ，例如www.maxx55.com；</li>
 <li> URL Path：当前站点下 URL 路径的请求，例如：/example；</li>
 <li> URL Full：当前站点下完整 URL 请求，必须包含 HTTP 协议，Host 和 路径，例如：https://www.maxx55.cn/example；</li>
-<li> 客户端国家/地区：符合ISO3166标准的国家/地区标识；</li>
-<li> 查询字符串: 当前站点下URL请求中查询字符串的参数值，例如lang=cn&version=1中的cn和1； </li>
-<li> HTTP 请求头: HTTP请求头部字段值，例如Accept-Language:zh-CN,zh;q=0.9中的zh-CN,zh;q=0.9。 </li>
-<li> 客户端 IP: 当前请求携带的客户端请求IP，支持IPv4 IPv6, 支持IP段。 </li>
+<li> 客户端国家/地区：符合 ISO3166 标准的国家/地区标识；</li>
+<li> 查询字符串: 当前站点下 URL 请求中查询字符串的参数值，例如 lang=cn&version=1 中的 cn 和 1； </li>
+<li> HTTP 请求头: HTTP 请求头部字段值，例如 Accept-Language:zh-CN,zh;q=0.9中的zh-CN,zh;q=0.9 ；</li>
+<li> 客户端 IP: 当前请求携带的客户端请求 IP，支持 IPv4/IPv6, 支持 IP 段； </li>
+<li> 请求协议: 当前请求的协议，取值范围为：HTTP、HTTPS；</li>
+<li> HTTP 请求方法: 当前请求的方法，取值范围为：GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT、OPTIONS、PATCH、COPY、LOCK、MKCOL、MOVE、PROPFIND、PROPPATCH、UNLOCK。 </li>
         :type Values: list of str
         :param _IgnoreCase: 是否忽略参数值的大小写，默认值为 false。
         :type IgnoreCase: bool
@@ -32035,7 +32381,7 @@ class RuleCondition(AbstractModel):
 
     @property
     def Target(self):
-        """匹配类型，取值有： <li> filename：文件名； </li> <li> extension：文件后缀； </li> <li> host：HOST； </li> <li> full_url：URL Full，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li> <li> url：URL Path，当前站点下 URL 路径的请求； </li><li>client_country：客户端国家/地区；</li> <li> query_string：查询字符串，当前站点下请求URL的查询字符串； </li> <li> request_header：HTTP请求头部。 </li><li> client_ip：客户端 IP。 </li>
+        """匹配类型，取值有： <li> filename：文件名； </li> <li> extension：文件后缀； </li> <li> host：HOST； </li> <li> full_url：URL Full，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li> <li> url：URL Path，当前站点下 URL 路径的请求； </li><li>client_country：客户端国家/地区；</li> <li> query_string：查询字符串，当前站点下请求 URL 的查询字符串； </li> <li> request_header：HTTP 请求头部。 </li><li> client_ip：客户端 IP。 </li><li> request_protocol：请求协议。 </li><li> request_method：HTTP 请求方法。 </li>
         :rtype: str
         """
         return self._Target
@@ -32047,16 +32393,18 @@ class RuleCondition(AbstractModel):
     @property
     def Values(self):
         """对应匹配类型的参数值，仅在匹配类型为查询字符串或HTTP请求头并且运算符取值为存在或不存在时允许传空数组，对应匹配类型有：
-<li> 文件后缀：jpg、txt等文件后缀；</li>
+<li> 文件后缀：jpg、txt 等文件后缀；</li>
 <li> 文件名称：例如 foo.jpg 中的 foo；</li>
-<li> 全部（站点任意请求）： all； </li>
+<li> 全部（站点任意请求）：all；</li>
 <li> HOST：当前站点下的 host ，例如www.maxx55.com；</li>
 <li> URL Path：当前站点下 URL 路径的请求，例如：/example；</li>
 <li> URL Full：当前站点下完整 URL 请求，必须包含 HTTP 协议，Host 和 路径，例如：https://www.maxx55.cn/example；</li>
-<li> 客户端国家/地区：符合ISO3166标准的国家/地区标识；</li>
-<li> 查询字符串: 当前站点下URL请求中查询字符串的参数值，例如lang=cn&version=1中的cn和1； </li>
-<li> HTTP 请求头: HTTP请求头部字段值，例如Accept-Language:zh-CN,zh;q=0.9中的zh-CN,zh;q=0.9。 </li>
-<li> 客户端 IP: 当前请求携带的客户端请求IP，支持IPv4 IPv6, 支持IP段。 </li>
+<li> 客户端国家/地区：符合 ISO3166 标准的国家/地区标识；</li>
+<li> 查询字符串: 当前站点下 URL 请求中查询字符串的参数值，例如 lang=cn&version=1 中的 cn 和 1； </li>
+<li> HTTP 请求头: HTTP 请求头部字段值，例如 Accept-Language:zh-CN,zh;q=0.9中的zh-CN,zh;q=0.9 ；</li>
+<li> 客户端 IP: 当前请求携带的客户端请求 IP，支持 IPv4/IPv6, 支持 IP 段； </li>
+<li> 请求协议: 当前请求的协议，取值范围为：HTTP、HTTPS；</li>
+<li> HTTP 请求方法: 当前请求的方法，取值范围为：GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT、OPTIONS、PATCH、COPY、LOCK、MKCOL、MOVE、PROPFIND、PROPPATCH、UNLOCK。 </li>
         :rtype: list of str
         """
         return self._Values

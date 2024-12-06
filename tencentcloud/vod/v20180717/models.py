@@ -20051,6 +20051,10 @@ class CreateRoundPlayRequest(AbstractModel):
 <li>Linear：单次播放，播单播放完停止播放。</li>
 默认值：Loop。
         :type PlayBackMode: str
+        :param _RoundPlayId: 播单唯一标识 ID，长度限制为64个字符，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）和连字符（-）。如果存在相同 RoundPlayId 的播单，返回 InvalidParameterValue.RoundPlayAlreadyExists 错误。默认取值为空，表示由系统分配。
+        :type RoundPlayId: str
+        :param _ExpiredTime: 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。过期后的播单将停止播放，“9999-12-31T23:59:59+08:00“表示不过期。默认值：9999-12-31T23:59:59+08:00。
+        :type ExpiredTime: str
         """
         self._StartTime = None
         self._RoundPlaylist = None
@@ -20058,6 +20062,8 @@ class CreateRoundPlayRequest(AbstractModel):
         self._Name = None
         self._Desc = None
         self._PlayBackMode = None
+        self._RoundPlayId = None
+        self._ExpiredTime = None
 
     @property
     def StartTime(self):
@@ -20129,6 +20135,28 @@ class CreateRoundPlayRequest(AbstractModel):
     def PlayBackMode(self, PlayBackMode):
         self._PlayBackMode = PlayBackMode
 
+    @property
+    def RoundPlayId(self):
+        """播单唯一标识 ID，长度限制为64个字符，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）和连字符（-）。如果存在相同 RoundPlayId 的播单，返回 InvalidParameterValue.RoundPlayAlreadyExists 错误。默认取值为空，表示由系统分配。
+        :rtype: str
+        """
+        return self._RoundPlayId
+
+    @RoundPlayId.setter
+    def RoundPlayId(self, RoundPlayId):
+        self._RoundPlayId = RoundPlayId
+
+    @property
+    def ExpiredTime(self):
+        """过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。过期后的播单将停止播放，“9999-12-31T23:59:59+08:00“表示不过期。默认值：9999-12-31T23:59:59+08:00。
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -20142,6 +20170,8 @@ class CreateRoundPlayRequest(AbstractModel):
         self._Name = params.get("Name")
         self._Desc = params.get("Desc")
         self._PlayBackMode = params.get("PlayBackMode")
+        self._RoundPlayId = params.get("RoundPlayId")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50631,6 +50661,8 @@ class ModifyRoundPlayRequest(AbstractModel):
 <li>Loop：循环播放播单；</li>
 <li>Linear：单次播放，播单播放完停止播放。</li>
         :type PlayBackMode: str
+        :param _ExpiredTime: 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播放。“9999-12-31T23:59:59+08:00”表示不过期。
+        :type ExpiredTime: str
         """
         self._RoundPlayId = None
         self._SubAppId = None
@@ -50640,6 +50672,7 @@ class ModifyRoundPlayRequest(AbstractModel):
         self._Desc = None
         self._Status = None
         self._PlayBackMode = None
+        self._ExpiredTime = None
 
     @property
     def RoundPlayId(self):
@@ -50732,6 +50765,17 @@ class ModifyRoundPlayRequest(AbstractModel):
     def PlayBackMode(self, PlayBackMode):
         self._PlayBackMode = PlayBackMode
 
+    @property
+    def ExpiredTime(self):
+        """过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播放。“9999-12-31T23:59:59+08:00”表示不过期。
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
 
     def _deserialize(self, params):
         self._RoundPlayId = params.get("RoundPlayId")
@@ -50747,6 +50791,7 @@ class ModifyRoundPlayRequest(AbstractModel):
         self._Desc = params.get("Desc")
         self._Status = params.get("Status")
         self._PlayBackMode = params.get("PlayBackMode")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65413,6 +65458,8 @@ class RoundPlayInfo(AbstractModel):
         :param _UpdateTime: 更新时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _ExpiredTime: 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播单的播放。“9999-12-31T23:59:59+08:00”表示永不过期。
+        :type ExpiredTime: str
         """
         self._RoundPlayId = None
         self._StartTime = None
@@ -65424,6 +65471,7 @@ class RoundPlayInfo(AbstractModel):
         self._Url = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._ExpiredTime = None
 
     @property
     def RoundPlayId(self):
@@ -65543,6 +65591,17 @@ class RoundPlayInfo(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def ExpiredTime(self):
+        """过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播单的播放。“9999-12-31T23:59:59+08:00”表示永不过期。
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
 
     def _deserialize(self, params):
         self._RoundPlayId = params.get("RoundPlayId")
@@ -65560,6 +65619,7 @@ class RoundPlayInfo(AbstractModel):
         self._Url = params.get("Url")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65586,7 +65646,7 @@ Type 对应的格式必须为 HLS 格式。
         :type AudioVideoType: str
         :param _ItemId: 播放节目的 ID，由系统分配。
         :type ItemId: str
-        :param _Definition: 指定播放的转码模版，当 AudioVideoType 为 Transcode 时必须指定。
+        :param _Definition: 指定播放的转码模板，当 AudioVideoType 为 Transcode 时必须指定。
         :type Definition: int
         """
         self._FileId = None
@@ -65632,7 +65692,7 @@ Type 对应的格式必须为 HLS 格式。
 
     @property
     def Definition(self):
-        """指定播放的转码模版，当 AudioVideoType 为 Transcode 时必须指定。
+        """指定播放的转码模板，当 AudioVideoType 为 Transcode 时必须指定。
         :rtype: int
         """
         return self._Definition

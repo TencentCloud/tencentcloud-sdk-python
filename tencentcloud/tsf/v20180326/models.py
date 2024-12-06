@@ -594,6 +594,83 @@ class AdvanceSettings(AbstractModel):
         
 
 
+class Affinity(AbstractModel):
+    """亲和规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scope: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scope: str
+        :param _Weight: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: str
+        :param _Paths: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Paths: list of CommonOption
+        """
+        self._Scope = None
+        self._Weight = None
+        self._Paths = None
+
+    @property
+    def Scope(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Weight(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Paths(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonOption
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+
+    def _deserialize(self, params):
+        self._Scope = params.get("Scope")
+        self._Weight = params.get("Weight")
+        if params.get("Paths") is not None:
+            self._Paths = []
+            for item in params.get("Paths"):
+                obj = CommonOption()
+                obj._deserialize(item)
+                self._Paths.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentProfile(AbstractModel):
     """部署javaagent的类型、版本信息
 
@@ -2453,6 +2530,33 @@ class ApplicationForPage(AbstractModel):
         :param _IgnoreCreateImageRepository: IgnoreCreateImageRepository
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCreateImageRepository: bool
+        :param _ApmInstanceId: Apm业务系统id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApmInstanceId: str
+        :param _ApmInstanceName: Apm业务系统Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApmInstanceName: str
+        :param _SyncDeleteImageRepository: 同步删除镜像仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncDeleteImageRepository: bool
+        :param _MicroserviceSubType: 应用微服务子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicroserviceSubType: str
+        :param _ProgramLanguage: 应用编程语言类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramLanguage: str
+        :param _FrameworkType: 开发框架类型[SpringCloud，Dubbo，Go-GRPC，Other]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameworkType: str
+        :param _ServiceGovernanceConfig: 注册配置治理信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
+        :param _MicroserviceTypeList: 微服务类型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicroserviceTypeList: list of str
+        :param _CreateSameNameImageRepository: 是否同时创建镜像仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateSameNameImageRepository: bool
         """
         self._ApplicationId = None
         self._ApplicationName = None
@@ -2468,6 +2572,15 @@ class ApplicationForPage(AbstractModel):
         self._ApplicationRemarkName = None
         self._ServiceConfigList = None
         self._IgnoreCreateImageRepository = None
+        self._ApmInstanceId = None
+        self._ApmInstanceName = None
+        self._SyncDeleteImageRepository = None
+        self._MicroserviceSubType = None
+        self._ProgramLanguage = None
+        self._FrameworkType = None
+        self._ServiceGovernanceConfig = None
+        self._MicroserviceTypeList = None
+        self._CreateSameNameImageRepository = None
 
     @property
     def ApplicationId(self):
@@ -2637,6 +2750,114 @@ class ApplicationForPage(AbstractModel):
     def IgnoreCreateImageRepository(self, IgnoreCreateImageRepository):
         self._IgnoreCreateImageRepository = IgnoreCreateImageRepository
 
+    @property
+    def ApmInstanceId(self):
+        """Apm业务系统id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApmInstanceId
+
+    @ApmInstanceId.setter
+    def ApmInstanceId(self, ApmInstanceId):
+        self._ApmInstanceId = ApmInstanceId
+
+    @property
+    def ApmInstanceName(self):
+        """Apm业务系统Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApmInstanceName
+
+    @ApmInstanceName.setter
+    def ApmInstanceName(self, ApmInstanceName):
+        self._ApmInstanceName = ApmInstanceName
+
+    @property
+    def SyncDeleteImageRepository(self):
+        """同步删除镜像仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SyncDeleteImageRepository
+
+    @SyncDeleteImageRepository.setter
+    def SyncDeleteImageRepository(self, SyncDeleteImageRepository):
+        self._SyncDeleteImageRepository = SyncDeleteImageRepository
+
+    @property
+    def MicroserviceSubType(self):
+        """应用微服务子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MicroserviceSubType
+
+    @MicroserviceSubType.setter
+    def MicroserviceSubType(self, MicroserviceSubType):
+        self._MicroserviceSubType = MicroserviceSubType
+
+    @property
+    def ProgramLanguage(self):
+        """应用编程语言类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProgramLanguage
+
+    @ProgramLanguage.setter
+    def ProgramLanguage(self, ProgramLanguage):
+        self._ProgramLanguage = ProgramLanguage
+
+    @property
+    def FrameworkType(self):
+        """开发框架类型[SpringCloud，Dubbo，Go-GRPC，Other]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FrameworkType
+
+    @FrameworkType.setter
+    def FrameworkType(self, FrameworkType):
+        self._FrameworkType = FrameworkType
+
+    @property
+    def ServiceGovernanceConfig(self):
+        """注册配置治理信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
+        """
+        return self._ServiceGovernanceConfig
+
+    @ServiceGovernanceConfig.setter
+    def ServiceGovernanceConfig(self, ServiceGovernanceConfig):
+        self._ServiceGovernanceConfig = ServiceGovernanceConfig
+
+    @property
+    def MicroserviceTypeList(self):
+        """微服务类型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._MicroserviceTypeList
+
+    @MicroserviceTypeList.setter
+    def MicroserviceTypeList(self, MicroserviceTypeList):
+        self._MicroserviceTypeList = MicroserviceTypeList
+
+    @property
+    def CreateSameNameImageRepository(self):
+        """是否同时创建镜像仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CreateSameNameImageRepository
+
+    @CreateSameNameImageRepository.setter
+    def CreateSameNameImageRepository(self, CreateSameNameImageRepository):
+        self._CreateSameNameImageRepository = CreateSameNameImageRepository
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -2658,6 +2879,17 @@ class ApplicationForPage(AbstractModel):
                 obj._deserialize(item)
                 self._ServiceConfigList.append(obj)
         self._IgnoreCreateImageRepository = params.get("IgnoreCreateImageRepository")
+        self._ApmInstanceId = params.get("ApmInstanceId")
+        self._ApmInstanceName = params.get("ApmInstanceName")
+        self._SyncDeleteImageRepository = params.get("SyncDeleteImageRepository")
+        self._MicroserviceSubType = params.get("MicroserviceSubType")
+        self._ProgramLanguage = params.get("ProgramLanguage")
+        self._FrameworkType = params.get("FrameworkType")
+        if params.get("ServiceGovernanceConfig") is not None:
+            self._ServiceGovernanceConfig = ServiceGovernanceConfig()
+            self._ServiceGovernanceConfig._deserialize(params.get("ServiceGovernanceConfig"))
+        self._MicroserviceTypeList = params.get("MicroserviceTypeList")
+        self._CreateSameNameImageRepository = params.get("CreateSameNameImageRepository")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2923,6 +3155,78 @@ class AssociateConfigWithGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class AvailableZoneScatterScheduleRule(AbstractModel):
+    """打散调度规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScatterDimension: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScatterDimension: str
+        :param _MaxUnbalanceQuantity: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxUnbalanceQuantity: int
+        :param _IsForceSchedule: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsForceSchedule: bool
+        """
+        self._ScatterDimension = None
+        self._MaxUnbalanceQuantity = None
+        self._IsForceSchedule = None
+
+    @property
+    def ScatterDimension(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScatterDimension
+
+    @ScatterDimension.setter
+    def ScatterDimension(self, ScatterDimension):
+        self._ScatterDimension = ScatterDimension
+
+    @property
+    def MaxUnbalanceQuantity(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxUnbalanceQuantity
+
+    @MaxUnbalanceQuantity.setter
+    def MaxUnbalanceQuantity(self, MaxUnbalanceQuantity):
+        self._MaxUnbalanceQuantity = MaxUnbalanceQuantity
+
+    @property
+    def IsForceSchedule(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsForceSchedule
+
+    @IsForceSchedule.setter
+    def IsForceSchedule(self, IsForceSchedule):
+        self._IsForceSchedule = IsForceSchedule
+
+
+    def _deserialize(self, params):
+        self._ScatterDimension = params.get("ScatterDimension")
+        self._MaxUnbalanceQuantity = params.get("MaxUnbalanceQuantity")
+        self._IsForceSchedule = params.get("IsForceSchedule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BindApiGroupRequest(AbstractModel):
@@ -5220,6 +5524,133 @@ class ClusterV2(AbstractModel):
         
 
 
+class CommonOption(AbstractModel):
+    """通用选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelName: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelName: str
+        :param _Operator: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _LabelValue: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        """
+        self._LabelName = None
+        self._Operator = None
+        self._LabelValue = None
+
+    @property
+    def LabelName(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def Operator(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def LabelValue(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+
+    def _deserialize(self, params):
+        self._LabelName = params.get("LabelName")
+        self._Operator = params.get("Operator")
+        self._LabelValue = params.get("LabelValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonRef(AbstractModel):
+    """ValueFrom 通用结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Key: Key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        """
+        self._Name = None
+        self._Key = None
+
+    @property
+    def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Key(self):
+        """Key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Config(AbstractModel):
     """配置项
 
@@ -5435,6 +5866,78 @@ class Config(AbstractModel):
         self._DeleteFlag = params.get("DeleteFlag")
         self._LastUpdateTime = params.get("LastUpdateTime")
         self._ConfigVersionCount = params.get("ConfigVersionCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigMapOption(AbstractModel):
+    """ConfigMap可选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Path: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Mode: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        """
+        self._Key = None
+        self._Path = None
+        self._Mode = None
+
+    @property
+    def Key(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Path(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Mode(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Path = params.get("Path")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9405,6 +9908,16 @@ class CreateApplicationRequest(AbstractModel):
         :type IgnoreCreateImageRepository: bool
         :param _ProgramIdList: 无
         :type ProgramIdList: list of str
+        :param _ApmInstanceId: apm业务系统id
+        :type ApmInstanceId: str
+        :param _ProgramLanguage: 编程语言
+        :type ProgramLanguage: str
+        :param _FrameworkType: 开发框架
+        :type FrameworkType: str
+        :param _ServiceGovernanceConfig: 注册配置治理
+        :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
+        :param _CreateSameNameImageRepository: 是否创建并关联同名镜像仓库
+        :type CreateSameNameImageRepository: bool
         """
         self._ApplicationName = None
         self._ApplicationType = None
@@ -9417,6 +9930,11 @@ class CreateApplicationRequest(AbstractModel):
         self._ServiceConfigList = None
         self._IgnoreCreateImageRepository = None
         self._ProgramIdList = None
+        self._ApmInstanceId = None
+        self._ProgramLanguage = None
+        self._FrameworkType = None
+        self._ServiceGovernanceConfig = None
+        self._CreateSameNameImageRepository = None
 
     @property
     def ApplicationName(self):
@@ -9539,6 +10057,61 @@ class CreateApplicationRequest(AbstractModel):
     def ProgramIdList(self, ProgramIdList):
         self._ProgramIdList = ProgramIdList
 
+    @property
+    def ApmInstanceId(self):
+        """apm业务系统id
+        :rtype: str
+        """
+        return self._ApmInstanceId
+
+    @ApmInstanceId.setter
+    def ApmInstanceId(self, ApmInstanceId):
+        self._ApmInstanceId = ApmInstanceId
+
+    @property
+    def ProgramLanguage(self):
+        """编程语言
+        :rtype: str
+        """
+        return self._ProgramLanguage
+
+    @ProgramLanguage.setter
+    def ProgramLanguage(self, ProgramLanguage):
+        self._ProgramLanguage = ProgramLanguage
+
+    @property
+    def FrameworkType(self):
+        """开发框架
+        :rtype: str
+        """
+        return self._FrameworkType
+
+    @FrameworkType.setter
+    def FrameworkType(self, FrameworkType):
+        self._FrameworkType = FrameworkType
+
+    @property
+    def ServiceGovernanceConfig(self):
+        """注册配置治理
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
+        """
+        return self._ServiceGovernanceConfig
+
+    @ServiceGovernanceConfig.setter
+    def ServiceGovernanceConfig(self, ServiceGovernanceConfig):
+        self._ServiceGovernanceConfig = ServiceGovernanceConfig
+
+    @property
+    def CreateSameNameImageRepository(self):
+        """是否创建并关联同名镜像仓库
+        :rtype: bool
+        """
+        return self._CreateSameNameImageRepository
+
+    @CreateSameNameImageRepository.setter
+    def CreateSameNameImageRepository(self, CreateSameNameImageRepository):
+        self._CreateSameNameImageRepository = CreateSameNameImageRepository
+
 
     def _deserialize(self, params):
         self._ApplicationName = params.get("ApplicationName")
@@ -9557,6 +10130,13 @@ class CreateApplicationRequest(AbstractModel):
                 self._ServiceConfigList.append(obj)
         self._IgnoreCreateImageRepository = params.get("IgnoreCreateImageRepository")
         self._ProgramIdList = params.get("ProgramIdList")
+        self._ApmInstanceId = params.get("ApmInstanceId")
+        self._ProgramLanguage = params.get("ProgramLanguage")
+        self._FrameworkType = params.get("FrameworkType")
+        if params.get("ServiceGovernanceConfig") is not None:
+            self._ServiceGovernanceConfig = ServiceGovernanceConfig()
+            self._ServiceGovernanceConfig._deserialize(params.get("ServiceGovernanceConfig"))
+        self._CreateSameNameImageRepository = params.get("CreateSameNameImageRepository")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11617,6 +12197,8 @@ class CreateGroupRequest(AbstractModel):
         :type GroupResourceType: str
         :param _Alias: 部署组备注
         :type Alias: str
+        :param _Tags: 标签列表
+        :type Tags: list of Tag
         """
         self._ApplicationId = None
         self._NamespaceId = None
@@ -11625,6 +12207,7 @@ class CreateGroupRequest(AbstractModel):
         self._GroupDesc = None
         self._GroupResourceType = None
         self._Alias = None
+        self._Tags = None
 
     @property
     def ApplicationId(self):
@@ -11703,6 +12286,17 @@ class CreateGroupRequest(AbstractModel):
     def Alias(self, Alias):
         self._Alias = Alias
 
+    @property
+    def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -11712,6 +12306,12 @@ class CreateGroupRequest(AbstractModel):
         self._GroupDesc = params.get("GroupDesc")
         self._GroupResourceType = params.get("GroupResourceType")
         self._Alias = params.get("Alias")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14147,6 +14747,171 @@ class CurvePoint(AbstractModel):
         self._Label = params.get("Label")
         self._Value = params.get("Value")
         self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomPodSchedule(AbstractModel):
+    """自定义Pod调度规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ForceSchedule: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceSchedule: :class:`tencentcloud.tsf.v20180326.models.ForceSchedule`
+        :param _TrySchedule: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrySchedule: :class:`tencentcloud.tsf.v20180326.models.TrySchedule`
+        """
+        self._ForceSchedule = None
+        self._TrySchedule = None
+
+    @property
+    def ForceSchedule(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ForceSchedule`
+        """
+        return self._ForceSchedule
+
+    @ForceSchedule.setter
+    def ForceSchedule(self, ForceSchedule):
+        self._ForceSchedule = ForceSchedule
+
+    @property
+    def TrySchedule(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.TrySchedule`
+        """
+        return self._TrySchedule
+
+    @TrySchedule.setter
+    def TrySchedule(self, TrySchedule):
+        self._TrySchedule = TrySchedule
+
+
+    def _deserialize(self, params):
+        if params.get("ForceSchedule") is not None:
+            self._ForceSchedule = ForceSchedule()
+            self._ForceSchedule._deserialize(params.get("ForceSchedule"))
+        if params.get("TrySchedule") is not None:
+            self._TrySchedule = TrySchedule()
+            self._TrySchedule._deserialize(params.get("TrySchedule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomTolerateSchedule(AbstractModel):
+    """自定义容忍调度规则列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Operator: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _Value: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Effect: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Effect: str
+        :param _TolerationSeconds: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TolerationSeconds: int
+        """
+        self._Key = None
+        self._Operator = None
+        self._Value = None
+        self._Effect = None
+        self._TolerationSeconds = None
+
+    @property
+    def Key(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operator(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Value(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Effect(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Effect
+
+    @Effect.setter
+    def Effect(self, Effect):
+        self._Effect = Effect
+
+    @property
+    def TolerationSeconds(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TolerationSeconds
+
+    @TolerationSeconds.setter
+    def TolerationSeconds(self, TolerationSeconds):
+        self._TolerationSeconds = TolerationSeconds
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Operator = params.get("Operator")
+        self._Value = params.get("Value")
+        self._Effect = params.get("Effect")
+        self._TolerationSeconds = params.get("TolerationSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18637,6 +19402,8 @@ class DescribeApplicationsRequest(AbstractModel):
         :type ApplicationResourceTypeList: list of str
         :param _ApplicationIdList: IdList
         :type ApplicationIdList: list of str
+        :param _MicroserviceTypeList: 查询多种微服务类型的应用
+        :type MicroserviceTypeList: list of str
         """
         self._SearchWord = None
         self._OrderBy = None
@@ -18647,6 +19414,7 @@ class DescribeApplicationsRequest(AbstractModel):
         self._MicroserviceType = None
         self._ApplicationResourceTypeList = None
         self._ApplicationIdList = None
+        self._MicroserviceTypeList = None
 
     @property
     def SearchWord(self):
@@ -18747,6 +19515,17 @@ class DescribeApplicationsRequest(AbstractModel):
     def ApplicationIdList(self, ApplicationIdList):
         self._ApplicationIdList = ApplicationIdList
 
+    @property
+    def MicroserviceTypeList(self):
+        """查询多种微服务类型的应用
+        :rtype: list of str
+        """
+        return self._MicroserviceTypeList
+
+    @MicroserviceTypeList.setter
+    def MicroserviceTypeList(self, MicroserviceTypeList):
+        self._MicroserviceTypeList = MicroserviceTypeList
+
 
     def _deserialize(self, params):
         self._SearchWord = params.get("SearchWord")
@@ -18758,6 +19537,7 @@ class DescribeApplicationsRequest(AbstractModel):
         self._MicroserviceType = params.get("MicroserviceType")
         self._ApplicationResourceTypeList = params.get("ApplicationResourceTypeList")
         self._ApplicationIdList = params.get("ApplicationIdList")
+        self._MicroserviceTypeList = params.get("MicroserviceTypeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20358,12 +21138,24 @@ class DescribeContainerEventsRequest(AbstractModel):
         :type Limit: int
         :param _GroupId: 当类型是 instance 时需要
         :type GroupId: str
+        :param _Kind: event的资源kind
+        :type Kind: str
+        :param _Type: event 的type
+        :type Type: str
+        :param _ResourceName: 资源名称
+        :type ResourceName: str
+        :param _SearchWord: 关键词查询
+        :type SearchWord: str
         """
         self._ResourceType = None
         self._ResourceId = None
         self._Offset = None
         self._Limit = None
         self._GroupId = None
+        self._Kind = None
+        self._Type = None
+        self._ResourceName = None
+        self._SearchWord = None
 
     @property
     def ResourceType(self):
@@ -20420,6 +21212,50 @@ class DescribeContainerEventsRequest(AbstractModel):
     def GroupId(self, GroupId):
         self._GroupId = GroupId
 
+    @property
+    def Kind(self):
+        """event的资源kind
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def Type(self):
+        """event 的type
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ResourceName(self):
+        """资源名称
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def SearchWord(self):
+        """关键词查询
+        :rtype: str
+        """
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
 
     def _deserialize(self, params):
         self._ResourceType = params.get("ResourceType")
@@ -20427,6 +21263,10 @@ class DescribeContainerEventsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._GroupId = params.get("GroupId")
+        self._Kind = params.get("Kind")
+        self._Type = params.get("Type")
+        self._ResourceName = params.get("ResourceName")
+        self._SearchWord = params.get("SearchWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23589,7 +24429,7 @@ class DescribeImageRepositoryRequest(AbstractModel):
         :type ApplicationId: str
         :param _TcrRepoInfo: TcrRepoInfo值
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
-        :param _RepoName: 镜像仓库
+        :param _RepoName: 镜像仓库名称
         :type RepoName: str
         """
         self._SearchWord = None
@@ -23668,7 +24508,7 @@ class DescribeImageRepositoryRequest(AbstractModel):
 
     @property
     def RepoName(self):
-        """镜像仓库
+        """镜像仓库名称
         :rtype: str
         """
         return self._RepoName
@@ -26659,11 +27499,17 @@ class DescribePodInstancesRequest(AbstractModel):
         :type Limit: int
         :param _PodNameList: 过滤字段
         :type PodNameList: list of str
+        :param _DeployVersion: 新老版本pod批次标识
+        :type DeployVersion: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
         """
         self._GroupId = None
         self._Offset = None
         self._Limit = None
         self._PodNameList = None
+        self._DeployVersion = None
+        self._TaskId = None
 
     @property
     def GroupId(self):
@@ -26709,12 +27555,36 @@ class DescribePodInstancesRequest(AbstractModel):
     def PodNameList(self, PodNameList):
         self._PodNameList = PodNameList
 
+    @property
+    def DeployVersion(self):
+        """新老版本pod批次标识
+        :rtype: str
+        """
+        return self._DeployVersion
+
+    @DeployVersion.setter
+    def DeployVersion(self, DeployVersion):
+        self._DeployVersion = DeployVersion
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._PodNameList = params.get("PodNameList")
+        self._DeployVersion = params.get("DeployVersion")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27960,6 +28830,8 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         :type SearchWord: str
         :param _DisableProgramAuthCheck: 无
         :type DisableProgramAuthCheck: bool
+        :param _MicroserviceTypeList: 查询指定微服务类型的应用列表
+        :type MicroserviceTypeList: list of str
         """
         self._ApplicationIdList = None
         self._ApplicationType = None
@@ -27969,6 +28841,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         self._ApplicationResourceTypeList = None
         self._SearchWord = None
         self._DisableProgramAuthCheck = None
+        self._MicroserviceTypeList = None
 
     @property
     def ApplicationIdList(self):
@@ -28058,6 +28931,17 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
     def DisableProgramAuthCheck(self, DisableProgramAuthCheck):
         self._DisableProgramAuthCheck = DisableProgramAuthCheck
 
+    @property
+    def MicroserviceTypeList(self):
+        """查询指定微服务类型的应用列表
+        :rtype: list of str
+        """
+        return self._MicroserviceTypeList
+
+    @MicroserviceTypeList.setter
+    def MicroserviceTypeList(self, MicroserviceTypeList):
+        self._MicroserviceTypeList = MicroserviceTypeList
+
 
     def _deserialize(self, params):
         self._ApplicationIdList = params.get("ApplicationIdList")
@@ -28068,6 +28952,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         self._ApplicationResourceTypeList = params.get("ApplicationResourceTypeList")
         self._SearchWord = params.get("SearchWord")
         self._DisableProgramAuthCheck = params.get("DisableProgramAuthCheck")
+        self._MicroserviceTypeList = params.get("MicroserviceTypeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31054,6 +31939,95 @@ class DraftApiGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EmptyDirOption(AbstractModel):
+    """空目录选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableMemory: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableMemory: bool
+        :param _StorageCapacity: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageCapacity: int
+        :param _StorageUnit: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageUnit: str
+        :param _SizeLimit: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SizeLimit: str
+        """
+        self._EnableMemory = None
+        self._StorageCapacity = None
+        self._StorageUnit = None
+        self._SizeLimit = None
+
+    @property
+    def EnableMemory(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableMemory
+
+    @EnableMemory.setter
+    def EnableMemory(self, EnableMemory):
+        self._EnableMemory = EnableMemory
+
+    @property
+    def StorageCapacity(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StorageCapacity
+
+    @StorageCapacity.setter
+    def StorageCapacity(self, StorageCapacity):
+        self._StorageCapacity = StorageCapacity
+
+    @property
+    def StorageUnit(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageUnit
+
+    @StorageUnit.setter
+    def StorageUnit(self, StorageUnit):
+        self._StorageUnit = StorageUnit
+
+    @property
+    def SizeLimit(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SizeLimit
+
+    @SizeLimit.setter
+    def SizeLimit(self, SizeLimit):
+        self._SizeLimit = SizeLimit
+
+
+    def _deserialize(self, params):
+        self._EnableMemory = params.get("EnableMemory")
+        self._StorageCapacity = params.get("StorageCapacity")
+        self._StorageUnit = params.get("StorageUnit")
+        self._SizeLimit = params.get("SizeLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnableLaneRuleRequest(AbstractModel):
     """EnableLaneRule请求参数结构体
 
@@ -31515,6 +32489,129 @@ class Env(AbstractModel):
         if params.get("ValueFrom") is not None:
             self._ValueFrom = ValueFrom()
             self._ValueFrom._deserialize(params.get("ValueFrom"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExclusiveInstance(AbstractModel):
+    """独占实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CenterType: 配置中心类型[Registration、Configuration]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CenterType: str
+        :param _InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceType: 实例类型[Polaris]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _RegionId: 实例地域id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param _InstanceNamespaceId: 实例命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNamespaceId: str
+        """
+        self._CenterType = None
+        self._InstanceId = None
+        self._InstanceType = None
+        self._InstanceName = None
+        self._RegionId = None
+        self._InstanceNamespaceId = None
+
+    @property
+    def CenterType(self):
+        """配置中心类型[Registration、Configuration]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CenterType
+
+    @CenterType.setter
+    def CenterType(self, CenterType):
+        self._CenterType = CenterType
+
+    @property
+    def InstanceId(self):
+        """实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceType(self):
+        """实例类型[Polaris]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceName(self):
+        """实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RegionId(self):
+        """实例地域id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def InstanceNamespaceId(self):
+        """实例命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceNamespaceId
+
+    @InstanceNamespaceId.setter
+    def InstanceNamespaceId(self, InstanceNamespaceId):
+        self._InstanceNamespaceId = InstanceNamespaceId
+
+
+    def _deserialize(self, params):
+        self._CenterType = params.get("CenterType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceName = params.get("InstanceName")
+        self._RegionId = params.get("RegionId")
+        self._InstanceNamespaceId = params.get("InstanceNamespaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32410,6 +33507,71 @@ class Filter(AbstractModel):
         
 
 
+class ForceSchedule(AbstractModel):
+    """强制调度配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffinityList: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffinityList: list of Affinity
+        :param _AntiAffinityList: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AntiAffinityList: list of Affinity
+        """
+        self._AffinityList = None
+        self._AntiAffinityList = None
+
+    @property
+    def AffinityList(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Affinity
+        """
+        return self._AffinityList
+
+    @AffinityList.setter
+    def AffinityList(self, AffinityList):
+        self._AffinityList = AffinityList
+
+    @property
+    def AntiAffinityList(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Affinity
+        """
+        return self._AntiAffinityList
+
+    @AntiAffinityList.setter
+    def AntiAffinityList(self, AntiAffinityList):
+        self._AntiAffinityList = AntiAffinityList
+
+
+    def _deserialize(self, params):
+        if params.get("AffinityList") is not None:
+            self._AffinityList = []
+            for item in params.get("AffinityList"):
+                obj = Affinity()
+                obj._deserialize(item)
+                self._AffinityList.append(obj)
+        if params.get("AntiAffinityList") is not None:
+            self._AntiAffinityList = []
+            for item in params.get("AntiAffinityList"):
+                obj = Affinity()
+                obj._deserialize(item)
+                self._AntiAffinityList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GatewayApiGroupVo(AbstractModel):
     """网关分组简单信息
 
@@ -32542,6 +33704,38 @@ class GatewayConfig(AbstractModel):
     """TSF Envoy网关服务配置
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Name: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        """服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GatewayDeployGroup(AbstractModel):
@@ -33823,6 +35017,9 @@ class GroupPod(AbstractModel):
         :param _NodeInstanceId: 节点实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeInstanceId: str
+        :param _SpecTotalCount: 预期副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecTotalCount: str
         """
         self._PodName = None
         self._PodId = None
@@ -33838,6 +35035,7 @@ class GroupPod(AbstractModel):
         self._InstanceAvailableStatus = None
         self._InstanceStatus = None
         self._NodeInstanceId = None
+        self._SpecTotalCount = None
 
     @property
     def PodName(self):
@@ -34007,6 +35205,18 @@ class GroupPod(AbstractModel):
     def NodeInstanceId(self, NodeInstanceId):
         self._NodeInstanceId = NodeInstanceId
 
+    @property
+    def SpecTotalCount(self):
+        """预期副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SpecTotalCount
+
+    @SpecTotalCount.setter
+    def SpecTotalCount(self, SpecTotalCount):
+        self._SpecTotalCount = SpecTotalCount
+
 
     def _deserialize(self, params):
         self._PodName = params.get("PodName")
@@ -34023,6 +35233,7 @@ class GroupPod(AbstractModel):
         self._InstanceAvailableStatus = params.get("InstanceAvailableStatus")
         self._InstanceStatus = params.get("InstanceStatus")
         self._NodeInstanceId = params.get("NodeInstanceId")
+        self._SpecTotalCount = params.get("SpecTotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34943,6 +36154,12 @@ class ImageRepository(AbstractModel):
         :param _Public: 是否公共,1:公有,0:私有
 注意：此字段可能返回 null，表示取不到有效值。
         :type Public: int
+        :param _CreateMode: 创建方式：manual | automatic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateMode: str
+        :param _RepoName: 仓库名，等同reponame字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoName: str
         """
         self._Reponame = None
         self._Repotype = None
@@ -34961,6 +36178,8 @@ class ImageRepository(AbstractModel):
         self._ApplicationName = None
         self._ApplicationNameReal = None
         self._Public = None
+        self._CreateMode = None
+        self._RepoName = None
 
     @property
     def Reponame(self):
@@ -35166,6 +36385,30 @@ class ImageRepository(AbstractModel):
     def Public(self, Public):
         self._Public = Public
 
+    @property
+    def CreateMode(self):
+        """创建方式：manual | automatic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateMode
+
+    @CreateMode.setter
+    def CreateMode(self, CreateMode):
+        self._CreateMode = CreateMode
+
+    @property
+    def RepoName(self):
+        """仓库名，等同reponame字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RepoName
+
+    @RepoName.setter
+    def RepoName(self, RepoName):
+        self._RepoName = RepoName
+
 
     def _deserialize(self, params):
         self._Reponame = params.get("Reponame")
@@ -35189,6 +36432,8 @@ class ImageRepository(AbstractModel):
             self._ApplicationName._deserialize(params.get("ApplicationName"))
         self._ApplicationNameReal = params.get("ApplicationNameReal")
         self._Public = params.get("Public")
+        self._CreateMode = params.get("CreateMode")
+        self._RepoName = params.get("RepoName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39149,12 +40394,21 @@ class ModifyApplicationRequest(AbstractModel):
         :type ApplicationRemarkName: str
         :param _ServiceConfigList: 服务配置信息列表
         :type ServiceConfigList: list of ServiceConfig
+        :param _MicroserviceType: 应用的微服务类型
+        :type MicroserviceType: str
+        :param _ServiceGovernanceConfig: 注册配置治理信息
+        :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
+        :param _FrameworkType: 应用开发框架
+        :type FrameworkType: str
         """
         self._ApplicationId = None
         self._ApplicationName = None
         self._ApplicationDesc = None
         self._ApplicationRemarkName = None
         self._ServiceConfigList = None
+        self._MicroserviceType = None
+        self._ServiceGovernanceConfig = None
+        self._FrameworkType = None
 
     @property
     def ApplicationId(self):
@@ -39211,6 +40465,39 @@ class ModifyApplicationRequest(AbstractModel):
     def ServiceConfigList(self, ServiceConfigList):
         self._ServiceConfigList = ServiceConfigList
 
+    @property
+    def MicroserviceType(self):
+        """应用的微服务类型
+        :rtype: str
+        """
+        return self._MicroserviceType
+
+    @MicroserviceType.setter
+    def MicroserviceType(self, MicroserviceType):
+        self._MicroserviceType = MicroserviceType
+
+    @property
+    def ServiceGovernanceConfig(self):
+        """注册配置治理信息
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
+        """
+        return self._ServiceGovernanceConfig
+
+    @ServiceGovernanceConfig.setter
+    def ServiceGovernanceConfig(self, ServiceGovernanceConfig):
+        self._ServiceGovernanceConfig = ServiceGovernanceConfig
+
+    @property
+    def FrameworkType(self):
+        """应用开发框架
+        :rtype: str
+        """
+        return self._FrameworkType
+
+    @FrameworkType.setter
+    def FrameworkType(self, FrameworkType):
+        self._FrameworkType = FrameworkType
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -39223,6 +40510,11 @@ class ModifyApplicationRequest(AbstractModel):
                 obj = ServiceConfig()
                 obj._deserialize(item)
                 self._ServiceConfigList.append(obj)
+        self._MicroserviceType = params.get("MicroserviceType")
+        if params.get("ServiceGovernanceConfig") is not None:
+            self._ServiceGovernanceConfig = ServiceGovernanceConfig()
+            self._ServiceGovernanceConfig._deserialize(params.get("ServiceGovernanceConfig"))
+        self._FrameworkType = params.get("FrameworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43647,11 +44939,15 @@ class ProtocolPort(AbstractModel):
         :param _NodePort: 主机端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodePort: int
+        :param _Name: 端口名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         """
         self._Protocol = None
         self._Port = None
         self._TargetPort = None
         self._NodePort = None
+        self._Name = None
 
     @property
     def Protocol(self):
@@ -43698,12 +44994,25 @@ class ProtocolPort(AbstractModel):
     def NodePort(self, NodePort):
         self._NodePort = NodePort
 
+    @property
+    def Name(self):
+        """端口名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Protocol = params.get("Protocol")
         self._Port = params.get("Port")
         self._TargetPort = params.get("TargetPort")
         self._NodePort = params.get("NodePort")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45993,8 +47302,52 @@ class SchedulingStrategy(AbstractModel):
         :param _Type: NONE：不使用调度策略；CROSS_AZ：跨可用区部署
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
+        :param _NodeScheduleStrategyType: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeScheduleStrategyType: str
+        :param _NodeScheduleOptions: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeScheduleOptions: list of CommonOption
+        :param _StrongAffinityList: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrongAffinityList: list of CommonOption
+        :param _WeakAffinityList: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeakAffinityList: list of CommonOption
+        :param _WeakAffinityWeight: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeakAffinityWeight: int
+        :param _AvailableZoneScatterScheduleType: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableZoneScatterScheduleType: str
+        :param _AvailableZoneScatterScheduleRules: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableZoneScatterScheduleRules: list of AvailableZoneScatterScheduleRule
+        :param _PodScheduleStrategyType: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodScheduleStrategyType: str
+        :param _CustomPodSchedule: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomPodSchedule: :class:`tencentcloud.tsf.v20180326.models.CustomPodSchedule`
+        :param _TolerateScheduleType: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TolerateScheduleType: str
+        :param _CustomTolerateSchedules: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomTolerateSchedules: list of CustomTolerateSchedule
         """
         self._Type = None
+        self._NodeScheduleStrategyType = None
+        self._NodeScheduleOptions = None
+        self._StrongAffinityList = None
+        self._WeakAffinityList = None
+        self._WeakAffinityWeight = None
+        self._AvailableZoneScatterScheduleType = None
+        self._AvailableZoneScatterScheduleRules = None
+        self._PodScheduleStrategyType = None
+        self._CustomPodSchedule = None
+        self._TolerateScheduleType = None
+        self._CustomTolerateSchedules = None
 
     @property
     def Type(self):
@@ -46008,9 +47361,179 @@ class SchedulingStrategy(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def NodeScheduleStrategyType(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeScheduleStrategyType
+
+    @NodeScheduleStrategyType.setter
+    def NodeScheduleStrategyType(self, NodeScheduleStrategyType):
+        self._NodeScheduleStrategyType = NodeScheduleStrategyType
+
+    @property
+    def NodeScheduleOptions(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonOption
+        """
+        return self._NodeScheduleOptions
+
+    @NodeScheduleOptions.setter
+    def NodeScheduleOptions(self, NodeScheduleOptions):
+        self._NodeScheduleOptions = NodeScheduleOptions
+
+    @property
+    def StrongAffinityList(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonOption
+        """
+        return self._StrongAffinityList
+
+    @StrongAffinityList.setter
+    def StrongAffinityList(self, StrongAffinityList):
+        self._StrongAffinityList = StrongAffinityList
+
+    @property
+    def WeakAffinityList(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonOption
+        """
+        return self._WeakAffinityList
+
+    @WeakAffinityList.setter
+    def WeakAffinityList(self, WeakAffinityList):
+        self._WeakAffinityList = WeakAffinityList
+
+    @property
+    def WeakAffinityWeight(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WeakAffinityWeight
+
+    @WeakAffinityWeight.setter
+    def WeakAffinityWeight(self, WeakAffinityWeight):
+        self._WeakAffinityWeight = WeakAffinityWeight
+
+    @property
+    def AvailableZoneScatterScheduleType(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AvailableZoneScatterScheduleType
+
+    @AvailableZoneScatterScheduleType.setter
+    def AvailableZoneScatterScheduleType(self, AvailableZoneScatterScheduleType):
+        self._AvailableZoneScatterScheduleType = AvailableZoneScatterScheduleType
+
+    @property
+    def AvailableZoneScatterScheduleRules(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AvailableZoneScatterScheduleRule
+        """
+        return self._AvailableZoneScatterScheduleRules
+
+    @AvailableZoneScatterScheduleRules.setter
+    def AvailableZoneScatterScheduleRules(self, AvailableZoneScatterScheduleRules):
+        self._AvailableZoneScatterScheduleRules = AvailableZoneScatterScheduleRules
+
+    @property
+    def PodScheduleStrategyType(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PodScheduleStrategyType
+
+    @PodScheduleStrategyType.setter
+    def PodScheduleStrategyType(self, PodScheduleStrategyType):
+        self._PodScheduleStrategyType = PodScheduleStrategyType
+
+    @property
+    def CustomPodSchedule(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CustomPodSchedule`
+        """
+        return self._CustomPodSchedule
+
+    @CustomPodSchedule.setter
+    def CustomPodSchedule(self, CustomPodSchedule):
+        self._CustomPodSchedule = CustomPodSchedule
+
+    @property
+    def TolerateScheduleType(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TolerateScheduleType
+
+    @TolerateScheduleType.setter
+    def TolerateScheduleType(self, TolerateScheduleType):
+        self._TolerateScheduleType = TolerateScheduleType
+
+    @property
+    def CustomTolerateSchedules(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomTolerateSchedule
+        """
+        return self._CustomTolerateSchedules
+
+    @CustomTolerateSchedules.setter
+    def CustomTolerateSchedules(self, CustomTolerateSchedules):
+        self._CustomTolerateSchedules = CustomTolerateSchedules
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
+        self._NodeScheduleStrategyType = params.get("NodeScheduleStrategyType")
+        if params.get("NodeScheduleOptions") is not None:
+            self._NodeScheduleOptions = []
+            for item in params.get("NodeScheduleOptions"):
+                obj = CommonOption()
+                obj._deserialize(item)
+                self._NodeScheduleOptions.append(obj)
+        if params.get("StrongAffinityList") is not None:
+            self._StrongAffinityList = []
+            for item in params.get("StrongAffinityList"):
+                obj = CommonOption()
+                obj._deserialize(item)
+                self._StrongAffinityList.append(obj)
+        if params.get("WeakAffinityList") is not None:
+            self._WeakAffinityList = []
+            for item in params.get("WeakAffinityList"):
+                obj = CommonOption()
+                obj._deserialize(item)
+                self._WeakAffinityList.append(obj)
+        self._WeakAffinityWeight = params.get("WeakAffinityWeight")
+        self._AvailableZoneScatterScheduleType = params.get("AvailableZoneScatterScheduleType")
+        if params.get("AvailableZoneScatterScheduleRules") is not None:
+            self._AvailableZoneScatterScheduleRules = []
+            for item in params.get("AvailableZoneScatterScheduleRules"):
+                obj = AvailableZoneScatterScheduleRule()
+                obj._deserialize(item)
+                self._AvailableZoneScatterScheduleRules.append(obj)
+        self._PodScheduleStrategyType = params.get("PodScheduleStrategyType")
+        if params.get("CustomPodSchedule") is not None:
+            self._CustomPodSchedule = CustomPodSchedule()
+            self._CustomPodSchedule._deserialize(params.get("CustomPodSchedule"))
+        self._TolerateScheduleType = params.get("TolerateScheduleType")
+        if params.get("CustomTolerateSchedules") is not None:
+            self._CustomTolerateSchedules = []
+            for item in params.get("CustomTolerateSchedules"):
+                obj = CustomTolerateSchedule()
+                obj._deserialize(item)
+                self._CustomTolerateSchedules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46615,6 +48138,83 @@ class ServiceConfig(AbstractModel):
         
 
 
+class ServiceGovernanceConfig(AbstractModel):
+    """注册配置治理信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableGovernance: 是否开启服务注册治理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableGovernance: bool
+        :param _GovernanceType: 服务治理类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GovernanceType: str
+        :param _ExclusiveInstances: 独享实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveInstances: list of ExclusiveInstance
+        """
+        self._EnableGovernance = None
+        self._GovernanceType = None
+        self._ExclusiveInstances = None
+
+    @property
+    def EnableGovernance(self):
+        """是否开启服务注册治理
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableGovernance
+
+    @EnableGovernance.setter
+    def EnableGovernance(self, EnableGovernance):
+        self._EnableGovernance = EnableGovernance
+
+    @property
+    def GovernanceType(self):
+        """服务治理类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GovernanceType
+
+    @GovernanceType.setter
+    def GovernanceType(self, GovernanceType):
+        self._GovernanceType = GovernanceType
+
+    @property
+    def ExclusiveInstances(self):
+        """独享实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExclusiveInstance
+        """
+        return self._ExclusiveInstances
+
+    @ExclusiveInstances.setter
+    def ExclusiveInstances(self, ExclusiveInstances):
+        self._ExclusiveInstances = ExclusiveInstances
+
+
+    def _deserialize(self, params):
+        self._EnableGovernance = params.get("EnableGovernance")
+        self._GovernanceType = params.get("GovernanceType")
+        if params.get("ExclusiveInstances") is not None:
+            self._ExclusiveInstances = []
+            for item in params.get("ExclusiveInstances"):
+                obj = ExclusiveInstance()
+                obj._deserialize(item)
+                self._ExclusiveInstances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServiceSetting(AbstractModel):
     """容器网络设置。
 
@@ -46646,6 +48246,45 @@ class ServiceSetting(AbstractModel):
         :param _SessionAffinityTimeoutSeconds: SessionAffinity会话时间，默认10800
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionAffinityTimeoutSeconds: int
+        :param _ServiceName: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _ExternalTrafficStrategy: 外部流量策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalTrafficStrategy: str
+        :param _ExternalTrafficPolicy: 外部流量策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalTrafficPolicy: str
+        :param _LoadBalancerProvisioner: 负载均衡提供者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerProvisioner: str
+        :param _LoadBalancingType: 负载均衡类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancingType: str
+        :param _ClusterIp: k8s负载均衡内网vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIp: str
+        :param _DisableServiceInt: 禁用服务Int记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableServiceInt: int
+        :param _OpenSessionAffinityInt: 开启SessionAffinity Int记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenSessionAffinityInt: int
+        :param _HeadlessServiceInt: 开启HeadlessService int记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadlessServiceInt: int
+        :param _Name: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _VpcId: VPC网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _LoadBalancingIp: 负载均衡VIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancingIp: str
+        :param _LoadBalancerId: 负载均衡id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerId: str
         """
         self._AccessType = None
         self._ProtocolPorts = None
@@ -46655,6 +48294,19 @@ class ServiceSetting(AbstractModel):
         self._AllowDeleteService = None
         self._OpenSessionAffinity = None
         self._SessionAffinityTimeoutSeconds = None
+        self._ServiceName = None
+        self._ExternalTrafficStrategy = None
+        self._ExternalTrafficPolicy = None
+        self._LoadBalancerProvisioner = None
+        self._LoadBalancingType = None
+        self._ClusterIp = None
+        self._DisableServiceInt = None
+        self._OpenSessionAffinityInt = None
+        self._HeadlessServiceInt = None
+        self._Name = None
+        self._VpcId = None
+        self._LoadBalancingIp = None
+        self._LoadBalancerId = None
 
     @property
     def AccessType(self):
@@ -46752,6 +48404,162 @@ class ServiceSetting(AbstractModel):
     def SessionAffinityTimeoutSeconds(self, SessionAffinityTimeoutSeconds):
         self._SessionAffinityTimeoutSeconds = SessionAffinityTimeoutSeconds
 
+    @property
+    def ServiceName(self):
+        """服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ExternalTrafficStrategy(self):
+        """外部流量策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExternalTrafficStrategy
+
+    @ExternalTrafficStrategy.setter
+    def ExternalTrafficStrategy(self, ExternalTrafficStrategy):
+        self._ExternalTrafficStrategy = ExternalTrafficStrategy
+
+    @property
+    def ExternalTrafficPolicy(self):
+        """外部流量策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExternalTrafficPolicy
+
+    @ExternalTrafficPolicy.setter
+    def ExternalTrafficPolicy(self, ExternalTrafficPolicy):
+        self._ExternalTrafficPolicy = ExternalTrafficPolicy
+
+    @property
+    def LoadBalancerProvisioner(self):
+        """负载均衡提供者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LoadBalancerProvisioner
+
+    @LoadBalancerProvisioner.setter
+    def LoadBalancerProvisioner(self, LoadBalancerProvisioner):
+        self._LoadBalancerProvisioner = LoadBalancerProvisioner
+
+    @property
+    def LoadBalancingType(self):
+        """负载均衡类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LoadBalancingType
+
+    @LoadBalancingType.setter
+    def LoadBalancingType(self, LoadBalancingType):
+        self._LoadBalancingType = LoadBalancingType
+
+    @property
+    def ClusterIp(self):
+        """k8s负载均衡内网vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterIp
+
+    @ClusterIp.setter
+    def ClusterIp(self, ClusterIp):
+        self._ClusterIp = ClusterIp
+
+    @property
+    def DisableServiceInt(self):
+        """禁用服务Int记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DisableServiceInt
+
+    @DisableServiceInt.setter
+    def DisableServiceInt(self, DisableServiceInt):
+        self._DisableServiceInt = DisableServiceInt
+
+    @property
+    def OpenSessionAffinityInt(self):
+        """开启SessionAffinity Int记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OpenSessionAffinityInt
+
+    @OpenSessionAffinityInt.setter
+    def OpenSessionAffinityInt(self, OpenSessionAffinityInt):
+        self._OpenSessionAffinityInt = OpenSessionAffinityInt
+
+    @property
+    def HeadlessServiceInt(self):
+        """开启HeadlessService int记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HeadlessServiceInt
+
+    @HeadlessServiceInt.setter
+    def HeadlessServiceInt(self, HeadlessServiceInt):
+        self._HeadlessServiceInt = HeadlessServiceInt
+
+    @property
+    def Name(self):
+        """服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VpcId(self):
+        """VPC网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def LoadBalancingIp(self):
+        """负载均衡VIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LoadBalancingIp
+
+    @LoadBalancingIp.setter
+    def LoadBalancingIp(self, LoadBalancingIp):
+        self._LoadBalancingIp = LoadBalancingIp
+
+    @property
+    def LoadBalancerId(self):
+        """负载均衡id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
@@ -46767,6 +48575,19 @@ class ServiceSetting(AbstractModel):
         self._AllowDeleteService = params.get("AllowDeleteService")
         self._OpenSessionAffinity = params.get("OpenSessionAffinity")
         self._SessionAffinityTimeoutSeconds = params.get("SessionAffinityTimeoutSeconds")
+        self._ServiceName = params.get("ServiceName")
+        self._ExternalTrafficStrategy = params.get("ExternalTrafficStrategy")
+        self._ExternalTrafficPolicy = params.get("ExternalTrafficPolicy")
+        self._LoadBalancerProvisioner = params.get("LoadBalancerProvisioner")
+        self._LoadBalancingType = params.get("LoadBalancingType")
+        self._ClusterIp = params.get("ClusterIp")
+        self._DisableServiceInt = params.get("DisableServiceInt")
+        self._OpenSessionAffinityInt = params.get("OpenSessionAffinityInt")
+        self._HeadlessServiceInt = params.get("HeadlessServiceInt")
+        self._Name = params.get("Name")
+        self._VpcId = params.get("VpcId")
+        self._LoadBalancingIp = params.get("LoadBalancingIp")
+        self._LoadBalancerId = params.get("LoadBalancerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47633,6 +49454,12 @@ class SimpleApplication(AbstractModel):
         :param _ApplicationRuntimeType: ApplicationRuntimeType
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationRuntimeType: str
+        :param _AmpInstanceId: Apm业务系统id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AmpInstanceId: str
+        :param _ApmInstanceName: Apm业务系统Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApmInstanceName: str
         """
         self._ApplicationId = None
         self._ApplicationName = None
@@ -47645,6 +49472,8 @@ class SimpleApplication(AbstractModel):
         self._UpdateTime = None
         self._ApigatewayServiceId = None
         self._ApplicationRuntimeType = None
+        self._AmpInstanceId = None
+        self._ApmInstanceName = None
 
     @property
     def ApplicationId(self):
@@ -47778,6 +49607,30 @@ class SimpleApplication(AbstractModel):
     def ApplicationRuntimeType(self, ApplicationRuntimeType):
         self._ApplicationRuntimeType = ApplicationRuntimeType
 
+    @property
+    def AmpInstanceId(self):
+        """Apm业务系统id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AmpInstanceId
+
+    @AmpInstanceId.setter
+    def AmpInstanceId(self, AmpInstanceId):
+        self._AmpInstanceId = AmpInstanceId
+
+    @property
+    def ApmInstanceName(self):
+        """Apm业务系统Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApmInstanceName
+
+    @ApmInstanceName.setter
+    def ApmInstanceName(self, ApmInstanceName):
+        self._ApmInstanceName = ApmInstanceName
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -47791,6 +49644,8 @@ class SimpleApplication(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._ApigatewayServiceId = params.get("ApigatewayServiceId")
         self._ApplicationRuntimeType = params.get("ApplicationRuntimeType")
+        self._AmpInstanceId = params.get("AmpInstanceId")
+        self._ApmInstanceName = params.get("ApmInstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48720,6 +50575,61 @@ class StopTaskExecuteResponse(AbstractModel):
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TaskFlowEdge(AbstractModel):
@@ -49869,6 +51779,71 @@ class ThreadPicture(AbstractModel):
         
 
 
+class TrySchedule(AbstractModel):
+    """尽量调度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffinityList: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffinityList: list of Affinity
+        :param _AntiAffinityList: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AntiAffinityList: list of Affinity
+        """
+        self._AffinityList = None
+        self._AntiAffinityList = None
+
+    @property
+    def AffinityList(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Affinity
+        """
+        return self._AffinityList
+
+    @AffinityList.setter
+    def AffinityList(self, AffinityList):
+        self._AffinityList = AffinityList
+
+    @property
+    def AntiAffinityList(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Affinity
+        """
+        return self._AntiAffinityList
+
+    @AntiAffinityList.setter
+    def AntiAffinityList(self, AntiAffinityList):
+        self._AntiAffinityList = AntiAffinityList
+
+
+    def _deserialize(self, params):
+        if params.get("AffinityList") is not None:
+            self._AffinityList = []
+            for item in params.get("AffinityList"):
+                obj = Affinity()
+                obj._deserialize(item)
+                self._AffinityList.append(obj)
+        if params.get("AntiAffinityList") is not None:
+            self._AntiAffinityList = []
+            for item in params.get("AntiAffinityList"):
+                obj = Affinity()
+                obj._deserialize(item)
+                self._AntiAffinityList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TsfApiListResponse(AbstractModel):
     """TsfApiListResponse
 
@@ -50194,9 +52169,13 @@ class TsfPageApplication(AbstractModel):
         :param _Content: 应用信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of ApplicationForPage
+        :param _SpecTotalCount: 获取部署组实例列表返回的原始批次个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecTotalCount: int
         """
         self._TotalCount = None
         self._Content = None
+        self._SpecTotalCount = None
 
     @property
     def TotalCount(self):
@@ -50222,6 +52201,18 @@ class TsfPageApplication(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def SpecTotalCount(self):
+        """获取部署组实例列表返回的原始批次个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SpecTotalCount
+
+    @SpecTotalCount.setter
+    def SpecTotalCount(self, SpecTotalCount):
+        self._SpecTotalCount = SpecTotalCount
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -50231,6 +52222,7 @@ class TsfPageApplication(AbstractModel):
                 obj = ApplicationForPage()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        self._SpecTotalCount = params.get("SpecTotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53598,9 +55590,17 @@ class ValueFrom(AbstractModel):
         :param _ResourceFieldRef: k8s env 的 ResourceFieldRef
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceFieldRef: :class:`tencentcloud.tsf.v20180326.models.ResourceFieldRef`
+        :param _ConfigMapKeyRef: k8s env的configMapKeyRef
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigMapKeyRef: :class:`tencentcloud.tsf.v20180326.models.CommonRef`
+        :param _SecretKeyRef: k8s env 的 secretKeyRef
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKeyRef: :class:`tencentcloud.tsf.v20180326.models.CommonRef`
         """
         self._FieldRef = None
         self._ResourceFieldRef = None
+        self._ConfigMapKeyRef = None
+        self._SecretKeyRef = None
 
     @property
     def FieldRef(self):
@@ -53626,6 +55626,30 @@ class ValueFrom(AbstractModel):
     def ResourceFieldRef(self, ResourceFieldRef):
         self._ResourceFieldRef = ResourceFieldRef
 
+    @property
+    def ConfigMapKeyRef(self):
+        """k8s env的configMapKeyRef
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CommonRef`
+        """
+        return self._ConfigMapKeyRef
+
+    @ConfigMapKeyRef.setter
+    def ConfigMapKeyRef(self, ConfigMapKeyRef):
+        self._ConfigMapKeyRef = ConfigMapKeyRef
+
+    @property
+    def SecretKeyRef(self):
+        """k8s env 的 secretKeyRef
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CommonRef`
+        """
+        return self._SecretKeyRef
+
+    @SecretKeyRef.setter
+    def SecretKeyRef(self, SecretKeyRef):
+        self._SecretKeyRef = SecretKeyRef
+
 
     def _deserialize(self, params):
         if params.get("FieldRef") is not None:
@@ -53634,6 +55658,12 @@ class ValueFrom(AbstractModel):
         if params.get("ResourceFieldRef") is not None:
             self._ResourceFieldRef = ResourceFieldRef()
             self._ResourceFieldRef._deserialize(params.get("ResourceFieldRef"))
+        if params.get("ConfigMapKeyRef") is not None:
+            self._ConfigMapKeyRef = CommonRef()
+            self._ConfigMapKeyRef._deserialize(params.get("ConfigMapKeyRef"))
+        if params.get("SecretKeyRef") is not None:
+            self._SecretKeyRef = CommonRef()
+            self._SecretKeyRef._deserialize(params.get("SecretKeyRef"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54872,10 +56902,18 @@ class VolumeInfo(AbstractModel):
         :type VolumeName: str
         :param _VolumeConfig: 数据卷配置
         :type VolumeConfig: str
+        :param _ConfigMapOptions: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigMapOptions: list of ConfigMapOption
+        :param _EmptyDirOption: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmptyDirOption: :class:`tencentcloud.tsf.v20180326.models.EmptyDirOption`
         """
         self._VolumeType = None
         self._VolumeName = None
         self._VolumeConfig = None
+        self._ConfigMapOptions = None
+        self._EmptyDirOption = None
 
     @property
     def VolumeType(self):
@@ -54910,11 +56948,44 @@ class VolumeInfo(AbstractModel):
     def VolumeConfig(self, VolumeConfig):
         self._VolumeConfig = VolumeConfig
 
+    @property
+    def ConfigMapOptions(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConfigMapOption
+        """
+        return self._ConfigMapOptions
+
+    @ConfigMapOptions.setter
+    def ConfigMapOptions(self, ConfigMapOptions):
+        self._ConfigMapOptions = ConfigMapOptions
+
+    @property
+    def EmptyDirOption(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.EmptyDirOption`
+        """
+        return self._EmptyDirOption
+
+    @EmptyDirOption.setter
+    def EmptyDirOption(self, EmptyDirOption):
+        self._EmptyDirOption = EmptyDirOption
+
 
     def _deserialize(self, params):
         self._VolumeType = params.get("VolumeType")
         self._VolumeName = params.get("VolumeName")
         self._VolumeConfig = params.get("VolumeConfig")
+        if params.get("ConfigMapOptions") is not None:
+            self._ConfigMapOptions = []
+            for item in params.get("ConfigMapOptions"):
+                obj = ConfigMapOption()
+                obj._deserialize(item)
+                self._ConfigMapOptions.append(obj)
+        if params.get("EmptyDirOption") is not None:
+            self._EmptyDirOption = EmptyDirOption()
+            self._EmptyDirOption._deserialize(params.get("EmptyDirOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -173,7 +173,7 @@ class TmtClient(AbstractClient):
 
 
     def TextTranslateBatch(self, request):
-        """文本翻译的批量接口
+        """批量翻译文本的接口
 
         :param request: Request instance for TextTranslateBatch.
         :type request: :class:`tencentcloud.tmt.v20180321.models.TextTranslateBatchRequest`

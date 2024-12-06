@@ -1757,29 +1757,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RecognizeKoreanDrivingLicenseOCR(self, request):
-        """韩国驾驶证识别
-
-        :param request: Request instance for RecognizeKoreanDrivingLicenseOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanDrivingLicenseOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanDrivingLicenseOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeKoreanDrivingLicenseOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeKoreanDrivingLicenseOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RecognizeMedicalInvoiceOCR(self, request):
         """医疗发票识别目前支持全国统一门诊发票、全国统一住院发票、以及部分地方的门诊和住院发票的识别。
 

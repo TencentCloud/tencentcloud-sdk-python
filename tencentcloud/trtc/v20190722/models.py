@@ -193,6 +193,10 @@ class AgentConfig(AbstractModel):
         :type InterruptMode: int
         :param _InterruptSpeechDuration: InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
         :type InterruptSpeechDuration: int
+        :param _TurnDetectionMode: 控制新一轮对话的触发方式，默认为0。
+- 0表示当服务端语音识别检测出的完整一句话后，自动触发一轮新的对话。
+- 1表示客户端在收到字幕消息后，自行决定是否手动发送聊天信令触发一轮新的对话。
+        :type TurnDetectionMode: int
         """
         self._UserId = None
         self._UserSig = None
@@ -201,6 +205,7 @@ class AgentConfig(AbstractModel):
         self._WelcomeMessage = None
         self._InterruptMode = None
         self._InterruptSpeechDuration = None
+        self._TurnDetectionMode = None
 
     @property
     def UserId(self):
@@ -279,6 +284,19 @@ class AgentConfig(AbstractModel):
     def InterruptSpeechDuration(self, InterruptSpeechDuration):
         self._InterruptSpeechDuration = InterruptSpeechDuration
 
+    @property
+    def TurnDetectionMode(self):
+        """控制新一轮对话的触发方式，默认为0。
+- 0表示当服务端语音识别检测出的完整一句话后，自动触发一轮新的对话。
+- 1表示客户端在收到字幕消息后，自行决定是否手动发送聊天信令触发一轮新的对话。
+        :rtype: int
+        """
+        return self._TurnDetectionMode
+
+    @TurnDetectionMode.setter
+    def TurnDetectionMode(self, TurnDetectionMode):
+        self._TurnDetectionMode = TurnDetectionMode
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -288,6 +306,7 @@ class AgentConfig(AbstractModel):
         self._WelcomeMessage = params.get("WelcomeMessage")
         self._InterruptMode = params.get("InterruptMode")
         self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
+        self._TurnDetectionMode = params.get("TurnDetectionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -602,6 +621,181 @@ class AudioParams(AbstractModel):
         
 
 
+class AuditStorageParams(AbstractModel):
+    """审核存储参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudAuditStorage: 腾讯云对象存储COS以及第三方云存储的账号信息
+        :type CloudAuditStorage: :class:`tencentcloud.trtc.v20190722.models.CloudAuditStorage`
+        """
+        self._CloudAuditStorage = None
+
+    @property
+    def CloudAuditStorage(self):
+        """腾讯云对象存储COS以及第三方云存储的账号信息
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudAuditStorage`
+        """
+        return self._CloudAuditStorage
+
+    @CloudAuditStorage.setter
+    def CloudAuditStorage(self, CloudAuditStorage):
+        self._CloudAuditStorage = CloudAuditStorage
+
+
+    def _deserialize(self, params):
+        if params.get("CloudAuditStorage") is not None:
+            self._CloudAuditStorage = CloudAuditStorage()
+            self._CloudAuditStorage._deserialize(params.get("CloudAuditStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAuditStorage(AbstractModel):
+    """腾讯云对象存储COS以及第三方云存储的账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: 腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS
+【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
+示例值：0
+        :type Vendor: int
+        :param _Region: 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-southeast-3	
+        :type Region: str
+        :param _Bucket: 云存储桶名称。
+        :type Bucket: str
+        :param _AccessKey: 云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+示例值：test-accesskey
+        :type AccessKey: str
+        :param _SecretKey: 云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+示例值：test-secretkey
+        :type SecretKey: str
+        :param _FileNamePrefix: 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+示例值：["prefix1", "prefix2"]
+        :type FileNamePrefix: list of str
+        """
+        self._Vendor = None
+        self._Region = None
+        self._Bucket = None
+        self._AccessKey = None
+        self._SecretKey = None
+        self._FileNamePrefix = None
+
+    @property
+    def Vendor(self):
+        """腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS
+【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
+示例值：0
+        :rtype: int
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Region(self):
+        """腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-southeast-3	
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        """云存储桶名称。
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def AccessKey(self):
+        """云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+示例值：test-accesskey
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        """云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+示例值：test-secretkey
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def FileNamePrefix(self):
+        """云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+示例值：["prefix1", "prefix2"]
+        :rtype: list of str
+        """
+        return self._FileNamePrefix
+
+    @FileNamePrefix.setter
+    def FileNamePrefix(self, FileNamePrefix):
+        self._FileNamePrefix = FileNamePrefix
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        self._FileNamePrefix = params.get("FileNamePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudStorage(AbstractModel):
     """腾讯云对象存储COS以及第三方云存储的账号信息
 
@@ -882,11 +1076,14 @@ class CreateBasicModerationRequest(AbstractModel):
         :type UserId: str
         :param _RoomIdType: TRTC房间号的类型。【*注意】必须和TRTC的房间所对应的RoomId类型相同:0: 字符串类型的RoomId1: 32位整型的RoomId（默认）
         :type RoomIdType: int
+        :param _AuditStorageParams: 音频文件上传到云存储的参数
+        :type AuditStorageParams: :class:`tencentcloud.trtc.v20190722.models.AuditStorageParams`
         """
         self._SdkAppId = None
         self._RoomId = None
         self._UserId = None
         self._RoomIdType = None
+        self._AuditStorageParams = None
 
     @property
     def SdkAppId(self):
@@ -932,12 +1129,26 @@ class CreateBasicModerationRequest(AbstractModel):
     def RoomIdType(self, RoomIdType):
         self._RoomIdType = RoomIdType
 
+    @property
+    def AuditStorageParams(self):
+        """音频文件上传到云存储的参数
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AuditStorageParams`
+        """
+        return self._AuditStorageParams
+
+    @AuditStorageParams.setter
+    def AuditStorageParams(self, AuditStorageParams):
+        self._AuditStorageParams = AuditStorageParams
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._RoomId = params.get("RoomId")
         self._UserId = params.get("UserId")
         self._RoomIdType = params.get("RoomIdType")
+        if params.get("AuditStorageParams") is not None:
+            self._AuditStorageParams = AuditStorageParams()
+            self._AuditStorageParams._deserialize(params.get("AuditStorageParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11016,10 +11227,15 @@ class ServerPushText(AbstractModel):
         :type Interrupt: bool
         :param _StopAfterPlay: 播报完文本后，是否自动关闭对话任务
         :type StopAfterPlay: bool
+        :param _Audio: 服务端推送播报音频
+    格式说明：音频以16KHz采样率的单声道格式提供，编码为Base64字符串。
+    输入规则：当提供Audio字段时，将不接受Text字段的输入。系统将直接播放Audio字段中的音频内容。
+        :type Audio: str
         """
         self._Text = None
         self._Interrupt = None
         self._StopAfterPlay = None
+        self._Audio = None
 
     @property
     def Text(self):
@@ -11054,11 +11270,25 @@ class ServerPushText(AbstractModel):
     def StopAfterPlay(self, StopAfterPlay):
         self._StopAfterPlay = StopAfterPlay
 
+    @property
+    def Audio(self):
+        """服务端推送播报音频
+    格式说明：音频以16KHz采样率的单声道格式提供，编码为Base64字符串。
+    输入规则：当提供Audio字段时，将不接受Text字段的输入。系统将直接播放Audio字段中的音频内容。
+        :rtype: str
+        """
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
         self._Interrupt = params.get("Interrupt")
         self._StopAfterPlay = params.get("StopAfterPlay")
+        self._Audio = params.get("Audio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

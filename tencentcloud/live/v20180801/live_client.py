@@ -72,6 +72,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddCasterMarkPicInfo(self, request):
+        """该接口用来新增图片水印。
+
+        :param request: Request instance for AddCasterMarkPicInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.AddCasterMarkPicInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddCasterMarkPicInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCasterMarkPicInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCasterMarkPicInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddCasterMarkWordInfo(self, request):
+        """为导播台添加文本配置。
+
+        :param request: Request instance for AddCasterMarkWordInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.AddCasterMarkWordInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddCasterMarkWordInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCasterMarkWordInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCasterMarkWordInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddCasterOutputInfo(self, request):
         """该接口用来新增导播台推流信息。导播台主监启动后，将会将主监画面推向该接口设置的地址。
 
@@ -936,6 +982,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCasterMarkPicInfo(self, request):
+        """该接口用来删除导播台某个Index对应的水印。
+
+        :param request: Request instance for DeleteCasterMarkPicInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterMarkPicInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteCasterMarkPicInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCasterMarkPicInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCasterMarkPicInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCasterMarkWordInfo(self, request):
+        """该接口用来删除导播台的文本配置。
+
+        :param request: Request instance for DeleteCasterMarkWordInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteCasterMarkWordInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteCasterMarkWordInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCasterMarkWordInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCasterMarkWordInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCasterOutputInfo(self, request):
         """该接口用来删除导播台的推流信息。
         注：若删除推流到腾讯云直播源站配置，即OutputIndex为0，OutputType为1的推流配置，在重新启动主监后，系统会自动重新生成一个推流到腾讯云直播源站配置。
@@ -1683,6 +1775,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCasterMarkPicInfos(self, request):
+        """该接口用来查询某个导播台的水印列表。
+
+        :param request: Request instance for DescribeCasterMarkPicInfos.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterMarkPicInfosRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterMarkPicInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterMarkPicInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterMarkPicInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCasterMarkWordInfos(self, request):
+        """该接口用来查询某个导播台的文本列表。
+
+        :param request: Request instance for DescribeCasterMarkWordInfos.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCasterMarkWordInfosRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCasterMarkWordInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCasterMarkWordInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCasterMarkWordInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCasterOutputInfos(self, request):
         """该接口用来查询某个导播台的推流信息列表。
 
@@ -2162,6 +2300,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeLiveDomains", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLiveDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLiveEnhanceInfoList(self, request):
+        """查询直播增强用量明细信息。
+
+        :param request: Request instance for DescribeLiveEnhanceInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveEnhanceInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveEnhanceInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveEnhanceInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveEnhanceInfoListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3705,6 +3866,53 @@ class LiveClient(AbstractClient):
             body = self.call("ModifyCasterLayoutInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCasterLayoutInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCasterMarkPicInfo(self, request):
+        """该接口用来修改导播台水印信息。
+        注意，修改的Index对应的水印需已存在
+
+        :param request: Request instance for ModifyCasterMarkPicInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyCasterMarkPicInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyCasterMarkPicInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCasterMarkPicInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCasterMarkPicInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCasterMarkWordInfo(self, request):
+        """该接口用来修改导播台文本配置。
+
+        :param request: Request instance for ModifyCasterMarkWordInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyCasterMarkWordInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyCasterMarkWordInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCasterMarkWordInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCasterMarkWordInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

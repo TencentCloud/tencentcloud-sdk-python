@@ -682,6 +682,8 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
         :type MX: int
         :param _TTL: 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
         :type TTL: int
+        :param _Remark: 备注
+        :type Remark: str
         """
         self._ZoneId = None
         self._RecordType = None
@@ -690,6 +692,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
         self._Weight = None
         self._MX = None
         self._TTL = None
+        self._Remark = None
 
     @property
     def ZoneId(self):
@@ -768,6 +771,17 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
     def TTL(self, TTL):
         self._TTL = TTL
 
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -777,6 +791,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
         self._Weight = params.get("Weight")
         self._MX = params.get("MX")
         self._TTL = params.get("TTL")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2887,6 +2902,8 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
         :type MX: int
         :param _TTL: 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
         :type TTL: int
+        :param _Remark: 备注
+        :type Remark: str
         """
         self._ZoneId = None
         self._RecordId = None
@@ -2896,6 +2913,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
         self._Weight = None
         self._MX = None
         self._TTL = None
+        self._Remark = None
 
     @property
     def ZoneId(self):
@@ -2985,6 +3003,17 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
     def TTL(self, TTL):
         self._TTL = TTL
 
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -2995,6 +3024,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
         self._Weight = params.get("Weight")
         self._MX = params.get("MX")
         self._TTL = params.get("TTL")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3887,6 +3917,9 @@ class PrivateZoneRecord(AbstractModel):
         :param _Enabled: 0暂停，1启用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: int
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
         self._RecordId = None
         self._ZoneId = None
@@ -3901,6 +3934,7 @@ class PrivateZoneRecord(AbstractModel):
         self._UpdatedOn = None
         self._Extra = None
         self._Enabled = None
+        self._Remark = None
 
     @property
     def RecordId(self):
@@ -4049,6 +4083,18 @@ class PrivateZoneRecord(AbstractModel):
     def Enabled(self, Enabled):
         self._Enabled = Enabled
 
+    @property
+    def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._RecordId = params.get("RecordId")
@@ -4064,6 +4110,7 @@ class PrivateZoneRecord(AbstractModel):
         self._UpdatedOn = params.get("UpdatedOn")
         self._Extra = params.get("Extra")
         self._Enabled = params.get("Enabled")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

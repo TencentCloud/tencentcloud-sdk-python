@@ -15966,6 +15966,102 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterTransparentEncryptInfoRequest(AbstractModel):
+    """DescribeClusterTransparentEncryptInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterTransparentEncryptInfoResponse(AbstractModel):
+    """DescribeClusterTransparentEncryptInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: 加密秘钥id
+        :type KeyId: str
+        :param _KeyRegion: 加密秘钥地域
+
+        :type KeyRegion: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KeyId = None
+        self._KeyRegion = None
+        self._RequestId = None
+
+    @property
+    def KeyId(self):
+        """加密秘钥id
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyRegion(self):
+        """加密秘钥地域
+
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._KeyRegion = params.get("KeyRegion")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClustersRequest(AbstractModel):
     """DescribeClusters请求参数结构体
 
@@ -23305,10 +23401,10 @@ class IsolateClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 任务流ID
+        :param _FlowId: 任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
-        :param _DealNames: 退款订单号
+        :param _DealNames: 退款订单号(预付费资源返回，如果需要同步订单状态，请使用计费产品的DescribeDealsByCond同步订单状态)
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23320,7 +23416,7 @@ class IsolateClusterResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """任务流ID
+        """任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23332,7 +23428,7 @@ class IsolateClusterResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """退款订单号
+        """退款订单号(预付费资源返回，如果需要同步订单状态，请使用计费产品的DescribeDealsByCond同步订单状态)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -29042,6 +29138,132 @@ class OpenClusterReadOnlyInstanceGroupAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class OpenClusterTransparentEncryptRequest(AbstractModel):
+    """OpenClusterTransparentEncrypt请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _KeyType: 秘钥类型(cloud,custom)
+        :type KeyType: str
+        :param _KeyId: 秘钥Id
+        :type KeyId: str
+        :param _KeyRegion: 秘钥地域
+        :type KeyRegion: str
+        """
+        self._ClusterId = None
+        self._KeyType = None
+        self._KeyId = None
+        self._KeyRegion = None
+
+    @property
+    def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def KeyType(self):
+        """秘钥类型(cloud,custom)
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyId(self):
+        """秘钥Id
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyRegion(self):
+        """秘钥地域
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._KeyType = params.get("KeyType")
+        self._KeyId = params.get("KeyId")
+        self._KeyRegion = params.get("KeyRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenClusterTransparentEncryptResponse(AbstractModel):
+    """OpenClusterTransparentEncrypt返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务id
+
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """异步任务id
+
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

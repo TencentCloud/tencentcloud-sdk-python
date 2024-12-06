@@ -2290,6 +2290,186 @@ class Filter(AbstractModel):
         
 
 
+class GPUConfig(AbstractModel):
+    """机型名称与GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric等相关配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 机型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _GPUParams: GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUParams: :class:`tencentcloud.tke.v20220501.models.GPUParams`
+        """
+        self._InstanceType = None
+        self._GPUParams = None
+
+    @property
+    def InstanceType(self):
+        """机型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def GPUParams(self):
+        """GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tke.v20220501.models.GPUParams`
+        """
+        return self._GPUParams
+
+    @GPUParams.setter
+    def GPUParams(self, GPUParams):
+        self._GPUParams = GPUParams
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        if params.get("GPUParams") is not None:
+            self._GPUParams = GPUParams()
+            self._GPUParams._deserialize(params.get("GPUParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GPUParams(AbstractModel):
+    """GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本，是否开启MIG以及是否开启Fabric
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Driver: GPU驱动版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Driver: str
+        :param _CUDA: CUDA版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CUDA: str
+        :param _CUDNN: CUDNN版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CUDNN: str
+        :param _MIGEnable: 是否启用MIG特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MIGEnable: bool
+        :param _Fabric: 是否启用Fabric特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fabric: bool
+        :param _CustomGPUDriver: 自定义驱动下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomGPUDriver: str
+        """
+        self._Driver = None
+        self._CUDA = None
+        self._CUDNN = None
+        self._MIGEnable = None
+        self._Fabric = None
+        self._CustomGPUDriver = None
+
+    @property
+    def Driver(self):
+        """GPU驱动版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Driver
+
+    @Driver.setter
+    def Driver(self, Driver):
+        self._Driver = Driver
+
+    @property
+    def CUDA(self):
+        """CUDA版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CUDA
+
+    @CUDA.setter
+    def CUDA(self, CUDA):
+        self._CUDA = CUDA
+
+    @property
+    def CUDNN(self):
+        """CUDNN版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CUDNN
+
+    @CUDNN.setter
+    def CUDNN(self, CUDNN):
+        self._CUDNN = CUDNN
+
+    @property
+    def MIGEnable(self):
+        """是否启用MIG特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._MIGEnable
+
+    @MIGEnable.setter
+    def MIGEnable(self, MIGEnable):
+        self._MIGEnable = MIGEnable
+
+    @property
+    def Fabric(self):
+        """是否启用Fabric特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Fabric
+
+    @Fabric.setter
+    def Fabric(self, Fabric):
+        self._Fabric = Fabric
+
+    @property
+    def CustomGPUDriver(self):
+        """自定义驱动下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomGPUDriver
+
+    @CustomGPUDriver.setter
+    def CustomGPUDriver(self, CustomGPUDriver):
+        self._CustomGPUDriver = CustomGPUDriver
+
+
+    def _deserialize(self, params):
+        self._Driver = params.get("Driver")
+        self._CUDA = params.get("CUDA")
+        self._CUDNN = params.get("CUDNN")
+        self._MIGEnable = params.get("MIGEnable")
+        self._Fabric = params.get("Fabric")
+        self._CustomGPUDriver = params.get("CustomGPUDriver")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HealthCheckPolicy(AbstractModel):
     """健康检测规则
 
@@ -6306,6 +6486,8 @@ class UpdateNativeNodePoolParam(AbstractModel):
         :type DataDisks: list of DataDisk
         :param _KeyIds: ssh公钥id数组
         :type KeyIds: list of str
+        :param _GPUConfigs: 节点池 GPU 配置
+        :type GPUConfigs: list of GPUConfig
         """
         self._Scaling = None
         self._SubnetIds = None
@@ -6326,6 +6508,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._Replicas = None
         self._DataDisks = None
         self._KeyIds = None
+        self._GPUConfigs = None
 
     @property
     def Scaling(self):
@@ -6539,6 +6722,17 @@ class UpdateNativeNodePoolParam(AbstractModel):
     def KeyIds(self, KeyIds):
         self._KeyIds = KeyIds
 
+    @property
+    def GPUConfigs(self):
+        """节点池 GPU 配置
+        :rtype: list of GPUConfig
+        """
+        return self._GPUConfigs
+
+    @GPUConfigs.setter
+    def GPUConfigs(self, GPUConfigs):
+        self._GPUConfigs = GPUConfigs
+
 
     def _deserialize(self, params):
         if params.get("Scaling") is not None:
@@ -6577,6 +6771,12 @@ class UpdateNativeNodePoolParam(AbstractModel):
                 obj._deserialize(item)
                 self._DataDisks.append(obj)
         self._KeyIds = params.get("KeyIds")
+        if params.get("GPUConfigs") is not None:
+            self._GPUConfigs = []
+            for item in params.get("GPUConfigs"):
+                obj = GPUConfig()
+                obj._deserialize(item)
+                self._GPUConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

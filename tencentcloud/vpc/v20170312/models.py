@@ -10024,6 +10024,10 @@ class CreateHaVipRequest(AbstractModel):
         :type CheckAssociate: bool
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
+        :param _HaVipAssociationSet: HaVip绑定的子机或网卡。最多支持10个实例。
+        :type HaVipAssociationSet: list of HaVipAssociation
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
         """
         self._VpcId = None
         self._HaVipName = None
@@ -10032,6 +10036,8 @@ class CreateHaVipRequest(AbstractModel):
         self._NetworkInterfaceId = None
         self._CheckAssociate = None
         self._Tags = None
+        self._HaVipAssociationSet = None
+        self._ClientToken = None
 
     @property
     def VpcId(self):
@@ -10110,6 +10116,28 @@ class CreateHaVipRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def HaVipAssociationSet(self):
+        """HaVip绑定的子机或网卡。最多支持10个实例。
+        :rtype: list of HaVipAssociation
+        """
+        return self._HaVipAssociationSet
+
+    @HaVipAssociationSet.setter
+    def HaVipAssociationSet(self, HaVipAssociationSet):
+        self._HaVipAssociationSet = HaVipAssociationSet
+
+    @property
+    def ClientToken(self):
+        """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -10124,6 +10152,13 @@ class CreateHaVipRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("HaVipAssociationSet") is not None:
+            self._HaVipAssociationSet = []
+            for item in params.get("HaVipAssociationSet"):
+                obj = HaVipAssociation()
+                obj._deserialize(item)
+                self._HaVipAssociationSet.append(obj)
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32447,6 +32482,120 @@ class DescribeTrafficPackagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTrafficQosPolicyRequest(AbstractModel):
+    """DescribeTrafficQosPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param _LocalRegion: 本端地域。
+        :type LocalRegion: str
+        :param _RemoteRegion: 远端地域。
+        :type RemoteRegion: str
+        """
+        self._CcnId = None
+        self._LocalRegion = None
+        self._RemoteRegion = None
+
+    @property
+    def CcnId(self):
+        """CCN实例ID。形如：ccn-f49l6u0z。
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def LocalRegion(self):
+        """本端地域。
+        :rtype: str
+        """
+        return self._LocalRegion
+
+    @LocalRegion.setter
+    def LocalRegion(self, LocalRegion):
+        self._LocalRegion = LocalRegion
+
+    @property
+    def RemoteRegion(self):
+        """远端地域。
+        :rtype: str
+        """
+        return self._RemoteRegion
+
+    @RemoteRegion.setter
+    def RemoteRegion(self, RemoteRegion):
+        self._RemoteRegion = RemoteRegion
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._LocalRegion = params.get("LocalRegion")
+        self._RemoteRegion = params.get("RemoteRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrafficQosPolicyResponse(AbstractModel):
+    """DescribeTrafficQosPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficQosPolicySet: 流量调度规则。
+        :type TrafficQosPolicySet: list of TrafficQosPolicySet
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TrafficQosPolicySet = None
+        self._RequestId = None
+
+    @property
+    def TrafficQosPolicySet(self):
+        """流量调度规则。
+        :rtype: list of TrafficQosPolicySet
+        """
+        return self._TrafficQosPolicySet
+
+    @TrafficQosPolicySet.setter
+    def TrafficQosPolicySet(self, TrafficQosPolicySet):
+        self._TrafficQosPolicySet = TrafficQosPolicySet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TrafficQosPolicySet") is not None:
+            self._TrafficQosPolicySet = []
+            for item in params.get("TrafficQosPolicySet"):
+                obj = TrafficQosPolicySet()
+                obj._deserialize(item)
+                self._TrafficQosPolicySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUsedIpAddressRequest(AbstractModel):
     """DescribeUsedIpAddress请求参数结构体
 
@@ -33910,7 +34059,6 @@ class DescribeVpcTaskResultResponse(AbstractModel):
         :param _Output: 异步任务执行输出。
         :type Output: str
         :param _Result: 异步任务详细结果。只用于特殊场景，如批量删除弹性网卡时查询成功的网卡列表和失败的列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of VpcTaskResultDetailInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33945,7 +34093,6 @@ class DescribeVpcTaskResultResponse(AbstractModel):
     @property
     def Result(self):
         """异步任务详细结果。只用于特殊场景，如批量删除弹性网卡时查询成功的网卡列表和失败的列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpcTaskResultDetailInfo
         """
         return self._Result
@@ -61272,6 +61419,129 @@ class TrafficPackage(AbstractModel):
                 obj._deserialize(item)
                 self._TagSet.append(obj)
         self._DeductType = params.get("DeductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrafficQosPolicySet(AbstractModel):
+    """流量调度规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
+        :param _QosId: qos id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QosId: int
+        :param _QosPolicyDescription: 描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QosPolicyDescription: str
+        :param _QosPolicyName: 名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QosPolicyName: str
+        :param _Bandwidth: 带宽。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bandwidth: int
+        :param _QosPolicyId: 流量调度策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QosPolicyId: str
+        """
+        self._CcnId = None
+        self._QosId = None
+        self._QosPolicyDescription = None
+        self._QosPolicyName = None
+        self._Bandwidth = None
+        self._QosPolicyId = None
+
+    @property
+    def CcnId(self):
+        """CCN实例ID。形如：ccn-f49l6u0z。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def QosId(self):
+        """qos id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._QosId
+
+    @QosId.setter
+    def QosId(self, QosId):
+        self._QosId = QosId
+
+    @property
+    def QosPolicyDescription(self):
+        """描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QosPolicyDescription
+
+    @QosPolicyDescription.setter
+    def QosPolicyDescription(self, QosPolicyDescription):
+        self._QosPolicyDescription = QosPolicyDescription
+
+    @property
+    def QosPolicyName(self):
+        """名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QosPolicyName
+
+    @QosPolicyName.setter
+    def QosPolicyName(self, QosPolicyName):
+        self._QosPolicyName = QosPolicyName
+
+    @property
+    def Bandwidth(self):
+        """带宽。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def QosPolicyId(self):
+        """流量调度策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QosPolicyId
+
+    @QosPolicyId.setter
+    def QosPolicyId(self, QosPolicyId):
+        self._QosPolicyId = QosPolicyId
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._QosId = params.get("QosId")
+        self._QosPolicyDescription = params.get("QosPolicyDescription")
+        self._QosPolicyName = params.get("QosPolicyName")
+        self._Bandwidth = params.get("Bandwidth")
+        self._QosPolicyId = params.get("QosPolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

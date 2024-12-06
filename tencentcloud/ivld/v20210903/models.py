@@ -373,9 +373,13 @@ class AudioData(AbstractModel):
         :type AudioInfoSet: list of AudioInfo
         :param _TextTagSet: 音频识别标签数据
         :type TextTagSet: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
+        :param _WebMediaURL: 音频下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebMediaURL: str
         """
         self._AudioInfoSet = None
         self._TextTagSet = None
+        self._WebMediaURL = None
 
     @property
     def AudioInfoSet(self):
@@ -400,6 +404,18 @@ class AudioData(AbstractModel):
     def TextTagSet(self, TextTagSet):
         self._TextTagSet = TextTagSet
 
+    @property
+    def WebMediaURL(self):
+        """音频下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WebMediaURL
+
+    @WebMediaURL.setter
+    def WebMediaURL(self, WebMediaURL):
+        self._WebMediaURL = WebMediaURL
+
 
     def _deserialize(self, params):
         if params.get("AudioInfoSet") is not None:
@@ -411,6 +427,7 @@ class AudioData(AbstractModel):
         if params.get("TextTagSet") is not None:
             self._TextTagSet = MultiLevelTag()
             self._TextTagSet._deserialize(params.get("TextTagSet"))
+        self._WebMediaURL = params.get("WebMediaURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -527,6 +544,12 @@ class AudioMetadata(AbstractModel):
         :param _Format: 媒资音频文件格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
+        :param _BitDepth: Audio Bit Depth: 16/24 bit .etc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BitDepth: int
+        :param _ShortFormat: 封装格式短后缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShortFormat: str
         """
         self._FileSize = None
         self._MD5 = None
@@ -534,6 +557,8 @@ class AudioMetadata(AbstractModel):
         self._SampleRate = None
         self._BitRate = None
         self._Format = None
+        self._BitDepth = None
+        self._ShortFormat = None
 
     @property
     def FileSize(self):
@@ -607,6 +632,30 @@ class AudioMetadata(AbstractModel):
     def Format(self, Format):
         self._Format = Format
 
+    @property
+    def BitDepth(self):
+        """Audio Bit Depth: 16/24 bit .etc
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BitDepth
+
+    @BitDepth.setter
+    def BitDepth(self, BitDepth):
+        self._BitDepth = BitDepth
+
+    @property
+    def ShortFormat(self):
+        """封装格式短后缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShortFormat
+
+    @ShortFormat.setter
+    def ShortFormat(self, ShortFormat):
+        self._ShortFormat = ShortFormat
+
 
     def _deserialize(self, params):
         self._FileSize = params.get("FileSize")
@@ -615,6 +664,8 @@ class AudioMetadata(AbstractModel):
         self._SampleRate = params.get("SampleRate")
         self._BitRate = params.get("BitRate")
         self._Format = params.get("Format")
+        self._BitDepth = params.get("BitDepth")
+        self._ShortFormat = params.get("ShortFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1040,7 +1091,7 @@ class CreateTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MediaId: 媒资文件ID，最长32B
+        :param _MediaId: 媒资文件ID
         :type MediaId: str
         :param _MediaPreknownInfo: 媒资素材先验知识，相关限制参考MediaPreknownInfo
         :type MediaPreknownInfo: :class:`tencentcloud.ivld.v20210903.models.MediaPreknownInfo`
@@ -1062,7 +1113,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def MediaId(self):
-        """媒资文件ID，最长32B
+        """媒资文件ID
         :rtype: str
         """
         return self._MediaId
@@ -1810,7 +1861,7 @@ class DeleteCustomCategoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CategoryId: 123
+        :param _CategoryId: 自定义分类ID
         :type CategoryId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1820,7 +1871,7 @@ class DeleteCustomCategoryResponse(AbstractModel):
 
     @property
     def CategoryId(self):
-        """123
+        """自定义分类ID
         :rtype: str
         """
         return self._CategoryId
@@ -2533,14 +2584,14 @@ class DescribeMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MediaId: 导入媒资返回的媒资ID，最长32B
+        :param _MediaId: 导入媒资返回的媒资ID
         :type MediaId: str
         """
         self._MediaId = None
 
     @property
     def MediaId(self):
-        """导入媒资返回的媒资ID，最长32B
+        """导入媒资返回的媒资ID
         :rtype: str
         """
         return self._MediaId
@@ -2925,14 +2976,14 @@ class DescribeTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: CreateTask返回的任务ID，最长32B
+        :param _TaskId: CreateTask返回的任务ID
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """CreateTask返回的任务ID，最长32B
+        """CreateTask返回的任务ID
         :rtype: str
         """
         return self._TaskId
@@ -3801,11 +3852,11 @@ class ImportMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _URL: 待分析视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+        :param _URL: 待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
         :type URL: str
-        :param _MD5: 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32B
+        :param _MD5: 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
         :type MD5: str
-        :param _Name: 待分析视频的名称，指定后可支持筛选，最多64B
+        :param _Name: 待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
         :type Name: str
         :param _WriteBackCosPath: 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
 推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
@@ -3828,7 +3879,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def URL(self):
-        """待分析视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+        """待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
         :rtype: str
         """
         return self._URL
@@ -3839,7 +3890,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def MD5(self):
-        """待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32B
+        """待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
         :rtype: str
         """
         return self._MD5
@@ -3850,7 +3901,7 @@ class ImportMediaRequest(AbstractModel):
 
     @property
     def Name(self):
-        """待分析视频的名称，指定后可支持筛选，最多64B
+        """待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
         :rtype: str
         """
         return self._Name
@@ -4244,7 +4295,6 @@ class L3Tag(AbstractModel):
 
 class MediaFilter(AbstractModel):
     """媒资过滤条件
-
 
     """
 
@@ -5201,12 +5251,16 @@ class PersonInfo(AbstractModel):
         :param _AppearRect: 人脸在图片中的位置，仅在图片标签任务有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppearRect: :class:`tencentcloud.ivld.v20210903.models.Rectf`
+        :param _PersonId: 人物的personId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersonId: str
         """
         self._Name = None
         self._Job = None
         self._FirstAppear = None
         self._AppearInfo = None
         self._AppearRect = None
+        self._PersonId = None
 
     @property
     def Name(self):
@@ -5264,6 +5318,18 @@ class PersonInfo(AbstractModel):
     def AppearRect(self, AppearRect):
         self._AppearRect = AppearRect
 
+    @property
+    def PersonId(self):
+        """人物的personId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -5275,6 +5341,7 @@ class PersonInfo(AbstractModel):
         if params.get("AppearRect") is not None:
             self._AppearRect = Rectf()
             self._AppearRect._deserialize(params.get("AppearRect"))
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6532,10 +6599,14 @@ class TextData(AbstractModel):
         :param _TextTagSet: 文本标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextTagSet: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
+        :param _WebMediaURL: 文档下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebMediaURL: str
         """
         self._Content = None
         self._Summary = None
         self._TextTagSet = None
+        self._WebMediaURL = None
 
     @property
     def Content(self):
@@ -6573,6 +6644,18 @@ class TextData(AbstractModel):
     def TextTagSet(self, TextTagSet):
         self._TextTagSet = TextTagSet
 
+    @property
+    def WebMediaURL(self):
+        """文档下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WebMediaURL
+
+    @WebMediaURL.setter
+    def WebMediaURL(self, WebMediaURL):
+        self._WebMediaURL = WebMediaURL
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -6580,6 +6663,7 @@ class TextData(AbstractModel):
         if params.get("TextTagSet") is not None:
             self._TextTagSet = MultiLevelTag()
             self._TextTagSet._deserialize(params.get("TextTagSet"))
+        self._WebMediaURL = params.get("WebMediaURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6690,11 +6774,15 @@ class TextMetadata(AbstractModel):
         :param _Format: 媒资文本文件格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
+        :param _ShortFormat: 封装格式短后缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShortFormat: str
         """
         self._FileSize = None
         self._MD5 = None
         self._Length = None
         self._Format = None
+        self._ShortFormat = None
 
     @property
     def FileSize(self):
@@ -6744,12 +6832,25 @@ class TextMetadata(AbstractModel):
     def Format(self, Format):
         self._Format = Format
 
+    @property
+    def ShortFormat(self):
+        """封装格式短后缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShortFormat
+
+    @ShortFormat.setter
+    def ShortFormat(self, ShortFormat):
+        self._ShortFormat = ShortFormat
+
 
     def _deserialize(self, params):
         self._FileSize = params.get("FileSize")
         self._MD5 = params.get("MD5")
         self._Length = params.get("Length")
         self._Format = params.get("Format")
+        self._ShortFormat = params.get("ShortFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6811,9 +6912,13 @@ class UnknownPerson(AbstractModel):
         :param _PutLibraryAllowed: 未知人物是否可以入库(只有当未知人物人脸小图质量分符合要求时才可入库)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PutLibraryAllowed: bool
+        :param _AuditClass: 内容审核结果: 0-正常;1-涉政;其他待确定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditClass: int
         """
         self._VideoAppearSet = None
         self._PutLibraryAllowed = None
+        self._AuditClass = None
 
     @property
     def VideoAppearSet(self):
@@ -6839,6 +6944,18 @@ class UnknownPerson(AbstractModel):
     def PutLibraryAllowed(self, PutLibraryAllowed):
         self._PutLibraryAllowed = PutLibraryAllowed
 
+    @property
+    def AuditClass(self):
+        """内容审核结果: 0-正常;1-涉政;其他待确定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AuditClass
+
+    @AuditClass.setter
+    def AuditClass(self, AuditClass):
+        self._AuditClass = AuditClass
+
 
     def _deserialize(self, params):
         if params.get("VideoAppearSet") is not None:
@@ -6848,6 +6965,7 @@ class UnknownPerson(AbstractModel):
                 obj._deserialize(item)
                 self._VideoAppearSet.append(obj)
         self._PutLibraryAllowed = params.get("PutLibraryAllowed")
+        self._AuditClass = params.get("AuditClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

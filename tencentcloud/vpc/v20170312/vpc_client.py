@@ -5233,6 +5233,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTrafficQosPolicy(self, request):
+        """查询流量调度规则
+
+        :param request: Request instance for DescribeTrafficQosPolicy.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTrafficQosPolicyRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeTrafficQosPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrafficQosPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTrafficQosPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUsedIpAddress(self, request):
         """本接口(DescribeUsedIpAddress)用于查询Subnet或者Vpc内的ip的使用情况，
         如ip被占用，返回占用ip的资源类别与id；如未被占用，返回空值

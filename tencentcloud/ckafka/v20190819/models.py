@@ -198,13 +198,13 @@ class AclRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleName: Acl规则名称
+        :param _RuleName: ACL规则名
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _PatternType: 匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
+        :param _PatternType: ACL规则匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
 注意：此字段可能返回 null，表示取不到有效值。
         :type PatternType: str
         :param _Pattern: 表示前缀匹配的前缀的值
@@ -254,7 +254,7 @@ class AclRule(AbstractModel):
 
     @property
     def RuleName(self):
-        """Acl规则名称
+        """ACL规则名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -266,7 +266,7 @@ class AclRule(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -278,7 +278,7 @@ class AclRule(AbstractModel):
 
     @property
     def PatternType(self):
-        """匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
+        """ACL规则匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -777,7 +777,7 @@ class AuthorizeTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _User: 用户
         :type User: str
@@ -790,7 +790,7 @@ class AuthorizeTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -977,7 +977,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _ResourceType: Acl资源类型，(2:TOPIC）
         :type ResourceType: int
@@ -993,7 +993,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1108,7 +1108,7 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
         r"""
         :param _GroupName: 消费分组名称
         :type GroupName: str
-        :param _InstanceId: 实例名称
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Partitions: partition信息
         :type Partitions: list of Partitions
@@ -1133,7 +1133,7 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例名称
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1237,7 +1237,7 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Topic: 主题属性列表 (同一个批次最多支持10个)
         :type Topic: list of BatchModifyTopicInfo
@@ -1247,7 +1247,7 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1341,7 +1341,7 @@ class BatchModifyTopicInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: topic名称
+        :param _TopicName: 主题名
         :type TopicName: str
         :param _PartitionNum: 分区数
         :type PartitionNum: int
@@ -1363,6 +1363,8 @@ class BatchModifyTopicInfo(AbstractModel):
         :type SegmentMs: int
         :param _MaxMessageBytes: 批次的消息大小，范围1 KB到12 MB
         :type MaxMessageBytes: int
+        :param _LogMsgTimestampType: 消息保存的时间类型：CreateTime/LogAppendTime
+        :type LogMsgTimestampType: str
         """
         self._TopicName = None
         self._PartitionNum = None
@@ -1375,10 +1377,11 @@ class BatchModifyTopicInfo(AbstractModel):
         self._RetentionBytes = None
         self._SegmentMs = None
         self._MaxMessageBytes = None
+        self._LogMsgTimestampType = None
 
     @property
     def TopicName(self):
-        """topic名称
+        """主题名
         :rtype: str
         """
         return self._TopicName
@@ -1497,6 +1500,17 @@ class BatchModifyTopicInfo(AbstractModel):
     def MaxMessageBytes(self, MaxMessageBytes):
         self._MaxMessageBytes = MaxMessageBytes
 
+    @property
+    def LogMsgTimestampType(self):
+        """消息保存的时间类型：CreateTime/LogAppendTime
+        :rtype: str
+        """
+        return self._LogMsgTimestampType
+
+    @LogMsgTimestampType.setter
+    def LogMsgTimestampType(self, LogMsgTimestampType):
+        self._LogMsgTimestampType = LogMsgTimestampType
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -1510,6 +1524,7 @@ class BatchModifyTopicInfo(AbstractModel):
         self._RetentionBytes = params.get("RetentionBytes")
         self._SegmentMs = params.get("SegmentMs")
         self._MaxMessageBytes = params.get("MaxMessageBytes")
+        self._LogMsgTimestampType = params.get("LogMsgTimestampType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1527,16 +1542,16 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _TopicName: topic名称
+        :param _TopicName: 主题名
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
-        :param _ReturnCode: 状态码
+        :param _ReturnCode: 操作返回码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnCode: str
-        :param _Message: 状态消息
+        :param _Message: 操作返回信息
         :type Message: str
         """
         self._InstanceId = None
@@ -1546,7 +1561,7 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1558,7 +1573,7 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     @property
     def TopicName(self):
-        """topic名称
+        """主题名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1570,7 +1585,7 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """状态码
+        """操作返回码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1582,7 +1597,7 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     @property
     def Message(self):
-        """状态消息
+        """操作返回信息
         :rtype: str
         """
         return self._Message
@@ -1617,7 +1632,7 @@ class BrokerTopicData(AbstractModel):
         :param _TopicName: 主题名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
-        :param _TopicId: 主题ID
+        :param _TopicId: 主题Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _DataSize: 主题占用Broker 容量大小
@@ -1642,7 +1657,7 @@ class BrokerTopicData(AbstractModel):
 
     @property
     def TopicId(self):
-        """主题ID
+        """主题Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1686,10 +1701,10 @@ class BrokerTopicFlowData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: Topic 名称
+        :param _TopicName: 主题名
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
-        :param _TopicId: Topic Id
+        :param _TopicId: 主题Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _TopicTraffic: Topic 流量(MB)
@@ -1702,7 +1717,7 @@ class BrokerTopicFlowData(AbstractModel):
 
     @property
     def TopicName(self):
-        """Topic 名称
+        """主题名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1714,7 +1729,7 @@ class BrokerTopicFlowData(AbstractModel):
 
     @property
     def TopicId(self):
-        """Topic Id
+        """主题Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1758,7 +1773,7 @@ class CancelAuthorizationTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _User: 用户
         :type User: str
@@ -1771,7 +1786,7 @@ class CancelAuthorizationTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -1824,7 +1839,7 @@ class CancelAuthorizationTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 0 成功
+        :param _Result: 0 成功 非0 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1835,7 +1850,7 @@ class CancelAuthorizationTokenResponse(AbstractModel):
 
     @property
     def Result(self):
-        """0 成功
+        """0 成功 非0 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3017,6 +3032,9 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
         :param _RetentionBytes: 消息保留文件大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionBytes: int
+        :param _LogMsgTimestampType: 消息保存的时间类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogMsgTimestampType: str
         """
         self._Retention = None
         self._MinInsyncReplicas = None
@@ -3026,6 +3044,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
         self._SegmentBytes = None
         self._MaxMessageBytes = None
         self._RetentionBytes = None
+        self._LogMsgTimestampType = None
 
     @property
     def Retention(self):
@@ -3124,6 +3143,18 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     def RetentionBytes(self, RetentionBytes):
         self._RetentionBytes = RetentionBytes
 
+    @property
+    def LogMsgTimestampType(self):
+        """消息保存的时间类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogMsgTimestampType
+
+    @LogMsgTimestampType.setter
+    def LogMsgTimestampType(self, LogMsgTimestampType):
+        self._LogMsgTimestampType = LogMsgTimestampType
+
 
     def _deserialize(self, params):
         self._Retention = params.get("Retention")
@@ -3134,6 +3165,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
         self._SegmentBytes = params.get("SegmentBytes")
         self._MaxMessageBytes = params.get("MaxMessageBytes")
         self._RetentionBytes = params.get("RetentionBytes")
+        self._LogMsgTimestampType = params.get("LogMsgTimestampType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3189,11 +3221,11 @@ class Connection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: Topic名称
+        :param _TopicName: 主题名
         :type TopicName: str
         :param _GroupId: 消费组ID
         :type GroupId: str
-        :param _TopicId: Topic的Id
+        :param _TopicId: 主题Id
         :type TopicId: str
         """
         self._TopicName = None
@@ -3202,7 +3234,7 @@ class Connection(AbstractModel):
 
     @property
     def TopicName(self):
-        """Topic名称
+        """主题名
         :rtype: str
         """
         return self._TopicName
@@ -3224,7 +3256,7 @@ class Connection(AbstractModel):
 
     @property
     def TopicId(self):
-        """Topic的Id
+        """主题Id
         :rtype: str
         """
         return self._TopicId
@@ -3884,7 +3916,7 @@ class CreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id信息
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _ResourceType: Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
         :type ResourceType: int
@@ -3912,7 +3944,7 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id信息
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -4070,11 +4102,11 @@ class CreateAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id信息
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _ResourceType: Acl资源类型,目前只支持Topic,枚举值列表：Topic
         :type ResourceType: str
-        :param _PatternType: 匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
+        :param _PatternType: ACL规则匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
         :type PatternType: str
         :param _RuleName: 规则名称
         :type RuleName: str
@@ -4098,7 +4130,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id信息
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -4120,7 +4152,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def PatternType(self):
-        """匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
+        """ACL规则匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
         :rtype: str
         """
         return self._PatternType
@@ -4267,11 +4299,11 @@ class CreateCdcClusterRequest(AbstractModel):
         :type CdcSubnetId: str
         :param _ZoneId: 所在可用区ID
         :type ZoneId: int
-        :param _Bandwidth: cdc集群的总带宽
+        :param _Bandwidth: 实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
         :type Bandwidth: int
         :param _DiskSize: cdc集群的总磁盘
         :type DiskSize: int
-        :param _DiskType: 数据盘类型
+        :param _DiskType: ckafka集群实例磁盘类型
         :type DiskType: str
         :param _SystemDiskType: 系统盘类型
         :type SystemDiskType: str
@@ -4331,7 +4363,7 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """cdc集群的总带宽
+        """实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
         :rtype: int
         """
         return self._Bandwidth
@@ -4353,7 +4385,7 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        """数据盘类型
+        """ckafka集群实例磁盘类型
         :rtype: str
         """
         return self._DiskType
@@ -4743,13 +4775,13 @@ class CreateConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _GroupName: group名称
+        :param _GroupName: 消费分组名称
         :type GroupName: str
-        :param _TopicName: topic名称，TopicName、TopicNameList 需要显示指定一个存在的topic名称
+        :param _TopicName: 主题名，TopicName、TopicNameList 需要显示指定一个存在的主题名
         :type TopicName: str
-        :param _TopicNameList: topic名称数组
+        :param _TopicNameList: 主题名列表
         :type TopicNameList: list of str
         """
         self._InstanceId = None
@@ -4759,7 +4791,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -4770,7 +4802,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """group名称
+        """消费分组名称
         :rtype: str
         """
         return self._GroupName
@@ -4781,7 +4813,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """topic名称，TopicName、TopicNameList 需要显示指定一个存在的topic名称
+        """主题名，TopicName、TopicNameList 需要显示指定一个存在的主题名
         :rtype: str
         """
         return self._TopicName
@@ -4792,7 +4824,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicNameList(self):
-        """topic名称数组
+        """主题名列表
         :rtype: list of str
         """
         return self._TopicNameList
@@ -4824,7 +4856,7 @@ class CreateConsumerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 创建group描述
+        :param _Result: 创建消费者组返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4834,7 +4866,7 @@ class CreateConsumerResponse(AbstractModel):
 
     @property
     def Result(self):
-        """创建group描述
+        """创建消费者组返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -4885,7 +4917,7 @@ class CreateDatahubTaskRequest(AbstractModel):
         :type SchemaId: str
         :param _TransformsParam: 数据处理规则
         :type TransformsParam: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务Id
         :type TaskId: str
         :param _Tags: 标签列表
         :type Tags: list of Tag
@@ -4991,7 +5023,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务Id
         :rtype: str
         """
         return self._TaskId
@@ -5108,7 +5140,7 @@ class CreateDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 任务id
+        :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5118,7 +5150,7 @@ class CreateDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """任务id
+        """返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
         """
         return self._Result
@@ -6420,7 +6452,7 @@ class CreatePartitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _TopicName: 主题名称
         :type TopicName: str
@@ -6433,7 +6465,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -6569,7 +6601,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type PublicNetworkMonthly: int
         :param _Tags: 标签
         :type Tags: list of Tag
-        :param _ElasticBandwidthSwitch: 弹性带宽开关 0不开启  1开启（0默认
+        :param _ElasticBandwidthSwitch: 弹性带宽开关 0不开启  1开启（0默认)
         :type ElasticBandwidthSwitch: int
         """
         self._InstanceName = None
@@ -6804,7 +6836,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ElasticBandwidthSwitch(self):
-        """弹性带宽开关 0不开启  1开启（0默认
+        """弹性带宽开关 0不开启  1开启（0默认)
         :rtype: int
         """
         return self._ElasticBandwidthSwitch
@@ -6902,11 +6934,11 @@ class CreatePrometheusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _VpcId: vpc地址
+        :param _VpcId: 私有网络Id
         :type VpcId: str
-        :param _SubnetId: 子网地址
+        :param _SubnetId: 子网Id
         :type SubnetId: str
         """
         self._InstanceId = None
@@ -6915,7 +6947,7 @@ class CreatePrometheusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -6926,7 +6958,7 @@ class CreatePrometheusRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc地址
+        """私有网络Id
         :rtype: str
         """
         return self._VpcId
@@ -6937,7 +6969,7 @@ class CreatePrometheusRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网地址
+        """子网Id
         :rtype: str
         """
         return self._SubnetId
@@ -7214,7 +7246,7 @@ class CreateTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _User: 用户名
         :type User: str
@@ -7224,7 +7256,7 @@ class CreateTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -7310,7 +7342,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _TopicName: 主题名称
         :type TopicName: str
@@ -7323,7 +7355,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -7783,7 +7815,7 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Name: 用户名称
         :type Name: str
@@ -7796,7 +7828,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -7849,7 +7881,7 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回的结果
+        :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7859,7 +7891,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回的结果
+        """返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -8592,7 +8624,7 @@ class DatahubTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务Id
         :type TaskId: str
         :param _TaskName: 任务名称
         :type TaskName: str
@@ -8640,7 +8672,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务Id
         :rtype: str
         """
         return self._TaskId
@@ -8939,9 +8971,9 @@ class DatahubTopicResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: Topic名称
+        :param _TopicName: 主题名称
         :type TopicName: str
-        :param _TopicId: TopicId
+        :param _TopicId: 主题Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         """
@@ -8950,7 +8982,7 @@ class DatahubTopicResp(AbstractModel):
 
     @property
     def TopicName(self):
-        """Topic名称
+        """主题名称
         :rtype: str
         """
         return self._TopicName
@@ -8961,7 +8993,7 @@ class DatahubTopicResp(AbstractModel):
 
     @property
     def TopicId(self):
-        """TopicId
+        """主题Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9117,7 +9149,7 @@ class DeleteAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id信息
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _ResourceType: Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
         :type ResourceType: int
@@ -9142,7 +9174,7 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id信息
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -9499,7 +9531,7 @@ class DeleteDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 任务id
+        :param _Result: 操作结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9510,7 +9542,7 @@ class DeleteDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """任务id
+        """操作结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         """
@@ -9627,7 +9659,7 @@ class DeleteGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Group: 消费分组
         :type Group: str
@@ -9637,7 +9669,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -9723,14 +9755,14 @@ class DeleteInstancePostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -9759,7 +9791,7 @@ class DeleteInstancePostResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回的结果集
+        :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceDeleteResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9769,7 +9801,7 @@ class DeleteInstancePostResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回的结果集
+        """返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceDeleteResponse`
         """
         return self._Result
@@ -9804,14 +9836,14 @@ class DeleteInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -9885,13 +9917,13 @@ class DeleteRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例唯一id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _RouteId: 路由id
         :type RouteId: int
         :param _CallerAppid: 调用方appId
         :type CallerAppid: int
-        :param _DeleteRouteTime: 删除路由时间
+        :param _DeleteRouteTime: 设置定时删除路由时间,若DeleteRouteTime < now ,设置时间小于当前接口提交时间则立即执行;DeleteRouteTime > now,设置时间大于当前接口提交时间,则按照设置的时间,定时执行删除;  该参数设置提交后,无法撤销!!!
         :type DeleteRouteTime: str
         """
         self._InstanceId = None
@@ -9901,7 +9933,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例唯一id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -9934,7 +9966,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def DeleteRouteTime(self):
-        """删除路由时间
+        """设置定时删除路由时间,若DeleteRouteTime < now ,设置时间小于当前接口提交时间则立即执行;DeleteRouteTime > now,设置时间大于当前接口提交时间,则按照设置的时间,定时执行删除;  该参数设置提交后,无法撤销!!!
         :rtype: str
         """
         return self._DeleteRouteTime
@@ -10011,9 +10043,9 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _DelayTime: 修改时间
+        :param _DelayTime: 修改删除路由的定时时间
         :type DelayTime: str
         """
         self._InstanceId = None
@@ -10021,7 +10053,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -10032,7 +10064,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     @property
     def DelayTime(self):
-        """修改时间
+        """修改删除路由的定时时间
         :rtype: str
         """
         return self._DelayTime
@@ -10090,9 +10122,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名
         :type TopicName: str
         :param _IpWhiteList: ip白名单列表
         :type IpWhiteList: list of str
@@ -10103,7 +10135,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -10114,7 +10146,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名
         :rtype: str
         """
         return self._TopicName
@@ -10297,7 +10329,7 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Name: 用户名称
         :type Name: str
@@ -10307,7 +10339,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -10393,7 +10425,7 @@ class DescribeACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _ResourceType: Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
         :type ResourceType: int
@@ -10415,7 +10447,7 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -10549,7 +10581,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _RuleName: ACL规则名
         :type RuleName: str
@@ -10565,7 +10597,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -10771,14 +10803,14 @@ class DescribeCkafkaZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CdcId: cdc专业集群业务参数
+        :param _CdcId: cdc集群Id
         :type CdcId: str
         """
         self._CdcId = None
 
     @property
     def CdcId(self):
-        """cdc专业集群业务参数
+        """cdc集群Id
         :rtype: str
         """
         return self._CdcId
@@ -12044,7 +12076,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka实例id。
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _GroupName: 可选，用户需要查询的group名称。
         :type GroupName: str
@@ -12063,7 +12095,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka实例id。
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -12922,14 +12954,14 @@ class DescribeDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 名称
+        :param _Name: 弹性topic名称
         :type Name: str
         """
         self._Name = None
 
     @property
     def Name(self):
-        """名称
+        """弹性topic名称
         :rtype: str
         """
         return self._Name
@@ -13178,7 +13210,7 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SearchWord: 查询值
+        :param _SearchWord: 搜索词
         :type SearchWord: str
         :param _Offset: 本次查询的偏移位置，默认为0
         :type Offset: int
@@ -13191,7 +13223,7 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """查询值
+        """搜索词
         :rtype: str
         """
         return self._SearchWord
@@ -13349,7 +13381,7 @@ class DescribeGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Group: groupId
+        :param _Group: 消费分组名称
         :type Group: str
         :param _Protocol: 该 group 使用的协议。
         :type Protocol: str
@@ -13359,7 +13391,7 @@ class DescribeGroup(AbstractModel):
 
     @property
     def Group(self):
-        """groupId
+        """消费分组名称
         :rtype: str
         """
         return self._Group
@@ -13400,9 +13432,9 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: （过滤条件）按照实例 ID 过滤。
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _GroupList: Kafka 消费分组，Consumer-group，这里是数组形式，示例：["xxx","yyy"]
+        :param _GroupList: Kafka 消费分组列表
         :type GroupList: list of str
         """
         self._InstanceId = None
@@ -13410,7 +13442,7 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """（过滤条件）按照实例 ID 过滤。
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -13421,7 +13453,7 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def GroupList(self):
-        """Kafka 消费分组，Consumer-group，这里是数组形式，示例：["xxx","yyy"]
+        """Kafka 消费分组列表
         :rtype: list of str
         """
         return self._GroupList
@@ -13501,7 +13533,7 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: （过滤条件）按照实例 ID 过滤
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Group: Kafka 消费分组
         :type Group: str
@@ -13523,7 +13555,7 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """（过滤条件）按照实例 ID 过滤
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -13612,7 +13644,7 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回的结果对象
+        :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13622,7 +13654,7 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回的结果对象
+        """返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
         """
         return self._Result
@@ -13657,7 +13689,7 @@ class DescribeGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _SearchWord: 搜索关键字
         :type SearchWord: str
@@ -13665,15 +13697,18 @@ class DescribeGroupRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 最大返回数量
         :type Limit: int
+        :param _Filters: 仅支持 GroupState 筛选,   支持的筛选状态有 Empty/Stable  注意：该参数只能在2.8/3.2 版本生效
+        :type Filters: list of Filter
         """
         self._InstanceId = None
         self._SearchWord = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -13715,12 +13750,29 @@ class DescribeGroupRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        """仅支持 GroupState 筛选,   支持的筛选状态有 Empty/Stable  注意：该参数只能在2.8/3.2 版本生效
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SearchWord = params.get("SearchWord")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13738,7 +13790,7 @@ class DescribeGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果集列表
+        :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13748,7 +13800,7 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回结果集列表
+        """返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupResponse`
         """
         return self._Result
@@ -13783,14 +13835,14 @@ class DescribeInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -14261,14 +14313,14 @@ class DescribePrometheusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """ckafka实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -14476,9 +14528,9 @@ class DescribeRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例唯一id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _RouteId: 路由id
+        :param _RouteId: 路由Id
         :type RouteId: int
         """
         self._InstanceId = None
@@ -14486,7 +14538,7 @@ class DescribeRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例唯一id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -14497,7 +14549,7 @@ class DescribeRouteRequest(AbstractModel):
 
     @property
     def RouteId(self):
-        """路由id
+        """路由Id
         :rtype: int
         """
         return self._RouteId
@@ -14572,14 +14624,14 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 任务唯一标记
+        :param _FlowId: 流程Id
         :type FlowId: int
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        """任务唯一标记
+        """流程Id
         :rtype: int
         """
         return self._FlowId
@@ -14653,7 +14705,7 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _TopicName: 主题名称
         :type TopicName: str
@@ -14663,7 +14715,7 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -14749,7 +14801,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _SearchWord: （过滤条件）按照topicName过滤，支持模糊查询
         :type SearchWord: str
@@ -14759,16 +14811,25 @@ class DescribeTopicDetailRequest(AbstractModel):
         :type Limit: int
         :param _AclRuleName: Acl预设策略名称
         :type AclRuleName: str
+        :param _OrderBy: 根据特定的属性排序(目前支持PartitionNum/CreateTime)
+        :type OrderBy: str
+        :param _OrderType: 0-顺序、1-倒序
+        :type OrderType: int
+        :param _Filters: 目前支持 ReplicaNum （副本数）筛选
+        :type Filters: list of Filter
         """
         self._InstanceId = None
         self._SearchWord = None
         self._Offset = None
         self._Limit = None
         self._AclRuleName = None
+        self._OrderBy = None
+        self._OrderType = None
+        self._Filters = None
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -14821,6 +14882,39 @@ class DescribeTopicDetailRequest(AbstractModel):
     def AclRuleName(self, AclRuleName):
         self._AclRuleName = AclRuleName
 
+    @property
+    def OrderBy(self):
+        """根据特定的属性排序(目前支持PartitionNum/CreateTime)
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderType(self):
+        """0-顺序、1-倒序
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def Filters(self):
+        """目前支持 ReplicaNum （副本数）筛选
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14828,6 +14922,14 @@ class DescribeTopicDetailRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._AclRuleName = params.get("AclRuleName")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderType = params.get("OrderType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14890,9 +14992,9 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _RankingType: 排行类别(PRO-Topic生产流量/CON-Topic消费流量)
+        :param _RankingType: 排行类别，PRO：Topic生产流量；CON：Topic消费流量
         :type RankingType: str
         :param _BeginDate: 排行起始日期
         :type BeginDate: str
@@ -14909,7 +15011,7 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -14920,7 +15022,7 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     @property
     def RankingType(self):
-        """排行类别(PRO-Topic生产流量/CON-Topic消费流量)
+        """排行类别，PRO：Topic生产流量；CON：Topic消费流量
         :rtype: str
         """
         return self._RankingType
@@ -14986,7 +15088,7 @@ class DescribeTopicFlowRankingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 流量排行
+        :param _Result: 流量排行返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicFlowRankingResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14996,7 +15098,7 @@ class DescribeTopicFlowRankingResponse(AbstractModel):
 
     @property
     def Result(self):
-        """流量排行
+        """流量排行返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicFlowRankingResult`
         """
         return self._Result
@@ -15031,9 +15133,9 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _TopicName: topic名称
+        :param _TopicName: 主题名
         :type TopicName: str
         """
         self._InstanceId = None
@@ -15041,7 +15143,7 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -15052,7 +15154,7 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """topic名称
+        """主题名
         :rtype: str
         """
         return self._TopicName
@@ -15130,7 +15232,7 @@ class DescribeTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _SearchWord: 过滤条件，按照 topicName 过滤，支持模糊查询
         :type SearchWord: str
@@ -15149,7 +15251,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -15273,9 +15375,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名
         :type TopicName: str
         :param _Offset: 分页时的起始位置
         :type Offset: int
@@ -15289,7 +15391,7 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -15300,7 +15402,7 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名
         :rtype: str
         """
         return self._TopicName
@@ -15540,13 +15642,13 @@ class DescribeUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _SearchWord: 按照名称过滤
         :type SearchWord: str
-        :param _Offset: 偏移
+        :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 本次返回个数
+        :param _Limit: 返回数量
         :type Limit: int
         """
         self._InstanceId = None
@@ -15556,7 +15658,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -15578,7 +15680,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移
+        """偏移量
         :rtype: int
         """
         return self._Offset
@@ -15589,7 +15691,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """本次返回个数
+        """返回数量
         :rtype: int
         """
         return self._Limit
@@ -15621,7 +15723,7 @@ class DescribeUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果列表
+        :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.UserResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15631,7 +15733,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回结果列表
+        """返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.UserResponse`
         """
         return self._Result
@@ -17035,7 +17137,7 @@ class EsParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Resource: 实例资源
+        :param _Resource: Es实例资源Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Port: Es的连接port
@@ -17119,7 +17221,7 @@ class EsParam(AbstractModel):
 
     @property
     def Resource(self):
-        """实例资源
+        """Es实例资源Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17460,7 +17562,7 @@ class EventBusParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 资源类型。EB_COS/EB_ES/EB_CLS
+        :param _Type: 资源类型。COS/ES/CLS
         :type Type: str
         :param _SelfBuilt: 是否为自建集群
         :type SelfBuilt: bool
@@ -17482,7 +17584,7 @@ class EventBusParam(AbstractModel):
 
     @property
     def Type(self):
-        """资源类型。EB_COS/EB_ES/EB_CLS
+        """资源类型。COS/ES/CLS
         :rtype: str
         """
         return self._Type
@@ -17690,7 +17792,7 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 主题名
+        :param _Name: 弹性topic名称
         :type Name: str
         :param _Partition: 分区id
         :type Partition: int
@@ -17703,7 +17805,7 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
 
     @property
     def Name(self):
-        """主题名
+        """弹性topic名称
         :rtype: str
         """
         return self._Name
@@ -17801,7 +17903,7 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 主题名
+        :param _Name: 弹性topic名称
         :type Name: str
         :param _Partition: 分区id
         :type Partition: int
@@ -17817,7 +17919,7 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def Name(self):
-        """主题名
+        """弹性topic名称
         :rtype: str
         """
         return self._Name
@@ -17930,7 +18032,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Topic: 主题名
         :type Topic: str
@@ -17946,7 +18048,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -18056,7 +18158,7 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Topic: 主题名
         :type Topic: str
@@ -18075,7 +18177,7 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -18200,7 +18302,7 @@ class FetchMessageListByTimestampRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _Topic: 主题名
         :type Topic: str
@@ -18208,7 +18310,7 @@ class FetchMessageListByTimestampRequest(AbstractModel):
         :type Partition: int
         :param _StartTime: 查询开始时间，13位时间戳
         :type StartTime: int
-        :param _SinglePartitionRecordNumber: 最大查询条数，默认20，最大20
+        :param _SinglePartitionRecordNumber: 最大查询条数，默认20，最大20, 最小1
         :type SinglePartitionRecordNumber: int
         """
         self._InstanceId = None
@@ -18219,7 +18321,7 @@ class FetchMessageListByTimestampRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -18263,7 +18365,7 @@ class FetchMessageListByTimestampRequest(AbstractModel):
 
     @property
     def SinglePartitionRecordNumber(self):
-        """最大查询条数，默认20，最大20
+        """最大查询条数，默认20，最大20, 最小1
         :rtype: int
         """
         return self._SinglePartitionRecordNumber
@@ -18654,14 +18756,14 @@ class Group(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 组名称
+        :param _GroupName: 消费分组名称
         :type GroupName: str
         """
         self._GroupName = None
 
     @property
     def GroupName(self):
-        """组名称
+        """消费分组名称
         :rtype: str
         """
         return self._GroupName
@@ -18788,7 +18890,7 @@ Stable：消费分组中各个消费者已经加入，处于稳定状态
         :type Protocol: str
         :param _Members: 仅当 state 为 Stable 且 protocol_type 为 consumer 时， 该数组才包含信息
         :type Members: list of GroupInfoMember
-        :param _Group: Kafka 消费分组
+        :param _Group: 消费分组名称
         :type Group: str
         """
         self._ErrorCode = None
@@ -18860,7 +18962,7 @@ Stable：消费分组中各个消费者已经加入，处于稳定状态
 
     @property
     def Group(self):
-        """Kafka 消费分组
+        """消费分组名称
         :rtype: str
         """
         return self._Group
@@ -19539,7 +19641,7 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 出参
+        :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19549,7 +19651,7 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     @property
     def Result(self):
-        """出参
+        """返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
         """
         return self._Result
@@ -20237,11 +20339,11 @@ class Instance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: ckafka集群实例Name
         :type InstanceName: str
-        :param _Status: 实例的状态。0：创建中，1：运行中，2：删除中 ， 5 隔离中，-1 创建失败
+        :param _Status: 实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
         :type Status: int
         :param _IfCommunity: 是否开源实例。开源：true，不开源：false
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20254,7 +20356,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -20265,7 +20367,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        """ckafka集群实例Name
         :rtype: str
         """
         return self._InstanceName
@@ -20276,7 +20378,7 @@ class Instance(AbstractModel):
 
     @property
     def Status(self):
-        """实例的状态。0：创建中，1：运行中，2：删除中 ， 5 隔离中，-1 创建失败
+        """实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
         :rtype: int
         """
         return self._Status
@@ -20320,9 +20422,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: ckafka集群实例Name
         :type InstanceName: str
         :param _VipList: 接入点 VIP 列表信息
         :type VipList: list of VipEntity
@@ -20330,7 +20432,7 @@ class InstanceAttributesResponse(AbstractModel):
         :type Vip: str
         :param _Vport: 虚拟端口
         :type Vport: str
-        :param _Status: 实例的状态。0：创建中，1：运行中，2：删除中
+        :param _Status: 实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
         :type Status: int
         :param _Bandwidth: 实例带宽，单位：Mbps
         :type Bandwidth: int
@@ -20366,10 +20468,10 @@ class InstanceAttributesResponse(AbstractModel):
         :param _ExpireTime: 过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
-        :param _ZoneIds: 跨可用区
+        :param _ZoneIds: 可用区列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: list of int
-        :param _Version: kafka版本信息
+        :param _Version: ckafka集群实例版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _MaxGroupNum: 最大分组数
@@ -20408,6 +20510,16 @@ class InstanceAttributesResponse(AbstractModel):
         :param _InstanceChargeType: 实例计费类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargeType: str
+        :param _ClusterType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param _FreePartitionNumber: 免费分区数量
+        :type FreePartitionNumber: int
+        :param _ElasticFloatBandwidth: 弹性带宽上浮值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticFloatBandwidth: int
+        :param _CustomCertId: ssl自定义证书id
+        :type CustomCertId: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -20445,10 +20557,14 @@ class InstanceAttributesResponse(AbstractModel):
         self._RemainingTopics = None
         self._DynamicDiskConfig = None
         self._InstanceChargeType = None
+        self._ClusterType = None
+        self._FreePartitionNumber = None
+        self._ElasticFloatBandwidth = None
+        self._CustomCertId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -20459,7 +20575,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        """ckafka集群实例Name
         :rtype: str
         """
         return self._InstanceName
@@ -20503,7 +20619,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Status(self):
-        """实例的状态。0：创建中，1：运行中，2：删除中
+        """实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
         :rtype: int
         """
         return self._Status
@@ -20692,7 +20808,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """跨可用区
+        """可用区列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -20704,7 +20820,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Version(self):
-        """kafka版本信息
+        """ckafka集群实例版本
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20858,6 +20974,52 @@ class InstanceAttributesResponse(AbstractModel):
     def InstanceChargeType(self, InstanceChargeType):
         self._InstanceChargeType = InstanceChargeType
 
+    @property
+    def ClusterType(self):
+        """集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def FreePartitionNumber(self):
+        """免费分区数量
+        :rtype: int
+        """
+        return self._FreePartitionNumber
+
+    @FreePartitionNumber.setter
+    def FreePartitionNumber(self, FreePartitionNumber):
+        self._FreePartitionNumber = FreePartitionNumber
+
+    @property
+    def ElasticFloatBandwidth(self):
+        """弹性带宽上浮值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ElasticFloatBandwidth
+
+    @ElasticFloatBandwidth.setter
+    def ElasticFloatBandwidth(self, ElasticFloatBandwidth):
+        self._ElasticFloatBandwidth = ElasticFloatBandwidth
+
+    @property
+    def CustomCertId(self):
+        """ssl自定义证书id
+        :rtype: str
+        """
+        return self._CustomCertId
+
+    @CustomCertId.setter
+    def CustomCertId(self, CustomCertId):
+        self._CustomCertId = CustomCertId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -20912,6 +21074,10 @@ class InstanceAttributesResponse(AbstractModel):
             self._DynamicDiskConfig = DynamicDiskConfig()
             self._DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         self._InstanceChargeType = params.get("InstanceChargeType")
+        self._ClusterType = params.get("ClusterType")
+        self._FreePartitionNumber = params.get("FreePartitionNumber")
+        self._ElasticFloatBandwidth = params.get("ElasticFloatBandwidth")
+        self._CustomCertId = params.get("CustomCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21084,9 +21250,9 @@ class InstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: ckafka集群实例名称
         :type InstanceName: str
         :param _Vip: 访问实例的vip 信息
         :type Vip: str
@@ -21094,11 +21260,11 @@ class InstanceDetail(AbstractModel):
         :type Vport: str
         :param _VipList: 虚拟IP列表
         :type VipList: list of VipEntity
-        :param _Status: 实例的状态。0：创建中，1：运行中，2：删除中：5隔离中， -1 创建失败
+        :param _Status: 实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
         :type Status: int
         :param _Bandwidth: 实例带宽，单位Mbps
         :type Bandwidth: int
-        :param _DiskSize: 实例的存储大小，单位GB
+        :param _DiskSize: ckafka集群实例磁盘大小，单位G
         :type DiskSize: int
         :param _ZoneId: 可用区域ID
         :type ZoneId: int
@@ -21131,10 +21297,10 @@ class InstanceDetail(AbstractModel):
         :param _Cvm: ckafka售卖类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cvm: int
-        :param _InstanceType: ckafka实例类型
+        :param _InstanceType: ckafka集群实例类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param _DiskType: 磁盘类型
+        :param _DiskType: ckafka集群实例磁盘类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param _MaxTopicNumber: 当前规格最大Topic数
@@ -21149,13 +21315,13 @@ class InstanceDetail(AbstractModel):
         :param _PartitionNumber: 实例当前partition数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionNumber: int
-        :param _PublicNetworkChargeType: 公网带宽类型
+        :param _PublicNetworkChargeType: ckafka集群实例公网带宽类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicNetworkChargeType: str
-        :param _PublicNetwork: 公网带宽值
+        :param _PublicNetwork: 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicNetwork: int
-        :param _ClusterType: 实例类型
+        :param _ClusterType: ckafka集群实例底层集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: str
         :param _Features: 实例功能列表
@@ -21197,7 +21363,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -21208,7 +21374,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称
+        """ckafka集群实例名称
         :rtype: str
         """
         return self._InstanceName
@@ -21252,7 +21418,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """实例的状态。0：创建中，1：运行中，2：删除中：5隔离中， -1 创建失败
+        """实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 
         :rtype: int
         """
         return self._Status
@@ -21274,7 +21440,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def DiskSize(self):
-        """实例的存储大小，单位GB
+        """ckafka集群实例磁盘大小，单位G
         :rtype: int
         """
         return self._DiskSize
@@ -21442,7 +21608,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceType(self):
-        """ckafka实例类型
+        """ckafka集群实例类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21454,7 +21620,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def DiskType(self):
-        """磁盘类型
+        """ckafka集群实例磁盘类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21514,7 +21680,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PublicNetworkChargeType(self):
-        """公网带宽类型
+        """ckafka集群实例公网带宽类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21526,7 +21692,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PublicNetwork(self):
-        """公网带宽值
+        """公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21538,7 +21704,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ClusterType(self):
-        """实例类型
+        """ckafka集群实例底层集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21792,7 +21958,7 @@ class InstanceScalingDownRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _UpgradeStrategy: 缩容模式  1:稳定变配 
 2.高速变配
@@ -21812,7 +21978,7 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -21890,7 +22056,7 @@ class InstanceScalingDownResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 缩容应答
+        :param _Result: 返回结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ScalingDownResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21901,7 +22067,7 @@ class InstanceScalingDownResponse(AbstractModel):
 
     @property
     def Result(self):
-        """缩容应答
+        """返回结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ScalingDownResp`
         """
@@ -22234,9 +22400,9 @@ class KafkaParam(AbstractModel):
         r"""
         :param _SelfBuilt: 是否为自建集群
         :type SelfBuilt: bool
-        :param _Resource: 实例资源
+        :param _Resource: ckafka集群实例Id
         :type Resource: str
-        :param _Topic: Topic名称，多个以“,”分隔
+        :param _Topic: 主题名，多个以“,”分隔
         :type Topic: str
         :param _OffsetType: Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
 注意：此字段可能返回 null，表示取不到有效值。
@@ -22247,10 +22413,10 @@ class KafkaParam(AbstractModel):
         :param _ResourceName: 实例资源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
-        :param _ZoneId: Zone ID
+        :param _ZoneId: 可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
-        :param _TopicId: Topic的Id
+        :param _TopicId: 主题Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _PartitionNum: Topic的分区数
@@ -22316,7 +22482,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def Resource(self):
-        """实例资源
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._Resource
@@ -22327,7 +22493,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def Topic(self):
-        """Topic名称，多个以“,”分隔
+        """主题名，多个以“,”分隔
         :rtype: str
         """
         return self._Topic
@@ -22374,7 +22540,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Zone ID
+        """可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22386,7 +22552,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def TopicId(self):
-        """Topic的Id
+        """主题Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22919,7 +23085,7 @@ class MariaDBParam(AbstractModel):
         :param _Resource: 该MariaDB在连接管理内的Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
-        :param _SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认位initial
+        :param _SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认值initial
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotMode: str
         :param _KeyColumns: 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
@@ -22990,7 +23156,7 @@ class MariaDBParam(AbstractModel):
 
     @property
     def SnapshotMode(self):
-        """复制存量信息(schema_only不复制, initial全量)，默认位initial
+        """复制存量信息(schema_only不复制, initial全量)，默认值initial
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23101,9 +23267,9 @@ class ModifyAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _RuleName: ACL策略名
+        :param _RuleName: ACL规则名
         :type RuleName: str
         :param _IsApplied: 修改预设规则时传入,是否应用到新增的Topic
         :type IsApplied: int
@@ -23114,7 +23280,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -23125,7 +23291,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """ACL策略名
+        """ACL规则名
         :rtype: str
         """
         return self._RuleName
@@ -23638,7 +23804,7 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 名称
+        :param _Name: 弹性topic名称
         :type Name: str
         :param _RetentionMs: 消息保留时间，单位：ms，当前最小值为60000ms。
         :type RetentionMs: int
@@ -23654,7 +23820,7 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
-        """名称
+        """弹性topic名称
         :rtype: str
         """
         return self._Name
@@ -23769,13 +23935,13 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: kafka实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _Group: kafka 消费分组
+        :param _Group: 消费分组名称
         :type Group: str
         :param _Strategy: 重置offset的策略，入参含义 0. 对齐shift-by参数，代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset)，代表把offset移动到指定的offset位置
         :type Strategy: int
-        :param _Topics: 表示需要重置的topics， 不填表示全部
+        :param _Topics: 需要重置的主题名列表， 不填表示全部
         :type Topics: list of str
         :param _Shift: 当strategy为0时，必须包含该字段，可以大于零代表会把offset向后移动shift条，小于零则将offset向前回溯shift条数。正确重置后新的offset应该是(old_offset + shift)，需要注意的是如果新的offset小于partition的earliest则会设置为earliest，如果大于partition 的latest则会设置为latest
         :type Shift: int
@@ -23797,7 +23963,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """kafka实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -23808,7 +23974,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
-        """kafka 消费分组
+        """消费分组名称
         :rtype: str
         """
         return self._Group
@@ -23830,7 +23996,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Topics(self):
-        """表示需要重置的topics， 不填表示全部
+        """需要重置的主题名列表， 不填表示全部
         :rtype: list of str
         """
         return self._Topics
@@ -24021,23 +24187,23 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _MsgRetentionTime: 实例日志的最长保留时间，单位分钟，最大30天，0代表不开启日志保留时间回收策略
+        :param _MsgRetentionTime: 实例日志的最长保留时间，单位分钟，最大90天，0代表不开启日志保留时间回收策略
         :type MsgRetentionTime: int
-        :param _InstanceName: 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _InstanceName: ckafka集群实例Name
         :type InstanceName: str
         :param _Config: 实例配置
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesConfig`
         :param _DynamicRetentionConfig: 动态消息保留策略配置
         :type DynamicRetentionConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
-        :param _RebalanceTime: 升配Rebalance时间
+        :param _RebalanceTime: 升配Rebalance时间 参数已废弃,忽略不填!!!
         :type RebalanceTime: int
-        :param _PublicNetwork: 公网带宽
+        :param _PublicNetwork: 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
         :type PublicNetwork: int
         :param _DynamicDiskConfig: 动态硬盘扩容策略配置
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
-        :param _MaxMessageByte: 实例级别单条消息大小（单位byte)
+        :param _MaxMessageByte: 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
         :type MaxMessageByte: int
         """
         self._InstanceId = None
@@ -24052,7 +24218,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -24063,7 +24229,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
-        """实例日志的最长保留时间，单位分钟，最大30天，0代表不开启日志保留时间回收策略
+        """实例日志的最长保留时间，单位分钟，最大90天，0代表不开启日志保留时间回收策略
         :rtype: int
         """
         return self._MsgRetentionTime
@@ -24074,7 +24240,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        """ckafka集群实例Name
         :rtype: str
         """
         return self._InstanceName
@@ -24107,7 +24273,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def RebalanceTime(self):
-        """升配Rebalance时间
+        """升配Rebalance时间 参数已废弃,忽略不填!!!
         :rtype: int
         """
         return self._RebalanceTime
@@ -24118,7 +24284,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def PublicNetwork(self):
-        """公网带宽
+        """公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
         :rtype: int
         """
         return self._PublicNetwork
@@ -24144,7 +24310,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def MaxMessageByte(self):
-        """实例级别单条消息大小（单位byte)
+        """实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
         :rtype: int
         """
         return self._MaxMessageByte
@@ -24490,7 +24656,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
         :type MaintenanceType: str
         :param _MaintenanceSubtype: INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
         :type MaintenanceSubtype: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名
         :type TopicName: str
         :param _ConfigureThreshold: 任务触发阈值
         :type ConfigureThreshold: int
@@ -24554,7 +24720,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名
         :rtype: str
         """
         return self._TopicName
@@ -24715,9 +24881,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
-        :param _TopicName: 主题名称。
+        :param _TopicName: 主题名
         :type TopicName: str
         :param _Note: 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
         :type Note: str
@@ -24739,7 +24905,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type IpWhiteList: list of str
         :param _EnableAclRule: 预设ACL规则, 1:打开  0:关闭，默认不打开
         :type EnableAclRule: int
-        :param _AclRuleName: 预设ACL规则的名称
+        :param _AclRuleName: ACL规则名
         :type AclRuleName: str
         :param _RetentionBytes: 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
         :type RetentionBytes: int
@@ -24749,7 +24915,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type QuotaProducerByteRate: int
         :param _QuotaConsumerByteRate: 消费限流，单位 MB/s
         :type QuotaConsumerByteRate: int
-        :param _ReplicaNum: 调整topic副本数
+        :param _ReplicaNum: topic副本数  最小值 1,最大值 3
         :type ReplicaNum: int
         """
         self._InstanceId = None
@@ -24773,7 +24939,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -24784,7 +24950,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称。
+        """主题名
         :rtype: str
         """
         return self._TopicName
@@ -24905,7 +25071,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
-        """预设ACL规则的名称
+        """ACL规则名
         :rtype: str
         """
         return self._AclRuleName
@@ -24960,7 +25126,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def ReplicaNum(self):
-        """调整topic副本数
+        """topic副本数  最小值 1,最大值 3
         :rtype: int
         """
         return self._ReplicaNum
@@ -25011,7 +25177,7 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果集
+        :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25021,7 +25187,7 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回结果集
+        """返回结果
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -26317,7 +26483,7 @@ class MySQLParam(AbstractModel):
         :param _Resource: 该MySQL在连接管理内的Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
-        :param _SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认位initial
+        :param _SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认值initial
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotMode: str
         :param _DdlTopic: 存放MySQL的Ddl信息的Topic，为空则默认不存放
@@ -26460,7 +26626,7 @@ class MySQLParam(AbstractModel):
 
     @property
     def SnapshotMode(self):
-        """复制存量信息(schema_only不复制, initial全量)，默认位initial
+        """复制存量信息(schema_only不复制, initial全量)，默认值initial
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26905,10 +27071,10 @@ class PartitionOffset(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Partition: Partition,例如"0"或"1"
+        :param _Partition: 分区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Partition: str
-        :param _Offset: Offset,例如100
+        :param _Offset: 位点偏移量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         """
@@ -26917,7 +27083,7 @@ class PartitionOffset(AbstractModel):
 
     @property
     def Partition(self):
-        """Partition,例如"0"或"1"
+        """分区
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26929,7 +27095,7 @@ class PartitionOffset(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset,例如100
+        """位点偏移量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28130,7 +28296,7 @@ class Region(AbstractModel):
         :param _RegionCodeV3: 地域代码（V3版本）
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionCodeV3: str
-        :param _Support: NONE:默认值不支持任何特殊机型\nCVM:支持CVM类型
+        :param _Support: NONE:默认值不支持任何特殊类型 实例类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Support: str
         :param _Ipv6: 是否支持ipv6, 0：表示不支持，1：表示支持
@@ -28208,7 +28374,7 @@ class Region(AbstractModel):
 
     @property
     def Support(self):
-        """NONE:默认值不支持任何特殊机型\nCVM:支持CVM类型
+        """NONE:默认值不支持任何特殊类型 实例类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28269,7 +28435,7 @@ class RenewCkafkaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例Id
         :type InstanceId: str
         :param _TimeSpan: 续费时长, 默认为1, 单位是月
         :type TimeSpan: int
@@ -28279,7 +28445,7 @@ class RenewCkafkaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -28477,7 +28643,7 @@ class Route(AbstractModel):
 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
         :type AccessType: int
-        :param _RouteId: 路由ID
+        :param _RouteId: 路由Id
         :type RouteId: int
         :param _VipType: vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
         :type VipType: int
@@ -28492,13 +28658,13 @@ class Route(AbstractModel):
         :param _DeleteTimestamp: 时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteTimestamp: str
-        :param _Subnet: 子网信息
+        :param _Subnet: 子网Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Subnet: str
         :param _BrokerVipList: 虚拟IP列表(1对1 broker节点)
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrokerVipList: list of VipEntity
-        :param _VpcId: vpc信息
+        :param _VpcId: 私有网络Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         """
@@ -28530,7 +28696,7 @@ class Route(AbstractModel):
 
     @property
     def RouteId(self):
-        """路由ID
+        """路由Id
         :rtype: int
         """
         return self._RouteId
@@ -28599,7 +28765,7 @@ class Route(AbstractModel):
 
     @property
     def Subnet(self):
-        """子网信息
+        """子网Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28623,7 +28789,7 @@ class Route(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc信息
+        """私有网络Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29422,7 +29588,7 @@ class ScalingDownResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealNames: 订单号
+        :param _DealNames: 订单号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         """
@@ -29430,7 +29596,7 @@ class ScalingDownResp(AbstractModel):
 
     @property
     def DealNames(self):
-        """订单号
+        """订单号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -30470,13 +30636,13 @@ class TopicDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名
         :type TopicName: str
-        :param _TopicId: 主题ID
+        :param _TopicId: 主题Id
         :type TopicId: str
         :param _PartitionNum: 分区数
         :type PartitionNum: int
-        :param _ReplicaNum: 副本数
+        :param _ReplicaNum: topic副本数  最小值 1,最大值 3
         :type ReplicaNum: int
         :param _Note: 备注
 注意：此字段可能返回 null，表示取不到有效值。
@@ -30525,7 +30691,7 @@ class TopicDetail(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名
         :rtype: str
         """
         return self._TopicName
@@ -30536,7 +30702,7 @@ class TopicDetail(AbstractModel):
 
     @property
     def TopicId(self):
-        """主题ID
+        """主题Id
         :rtype: str
         """
         return self._TopicId
@@ -30558,7 +30724,7 @@ class TopicDetail(AbstractModel):
 
     @property
     def ReplicaNum(self):
-        """副本数
+        """topic副本数  最小值 1,最大值 3
         :rtype: int
         """
         return self._ReplicaNum
@@ -30803,7 +30969,7 @@ class TopicFlowRanking(AbstractModel):
         :type PartitionNum: int
         :param _ReplicaNum: 副本数
         :type ReplicaNum: int
-        :param _TopicTraffic: Topic 流量
+        :param _TopicTraffic: Topic 流量,单位MB(设置date时以sum方式聚合)
         :type TopicTraffic: str
         :param _MessageHeap: Topic 消息堆积
         :type MessageHeap: int
@@ -30861,7 +31027,7 @@ class TopicFlowRanking(AbstractModel):
 
     @property
     def TopicTraffic(self):
-        """Topic 流量
+        """Topic 流量,单位MB(设置date时以sum方式聚合)
         :rtype: str
         """
         return self._TopicTraffic
@@ -31514,7 +31680,7 @@ class TopicPartitionDO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Partition: Partition ID
+        :param _Partition: Partition 分区ID
         :type Partition: int
         :param _LeaderStatus: Leader 运行状态
         :type LeaderStatus: int
@@ -31530,7 +31696,7 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def Partition(self):
-        """Partition ID
+        """Partition 分区ID
         :rtype: int
         """
         return self._Partition
@@ -32681,21 +32847,21 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: zone的id
+        :param _ZoneId: 可用区
         :type ZoneId: str
         :param _IsInternalApp: 是否内部APP
         :type IsInternalApp: int
-        :param _AppId: app id
+        :param _AppId: 应用标识
         :type AppId: int
         :param _Flag: 标识
         :type Flag: bool
-        :param _ZoneName: zone名称
+        :param _ZoneName: 可用区名称
         :type ZoneName: str
-        :param _ZoneStatus: zone状态
+        :param _ZoneStatus: 可用区状态
         :type ZoneStatus: int
         :param _Exflag: 额外标识
         :type Exflag: str
-        :param _SoldOut: json对象，key为机型，value true为售罄，false为未售罄
+        :param _SoldOut: true为售罄，false为未售罄
         :type SoldOut: str
         :param _SalesInfo: 标准版售罄信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -32716,7 +32882,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        """zone的id
+        """可用区
         :rtype: str
         """
         return self._ZoneId
@@ -32738,7 +32904,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """app id
+        """应用标识
         :rtype: int
         """
         return self._AppId
@@ -32760,7 +32926,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
-        """zone名称
+        """可用区名称
         :rtype: str
         """
         return self._ZoneName
@@ -32771,7 +32937,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneStatus(self):
-        """zone状态
+        """可用区状态
         :rtype: int
         """
         return self._ZoneStatus
@@ -32797,7 +32963,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def SoldOut(self):
-        """json对象，key为机型，value true为售罄，false为未售罄
+        """true为售罄，false为未售罄
         :rtype: str
         """
         return self._SoldOut
@@ -32888,13 +33054,13 @@ class ZoneResponse(AbstractModel):
         :param _Physical: 购买物理独占版配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Physical: str
-        :param _PublicNetwork: 公网带宽
+        :param _PublicNetwork: 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicNetwork: str
         :param _PublicNetworkLimit: 公网带宽配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicNetworkLimit: str
-        :param _RequestId: 请求ID
+        :param _RequestId: 请求Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestId: str
         :param _Version: 版本
@@ -33045,7 +33211,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def PublicNetwork(self):
-        """公网带宽
+        """公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33069,7 +33235,7 @@ class ZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """请求ID
+        """请求Id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

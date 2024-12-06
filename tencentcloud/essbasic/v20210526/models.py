@@ -11778,12 +11778,20 @@ class Component(AbstractModel):
 <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
 <li> <b>SIGN_PAGING_SEAL</b> : 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight</li>
 <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
+<li> <b>SIGN_VIRTUAL_COMBINATION</b> : 签批控件。内部最多组合4个特定控件（SIGN_SIGNATURE，SIGN_DATA,SIGN_MULTI_LINE_TEXT,SIGN_SELECTOR），本身不填充任何文字内容</li>
+<li> <b>SIGN_MULTI_LINE_TEXT</b> : 多行文本，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作批注附言</li>
+<li> <b>SIGN_SELECTOR</b> : 选择器，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作审批意见的选择</li>
 <li> <b>SIGN_LEGAL_PERSON_SEAL</b> : 企业法定代表人控件。</li></ul>
+
 
 * 个人方
 <ul><li> <b>SIGN_DATE</b> : 签署日期控件；</li>
 <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
-<li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li></ul>
+<li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
+<li> <b>SIGN_VIRTUAL_COMBINATION</b> : 签批控件。内部包含最多4个特定控件（SIGN_SIGNATURE，SIGN_DATA,SIGN_MULTI_LINE_TEXT,SIGN_SELECTOR），本身不填充任何文字内容</li>
+<li> <b>SIGN_MULTI_LINE_TEXT</b> : 多行文本，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作批注附言</li>
+<li> <b>SIGN_SELECTOR</b> : 选择器，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作审批意见的选择</li>
+</ul>
  
 注：` 表单域的控件不能作为印章和签名控件`
         :type ComponentType: str
@@ -11881,13 +11889,114 @@ class Component(AbstractModel):
 <b>参数样例</b>：`{"Rotate":-30,"RotateRelation":"Component_Id1"}`
 
 <font color="red">签署印章透明度功能设置，</font>当ComponentType为SIGN_SIGNATURE、SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL时，可以通过以下参数设置签署印章的透明度：
-<ul><li> <b>Opacity</b>：印章透明度，支持范围：0.6-1，0.7表示70%的透明度，1表示无透明度</li></ul>
+<ul><li> <b>Opacity</b>：印章透明度，支持范围：0-1，0.7表示70%的透明度，1表示无透明度</li></ul>
 <b>参数样例</b>：`{"Opacity":0.7}`
 
 <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
 场景说明：如果使用关键字进行定位，但是指定的PDF文件中又没有设置的关键字时，发起合同会进行关键字是否存在的校验，如果关键字不存在，会进行报错返回。如果不希望进行报错，可以设置"IgnoreKeywordError"来忽略错误。请注意，如果关键字签署控件对应的签署方在整个PDF文件中一个签署控件都没有，还是会触发报错逻辑。
 <b>参数样例</b>：` "{"IgnoreKeywordError":1}"`
+
+
+<font color="red">ComponentType为SIGN_VIRTUAL_COMBINATION时</font>，支持以下参数：
+<ul>
+<li><b>Children:</b> 绝对定位模式下，用来指定此签批控件的组合子控件 </li>
+<b>参数样例</b>：<br>`{"Children":["ComponentId_29","ComponentId_27","ComponentId_28","ComponentId_30"]}`
+<li><b>ChildrenComponents:</b> 关键字定位模式下，用来指定此签批控件的组合子控件 </li>
+ChildrenComponent结构体定义:
+<table border="1">
+    <thead>
+        <tr>
+            <th>字段名称</th>
+            <th>类型</th>
+            <th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ComponentType</td>
+            <td>string</td>
+            <td>子控件类型-可选值:SIGN_SIGNATURE,SIGN_DATE,SIGN_SELECTOR,SIGN_MULTI_LINE_TEXT</td>
+        </tr>
+        <tr>
+            <td>ComponentName</td>
+            <td>string</td>
+            <td>子控件名称</td>
+        </tr>
+        <tr>
+            <td>Placeholder</td>
+            <td>string</td>
+            <td>子控件提示语</td>
+        </tr>
+        <tr>
+            <td>ComponentOffsetX</td>
+            <td>float</td>
+            <td>控件偏移位置X（相对于父控件（签批控件的ComponentX））</td>
+        </tr>
+        <tr>
+            <td>ComponentOffsetY</td>
+            <td>float</td>
+            <td>控件偏移位置Y 相对于父控件（签批控件的ComponentY））</td>
+        </tr>
+        <tr>
+            <td>ComponentWidth</td>
+            <td>float</td>
+            <td>控件宽</td>
+        </tr>
+        <tr>
+            <td>ComponentHeight</td>
+            <td>float</td>
+            <td>控件高</td>
+        </tr>
+        <tr>
+            <td>ComponentExtra</td>
+            <td>string</td>
+            <td>控件的附属信息，根据ComponentType设置</td>
+        </tr>
+    </tbody>
+</table>
+<b>参数样例</b>：
+```json
+{
+    "ChildrenComponents": [
+        {
+            "ComponentType": "SIGN_SIGNATURE",
+            "ComponentName": "个人签名",
+            "Placeholder": "请签名",
+            "ComponentOffsetX": 10,
+            "ComponentOffsetY": 30,
+            "ComponentWidth": 119,
+            "ComponentHeight": 43,
+            "ComponentExtra": "{\"ComponentTypeLimit\":[\"SYSTEM_ESIGN\"]}"
+        },
+        {
+            "ComponentType": "SIGN_SELECTOR",
+            "ComponentName": "是否同意此协议",
+            "Placeholder": "",
+            "ComponentOffsetX": 50,
+            "ComponentOffsetY": 130,
+            "ComponentWidth": 120,
+            "ComponentHeight": 43,
+            "ComponentExtra": "{\"Values\":[\"同意\",\"不同意\",\"再想想\"],\"FontSize\":12,\"FontAlign\":\"Left\",\"Font\":\"黑体\",\"MultiSelect\":false}"
+        },
+        {
+            "ComponentType": "SIGN_MULTI_LINE_TEXT",
+            "ComponentName": "批注附言",
+            "Placeholder": "",
+            "ComponentOffsetX": 150,
+            "ComponentOffsetY": 300,
+            "ComponentWidth": 200,
+            "ComponentHeight": 86,
+            "ComponentExtra": ""
+        }
+    ]
+}
+```
+</ul>
+
+
+
+
         :type ComponentExtra: str
         :param _ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
 <ul><li> <b>TEXT</b> : 文本内容</li>
@@ -12029,12 +12138,20 @@ class Component(AbstractModel):
 <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
 <li> <b>SIGN_PAGING_SEAL</b> : 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight</li>
 <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
+<li> <b>SIGN_VIRTUAL_COMBINATION</b> : 签批控件。内部最多组合4个特定控件（SIGN_SIGNATURE，SIGN_DATA,SIGN_MULTI_LINE_TEXT,SIGN_SELECTOR），本身不填充任何文字内容</li>
+<li> <b>SIGN_MULTI_LINE_TEXT</b> : 多行文本，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作批注附言</li>
+<li> <b>SIGN_SELECTOR</b> : 选择器，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作审批意见的选择</li>
 <li> <b>SIGN_LEGAL_PERSON_SEAL</b> : 企业法定代表人控件。</li></ul>
+
 
 * 个人方
 <ul><li> <b>SIGN_DATE</b> : 签署日期控件；</li>
 <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
-<li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li></ul>
+<li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
+<li> <b>SIGN_VIRTUAL_COMBINATION</b> : 签批控件。内部包含最多4个特定控件（SIGN_SIGNATURE，SIGN_DATA,SIGN_MULTI_LINE_TEXT,SIGN_SELECTOR），本身不填充任何文字内容</li>
+<li> <b>SIGN_MULTI_LINE_TEXT</b> : 多行文本，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作批注附言</li>
+<li> <b>SIGN_SELECTOR</b> : 选择器，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作审批意见的选择</li>
+</ul>
  
 注：` 表单域的控件不能作为印章和签名控件`
         :rtype: str
@@ -12231,13 +12348,114 @@ class Component(AbstractModel):
 <b>参数样例</b>：`{"Rotate":-30,"RotateRelation":"Component_Id1"}`
 
 <font color="red">签署印章透明度功能设置，</font>当ComponentType为SIGN_SIGNATURE、SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL时，可以通过以下参数设置签署印章的透明度：
-<ul><li> <b>Opacity</b>：印章透明度，支持范围：0.6-1，0.7表示70%的透明度，1表示无透明度</li></ul>
+<ul><li> <b>Opacity</b>：印章透明度，支持范围：0-1，0.7表示70%的透明度，1表示无透明度</li></ul>
 <b>参数样例</b>：`{"Opacity":0.7}`
 
 <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
 场景说明：如果使用关键字进行定位，但是指定的PDF文件中又没有设置的关键字时，发起合同会进行关键字是否存在的校验，如果关键字不存在，会进行报错返回。如果不希望进行报错，可以设置"IgnoreKeywordError"来忽略错误。请注意，如果关键字签署控件对应的签署方在整个PDF文件中一个签署控件都没有，还是会触发报错逻辑。
 <b>参数样例</b>：` "{"IgnoreKeywordError":1}"`
+
+
+<font color="red">ComponentType为SIGN_VIRTUAL_COMBINATION时</font>，支持以下参数：
+<ul>
+<li><b>Children:</b> 绝对定位模式下，用来指定此签批控件的组合子控件 </li>
+<b>参数样例</b>：<br>`{"Children":["ComponentId_29","ComponentId_27","ComponentId_28","ComponentId_30"]}`
+<li><b>ChildrenComponents:</b> 关键字定位模式下，用来指定此签批控件的组合子控件 </li>
+ChildrenComponent结构体定义:
+<table border="1">
+    <thead>
+        <tr>
+            <th>字段名称</th>
+            <th>类型</th>
+            <th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ComponentType</td>
+            <td>string</td>
+            <td>子控件类型-可选值:SIGN_SIGNATURE,SIGN_DATE,SIGN_SELECTOR,SIGN_MULTI_LINE_TEXT</td>
+        </tr>
+        <tr>
+            <td>ComponentName</td>
+            <td>string</td>
+            <td>子控件名称</td>
+        </tr>
+        <tr>
+            <td>Placeholder</td>
+            <td>string</td>
+            <td>子控件提示语</td>
+        </tr>
+        <tr>
+            <td>ComponentOffsetX</td>
+            <td>float</td>
+            <td>控件偏移位置X（相对于父控件（签批控件的ComponentX））</td>
+        </tr>
+        <tr>
+            <td>ComponentOffsetY</td>
+            <td>float</td>
+            <td>控件偏移位置Y 相对于父控件（签批控件的ComponentY））</td>
+        </tr>
+        <tr>
+            <td>ComponentWidth</td>
+            <td>float</td>
+            <td>控件宽</td>
+        </tr>
+        <tr>
+            <td>ComponentHeight</td>
+            <td>float</td>
+            <td>控件高</td>
+        </tr>
+        <tr>
+            <td>ComponentExtra</td>
+            <td>string</td>
+            <td>控件的附属信息，根据ComponentType设置</td>
+        </tr>
+    </tbody>
+</table>
+<b>参数样例</b>：
+```json
+{
+    "ChildrenComponents": [
+        {
+            "ComponentType": "SIGN_SIGNATURE",
+            "ComponentName": "个人签名",
+            "Placeholder": "请签名",
+            "ComponentOffsetX": 10,
+            "ComponentOffsetY": 30,
+            "ComponentWidth": 119,
+            "ComponentHeight": 43,
+            "ComponentExtra": "{\"ComponentTypeLimit\":[\"SYSTEM_ESIGN\"]}"
+        },
+        {
+            "ComponentType": "SIGN_SELECTOR",
+            "ComponentName": "是否同意此协议",
+            "Placeholder": "",
+            "ComponentOffsetX": 50,
+            "ComponentOffsetY": 130,
+            "ComponentWidth": 120,
+            "ComponentHeight": 43,
+            "ComponentExtra": "{\"Values\":[\"同意\",\"不同意\",\"再想想\"],\"FontSize\":12,\"FontAlign\":\"Left\",\"Font\":\"黑体\",\"MultiSelect\":false}"
+        },
+        {
+            "ComponentType": "SIGN_MULTI_LINE_TEXT",
+            "ComponentName": "批注附言",
+            "Placeholder": "",
+            "ComponentOffsetX": 150,
+            "ComponentOffsetY": 300,
+            "ComponentWidth": 200,
+            "ComponentHeight": 86,
+            "ComponentExtra": ""
+        }
+    ]
+}
+```
+</ul>
+
+
+
+
         :rtype: str
         """
         return self._ComponentExtra
@@ -15895,7 +16113,7 @@ class CreateSignUrlsRequest(AbstractModel):
         :type FlowGroupId: str
         :param _Endpoint: 签署链接类型,可以设置的参数如下
 <ul><li> **WEIXINAPP** :(默认)跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型 ，此时返回短链</li>
-<li> **CHANNEL** :带有H5引导页的跳转电子签小程序的链接</li>
+<li> **CHANNEL** :带有H5引导页的跳转电子签小程序的链接(<b>GenerateType非ALL时候不能设置成CHANNEL</b>)</li>
 <li> **APP** :第三方App或小程序跳转电子签小程序的path, App或者小程序跳转适合此类型</li>
 <li> **LONGURL2WEIXINAPP** :跳转电子签小程序的链接, H5跳转适合此类型，此时返回长链</li></ul>
 
@@ -16035,7 +16253,7 @@ class CreateSignUrlsRequest(AbstractModel):
     def Endpoint(self):
         """签署链接类型,可以设置的参数如下
 <ul><li> **WEIXINAPP** :(默认)跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型 ，此时返回短链</li>
-<li> **CHANNEL** :带有H5引导页的跳转电子签小程序的链接</li>
+<li> **CHANNEL** :带有H5引导页的跳转电子签小程序的链接(<b>GenerateType非ALL时候不能设置成CHANNEL</b>)</li>
 <li> **APP** :第三方App或小程序跳转电子签小程序的path, App或者小程序跳转适合此类型</li>
 <li> **LONGURL2WEIXINAPP** :跳转电子签小程序的链接, H5跳转适合此类型，此时返回长链</li></ul>
 
@@ -19907,6 +20125,9 @@ class FlowApproverInfo(AbstractModel):
 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
         :type Intention: :class:`tencentcloud.essbasic.v20210526.models.Intention`
+        :param _SignEndpoints: 进入签署流程的限制，目前支持以下选项：
+<ul><li> <b>空值（默认）</b> :无限制，可在任何场景进入签署流程。</li><li> <b>link</b> :选择此选项后，将无法通过控制台或电子签小程序列表进入填写或签署操作，仅可预览合同。填写或签署流程只能通过短信或发起方提供的专用链接进行。</li></ul>
+        :type SignEndpoints: list of str
         """
         self._Name = None
         self._IdCardType = None
@@ -19935,6 +20156,7 @@ class FlowApproverInfo(AbstractModel):
         self._SignTypeSelector = None
         self._Components = None
         self._Intention = None
+        self._SignEndpoints = None
 
     @property
     def Name(self):
@@ -20351,6 +20573,18 @@ class FlowApproverInfo(AbstractModel):
     def Intention(self, Intention):
         self._Intention = Intention
 
+    @property
+    def SignEndpoints(self):
+        """进入签署流程的限制，目前支持以下选项：
+<ul><li> <b>空值（默认）</b> :无限制，可在任何场景进入签署流程。</li><li> <b>link</b> :选择此选项后，将无法通过控制台或电子签小程序列表进入填写或签署操作，仅可预览合同。填写或签署流程只能通过短信或发起方提供的专用链接进行。</li></ul>
+        :rtype: list of str
+        """
+        return self._SignEndpoints
+
+    @SignEndpoints.setter
+    def SignEndpoints(self, SignEndpoints):
+        self._SignEndpoints = SignEndpoints
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20399,6 +20633,7 @@ class FlowApproverInfo(AbstractModel):
         if params.get("Intention") is not None:
             self._Intention = Intention()
             self._Intention._deserialize(params.get("Intention"))
+        self._SignEndpoints = params.get("SignEndpoints")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

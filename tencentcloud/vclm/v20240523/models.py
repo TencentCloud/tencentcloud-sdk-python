@@ -90,6 +90,144 @@ class AsrTimestamps(AbstractModel):
         
 
 
+class CheckAnimateImageJobRequest(AbstractModel):
+    """CheckAnimateImageJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 动作模板ID。
+        :type TemplateId: str
+        :param _ImageUrl: 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+图片分辨率：长边分辨率范围【192，4096】；
+图片大小：不超过10M；
+图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+        :type ImageUrl: str
+        :param _ImageBase64: 图片base64数据。
+图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+图片分辨率：长边分辨率范围【192，4096】；
+图片大小：不超过10M；
+图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+        :type ImageBase64: str
+        :param _EnableBodyJoins: 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+        :type EnableBodyJoins: bool
+        """
+        self._TemplateId = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._EnableBodyJoins = None
+
+    @property
+    def TemplateId(self):
+        """动作模板ID。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def ImageUrl(self):
+        """图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+图片分辨率：长边分辨率范围【192，4096】；
+图片大小：不超过10M；
+图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        """图片base64数据。
+图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+图片分辨率：长边分辨率范围【192，4096】；
+图片大小：不超过10M；
+图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def EnableBodyJoins(self):
+        """是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+        :rtype: bool
+        """
+        return self._EnableBodyJoins
+
+    @EnableBodyJoins.setter
+    def EnableBodyJoins(self, EnableBodyJoins):
+        self._EnableBodyJoins = EnableBodyJoins
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._EnableBodyJoins = params.get("EnableBodyJoins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckAnimateImageJobResponse(AbstractModel):
+    """CheckAnimateImageJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckPass: 输入图是否通过校验。
+        :type CheckPass: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CheckPass = None
+        self._RequestId = None
+
+    @property
+    def CheckPass(self):
+        """输入图是否通过校验。
+        :rtype: bool
+        """
+        return self._CheckPass
+
+    @CheckPass.setter
+    def CheckPass(self, CheckPass):
+        self._CheckPass = CheckPass
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CheckPass = params.get("CheckPass")
+        self._RequestId = params.get("RequestId")
+
+
 class ConfirmVideoTranslateJobRequest(AbstractModel):
     """ConfirmVideoTranslateJob请求参数结构体
 
@@ -1121,12 +1259,16 @@ class SubmitImageAnimateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageUrl: 图片格式：支持PNG、JPG、JPEG格式；
-图片分辨率：长边分辨率不超过2056；
+        :param _ImageUrl: 图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+图片分辨率：长边分辨率范围【192，4096】；
 图片大小：不超过10M；
 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
         :type ImageUrl: str
-        :param _ImageBase64: 图片base64数据。图片格式：支持PNG、JPG、JPEG格式；图片分辨率：长边分辨率不超过2056；图片大小：不超过10M；图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+        :param _ImageBase64: 图片base64数据。
+图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+图片分辨率：长边分辨率范围【192，4096】；
+图片大小：不超过10M；
+图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
         :type ImageBase64: str
         :param _TemplateId: 动作模板ID。取值说明：ke3 科目三；tuziwu 兔子舞；huajiangwu 划桨舞。
 
@@ -1135,7 +1277,7 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         :type EnableAudio: bool
         :param _EnableBodyJoins: 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
         :type EnableBodyJoins: bool
-        :param _EnableSegment: 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+        :param _EnableSegment: 最终视频是否保留原图的背景，默认不保留。
 
         :type EnableSegment: bool
         :param _LogoAdd: 为生成视频添加标识的开关，默认为0。
@@ -1159,8 +1301,8 @@ class SubmitImageAnimateJobRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片格式：支持PNG、JPG、JPEG格式；
-图片分辨率：长边分辨率不超过2056；
+        """图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+图片分辨率：长边分辨率范围【192，4096】；
 图片大小：不超过10M；
 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
         :rtype: str
@@ -1173,7 +1315,11 @@ class SubmitImageAnimateJobRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片base64数据。图片格式：支持PNG、JPG、JPEG格式；图片分辨率：长边分辨率不超过2056；图片大小：不超过10M；图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
+        """图片base64数据。
+图片格式：支持PNG、JPG、JPEG、BMP、WEBP格式；
+图片分辨率：长边分辨率范围【192，4096】；
+图片大小：不超过10M；
+图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
         :rtype: str
         """
         return self._ImageBase64
@@ -1218,7 +1364,7 @@ class SubmitImageAnimateJobRequest(AbstractModel):
 
     @property
     def EnableSegment(self):
-        """最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+        """最终视频是否保留原图的背景，默认不保留。
 
         :rtype: bool
         """
@@ -1284,7 +1430,7 @@ class SubmitImageAnimateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID。
+        :param _JobId: 图片跳舞任务ID。
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1294,7 +1440,7 @@ class SubmitImageAnimateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID。
+        """图片跳舞任务ID。
         :rtype: str
         """
         return self._JobId

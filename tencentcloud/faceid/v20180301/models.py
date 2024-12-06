@@ -9173,7 +9173,6 @@ class MobileStatusResponse(AbstractModel):
 0：正常。
 1：停机。
 2：销号。
-3：空号。
 4：不在网。
 99：未知状态。
         :type StatusCode: int
@@ -9222,7 +9221,6 @@ class MobileStatusResponse(AbstractModel):
 0：正常。
 1：停机。
 2：销号。
-3：空号。
 4：不在网。
 99：未知状态。
         :rtype: int

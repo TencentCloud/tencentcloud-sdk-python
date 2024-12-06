@@ -218,6 +218,168 @@ class AddCasterLayoutInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddCasterMarkPicInfoRequest(AbstractModel):
+    """AddCasterMarkPicInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID
+        :type CasterId: int
+        :param _MarkPicInfo: 图片水印详细参数。
+        :type MarkPicInfo: :class:`tencentcloud.live.v20180801.models.CasterMarkPicInfo`
+        """
+        self._CasterId = None
+        self._MarkPicInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def MarkPicInfo(self):
+        """图片水印详细参数。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterMarkPicInfo`
+        """
+        return self._MarkPicInfo
+
+    @MarkPicInfo.setter
+    def MarkPicInfo(self, MarkPicInfo):
+        self._MarkPicInfo = MarkPicInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("MarkPicInfo") is not None:
+            self._MarkPicInfo = CasterMarkPicInfo()
+            self._MarkPicInfo._deserialize(params.get("MarkPicInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCasterMarkPicInfoResponse(AbstractModel):
+    """AddCasterMarkPicInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AddCasterMarkWordInfoRequest(AbstractModel):
+    """AddCasterMarkWordInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _MarkWordInfo: 文本的详细配置。
+        :type MarkWordInfo: :class:`tencentcloud.live.v20180801.models.CasterMarkWordInfo`
+        """
+        self._CasterId = None
+        self._MarkWordInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def MarkWordInfo(self):
+        """文本的详细配置。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterMarkWordInfo`
+        """
+        return self._MarkWordInfo
+
+    @MarkWordInfo.setter
+    def MarkWordInfo(self, MarkWordInfo):
+        self._MarkWordInfo = MarkWordInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("MarkWordInfo") is not None:
+            self._MarkWordInfo = CasterMarkWordInfo()
+            self._MarkWordInfo._deserialize(params.get("MarkWordInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCasterMarkWordInfoResponse(AbstractModel):
+    """AddCasterMarkWordInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddCasterOutputInfoRequest(AbstractModel):
     """AddCasterOutputInfo请求参数结构体
 
@@ -3133,6 +3295,449 @@ class CasterLayoutParam(AbstractModel):
         self._LayerLocationX = params.get("LayerLocationX")
         self._LayerLocationY = params.get("LayerLocationY")
         self._UsePortraitSegment = params.get("UsePortraitSegment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CasterMarkPicInfo(AbstractModel):
+    """导播台水印信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkPicIndex: 水印图片Index。
+        :type MarkPicIndex: int
+        :param _MarkPicId: 注：该字段已废弃。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkPicId: int
+        :param _MarkPicWidth: 水印图片在输出时的宽度。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
+当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面上所占的比例值。
+        :type MarkPicWidth: float
+        :param _MarkPicHeight: 水印图片在输出时的高度。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1080]。 
+当该值为小于1大于0的小数时，单位为百分比，表示水印在输出上所占的比例值。
+        :type MarkPicHeight: float
+        :param _MarkPicLocationX: 水印图片在输出时的X轴坐标。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
+当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面上x坐标所占的比例值。
+        :type MarkPicLocationX: float
+        :param _MarkPicLocationY: 水印图片在输出时的Y坐标。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1080]。 
+当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面Y坐标上所占的比例值。
+        :type MarkPicLocationY: float
+        :param _MarkPicUrl: 水印地址。
+最大长度256字符，且url需以jpg、jpeg、png、bmp、gif后缀结尾。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkPicUrl: str
+        :param _Description: 水印描述。
+最大允许长度为256。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _IsEqualProportion: 是否启用了等比例缩放。
+注：该字段仅做状态保存，无实际效果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsEqualProportion: bool
+        """
+        self._MarkPicIndex = None
+        self._MarkPicId = None
+        self._MarkPicWidth = None
+        self._MarkPicHeight = None
+        self._MarkPicLocationX = None
+        self._MarkPicLocationY = None
+        self._MarkPicUrl = None
+        self._Description = None
+        self._IsEqualProportion = None
+
+    @property
+    def MarkPicIndex(self):
+        """水印图片Index。
+        :rtype: int
+        """
+        return self._MarkPicIndex
+
+    @MarkPicIndex.setter
+    def MarkPicIndex(self, MarkPicIndex):
+        self._MarkPicIndex = MarkPicIndex
+
+    @property
+    def MarkPicId(self):
+        """注：该字段已废弃。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MarkPicId
+
+    @MarkPicId.setter
+    def MarkPicId(self, MarkPicId):
+        self._MarkPicId = MarkPicId
+
+    @property
+    def MarkPicWidth(self):
+        """水印图片在输出时的宽度。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
+当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面上所占的比例值。
+        :rtype: float
+        """
+        return self._MarkPicWidth
+
+    @MarkPicWidth.setter
+    def MarkPicWidth(self, MarkPicWidth):
+        self._MarkPicWidth = MarkPicWidth
+
+    @property
+    def MarkPicHeight(self):
+        """水印图片在输出时的高度。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1080]。 
+当该值为小于1大于0的小数时，单位为百分比，表示水印在输出上所占的比例值。
+        :rtype: float
+        """
+        return self._MarkPicHeight
+
+    @MarkPicHeight.setter
+    def MarkPicHeight(self, MarkPicHeight):
+        self._MarkPicHeight = MarkPicHeight
+
+    @property
+    def MarkPicLocationX(self):
+        """水印图片在输出时的X轴坐标。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
+当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面上x坐标所占的比例值。
+        :rtype: float
+        """
+        return self._MarkPicLocationX
+
+    @MarkPicLocationX.setter
+    def MarkPicLocationX(self, MarkPicLocationX):
+        self._MarkPicLocationX = MarkPicLocationX
+
+    @property
+    def MarkPicLocationY(self):
+        """水印图片在输出时的Y坐标。
+当该值为大于1的整数值时，单位为像素，允许范围[1,1080]。 
+当该值为小于1大于0的小数时，单位为百分比，表示水印在最终画面Y坐标上所占的比例值。
+        :rtype: float
+        """
+        return self._MarkPicLocationY
+
+    @MarkPicLocationY.setter
+    def MarkPicLocationY(self, MarkPicLocationY):
+        self._MarkPicLocationY = MarkPicLocationY
+
+    @property
+    def MarkPicUrl(self):
+        """水印地址。
+最大长度256字符，且url需以jpg、jpeg、png、bmp、gif后缀结尾。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MarkPicUrl
+
+    @MarkPicUrl.setter
+    def MarkPicUrl(self, MarkPicUrl):
+        self._MarkPicUrl = MarkPicUrl
+
+    @property
+    def Description(self):
+        """水印描述。
+最大允许长度为256。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IsEqualProportion(self):
+        """是否启用了等比例缩放。
+注：该字段仅做状态保存，无实际效果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsEqualProportion
+
+    @IsEqualProportion.setter
+    def IsEqualProportion(self, IsEqualProportion):
+        self._IsEqualProportion = IsEqualProportion
+
+
+    def _deserialize(self, params):
+        self._MarkPicIndex = params.get("MarkPicIndex")
+        self._MarkPicId = params.get("MarkPicId")
+        self._MarkPicWidth = params.get("MarkPicWidth")
+        self._MarkPicHeight = params.get("MarkPicHeight")
+        self._MarkPicLocationX = params.get("MarkPicLocationX")
+        self._MarkPicLocationY = params.get("MarkPicLocationY")
+        self._MarkPicUrl = params.get("MarkPicUrl")
+        self._Description = params.get("Description")
+        self._IsEqualProportion = params.get("IsEqualProportion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CasterMarkWordInfo(AbstractModel):
+    """导播台文字水印配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkWordIndex: 文字水印Index。
+        :type MarkWordIndex: int
+        :param _MarkWordText: 文字水印内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordText: str
+        :param _MarkWordFontSize: 文字水印的字号。
+范围[16, 60]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordFontSize: int
+        :param _MarkWordFontColor: 文字水印的颜色，值为HEX颜色代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordFontColor: str
+        :param _MarkWordFontType: 文字水印的字体类型。
+范围[1,2]。
+1. 宋体
+2. 黑体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordFontType: int
+        :param _MarkWordLocationX: 文字水印的x坐标位置，单位百分比。
+范围[0.0, 1.0]
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordLocationX: float
+        :param _MarkWordLocationY: 文字水印的Y坐标位置，单位百分比。
+范围[0.0, 1.0]
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordLocationY: float
+        :param _MarkWordRollEnable: 是否开启文字跑马灯功能。
+默认为false。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordRollEnable: bool
+        :param _MarkWordRollOnceTime: 跑马灯文字显示一遍的时间，单位为秒。
+默认为5s。
+范围[5, 600]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordRollOnceTime: int
+        :param _MarkWordRollDirection: 跑马灯文字的方向。
+默认值为0。
+范围[0,1]。
+0 从左到右
+1 从右到左
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordRollDirection: int
+        :param _MarkWordRollStartLocationX: 跑马灯文字显示的起始x坐标，单位百分比。
+范围[0.0, 1.0]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordRollStartLocationX: float
+        :param _MarkWordRollEndLocationX: 跑马灯文字显示的截止x坐标，单位百分比。
+范围[0.0, 1.0]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordRollEndLocationX: float
+        """
+        self._MarkWordIndex = None
+        self._MarkWordText = None
+        self._MarkWordFontSize = None
+        self._MarkWordFontColor = None
+        self._MarkWordFontType = None
+        self._MarkWordLocationX = None
+        self._MarkWordLocationY = None
+        self._MarkWordRollEnable = None
+        self._MarkWordRollOnceTime = None
+        self._MarkWordRollDirection = None
+        self._MarkWordRollStartLocationX = None
+        self._MarkWordRollEndLocationX = None
+
+    @property
+    def MarkWordIndex(self):
+        """文字水印Index。
+        :rtype: int
+        """
+        return self._MarkWordIndex
+
+    @MarkWordIndex.setter
+    def MarkWordIndex(self, MarkWordIndex):
+        self._MarkWordIndex = MarkWordIndex
+
+    @property
+    def MarkWordText(self):
+        """文字水印内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MarkWordText
+
+    @MarkWordText.setter
+    def MarkWordText(self, MarkWordText):
+        self._MarkWordText = MarkWordText
+
+    @property
+    def MarkWordFontSize(self):
+        """文字水印的字号。
+范围[16, 60]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MarkWordFontSize
+
+    @MarkWordFontSize.setter
+    def MarkWordFontSize(self, MarkWordFontSize):
+        self._MarkWordFontSize = MarkWordFontSize
+
+    @property
+    def MarkWordFontColor(self):
+        """文字水印的颜色，值为HEX颜色代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MarkWordFontColor
+
+    @MarkWordFontColor.setter
+    def MarkWordFontColor(self, MarkWordFontColor):
+        self._MarkWordFontColor = MarkWordFontColor
+
+    @property
+    def MarkWordFontType(self):
+        """文字水印的字体类型。
+范围[1,2]。
+1. 宋体
+2. 黑体
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MarkWordFontType
+
+    @MarkWordFontType.setter
+    def MarkWordFontType(self, MarkWordFontType):
+        self._MarkWordFontType = MarkWordFontType
+
+    @property
+    def MarkWordLocationX(self):
+        """文字水印的x坐标位置，单位百分比。
+范围[0.0, 1.0]
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MarkWordLocationX
+
+    @MarkWordLocationX.setter
+    def MarkWordLocationX(self, MarkWordLocationX):
+        self._MarkWordLocationX = MarkWordLocationX
+
+    @property
+    def MarkWordLocationY(self):
+        """文字水印的Y坐标位置，单位百分比。
+范围[0.0, 1.0]
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MarkWordLocationY
+
+    @MarkWordLocationY.setter
+    def MarkWordLocationY(self, MarkWordLocationY):
+        self._MarkWordLocationY = MarkWordLocationY
+
+    @property
+    def MarkWordRollEnable(self):
+        """是否开启文字跑马灯功能。
+默认为false。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._MarkWordRollEnable
+
+    @MarkWordRollEnable.setter
+    def MarkWordRollEnable(self, MarkWordRollEnable):
+        self._MarkWordRollEnable = MarkWordRollEnable
+
+    @property
+    def MarkWordRollOnceTime(self):
+        """跑马灯文字显示一遍的时间，单位为秒。
+默认为5s。
+范围[5, 600]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MarkWordRollOnceTime
+
+    @MarkWordRollOnceTime.setter
+    def MarkWordRollOnceTime(self, MarkWordRollOnceTime):
+        self._MarkWordRollOnceTime = MarkWordRollOnceTime
+
+    @property
+    def MarkWordRollDirection(self):
+        """跑马灯文字的方向。
+默认值为0。
+范围[0,1]。
+0 从左到右
+1 从右到左
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MarkWordRollDirection
+
+    @MarkWordRollDirection.setter
+    def MarkWordRollDirection(self, MarkWordRollDirection):
+        self._MarkWordRollDirection = MarkWordRollDirection
+
+    @property
+    def MarkWordRollStartLocationX(self):
+        """跑马灯文字显示的起始x坐标，单位百分比。
+范围[0.0, 1.0]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MarkWordRollStartLocationX
+
+    @MarkWordRollStartLocationX.setter
+    def MarkWordRollStartLocationX(self, MarkWordRollStartLocationX):
+        self._MarkWordRollStartLocationX = MarkWordRollStartLocationX
+
+    @property
+    def MarkWordRollEndLocationX(self):
+        """跑马灯文字显示的截止x坐标，单位百分比。
+范围[0.0, 1.0]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MarkWordRollEndLocationX
+
+    @MarkWordRollEndLocationX.setter
+    def MarkWordRollEndLocationX(self, MarkWordRollEndLocationX):
+        self._MarkWordRollEndLocationX = MarkWordRollEndLocationX
+
+
+    def _deserialize(self, params):
+        self._MarkWordIndex = params.get("MarkWordIndex")
+        self._MarkWordText = params.get("MarkWordText")
+        self._MarkWordFontSize = params.get("MarkWordFontSize")
+        self._MarkWordFontColor = params.get("MarkWordFontColor")
+        self._MarkWordFontType = params.get("MarkWordFontType")
+        self._MarkWordLocationX = params.get("MarkWordLocationX")
+        self._MarkWordLocationY = params.get("MarkWordLocationY")
+        self._MarkWordRollEnable = params.get("MarkWordRollEnable")
+        self._MarkWordRollOnceTime = params.get("MarkWordRollOnceTime")
+        self._MarkWordRollDirection = params.get("MarkWordRollDirection")
+        self._MarkWordRollStartLocationX = params.get("MarkWordRollStartLocationX")
+        self._MarkWordRollEndLocationX = params.get("MarkWordRollEndLocationX")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9901,6 +10506,164 @@ class DeleteCasterLayoutInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCasterMarkPicInfoRequest(AbstractModel):
+    """DeleteCasterMarkPicInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _MarkPicIndex: 需要删除的水印Index。
+        :type MarkPicIndex: int
+        """
+        self._CasterId = None
+        self._MarkPicIndex = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def MarkPicIndex(self):
+        """需要删除的水印Index。
+        :rtype: int
+        """
+        return self._MarkPicIndex
+
+    @MarkPicIndex.setter
+    def MarkPicIndex(self, MarkPicIndex):
+        self._MarkPicIndex = MarkPicIndex
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._MarkPicIndex = params.get("MarkPicIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCasterMarkPicInfoResponse(AbstractModel):
+    """DeleteCasterMarkPicInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCasterMarkWordInfoRequest(AbstractModel):
+    """DeleteCasterMarkWordInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _MarkWordIndex: 需要删除的文字水印Index。
+        :type MarkWordIndex: int
+        """
+        self._CasterId = None
+        self._MarkWordIndex = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def MarkWordIndex(self):
+        """需要删除的文字水印Index。
+        :rtype: int
+        """
+        return self._MarkWordIndex
+
+    @MarkWordIndex.setter
+    def MarkWordIndex(self, MarkWordIndex):
+        self._MarkWordIndex = MarkWordIndex
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        self._MarkWordIndex = params.get("MarkWordIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCasterMarkWordInfoResponse(AbstractModel):
+    """DeleteCasterMarkWordInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCasterOutputInfoRequest(AbstractModel):
     """DeleteCasterOutputInfo请求参数结构体
 
@@ -12958,6 +13721,178 @@ class DescribeCasterListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCasterMarkPicInfosRequest(AbstractModel):
+    """DescribeCasterMarkPicInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterMarkPicInfosResponse(AbstractModel):
+    """DescribeCasterMarkPicInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkPicInfos: 导播台的水印信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkPicInfos: list of CasterMarkPicInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MarkPicInfos = None
+        self._RequestId = None
+
+    @property
+    def MarkPicInfos(self):
+        """导播台的水印信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CasterMarkPicInfo
+        """
+        return self._MarkPicInfos
+
+    @MarkPicInfos.setter
+    def MarkPicInfos(self, MarkPicInfos):
+        self._MarkPicInfos = MarkPicInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MarkPicInfos") is not None:
+            self._MarkPicInfos = []
+            for item in params.get("MarkPicInfos"):
+                obj = CasterMarkPicInfo()
+                obj._deserialize(item)
+                self._MarkPicInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCasterMarkWordInfosRequest(AbstractModel):
+    """DescribeCasterMarkWordInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        """
+        self._CasterId = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCasterMarkWordInfosResponse(AbstractModel):
+    """DescribeCasterMarkWordInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkWordInfos: 导播台的文本信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkWordInfos: list of CasterMarkWordInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MarkWordInfos = None
+        self._RequestId = None
+
+    @property
+    def MarkWordInfos(self):
+        """导播台的文本信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CasterMarkWordInfo
+        """
+        return self._MarkWordInfos
+
+    @MarkWordInfos.setter
+    def MarkWordInfos(self, MarkWordInfos):
+        self._MarkWordInfos = MarkWordInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MarkWordInfos") is not None:
+            self._MarkWordInfos = []
+            for item in params.get("MarkWordInfos"):
+                obj = CasterMarkWordInfo()
+                obj._deserialize(item)
+                self._MarkWordInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCasterOutputInfosRequest(AbstractModel):
     """DescribeCasterOutputInfos请求参数结构体
 
@@ -15222,6 +16157,192 @@ class DescribeLiveDomainsResponse(AbstractModel):
                 self._DomainList.append(obj)
         self._CreateLimitCount = params.get("CreateLimitCount")
         self._PlayTypeCount = params.get("PlayTypeCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveEnhanceInfoListRequest(AbstractModel):
+    """DescribeLiveEnhanceInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始时间点，使用ISO格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
+        :type StartTime: str
+        :param _EndTime: 结束时间点，使用ISO格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
+        :type EndTime: str
+        :param _Granularity: 查询粒度，支持5，60分钟。
+        :type Granularity: int
+        :param _DomainNames: 查询域名，如果不填则默认查全部的数据。
+        :type DomainNames: list of str
+        :param _Type: 增强服务类型，如果不填则默认查全部的数据。
+        :type Type: list of str
+        :param _Resolution: 分辨率，如果不填则默认查全部的数据。
+        :type Resolution: list of str
+        :param _Fps: 帧率，如果不填则默认查全部的数据。
+        :type Fps: list of str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Granularity = None
+        self._DomainNames = None
+        self._Type = None
+        self._Resolution = None
+        self._Fps = None
+
+    @property
+    def StartTime(self):
+        """起始时间点，使用ISO格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间点，使用ISO格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见[ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+接口支持最近三个月的查询，开始时间和结束时间查询跨度不能超过三十天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Granularity(self):
+        """查询粒度，支持5，60分钟。
+        :rtype: int
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def DomainNames(self):
+        """查询域名，如果不填则默认查全部的数据。
+        :rtype: list of str
+        """
+        return self._DomainNames
+
+    @DomainNames.setter
+    def DomainNames(self, DomainNames):
+        self._DomainNames = DomainNames
+
+    @property
+    def Type(self):
+        """增强服务类型，如果不填则默认查全部的数据。
+        :rtype: list of str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Resolution(self):
+        """分辨率，如果不填则默认查全部的数据。
+        :rtype: list of str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Fps(self):
+        """帧率，如果不填则默认查全部的数据。
+        :rtype: list of str
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Granularity = params.get("Granularity")
+        self._DomainNames = params.get("DomainNames")
+        self._Type = params.get("Type")
+        self._Resolution = params.get("Resolution")
+        self._Fps = params.get("Fps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveEnhanceInfoListResponse(AbstractModel):
+    """DescribeLiveEnhanceInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataInfoList: 直播增强统计信息列表。
+        :type DataInfoList: list of LiveEnhanceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        """直播增强统计信息列表。
+        :rtype: list of LiveEnhanceInfo
+        """
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self._DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = LiveEnhanceInfo()
+                obj._deserialize(item)
+                self._DataInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25579,6 +26700,117 @@ class LiveDomainCertBindings(AbstractModel):
         
 
 
+class LiveEnhanceInfo(AbstractModel):
+    """直播增强计费信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _Time: 时间。
+        :type Time: str
+        :param _Duration: 计费时长，单位分钟。
+        :type Duration: int
+        :param _Fps: 帧率。
+        :type Fps: str
+        :param _Resolution: 分辨率。
+        :type Resolution: str
+        :param _Type: 增强服务类型。
+        :type Type: str
+        """
+        self._Domain = None
+        self._Time = None
+        self._Duration = None
+        self._Fps = None
+        self._Resolution = None
+        self._Type = None
+
+    @property
+    def Domain(self):
+        """域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Time(self):
+        """时间。
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Duration(self):
+        """计费时长，单位分钟。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Fps(self):
+        """帧率。
+        :rtype: str
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Resolution(self):
+        """分辨率。
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Type(self):
+        """增强服务类型。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Time = params.get("Time")
+        self._Duration = params.get("Duration")
+        self._Fps = params.get("Fps")
+        self._Resolution = params.get("Resolution")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LivePackageInfo(AbstractModel):
     """直播包信息。
 
@@ -26817,6 +28049,168 @@ class ModifyCasterLayoutInfoRequest(AbstractModel):
 
 class ModifyCasterLayoutInfoResponse(AbstractModel):
     """ModifyCasterLayoutInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCasterMarkPicInfoRequest(AbstractModel):
+    """ModifyCasterMarkPicInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _MarkPicInfo: 新的水印信息。
+        :type MarkPicInfo: :class:`tencentcloud.live.v20180801.models.CasterMarkPicInfo`
+        """
+        self._CasterId = None
+        self._MarkPicInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def MarkPicInfo(self):
+        """新的水印信息。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterMarkPicInfo`
+        """
+        return self._MarkPicInfo
+
+    @MarkPicInfo.setter
+    def MarkPicInfo(self, MarkPicInfo):
+        self._MarkPicInfo = MarkPicInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("MarkPicInfo") is not None:
+            self._MarkPicInfo = CasterMarkPicInfo()
+            self._MarkPicInfo._deserialize(params.get("MarkPicInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCasterMarkPicInfoResponse(AbstractModel):
+    """ModifyCasterMarkPicInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCasterMarkWordInfoRequest(AbstractModel):
+    """ModifyCasterMarkWordInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CasterId: 导播台ID。
+        :type CasterId: int
+        :param _MarkWordInfo: 修改的文本配置。
+        :type MarkWordInfo: :class:`tencentcloud.live.v20180801.models.CasterMarkWordInfo`
+        """
+        self._CasterId = None
+        self._MarkWordInfo = None
+
+    @property
+    def CasterId(self):
+        """导播台ID。
+        :rtype: int
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def MarkWordInfo(self):
+        """修改的文本配置。
+        :rtype: :class:`tencentcloud.live.v20180801.models.CasterMarkWordInfo`
+        """
+        return self._MarkWordInfo
+
+    @MarkWordInfo.setter
+    def MarkWordInfo(self, MarkWordInfo):
+        self._MarkWordInfo = MarkWordInfo
+
+
+    def _deserialize(self, params):
+        self._CasterId = params.get("CasterId")
+        if params.get("MarkWordInfo") is not None:
+            self._MarkWordInfo = CasterMarkWordInfo()
+            self._MarkWordInfo._deserialize(params.get("MarkWordInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCasterMarkWordInfoResponse(AbstractModel):
+    """ModifyCasterMarkWordInfo返回参数结构体
 
     """
 

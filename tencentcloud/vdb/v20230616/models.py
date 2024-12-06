@@ -348,6 +348,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type EngineNames: list of str
         :param _EngineVersions: 按照版本筛选实例。
         :type EngineVersions: list of str
+        :param _ApiVersions: 按照api版本筛选实例
+        :type ApiVersions: list of str
         :param _CreateAt: 按照创建时间筛选实例。
         :type CreateAt: str
         :param _Zones: 按照可用区筛选实例。
@@ -369,6 +371,7 @@ class DescribeInstancesRequest(AbstractModel):
         self._Status = None
         self._EngineNames = None
         self._EngineVersions = None
+        self._ApiVersions = None
         self._CreateAt = None
         self._Zones = None
         self._OrderBy = None
@@ -442,6 +445,17 @@ class DescribeInstancesRequest(AbstractModel):
     @EngineVersions.setter
     def EngineVersions(self, EngineVersions):
         self._EngineVersions = EngineVersions
+
+    @property
+    def ApiVersions(self):
+        """按照api版本筛选实例
+        :rtype: list of str
+        """
+        return self._ApiVersions
+
+    @ApiVersions.setter
+    def ApiVersions(self, ApiVersions):
+        self._ApiVersions = ApiVersions
 
     @property
     def CreateAt(self):
@@ -528,6 +542,7 @@ class DescribeInstancesRequest(AbstractModel):
         self._Status = params.get("Status")
         self._EngineNames = params.get("EngineNames")
         self._EngineVersions = params.get("EngineVersions")
+        self._ApiVersions = params.get("ApiVersions")
         self._CreateAt = params.get("CreateAt")
         self._Zones = params.get("Zones")
         self._OrderBy = params.get("OrderBy")
@@ -1440,11 +1455,17 @@ class Network(AbstractModel):
         :param _Port: 内网访问Port。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
+        :param _PreserveDuration: 旧 ip 保留时长，单位天
+        :type PreserveDuration: int
+        :param _ExpireTime: 旧 ip 到期时间
+        :type ExpireTime: str
         """
         self._VpcId = None
         self._SubnetId = None
         self._Vip = None
         self._Port = None
+        self._PreserveDuration = None
+        self._ExpireTime = None
 
     @property
     def VpcId(self):
@@ -1494,12 +1515,36 @@ class Network(AbstractModel):
     def Port(self, Port):
         self._Port = Port
 
+    @property
+    def PreserveDuration(self):
+        """旧 ip 保留时长，单位天
+        :rtype: int
+        """
+        return self._PreserveDuration
+
+    @PreserveDuration.setter
+    def PreserveDuration(self, PreserveDuration):
+        self._PreserveDuration = PreserveDuration
+
+    @property
+    def ExpireTime(self):
+        """旧 ip 到期时间
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._Vip = params.get("Vip")
         self._Port = params.get("Port")
+        self._PreserveDuration = params.get("PreserveDuration")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

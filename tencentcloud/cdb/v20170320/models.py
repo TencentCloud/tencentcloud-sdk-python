@@ -4808,6 +4808,148 @@ class CheckMigrateClusterRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id。
+        :type InstanceId: str
+        :param _Cpu: 实例CPU核数
+        :type Cpu: int
+        :param _Memory: 实例内存大小，单位：MB
+        :type Memory: int
+        :param _Volume: 实例硬盘大小，单位：GB
+        :type Volume: int
+        :param _DiskType: 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+        :type DiskType: str
+        :param _ClusterTopology: 集群版节点拓扑配置。
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _DeviceType: 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+        :type DeviceType: str
+        :param _RoInfo: 只读实例信息
+        :type RoInfo: list of MigrateClusterRoInfo
+        """
+        self._InstanceId = None
+        self._Cpu = None
+        self._Memory = None
+        self._Volume = None
+        self._DiskType = None
+        self._ClusterTopology = None
+        self._DeviceType = None
+        self._RoInfo = None
+
+    @property
+    def InstanceId(self):
+        """实例Id。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Cpu(self):
+        """实例CPU核数
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        """实例内存大小，单位：MB
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        """实例硬盘大小，单位：GB
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def DiskType(self):
+        """磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def ClusterTopology(self):
+        """集群版节点拓扑配置。
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        """
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
+    @property
+    def DeviceType(self):
+        """迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def RoInfo(self):
+        """只读实例信息
+        :rtype: list of MigrateClusterRoInfo
+        """
+        return self._RoInfo
+
+    @RoInfo.setter
+    def RoInfo(self, RoInfo):
+        self._RoInfo = RoInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._DiskType = params.get("DiskType")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._DeviceType = params.get("DeviceType")
+        if params.get("RoInfo") is not None:
+            self._RoInfo = []
+            for item in params.get("RoInfo"):
+                obj = MigrateClusterRoInfo()
+                obj._deserialize(item)
+                self._RoInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CheckMigrateClusterResponse(AbstractModel):
     """CheckMigrateCluster返回参数结构体
@@ -4816,10 +4958,38 @@ class CheckMigrateClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CheckResult: 校验是否通过，通过为pass，失败为fail
+        :type CheckResult: str
+        :param _Items: 校验项
+        :type Items: list of CheckMigrateResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._CheckResult = None
+        self._Items = None
         self._RequestId = None
+
+    @property
+    def CheckResult(self):
+        """校验是否通过，通过为pass，失败为fail
+        :rtype: str
+        """
+        return self._CheckResult
+
+    @CheckResult.setter
+    def CheckResult(self, CheckResult):
+        self._CheckResult = CheckResult
+
+    @property
+    def Items(self):
+        """校验项
+        :rtype: list of CheckMigrateResult
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
 
     @property
     def RequestId(self):
@@ -4834,7 +5004,80 @@ class CheckMigrateClusterResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CheckResult = params.get("CheckResult")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = CheckMigrateResult()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class CheckMigrateResult(AbstractModel):
+    """迁移集群版校验结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 校验名称
+        :type Name: str
+        :param _Status: 校验结果，通过为pass，失败为fail
+        :type Status: str
+        :param _Desc: 校验结果描述
+        :type Desc: str
+        """
+        self._Name = None
+        self._Status = None
+        self._Desc = None
+
+    @property
+    def Name(self):
+        """校验名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        """校验结果，通过为pass，失败为fail
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Desc(self):
+        """校验结果描述
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CloneItem(AbstractModel):
@@ -18418,6 +18661,156 @@ class DescribeInstanceAlarmEventsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param _StartTime: 事件查询范围开始时间，闭区间。
+        :type StartTime: str
+        :param _EndTime: 事件查询范围截止时间，闭区间。
+        :type EndTime: str
+        :param _EventName: 事件名称。 Outofmemory - 内存OOM（有状态事件）; Switch - 主从切换（有状态事件）; Roremove - 只读实例剔除（有状态事件）; MemoryUsedHigh - 内存使用率过高（有状态事件）; CPUExpansion - CPU性能扩容（无状态事件）; CPUExpansionFailed - CPU性能扩容失败（无状态事件）; CPUContraction - CPU性能回缩（无状态事件）; Restart - 实例重启（有状态事件）; ServerFailureNodeMigration - ServerFailureNodeMigration（有状态事件）; PlannedSwitch - 计划内主备切换（无状态事件）; OverusedReadonlySet - 实例将被锁定（无状态事件）; OverusedReadWriteSet - 实例解除锁定（无状态事件）。
+        :type EventName: list of str
+        :param _EventStatus: 事件状态。"1" - 发生事件；"0" - 恢复事件；"-" - 无状态事件。
+        :type EventStatus: str
+        :param _Order: 排序方式。按事件发生事件进行排序，"DESC"-倒排；”ASC“-正序，默认倒排。
+        :type Order: str
+        :param _Limit: 事件展示数量。
+        :type Limit: str
+        :param _Offset: 偏移量。
+        :type Offset: str
+        :param _NodeId: 节点 ID。
+        :type NodeId: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._EventName = None
+        self._EventStatus = None
+        self._Order = None
+        self._Limit = None
+        self._Offset = None
+        self._NodeId = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """事件查询范围开始时间，闭区间。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """事件查询范围截止时间，闭区间。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EventName(self):
+        """事件名称。 Outofmemory - 内存OOM（有状态事件）; Switch - 主从切换（有状态事件）; Roremove - 只读实例剔除（有状态事件）; MemoryUsedHigh - 内存使用率过高（有状态事件）; CPUExpansion - CPU性能扩容（无状态事件）; CPUExpansionFailed - CPU性能扩容失败（无状态事件）; CPUContraction - CPU性能回缩（无状态事件）; Restart - 实例重启（有状态事件）; ServerFailureNodeMigration - ServerFailureNodeMigration（有状态事件）; PlannedSwitch - 计划内主备切换（无状态事件）; OverusedReadonlySet - 实例将被锁定（无状态事件）; OverusedReadWriteSet - 实例解除锁定（无状态事件）。
+        :rtype: list of str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventStatus(self):
+        """事件状态。"1" - 发生事件；"0" - 恢复事件；"-" - 无状态事件。
+        :rtype: str
+        """
+        return self._EventStatus
+
+    @EventStatus.setter
+    def EventStatus(self, EventStatus):
+        self._EventStatus = EventStatus
+
+    @property
+    def Order(self):
+        """排序方式。按事件发生事件进行排序，"DESC"-倒排；”ASC“-正序，默认倒排。
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Limit(self):
+        """事件展示数量。
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量。
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def NodeId(self):
+        """节点 ID。
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._EventName = params.get("EventName")
+        self._EventStatus = params.get("EventStatus")
+        self._Order = params.get("Order")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeInstanceAlarmEventsResponse(AbstractModel):
     """DescribeInstanceAlarmEvents返回参数结构体
@@ -18426,10 +18819,40 @@ class DescribeInstanceAlarmEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 事件数。
+        :type TotalCount: int
+        :param _Items: 事件信息。查询不到信息时，Items为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of InstEventInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._Items = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """事件数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        """事件信息。查询不到信息时，Items为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstEventInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
 
     @property
     def RequestId(self):
@@ -18444,6 +18867,13 @@ class DescribeInstanceAlarmEventsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = InstEventInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23232,6 +23662,104 @@ class InquiryPriceUpgradeInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InstEventInfo(AbstractModel):
+    """实例事件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventName: 事件名称。
+        :type EventName: str
+        :param _EventStatus: 事件状态。
+        :type EventStatus: str
+        :param _OccurTime: 事件发生时间。
+        :type OccurTime: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _NodeId: 节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: str
+        """
+        self._EventName = None
+        self._EventStatus = None
+        self._OccurTime = None
+        self._InstanceId = None
+        self._NodeId = None
+
+    @property
+    def EventName(self):
+        """事件名称。
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventStatus(self):
+        """事件状态。
+        :rtype: str
+        """
+        return self._EventStatus
+
+    @EventStatus.setter
+    def EventStatus(self, EventStatus):
+        self._EventStatus = EventStatus
+
+    @property
+    def OccurTime(self):
+        """事件发生时间。
+        :rtype: str
+        """
+        return self._OccurTime
+
+    @OccurTime.setter
+    def OccurTime(self, OccurTime):
+        self._OccurTime = OccurTime
+
+    @property
+    def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeId(self):
+        """节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._EventName = params.get("EventName")
+        self._EventStatus = params.get("EventStatus")
+        self._OccurTime = params.get("OccurTime")
+        self._InstanceId = params.get("InstanceId")
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceAuditLogFilters(AbstractModel):
     """审计日志搜索过滤器
 
@@ -25208,6 +25736,162 @@ class MasterInfo(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._ExClusterId = params.get("ExClusterId")
         self._ExClusterName = params.get("ExClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateClusterRoInfo(AbstractModel):
+    """一键迁移集群版只读实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoInstanceId: 只读实例名称
+        :type RoInstanceId: str
+        :param _Cpu: 只读实例CPU核数
+        :type Cpu: int
+        :param _Memory: 只读实例内存大小，单位：MB
+        :type Memory: int
+        :param _Volume: 只读实例硬盘大小，单位：GB
+        :type Volume: int
+        :param _DiskType: 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+        :type DiskType: str
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _DeviceType: 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+        :type DeviceType: str
+        :param _RoGroupId: 只读实例所在ro组，例：cdbrg-xxx
+        :type RoGroupId: str
+        :param _SrcAlarmPolicyList: 实例当前告警策略id数组
+        :type SrcAlarmPolicyList: list of int
+        """
+        self._RoInstanceId = None
+        self._Cpu = None
+        self._Memory = None
+        self._Volume = None
+        self._DiskType = None
+        self._Zone = None
+        self._DeviceType = None
+        self._RoGroupId = None
+        self._SrcAlarmPolicyList = None
+
+    @property
+    def RoInstanceId(self):
+        """只读实例名称
+        :rtype: str
+        """
+        return self._RoInstanceId
+
+    @RoInstanceId.setter
+    def RoInstanceId(self, RoInstanceId):
+        self._RoInstanceId = RoInstanceId
+
+    @property
+    def Cpu(self):
+        """只读实例CPU核数
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        """只读实例内存大小，单位：MB
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        """只读实例硬盘大小，单位：GB
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def DiskType(self):
+        """磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def Zone(self):
+        """可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def DeviceType(self):
+        """迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def RoGroupId(self):
+        """只读实例所在ro组，例：cdbrg-xxx
+        :rtype: str
+        """
+        return self._RoGroupId
+
+    @RoGroupId.setter
+    def RoGroupId(self, RoGroupId):
+        self._RoGroupId = RoGroupId
+
+    @property
+    def SrcAlarmPolicyList(self):
+        """实例当前告警策略id数组
+        :rtype: list of int
+        """
+        return self._SrcAlarmPolicyList
+
+    @SrcAlarmPolicyList.setter
+    def SrcAlarmPolicyList(self, SrcAlarmPolicyList):
+        self._SrcAlarmPolicyList = SrcAlarmPolicyList
+
+
+    def _deserialize(self, params):
+        self._RoInstanceId = params.get("RoInstanceId")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._DiskType = params.get("DiskType")
+        self._Zone = params.get("Zone")
+        self._DeviceType = params.get("DeviceType")
+        self._RoGroupId = params.get("RoGroupId")
+        self._SrcAlarmPolicyList = params.get("SrcAlarmPolicyList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

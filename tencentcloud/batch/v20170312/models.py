@@ -1856,46 +1856,16 @@ class DataDisk(AbstractModel):
         r"""
         :param _DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
         :type DiskSize: int
-        :param _DiskType: 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br />
-<li>
-  LOCAL_BASIC：本地硬盘<br />
-  <li>
-    LOCAL_SSD：本地SSD硬盘<br />
-    <li>
-      LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br />
-      <li>
-        LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br />
-        <li>
-          CLOUD_BASIC：普通云硬盘<br />
-          <li>
-            CLOUD_PREMIUM：高性能云硬盘<br />
-            <li>
-              CLOUD_SSD：SSD云硬盘<br />
-              <li>
-                CLOUD_HSSD：增强型SSD云硬盘<br />
-                <li>
-                  CLOUD_TSSD：极速型SSD云硬盘<br />
-                  <li>
-                    CLOUD_BSSD：通用型SSD云硬盘<br /><br />默认取值：LOCAL_BASIC。<br /><br />该参数对`ResizeInstanceDisk`接口无效。
-                  </li>
-                </li>
-              </li>
-            </li>
-          </li>
-        </li>
-      </li>
-    </li>
-  </li>
-</li>
+        :param _DiskType: 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br /><li>LOCAL_BASIC：本地硬盘<br /> <li>LOCAL_SSD：本地SSD硬盘<br /><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br /><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br /><li>CLOUD_BASIC：普通云硬盘<br /><li> CLOUD_PREMIUM：高性能云硬盘<br /><li>CLOUD_SSD：SSD云硬盘<br /><li> CLOUD_HSSD：增强型SSD云硬盘<br /> <li>CLOUD_TSSD：极速型SSD云硬盘<br /><li>CLOUD_BSSD：通用型SSD云硬盘<br /><br />默认取值：LOCAL_BASIC。<br /><br />该参数对`ResizeInstanceDisk`接口无效。</li></li></li> </li> </li></li></li></li></li></li>
         :type DiskType: str
         :param _DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID，暂时不支持该参数。
 该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
         :type DiskId: str
         :param _DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
-<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
+<li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
 <li>
-  FALSE：子机销毁时，保留数据盘<br />
-  默认取值：TRUE<br />
+  false：子机销毁时，保留数据盘<br />
+  默认取值：true<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1928,6 +1898,10 @@ class DataDisk(AbstractModel):
  <b>注：内测中。</b>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BurstPerformance: bool
+        :param _DiskName: 磁盘名称，长度不超过128 个字符。
+
+该参数正在邀测中，暂未开放使用。
+        :type DiskName: str
         """
         self._DiskSize = None
         self._DiskType = None
@@ -1939,6 +1913,7 @@ class DataDisk(AbstractModel):
         self._ThroughputPerformance = None
         self._CdcId = None
         self._BurstPerformance = None
+        self._DiskName = None
 
     @property
     def DiskSize(self):
@@ -1953,37 +1928,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br />
-<li>
-  LOCAL_BASIC：本地硬盘<br />
-  <li>
-    LOCAL_SSD：本地SSD硬盘<br />
-    <li>
-      LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br />
-      <li>
-        LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br />
-        <li>
-          CLOUD_BASIC：普通云硬盘<br />
-          <li>
-            CLOUD_PREMIUM：高性能云硬盘<br />
-            <li>
-              CLOUD_SSD：SSD云硬盘<br />
-              <li>
-                CLOUD_HSSD：增强型SSD云硬盘<br />
-                <li>
-                  CLOUD_TSSD：极速型SSD云硬盘<br />
-                  <li>
-                    CLOUD_BSSD：通用型SSD云硬盘<br /><br />默认取值：LOCAL_BASIC。<br /><br />该参数对`ResizeInstanceDisk`接口无效。
-                  </li>
-                </li>
-              </li>
-            </li>
-          </li>
-        </li>
-      </li>
-    </li>
-  </li>
-</li>
+        """数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br /><li>LOCAL_BASIC：本地硬盘<br /> <li>LOCAL_SSD：本地SSD硬盘<br /><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br /><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br /><li>CLOUD_BASIC：普通云硬盘<br /><li> CLOUD_PREMIUM：高性能云硬盘<br /><li>CLOUD_SSD：SSD云硬盘<br /><li> CLOUD_HSSD：增强型SSD云硬盘<br /> <li>CLOUD_TSSD：极速型SSD云硬盘<br /><li>CLOUD_BSSD：通用型SSD云硬盘<br /><br />默认取值：LOCAL_BASIC。<br /><br />该参数对`ResizeInstanceDisk`接口无效。</li></li></li> </li> </li></li></li></li></li></li>
         :rtype: str
         """
         return self._DiskType
@@ -2007,10 +1952,10 @@ class DataDisk(AbstractModel):
     @property
     def DeleteWithInstance(self):
         """数据盘是否随子机销毁。取值范围：
-<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
+<li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
 <li>
-  FALSE：子机销毁时，保留数据盘<br />
-  默认取值：TRUE<br />
+  false：子机销毁时，保留数据盘<br />
+  默认取值：true<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2104,6 +2049,19 @@ class DataDisk(AbstractModel):
     def BurstPerformance(self, BurstPerformance):
         self._BurstPerformance = BurstPerformance
 
+    @property
+    def DiskName(self):
+        """磁盘名称，长度不超过128 个字符。
+
+该参数正在邀测中，暂未开放使用。
+        :rtype: str
+        """
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
 
     def _deserialize(self, params):
         self._DiskSize = params.get("DiskSize")
@@ -2116,6 +2074,7 @@ class DataDisk(AbstractModel):
         self._ThroughputPerformance = params.get("ThroughputPerformance")
         self._CdcId = params.get("CdcId")
         self._BurstPerformance = params.get("BurstPerformance")
+        self._DiskName = params.get("DiskName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9699,11 +9658,17 @@ class SystemDisk(AbstractModel):
         :param _CdcId: 所属的独享集群ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
+        :param _DiskName: 磁盘名称，长度不超过128 个字符。
+
+该参数正在邀测中，暂未开放使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskName: str
         """
         self._DiskType = None
         self._DiskId = None
         self._DiskSize = None
         self._CdcId = None
+        self._DiskName = None
 
     @property
     def DiskType(self):
@@ -9760,12 +9725,27 @@ class SystemDisk(AbstractModel):
     def CdcId(self, CdcId):
         self._CdcId = CdcId
 
+    @property
+    def DiskName(self):
+        """磁盘名称，长度不超过128 个字符。
+
+该参数正在邀测中，暂未开放使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._DiskId = params.get("DiskId")
         self._DiskSize = params.get("DiskSize")
         self._CdcId = params.get("CdcId")
+        self._DiskName = params.get("DiskName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

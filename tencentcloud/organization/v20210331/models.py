@@ -7124,7 +7124,7 @@ class DescribePolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyId: 策略Id。
+        :param _PolicyId: 策略Id。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
         :type PolicyId: int
         :param _PolicyType: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
         :type PolicyType: str
@@ -7134,7 +7134,7 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """策略Id。
+        """策略Id。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
         :rtype: int
         """
         return self._PolicyId
@@ -10769,10 +10769,8 @@ class ListNonCompliantResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 资源及标签合规信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ResourceTagMapping
         :param _PaginationToken: 获取的下一页的Token值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PaginationToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10784,7 +10782,6 @@ class ListNonCompliantResourceResponse(AbstractModel):
     @property
     def Items(self):
         """资源及标签合规信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceTagMapping
         """
         return self._Items
@@ -10796,7 +10793,6 @@ class ListNonCompliantResourceResponse(AbstractModel):
     @property
     def PaginationToken(self):
         """获取的下一页的Token值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PaginationToken
@@ -10902,10 +10898,8 @@ class ListOrgServiceAssignMemberResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Items: 委派管理员列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrganizationServiceAssignMember
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10917,7 +10911,6 @@ class ListOrgServiceAssignMemberResponse(AbstractModel):
     @property
     def Total(self):
         """总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -10929,7 +10922,6 @@ class ListOrgServiceAssignMemberResponse(AbstractModel):
     @property
     def Items(self):
         """委派管理员列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrganizationServiceAssignMember
         """
         return self._Items
@@ -11065,10 +11057,8 @@ class ListOrganizationIdentityResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Items: 条目详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgIdentity
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11080,7 +11070,6 @@ class ListOrganizationIdentityResponse(AbstractModel):
     @property
     def Total(self):
         """总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -11092,7 +11081,6 @@ class ListOrganizationIdentityResponse(AbstractModel):
     @property
     def Items(self):
         """条目详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgIdentity
         """
         return self._Items
@@ -11198,10 +11186,8 @@ class ListOrganizationServiceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Items: 集团服务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrganizationServiceAssign
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11213,7 +11199,6 @@ class ListOrganizationServiceResponse(AbstractModel):
     @property
     def Total(self):
         """总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -11225,7 +11210,6 @@ class ListOrganizationServiceResponse(AbstractModel):
     @property
     def Items(self):
         """集团服务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrganizationServiceAssign
         """
         return self._Items
@@ -11673,7 +11657,6 @@ class ListPoliciesForTargetResponse(AbstractModel):
         :param _TotalNum: 总数。
         :type TotalNum: int
         :param _List: 目标关联的策略列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ListPoliciesForTarget
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11696,7 +11679,6 @@ class ListPoliciesForTargetResponse(AbstractModel):
     @property
     def List(self):
         """目标关联的策略列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ListPoliciesForTarget
         """
         return self._List
@@ -11834,7 +11816,6 @@ class ListPoliciesResponse(AbstractModel):
         :param _TotalNum: 策略总数
         :type TotalNum: int
         :param _List: 策略列表数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ListPolicyNode
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11857,7 +11838,6 @@ class ListPoliciesResponse(AbstractModel):
     @property
     def List(self):
         """策略列表数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ListPolicyNode
         """
         return self._List
@@ -13073,7 +13053,6 @@ class ListTargetsForPolicyResponse(AbstractModel):
         :param _TotalNum: 总数。
         :type TotalNum: int
         :param _List: 指定SCP策略关联目标列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ListTargetsForPolicyNode
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13096,7 +13075,6 @@ class ListTargetsForPolicyResponse(AbstractModel):
     @property
     def List(self):
         """指定SCP策略关联目标列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ListTargetsForPolicyNode
         """
         return self._List

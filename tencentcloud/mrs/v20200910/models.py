@@ -26,14 +26,11 @@ class AdmissionConditionBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -43,7 +40,6 @@ class AdmissionConditionBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -56,7 +52,6 @@ class AdmissionConditionBlock(AbstractModel):
     def Src(self):
         """原文
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -68,7 +63,6 @@ class AdmissionConditionBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -100,16 +94,12 @@ class AdmissionDiagnosisBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -120,7 +110,6 @@ class AdmissionDiagnosisBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -132,7 +121,6 @@ class AdmissionDiagnosisBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -144,7 +132,6 @@ class AdmissionDiagnosisBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -156,7 +143,6 @@ class AdmissionDiagnosisBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -189,7 +175,6 @@ class Advice(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -197,7 +182,6 @@ class Advice(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -227,19 +211,14 @@ class AspectRatio(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Number: 数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Number: str
         :param _Relation: 关系
-注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Index = None
@@ -251,7 +230,6 @@ class AspectRatio(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -263,7 +241,6 @@ class AspectRatio(AbstractModel):
     @property
     def Number(self):
         """数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Number
@@ -275,7 +252,6 @@ class AspectRatio(AbstractModel):
     @property
     def Relation(self):
         """关系
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Relation
@@ -287,7 +263,6 @@ class AspectRatio(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -299,7 +274,6 @@ class AspectRatio(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -333,19 +307,14 @@ class BaseInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 标准值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -357,7 +326,6 @@ class BaseInfo(AbstractModel):
     @property
     def Name(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -369,7 +337,6 @@ class BaseInfo(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -381,7 +348,6 @@ class BaseInfo(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -393,7 +359,6 @@ class BaseInfo(AbstractModel):
     @property
     def Value(self):
         """标准值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -405,7 +370,6 @@ class BaseInfo(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -444,19 +408,14 @@ class BaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原始文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 归一化后值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Alias: 别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _Coords: 四点坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -468,7 +427,6 @@ class BaseItem(AbstractModel):
     @property
     def Name(self):
         """类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -480,7 +438,6 @@ class BaseItem(AbstractModel):
     @property
     def Src(self):
         """原始文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -492,7 +449,6 @@ class BaseItem(AbstractModel):
     @property
     def Value(self):
         """归一化后值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -504,7 +460,6 @@ class BaseItem(AbstractModel):
     @property
     def Alias(self):
         """别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Alias
@@ -516,7 +471,6 @@ class BaseItem(AbstractModel):
     @property
     def Coords(self):
         """四点坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -555,16 +509,12 @@ class BaseItem2(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原始文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 归一化后值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Coords: 四点坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -575,7 +525,6 @@ class BaseItem2(AbstractModel):
     @property
     def Name(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -587,7 +536,6 @@ class BaseItem2(AbstractModel):
     @property
     def Src(self):
         """原始文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -599,7 +547,6 @@ class BaseItem2(AbstractModel):
     @property
     def Value(self):
         """归一化后值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -611,7 +558,6 @@ class BaseItem2(AbstractModel):
     @property
     def Coords(self):
         """四点坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -649,19 +595,14 @@ class BaseItem3(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原始文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 归一化后值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Coords: 四点坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         :param _Order: 第几次
-注意：此字段可能返回 null，表示取不到有效值。
         :type Order: int
         """
         self._Name = None
@@ -673,7 +614,6 @@ class BaseItem3(AbstractModel):
     @property
     def Name(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -685,7 +625,6 @@ class BaseItem3(AbstractModel):
     @property
     def Src(self):
         """原始文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -697,7 +636,6 @@ class BaseItem3(AbstractModel):
     @property
     def Value(self):
         """归一化后值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -709,7 +647,6 @@ class BaseItem3(AbstractModel):
     @property
     def Coords(self):
         """四点坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -721,7 +658,6 @@ class BaseItem3(AbstractModel):
     @property
     def Order(self):
         """第几次
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Order
@@ -760,49 +696,34 @@ class BiologicalProductInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 药品名称，包括通用名和商品名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoName`
         :param _IngredientAndAppearance: 成份和性状
-注意：此字段可能返回 null，表示取不到有效值。
         :type IngredientAndAppearance: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoIngredientAndAppearance`
         :param _VaccinationTarget: 接种对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type VaccinationTarget: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoVaccinationTarget`
         :param _Indications: 作用与用途
-注意：此字段可能返回 null，表示取不到有效值。
         :type Indications: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoIndications`
         :param _Brochure: 规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type Brochure: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoBrochure`
         :param _Dosage: 免疫程序和剂量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Dosage: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoDosage`
         :param _AdverseReaction: 不良反应
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdverseReaction: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoAdverseReaction`
         :param _Contraindications: 禁忌情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type Contraindications: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoContraindications`
         :param _Precautions: 注意事项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Precautions: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoPrecautions`
         :param _Storage: 储存条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Storage: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoStorage`
         :param _Packaging: 包装信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Packaging: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoPackaging`
         :param _ValidityPeriod: 有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoValidityPeriod`
         :param _ExecutiveStandards: 执行标准
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutiveStandards: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoExecutiveStandards`
         :param _Approval: 批准文号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Approval: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoApproval`
         :param _Manufacturer: 生产企业名称和地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoManufacturer`
         """
         self._Name = None
@@ -824,7 +745,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Name(self):
         """药品名称，包括通用名和商品名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoName`
         """
         return self._Name
@@ -836,7 +756,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def IngredientAndAppearance(self):
         """成份和性状
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoIngredientAndAppearance`
         """
         return self._IngredientAndAppearance
@@ -848,7 +767,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def VaccinationTarget(self):
         """接种对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoVaccinationTarget`
         """
         return self._VaccinationTarget
@@ -860,7 +778,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Indications(self):
         """作用与用途
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoIndications`
         """
         return self._Indications
@@ -872,7 +789,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Brochure(self):
         """规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoBrochure`
         """
         return self._Brochure
@@ -884,7 +800,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Dosage(self):
         """免疫程序和剂量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoDosage`
         """
         return self._Dosage
@@ -896,7 +811,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def AdverseReaction(self):
         """不良反应
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoAdverseReaction`
         """
         return self._AdverseReaction
@@ -908,7 +822,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Contraindications(self):
         """禁忌情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoContraindications`
         """
         return self._Contraindications
@@ -920,7 +833,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Precautions(self):
         """注意事项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoPrecautions`
         """
         return self._Precautions
@@ -932,7 +844,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Storage(self):
         """储存条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoStorage`
         """
         return self._Storage
@@ -944,7 +855,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Packaging(self):
         """包装信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoPackaging`
         """
         return self._Packaging
@@ -956,7 +866,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def ValidityPeriod(self):
         """有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoValidityPeriod`
         """
         return self._ValidityPeriod
@@ -968,7 +877,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def ExecutiveStandards(self):
         """执行标准
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoExecutiveStandards`
         """
         return self._ExecutiveStandards
@@ -980,7 +888,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Approval(self):
         """批准文号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoApproval`
         """
         return self._Approval
@@ -992,7 +899,6 @@ class BiologicalProductInfo(AbstractModel):
     @property
     def Manufacturer(self):
         """生产企业名称和地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoManufacturer`
         """
         return self._Manufacturer
@@ -1066,7 +972,6 @@ class BiologicalProductInfoAdverseReaction(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1074,7 +979,6 @@ class BiologicalProductInfoAdverseReaction(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1104,7 +1008,6 @@ class BiologicalProductInfoApproval(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1112,7 +1015,6 @@ class BiologicalProductInfoApproval(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1142,7 +1044,6 @@ class BiologicalProductInfoBrochure(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1150,7 +1051,6 @@ class BiologicalProductInfoBrochure(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1180,7 +1080,6 @@ class BiologicalProductInfoContraindications(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1188,7 +1087,6 @@ class BiologicalProductInfoContraindications(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1218,7 +1116,6 @@ class BiologicalProductInfoDosage(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1226,7 +1123,6 @@ class BiologicalProductInfoDosage(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1256,7 +1152,6 @@ class BiologicalProductInfoExecutiveStandards(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1264,7 +1159,6 @@ class BiologicalProductInfoExecutiveStandards(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1294,7 +1188,6 @@ class BiologicalProductInfoIndications(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1302,7 +1195,6 @@ class BiologicalProductInfoIndications(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1332,7 +1224,6 @@ class BiologicalProductInfoIngredientAndAppearance(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1340,7 +1231,6 @@ class BiologicalProductInfoIngredientAndAppearance(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1370,7 +1260,6 @@ class BiologicalProductInfoManufacturer(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1378,7 +1267,6 @@ class BiologicalProductInfoManufacturer(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1408,19 +1296,15 @@ class BiologicalProductInfoName(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _GenericName: 通用名
-注意：此字段可能返回 null，表示取不到有效值。
         :type GenericName: str
         :param _BarndName: 品牌名
 注意：此字段可能返回 null，表示取不到有效值。
         :type BarndName: str
         :param _EnName: 英文名
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnName: str
         :param _Pinyin: 拼音
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pinyin: str
         """
         self._Text = None
@@ -1432,7 +1316,6 @@ class BiologicalProductInfoName(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1444,7 +1327,6 @@ class BiologicalProductInfoName(AbstractModel):
     @property
     def GenericName(self):
         """通用名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GenericName
@@ -1472,7 +1354,6 @@ class BiologicalProductInfoName(AbstractModel):
     @property
     def EnName(self):
         """英文名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnName
@@ -1484,7 +1365,6 @@ class BiologicalProductInfoName(AbstractModel):
     @property
     def Pinyin(self):
         """拼音
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Pinyin
@@ -1518,7 +1398,6 @@ class BiologicalProductInfoPackaging(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1526,7 +1405,6 @@ class BiologicalProductInfoPackaging(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1556,7 +1434,6 @@ class BiologicalProductInfoPrecautions(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1564,7 +1441,6 @@ class BiologicalProductInfoPrecautions(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1594,7 +1470,6 @@ class BiologicalProductInfoStorage(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1602,7 +1477,6 @@ class BiologicalProductInfoStorage(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1632,7 +1506,6 @@ class BiologicalProductInfoVaccinationTarget(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1640,7 +1513,6 @@ class BiologicalProductInfoVaccinationTarget(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1670,7 +1542,6 @@ class BiologicalProductInfoValidityPeriod(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -1678,7 +1549,6 @@ class BiologicalProductInfoValidityPeriod(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -1708,13 +1578,10 @@ class BiopsyPart(AbstractModel):
     def __init__(self):
         r"""
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Value = None
@@ -1724,7 +1591,6 @@ class BiopsyPart(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -1736,7 +1602,6 @@ class BiopsyPart(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -1748,7 +1613,6 @@ class BiopsyPart(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -1785,19 +1649,14 @@ class BirthCert(AbstractModel):
     def __init__(self):
         r"""
         :param _NeonatalInfo: 新生儿信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type NeonatalInfo: :class:`tencentcloud.mrs.v20200910.models.NeonatalInfo`
         :param _MotherInfo: 母亲信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MotherInfo: :class:`tencentcloud.mrs.v20200910.models.ParentInfo`
         :param _FatherInfo: 父亲信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type FatherInfo: :class:`tencentcloud.mrs.v20200910.models.ParentInfo`
         :param _IssueInfo: 签发信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type IssueInfo: :class:`tencentcloud.mrs.v20200910.models.IssueInfo`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._NeonatalInfo = None
@@ -1809,7 +1668,6 @@ class BirthCert(AbstractModel):
     @property
     def NeonatalInfo(self):
         """新生儿信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.NeonatalInfo`
         """
         return self._NeonatalInfo
@@ -1821,7 +1679,6 @@ class BirthCert(AbstractModel):
     @property
     def MotherInfo(self):
         """母亲信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ParentInfo`
         """
         return self._MotherInfo
@@ -1833,7 +1690,6 @@ class BirthCert(AbstractModel):
     @property
     def FatherInfo(self):
         """父亲信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ParentInfo`
         """
         return self._FatherInfo
@@ -1845,7 +1701,6 @@ class BirthCert(AbstractModel):
     @property
     def IssueInfo(self):
         """签发信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.IssueInfo`
         """
         return self._IssueInfo
@@ -1857,7 +1712,6 @@ class BirthCert(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -1899,13 +1753,10 @@ class BirthPlaceBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -1915,7 +1766,6 @@ class BirthPlaceBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1927,7 +1777,6 @@ class BirthPlaceBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -1939,7 +1788,6 @@ class BirthPlaceBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -1971,79 +1819,54 @@ class Block(AbstractModel):
     def __init__(self):
         r"""
         :param _Check: 诊断信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Check: list of Check
         :param _Pathology: 病理报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pathology: list of PathologyReport
         :param _MedDoc: 医学资料
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedDoc: list of MedDoc
         :param _DiagCert: 诊断证明
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiagCert: list of DiagCert
         :param _FirstPage: 病案首页
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstPage: list of FirstPage
         :param _Indicator: 检验报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Indicator: list of Indicator
         :param _MedicalRecordInfo: 门诊病历信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalRecordInfo: list of MedicalRecordInfo
         :param _Hospitalization: 出入院信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hospitalization: list of Hospitalization
         :param _Surgery: 手术记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type Surgery: list of Surgery
         :param _Prescription: 处方单
-注意：此字段可能返回 null，表示取不到有效值。
         :type Prescription: list of Prescription
         :param _VaccineCertificate: 免疫接种证明
-注意：此字段可能返回 null，表示取不到有效值。
         :type VaccineCertificate: list of VaccineCertificate
         :param _Electrocardiogram: 心电图
-注意：此字段可能返回 null，表示取不到有效值。
         :type Electrocardiogram: list of Electrocardiogram
         :param _PathologyV2: 病理报告v2
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologyV2: list of PathologyV2
         :param _Endoscopy: 内窥镜报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Endoscopy: list of Endoscopy
         :param _C14: C14检验报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type C14: list of Indicator
         :param _Exame: 体检结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type Exame: list of Exame
         :param _MedDocV2: 出入院结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedDocV2: list of DischargeInfoBlock
         :param _IndicatorV3: 检验报告v3
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndicatorV3: list of IndicatorV3
         :param _Maternity: 孕产报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Maternity: list of Maternity
         :param _Timeline: 时间轴
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timeline: list of TimelineInformation
         :param _Covid: 核酸报告结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type Covid: list of CovidItemsInfo
         :param _Eye: 眼科报告结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :type Eye: list of EyeItemsInfo
         :param _BirthCert: 出生证明结构化信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthCert: list of BirthCert
         :param _TextTypeListBlocks: 文本类型列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextTypeListBlocks: list of TextTypeListBlock
         :param _PhysicalExamination: 体检报告信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalExamination: :class:`tencentcloud.mrs.v20200910.models.PhysicalExaminationV1`
         """
         self._Check = None
@@ -2075,7 +1898,6 @@ class Block(AbstractModel):
     @property
     def Check(self):
         """诊断信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Check
         """
         return self._Check
@@ -2087,7 +1909,6 @@ class Block(AbstractModel):
     @property
     def Pathology(self):
         """病理报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PathologyReport
         """
         return self._Pathology
@@ -2099,7 +1920,6 @@ class Block(AbstractModel):
     @property
     def MedDoc(self):
         """医学资料
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MedDoc
         """
         return self._MedDoc
@@ -2111,7 +1931,6 @@ class Block(AbstractModel):
     @property
     def DiagCert(self):
         """诊断证明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiagCert
         """
         return self._DiagCert
@@ -2123,7 +1942,6 @@ class Block(AbstractModel):
     @property
     def FirstPage(self):
         """病案首页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FirstPage
         """
         return self._FirstPage
@@ -2135,7 +1953,6 @@ class Block(AbstractModel):
     @property
     def Indicator(self):
         """检验报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Indicator
         """
         return self._Indicator
@@ -2147,7 +1964,6 @@ class Block(AbstractModel):
     @property
     def MedicalRecordInfo(self):
         """门诊病历信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MedicalRecordInfo
         """
         return self._MedicalRecordInfo
@@ -2159,7 +1975,6 @@ class Block(AbstractModel):
     @property
     def Hospitalization(self):
         """出入院信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Hospitalization
         """
         return self._Hospitalization
@@ -2171,7 +1986,6 @@ class Block(AbstractModel):
     @property
     def Surgery(self):
         """手术记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Surgery
         """
         return self._Surgery
@@ -2183,7 +1997,6 @@ class Block(AbstractModel):
     @property
     def Prescription(self):
         """处方单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Prescription
         """
         return self._Prescription
@@ -2195,7 +2008,6 @@ class Block(AbstractModel):
     @property
     def VaccineCertificate(self):
         """免疫接种证明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VaccineCertificate
         """
         return self._VaccineCertificate
@@ -2207,7 +2019,6 @@ class Block(AbstractModel):
     @property
     def Electrocardiogram(self):
         """心电图
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Electrocardiogram
         """
         return self._Electrocardiogram
@@ -2219,7 +2030,6 @@ class Block(AbstractModel):
     @property
     def PathologyV2(self):
         """病理报告v2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PathologyV2
         """
         return self._PathologyV2
@@ -2231,7 +2041,6 @@ class Block(AbstractModel):
     @property
     def Endoscopy(self):
         """内窥镜报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Endoscopy
         """
         return self._Endoscopy
@@ -2243,7 +2052,6 @@ class Block(AbstractModel):
     @property
     def C14(self):
         """C14检验报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Indicator
         """
         return self._C14
@@ -2255,7 +2063,6 @@ class Block(AbstractModel):
     @property
     def Exame(self):
         """体检结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Exame
         """
         return self._Exame
@@ -2267,7 +2074,6 @@ class Block(AbstractModel):
     @property
     def MedDocV2(self):
         """出入院结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DischargeInfoBlock
         """
         return self._MedDocV2
@@ -2279,7 +2085,6 @@ class Block(AbstractModel):
     @property
     def IndicatorV3(self):
         """检验报告v3
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IndicatorV3
         """
         return self._IndicatorV3
@@ -2291,7 +2096,6 @@ class Block(AbstractModel):
     @property
     def Maternity(self):
         """孕产报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Maternity
         """
         return self._Maternity
@@ -2303,7 +2107,6 @@ class Block(AbstractModel):
     @property
     def Timeline(self):
         """时间轴
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimelineInformation
         """
         return self._Timeline
@@ -2315,7 +2118,6 @@ class Block(AbstractModel):
     @property
     def Covid(self):
         """核酸报告结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CovidItemsInfo
         """
         return self._Covid
@@ -2327,7 +2129,6 @@ class Block(AbstractModel):
     @property
     def Eye(self):
         """眼科报告结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EyeItemsInfo
         """
         return self._Eye
@@ -2339,7 +2140,6 @@ class Block(AbstractModel):
     @property
     def BirthCert(self):
         """出生证明结构化信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BirthCert
         """
         return self._BirthCert
@@ -2351,7 +2151,6 @@ class Block(AbstractModel):
     @property
     def TextTypeListBlocks(self):
         """文本类型列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TextTypeListBlock
         """
         return self._TextTypeListBlocks
@@ -2363,7 +2162,6 @@ class Block(AbstractModel):
     @property
     def PhysicalExamination(self):
         """体检报告信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalExaminationV1`
         """
         return self._PhysicalExamination
@@ -2539,25 +2337,18 @@ class BlockInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Positive: 阳性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Positive: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Size: 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: list of Size
         """
         self._Index = None
@@ -2571,7 +2362,6 @@ class BlockInfo(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -2583,7 +2373,6 @@ class BlockInfo(AbstractModel):
     @property
     def Positive(self):
         """阳性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Positive
@@ -2595,7 +2384,6 @@ class BlockInfo(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -2607,7 +2395,6 @@ class BlockInfo(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -2619,7 +2406,6 @@ class BlockInfo(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -2631,7 +2417,6 @@ class BlockInfo(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2643,7 +2428,6 @@ class BlockInfo(AbstractModel):
     @property
     def Size(self):
         """大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Size
         """
         return self._Size
@@ -2684,19 +2468,14 @@ class BlockInfoV2(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Code: 疾病编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         """
         self._Index = None
@@ -2708,7 +2487,6 @@ class BlockInfoV2(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -2720,7 +2498,6 @@ class BlockInfoV2(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -2732,7 +2509,6 @@ class BlockInfoV2(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -2744,7 +2520,6 @@ class BlockInfoV2(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2756,7 +2531,6 @@ class BlockInfoV2(AbstractModel):
     @property
     def Code(self):
         """疾病编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -2790,13 +2564,10 @@ class BlockTitle(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: name
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: src
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: value
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -2806,7 +2577,6 @@ class BlockTitle(AbstractModel):
     @property
     def Name(self):
         """name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2818,7 +2588,6 @@ class BlockTitle(AbstractModel):
     @property
     def Src(self):
         """src
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -2830,7 +2599,6 @@ class BlockTitle(AbstractModel):
     @property
     def Value(self):
         """value
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -2862,25 +2630,18 @@ class BloodPressureBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _NormDiastolic: 舒张压
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormDiastolic: str
         :param _NormSystolic: 收缩压
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormSystolic: str
         """
         self._Name = None
@@ -2894,7 +2655,6 @@ class BloodPressureBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2906,7 +2666,6 @@ class BloodPressureBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -2918,7 +2677,6 @@ class BloodPressureBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -2930,7 +2688,6 @@ class BloodPressureBlock(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -2942,7 +2699,6 @@ class BloodPressureBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -2954,7 +2710,6 @@ class BloodPressureBlock(AbstractModel):
     @property
     def NormDiastolic(self):
         """舒张压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NormDiastolic
@@ -2966,7 +2721,6 @@ class BloodPressureBlock(AbstractModel):
     @property
     def NormSystolic(self):
         """收缩压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NormSystolic
@@ -3002,25 +2756,18 @@ class BloodPressureItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Item: 项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Result: 数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Times: 第几次
-注意：此字段可能返回 null，表示取不到有效值。
         :type Times: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Location: 左右手臂
-注意：此字段可能返回 null，表示取不到有效值。
         :type Location: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Name = None
@@ -3034,7 +2781,6 @@ class BloodPressureItem(AbstractModel):
     @property
     def Name(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3046,7 +2792,6 @@ class BloodPressureItem(AbstractModel):
     @property
     def Item(self):
         """项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -3058,7 +2803,6 @@ class BloodPressureItem(AbstractModel):
     @property
     def Result(self):
         """数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -3070,7 +2814,6 @@ class BloodPressureItem(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Unit
@@ -3082,7 +2825,6 @@ class BloodPressureItem(AbstractModel):
     @property
     def Times(self):
         """第几次
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Times
@@ -3094,7 +2836,6 @@ class BloodPressureItem(AbstractModel):
     @property
     def Location(self):
         """左右手臂
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Location
@@ -3106,7 +2847,6 @@ class BloodPressureItem(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -3152,16 +2892,12 @@ class BodyExaminationBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _BodyTemperature: 体温
-注意：此字段可能返回 null，表示取不到有效值。
         :type BodyTemperature: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         :param _Pulse: 脉搏
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pulse: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         :param _Breathe: 呼吸
-注意：此字段可能返回 null，表示取不到有效值。
         :type Breathe: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         :param _BloodPressure: 血压
-注意：此字段可能返回 null，表示取不到有效值。
         :type BloodPressure: :class:`tencentcloud.mrs.v20200910.models.BloodPressureBlock`
         """
         self._BodyTemperature = None
@@ -3172,7 +2908,6 @@ class BodyExaminationBlock(AbstractModel):
     @property
     def BodyTemperature(self):
         """体温
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         """
         return self._BodyTemperature
@@ -3184,7 +2919,6 @@ class BodyExaminationBlock(AbstractModel):
     @property
     def Pulse(self):
         """脉搏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         """
         return self._Pulse
@@ -3196,7 +2930,6 @@ class BodyExaminationBlock(AbstractModel):
     @property
     def Breathe(self):
         """呼吸
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BodyTemperatureBlock`
         """
         return self._Breathe
@@ -3208,7 +2941,6 @@ class BodyExaminationBlock(AbstractModel):
     @property
     def BloodPressure(self):
         """血压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BloodPressureBlock`
         """
         return self._BloodPressure
@@ -3249,19 +2981,14 @@ class BodyTemperatureBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -3273,7 +3000,6 @@ class BodyTemperatureBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3285,7 +3011,6 @@ class BodyTemperatureBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -3297,7 +3022,6 @@ class BodyTemperatureBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -3309,7 +3033,6 @@ class BodyTemperatureBlock(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -3321,7 +3044,6 @@ class BodyTemperatureBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -3355,16 +3077,12 @@ class Check(AbstractModel):
     def __init__(self):
         r"""
         :param _Desc: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: :class:`tencentcloud.mrs.v20200910.models.Desc`
         :param _Summary: 结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: :class:`tencentcloud.mrs.v20200910.models.Summary`
         :param _BlockTitle: 检查报告块标题
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlockTitle: list of BlockTitle
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Desc = None
@@ -3375,7 +3093,6 @@ class Check(AbstractModel):
     @property
     def Desc(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Desc`
         """
         return self._Desc
@@ -3387,7 +3104,6 @@ class Check(AbstractModel):
     @property
     def Summary(self):
         """结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Summary`
         """
         return self._Summary
@@ -3399,7 +3115,6 @@ class Check(AbstractModel):
     @property
     def BlockTitle(self):
         """检查报告块标题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BlockTitle
         """
         return self._BlockTitle
@@ -3411,7 +3126,6 @@ class Check(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -3453,73 +3167,50 @@ class ChemicalProductInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 药品名称，包括通用名和商品名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoName`
         :param _ActiveIngredient: 活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveIngredient: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoActiveIngredient`
         :param _Appearance: 性状
-注意：此字段可能返回 null，表示取不到有效值。
         :type Appearance: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoAppearance`
         :param _Indications: 适应症描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Indications: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoIndications`
         :param _Brochure: 规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type Brochure: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoBrochure`
         :param _Dosage: 用法用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Dosage: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoDosage`
         :param _AdverseReaction: 不良反应
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdverseReaction: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoAdverseReaction`
         :param _Contraindications: 禁忌情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type Contraindications: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoContraindications`
         :param _Precautions: 注意事项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Precautions: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPrecautions`
         :param _PregnancyLactationUse: 孕妇及哺乳期妇女用药
-注意：此字段可能返回 null，表示取不到有效值。
         :type PregnancyLactationUse: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPregnancyLactationUse`
         :param _PediatricUse: 儿童用药
-注意：此字段可能返回 null，表示取不到有效值。
         :type PediatricUse: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPediatricUse`
         :param _GeriatricUse: 老年用药
-注意：此字段可能返回 null，表示取不到有效值。
         :type GeriatricUse: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoGeriatricUse`
         :param _Interactions: 药品的药物相互作用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Interactions: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoInteractions`
         :param _Overdose: 药物过量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Overdose: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoOverdose`
         :param _ClinicalTrial: 临床试验
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClinicalTrial: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoClinicalTrial`
         :param _PharmacologyToxicology: 药理毒理
-注意：此字段可能返回 null，表示取不到有效值。
         :type PharmacologyToxicology: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPharmacologyToxicology`
         :param _Pharmacokinetics: 药代动力学
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pharmacokinetics: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPharmacokinetics`
         :param _Storage: 储存条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Storage: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoStorage`
         :param _Packaging: 包装信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Packaging: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPackaging`
         :param _ValidityPeriod: 有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoValidityPeriod`
         :param _ExecutiveStandards: 执行标准
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutiveStandards: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoExecutiveStandards`
         :param _Approval: 批准文号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Approval: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoApproval`
         :param _Manufacturer: 生产企业名称和地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoManufacturer`
         """
         self._Name = None
@@ -3549,7 +3240,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Name(self):
         """药品名称，包括通用名和商品名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoName`
         """
         return self._Name
@@ -3561,7 +3251,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def ActiveIngredient(self):
         """活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoActiveIngredient`
         """
         return self._ActiveIngredient
@@ -3573,7 +3262,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Appearance(self):
         """性状
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoAppearance`
         """
         return self._Appearance
@@ -3585,7 +3273,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Indications(self):
         """适应症描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoIndications`
         """
         return self._Indications
@@ -3597,7 +3284,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Brochure(self):
         """规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoBrochure`
         """
         return self._Brochure
@@ -3609,7 +3295,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Dosage(self):
         """用法用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoDosage`
         """
         return self._Dosage
@@ -3621,7 +3306,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def AdverseReaction(self):
         """不良反应
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoAdverseReaction`
         """
         return self._AdverseReaction
@@ -3633,7 +3317,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Contraindications(self):
         """禁忌情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoContraindications`
         """
         return self._Contraindications
@@ -3645,7 +3328,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Precautions(self):
         """注意事项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPrecautions`
         """
         return self._Precautions
@@ -3657,7 +3339,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def PregnancyLactationUse(self):
         """孕妇及哺乳期妇女用药
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPregnancyLactationUse`
         """
         return self._PregnancyLactationUse
@@ -3669,7 +3350,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def PediatricUse(self):
         """儿童用药
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPediatricUse`
         """
         return self._PediatricUse
@@ -3681,7 +3361,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def GeriatricUse(self):
         """老年用药
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoGeriatricUse`
         """
         return self._GeriatricUse
@@ -3693,7 +3372,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Interactions(self):
         """药品的药物相互作用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoInteractions`
         """
         return self._Interactions
@@ -3705,7 +3383,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Overdose(self):
         """药物过量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoOverdose`
         """
         return self._Overdose
@@ -3717,7 +3394,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def ClinicalTrial(self):
         """临床试验
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoClinicalTrial`
         """
         return self._ClinicalTrial
@@ -3729,7 +3405,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def PharmacologyToxicology(self):
         """药理毒理
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPharmacologyToxicology`
         """
         return self._PharmacologyToxicology
@@ -3741,7 +3416,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Pharmacokinetics(self):
         """药代动力学
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPharmacokinetics`
         """
         return self._Pharmacokinetics
@@ -3753,7 +3427,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Storage(self):
         """储存条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoStorage`
         """
         return self._Storage
@@ -3765,7 +3438,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Packaging(self):
         """包装信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPackaging`
         """
         return self._Packaging
@@ -3777,7 +3449,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def ValidityPeriod(self):
         """有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoValidityPeriod`
         """
         return self._ValidityPeriod
@@ -3789,7 +3460,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def ExecutiveStandards(self):
         """执行标准
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoExecutiveStandards`
         """
         return self._ExecutiveStandards
@@ -3801,7 +3471,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Approval(self):
         """批准文号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoApproval`
         """
         return self._Approval
@@ -3813,7 +3482,6 @@ class ChemicalProductInfo(AbstractModel):
     @property
     def Manufacturer(self):
         """生产企业名称和地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoManufacturer`
         """
         return self._Manufacturer
@@ -3911,19 +3579,14 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _ChemicalName: 活性成份的化学名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChemicalName: str
         :param _ChemicalFormula: 活性成份的化学结构式
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChemicalFormula: str
         :param _MolecularFormula: 活性成份的分子式
-注意：此字段可能返回 null，表示取不到有效值。
         :type MolecularFormula: str
         :param _MolecularWeight: 活性成份的分子量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MolecularWeight: str
         """
         self._Text = None
@@ -3935,7 +3598,6 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -3947,7 +3609,6 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
     @property
     def ChemicalName(self):
         """活性成份的化学名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChemicalName
@@ -3959,7 +3620,6 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
     @property
     def ChemicalFormula(self):
         """活性成份的化学结构式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChemicalFormula
@@ -3971,7 +3631,6 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
     @property
     def MolecularFormula(self):
         """活性成份的分子式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MolecularFormula
@@ -3983,7 +3642,6 @@ class ChemicalProductInfoActiveIngredient(AbstractModel):
     @property
     def MolecularWeight(self):
         """活性成份的分子量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MolecularWeight
@@ -4017,7 +3675,6 @@ class ChemicalProductInfoAdverseReaction(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4025,7 +3682,6 @@ class ChemicalProductInfoAdverseReaction(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4055,7 +3711,6 @@ class ChemicalProductInfoAppearance(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4063,7 +3718,6 @@ class ChemicalProductInfoAppearance(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4093,7 +3747,6 @@ class ChemicalProductInfoApproval(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4101,7 +3754,6 @@ class ChemicalProductInfoApproval(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4131,7 +3783,6 @@ class ChemicalProductInfoBrochure(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4139,7 +3790,6 @@ class ChemicalProductInfoBrochure(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4169,7 +3819,6 @@ class ChemicalProductInfoClinicalTrial(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4177,7 +3826,6 @@ class ChemicalProductInfoClinicalTrial(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4207,7 +3855,6 @@ class ChemicalProductInfoContraindications(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4215,7 +3862,6 @@ class ChemicalProductInfoContraindications(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4245,7 +3891,6 @@ class ChemicalProductInfoDosage(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4253,7 +3898,6 @@ class ChemicalProductInfoDosage(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4283,7 +3927,6 @@ class ChemicalProductInfoExecutiveStandards(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4291,7 +3934,6 @@ class ChemicalProductInfoExecutiveStandards(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4321,7 +3963,6 @@ class ChemicalProductInfoGeriatricUse(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4329,7 +3970,6 @@ class ChemicalProductInfoGeriatricUse(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4359,7 +3999,6 @@ class ChemicalProductInfoIndications(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4367,7 +4006,6 @@ class ChemicalProductInfoIndications(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4397,7 +4035,6 @@ class ChemicalProductInfoInteractions(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4405,7 +4042,6 @@ class ChemicalProductInfoInteractions(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4435,25 +4071,18 @@ class ChemicalProductInfoManufacturer(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Name: 企业名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Address: 生产地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _PostalCode: 邮政编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostalCode: str
         :param _Phone: 电话，包含区号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
         :param _Fax: 传真，包含区号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fax: str
         :param _Website: 网址，如无则不填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Website: str
         """
         self._Text = None
@@ -4467,7 +4096,6 @@ class ChemicalProductInfoManufacturer(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4479,7 +4107,6 @@ class ChemicalProductInfoManufacturer(AbstractModel):
     @property
     def Name(self):
         """企业名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -4491,7 +4118,6 @@ class ChemicalProductInfoManufacturer(AbstractModel):
     @property
     def Address(self):
         """生产地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -4503,7 +4129,6 @@ class ChemicalProductInfoManufacturer(AbstractModel):
     @property
     def PostalCode(self):
         """邮政编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PostalCode
@@ -4515,7 +4140,6 @@ class ChemicalProductInfoManufacturer(AbstractModel):
     @property
     def Phone(self):
         """电话，包含区号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Phone
@@ -4527,7 +4151,6 @@ class ChemicalProductInfoManufacturer(AbstractModel):
     @property
     def Fax(self):
         """传真，包含区号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Fax
@@ -4539,7 +4162,6 @@ class ChemicalProductInfoManufacturer(AbstractModel):
     @property
     def Website(self):
         """网址，如无则不填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Website
@@ -4575,19 +4197,15 @@ class ChemicalProductInfoName(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _GenericName: 通用名
-注意：此字段可能返回 null，表示取不到有效值。
         :type GenericName: str
         :param _BarndName: 品牌名
 注意：此字段可能返回 null，表示取不到有效值。
         :type BarndName: str
         :param _EnName: 英文名
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnName: str
         :param _Pinyin: 拼音
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pinyin: str
         :param _BrandName: 品牌名
         :type BrandName: str
@@ -4602,7 +4220,6 @@ class ChemicalProductInfoName(AbstractModel):
     @property
     def Text(self):
         """文本内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4614,7 +4231,6 @@ class ChemicalProductInfoName(AbstractModel):
     @property
     def GenericName(self):
         """通用名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GenericName
@@ -4642,7 +4258,6 @@ class ChemicalProductInfoName(AbstractModel):
     @property
     def EnName(self):
         """英文名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnName
@@ -4654,7 +4269,6 @@ class ChemicalProductInfoName(AbstractModel):
     @property
     def Pinyin(self):
         """拼音
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Pinyin
@@ -4700,7 +4314,6 @@ class ChemicalProductInfoOverdose(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4708,7 +4321,6 @@ class ChemicalProductInfoOverdose(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4738,7 +4350,6 @@ class ChemicalProductInfoPackaging(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4746,7 +4357,6 @@ class ChemicalProductInfoPackaging(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4776,7 +4386,6 @@ class ChemicalProductInfoPediatricUse(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4784,7 +4393,6 @@ class ChemicalProductInfoPediatricUse(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4814,7 +4422,6 @@ class ChemicalProductInfoPharmacokinetics(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4822,7 +4429,6 @@ class ChemicalProductInfoPharmacokinetics(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4852,7 +4458,6 @@ class ChemicalProductInfoPharmacologyToxicology(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4860,7 +4465,6 @@ class ChemicalProductInfoPharmacologyToxicology(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4890,7 +4494,6 @@ class ChemicalProductInfoPrecautions(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4898,7 +4501,6 @@ class ChemicalProductInfoPrecautions(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4928,7 +4530,6 @@ class ChemicalProductInfoPregnancyLactationUse(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4936,7 +4537,6 @@ class ChemicalProductInfoPregnancyLactationUse(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -4966,7 +4566,6 @@ class ChemicalProductInfoStorage(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -4974,7 +4573,6 @@ class ChemicalProductInfoStorage(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -5004,7 +4602,6 @@ class ChemicalProductInfoValidityPeriod(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         """
         self._Text = None
@@ -5012,7 +4609,6 @@ class ChemicalProductInfoValidityPeriod(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -5042,19 +4638,14 @@ class ChestCircumferenceItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Item: 项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Result: 数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _State: 呼吸状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         self._Name = None
@@ -5066,7 +4657,6 @@ class ChestCircumferenceItem(AbstractModel):
     @property
     def Name(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5078,7 +4668,6 @@ class ChestCircumferenceItem(AbstractModel):
     @property
     def Item(self):
         """项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -5090,7 +4679,6 @@ class ChestCircumferenceItem(AbstractModel):
     @property
     def Result(self):
         """数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -5102,7 +4690,6 @@ class ChestCircumferenceItem(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Unit
@@ -5114,7 +4701,6 @@ class ChestCircumferenceItem(AbstractModel):
     @property
     def State(self):
         """呼吸状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._State
@@ -5156,16 +4742,12 @@ class ChiefComplaintBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 单位输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Detail: 主诉详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of ChiefComplaintDetailBlock
         """
         self._Name = None
@@ -5176,7 +4758,6 @@ class ChiefComplaintBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5188,7 +4769,6 @@ class ChiefComplaintBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -5200,7 +4780,6 @@ class ChiefComplaintBlock(AbstractModel):
     @property
     def Value(self):
         """单位输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -5212,7 +4791,6 @@ class ChiefComplaintBlock(AbstractModel):
     @property
     def Detail(self):
         """主诉详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChiefComplaintDetailBlock
         """
         return self._Detail
@@ -5250,16 +4828,12 @@ class ChiefComplaintDetailBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _DiseaseName: 疾病名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseaseName: str
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: str
         :param _Time: 时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
         :param _TimeType: 时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeType: str
         """
         self._DiseaseName = None
@@ -5270,7 +4844,6 @@ class ChiefComplaintDetailBlock(AbstractModel):
     @property
     def DiseaseName(self):
         """疾病名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiseaseName
@@ -5282,7 +4855,6 @@ class ChiefComplaintDetailBlock(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Part
@@ -5294,7 +4866,6 @@ class ChiefComplaintDetailBlock(AbstractModel):
     @property
     def Time(self):
         """时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Time
@@ -5306,7 +4877,6 @@ class ChiefComplaintDetailBlock(AbstractModel):
     @property
     def TimeType(self):
         """时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeType
@@ -5339,13 +4909,10 @@ class ClinicalStaging(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -5355,7 +4922,6 @@ class ClinicalStaging(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5367,7 +4933,6 @@ class ClinicalStaging(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -5379,7 +4944,6 @@ class ClinicalStaging(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -5411,7 +4975,6 @@ class Coord(AbstractModel):
     def __init__(self):
         r"""
         :param _Points: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Points: list of Point
         """
         self._Points = None
@@ -5419,7 +4982,6 @@ class Coord(AbstractModel):
     @property
     def Points(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Point
         """
         return self._Points
@@ -5454,16 +5016,12 @@ class Coordinate(AbstractModel):
     def __init__(self):
         r"""
         :param _X: 左上角x坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type X: int
         :param _Y: 左上角y坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Y: int
         :param _Width: 宽度，单位像素
-注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param _Height: 高度，单位像素
-注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         """
         self._X = None
@@ -5474,7 +5032,6 @@ class Coordinate(AbstractModel):
     @property
     def X(self):
         """左上角x坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._X
@@ -5486,7 +5043,6 @@ class Coordinate(AbstractModel):
     @property
     def Y(self):
         """左上角y坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Y
@@ -5498,7 +5054,6 @@ class Coordinate(AbstractModel):
     @property
     def Width(self):
         """宽度，单位像素
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Width
@@ -5510,7 +5065,6 @@ class Coordinate(AbstractModel):
     @property
     def Height(self):
         """高度，单位像素
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Height
@@ -5543,19 +5097,14 @@ class CovidItem(AbstractModel):
     def __init__(self):
         r"""
         :param _SampleTime: 采样时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleTime: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _TestTime: 检测时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TestTime: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _TestOrganization: 检测机构
-注意：此字段可能返回 null，表示取不到有效值。
         :type TestOrganization: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _TestResult: 检测结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type TestResult: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _CodeColor: 健康码颜色
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeColor: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         self._SampleTime = None
@@ -5567,7 +5116,6 @@ class CovidItem(AbstractModel):
     @property
     def SampleTime(self):
         """采样时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._SampleTime
@@ -5579,7 +5127,6 @@ class CovidItem(AbstractModel):
     @property
     def TestTime(self):
         """检测时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._TestTime
@@ -5591,7 +5138,6 @@ class CovidItem(AbstractModel):
     @property
     def TestOrganization(self):
         """检测机构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._TestOrganization
@@ -5603,7 +5149,6 @@ class CovidItem(AbstractModel):
     @property
     def TestResult(self):
         """检测结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._TestResult
@@ -5615,7 +5160,6 @@ class CovidItem(AbstractModel):
     @property
     def CodeColor(self):
         """健康码颜色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._CodeColor
@@ -5659,13 +5203,10 @@ class CovidItemsInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CovidItems: 核酸报告结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type CovidItems: list of CovidItem
         :param _Version: 版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._CovidItems = None
@@ -5675,7 +5216,6 @@ class CovidItemsInfo(AbstractModel):
     @property
     def CovidItems(self):
         """核酸报告结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CovidItem
         """
         return self._CovidItems
@@ -5687,7 +5227,6 @@ class CovidItemsInfo(AbstractModel):
     @property
     def Version(self):
         """版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -5699,7 +5238,6 @@ class CovidItemsInfo(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -5736,25 +5274,18 @@ class DeathDateBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Timestamp: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -5768,7 +5299,6 @@ class DeathDateBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5780,7 +5310,6 @@ class DeathDateBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -5792,7 +5321,6 @@ class DeathDateBlock(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -5804,7 +5332,6 @@ class DeathDateBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -5816,7 +5343,6 @@ class DeathDateBlock(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -5828,7 +5354,6 @@ class DeathDateBlock(AbstractModel):
     @property
     def Timestamp(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timestamp
@@ -5840,7 +5365,6 @@ class DeathDateBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -5876,16 +5400,12 @@ class Desc(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Organ: 器官
-注意：此字段可能返回 null，表示取不到有效值。
         :type Organ: list of Organ
         :param _Tuber: 结节
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tuber: list of TuberInfo
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Text = None
@@ -5896,7 +5416,6 @@ class Desc(AbstractModel):
     @property
     def Text(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -5908,7 +5427,6 @@ class Desc(AbstractModel):
     @property
     def Organ(self):
         """器官
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Organ
         """
         return self._Organ
@@ -5920,7 +5438,6 @@ class Desc(AbstractModel):
     @property
     def Tuber(self):
         """结节
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TuberInfo
         """
         return self._Tuber
@@ -5932,7 +5449,6 @@ class Desc(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -5980,10 +5496,8 @@ class DescInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 描述段落文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _Infos: 描述段落详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Infos: list of DetailInformation
         """
         self._Text = None
@@ -5992,7 +5506,6 @@ class DescInfo(AbstractModel):
     @property
     def Text(self):
         """描述段落文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Text
@@ -6004,7 +5517,6 @@ class DescInfo(AbstractModel):
     @property
     def Infos(self):
         """描述段落详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetailInformation
         """
         return self._Infos
@@ -6042,46 +5554,32 @@ class DetailInformation(AbstractModel):
     def __init__(self):
         r"""
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _TissueSizes: 组织大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type TissueSizes: list of Size
         :param _TuberSizes: 结节大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type TuberSizes: list of Size
         :param _CancerSizes: 肿瘤大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type CancerSizes: list of Size
         :param _HistologyLevel: 组织学等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistologyLevel: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _HistologyType: 组织学类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistologyType: :class:`tencentcloud.mrs.v20200910.models.HistologyTypeV2`
         :param _Invasive: 侵犯
-注意：此字段可能返回 null，表示取不到有效值。
         :type Invasive: list of InvasiveV2
         :param _PTNM: pTNM
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNM: :class:`tencentcloud.mrs.v20200910.models.PTNM`
         :param _InfiltrationDepth: 浸润深度
-注意：此字段可能返回 null，表示取不到有效值。
         :type InfiltrationDepth: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _TuberNum: 结节数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TuberNum: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _Calcification: 钙化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Calcification: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _Necrosis: 坏死
-注意：此字段可能返回 null，表示取不到有效值。
         :type Necrosis: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _Abnormity: 异形
-注意：此字段可能返回 null，表示取不到有效值。
         :type Abnormity: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _Breaked: 断链
-注意：此字段可能返回 null，表示取不到有效值。
         :type Breaked: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         self._Part = None
@@ -6102,7 +5600,6 @@ class DetailInformation(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -6114,7 +5611,6 @@ class DetailInformation(AbstractModel):
     @property
     def TissueSizes(self):
         """组织大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Size
         """
         return self._TissueSizes
@@ -6126,7 +5622,6 @@ class DetailInformation(AbstractModel):
     @property
     def TuberSizes(self):
         """结节大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Size
         """
         return self._TuberSizes
@@ -6138,7 +5633,6 @@ class DetailInformation(AbstractModel):
     @property
     def CancerSizes(self):
         """肿瘤大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Size
         """
         return self._CancerSizes
@@ -6150,7 +5644,6 @@ class DetailInformation(AbstractModel):
     @property
     def HistologyLevel(self):
         """组织学等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._HistologyLevel
@@ -6162,7 +5655,6 @@ class DetailInformation(AbstractModel):
     @property
     def HistologyType(self):
         """组织学类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyTypeV2`
         """
         return self._HistologyType
@@ -6174,7 +5666,6 @@ class DetailInformation(AbstractModel):
     @property
     def Invasive(self):
         """侵犯
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InvasiveV2
         """
         return self._Invasive
@@ -6186,7 +5677,6 @@ class DetailInformation(AbstractModel):
     @property
     def PTNM(self):
         """pTNM
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PTNM`
         """
         return self._PTNM
@@ -6198,7 +5688,6 @@ class DetailInformation(AbstractModel):
     @property
     def InfiltrationDepth(self):
         """浸润深度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._InfiltrationDepth
@@ -6210,7 +5699,6 @@ class DetailInformation(AbstractModel):
     @property
     def TuberNum(self):
         """结节数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._TuberNum
@@ -6222,7 +5710,6 @@ class DetailInformation(AbstractModel):
     @property
     def Calcification(self):
         """钙化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Calcification
@@ -6234,7 +5721,6 @@ class DetailInformation(AbstractModel):
     @property
     def Necrosis(self):
         """坏死
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Necrosis
@@ -6246,7 +5732,6 @@ class DetailInformation(AbstractModel):
     @property
     def Abnormity(self):
         """异形
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Abnormity
@@ -6258,7 +5743,6 @@ class DetailInformation(AbstractModel):
     @property
     def Breaked(self):
         """断链
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Breaked
@@ -6341,13 +5825,10 @@ class DiagCert(AbstractModel):
     def __init__(self):
         r"""
         :param _Advice: 建议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Advice: :class:`tencentcloud.mrs.v20200910.models.Advice`
         :param _Diagnosis: 诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type Diagnosis: list of DiagCertItem
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Advice = None
@@ -6357,7 +5838,6 @@ class DiagCert(AbstractModel):
     @property
     def Advice(self):
         """建议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Advice`
         """
         return self._Advice
@@ -6369,7 +5849,6 @@ class DiagCert(AbstractModel):
     @property
     def Diagnosis(self):
         """诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiagCertItem
         """
         return self._Diagnosis
@@ -6381,7 +5860,6 @@ class DiagCert(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -6420,13 +5898,10 @@ class DiagCertItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of str
         """
         self._Text = None
@@ -6436,7 +5911,6 @@ class DiagCertItem(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -6448,7 +5922,6 @@ class DiagCertItem(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -6460,7 +5933,6 @@ class DiagCertItem(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Value
@@ -6492,16 +5964,12 @@ class DischargeConditionBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         """
         self._Name = None
@@ -6512,7 +5980,6 @@ class DischargeConditionBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6524,7 +5991,6 @@ class DischargeConditionBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -6536,7 +6002,6 @@ class DischargeConditionBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -6548,7 +6013,6 @@ class DischargeConditionBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -6581,19 +6045,14 @@ class DischargeDiagnosis(AbstractModel):
     def __init__(self):
         r"""
         :param _TableIndex: 表格位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableIndex: int
         :param _OutDiagnosis: 出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutDiagnosis: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _DiseaseCode: 疾病编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseaseCode: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _InStatus: 入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type InStatus: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _OutStatus: 出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutStatus: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         self._TableIndex = None
@@ -6605,7 +6064,6 @@ class DischargeDiagnosis(AbstractModel):
     @property
     def TableIndex(self):
         """表格位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TableIndex
@@ -6617,7 +6075,6 @@ class DischargeDiagnosis(AbstractModel):
     @property
     def OutDiagnosis(self):
         """出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._OutDiagnosis
@@ -6629,7 +6086,6 @@ class DischargeDiagnosis(AbstractModel):
     @property
     def DiseaseCode(self):
         """疾病编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._DiseaseCode
@@ -6641,7 +6097,6 @@ class DischargeDiagnosis(AbstractModel):
     @property
     def InStatus(self):
         """入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InStatus
@@ -6653,7 +6108,6 @@ class DischargeDiagnosis(AbstractModel):
     @property
     def OutStatus(self):
         """出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._OutStatus
@@ -6695,16 +6149,12 @@ class DischargeDiagnosisBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -6715,7 +6165,6 @@ class DischargeDiagnosisBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6727,7 +6176,6 @@ class DischargeDiagnosisBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -6739,7 +6187,6 @@ class DischargeDiagnosisBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -6751,7 +6198,6 @@ class DischargeDiagnosisBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -6784,22 +6230,16 @@ class DischargeInfoBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _DiseaseHistory: 疾病史
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseaseHistory: :class:`tencentcloud.mrs.v20200910.models.DiseaseHistoryBlock`
         :param _PersonalHistory: 个人史
-注意：此字段可能返回 null，表示取不到有效值。
         :type PersonalHistory: :class:`tencentcloud.mrs.v20200910.models.PersonalHistoryBlock`
         :param _DrugHistory: 药物史
-注意：此字段可能返回 null，表示取不到有效值。
         :type DrugHistory: :class:`tencentcloud.mrs.v20200910.models.DrugHistoryBlock`
         :param _TreatmentRecord: 治疗相关
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreatmentRecord: :class:`tencentcloud.mrs.v20200910.models.TreatmentRecordBlock`
         :param _ParagraphBlock: 文本段落
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParagraphBlock: :class:`tencentcloud.mrs.v20200910.models.ParagraphBlock`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._DiseaseHistory = None
@@ -6812,7 +6252,6 @@ class DischargeInfoBlock(AbstractModel):
     @property
     def DiseaseHistory(self):
         """疾病史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseaseHistoryBlock`
         """
         return self._DiseaseHistory
@@ -6824,7 +6263,6 @@ class DischargeInfoBlock(AbstractModel):
     @property
     def PersonalHistory(self):
         """个人史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PersonalHistoryBlock`
         """
         return self._PersonalHistory
@@ -6836,7 +6274,6 @@ class DischargeInfoBlock(AbstractModel):
     @property
     def DrugHistory(self):
         """药物史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DrugHistoryBlock`
         """
         return self._DrugHistory
@@ -6848,7 +6285,6 @@ class DischargeInfoBlock(AbstractModel):
     @property
     def TreatmentRecord(self):
         """治疗相关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.TreatmentRecordBlock`
         """
         return self._TreatmentRecord
@@ -6860,7 +6296,6 @@ class DischargeInfoBlock(AbstractModel):
     @property
     def ParagraphBlock(self):
         """文本段落
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ParagraphBlock`
         """
         return self._ParagraphBlock
@@ -6872,7 +6307,6 @@ class DischargeInfoBlock(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -6917,19 +6351,14 @@ class DiseaseHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _MainDiseaseHistory: 主要病史
-注意：此字段可能返回 null，表示取不到有效值。
         :type MainDiseaseHistory: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         :param _AllergyHistory: 过敏史
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllergyHistory: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         :param _InfectHistory: 注射史
-注意：此字段可能返回 null，表示取不到有效值。
         :type InfectHistory: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         :param _SurgeryHistory: 手术史
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryHistory: :class:`tencentcloud.mrs.v20200910.models.SurgeryHistoryBlock`
         :param _TransfusionHistory: 输血史
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransfusionHistory: :class:`tencentcloud.mrs.v20200910.models.TransfusionHistoryBlock`
         """
         self._MainDiseaseHistory = None
@@ -6941,7 +6370,6 @@ class DiseaseHistoryBlock(AbstractModel):
     @property
     def MainDiseaseHistory(self):
         """主要病史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         """
         return self._MainDiseaseHistory
@@ -6953,7 +6381,6 @@ class DiseaseHistoryBlock(AbstractModel):
     @property
     def AllergyHistory(self):
         """过敏史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         """
         return self._AllergyHistory
@@ -6965,7 +6392,6 @@ class DiseaseHistoryBlock(AbstractModel):
     @property
     def InfectHistory(self):
         """注射史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MainDiseaseHistoryBlock`
         """
         return self._InfectHistory
@@ -6977,7 +6403,6 @@ class DiseaseHistoryBlock(AbstractModel):
     @property
     def SurgeryHistory(self):
         """手术史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryHistoryBlock`
         """
         return self._SurgeryHistory
@@ -6989,7 +6414,6 @@ class DiseaseHistoryBlock(AbstractModel):
     @property
     def TransfusionHistory(self):
         """输血史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.TransfusionHistoryBlock`
         """
         return self._TransfusionHistory
@@ -7033,19 +6457,14 @@ class DiseaseMedicalHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _MainDiseaseHistory: 主病史
-注意：此字段可能返回 null，表示取不到有效值。
         :type MainDiseaseHistory: str
         :param _AllergyHistory: 过敏史
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllergyHistory: str
         :param _InfectHistory: 传染疾病史
-注意：此字段可能返回 null，表示取不到有效值。
         :type InfectHistory: str
         :param _OperationHistory: 手术史
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationHistory: str
         :param _TransfusionHistory: 输血史
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransfusionHistory: str
         """
         self._MainDiseaseHistory = None
@@ -7057,7 +6476,6 @@ class DiseaseMedicalHistory(AbstractModel):
     @property
     def MainDiseaseHistory(self):
         """主病史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MainDiseaseHistory
@@ -7069,7 +6487,6 @@ class DiseaseMedicalHistory(AbstractModel):
     @property
     def AllergyHistory(self):
         """过敏史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AllergyHistory
@@ -7081,7 +6498,6 @@ class DiseaseMedicalHistory(AbstractModel):
     @property
     def InfectHistory(self):
         """传染疾病史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InfectHistory
@@ -7093,7 +6509,6 @@ class DiseaseMedicalHistory(AbstractModel):
     @property
     def OperationHistory(self):
         """手术史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationHistory
@@ -7105,7 +6520,6 @@ class DiseaseMedicalHistory(AbstractModel):
     @property
     def TransfusionHistory(self):
         """输血史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransfusionHistory
@@ -7139,16 +6553,12 @@ class DiseasePresentBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Norm: 归一化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         """
         self._Name = None
@@ -7159,7 +6569,6 @@ class DiseasePresentBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7171,7 +6580,6 @@ class DiseasePresentBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -7183,7 +6591,6 @@ class DiseasePresentBlock(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -7195,7 +6602,6 @@ class DiseasePresentBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -7228,16 +6634,12 @@ class DosageBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _SingleMeasurement: 单次计量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SingleMeasurement: str
         :param _Frequency: 频次
-注意：此字段可能返回 null，表示取不到有效值。
         :type Frequency: str
         :param _DrugDeliveryRoute: 给药途径
-注意：此字段可能返回 null，表示取不到有效值。
         :type DrugDeliveryRoute: str
         """
         self._Value = None
@@ -7248,7 +6650,6 @@ class DosageBlock(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -7260,7 +6661,6 @@ class DosageBlock(AbstractModel):
     @property
     def SingleMeasurement(self):
         """单次计量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SingleMeasurement
@@ -7272,7 +6672,6 @@ class DosageBlock(AbstractModel):
     @property
     def Frequency(self):
         """频次
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Frequency
@@ -7284,7 +6683,6 @@ class DosageBlock(AbstractModel):
     @property
     def DrugDeliveryRoute(self):
         """给药途径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DrugDeliveryRoute
@@ -7317,16 +6715,12 @@ class DrugHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 药品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _DrugList: 药物列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DrugList: list of DrugListBlock
         :param _Value: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -7337,7 +6731,6 @@ class DrugHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """药品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7349,7 +6742,6 @@ class DrugHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -7361,7 +6753,6 @@ class DrugHistoryBlock(AbstractModel):
     @property
     def DrugList(self):
         """药物列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DrugListBlock
         """
         return self._DrugList
@@ -7373,7 +6764,6 @@ class DrugHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -7449,10 +6839,8 @@ class DrugInstructionObjectResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ChemicalProductInfo: 药品说明书消息定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChemicalProductInfo: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfo`
         :param _BiologicalProductInfo: 预防用生物制品说明书
-注意：此字段可能返回 null，表示取不到有效值。
         :type BiologicalProductInfo: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7464,7 +6852,6 @@ class DrugInstructionObjectResponse(AbstractModel):
     @property
     def ChemicalProductInfo(self):
         """药品说明书消息定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfo`
         """
         return self._ChemicalProductInfo
@@ -7476,7 +6863,6 @@ class DrugInstructionObjectResponse(AbstractModel):
     @property
     def BiologicalProductInfo(self):
         """预防用生物制品说明书
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfo`
         """
         return self._BiologicalProductInfo
@@ -7515,16 +6901,12 @@ class DrugListBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _CommonName: 通用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CommonName: str
         :param _TradeName: 商品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TradeName: str
         :param _Dosage: 用法用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Dosage: :class:`tencentcloud.mrs.v20200910.models.DosageBlock`
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._CommonName = None
@@ -7535,7 +6917,6 @@ class DrugListBlock(AbstractModel):
     @property
     def CommonName(self):
         """通用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CommonName
@@ -7547,7 +6928,6 @@ class DrugListBlock(AbstractModel):
     @property
     def TradeName(self):
         """商品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TradeName
@@ -7559,7 +6939,6 @@ class DrugListBlock(AbstractModel):
     @property
     def Dosage(self):
         """用法用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DosageBlock`
         """
         return self._Dosage
@@ -7571,7 +6950,6 @@ class DrugListBlock(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -7606,64 +6984,44 @@ class EcgDescription(AbstractModel):
     def __init__(self):
         r"""
         :param _HeartRate: 心率
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeartRate: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _AuricularRate: 心房率
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuricularRate: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _VentricularRate: 心室率
-注意：此字段可能返回 null，表示取不到有效值。
         :type VentricularRate: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _Rhythm: 节律
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rhythm: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _PDuration: P波时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PDuration: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _QrsDuration: QRS时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type QrsDuration: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _QrsAxis: QRS电轴
-注意：此字段可能返回 null，表示取不到有效值。
         :type QrsAxis: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _PRInterval: P-R间期
-注意：此字段可能返回 null，表示取不到有效值。
         :type PRInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _PPInterval: P-P间期
-注意：此字段可能返回 null，表示取不到有效值。
         :type PPInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _RRInterval: R-R间期
-注意：此字段可能返回 null，表示取不到有效值。
         :type RRInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _PJInterval: P-J间期
-注意：此字段可能返回 null，表示取不到有效值。
         :type PJInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _QTInterval: Q-T间期
-注意：此字段可能返回 null，表示取不到有效值。
         :type QTInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _QTCInterval: qt/qtc间期
-注意：此字段可能返回 null，表示取不到有效值。
         :type QTCInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _Rv5SV1Amplitude: RV5/SV1振幅
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rv5SV1Amplitude: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _Rv5AddSV1Amplitude: RV5+SV1振幅
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rv5AddSV1Amplitude: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _PRTAxis: PRT电轴
-注意：此字段可能返回 null，表示取不到有效值。
         :type PRTAxis: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _Rv5Amplitude: RV5振幅
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rv5Amplitude: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _SV1Amplitude: SV1振幅
-注意：此字段可能返回 null，表示取不到有效值。
         :type SV1Amplitude: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _RV6SV2: RV6/SV2
-注意：此字段可能返回 null，表示取不到有效值。
         :type RV6SV2: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         :param _PQRSTAxis: P/QRS/T电轴
-注意：此字段可能返回 null，表示取不到有效值。
         :type PQRSTAxis: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         self._HeartRate = None
@@ -7690,7 +7048,6 @@ class EcgDescription(AbstractModel):
     @property
     def HeartRate(self):
         """心率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._HeartRate
@@ -7702,7 +7059,6 @@ class EcgDescription(AbstractModel):
     @property
     def AuricularRate(self):
         """心房率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._AuricularRate
@@ -7714,7 +7070,6 @@ class EcgDescription(AbstractModel):
     @property
     def VentricularRate(self):
         """心室率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._VentricularRate
@@ -7726,7 +7081,6 @@ class EcgDescription(AbstractModel):
     @property
     def Rhythm(self):
         """节律
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._Rhythm
@@ -7738,7 +7092,6 @@ class EcgDescription(AbstractModel):
     @property
     def PDuration(self):
         """P波时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PDuration
@@ -7750,7 +7103,6 @@ class EcgDescription(AbstractModel):
     @property
     def QrsDuration(self):
         """QRS时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._QrsDuration
@@ -7762,7 +7114,6 @@ class EcgDescription(AbstractModel):
     @property
     def QrsAxis(self):
         """QRS电轴
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._QrsAxis
@@ -7774,7 +7125,6 @@ class EcgDescription(AbstractModel):
     @property
     def PRInterval(self):
         """P-R间期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PRInterval
@@ -7786,7 +7136,6 @@ class EcgDescription(AbstractModel):
     @property
     def PPInterval(self):
         """P-P间期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PPInterval
@@ -7798,7 +7147,6 @@ class EcgDescription(AbstractModel):
     @property
     def RRInterval(self):
         """R-R间期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._RRInterval
@@ -7810,7 +7158,6 @@ class EcgDescription(AbstractModel):
     @property
     def PJInterval(self):
         """P-J间期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PJInterval
@@ -7822,7 +7169,6 @@ class EcgDescription(AbstractModel):
     @property
     def QTInterval(self):
         """Q-T间期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._QTInterval
@@ -7834,7 +7180,6 @@ class EcgDescription(AbstractModel):
     @property
     def QTCInterval(self):
         """qt/qtc间期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._QTCInterval
@@ -7846,7 +7191,6 @@ class EcgDescription(AbstractModel):
     @property
     def Rv5SV1Amplitude(self):
         """RV5/SV1振幅
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._Rv5SV1Amplitude
@@ -7858,7 +7202,6 @@ class EcgDescription(AbstractModel):
     @property
     def Rv5AddSV1Amplitude(self):
         """RV5+SV1振幅
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._Rv5AddSV1Amplitude
@@ -7870,7 +7213,6 @@ class EcgDescription(AbstractModel):
     @property
     def PRTAxis(self):
         """PRT电轴
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PRTAxis
@@ -7882,7 +7224,6 @@ class EcgDescription(AbstractModel):
     @property
     def Rv5Amplitude(self):
         """RV5振幅
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._Rv5Amplitude
@@ -7894,7 +7235,6 @@ class EcgDescription(AbstractModel):
     @property
     def SV1Amplitude(self):
         """SV1振幅
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._SV1Amplitude
@@ -7906,7 +7246,6 @@ class EcgDescription(AbstractModel):
     @property
     def RV6SV2(self):
         """RV6/SV2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._RV6SV2
@@ -7918,7 +7257,6 @@ class EcgDescription(AbstractModel):
     @property
     def PQRSTAxis(self):
         """P/QRS/T电轴
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
         """
         return self._PQRSTAxis
@@ -8007,10 +7345,8 @@ class EcgDiagnosis(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of str
         """
         self._Name = None
@@ -8019,7 +7355,6 @@ class EcgDiagnosis(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -8031,7 +7366,6 @@ class EcgDiagnosis(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Value
@@ -8062,16 +7396,12 @@ class EcgItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         """
         self._Name = None
@@ -8082,7 +7412,6 @@ class EcgItem(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -8094,7 +7423,6 @@ class EcgItem(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -8106,7 +7434,6 @@ class EcgItem(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -8118,7 +7445,6 @@ class EcgItem(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -8151,19 +7477,14 @@ class Elastic(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Score: 分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Index = None
@@ -8175,7 +7496,6 @@ class Elastic(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -8187,7 +7507,6 @@ class Elastic(AbstractModel):
     @property
     def Score(self):
         """分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Score
@@ -8199,7 +7518,6 @@ class Elastic(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -8211,7 +7529,6 @@ class Elastic(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -8223,7 +7540,6 @@ class Elastic(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -8257,13 +7573,10 @@ class Electrocardiogram(AbstractModel):
     def __init__(self):
         r"""
         :param _EcgDescription: 心电图详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type EcgDescription: :class:`tencentcloud.mrs.v20200910.models.EcgDescription`
         :param _EcgDiagnosis: 心电图诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type EcgDiagnosis: :class:`tencentcloud.mrs.v20200910.models.EcgDiagnosis`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._EcgDescription = None
@@ -8273,7 +7586,6 @@ class Electrocardiogram(AbstractModel):
     @property
     def EcgDescription(self):
         """心电图详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgDescription`
         """
         return self._EcgDescription
@@ -8285,7 +7597,6 @@ class Electrocardiogram(AbstractModel):
     @property
     def EcgDiagnosis(self):
         """心电图诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EcgDiagnosis`
         """
         return self._EcgDiagnosis
@@ -8297,7 +7608,6 @@ class Electrocardiogram(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -8333,16 +7643,12 @@ class Endoscopy(AbstractModel):
     def __init__(self):
         r"""
         :param _BiopsyPart: 活检部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type BiopsyPart: :class:`tencentcloud.mrs.v20200910.models.BiopsyPart`
         :param _Desc: 可见描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: :class:`tencentcloud.mrs.v20200910.models.EndoscopyDesc`
         :param _Summary: 结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: :class:`tencentcloud.mrs.v20200910.models.Summary`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._BiopsyPart = None
@@ -8353,7 +7659,6 @@ class Endoscopy(AbstractModel):
     @property
     def BiopsyPart(self):
         """活检部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BiopsyPart`
         """
         return self._BiopsyPart
@@ -8365,7 +7670,6 @@ class Endoscopy(AbstractModel):
     @property
     def Desc(self):
         """可见描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EndoscopyDesc`
         """
         return self._Desc
@@ -8377,7 +7681,6 @@ class Endoscopy(AbstractModel):
     @property
     def Summary(self):
         """结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Summary`
         """
         return self._Summary
@@ -8389,7 +7692,6 @@ class Endoscopy(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -8428,13 +7730,10 @@ class EndoscopyDesc(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 描述内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Organ: 器官
-注意：此字段可能返回 null，表示取不到有效值。
         :type Organ: list of EndoscopyOrgan
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Text = None
@@ -8444,7 +7743,6 @@ class EndoscopyDesc(AbstractModel):
     @property
     def Text(self):
         """描述内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -8456,7 +7754,6 @@ class EndoscopyDesc(AbstractModel):
     @property
     def Organ(self):
         """器官
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EndoscopyOrgan
         """
         return self._Organ
@@ -8468,7 +7765,6 @@ class EndoscopyDesc(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -8510,22 +7806,16 @@ class EndoscopyOrgan(AbstractModel):
     def __init__(self):
         r"""
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _PartAlias: 部位别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type PartAlias: str
         :param _SymDescList: 症状描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type SymDescList: list of BlockInfo
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Part = None
@@ -8538,7 +7828,6 @@ class EndoscopyOrgan(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -8550,7 +7839,6 @@ class EndoscopyOrgan(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -8562,7 +7850,6 @@ class EndoscopyOrgan(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -8574,7 +7861,6 @@ class EndoscopyOrgan(AbstractModel):
     @property
     def PartAlias(self):
         """部位别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PartAlias
@@ -8586,7 +7872,6 @@ class EndoscopyOrgan(AbstractModel):
     @property
     def SymDescList(self):
         """症状描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BlockInfo
         """
         return self._SymDescList
@@ -8598,7 +7883,6 @@ class EndoscopyOrgan(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -8645,10 +7929,8 @@ class Exame(AbstractModel):
     def __init__(self):
         r"""
         :param _OverView: 结论段落
-注意：此字段可能返回 null，表示取不到有效值。
         :type OverView: list of ResultInfo
         :param _Abnormality: 异常与建议段落
-注意：此字段可能返回 null，表示取不到有效值。
         :type Abnormality: list of ResultInfo
         """
         self._OverView = None
@@ -8657,7 +7939,6 @@ class Exame(AbstractModel):
     @property
     def OverView(self):
         """结论段落
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResultInfo
         """
         return self._OverView
@@ -8669,7 +7950,6 @@ class Exame(AbstractModel):
     @property
     def Abnormality(self):
         """异常与建议段落
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResultInfo
         """
         return self._Abnormality
@@ -8710,16 +7990,12 @@ class EyeChildItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Sph: 球镜
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sph: list of BaseItem3
         :param _Cyl: 柱镜
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cyl: list of BaseItem3
         :param _Ax: 轴位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ax: list of BaseItem3
         :param _Se: 等效球镜
-注意：此字段可能返回 null，表示取不到有效值。
         :type Se: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
         """
         self._Sph = None
@@ -8730,7 +8006,6 @@ class EyeChildItem(AbstractModel):
     @property
     def Sph(self):
         """球镜
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BaseItem3
         """
         return self._Sph
@@ -8742,7 +8017,6 @@ class EyeChildItem(AbstractModel):
     @property
     def Cyl(self):
         """柱镜
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BaseItem3
         """
         return self._Cyl
@@ -8754,7 +8028,6 @@ class EyeChildItem(AbstractModel):
     @property
     def Ax(self):
         """轴位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BaseItem3
         """
         return self._Ax
@@ -8766,7 +8039,6 @@ class EyeChildItem(AbstractModel):
     @property
     def Se(self):
         """等效球镜
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
         """
         return self._Se
@@ -8816,13 +8088,10 @@ class EyeItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Left: 左眼
-注意：此字段可能返回 null，表示取不到有效值。
         :type Left: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
         :param _Right: 右眼
-注意：此字段可能返回 null，表示取不到有效值。
         :type Right: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
         :param _Pd: 瞳距
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pd: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
         """
         self._Left = None
@@ -8832,7 +8101,6 @@ class EyeItem(AbstractModel):
     @property
     def Left(self):
         """左眼
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
         """
         return self._Left
@@ -8844,7 +8112,6 @@ class EyeItem(AbstractModel):
     @property
     def Right(self):
         """右眼
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeChildItem`
         """
         return self._Right
@@ -8856,7 +8123,6 @@ class EyeItem(AbstractModel):
     @property
     def Pd(self):
         """瞳距
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem2`
         """
         return self._Pd
@@ -8894,13 +8160,10 @@ class EyeItemsInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _EyeItems: 眼科报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type EyeItems: :class:`tencentcloud.mrs.v20200910.models.EyeItem`
         :param _Version: 版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._EyeItems = None
@@ -8910,7 +8173,6 @@ class EyeItemsInfo(AbstractModel):
     @property
     def EyeItems(self):
         """眼科报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeItem`
         """
         return self._EyeItems
@@ -8922,7 +8184,6 @@ class EyeItemsInfo(AbstractModel):
     @property
     def Version(self):
         """版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -8934,7 +8195,6 @@ class EyeItemsInfo(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -8968,13 +8228,10 @@ class FamilyHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _RelativeHistory: 家庭成员
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelativeHistory: :class:`tencentcloud.mrs.v20200910.models.RelativeHistoryBlock`
         :param _RelativeCancerHistory: 家族肿瘤史
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelativeCancerHistory: :class:`tencentcloud.mrs.v20200910.models.RelativeCancerHistoryBlock`
         :param _GeneticHistory: 家族遗传史
-注意：此字段可能返回 null，表示取不到有效值。
         :type GeneticHistory: :class:`tencentcloud.mrs.v20200910.models.GeneticHistoryBlock`
         """
         self._RelativeHistory = None
@@ -8984,7 +8241,6 @@ class FamilyHistoryBlock(AbstractModel):
     @property
     def RelativeHistory(self):
         """家庭成员
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.RelativeHistoryBlock`
         """
         return self._RelativeHistory
@@ -8996,7 +8252,6 @@ class FamilyHistoryBlock(AbstractModel):
     @property
     def RelativeCancerHistory(self):
         """家族肿瘤史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.RelativeCancerHistoryBlock`
         """
         return self._RelativeCancerHistory
@@ -9008,7 +8263,6 @@ class FamilyHistoryBlock(AbstractModel):
     @property
     def GeneticHistory(self):
         """家族遗传史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneticHistoryBlock`
         """
         return self._GeneticHistory
@@ -9046,13 +8300,10 @@ class FamilyMedicalHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _RelativeHistory: 家族成员史
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelativeHistory: str
         :param _RelativeCancerHistory: 家族肿瘤史
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelativeCancerHistory: str
         :param _GeneticHistory: 家族遗传史
-注意：此字段可能返回 null，表示取不到有效值。
         :type GeneticHistory: str
         """
         self._RelativeHistory = None
@@ -9062,7 +8313,6 @@ class FamilyMedicalHistory(AbstractModel):
     @property
     def RelativeHistory(self):
         """家族成员史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RelativeHistory
@@ -9074,7 +8324,6 @@ class FamilyMedicalHistory(AbstractModel):
     @property
     def RelativeCancerHistory(self):
         """家族肿瘤史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RelativeCancerHistory
@@ -9086,7 +8335,6 @@ class FamilyMedicalHistory(AbstractModel):
     @property
     def GeneticHistory(self):
         """家族遗传史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GeneticHistory
@@ -9118,25 +8366,18 @@ class FertilityHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _State: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _PregCount: 妊娠次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PregCount: str
         :param _ProduCount: 生产次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProduCount: str
         """
         self._Name = None
@@ -9150,7 +8391,6 @@ class FertilityHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -9162,7 +8402,6 @@ class FertilityHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -9174,7 +8413,6 @@ class FertilityHistoryBlock(AbstractModel):
     @property
     def State(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._State
@@ -9186,7 +8424,6 @@ class FertilityHistoryBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -9198,7 +8435,6 @@ class FertilityHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -9210,7 +8446,6 @@ class FertilityHistoryBlock(AbstractModel):
     @property
     def PregCount(self):
         """妊娠次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PregCount
@@ -9222,7 +8457,6 @@ class FertilityHistoryBlock(AbstractModel):
     @property
     def ProduCount(self):
         """生产次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProduCount
@@ -9258,85 +8492,58 @@ class Fetus(AbstractModel):
     def __init__(self):
         r"""
         :param _BPD: 双顶径
-注意：此字段可能返回 null，表示取不到有效值。
         :type BPD: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _APTD: 腹前后径
-注意：此字段可能返回 null，表示取不到有效值。
         :type APTD: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _TTD: 腹左右径
-注意：此字段可能返回 null，表示取不到有效值。
         :type TTD: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _CRL: 头臀径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CRL: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _HC: 头围
-注意：此字段可能返回 null，表示取不到有效值。
         :type HC: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _AC: 腹围
-注意：此字段可能返回 null，表示取不到有效值。
         :type AC: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _FL: 股骨长
-注意：此字段可能返回 null，表示取不到有效值。
         :type FL: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _HL: 肱骨长
-注意：此字段可能返回 null，表示取不到有效值。
         :type HL: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _Weight: 胎儿重量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _NT: 颈项透明层
-注意：此字段可能返回 null，表示取不到有效值。
         :type NT: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _UmbilicalCord: 脐动脉血流
-注意：此字段可能返回 null，表示取不到有效值。
         :type UmbilicalCord: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _WaterDeep: 羊水最大深度
-注意：此字段可能返回 null，表示取不到有效值。
         :type WaterDeep: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _WaterQuad: 羊水四象限测量
-注意：此字段可能返回 null，表示取不到有效值。
         :type WaterQuad: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _AFI: 羊水指数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AFI: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _FHR: 胎心
-注意：此字段可能返回 null，表示取不到有效值。
         :type FHR: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _Movement: 胎动
-注意：此字段可能返回 null，表示取不到有效值。
         :type Movement: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _Num: 胎数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Num: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _Position: 胎位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Position: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _Alive: 是否活胎
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alive: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _PlacentaLocation: 胎盘位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlacentaLocation: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _PlacentaThickness: 胎盘厚度
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlacentaThickness: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _PlacentaGrade: 胎盘成熟度
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlacentaGrade: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _GestationTime: 妊娠时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type GestationTime: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _GestationPeriod: 妊娠周期
-注意：此字段可能返回 null，表示取不到有效值。
         :type GestationPeriod: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _AroundNeck: 绕颈
-注意：此字段可能返回 null，表示取不到有效值。
         :type AroundNeck: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _Sym: 病变
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sym: list of FieldInfo
         :param _Src: 原文内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         """
         self._BPD = None
@@ -9370,7 +8577,6 @@ class Fetus(AbstractModel):
     @property
     def BPD(self):
         """双顶径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._BPD
@@ -9382,7 +8588,6 @@ class Fetus(AbstractModel):
     @property
     def APTD(self):
         """腹前后径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._APTD
@@ -9394,7 +8599,6 @@ class Fetus(AbstractModel):
     @property
     def TTD(self):
         """腹左右径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._TTD
@@ -9406,7 +8610,6 @@ class Fetus(AbstractModel):
     @property
     def CRL(self):
         """头臀径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._CRL
@@ -9418,7 +8621,6 @@ class Fetus(AbstractModel):
     @property
     def HC(self):
         """头围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._HC
@@ -9430,7 +8632,6 @@ class Fetus(AbstractModel):
     @property
     def AC(self):
         """腹围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._AC
@@ -9442,7 +8643,6 @@ class Fetus(AbstractModel):
     @property
     def FL(self):
         """股骨长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._FL
@@ -9454,7 +8654,6 @@ class Fetus(AbstractModel):
     @property
     def HL(self):
         """肱骨长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._HL
@@ -9466,7 +8665,6 @@ class Fetus(AbstractModel):
     @property
     def Weight(self):
         """胎儿重量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Weight
@@ -9478,7 +8676,6 @@ class Fetus(AbstractModel):
     @property
     def NT(self):
         """颈项透明层
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._NT
@@ -9490,7 +8687,6 @@ class Fetus(AbstractModel):
     @property
     def UmbilicalCord(self):
         """脐动脉血流
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._UmbilicalCord
@@ -9502,7 +8698,6 @@ class Fetus(AbstractModel):
     @property
     def WaterDeep(self):
         """羊水最大深度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._WaterDeep
@@ -9514,7 +8709,6 @@ class Fetus(AbstractModel):
     @property
     def WaterQuad(self):
         """羊水四象限测量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._WaterQuad
@@ -9526,7 +8720,6 @@ class Fetus(AbstractModel):
     @property
     def AFI(self):
         """羊水指数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._AFI
@@ -9538,7 +8731,6 @@ class Fetus(AbstractModel):
     @property
     def FHR(self):
         """胎心
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._FHR
@@ -9550,7 +8742,6 @@ class Fetus(AbstractModel):
     @property
     def Movement(self):
         """胎动
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Movement
@@ -9562,7 +8753,6 @@ class Fetus(AbstractModel):
     @property
     def Num(self):
         """胎数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Num
@@ -9574,7 +8764,6 @@ class Fetus(AbstractModel):
     @property
     def Position(self):
         """胎位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Position
@@ -9586,7 +8775,6 @@ class Fetus(AbstractModel):
     @property
     def Alive(self):
         """是否活胎
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._Alive
@@ -9598,7 +8786,6 @@ class Fetus(AbstractModel):
     @property
     def PlacentaLocation(self):
         """胎盘位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._PlacentaLocation
@@ -9610,7 +8797,6 @@ class Fetus(AbstractModel):
     @property
     def PlacentaThickness(self):
         """胎盘厚度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._PlacentaThickness
@@ -9622,7 +8808,6 @@ class Fetus(AbstractModel):
     @property
     def PlacentaGrade(self):
         """胎盘成熟度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._PlacentaGrade
@@ -9634,7 +8819,6 @@ class Fetus(AbstractModel):
     @property
     def GestationTime(self):
         """妊娠时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._GestationTime
@@ -9646,7 +8830,6 @@ class Fetus(AbstractModel):
     @property
     def GestationPeriod(self):
         """妊娠周期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._GestationPeriod
@@ -9658,7 +8841,6 @@ class Fetus(AbstractModel):
     @property
     def AroundNeck(self):
         """绕颈
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._AroundNeck
@@ -9670,7 +8852,6 @@ class Fetus(AbstractModel):
     @property
     def Sym(self):
         """病变
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FieldInfo
         """
         return self._Sym
@@ -9682,7 +8863,6 @@ class Fetus(AbstractModel):
     @property
     def Src(self):
         """原文内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -9793,16 +8973,12 @@ class FieldInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Nums: 数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nums: list of NumValue
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         """
         self._Name = None
@@ -9813,7 +8989,6 @@ class FieldInfo(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -9825,7 +9000,6 @@ class FieldInfo(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -9837,7 +9011,6 @@ class FieldInfo(AbstractModel):
     @property
     def Nums(self):
         """数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NumValue
         """
         return self._Nums
@@ -9849,7 +9022,6 @@ class FieldInfo(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -9887,22 +9059,16 @@ class FirstPage(AbstractModel):
     def __init__(self):
         r"""
         :param _DischargeDiagnosis: 出入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeDiagnosis: list of DischargeDiagnosis
         :param _PathologicalDiagnosis: 病理诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologicalDiagnosis: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _ClinicalDiagnosis: 临床诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClinicalDiagnosis: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _DamagePoi: 受伤中毒的外部原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type DamagePoi: :class:`tencentcloud.mrs.v20200910.models.BlockInfoV2`
         :param _Fp2NdItems: 病案首页第二页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fp2NdItems: list of Fp2NdItem
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._DischargeDiagnosis = None
@@ -9915,7 +9081,6 @@ class FirstPage(AbstractModel):
     @property
     def DischargeDiagnosis(self):
         """出入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DischargeDiagnosis
         """
         return self._DischargeDiagnosis
@@ -9927,7 +9092,6 @@ class FirstPage(AbstractModel):
     @property
     def PathologicalDiagnosis(self):
         """病理诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._PathologicalDiagnosis
@@ -9939,7 +9103,6 @@ class FirstPage(AbstractModel):
     @property
     def ClinicalDiagnosis(self):
         """临床诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ClinicalDiagnosis
@@ -9951,7 +9114,6 @@ class FirstPage(AbstractModel):
     @property
     def DamagePoi(self):
         """受伤中毒的外部原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfoV2`
         """
         return self._DamagePoi
@@ -9963,7 +9125,6 @@ class FirstPage(AbstractModel):
     @property
     def Fp2NdItems(self):
         """病案首页第二页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Fp2NdItem
         """
         return self._Fp2NdItems
@@ -9975,7 +9136,6 @@ class FirstPage(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -10026,28 +9186,20 @@ class Fp2NdItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 手术编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Name: 手术名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _StartTime: 手术开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _EndTime: 手术结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Level: 手术等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Type: 手术类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _IncisionHealingGrade: 醉愈合方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncisionHealingGrade: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _AnesthesiaMethod: 麻醉方法
-注意：此字段可能返回 null，表示取不到有效值。
         :type AnesthesiaMethod: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         self._Code = None
@@ -10062,7 +9214,6 @@ class Fp2NdItem(AbstractModel):
     @property
     def Code(self):
         """手术编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Code
@@ -10074,7 +9225,6 @@ class Fp2NdItem(AbstractModel):
     @property
     def Name(self):
         """手术名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Name
@@ -10086,7 +9236,6 @@ class Fp2NdItem(AbstractModel):
     @property
     def StartTime(self):
         """手术开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._StartTime
@@ -10098,7 +9247,6 @@ class Fp2NdItem(AbstractModel):
     @property
     def EndTime(self):
         """手术结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._EndTime
@@ -10110,7 +9258,6 @@ class Fp2NdItem(AbstractModel):
     @property
     def Level(self):
         """手术等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Level
@@ -10122,7 +9269,6 @@ class Fp2NdItem(AbstractModel):
     @property
     def Type(self):
         """手术类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Type
@@ -10134,7 +9280,6 @@ class Fp2NdItem(AbstractModel):
     @property
     def IncisionHealingGrade(self):
         """醉愈合方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._IncisionHealingGrade
@@ -10146,7 +9291,6 @@ class Fp2NdItem(AbstractModel):
     @property
     def AnesthesiaMethod(self):
         """麻醉方法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._AnesthesiaMethod
@@ -10199,13 +9343,10 @@ class GeneralExaminationBaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _VitalSign: 生命体征
-注意：此字段可能返回 null，表示取不到有效值。
         :type VitalSign: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationVitalSign`
         :param _Others: 其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationOthers`
         :param _BriefSummary: 小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationBriefSummary`
         """
         self._VitalSign = None
@@ -10215,7 +9356,6 @@ class GeneralExaminationBaseItem(AbstractModel):
     @property
     def VitalSign(self):
         """生命体征
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationVitalSign`
         """
         return self._VitalSign
@@ -10227,7 +9367,6 @@ class GeneralExaminationBaseItem(AbstractModel):
     @property
     def Others(self):
         """其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationOthers`
         """
         return self._Others
@@ -10239,7 +9378,6 @@ class GeneralExaminationBaseItem(AbstractModel):
     @property
     def BriefSummary(self):
         """小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationBriefSummary`
         """
         return self._BriefSummary
@@ -10277,7 +9415,6 @@ class GeneralExaminationBriefSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 一般检查小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -10285,7 +9422,6 @@ class GeneralExaminationBriefSummary(AbstractModel):
     @property
     def Text(self):
         """一般检查小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10317,34 +9453,24 @@ class GeneralExaminationOthers(AbstractModel):
     def __init__(self):
         r"""
         :param _Countenance: 面容与表情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Countenance: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _MentalStatus: 精神状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type MentalStatus: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _DevelopmentCondition: 发育及营养状况
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevelopmentCondition: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Memory: 记忆力
-注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Hipline: 臀围
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hipline: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _WaistHipRatio: 腰臀比
-注意：此字段可能返回 null，表示取不到有效值。
         :type WaistHipRatio: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _Addiction: 生活嗜好
-注意：此字段可能返回 null，表示取不到有效值。
         :type Addiction: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _AbilityOfLifeADL: 生活能力评定
-注意：此字段可能返回 null，表示取不到有效值。
         :type AbilityOfLifeADL: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Others: 一般检查其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: list of KeyValueItem
         :param _ChestCircumference: 胸围
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChestCircumference: :class:`tencentcloud.mrs.v20200910.models.ChestCircumferenceItem`
         """
         self._Countenance = None
@@ -10361,7 +9487,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def Countenance(self):
         """面容与表情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Countenance
@@ -10373,7 +9498,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def MentalStatus(self):
         """精神状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._MentalStatus
@@ -10385,7 +9509,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def DevelopmentCondition(self):
         """发育及营养状况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._DevelopmentCondition
@@ -10397,7 +9520,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def Memory(self):
         """记忆力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Memory
@@ -10409,7 +9531,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def Hipline(self):
         """臀围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._Hipline
@@ -10421,7 +9542,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def WaistHipRatio(self):
         """腰臀比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._WaistHipRatio
@@ -10433,7 +9553,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def Addiction(self):
         """生活嗜好
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Addiction
@@ -10445,7 +9564,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def AbilityOfLifeADL(self):
         """生活能力评定
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._AbilityOfLifeADL
@@ -10457,7 +9575,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def Others(self):
         """一般检查其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -10469,7 +9586,6 @@ class GeneralExaminationOthers(AbstractModel):
     @property
     def ChestCircumference(self):
         """胸围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChestCircumferenceItem`
         """
         return self._ChestCircumference
@@ -10531,34 +9647,24 @@ class GeneralExaminationVitalSign(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 生命体征总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _BodyTemperature: 体温
-注意：此字段可能返回 null，表示取不到有效值。
         :type BodyTemperature: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _Pulse: 脉率
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pulse: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _HeartRate: 心率
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeartRate: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _BreathingRate: 呼吸频率
-注意：此字段可能返回 null，表示取不到有效值。
         :type BreathingRate: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _BodyHeight: 身高
-注意：此字段可能返回 null，表示取不到有效值。
         :type BodyHeight: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _BodyWeight: 体重
-注意：此字段可能返回 null，表示取不到有效值。
         :type BodyWeight: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _BodyMassIndex: 体质指数
-注意：此字段可能返回 null，表示取不到有效值。
         :type BodyMassIndex: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _Waistline: 腰围
-注意：此字段可能返回 null，表示取不到有效值。
         :type Waistline: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _BloodPressure: 血压
-注意：此字段可能返回 null，表示取不到有效值。
         :type BloodPressure: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationVitalSignBloodPressure`
         """
         self._Text = None
@@ -10575,7 +9681,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def Text(self):
         """生命体征总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._Text
@@ -10587,7 +9692,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def BodyTemperature(self):
         """体温
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BodyTemperature
@@ -10599,7 +9703,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def Pulse(self):
         """脉率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._Pulse
@@ -10611,7 +9714,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def HeartRate(self):
         """心率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._HeartRate
@@ -10623,7 +9725,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def BreathingRate(self):
         """呼吸频率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BreathingRate
@@ -10635,7 +9736,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def BodyHeight(self):
         """身高
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BodyHeight
@@ -10647,7 +9747,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def BodyWeight(self):
         """体重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BodyWeight
@@ -10659,7 +9758,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def BodyMassIndex(self):
         """体质指数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._BodyMassIndex
@@ -10671,7 +9769,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def Waistline(self):
         """腰围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._Waistline
@@ -10683,7 +9780,6 @@ class GeneralExaminationVitalSign(AbstractModel):
     @property
     def BloodPressure(self):
         """血压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationVitalSignBloodPressure`
         """
         return self._BloodPressure
@@ -10742,16 +9838,12 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 血压
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.BloodPressureItem`
         :param _SystolicDiastolicPressure: 收缩压/舒张压
-注意：此字段可能返回 null，表示取不到有效值。
         :type SystolicDiastolicPressure: list of BloodPressureItem
         :param _SystolicPressure: 收缩压
-注意：此字段可能返回 null，表示取不到有效值。
         :type SystolicPressure: list of BloodPressureItem
         :param _DiastolicPressure: 舒张压
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiastolicPressure: list of BloodPressureItem
         """
         self._Text = None
@@ -10762,7 +9854,6 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
     @property
     def Text(self):
         """血压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BloodPressureItem`
         """
         return self._Text
@@ -10774,7 +9865,6 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
     @property
     def SystolicDiastolicPressure(self):
         """收缩压/舒张压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BloodPressureItem
         """
         return self._SystolicDiastolicPressure
@@ -10786,7 +9876,6 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
     @property
     def SystolicPressure(self):
         """收缩压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BloodPressureItem
         """
         return self._SystolicPressure
@@ -10798,7 +9887,6 @@ class GeneralExaminationVitalSignBloodPressure(AbstractModel):
     @property
     def DiastolicPressure(self):
         """舒张压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BloodPressureItem
         """
         return self._DiastolicPressure
@@ -10848,16 +9936,12 @@ class GeneticHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _GeneticList: 遗传列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type GeneticList: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -10868,7 +9952,6 @@ class GeneticHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -10880,7 +9963,6 @@ class GeneticHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -10892,7 +9974,6 @@ class GeneticHistoryBlock(AbstractModel):
     @property
     def GeneticList(self):
         """遗传列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GeneticList
@@ -10904,7 +9985,6 @@ class GeneticHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -10937,7 +10017,6 @@ class GynaecologyAdnexal(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 子宫附件总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -10945,7 +10024,6 @@ class GynaecologyAdnexal(AbstractModel):
     @property
     def Text(self):
         """子宫附件总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -10977,31 +10055,22 @@ class GynaecologyBaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Vulva: 外阴
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vulva: :class:`tencentcloud.mrs.v20200910.models.GynaecologyVulva`
         :param _Vagina: 阴道
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vagina: :class:`tencentcloud.mrs.v20200910.models.GynaecologyVagina`
         :param _Cervix: 子宫颈
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cervix: :class:`tencentcloud.mrs.v20200910.models.GynaecologyCervix`
         :param _Uterus: 子宫
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uterus: :class:`tencentcloud.mrs.v20200910.models.GynaecologyUterus`
         :param _Adnexal: 子宫附件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Adnexal: :class:`tencentcloud.mrs.v20200910.models.GynaecologyAdnexal`
         :param _PelvicCavity: 盆腔
-注意：此字段可能返回 null，表示取不到有效值。
         :type PelvicCavity: :class:`tencentcloud.mrs.v20200910.models.GynaecologyPelvicCavity`
         :param _Others: 妇科其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: list of KeyValueItem
         :param _MenstrualHistory: 月经史
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualHistory: :class:`tencentcloud.mrs.v20200910.models.GynaecologyMenstrualHistory`
         :param _BriefSummary: 小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.GynaecologyBriefSummary`
         """
         self._Vulva = None
@@ -11017,7 +10086,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def Vulva(self):
         """外阴
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyVulva`
         """
         return self._Vulva
@@ -11029,7 +10097,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def Vagina(self):
         """阴道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyVagina`
         """
         return self._Vagina
@@ -11041,7 +10108,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def Cervix(self):
         """子宫颈
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyCervix`
         """
         return self._Cervix
@@ -11053,7 +10119,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def Uterus(self):
         """子宫
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyUterus`
         """
         return self._Uterus
@@ -11065,7 +10130,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def Adnexal(self):
         """子宫附件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyAdnexal`
         """
         return self._Adnexal
@@ -11077,7 +10141,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def PelvicCavity(self):
         """盆腔
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyPelvicCavity`
         """
         return self._PelvicCavity
@@ -11089,7 +10152,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def Others(self):
         """妇科其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -11101,7 +10163,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def MenstrualHistory(self):
         """月经史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyMenstrualHistory`
         """
         return self._MenstrualHistory
@@ -11113,7 +10174,6 @@ class GynaecologyBaseItem(AbstractModel):
     @property
     def BriefSummary(self):
         """小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyBriefSummary`
         """
         return self._BriefSummary
@@ -11172,7 +10232,6 @@ class GynaecologyBriefSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -11180,7 +10239,6 @@ class GynaecologyBriefSummary(AbstractModel):
     @property
     def Text(self):
         """小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -11212,7 +10270,6 @@ class GynaecologyCervix(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 子宫颈总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -11220,7 +10277,6 @@ class GynaecologyCervix(AbstractModel):
     @property
     def Text(self):
         """子宫颈总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -11252,7 +10308,6 @@ class GynaecologyMenstrualHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 妇科月经史总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -11260,7 +10315,6 @@ class GynaecologyMenstrualHistory(AbstractModel):
     @property
     def Text(self):
         """妇科月经史总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -11292,7 +10346,6 @@ class GynaecologyPelvicCavity(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 盆腔总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -11300,7 +10353,6 @@ class GynaecologyPelvicCavity(AbstractModel):
     @property
     def Text(self):
         """盆腔总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -11332,7 +10384,6 @@ class GynaecologyUterus(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 子宫总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -11340,7 +10391,6 @@ class GynaecologyUterus(AbstractModel):
     @property
     def Text(self):
         """子宫总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -11372,7 +10422,6 @@ class GynaecologyVagina(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 阴道总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -11380,7 +10429,6 @@ class GynaecologyVagina(AbstractModel):
     @property
     def Text(self):
         """阴道总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -11412,7 +10460,6 @@ class GynaecologyVulva(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 外阴总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -11420,7 +10467,6 @@ class GynaecologyVulva(AbstractModel):
     @property
     def Text(self):
         """外阴总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -11593,16 +10639,12 @@ class HearingItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Item: 项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Location: 方位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Location: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Result: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         self._Name = None
@@ -11613,7 +10655,6 @@ class HearingItem(AbstractModel):
     @property
     def Name(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -11625,7 +10666,6 @@ class HearingItem(AbstractModel):
     @property
     def Item(self):
         """项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -11637,7 +10677,6 @@ class HearingItem(AbstractModel):
     @property
     def Location(self):
         """方位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Location
@@ -11649,7 +10688,6 @@ class HearingItem(AbstractModel):
     @property
     def Result(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -11688,19 +10726,14 @@ class HistologyClass(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -11712,7 +10745,6 @@ class HistologyClass(AbstractModel):
     @property
     def Name(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -11724,7 +10756,6 @@ class HistologyClass(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -11736,7 +10767,6 @@ class HistologyClass(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -11748,7 +10778,6 @@ class HistologyClass(AbstractModel):
     @property
     def Value(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -11760,7 +10789,6 @@ class HistologyClass(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -11799,13 +10827,10 @@ class HistologyLevel(AbstractModel):
     def __init__(self):
         r"""
         :param _Grade: 等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: str
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         """
         self._Grade = None
@@ -11815,7 +10840,6 @@ class HistologyLevel(AbstractModel):
     @property
     def Grade(self):
         """等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Grade
@@ -11827,7 +10851,6 @@ class HistologyLevel(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -11839,7 +10862,6 @@ class HistologyLevel(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -11871,16 +10893,12 @@ class HistologyType(AbstractModel):
     def __init__(self):
         r"""
         :param _Infiltration: 浸润
-注意：此字段可能返回 null，表示取不到有效值。
         :type Infiltration: str
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._Infiltration = None
@@ -11891,7 +10909,6 @@ class HistologyType(AbstractModel):
     @property
     def Infiltration(self):
         """浸润
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Infiltration
@@ -11903,7 +10920,6 @@ class HistologyType(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -11915,7 +10931,6 @@ class HistologyType(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -11927,7 +10942,6 @@ class HistologyType(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -11960,22 +10974,16 @@ class HistologyTypeV2(AbstractModel):
     def __init__(self):
         r"""
         :param _Infiltration: 浸润
-注意：此字段可能返回 null，表示取不到有效值。
         :type Infiltration: str
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Type: 归一化后的组织学类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Name: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Infiltration = None
@@ -11988,7 +10996,6 @@ class HistologyTypeV2(AbstractModel):
     @property
     def Infiltration(self):
         """浸润
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Infiltration
@@ -12000,7 +11007,6 @@ class HistologyTypeV2(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -12012,7 +11018,6 @@ class HistologyTypeV2(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -12024,7 +11029,6 @@ class HistologyTypeV2(AbstractModel):
     @property
     def Type(self):
         """归一化后的组织学类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -12036,7 +11040,6 @@ class HistologyTypeV2(AbstractModel):
     @property
     def Name(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -12048,7 +11051,6 @@ class HistologyTypeV2(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -12088,34 +11090,25 @@ class Hospitalization(AbstractModel):
     def __init__(self):
         r"""
         :param _AdmissionTime: 入院时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionTime: str
         :param _DischargeTime: 出院时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeTime: str
         :param _AdmissionDays: 住院天数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionDays: str
         :param _AdmissionDignosis: 入院诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionDignosis: str
         :param _AdmissionCondition: 入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionCondition: str
         :param _DiagnosisTreatment: 诊疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnosisTreatment: str
         :param _DischargeDiagnosis: 出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeDiagnosis: str
         :param _DischargeInstruction: 出院医嘱
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeInstruction: str
         :param _AdmissionDiagnosis: 入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionDiagnosis: str
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._AdmissionTime = None
@@ -12132,7 +11125,6 @@ class Hospitalization(AbstractModel):
     @property
     def AdmissionTime(self):
         """入院时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionTime
@@ -12144,7 +11136,6 @@ class Hospitalization(AbstractModel):
     @property
     def DischargeTime(self):
         """出院时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeTime
@@ -12156,7 +11147,6 @@ class Hospitalization(AbstractModel):
     @property
     def AdmissionDays(self):
         """住院天数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionDays
@@ -12184,7 +11174,6 @@ class Hospitalization(AbstractModel):
     @property
     def AdmissionCondition(self):
         """入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionCondition
@@ -12196,7 +11185,6 @@ class Hospitalization(AbstractModel):
     @property
     def DiagnosisTreatment(self):
         """诊疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiagnosisTreatment
@@ -12208,7 +11196,6 @@ class Hospitalization(AbstractModel):
     @property
     def DischargeDiagnosis(self):
         """出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeDiagnosis
@@ -12220,7 +11207,6 @@ class Hospitalization(AbstractModel):
     @property
     def DischargeInstruction(self):
         """出院医嘱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeInstruction
@@ -12232,7 +11218,6 @@ class Hospitalization(AbstractModel):
     @property
     def AdmissionDiagnosis(self):
         """入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionDiagnosis
@@ -12244,7 +11229,6 @@ class Hospitalization(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -12283,19 +11267,14 @@ class IHCBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 具体值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.mrs.v20200910.models.ValueBlock`
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Index = None
@@ -12307,7 +11286,6 @@ class IHCBlock(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -12319,7 +11297,6 @@ class IHCBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -12331,7 +11308,6 @@ class IHCBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -12343,7 +11319,6 @@ class IHCBlock(AbstractModel):
     @property
     def Value(self):
         """具体值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueBlock`
         """
         return self._Value
@@ -12355,7 +11330,6 @@ class IHCBlock(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -12396,13 +11370,10 @@ class IHCInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 值
         :type Value: :class:`tencentcloud.mrs.v20200910.models.Value`
@@ -12415,7 +11386,6 @@ class IHCInfo(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -12427,7 +11397,6 @@ class IHCInfo(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -12439,7 +11408,6 @@ class IHCInfo(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -12485,19 +11453,14 @@ class IHCV2(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Name: ihc归一化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: ihc详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.mrs.v20200910.models.Value`
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Index = None
@@ -12509,7 +11472,6 @@ class IHCV2(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -12521,7 +11483,6 @@ class IHCV2(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -12533,7 +11494,6 @@ class IHCV2(AbstractModel):
     @property
     def Name(self):
         """ihc归一化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -12545,7 +11505,6 @@ class IHCV2(AbstractModel):
     @property
     def Value(self):
         """ihc详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Value`
         """
         return self._Value
@@ -12557,7 +11516,6 @@ class IHCV2(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -13139,7 +12097,6 @@ class ImageToClassResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TextTypeList: 分类结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextTypeList: list of TextType
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13150,7 +12107,6 @@ class ImageToClassResponse(AbstractModel):
     @property
     def TextTypeList(self):
         """分类结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -13405,13 +12361,10 @@ class ImmunohistochemistryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 免疫组化详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of IHCBlock
         """
         self._Name = None
@@ -13421,7 +12374,6 @@ class ImmunohistochemistryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -13433,7 +12385,6 @@ class ImmunohistochemistryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -13445,7 +12396,6 @@ class ImmunohistochemistryBlock(AbstractModel):
     @property
     def Value(self):
         """免疫组化详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IHCBlock
         """
         return self._Value
@@ -13482,13 +12432,10 @@ class Indicator(AbstractModel):
     def __init__(self):
         r"""
         :param _Indicators: 检验指标项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Indicators: list of IndicatorItem
         :param _BlockTitle: 检验报告块标题
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlockTitle: list of BlockTitle
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Indicators = None
@@ -13498,7 +12445,6 @@ class Indicator(AbstractModel):
     @property
     def Indicators(self):
         """检验指标项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IndicatorItem
         """
         return self._Indicators
@@ -13510,7 +12456,6 @@ class Indicator(AbstractModel):
     @property
     def BlockTitle(self):
         """检验报告块标题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BlockTitle
         """
         return self._BlockTitle
@@ -13522,7 +12467,6 @@ class Indicator(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -13564,43 +12508,30 @@ class IndicatorItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 英文缩写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Scode: 标准缩写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scode: str
         :param _Name: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Sname: 标准名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sname: str
         :param _Result: 结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Range: 参考范围
-注意：此字段可能返回 null，表示取不到有效值。
         :type Range: str
         :param _Arrow: 上下箭头
-注意：此字段可能返回 null，表示取不到有效值。
         :type Arrow: str
         :param _Normal: 是否正常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Normal: bool
         :param _ItemString: 项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemString: str
         :param _Id: 指标项ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Coords: 指标项坐标位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
         :param _InferNormal: 推测结果是否异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type InferNormal: str
         """
         self._Code = None
@@ -13620,7 +12551,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Code(self):
         """英文缩写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -13632,7 +12562,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Scode(self):
         """标准缩写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Scode
@@ -13644,7 +12573,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Name(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -13656,7 +12584,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Sname(self):
         """标准名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sname
@@ -13668,7 +12595,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Result(self):
         """结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -13680,7 +12606,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -13692,7 +12617,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Range(self):
         """参考范围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Range
@@ -13704,7 +12628,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Arrow(self):
         """上下箭头
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Arrow
@@ -13716,7 +12639,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Normal(self):
         """是否正常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Normal
@@ -13728,7 +12650,6 @@ class IndicatorItem(AbstractModel):
     @property
     def ItemString(self):
         """项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ItemString
@@ -13740,7 +12661,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Id(self):
         """指标项ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -13752,7 +12672,6 @@ class IndicatorItem(AbstractModel):
     @property
     def Coords(self):
         """指标项坐标位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
         """
         return self._Coords
@@ -13764,7 +12683,6 @@ class IndicatorItem(AbstractModel):
     @property
     def InferNormal(self):
         """推测结果是否异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InferNormal
@@ -13808,37 +12726,26 @@ class IndicatorItemV2(AbstractModel):
     def __init__(self):
         r"""
         :param _Item: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Item: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Code: 英文编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Result: 结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Range: 参考范围
-注意：此字段可能返回 null，表示取不到有效值。
         :type Range: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Arrow: 上下箭头
-注意：此字段可能返回 null，表示取不到有效值。
         :type Arrow: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Method: 检测方法
-注意：此字段可能返回 null，表示取不到有效值。
         :type Method: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         :param _Normal: 结果是否异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Normal: bool
         :param _Id: ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Order: 序号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Order: int
         :param _InferNormal: 推测结果是否异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type InferNormal: str
         """
         self._Item = None
@@ -13856,7 +12763,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Item(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Item
@@ -13868,7 +12774,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Code(self):
         """英文编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Code
@@ -13880,7 +12785,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Result(self):
         """结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Result
@@ -13892,7 +12796,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Unit
@@ -13904,7 +12807,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Range(self):
         """参考范围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Range
@@ -13916,7 +12818,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Arrow(self):
         """上下箭头
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Arrow
@@ -13928,7 +12829,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Method(self):
         """检测方法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Method
@@ -13940,7 +12840,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Normal(self):
         """结果是否异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Normal
@@ -13952,7 +12851,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Id(self):
         """ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -13964,7 +12862,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def Order(self):
         """序号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Order
@@ -13976,7 +12873,6 @@ class IndicatorItemV2(AbstractModel):
     @property
     def InferNormal(self):
         """推测结果是否异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InferNormal
@@ -14033,13 +12929,10 @@ class IndicatorV3(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIndictors: list of TableIndicators
         :param _Version: 版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _TableIndicators: 检验报告V3结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableIndicators: list of TableIndicators
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._TableIndictors = None
@@ -14066,7 +12959,6 @@ class IndicatorV3(AbstractModel):
     @property
     def Version(self):
         """版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -14078,7 +12970,6 @@ class IndicatorV3(AbstractModel):
     @property
     def TableIndicators(self):
         """检验报告V3结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableIndicators
         """
         return self._TableIndicators
@@ -14090,7 +12981,6 @@ class IndicatorV3(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -14133,25 +13023,18 @@ class InternalMedicineAbdomen(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 内科腹部小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Liver: 肝脏
-注意：此字段可能返回 null，表示取不到有效值。
         :type Liver: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenLiver`
         :param _GallBladder: 胆囊
-注意：此字段可能返回 null，表示取不到有效值。
         :type GallBladder: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenGallBladder`
         :param _Pancreas: 胰腺
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pancreas: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenPancreas`
         :param _Spleen: 脾脏
-注意：此字段可能返回 null，表示取不到有效值。
         :type Spleen: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenSpleen`
         :param _Kidney: 肾脏
-注意：此字段可能返回 null，表示取不到有效值。
         :type Kidney: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenKidney`
         :param _Others: 腹部其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: list of KeyValueItem
         """
         self._Text = None
@@ -14165,7 +13048,6 @@ class InternalMedicineAbdomen(AbstractModel):
     @property
     def Text(self):
         """内科腹部小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -14177,7 +13059,6 @@ class InternalMedicineAbdomen(AbstractModel):
     @property
     def Liver(self):
         """肝脏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenLiver`
         """
         return self._Liver
@@ -14189,7 +13070,6 @@ class InternalMedicineAbdomen(AbstractModel):
     @property
     def GallBladder(self):
         """胆囊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenGallBladder`
         """
         return self._GallBladder
@@ -14201,7 +13081,6 @@ class InternalMedicineAbdomen(AbstractModel):
     @property
     def Pancreas(self):
         """胰腺
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenPancreas`
         """
         return self._Pancreas
@@ -14213,7 +13092,6 @@ class InternalMedicineAbdomen(AbstractModel):
     @property
     def Spleen(self):
         """脾脏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenSpleen`
         """
         return self._Spleen
@@ -14225,7 +13103,6 @@ class InternalMedicineAbdomen(AbstractModel):
     @property
     def Kidney(self):
         """肾脏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenKidney`
         """
         return self._Kidney
@@ -14237,7 +13114,6 @@ class InternalMedicineAbdomen(AbstractModel):
     @property
     def Others(self):
         """腹部其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -14290,22 +13166,16 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
     def __init__(self):
         r"""
         :param _Src: 胆囊总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Size: 胆囊大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Palpation: 胆囊触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Percussion: 胆囊叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Tenderness: 胆囊压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Consistency: 胆囊质地
-注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Src = None
@@ -14318,7 +13188,6 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
     @property
     def Src(self):
         """胆囊总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -14330,7 +13199,6 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
     @property
     def Size(self):
         """胆囊大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -14342,7 +13210,6 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
     @property
     def Palpation(self):
         """胆囊触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -14354,7 +13221,6 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
     @property
     def Percussion(self):
         """胆囊叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -14366,7 +13232,6 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
     @property
     def Tenderness(self):
         """胆囊压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -14378,7 +13243,6 @@ class InternalMedicineAbdomenGallBladder(AbstractModel):
     @property
     def Consistency(self):
         """胆囊质地
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -14425,22 +13289,16 @@ class InternalMedicineAbdomenKidney(AbstractModel):
     def __init__(self):
         r"""
         :param _Src: 肾脏总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Size: 肾脏大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Palpation: 肾脏触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Percussion: 肾脏叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Tenderness: 肾脏压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Consistency: 肾脏质地
-注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Src = None
@@ -14453,7 +13311,6 @@ class InternalMedicineAbdomenKidney(AbstractModel):
     @property
     def Src(self):
         """肾脏总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -14465,7 +13322,6 @@ class InternalMedicineAbdomenKidney(AbstractModel):
     @property
     def Size(self):
         """肾脏大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -14477,7 +13333,6 @@ class InternalMedicineAbdomenKidney(AbstractModel):
     @property
     def Palpation(self):
         """肾脏触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -14489,7 +13344,6 @@ class InternalMedicineAbdomenKidney(AbstractModel):
     @property
     def Percussion(self):
         """肾脏叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -14501,7 +13355,6 @@ class InternalMedicineAbdomenKidney(AbstractModel):
     @property
     def Tenderness(self):
         """肾脏压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -14513,7 +13366,6 @@ class InternalMedicineAbdomenKidney(AbstractModel):
     @property
     def Consistency(self):
         """肾脏质地
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -14560,22 +13412,16 @@ class InternalMedicineAbdomenLiver(AbstractModel):
     def __init__(self):
         r"""
         :param _Src: 肝脏总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Size: 肝脏大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Palpation: 肝脏触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Percussion: 肝脏叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Tenderness: 肝脏压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Consistency: 肝脏质地
-注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Src = None
@@ -14588,7 +13434,6 @@ class InternalMedicineAbdomenLiver(AbstractModel):
     @property
     def Src(self):
         """肝脏总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -14600,7 +13445,6 @@ class InternalMedicineAbdomenLiver(AbstractModel):
     @property
     def Size(self):
         """肝脏大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -14612,7 +13456,6 @@ class InternalMedicineAbdomenLiver(AbstractModel):
     @property
     def Palpation(self):
         """肝脏触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -14624,7 +13467,6 @@ class InternalMedicineAbdomenLiver(AbstractModel):
     @property
     def Percussion(self):
         """肝脏叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -14636,7 +13478,6 @@ class InternalMedicineAbdomenLiver(AbstractModel):
     @property
     def Tenderness(self):
         """肝脏压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -14648,7 +13489,6 @@ class InternalMedicineAbdomenLiver(AbstractModel):
     @property
     def Consistency(self):
         """肝脏质地
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -14695,22 +13535,16 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
     def __init__(self):
         r"""
         :param _Src: 胰腺总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Size: 胰腺大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Palpation: 胰腺触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Percussion: 胰腺叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Tenderness: 肝脏压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Consistency: 胰腺质地
-注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Src = None
@@ -14723,7 +13557,6 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
     @property
     def Src(self):
         """胰腺总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -14735,7 +13568,6 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
     @property
     def Size(self):
         """胰腺大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -14747,7 +13579,6 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
     @property
     def Palpation(self):
         """胰腺触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -14759,7 +13590,6 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
     @property
     def Percussion(self):
         """胰腺叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -14771,7 +13601,6 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
     @property
     def Tenderness(self):
         """肝脏压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -14783,7 +13612,6 @@ class InternalMedicineAbdomenPancreas(AbstractModel):
     @property
     def Consistency(self):
         """胰腺质地
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -14830,22 +13658,16 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
     def __init__(self):
         r"""
         :param _Src: 脾脏总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Size: 脾脏大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Palpation: 脾脏触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Percussion: 脾脏叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Tenderness: 脾脏压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Consistency: 脾脏质地
-注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Src = None
@@ -14858,7 +13680,6 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
     @property
     def Src(self):
         """脾脏总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Src
@@ -14870,7 +13691,6 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
     @property
     def Size(self):
         """脾脏大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Size
@@ -14882,7 +13702,6 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
     @property
     def Palpation(self):
         """脾脏触诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Palpation
@@ -14894,7 +13713,6 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
     @property
     def Percussion(self):
         """脾脏叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Percussion
@@ -14906,7 +13724,6 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
     @property
     def Tenderness(self):
         """脾脏压痛
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Tenderness
@@ -14918,7 +13735,6 @@ class InternalMedicineAbdomenSpleen(AbstractModel):
     @property
     def Consistency(self):
         """脾脏质地
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Consistency
@@ -14965,22 +13781,16 @@ class InternalMedicineBaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Abdomen: 体检报告-内科-腹部
-注意：此字段可能返回 null，表示取不到有效值。
         :type Abdomen: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomen`
         :param _Heart: 体检报告-内科-心脏
-注意：此字段可能返回 null，表示取不到有效值。
         :type Heart: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineHeart`
         :param _Vessel: 体检报告-内科-血管
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vessel: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineVessel`
         :param _RespiratorySystem: 体检报告-内科-呼吸系统
-注意：此字段可能返回 null，表示取不到有效值。
         :type RespiratorySystem: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineRespiratorySystem`
         :param _Others: 体检报告-内科-内科其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: list of KeyValueItem
         :param _BriefSummary: 体检报告-内科-小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineBriefSummary`
         """
         self._Abdomen = None
@@ -14993,7 +13803,6 @@ class InternalMedicineBaseItem(AbstractModel):
     @property
     def Abdomen(self):
         """体检报告-内科-腹部
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomen`
         """
         return self._Abdomen
@@ -15005,7 +13814,6 @@ class InternalMedicineBaseItem(AbstractModel):
     @property
     def Heart(self):
         """体检报告-内科-心脏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineHeart`
         """
         return self._Heart
@@ -15017,7 +13825,6 @@ class InternalMedicineBaseItem(AbstractModel):
     @property
     def Vessel(self):
         """体检报告-内科-血管
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineVessel`
         """
         return self._Vessel
@@ -15029,7 +13836,6 @@ class InternalMedicineBaseItem(AbstractModel):
     @property
     def RespiratorySystem(self):
         """体检报告-内科-呼吸系统
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineRespiratorySystem`
         """
         return self._RespiratorySystem
@@ -15041,7 +13847,6 @@ class InternalMedicineBaseItem(AbstractModel):
     @property
     def Others(self):
         """体检报告-内科-内科其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -15053,7 +13858,6 @@ class InternalMedicineBaseItem(AbstractModel):
     @property
     def BriefSummary(self):
         """体检报告-内科-小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineBriefSummary`
         """
         return self._BriefSummary
@@ -15103,7 +13907,6 @@ class InternalMedicineBriefSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 内科小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -15111,7 +13914,6 @@ class InternalMedicineBriefSummary(AbstractModel):
     @property
     def Text(self):
         """内科小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -15143,16 +13945,12 @@ class InternalMedicineHeart(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 心脏总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _HeartRhythm: 心律
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeartRhythm: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _HeartRate: 心率
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeartRate: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         :param _HeartAuscultation: 心脏听诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeartAuscultation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -15163,7 +13961,6 @@ class InternalMedicineHeart(AbstractModel):
     @property
     def Text(self):
         """心脏总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -15175,7 +13972,6 @@ class InternalMedicineHeart(AbstractModel):
     @property
     def HeartRhythm(self):
         """心律
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._HeartRhythm
@@ -15187,7 +13983,6 @@ class InternalMedicineHeart(AbstractModel):
     @property
     def HeartRate(self):
         """心率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
         """
         return self._HeartRate
@@ -15199,7 +13994,6 @@ class InternalMedicineHeart(AbstractModel):
     @property
     def HeartAuscultation(self):
         """心脏听诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._HeartAuscultation
@@ -15240,19 +14034,14 @@ class InternalMedicineRespiratorySystem(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 呼吸系统总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Thoracic: 胸廓
-注意：此字段可能返回 null，表示取不到有效值。
         :type Thoracic: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Sputum: 痰量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sputum: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _LungPercussion: 肺部叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :type LungPercussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _LungAuscultation: 肺部听诊其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type LungAuscultation: list of KeyValueItem
         """
         self._Text = None
@@ -15264,7 +14053,6 @@ class InternalMedicineRespiratorySystem(AbstractModel):
     @property
     def Text(self):
         """呼吸系统总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -15276,7 +14064,6 @@ class InternalMedicineRespiratorySystem(AbstractModel):
     @property
     def Thoracic(self):
         """胸廓
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Thoracic
@@ -15288,7 +14075,6 @@ class InternalMedicineRespiratorySystem(AbstractModel):
     @property
     def Sputum(self):
         """痰量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Sputum
@@ -15300,7 +14086,6 @@ class InternalMedicineRespiratorySystem(AbstractModel):
     @property
     def LungPercussion(self):
         """肺部叩诊
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._LungPercussion
@@ -15312,7 +14097,6 @@ class InternalMedicineRespiratorySystem(AbstractModel):
     @property
     def LungAuscultation(self):
         """肺部听诊其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._LungAuscultation
@@ -15359,13 +14143,10 @@ class InternalMedicineVessel(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 血管总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _VascularMurmur: 血管杂音
-注意：此字段可能返回 null，表示取不到有效值。
         :type VascularMurmur: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _PeripheralVessel: 外周血管
-注意：此字段可能返回 null，表示取不到有效值。
         :type PeripheralVessel: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -15375,7 +14156,6 @@ class InternalMedicineVessel(AbstractModel):
     @property
     def Text(self):
         """血管总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -15387,7 +14167,6 @@ class InternalMedicineVessel(AbstractModel):
     @property
     def VascularMurmur(self):
         """血管杂音
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._VascularMurmur
@@ -15399,7 +14178,6 @@ class InternalMedicineVessel(AbstractModel):
     @property
     def PeripheralVessel(self):
         """外周血管
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._PeripheralVessel
@@ -15437,16 +14215,12 @@ class Invas(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _Positive: 阳性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Positive: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         """
         self._Index = None
@@ -15457,7 +14231,6 @@ class Invas(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -15469,7 +14242,6 @@ class Invas(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -15481,7 +14253,6 @@ class Invas(AbstractModel):
     @property
     def Positive(self):
         """阳性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Positive
@@ -15493,7 +14264,6 @@ class Invas(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -15528,19 +14298,14 @@ class InvasiveV2(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _Positive: 阴性或阳性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Positive: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Index = None
@@ -15552,7 +14317,6 @@ class InvasiveV2(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -15564,7 +14328,6 @@ class InvasiveV2(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -15576,7 +14339,6 @@ class InvasiveV2(AbstractModel):
     @property
     def Positive(self):
         """阴性或阳性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Positive
@@ -15588,7 +14350,6 @@ class InvasiveV2(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -15600,7 +14361,6 @@ class InvasiveV2(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -15641,13 +14401,10 @@ class IssueInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CertNumber: 编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertNumber: str
         :param _IssuedAuthority: 签发机构
-注意：此字段可能返回 null，表示取不到有效值。
         :type IssuedAuthority: str
         :param _IssuedDate: 签发日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type IssuedDate: str
         """
         self._CertNumber = None
@@ -15657,7 +14414,6 @@ class IssueInfo(AbstractModel):
     @property
     def CertNumber(self):
         """编号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertNumber
@@ -15669,7 +14425,6 @@ class IssueInfo(AbstractModel):
     @property
     def IssuedAuthority(self):
         """签发机构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IssuedAuthority
@@ -15681,7 +14436,6 @@ class IssueInfo(AbstractModel):
     @property
     def IssuedDate(self):
         """签发日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IssuedDate
@@ -15713,16 +14467,12 @@ class KeyValueItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Item: 项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Result: 结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Name = None
@@ -15733,7 +14483,6 @@ class KeyValueItem(AbstractModel):
     @property
     def Name(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15745,7 +14494,6 @@ class KeyValueItem(AbstractModel):
     @property
     def Item(self):
         """项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -15757,7 +14505,6 @@ class KeyValueItem(AbstractModel):
     @property
     def Result(self):
         """结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -15769,7 +14516,6 @@ class KeyValueItem(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -15806,25 +14552,18 @@ class LastMenstrualPeriodBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Timestamp: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -15838,7 +14577,6 @@ class LastMenstrualPeriodBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15850,7 +14588,6 @@ class LastMenstrualPeriodBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -15862,7 +14599,6 @@ class LastMenstrualPeriodBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -15874,7 +14610,6 @@ class LastMenstrualPeriodBlock(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -15886,7 +14621,6 @@ class LastMenstrualPeriodBlock(AbstractModel):
     @property
     def Timestamp(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timestamp
@@ -15898,7 +14632,6 @@ class LastMenstrualPeriodBlock(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -15910,7 +14643,6 @@ class LastMenstrualPeriodBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -15946,19 +14678,14 @@ class Lymph(AbstractModel):
     def __init__(self):
         r"""
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _TransferNum: 转移数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferNum: int
         """
         self._Src = None
@@ -15970,7 +14697,6 @@ class Lymph(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -15982,7 +14708,6 @@ class Lymph(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -15994,7 +14719,6 @@ class Lymph(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -16006,7 +14730,6 @@ class Lymph(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -16018,7 +14741,6 @@ class Lymph(AbstractModel):
     @property
     def TransferNum(self):
         """转移数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TransferNum
@@ -16054,28 +14776,20 @@ class LymphNode(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Total: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _TransferNum: 转移数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferNum: int
         :param _Sizes: 淋巴结大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sizes: list of int
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -16090,7 +14804,6 @@ class LymphNode(AbstractModel):
     @property
     def Name(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -16102,7 +14815,6 @@ class LymphNode(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -16114,7 +14826,6 @@ class LymphNode(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -16126,7 +14837,6 @@ class LymphNode(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -16138,7 +14848,6 @@ class LymphNode(AbstractModel):
     @property
     def Total(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -16150,7 +14859,6 @@ class LymphNode(AbstractModel):
     @property
     def TransferNum(self):
         """转移数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TransferNum
@@ -16162,7 +14870,6 @@ class LymphNode(AbstractModel):
     @property
     def Sizes(self):
         """淋巴结大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Sizes
@@ -16174,7 +14881,6 @@ class LymphNode(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -16218,22 +14924,16 @@ class LymphTotal(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TransferNum: 转移数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferNum: int
         :param _Total: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -16246,7 +14946,6 @@ class LymphTotal(AbstractModel):
     @property
     def Name(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -16258,7 +14957,6 @@ class LymphTotal(AbstractModel):
     @property
     def TransferNum(self):
         """转移数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TransferNum
@@ -16270,7 +14968,6 @@ class LymphTotal(AbstractModel):
     @property
     def Total(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -16282,7 +14979,6 @@ class LymphTotal(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -16294,7 +14990,6 @@ class LymphTotal(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -16306,7 +15001,6 @@ class LymphTotal(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -16346,22 +15040,16 @@ class MainDiseaseHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _State: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: bool
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Neglist: 否定列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Neglist: :class:`tencentcloud.mrs.v20200910.models.NeglistBlock`
         :param _Poslist: 肯定列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Poslist: :class:`tencentcloud.mrs.v20200910.models.PoslistBlock`
         """
         self._Name = None
@@ -16374,7 +15062,6 @@ class MainDiseaseHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -16386,7 +15073,6 @@ class MainDiseaseHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -16398,7 +15084,6 @@ class MainDiseaseHistoryBlock(AbstractModel):
     @property
     def State(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._State
@@ -16410,7 +15095,6 @@ class MainDiseaseHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -16422,7 +15106,6 @@ class MainDiseaseHistoryBlock(AbstractModel):
     @property
     def Neglist(self):
         """否定列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.NeglistBlock`
         """
         return self._Neglist
@@ -16434,7 +15117,6 @@ class MainDiseaseHistoryBlock(AbstractModel):
     @property
     def Poslist(self):
         """肯定列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PoslistBlock`
         """
         return self._Poslist
@@ -16473,16 +15155,12 @@ class Maternity(AbstractModel):
     def __init__(self):
         r"""
         :param _Desc: 描述部分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: :class:`tencentcloud.mrs.v20200910.models.MaternityDesc`
         :param _Summary: 结论部分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: :class:`tencentcloud.mrs.v20200910.models.MaternitySummary`
         :param _OcrText: 报告原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrText: str
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Desc = None
@@ -16493,7 +15171,6 @@ class Maternity(AbstractModel):
     @property
     def Desc(self):
         """描述部分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MaternityDesc`
         """
         return self._Desc
@@ -16505,7 +15182,6 @@ class Maternity(AbstractModel):
     @property
     def Summary(self):
         """结论部分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MaternitySummary`
         """
         return self._Summary
@@ -16517,7 +15193,6 @@ class Maternity(AbstractModel):
     @property
     def OcrText(self):
         """报告原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OcrText
@@ -16529,7 +15204,6 @@ class Maternity(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -16566,16 +15240,12 @@ class MaternityDesc(AbstractModel):
     def __init__(self):
         r"""
         :param _Fetus: 胎儿数据结构
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fetus: list of Fetus
         :param _FetusNum: 胎儿数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FetusNum: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _Text: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Fetus = None
@@ -16586,7 +15256,6 @@ class MaternityDesc(AbstractModel):
     @property
     def Fetus(self):
         """胎儿数据结构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Fetus
         """
         return self._Fetus
@@ -16598,7 +15267,6 @@ class MaternityDesc(AbstractModel):
     @property
     def FetusNum(self):
         """胎儿数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._FetusNum
@@ -16610,7 +15278,6 @@ class MaternityDesc(AbstractModel):
     @property
     def Text(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -16622,7 +15289,6 @@ class MaternityDesc(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -16667,19 +15333,14 @@ class MaternitySummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Fetus: 胎儿数据结构
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fetus: list of Fetus
         :param _FetusNum: 胎儿数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FetusNum: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         :param _Sym: 病变
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sym: list of FieldInfo
         :param _Text: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Fetus = None
@@ -16691,7 +15352,6 @@ class MaternitySummary(AbstractModel):
     @property
     def Fetus(self):
         """胎儿数据结构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Fetus
         """
         return self._Fetus
@@ -16703,7 +15363,6 @@ class MaternitySummary(AbstractModel):
     @property
     def FetusNum(self):
         """胎儿数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FieldInfo`
         """
         return self._FetusNum
@@ -16715,7 +15374,6 @@ class MaternitySummary(AbstractModel):
     @property
     def Sym(self):
         """病变
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FieldInfo
         """
         return self._Sym
@@ -16727,7 +15385,6 @@ class MaternitySummary(AbstractModel):
     @property
     def Text(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -16739,7 +15396,6 @@ class MaternitySummary(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -16790,13 +15446,10 @@ class MedDoc(AbstractModel):
     def __init__(self):
         r"""
         :param _Advice: 建议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Advice: :class:`tencentcloud.mrs.v20200910.models.Advice`
         :param _Diagnosis: 诊断结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Diagnosis: list of DiagCertItem
         :param _DiseaseMedicalHistory: 疾病史
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseaseMedicalHistory: :class:`tencentcloud.mrs.v20200910.models.DiseaseMedicalHistory`
         :param _PersonalMedicalHistory: 个人史
         :type PersonalMedicalHistory: :class:`tencentcloud.mrs.v20200910.models.PersonalMedicalHistory`
@@ -16809,7 +15462,6 @@ class MedDoc(AbstractModel):
         :param _TreatmentRecord: 诊疗记录
         :type TreatmentRecord: :class:`tencentcloud.mrs.v20200910.models.TreatmentRecord`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Advice = None
@@ -16825,7 +15477,6 @@ class MedDoc(AbstractModel):
     @property
     def Advice(self):
         """建议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Advice`
         """
         return self._Advice
@@ -16837,7 +15488,6 @@ class MedDoc(AbstractModel):
     @property
     def Diagnosis(self):
         """诊断结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiagCertItem
         """
         return self._Diagnosis
@@ -16849,7 +15499,6 @@ class MedDoc(AbstractModel):
     @property
     def DiseaseMedicalHistory(self):
         """疾病史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseaseMedicalHistory`
         """
         return self._DiseaseMedicalHistory
@@ -16916,7 +15565,6 @@ class MedDoc(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -16973,31 +15621,22 @@ class MedicalRecordInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DiagnosisTime: 就诊日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnosisTime: str
         :param _DiagnosisDepartmentName: 就诊科室
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnosisDepartmentName: str
         :param _DiagnosisDoctorName: 就诊医生
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnosisDoctorName: str
         :param _ClinicalDiagnosis: 临床诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClinicalDiagnosis: str
         :param _MainNarration: 主述
-注意：此字段可能返回 null，表示取不到有效值。
         :type MainNarration: str
         :param _PhysicalExamination: 体格检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalExamination: str
         :param _InspectionFindings: 检查结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type InspectionFindings: str
         :param _TreatmentOpinion: 治疗意见
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreatmentOpinion: str
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._DiagnosisTime = None
@@ -17013,7 +15652,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def DiagnosisTime(self):
         """就诊日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiagnosisTime
@@ -17025,7 +15663,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def DiagnosisDepartmentName(self):
         """就诊科室
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiagnosisDepartmentName
@@ -17037,7 +15674,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def DiagnosisDoctorName(self):
         """就诊医生
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiagnosisDoctorName
@@ -17049,7 +15685,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def ClinicalDiagnosis(self):
         """临床诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClinicalDiagnosis
@@ -17061,7 +15696,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def MainNarration(self):
         """主述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MainNarration
@@ -17073,7 +15707,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def PhysicalExamination(self):
         """体格检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PhysicalExamination
@@ -17085,7 +15718,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def InspectionFindings(self):
         """检查结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InspectionFindings
@@ -17097,7 +15729,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def TreatmentOpinion(self):
         """治疗意见
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreatmentOpinion
@@ -17109,7 +15740,6 @@ class MedicalRecordInfo(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -17147,28 +15777,20 @@ class Medicine(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 药品名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TradeName: 商品名
-注意：此字段可能返回 null，表示取不到有效值。
         :type TradeName: str
         :param _Firm: 厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :type Firm: str
         :param _Category: 医保类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
         :param _Specification: 规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type Specification: str
         :param _MinQuantity: 最小包装数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinQuantity: str
         :param _DosageUnit: 最小制剂单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type DosageUnit: str
         :param _PackingUnit: 最小包装单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackingUnit: str
         """
         self._Name = None
@@ -17183,7 +15805,6 @@ class Medicine(AbstractModel):
     @property
     def Name(self):
         """药品名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17195,7 +15816,6 @@ class Medicine(AbstractModel):
     @property
     def TradeName(self):
         """商品名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TradeName
@@ -17207,7 +15827,6 @@ class Medicine(AbstractModel):
     @property
     def Firm(self):
         """厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Firm
@@ -17219,7 +15838,6 @@ class Medicine(AbstractModel):
     @property
     def Category(self):
         """医保类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Category
@@ -17231,7 +15849,6 @@ class Medicine(AbstractModel):
     @property
     def Specification(self):
         """规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Specification
@@ -17243,7 +15860,6 @@ class Medicine(AbstractModel):
     @property
     def MinQuantity(self):
         """最小包装数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MinQuantity
@@ -17255,7 +15871,6 @@ class Medicine(AbstractModel):
     @property
     def DosageUnit(self):
         """最小制剂单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DosageUnit
@@ -17267,7 +15882,6 @@ class Medicine(AbstractModel):
     @property
     def PackingUnit(self):
         """最小包装单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackingUnit
@@ -17304,13 +15918,10 @@ class MenstrualFlowBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -17320,7 +15931,6 @@ class MenstrualFlowBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17332,7 +15942,6 @@ class MenstrualFlowBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -17344,7 +15953,6 @@ class MenstrualFlowBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -17376,22 +15984,16 @@ class MenstrualHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _LastMenstrualPeriod: 末次月经
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastMenstrualPeriod: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         :param _MenstrualFlow: 月经量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualFlow: :class:`tencentcloud.mrs.v20200910.models.MenstrualFlowBlock`
         :param _MenarcheAge: 初潮时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenarcheAge: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         :param _MenstruationOrNot: 是否绝经
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstruationOrNot: :class:`tencentcloud.mrs.v20200910.models.MenstruationOrNotBlock`
         :param _MenstrualCycles: 月经周期
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualCycles: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         :param _MenstrualPeriod: 月经经期
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualPeriod: :class:`tencentcloud.mrs.v20200910.models.MenstrualPeriodBlock`
         """
         self._LastMenstrualPeriod = None
@@ -17404,7 +16006,6 @@ class MenstrualHistoryBlock(AbstractModel):
     @property
     def LastMenstrualPeriod(self):
         """末次月经
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         """
         return self._LastMenstrualPeriod
@@ -17416,7 +16017,6 @@ class MenstrualHistoryBlock(AbstractModel):
     @property
     def MenstrualFlow(self):
         """月经量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualFlowBlock`
         """
         return self._MenstrualFlow
@@ -17428,7 +16028,6 @@ class MenstrualHistoryBlock(AbstractModel):
     @property
     def MenarcheAge(self):
         """初潮时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         """
         return self._MenarcheAge
@@ -17440,7 +16039,6 @@ class MenstrualHistoryBlock(AbstractModel):
     @property
     def MenstruationOrNot(self):
         """是否绝经
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstruationOrNotBlock`
         """
         return self._MenstruationOrNot
@@ -17452,7 +16050,6 @@ class MenstrualHistoryBlock(AbstractModel):
     @property
     def MenstrualCycles(self):
         """月经周期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.LastMenstrualPeriodBlock`
         """
         return self._MenstrualCycles
@@ -17464,7 +16061,6 @@ class MenstrualHistoryBlock(AbstractModel):
     @property
     def MenstrualPeriod(self):
         """月经经期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualPeriodBlock`
         """
         return self._MenstrualPeriod
@@ -17511,28 +16107,20 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _State: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _TimeType: 时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeType: str
         :param _Timestamp: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -17547,7 +16135,6 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17559,7 +16146,6 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -17571,7 +16157,6 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     @property
     def State(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._State
@@ -17583,7 +16168,6 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -17595,7 +16179,6 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     @property
     def TimeType(self):
         """时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeType
@@ -17607,7 +16190,6 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     @property
     def Timestamp(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timestamp
@@ -17619,7 +16201,6 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -17631,7 +16212,6 @@ class MenstrualHistoryDetailBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -17668,22 +16248,16 @@ class MenstrualMedicalHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _LastMenstrualPeriod: 末次月经时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastMenstrualPeriod: str
         :param _MenstrualFlow: 经量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualFlow: str
         :param _MenarcheAge: 月经初潮年龄
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenarcheAge: str
         :param _MenstruationOrNot: 是否来月经
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstruationOrNot: str
         :param _MenstrualCycles: 月经周期
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualCycles: str
         :param _MenstrualPeriod: 月经持续天数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualPeriod: str
         """
         self._LastMenstrualPeriod = None
@@ -17696,7 +16270,6 @@ class MenstrualMedicalHistory(AbstractModel):
     @property
     def LastMenstrualPeriod(self):
         """末次月经时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastMenstrualPeriod
@@ -17708,7 +16281,6 @@ class MenstrualMedicalHistory(AbstractModel):
     @property
     def MenstrualFlow(self):
         """经量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MenstrualFlow
@@ -17720,7 +16292,6 @@ class MenstrualMedicalHistory(AbstractModel):
     @property
     def MenarcheAge(self):
         """月经初潮年龄
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MenarcheAge
@@ -17732,7 +16303,6 @@ class MenstrualMedicalHistory(AbstractModel):
     @property
     def MenstruationOrNot(self):
         """是否来月经
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MenstruationOrNot
@@ -17744,7 +16314,6 @@ class MenstrualMedicalHistory(AbstractModel):
     @property
     def MenstrualCycles(self):
         """月经周期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MenstrualCycles
@@ -17756,7 +16325,6 @@ class MenstrualMedicalHistory(AbstractModel):
     @property
     def MenstrualPeriod(self):
         """月经持续天数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MenstrualPeriod
@@ -17791,25 +16359,18 @@ class MenstrualPeriodBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Timestamp: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -17823,7 +16384,6 @@ class MenstrualPeriodBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17835,7 +16395,6 @@ class MenstrualPeriodBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -17847,7 +16406,6 @@ class MenstrualPeriodBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -17859,7 +16417,6 @@ class MenstrualPeriodBlock(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -17871,7 +16428,6 @@ class MenstrualPeriodBlock(AbstractModel):
     @property
     def Timestamp(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timestamp
@@ -17883,7 +16439,6 @@ class MenstrualPeriodBlock(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -17895,7 +16450,6 @@ class MenstrualPeriodBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -17931,22 +16485,16 @@ class MenstruationOrNotBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _TimeType: 时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeType: str
         :param _Timestamp: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -17959,7 +16507,6 @@ class MenstruationOrNotBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17971,7 +16518,6 @@ class MenstruationOrNotBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -17983,7 +16529,6 @@ class MenstruationOrNotBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -17995,7 +16540,6 @@ class MenstruationOrNotBlock(AbstractModel):
     @property
     def TimeType(self):
         """时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeType
@@ -18007,7 +16551,6 @@ class MenstruationOrNotBlock(AbstractModel):
     @property
     def Timestamp(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timestamp
@@ -18019,7 +16562,6 @@ class MenstruationOrNotBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -18054,19 +16596,14 @@ class Molecular(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Name: 基因名称标注化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 分子病理详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.mrs.v20200910.models.MolecularValue`
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Index = None
@@ -18078,7 +16615,6 @@ class Molecular(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -18090,7 +16626,6 @@ class Molecular(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -18102,7 +16637,6 @@ class Molecular(AbstractModel):
     @property
     def Name(self):
         """基因名称标注化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -18114,7 +16648,6 @@ class Molecular(AbstractModel):
     @property
     def Value(self):
         """分子病理详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MolecularValue`
         """
         return self._Value
@@ -18126,7 +16659,6 @@ class Molecular(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -18167,19 +16699,14 @@ class MolecularValue(AbstractModel):
     def __init__(self):
         r"""
         :param _Exon: 外显子
-注意：此字段可能返回 null，表示取不到有效值。
         :type Exon: str
         :param _Position: 点位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Position: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Positive: 阳性或阴性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Positive: str
         :param _Src: 基因名称原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         """
         self._Exon = None
@@ -18191,7 +16718,6 @@ class MolecularValue(AbstractModel):
     @property
     def Exon(self):
         """外显子
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Exon
@@ -18203,7 +16729,6 @@ class MolecularValue(AbstractModel):
     @property
     def Position(self):
         """点位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Position
@@ -18215,7 +16740,6 @@ class MolecularValue(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -18227,7 +16751,6 @@ class MolecularValue(AbstractModel):
     @property
     def Positive(self):
         """阳性或阴性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Positive
@@ -18239,7 +16762,6 @@ class MolecularValue(AbstractModel):
     @property
     def Src(self):
         """基因名称原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -18273,19 +16795,14 @@ class Multiple(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Count: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Index = None
@@ -18297,7 +16814,6 @@ class Multiple(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -18309,7 +16825,6 @@ class Multiple(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -18321,7 +16836,6 @@ class Multiple(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -18333,7 +16847,6 @@ class Multiple(AbstractModel):
     @property
     def Count(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -18345,7 +16858,6 @@ class Multiple(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -18379,10 +16891,8 @@ class NeglistBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -18391,7 +16901,6 @@ class NeglistBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -18403,7 +16912,6 @@ class NeglistBlock(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -18434,28 +16942,20 @@ class NeonatalInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _NeonatalName: 新生儿名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type NeonatalName: str
         :param _NeonatalGender: 新生儿性别
-注意：此字段可能返回 null，表示取不到有效值。
         :type NeonatalGender: str
         :param _BirthLength: 出生身长
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthLength: str
         :param _BirthWeight: 出生体重
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthWeight: str
         :param _GestationalAge: 出生孕周
-注意：此字段可能返回 null，表示取不到有效值。
         :type GestationalAge: str
         :param _BirthTime: 出生时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthTime: str
         :param _BirthPlace: 出生地点
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthPlace: str
         :param _MedicalInstitutions: 医疗机构
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalInstitutions: str
         """
         self._NeonatalName = None
@@ -18470,7 +16970,6 @@ class NeonatalInfo(AbstractModel):
     @property
     def NeonatalName(self):
         """新生儿名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NeonatalName
@@ -18482,7 +16981,6 @@ class NeonatalInfo(AbstractModel):
     @property
     def NeonatalGender(self):
         """新生儿性别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NeonatalGender
@@ -18494,7 +16992,6 @@ class NeonatalInfo(AbstractModel):
     @property
     def BirthLength(self):
         """出生身长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BirthLength
@@ -18506,7 +17003,6 @@ class NeonatalInfo(AbstractModel):
     @property
     def BirthWeight(self):
         """出生体重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BirthWeight
@@ -18518,7 +17014,6 @@ class NeonatalInfo(AbstractModel):
     @property
     def GestationalAge(self):
         """出生孕周
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GestationalAge
@@ -18530,7 +17025,6 @@ class NeonatalInfo(AbstractModel):
     @property
     def BirthTime(self):
         """出生时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BirthTime
@@ -18542,7 +17036,6 @@ class NeonatalInfo(AbstractModel):
     @property
     def BirthPlace(self):
         """出生地点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BirthPlace
@@ -18554,7 +17047,6 @@ class NeonatalInfo(AbstractModel):
     @property
     def MedicalInstitutions(self):
         """医疗机构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MedicalInstitutions
@@ -18591,25 +17083,19 @@ class NormPart(AbstractModel):
     def __init__(self):
         r"""
         :param _Part: 部位值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: str
         :param _PartDirection: 部位方向
-注意：此字段可能返回 null，表示取不到有效值。
         :type PartDirection: str
         :param _Tissue: 组织值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tissue: str
         :param _TissueDirection: 组织方向
-注意：此字段可能返回 null，表示取不到有效值。
         :type TissueDirection: str
         :param _Upper: 上级部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Upper: str
         :param _PartDetail: 部位详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartDetail: :class:`tencentcloud.mrs.v20200910.models.PartDesc`
         :param _PartDetailList: 部位详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type PartDetailList: list of PartDesc
         """
         self._Part = None
@@ -18623,7 +17109,6 @@ class NormPart(AbstractModel):
     @property
     def Part(self):
         """部位值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Part
@@ -18635,7 +17120,6 @@ class NormPart(AbstractModel):
     @property
     def PartDirection(self):
         """部位方向
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PartDirection
@@ -18647,7 +17131,6 @@ class NormPart(AbstractModel):
     @property
     def Tissue(self):
         """组织值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Tissue
@@ -18659,7 +17142,6 @@ class NormPart(AbstractModel):
     @property
     def TissueDirection(self):
         """组织方向
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TissueDirection
@@ -18671,7 +17153,6 @@ class NormPart(AbstractModel):
     @property
     def Upper(self):
         """上级部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Upper
@@ -18699,7 +17180,6 @@ class NormPart(AbstractModel):
     @property
     def PartDetailList(self):
         """部位详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PartDesc
         """
         return self._PartDetailList
@@ -18742,16 +17222,12 @@ class NormSize(AbstractModel):
     def __init__(self):
         r"""
         :param _Number: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Number: list of str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Impl: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Impl: str
         """
         self._Number = None
@@ -18762,7 +17238,6 @@ class NormSize(AbstractModel):
     @property
     def Number(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Number
@@ -18774,7 +17249,6 @@ class NormSize(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -18786,7 +17260,6 @@ class NormSize(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -18798,7 +17271,6 @@ class NormSize(AbstractModel):
     @property
     def Impl(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Impl
@@ -18831,10 +17303,8 @@ class NumValue(AbstractModel):
     def __init__(self):
         r"""
         :param _Num: 数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Num: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         """
         self._Num = None
@@ -18843,7 +17313,6 @@ class NumValue(AbstractModel):
     @property
     def Num(self):
         """数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Num
@@ -18855,7 +17324,6 @@ class NumValue(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -18886,10 +17354,8 @@ class ObstericalMedicalHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _MarriageHistory: 婚史
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarriageHistory: str
         :param _FertilityHistory: 孕史
-注意：此字段可能返回 null，表示取不到有效值。
         :type FertilityHistory: str
         """
         self._MarriageHistory = None
@@ -18898,7 +17364,6 @@ class ObstericalMedicalHistory(AbstractModel):
     @property
     def MarriageHistory(self):
         """婚史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarriageHistory
@@ -18910,7 +17375,6 @@ class ObstericalMedicalHistory(AbstractModel):
     @property
     def FertilityHistory(self):
         """孕史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FertilityHistory
@@ -18941,10 +17405,8 @@ class ObstetricalHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _MarriageHistory: 婚姻史
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarriageHistory: :class:`tencentcloud.mrs.v20200910.models.MenstrualHistoryDetailBlock`
         :param _FertilityHistory: 婚育史
-注意：此字段可能返回 null，表示取不到有效值。
         :type FertilityHistory: :class:`tencentcloud.mrs.v20200910.models.FertilityHistoryBlock`
         """
         self._MarriageHistory = None
@@ -18953,7 +17415,6 @@ class ObstetricalHistoryBlock(AbstractModel):
     @property
     def MarriageHistory(self):
         """婚姻史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualHistoryDetailBlock`
         """
         return self._MarriageHistory
@@ -18965,7 +17426,6 @@ class ObstetricalHistoryBlock(AbstractModel):
     @property
     def FertilityHistory(self):
         """婚育史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FertilityHistoryBlock`
         """
         return self._FertilityHistory
@@ -19129,13 +17589,10 @@ class OphthalmologyBareEyeSight(AbstractModel):
     def __init__(self):
         r"""
         :param _LeftEyeVisual: 左眼视力
-注意：此字段可能返回 null，表示取不到有效值。
         :type LeftEyeVisual: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Text: 裸眼视力
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _RightEyeVisual: 右眼视力
-注意：此字段可能返回 null，表示取不到有效值。
         :type RightEyeVisual: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._LeftEyeVisual = None
@@ -19145,7 +17602,6 @@ class OphthalmologyBareEyeSight(AbstractModel):
     @property
     def LeftEyeVisual(self):
         """左眼视力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._LeftEyeVisual
@@ -19157,7 +17613,6 @@ class OphthalmologyBareEyeSight(AbstractModel):
     @property
     def Text(self):
         """裸眼视力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -19169,7 +17624,6 @@ class OphthalmologyBareEyeSight(AbstractModel):
     @property
     def RightEyeVisual(self):
         """右眼视力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._RightEyeVisual
@@ -19207,22 +17661,16 @@ class OphthalmologyBaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _BareEyeSight: 裸眼视力
-注意：此字段可能返回 null，表示取不到有效值。
         :type BareEyeSight: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBareEyeSight`
         :param _CorrectedVisualAcuity: 矫正视力
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorrectedVisualAcuity: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyCorrectedVisualAcuity`
         :param _ColourVision: 色觉
-注意：此字段可能返回 null，表示取不到有效值。
         :type ColourVision: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyColourVision`
         :param _Fundoscopy: 眼底
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fundoscopy: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyFundoscopy`
         :param _Others: 眼科其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: list of KeyValueItem
         :param _BriefSummary: 眼科小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBriefSummary`
         """
         self._BareEyeSight = None
@@ -19235,7 +17683,6 @@ class OphthalmologyBaseItem(AbstractModel):
     @property
     def BareEyeSight(self):
         """裸眼视力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBareEyeSight`
         """
         return self._BareEyeSight
@@ -19247,7 +17694,6 @@ class OphthalmologyBaseItem(AbstractModel):
     @property
     def CorrectedVisualAcuity(self):
         """矫正视力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyCorrectedVisualAcuity`
         """
         return self._CorrectedVisualAcuity
@@ -19259,7 +17705,6 @@ class OphthalmologyBaseItem(AbstractModel):
     @property
     def ColourVision(self):
         """色觉
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyColourVision`
         """
         return self._ColourVision
@@ -19271,7 +17716,6 @@ class OphthalmologyBaseItem(AbstractModel):
     @property
     def Fundoscopy(self):
         """眼底
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyFundoscopy`
         """
         return self._Fundoscopy
@@ -19283,7 +17727,6 @@ class OphthalmologyBaseItem(AbstractModel):
     @property
     def Others(self):
         """眼科其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -19295,7 +17738,6 @@ class OphthalmologyBaseItem(AbstractModel):
     @property
     def BriefSummary(self):
         """眼科小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBriefSummary`
         """
         return self._BriefSummary
@@ -19345,7 +17787,6 @@ class OphthalmologyBriefSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 眼科小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -19353,7 +17794,6 @@ class OphthalmologyBriefSummary(AbstractModel):
     @property
     def Text(self):
         """眼科小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -19385,7 +17825,6 @@ class OphthalmologyColourVision(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 色觉总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -19393,7 +17832,6 @@ class OphthalmologyColourVision(AbstractModel):
     @property
     def Text(self):
         """色觉总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -19425,13 +17863,10 @@ class OphthalmologyCorrectedVisualAcuity(AbstractModel):
     def __init__(self):
         r"""
         :param _LeftEyeVisual: 左眼矫正视力
-注意：此字段可能返回 null，表示取不到有效值。
         :type LeftEyeVisual: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Text: 矫正视力
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _RightEyeVisual: 右眼矫正视力
-注意：此字段可能返回 null，表示取不到有效值。
         :type RightEyeVisual: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._LeftEyeVisual = None
@@ -19441,7 +17876,6 @@ class OphthalmologyCorrectedVisualAcuity(AbstractModel):
     @property
     def LeftEyeVisual(self):
         """左眼矫正视力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._LeftEyeVisual
@@ -19453,7 +17887,6 @@ class OphthalmologyCorrectedVisualAcuity(AbstractModel):
     @property
     def Text(self):
         """矫正视力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -19465,7 +17898,6 @@ class OphthalmologyCorrectedVisualAcuity(AbstractModel):
     @property
     def RightEyeVisual(self):
         """右眼矫正视力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._RightEyeVisual
@@ -19503,7 +17935,6 @@ class OphthalmologyFundoscopy(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 眼底检查总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -19511,7 +17942,6 @@ class OphthalmologyFundoscopy(AbstractModel):
     @property
     def Text(self):
         """眼底检查总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -19543,118 +17973,81 @@ class Organ(AbstractModel):
     def __init__(self):
         r"""
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _Size: 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: list of Size
         :param _Envelope: 包膜
-注意：此字段可能返回 null，表示取不到有效值。
         :type Envelope: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Edge: 边缘
-注意：此字段可能返回 null，表示取不到有效值。
         :type Edge: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _InnerEcho: 内部回声
-注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEcho: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Gland: 腺体
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gland: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Shape: 形状
-注意：此字段可能返回 null，表示取不到有效值。
         :type Shape: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Thickness: 厚度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Thickness: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _ShapeAttr: 形态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShapeAttr: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _CDFI: 血液cdfi
-注意：此字段可能返回 null，表示取不到有效值。
         :type CDFI: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _SymDesc: 描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SymDesc: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _SizeStatus: 大小状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type SizeStatus: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Outline: 轮廓
-注意：此字段可能返回 null，表示取不到有效值。
         :type Outline: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Structure: 结构
-注意：此字段可能返回 null，表示取不到有效值。
         :type Structure: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Density: 密度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Density: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Vas: 血管
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vas: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Cysticwall: 囊壁
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cysticwall: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Capsule: 被膜
-注意：此字段可能返回 null，表示取不到有效值。
         :type Capsule: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _IsthmusThicknese: 峡部厚度
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsthmusThicknese: :class:`tencentcloud.mrs.v20200910.models.Size`
         :param _InnerEchoDistribution: 内部回声分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEchoDistribution: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Transparent: 透声度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Transparent: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _MriAdc: MRI ADC
-注意：此字段可能返回 null，表示取不到有效值。
         :type MriAdc: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _MriDwi: MRI DWI
-注意：此字段可能返回 null，表示取不到有效值。
         :type MriDwi: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _MriT1: MRI T1信号
-注意：此字段可能返回 null，表示取不到有效值。
         :type MriT1: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _MriT2: MRI T2信号
-注意：此字段可能返回 null，表示取不到有效值。
         :type MriT2: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _CtHu: CT HU值
-注意：此字段可能返回 null，表示取不到有效值。
         :type CtHu: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Suvmax: SUmax值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suvmax: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Metabolism: 代谢情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metabolism: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _RadioactiveUptake: 放射性摄取
-注意：此字段可能返回 null，表示取不到有效值。
         :type RadioactiveUptake: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _LymphEnlargement: 淋巴结情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type LymphEnlargement: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _ImageFeature: 影像特征
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageFeature: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Duct: 导管
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duct: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Trend: 趋势
-注意：此字段可能返回 null，表示取不到有效值。
         :type Trend: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Operation: 手术情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Coords: 器官在报告图片中的坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         :param _IsthmusThickness: 峡部厚度
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsthmusThickness: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
         self._Part = None
@@ -19699,7 +18092,6 @@ class Organ(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -19711,7 +18103,6 @@ class Organ(AbstractModel):
     @property
     def Size(self):
         """大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Size
         """
         return self._Size
@@ -19723,7 +18114,6 @@ class Organ(AbstractModel):
     @property
     def Envelope(self):
         """包膜
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Envelope
@@ -19735,7 +18125,6 @@ class Organ(AbstractModel):
     @property
     def Edge(self):
         """边缘
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Edge
@@ -19747,7 +18136,6 @@ class Organ(AbstractModel):
     @property
     def InnerEcho(self):
         """内部回声
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InnerEcho
@@ -19759,7 +18147,6 @@ class Organ(AbstractModel):
     @property
     def Gland(self):
         """腺体
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Gland
@@ -19771,7 +18158,6 @@ class Organ(AbstractModel):
     @property
     def Shape(self):
         """形状
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Shape
@@ -19783,7 +18169,6 @@ class Organ(AbstractModel):
     @property
     def Thickness(self):
         """厚度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Thickness
@@ -19795,7 +18180,6 @@ class Organ(AbstractModel):
     @property
     def ShapeAttr(self):
         """形态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ShapeAttr
@@ -19807,7 +18191,6 @@ class Organ(AbstractModel):
     @property
     def CDFI(self):
         """血液cdfi
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._CDFI
@@ -19819,7 +18202,6 @@ class Organ(AbstractModel):
     @property
     def SymDesc(self):
         """描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SymDesc
@@ -19831,7 +18213,6 @@ class Organ(AbstractModel):
     @property
     def SizeStatus(self):
         """大小状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SizeStatus
@@ -19843,7 +18224,6 @@ class Organ(AbstractModel):
     @property
     def Outline(self):
         """轮廓
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Outline
@@ -19855,7 +18235,6 @@ class Organ(AbstractModel):
     @property
     def Structure(self):
         """结构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Structure
@@ -19867,7 +18246,6 @@ class Organ(AbstractModel):
     @property
     def Density(self):
         """密度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Density
@@ -19879,7 +18257,6 @@ class Organ(AbstractModel):
     @property
     def Vas(self):
         """血管
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Vas
@@ -19891,7 +18268,6 @@ class Organ(AbstractModel):
     @property
     def Cysticwall(self):
         """囊壁
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Cysticwall
@@ -19903,7 +18279,6 @@ class Organ(AbstractModel):
     @property
     def Capsule(self):
         """被膜
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Capsule
@@ -19931,7 +18306,6 @@ class Organ(AbstractModel):
     @property
     def InnerEchoDistribution(self):
         """内部回声分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InnerEchoDistribution
@@ -19943,7 +18317,6 @@ class Organ(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -19955,7 +18328,6 @@ class Organ(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -19967,7 +18339,6 @@ class Organ(AbstractModel):
     @property
     def Transparent(self):
         """透声度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Transparent
@@ -19979,7 +18350,6 @@ class Organ(AbstractModel):
     @property
     def MriAdc(self):
         """MRI ADC
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriAdc
@@ -19991,7 +18361,6 @@ class Organ(AbstractModel):
     @property
     def MriDwi(self):
         """MRI DWI
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriDwi
@@ -20003,7 +18372,6 @@ class Organ(AbstractModel):
     @property
     def MriT1(self):
         """MRI T1信号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriT1
@@ -20015,7 +18383,6 @@ class Organ(AbstractModel):
     @property
     def MriT2(self):
         """MRI T2信号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriT2
@@ -20027,7 +18394,6 @@ class Organ(AbstractModel):
     @property
     def CtHu(self):
         """CT HU值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._CtHu
@@ -20039,7 +18405,6 @@ class Organ(AbstractModel):
     @property
     def Suvmax(self):
         """SUmax值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Suvmax
@@ -20051,7 +18416,6 @@ class Organ(AbstractModel):
     @property
     def Metabolism(self):
         """代谢情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Metabolism
@@ -20063,7 +18427,6 @@ class Organ(AbstractModel):
     @property
     def RadioactiveUptake(self):
         """放射性摄取
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._RadioactiveUptake
@@ -20075,7 +18438,6 @@ class Organ(AbstractModel):
     @property
     def LymphEnlargement(self):
         """淋巴结情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._LymphEnlargement
@@ -20087,7 +18449,6 @@ class Organ(AbstractModel):
     @property
     def ImageFeature(self):
         """影像特征
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ImageFeature
@@ -20099,7 +18460,6 @@ class Organ(AbstractModel):
     @property
     def Duct(self):
         """导管
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Duct
@@ -20111,7 +18471,6 @@ class Organ(AbstractModel):
     @property
     def Trend(self):
         """趋势
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Trend
@@ -20123,7 +18482,6 @@ class Organ(AbstractModel):
     @property
     def Operation(self):
         """手术情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Operation
@@ -20135,7 +18493,6 @@ class Organ(AbstractModel):
     @property
     def Coords(self):
         """器官在报告图片中的坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -20147,7 +18504,6 @@ class Organ(AbstractModel):
     @property
     def IsthmusThickness(self):
         """峡部厚度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
         return self._IsthmusThickness
@@ -20292,22 +18648,16 @@ class OtherInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Anesthesia: 麻醉方法
-注意：此字段可能返回 null，表示取不到有效值。
         :type Anesthesia: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _BloodLoss: 术中出血
-注意：此字段可能返回 null，表示取不到有效值。
         :type BloodLoss: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _BloodTransfusion: 输血
-注意：此字段可能返回 null，表示取不到有效值。
         :type BloodTransfusion: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _Duration: 手术用时
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _EndTime: 手术开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _StartTime: 手术结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         self._Anesthesia = None
@@ -20320,7 +18670,6 @@ class OtherInfo(AbstractModel):
     @property
     def Anesthesia(self):
         """麻醉方法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._Anesthesia
@@ -20332,7 +18681,6 @@ class OtherInfo(AbstractModel):
     @property
     def BloodLoss(self):
         """术中出血
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._BloodLoss
@@ -20344,7 +18692,6 @@ class OtherInfo(AbstractModel):
     @property
     def BloodTransfusion(self):
         """输血
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._BloodTransfusion
@@ -20356,7 +18703,6 @@ class OtherInfo(AbstractModel):
     @property
     def Duration(self):
         """手术用时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._Duration
@@ -20368,7 +18714,6 @@ class OtherInfo(AbstractModel):
     @property
     def EndTime(self):
         """手术开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._EndTime
@@ -20380,7 +18725,6 @@ class OtherInfo(AbstractModel):
     @property
     def StartTime(self):
         """手术结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._StartTime
@@ -20427,19 +18771,14 @@ class OtolaryngologyBaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Ear: 耳朵
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ear: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyEar`
         :param _Nose: 鼻
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nose: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyNose`
         :param _Larynx: 喉
-注意：此字段可能返回 null，表示取不到有效值。
         :type Larynx: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyLarynx`
         :param _Others: 耳鼻喉其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: list of KeyValueItem
         :param _BriefSummary: 小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyBriefSummary`
         """
         self._Ear = None
@@ -20451,7 +18790,6 @@ class OtolaryngologyBaseItem(AbstractModel):
     @property
     def Ear(self):
         """耳朵
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyEar`
         """
         return self._Ear
@@ -20463,7 +18801,6 @@ class OtolaryngologyBaseItem(AbstractModel):
     @property
     def Nose(self):
         """鼻
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyNose`
         """
         return self._Nose
@@ -20475,7 +18812,6 @@ class OtolaryngologyBaseItem(AbstractModel):
     @property
     def Larynx(self):
         """喉
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyLarynx`
         """
         return self._Larynx
@@ -20487,7 +18823,6 @@ class OtolaryngologyBaseItem(AbstractModel):
     @property
     def Others(self):
         """耳鼻喉其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -20499,7 +18834,6 @@ class OtolaryngologyBaseItem(AbstractModel):
     @property
     def BriefSummary(self):
         """小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyBriefSummary`
         """
         return self._BriefSummary
@@ -20546,7 +18880,6 @@ class OtolaryngologyBriefSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 耳鼻喉小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -20554,7 +18887,6 @@ class OtolaryngologyBriefSummary(AbstractModel):
     @property
     def Text(self):
         """耳鼻喉小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -20586,10 +18918,8 @@ class OtolaryngologyEar(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 耳总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Hearing: 听力
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hearing: :class:`tencentcloud.mrs.v20200910.models.HearingItem`
         """
         self._Text = None
@@ -20598,7 +18928,6 @@ class OtolaryngologyEar(AbstractModel):
     @property
     def Text(self):
         """耳总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -20610,7 +18939,6 @@ class OtolaryngologyEar(AbstractModel):
     @property
     def Hearing(self):
         """听力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HearingItem`
         """
         return self._Hearing
@@ -20645,7 +18973,6 @@ class OtolaryngologyLarynx(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 喉总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -20653,7 +18980,6 @@ class OtolaryngologyLarynx(AbstractModel):
     @property
     def Text(self):
         """喉总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -20685,7 +19011,6 @@ class OtolaryngologyNose(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 鼻总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -20693,7 +19018,6 @@ class OtolaryngologyNose(AbstractModel):
     @property
     def Text(self):
         """鼻总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -20725,28 +19049,20 @@ class PTNM(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _PT: pT
-注意：此字段可能返回 null，表示取不到有效值。
         :type PT: str
         :param _PN: pN
-注意：此字段可能返回 null，表示取不到有效值。
         :type PN: str
         :param _PM: pM
-注意：此字段可能返回 null，表示取不到有效值。
         :type PM: str
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -20761,7 +19077,6 @@ class PTNM(AbstractModel):
     @property
     def Name(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -20773,7 +19088,6 @@ class PTNM(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -20785,7 +19099,6 @@ class PTNM(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -20797,7 +19110,6 @@ class PTNM(AbstractModel):
     @property
     def Value(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -20809,7 +19121,6 @@ class PTNM(AbstractModel):
     @property
     def PT(self):
         """pT
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PT
@@ -20821,7 +19132,6 @@ class PTNM(AbstractModel):
     @property
     def PN(self):
         """pN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PN
@@ -20833,7 +19143,6 @@ class PTNM(AbstractModel):
     @property
     def PM(self):
         """pM
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PM
@@ -20845,7 +19154,6 @@ class PTNM(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -20887,19 +19195,14 @@ class PTNMBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _PTNMM: PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMM: str
         :param _PTNMN: PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMN: str
         :param _PTNMT: PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMT: str
         """
         self._Name = None
@@ -20911,7 +19214,6 @@ class PTNMBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -20923,7 +19225,6 @@ class PTNMBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -20935,7 +19236,6 @@ class PTNMBlock(AbstractModel):
     @property
     def PTNMM(self):
         """PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PTNMM
@@ -20947,7 +19247,6 @@ class PTNMBlock(AbstractModel):
     @property
     def PTNMN(self):
         """PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PTNMN
@@ -20959,7 +19258,6 @@ class PTNMBlock(AbstractModel):
     @property
     def PTNMT(self):
         """PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PTNMT
@@ -20993,89 +19291,62 @@ class ParagraphBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _IncisionHealingText: 切口愈合情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncisionHealingText: str
         :param _AuxiliaryExaminationText: 辅助检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuxiliaryExaminationText: str
         :param _SpecialExamText: 特殊检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialExamText: str
         :param _OutpatientDiagnosisText: 门诊诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutpatientDiagnosisText: str
         :param _AdmissionConditionText: 入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionConditionText: str
         :param _CheckAndTreatmentProcessText: 诊疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckAndTreatmentProcessText: str
         :param _SymptomsAndSignsText: 体征
-注意：此字段可能返回 null，表示取不到有效值。
         :type SymptomsAndSignsText: str
         :param _DischargeInstructionsText: 出院医嘱
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeInstructionsText: str
         :param _AdmissionDiagnosisText: 入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionDiagnosisText: str
         :param _SurgeryConditionText: 手术情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryConditionText: str
         :param _PathologicalDiagnosisText: 病理诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologicalDiagnosisText: str
         :param _DischargeConditionText: 出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeConditionText: str
         :param _CheckRecordText: 检查记录
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckRecordText: str
         :param _ChiefComplaintText: 主诉
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChiefComplaintText: str
         :param _DischargeDiagnosisText: 出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeDiagnosisText: str
         :param _MainDiseaseHistoryText: 既往史
-注意：此字段可能返回 null，表示取不到有效值。
         :type MainDiseaseHistoryText: str
         :param _DiseasePresentText: 现病史
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseasePresentText: str
         :param _PersonalHistoryText: 个人史
-注意：此字段可能返回 null，表示取不到有效值。
         :type PersonalHistoryText: str
         :param _MenstruallHistoryText: 月经史
 注意：此字段可能返回 null，表示取不到有效值。
         :type MenstruallHistoryText: str
         :param _ObstericalHistoryText: 婚育史
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObstericalHistoryText: str
         :param _FamilyHistoryText: 家族史
-注意：此字段可能返回 null，表示取不到有效值。
         :type FamilyHistoryText: str
         :param _AllergyHistoryText: 过敏史
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllergyHistoryText: str
         :param _DiseaseHistoryText: 病史信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseaseHistoryText: str
         :param _OtherDiagnosisText: 其它诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type OtherDiagnosisText: str
         :param _BodyExaminationText: 体格检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type BodyExaminationText: str
         :param _SpecialistExaminationText: 专科检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialistExaminationText: str
         :param _TreatmentResultText: 治疗结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreatmentResultText: str
         :param _MenstrualHistoryText: 月经史
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualHistoryText: str
         """
         self._IncisionHealingText = None
@@ -21110,7 +19381,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def IncisionHealingText(self):
         """切口愈合情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncisionHealingText
@@ -21122,7 +19392,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def AuxiliaryExaminationText(self):
         """辅助检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuxiliaryExaminationText
@@ -21134,7 +19403,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def SpecialExamText(self):
         """特殊检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpecialExamText
@@ -21146,7 +19414,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def OutpatientDiagnosisText(self):
         """门诊诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutpatientDiagnosisText
@@ -21158,7 +19425,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def AdmissionConditionText(self):
         """入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionConditionText
@@ -21170,7 +19436,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def CheckAndTreatmentProcessText(self):
         """诊疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckAndTreatmentProcessText
@@ -21182,7 +19447,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def SymptomsAndSignsText(self):
         """体征
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SymptomsAndSignsText
@@ -21194,7 +19458,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def DischargeInstructionsText(self):
         """出院医嘱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeInstructionsText
@@ -21206,7 +19469,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def AdmissionDiagnosisText(self):
         """入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionDiagnosisText
@@ -21218,7 +19480,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def SurgeryConditionText(self):
         """手术情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SurgeryConditionText
@@ -21230,7 +19491,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def PathologicalDiagnosisText(self):
         """病理诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PathologicalDiagnosisText
@@ -21242,7 +19502,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def DischargeConditionText(self):
         """出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeConditionText
@@ -21255,7 +19514,6 @@ class ParagraphBlock(AbstractModel):
     def CheckRecordText(self):
         """检查记录
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckRecordText
@@ -21267,7 +19525,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def ChiefComplaintText(self):
         """主诉
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChiefComplaintText
@@ -21279,7 +19536,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def DischargeDiagnosisText(self):
         """出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeDiagnosisText
@@ -21291,7 +19547,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def MainDiseaseHistoryText(self):
         """既往史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MainDiseaseHistoryText
@@ -21303,7 +19558,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def DiseasePresentText(self):
         """现病史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiseasePresentText
@@ -21315,7 +19569,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def PersonalHistoryText(self):
         """个人史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PersonalHistoryText
@@ -21343,7 +19596,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def ObstericalHistoryText(self):
         """婚育史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObstericalHistoryText
@@ -21355,7 +19607,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def FamilyHistoryText(self):
         """家族史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FamilyHistoryText
@@ -21367,7 +19618,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def AllergyHistoryText(self):
         """过敏史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AllergyHistoryText
@@ -21379,7 +19629,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def DiseaseHistoryText(self):
         """病史信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiseaseHistoryText
@@ -21391,7 +19640,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def OtherDiagnosisText(self):
         """其它诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OtherDiagnosisText
@@ -21403,7 +19651,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def BodyExaminationText(self):
         """体格检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BodyExaminationText
@@ -21415,7 +19662,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def SpecialistExaminationText(self):
         """专科检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpecialistExaminationText
@@ -21427,7 +19673,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def TreatmentResultText(self):
         """治疗结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreatmentResultText
@@ -21439,7 +19684,6 @@ class ParagraphBlock(AbstractModel):
     @property
     def MenstrualHistoryText(self):
         """月经史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MenstrualHistoryText
@@ -21496,22 +19740,16 @@ class ParentInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Age: 年龄
-注意：此字段可能返回 null，表示取不到有效值。
         :type Age: str
         :param _IdCard: 证件号
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdCard: str
         :param _Ethnicity: 民族
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ethnicity: str
         :param _Nationality: 国籍
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nationality: str
         :param _Address: 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         """
         self._Name = None
@@ -21524,7 +19762,6 @@ class ParentInfo(AbstractModel):
     @property
     def Name(self):
         """名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -21536,7 +19773,6 @@ class ParentInfo(AbstractModel):
     @property
     def Age(self):
         """年龄
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Age
@@ -21548,7 +19784,6 @@ class ParentInfo(AbstractModel):
     @property
     def IdCard(self):
         """证件号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdCard
@@ -21560,7 +19795,6 @@ class ParentInfo(AbstractModel):
     @property
     def Ethnicity(self):
         """民族
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ethnicity
@@ -21572,7 +19806,6 @@ class ParentInfo(AbstractModel):
     @property
     def Nationality(self):
         """国籍
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Nationality
@@ -21584,7 +19817,6 @@ class ParentInfo(AbstractModel):
     @property
     def Address(self):
         """地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -21619,22 +19851,16 @@ class Part(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _NormPart: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormPart: :class:`tencentcloud.mrs.v20200910.models.NormPart`
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ValueBrief: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValueBrief: str
         """
         self._Index = None
@@ -21647,7 +19873,6 @@ class Part(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -21659,7 +19884,6 @@ class Part(AbstractModel):
     @property
     def NormPart(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.NormPart`
         """
         return self._NormPart
@@ -21671,7 +19895,6 @@ class Part(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -21683,7 +19906,6 @@ class Part(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -21695,7 +19917,6 @@ class Part(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -21707,7 +19928,6 @@ class Part(AbstractModel):
     @property
     def ValueBrief(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValueBrief
@@ -21744,16 +19964,12 @@ class PartDesc(AbstractModel):
     def __init__(self):
         r"""
         :param _MainDir: 主要部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type MainDir: str
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: str
         :param _SecondaryDir: 次要部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecondaryDir: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._MainDir = None
@@ -21764,7 +19980,6 @@ class PartDesc(AbstractModel):
     @property
     def MainDir(self):
         """主要部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MainDir
@@ -21776,7 +19991,6 @@ class PartDesc(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Part
@@ -21788,7 +20002,6 @@ class PartDesc(AbstractModel):
     @property
     def SecondaryDir(self):
         """次要部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecondaryDir
@@ -21800,7 +20013,6 @@ class PartDesc(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -21833,16 +20045,12 @@ class PathologicalDiagnosisBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Detail: 病理详细
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of PathologicalDiagnosisDetailBlock
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -21853,7 +20061,6 @@ class PathologicalDiagnosisBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -21865,7 +20072,6 @@ class PathologicalDiagnosisBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -21877,7 +20083,6 @@ class PathologicalDiagnosisBlock(AbstractModel):
     @property
     def Detail(self):
         """病理详细
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PathologicalDiagnosisDetailBlock
         """
         return self._Detail
@@ -21889,7 +20094,6 @@ class PathologicalDiagnosisBlock(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -21927,13 +20131,10 @@ class PathologicalDiagnosisDetailBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: str
         :param _HistologicalType: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistologicalType: str
         :param _HistologicalGrade: 等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistologicalGrade: str
         """
         self._Part = None
@@ -21943,7 +20144,6 @@ class PathologicalDiagnosisDetailBlock(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Part
@@ -21955,7 +20155,6 @@ class PathologicalDiagnosisDetailBlock(AbstractModel):
     @property
     def HistologicalType(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HistologicalType
@@ -21967,7 +20166,6 @@ class PathologicalDiagnosisDetailBlock(AbstractModel):
     @property
     def HistologicalGrade(self):
         """等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HistologicalGrade
@@ -21999,46 +20197,32 @@ class PathologyReport(AbstractModel):
     def __init__(self):
         r"""
         :param _CancerPart: 癌症部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type CancerPart: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _CancerSize: 癌症部位大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type CancerSize: list of Size
         :param _DescText: 描述文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type DescText: str
         :param _HistologyLevel: 组织学等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistologyLevel: :class:`tencentcloud.mrs.v20200910.models.HistologyLevel`
         :param _HistologyType: 组织学类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistologyType: :class:`tencentcloud.mrs.v20200910.models.HistologyType`
         :param _IHC: IHC信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type IHC: list of IHCInfo
         :param _InfiltrationDepth: 浸润深度
-注意：此字段可能返回 null，表示取不到有效值。
         :type InfiltrationDepth: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Invasive: 肿瘤扩散
-注意：此字段可能返回 null，表示取不到有效值。
         :type Invasive: list of Invas
         :param _LymphNodes: 淋巴结
-注意：此字段可能返回 null，表示取不到有效值。
         :type LymphNodes: list of Lymph
         :param _PTNM: PTNM信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNM: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _PathologicalReportType: 病理报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologicalReportType: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _ReportText: 报告原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportText: str
         :param _SampleType: 标本类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleType: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _SummaryText: 结论文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryText: str
         """
         self._CancerPart = None
@@ -22059,7 +20243,6 @@ class PathologyReport(AbstractModel):
     @property
     def CancerPart(self):
         """癌症部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._CancerPart
@@ -22071,7 +20254,6 @@ class PathologyReport(AbstractModel):
     @property
     def CancerSize(self):
         """癌症部位大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Size
         """
         return self._CancerSize
@@ -22083,7 +20265,6 @@ class PathologyReport(AbstractModel):
     @property
     def DescText(self):
         """描述文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DescText
@@ -22095,7 +20276,6 @@ class PathologyReport(AbstractModel):
     @property
     def HistologyLevel(self):
         """组织学等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyLevel`
         """
         return self._HistologyLevel
@@ -22107,7 +20287,6 @@ class PathologyReport(AbstractModel):
     @property
     def HistologyType(self):
         """组织学类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyType`
         """
         return self._HistologyType
@@ -22119,7 +20298,6 @@ class PathologyReport(AbstractModel):
     @property
     def IHC(self):
         """IHC信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IHCInfo
         """
         return self._IHC
@@ -22131,7 +20309,6 @@ class PathologyReport(AbstractModel):
     @property
     def InfiltrationDepth(self):
         """浸润深度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InfiltrationDepth
@@ -22143,7 +20320,6 @@ class PathologyReport(AbstractModel):
     @property
     def Invasive(self):
         """肿瘤扩散
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Invas
         """
         return self._Invasive
@@ -22155,7 +20331,6 @@ class PathologyReport(AbstractModel):
     @property
     def LymphNodes(self):
         """淋巴结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Lymph
         """
         return self._LymphNodes
@@ -22167,7 +20342,6 @@ class PathologyReport(AbstractModel):
     @property
     def PTNM(self):
         """PTNM信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._PTNM
@@ -22179,7 +20353,6 @@ class PathologyReport(AbstractModel):
     @property
     def PathologicalReportType(self):
         """病理报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._PathologicalReportType
@@ -22191,7 +20364,6 @@ class PathologyReport(AbstractModel):
     @property
     def ReportText(self):
         """报告原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportText
@@ -22203,7 +20375,6 @@ class PathologyReport(AbstractModel):
     @property
     def SampleType(self):
         """标本类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SampleType
@@ -22215,7 +20386,6 @@ class PathologyReport(AbstractModel):
     @property
     def SummaryText(self):
         """结论文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SummaryText
@@ -22292,49 +20462,34 @@ class PathologyV2(AbstractModel):
     def __init__(self):
         r"""
         :param _PathologicalReportType: 报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologicalReportType: :class:`tencentcloud.mrs.v20200910.models.Report`
         :param _Desc: 描述段落
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: :class:`tencentcloud.mrs.v20200910.models.DescInfo`
         :param _Summary: 诊断结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: :class:`tencentcloud.mrs.v20200910.models.SummaryInfo`
         :param _ReportText: 报告全文
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportText: str
         :param _LymphTotal: 淋巴结总计转移信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type LymphTotal: list of LymphTotal
         :param _LymphNodes: 单淋巴结转移信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type LymphNodes: list of LymphNode
         :param _Ihc: ihc信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ihc: list of IHCV2
         :param _Clinical: 临床诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type Clinical: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _Precancer: 是否癌前病变
-注意：此字段可能返回 null，表示取不到有效值。
         :type Precancer: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         :param _Malignant: 是否恶性肿瘤
-注意：此字段可能返回 null，表示取不到有效值。
         :type Malignant: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         :param _Benigntumor: 是否良性肿瘤
-注意：此字段可能返回 null，表示取不到有效值。
         :type Benigntumor: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         :param _SampleType: 送检材料
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleType: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _LymphSize: 淋巴结大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type LymphSize: list of Size
         :param _Molecular: 分子病理
-注意：此字段可能返回 null，表示取不到有效值。
         :type Molecular: list of Molecular
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._PathologicalReportType = None
@@ -22356,7 +20511,6 @@ class PathologyV2(AbstractModel):
     @property
     def PathologicalReportType(self):
         """报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Report`
         """
         return self._PathologicalReportType
@@ -22368,7 +20522,6 @@ class PathologyV2(AbstractModel):
     @property
     def Desc(self):
         """描述段落
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DescInfo`
         """
         return self._Desc
@@ -22380,7 +20533,6 @@ class PathologyV2(AbstractModel):
     @property
     def Summary(self):
         """诊断结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SummaryInfo`
         """
         return self._Summary
@@ -22392,7 +20544,6 @@ class PathologyV2(AbstractModel):
     @property
     def ReportText(self):
         """报告全文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportText
@@ -22404,7 +20555,6 @@ class PathologyV2(AbstractModel):
     @property
     def LymphTotal(self):
         """淋巴结总计转移信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LymphTotal
         """
         return self._LymphTotal
@@ -22416,7 +20566,6 @@ class PathologyV2(AbstractModel):
     @property
     def LymphNodes(self):
         """单淋巴结转移信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LymphNode
         """
         return self._LymphNodes
@@ -22428,7 +20577,6 @@ class PathologyV2(AbstractModel):
     @property
     def Ihc(self):
         """ihc信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IHCV2
         """
         return self._Ihc
@@ -22440,7 +20588,6 @@ class PathologyV2(AbstractModel):
     @property
     def Clinical(self):
         """临床诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Clinical
@@ -22452,7 +20599,6 @@ class PathologyV2(AbstractModel):
     @property
     def Precancer(self):
         """是否癌前病变
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         """
         return self._Precancer
@@ -22464,7 +20610,6 @@ class PathologyV2(AbstractModel):
     @property
     def Malignant(self):
         """是否恶性肿瘤
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         """
         return self._Malignant
@@ -22476,7 +20621,6 @@ class PathologyV2(AbstractModel):
     @property
     def Benigntumor(self):
         """是否良性肿瘤
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.HistologyClass`
         """
         return self._Benigntumor
@@ -22488,7 +20632,6 @@ class PathologyV2(AbstractModel):
     @property
     def SampleType(self):
         """送检材料
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._SampleType
@@ -22500,7 +20643,6 @@ class PathologyV2(AbstractModel):
     @property
     def LymphSize(self):
         """淋巴结大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Size
         """
         return self._LymphSize
@@ -22512,7 +20654,6 @@ class PathologyV2(AbstractModel):
     @property
     def Molecular(self):
         """分子病理
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Molecular
         """
         return self._Molecular
@@ -22524,7 +20665,6 @@ class PathologyV2(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -22609,70 +20749,49 @@ class PatientInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 患者姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Sex: 患者性别
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sex: str
         :param _Age: 患者年龄
-注意：此字段可能返回 null，表示取不到有效值。
         :type Age: str
         :param _Phone: 患者手机号码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
         :param _Address: 患者地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _IdCard: 患者身份证
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdCard: str
         :param _HealthCardNo: 健康卡号
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCardNo: str
         :param _SocialSecurityCardNo: 社保卡号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SocialSecurityCardNo: str
         :param _Birthday: 出生日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Birthday: str
         :param _Ethnicity: 民族
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ethnicity: str
         :param _Married: 婚姻状况
-注意：此字段可能返回 null，表示取不到有效值。
         :type Married: str
         :param _Profession: 职业
-注意：此字段可能返回 null，表示取不到有效值。
         :type Profession: str
         :param _EducationBackground: 教育程度
-注意：此字段可能返回 null，表示取不到有效值。
         :type EducationBackground: str
         :param _Nationality: 国籍
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nationality: str
         :param _BirthPlace: 籍贯
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthPlace: str
         :param _MedicalInsuranceType: 医保类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalInsuranceType: str
         :param _AgeNorm: 标准化年龄
-注意：此字段可能返回 null，表示取不到有效值。
         :type AgeNorm: str
         :param _Nation: 民族。该字段已不再使用，请从Ethnicity取值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nation: str
         :param _MarriedCode: 婚姻代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarriedCode: str
         :param _ProfessionCode: 职业代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfessionCode: str
         :param _MedicalInsuranceTypeCode: 居民医保代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalInsuranceTypeCode: str
         :param _BedNo: 床号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BedNo: str
         """
         self._Name = None
@@ -22701,7 +20820,6 @@ class PatientInfo(AbstractModel):
     @property
     def Name(self):
         """患者姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -22713,7 +20831,6 @@ class PatientInfo(AbstractModel):
     @property
     def Sex(self):
         """患者性别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sex
@@ -22725,7 +20842,6 @@ class PatientInfo(AbstractModel):
     @property
     def Age(self):
         """患者年龄
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Age
@@ -22737,7 +20853,6 @@ class PatientInfo(AbstractModel):
     @property
     def Phone(self):
         """患者手机号码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Phone
@@ -22749,7 +20864,6 @@ class PatientInfo(AbstractModel):
     @property
     def Address(self):
         """患者地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -22761,7 +20875,6 @@ class PatientInfo(AbstractModel):
     @property
     def IdCard(self):
         """患者身份证
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdCard
@@ -22773,7 +20886,6 @@ class PatientInfo(AbstractModel):
     @property
     def HealthCardNo(self):
         """健康卡号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HealthCardNo
@@ -22785,7 +20897,6 @@ class PatientInfo(AbstractModel):
     @property
     def SocialSecurityCardNo(self):
         """社保卡号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SocialSecurityCardNo
@@ -22797,7 +20908,6 @@ class PatientInfo(AbstractModel):
     @property
     def Birthday(self):
         """出生日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Birthday
@@ -22809,7 +20919,6 @@ class PatientInfo(AbstractModel):
     @property
     def Ethnicity(self):
         """民族
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ethnicity
@@ -22821,7 +20930,6 @@ class PatientInfo(AbstractModel):
     @property
     def Married(self):
         """婚姻状况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Married
@@ -22833,7 +20941,6 @@ class PatientInfo(AbstractModel):
     @property
     def Profession(self):
         """职业
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Profession
@@ -22845,7 +20952,6 @@ class PatientInfo(AbstractModel):
     @property
     def EducationBackground(self):
         """教育程度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EducationBackground
@@ -22857,7 +20963,6 @@ class PatientInfo(AbstractModel):
     @property
     def Nationality(self):
         """国籍
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Nationality
@@ -22869,7 +20974,6 @@ class PatientInfo(AbstractModel):
     @property
     def BirthPlace(self):
         """籍贯
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BirthPlace
@@ -22881,7 +20985,6 @@ class PatientInfo(AbstractModel):
     @property
     def MedicalInsuranceType(self):
         """医保类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MedicalInsuranceType
@@ -22893,7 +20996,6 @@ class PatientInfo(AbstractModel):
     @property
     def AgeNorm(self):
         """标准化年龄
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AgeNorm
@@ -22921,7 +21023,6 @@ class PatientInfo(AbstractModel):
     @property
     def MarriedCode(self):
         """婚姻代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarriedCode
@@ -22933,7 +21034,6 @@ class PatientInfo(AbstractModel):
     @property
     def ProfessionCode(self):
         """职业代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfessionCode
@@ -22945,7 +21045,6 @@ class PatientInfo(AbstractModel):
     @property
     def MedicalInsuranceTypeCode(self):
         """居民医保代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MedicalInsuranceTypeCode
@@ -22957,7 +21056,6 @@ class PatientInfo(AbstractModel):
     @property
     def BedNo(self):
         """床号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BedNo
@@ -23059,28 +21157,20 @@ class PersonalHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _BirthPlace: 出生地
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthPlace: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         :param _LivePlace: 居住地
-注意：此字段可能返回 null，表示取不到有效值。
         :type LivePlace: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         :param _Job: 职业
-注意：此字段可能返回 null，表示取不到有效值。
         :type Job: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         :param _SmokeHistory: 吸烟
-注意：此字段可能返回 null，表示取不到有效值。
         :type SmokeHistory: :class:`tencentcloud.mrs.v20200910.models.SmokeHistoryBlock`
         :param _AlcoholicHistory: 喝酒
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlcoholicHistory: :class:`tencentcloud.mrs.v20200910.models.SmokeHistoryBlock`
         :param _MenstrualHistory: 月经史
-注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualHistory: :class:`tencentcloud.mrs.v20200910.models.MenstrualHistoryBlock`
         :param _ObstericalHistory: 婚姻-生育史
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObstericalHistory: :class:`tencentcloud.mrs.v20200910.models.ObstetricalHistoryBlock`
         :param _FamilyHistory: 家族史
-注意：此字段可能返回 null，表示取不到有效值。
         :type FamilyHistory: :class:`tencentcloud.mrs.v20200910.models.FamilyHistoryBlock`
         """
         self._BirthPlace = None
@@ -23095,7 +21185,6 @@ class PersonalHistoryBlock(AbstractModel):
     @property
     def BirthPlace(self):
         """出生地
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         """
         return self._BirthPlace
@@ -23107,7 +21196,6 @@ class PersonalHistoryBlock(AbstractModel):
     @property
     def LivePlace(self):
         """居住地
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         """
         return self._LivePlace
@@ -23119,7 +21207,6 @@ class PersonalHistoryBlock(AbstractModel):
     @property
     def Job(self):
         """职业
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BirthPlaceBlock`
         """
         return self._Job
@@ -23131,7 +21218,6 @@ class PersonalHistoryBlock(AbstractModel):
     @property
     def SmokeHistory(self):
         """吸烟
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SmokeHistoryBlock`
         """
         return self._SmokeHistory
@@ -23143,7 +21229,6 @@ class PersonalHistoryBlock(AbstractModel):
     @property
     def AlcoholicHistory(self):
         """喝酒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SmokeHistoryBlock`
         """
         return self._AlcoholicHistory
@@ -23155,7 +21240,6 @@ class PersonalHistoryBlock(AbstractModel):
     @property
     def MenstrualHistory(self):
         """月经史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MenstrualHistoryBlock`
         """
         return self._MenstrualHistory
@@ -23167,7 +21251,6 @@ class PersonalHistoryBlock(AbstractModel):
     @property
     def ObstericalHistory(self):
         """婚姻-生育史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ObstetricalHistoryBlock`
         """
         return self._ObstericalHistory
@@ -23179,7 +21262,6 @@ class PersonalHistoryBlock(AbstractModel):
     @property
     def FamilyHistory(self):
         """家族史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FamilyHistoryBlock`
         """
         return self._FamilyHistory
@@ -23232,19 +21314,14 @@ class PersonalMedicalHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _BirthPlace: 出生史
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthPlace: str
         :param _LivePlace: 居住史
-注意：此字段可能返回 null，表示取不到有效值。
         :type LivePlace: str
         :param _Job: 工作史
-注意：此字段可能返回 null，表示取不到有效值。
         :type Job: str
         :param _SmokeHistory: 吸烟史
-注意：此字段可能返回 null，表示取不到有效值。
         :type SmokeHistory: str
         :param _AlcoholicHistory: 饮酒史
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlcoholicHistory: str
         """
         self._BirthPlace = None
@@ -23256,7 +21333,6 @@ class PersonalMedicalHistory(AbstractModel):
     @property
     def BirthPlace(self):
         """出生史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BirthPlace
@@ -23268,7 +21344,6 @@ class PersonalMedicalHistory(AbstractModel):
     @property
     def LivePlace(self):
         """居住史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LivePlace
@@ -23280,7 +21355,6 @@ class PersonalMedicalHistory(AbstractModel):
     @property
     def Job(self):
         """工作史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Job
@@ -23292,7 +21366,6 @@ class PersonalMedicalHistory(AbstractModel):
     @property
     def SmokeHistory(self):
         """吸烟史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SmokeHistory
@@ -23304,7 +21377,6 @@ class PersonalMedicalHistory(AbstractModel):
     @property
     def AlcoholicHistory(self):
         """饮酒史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AlcoholicHistory
@@ -23338,16 +21410,12 @@ class PhysicalBaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原始文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 归一化后值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Coords: 四点坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -23358,7 +21426,6 @@ class PhysicalBaseItem(AbstractModel):
     @property
     def Name(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -23370,7 +21437,6 @@ class PhysicalBaseItem(AbstractModel):
     @property
     def Src(self):
         """原始文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -23382,7 +21448,6 @@ class PhysicalBaseItem(AbstractModel):
     @property
     def Value(self):
         """归一化后值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -23394,7 +21459,6 @@ class PhysicalBaseItem(AbstractModel):
     @property
     def Coords(self):
         """四点坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -23432,28 +21496,20 @@ class PhysicalExamination(AbstractModel):
     def __init__(self):
         r"""
         :param _GeneralExamination: 一般检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type GeneralExamination: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationBaseItem`
         :param _InternalMedicine: 内科
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternalMedicine: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineBaseItem`
         :param _Surgery: 外科
-注意：此字段可能返回 null，表示取不到有效值。
         :type Surgery: :class:`tencentcloud.mrs.v20200910.models.SurgeryBaseItem`
         :param _Stomatology: 口腔科
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stomatology: :class:`tencentcloud.mrs.v20200910.models.StomatologyBaseItem`
         :param _Ophthalmology: 眼科
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ophthalmology: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBaseItem`
         :param _Otolaryngology: 耳鼻喉科
-注意：此字段可能返回 null，表示取不到有效值。
         :type Otolaryngology: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyBaseItem`
         :param _Gynaecology: 妇科
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gynaecology: :class:`tencentcloud.mrs.v20200910.models.GynaecologyBaseItem`
         :param _Unclassified: 未标准化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unclassified: list of KeyValueItem
         """
         self._GeneralExamination = None
@@ -23468,7 +21524,6 @@ class PhysicalExamination(AbstractModel):
     @property
     def GeneralExamination(self):
         """一般检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationBaseItem`
         """
         return self._GeneralExamination
@@ -23480,7 +21535,6 @@ class PhysicalExamination(AbstractModel):
     @property
     def InternalMedicine(self):
         """内科
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineBaseItem`
         """
         return self._InternalMedicine
@@ -23492,7 +21546,6 @@ class PhysicalExamination(AbstractModel):
     @property
     def Surgery(self):
         """外科
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryBaseItem`
         """
         return self._Surgery
@@ -23504,7 +21557,6 @@ class PhysicalExamination(AbstractModel):
     @property
     def Stomatology(self):
         """口腔科
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyBaseItem`
         """
         return self._Stomatology
@@ -23516,7 +21568,6 @@ class PhysicalExamination(AbstractModel):
     @property
     def Ophthalmology(self):
         """眼科
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBaseItem`
         """
         return self._Ophthalmology
@@ -23528,7 +21579,6 @@ class PhysicalExamination(AbstractModel):
     @property
     def Otolaryngology(self):
         """耳鼻喉科
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyBaseItem`
         """
         return self._Otolaryngology
@@ -23540,7 +21590,6 @@ class PhysicalExamination(AbstractModel):
     @property
     def Gynaecology(self):
         """妇科
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.GynaecologyBaseItem`
         """
         return self._Gynaecology
@@ -23552,7 +21601,6 @@ class PhysicalExamination(AbstractModel):
     @property
     def Unclassified(self):
         """未标准化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Unclassified
@@ -23608,10 +21656,8 @@ class PhysicalExaminationV1(AbstractModel):
     def __init__(self):
         r"""
         :param _PhysicalExaminationMulti: 体检报告信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalExaminationMulti: :class:`tencentcloud.mrs.v20200910.models.PhysicalExamination`
         :param _Version: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._PhysicalExaminationMulti = None
@@ -23620,7 +21666,6 @@ class PhysicalExaminationV1(AbstractModel):
     @property
     def PhysicalExaminationMulti(self):
         """体检报告信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalExamination`
         """
         return self._PhysicalExaminationMulti
@@ -23632,7 +21677,6 @@ class PhysicalExaminationV1(AbstractModel):
     @property
     def Version(self):
         """版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -23665,10 +21709,8 @@ class Point(AbstractModel):
     def __init__(self):
         r"""
         :param _X: x坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type X: int
         :param _Y: y坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Y: int
         """
         self._X = None
@@ -23677,7 +21719,6 @@ class Point(AbstractModel):
     @property
     def X(self):
         """x坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._X
@@ -23689,7 +21730,6 @@ class Point(AbstractModel):
     @property
     def Y(self):
         """y坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Y
@@ -23720,10 +21760,8 @@ class PoslistBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -23732,7 +21770,6 @@ class PoslistBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -23744,7 +21781,6 @@ class PoslistBlock(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -23775,10 +21811,8 @@ class Prescription(AbstractModel):
     def __init__(self):
         r"""
         :param _MedicineList: 药品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedicineList: list of Medicine
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._MedicineList = None
@@ -23787,7 +21821,6 @@ class Prescription(AbstractModel):
     @property
     def MedicineList(self):
         """药品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Medicine
         """
         return self._MedicineList
@@ -23799,7 +21832,6 @@ class Prescription(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -23835,16 +21867,12 @@ class Rectangle(AbstractModel):
     def __init__(self):
         r"""
         :param _X: x坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type X: int
         :param _Y: y坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Y: int
         :param _W: 宽
-注意：此字段可能返回 null，表示取不到有效值。
         :type W: int
         :param _H: 高
-注意：此字段可能返回 null，表示取不到有效值。
         :type H: int
         """
         self._X = None
@@ -23855,7 +21883,6 @@ class Rectangle(AbstractModel):
     @property
     def X(self):
         """x坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._X
@@ -23867,7 +21894,6 @@ class Rectangle(AbstractModel):
     @property
     def Y(self):
         """y坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Y
@@ -23879,7 +21905,6 @@ class Rectangle(AbstractModel):
     @property
     def W(self):
         """宽
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._W
@@ -23891,7 +21916,6 @@ class Rectangle(AbstractModel):
     @property
     def H(self):
         """高
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._H
@@ -23924,28 +21948,20 @@ class RelapseDateBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _DiseaseName: 疾病名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseaseName: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Norm: 归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Norm: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Timestamp: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -23960,7 +21976,6 @@ class RelapseDateBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -23972,7 +21987,6 @@ class RelapseDateBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -23984,7 +21998,6 @@ class RelapseDateBlock(AbstractModel):
     @property
     def DiseaseName(self):
         """疾病名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiseaseName
@@ -23996,7 +22009,6 @@ class RelapseDateBlock(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -24008,7 +22020,6 @@ class RelapseDateBlock(AbstractModel):
     @property
     def Norm(self):
         """归一化值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Norm
@@ -24020,7 +22031,6 @@ class RelapseDateBlock(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -24032,7 +22042,6 @@ class RelapseDateBlock(AbstractModel):
     @property
     def Timestamp(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timestamp
@@ -24044,7 +22053,6 @@ class RelapseDateBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -24081,16 +22089,12 @@ class RelativeCancerHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _RelativeCancerList: 肿瘤史列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelativeCancerList: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -24101,7 +22105,6 @@ class RelativeCancerHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -24113,7 +22116,6 @@ class RelativeCancerHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -24125,7 +22127,6 @@ class RelativeCancerHistoryBlock(AbstractModel):
     @property
     def RelativeCancerList(self):
         """肿瘤史列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RelativeCancerList
@@ -24137,7 +22138,6 @@ class RelativeCancerHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -24170,16 +22170,12 @@ class RelativeHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Detail: 成员列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of RelativeHistoryDetailBlock
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -24190,7 +22186,6 @@ class RelativeHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -24202,7 +22197,6 @@ class RelativeHistoryBlock(AbstractModel):
     @property
     def Detail(self):
         """成员列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RelativeHistoryDetailBlock
         """
         return self._Detail
@@ -24214,7 +22208,6 @@ class RelativeHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -24226,7 +22219,6 @@ class RelativeHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -24264,16 +22256,12 @@ class RelativeHistoryDetailBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Relation: 关系
-注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
         :param _TimeOfDeath: 死亡时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOfDeath: str
         :param _TimeType: 时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeType: str
         """
         self._Name = None
@@ -24284,7 +22272,6 @@ class RelativeHistoryDetailBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -24296,7 +22283,6 @@ class RelativeHistoryDetailBlock(AbstractModel):
     @property
     def Relation(self):
         """关系
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Relation
@@ -24308,7 +22294,6 @@ class RelativeHistoryDetailBlock(AbstractModel):
     @property
     def TimeOfDeath(self):
         """死亡时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeOfDeath
@@ -24320,7 +22305,6 @@ class RelativeHistoryDetailBlock(AbstractModel):
     @property
     def TimeType(self):
         """时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeType
@@ -24353,19 +22337,14 @@ class Report(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Coords: 原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Name = None
@@ -24377,7 +22356,6 @@ class Report(AbstractModel):
     @property
     def Name(self):
         """项目名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -24389,7 +22367,6 @@ class Report(AbstractModel):
     @property
     def Index(self):
         """索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -24401,7 +22378,6 @@ class Report(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -24413,7 +22389,6 @@ class Report(AbstractModel):
     @property
     def Value(self):
         """报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -24425,7 +22400,6 @@ class Report(AbstractModel):
     @property
     def Coords(self):
         """原文对应坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -24464,82 +22438,56 @@ class ReportInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Hospital: 医院名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hospital: str
         :param _DepartmentName: 科室名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentName: str
         :param _BillingTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingTime: str
         :param _ReportTime: 报告时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTime: str
         :param _InspectTime: 检查时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type InspectTime: str
         :param _CheckNum: 检查号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckNum: str
         :param _ImageNum: 影像号
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageNum: str
         :param _RadiationNum: 放射号
-注意：此字段可能返回 null，表示取不到有效值。
         :type RadiationNum: str
         :param _TestNum: 检验号
-注意：此字段可能返回 null，表示取不到有效值。
         :type TestNum: str
         :param _OutpatientNum: 门诊号
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutpatientNum: str
         :param _PathologyNum: 病理号
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologyNum: str
         :param _InHospitalNum: 住院号
-注意：此字段可能返回 null，表示取不到有效值。
         :type InHospitalNum: str
         :param _SampleNum: 样本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleNum: str
         :param _SampleType: 标本种类
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleType: str
         :param _MedicalRecordNum: 病历号
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalRecordNum: str
         :param _ReportName: 报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportName: str
         :param _UltraNum: 超声号
-注意：此字段可能返回 null，表示取不到有效值。
         :type UltraNum: str
         :param _Diagnose: 临床诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type Diagnose: str
         :param _CheckItem: 检查项目
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckItem: str
         :param _CheckMethod: 检查方法
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckMethod: str
         :param _DiagnoseTime: 诊断时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnoseTime: str
         :param _HealthCheckupNum: 体检号
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckupNum: str
         :param _OtherTime: 其它时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OtherTime: str
         :param _PrintTime: 打印时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrintTime: str
         :param _Times: 未归类时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Times: list of Time
         :param _BedNo: 床号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BedNo: str
         """
         self._Hospital = None
@@ -24572,7 +22520,6 @@ class ReportInfo(AbstractModel):
     @property
     def Hospital(self):
         """医院名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Hospital
@@ -24584,7 +22531,6 @@ class ReportInfo(AbstractModel):
     @property
     def DepartmentName(self):
         """科室名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DepartmentName
@@ -24596,7 +22542,6 @@ class ReportInfo(AbstractModel):
     @property
     def BillingTime(self):
         """申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillingTime
@@ -24608,7 +22553,6 @@ class ReportInfo(AbstractModel):
     @property
     def ReportTime(self):
         """报告时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportTime
@@ -24620,7 +22564,6 @@ class ReportInfo(AbstractModel):
     @property
     def InspectTime(self):
         """检查时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InspectTime
@@ -24632,7 +22575,6 @@ class ReportInfo(AbstractModel):
     @property
     def CheckNum(self):
         """检查号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckNum
@@ -24644,7 +22586,6 @@ class ReportInfo(AbstractModel):
     @property
     def ImageNum(self):
         """影像号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageNum
@@ -24656,7 +22597,6 @@ class ReportInfo(AbstractModel):
     @property
     def RadiationNum(self):
         """放射号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RadiationNum
@@ -24668,7 +22608,6 @@ class ReportInfo(AbstractModel):
     @property
     def TestNum(self):
         """检验号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TestNum
@@ -24680,7 +22619,6 @@ class ReportInfo(AbstractModel):
     @property
     def OutpatientNum(self):
         """门诊号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutpatientNum
@@ -24692,7 +22630,6 @@ class ReportInfo(AbstractModel):
     @property
     def PathologyNum(self):
         """病理号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PathologyNum
@@ -24704,7 +22641,6 @@ class ReportInfo(AbstractModel):
     @property
     def InHospitalNum(self):
         """住院号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InHospitalNum
@@ -24716,7 +22652,6 @@ class ReportInfo(AbstractModel):
     @property
     def SampleNum(self):
         """样本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SampleNum
@@ -24728,7 +22663,6 @@ class ReportInfo(AbstractModel):
     @property
     def SampleType(self):
         """标本种类
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SampleType
@@ -24740,7 +22674,6 @@ class ReportInfo(AbstractModel):
     @property
     def MedicalRecordNum(self):
         """病历号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MedicalRecordNum
@@ -24752,7 +22685,6 @@ class ReportInfo(AbstractModel):
     @property
     def ReportName(self):
         """报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportName
@@ -24764,7 +22696,6 @@ class ReportInfo(AbstractModel):
     @property
     def UltraNum(self):
         """超声号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UltraNum
@@ -24776,7 +22707,6 @@ class ReportInfo(AbstractModel):
     @property
     def Diagnose(self):
         """临床诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Diagnose
@@ -24788,7 +22718,6 @@ class ReportInfo(AbstractModel):
     @property
     def CheckItem(self):
         """检查项目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckItem
@@ -24800,7 +22729,6 @@ class ReportInfo(AbstractModel):
     @property
     def CheckMethod(self):
         """检查方法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckMethod
@@ -24812,7 +22740,6 @@ class ReportInfo(AbstractModel):
     @property
     def DiagnoseTime(self):
         """诊断时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiagnoseTime
@@ -24824,7 +22751,6 @@ class ReportInfo(AbstractModel):
     @property
     def HealthCheckupNum(self):
         """体检号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HealthCheckupNum
@@ -24836,7 +22762,6 @@ class ReportInfo(AbstractModel):
     @property
     def OtherTime(self):
         """其它时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OtherTime
@@ -24848,7 +22773,6 @@ class ReportInfo(AbstractModel):
     @property
     def PrintTime(self):
         """打印时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PrintTime
@@ -24860,7 +22784,6 @@ class ReportInfo(AbstractModel):
     @property
     def Times(self):
         """未归类时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Time
         """
         return self._Times
@@ -24872,7 +22795,6 @@ class ReportInfo(AbstractModel):
     @property
     def BedNo(self):
         """床号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BedNo
@@ -24983,13 +22905,10 @@ class ResultInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 段落文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _Items: 结论详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of BaseInfo
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Text = None
@@ -24999,7 +22918,6 @@ class ResultInfo(AbstractModel):
     @property
     def Text(self):
         """段落文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Text
@@ -25011,7 +22929,6 @@ class ResultInfo(AbstractModel):
     @property
     def Items(self):
         """结论详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BaseInfo
         """
         return self._Items
@@ -25023,7 +22940,6 @@ class ResultInfo(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -25062,19 +22978,14 @@ class Size(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _NormSize: 标准大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormSize: :class:`tencentcloud.mrs.v20200910.models.NormSize`
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Index = None
@@ -25086,7 +22997,6 @@ class Size(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -25098,7 +23008,6 @@ class Size(AbstractModel):
     @property
     def NormSize(self):
         """标准大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.NormSize`
         """
         return self._NormSize
@@ -25110,7 +23019,6 @@ class Size(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -25122,7 +23030,6 @@ class Size(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -25134,7 +23041,6 @@ class Size(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -25170,28 +23076,20 @@ class SmokeHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _TimeUnit: 时间单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _TimeNorm: 时间归一化
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeNorm: str
         :param _Amount: 吸烟量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: str
         :param _QuitState: 戒烟状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type QuitState: bool
         :param _State: 是否吸烟
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: bool
         :param _Value: 对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -25206,7 +23104,6 @@ class SmokeHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -25218,7 +23115,6 @@ class SmokeHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -25230,7 +23126,6 @@ class SmokeHistoryBlock(AbstractModel):
     @property
     def TimeUnit(self):
         """时间单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeUnit
@@ -25242,7 +23137,6 @@ class SmokeHistoryBlock(AbstractModel):
     @property
     def TimeNorm(self):
         """时间归一化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeNorm
@@ -25254,7 +23148,6 @@ class SmokeHistoryBlock(AbstractModel):
     @property
     def Amount(self):
         """吸烟量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Amount
@@ -25266,7 +23159,6 @@ class SmokeHistoryBlock(AbstractModel):
     @property
     def QuitState(self):
         """戒烟状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._QuitState
@@ -25278,7 +23170,6 @@ class SmokeHistoryBlock(AbstractModel):
     @property
     def State(self):
         """是否吸烟
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._State
@@ -25290,7 +23181,6 @@ class SmokeHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """对外输出值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -25327,19 +23217,14 @@ class StomatologyBaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _ToothDecay: 龋齿
-注意：此字段可能返回 null，表示取不到有效值。
         :type ToothDecay: :class:`tencentcloud.mrs.v20200910.models.StomatologyToothDecay`
         :param _Gingiva: 牙龈
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gingiva: :class:`tencentcloud.mrs.v20200910.models.StomatologyGingiva`
         :param _Periodontics: 牙周
-注意：此字段可能返回 null，表示取不到有效值。
         :type Periodontics: :class:`tencentcloud.mrs.v20200910.models.StomatologyPeriodontics`
         :param _Others: 口腔其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: list of KeyValueItem
         :param _BriefSummary: 小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.StomatologyBriefSummary`
         """
         self._ToothDecay = None
@@ -25351,7 +23236,6 @@ class StomatologyBaseItem(AbstractModel):
     @property
     def ToothDecay(self):
         """龋齿
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyToothDecay`
         """
         return self._ToothDecay
@@ -25363,7 +23247,6 @@ class StomatologyBaseItem(AbstractModel):
     @property
     def Gingiva(self):
         """牙龈
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyGingiva`
         """
         return self._Gingiva
@@ -25375,7 +23258,6 @@ class StomatologyBaseItem(AbstractModel):
     @property
     def Periodontics(self):
         """牙周
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyPeriodontics`
         """
         return self._Periodontics
@@ -25387,7 +23269,6 @@ class StomatologyBaseItem(AbstractModel):
     @property
     def Others(self):
         """口腔其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -25399,7 +23280,6 @@ class StomatologyBaseItem(AbstractModel):
     @property
     def BriefSummary(self):
         """小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.StomatologyBriefSummary`
         """
         return self._BriefSummary
@@ -25446,7 +23326,6 @@ class StomatologyBriefSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 口腔小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -25454,7 +23333,6 @@ class StomatologyBriefSummary(AbstractModel):
     @property
     def Text(self):
         """口腔小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -25486,7 +23364,6 @@ class StomatologyGingiva(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 牙龈总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -25494,7 +23371,6 @@ class StomatologyGingiva(AbstractModel):
     @property
     def Text(self):
         """牙龈总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -25526,7 +23402,6 @@ class StomatologyPeriodontics(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 牙周总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -25534,7 +23409,6 @@ class StomatologyPeriodontics(AbstractModel):
     @property
     def Text(self):
         """牙周总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -25566,7 +23440,6 @@ class StomatologyToothDecay(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 龋齿总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -25574,7 +23447,6 @@ class StomatologyToothDecay(AbstractModel):
     @property
     def Text(self):
         """龋齿总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -25606,13 +23478,10 @@ class Summary(AbstractModel):
     def __init__(self):
         r"""
         :param _Symptom: 症状
-注意：此字段可能返回 null，表示取不到有效值。
         :type Symptom: list of SymptomInfo
         :param _Text: 文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Symptom = None
@@ -25622,7 +23491,6 @@ class Summary(AbstractModel):
     @property
     def Symptom(self):
         """症状
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SymptomInfo
         """
         return self._Symptom
@@ -25634,7 +23502,6 @@ class Summary(AbstractModel):
     @property
     def Text(self):
         """文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -25646,7 +23513,6 @@ class Summary(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -25688,10 +23554,8 @@ class SummaryInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 诊断结论文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         :param _Infos: 诊断结论详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Infos: list of DetailInformation
         """
         self._Text = None
@@ -25700,7 +23564,6 @@ class SummaryInfo(AbstractModel):
     @property
     def Text(self):
         """诊断结论文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseInfo`
         """
         return self._Text
@@ -25712,7 +23575,6 @@ class SummaryInfo(AbstractModel):
     @property
     def Infos(self):
         """诊断结论详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetailInformation
         """
         return self._Infos
@@ -25750,13 +23612,10 @@ class Surgery(AbstractModel):
     def __init__(self):
         r"""
         :param _SurgeryHistory: 手术史
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryHistory: :class:`tencentcloud.mrs.v20200910.models.SurgeryHistory`
         :param _OtherInfo: 其他信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type OtherInfo: :class:`tencentcloud.mrs.v20200910.models.OtherInfo`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._SurgeryHistory = None
@@ -25766,7 +23625,6 @@ class Surgery(AbstractModel):
     @property
     def SurgeryHistory(self):
         """手术史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryHistory`
         """
         return self._SurgeryHistory
@@ -25778,7 +23636,6 @@ class Surgery(AbstractModel):
     @property
     def OtherInfo(self):
         """其他信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.OtherInfo`
         """
         return self._OtherInfo
@@ -25790,7 +23647,6 @@ class Surgery(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -25826,13 +23682,10 @@ class SurgeryAnorectal(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 肛门直肠总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _DigitalRectalExamination: 直肠指检
-注意：此字段可能返回 null，表示取不到有效值。
         :type DigitalRectalExamination: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Hemorrhoid: 痔疮
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hemorrhoid: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -25842,7 +23695,6 @@ class SurgeryAnorectal(AbstractModel):
     @property
     def Text(self):
         """肛门直肠总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -25854,7 +23706,6 @@ class SurgeryAnorectal(AbstractModel):
     @property
     def DigitalRectalExamination(self):
         """直肠指检
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._DigitalRectalExamination
@@ -25866,7 +23717,6 @@ class SurgeryAnorectal(AbstractModel):
     @property
     def Hemorrhoid(self):
         """痔疮
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Hemorrhoid
@@ -25904,10 +23754,8 @@ class SurgeryAttr(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -25916,7 +23764,6 @@ class SurgeryAttr(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -25928,7 +23775,6 @@ class SurgeryAttr(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -25959,34 +23805,24 @@ class SurgeryBaseItem(AbstractModel):
     def __init__(self):
         r"""
         :param _HeadNeck: 体检报告-外科-头颈部
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadNeck: :class:`tencentcloud.mrs.v20200910.models.SurgeryHeadNeck`
         :param _Thyroid: 体检报告-外科-甲状腺
-注意：此字段可能返回 null，表示取不到有效值。
         :type Thyroid: :class:`tencentcloud.mrs.v20200910.models.SurgeryThyroid`
         :param _Breast: 体检报告-外科-乳房
-注意：此字段可能返回 null，表示取不到有效值。
         :type Breast: :class:`tencentcloud.mrs.v20200910.models.SurgeryBreast`
         :param _LymphNode: 体检报告-外科-浅表淋巴结
-注意：此字段可能返回 null，表示取不到有效值。
         :type LymphNode: :class:`tencentcloud.mrs.v20200910.models.SurgeryLymphNode`
         :param _SpinalExtremities: 体检报告-外科-脊柱
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpinalExtremities: :class:`tencentcloud.mrs.v20200910.models.SurgerySpinalExtremities`
         :param _Skin: 体检报告-外科-皮肤
-注意：此字段可能返回 null，表示取不到有效值。
         :type Skin: :class:`tencentcloud.mrs.v20200910.models.SurgerySkin`
         :param _Anorectal: 体检报告-外科-肛门直肠
-注意：此字段可能返回 null，表示取不到有效值。
         :type Anorectal: :class:`tencentcloud.mrs.v20200910.models.SurgeryAnorectal`
         :param _UrogenitalSystem: 体检报告-外科-泌尿生殖系统
-注意：此字段可能返回 null，表示取不到有效值。
         :type UrogenitalSystem: :class:`tencentcloud.mrs.v20200910.models.SurgeryUrogenitalSystem`
         :param _Others: 体检报告-外科-外科其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type Others: list of KeyValueItem
         :param _BriefSummary: 体检报告-外科-小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.SurgeryBriefSummary`
         """
         self._HeadNeck = None
@@ -26003,7 +23839,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def HeadNeck(self):
         """体检报告-外科-头颈部
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryHeadNeck`
         """
         return self._HeadNeck
@@ -26015,7 +23850,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def Thyroid(self):
         """体检报告-外科-甲状腺
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryThyroid`
         """
         return self._Thyroid
@@ -26027,7 +23861,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def Breast(self):
         """体检报告-外科-乳房
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryBreast`
         """
         return self._Breast
@@ -26039,7 +23872,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def LymphNode(self):
         """体检报告-外科-浅表淋巴结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryLymphNode`
         """
         return self._LymphNode
@@ -26051,7 +23883,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def SpinalExtremities(self):
         """体检报告-外科-脊柱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgerySpinalExtremities`
         """
         return self._SpinalExtremities
@@ -26063,7 +23894,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def Skin(self):
         """体检报告-外科-皮肤
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgerySkin`
         """
         return self._Skin
@@ -26075,7 +23905,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def Anorectal(self):
         """体检报告-外科-肛门直肠
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAnorectal`
         """
         return self._Anorectal
@@ -26087,7 +23916,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def UrogenitalSystem(self):
         """体检报告-外科-泌尿生殖系统
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryUrogenitalSystem`
         """
         return self._UrogenitalSystem
@@ -26099,7 +23927,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def Others(self):
         """体检报告-外科-外科其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueItem
         """
         return self._Others
@@ -26111,7 +23938,6 @@ class SurgeryBaseItem(AbstractModel):
     @property
     def BriefSummary(self):
         """体检报告-外科-小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryBriefSummary`
         """
         return self._BriefSummary
@@ -26173,7 +23999,6 @@ class SurgeryBreast(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 乳房总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -26181,7 +24006,6 @@ class SurgeryBreast(AbstractModel):
     @property
     def Text(self):
         """乳房总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -26213,7 +24037,6 @@ class SurgeryBriefSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 外科小结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -26221,7 +24044,6 @@ class SurgeryBriefSummary(AbstractModel):
     @property
     def Text(self):
         """外科小结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -26253,17 +24075,13 @@ class SurgeryConditionBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _SurgeryList: 手术历史
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryList: list of SurgeryListBlock
         :param _Value: 对外输出值
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -26274,7 +24092,6 @@ class SurgeryConditionBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -26286,7 +24103,6 @@ class SurgeryConditionBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -26298,7 +24114,6 @@ class SurgeryConditionBlock(AbstractModel):
     @property
     def SurgeryList(self):
         """手术历史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SurgeryListBlock
         """
         return self._SurgeryList
@@ -26311,7 +24126,6 @@ class SurgeryConditionBlock(AbstractModel):
     def Value(self):
         """对外输出值
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -26349,7 +24163,6 @@ class SurgeryHeadNeck(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 头颈部总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -26357,7 +24170,6 @@ class SurgeryHeadNeck(AbstractModel):
     @property
     def Text(self):
         """头颈部总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -26389,22 +24201,16 @@ class SurgeryHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _SurgeryName: 手术名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryName: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _SurgeryDate: 手术日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryDate: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _PreoperativePathology: 术前诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreoperativePathology: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _IntraoperativePathology: 术中诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntraoperativePathology: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _PostoperativePathology: 术后诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostoperativePathology: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         :param _DischargeDiagnosis: 出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeDiagnosis: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         self._SurgeryName = None
@@ -26417,7 +24223,6 @@ class SurgeryHistory(AbstractModel):
     @property
     def SurgeryName(self):
         """手术名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._SurgeryName
@@ -26429,7 +24234,6 @@ class SurgeryHistory(AbstractModel):
     @property
     def SurgeryDate(self):
         """手术日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._SurgeryDate
@@ -26441,7 +24245,6 @@ class SurgeryHistory(AbstractModel):
     @property
     def PreoperativePathology(self):
         """术前诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._PreoperativePathology
@@ -26453,7 +24256,6 @@ class SurgeryHistory(AbstractModel):
     @property
     def IntraoperativePathology(self):
         """术中诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._IntraoperativePathology
@@ -26465,7 +24267,6 @@ class SurgeryHistory(AbstractModel):
     @property
     def PostoperativePathology(self):
         """术后诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._PostoperativePathology
@@ -26477,7 +24278,6 @@ class SurgeryHistory(AbstractModel):
     @property
     def DischargeDiagnosis(self):
         """出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
         """
         return self._DischargeDiagnosis
@@ -26524,16 +24324,12 @@ class SurgeryHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Surgerylist: 手术列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Surgerylist: list of SurgeryListBlock
         """
         self._Name = None
@@ -26544,7 +24340,6 @@ class SurgeryHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -26556,7 +24351,6 @@ class SurgeryHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -26568,7 +24362,6 @@ class SurgeryHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -26580,7 +24373,6 @@ class SurgeryHistoryBlock(AbstractModel):
     @property
     def Surgerylist(self):
         """手术列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SurgeryListBlock
         """
         return self._Surgerylist
@@ -26618,16 +24410,12 @@ class SurgeryListBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Time: 时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
         :param _TimeType: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeType: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: list of str
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: str
         """
         self._Time = None
@@ -26638,7 +24426,6 @@ class SurgeryListBlock(AbstractModel):
     @property
     def Time(self):
         """时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Time
@@ -26650,7 +24437,6 @@ class SurgeryListBlock(AbstractModel):
     @property
     def TimeType(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeType
@@ -26662,7 +24448,6 @@ class SurgeryListBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Name
@@ -26674,7 +24459,6 @@ class SurgeryListBlock(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Part
@@ -26707,7 +24491,6 @@ class SurgeryLymphNode(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 浅表淋巴结总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -26715,7 +24498,6 @@ class SurgeryLymphNode(AbstractModel):
     @property
     def Text(self):
         """浅表淋巴结总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -26747,7 +24529,6 @@ class SurgerySkin(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 皮肤总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -26755,7 +24536,6 @@ class SurgerySkin(AbstractModel):
     @property
     def Text(self):
         """皮肤总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -26787,25 +24567,18 @@ class SurgerySpinalExtremities(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 脊柱四肢总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _SpinalColumn: 脊柱
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpinalColumn: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _LimbJoint: 四肢和关节
-注意：此字段可能返回 null，表示取不到有效值。
         :type LimbJoint: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Foot: 平跛足
-注意：此字段可能返回 null，表示取不到有效值。
         :type Foot: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Bone: 骨骼
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bone: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Gait: 步态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gait: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Deformity: 残疾或畸形
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deformity: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -26819,7 +24592,6 @@ class SurgerySpinalExtremities(AbstractModel):
     @property
     def Text(self):
         """脊柱四肢总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -26831,7 +24603,6 @@ class SurgerySpinalExtremities(AbstractModel):
     @property
     def SpinalColumn(self):
         """脊柱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._SpinalColumn
@@ -26843,7 +24614,6 @@ class SurgerySpinalExtremities(AbstractModel):
     @property
     def LimbJoint(self):
         """四肢和关节
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._LimbJoint
@@ -26855,7 +24625,6 @@ class SurgerySpinalExtremities(AbstractModel):
     @property
     def Foot(self):
         """平跛足
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Foot
@@ -26867,7 +24636,6 @@ class SurgerySpinalExtremities(AbstractModel):
     @property
     def Bone(self):
         """骨骼
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Bone
@@ -26879,7 +24647,6 @@ class SurgerySpinalExtremities(AbstractModel):
     @property
     def Gait(self):
         """步态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Gait
@@ -26891,7 +24658,6 @@ class SurgerySpinalExtremities(AbstractModel):
     @property
     def Deformity(self):
         """残疾或畸形
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Deformity
@@ -26941,7 +24707,6 @@ class SurgeryThyroid(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 甲状腺总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -26949,7 +24714,6 @@ class SurgeryThyroid(AbstractModel):
     @property
     def Text(self):
         """甲状腺总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -26981,13 +24745,10 @@ class SurgeryUrogenitalSystem(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 泌尿生殖系统总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _Prostate: 前列腺
-注意：此字段可能返回 null，表示取不到有效值。
         :type Prostate: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         :param _ExternalReproductiveOrgans: 外生殖器（男性）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalReproductiveOrgans: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         self._Text = None
@@ -26997,7 +24758,6 @@ class SurgeryUrogenitalSystem(AbstractModel):
     @property
     def Text(self):
         """泌尿生殖系统总体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Text
@@ -27009,7 +24769,6 @@ class SurgeryUrogenitalSystem(AbstractModel):
     @property
     def Prostate(self):
         """前列腺
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._Prostate
@@ -27021,7 +24780,6 @@ class SurgeryUrogenitalSystem(AbstractModel):
     @property
     def ExternalReproductiveOrgans(self):
         """外生殖器（男性）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
         """
         return self._ExternalReproductiveOrgans
@@ -27059,25 +24817,18 @@ class SymptomInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Grade: 等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _Symptom: 病变
-注意：此字段可能返回 null，表示取不到有效值。
         :type Symptom: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Attrs: 属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Attrs: list of BlockInfo
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Coords: 坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         """
         self._Grade = None
@@ -27091,7 +24842,6 @@ class SymptomInfo(AbstractModel):
     @property
     def Grade(self):
         """等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Grade
@@ -27103,7 +24853,6 @@ class SymptomInfo(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -27115,7 +24864,6 @@ class SymptomInfo(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -27127,7 +24875,6 @@ class SymptomInfo(AbstractModel):
     @property
     def Symptom(self):
         """病变
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Symptom
@@ -27139,7 +24886,6 @@ class SymptomInfo(AbstractModel):
     @property
     def Attrs(self):
         """属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BlockInfo
         """
         return self._Attrs
@@ -27151,7 +24897,6 @@ class SymptomInfo(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -27163,7 +24908,6 @@ class SymptomInfo(AbstractModel):
     @property
     def Coords(self):
         """坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -27215,10 +24959,8 @@ class TableIndicators(AbstractModel):
     def __init__(self):
         r"""
         :param _Indicators: 项目列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Indicators: list of IndicatorItemV2
         :param _Sample: 采样标本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sample: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         self._Indicators = None
@@ -27227,7 +24969,6 @@ class TableIndicators(AbstractModel):
     @property
     def Indicators(self):
         """项目列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IndicatorItemV2
         """
         return self._Indicators
@@ -27239,7 +24980,6 @@ class TableIndicators(AbstractModel):
     @property
     def Sample(self):
         """采样标本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BaseItem`
         """
         return self._Sample
@@ -27277,91 +25017,62 @@ class Template(AbstractModel):
     def __init__(self):
         r"""
         :param _PatientInfo: 患者信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PatientInfo: :class:`tencentcloud.mrs.v20200910.models.PatientInfo`
         :param _ReportInfo: 报告信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportInfo: :class:`tencentcloud.mrs.v20200910.models.ReportInfo`
         :param _Check: 检查报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Check: :class:`tencentcloud.mrs.v20200910.models.Check`
         :param _Pathology: 病理报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pathology: :class:`tencentcloud.mrs.v20200910.models.PathologyReport`
         :param _MedDoc: 出院报告，入院报告，门诊病历
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedDoc: :class:`tencentcloud.mrs.v20200910.models.MedDoc`
         :param _DiagCert: 诊断证明
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiagCert: :class:`tencentcloud.mrs.v20200910.models.DiagCert`
         :param _FirstPage: 病案首页
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstPage: :class:`tencentcloud.mrs.v20200910.models.FirstPage`
         :param _Indicator: 检验报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Indicator: :class:`tencentcloud.mrs.v20200910.models.Indicator`
         :param _ReportType: 报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportType: str
         :param _MedicalRecordInfo: 门诊病历信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalRecordInfo: :class:`tencentcloud.mrs.v20200910.models.MedicalRecordInfo`
         :param _Hospitalization: 出入院信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hospitalization: :class:`tencentcloud.mrs.v20200910.models.Hospitalization`
         :param _Surgery: 手术记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type Surgery: :class:`tencentcloud.mrs.v20200910.models.Surgery`
         :param _Electrocardiogram: 心电图报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Electrocardiogram: :class:`tencentcloud.mrs.v20200910.models.Electrocardiogram`
         :param _Endoscopy: 内窥镜报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Endoscopy: :class:`tencentcloud.mrs.v20200910.models.Endoscopy`
         :param _Prescription: 处方单
-注意：此字段可能返回 null，表示取不到有效值。
         :type Prescription: :class:`tencentcloud.mrs.v20200910.models.Prescription`
         :param _VaccineCertificate: 疫苗接种凭证
-注意：此字段可能返回 null，表示取不到有效值。
         :type VaccineCertificate: :class:`tencentcloud.mrs.v20200910.models.VaccineCertificate`
         :param _OcrText: OCR文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrText: str
         :param _OcrResult: OCR拼接后文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrResult: str
         :param _ReportTypeDesc: 报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTypeDesc: str
         :param _PathologyV2: 病理报告v2
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologyV2: :class:`tencentcloud.mrs.v20200910.models.PathologyV2`
         :param _C14: 碳14尿素呼气试验
-注意：此字段可能返回 null，表示取不到有效值。
         :type C14: :class:`tencentcloud.mrs.v20200910.models.Indicator`
         :param _Exame: 体检结论
-注意：此字段可能返回 null，表示取不到有效值。
         :type Exame: :class:`tencentcloud.mrs.v20200910.models.Exame`
         :param _MedDocV2: 出院报告v2，入院报告v2，门诊病历v2
-注意：此字段可能返回 null，表示取不到有效值。
         :type MedDocV2: :class:`tencentcloud.mrs.v20200910.models.DischargeInfoBlock`
         :param _IndicatorV3: 检验报告v3
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndicatorV3: :class:`tencentcloud.mrs.v20200910.models.IndicatorV3`
         :param _Covid: 核酸报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Covid: :class:`tencentcloud.mrs.v20200910.models.CovidItemsInfo`
         :param _Maternity: 孕产报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Maternity: :class:`tencentcloud.mrs.v20200910.models.Maternity`
         :param _Eye: 眼科报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Eye: :class:`tencentcloud.mrs.v20200910.models.EyeItemsInfo`
         :param _BirthCert: 出生证明
-注意：此字段可能返回 null，表示取不到有效值。
         :type BirthCert: :class:`tencentcloud.mrs.v20200910.models.BirthCert`
         :param _Timeline: 时间轴
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timeline: :class:`tencentcloud.mrs.v20200910.models.TimelineInformation`
         """
         self._PatientInfo = None
@@ -27397,7 +25108,6 @@ class Template(AbstractModel):
     @property
     def PatientInfo(self):
         """患者信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PatientInfo`
         """
         return self._PatientInfo
@@ -27409,7 +25119,6 @@ class Template(AbstractModel):
     @property
     def ReportInfo(self):
         """报告信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ReportInfo`
         """
         return self._ReportInfo
@@ -27421,7 +25130,6 @@ class Template(AbstractModel):
     @property
     def Check(self):
         """检查报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Check`
         """
         return self._Check
@@ -27433,7 +25141,6 @@ class Template(AbstractModel):
     @property
     def Pathology(self):
         """病理报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PathologyReport`
         """
         return self._Pathology
@@ -27445,7 +25152,6 @@ class Template(AbstractModel):
     @property
     def MedDoc(self):
         """出院报告，入院报告，门诊病历
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MedDoc`
         """
         return self._MedDoc
@@ -27457,7 +25163,6 @@ class Template(AbstractModel):
     @property
     def DiagCert(self):
         """诊断证明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiagCert`
         """
         return self._DiagCert
@@ -27469,7 +25174,6 @@ class Template(AbstractModel):
     @property
     def FirstPage(self):
         """病案首页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.FirstPage`
         """
         return self._FirstPage
@@ -27481,7 +25185,6 @@ class Template(AbstractModel):
     @property
     def Indicator(self):
         """检验报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Indicator`
         """
         return self._Indicator
@@ -27493,7 +25196,6 @@ class Template(AbstractModel):
     @property
     def ReportType(self):
         """报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportType
@@ -27505,7 +25207,6 @@ class Template(AbstractModel):
     @property
     def MedicalRecordInfo(self):
         """门诊病历信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.MedicalRecordInfo`
         """
         return self._MedicalRecordInfo
@@ -27517,7 +25218,6 @@ class Template(AbstractModel):
     @property
     def Hospitalization(self):
         """出入院信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Hospitalization`
         """
         return self._Hospitalization
@@ -27529,7 +25229,6 @@ class Template(AbstractModel):
     @property
     def Surgery(self):
         """手术记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Surgery`
         """
         return self._Surgery
@@ -27541,7 +25240,6 @@ class Template(AbstractModel):
     @property
     def Electrocardiogram(self):
         """心电图报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Electrocardiogram`
         """
         return self._Electrocardiogram
@@ -27553,7 +25251,6 @@ class Template(AbstractModel):
     @property
     def Endoscopy(self):
         """内窥镜报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Endoscopy`
         """
         return self._Endoscopy
@@ -27565,7 +25262,6 @@ class Template(AbstractModel):
     @property
     def Prescription(self):
         """处方单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Prescription`
         """
         return self._Prescription
@@ -27577,7 +25273,6 @@ class Template(AbstractModel):
     @property
     def VaccineCertificate(self):
         """疫苗接种凭证
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.VaccineCertificate`
         """
         return self._VaccineCertificate
@@ -27589,7 +25284,6 @@ class Template(AbstractModel):
     @property
     def OcrText(self):
         """OCR文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OcrText
@@ -27601,7 +25295,6 @@ class Template(AbstractModel):
     @property
     def OcrResult(self):
         """OCR拼接后文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OcrResult
@@ -27613,7 +25306,6 @@ class Template(AbstractModel):
     @property
     def ReportTypeDesc(self):
         """报告类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportTypeDesc
@@ -27625,7 +25317,6 @@ class Template(AbstractModel):
     @property
     def PathologyV2(self):
         """病理报告v2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PathologyV2`
         """
         return self._PathologyV2
@@ -27637,7 +25328,6 @@ class Template(AbstractModel):
     @property
     def C14(self):
         """碳14尿素呼气试验
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Indicator`
         """
         return self._C14
@@ -27649,7 +25339,6 @@ class Template(AbstractModel):
     @property
     def Exame(self):
         """体检结论
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Exame`
         """
         return self._Exame
@@ -27661,7 +25350,6 @@ class Template(AbstractModel):
     @property
     def MedDocV2(self):
         """出院报告v2，入院报告v2，门诊病历v2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DischargeInfoBlock`
         """
         return self._MedDocV2
@@ -27673,7 +25361,6 @@ class Template(AbstractModel):
     @property
     def IndicatorV3(self):
         """检验报告v3
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.IndicatorV3`
         """
         return self._IndicatorV3
@@ -27685,7 +25372,6 @@ class Template(AbstractModel):
     @property
     def Covid(self):
         """核酸报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.CovidItemsInfo`
         """
         return self._Covid
@@ -27697,7 +25383,6 @@ class Template(AbstractModel):
     @property
     def Maternity(self):
         """孕产报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Maternity`
         """
         return self._Maternity
@@ -27709,7 +25394,6 @@ class Template(AbstractModel):
     @property
     def Eye(self):
         """眼科报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.EyeItemsInfo`
         """
         return self._Eye
@@ -27721,7 +25405,6 @@ class Template(AbstractModel):
     @property
     def BirthCert(self):
         """出生证明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BirthCert`
         """
         return self._BirthCert
@@ -27733,7 +25416,6 @@ class Template(AbstractModel):
     @property
     def Timeline(self):
         """时间轴
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.TimelineInformation`
         """
         return self._Timeline
@@ -28094,13 +25776,10 @@ class TextType(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 类别Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Level: 类别层级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _Name: 类别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Id = None
@@ -28110,7 +25789,6 @@ class TextType(AbstractModel):
     @property
     def Id(self):
         """类别Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -28122,7 +25800,6 @@ class TextType(AbstractModel):
     @property
     def Level(self):
         """类别层级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -28134,7 +25811,6 @@ class TextType(AbstractModel):
     @property
     def Name(self):
         """类别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -28166,10 +25842,8 @@ class TextTypeListBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _TextTypeList: 文本类型列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextTypeList: list of TextType
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._TextTypeList = None
@@ -28178,7 +25852,6 @@ class TextTypeListBlock(AbstractModel):
     @property
     def TextTypeList(self):
         """文本类型列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TextType
         """
         return self._TextTypeList
@@ -28190,7 +25863,6 @@ class TextTypeListBlock(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -28226,10 +25898,8 @@ class Time(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 具体时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 时间值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -28238,7 +25908,6 @@ class Time(AbstractModel):
     @property
     def Name(self):
         """具体时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -28250,7 +25919,6 @@ class Time(AbstractModel):
     @property
     def Value(self):
         """时间值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -28281,28 +25949,20 @@ class TimelineEvent(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 事件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Src: 原文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _SubType: 事件子类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubType: str
         :param _Time: 事件发生时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
         :param _Value: 事件值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Rectangle: 位置坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rectangle: :class:`tencentcloud.mrs.v20200910.models.Rectangle`
         :param _Place: 事件发生地点
-注意：此字段可能返回 null，表示取不到有效值。
         :type Place: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._Type = None
@@ -28317,7 +25977,6 @@ class TimelineEvent(AbstractModel):
     @property
     def Type(self):
         """事件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -28329,7 +25988,6 @@ class TimelineEvent(AbstractModel):
     @property
     def Src(self):
         """原文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -28341,7 +25999,6 @@ class TimelineEvent(AbstractModel):
     @property
     def SubType(self):
         """事件子类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubType
@@ -28353,7 +26010,6 @@ class TimelineEvent(AbstractModel):
     @property
     def Time(self):
         """事件发生时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Time
@@ -28365,7 +26021,6 @@ class TimelineEvent(AbstractModel):
     @property
     def Value(self):
         """事件值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -28377,7 +26032,6 @@ class TimelineEvent(AbstractModel):
     @property
     def Rectangle(self):
         """位置坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Rectangle`
         """
         return self._Rectangle
@@ -28389,7 +26043,6 @@ class TimelineEvent(AbstractModel):
     @property
     def Place(self):
         """事件发生地点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Place
@@ -28401,7 +26054,6 @@ class TimelineEvent(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -28440,10 +26092,8 @@ class TimelineInformation(AbstractModel):
     def __init__(self):
         r"""
         :param _Timeline: 时间轴
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timeline: list of TimelineEvent
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Timeline = None
@@ -28452,7 +26102,6 @@ class TimelineInformation(AbstractModel):
     @property
     def Timeline(self):
         """时间轴
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimelineEvent
         """
         return self._Timeline
@@ -28464,7 +26113,6 @@ class TimelineInformation(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -28500,16 +26148,12 @@ class TransfusionHistoryBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _State: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: bool
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -28520,7 +26164,6 @@ class TransfusionHistoryBlock(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -28532,7 +26175,6 @@ class TransfusionHistoryBlock(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -28544,7 +26186,6 @@ class TransfusionHistoryBlock(AbstractModel):
     @property
     def State(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._State
@@ -28556,7 +26197,6 @@ class TransfusionHistoryBlock(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -28592,85 +26232,58 @@ class TreatmentRecord(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type DmissionCondition: str
         :param _ChiefComplaint: 主诉
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChiefComplaint: str
         :param _DiseasePresent: 现病史
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseasePresent: str
         :param _SymptomsAndSigns: 主要症状体征
-注意：此字段可能返回 null，表示取不到有效值。
         :type SymptomsAndSigns: str
         :param _AuxiliaryExamination: 辅助检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuxiliaryExamination: str
         :param _BodyExamination: 体格检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type BodyExamination: str
         :param _SpecialistExamination: 专科检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialistExamination: str
         :param _MentalExamination: 精神检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type MentalExamination: str
         :param _CheckRecord: 检查记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckRecord: str
         :param _InspectResult: 化验结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type InspectResult: str
         :param _IncisionHealing: 切口愈合情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncisionHealing: str
         :param _TreatmentSuggestion: 处理意见
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreatmentSuggestion: str
         :param _FollowUpRequirements: 门诊随访要求
-注意：此字段可能返回 null，表示取不到有效值。
         :type FollowUpRequirements: str
         :param _CheckAndTreatmentProcess: 诊疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckAndTreatmentProcess: str
         :param _SurgeryCondition: 手术经过
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryCondition: str
         :param _ConditionChanges: 入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionChanges: str
         :param _DischargeCondition: 出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeCondition: str
         :param _PTNM: pTNM信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNM: str
         :param _PTNMM: pTNMM信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMM: str
         :param _PTNMN: pTNMN信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMN: str
         :param _PTNMT: pTNMT信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMT: str
         :param _ECOG: ECOG信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ECOG: str
         :param _NRS: NRS信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type NRS: str
         :param _KPS: KPS信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type KPS: str
         :param _DeathDate: 死亡日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeathDate: str
         :param _RelapseDate: 复发日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelapseDate: str
         :param _ObservationDays: 观测天数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObservationDays: str
         :param _AdmissionCondition: 入院
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionCondition: str
         """
         self._DmissionCondition = None
@@ -28721,7 +26334,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def ChiefComplaint(self):
         """主诉
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChiefComplaint
@@ -28733,7 +26345,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def DiseasePresent(self):
         """现病史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiseasePresent
@@ -28745,7 +26356,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def SymptomsAndSigns(self):
         """主要症状体征
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SymptomsAndSigns
@@ -28757,7 +26367,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def AuxiliaryExamination(self):
         """辅助检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuxiliaryExamination
@@ -28769,7 +26378,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def BodyExamination(self):
         """体格检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BodyExamination
@@ -28781,7 +26389,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def SpecialistExamination(self):
         """专科检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpecialistExamination
@@ -28793,7 +26400,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def MentalExamination(self):
         """精神检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MentalExamination
@@ -28805,7 +26411,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def CheckRecord(self):
         """检查记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckRecord
@@ -28817,7 +26422,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def InspectResult(self):
         """化验结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InspectResult
@@ -28829,7 +26433,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def IncisionHealing(self):
         """切口愈合情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncisionHealing
@@ -28841,7 +26444,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def TreatmentSuggestion(self):
         """处理意见
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreatmentSuggestion
@@ -28853,7 +26455,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def FollowUpRequirements(self):
         """门诊随访要求
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FollowUpRequirements
@@ -28865,7 +26466,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def CheckAndTreatmentProcess(self):
         """诊疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckAndTreatmentProcess
@@ -28877,7 +26477,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def SurgeryCondition(self):
         """手术经过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SurgeryCondition
@@ -28889,7 +26488,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def ConditionChanges(self):
         """入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConditionChanges
@@ -28901,7 +26499,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def DischargeCondition(self):
         """出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeCondition
@@ -28913,7 +26510,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def PTNM(self):
         """pTNM信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PTNM
@@ -28925,7 +26521,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def PTNMM(self):
         """pTNMM信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PTNMM
@@ -28937,7 +26532,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def PTNMN(self):
         """pTNMN信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PTNMN
@@ -28949,7 +26543,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def PTNMT(self):
         """pTNMT信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PTNMT
@@ -28961,7 +26554,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def ECOG(self):
         """ECOG信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ECOG
@@ -28973,7 +26565,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def NRS(self):
         """NRS信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NRS
@@ -28985,7 +26576,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def KPS(self):
         """KPS信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KPS
@@ -28997,7 +26587,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def DeathDate(self):
         """死亡日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeathDate
@@ -29009,7 +26598,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def RelapseDate(self):
         """复发日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RelapseDate
@@ -29021,7 +26609,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def ObservationDays(self):
         """观测天数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObservationDays
@@ -29033,7 +26620,6 @@ class TreatmentRecord(AbstractModel):
     @property
     def AdmissionCondition(self):
         """入院
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionCondition
@@ -29090,157 +26676,106 @@ class TreatmentRecordBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Immunohistochemistry: 免疫组化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Immunohistochemistry: :class:`tencentcloud.mrs.v20200910.models.ImmunohistochemistryBlock`
         :param _ChiefComplaint: 主诉
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChiefComplaint: :class:`tencentcloud.mrs.v20200910.models.ChiefComplaintBlock`
         :param _AdmissionCondition: 入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionCondition: :class:`tencentcloud.mrs.v20200910.models.AdmissionConditionBlock`
         :param _BodyExamination: 查体
-注意：此字段可能返回 null，表示取不到有效值。
         :type BodyExamination: :class:`tencentcloud.mrs.v20200910.models.BodyExaminationBlock`
         :param _AdmissionDiagnosis: 入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionDiagnosis: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         :param _AdmissionTraditionalDiagnosis: 入院中医诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionTraditionalDiagnosis: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         :param _AdmissionModernDiagnosis: 入院西医诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionModernDiagnosis: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         :param _PathologicalDiagnosis: 病理诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologicalDiagnosis: :class:`tencentcloud.mrs.v20200910.models.PathologicalDiagnosisBlock`
         :param _DiseasePresent: 现病史
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiseasePresent: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _SymptomsAndSigns: 体征
-注意：此字段可能返回 null，表示取不到有效值。
         :type SymptomsAndSigns: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _AuxiliaryExamination: 辅助检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuxiliaryExamination: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _SpecialistExamination: 特殊检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialistExamination: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _MentalExamination: 精神检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type MentalExamination: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _CheckRecord: 检查记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckRecord: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _InspectResult: 检查结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type InspectResult: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _CheckAndTreatmentProcess: 治疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckAndTreatmentProcess: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _SurgeryCondition: 手术经过
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryCondition: :class:`tencentcloud.mrs.v20200910.models.SurgeryConditionBlock`
         :param _IncisionHealing: 切口愈合
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncisionHealing: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _DischargeDiagnosis: 出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeDiagnosis: :class:`tencentcloud.mrs.v20200910.models.DischargeDiagnosisBlock`
         :param _DischargeTraditionalDiagnosis: 出院中医诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeTraditionalDiagnosis: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _DischargeModernDiagnosis: 出院西医诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeModernDiagnosis: :class:`tencentcloud.mrs.v20200910.models.DischargeDiagnosisBlock`
         :param _DischargeCondition: 出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeCondition: :class:`tencentcloud.mrs.v20200910.models.DischargeConditionBlock`
         :param _DischargeInstructions: 出院医嘱
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeInstructions: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _TreatmentSuggestion: 治疗建议
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreatmentSuggestion: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _FollowUpRequirements: 随访
-注意：此字段可能返回 null，表示取不到有效值。
         :type FollowUpRequirements: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _ConditionChanges: 治疗情况变化
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionChanges: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _PulmonaryArterySystolicPressure: 收缩压
-注意：此字段可能返回 null，表示取不到有效值。
         :type PulmonaryArterySystolicPressure: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _BCLC: bclc分期
-注意：此字段可能返回 null，表示取不到有效值。
         :type BCLC: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _PTNM: PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTNM: :class:`tencentcloud.mrs.v20200910.models.PTNMBlock`
         :param _ECOG: ECOG评分
-注意：此字段可能返回 null，表示取不到有效值。
         :type ECOG: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _NRS: NRS评分
-注意：此字段可能返回 null，表示取不到有效值。
         :type NRS: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _KPS: kps评分
-注意：此字段可能返回 null，表示取不到有效值。
         :type KPS: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         :param _Cancerstaging: 癌症分期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cancerstaging: :class:`tencentcloud.mrs.v20200910.models.ClinicalStaging`
         :param _DeathDate: 死亡时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeathDate: :class:`tencentcloud.mrs.v20200910.models.DeathDateBlock`
         :param _RelapseDate: 复发日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelapseDate: :class:`tencentcloud.mrs.v20200910.models.RelapseDateBlock`
         :param _ObservationDays: 观察日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObservationDays: :class:`tencentcloud.mrs.v20200910.models.DeathDateBlock`
         :param _IncisionHealingText: 切口愈合情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncisionHealingText: str
         :param _AuxiliaryExaminationText: 辅助检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuxiliaryExaminationText: str
         :param _SpecialExamText: 特殊检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialExamText: str
         :param _OutpatientDiagnosisText: 门诊诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutpatientDiagnosisText: str
         :param _AdmissionConditionText: 入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionConditionText: str
         :param _CheckAndTreatmentProcessText: 诊疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckAndTreatmentProcessText: str
         :param _SymptomsAndSignsText: 体征
-注意：此字段可能返回 null，表示取不到有效值。
         :type SymptomsAndSignsText: str
         :param _DischargeInstructionsText: 出院医嘱
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeInstructionsText: str
         :param _AdmissionDiagnosisText: 入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionDiagnosisText: str
         :param _SurgeryConditionText: 手术情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryConditionText: str
         :param _PathologicalDiagnosisText: 病理诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathologicalDiagnosisText: str
         :param _DischargeConditionText: 出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeConditionText: str
         :param _CheckRecordText: 检查记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckRecordText: str
         :param _ChiefComplaintText: 主诉
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChiefComplaintText: str
         :param _DischargeDiagnosisText: 出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeDiagnosisText: str
         """
         self._Immunohistochemistry = None
@@ -29298,7 +26833,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def Immunohistochemistry(self):
         """免疫组化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ImmunohistochemistryBlock`
         """
         return self._Immunohistochemistry
@@ -29310,7 +26844,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def ChiefComplaint(self):
         """主诉
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ChiefComplaintBlock`
         """
         return self._ChiefComplaint
@@ -29322,7 +26855,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def AdmissionCondition(self):
         """入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AdmissionConditionBlock`
         """
         return self._AdmissionCondition
@@ -29334,7 +26866,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def BodyExamination(self):
         """查体
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BodyExaminationBlock`
         """
         return self._BodyExamination
@@ -29346,7 +26877,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def AdmissionDiagnosis(self):
         """入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         """
         return self._AdmissionDiagnosis
@@ -29358,7 +26888,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def AdmissionTraditionalDiagnosis(self):
         """入院中医诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         """
         return self._AdmissionTraditionalDiagnosis
@@ -29370,7 +26899,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def AdmissionModernDiagnosis(self):
         """入院西医诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AdmissionDiagnosisBlock`
         """
         return self._AdmissionModernDiagnosis
@@ -29382,7 +26910,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def PathologicalDiagnosis(self):
         """病理诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PathologicalDiagnosisBlock`
         """
         return self._PathologicalDiagnosis
@@ -29394,7 +26921,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DiseasePresent(self):
         """现病史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._DiseasePresent
@@ -29406,7 +26932,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def SymptomsAndSigns(self):
         """体征
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._SymptomsAndSigns
@@ -29418,7 +26943,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def AuxiliaryExamination(self):
         """辅助检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._AuxiliaryExamination
@@ -29430,7 +26954,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def SpecialistExamination(self):
         """特殊检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._SpecialistExamination
@@ -29442,7 +26965,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def MentalExamination(self):
         """精神检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._MentalExamination
@@ -29454,7 +26976,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def CheckRecord(self):
         """检查记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._CheckRecord
@@ -29466,7 +26987,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def InspectResult(self):
         """检查结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._InspectResult
@@ -29478,7 +26998,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def CheckAndTreatmentProcess(self):
         """治疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._CheckAndTreatmentProcess
@@ -29490,7 +27009,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def SurgeryCondition(self):
         """手术经过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.SurgeryConditionBlock`
         """
         return self._SurgeryCondition
@@ -29502,7 +27020,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def IncisionHealing(self):
         """切口愈合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._IncisionHealing
@@ -29514,7 +27031,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DischargeDiagnosis(self):
         """出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DischargeDiagnosisBlock`
         """
         return self._DischargeDiagnosis
@@ -29526,7 +27042,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DischargeTraditionalDiagnosis(self):
         """出院中医诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._DischargeTraditionalDiagnosis
@@ -29538,7 +27053,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DischargeModernDiagnosis(self):
         """出院西医诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DischargeDiagnosisBlock`
         """
         return self._DischargeModernDiagnosis
@@ -29550,7 +27064,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DischargeCondition(self):
         """出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DischargeConditionBlock`
         """
         return self._DischargeCondition
@@ -29562,7 +27075,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DischargeInstructions(self):
         """出院医嘱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._DischargeInstructions
@@ -29574,7 +27086,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def TreatmentSuggestion(self):
         """治疗建议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._TreatmentSuggestion
@@ -29586,7 +27097,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def FollowUpRequirements(self):
         """随访
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._FollowUpRequirements
@@ -29598,7 +27108,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def ConditionChanges(self):
         """治疗情况变化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._ConditionChanges
@@ -29610,7 +27119,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def PulmonaryArterySystolicPressure(self):
         """收缩压
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._PulmonaryArterySystolicPressure
@@ -29622,7 +27130,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def BCLC(self):
         """bclc分期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._BCLC
@@ -29634,7 +27141,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def PTNM(self):
         """PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PTNMBlock`
         """
         return self._PTNM
@@ -29646,7 +27152,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def ECOG(self):
         """ECOG评分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._ECOG
@@ -29658,7 +27163,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def NRS(self):
         """NRS评分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._NRS
@@ -29670,7 +27174,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def KPS(self):
         """kps评分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DiseasePresentBlock`
         """
         return self._KPS
@@ -29682,7 +27185,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def Cancerstaging(self):
         """癌症分期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.ClinicalStaging`
         """
         return self._Cancerstaging
@@ -29694,7 +27196,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DeathDate(self):
         """死亡时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DeathDateBlock`
         """
         return self._DeathDate
@@ -29706,7 +27207,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def RelapseDate(self):
         """复发日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.RelapseDateBlock`
         """
         return self._RelapseDate
@@ -29718,7 +27218,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def ObservationDays(self):
         """观察日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.DeathDateBlock`
         """
         return self._ObservationDays
@@ -29730,7 +27229,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def IncisionHealingText(self):
         """切口愈合情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncisionHealingText
@@ -29742,7 +27240,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def AuxiliaryExaminationText(self):
         """辅助检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuxiliaryExaminationText
@@ -29754,7 +27251,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def SpecialExamText(self):
         """特殊检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpecialExamText
@@ -29766,7 +27262,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def OutpatientDiagnosisText(self):
         """门诊诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutpatientDiagnosisText
@@ -29778,7 +27273,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def AdmissionConditionText(self):
         """入院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionConditionText
@@ -29790,7 +27284,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def CheckAndTreatmentProcessText(self):
         """诊疗经过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckAndTreatmentProcessText
@@ -29802,7 +27295,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def SymptomsAndSignsText(self):
         """体征
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SymptomsAndSignsText
@@ -29814,7 +27306,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DischargeInstructionsText(self):
         """出院医嘱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeInstructionsText
@@ -29826,7 +27317,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def AdmissionDiagnosisText(self):
         """入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdmissionDiagnosisText
@@ -29838,7 +27328,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def SurgeryConditionText(self):
         """手术情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SurgeryConditionText
@@ -29850,7 +27339,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def PathologicalDiagnosisText(self):
         """病理诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PathologicalDiagnosisText
@@ -29862,7 +27350,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DischargeConditionText(self):
         """出院情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeConditionText
@@ -29874,7 +27361,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def CheckRecordText(self):
         """检查记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckRecordText
@@ -29886,7 +27372,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def ChiefComplaintText(self):
         """主诉
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChiefComplaintText
@@ -29898,7 +27383,6 @@ class TreatmentRecordBlock(AbstractModel):
     @property
     def DischargeDiagnosisText(self):
         """出院诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DischargeDiagnosisText
@@ -30050,142 +27534,97 @@ class TuberInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
         :param _Size: 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: list of Size
         :param _Multiple: 多发
-注意：此字段可能返回 null，表示取不到有效值。
         :type Multiple: :class:`tencentcloud.mrs.v20200910.models.Multiple`
         :param _AspectRatio: 纵横比
-注意：此字段可能返回 null，表示取不到有效值。
         :type AspectRatio: :class:`tencentcloud.mrs.v20200910.models.AspectRatio`
         :param _Edge: 边缘
-注意：此字段可能返回 null，表示取不到有效值。
         :type Edge: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _InnerEcho: 内部回声
-注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEcho: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _RearEcho: 外部回声
-注意：此字段可能返回 null，表示取不到有效值。
         :type RearEcho: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Elastic: 弹性质地
-注意：此字段可能返回 null，表示取不到有效值。
         :type Elastic: :class:`tencentcloud.mrs.v20200910.models.Elastic`
         :param _Shape: 形状
-注意：此字段可能返回 null，表示取不到有效值。
         :type Shape: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _ShapeAttr: 形态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShapeAttr: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _SkinMedulla: 皮髓质信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkinMedulla: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Trend: 变化趋势
-注意：此字段可能返回 null，表示取不到有效值。
         :type Trend: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Calcification: 钙化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Calcification: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Envelope: 包膜
-注意：此字段可能返回 null，表示取不到有效值。
         :type Envelope: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Enhancement: 强化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enhancement: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _LymphEnlargement: 淋巴结
-注意：此字段可能返回 null，表示取不到有效值。
         :type LymphEnlargement: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _LymphDoor: 淋巴门
-注意：此字段可能返回 null，表示取不到有效值。
         :type LymphDoor: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Activity: 活动度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Activity: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Operation: 手术情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _CDFI: 血液cdfi
-注意：此字段可能返回 null，表示取不到有效值。
         :type CDFI: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Index: 原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
         :param _SizeStatus: 大小状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type SizeStatus: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _InnerEchoDistribution: 内部回声分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEchoDistribution: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _InnerEchoType: 内部回声类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEchoType: list of BlockInfo
         :param _Outline: 轮廓
-注意：此字段可能返回 null，表示取不到有效值。
         :type Outline: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Structure: 结构
-注意：此字段可能返回 null，表示取不到有效值。
         :type Structure: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Density: 密度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Density: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Vas: 血管
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vas: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Cysticwall: 囊壁
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cysticwall: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Capsule: 被膜
-注意：此字段可能返回 null，表示取不到有效值。
         :type Capsule: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _IsthmusThicknese: 峡部厚度
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsthmusThicknese: :class:`tencentcloud.mrs.v20200910.models.Size`
         :param _Src: 原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         :param _Transparent: 透声度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Transparent: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _MriAdc: MRI ADC
-注意：此字段可能返回 null，表示取不到有效值。
         :type MriAdc: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _MriDwi: MRI DWI
-注意：此字段可能返回 null，表示取不到有效值。
         :type MriDwi: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _MriT1: MRI T1信号
-注意：此字段可能返回 null，表示取不到有效值。
         :type MriT1: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _MriT2: MRI T2信号
-注意：此字段可能返回 null，表示取不到有效值。
         :type MriT2: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _CtHu: CT HU值
-注意：此字段可能返回 null，表示取不到有效值。
         :type CtHu: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Suvmax: SUmax值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suvmax: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Metabolism: 代谢情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metabolism: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _RadioactiveUptake: 放射性摄取
-注意：此字段可能返回 null，表示取不到有效值。
         :type RadioactiveUptake: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _SymDesc: 病变
-注意：此字段可能返回 null，表示取不到有效值。
         :type SymDesc: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _ImageFeature: 影像特征
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageFeature: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param _Coords: 在报告图片中的坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
         :param _IsthmusThickness: 峡部厚度
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsthmusThickness: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
         self._Type = None
@@ -30238,7 +27677,6 @@ class TuberInfo(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Type
@@ -30250,7 +27688,6 @@ class TuberInfo(AbstractModel):
     @property
     def Part(self):
         """部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Part`
         """
         return self._Part
@@ -30262,7 +27699,6 @@ class TuberInfo(AbstractModel):
     @property
     def Size(self):
         """大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Size
         """
         return self._Size
@@ -30274,7 +27710,6 @@ class TuberInfo(AbstractModel):
     @property
     def Multiple(self):
         """多发
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Multiple`
         """
         return self._Multiple
@@ -30286,7 +27721,6 @@ class TuberInfo(AbstractModel):
     @property
     def AspectRatio(self):
         """纵横比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.AspectRatio`
         """
         return self._AspectRatio
@@ -30298,7 +27732,6 @@ class TuberInfo(AbstractModel):
     @property
     def Edge(self):
         """边缘
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Edge
@@ -30310,7 +27743,6 @@ class TuberInfo(AbstractModel):
     @property
     def InnerEcho(self):
         """内部回声
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InnerEcho
@@ -30322,7 +27754,6 @@ class TuberInfo(AbstractModel):
     @property
     def RearEcho(self):
         """外部回声
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._RearEcho
@@ -30334,7 +27765,6 @@ class TuberInfo(AbstractModel):
     @property
     def Elastic(self):
         """弹性质地
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Elastic`
         """
         return self._Elastic
@@ -30346,7 +27776,6 @@ class TuberInfo(AbstractModel):
     @property
     def Shape(self):
         """形状
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Shape
@@ -30358,7 +27787,6 @@ class TuberInfo(AbstractModel):
     @property
     def ShapeAttr(self):
         """形态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ShapeAttr
@@ -30370,7 +27798,6 @@ class TuberInfo(AbstractModel):
     @property
     def SkinMedulla(self):
         """皮髓质信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SkinMedulla
@@ -30382,7 +27809,6 @@ class TuberInfo(AbstractModel):
     @property
     def Trend(self):
         """变化趋势
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Trend
@@ -30394,7 +27820,6 @@ class TuberInfo(AbstractModel):
     @property
     def Calcification(self):
         """钙化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Calcification
@@ -30406,7 +27831,6 @@ class TuberInfo(AbstractModel):
     @property
     def Envelope(self):
         """包膜
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Envelope
@@ -30418,7 +27842,6 @@ class TuberInfo(AbstractModel):
     @property
     def Enhancement(self):
         """强化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Enhancement
@@ -30430,7 +27853,6 @@ class TuberInfo(AbstractModel):
     @property
     def LymphEnlargement(self):
         """淋巴结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._LymphEnlargement
@@ -30442,7 +27864,6 @@ class TuberInfo(AbstractModel):
     @property
     def LymphDoor(self):
         """淋巴门
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._LymphDoor
@@ -30454,7 +27875,6 @@ class TuberInfo(AbstractModel):
     @property
     def Activity(self):
         """活动度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Activity
@@ -30466,7 +27886,6 @@ class TuberInfo(AbstractModel):
     @property
     def Operation(self):
         """手术情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Operation
@@ -30478,7 +27897,6 @@ class TuberInfo(AbstractModel):
     @property
     def CDFI(self):
         """血液cdfi
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._CDFI
@@ -30490,7 +27908,6 @@ class TuberInfo(AbstractModel):
     @property
     def Index(self):
         """原文位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Index
@@ -30502,7 +27919,6 @@ class TuberInfo(AbstractModel):
     @property
     def SizeStatus(self):
         """大小状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SizeStatus
@@ -30514,7 +27930,6 @@ class TuberInfo(AbstractModel):
     @property
     def InnerEchoDistribution(self):
         """内部回声分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._InnerEchoDistribution
@@ -30526,7 +27941,6 @@ class TuberInfo(AbstractModel):
     @property
     def InnerEchoType(self):
         """内部回声类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BlockInfo
         """
         return self._InnerEchoType
@@ -30538,7 +27952,6 @@ class TuberInfo(AbstractModel):
     @property
     def Outline(self):
         """轮廓
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Outline
@@ -30550,7 +27963,6 @@ class TuberInfo(AbstractModel):
     @property
     def Structure(self):
         """结构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Structure
@@ -30562,7 +27974,6 @@ class TuberInfo(AbstractModel):
     @property
     def Density(self):
         """密度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Density
@@ -30574,7 +27985,6 @@ class TuberInfo(AbstractModel):
     @property
     def Vas(self):
         """血管
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Vas
@@ -30586,7 +27996,6 @@ class TuberInfo(AbstractModel):
     @property
     def Cysticwall(self):
         """囊壁
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Cysticwall
@@ -30598,7 +28007,6 @@ class TuberInfo(AbstractModel):
     @property
     def Capsule(self):
         """被膜
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Capsule
@@ -30626,7 +28034,6 @@ class TuberInfo(AbstractModel):
     @property
     def Src(self):
         """原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Src
@@ -30638,7 +28045,6 @@ class TuberInfo(AbstractModel):
     @property
     def Transparent(self):
         """透声度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Transparent
@@ -30650,7 +28056,6 @@ class TuberInfo(AbstractModel):
     @property
     def MriAdc(self):
         """MRI ADC
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriAdc
@@ -30662,7 +28067,6 @@ class TuberInfo(AbstractModel):
     @property
     def MriDwi(self):
         """MRI DWI
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriDwi
@@ -30674,7 +28078,6 @@ class TuberInfo(AbstractModel):
     @property
     def MriT1(self):
         """MRI T1信号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriT1
@@ -30686,7 +28089,6 @@ class TuberInfo(AbstractModel):
     @property
     def MriT2(self):
         """MRI T2信号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._MriT2
@@ -30698,7 +28100,6 @@ class TuberInfo(AbstractModel):
     @property
     def CtHu(self):
         """CT HU值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._CtHu
@@ -30710,7 +28111,6 @@ class TuberInfo(AbstractModel):
     @property
     def Suvmax(self):
         """SUmax值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Suvmax
@@ -30722,7 +28122,6 @@ class TuberInfo(AbstractModel):
     @property
     def Metabolism(self):
         """代谢情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._Metabolism
@@ -30734,7 +28133,6 @@ class TuberInfo(AbstractModel):
     @property
     def RadioactiveUptake(self):
         """放射性摄取
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._RadioactiveUptake
@@ -30746,7 +28144,6 @@ class TuberInfo(AbstractModel):
     @property
     def SymDesc(self):
         """病变
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._SymDesc
@@ -30758,7 +28155,6 @@ class TuberInfo(AbstractModel):
     @property
     def ImageFeature(self):
         """影像特征
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
         return self._ImageFeature
@@ -30770,7 +28166,6 @@ class TuberInfo(AbstractModel):
     @property
     def Coords(self):
         """在报告图片中的坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
         return self._Coords
@@ -30782,7 +28177,6 @@ class TuberInfo(AbstractModel):
     @property
     def IsthmusThickness(self):
         """峡部厚度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
         return self._IsthmusThickness
@@ -31357,34 +28751,24 @@ class Vaccination(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 序号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Vaccine: 疫苗名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vaccine: str
         :param _Dose: 剂次
-注意：此字段可能返回 null，表示取不到有效值。
         :type Dose: str
         :param _Date: 接种日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
         :param _LotNumber: 疫苗批号
-注意：此字段可能返回 null，表示取不到有效值。
         :type LotNumber: str
         :param _Manufacturer: 生产企业
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
         :param _Clinic: 接种单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Clinic: str
         :param _Site: 接种部位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Site: str
         :param _Provider: 接种者
-注意：此字段可能返回 null，表示取不到有效值。
         :type Provider: str
         :param _Lot: 疫苗批号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Lot: str
         """
         self._Id = None
@@ -31401,7 +28785,6 @@ class Vaccination(AbstractModel):
     @property
     def Id(self):
         """序号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -31413,7 +28796,6 @@ class Vaccination(AbstractModel):
     @property
     def Vaccine(self):
         """疫苗名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vaccine
@@ -31425,7 +28807,6 @@ class Vaccination(AbstractModel):
     @property
     def Dose(self):
         """剂次
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Dose
@@ -31437,7 +28818,6 @@ class Vaccination(AbstractModel):
     @property
     def Date(self):
         """接种日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Date
@@ -31449,7 +28829,6 @@ class Vaccination(AbstractModel):
     @property
     def LotNumber(self):
         """疫苗批号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LotNumber
@@ -31461,7 +28840,6 @@ class Vaccination(AbstractModel):
     @property
     def Manufacturer(self):
         """生产企业
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Manufacturer
@@ -31473,7 +28851,6 @@ class Vaccination(AbstractModel):
     @property
     def Clinic(self):
         """接种单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Clinic
@@ -31485,7 +28862,6 @@ class Vaccination(AbstractModel):
     @property
     def Site(self):
         """接种部位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Site
@@ -31497,7 +28873,6 @@ class Vaccination(AbstractModel):
     @property
     def Provider(self):
         """接种者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Provider
@@ -31509,7 +28884,6 @@ class Vaccination(AbstractModel):
     @property
     def Lot(self):
         """疫苗批号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Lot
@@ -31548,10 +28922,8 @@ class VaccineCertificate(AbstractModel):
     def __init__(self):
         r"""
         :param _VaccineList: 免疫接种列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VaccineList: list of Vaccination
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._VaccineList = None
@@ -31560,7 +28932,6 @@ class VaccineCertificate(AbstractModel):
     @property
     def VaccineList(self):
         """免疫接种列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Vaccination
         """
         return self._VaccineList
@@ -31572,7 +28943,6 @@ class VaccineCertificate(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page
@@ -31608,13 +28978,10 @@ class Value(AbstractModel):
     def __init__(self):
         r"""
         :param _Grade: 等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: str
         :param _Percent: 百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: list of float
         :param _Positive: 阳性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Positive: str
         """
         self._Grade = None
@@ -31624,7 +28991,6 @@ class Value(AbstractModel):
     @property
     def Grade(self):
         """等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Grade
@@ -31636,7 +29002,6 @@ class Value(AbstractModel):
     @property
     def Percent(self):
         """百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Percent
@@ -31648,7 +29013,6 @@ class Value(AbstractModel):
     @property
     def Positive(self):
         """阳性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Positive
@@ -31680,13 +29044,10 @@ class ValueBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Grade: 等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: str
         :param _Percent: 百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: list of float
         :param _Positive: 阳性阴性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Positive: str
         """
         self._Grade = None
@@ -31696,7 +29057,6 @@ class ValueBlock(AbstractModel):
     @property
     def Grade(self):
         """等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Grade
@@ -31708,7 +29068,6 @@ class ValueBlock(AbstractModel):
     @property
     def Percent(self):
         """百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Percent
@@ -31720,7 +29079,6 @@ class ValueBlock(AbstractModel):
     @property
     def Positive(self):
         """阳性阴性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Positive
@@ -31752,19 +29110,14 @@ class ValueUnitItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Item: 项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Result: 数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         :param _Page: 数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
         """
         self._Name = None
@@ -31776,7 +29129,6 @@ class ValueUnitItem(AbstractModel):
     @property
     def Name(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -31788,7 +29140,6 @@ class ValueUnitItem(AbstractModel):
     @property
     def Item(self):
         """项目原文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Item
@@ -31800,7 +29151,6 @@ class ValueUnitItem(AbstractModel):
     @property
     def Result(self):
         """数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Result
@@ -31812,7 +29162,6 @@ class ValueUnitItem(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
         """
         return self._Unit
@@ -31824,7 +29173,6 @@ class ValueUnitItem(AbstractModel):
     @property
     def Page(self):
         """数据在原PDF文件中的第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Page

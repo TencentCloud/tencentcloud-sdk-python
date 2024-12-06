@@ -13110,11 +13110,14 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
 默认取值：RECREATE
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplaceMode: str
+        :param _AutoUpdateInstanceTags: 自动更新实例标签。默认取值为 false，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
+        :type AutoUpdateInstanceTags: bool
         """
         self._ReplaceMonitorUnhealthy = None
         self._ScalingMode = None
         self._ReplaceLoadBalancerUnhealthy = None
         self._ReplaceMode = None
+        self._AutoUpdateInstanceTags = None
 
     @property
     def ReplaceMonitorUnhealthy(self):
@@ -13167,12 +13170,24 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
     def ReplaceMode(self, ReplaceMode):
         self._ReplaceMode = ReplaceMode
 
+    @property
+    def AutoUpdateInstanceTags(self):
+        """自动更新实例标签。默认取值为 false，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
+        :rtype: bool
+        """
+        return self._AutoUpdateInstanceTags
+
+    @AutoUpdateInstanceTags.setter
+    def AutoUpdateInstanceTags(self, AutoUpdateInstanceTags):
+        self._AutoUpdateInstanceTags = AutoUpdateInstanceTags
+
 
     def _deserialize(self, params):
         self._ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
         self._ScalingMode = params.get("ScalingMode")
         self._ReplaceLoadBalancerUnhealthy = params.get("ReplaceLoadBalancerUnhealthy")
         self._ReplaceMode = params.get("ReplaceMode")
+        self._AutoUpdateInstanceTags = params.get("AutoUpdateInstanceTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

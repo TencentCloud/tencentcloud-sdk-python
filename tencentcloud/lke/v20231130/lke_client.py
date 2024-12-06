@@ -166,6 +166,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDocCate(self, request):
+        """创建Doc分类
+
+        :param request: Request instance for CreateDocCate.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateDocCateRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateDocCateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDocCate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDocCateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateQA(self, request):
         """录入问答
 
@@ -344,6 +367,29 @@ class LkeClient(AbstractClient):
             body = self.call("DeleteDoc", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDocCate(self, request):
+        """Doc分类删除
+
+        :param request: Request instance for DeleteDocCate.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DeleteDocCateRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DeleteDocCateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDocCate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDocCateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1205,6 +1251,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GroupDoc(self, request):
+        """Doc分组
+
+        :param request: Request instance for GroupDoc.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GroupDocRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GroupDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GroupDoc", params, headers=headers)
+            response = json.loads(body)
+            model = models.GroupDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GroupQA(self, request):
         """QA分组
 
@@ -1320,6 +1389,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListAppKnowledgeDetail(self, request):
+        """列表查询知识库容量详情
+
+        :param request: Request instance for ListAppKnowledgeDetail.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListAppKnowledgeDetailRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListAppKnowledgeDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAppKnowledgeDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAppKnowledgeDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListAttributeLabel(self, request):
         """查询属性标签列表
 
@@ -1357,6 +1449,29 @@ class LkeClient(AbstractClient):
             body = self.call("ListDoc", params, headers=headers)
             response = json.loads(body)
             model = models.ListDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDocCate(self, request):
+        """获取Doc分类
+
+        :param request: Request instance for ListDocCate.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListDocCateRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListDocCateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDocCate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDocCateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1619,6 +1734,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListUsageCallDetail(self, request):
+        """列表查询单次调用明细
+
+        :param request: Request instance for ListUsageCallDetail.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListUsageCallDetailRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListUsageCallDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListUsageCallDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListUsageCallDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApp(self, request):
         """修改应用请求结构体
 
@@ -1702,6 +1840,29 @@ class LkeClient(AbstractClient):
             body = self.call("ModifyDocAttrRange", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDocAttrRangeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDocCate(self, request):
+        """修改Doc分类
+
+        :param request: Request instance for ModifyDocCate.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ModifyDocCateRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ModifyDocCateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDocCate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDocCateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

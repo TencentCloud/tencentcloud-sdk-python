@@ -534,25 +534,25 @@ class AppModel(AbstractModel):
 
 
 class AttrLabel(AbstractModel):
-    """属性标签详情信息
+    """标签详情信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Source: 属性标签来源
+        :param _Source: 标签来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
-        :param _AttrBizId: 属性ID
+        :param _AttrBizId: 标签ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttrBizId: str
-        :param _AttrKey: 属性标识
+        :param _AttrKey: 标签标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttrKey: str
-        :param _AttrName: 属性名称
+        :param _AttrName: 标签名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttrName: str
-        :param _Labels: 标签ID
+        :param _Labels: 标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
         """
@@ -564,7 +564,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def Source(self):
-        """属性标签来源
+        """标签来源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -576,7 +576,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def AttrBizId(self):
-        """属性ID
+        """标签ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -588,7 +588,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def AttrKey(self):
-        """属性标识
+        """标签标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -600,7 +600,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def AttrName(self):
-        """属性名称
+        """标签名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -612,7 +612,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def Labels(self):
-        """标签ID
+        """标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Label
         """
@@ -651,19 +651,19 @@ class AttrLabelDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AttrBizId: 属性ID
+        :param _AttrBizId: 标签ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttrBizId: str
-        :param _AttrKey: 属性标识
+        :param _AttrKey: 标签标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttrKey: str
-        :param _AttrName: 属性名称
+        :param _AttrName: 标签名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttrName: str
-        :param _LabelNames: 标签名称
+        :param _LabelNames: 标签值名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelNames: list of str
-        :param _IsUpdating: 属性标签是否在更新中
+        :param _IsUpdating: 标签是否在更新中
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdating: bool
         :param _Status: 状态
@@ -683,7 +683,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def AttrBizId(self):
-        """属性ID
+        """标签ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -695,7 +695,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def AttrKey(self):
-        """属性标识
+        """标签标识
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -707,7 +707,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def AttrName(self):
-        """属性名称
+        """标签名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -719,7 +719,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def LabelNames(self):
-        """标签名称
+        """标签值名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -731,7 +731,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def IsUpdating(self):
-        """属性标签是否在更新中
+        """标签是否在更新中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -785,17 +785,17 @@ class AttrLabelDetail(AbstractModel):
 
 
 class AttrLabelRefer(AbstractModel):
-    """属性标签引用信息
+    """标签引用信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Source: 属性标签来源，1：属性标签
+        :param _Source: 标签来源，1：标签
         :type Source: int
-        :param _AttributeBizId: 属性ID
+        :param _AttributeBizId: 标签ID
         :type AttributeBizId: str
-        :param _LabelBizIds: 标签ID
+        :param _LabelBizIds: 标签值ID
         :type LabelBizIds: list of str
         """
         self._Source = None
@@ -804,7 +804,7 @@ class AttrLabelRefer(AbstractModel):
 
     @property
     def Source(self):
-        """属性标签来源，1：属性标签
+        """标签来源，1：标签
         :rtype: int
         """
         return self._Source
@@ -815,7 +815,7 @@ class AttrLabelRefer(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        """属性ID
+        """标签ID
         :rtype: str
         """
         return self._AttributeBizId
@@ -826,7 +826,7 @@ class AttrLabelRefer(AbstractModel):
 
     @property
     def LabelBizIds(self):
-        """标签ID
+        """标签值ID
         :rtype: list of str
         """
         return self._LabelBizIds
@@ -887,19 +887,19 @@ class AttributeFilters(AbstractModel):
 
 
 class AttributeLabel(AbstractModel):
-    """属性标签
+    """标签值
 
     """
 
     def __init__(self):
         r"""
-        :param _LabelBizId: 标签ID
+        :param _LabelBizId: 标准词ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelBizId: str
-        :param _LabelName: 标签名称
+        :param _LabelName: 标准词名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelName: str
-        :param _SimilarLabels: 相似标签名称
+        :param _SimilarLabels: 同义词名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SimilarLabels: list of str
         """
@@ -909,7 +909,7 @@ class AttributeLabel(AbstractModel):
 
     @property
     def LabelBizId(self):
-        """标签ID
+        """标准词ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -921,7 +921,7 @@ class AttributeLabel(AbstractModel):
 
     @property
     def LabelName(self):
-        """标签名称
+        """标准词名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -933,7 +933,7 @@ class AttributeLabel(AbstractModel):
 
     @property
     def SimilarLabels(self):
-        """相似标签名称
+        """同义词名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1020,6 +1020,384 @@ class BaseConfig(AbstractModel):
         self._Name = params.get("Name")
         self._Avatar = params.get("Avatar")
         self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CallDetail(AbstractModel):
+    """调用类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 关联ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _CallTime: 调用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallTime: str
+        :param _TotalTokenUsage: 总token消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalTokenUsage: float
+        :param _InputTokenUsage: 输入token消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputTokenUsage: float
+        :param _OutputTokenUsage: 输出token消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputTokenUsage: float
+        :param _SearchUsage: 搜索服务调用次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchUsage: int
+        :param _ModelName: 模型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelName: str
+        :param _CallType: 调用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallType: str
+        :param _UinAccount: 账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UinAccount: str
+        :param _AppName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppName: str
+        :param _PageUsage: 总消耗页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageUsage: int
+        :param _SubScene: 筛选子场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubScene: str
+        """
+        self._Id = None
+        self._CallTime = None
+        self._TotalTokenUsage = None
+        self._InputTokenUsage = None
+        self._OutputTokenUsage = None
+        self._SearchUsage = None
+        self._ModelName = None
+        self._CallType = None
+        self._UinAccount = None
+        self._AppName = None
+        self._PageUsage = None
+        self._SubScene = None
+
+    @property
+    def Id(self):
+        """关联ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CallTime(self):
+        """调用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CallTime
+
+    @CallTime.setter
+    def CallTime(self, CallTime):
+        self._CallTime = CallTime
+
+    @property
+    def TotalTokenUsage(self):
+        """总token消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TotalTokenUsage
+
+    @TotalTokenUsage.setter
+    def TotalTokenUsage(self, TotalTokenUsage):
+        self._TotalTokenUsage = TotalTokenUsage
+
+    @property
+    def InputTokenUsage(self):
+        """输入token消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._InputTokenUsage
+
+    @InputTokenUsage.setter
+    def InputTokenUsage(self, InputTokenUsage):
+        self._InputTokenUsage = InputTokenUsage
+
+    @property
+    def OutputTokenUsage(self):
+        """输出token消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._OutputTokenUsage
+
+    @OutputTokenUsage.setter
+    def OutputTokenUsage(self, OutputTokenUsage):
+        self._OutputTokenUsage = OutputTokenUsage
+
+    @property
+    def SearchUsage(self):
+        """搜索服务调用次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SearchUsage
+
+    @SearchUsage.setter
+    def SearchUsage(self, SearchUsage):
+        self._SearchUsage = SearchUsage
+
+    @property
+    def ModelName(self):
+        """模型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def CallType(self):
+        """调用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CallType
+
+    @CallType.setter
+    def CallType(self, CallType):
+        self._CallType = CallType
+
+    @property
+    def UinAccount(self):
+        """账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
+
+    @property
+    def AppName(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PageUsage(self):
+        """总消耗页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageUsage
+
+    @PageUsage.setter
+    def PageUsage(self, PageUsage):
+        self._PageUsage = PageUsage
+
+    @property
+    def SubScene(self):
+        """筛选子场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubScene
+
+    @SubScene.setter
+    def SubScene(self, SubScene):
+        self._SubScene = SubScene
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._CallTime = params.get("CallTime")
+        self._TotalTokenUsage = params.get("TotalTokenUsage")
+        self._InputTokenUsage = params.get("InputTokenUsage")
+        self._OutputTokenUsage = params.get("OutputTokenUsage")
+        self._SearchUsage = params.get("SearchUsage")
+        self._ModelName = params.get("ModelName")
+        self._CallType = params.get("CallType")
+        self._UinAccount = params.get("UinAccount")
+        self._AppName = params.get("AppName")
+        self._PageUsage = params.get("PageUsage")
+        self._SubScene = params.get("SubScene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CateInfo(AbstractModel):
+    """分类信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CateBizId: 分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CateBizId: str
+        :param _Name: 分类名称
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Total: 分类下的Record（如文档、同义词等）数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _CanAdd: 是否可新增
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanAdd: bool
+        :param _CanEdit: 是否可编辑
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanEdit: bool
+        :param _CanDelete: 是否可删除
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanDelete: bool
+        :param _Children: 子分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of CateInfo
+        """
+        self._CateBizId = None
+        self._Name = None
+        self._Total = None
+        self._CanAdd = None
+        self._CanEdit = None
+        self._CanDelete = None
+        self._Children = None
+
+    @property
+    def CateBizId(self):
+        """分类ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def Name(self):
+        """分类名称
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Total(self):
+        """分类下的Record（如文档、同义词等）数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def CanAdd(self):
+        """是否可新增
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanAdd
+
+    @CanAdd.setter
+    def CanAdd(self, CanAdd):
+        self._CanAdd = CanAdd
+
+    @property
+    def CanEdit(self):
+        """是否可编辑
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanDelete(self):
+        """是否可删除
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def Children(self):
+        """子分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CateInfo
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._CateBizId = params.get("CateBizId")
+        self._Name = params.get("Name")
+        self._Total = params.get("Total")
+        self._CanAdd = params.get("CanAdd")
+        self._CanEdit = params.get("CanEdit")
+        self._CanDelete = params.get("CanDelete")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = CateInfo()
+                obj._deserialize(item)
+                self._Children.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2201,6 +2579,166 @@ class CreateCorpResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDocCateRequest(AbstractModel):
+    """CreateDocCate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: 应用ID
+        :type BotBizId: str
+        :param _ParentBizId: 父级业务ID
+        :type ParentBizId: str
+        :param _Name: 分类名称
+
+        :type Name: str
+        """
+        self._BotBizId = None
+        self._ParentBizId = None
+        self._Name = None
+
+    @property
+    def BotBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def ParentBizId(self):
+        """父级业务ID
+        :rtype: str
+        """
+        return self._ParentBizId
+
+    @ParentBizId.setter
+    def ParentBizId(self, ParentBizId):
+        self._ParentBizId = ParentBizId
+
+    @property
+    def Name(self):
+        """分类名称
+
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._ParentBizId = params.get("ParentBizId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDocCateResponse(AbstractModel):
+    """CreateDocCate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanAdd: 是否可新增
+
+        :type CanAdd: bool
+        :param _CanEdit: 是否可编辑
+        :type CanEdit: bool
+        :param _CanDelete: 是否可删除
+
+        :type CanDelete: bool
+        :param _CateBizId: 分类业务ID
+        :type CateBizId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CanAdd = None
+        self._CanEdit = None
+        self._CanDelete = None
+        self._CateBizId = None
+        self._RequestId = None
+
+    @property
+    def CanAdd(self):
+        """是否可新增
+
+        :rtype: bool
+        """
+        return self._CanAdd
+
+    @CanAdd.setter
+    def CanAdd(self, CanAdd):
+        self._CanAdd = CanAdd
+
+    @property
+    def CanEdit(self):
+        """是否可编辑
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanDelete(self):
+        """是否可删除
+
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CateBizId(self):
+        """分类业务ID
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CanAdd = params.get("CanAdd")
+        self._CanEdit = params.get("CanEdit")
+        self._CanDelete = params.get("CanDelete")
+        self._CateBizId = params.get("CateBizId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateQACateRequest(AbstractModel):
     """CreateQACate请求参数结构体
 
@@ -3288,6 +3826,85 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
 class DeleteAttributeLabelResponse(AbstractModel):
     """DeleteAttributeLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDocCateRequest(AbstractModel):
+    """DeleteDocCate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: 应用ID
+        :type BotBizId: str
+        :param _CateBizId: 分类业务ID
+        :type CateBizId: str
+        """
+        self._BotBizId = None
+        self._CateBizId = None
+
+    @property
+    def BotBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def CateBizId(self):
+        """分类业务ID
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._CateBizId = params.get("CateBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDocCateResponse(AbstractModel):
+    """DeleteDocCate返回参数结构体
 
     """
 
@@ -6772,7 +7389,8 @@ class DescribeStorageCredentialRequest(AbstractModel):
         :type BotBizId: str
         :param _FileType: 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
         :type FileType: str
-        :param _IsPublic: IsPublic用于上传文件时选择场景，当上传为对话端文件时IsPublic为true，上传文档库文件时场景IsPublic为false
+        :param _IsPublic: IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
+
         :type IsPublic: bool
         :param _TypeKey: 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
         :type TypeKey: str
@@ -6806,7 +7424,8 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def IsPublic(self):
-        """IsPublic用于上传文件时选择场景，当上传为对话端文件时IsPublic为true，上传文档库文件时场景IsPublic为false
+        """IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
+
         :rtype: bool
         """
         return self._IsPublic
@@ -10543,6 +11162,100 @@ class GetWsTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GroupDocRequest(AbstractModel):
+    """GroupDoc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: 应用ID
+        :type BotBizId: str
+        :param _BizIds: 操作对象的业务ID列表
+        :type BizIds: list of str
+        :param _CateBizId: 分组 ID
+        :type CateBizId: str
+        """
+        self._BotBizId = None
+        self._BizIds = None
+        self._CateBizId = None
+
+    @property
+    def BotBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def BizIds(self):
+        """操作对象的业务ID列表
+        :rtype: list of str
+        """
+        return self._BizIds
+
+    @BizIds.setter
+    def BizIds(self, BizIds):
+        self._BizIds = BizIds
+
+    @property
+    def CateBizId(self):
+        """分组 ID
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._BizIds = params.get("BizIds")
+        self._CateBizId = params.get("CateBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupDocResponse(AbstractModel):
+    """GroupDoc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class GroupQARequest(AbstractModel):
     """GroupQA请求参数结构体
 
@@ -11207,6 +11920,95 @@ class KnowledgeCapacityPieGraphDetail(AbstractModel):
         self._AppName = params.get("AppName")
         self._UsedCharSize = params.get("UsedCharSize")
         self._Proportion = params.get("Proportion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeDetail(AbstractModel):
+    """应用使用知识库容量详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppName: str
+        :param _UsedCharSize: 已用字符数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedCharSize: str
+        :param _Proportion: 使用占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Proportion: float
+        :param _ExceedCharSize: 超量字符数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceedCharSize: str
+        """
+        self._AppName = None
+        self._UsedCharSize = None
+        self._Proportion = None
+        self._ExceedCharSize = None
+
+    @property
+    def AppName(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UsedCharSize(self):
+        """已用字符数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UsedCharSize
+
+    @UsedCharSize.setter
+    def UsedCharSize(self, UsedCharSize):
+        self._UsedCharSize = UsedCharSize
+
+    @property
+    def Proportion(self):
+        """使用占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Proportion
+
+    @Proportion.setter
+    def Proportion(self, Proportion):
+        self._Proportion = Proportion
+
+    @property
+    def ExceedCharSize(self):
+        """超量字符数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExceedCharSize
+
+    @ExceedCharSize.setter
+    def ExceedCharSize(self, ExceedCharSize):
+        self._ExceedCharSize = ExceedCharSize
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._UsedCharSize = params.get("UsedCharSize")
+        self._Proportion = params.get("Proportion")
+        self._ExceedCharSize = params.get("ExceedCharSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11960,6 +12762,135 @@ class ListAppCategoryRspOption(AbstractModel):
         
 
 
+class ListAppKnowledgeDetailRequest(AbstractModel):
+    """ListAppKnowledgeDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 页面大小
+        :type PageSize: int
+        :param _AppBizIds: 应用ID列表
+        :type AppBizIds: list of str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._AppBizIds = None
+
+    @property
+    def PageNumber(self):
+        """页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """页面大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def AppBizIds(self):
+        """应用ID列表
+        :rtype: list of str
+        """
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAppKnowledgeDetailResponse(AbstractModel):
+    """ListAppKnowledgeDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 列表总数
+        :type Total: int
+        :param _List: 应用使用知识库容量详情
+        :type List: list of KnowledgeDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """列表总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """应用使用知识库容量详情
+        :rtype: list of KnowledgeDetail
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = KnowledgeDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListAppRequest(AbstractModel):
     """ListApp请求参数结构体
 
@@ -12288,6 +13219,90 @@ class ListAttributeLabelResponse(AbstractModel):
             self._List = []
             for item in params.get("List"):
                 obj = AttrLabelDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListDocCateRequest(AbstractModel):
+    """ListDocCate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: 应用ID
+        :type BotBizId: str
+        """
+        self._BotBizId = None
+
+    @property
+    def BotBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListDocCateResponse(AbstractModel):
+    """ListDocCate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 列表
+        :type List: list of CateInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """列表
+        :rtype: list of CateInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CateInfo()
                 obj._deserialize(item)
                 self._List.append(obj)
         self._RequestId = params.get("RequestId")
@@ -15422,6 +16437,225 @@ class ListUnsatisfiedReplyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListUsageCallDetailRequest(AbstractModel):
+    """ListUsageCallDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型标识
+        :type ModelName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 分页数量
+        :type PageSize: int
+        :param _UinAccount: uin列表
+        :type UinAccount: list of str
+        :param _AppBizIds: 应用ID列表
+        :type AppBizIds: list of str
+        :param _CallType: 调用类型列表
+        :type CallType: str
+        :param _SubScenes: 筛选子场景
+        :type SubScenes: list of str
+        """
+        self._ModelName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._UinAccount = None
+        self._AppBizIds = None
+        self._CallType = None
+        self._SubScenes = None
+
+    @property
+    def ModelName(self):
+        """模型标识
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageNumber(self):
+        """页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """分页数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def UinAccount(self):
+        """uin列表
+        :rtype: list of str
+        """
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
+
+    @property
+    def AppBizIds(self):
+        """应用ID列表
+        :rtype: list of str
+        """
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+    @property
+    def CallType(self):
+        """调用类型列表
+        :rtype: str
+        """
+        return self._CallType
+
+    @CallType.setter
+    def CallType(self, CallType):
+        self._CallType = CallType
+
+    @property
+    def SubScenes(self):
+        """筛选子场景
+        :rtype: list of str
+        """
+        return self._SubScenes
+
+    @SubScenes.setter
+    def SubScenes(self, SubScenes):
+        self._SubScenes = SubScenes
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._UinAccount = params.get("UinAccount")
+        self._AppBizIds = params.get("AppBizIds")
+        self._CallType = params.get("CallType")
+        self._SubScenes = params.get("SubScenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListUsageCallDetailResponse(AbstractModel):
+    """ListUsageCallDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 列表总数
+        :type Total: int
+        :param _List: 列表
+        :type List: list of CallDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """列表总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """列表
+        :rtype: list of CallDetail
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CallDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class Message(AbstractModel):
     """一条message代表一条对话记录
     role表示角色  user或者assistant
@@ -16153,6 +17387,102 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
 class ModifyDocAttrRangeResponse(AbstractModel):
     """ModifyDocAttrRange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDocCateRequest(AbstractModel):
+    """ModifyDocCate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: 应用ID
+        :type BotBizId: str
+        :param _Name: 分类名称
+
+        :type Name: str
+        :param _CateBizId: 分类业务ID
+        :type CateBizId: str
+        """
+        self._BotBizId = None
+        self._Name = None
+        self._CateBizId = None
+
+    @property
+    def BotBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def Name(self):
+        """分类名称
+
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CateBizId(self):
+        """分类业务ID
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._Name = params.get("Name")
+        self._CateBizId = params.get("CateBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDocCateResponse(AbstractModel):
+    """ModifyDocCate返回参数结构体
 
     """
 
