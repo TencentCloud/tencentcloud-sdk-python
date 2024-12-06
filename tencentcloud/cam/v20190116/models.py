@@ -738,10 +738,10 @@ class AttachPolicyInfo(AbstractModel):
         :param _AddTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
-        :param _CreateMode: 创建来源，1 通过控制台创建, 2 通过策略语法创建。
+        :param _CreateMode: 创建来源，1 通过控制台创建, 2 通过策略语法创建
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateMode: int
-        :param _PolicyType: 取值为user和QCS
+        :param _PolicyType: 取值为User和QCS。User代表自定义策略，QCS代表系统策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
         :param _Remark: 策略备注
@@ -753,10 +753,10 @@ class AttachPolicyInfo(AbstractModel):
         :param _OperateUin: 策略关联操作者ID，如果UinType为0表示子账号Uin，如果UinType为1表示角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: str
-        :param _OperateUinType: UinType为0表示OperateUin字段是子账号Uin，如果UinType为1表示OperateUin字段是角色ID
+        :param _OperateUinType: 取值为0和1。OperateUinType为0表示OperateUin字段是子账号Uin。如果OperateUinType为1表示OperateUin字段是角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUinType: int
-        :param _Deactived: 是否已下线
+        :param _Deactived: 是否已下线，1代表已下线，0代表未下线
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
         :param _DeactivedDetail: 已下线的产品列表
@@ -812,7 +812,7 @@ class AttachPolicyInfo(AbstractModel):
 
     @property
     def CreateMode(self):
-        """创建来源，1 通过控制台创建, 2 通过策略语法创建。
+        """创建来源，1 通过控制台创建, 2 通过策略语法创建
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -824,7 +824,7 @@ class AttachPolicyInfo(AbstractModel):
 
     @property
     def PolicyType(self):
-        """取值为user和QCS
+        """取值为User和QCS。User代表自定义策略，QCS代表系统策略
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -872,7 +872,7 @@ class AttachPolicyInfo(AbstractModel):
 
     @property
     def OperateUinType(self):
-        """UinType为0表示OperateUin字段是子账号Uin，如果UinType为1表示OperateUin字段是角色ID
+        """取值为0和1。OperateUinType为0表示OperateUin字段是子账号Uin。如果OperateUinType为1表示OperateUin字段是角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -884,7 +884,7 @@ class AttachPolicyInfo(AbstractModel):
 
     @property
     def Deactived(self):
-        """是否已下线
+        """是否已下线，1代表已下线，0代表未下线
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

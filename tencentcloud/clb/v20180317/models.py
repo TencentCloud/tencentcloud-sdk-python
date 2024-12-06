@@ -19663,7 +19663,7 @@ class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
         r"""
         :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param _SecurityGroups: 安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数，或传入空数组。
+        :param _SecurityGroups: 安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数。
         :type SecurityGroups: list of str
         """
         self._LoadBalancerId = None
@@ -19682,7 +19682,7 @@ class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroups(self):
-        """安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数，或传入空数组。
+        """安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数。
         :rtype: list of str
         """
         return self._SecurityGroups

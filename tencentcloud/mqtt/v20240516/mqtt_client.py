@@ -26,6 +26,29 @@ class MqttClient(AbstractClient):
     _service = 'mqtt'
 
 
+    def ActivateDeviceCertificate(self, request):
+        """生效设备证书
+
+        :param request: Request instance for ActivateDeviceCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ActivateDeviceCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ActivateDeviceCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateDeviceCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateDeviceCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAuthorizationPolicy(self, request):
         """创建MQTT实例的性能测试任务
 
@@ -233,6 +256,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceCertificates(self, request):
+        """分页查询设备证书
+
+        :param request: Request instance for DescribeDeviceCertificates.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificatesRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceCertificates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceCertificatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstance(self, request):
         """查询实例信息
 
@@ -260,7 +306,6 @@ class MqttClient(AbstractClient):
         """获取实例列表，Filters参数使用说明如下：
         1. InstanceName, 名称模糊查询
         2. InstanceId，实例ID查询
-        3. InstanceType, 实例类型查询，支持多选
         3. InstanceStatus，实例状态查询，支持多选
 
         当使用TagFilters查询时，Filters参数失效。

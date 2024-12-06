@@ -14097,7 +14097,18 @@ class Registry(AbstractModel):
         :type RegistryName: str
         :param _RegistryType: 实例规格
         :type RegistryType: str
-        :param _Status: 实例状态
+        :param _Status: 实例状态。有以下状态：
+Pending, 初始化中
+Deploying, 创建中
+Running, 运行中
+Unhealthy, 状态异常
+FailedCreated, 创建失败
+FailedUpdated, 更新失败
+Bucket-Error, 存储桶异常
+Isolate, 待回收
+Deleting, 删除中
+DeleteBucketFailed, 实例删除存储桶失败
+DeleteFailed, 实例删除失败
         :type Status: str
         :param _PublicDomain: 实例的公共访问地址
         :type PublicDomain: str
@@ -14180,7 +14191,18 @@ class Registry(AbstractModel):
 
     @property
     def Status(self):
-        """实例状态
+        """实例状态。有以下状态：
+Pending, 初始化中
+Deploying, 创建中
+Running, 运行中
+Unhealthy, 状态异常
+FailedCreated, 创建失败
+FailedUpdated, 更新失败
+Bucket-Error, 存储桶异常
+Isolate, 待回收
+Deleting, 删除中
+DeleteBucketFailed, 实例删除存储桶失败
+DeleteFailed, 实例删除失败
         :rtype: str
         """
         return self._Status

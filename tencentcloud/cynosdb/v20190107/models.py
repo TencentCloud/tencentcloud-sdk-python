@@ -3806,6 +3806,115 @@ class CloseClusterPasswordComplexityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloseProxyEndPointRequest(AbstractModel):
+    """CloseProxyEndPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ProxyGroupId: 数据库代理组ID
+        :type ProxyGroupId: str
+        """
+        self._ClusterId = None
+        self._ProxyGroupId = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ProxyGroupId(self):
+        """数据库代理组ID
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseProxyEndPointResponse(AbstractModel):
+    """CloseProxyEndPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步流程ID
+        :type FlowId: int
+        :param _TaskId: 异步任务ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        """异步流程ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        """异步任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CloseProxyRequest(AbstractModel):
     """CloseProxy请求参数结构体
 
@@ -17560,6 +17669,115 @@ class DescribeInstancesResponse(AbstractModel):
                 obj = CynosdbInstance()
                 obj._deserialize(item)
                 self._InstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstancesWithinSameClusterRequest(AbstractModel):
+    """DescribeInstancesWithinSameCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniqVpcId: vpcId
+        :type UniqVpcId: str
+        :param _Vip: vip
+        :type Vip: str
+        """
+        self._UniqVpcId = None
+        self._Vip = None
+
+    @property
+    def UniqVpcId(self):
+        """vpcId
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Vip(self):
+        """vip
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesWithinSameClusterResponse(AbstractModel):
+    """DescribeInstancesWithinSameCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 实例个数
+        :type TotalCount: int
+        :param _InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceIds = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """实例个数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceIds(self):
+        """实例ID列表
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._InstanceIds = params.get("InstanceIds")
         self._RequestId = params.get("RequestId")
 
 

@@ -1062,7 +1062,9 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeAMQPClusters(self, request):
-        """获取amqp集群列表
+        """历史原因，该接口位于tdmq-manager，目前rabbitmq产品没有使用该接口，当前使用的是DescribeRabbitMQVipInstances。不过从调用链上看，线网还有请求流程，所以走预下线流程。
+
+        获取amqp集群列表
 
         :param request: Request instance for DescribeAMQPClusters.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPClustersRequest`
@@ -1190,31 +1192,6 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribeClusters", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClustersResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCmqDeadLetterSourceQueues(self, request):
-        """接口很久之前已删除，需下线
-
-        枚举cmq死信队列源队列
-
-        :param request: Request instance for DescribeCmqDeadLetterSourceQueues.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqDeadLetterSourceQueuesRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqDeadLetterSourceQueuesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCmqDeadLetterSourceQueues", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCmqDeadLetterSourceQueuesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2582,7 +2559,9 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyAMQPCluster(self, request):
-        """更新Amqp集群信息
+        """历史原因，该接口位于tdmq-manager，目前rabbitmq产品没有使用该接口，当前使用的是ModifyRabbitMQVipInstance。不过从调用链上看，线网还有请求流程，所以走预下线流程。
+
+        更新Amqp集群信息
 
         :param request: Request instance for ModifyAMQPCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPClusterRequest`

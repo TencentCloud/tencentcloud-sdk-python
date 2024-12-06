@@ -10435,6 +10435,8 @@ class RequestSummary(AbstractModel):
         :type Status: str
         :param _Result: 响应详情
         :type Result: str
+        :param _RPS: 平均rps, 单位req/s
+        :type RPS: float
         """
         self._Service = None
         self._Method = None
@@ -10448,6 +10450,7 @@ class RequestSummary(AbstractModel):
         self._P99 = None
         self._Status = None
         self._Result = None
+        self._RPS = None
 
     @property
     def Service(self):
@@ -10581,6 +10584,17 @@ class RequestSummary(AbstractModel):
     def Result(self, Result):
         self._Result = Result
 
+    @property
+    def RPS(self):
+        """平均rps, 单位req/s
+        :rtype: float
+        """
+        return self._RPS
+
+    @RPS.setter
+    def RPS(self, RPS):
+        self._RPS = RPS
+
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
@@ -10595,6 +10609,7 @@ class RequestSummary(AbstractModel):
         self._P99 = params.get("P99")
         self._Status = params.get("Status")
         self._Result = params.get("Result")
+        self._RPS = params.get("RPS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

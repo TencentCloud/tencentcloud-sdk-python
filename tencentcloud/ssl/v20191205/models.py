@@ -3071,7 +3071,7 @@ class CommitCertificateInformationRequest(AbstractModel):
         r"""
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
-        :param _VerifyType: 域名验证方式
+        :param _VerifyType: 域名验证方式，如 DNS,DNS_AUTO,FILE
         :type VerifyType: str
         """
         self._CertificateId = None
@@ -3090,7 +3090,7 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     @property
     def VerifyType(self):
-        """域名验证方式
+        """域名验证方式，如 DNS,DNS_AUTO,FILE
         :rtype: str
         """
         return self._VerifyType
@@ -4773,7 +4773,7 @@ class DeployCertificateInstanceRequest(AbstractModel):
         :type CertificateId: str
         :param _InstanceIdList: 需要部署实例列表
         :type InstanceIdList: list of str
-        :param _ResourceType: 部署的云资源类型
+        :param _ResourceType: 部署的云资源类型,如clb，cos
         :type ResourceType: str
         :param _Status: 部署云资源状态：
 云直播：
@@ -4814,7 +4814,7 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """部署的云资源类型
+        """部署的云资源类型,如clb，cos
         :rtype: str
         """
         return self._ResourceType
@@ -4933,9 +4933,9 @@ class DeployCertificateRecordRetryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 待重试部署记录ID
+        :param _DeployRecordId: 待重试部署记录ID，通过DeployCertificateInstance获得
         :type DeployRecordId: int
-        :param _DeployRecordDetailId: 待重试部署记录详情ID
+        :param _DeployRecordDetailId: 待重试部署记录详情ID，通过DescribeHostDeployRecordDetail获得
         :type DeployRecordDetailId: int
         """
         self._DeployRecordId = None
@@ -4943,7 +4943,7 @@ class DeployCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """待重试部署记录ID
+        """待重试部署记录ID，通过DeployCertificateInstance获得
         :rtype: int
         """
         return self._DeployRecordId
@@ -4954,7 +4954,7 @@ class DeployCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
-        """待重试部署记录详情ID
+        """待重试部署记录详情ID，通过DescribeHostDeployRecordDetail获得
         :rtype: int
         """
         return self._DeployRecordDetailId
@@ -5012,14 +5012,14 @@ class DeployCertificateRecordRollbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 待重试部署记录ID
+        :param _DeployRecordId: 待重试部署记录ID,就是通过DeployCertificateInstance返回的DeployRecordId
         :type DeployRecordId: int
         """
         self._DeployRecordId = None
 
     @property
     def DeployRecordId(self):
-        """待重试部署记录ID
+        """待重试部署记录ID,就是通过DeployCertificateInstance返回的DeployRecordId
         :rtype: int
         """
         return self._DeployRecordId
@@ -6110,14 +6110,14 @@ class DescribeCertificateBindResourceTaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskIds: 任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
+        :param _TaskIds: 任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果， 最大支持100个
         :type TaskIds: list of str
         """
         self._TaskIds = None
 
     @property
     def TaskIds(self):
-        """任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
+        """任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果， 最大支持100个
         :rtype: list of str
         """
         return self._TaskIds
@@ -7852,7 +7852,7 @@ class DescribeCertificatesRequest(AbstractModel):
         r"""
         :param _Offset: 分页偏移量，从0开始。
         :type Offset: int
-        :param _Limit: 每页数量，默认10。最大1000
+        :param _Limit: 每页数量，默认10。最大值1000，如超过1000按1000处理
         :type Limit: int
         :param _SearchKey: 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
         :type SearchKey: str
@@ -7880,7 +7880,7 @@ class DescribeCertificatesRequest(AbstractModel):
         :type Hostable: int
         :param _Tags: 筛选指定标签的证书
         :type Tags: list of Tags
-        :param _IsPendingIssue: //是否筛选等待签发的证书，传1是筛选，0和null不筛选
+        :param _IsPendingIssue: 是否筛选等待签发的证书，传1是筛选，0和null不筛选
         :type IsPendingIssue: int
         """
         self._Offset = None
@@ -7913,7 +7913,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量，默认10。最大1000
+        """每页数量，默认10。最大值1000，如超过1000按1000处理
         :rtype: int
         """
         return self._Limit
@@ -8067,7 +8067,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def IsPendingIssue(self):
-        """//是否筛选等待签发的证书，传1是筛选，0和null不筛选
+        """是否筛选等待签发的证书，传1是筛选，0和null不筛选
         :rtype: int
         """
         return self._IsPendingIssue
@@ -8608,20 +8608,26 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
         r"""
         :param _CertificateId: 待部署的证书ID
         :type CertificateId: str
-        :param _ResourceType: 部署资源类型
-        :type ResourceType: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
+        :param _ResourceType: 部署资源类型apigateway
+        :type ResourceType: str
         :param _OldCertificateId: 已部署的证书ID
         :type OldCertificateId: str
+        :param _Limit: 每页数量，默认10。	
+        :type Limit: int
+        :param _Offset: 分页偏移量，从0开始。	
+        :type Offset: str
         """
         self._CertificateId = None
-        self._ResourceType = None
         self._IsCache = None
         self._Filters = None
+        self._ResourceType = None
         self._OldCertificateId = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def CertificateId(self):
@@ -8633,17 +8639,6 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
     @CertificateId.setter
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
-
-    @property
-    def ResourceType(self):
-        """部署资源类型
-        :rtype: str
-        """
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def IsCache(self):
@@ -8668,6 +8663,17 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
         self._Filters = Filters
 
     @property
+    def ResourceType(self):
+        """部署资源类型apigateway
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
     def OldCertificateId(self):
         """已部署的证书ID
         :rtype: str
@@ -8678,10 +8684,31 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
     def OldCertificateId(self, OldCertificateId):
         self._OldCertificateId = OldCertificateId
 
+    @property
+    def Limit(self):
+        """每页数量，默认10。	
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移量，从0开始。	
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
-        self._ResourceType = params.get("ResourceType")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -8689,7 +8716,10 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         self._OldCertificateId = params.get("OldCertificateId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8707,10 +8737,10 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: apiGateway实例列表
+        :param _InstanceList: apiGateway实例列表,如取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of ApiGatewayInstanceDetail
-        :param _TotalCount: 总数
+        :param _TotalCount: 总数，如取不到值返回0
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8721,7 +8751,7 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """apiGateway实例列表
+        """apiGateway实例列表,如取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiGatewayInstanceDetail
         """
@@ -8733,7 +8763,7 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        """总数，如取不到值返回0
         :rtype: int
         """
         return self._TotalCount
@@ -8774,25 +8804,25 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
         r"""
         :param _CertificateId: 待部署的证书ID
         :type CertificateId: str
-        :param _ResourceType: 部署资源类型
-        :type ResourceType: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
+        :param _ResourceType: 部署资源类型cdn
+        :type ResourceType: str
         :param _OldCertificateId: 原证书ID
         :type OldCertificateId: str
         :param _Offset: 分页偏移量，从0开始。	
         :type Offset: int
         :param _Limit: 每页数量，默认10。	
         :type Limit: int
-        :param _AsyncCache: 是否异步
+        :param _AsyncCache: 是否异步,0表示否，1表示是，默认为0
         :type AsyncCache: int
         """
         self._CertificateId = None
-        self._ResourceType = None
         self._IsCache = None
         self._Filters = None
+        self._ResourceType = None
         self._OldCertificateId = None
         self._Offset = None
         self._Limit = None
@@ -8808,17 +8838,6 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
     @CertificateId.setter
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
-
-    @property
-    def ResourceType(self):
-        """部署资源类型
-        :rtype: str
-        """
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def IsCache(self):
@@ -8841,6 +8860,17 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def ResourceType(self):
+        """部署资源类型cdn
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
 
     @property
     def OldCertificateId(self):
@@ -8877,7 +8907,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步
+        """是否异步,0表示否，1表示是，默认为0
         :rtype: int
         """
         return self._AsyncCache
@@ -8889,7 +8919,6 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
-        self._ResourceType = params.get("ResourceType")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -8897,6 +8926,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         self._OldCertificateId = params.get("OldCertificateId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
@@ -8918,16 +8948,16 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: CDN实例列表
+        :param _InstanceList: CDN实例列表，如取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of CdnInstanceDetail
-        :param _TotalCount: CDN域名总数
+        :param _TotalCount: CDN域名总数，如取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _AsyncTotalNum: 异步刷新总数	
+        :param _AsyncTotalNum: 异步刷新总数，如取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncTotalNum: int
-        :param _AsyncOffset: 异步刷新当前执行数	
+        :param _AsyncOffset: 异步刷新当前执行数，如取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
         :param _AsyncCacheTime: 当前缓存读取时间
@@ -8945,7 +8975,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """CDN实例列表
+        """CDN实例列表，如取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CdnInstanceDetail
         """
@@ -8957,7 +8987,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """CDN域名总数
+        """CDN域名总数，如取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8969,7 +8999,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
-        """异步刷新总数	
+        """异步刷新总数，如取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8981,7 +9011,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
-        """异步刷新当前执行数	
+        """异步刷新当前执行数，如取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9036,39 +9066,28 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: 待部署的证书ID
-        :type CertificateId: str
         :param _Offset: 分页偏移量，从0开始。
         :type Offset: int
         :param _Limit: 每页数量，默认10。
         :type Limit: int
+        :param _CertificateId: 待部署的证书ID
+        :type CertificateId: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
-        :param _AsyncCache: 是否异步缓存
+        :param _AsyncCache: 是否异步缓存,0表示否,1表示是
         :type AsyncCache: int
         :param _OldCertificateId: 原证书ID
         :type OldCertificateId: str
         """
-        self._CertificateId = None
         self._Offset = None
         self._Limit = None
+        self._CertificateId = None
         self._IsCache = None
         self._Filters = None
         self._AsyncCache = None
         self._OldCertificateId = None
-
-    @property
-    def CertificateId(self):
-        """待部署的证书ID
-        :rtype: str
-        """
-        return self._CertificateId
-
-    @CertificateId.setter
-    def CertificateId(self, CertificateId):
-        self._CertificateId = CertificateId
 
     @property
     def Offset(self):
@@ -9091,6 +9110,17 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
 
     @property
     def IsCache(self):
@@ -9116,7 +9146,7 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步缓存
+        """是否异步缓存,0表示否,1表示是
         :rtype: int
         """
         return self._AsyncCache
@@ -9138,9 +9168,9 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._CertificateId = params.get("CertificateId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._CertificateId = params.get("CertificateId")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -9167,19 +9197,19 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: 总数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _InstanceList: CLB实例监听器列表
+        :param _InstanceList: CLB实例监听器列表，取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of ClbInstanceDetail
-        :param _AsyncTotalNum: 异步刷新总数
+        :param _AsyncTotalNum: 异步刷新总数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncTotalNum: int
-        :param _AsyncOffset: 异步刷新当前执行数
+        :param _AsyncOffset: 异步刷新当前执行数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
-        :param _AsyncCacheTime: 当前缓存读取时间	
+        :param _AsyncCacheTime: 当前缓存读取时间，去不到值返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9194,7 +9224,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        """总数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9206,7 +9236,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """CLB实例监听器列表
+        """CLB实例监听器列表，取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClbInstanceDetail
         """
@@ -9218,7 +9248,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
-        """异步刷新总数
+        """异步刷新总数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9230,7 +9260,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
-        """异步刷新当前执行数
+        """异步刷新当前执行数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9242,7 +9272,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
-        """当前缓存读取时间	
+        """当前缓存读取时间，去不到值返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9299,7 +9329,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 每页数量，默认10。	
         :type Limit: int
-        :param _AsyncCache: 是否异步	
+        :param _AsyncCache: 是否异步，0表示否，1表示是
         :type AsyncCache: int
         """
         self._CertificateId = None
@@ -9390,7 +9420,7 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步	
+        """是否异步，0表示否，1表示是
         :rtype: int
         """
         return self._AsyncCache
@@ -9551,20 +9581,26 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
         r"""
         :param _CertificateId: 待部署的证书ID
         :type CertificateId: str
-        :param _ResourceType: 部署资源类型
-        :type ResourceType: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
+        :param _ResourceType: 部署资源类型ddos
+        :type ResourceType: str
         :param _OldCertificateId: 已部署的证书ID
         :type OldCertificateId: str
+        :param _Offset: 分页偏移量，从0开始。	
+        :type Offset: int
+        :param _Limit: 每页数量，默认10。	
+        :type Limit: int
         """
         self._CertificateId = None
-        self._ResourceType = None
         self._IsCache = None
         self._Filters = None
+        self._ResourceType = None
         self._OldCertificateId = None
+        self._Offset = None
+        self._Limit = None
 
     @property
     def CertificateId(self):
@@ -9576,17 +9612,6 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
     @CertificateId.setter
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
-
-    @property
-    def ResourceType(self):
-        """部署资源类型
-        :rtype: str
-        """
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def IsCache(self):
@@ -9611,6 +9636,17 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
         self._Filters = Filters
 
     @property
+    def ResourceType(self):
+        """部署资源类型ddos
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
     def OldCertificateId(self):
         """已部署的证书ID
         :rtype: str
@@ -9621,10 +9657,31 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
     def OldCertificateId(self, OldCertificateId):
         self._OldCertificateId = OldCertificateId
 
+    @property
+    def Offset(self):
+        """分页偏移量，从0开始。	
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页数量，默认10。	
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
-        self._ResourceType = params.get("ResourceType")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -9632,7 +9689,10 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         self._OldCertificateId = params.get("OldCertificateId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9650,18 +9710,22 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: DDOS实例列表
+        :param _InstanceList: DDOS实例列表,取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of DdosInstanceDetail
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
     def InstanceList(self):
-        """DDOS实例列表
+        """DDOS实例列表,取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DdosInstanceDetail
         """
@@ -9670,6 +9734,18 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
     @InstanceList.setter
     def InstanceList(self, InstanceList):
         self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -9690,6 +9766,7 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
                 obj = DdosInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9890,7 +9967,7 @@ class DescribeHostDeployRecordRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 每页数量，默认10。
         :type Limit: int
-        :param _ResourceType: 资源类型
+        :param _ResourceType: 支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse
         :type ResourceType: str
         """
         self._CertificateId = None
@@ -9933,7 +10010,7 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型
+        """支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse
         :rtype: str
         """
         return self._ResourceType
@@ -10034,17 +10111,17 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
         r"""
         :param _CertificateId: 待部署的证书ID
         :type CertificateId: str
-        :param _ResourceType: 部署资源类型 lighthouse
-        :type ResourceType: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表
         :type Filters: list of Filter
+        :param _ResourceType: 部署资源类型 lighthouse
+        :type ResourceType: str
         """
         self._CertificateId = None
-        self._ResourceType = None
         self._IsCache = None
         self._Filters = None
+        self._ResourceType = None
 
     @property
     def CertificateId(self):
@@ -10056,17 +10133,6 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
     @CertificateId.setter
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
-
-    @property
-    def ResourceType(self):
-        """部署资源类型 lighthouse
-        :rtype: str
-        """
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def IsCache(self):
@@ -10090,10 +10156,20 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def ResourceType(self):
+        """部署资源类型 lighthouse
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
-        self._ResourceType = params.get("ResourceType")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -10101,6 +10177,7 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10118,10 +10195,10 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: Lighthouse实例列表
+        :param _InstanceList: Lighthouse实例列表,如取不到返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of LighthouseInstanceDetail
-        :param _TotalCount: 总数
+        :param _TotalCount: 总数，如取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10133,7 +10210,7 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """Lighthouse实例列表
+        """Lighthouse实例列表,如取不到返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LighthouseInstanceDetail
         """
@@ -10145,7 +10222,7 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        """总数，如取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10187,19 +10264,19 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
         r"""
         :param _CertificateId: 待部署的证书ID
         :type CertificateId: str
-        :param _ResourceType: 部署资源类型
-        :type ResourceType: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
+        :param _ResourceType: 部署资源类型
+        :type ResourceType: str
         :param _OldCertificateId: 已部署的证书ID
         :type OldCertificateId: str
         """
         self._CertificateId = None
-        self._ResourceType = None
         self._IsCache = None
         self._Filters = None
+        self._ResourceType = None
         self._OldCertificateId = None
 
     @property
@@ -10212,17 +10289,6 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
     @CertificateId.setter
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
-
-    @property
-    def ResourceType(self):
-        """部署资源类型
-        :rtype: str
-        """
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def IsCache(self):
@@ -10247,6 +10313,21 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
         self._Filters = Filters
 
     @property
+    def ResourceType(self):
+        warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
+
+        """部署资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
+
+        self._ResourceType = ResourceType
+
+    @property
     def OldCertificateId(self):
         """已部署的证书ID
         :rtype: str
@@ -10260,7 +10341,6 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
-        self._ResourceType = params.get("ResourceType")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -10268,6 +10348,7 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         self._OldCertificateId = params.get("OldCertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10286,7 +10367,7 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: live实例列表
+        :param _InstanceList: live实例列表,如取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of LiveInstanceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10297,7 +10378,7 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """live实例列表
+        """live实例列表,如取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveInstanceDetail
         """
@@ -10547,39 +10628,28 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: 待部署的证书ID
-        :type CertificateId: str
         :param _Offset: 分页偏移量，从0开始。
         :type Offset: int
         :param _Limit: 每页数量，默认10。
         :type Limit: int
+        :param _CertificateId: 待部署的证书ID
+        :type CertificateId: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
-        :param _AsyncCache: 是否异步缓存
+        :param _AsyncCache: 是否异步缓存，0表示否，1表示是，默认为0
         :type AsyncCache: int
         :param _OldCertificateId: 原证书ID
         :type OldCertificateId: str
         """
-        self._CertificateId = None
         self._Offset = None
         self._Limit = None
+        self._CertificateId = None
         self._IsCache = None
         self._Filters = None
         self._AsyncCache = None
         self._OldCertificateId = None
-
-    @property
-    def CertificateId(self):
-        """待部署的证书ID
-        :rtype: str
-        """
-        return self._CertificateId
-
-    @CertificateId.setter
-    def CertificateId(self, CertificateId):
-        self._CertificateId = CertificateId
 
     @property
     def Offset(self):
@@ -10602,6 +10672,17 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
 
     @property
     def IsCache(self):
@@ -10627,7 +10708,7 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步缓存
+        """是否异步缓存，0表示否，1表示是，默认为0
         :rtype: int
         """
         return self._AsyncCache
@@ -10649,9 +10730,9 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._CertificateId = params.get("CertificateId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._CertificateId = params.get("CertificateId")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -10678,16 +10759,16 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: 总数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _InstanceList: CLB实例监听器列表
+        :param _InstanceList: tke实例列表，取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of TkeInstanceDetail
-        :param _AsyncTotalNum: 异步刷新总数
+        :param _AsyncTotalNum: 异步刷新总数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncTotalNum: int
-        :param _AsyncOffset: 异步刷新当前执行数
+        :param _AsyncOffset: 异步刷新当前执行数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
         :param _AsyncCacheTime: 当前缓存读取时间	
@@ -10705,7 +10786,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        """总数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10717,7 +10798,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """CLB实例监听器列表
+        """tke实例列表，取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TkeInstanceDetail
         """
@@ -10729,7 +10810,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
-        """异步刷新总数
+        """异步刷新总数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10741,7 +10822,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
-        """异步刷新当前执行数
+        """异步刷新当前执行数，取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10796,7 +10877,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 一键更新记录ID
+        :param _DeployRecordId: 一键更新记录ID,从接口UpdateCertificateInstance获得
         :type DeployRecordId: str
         :param _Limit: 每页数量，默认10。
         :type Limit: str
@@ -10809,7 +10890,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """一键更新记录ID
+        """一键更新记录ID,从接口UpdateCertificateInstance获得
         :rtype: str
         """
         return self._DeployRecordId
@@ -10862,19 +10943,19 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: 总数,如果取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RecordDetailList: 证书部署记录列表
+        :param _RecordDetailList: 证书部署记录列表，如果取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordDetailList: list of UpdateRecordDetails
-        :param _SuccessTotalCount: 成功总数
+        :param _SuccessTotalCount: 成功总数,如果取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessTotalCount: int
-        :param _FailedTotalCount: 失败总数
+        :param _FailedTotalCount: 失败总数,如果取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedTotalCount: int
-        :param _RunningTotalCount: 部署中总数
+        :param _RunningTotalCount: 部署中总数,如果取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10889,7 +10970,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        """总数,如果取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10901,7 +10982,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RecordDetailList(self):
-        """证书部署记录列表
+        """证书部署记录列表，如果取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpdateRecordDetails
         """
@@ -10913,7 +10994,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def SuccessTotalCount(self):
-        """成功总数
+        """成功总数,如果取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10925,7 +11006,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def FailedTotalCount(self):
-        """失败总数
+        """失败总数,如果取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10937,7 +11018,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RunningTotalCount(self):
-        """部署中总数
+        """部署中总数,如果取不到返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11130,19 +11211,19 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
         r"""
         :param _CertificateId: 待部署的证书ID
         :type CertificateId: str
-        :param _ResourceType: 部署资源类型 vod
-        :type ResourceType: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表
         :type Filters: list of Filter
+        :param _ResourceType: 部署资源类型 vod
+        :type ResourceType: str
         :param _OldCertificateId: 已部署的证书ID
         :type OldCertificateId: str
         """
         self._CertificateId = None
-        self._ResourceType = None
         self._IsCache = None
         self._Filters = None
+        self._ResourceType = None
         self._OldCertificateId = None
 
     @property
@@ -11155,17 +11236,6 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
     @CertificateId.setter
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
-
-    @property
-    def ResourceType(self):
-        """部署资源类型 vod
-        :rtype: str
-        """
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def IsCache(self):
@@ -11190,6 +11260,21 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
         self._Filters = Filters
 
     @property
+    def ResourceType(self):
+        warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
+
+        """部署资源类型 vod
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
+
+        self._ResourceType = ResourceType
+
+    @property
     def OldCertificateId(self):
         """已部署的证书ID
         :rtype: str
@@ -11203,7 +11288,6 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
-        self._ResourceType = params.get("ResourceType")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -11211,6 +11295,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         self._OldCertificateId = params.get("OldCertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -11229,10 +11314,10 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: Vod实例列表
+        :param _InstanceList: Vod实例列表，如果取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of VodInstanceDetail
-        :param _TotalCount: 总数
+        :param _TotalCount: 总数,如果取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11244,7 +11329,7 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """Vod实例列表
+        """Vod实例列表，如果取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VodInstanceDetail
         """
@@ -11256,7 +11341,7 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """总数
+        """总数,如果取不到值返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11298,19 +11383,19 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
         r"""
         :param _CertificateId: 待部署的证书ID
         :type CertificateId: str
-        :param _ResourceType: 部署资源类型
-        :type ResourceType: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
+        :param _ResourceType: 部署资源类型，如waf
+        :type ResourceType: str
         :param _OldCertificateId: 已部署的证书ID
         :type OldCertificateId: str
         """
         self._CertificateId = None
-        self._ResourceType = None
         self._IsCache = None
         self._Filters = None
+        self._ResourceType = None
         self._OldCertificateId = None
 
     @property
@@ -11323,17 +11408,6 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
     @CertificateId.setter
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
-
-    @property
-    def ResourceType(self):
-        """部署资源类型
-        :rtype: str
-        """
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def IsCache(self):
@@ -11358,6 +11432,21 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
         self._Filters = Filters
 
     @property
+    def ResourceType(self):
+        warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
+
+        """部署资源类型，如waf
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
+
+        self._ResourceType = ResourceType
+
+    @property
     def OldCertificateId(self):
         """已部署的证书ID
         :rtype: str
@@ -11371,7 +11460,6 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
-        self._ResourceType = params.get("ResourceType")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -11379,6 +11467,7 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         self._OldCertificateId = params.get("OldCertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -11397,7 +11486,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: WAF实例列表
+        :param _InstanceList: WAF实例列表，如果没有取到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of LiveInstanceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11408,7 +11497,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """WAF实例列表
+        """WAF实例列表，如果没有取到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveInstanceDetail
         """
@@ -11447,7 +11536,7 @@ class DescribeManagerDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ManagerId: 管理人ID
+        :param _ManagerId: 管理人ID,可以从describeManagers接口获得
         :type ManagerId: int
         :param _Limit: 分页每页数量
         :type Limit: int
@@ -11460,7 +11549,7 @@ class DescribeManagerDetailRequest(AbstractModel):
 
     @property
     def ManagerId(self):
-        """管理人ID
+        """管理人ID,可以从describeManagers接口获得
         :rtype: int
         """
         return self._ManagerId
@@ -11845,7 +11934,7 @@ class DescribeManagersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompanyId: 公司ID
+        :param _CompanyId: 公司ID,可以从DescribeCompanies接口获取
         :type CompanyId: int
         :param _Offset: 分页偏移量
         :type Offset: int
@@ -11877,7 +11966,7 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def CompanyId(self):
-        """公司ID
+        """公司ID,可以从DescribeCompanies接口获取
         :rtype: int
         """
         return self._CompanyId
@@ -18076,9 +18165,9 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 待重试部署记录ID
+        :param _DeployRecordId: 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID
         :type DeployRecordId: int
-        :param _DeployRecordDetailId: 待重试部署记录详情ID
+        :param _DeployRecordDetailId: 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得
         :type DeployRecordDetailId: int
         """
         self._DeployRecordId = None
@@ -18086,7 +18175,7 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """待重试部署记录ID
+        """待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID
         :rtype: int
         """
         return self._DeployRecordId
@@ -18097,7 +18186,7 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
-        """待重试部署记录详情ID
+        """待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得
         :rtype: int
         """
         return self._DeployRecordDetailId
@@ -18155,14 +18244,14 @@ class UpdateCertificateRecordRollbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 待重试部署记录ID
+        :param _DeployRecordId: 待重试部署记录ID,通过UpdateCertificateInstance获得
         :type DeployRecordId: int
         """
         self._DeployRecordId = None
 
     @property
     def DeployRecordId(self):
-        """待重试部署记录ID
+        """待重试部署记录ID,通过UpdateCertificateInstance获得
         :rtype: int
         """
         return self._DeployRecordId

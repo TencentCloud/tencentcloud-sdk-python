@@ -2135,11 +2135,14 @@ class AllocateIp6AddressesBandwidthRequest(AbstractModel):
         :type InternetChargeType: str
         :param _BandwidthPackageId: 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
         :type BandwidthPackageId: str
+        :param _Tags: 需要关联的标签列表。	
+        :type Tags: list of Tag
         """
         self._Ip6Addresses = None
         self._InternetMaxBandwidthOut = None
         self._InternetChargeType = None
         self._BandwidthPackageId = None
+        self._Tags = None
 
     @property
     def Ip6Addresses(self):
@@ -2185,12 +2188,29 @@ class AllocateIp6AddressesBandwidthRequest(AbstractModel):
     def BandwidthPackageId(self, BandwidthPackageId):
         self._BandwidthPackageId = BandwidthPackageId
 
+    @property
+    def Tags(self):
+        """需要关联的标签列表。	
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Ip6Addresses = params.get("Ip6Addresses")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._InternetChargeType = params.get("InternetChargeType")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5001,10 +5021,8 @@ class CcnAttachedInstance(AbstractModel):
         :param _Description: 备注
         :type Description: str
         :param _RouteTableId: 路由表ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableId: str
         :param _RouteTableName: 路由表名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableName: str
         """
         self._CcnId = None
@@ -5169,7 +5187,6 @@ class CcnAttachedInstance(AbstractModel):
     @property
     def RouteTableId(self):
         """路由表ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RouteTableId
@@ -5181,7 +5198,6 @@ class CcnAttachedInstance(AbstractModel):
     @property
     def RouteTableName(self):
         """路由表名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RouteTableName
@@ -13206,9 +13222,12 @@ class CreateServiceTemplateGroupRequest(AbstractModel):
         :type ServiceTemplateGroupName: str
         :param _ServiceTemplateIds: 协议端口模板实例ID，例如：ppm-4dw6agho。
         :type ServiceTemplateIds: list of str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._ServiceTemplateGroupName = None
         self._ServiceTemplateIds = None
+        self._Tags = None
 
     @property
     def ServiceTemplateGroupName(self):
@@ -13232,10 +13251,27 @@ class CreateServiceTemplateGroupRequest(AbstractModel):
     def ServiceTemplateIds(self, ServiceTemplateIds):
         self._ServiceTemplateIds = ServiceTemplateIds
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ServiceTemplateGroupName = params.get("ServiceTemplateGroupName")
         self._ServiceTemplateIds = params.get("ServiceTemplateIds")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40904,40 +40940,28 @@ class IKEOptionsSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param _PropoEncryAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
-注意：此字段可能返回 null，表示取不到有效值。
         :type PropoEncryAlgorithm: str
         :param _PropoAuthenAlgorithm: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为MD5
-注意：此字段可能返回 null，表示取不到有效值。
         :type PropoAuthenAlgorithm: str
         :param _ExchangeMode: 协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExchangeMode: str
         :param _LocalIdentity: 本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalIdentity: str
         :param _RemoteIdentity: 对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteIdentity: str
         :param _LocalAddress: 本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalAddress: str
         :param _RemoteAddress: 对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteAddress: str
         :param _LocalFqdnName: 本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalFqdnName: str
         :param _RemoteFqdnName: 对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteFqdnName: str
         :param _DhGroupName: DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
-注意：此字段可能返回 null，表示取不到有效值。
         :type DhGroupName: str
         :param _IKESaLifetimeSeconds: IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
-注意：此字段可能返回 null，表示取不到有效值。
         :type IKESaLifetimeSeconds: int
         :param _IKEVersion: IKE版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type IKEVersion: str
         """
         self._PropoEncryAlgorithm = None
@@ -40956,7 +40980,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def PropoEncryAlgorithm(self):
         """加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PropoEncryAlgorithm
@@ -40968,7 +40991,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def PropoAuthenAlgorithm(self):
         """认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为MD5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PropoAuthenAlgorithm
@@ -40980,7 +41002,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def ExchangeMode(self):
         """协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExchangeMode
@@ -40992,7 +41013,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def LocalIdentity(self):
         """本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalIdentity
@@ -41004,7 +41024,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def RemoteIdentity(self):
         """对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemoteIdentity
@@ -41016,7 +41035,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def LocalAddress(self):
         """本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalAddress
@@ -41028,7 +41046,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def RemoteAddress(self):
         """对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemoteAddress
@@ -41040,7 +41057,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def LocalFqdnName(self):
         """本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalFqdnName
@@ -41052,7 +41068,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def RemoteFqdnName(self):
         """对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemoteFqdnName
@@ -41064,7 +41079,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def DhGroupName(self):
         """DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DhGroupName
@@ -41076,7 +41090,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def IKESaLifetimeSeconds(self):
         """IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IKESaLifetimeSeconds
@@ -41088,7 +41101,6 @@ class IKEOptionsSpecification(AbstractModel):
     @property
     def IKEVersion(self):
         """IKE版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IKEVersion
@@ -41129,22 +41141,17 @@ class IPSECOptionsSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param _EncryptAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'SM4', 'NULL'， 默认为AES-CBC-128
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptAlgorithm: str
         :param _IntegrityAlgorith: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrityAlgorith: str
         :param _IPSECSaLifetimeSeconds: IPsec SA lifetime(s)：单位秒，取值范围：180-604800
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPSECSaLifetimeSeconds: int
         :param _PfsDhGroup: PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
-注意：此字段可能返回 null，表示取不到有效值。
         :type PfsDhGroup: str
         :param _IPSECSaLifetimeTraffic: IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPSECSaLifetimeTraffic: int
         :param _IntegrityAlgorithm: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrityAlgorithm: str
         """
         self._EncryptAlgorithm = None
@@ -41157,7 +41164,6 @@ class IPSECOptionsSpecification(AbstractModel):
     @property
     def EncryptAlgorithm(self):
         """加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'SM4', 'NULL'， 默认为AES-CBC-128
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -41185,7 +41191,6 @@ class IPSECOptionsSpecification(AbstractModel):
     @property
     def IPSECSaLifetimeSeconds(self):
         """IPsec SA lifetime(s)：单位秒，取值范围：180-604800
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IPSECSaLifetimeSeconds
@@ -41197,7 +41202,6 @@ class IPSECOptionsSpecification(AbstractModel):
     @property
     def PfsDhGroup(self):
         """PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PfsDhGroup
@@ -41209,7 +41213,6 @@ class IPSECOptionsSpecification(AbstractModel):
     @property
     def IPSECSaLifetimeTraffic(self):
         """IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IPSECSaLifetimeTraffic
@@ -41221,7 +41224,6 @@ class IPSECOptionsSpecification(AbstractModel):
     @property
     def IntegrityAlgorithm(self):
         """认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IntegrityAlgorithm

@@ -9639,8 +9639,11 @@ class NamespaceResourceEnv(AbstractModel):
         :param _TKE: 基于TKE集群的资源池
 注意：此字段可能返回 null，表示取不到有效值。
         :type TKE: :class:`tencentcloud.scf.v20180416.models.NamespaceResourceEnvTKE`
+        :param _OFFLINE: 近离线计算类型的命名空间
+        :type OFFLINE: bool
         """
         self._TKE = None
+        self._OFFLINE = None
 
     @property
     def TKE(self):
@@ -9654,11 +9657,23 @@ class NamespaceResourceEnv(AbstractModel):
     def TKE(self, TKE):
         self._TKE = TKE
 
+    @property
+    def OFFLINE(self):
+        """近离线计算类型的命名空间
+        :rtype: bool
+        """
+        return self._OFFLINE
+
+    @OFFLINE.setter
+    def OFFLINE(self, OFFLINE):
+        self._OFFLINE = OFFLINE
+
 
     def _deserialize(self, params):
         if params.get("TKE") is not None:
             self._TKE = NamespaceResourceEnvTKE()
             self._TKE._deserialize(params.get("TKE"))
+        self._OFFLINE = params.get("OFFLINE")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

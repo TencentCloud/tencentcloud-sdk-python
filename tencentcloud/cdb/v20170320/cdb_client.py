@@ -372,7 +372,9 @@ class CdbClient(AbstractClient):
 
 
     def CreateAuditRule(self, request):
-        """本接口(CreateAuditRule)用于创建用户在当前地域的审计规则。
+        """不再支持审计规则创建
+
+        本接口(CreateAuditRule)用于创建用户在当前地域的审计规则。
 
         :param request: Request instance for CreateAuditRule.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditRuleRequest`
@@ -780,7 +782,9 @@ class CdbClient(AbstractClient):
 
 
     def DeleteAuditRule(self, request):
-        """本接口(DeleteAuditRule)用于删除用户的审计规则。
+        """不再支持审计规则创建
+
+        本接口(DeleteAuditRule)用于删除用户的审计规则。
 
         :param request: Request instance for DeleteAuditRule.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditRuleRequest`
@@ -1194,7 +1198,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditRules(self, request):
-        """本接口(DescribeAuditRules)用于查询用户在当前地域的审计规则。
+        """不再支持审计规则创建
+
+        本接口(DescribeAuditRules)用于查询用户在当前地域的审计规则。
 
         :param request: Request instance for DescribeAuditRules.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRulesRequest`
@@ -2742,7 +2748,9 @@ class CdbClient(AbstractClient):
 
 
     def ModifyAuditRule(self, request):
-        """本接口(ModifyAuditRule)用于修改用户的审计规则。
+        """不再支持审计规则创建
+
+        本接口(ModifyAuditRule)用于修改用户的审计规则。
 
         :param request: Request instance for ModifyAuditRule.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditRuleRequest`

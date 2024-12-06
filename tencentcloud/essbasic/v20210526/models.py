@@ -19747,6 +19747,9 @@ class FlowApproverDetail(AbstractModel):
         :param _ApproverRoleName: 自定义签署人的角色名, 如: 收款人、开具人、见证人等
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverRoleName: str
+        :param _SignId: 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignId: str
         """
         self._ReceiptId = None
         self._ProxyOrganizationOpenId = None
@@ -19760,6 +19763,7 @@ class FlowApproverDetail(AbstractModel):
         self._ApproveTime = None
         self._ApproveType = None
         self._ApproverRoleName = None
+        self._SignId = None
 
     @property
     def ReceiptId(self):
@@ -19914,6 +19918,18 @@ class FlowApproverDetail(AbstractModel):
     def ApproverRoleName(self, ApproverRoleName):
         self._ApproverRoleName = ApproverRoleName
 
+    @property
+    def SignId(self):
+        """签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
 
     def _deserialize(self, params):
         self._ReceiptId = params.get("ReceiptId")
@@ -19928,6 +19944,7 @@ class FlowApproverDetail(AbstractModel):
         self._ApproveTime = params.get("ApproveTime")
         self._ApproveType = params.get("ApproveType")
         self._ApproverRoleName = params.get("ApproverRoleName")
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

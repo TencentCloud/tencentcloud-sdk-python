@@ -142,7 +142,7 @@ class SslClient(AbstractClient):
 
 
     def CommitCertificateInformation(self, request):
-        """提交证书订单。
+        """提交证书订单到CA机构。
 
         :param request: Request instance for CommitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CommitCertificateInformationRequest`
@@ -165,7 +165,7 @@ class SslClient(AbstractClient):
 
 
     def CompleteCertificate(self, request):
-        """本接口（CompleteCertificate）用于主动触发证书验证。仅非DNSPod和Wotrus品牌证书支持使用此接口。
+        """本接口（CompleteCertificate）用于主动触发证书验证。DNSPod和Wotrus品牌的证书不支持使用此接口。
 
         :param request: Request instance for CompleteCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CompleteCertificateRequest`

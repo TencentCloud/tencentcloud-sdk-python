@@ -9809,150 +9809,6 @@ class DescribeClustersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeCmqDeadLetterSourceQueuesRequest(AbstractModel):
-    """DescribeCmqDeadLetterSourceQueues请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DeadLetterQueueName: 死信队列名称
-        :type DeadLetterQueueName: str
-        :param _Limit: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
-        :type Limit: int
-        :param _Offset: 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。
-        :type Offset: int
-        :param _SourceQueueName: 根据SourceQueueName过滤
-        :type SourceQueueName: str
-        """
-        self._DeadLetterQueueName = None
-        self._Limit = None
-        self._Offset = None
-        self._SourceQueueName = None
-
-    @property
-    def DeadLetterQueueName(self):
-        """死信队列名称
-        :rtype: str
-        """
-        return self._DeadLetterQueueName
-
-    @DeadLetterQueueName.setter
-    def DeadLetterQueueName(self, DeadLetterQueueName):
-        self._DeadLetterQueueName = DeadLetterQueueName
-
-    @property
-    def Limit(self):
-        """分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        """分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def SourceQueueName(self):
-        """根据SourceQueueName过滤
-        :rtype: str
-        """
-        return self._SourceQueueName
-
-    @SourceQueueName.setter
-    def SourceQueueName(self, SourceQueueName):
-        self._SourceQueueName = SourceQueueName
-
-
-    def _deserialize(self, params):
-        self._DeadLetterQueueName = params.get("DeadLetterQueueName")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._SourceQueueName = params.get("SourceQueueName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCmqDeadLetterSourceQueuesResponse(AbstractModel):
-    """DescribeCmqDeadLetterSourceQueues返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 满足本次条件的队列个数
-        :type TotalCount: int
-        :param _QueueSet: 死信队列源队列
-        :type QueueSet: list of CmqDeadLetterSource
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._QueueSet = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        """满足本次条件的队列个数
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def QueueSet(self):
-        """死信队列源队列
-        :rtype: list of CmqDeadLetterSource
-        """
-        return self._QueueSet
-
-    @QueueSet.setter
-    def QueueSet(self, QueueSet):
-        self._QueueSet = QueueSet
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("QueueSet") is not None:
-            self._QueueSet = []
-            for item in params.get("QueueSet"):
-                obj = CmqDeadLetterSource()
-                obj._deserialize(item)
-                self._QueueSet.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeCmqQueueDetailRequest(AbstractModel):
     """DescribeCmqQueueDetail请求参数结构体
 
@@ -30210,7 +30066,7 @@ class RocketMQClusterConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MaxTpsPerNamespace: 单命名空间TPS上线
+        :param _MaxTpsPerNamespace: 单命名空间TPS上限
         :type MaxTpsPerNamespace: int
         :param _MaxNamespaceNum: 最大命名空间数量
         :type MaxNamespaceNum: int
@@ -30249,13 +30105,17 @@ class RocketMQClusterConfig(AbstractModel):
 
     @property
     def MaxTpsPerNamespace(self):
-        """单命名空间TPS上线
+        warnings.warn("parameter `MaxTpsPerNamespace` is deprecated", DeprecationWarning) 
+
+        """单命名空间TPS上限
         :rtype: int
         """
         return self._MaxTpsPerNamespace
 
     @MaxTpsPerNamespace.setter
     def MaxTpsPerNamespace(self, MaxTpsPerNamespace):
+        warnings.warn("parameter `MaxTpsPerNamespace` is deprecated", DeprecationWarning) 
+
         self._MaxTpsPerNamespace = MaxTpsPerNamespace
 
     @property
@@ -31638,7 +31498,7 @@ class RocketMQGroupConfigOutput(AbstractModel):
         :param _GroupName: 消费组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
-        :param _Imported: 导入状态
+        :param _Imported: 是否已导入
 注意：此字段可能返回 null，表示取不到有效值。
         :type Imported: bool
         :param _Remark: remark
@@ -31676,7 +31536,7 @@ class RocketMQGroupConfigOutput(AbstractModel):
 
     @property
     def Imported(self):
-        """导入状态
+        """是否已导入
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """

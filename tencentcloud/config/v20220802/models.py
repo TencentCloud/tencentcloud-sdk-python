@@ -179,7 +179,7 @@ ConfigurationItemChangeNotification：变更触发
         :param _ManageInputParameter: 参数详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManageInputParameter: list of InputParameterForManage
-        :param _CompliancePackName: 规则名称
+        :param _CompliancePackName: 合规包名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompliancePackName: str
         :param _RegionsScope: 关联地域
@@ -475,7 +475,7 @@ ConfigurationItemChangeNotification：变更触发
 
     @property
     def CompliancePackName(self):
-        """规则名称
+        """合规包名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1453,20 +1453,29 @@ class ListConfigRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页限制
+        :param _Limit: 每页数量。
+取值范围：1~200
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量。
+取值范围：最小值为0
         :type Offset: int
-        :param _OrderType: 排序类型, 倒序：desc，顺序：asc
+        :param _OrderType: 排序类型(规则名称)。
+倒序：desc，
+顺序：asc
         :type OrderType: str
-        :param _RiskLevel: 风险等级
-1：高风险。
-2：中风险。
+        :param _RiskLevel: 风险等级。
+1：高风险，
+2：中风险，
 3：低风险。
         :type RiskLevel: list of int non-negative
-        :param _State: 规则状态
+        :param _State: 规则状态。
+ACTIVE：启用
+UN_ACTIVE：停用
+
         :type State: str
-        :param _ComplianceResult: 评估结果
+        :param _ComplianceResult: 评估结果。
+COMPLIANT：合规
+NON_COMPLIANT：不合规
         :type ComplianceResult: list of str
         :param _RuleName: 规则名
         :type RuleName: str
@@ -1481,7 +1490,8 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页限制
+        """每页数量。
+取值范围：1~200
         :rtype: int
         """
         return self._Limit
@@ -1492,7 +1502,8 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量。
+取值范围：最小值为0
         :rtype: int
         """
         return self._Offset
@@ -1503,7 +1514,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序类型, 倒序：desc，顺序：asc
+        """排序类型(规则名称)。
+倒序：desc，
+顺序：asc
         :rtype: str
         """
         return self._OrderType
@@ -1514,9 +1527,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """风险等级
-1：高风险。
-2：中风险。
+        """风险等级。
+1：高风险，
+2：中风险，
 3：低风险。
         :rtype: list of int non-negative
         """
@@ -1528,7 +1541,10 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def State(self):
-        """规则状态
+        """规则状态。
+ACTIVE：启用
+UN_ACTIVE：停用
+
         :rtype: str
         """
         return self._State
@@ -1539,7 +1555,9 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        """评估结果
+        """评估结果。
+COMPLIANT：合规
+NON_COMPLIANT：不合规
         :rtype: list of str
         """
         return self._ComplianceResult
@@ -1819,7 +1837,8 @@ class PutEvaluationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResultToken: 回调令牌。从自定义规则所选的scf云函数Context中取参数ResultToken值
+        :param _ResultToken: 回调令牌。从自定义规则所选的scf云函数入参中取参数ResultToken值
+<a href="https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E" target="_blank">云函数入参说明</a>
         :type ResultToken: str
         :param _Evaluations: 自定义规则评估结果信息。
         :type Evaluations: list of Evaluation
@@ -1829,7 +1848,8 @@ class PutEvaluationsRequest(AbstractModel):
 
     @property
     def ResultToken(self):
-        """回调令牌。从自定义规则所选的scf云函数Context中取参数ResultToken值
+        """回调令牌。从自定义规则所选的scf云函数入参中取参数ResultToken值
+<a href="https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E" target="_blank">云函数入参说明</a>
         :rtype: str
         """
         return self._ResultToken

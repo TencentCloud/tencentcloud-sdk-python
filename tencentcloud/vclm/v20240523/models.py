@@ -297,10 +297,12 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
         :type TaskId: str
         :param _SessionId: 音频转译结果确认 session。	
         :type SessionId: str
-        :param _Status: 该字段与 DescribeVideoTranslateJob 接口的 Status 功能相同，均表示任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
+        :param _Status: 任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
         :type Status: int
         :param _Message: 视频转译任务信息。	
         :type Message: str
+        :param _JobStatus: 任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
+        :type JobStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -309,6 +311,7 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
         self._SessionId = None
         self._Status = None
         self._Message = None
+        self._JobStatus = None
         self._RequestId = None
 
     @property
@@ -324,6 +327,8 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        warnings.warn("parameter `TaskId` is deprecated", DeprecationWarning) 
+
         """音频转译任务 ID。
         :rtype: str
         """
@@ -331,10 +336,14 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @TaskId.setter
     def TaskId(self, TaskId):
+        warnings.warn("parameter `TaskId` is deprecated", DeprecationWarning) 
+
         self._TaskId = TaskId
 
     @property
     def SessionId(self):
+        warnings.warn("parameter `SessionId` is deprecated", DeprecationWarning) 
+
         """音频转译结果确认 session。	
         :rtype: str
         """
@@ -342,21 +351,29 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @SessionId.setter
     def SessionId(self, SessionId):
+        warnings.warn("parameter `SessionId` is deprecated", DeprecationWarning) 
+
         self._SessionId = SessionId
 
     @property
     def Status(self):
-        """该字段与 DescribeVideoTranslateJob 接口的 Status 功能相同，均表示任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
+        """任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
         :rtype: int
         """
         return self._Status
 
     @Status.setter
     def Status(self, Status):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         self._Status = Status
 
     @property
     def Message(self):
+        warnings.warn("parameter `Message` is deprecated", DeprecationWarning) 
+
         """视频转译任务信息。	
         :rtype: str
         """
@@ -364,7 +381,20 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
 
     @Message.setter
     def Message(self, Message):
+        warnings.warn("parameter `Message` is deprecated", DeprecationWarning) 
+
         self._Message = Message
+
+    @property
+    def JobStatus(self):
+        """任务状态。0：任务初始化。1：音频翻译中。 2：音频翻译失败。 3：音频翻译成功。 4：音频结果待确认。 5：音频结果已确认完毕。6：视频翻译中。 7：视频翻译失败。 8：视频翻译成功。
+        :rtype: int
+        """
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
 
     @property
     def RequestId(self):
@@ -384,6 +414,7 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._Status = params.get("Status")
         self._Message = params.get("Message")
+        self._JobStatus = params.get("JobStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -978,6 +1009,8 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobConfirm(self):
+        warnings.warn("parameter `JobConfirm` is deprecated", DeprecationWarning) 
+
         """是否需要确认翻译结果。0：不需要，1：需要。	
         :rtype: int
         """
@@ -985,10 +1018,14 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @JobConfirm.setter
     def JobConfirm(self, JobConfirm):
+        warnings.warn("parameter `JobConfirm` is deprecated", DeprecationWarning) 
+
         self._JobConfirm = JobConfirm
 
     @property
     def JobAudioTaskId(self):
+        warnings.warn("parameter `JobAudioTaskId` is deprecated", DeprecationWarning) 
+
         """音频任务 ID。	
         :rtype: str
         """
@@ -996,10 +1033,14 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @JobAudioTaskId.setter
     def JobAudioTaskId(self, JobAudioTaskId):
+        warnings.warn("parameter `JobAudioTaskId` is deprecated", DeprecationWarning) 
+
         self._JobAudioTaskId = JobAudioTaskId
 
     @property
     def JobVideoModerationId(self):
+        warnings.warn("parameter `JobVideoModerationId` is deprecated", DeprecationWarning) 
+
         """视频审核任务ID。
         :rtype: str
         """
@@ -1007,10 +1048,14 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @JobVideoModerationId.setter
     def JobVideoModerationId(self, JobVideoModerationId):
+        warnings.warn("parameter `JobVideoModerationId` is deprecated", DeprecationWarning) 
+
         self._JobVideoModerationId = JobVideoModerationId
 
     @property
     def JobAudioModerationId(self):
+        warnings.warn("parameter `JobAudioModerationId` is deprecated", DeprecationWarning) 
+
         """音频审核任务 ID。
         :rtype: str
         """
@@ -1018,10 +1063,14 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @JobAudioModerationId.setter
     def JobAudioModerationId(self, JobAudioModerationId):
+        warnings.warn("parameter `JobAudioModerationId` is deprecated", DeprecationWarning) 
+
         self._JobAudioModerationId = JobAudioModerationId
 
     @property
     def JobVideoId(self):
+        warnings.warn("parameter `JobVideoId` is deprecated", DeprecationWarning) 
+
         """口型驱动任务 ID。
         :rtype: str
         """
@@ -1029,10 +1078,14 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @JobVideoId.setter
     def JobVideoId(self, JobVideoId):
+        warnings.warn("parameter `JobVideoId` is deprecated", DeprecationWarning) 
+
         self._JobVideoId = JobVideoId
 
     @property
     def OriginalVideoUrl(self):
+        warnings.warn("parameter `OriginalVideoUrl` is deprecated", DeprecationWarning) 
+
         """视频素材原始 URL。
         :rtype: str
         """
@@ -1040,6 +1093,8 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @OriginalVideoUrl.setter
     def OriginalVideoUrl(self, OriginalVideoUrl):
+        warnings.warn("parameter `OriginalVideoUrl` is deprecated", DeprecationWarning) 
+
         self._OriginalVideoUrl = OriginalVideoUrl
 
     @property
@@ -1055,6 +1110,8 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobSubmitReqId(self):
+        warnings.warn("parameter `JobSubmitReqId` is deprecated", DeprecationWarning) 
+
         """提交视频转译任务时的 requestId。
         :rtype: str
         """
@@ -1062,6 +1119,8 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
 
     @JobSubmitReqId.setter
     def JobSubmitReqId(self, JobSubmitReqId):
+        warnings.warn("parameter `JobSubmitReqId` is deprecated", DeprecationWarning) 
+
         self._JobSubmitReqId = JobSubmitReqId
 
     @property

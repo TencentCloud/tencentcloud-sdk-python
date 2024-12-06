@@ -236,59 +236,42 @@ class VclmClient(AbstractClient):
 
 
     def SubmitVideoTranslateJob(self, request):
-        """###### 支持音色种别列表
-        | 音色名称                 | 性别 | 音色ID |音色试听ID |
-        | ------------------------ | ---- | ------ |------ |
-        | Florian Multilingual     | 男   | 701001 |
-        | Seraphina                | 女   | 701002 |
-        | Ada Multilingual         | 女   | 701003 |
-        | Ollie Multilingual       | 男   | 701004 |
-        | Ava Multilingual         | 女   | 701005 |
-        | Andrew Multilingual      | 男   | 701006 |
-        | Emma Multilingual        | 女   | 701007 |
-        | Brian Multilingual       | 男   | 701008 |
-        | Jenny Multilingual       | 女   | 701009 |
-        | Ryan Multilingual        | 男   | 701010 |
-        | Adam Multilingual        | 男   | 701011 |
-        | AlloyTurbo Multilingual  | 男   | 701012 |
-        | Amanda Multilingual      | 女   | 701013 |
-        | Brandon Multilingual     | 男   | 701014 |
-        | Christopher Multilingual | 男   | 701015 |
-        | Cora Multilingual        | 女   | 701016 |
-        | Davis Multilingual       | 男   | 701017 |
-        | Derek Multilingual       | 男   | 701018 |
-        | Dustin Multilingual      | 男   | 701019 |
-        | Evelyn Multilingual      | 女   | 701020 |
-        | Lewis Multilingual       | 男   | 701021 |
-        | Lola Multilingual        | 女   | 701022 |
-        | Nancy Multilingual       | 女   | 701023 |
-        | NovaTurbo Multilingual   | 女   | 701024 |
-        | Phoebe Multilingual      | 女   | 701025 |
-        | Samuel Multilingual      | 男   | 701026 |
-        | Serena Multilingual      | 女   | 701027 |
-        | Steffan Multilingual     | 男   | 701028 |
-        | Arabella Multilingual    | 女   | 701029 |
-        | Isidora Multilingual     | 女   | 701030 |
-        | Tristan Multilingual     | 男   | 701031 |
-        | Ximena Multilingual      | 女   | 701032 |
-        | Remy Multilingual        | 男   | 701033 |
-        | Vivienne Multilingual    | 女   | 701034 |
-        | Lucien Multilingual      | 男   | 701035 |
-        | Alessio Multilingual     | 男   | 701036 |
-        | Giuseppe Multilingual    | 男   | 701037 |
-        | Isabella Multilingual    | 女   | 701038 |
-        | Marcello Multilingual    | 男   | 701039 |
-        | Masaru Multilingual      | 男   | 701040 |
-        | Hyunsu Multilingual      | 男   | 701041 |
-        | Macerio Multilingual     | 男   | 701042 |
-        | Thalita Multilingual     | 女   | 701043 |
-        | 晓辰 多语言              | 女   | 701044 |
-        | 晓晓 多语言              | 女   | 701045 |
-        | 晓宇 多语言              | 女   | 701046 |
-        | 云逸 多语言              | 男   | 701047 |
-        | Yunfan Multilingual      | 男   | 701048 |
-        | Yunxiao Multilingual     | 男   | 701049 |
-        | 晓晓 方言                | 女   | 701050 |
+        """### 支持音色种别列表。
+        每个音色都支持：英语（美国）、阿拉伯语、德语、西班牙语、法语、印尼语、意大利语、日语、韩语、马来语、葡萄牙语、俄语、泰语、土耳其语、越南语。
+
+        | 音色名称    | 性别 | 音色ID |
+        | ----------- | ---- | ------ |
+        | Seraphina   | 女   | 701002 |
+        | Ada         | 女   | 701003 |
+        | Emma        | 女   | 701007 |
+        | Brian       | 男   | 701008 |
+        | Amanda      | 女   | 701013 |
+        | Brandon     | 男   | 701014 |
+        | Christopher | 男   | 701015 |
+        | Davis       | 男   | 701017 |
+        | Derek       | 男   | 701018 |
+        | Dustin      | 男   | 701019 |
+        | Evelyn      | 女   | 701020 |
+        | Lewis       | 男   | 701021 |
+        | Lola        | 女   | 701022 |
+        | Samuel      | 男   | 701026 |
+        | Steffan     | 男   | 701028 |
+        | Arabella    | 女   | 701029 |
+        | Isidora     | 女   | 701030 |
+        | Tristan     | 男   | 701031 |
+        | Vivienne    | 女   | 701034 |
+        | Lucien      | 男   | 701035 |
+        | Alessio     | 男   | 701036 |
+        | Giuseppe    | 男   | 701037 |
+        | Isabella    | 女   | 701038 |
+        | Marcello    | 男   | 701039 |
+        | Masaru      | 男   | 701040 |
+        | Macerio     | 男   | 701042 |
+        | Thalita     | 女   | 701043 |
+        | 晓晓         | 女   | 701045 |
+        | 晓宇         | 女   | 701046 |
+        | 云逸         | 男   | 701047 |
+        | Yunfan       | 男   | 701048 |
 
         :param request: Request instance for SubmitVideoTranslateJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoTranslateJobRequest`

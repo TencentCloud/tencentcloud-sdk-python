@@ -210,6 +210,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseProxyEndPoint(self, request):
+        """关闭数据库代理连接地址
+
+        :param request: Request instance for CloseProxyEndPoint.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyEndPointRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseProxyEndPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseProxyEndPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseWan(self, request):
         """本接口（CloseWan）用于关闭外网。
 
@@ -1466,6 +1489,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstancesWithinSameCluster(self, request):
+        """本接口(DescribeInstancesWithinSameCluster)用于查询同一集群下实例列表
+
+        :param request: Request instance for DescribeInstancesWithinSameCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstancesWithinSameClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstancesWithinSameClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesWithinSameCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesWithinSameClusterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
