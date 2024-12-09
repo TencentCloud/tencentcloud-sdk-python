@@ -240,12 +240,13 @@ class AIRecognitionTemplateItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
         :param _AsrFullTextConfigure: 语音全文识别控制参数。
+<font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
         :param _AsrWordsConfigure: 语音关键词识别控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
-        :param _AsrTranslateConfigure: 语音翻译控制参数。
+        :param _AsrTranslateConfigure: 语音翻译识别控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         :param _ObjectConfigure: 物体识别控制参数。
@@ -384,6 +385,7 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def AsrFullTextConfigure(self):
         """语音全文识别控制参数。
+<font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
         """
@@ -407,7 +409,7 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def AsrTranslateConfigure(self):
-        """语音翻译控制参数。
+        """语音翻译识别控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         """
@@ -4161,17 +4163,17 @@ class AiRecognitionTaskAsrTranslateResultOutput(AbstractModel):
 
 
 class AiRecognitionTaskAsrTranslateSegmentItem(AbstractModel):
-    """语音翻译片段。
+    """语音翻译识别片段。
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: 语音翻译片段置信度。取值：0~100。
+        :param _Confidence: 语音翻译识别片段置信度。取值：0~100。
         :type Confidence: float
-        :param _StartTimeOffset: 语音翻译片段起始的偏移时间，单位：秒。
+        :param _StartTimeOffset: 语音翻译识别片段起始的偏移时间，单位：秒。
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 语音翻译片段终止的偏移时间，单位：秒。
+        :param _EndTimeOffset: 语音翻译识别片段终止的偏移时间，单位：秒。
         :type EndTimeOffset: float
         :param _Text: 识别文本。
         :type Text: str
@@ -4186,7 +4188,7 @@ class AiRecognitionTaskAsrTranslateSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
-        """语音翻译片段置信度。取值：0~100。
+        """语音翻译识别片段置信度。取值：0~100。
         :rtype: float
         """
         return self._Confidence
@@ -4197,7 +4199,7 @@ class AiRecognitionTaskAsrTranslateSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        """语音翻译片段起始的偏移时间，单位：秒。
+        """语音翻译识别片段起始的偏移时间，单位：秒。
         :rtype: float
         """
         return self._StartTimeOffset
@@ -4208,7 +4210,7 @@ class AiRecognitionTaskAsrTranslateSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        """语音翻译片段终止的偏移时间，单位：秒。
+        """语音翻译识别片段终止的偏移时间，单位：秒。
         :rtype: float
         """
         return self._EndTimeOffset
@@ -11300,7 +11302,8 @@ class ArtifactRepairInfo(AbstractModel):
 
 
 class AsrFullTextConfigureInfo(AbstractModel):
-    """语音全文识别任务控制参数
+    """语音全文识别任务控制参数。
+    <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font>
 
     """
 
@@ -11538,15 +11541,15 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
 
 class AsrTranslateConfigureInfo(AbstractModel):
-    """语音翻译任务控制参数
+    """语音翻译识别任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: 语音翻译任务开关，可选值：
+        :param _Switch: 语音翻译识别任务开关，可选值：
 <li>ON：开启；</li>
-<li>OFF：关闭。</li><font color=red>注意：</font>语音翻译任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译和 ASR 全文识别功能项。
+<li>OFF：关闭。</li><font color=red>注意：</font>语音翻译识别任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译识别和 ASR 全文识别功能项。
 
         :type Switch: str
         :param _SrcLanguage: 媒体源语言，当 Switch 为 ON 时，此参数必填。取值范围：
@@ -11564,7 +11567,9 @@ class AsrTranslateConfigureInfo(AbstractModel):
 <li>hi：印地语；</li>
 <li>fr：法语。</li>
         :type SrcLanguage: str
-        :param _DstLanguage: 翻译目标语言，当 Switch 为 ON 时，此参数必填。
+        :param _DstLanguage: 翻译目标语言，当 Switch 为 ON 时，此参数有效。
+若此参数不填或者填写空字符串，则表示只进行语音全文识别，不进行翻译（计费项与 AsrFullTextConfigure 语音全文识别一致）；
+否则，此参数的取值范围分为如下几种情况：
 当 SrcLanguage 为 zh（中文）时，取值范围：
 <li>en：英文；</li>
 <li>ja：日文；</li>
@@ -11664,9 +11669,9 @@ class AsrTranslateConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
-        """语音翻译任务开关，可选值：
+        """语音翻译识别任务开关，可选值：
 <li>ON：开启；</li>
-<li>OFF：关闭。</li><font color=red>注意：</font>语音翻译任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译和 ASR 全文识别功能项。
+<li>OFF：关闭。</li><font color=red>注意：</font>语音翻译识别任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译识别和 ASR 全文识别功能项。
 
         :rtype: str
         """
@@ -11702,7 +11707,9 @@ class AsrTranslateConfigureInfo(AbstractModel):
 
     @property
     def DstLanguage(self):
-        """翻译目标语言，当 Switch 为 ON 时，此参数必填。
+        """翻译目标语言，当 Switch 为 ON 时，此参数有效。
+若此参数不填或者填写空字符串，则表示只进行语音全文识别，不进行翻译（计费项与 AsrFullTextConfigure 语音全文识别一致）；
+否则，此参数的取值范围分为如下几种情况：
 当 SrcLanguage 为 zh（中文）时，取值范围：
 <li>en：英文；</li>
 <li>ja：日文；</li>
@@ -11836,15 +11843,15 @@ class AsrTranslateConfigureInfo(AbstractModel):
 
 
 class AsrTranslateConfigureInfoForUpdate(AbstractModel):
-    """语音翻译控制参数
+    """语音翻译识别控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: 语音翻译任务开关，可选值：
+        :param _Switch: 语音翻译识别任务开关，可选值：
 <li>ON：开启；</li>
-<li>OFF：关闭。</li>
+<li>OFF：关闭。</li><font color=red>注意：</font>语音翻译识别任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译识别和 ASR 全文识别功能项。
         :type Switch: str
         :param _SrcLanguage: 媒体源语言，取值范围：
 <li>zh：中文；</li>
@@ -11862,6 +11869,8 @@ class AsrTranslateConfigureInfoForUpdate(AbstractModel):
 <li>fr：法语。</li>
         :type SrcLanguage: str
         :param _DstLanguage: 翻译目标语言。
+若此参数填写空字符串，则表示只进行语音全文识别，不进行翻译（计费项与 AsrFullTextConfigure 语音全文识别一致）；
+否则，此参数的取值范围分为如下几种情况：
 当 SrcLanguage 为 zh（中文）时，取值范围：
 <li>en：英文；</li>
 <li>ja：日文；</li>
@@ -11957,9 +11966,9 @@ class AsrTranslateConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
-        """语音翻译任务开关，可选值：
+        """语音翻译识别任务开关，可选值：
 <li>ON：开启；</li>
-<li>OFF：关闭。</li>
+<li>OFF：关闭。</li><font color=red>注意：</font>语音翻译识别任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译识别和 ASR 全文识别功能项。
         :rtype: str
         """
         return self._Switch
@@ -11995,6 +12004,8 @@ class AsrTranslateConfigureInfoForUpdate(AbstractModel):
     @property
     def DstLanguage(self):
         """翻译目标语言。
+若此参数填写空字符串，则表示只进行语音全文识别，不进行翻译（计费项与 AsrFullTextConfigure 语音全文识别一致）；
+否则，此参数的取值范围分为如下几种情况：
 当 SrcLanguage 为 zh（中文）时，取值范围：
 <li>en：英文；</li>
 <li>ja：日文；</li>
@@ -16355,10 +16366,11 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         :param _OcrWordsConfigure: 文本关键词识别控制参数。
         :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
         :param _AsrFullTextConfigure: 语音全文识别控制参数。
+<font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
         :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
         :param _AsrWordsConfigure: 语音关键词识别控制参数。
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
-        :param _AsrTranslateConfigure: 语音翻译控制参数。
+        :param _AsrTranslateConfigure: 语音翻译识别控制参数。
         :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         :param _ObjectConfigure: 物体识别控制参数。
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
@@ -16470,6 +16482,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
     @property
     def AsrFullTextConfigure(self):
         """语音全文识别控制参数。
+<font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
         """
         return self._AsrFullTextConfigure
@@ -16491,7 +16504,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrTranslateConfigure(self):
-        """语音翻译控制参数。
+        """语音翻译识别控制参数。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         """
         return self._AsrTranslateConfigure
@@ -47155,10 +47168,11 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         :param _OcrWordsConfigure: 文本关键词识别控制参数。
         :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfoForUpdate`
         :param _AsrFullTextConfigure: 语音全文识别控制参数。
+<font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font>
         :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfoForUpdate`
         :param _AsrWordsConfigure: 语音关键词识别控制参数。
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfoForUpdate`
-        :param _AsrTranslateConfigure: 语音翻译控制参数。
+        :param _AsrTranslateConfigure: 语音翻译识别控制参数。
         :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfoForUpdate`
         :param _ObjectConfigure: 物体识别控制参数。
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`
@@ -47282,6 +47296,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
     @property
     def AsrFullTextConfigure(self):
         """语音全文识别控制参数。
+<font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfoForUpdate`
         """
         return self._AsrFullTextConfigure
@@ -47303,7 +47318,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrTranslateConfigure(self):
-        """语音翻译控制参数。
+        """语音翻译识别控制参数。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfoForUpdate`
         """
         return self._AsrTranslateConfigure

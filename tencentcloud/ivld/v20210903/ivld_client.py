@@ -425,7 +425,6 @@ class IvldClient(AbstractClient):
     def DescribeCustomPersons(self, request):
         """批量描述自定义人物
 
-
         :param request: Request instance for DescribeCustomPersons.
         :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeCustomPersonsRequest`
         :rtype: :class:`tencentcloud.ivld.v20210903.models.DescribeCustomPersonsResponse`

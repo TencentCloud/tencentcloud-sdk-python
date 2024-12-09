@@ -1225,6 +1225,63 @@ clusterAfter 表示在集群初始化后执行。
         
 
 
+class CLBSetting(AbstractModel):
+    """容器集群Pod服务CLB设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLBType: CLB类型，PUBLIC_IP表示支持公网CLB和INTERNAL_IP表示支持内网CLB字段 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLBType: str
+        :param _VPCSettings: Vpc和子网信息设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        """
+        self._CLBType = None
+        self._VPCSettings = None
+
+    @property
+    def CLBType(self):
+        """CLB类型，PUBLIC_IP表示支持公网CLB和INTERNAL_IP表示支持内网CLB字段 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CLBType
+
+    @CLBType.setter
+    def CLBType(self, CLBType):
+        self._CLBType = CLBType
+
+    @property
+    def VPCSettings(self):
+        """Vpc和子网信息设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        """
+        return self._VPCSettings
+
+    @VPCSettings.setter
+    def VPCSettings(self, VPCSettings):
+        self._VPCSettings = VPCSettings
+
+
+    def _deserialize(self, params):
+        self._CLBType = params.get("CLBType")
+        if params.get("VPCSettings") is not None:
+            self._VPCSettings = VPCSettings()
+            self._VPCSettings._deserialize(params.get("VPCSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class COSSettings(AbstractModel):
     """COS 相关配置
 
@@ -1649,6 +1706,183 @@ class CdbInfo(AbstractModel):
         self._SerialNo = params.get("SerialNo")
         self._ZoneId = params.get("ZoneId")
         self._RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudResource(AbstractModel):
+    """容器集群Pod请求资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComponentName: 组件角色名
+        :type ComponentName: str
+        :param _PodNumber: pod请求数量
+        :type PodNumber: int
+        :param _LimitCpu: Cpu请求数量最大值
+        :type LimitCpu: int
+        :param _LimitMemory: 内存请求数量最大值
+        :type LimitMemory: int
+        :param _Service: 服务名称，如HIVE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: str
+        :param _VolumeDir: 数据卷目录设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeDir: :class:`tencentcloud.emr.v20190103.models.VolumeSetting`
+        :param _ExternalAccess: 组件外部访问设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalAccess: :class:`tencentcloud.emr.v20190103.models.ExternalAccess`
+        :param _Affinity: 节点亲和性设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Affinity: :class:`tencentcloud.emr.v20190103.models.NodeAffinity`
+        :param _Disks: 所选数据盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Disks: list of Disk
+        """
+        self._ComponentName = None
+        self._PodNumber = None
+        self._LimitCpu = None
+        self._LimitMemory = None
+        self._Service = None
+        self._VolumeDir = None
+        self._ExternalAccess = None
+        self._Affinity = None
+        self._Disks = None
+
+    @property
+    def ComponentName(self):
+        """组件角色名
+        :rtype: str
+        """
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def PodNumber(self):
+        """pod请求数量
+        :rtype: int
+        """
+        return self._PodNumber
+
+    @PodNumber.setter
+    def PodNumber(self, PodNumber):
+        self._PodNumber = PodNumber
+
+    @property
+    def LimitCpu(self):
+        """Cpu请求数量最大值
+        :rtype: int
+        """
+        return self._LimitCpu
+
+    @LimitCpu.setter
+    def LimitCpu(self, LimitCpu):
+        self._LimitCpu = LimitCpu
+
+    @property
+    def LimitMemory(self):
+        """内存请求数量最大值
+        :rtype: int
+        """
+        return self._LimitMemory
+
+    @LimitMemory.setter
+    def LimitMemory(self, LimitMemory):
+        self._LimitMemory = LimitMemory
+
+    @property
+    def Service(self):
+        """服务名称，如HIVE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def VolumeDir(self):
+        """数据卷目录设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.VolumeSetting`
+        """
+        return self._VolumeDir
+
+    @VolumeDir.setter
+    def VolumeDir(self, VolumeDir):
+        self._VolumeDir = VolumeDir
+
+    @property
+    def ExternalAccess(self):
+        """组件外部访问设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ExternalAccess`
+        """
+        return self._ExternalAccess
+
+    @ExternalAccess.setter
+    def ExternalAccess(self, ExternalAccess):
+        self._ExternalAccess = ExternalAccess
+
+    @property
+    def Affinity(self):
+        """节点亲和性设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeAffinity`
+        """
+        return self._Affinity
+
+    @Affinity.setter
+    def Affinity(self, Affinity):
+        self._Affinity = Affinity
+
+    @property
+    def Disks(self):
+        """所选数据盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Disk
+        """
+        return self._Disks
+
+    @Disks.setter
+    def Disks(self, Disks):
+        self._Disks = Disks
+
+
+    def _deserialize(self, params):
+        self._ComponentName = params.get("ComponentName")
+        self._PodNumber = params.get("PodNumber")
+        self._LimitCpu = params.get("LimitCpu")
+        self._LimitMemory = params.get("LimitMemory")
+        self._Service = params.get("Service")
+        if params.get("VolumeDir") is not None:
+            self._VolumeDir = VolumeSetting()
+            self._VolumeDir._deserialize(params.get("VolumeDir"))
+        if params.get("ExternalAccess") is not None:
+            self._ExternalAccess = ExternalAccess()
+            self._ExternalAccess._deserialize(params.get("ExternalAccess"))
+        if params.get("Affinity") is not None:
+            self._Affinity = NodeAffinity()
+            self._Affinity._deserialize(params.get("Affinity"))
+        if params.get("Disks") is not None:
+            self._Disks = []
+            for item in params.get("Disks"):
+                obj = Disk()
+                obj._deserialize(item)
+                self._Disks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3384,6 +3618,357 @@ class Configuration(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateCloudInstanceRequest(AbstractModel):
+    """CreateCloudInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: 实例名称。
+<li>长度限制为6-36个字符。</li>
+<li>只允许包含中文、字母、数字、-、_。</li>
+        :type InstanceName: str
+        :param _ClusterClass: 容器集群类型，取值范围
+<li>EMR容器集群实例: EMR-TKE</li>
+        :type ClusterClass: str
+        :param _Software: 部署的组件列表，不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
+
+        :type Software: list of str
+        :param _PlatFormType: 容器平台类型，取值范围
+<li>EMR容器集群实例: tke</li>
+        :type PlatFormType: str
+        :param _CosBucket: cos存储桶
+        :type CosBucket: str
+        :param _EksClusterId: 容器集群id
+        :type EksClusterId: str
+        :param _ProductId: 产品Id，不同产品ID表示不同的EMR产品版本。取值范围：
+<li>60:表示EMR-TKE-V1.1.0</li>
+<li>55:表示EMR-TKE-V1.0.1</li>
+<li>52:表示EMR-TKE-V1.0.0</li>
+        :type ProductId: int
+        :param _ClientToken: 客户端token，唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，小于等于64个字符，例如 a9a90aa6----fae36063280
+示例值：a9a90aa6----fae36063280
+        :type ClientToken: str
+        :param _VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param _CloudResources: 所有组件角色及其对应的Pod资源请求信息
+        :type CloudResources: list of CloudResource
+        :param _SgId: 安全组Id，为空默认创建新的安全组
+        :type SgId: str
+        :param _MetaDBInfo: 元数据库信息
+MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser MetaDataPass UnifyMetaInstanceId不用填
+当MetaType选择EMR_EXIT_META时，填写UnifyMetaInstanceId
+当MetaType选择USER_CUSTOM_META时，填写MetaDataJdbcUrl MetaDataUser MetaDataPass
+        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaDBInfo`
+        :param _Tags: 标签信息
+        :type Tags: list of Tag
+        :param _LoginSettings: 登陆密码，LoginSettings中的Password字段
+        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        :param _ExternalService: 共享服务信息
+        :type ExternalService: list of ExternalService
+        :param _ZoneId: 可用区id
+        :type ZoneId: int
+        """
+        self._InstanceName = None
+        self._ClusterClass = None
+        self._Software = None
+        self._PlatFormType = None
+        self._CosBucket = None
+        self._EksClusterId = None
+        self._ProductId = None
+        self._ClientToken = None
+        self._VPCSettings = None
+        self._CloudResources = None
+        self._SgId = None
+        self._MetaDBInfo = None
+        self._Tags = None
+        self._LoginSettings = None
+        self._ExternalService = None
+        self._ZoneId = None
+
+    @property
+    def InstanceName(self):
+        """实例名称。
+<li>长度限制为6-36个字符。</li>
+<li>只允许包含中文、字母、数字、-、_。</li>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ClusterClass(self):
+        """容器集群类型，取值范围
+<li>EMR容器集群实例: EMR-TKE</li>
+        :rtype: str
+        """
+        return self._ClusterClass
+
+    @ClusterClass.setter
+    def ClusterClass(self, ClusterClass):
+        self._ClusterClass = ClusterClass
+
+    @property
+    def Software(self):
+        """部署的组件列表，不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
+
+        :rtype: list of str
+        """
+        return self._Software
+
+    @Software.setter
+    def Software(self, Software):
+        self._Software = Software
+
+    @property
+    def PlatFormType(self):
+        """容器平台类型，取值范围
+<li>EMR容器集群实例: tke</li>
+        :rtype: str
+        """
+        return self._PlatFormType
+
+    @PlatFormType.setter
+    def PlatFormType(self, PlatFormType):
+        self._PlatFormType = PlatFormType
+
+    @property
+    def CosBucket(self):
+        """cos存储桶
+        :rtype: str
+        """
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def EksClusterId(self):
+        """容器集群id
+        :rtype: str
+        """
+        return self._EksClusterId
+
+    @EksClusterId.setter
+    def EksClusterId(self, EksClusterId):
+        self._EksClusterId = EksClusterId
+
+    @property
+    def ProductId(self):
+        """产品Id，不同产品ID表示不同的EMR产品版本。取值范围：
+<li>60:表示EMR-TKE-V1.1.0</li>
+<li>55:表示EMR-TKE-V1.0.1</li>
+<li>52:表示EMR-TKE-V1.0.0</li>
+        :rtype: int
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ClientToken(self):
+        """客户端token，唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，小于等于64个字符，例如 a9a90aa6----fae36063280
+示例值：a9a90aa6----fae36063280
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def VPCSettings(self):
+        """私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        """
+        return self._VPCSettings
+
+    @VPCSettings.setter
+    def VPCSettings(self, VPCSettings):
+        self._VPCSettings = VPCSettings
+
+    @property
+    def CloudResources(self):
+        """所有组件角色及其对应的Pod资源请求信息
+        :rtype: list of CloudResource
+        """
+        return self._CloudResources
+
+    @CloudResources.setter
+    def CloudResources(self, CloudResources):
+        self._CloudResources = CloudResources
+
+    @property
+    def SgId(self):
+        """安全组Id，为空默认创建新的安全组
+        :rtype: str
+        """
+        return self._SgId
+
+    @SgId.setter
+    def SgId(self, SgId):
+        self._SgId = SgId
+
+    @property
+    def MetaDBInfo(self):
+        """元数据库信息
+MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser MetaDataPass UnifyMetaInstanceId不用填
+当MetaType选择EMR_EXIT_META时，填写UnifyMetaInstanceId
+当MetaType选择USER_CUSTOM_META时，填写MetaDataJdbcUrl MetaDataUser MetaDataPass
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CustomMetaDBInfo`
+        """
+        return self._MetaDBInfo
+
+    @MetaDBInfo.setter
+    def MetaDBInfo(self, MetaDBInfo):
+        self._MetaDBInfo = MetaDBInfo
+
+    @property
+    def Tags(self):
+        """标签信息
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def LoginSettings(self):
+        """登陆密码，LoginSettings中的Password字段
+        :rtype: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        """
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+    @property
+    def ExternalService(self):
+        """共享服务信息
+        :rtype: list of ExternalService
+        """
+        return self._ExternalService
+
+    @ExternalService.setter
+    def ExternalService(self, ExternalService):
+        self._ExternalService = ExternalService
+
+    @property
+    def ZoneId(self):
+        """可用区id
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._ClusterClass = params.get("ClusterClass")
+        self._Software = params.get("Software")
+        self._PlatFormType = params.get("PlatFormType")
+        self._CosBucket = params.get("CosBucket")
+        self._EksClusterId = params.get("EksClusterId")
+        self._ProductId = params.get("ProductId")
+        self._ClientToken = params.get("ClientToken")
+        if params.get("VPCSettings") is not None:
+            self._VPCSettings = VPCSettings()
+            self._VPCSettings._deserialize(params.get("VPCSettings"))
+        if params.get("CloudResources") is not None:
+            self._CloudResources = []
+            for item in params.get("CloudResources"):
+                obj = CloudResource()
+                obj._deserialize(item)
+                self._CloudResources.append(obj)
+        self._SgId = params.get("SgId")
+        if params.get("MetaDBInfo") is not None:
+            self._MetaDBInfo = CustomMetaDBInfo()
+            self._MetaDBInfo._deserialize(params.get("MetaDBInfo"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("LoginSettings") is not None:
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
+        if params.get("ExternalService") is not None:
+            self._ExternalService = []
+            for item in params.get("ExternalService"):
+                obj = ExternalService()
+                obj._deserialize(item)
+                self._ExternalService.append(obj)
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudInstanceResponse(AbstractModel):
+    """CreateCloudInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateClusterRequest(AbstractModel):
@@ -11454,6 +12039,82 @@ class DiffHeader(AbstractModel):
         
 
 
+class Disk(AbstractModel):
+    """磁盘信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: 数据盘类型，创建EMR容器集群实例可选
+<li> SSD云盘: CLOUD_SSD</li>
+<li>高效云盘: CLOUD_PREMIUM</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param _DiskCapacity: 单块大小GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskCapacity: int
+        :param _DiskNumber: 数据盘数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskNumber: int
+        """
+        self._DiskType = None
+        self._DiskCapacity = None
+        self._DiskNumber = None
+
+    @property
+    def DiskType(self):
+        """数据盘类型，创建EMR容器集群实例可选
+<li> SSD云盘: CLOUD_SSD</li>
+<li>高效云盘: CLOUD_PREMIUM</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskCapacity(self):
+        """单块大小GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DiskCapacity
+
+    @DiskCapacity.setter
+    def DiskCapacity(self, DiskCapacity):
+        self._DiskCapacity = DiskCapacity
+
+    @property
+    def DiskNumber(self):
+        """数据盘数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DiskNumber
+
+    @DiskNumber.setter
+    def DiskNumber(self, DiskNumber):
+        self._DiskNumber = DiskNumber
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskCapacity = params.get("DiskCapacity")
+        self._DiskNumber = params.get("DiskNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DiskGroup(AbstractModel):
     """磁盘组。
 
@@ -13232,6 +13893,63 @@ class Execution(AbstractModel):
         
 
 
+class ExternalAccess(AbstractModel):
+    """容器集群外部访问设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 外部访问类型，当前仅支持CLB字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _CLBServer: CLB设置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLBServer: :class:`tencentcloud.emr.v20190103.models.CLBSetting`
+        """
+        self._Type = None
+        self._CLBServer = None
+
+    @property
+    def Type(self):
+        """外部访问类型，当前仅支持CLB字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CLBServer(self):
+        """CLB设置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CLBSetting`
+        """
+        return self._CLBServer
+
+    @CLBServer.setter
+    def CLBServer(self, CLBServer):
+        self._CLBServer = CLBServer
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("CLBServer") is not None:
+            self._CLBServer = CLBSetting()
+            self._CLBServer._deserialize(params.get("CLBServer"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExternalService(AbstractModel):
     """共用组件信息
 
@@ -13896,6 +14614,61 @@ class HiveQuery(AbstractModel):
         self._JobIds = params.get("JobIds")
         self._ExecutionEngine = params.get("ExecutionEngine")
         self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostPathVolumeSource(AbstractModel):
+    """主机路径
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 主机路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Type: 主机路径类型，当前默认DirectoryOrCreate
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Path = None
+        self._Type = None
+
+    @property
+    def Path(self):
+        """主机路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Type(self):
+        """主机路径类型，当前默认DirectoryOrCreate
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17980,6 +18753,149 @@ class ModifyGlobalConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPodNumRequest(AbstractModel):
+    """ModifyPodNum请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群Id
+        :type InstanceId: str
+        :param _ServiceGroup: 服务编号
+        :type ServiceGroup: int
+        :param _ServiceType: 角色编号
+        :type ServiceType: int
+        :param _PodNum: 期望Pod数量
+        :type PodNum: int
+        """
+        self._InstanceId = None
+        self._ServiceGroup = None
+        self._ServiceType = None
+        self._PodNum = None
+
+    @property
+    def InstanceId(self):
+        """集群Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceGroup(self):
+        """服务编号
+        :rtype: int
+        """
+        return self._ServiceGroup
+
+    @ServiceGroup.setter
+    def ServiceGroup(self, ServiceGroup):
+        self._ServiceGroup = ServiceGroup
+
+    @property
+    def ServiceType(self):
+        """角色编号
+        :rtype: int
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def PodNum(self):
+        """期望Pod数量
+        :rtype: int
+        """
+        return self._PodNum
+
+    @PodNum.setter
+    def PodNum(self, PodNum):
+        self._PodNum = PodNum
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceGroup = params.get("ServiceGroup")
+        self._ServiceType = params.get("ServiceType")
+        self._PodNum = params.get("PodNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPodNumResponse(AbstractModel):
+    """ModifyPodNum返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _FlowId: 流程Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FlowId(self):
+        """流程Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyResourcePoolsRequest(AbstractModel):
     """ModifyResourcePools请求参数结构体
 
@@ -19526,6 +20442,68 @@ class NewResourceSpec(AbstractModel):
         
 
 
+class NodeAffinity(AbstractModel):
+    """节点亲和性设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequiredDuringSchedulingIgnoredDuringExecution: 节点亲和性-强制调度设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequiredDuringSchedulingIgnoredDuringExecution: :class:`tencentcloud.emr.v20190103.models.NodeSelector`
+        :param _PreferredDuringSchedulingIgnoredDuringExecution: 节点亲和性-容忍调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreferredDuringSchedulingIgnoredDuringExecution: list of PreferredSchedulingTerm
+        """
+        self._RequiredDuringSchedulingIgnoredDuringExecution = None
+        self._PreferredDuringSchedulingIgnoredDuringExecution = None
+
+    @property
+    def RequiredDuringSchedulingIgnoredDuringExecution(self):
+        """节点亲和性-强制调度设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeSelector`
+        """
+        return self._RequiredDuringSchedulingIgnoredDuringExecution
+
+    @RequiredDuringSchedulingIgnoredDuringExecution.setter
+    def RequiredDuringSchedulingIgnoredDuringExecution(self, RequiredDuringSchedulingIgnoredDuringExecution):
+        self._RequiredDuringSchedulingIgnoredDuringExecution = RequiredDuringSchedulingIgnoredDuringExecution
+
+    @property
+    def PreferredDuringSchedulingIgnoredDuringExecution(self):
+        """节点亲和性-容忍调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PreferredSchedulingTerm
+        """
+        return self._PreferredDuringSchedulingIgnoredDuringExecution
+
+    @PreferredDuringSchedulingIgnoredDuringExecution.setter
+    def PreferredDuringSchedulingIgnoredDuringExecution(self, PreferredDuringSchedulingIgnoredDuringExecution):
+        self._PreferredDuringSchedulingIgnoredDuringExecution = PreferredDuringSchedulingIgnoredDuringExecution
+
+
+    def _deserialize(self, params):
+        if params.get("RequiredDuringSchedulingIgnoredDuringExecution") is not None:
+            self._RequiredDuringSchedulingIgnoredDuringExecution = NodeSelector()
+            self._RequiredDuringSchedulingIgnoredDuringExecution._deserialize(params.get("RequiredDuringSchedulingIgnoredDuringExecution"))
+        if params.get("PreferredDuringSchedulingIgnoredDuringExecution") is not None:
+            self._PreferredDuringSchedulingIgnoredDuringExecution = []
+            for item in params.get("PreferredDuringSchedulingIgnoredDuringExecution"):
+                obj = PreferredSchedulingTerm()
+                obj._deserialize(item)
+                self._PreferredDuringSchedulingIgnoredDuringExecution.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeDetailPriceResult(AbstractModel):
     """用于创建集群价格清单 节点价格详情
 
@@ -20655,6 +21633,164 @@ class NodeResourceSpec(AbstractModel):
                 obj = DiskSpecInfo()
                 obj._deserialize(item)
                 self._LocalDataDisk.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeSelector(AbstractModel):
+    """Pod强制调度节点选择条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeSelectorTerms: Pod强制调度节点选择条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeSelectorTerms: list of NodeSelectorTerm
+        """
+        self._NodeSelectorTerms = None
+
+    @property
+    def NodeSelectorTerms(self):
+        """Pod强制调度节点选择条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSelectorTerm
+        """
+        return self._NodeSelectorTerms
+
+    @NodeSelectorTerms.setter
+    def NodeSelectorTerms(self, NodeSelectorTerms):
+        self._NodeSelectorTerms = NodeSelectorTerms
+
+
+    def _deserialize(self, params):
+        if params.get("NodeSelectorTerms") is not None:
+            self._NodeSelectorTerms = []
+            for item in params.get("NodeSelectorTerms"):
+                obj = NodeSelectorTerm()
+                obj._deserialize(item)
+                self._NodeSelectorTerms.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeSelectorRequirement(AbstractModel):
+    """Pod节点选择项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 节点选择项Key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Operator: 节点选择项Operator值，支持In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _Values: 节点选择项Values值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Operator = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        """节点选择项Key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operator(self):
+        """节点选择项Operator值，支持In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Values(self):
+        """节点选择项Values值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Operator = params.get("Operator")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeSelectorTerm(AbstractModel):
+    """Pod节点选择项集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MatchExpressions: 节点选择项表达式集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchExpressions: list of NodeSelectorRequirement
+        """
+        self._MatchExpressions = None
+
+    @property
+    def MatchExpressions(self):
+        """节点选择项表达式集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSelectorRequirement
+        """
+        return self._MatchExpressions
+
+    @MatchExpressions.setter
+    def MatchExpressions(self, MatchExpressions):
+        self._MatchExpressions = MatchExpressions
+
+
+    def _deserialize(self, params):
+        if params.get("MatchExpressions") is not None:
+            self._MatchExpressions = []
+            for item in params.get("MatchExpressions"):
+                obj = NodeSelectorRequirement()
+                obj._deserialize(item)
+                self._MatchExpressions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23058,6 +24194,63 @@ class PrePaySetting(AbstractModel):
             self._Period = Period()
             self._Period._deserialize(params.get("Period"))
         self._AutoRenewFlag = params.get("AutoRenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreferredSchedulingTerm(AbstractModel):
+    """Pod容忍调度节点选择项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Weight: 权重，范围1-100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param _Preference: 节点选择表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Preference: :class:`tencentcloud.emr.v20190103.models.NodeSelectorTerm`
+        """
+        self._Weight = None
+        self._Preference = None
+
+    @property
+    def Weight(self):
+        """权重，范围1-100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Preference(self):
+        """节点选择表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeSelectorTerm`
+        """
+        return self._Preference
+
+    @Preference.setter
+    def Preference(self, Preference):
+        self._Preference = Preference
+
+
+    def _deserialize(self, params):
+        self._Weight = params.get("Weight")
+        if params.get("Preference") is not None:
+            self._Preference = NodeSelectorTerm()
+            self._Preference._deserialize(params.get("Preference"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30779,6 +31972,69 @@ class VirtualPrivateCloud(AbstractModel):
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeSetting(AbstractModel):
+    """数据卷目录设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeType: 数据卷类型
+<li>HOST_PATH表示支持本机路径</li>
+<li>NEW_PVC表示新建PVC</li>
+组件角色支持的数据卷类型可参考 EMR on TKE 集群部署说明：[部署说明](https://cloud.tencent.com/document/product/589/94254)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeType: str
+        :param _HostPath: 主机路径信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostPath: :class:`tencentcloud.emr.v20190103.models.HostPathVolumeSource`
+        """
+        self._VolumeType = None
+        self._HostPath = None
+
+    @property
+    def VolumeType(self):
+        """数据卷类型
+<li>HOST_PATH表示支持本机路径</li>
+<li>NEW_PVC表示新建PVC</li>
+组件角色支持的数据卷类型可参考 EMR on TKE 集群部署说明：[部署说明](https://cloud.tencent.com/document/product/589/94254)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VolumeType
+
+    @VolumeType.setter
+    def VolumeType(self, VolumeType):
+        self._VolumeType = VolumeType
+
+    @property
+    def HostPath(self):
+        """主机路径信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.HostPathVolumeSource`
+        """
+        return self._HostPath
+
+    @HostPath.setter
+    def HostPath(self, HostPath):
+        self._HostPath = HostPath
+
+
+    def _deserialize(self, params):
+        self._VolumeType = params.get("VolumeType")
+        if params.get("HostPath") is not None:
+            self._HostPath = HostPathVolumeSource()
+            self._HostPath._deserialize(params.get("HostPath"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -686,6 +686,20 @@ class AirTransport(AbstractModel):
         :type QRCodeMark: int
         :param _FlightItems: 条目
         :type FlightItems: list of FlightItem
+        :param _PromptInformation: 提示信息
+        :type PromptInformation: str
+        :param _BuyerTaxID: 统一社会信用代码/纳税人识别号
+        :type BuyerTaxID: str
+        :param _Buyer: 购买方名称
+        :type Buyer: str
+        :param _ReceiptNumber: 发票号码
+        :type ReceiptNumber: str
+        :param _InvoiceStatus: 开票状态
+        :type InvoiceStatus: str
+        :param _TaxRate: 增值税税率
+        :type TaxRate: str
+        :param _TaxAmount: 增值税税额
+        :type TaxAmount: str
         """
         self._Title = None
         self._Number = None
@@ -711,6 +725,13 @@ class AirTransport(AbstractModel):
         self._Endorsement = None
         self._QRCodeMark = None
         self._FlightItems = None
+        self._PromptInformation = None
+        self._BuyerTaxID = None
+        self._Buyer = None
+        self._ReceiptNumber = None
+        self._InvoiceStatus = None
+        self._TaxRate = None
+        self._TaxAmount = None
 
     @property
     def Title(self):
@@ -976,6 +997,83 @@ class AirTransport(AbstractModel):
     def FlightItems(self, FlightItems):
         self._FlightItems = FlightItems
 
+    @property
+    def PromptInformation(self):
+        """提示信息
+        :rtype: str
+        """
+        return self._PromptInformation
+
+    @PromptInformation.setter
+    def PromptInformation(self, PromptInformation):
+        self._PromptInformation = PromptInformation
+
+    @property
+    def BuyerTaxID(self):
+        """统一社会信用代码/纳税人识别号
+        :rtype: str
+        """
+        return self._BuyerTaxID
+
+    @BuyerTaxID.setter
+    def BuyerTaxID(self, BuyerTaxID):
+        self._BuyerTaxID = BuyerTaxID
+
+    @property
+    def Buyer(self):
+        """购买方名称
+        :rtype: str
+        """
+        return self._Buyer
+
+    @Buyer.setter
+    def Buyer(self, Buyer):
+        self._Buyer = Buyer
+
+    @property
+    def ReceiptNumber(self):
+        """发票号码
+        :rtype: str
+        """
+        return self._ReceiptNumber
+
+    @ReceiptNumber.setter
+    def ReceiptNumber(self, ReceiptNumber):
+        self._ReceiptNumber = ReceiptNumber
+
+    @property
+    def InvoiceStatus(self):
+        """开票状态
+        :rtype: str
+        """
+        return self._InvoiceStatus
+
+    @InvoiceStatus.setter
+    def InvoiceStatus(self, InvoiceStatus):
+        self._InvoiceStatus = InvoiceStatus
+
+    @property
+    def TaxRate(self):
+        """增值税税率
+        :rtype: str
+        """
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+    @property
+    def TaxAmount(self):
+        """增值税税额
+        :rtype: str
+        """
+        return self._TaxAmount
+
+    @TaxAmount.setter
+    def TaxAmount(self, TaxAmount):
+        self._TaxAmount = TaxAmount
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -1007,6 +1105,13 @@ class AirTransport(AbstractModel):
                 obj = FlightItem()
                 obj._deserialize(item)
                 self._FlightItems.append(obj)
+        self._PromptInformation = params.get("PromptInformation")
+        self._BuyerTaxID = params.get("BuyerTaxID")
+        self._Buyer = params.get("Buyer")
+        self._ReceiptNumber = params.get("ReceiptNumber")
+        self._InvoiceStatus = params.get("InvoiceStatus")
+        self._TaxRate = params.get("TaxRate")
+        self._TaxAmount = params.get("TaxAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6934,6 +7039,8 @@ class ElectronicTrainTicketFull(AbstractModel):
         :type BuyerTaxID: str
         :param _OriginalNumber: 原发票号码
         :type OriginalNumber: str
+        :param _IDInfo: 标识信息
+        :type IDInfo: str
         """
         self._TypeOfVoucher = None
         self._ElectronicTicketNum = None
@@ -6955,6 +7062,7 @@ class ElectronicTrainTicketFull(AbstractModel):
         self._Buyer = None
         self._BuyerTaxID = None
         self._OriginalNumber = None
+        self._IDInfo = None
 
     @property
     def TypeOfVoucher(self):
@@ -7176,6 +7284,17 @@ class ElectronicTrainTicketFull(AbstractModel):
     def OriginalNumber(self, OriginalNumber):
         self._OriginalNumber = OriginalNumber
 
+    @property
+    def IDInfo(self):
+        """标识信息
+        :rtype: str
+        """
+        return self._IDInfo
+
+    @IDInfo.setter
+    def IDInfo(self, IDInfo):
+        self._IDInfo = IDInfo
+
 
     def _deserialize(self, params):
         self._TypeOfVoucher = params.get("TypeOfVoucher")
@@ -7198,6 +7317,7 @@ class ElectronicTrainTicketFull(AbstractModel):
         self._Buyer = params.get("Buyer")
         self._BuyerTaxID = params.get("BuyerTaxID")
         self._OriginalNumber = params.get("OriginalNumber")
+        self._IDInfo = params.get("IDInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28644,8 +28764,9 @@ class TableInfo(AbstractModel):
         :param _Cells: 单元格内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cells: list of TableCellInfo
-        :param _Type: 图像中的文本块类型，0 为非表格文本，
-1 为有线表格，2 为无线表格
+        :param _Type: 图像中的文本块类型：0为非表格文本、1为有线表格、2为无线表格，
+有线表格：在表格内部，有横线/竖线纵跨整个表格的宽/高；
+无线表格：在表格内部，无横线/竖线纵跨整个表格的宽/高。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _TableCoordPoint: 表格主体四个顶点坐标（依次为左上角，
@@ -28671,8 +28792,9 @@ class TableInfo(AbstractModel):
 
     @property
     def Type(self):
-        """图像中的文本块类型，0 为非表格文本，
-1 为有线表格，2 为无线表格
+        """图像中的文本块类型：0为非表格文本、1为有线表格、2为无线表格，
+有线表格：在表格内部，有横线/竖线纵跨整个表格的宽/高；
+无线表格：在表格内部，无横线/竖线纵跨整个表格的宽/高。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

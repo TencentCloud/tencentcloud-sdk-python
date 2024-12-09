@@ -2120,6 +2120,289 @@ class AllocateAddressesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AllocateIPv6AddressesRequest(AbstractModel):
+    """AllocateIPv6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressName: EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名。
+        :type AddressName: str
+        :param _AddressType: 弹性公网IPv6类型，可选值：
+
+- EIPv6：普通IPv6
+- HighQualityEIPv6：精品IPv6
+注意：需联系产品开通精品IPv6白名单，且仅部分地域支持精品IPv6
+
+默认值：EIPv6。
+        :type AddressType: str
+        :param _AddressCount: 申请的弹性公网IPv6数量，默认值：1。
+        :type AddressCount: int
+        :param _InternetChargeType: 弹性公网IPv6计费方式，可选值：
+
+- BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费
+- TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
+
+默认值：TRAFFIC_POSTPAID_BY_HOUR。
+        :type InternetChargeType: str
+        :param _InternetServiceProvider: 弹性公网IPv6线路类型，默认值：BGP。
+
+已开通静态单线IP白名单的用户，可选值：
+- CMCC：中国移动
+- CTCC：中国电信
+- CUCC：中国联通
+注意：仅部分地域支持静态单线IP。
+        :type InternetServiceProvider: str
+        :param _InternetMaxBandwidthOut: 弹性公网IPv6带宽上限，单位：Mbps。
+
+可选值范围取决于EIP计费方式：
+
+- BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps
+- TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps
+
+默认值：1 Mbps。
+        :type InternetMaxBandwidthOut: int
+        :param _BandwidthPackageId: 带宽包唯一ID参数。
+设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费。
+        :type BandwidthPackageId: str
+        :param _Tags: 需要关联的标签列表。
+        :type Tags: list of Tag
+        :param _Egress: 弹性公网IPv6网络出口，可选值：
+
+- CENTER_EGRESS_1：中心出口一
+- CENTER_EGRESS_2：中心出口二
+- CENTER_EGRESS_3：中心出口三
+注意：不同运营商或资源类型对应的网络出口需要联系产品开白
+
+默认值：CENTER_EGRESS_1。
+        :type Egress: str
+        """
+        self._AddressName = None
+        self._AddressType = None
+        self._AddressCount = None
+        self._InternetChargeType = None
+        self._InternetServiceProvider = None
+        self._InternetMaxBandwidthOut = None
+        self._BandwidthPackageId = None
+        self._Tags = None
+        self._Egress = None
+
+    @property
+    def AddressName(self):
+        """EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名。
+        :rtype: str
+        """
+        return self._AddressName
+
+    @AddressName.setter
+    def AddressName(self, AddressName):
+        self._AddressName = AddressName
+
+    @property
+    def AddressType(self):
+        """弹性公网IPv6类型，可选值：
+
+- EIPv6：普通IPv6
+- HighQualityEIPv6：精品IPv6
+注意：需联系产品开通精品IPv6白名单，且仅部分地域支持精品IPv6
+
+默认值：EIPv6。
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+    @property
+    def AddressCount(self):
+        """申请的弹性公网IPv6数量，默认值：1。
+        :rtype: int
+        """
+        return self._AddressCount
+
+    @AddressCount.setter
+    def AddressCount(self, AddressCount):
+        self._AddressCount = AddressCount
+
+    @property
+    def InternetChargeType(self):
+        """弹性公网IPv6计费方式，可选值：
+
+- BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费
+- TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
+
+默认值：TRAFFIC_POSTPAID_BY_HOUR。
+        :rtype: str
+        """
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+    @property
+    def InternetServiceProvider(self):
+        """弹性公网IPv6线路类型，默认值：BGP。
+
+已开通静态单线IP白名单的用户，可选值：
+- CMCC：中国移动
+- CTCC：中国电信
+- CUCC：中国联通
+注意：仅部分地域支持静态单线IP。
+        :rtype: str
+        """
+        return self._InternetServiceProvider
+
+    @InternetServiceProvider.setter
+    def InternetServiceProvider(self, InternetServiceProvider):
+        self._InternetServiceProvider = InternetServiceProvider
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """弹性公网IPv6带宽上限，单位：Mbps。
+
+可选值范围取决于EIP计费方式：
+
+- BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps
+- TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps
+
+默认值：1 Mbps。
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def BandwidthPackageId(self):
+        """带宽包唯一ID参数。
+设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费。
+        :rtype: str
+        """
+        return self._BandwidthPackageId
+
+    @BandwidthPackageId.setter
+    def BandwidthPackageId(self, BandwidthPackageId):
+        self._BandwidthPackageId = BandwidthPackageId
+
+    @property
+    def Tags(self):
+        """需要关联的标签列表。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Egress(self):
+        """弹性公网IPv6网络出口，可选值：
+
+- CENTER_EGRESS_1：中心出口一
+- CENTER_EGRESS_2：中心出口二
+- CENTER_EGRESS_3：中心出口三
+注意：不同运营商或资源类型对应的网络出口需要联系产品开白
+
+默认值：CENTER_EGRESS_1。
+        :rtype: str
+        """
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
+
+    def _deserialize(self, params):
+        self._AddressName = params.get("AddressName")
+        self._AddressType = params.get("AddressType")
+        self._AddressCount = params.get("AddressCount")
+        self._InternetChargeType = params.get("InternetChargeType")
+        self._InternetServiceProvider = params.get("InternetServiceProvider")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._BandwidthPackageId = params.get("BandwidthPackageId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Egress = params.get("Egress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocateIPv6AddressesResponse(AbstractModel):
+    """AllocateIPv6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressSet: 申请到的弹性公网 IPv6 地址的唯一 ID 列表。
+        :type AddressSet: list of str
+        :param _TaskId: 异步任务TaskId，可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AddressSet = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def AddressSet(self):
+        """申请到的弹性公网 IPv6 地址的唯一 ID 列表。
+        :rtype: list of str
+        """
+        return self._AddressSet
+
+    @AddressSet.setter
+    def AddressSet(self, AddressSet):
+        self._AddressSet = AddressSet
+
+    @property
+    def TaskId(self):
+        """异步任务TaskId，可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AddressSet = params.get("AddressSet")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class AllocateIp6AddressesBandwidthRequest(AbstractModel):
     """AllocateIp6AddressesBandwidth请求参数结构体
 
@@ -3149,6 +3432,100 @@ class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
 class AssociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
     """AssociateDirectConnectGatewayNatGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AssociateIPv6AddressRequest(AbstractModel):
+    """AssociateIPv6Address请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressId: 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+        :type IPv6AddressId: str
+        :param _NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+        :type NetworkInterfaceId: str
+        :param _PrivateIPv6Address: 要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的Ipv6AddressSet.Address获取。
+        :type PrivateIPv6Address: str
+        """
+        self._IPv6AddressId = None
+        self._NetworkInterfaceId = None
+        self._PrivateIPv6Address = None
+
+    @property
+    def IPv6AddressId(self):
+        """弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+        :rtype: str
+        """
+        return self._IPv6AddressId
+
+    @IPv6AddressId.setter
+    def IPv6AddressId(self, IPv6AddressId):
+        self._IPv6AddressId = IPv6AddressId
+
+    @property
+    def NetworkInterfaceId(self):
+        """要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+        :rtype: str
+        """
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def PrivateIPv6Address(self):
+        """要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的Ipv6AddressSet.Address获取。
+        :rtype: str
+        """
+        return self._PrivateIPv6Address
+
+    @PrivateIPv6Address.setter
+    def PrivateIPv6Address(self, PrivateIPv6Address):
+        self._PrivateIPv6Address = PrivateIPv6Address
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressId = params.get("IPv6AddressId")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._PrivateIPv6Address = params.get("PrivateIPv6Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateIPv6AddressResponse(AbstractModel):
+    """AssociateIPv6Address返回参数结构体
 
     """
 
@@ -7939,9 +8316,12 @@ class CreateAddressTemplateGroupRequest(AbstractModel):
         :type AddressTemplateGroupName: str
         :param _AddressTemplateIds: IP地址模板实例ID，例如：ipm-mdunqeb6。
         :type AddressTemplateIds: list of str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._AddressTemplateGroupName = None
         self._AddressTemplateIds = None
+        self._Tags = None
 
     @property
     def AddressTemplateGroupName(self):
@@ -7965,10 +8345,27 @@ class CreateAddressTemplateGroupRequest(AbstractModel):
     def AddressTemplateIds(self, AddressTemplateIds):
         self._AddressTemplateIds = AddressTemplateIds
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._AddressTemplateGroupName = params.get("AddressTemplateGroupName")
         self._AddressTemplateIds = params.get("AddressTemplateIds")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8037,10 +8434,13 @@ class CreateAddressTemplateRequest(AbstractModel):
         :type Addresses: list of str
         :param _AddressesExtra: 地址信息，支持携带备注，支持 IP、CIDR、IP 范围。Addresses与AddressesExtra必填其一。
         :type AddressesExtra: list of AddressInfo
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._AddressTemplateName = None
         self._Addresses = None
         self._AddressesExtra = None
+        self._Tags = None
 
     @property
     def AddressTemplateName(self):
@@ -8075,6 +8475,17 @@ class CreateAddressTemplateRequest(AbstractModel):
     def AddressesExtra(self, AddressesExtra):
         self._AddressesExtra = AddressesExtra
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._AddressTemplateName = params.get("AddressTemplateName")
@@ -8085,6 +8496,12 @@ class CreateAddressTemplateRequest(AbstractModel):
                 obj = AddressInfo()
                 obj._deserialize(item)
                 self._AddressesExtra.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13340,10 +13757,13 @@ class CreateServiceTemplateRequest(AbstractModel):
         :type Services: list of str
         :param _ServicesExtra: 支持添加备注，单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。Services与ServicesExtra必填其一。
         :type ServicesExtra: list of ServicesInfo
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._ServiceTemplateName = None
         self._Services = None
         self._ServicesExtra = None
+        self._Tags = None
 
     @property
     def ServiceTemplateName(self):
@@ -13378,6 +13798,17 @@ class CreateServiceTemplateRequest(AbstractModel):
     def ServicesExtra(self, ServicesExtra):
         self._ServicesExtra = ServicesExtra
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ServiceTemplateName = params.get("ServiceTemplateName")
@@ -13388,6 +13819,12 @@ class CreateServiceTemplateRequest(AbstractModel):
                 obj = ServicesInfo()
                 obj._deserialize(item)
                 self._ServicesExtra.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25737,6 +26174,210 @@ class DescribeHighPriorityRoutesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIPv6AddressesRequest(AbstractModel):
+    """DescribeIPv6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressIds: 标识 IPv6 的唯一 ID 列。
+
+- 传统弹性公网 IPv6 唯一 ID 形如：`eip-11112222`
+- 弹性公网 IPv6 唯一 ID 形如：`eipv6-11112222`
+
+注意：参数不支持同时指定`IPv6AddressIds`和`Filters`。
+        :type IPv6AddressIds: list of str
+        :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。参数不支持同时指定`IPv6AddressIds`和`Filters`。详细的过滤条件如下：
+
+- address-id - String - 是否必填：否 - （过滤条件）按照弹性公网IPv6的唯一ID过滤。
+- public-ipv6-address - String - 是否必填：否 - （过滤条件）按照公网 IPv6 的 IP 地址过滤。
+- network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。
+- instance-id - String - 是否必填：否 - （过滤条件）按照绑定实例的唯一ID过滤。
+- charge-type - String - 是否必填：否 - （过滤条件）按照计费类型过滤。
+- private-ipv6-address - String - 是否必填：否 - （过滤条件）按照绑定的内网 IPv6 地址过滤。
+- egress - String - 是否必填：否 - （过滤条件）按照出口过滤。
+- address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'，'EIPv6'，'WanIPv6'，'HighQualityEIPv6'。默认值是'EIPv6'。
+- address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'。
+- address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'，'BINDING'，'BIND'，'UNBINDING'，'UNBIND'，'OFFLINING'，'BIND_ENI'，'PRIVATE'。
+- address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。
+- tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。
+- tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。
+- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。
+        :type Filters: list of Filter
+        :param _Traditional: 是否查询传统型IPv6地址信息。
+        :type Traditional: bool
+        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Limit: int
+        """
+        self._IPv6AddressIds = None
+        self._Filters = None
+        self._Traditional = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def IPv6AddressIds(self):
+        """标识 IPv6 的唯一 ID 列。
+
+- 传统弹性公网 IPv6 唯一 ID 形如：`eip-11112222`
+- 弹性公网 IPv6 唯一 ID 形如：`eipv6-11112222`
+
+注意：参数不支持同时指定`IPv6AddressIds`和`Filters`。
+        :rtype: list of str
+        """
+        return self._IPv6AddressIds
+
+    @IPv6AddressIds.setter
+    def IPv6AddressIds(self, IPv6AddressIds):
+        self._IPv6AddressIds = IPv6AddressIds
+
+    @property
+    def Filters(self):
+        """每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。参数不支持同时指定`IPv6AddressIds`和`Filters`。详细的过滤条件如下：
+
+- address-id - String - 是否必填：否 - （过滤条件）按照弹性公网IPv6的唯一ID过滤。
+- public-ipv6-address - String - 是否必填：否 - （过滤条件）按照公网 IPv6 的 IP 地址过滤。
+- network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。
+- instance-id - String - 是否必填：否 - （过滤条件）按照绑定实例的唯一ID过滤。
+- charge-type - String - 是否必填：否 - （过滤条件）按照计费类型过滤。
+- private-ipv6-address - String - 是否必填：否 - （过滤条件）按照绑定的内网 IPv6 地址过滤。
+- egress - String - 是否必填：否 - （过滤条件）按照出口过滤。
+- address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'，'EIPv6'，'WanIPv6'，'HighQualityEIPv6'。默认值是'EIPv6'。
+- address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'。
+- address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'，'BINDING'，'BIND'，'UNBINDING'，'UNBIND'，'OFFLINING'，'BIND_ENI'，'PRIVATE'。
+- address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。
+- tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。
+- tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。
+- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Traditional(self):
+        """是否查询传统型IPv6地址信息。
+        :rtype: bool
+        """
+        return self._Traditional
+
+    @Traditional.setter
+    def Traditional(self, Traditional):
+        self._Traditional = Traditional
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressIds = params.get("IPv6AddressIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Traditional = params.get("Traditional")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIPv6AddressesResponse(AbstractModel):
+    """DescribeIPv6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的 IPv6 数量。
+        :type TotalCount: int
+        :param _AddressSet: IPv6 详细信息列表。
+        :type AddressSet: list of Address
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AddressSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合条件的 IPv6 数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AddressSet(self):
+        """IPv6 详细信息列表。
+        :rtype: list of Address
+        """
+        return self._AddressSet
+
+    @AddressSet.setter
+    def AddressSet(self, AddressSet):
+        self._AddressSet = AddressSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AddressSet") is not None:
+            self._AddressSet = []
+            for item in params.get("AddressSet"):
+                obj = Address()
+                obj._deserialize(item)
+                self._AddressSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIp6AddressesRequest(AbstractModel):
     """DescribeIp6Addresses请求参数结构体
 
@@ -37384,6 +38025,85 @@ class DisassociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisassociateIPv6AddressRequest(AbstractModel):
+    """DisassociateIPv6Address请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressId: 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+        :type IPv6AddressId: str
+        :param _KeepBindWithEni: 解绑时是否保持绑定弹性网卡。
+        :type KeepBindWithEni: bool
+        """
+        self._IPv6AddressId = None
+        self._KeepBindWithEni = None
+
+    @property
+    def IPv6AddressId(self):
+        """弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+        :rtype: str
+        """
+        return self._IPv6AddressId
+
+    @IPv6AddressId.setter
+    def IPv6AddressId(self, IPv6AddressId):
+        self._IPv6AddressId = IPv6AddressId
+
+    @property
+    def KeepBindWithEni(self):
+        """解绑时是否保持绑定弹性网卡。
+        :rtype: bool
+        """
+        return self._KeepBindWithEni
+
+    @KeepBindWithEni.setter
+    def KeepBindWithEni(self, KeepBindWithEni):
+        self._KeepBindWithEni = KeepBindWithEni
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressId = params.get("IPv6AddressId")
+        self._KeepBindWithEni = params.get("KeepBindWithEni")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateIPv6AddressResponse(AbstractModel):
+    """DisassociateIPv6Address返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DisassociateNatGatewayAddressRequest(AbstractModel):
     """DisassociateNatGatewayAddress请求参数结构体
 
@@ -45754,6 +46474,164 @@ class ModifyHighPriorityRouteTableAttributeRequest(AbstractModel):
 
 class ModifyHighPriorityRouteTableAttributeResponse(AbstractModel):
     """ModifyHighPriorityRouteTableAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIPv6AddressesAttributesRequest(AbstractModel):
+    """ModifyIPv6AddressesAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressIds: 弹性公网IPv6唯一ID列表。
+        :type IPv6AddressIds: list of str
+        :param _IPv6AddressName: 弹性公网IPv6地址名称
+        :type IPv6AddressName: str
+        """
+        self._IPv6AddressIds = None
+        self._IPv6AddressName = None
+
+    @property
+    def IPv6AddressIds(self):
+        """弹性公网IPv6唯一ID列表。
+        :rtype: list of str
+        """
+        return self._IPv6AddressIds
+
+    @IPv6AddressIds.setter
+    def IPv6AddressIds(self, IPv6AddressIds):
+        self._IPv6AddressIds = IPv6AddressIds
+
+    @property
+    def IPv6AddressName(self):
+        """弹性公网IPv6地址名称
+        :rtype: str
+        """
+        return self._IPv6AddressName
+
+    @IPv6AddressName.setter
+    def IPv6AddressName(self, IPv6AddressName):
+        self._IPv6AddressName = IPv6AddressName
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressIds = params.get("IPv6AddressIds")
+        self._IPv6AddressName = params.get("IPv6AddressName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIPv6AddressesAttributesResponse(AbstractModel):
+    """ModifyIPv6AddressesAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIPv6AddressesBandwidthRequest(AbstractModel):
+    """ModifyIPv6AddressesBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressIds: 弹性公网IPv6地址唯一ID
+        :type IPv6AddressIds: list of str
+        :param _InternetMaxBandwidthOut: 弹性公网IPv6地址网络带宽
+        :type InternetMaxBandwidthOut: int
+        """
+        self._IPv6AddressIds = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def IPv6AddressIds(self):
+        """弹性公网IPv6地址唯一ID
+        :rtype: list of str
+        """
+        return self._IPv6AddressIds
+
+    @IPv6AddressIds.setter
+    def IPv6AddressIds(self, IPv6AddressIds):
+        self._IPv6AddressIds = IPv6AddressIds
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """弹性公网IPv6地址网络带宽
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressIds = params.get("IPv6AddressIds")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIPv6AddressesBandwidthResponse(AbstractModel):
+    """ModifyIPv6AddressesBandwidth返回参数结构体
 
     """
 
@@ -54243,6 +55121,70 @@ class ReleaseAddressesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ReleaseIPv6AddressesRequest(AbstractModel):
+    """ReleaseIPv6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressIds: IPv6地址唯一ID。
+        :type IPv6AddressIds: list of str
+        """
+        self._IPv6AddressIds = None
+
+    @property
+    def IPv6AddressIds(self):
+        """IPv6地址唯一ID。
+        :rtype: list of str
+        """
+        return self._IPv6AddressIds
+
+    @IPv6AddressIds.setter
+    def IPv6AddressIds(self, IPv6AddressIds):
+        self._IPv6AddressIds = IPv6AddressIds
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressIds = params.get("IPv6AddressIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseIPv6AddressesResponse(AbstractModel):
+    """ReleaseIPv6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

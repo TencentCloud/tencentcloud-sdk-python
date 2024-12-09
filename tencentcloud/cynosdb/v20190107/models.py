@@ -19929,6 +19929,90 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServerlessInstanceSpecsRequest(AbstractModel):
+    """DescribeServerlessInstanceSpecs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+        :type Zone: str
+        """
+        self._Zone = None
+
+    @property
+    def Zone(self):
+        """可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServerlessInstanceSpecsResponse(AbstractModel):
+    """DescribeServerlessInstanceSpecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Specs: Serverless实例可选规格
+        :type Specs: list of ServerlessSpec
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Specs = None
+        self._RequestId = None
+
+    @property
+    def Specs(self):
+        """Serverless实例可选规格
+        :rtype: list of ServerlessSpec
+        """
+        return self._Specs
+
+    @Specs.setter
+    def Specs(self, Specs):
+        self._Specs = Specs
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Specs") is not None:
+            self._Specs = []
+            for item in params.get("Specs"):
+                obj = ServerlessSpec()
+                obj._deserialize(item)
+                self._Specs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServerlessStrategyRequest(AbstractModel):
     """DescribeServerlessStrategy请求参数结构体
 
@@ -27824,10 +27908,6 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         :type MinRoCount: int
         :param _MaxRoCount: 只读节点最大个数
         :type MaxRoCount: int
-        :param _AutoScaleUp: 集群是否允许扩容，可选范围<li>yes</li><li>no</li>
-        :type AutoScaleUp: str
-        :param _AutoScaleDown: 集群是否允许缩容，可选范围<li>yes</li><li>no</li>
-        :type AutoScaleDown: str
         """
         self._ClusterId = None
         self._AutoPause = None
@@ -27840,8 +27920,6 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MaxRoCpu = None
         self._MinRoCount = None
         self._MaxRoCount = None
-        self._AutoScaleUp = None
-        self._AutoScaleDown = None
 
     @property
     def ClusterId(self):
@@ -27966,28 +28044,6 @@ class ModifyServerlessStrategyRequest(AbstractModel):
     def MaxRoCount(self, MaxRoCount):
         self._MaxRoCount = MaxRoCount
 
-    @property
-    def AutoScaleUp(self):
-        """集群是否允许扩容，可选范围<li>yes</li><li>no</li>
-        :rtype: str
-        """
-        return self._AutoScaleUp
-
-    @AutoScaleUp.setter
-    def AutoScaleUp(self, AutoScaleUp):
-        self._AutoScaleUp = AutoScaleUp
-
-    @property
-    def AutoScaleDown(self):
-        """集群是否允许缩容，可选范围<li>yes</li><li>no</li>
-        :rtype: str
-        """
-        return self._AutoScaleDown
-
-    @AutoScaleDown.setter
-    def AutoScaleDown(self, AutoScaleDown):
-        self._AutoScaleDown = AutoScaleDown
-
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -28001,8 +28057,6 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MaxRoCpu = params.get("MaxRoCpu")
         self._MinRoCount = params.get("MinRoCount")
         self._MaxRoCount = params.get("MaxRoCount")
-        self._AutoScaleUp = params.get("AutoScaleUp")
-        self._AutoScaleDown = params.get("AutoScaleDown")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36276,6 +36330,233 @@ class SecurityGroup(AbstractModel):
         self._SecurityGroupId = params.get("SecurityGroupId")
         self._SecurityGroupName = params.get("SecurityGroupName")
         self._SecurityGroupRemark = params.get("SecurityGroupRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessSpec(AbstractModel):
+    """serverless规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinCpu: cpu最小值
+        :type MinCpu: float
+        :param _MaxCpu: cpu最大值
+        :type MaxCpu: float
+        :param _MaxStorageSize: 最大存储空间
+        :type MaxStorageSize: int
+        :param _IsDefault: 是否为默认规格
+        :type IsDefault: int
+        :param _HasStock: 是否有库存
+        :type HasStock: bool
+        :param _StockCount: 库存数量
+        :type StockCount: int
+        :param _ZoneStockInfos: 可用区库存信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneStockInfos: list of ServerlessZoneStockInfo
+        """
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._MaxStorageSize = None
+        self._IsDefault = None
+        self._HasStock = None
+        self._StockCount = None
+        self._ZoneStockInfos = None
+
+    @property
+    def MinCpu(self):
+        """cpu最小值
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        """cpu最大值
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def MaxStorageSize(self):
+        """最大存储空间
+        :rtype: int
+        """
+        return self._MaxStorageSize
+
+    @MaxStorageSize.setter
+    def MaxStorageSize(self, MaxStorageSize):
+        self._MaxStorageSize = MaxStorageSize
+
+    @property
+    def IsDefault(self):
+        """是否为默认规格
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def HasStock(self):
+        """是否有库存
+        :rtype: bool
+        """
+        return self._HasStock
+
+    @HasStock.setter
+    def HasStock(self, HasStock):
+        self._HasStock = HasStock
+
+    @property
+    def StockCount(self):
+        """库存数量
+        :rtype: int
+        """
+        return self._StockCount
+
+    @StockCount.setter
+    def StockCount(self, StockCount):
+        self._StockCount = StockCount
+
+    @property
+    def ZoneStockInfos(self):
+        """可用区库存信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServerlessZoneStockInfo
+        """
+        return self._ZoneStockInfos
+
+    @ZoneStockInfos.setter
+    def ZoneStockInfos(self, ZoneStockInfos):
+        self._ZoneStockInfos = ZoneStockInfos
+
+
+    def _deserialize(self, params):
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._MaxStorageSize = params.get("MaxStorageSize")
+        self._IsDefault = params.get("IsDefault")
+        self._HasStock = params.get("HasStock")
+        self._StockCount = params.get("StockCount")
+        if params.get("ZoneStockInfos") is not None:
+            self._ZoneStockInfos = []
+            for item in params.get("ZoneStockInfos"):
+                obj = ServerlessZoneStockInfo()
+                obj._deserialize(item)
+                self._ZoneStockInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessZoneStockInfo(AbstractModel):
+    """serverless类型的可用区库存信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _StockCount: 存储量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StockCount: int
+        :param _HasStock: 是否包含库存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasStock: bool
+        :param _SlaveZoneStockInfos: 从可用区库存信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZoneStockInfos: list of SlaveZoneStockInfo
+        """
+        self._Zone = None
+        self._StockCount = None
+        self._HasStock = None
+        self._SlaveZoneStockInfos = None
+
+    @property
+    def Zone(self):
+        """可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def StockCount(self):
+        """存储量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StockCount
+
+    @StockCount.setter
+    def StockCount(self, StockCount):
+        self._StockCount = StockCount
+
+    @property
+    def HasStock(self):
+        """是否包含库存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasStock
+
+    @HasStock.setter
+    def HasStock(self, HasStock):
+        self._HasStock = HasStock
+
+    @property
+    def SlaveZoneStockInfos(self):
+        """从可用区库存信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SlaveZoneStockInfo
+        """
+        return self._SlaveZoneStockInfos
+
+    @SlaveZoneStockInfos.setter
+    def SlaveZoneStockInfos(self, SlaveZoneStockInfos):
+        self._SlaveZoneStockInfos = SlaveZoneStockInfos
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._StockCount = params.get("StockCount")
+        self._HasStock = params.get("HasStock")
+        if params.get("SlaveZoneStockInfos") is not None:
+            self._SlaveZoneStockInfos = []
+            for item in params.get("SlaveZoneStockInfos"):
+                obj = SlaveZoneStockInfo()
+                obj._deserialize(item)
+                self._SlaveZoneStockInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

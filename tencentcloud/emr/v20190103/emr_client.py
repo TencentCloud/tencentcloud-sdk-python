@@ -73,6 +73,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudInstance(self, request):
+        """创建EMR容器集群实例
+
+        :param request: Request instance for CreateCloudInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateCloudInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateCloudInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCluster(self, request):
         """创建EMR集群实例
 
@@ -1103,6 +1126,29 @@ class EmrClient(AbstractClient):
             body = self.call("ModifyGlobalConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGlobalConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPodNum(self, request):
+        """调整Pod数量
+
+        :param request: Request instance for ModifyPodNum.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyPodNumRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyPodNumResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPodNum", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPodNumResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

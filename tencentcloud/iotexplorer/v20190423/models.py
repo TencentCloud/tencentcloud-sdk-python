@@ -5724,6 +5724,9 @@ class DescribeBatchProductionResponse(AbstractModel):
         :param _LastFailedReason: 量产最后失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastFailedReason: str
+        :param _Status: 量产状态  0：任务创建，未量产；1：处理中；2：量产结束上传结果中；3：任务完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5735,6 +5738,7 @@ class DescribeBatchProductionResponse(AbstractModel):
         self._UploadUrl = None
         self._SuccessCount = None
         self._LastFailedReason = None
+        self._Status = None
         self._RequestId = None
 
     @property
@@ -5828,6 +5832,18 @@ class DescribeBatchProductionResponse(AbstractModel):
         self._LastFailedReason = LastFailedReason
 
     @property
+    def Status(self):
+        """量产状态  0：任务创建，未量产；1：处理中；2：量产结束上传结果中；3：任务完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5848,6 +5864,7 @@ class DescribeBatchProductionResponse(AbstractModel):
         self._UploadUrl = params.get("UploadUrl")
         self._SuccessCount = params.get("SuccessCount")
         self._LastFailedReason = params.get("LastFailedReason")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 

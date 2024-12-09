@@ -2224,7 +2224,7 @@ video 纯视频
         :type EndDelayTime: int
         :param _LiveType: 直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
         :type LiveType: int
-        :param _RecordLiveUrl: 伪直播链接
+        :param _RecordLiveUrl: 伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。
         :type RecordLiveUrl: str
         :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
         :type EnableAutoStart: int
@@ -2554,7 +2554,7 @@ video 纯视频
 
     @property
     def RecordLiveUrl(self):
-        """伪直播链接
+        """伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。
         :rtype: str
         """
         return self._RecordLiveUrl

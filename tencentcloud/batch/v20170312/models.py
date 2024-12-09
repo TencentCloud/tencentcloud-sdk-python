@@ -4956,12 +4956,12 @@ class Docker(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _User: Docker Hub 用户名或 Tencent Registry 用户名
-        :type User: str
-        :param _Password: Docker Hub 密码或 Tencent Registry 密码
-        :type Password: str
         :param _Image: Docker Hub填写“[user/repo]:[tag]”，Tencent Registry填写“ccr.ccs.tencentyun.com/[namespace/repo]:[tag]”
         :type Image: str
+        :param _User: Docker Hub 用户名或 Tencent Registry 用户名；公共镜像可不填写此参数。
+        :type User: str
+        :param _Password: Docker Hub 密码或 Tencent Registry 密码；公共镜像可不填写此参数。
+        :type Password: str
         :param _Server: Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
         :type Server: str
         :param _MaxRetryCount: 拉取Docker镜像重试次数。默认值：0。
@@ -4972,35 +4972,13 @@ class Docker(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type DockerRunOption: str
         """
+        self._Image = None
         self._User = None
         self._Password = None
-        self._Image = None
         self._Server = None
         self._MaxRetryCount = None
         self._DelayOnRetry = None
         self._DockerRunOption = None
-
-    @property
-    def User(self):
-        """Docker Hub 用户名或 Tencent Registry 用户名
-        :rtype: str
-        """
-        return self._User
-
-    @User.setter
-    def User(self, User):
-        self._User = User
-
-    @property
-    def Password(self):
-        """Docker Hub 密码或 Tencent Registry 密码
-        :rtype: str
-        """
-        return self._Password
-
-    @Password.setter
-    def Password(self, Password):
-        self._Password = Password
 
     @property
     def Image(self):
@@ -5012,6 +4990,28 @@ class Docker(AbstractModel):
     @Image.setter
     def Image(self, Image):
         self._Image = Image
+
+    @property
+    def User(self):
+        """Docker Hub 用户名或 Tencent Registry 用户名；公共镜像可不填写此参数。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        """Docker Hub 密码或 Tencent Registry 密码；公共镜像可不填写此参数。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
 
     @property
     def Server(self):
@@ -5060,9 +5060,9 @@ class Docker(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Image = params.get("Image")
         self._User = params.get("User")
         self._Password = params.get("Password")
-        self._Image = params.get("Image")
         self._Server = params.get("Server")
         self._MaxRetryCount = params.get("MaxRetryCount")
         self._DelayOnRetry = params.get("DelayOnRetry")

@@ -312,8 +312,12 @@ class GenerateAvatarRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Type: 图像类型，默认为人像。
+human：人像头像，仅支持人像图片输入，建议避免上传无人、多人、人像过小的图片。
+pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物、多动物、动物过小的图片。
+        :type Type: str
         :param _Style: 头像风格，仅在人像模式下生效。
-请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，传入风格编号，不传默认使用 flower 风格。
+若使用人像模式，请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，传入风格编号，不传默认使用 flower 风格。
 若使用萌宠贴纸模式，无需选择风格，该参数不生效。
         :type Style: str
         :param _InputImage: 输入图 Base64 数据。
@@ -324,10 +328,6 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
         :type InputUrl: str
-        :param _Type: 图像类型，默认为人像。
-human：人像头像，仅支持人像图片输入，建议避免上传无人、多人、人像过小的图片。
-pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物、多动物、动物过小的图片。
-        :type Type: str
         :param _Filter: 输入人像图的质量检测开关，默认开启，仅在人像模式下生效。
 1：开启
 0：关闭
@@ -347,19 +347,32 @@ pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物�
         :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
         :type RspImgType: str
         """
+        self._Type = None
         self._Style = None
         self._InputImage = None
         self._InputUrl = None
-        self._Type = None
         self._Filter = None
         self._LogoAdd = None
         self._LogoParam = None
         self._RspImgType = None
 
     @property
+    def Type(self):
+        """图像类型，默认为人像。
+human：人像头像，仅支持人像图片输入，建议避免上传无人、多人、人像过小的图片。
+pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物、多动物、动物过小的图片。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def Style(self):
         """头像风格，仅在人像模式下生效。
-请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，传入风格编号，不传默认使用 flower 风格。
+若使用人像模式，请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，传入风格编号，不传默认使用 flower 风格。
 若使用萌宠贴纸模式，无需选择风格，该参数不生效。
         :rtype: str
         """
@@ -394,19 +407,6 @@ Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
     @InputUrl.setter
     def InputUrl(self, InputUrl):
         self._InputUrl = InputUrl
-
-    @property
-    def Type(self):
-        """图像类型，默认为人像。
-human：人像头像，仅支持人像图片输入，建议避免上传无人、多人、人像过小的图片。
-pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物、多动物、动物过小的图片。
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
 
     @property
     def Filter(self):
@@ -464,10 +464,10 @@ pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物�
 
 
     def _deserialize(self, params):
+        self._Type = params.get("Type")
         self._Style = params.get("Style")
         self._InputImage = params.get("InputImage")
         self._InputUrl = params.get("InputUrl")
-        self._Type = params.get("Type")
         self._Filter = params.get("Filter")
         self._LogoAdd = params.get("LogoAdd")
         if params.get("LogoParam") is not None:
@@ -486,6 +486,186 @@ pet：萌宠贴纸，仅支持动物图片输入，建议避免上传无动物�
 
 class GenerateAvatarResponse(AbstractModel):
     """GenerateAvatar返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultImage: 根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :type ResultImage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultImage = None
+        self._RequestId = None
+
+    @property
+    def ResultImage(self):
+        """根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :rtype: str
+        """
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultImage = params.get("ResultImage")
+        self._RequestId = params.get("RequestId")
+
+
+class ImageOutpaintingRequest(AbstractModel):
+    """ImageOutpainting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ratio: 扩展后的比例（宽:高），需要不等于原图比例。
+支持：1:1、4:3、3:4、16:9、9:16
+        :type Ratio: str
+        :param _InputImage: 输入图 Base64 数据。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type InputImage: str
+        :param _InputUrl: 输入图 Url。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type InputUrl: str
+        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        :type RspImgType: str
+        :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        self._Ratio = None
+        self._InputImage = None
+        self._InputUrl = None
+        self._RspImgType = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def Ratio(self):
+        """扩展后的比例（宽:高），需要不等于原图比例。
+支持：1:1、4:3、3:4、16:9、9:16
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def InputImage(self):
+        """输入图 Base64 数据。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: str
+        """
+        return self._InputImage
+
+    @InputImage.setter
+    def InputImage(self, InputImage):
+        self._InputImage = InputImage
+
+    @property
+    def InputUrl(self):
+        """输入图 Url。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: str
+        """
+        return self._InputUrl
+
+    @InputUrl.setter
+    def InputUrl(self, InputUrl):
+        self._InputUrl = InputUrl
+
+    @property
+    def RspImgType(self):
+        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        :rtype: str
+        """
+        return self._RspImgType
+
+    @RspImgType.setter
+    def RspImgType(self, RspImgType):
+        self._RspImgType = RspImgType
+
+    @property
+    def LogoAdd(self):
+        """为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        """标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+
+    def _deserialize(self, params):
+        self._Ratio = params.get("Ratio")
+        self._InputImage = params.get("InputImage")
+        self._InputUrl = params.get("InputUrl")
+        self._RspImgType = params.get("RspImgType")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageOutpaintingResponse(AbstractModel):
+    """ImageOutpainting返回参数结构体
 
     """
 

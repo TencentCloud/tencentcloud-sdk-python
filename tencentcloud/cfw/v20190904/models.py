@@ -8894,7 +8894,7 @@ class DescribeBlockStaticListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 无
+        :param _Data: 查询结果
         :type Data: list of StaticInfo
         :param _Status: 异步查询状态，1查询执行中，0查询已结束
         :type Status: int
@@ -8907,7 +8907,7 @@ class DescribeBlockStaticListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """无
+        """查询结果
         :rtype: list of StaticInfo
         """
         return self._Data

@@ -1875,11 +1875,11 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _VideoUrl: 视频地址URL。
-格式要求：支持 mp4、mov 。
+格式要求：支持 mp4、mov、avi 。
 时长要求：【5-600】秒。
 fps 要求：【15-60】fps
 分辨率要求：单边像素要求在 【360~4096】 之间。
-大小要求：不超过500Mb
+大小要求：不超过500MB
 
         :type VideoUrl: str
         :param _SrcLang: 输入视频中音频语种
@@ -1888,7 +1888,7 @@ fps 要求：【15-60】fps
         :param _AudioUrl: 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
 格式要求：支持 mp3、m4a、aac、wav 格式。
 时长要求：【5~600】秒，音频时长要匹配视频时长。
-大小要求：不超过 100Mb。
+大小要求：不超过 100MB。
         :type AudioUrl: str
         :param _DstLang: 输出视频中翻译语种
 目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
@@ -1923,11 +1923,11 @@ fps 要求：【15-60】fps
     @property
     def VideoUrl(self):
         """视频地址URL。
-格式要求：支持 mp4、mov 。
+格式要求：支持 mp4、mov、avi 。
 时长要求：【5-600】秒。
 fps 要求：【15-60】fps
 分辨率要求：单边像素要求在 【360~4096】 之间。
-大小要求：不超过500Mb
+大小要求：不超过500MB
 
         :rtype: str
         """
@@ -1954,7 +1954,7 @@ fps 要求：【15-60】fps
         """当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
 格式要求：支持 mp3、m4a、aac、wav 格式。
 时长要求：【5~600】秒，音频时长要匹配视频时长。
-大小要求：不超过 100Mb。
+大小要求：不超过 100MB。
         :rtype: str
         """
         return self._AudioUrl

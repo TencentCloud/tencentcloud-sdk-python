@@ -1820,6 +1820,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeServerlessInstanceSpecs(self, request):
+        """查询Serverless实例可选规格
+
+        :param request: Request instance for DescribeServerlessInstanceSpecs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessInstanceSpecsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessInstanceSpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServerlessInstanceSpecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServerlessInstanceSpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServerlessStrategy(self, request):
         """查询serverless策略
 

@@ -13,3 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# DBError
+INTERNALERROR_DBERROR = 'InternalError.DBError'
+
+# 找不到该License
+RESOURCENOTFOUND_LICENSENOTFOUNDERR = 'ResourceNotFound.LicenseNotFoundErr'

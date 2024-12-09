@@ -75,6 +75,30 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImageOutpainting(self, request):
+        """扩图接口支持对输入图像按指定宽高比实现智能扩图。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务。
+
+        :param request: Request instance for ImageOutpainting.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.ImageOutpaintingRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.ImageOutpaintingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageOutpainting", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImageOutpaintingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImageToImage(self, request):
         """图像风格化（图生图）接口提供生成式的图生图风格转化能力，将根据输入的图像及文本描述，智能生成风格转化后的图像。建议避免输入人像过小、姿势复杂、人数较多的人像图片。
         图像风格化（图生图）默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。

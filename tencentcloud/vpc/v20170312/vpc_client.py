@@ -192,6 +192,33 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AllocateIPv6Addresses(self, request):
+        """本接口（AllocateIPv6Addresses）用于申请一个或多个弹性公网IPv6（简称EIPv6）实例。
+
+        - EIPv6 是您在腾讯云某个地域可以独立申请和持有的，固定不变的公网 IPv6 地址，提供与弹性公网 IPv4 一致的产品体验。
+        - 通过弹性公网 IPv6，您可以快速将 EIPv6 实例绑定到云资源的内网 IPv6 地址上，实现为云资源快速开通 IPv6 公网带宽。
+        - 您还可以按需将 EIPv6 实例绑定到其他云资源上，从而屏蔽实例故障。
+
+        :param request: Request instance for AllocateIPv6Addresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AllocateIPv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AllocateIPv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AllocateIPv6Addresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.AllocateIPv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AllocateIp6AddressesBandwidth(self, request):
         """本接口（AllocateIp6AddressesBandwidth）用于为传统弹性公网 IPv6 实例开通 IPv6 公网带宽。
 
@@ -393,6 +420,32 @@ class VpcClient(AbstractClient):
             body = self.call("AssociateDirectConnectGatewayNatGateway", params, headers=headers)
             response = json.loads(body)
             model = models.AssociateDirectConnectGatewayNatGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AssociateIPv6Address(self, request):
+        """本接口（AssociateIPv6Address）用于将弹性公网IPv6（简称EIPv6）实例绑定到 CVM 或弹性网卡配置的内网 IPv6 地址上。
+
+        - 将 EIPv6 绑定到 CVM 上，其本质是将 EIPv6 绑定到 CVM 弹性网卡所配置的内网 IPv6 地址上。
+        - 将 EIPv6 绑定到指定网卡的内网 IPv6 时，需确保该内网 IPv6 地址为未绑定状态，才能执行绑定操作。
+
+        :param request: Request instance for AssociateIPv6Address.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateIPv6AddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateIPv6AddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateIPv6Address", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateIPv6AddressResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4127,6 +4180,32 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIPv6Addresses(self, request):
+        """本接口（DescribeIPv6Addresses）用于查询一个或多个弹性公网 IPv6（简称 EIPv6）实例的详细信息。
+
+        - 支持查询您在指定地域的弹性公网 IPv6 和传统弹性公网 IPv6 实例信息
+        - 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的 EIPv6。
+
+        :param request: Request instance for DescribeIPv6Addresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIPv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIPv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIPv6Addresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIPv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIp6Addresses(self, request):
         """本接口（DescribeIp6Addresses）用于查询一个或多个传统弹性公网 IPv6 实例的详细信息。
 
@@ -6021,6 +6100,32 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisassociateIPv6Address(self, request):
+        """本接口（DisassociateIPv6Address）用于解绑弹性公网 IPv6（简称EIPv6）实例。
+
+        - 支持对 CVM、弹性网卡绑定的 EIPv6 实例进行解绑操作。
+        - 只有状态为 BIND 和 BIND_ENI 的 EIPv6 实例才能进行解绑操作。
+
+        :param request: Request instance for DisassociateIPv6Address.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateIPv6AddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateIPv6AddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateIPv6Address", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateIPv6AddressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisassociateNatGatewayAddress(self, request):
         """本接口（DisassociateNatGatewayAddress）用于NAT网关解绑弹性IP。
 
@@ -7169,8 +7274,56 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyIPv6AddressesAttributes(self, request):
+        """本接口（ModifyIPv6AddressesAttributes）用于修改弹性公网 IPv6（简称EIPv6）实例名称。
+
+        - 支持对弹性公网 IPv6 和传统弹性公网 IPv6 实例名称进行修改。
+
+        :param request: Request instance for ModifyIPv6AddressesAttributes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesAttributesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIPv6AddressesAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIPv6AddressesAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIPv6AddressesBandwidth(self, request):
+        """本接口（ModifyIPv6AddressesBandwidth）用于调整弹性公网 IPv6（简称EIPv6）实例的带宽上限。
+
+        :param request: Request instance for ModifyIPv6AddressesBandwidth.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIPv6AddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIPv6AddressesBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyIp6AddressesBandwidth(self, request):
-        """本接口（ModifyIp6AddressesBandwidt）用于调整传统弹性公网 IPv6 实例的带宽上限。
+        """本接口（ModifyIp6AddressesBandwidth）用于调整传统弹性公网 IPv6 实例的带宽上限。
 
         - 仅支持对传统弹性公网 IPv6 实例的带宽上限进行调整。
         - 如需调整弹性公网 IPv6 实例的带宽上限，请使用 ModifyIPv6AddressesBandwidth 接口。
@@ -8230,6 +8383,32 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReleaseIPv6Addresses(self, request):
+        """本接口（ReleaseIPv6Addresses）用于释放一个或多个弹性公网IPv6（简称EIPv6）实例。
+
+        - 支持对已申请到的弹性公网 IPv6 实例进行释放操作，如需再次使用，请重新申请。
+        - 只有状态为 UNBIND 的 EIPv6 实例才能进行释放操作。
+
+        :param request: Request instance for ReleaseIPv6Addresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReleaseIPv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReleaseIPv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseIPv6Addresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReleaseIPv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReleaseIp6AddressesBandwidth(self, request):
         """本接口（ReleaseIp6AddressesBandwidth）用于为传统弹性公网 IPv6 实例关闭 IPv6 公网带宽。
 
@@ -8664,8 +8843,7 @@ class VpcClient(AbstractClient):
 
 
     def ResetRoutes(self, request):
-        """本接口（ResetRoutes）用于对某个路由表名称和所有路由策略（Route）进行重新设置。<br />
-        注意: 调用本接口是先删除当前路由表中所有路由策略, 再保存新提交的路由策略内容, 会引起网络中断。
+        """本接口（ResetRoutes）用于对某个路由表名称和所有路由策略（Route）进行重新设置。<br /> 注意: 调用本接口时先删除当前路由表中所有路由策略, 再保存新提交的路由策略内容, 会引起网络中断。
 
         :param request: Request instance for ResetRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetRoutesRequest`

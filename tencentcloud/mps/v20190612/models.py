@@ -31754,8 +31754,20 @@ class ImageEnhanceConfig(AbstractModel):
         :param _SuperResolution: 超分配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param _ColorEnhance: 色彩增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
+        :param _SharpEnhance: 细节增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SharpEnhance: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
+        :param _FaceEnhance: 人脸增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
         """
         self._SuperResolution = None
+        self._ColorEnhance = None
+        self._SharpEnhance = None
+        self._FaceEnhance = None
 
     @property
     def SuperResolution(self):
@@ -31769,11 +31781,56 @@ class ImageEnhanceConfig(AbstractModel):
     def SuperResolution(self, SuperResolution):
         self._SuperResolution = SuperResolution
 
+    @property
+    def ColorEnhance(self):
+        """色彩增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
+        """
+        return self._ColorEnhance
+
+    @ColorEnhance.setter
+    def ColorEnhance(self, ColorEnhance):
+        self._ColorEnhance = ColorEnhance
+
+    @property
+    def SharpEnhance(self):
+        """细节增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
+        """
+        return self._SharpEnhance
+
+    @SharpEnhance.setter
+    def SharpEnhance(self, SharpEnhance):
+        self._SharpEnhance = SharpEnhance
+
+    @property
+    def FaceEnhance(self):
+        """人脸增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        """
+        return self._FaceEnhance
+
+    @FaceEnhance.setter
+    def FaceEnhance(self, FaceEnhance):
+        self._FaceEnhance = FaceEnhance
+
 
     def _deserialize(self, params):
         if params.get("SuperResolution") is not None:
             self._SuperResolution = SuperResolutionConfig()
             self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("ColorEnhance") is not None:
+            self._ColorEnhance = ColorEnhanceConfig()
+            self._ColorEnhance._deserialize(params.get("ColorEnhance"))
+        if params.get("SharpEnhance") is not None:
+            self._SharpEnhance = SharpEnhanceConfig()
+            self._SharpEnhance._deserialize(params.get("SharpEnhance"))
+        if params.get("FaceEnhance") is not None:
+            self._FaceEnhance = FaceEnhanceConfig()
+            self._FaceEnhance._deserialize(params.get("FaceEnhance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44000,6 +44057,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 <li>AiReviewResult：内容审核结果；</li>
 <li>AiRecognitionResult：内容识别结果；</li>
 <li>LiveRecordResult：直播录制结果；</li>
+<li>AiQualityControlResult：媒体质检结果；</li>
 <li>ProcessEof：直播流处理结束。</li>
         :type NotificationType: str
         :param _TaskId: 视频处理任务 ID。
@@ -44026,6 +44084,12 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         :type SessionId: str
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
         :type SessionContext: str
+        :param _Timestamp: - 过期时间，事件通知签名过期 UNIX 时间戳。 - 来自媒体处理的消息通知默认过期时间是10分钟，如果一条消息通知中的 Timestamp 值所指定的时间已经过期，则可以判定这条通知无效，进而可以防止网络重放攻击。 - Timestamp 的格式为十进制 UNIX 时间戳，即从1970年01月01日（UTC/GMT 的午夜）开始所经过的秒数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _Sign: 事件通知安全签名 Sign = MD5（Timestamp + NotifyKey）。说明：媒体处理把Timestamp 和 TaskNotifyConfig 里面的NotifyKey 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自媒体处理后台。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sign: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -44039,6 +44103,8 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         self._LiveRecordResultInfo = None
         self._SessionId = None
         self._SessionContext = None
+        self._Timestamp = None
+        self._Sign = None
         self._RequestId = None
 
     @property
@@ -44047,6 +44113,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 <li>AiReviewResult：内容审核结果；</li>
 <li>AiRecognitionResult：内容识别结果；</li>
 <li>LiveRecordResult：直播录制结果；</li>
+<li>AiQualityControlResult：媒体质检结果；</li>
 <li>ProcessEof：直播流处理结束。</li>
         :rtype: str
         """
@@ -44162,6 +44229,30 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         self._SessionContext = SessionContext
 
     @property
+    def Timestamp(self):
+        """- 过期时间，事件通知签名过期 UNIX 时间戳。 - 来自媒体处理的消息通知默认过期时间是10分钟，如果一条消息通知中的 Timestamp 值所指定的时间已经过期，则可以判定这条通知无效，进而可以防止网络重放攻击。 - Timestamp 的格式为十进制 UNIX 时间戳，即从1970年01月01日（UTC/GMT 的午夜）开始所经过的秒数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Sign(self):
+        """事件通知安全签名 Sign = MD5（Timestamp + NotifyKey）。说明：媒体处理把Timestamp 和 TaskNotifyConfig 里面的NotifyKey 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自媒体处理后台。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -44196,6 +44287,8 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
             self._LiveRecordResultInfo._deserialize(params.get("LiveRecordResultInfo"))
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
+        self._Timestamp = params.get("Timestamp")
+        self._Sign = params.get("Sign")
         self._RequestId = params.get("RequestId")
 
 
