@@ -141,6 +141,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeactivateDeviceCertificate(self, request):
+        """失效Ca证书
+
+        :param request: Request instance for DeactivateDeviceCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeactivateDeviceCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeactivateDeviceCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeactivateDeviceCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeactivateDeviceCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAuthenticator(self, request):
         """根据认证器类型删除一个MQTT认证器
 
@@ -178,6 +201,29 @@ class MqttClient(AbstractClient):
             body = self.call("DeleteAuthorizationPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAuthorizationPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDeviceCertificate(self, request):
+        """删除设备证书
+
+        :param request: Request instance for DeleteDeviceCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteDeviceCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeleteDeviceCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeviceCertificateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -247,6 +293,29 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeAuthorizationPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuthorizationPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceCertificate(self, request):
+        """查询设备证书详情接口
+
+        :param request: Request instance for DescribeDeviceCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceCertificateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -485,6 +554,29 @@ class MqttClient(AbstractClient):
             body = self.call("RegisterDeviceCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.RegisterDeviceCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RevokedDeviceCertificate(self, request):
+        """吊销设备证书
+
+        :param request: Request instance for RevokedDeviceCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.RevokedDeviceCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.RevokedDeviceCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RevokedDeviceCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.RevokedDeviceCertificateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

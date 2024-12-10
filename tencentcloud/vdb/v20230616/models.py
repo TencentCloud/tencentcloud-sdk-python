@@ -1117,6 +1117,8 @@ class InstanceInfo(AbstractModel):
 
     @property
     def HealthScore(self):
+        warnings.warn("parameter `HealthScore` is deprecated", DeprecationWarning) 
+
         """健康得分。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
@@ -1125,10 +1127,14 @@ class InstanceInfo(AbstractModel):
 
     @HealthScore.setter
     def HealthScore(self, HealthScore):
+        warnings.warn("parameter `HealthScore` is deprecated", DeprecationWarning) 
+
         self._HealthScore = HealthScore
 
     @property
     def Warning(self):
+        warnings.warn("parameter `Warning` is deprecated", DeprecationWarning) 
+
         """异常告警。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -1137,10 +1143,14 @@ class InstanceInfo(AbstractModel):
 
     @Warning.setter
     def Warning(self, Warning):
+        warnings.warn("parameter `Warning` is deprecated", DeprecationWarning) 
+
         self._Warning = Warning
 
     @property
     def Project(self):
+        warnings.warn("parameter `Project` is deprecated", DeprecationWarning) 
+
         """所属项目。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -1149,6 +1159,8 @@ class InstanceInfo(AbstractModel):
 
     @Project.setter
     def Project(self, Project):
+        warnings.warn("parameter `Project` is deprecated", DeprecationWarning) 
+
         self._Project = Project
 
     @property

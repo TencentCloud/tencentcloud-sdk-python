@@ -1703,9 +1703,13 @@ class AddOnSubtitle(AbstractModel):
         :param _Subtitle: 字幕文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _SubtitleName: 字幕名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleName: str
         """
         self._Type = None
         self._Subtitle = None
+        self._SubtitleName = None
 
     @property
     def Type(self):
@@ -1734,12 +1738,25 @@ class AddOnSubtitle(AbstractModel):
     def Subtitle(self, Subtitle):
         self._Subtitle = Subtitle
 
+    @property
+    def SubtitleName(self):
+        """字幕名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         if params.get("Subtitle") is not None:
             self._Subtitle = MediaInputInfo()
             self._Subtitle._deserialize(params.get("Subtitle"))
+        self._SubtitleName = params.get("SubtitleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

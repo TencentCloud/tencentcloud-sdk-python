@@ -463,6 +463,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateNativeGatewayServiceSource(self, request):
+        """创建网关服务来源
+
+        :param request: Request instance for CreateNativeGatewayServiceSource.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateNativeGatewayServiceSourceRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateNativeGatewayServiceSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNativeGatewayServiceSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNativeGatewayServiceSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrUpdateConfigFileAndRelease(self, request):
         """创建或更新配置文件并发布配置
 
@@ -937,6 +960,29 @@ class TseClient(AbstractClient):
             body = self.call("DeleteNativeGatewayServerGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteNativeGatewayServerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteNativeGatewayServiceSource(self, request):
+        """删除网关服务来源实例
+
+        :param request: Request instance for DeleteNativeGatewayServiceSource.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteNativeGatewayServiceSourceRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteNativeGatewayServiceSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNativeGatewayServiceSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteNativeGatewayServiceSourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1751,6 +1797,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNativeGatewayServiceSources(self, request):
+        """查询网关服务来源实例列表
+
+        :param request: Request instance for DescribeNativeGatewayServiceSources.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeNativeGatewayServiceSourcesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeNativeGatewayServiceSourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNativeGatewayServiceSources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNativeGatewayServiceSourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOneCloudNativeAPIGatewayService(self, request):
         """获取云原生网关服务详情
 
@@ -2340,6 +2409,29 @@ class TseClient(AbstractClient):
             body = self.call("ModifyNativeGatewayServerGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyNativeGatewayServerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyNativeGatewayServiceSource(self, request):
+        """修改网关服务来源
+
+        :param request: Request instance for ModifyNativeGatewayServiceSource.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNativeGatewayServiceSourceRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyNativeGatewayServiceSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNativeGatewayServiceSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNativeGatewayServiceSourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -14586,6 +14586,8 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         :type IsPassService: bool
         :param _ServiceType: 挂载的PAAS服务类型，CLB,CDB,CRS，不填默认挂载为CLB。
         :type ServiceType: str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._VpcId = None
         self._EndPointServiceName = None
@@ -14593,6 +14595,7 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         self._ServiceInstanceId = None
         self._IsPassService = None
         self._ServiceType = None
+        self._Tags = None
 
     @property
     def VpcId(self):
@@ -14660,6 +14663,17 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
     def ServiceType(self, ServiceType):
         self._ServiceType = ServiceType
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -14668,6 +14682,12 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         self._ServiceInstanceId = params.get("ServiceInstanceId")
         self._IsPassService = params.get("IsPassService")
         self._ServiceType = params.get("ServiceType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

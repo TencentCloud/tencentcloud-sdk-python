@@ -75,6 +75,30 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImageInpaintingRemoval(self, request):
+        """消除补全接口通过图像 mask 指定需要消除的人、物、文字等区域，在选定区域对图像内容进行消除与重绘补全。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务。
+
+        :param request: Request instance for ImageInpaintingRemoval.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.ImageInpaintingRemovalRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.ImageInpaintingRemovalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageInpaintingRemoval", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImageInpaintingRemovalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImageOutpainting(self, request):
         """扩图接口支持对输入图像按指定宽高比实现智能扩图。
         默认提供1个并发，代表最多能同时处理1个已提交的任务。

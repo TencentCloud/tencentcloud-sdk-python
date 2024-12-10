@@ -7154,6 +7154,9 @@ class GroupMemberInfo(AbstractModel):
         :type CreateTime: str
         :param _IsReceiverOwner: 是否为主消息接收人。0-否 1-是
         :type IsReceiverOwner: int
+        :param _Remark: 昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
         self._Uid = None
         self._Uin = None
@@ -7166,6 +7169,7 @@ class GroupMemberInfo(AbstractModel):
         self._UserType = None
         self._CreateTime = None
         self._IsReceiverOwner = None
+        self._Remark = None
 
     @property
     def Uid(self):
@@ -7288,6 +7292,18 @@ class GroupMemberInfo(AbstractModel):
     def IsReceiverOwner(self, IsReceiverOwner):
         self._IsReceiverOwner = IsReceiverOwner
 
+    @property
+    def Remark(self):
+        """昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._Uid = params.get("Uid")
@@ -7301,6 +7317,7 @@ class GroupMemberInfo(AbstractModel):
         self._UserType = params.get("UserType")
         self._CreateTime = params.get("CreateTime")
         self._IsReceiverOwner = params.get("IsReceiverOwner")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12769,6 +12786,100 @@ class UpdateRoleDescriptionRequest(AbstractModel):
 
 class UpdateRoleDescriptionResponse(AbstractModel):
     """UpdateRoleDescription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateRoleSessionDurationRequest(AbstractModel):
+    """UpdateRoleSessionDuration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionDuration: 时长(秒)
+        :type SessionDuration: int
+        :param _RoleName: 角色名(与角色ID必填一个)
+        :type RoleName: str
+        :param _RoleId: 角色ID(与角色名必填一个)
+        :type RoleId: int
+        """
+        self._SessionDuration = None
+        self._RoleName = None
+        self._RoleId = None
+
+    @property
+    def SessionDuration(self):
+        """时长(秒)
+        :rtype: int
+        """
+        return self._SessionDuration
+
+    @SessionDuration.setter
+    def SessionDuration(self, SessionDuration):
+        self._SessionDuration = SessionDuration
+
+    @property
+    def RoleName(self):
+        """角色名(与角色ID必填一个)
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleId(self):
+        """角色ID(与角色名必填一个)
+        :rtype: int
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+
+    def _deserialize(self, params):
+        self._SessionDuration = params.get("SessionDuration")
+        self._RoleName = params.get("RoleName")
+        self._RoleId = params.get("RoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRoleSessionDurationResponse(AbstractModel):
+    """UpdateRoleSessionDuration返回参数结构体
 
     """
 

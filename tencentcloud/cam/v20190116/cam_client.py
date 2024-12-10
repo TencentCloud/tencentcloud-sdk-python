@@ -2006,6 +2006,29 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateRoleSessionDuration(self, request):
+        """修改角色会话时长
+
+        :param request: Request instance for UpdateRoleSessionDuration.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateRoleSessionDurationRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateRoleSessionDurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateRoleSessionDuration", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateRoleSessionDurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateSAMLProvider(self, request):
         """更新SAML身份提供商信息
 

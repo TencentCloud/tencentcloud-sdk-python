@@ -14195,17 +14195,23 @@ class MLIDCardOCRRequest(AbstractModel):
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
         :type ImageBase64: str
+        :param _BackImageBase64: 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type BackImageBase64: str
         :param _ImageUrl: 图片的 Url 地址。( 中国地区之外不支持这个字段 )
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param _BackImageUrl: 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type BackImageUrl: str
         :param _RetImage: 是否返回图片，默认false
         :type RetImage: bool
         """
         self._ImageBase64 = None
+        self._BackImageBase64 = None
         self._ImageUrl = None
+        self._BackImageUrl = None
         self._RetImage = None
 
     @property
@@ -14220,6 +14226,17 @@ class MLIDCardOCRRequest(AbstractModel):
     @ImageBase64.setter
     def ImageBase64(self, ImageBase64):
         self._ImageBase64 = ImageBase64
+
+    @property
+    def BackImageBase64(self):
+        """卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
 
     @property
     def ImageUrl(self):
@@ -14237,6 +14254,17 @@ class MLIDCardOCRRequest(AbstractModel):
         self._ImageUrl = ImageUrl
 
     @property
+    def BackImageUrl(self):
+        """卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
+
+    @property
     def RetImage(self):
         """是否返回图片，默认false
         :rtype: bool
@@ -14250,7 +14278,9 @@ class MLIDCardOCRRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
+        self._BackImageBase64 = params.get("BackImageBase64")
         self._ImageUrl = params.get("ImageUrl")
+        self._BackImageUrl = params.get("BackImageUrl")
         self._RetImage = params.get("RetImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -14304,6 +14334,8 @@ MyKid 儿童卡
         :type Type: str
         :param _Birthday: 出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
         :type Birthday: str
+        :param _MyKadNumber: 马来身份证背面号码
+        :type MyKadNumber: str
         :param _WarnCardInfos: 告警码
 -9101 证件边框不完整告警
 -9102 证件复印件告警
@@ -14325,6 +14357,7 @@ MyKid 儿童卡
         self._AdvancedInfo = None
         self._Type = None
         self._Birthday = None
+        self._MyKadNumber = None
         self._WarnCardInfos = None
         self._RequestId = None
 
@@ -14449,6 +14482,17 @@ MyKid 儿童卡
         self._Birthday = Birthday
 
     @property
+    def MyKadNumber(self):
+        """马来身份证背面号码
+        :rtype: str
+        """
+        return self._MyKadNumber
+
+    @MyKadNumber.setter
+    def MyKadNumber(self, MyKadNumber):
+        self._MyKadNumber = MyKadNumber
+
+    @property
     def WarnCardInfos(self):
         """告警码
 -9101 证件边框不完整告警
@@ -14488,6 +14532,7 @@ MyKid 儿童卡
         self._AdvancedInfo = params.get("AdvancedInfo")
         self._Type = params.get("Type")
         self._Birthday = params.get("Birthday")
+        self._MyKadNumber = params.get("MyKadNumber")
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
@@ -30766,6 +30811,180 @@ class TextTable(AbstractModel):
         
 
 
+class TextTractorVehicleBack(AbstractModel):
+    """拖拉机行驶证副页正面的识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlateNo: 号牌号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlateNo: str
+        :param _AllowNum: 准乘人数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowNum: str
+        :param _CombineHarvesterQuality: 联合收割机质量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CombineHarvesterQuality: str
+        :param _TractorMinUsageWeight: 拖拉机最小使用质量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TractorMinUsageWeight: str
+        :param _TractorMaxAllowLoadCapacity: 拖拉机最大允许载质量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TractorMaxAllowLoadCapacity: str
+        :param _ExternalSize: 外廓尺寸
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalSize: str
+        :param _Record: 检验记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Record: str
+        :param _VehicleType: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VehicleType: str
+        :param _Address: 住址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        """
+        self._PlateNo = None
+        self._AllowNum = None
+        self._CombineHarvesterQuality = None
+        self._TractorMinUsageWeight = None
+        self._TractorMaxAllowLoadCapacity = None
+        self._ExternalSize = None
+        self._Record = None
+        self._VehicleType = None
+        self._Address = None
+
+    @property
+    def PlateNo(self):
+        """号牌号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PlateNo
+
+    @PlateNo.setter
+    def PlateNo(self, PlateNo):
+        self._PlateNo = PlateNo
+
+    @property
+    def AllowNum(self):
+        """准乘人数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AllowNum
+
+    @AllowNum.setter
+    def AllowNum(self, AllowNum):
+        self._AllowNum = AllowNum
+
+    @property
+    def CombineHarvesterQuality(self):
+        """联合收割机质量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CombineHarvesterQuality
+
+    @CombineHarvesterQuality.setter
+    def CombineHarvesterQuality(self, CombineHarvesterQuality):
+        self._CombineHarvesterQuality = CombineHarvesterQuality
+
+    @property
+    def TractorMinUsageWeight(self):
+        """拖拉机最小使用质量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TractorMinUsageWeight
+
+    @TractorMinUsageWeight.setter
+    def TractorMinUsageWeight(self, TractorMinUsageWeight):
+        self._TractorMinUsageWeight = TractorMinUsageWeight
+
+    @property
+    def TractorMaxAllowLoadCapacity(self):
+        """拖拉机最大允许载质量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TractorMaxAllowLoadCapacity
+
+    @TractorMaxAllowLoadCapacity.setter
+    def TractorMaxAllowLoadCapacity(self, TractorMaxAllowLoadCapacity):
+        self._TractorMaxAllowLoadCapacity = TractorMaxAllowLoadCapacity
+
+    @property
+    def ExternalSize(self):
+        """外廓尺寸
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExternalSize
+
+    @ExternalSize.setter
+    def ExternalSize(self, ExternalSize):
+        self._ExternalSize = ExternalSize
+
+    @property
+    def Record(self):
+        """检验记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def VehicleType(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VehicleType
+
+    @VehicleType.setter
+    def VehicleType(self, VehicleType):
+        self._VehicleType = VehicleType
+
+    @property
+    def Address(self):
+        """住址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+
+    def _deserialize(self, params):
+        self._PlateNo = params.get("PlateNo")
+        self._AllowNum = params.get("AllowNum")
+        self._CombineHarvesterQuality = params.get("CombineHarvesterQuality")
+        self._TractorMinUsageWeight = params.get("TractorMinUsageWeight")
+        self._TractorMaxAllowLoadCapacity = params.get("TractorMaxAllowLoadCapacity")
+        self._ExternalSize = params.get("ExternalSize")
+        self._Record = params.get("Record")
+        self._VehicleType = params.get("VehicleType")
+        self._Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TextVatInvoice(AbstractModel):
     """增值税发票识别结果
 
@@ -38007,10 +38226,13 @@ BACK 为行驶证副页正面（有号码号牌的一面），
 DOUBLE 为行驶证主页正面和副页正面。
 默认值为：FRONT。
         :type CardSide: str
+        :param _TractorCardSide: FRONT为行驶证主页正面（有红色印章的一面），BACK 为拖拉机行驶证副页正面识别
+        :type TractorCardSide: str
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._CardSide = None
+        self._TractorCardSide = None
 
     @property
     def ImageBase64(self):
@@ -38050,11 +38272,23 @@ DOUBLE 为行驶证主页正面和副页正面。
     def CardSide(self, CardSide):
         self._CardSide = CardSide
 
+    @property
+    def TractorCardSide(self):
+        """FRONT为行驶证主页正面（有红色印章的一面），BACK 为拖拉机行驶证副页正面识别
+        :rtype: str
+        """
+        return self._TractorCardSide
+
+    @TractorCardSide.setter
+    def TractorCardSide(self, TractorCardSide):
+        self._TractorCardSide = TractorCardSide
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
         self._CardSide = params.get("CardSide")
+        self._TractorCardSide = params.get("TractorCardSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38096,6 +38330,9 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         :type RecognizeWarnMsg: list of str
         :param _VehicleLicenseType: 行驶证类型 电子行驶证：Electronic 普通行驶证：Normal
         :type VehicleLicenseType: str
+        :param _TractorBackInfo: 拖拉机行驶证副页正面的识别结果，CardSide 为 BACK。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TractorBackInfo: :class:`tencentcloud.ocr.v20181119.models.TextTractorVehicleBack`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -38104,6 +38341,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         self._RecognizeWarnCode = None
         self._RecognizeWarnMsg = None
         self._VehicleLicenseType = None
+        self._TractorBackInfo = None
         self._RequestId = None
 
     @property
@@ -38176,6 +38414,18 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         self._VehicleLicenseType = VehicleLicenseType
 
     @property
+    def TractorBackInfo(self):
+        """拖拉机行驶证副页正面的识别结果，CardSide 为 BACK。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextTractorVehicleBack`
+        """
+        return self._TractorBackInfo
+
+    @TractorBackInfo.setter
+    def TractorBackInfo(self, TractorBackInfo):
+        self._TractorBackInfo = TractorBackInfo
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -38197,6 +38447,9 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         self._RecognizeWarnCode = params.get("RecognizeWarnCode")
         self._RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self._VehicleLicenseType = params.get("VehicleLicenseType")
+        if params.get("TractorBackInfo") is not None:
+            self._TractorBackInfo = TextTractorVehicleBack()
+            self._TractorBackInfo._deserialize(params.get("TractorBackInfo"))
         self._RequestId = params.get("RequestId")
 
 

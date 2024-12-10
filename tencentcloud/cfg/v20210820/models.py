@@ -1897,6 +1897,8 @@ class DescribeTaskListRequest(AbstractModel):
         :type ApplicationName: list of str
         :param _TaskStatusList: 任务状态筛选--支持多选 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
         :type TaskStatusList: list of int non-negative
+        :param _ArchId: 架构ID
+        :type ArchId: str
         """
         self._Limit = None
         self._Offset = None
@@ -1912,6 +1914,7 @@ class DescribeTaskListRequest(AbstractModel):
         self._ApplicationId = None
         self._ApplicationName = None
         self._TaskStatusList = None
+        self._ArchId = None
 
     @property
     def Limit(self):
@@ -2067,6 +2070,17 @@ class DescribeTaskListRequest(AbstractModel):
     def TaskStatusList(self, TaskStatusList):
         self._TaskStatusList = TaskStatusList
 
+    @property
+    def ArchId(self):
+        """架构ID
+        :rtype: str
+        """
+        return self._ArchId
+
+    @ArchId.setter
+    def ArchId(self, ArchId):
+        self._ArchId = ArchId
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -2093,6 +2107,7 @@ class DescribeTaskListRequest(AbstractModel):
         self._ApplicationId = params.get("ApplicationId")
         self._ApplicationName = params.get("ApplicationName")
         self._TaskStatusList = params.get("TaskStatusList")
+        self._ArchId = params.get("ArchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

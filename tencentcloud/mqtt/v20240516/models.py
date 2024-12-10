@@ -1117,6 +1117,85 @@ class CreateTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeactivateDeviceCertificateRequest(AbstractModel):
+    """DeactivateDeviceCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DeviceCertificateSn: 设备证书序列号
+        :type DeviceCertificateSn: str
+        """
+        self._InstanceId = None
+        self._DeviceCertificateSn = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceCertificateSn(self):
+        """设备证书序列号
+        :rtype: str
+        """
+        return self._DeviceCertificateSn
+
+    @DeviceCertificateSn.setter
+    def DeviceCertificateSn(self, DeviceCertificateSn):
+        self._DeviceCertificateSn = DeviceCertificateSn
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceCertificateSn = params.get("DeviceCertificateSn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeactivateDeviceCertificateResponse(AbstractModel):
+    """DeactivateDeviceCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAuthenticatorRequest(AbstractModel):
     """DeleteAuthenticator请求参数结构体
 
@@ -1249,6 +1328,85 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
 class DeleteAuthorizationPolicyResponse(AbstractModel):
     """DeleteAuthorizationPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDeviceCertificateRequest(AbstractModel):
+    """DeleteDeviceCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DeviceCertificateSn: 设备证书序列号
+        :type DeviceCertificateSn: str
+        """
+        self._InstanceId = None
+        self._DeviceCertificateSn = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceCertificateSn(self):
+        """设备证书序列号
+        :rtype: str
+        """
+        return self._DeviceCertificateSn
+
+    @DeviceCertificateSn.setter
+    def DeviceCertificateSn(self, DeviceCertificateSn):
+        self._DeviceCertificateSn = DeviceCertificateSn
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceCertificateSn = params.get("DeviceCertificateSn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceCertificateResponse(AbstractModel):
+    """DeleteDeviceCertificate返回参数结构体
 
     """
 
@@ -1534,6 +1692,299 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
                 obj = AuthorizationPolicyItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceCertificateRequest(AbstractModel):
+    """DescribeDeviceCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceCertificateSn: 设备证书sn
+        :type DeviceCertificateSn: str
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self._DeviceCertificateSn = None
+        self._InstanceId = None
+
+    @property
+    def DeviceCertificateSn(self):
+        """设备证书sn
+        :rtype: str
+        """
+        return self._DeviceCertificateSn
+
+    @DeviceCertificateSn.setter
+    def DeviceCertificateSn(self, DeviceCertificateSn):
+        self._DeviceCertificateSn = DeviceCertificateSn
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._DeviceCertificateSn = params.get("DeviceCertificateSn")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceCertificateResponse(AbstractModel):
+    """DescribeDeviceCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: int
+        :param _UpdateTime: 上次更新时间
+        :type UpdateTime: int
+        :param _NotAfterTime: 证书失效日期
+        :type NotAfterTime: int
+        :param _LastActivationTime: 上次激活时间
+        :type LastActivationTime: int
+        :param _LastInactivationTime: 上次取消激活时间
+        :type LastInactivationTime: int
+        :param _Status: 证书状态
+        :type Status: str
+        :param _CaSn: 证书序列号
+        :type CaSn: str
+        :param _DeviceCertificateSn: 设备证书sn
+        :type DeviceCertificateSn: str
+        :param _DeviceCertificate: 证书内容
+        :type DeviceCertificate: str
+        :param _DeviceCertificateCn: 设备证书cn
+        :type DeviceCertificateCn: str
+        :param _Format: 证书格式
+        :type Format: str
+        :param _ClientId: 客户端id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        :param _CertificateSource:     API, 手动注册   
+    JITP 自动注册
+        :type CertificateSource: str
+        :param _NotBeforeTime: 证书生效开始时间
+        :type NotBeforeTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CreatedTime = None
+        self._UpdateTime = None
+        self._NotAfterTime = None
+        self._LastActivationTime = None
+        self._LastInactivationTime = None
+        self._Status = None
+        self._CaSn = None
+        self._DeviceCertificateSn = None
+        self._DeviceCertificate = None
+        self._DeviceCertificateCn = None
+        self._Format = None
+        self._ClientId = None
+        self._CertificateSource = None
+        self._NotBeforeTime = None
+        self._RequestId = None
+
+    @property
+    def CreatedTime(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdateTime(self):
+        """上次更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def NotAfterTime(self):
+        """证书失效日期
+        :rtype: int
+        """
+        return self._NotAfterTime
+
+    @NotAfterTime.setter
+    def NotAfterTime(self, NotAfterTime):
+        self._NotAfterTime = NotAfterTime
+
+    @property
+    def LastActivationTime(self):
+        """上次激活时间
+        :rtype: int
+        """
+        return self._LastActivationTime
+
+    @LastActivationTime.setter
+    def LastActivationTime(self, LastActivationTime):
+        self._LastActivationTime = LastActivationTime
+
+    @property
+    def LastInactivationTime(self):
+        """上次取消激活时间
+        :rtype: int
+        """
+        return self._LastInactivationTime
+
+    @LastInactivationTime.setter
+    def LastInactivationTime(self, LastInactivationTime):
+        self._LastInactivationTime = LastInactivationTime
+
+    @property
+    def Status(self):
+        """证书状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CaSn(self):
+        """证书序列号
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+    @property
+    def DeviceCertificateSn(self):
+        """设备证书sn
+        :rtype: str
+        """
+        return self._DeviceCertificateSn
+
+    @DeviceCertificateSn.setter
+    def DeviceCertificateSn(self, DeviceCertificateSn):
+        self._DeviceCertificateSn = DeviceCertificateSn
+
+    @property
+    def DeviceCertificate(self):
+        """证书内容
+        :rtype: str
+        """
+        return self._DeviceCertificate
+
+    @DeviceCertificate.setter
+    def DeviceCertificate(self, DeviceCertificate):
+        self._DeviceCertificate = DeviceCertificate
+
+    @property
+    def DeviceCertificateCn(self):
+        """设备证书cn
+        :rtype: str
+        """
+        return self._DeviceCertificateCn
+
+    @DeviceCertificateCn.setter
+    def DeviceCertificateCn(self, DeviceCertificateCn):
+        self._DeviceCertificateCn = DeviceCertificateCn
+
+    @property
+    def Format(self):
+        """证书格式
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def ClientId(self):
+        """客户端id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def CertificateSource(self):
+        """    API, 手动注册   
+    JITP 自动注册
+        :rtype: str
+        """
+        return self._CertificateSource
+
+    @CertificateSource.setter
+    def CertificateSource(self, CertificateSource):
+        self._CertificateSource = CertificateSource
+
+    @property
+    def NotBeforeTime(self):
+        """证书生效开始时间
+        :rtype: int
+        """
+        return self._NotBeforeTime
+
+    @NotBeforeTime.setter
+    def NotBeforeTime(self, NotBeforeTime):
+        self._NotBeforeTime = NotBeforeTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._NotAfterTime = params.get("NotAfterTime")
+        self._LastActivationTime = params.get("LastActivationTime")
+        self._LastInactivationTime = params.get("LastInactivationTime")
+        self._Status = params.get("Status")
+        self._CaSn = params.get("CaSn")
+        self._DeviceCertificateSn = params.get("DeviceCertificateSn")
+        self._DeviceCertificate = params.get("DeviceCertificate")
+        self._DeviceCertificateCn = params.get("DeviceCertificateCn")
+        self._Format = params.get("Format")
+        self._ClientId = params.get("ClientId")
+        self._CertificateSource = params.get("CertificateSource")
+        self._NotBeforeTime = params.get("NotBeforeTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -4215,6 +4666,85 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
 class RegisterDeviceCertificateResponse(AbstractModel):
     """RegisterDeviceCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RevokedDeviceCertificateRequest(AbstractModel):
+    """RevokedDeviceCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DeviceCertificateSn: 设备证书序列号
+        :type DeviceCertificateSn: str
+        """
+        self._InstanceId = None
+        self._DeviceCertificateSn = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceCertificateSn(self):
+        """设备证书序列号
+        :rtype: str
+        """
+        return self._DeviceCertificateSn
+
+    @DeviceCertificateSn.setter
+    def DeviceCertificateSn(self, DeviceCertificateSn):
+        self._DeviceCertificateSn = DeviceCertificateSn
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceCertificateSn = params.get("DeviceCertificateSn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RevokedDeviceCertificateResponse(AbstractModel):
+    """RevokedDeviceCertificate返回参数结构体
 
     """
 

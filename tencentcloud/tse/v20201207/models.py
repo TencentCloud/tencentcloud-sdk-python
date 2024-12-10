@@ -8066,6 +8066,169 @@ class CreateNativeGatewayServerGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateNativeGatewayServiceSourceRequest(AbstractModel):
+    """CreateNativeGatewayServiceSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayID: 网关实例ID
+        :type GatewayID: str
+        :param _SourceType: 服务来源类型，参考值：
+- TSE-Nacos 
+- TSE-Consul 
+- TSE-PolarisMesh
+- Customer-Nacos
+- Customer-Consul
+- Customer-PolarisMesh
+- TSF
+- TKE
+- EKS
+- PrivateDNS
+- Customer-DNS
+        :type SourceType: str
+        :param _SourceID: 服务来源实例ID，当SourceType的值不为PrivateDNS或Customer-DNS时，必填
+        :type SourceID: str
+        :param _SourceName: 服务来源实例名称，当SourceType的值不为PrivateDNS时，必填
+        :type SourceName: str
+        :param _SourceInfo: 服务来源实例额外信息
+        :type SourceInfo: :class:`tencentcloud.tse.v20201207.models.SourceInfo`
+        """
+        self._GatewayID = None
+        self._SourceType = None
+        self._SourceID = None
+        self._SourceName = None
+        self._SourceInfo = None
+
+    @property
+    def GatewayID(self):
+        """网关实例ID
+        :rtype: str
+        """
+        return self._GatewayID
+
+    @GatewayID.setter
+    def GatewayID(self, GatewayID):
+        self._GatewayID = GatewayID
+
+    @property
+    def SourceType(self):
+        """服务来源类型，参考值：
+- TSE-Nacos 
+- TSE-Consul 
+- TSE-PolarisMesh
+- Customer-Nacos
+- Customer-Consul
+- Customer-PolarisMesh
+- TSF
+- TKE
+- EKS
+- PrivateDNS
+- Customer-DNS
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceID(self):
+        """服务来源实例ID，当SourceType的值不为PrivateDNS或Customer-DNS时，必填
+        :rtype: str
+        """
+        return self._SourceID
+
+    @SourceID.setter
+    def SourceID(self, SourceID):
+        self._SourceID = SourceID
+
+    @property
+    def SourceName(self):
+        """服务来源实例名称，当SourceType的值不为PrivateDNS时，必填
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceInfo(self):
+        """服务来源实例额外信息
+        :rtype: :class:`tencentcloud.tse.v20201207.models.SourceInfo`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+
+    def _deserialize(self, params):
+        self._GatewayID = params.get("GatewayID")
+        self._SourceType = params.get("SourceType")
+        self._SourceID = params.get("SourceID")
+        self._SourceName = params.get("SourceName")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = SourceInfo()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNativeGatewayServiceSourceResponse(AbstractModel):
+    """CreateNativeGatewayServiceSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 创建是否成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """创建是否成功
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOrUpdateConfigFileAndReleaseRequest(AbstractModel):
     """CreateOrUpdateConfigFileAndRelease请求参数结构体
 
@@ -10292,6 +10455,100 @@ class DeleteNativeGatewayServerGroupResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteNativeGatewayServiceSourceRequest(AbstractModel):
+    """DeleteNativeGatewayServiceSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayID: 网关实例 ID
+        :type GatewayID: str
+        :param _SourceID: 服务来源实例 ID
+        :type SourceID: str
+        """
+        self._GatewayID = None
+        self._SourceID = None
+
+    @property
+    def GatewayID(self):
+        """网关实例 ID
+        :rtype: str
+        """
+        return self._GatewayID
+
+    @GatewayID.setter
+    def GatewayID(self, GatewayID):
+        self._GatewayID = GatewayID
+
+    @property
+    def SourceID(self):
+        """服务来源实例 ID
+        :rtype: str
+        """
+        return self._SourceID
+
+    @SourceID.setter
+    def SourceID(self, SourceID):
+        self._SourceID = SourceID
+
+
+    def _deserialize(self, params):
+        self._GatewayID = params.get("GatewayID")
+        self._SourceID = params.get("SourceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNativeGatewayServiceSourceResponse(AbstractModel):
+    """DeleteNativeGatewayServiceSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 结果
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """结果
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteWafDomainsRequest(AbstractModel):
@@ -16161,6 +16418,195 @@ class DescribeNativeGatewayServerGroupsResponse(AbstractModel):
         if params.get("Result") is not None:
             self._Result = NativeGatewayServerGroups()
             self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNativeGatewayServiceSourcesRequest(AbstractModel):
+    """DescribeNativeGatewayServiceSources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayID: 网关实例ID
+        :type GatewayID: str
+        :param _Limit: 单页条数，最大100
+        :type Limit: int
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _SourceName: 服务来源实例名称，模糊搜索
+        :type SourceName: str
+        :param _SourceTypes: 微服务引擎类型：TSE-Nacos｜TSE-Consul｜TSE-PolarisMesh｜Customer-Nacos｜Customer-Consul｜Customer-PolarisMesh
+        :type SourceTypes: list of str
+        :param _OrderField: 排序字段类型，当前仅支持SourceName
+        :type OrderField: str
+        :param _OrderType: 排序类型，AES/DESC
+        :type OrderType: str
+        """
+        self._GatewayID = None
+        self._Limit = None
+        self._Offset = None
+        self._SourceName = None
+        self._SourceTypes = None
+        self._OrderField = None
+        self._OrderType = None
+
+    @property
+    def GatewayID(self):
+        """网关实例ID
+        :rtype: str
+        """
+        return self._GatewayID
+
+    @GatewayID.setter
+    def GatewayID(self, GatewayID):
+        self._GatewayID = GatewayID
+
+    @property
+    def Limit(self):
+        """单页条数，最大100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SourceName(self):
+        """服务来源实例名称，模糊搜索
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceTypes(self):
+        """微服务引擎类型：TSE-Nacos｜TSE-Consul｜TSE-PolarisMesh｜Customer-Nacos｜Customer-Consul｜Customer-PolarisMesh
+        :rtype: list of str
+        """
+        return self._SourceTypes
+
+    @SourceTypes.setter
+    def SourceTypes(self, SourceTypes):
+        self._SourceTypes = SourceTypes
+
+    @property
+    def OrderField(self):
+        """排序字段类型，当前仅支持SourceName
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderType(self):
+        """排序类型，AES/DESC
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+
+    def _deserialize(self, params):
+        self._GatewayID = params.get("GatewayID")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SourceName = params.get("SourceName")
+        self._SourceTypes = params.get("SourceTypes")
+        self._OrderField = params.get("OrderField")
+        self._OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNativeGatewayServiceSourcesResponse(AbstractModel):
+    """DescribeNativeGatewayServiceSources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总实例数
+        :type Total: int
+        :param _List: 服务来源实例列表
+        :type List: list of NativeGatewayServiceSourceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总实例数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """服务来源实例列表
+        :rtype: list of NativeGatewayServiceSourceItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = NativeGatewayServiceSourceItem()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25782,6 +26228,117 @@ class ModifyNativeGatewayServerGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyNativeGatewayServiceSourceRequest(AbstractModel):
+    """ModifyNativeGatewayServiceSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayID: 网关实例ID
+        :type GatewayID: str
+        :param _SourceID: 服务来源实例ID
+        :type SourceID: str
+        :param _SourceName: 服务来源名称
+        :type SourceName: str
+        :param _SourceInfo: 服务来源实例额外信息
+        :type SourceInfo: :class:`tencentcloud.tse.v20201207.models.SourceInfo`
+        """
+        self._GatewayID = None
+        self._SourceID = None
+        self._SourceName = None
+        self._SourceInfo = None
+
+    @property
+    def GatewayID(self):
+        """网关实例ID
+        :rtype: str
+        """
+        return self._GatewayID
+
+    @GatewayID.setter
+    def GatewayID(self, GatewayID):
+        self._GatewayID = GatewayID
+
+    @property
+    def SourceID(self):
+        """服务来源实例ID
+        :rtype: str
+        """
+        return self._SourceID
+
+    @SourceID.setter
+    def SourceID(self, SourceID):
+        self._SourceID = SourceID
+
+    @property
+    def SourceName(self):
+        """服务来源名称
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceInfo(self):
+        """服务来源实例额外信息
+        :rtype: :class:`tencentcloud.tse.v20201207.models.SourceInfo`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+
+    def _deserialize(self, params):
+        self._GatewayID = params.get("GatewayID")
+        self._SourceID = params.get("SourceID")
+        self._SourceName = params.get("SourceName")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = SourceInfo()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNativeGatewayServiceSourceResponse(AbstractModel):
+    """ModifyNativeGatewayServiceSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyNetworkAccessStrategyRequest(AbstractModel):
     """ModifyNetworkAccessStrategy请求参数结构体
 
@@ -26652,6 +27209,134 @@ class NativeGatewayServerGroups(AbstractModel):
                 obj = NativeGatewayServerGroup()
                 obj._deserialize(item)
                 self._GatewayGroupList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NativeGatewayServiceSourceItem(AbstractModel):
+    """网关数据来源单个描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayID: 网关实例ID
+        :type GatewayID: str
+        :param _SourceID: 服务来源ID
+        :type SourceID: str
+        :param _SourceName: 服务来源名称
+        :type SourceName: str
+        :param _SourceType: 服务来源类型
+        :type SourceType: str
+        :param _SourceInfo: 服务来源额外信息
+        :type SourceInfo: :class:`tencentcloud.tse.v20201207.models.SourceInfo`
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self._GatewayID = None
+        self._SourceID = None
+        self._SourceName = None
+        self._SourceType = None
+        self._SourceInfo = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def GatewayID(self):
+        """网关实例ID
+        :rtype: str
+        """
+        return self._GatewayID
+
+    @GatewayID.setter
+    def GatewayID(self, GatewayID):
+        self._GatewayID = GatewayID
+
+    @property
+    def SourceID(self):
+        """服务来源ID
+        :rtype: str
+        """
+        return self._SourceID
+
+    @SourceID.setter
+    def SourceID(self, SourceID):
+        self._SourceID = SourceID
+
+    @property
+    def SourceName(self):
+        """服务来源名称
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceType(self):
+        """服务来源类型
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceInfo(self):
+        """服务来源额外信息
+        :rtype: :class:`tencentcloud.tse.v20201207.models.SourceInfo`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._GatewayID = params.get("GatewayID")
+        self._SourceID = params.get("SourceID")
+        self._SourceName = params.get("SourceName")
+        self._SourceType = params.get("SourceType")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = SourceInfo()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28824,6 +29509,207 @@ class ServiceWafStatus(AbstractModel):
         self._Id = params.get("Id")
         self._Type = params.get("Type")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceInfo(AbstractModel):
+    """服务来源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Addresses: 微服务引擎接入IP地址信息
+        :type Addresses: list of str
+        :param _VpcInfo: 微服务引擎VPC信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcInfo: :class:`tencentcloud.tse.v20201207.models.SourceInstanceVpcInfo`
+        :param _Auth: 微服务引擎鉴权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Auth: :class:`tencentcloud.tse.v20201207.models.SourceInstanceAuth`
+        """
+        self._Addresses = None
+        self._VpcInfo = None
+        self._Auth = None
+
+    @property
+    def Addresses(self):
+        """微服务引擎接入IP地址信息
+        :rtype: list of str
+        """
+        return self._Addresses
+
+    @Addresses.setter
+    def Addresses(self, Addresses):
+        self._Addresses = Addresses
+
+    @property
+    def VpcInfo(self):
+        """微服务引擎VPC信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tse.v20201207.models.SourceInstanceVpcInfo`
+        """
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+    @property
+    def Auth(self):
+        """微服务引擎鉴权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tse.v20201207.models.SourceInstanceAuth`
+        """
+        return self._Auth
+
+    @Auth.setter
+    def Auth(self, Auth):
+        self._Auth = Auth
+
+
+    def _deserialize(self, params):
+        self._Addresses = params.get("Addresses")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = SourceInstanceVpcInfo()
+            self._VpcInfo._deserialize(params.get("VpcInfo"))
+        if params.get("Auth") is not None:
+            self._Auth = SourceInstanceAuth()
+            self._Auth._deserialize(params.get("Auth"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceInstanceAuth(AbstractModel):
+    """实例鉴权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Username: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param _Password: 账户密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _AccessToken: 访问凭据 token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessToken: str
+        """
+        self._Username = None
+        self._Password = None
+        self._AccessToken = None
+
+    @property
+    def Username(self):
+        """用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        """账户密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def AccessToken(self):
+        """访问凭据 token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessToken
+
+    @AccessToken.setter
+    def AccessToken(self, AccessToken):
+        self._AccessToken = AccessToken
+
+
+    def _deserialize(self, params):
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._AccessToken = params.get("AccessToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceInstanceVpcInfo(AbstractModel):
+    """微服务引擎实例的VPC信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcID: 微服务引擎VPC信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcID: str
+        :param _SubnetID: 微服务引擎子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetID: str
+        """
+        self._VpcID = None
+        self._SubnetID = None
+
+    @property
+    def VpcID(self):
+        """微服务引擎VPC信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcID
+
+    @VpcID.setter
+    def VpcID(self, VpcID):
+        self._VpcID = VpcID
+
+    @property
+    def SubnetID(self):
+        """微服务引擎子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetID
+
+    @SubnetID.setter
+    def SubnetID(self, SubnetID):
+        self._SubnetID = SubnetID
+
+
+    def _deserialize(self, params):
+        self._VpcID = params.get("VpcID")
+        self._SubnetID = params.get("SubnetID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

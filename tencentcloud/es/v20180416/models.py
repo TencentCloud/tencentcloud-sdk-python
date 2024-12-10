@@ -8740,12 +8740,28 @@ class EsDictionaryInfo(AbstractModel):
         :type Synonym: list of DictInfo
         :param _UpdateType: 更新词典类型
         :type UpdateType: str
+        :param _AnsjMain: ansj启用词词典列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnsjMain: list of DictInfo
+        :param _AnsjStop: ansj停用词词典列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnsjStop: list of DictInfo
+        :param _AnsjAmbiguity: ansj歧义词库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnsjAmbiguity: list of DictInfo
+        :param _AnsjSynonyms: ansj同义词词典列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnsjSynonyms: list of DictInfo
         """
         self._MainDict = None
         self._Stopwords = None
         self._QQDict = None
         self._Synonym = None
         self._UpdateType = None
+        self._AnsjMain = None
+        self._AnsjStop = None
+        self._AnsjAmbiguity = None
+        self._AnsjSynonyms = None
 
     @property
     def MainDict(self):
@@ -8802,6 +8818,54 @@ class EsDictionaryInfo(AbstractModel):
     def UpdateType(self, UpdateType):
         self._UpdateType = UpdateType
 
+    @property
+    def AnsjMain(self):
+        """ansj启用词词典列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DictInfo
+        """
+        return self._AnsjMain
+
+    @AnsjMain.setter
+    def AnsjMain(self, AnsjMain):
+        self._AnsjMain = AnsjMain
+
+    @property
+    def AnsjStop(self):
+        """ansj停用词词典列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DictInfo
+        """
+        return self._AnsjStop
+
+    @AnsjStop.setter
+    def AnsjStop(self, AnsjStop):
+        self._AnsjStop = AnsjStop
+
+    @property
+    def AnsjAmbiguity(self):
+        """ansj歧义词库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DictInfo
+        """
+        return self._AnsjAmbiguity
+
+    @AnsjAmbiguity.setter
+    def AnsjAmbiguity(self, AnsjAmbiguity):
+        self._AnsjAmbiguity = AnsjAmbiguity
+
+    @property
+    def AnsjSynonyms(self):
+        """ansj同义词词典列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DictInfo
+        """
+        return self._AnsjSynonyms
+
+    @AnsjSynonyms.setter
+    def AnsjSynonyms(self, AnsjSynonyms):
+        self._AnsjSynonyms = AnsjSynonyms
+
 
     def _deserialize(self, params):
         if params.get("MainDict") is not None:
@@ -8829,6 +8893,30 @@ class EsDictionaryInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Synonym.append(obj)
         self._UpdateType = params.get("UpdateType")
+        if params.get("AnsjMain") is not None:
+            self._AnsjMain = []
+            for item in params.get("AnsjMain"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self._AnsjMain.append(obj)
+        if params.get("AnsjStop") is not None:
+            self._AnsjStop = []
+            for item in params.get("AnsjStop"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self._AnsjStop.append(obj)
+        if params.get("AnsjAmbiguity") is not None:
+            self._AnsjAmbiguity = []
+            for item in params.get("AnsjAmbiguity"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self._AnsjAmbiguity.append(obj)
+        if params.get("AnsjSynonyms") is not None:
+            self._AnsjSynonyms = []
+            for item in params.get("AnsjSynonyms"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self._AnsjSynonyms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10353,6 +10441,15 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _ReadWriteMode: 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadWriteMode: int
+        :param _EnableScheduleRecoverGroup: 是否有置放群组异步调度任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: 异步调度任务的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        :param _EnableDestroyProtection: 开启集群保护：OPEN-开启，CLOSE-关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableDestroyProtection: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -10445,6 +10542,9 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._SubProductCode = None
         self._CosBucketStorageSize = None
         self._ReadWriteMode = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
+        self._EnableDestroyProtection = None
 
     @property
     def InstanceId(self):
@@ -11507,6 +11607,42 @@ RENEW_FLAG_DEFAULT：不自动续费
     def ReadWriteMode(self, ReadWriteMode):
         self._ReadWriteMode = ReadWriteMode
 
+    @property
+    def EnableScheduleRecoverGroup(self):
+        """是否有置放群组异步调度任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        """异步调度任务的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        """
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
+    @property
+    def EnableDestroyProtection(self):
+        """开启集群保护：OPEN-开启，CLOSE-关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EnableDestroyProtection
+
+    @EnableDestroyProtection.setter
+    def EnableDestroyProtection(self, EnableDestroyProtection):
+        self._EnableDestroyProtection = EnableDestroyProtection
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11646,6 +11782,11 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._SubProductCode = params.get("SubProductCode")
         self._CosBucketStorageSize = params.get("CosBucketStorageSize")
         self._ReadWriteMode = params.get("ReadWriteMode")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
+        self._EnableDestroyProtection = params.get("EnableDestroyProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14360,6 +14501,8 @@ class Operation(AbstractModel):
         :type Tasks: list of TaskDetail
         :param _Progress: 操作进度
         :type Progress: float
+        :param _RollbackTag: 回滚标记， 0未回滚 ，1回滚中，2已回滚
+        :type RollbackTag: int
         :param _SubAccountUin: 操作者Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
@@ -14371,6 +14514,7 @@ class Operation(AbstractModel):
         self._Result = None
         self._Tasks = None
         self._Progress = None
+        self._RollbackTag = None
         self._SubAccountUin = None
 
     @property
@@ -14451,6 +14595,17 @@ class Operation(AbstractModel):
         self._Progress = Progress
 
     @property
+    def RollbackTag(self):
+        """回滚标记， 0未回滚 ，1回滚中，2已回滚
+        :rtype: int
+        """
+        return self._RollbackTag
+
+    @RollbackTag.setter
+    def RollbackTag(self, RollbackTag):
+        self._RollbackTag = RollbackTag
+
+    @property
     def SubAccountUin(self):
         """操作者Uin
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14478,6 +14633,7 @@ class Operation(AbstractModel):
                 obj._deserialize(item)
                 self._Tasks.append(obj)
         self._Progress = params.get("Progress")
+        self._RollbackTag = params.get("RollbackTag")
         self._SubAccountUin = params.get("SubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -18287,6 +18443,8 @@ CLOSE 关闭
         :type EnableScheduleRecoverGroup: bool
         :param _EnableScheduleOperationDuration: 置放群组异步任务可维护时间段
         :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        :param _EnableDestroyProtection: 开启集群保护：OPEN-开启，CLOSE-关闭
+        :type EnableDestroyProtection: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -18331,6 +18489,7 @@ CLOSE 关闭
         self._ReadWriteMode = None
         self._EnableScheduleRecoverGroup = None
         self._EnableScheduleOperationDuration = None
+        self._EnableDestroyProtection = None
 
     @property
     def InstanceId(self):
@@ -18826,6 +18985,17 @@ CLOSE 关闭
     def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
         self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
 
+    @property
+    def EnableDestroyProtection(self):
+        """开启集群保护：OPEN-开启，CLOSE-关闭
+        :rtype: str
+        """
+        return self._EnableDestroyProtection
+
+    @EnableDestroyProtection.setter
+    def EnableDestroyProtection(self, EnableDestroyProtection):
+        self._EnableDestroyProtection = EnableDestroyProtection
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -18900,6 +19070,7 @@ CLOSE 关闭
         if params.get("EnableScheduleOperationDuration") is not None:
             self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
             self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
+        self._EnableDestroyProtection = params.get("EnableDestroyProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
