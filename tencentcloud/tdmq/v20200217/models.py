@@ -21334,11 +21334,15 @@ class InstanceNodeDistribution(AbstractModel):
         :type NodeCount: int
         :param _NodePermWipeFlag: 有调度任务且没有切回的可用区，此标识为true
         :type NodePermWipeFlag: bool
+        :param _ZoneStatus: 可用区状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneStatus: str
         """
         self._ZoneName = None
         self._ZoneId = None
         self._NodeCount = None
         self._NodePermWipeFlag = None
+        self._ZoneStatus = None
 
     @property
     def ZoneName(self):
@@ -21384,12 +21388,25 @@ class InstanceNodeDistribution(AbstractModel):
     def NodePermWipeFlag(self, NodePermWipeFlag):
         self._NodePermWipeFlag = NodePermWipeFlag
 
+    @property
+    def ZoneStatus(self):
+        """可用区状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ZoneStatus
+
+    @ZoneStatus.setter
+    def ZoneStatus(self, ZoneStatus):
+        self._ZoneStatus = ZoneStatus
+
 
     def _deserialize(self, params):
         self._ZoneName = params.get("ZoneName")
         self._ZoneId = params.get("ZoneId")
         self._NodeCount = params.get("NodeCount")
         self._NodePermWipeFlag = params.get("NodePermWipeFlag")
+        self._ZoneStatus = params.get("ZoneStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2342,7 +2342,7 @@ class CreateLaunchTemplateRequest(AbstractModel):
         :type InstanceCount: int
         :param _InstanceName: 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。</li><li>最多支持60个字符（包含模式串）。</li>
         :type InstanceName: str
-        :param _LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+        :param _LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式为密钥或保持镜像的原始登录设置。
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :type SecurityGroupIds: list of str
@@ -2531,7 +2531,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
 
     @property
     def LoginSettings(self):
-        """实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+        """实例登录设置。通过该参数可以设置实例的登录方式为密钥或保持镜像的原始登录设置。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -2851,7 +2851,7 @@ class CreateLaunchTemplateVersionRequest(AbstractModel):
         :type InstanceCount: int
         :param _InstanceName: 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。</li><li>最多支持60个字符（包含模式串）。</li>
         :type InstanceName: str
-        :param _LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+        :param _LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式为密钥或保持镜像的原始登录设置。
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :type SecurityGroupIds: list of str
@@ -3052,7 +3052,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
 
     @property
     def LoginSettings(self):
-        """实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+        """实例登录设置。通过该参数可以设置实例的登录方式为密钥或保持镜像的原始登录设置。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -9015,7 +9015,7 @@ class Externals(AbstractModel):
         :param _ReleaseAddress: 释放地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseAddress: bool
-        :param _UnsupportNetworks: 不支持的网络类型，取值范围：<br><li>BASIC：基础网络<br><li>VPC1.0：私有网络VPC1.0
+        :param _UnsupportNetworks: 不支持的网络类型，取值范围：<br><li>BASIC：基础网络</li><li>VPC1.0：私有网络VPC1.0</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnsupportNetworks: list of str
         :param _StorageBlockAttr: HDD本地存储属性
@@ -9040,7 +9040,7 @@ class Externals(AbstractModel):
 
     @property
     def UnsupportNetworks(self):
-        """不支持的网络类型，取值范围：<br><li>BASIC：基础网络<br><li>VPC1.0：私有网络VPC1.0
+        """不支持的网络类型，取值范围：<br><li>BASIC：基础网络</li><li>VPC1.0：私有网络VPC1.0</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

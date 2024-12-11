@@ -12151,7 +12151,7 @@ class ImageToObjectRequest(AbstractModel):
         :type IsUsedClassify: bool
         :param _HandleParam: 图片处理参数
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
-        :param _ImageInfoList: 图片列表，允许传入多张图片，目前只支持传入图片base64编码，图片url暂不支持
+        :param _ImageInfoList: 图片列表，目前只支持传入一张图片，需要是图片base64编码，图片url暂不支持
         :type ImageInfoList: list of ImageInfo
         :param _UserType: 后付费的用户类型，新客户传1，老客户可不传或传 0。2022 年 12 月 15 新增了计费项，在此时间之前已经通过商务指定优惠价格的大客户，请不传这个字段或传 0，如果传 1 会导致以前获得的折扣价格失效。在 2022 年 12 月 15 日之后，通过商务指定优惠价格的大客户请传 1。
         :type UserType: int
@@ -12207,7 +12207,7 @@ class ImageToObjectRequest(AbstractModel):
 
     @property
     def ImageInfoList(self):
-        """图片列表，允许传入多张图片，目前只支持传入图片base64编码，图片url暂不支持
+        """图片列表，目前只支持传入一张图片，需要是图片base64编码，图片url暂不支持
         :rtype: list of ImageInfo
         """
         return self._ImageInfoList

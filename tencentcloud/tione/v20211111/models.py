@@ -204,15 +204,15 @@ class ChatCompletionRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Model: 对话的目标模型ID。
-自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
+自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。
         :type Model: str
         :param _Messages: 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
         :type Messages: list of Message
-        :param _Temperature: 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+        :param _Temperature: 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
         :type Temperature: float
         :param _TopP: 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
         :type TopP: float
-        :param _MaxTokens: 仅当模型为自行部署的开源大模型时生效。最大生成的token数目。默认为无限大。
+        :param _MaxTokens: 仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。
         :type MaxTokens: int
         """
         self._Model = None
@@ -224,7 +224,7 @@ class ChatCompletionRequest(AbstractModel):
     @property
     def Model(self):
         """对话的目标模型ID。
-自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
+自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。
         :rtype: str
         """
         return self._Model
@@ -246,7 +246,7 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def Temperature(self):
-        """仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+        """仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
         :rtype: float
         """
         return self._Temperature
@@ -268,7 +268,7 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def MaxTokens(self):
-        """仅当模型为自行部署的开源大模型时生效。最大生成的token数目。默认为无限大。
+        """仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。
         :rtype: int
         """
         return self._MaxTokens
@@ -306,15 +306,13 @@ class ChatCompletionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 部署好的服务Id
+        :param _Model: 对话的模型服务组ID
         :type Model: str
         :param _Choices: 本次问答的答案。
         :type Choices: list of Choice
         :param _Id: 会话Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Usage: token统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type Usage: :class:`tencentcloud.tione.v20211111.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -327,7 +325,7 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Model(self):
-        """部署好的服务Id
+        """对话的模型服务组ID
         :rtype: str
         """
         return self._Model
@@ -350,7 +348,6 @@ class ChatCompletionResponse(AbstractModel):
     @property
     def Id(self):
         """会话Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -362,7 +359,6 @@ class ChatCompletionResponse(AbstractModel):
     @property
     def Usage(self):
         """token统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.Usage`
         """
         return self._Usage
@@ -406,7 +402,6 @@ class Choice(AbstractModel):
     def __init__(self):
         r"""
         :param _Message: 对话结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: :class:`tencentcloud.tione.v20211111.models.Message`
         :param _FinishReason: 结束理由: stop, length, content_filter, null
         :type FinishReason: str
@@ -420,7 +415,6 @@ class Choice(AbstractModel):
     @property
     def Message(self):
         """对话结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.Message`
         """
         return self._Message
@@ -767,19 +761,33 @@ ANNOTATION_TYPE_CLASSIFICATION，图片分类
 ANNOTATION_TYPE_DETECTION，目标检测
 ANNOTATION_TYPE_SEGMENTATION，图片分割
 ANNOTATION_TYPE_TRACKING，目标跟踪
+ANNOTATION_TYPE_OCR，OCR
+ANNOTATION_TYPE_TEXT_CLASSIFICATION，文本分类
         :type AnnotationType: str
         :param _AnnotationFormat: 标注格式:
 ANNOTATION_FORMAT_TI，TI平台格式
 ANNOTATION_FORMAT_PASCAL，Pascal Voc
 ANNOTATION_FORMAT_COCO，COCO
 ANNOTATION_FORMAT_FILE，文件目录结构
+ANNOTATION_FORMAT_TEXT_TI，文本类型TI平台格式
+ANNOTATION_FORMAT_TXT，文本类型TXT格式
+ANNOTATION_FORMAT_CSV，文本类型CSV格式
+ANNOTATION_FORMAT_JSON，文本类型JSON格式
         :type AnnotationFormat: str
         :param _SchemaInfos: 表头信息
         :type SchemaInfos: list of SchemaInfo
         :param _IsSchemaExisted: 数据是否存在表头
         :type IsSchemaExisted: bool
-        :param _ContentType: 导入文件粒度，按行或者按文件
+        :param _ContentType: 导入文件粒度
+TYPE_TEXT_LINE，按行
+TYPE_TEXT_FILE，按文件
         :type ContentType: str
+        :param _DatasetScene: 数据集建模一级类别。LLM,CV,STRUCTURE,OTHER
+        :type DatasetScene: str
+        :param _SceneTags: 数据集标签。
+        :type SceneTags: list of str
+        :param _CFSConfig: 数据集CFS配置。仅支持LLM场景
+        :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
         """
         self._DatasetName = None
         self._DatasetType = None
@@ -792,6 +800,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
         self._SchemaInfos = None
         self._IsSchemaExisted = None
         self._ContentType = None
+        self._DatasetScene = None
+        self._SceneTags = None
+        self._CFSConfig = None
 
     @property
     def DatasetName(self):
@@ -872,6 +883,8 @@ ANNOTATION_TYPE_CLASSIFICATION，图片分类
 ANNOTATION_TYPE_DETECTION，目标检测
 ANNOTATION_TYPE_SEGMENTATION，图片分割
 ANNOTATION_TYPE_TRACKING，目标跟踪
+ANNOTATION_TYPE_OCR，OCR
+ANNOTATION_TYPE_TEXT_CLASSIFICATION，文本分类
         :rtype: str
         """
         return self._AnnotationType
@@ -887,6 +900,10 @@ ANNOTATION_FORMAT_TI，TI平台格式
 ANNOTATION_FORMAT_PASCAL，Pascal Voc
 ANNOTATION_FORMAT_COCO，COCO
 ANNOTATION_FORMAT_FILE，文件目录结构
+ANNOTATION_FORMAT_TEXT_TI，文本类型TI平台格式
+ANNOTATION_FORMAT_TXT，文本类型TXT格式
+ANNOTATION_FORMAT_CSV，文本类型CSV格式
+ANNOTATION_FORMAT_JSON，文本类型JSON格式
         :rtype: str
         """
         return self._AnnotationFormat
@@ -919,7 +936,9 @@ ANNOTATION_FORMAT_FILE，文件目录结构
 
     @property
     def ContentType(self):
-        """导入文件粒度，按行或者按文件
+        """导入文件粒度
+TYPE_TEXT_LINE，按行
+TYPE_TEXT_FILE，按文件
         :rtype: str
         """
         return self._ContentType
@@ -927,6 +946,39 @@ ANNOTATION_FORMAT_FILE，文件目录结构
     @ContentType.setter
     def ContentType(self, ContentType):
         self._ContentType = ContentType
+
+    @property
+    def DatasetScene(self):
+        """数据集建模一级类别。LLM,CV,STRUCTURE,OTHER
+        :rtype: str
+        """
+        return self._DatasetScene
+
+    @DatasetScene.setter
+    def DatasetScene(self, DatasetScene):
+        self._DatasetScene = DatasetScene
+
+    @property
+    def SceneTags(self):
+        """数据集标签。
+        :rtype: list of str
+        """
+        return self._SceneTags
+
+    @SceneTags.setter
+    def SceneTags(self, SceneTags):
+        self._SceneTags = SceneTags
+
+    @property
+    def CFSConfig(self):
+        """数据集CFS配置。仅支持LLM场景
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
+        return self._CFSConfig
+
+    @CFSConfig.setter
+    def CFSConfig(self, CFSConfig):
+        self._CFSConfig = CFSConfig
 
 
     def _deserialize(self, params):
@@ -955,6 +1007,11 @@ ANNOTATION_FORMAT_FILE，文件目录结构
                 self._SchemaInfos.append(obj)
         self._IsSchemaExisted = params.get("IsSchemaExisted")
         self._ContentType = params.get("ContentType")
+        self._DatasetScene = params.get("DatasetScene")
+        self._SceneTags = params.get("SceneTags")
+        if params.get("CFSConfig") is not None:
+            self._CFSConfig = CFSConfig()
+            self._CFSConfig._deserialize(params.get("CFSConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1106,6 +1163,10 @@ HYBRID_PAID:
         :type CommandBase64: str
         :param _ServicePort: 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
         :type ServicePort: int
+        :param _DeployType: 服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+        :type DeployType: str
+        :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+        :type InstancePerReplicas: int
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -1140,6 +1201,8 @@ HYBRID_PAID:
         self._ServiceEIP = None
         self._CommandBase64 = None
         self._ServicePort = None
+        self._DeployType = None
+        self._InstancePerReplicas = None
 
     @property
     def ServiceGroupId(self):
@@ -1527,6 +1590,28 @@ HYBRID_PAID:
     def ServicePort(self, ServicePort):
         self._ServicePort = ServicePort
 
+    @property
+    def DeployType(self):
+        """服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def InstancePerReplicas(self):
+        """单副本下的实例数，仅在部署类型为DIST时生效，默认1
+        :rtype: int
+        """
+        return self._InstancePerReplicas
+
+    @InstancePerReplicas.setter
+    def InstancePerReplicas(self, InstancePerReplicas):
+        self._InstancePerReplicas = InstancePerReplicas
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -1595,6 +1680,8 @@ HYBRID_PAID:
             self._ServiceEIP._deserialize(params.get("ServiceEIP"))
         self._CommandBase64 = params.get("CommandBase64")
         self._ServicePort = params.get("ServicePort")
+        self._DeployType = params.get("DeployType")
+        self._InstancePerReplicas = params.get("InstancePerReplicas")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1613,7 +1700,6 @@ class CreateModelServiceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Service: 生成的模型服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type Service: :class:`tencentcloud.tione.v20211111.models.Service`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1624,7 +1710,6 @@ class CreateModelServiceResponse(AbstractModel):
     @property
     def Service(self):
         """生成的模型服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.Service`
         """
         return self._Service
@@ -2868,6 +2953,10 @@ class DataConfig(AbstractModel):
         r"""
         :param _MappingPath: 映射路径
         :type MappingPath: str
+        :param _DataSourceUsage: 存储用途
+可选值为 BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, OTHER
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceUsage: str
         :param _DataSourceType: DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
@@ -2897,6 +2986,7 @@ class DataConfig(AbstractModel):
         :type CBSSource: :class:`tencentcloud.tione.v20211111.models.CBSConfig`
         """
         self._MappingPath = None
+        self._DataSourceUsage = None
         self._DataSourceType = None
         self._DataSetSource = None
         self._COSSource = None
@@ -2917,6 +3007,19 @@ class DataConfig(AbstractModel):
     @MappingPath.setter
     def MappingPath(self, MappingPath):
         self._MappingPath = MappingPath
+
+    @property
+    def DataSourceUsage(self):
+        """存储用途
+可选值为 BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, OTHER
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSourceUsage
+
+    @DataSourceUsage.setter
+    def DataSourceUsage(self, DataSourceUsage):
+        self._DataSourceUsage = DataSourceUsage
 
     @property
     def DataSourceType(self):
@@ -3029,6 +3132,7 @@ class DataConfig(AbstractModel):
 
     def _deserialize(self, params):
         self._MappingPath = params.get("MappingPath")
+        self._DataSourceUsage = params.get("DataSourceUsage")
         self._DataSourceType = params.get("DataSourceType")
         if params.get("DataSetSource") is not None:
             self._DataSetSource = DataSetConfig()
@@ -3236,6 +3340,24 @@ class DatasetGroup(AbstractModel):
         :param _ContentType: 文本数据集导入方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentType: str
+        :param _DatasetScene: 数据集建模类别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasetScene: str
+        :param _CFSConfig: CFS配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        :param _SceneTags: 数据集标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneTags: list of str
+        :param _NumAnnotated: 已标注数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumAnnotated: int
+        :param _AnnotationSpecification: 标注规范
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnnotationSpecification: str
+        :param _AnnotationSchemaConfigured: 标注Schema是否配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnnotationSchemaConfigured: bool
         """
         self._DatasetId = None
         self._DatasetName = None
@@ -3263,6 +3385,12 @@ class DatasetGroup(AbstractModel):
         self._OcrScene = None
         self._AnnotationKeyStatus = None
         self._ContentType = None
+        self._DatasetScene = None
+        self._CFSConfig = None
+        self._SceneTags = None
+        self._NumAnnotated = None
+        self._AnnotationSpecification = None
+        self._AnnotationSchemaConfigured = None
 
     @property
     def DatasetId(self):
@@ -3576,6 +3704,78 @@ class DatasetGroup(AbstractModel):
     def ContentType(self, ContentType):
         self._ContentType = ContentType
 
+    @property
+    def DatasetScene(self):
+        """数据集建模类别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasetScene
+
+    @DatasetScene.setter
+    def DatasetScene(self, DatasetScene):
+        self._DatasetScene = DatasetScene
+
+    @property
+    def CFSConfig(self):
+        """CFS配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
+        return self._CFSConfig
+
+    @CFSConfig.setter
+    def CFSConfig(self, CFSConfig):
+        self._CFSConfig = CFSConfig
+
+    @property
+    def SceneTags(self):
+        """数据集标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SceneTags
+
+    @SceneTags.setter
+    def SceneTags(self, SceneTags):
+        self._SceneTags = SceneTags
+
+    @property
+    def NumAnnotated(self):
+        """已标注数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumAnnotated
+
+    @NumAnnotated.setter
+    def NumAnnotated(self, NumAnnotated):
+        self._NumAnnotated = NumAnnotated
+
+    @property
+    def AnnotationSpecification(self):
+        """标注规范
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AnnotationSpecification
+
+    @AnnotationSpecification.setter
+    def AnnotationSpecification(self, AnnotationSpecification):
+        self._AnnotationSpecification = AnnotationSpecification
+
+    @property
+    def AnnotationSchemaConfigured(self):
+        """标注Schema是否配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AnnotationSchemaConfigured
+
+    @AnnotationSchemaConfigured.setter
+    def AnnotationSchemaConfigured(self, AnnotationSchemaConfigured):
+        self._AnnotationSchemaConfigured = AnnotationSchemaConfigured
+
 
     def _deserialize(self, params):
         self._DatasetId = params.get("DatasetId")
@@ -3618,6 +3818,14 @@ class DatasetGroup(AbstractModel):
         self._OcrScene = params.get("OcrScene")
         self._AnnotationKeyStatus = params.get("AnnotationKeyStatus")
         self._ContentType = params.get("ContentType")
+        self._DatasetScene = params.get("DatasetScene")
+        if params.get("CFSConfig") is not None:
+            self._CFSConfig = CFSConfig()
+            self._CFSConfig._deserialize(params.get("CFSConfig"))
+        self._SceneTags = params.get("SceneTags")
+        self._NumAnnotated = params.get("NumAnnotated")
+        self._AnnotationSpecification = params.get("AnnotationSpecification")
+        self._AnnotationSchemaConfigured = params.get("AnnotationSchemaConfigured")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3707,6 +3915,27 @@ class DatasetInfo(AbstractModel):
         :param _AnnotationKeyStatus: 数据集字典修改状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnnotationKeyStatus: str
+        :param _ContentType: 内容类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentType: str
+        :param _DatasetScene: 数据集建模类别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasetScene: str
+        :param _CFSConfig: CFS配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        :param _SceneTags: 数据集标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneTags: list of str
+        :param _NumAnnotated: 已标注数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumAnnotated: int
+        :param _AnnotationSpecification: 标注规范
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnnotationSpecification: str
+        :param _AnnotationSchemaConfigured: 标注Schema是否配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnnotationSchemaConfigured: bool
         """
         self._DatasetId = None
         self._DatasetName = None
@@ -3732,6 +3961,13 @@ class DatasetInfo(AbstractModel):
         self._DatasetScope = None
         self._OcrScene = None
         self._AnnotationKeyStatus = None
+        self._ContentType = None
+        self._DatasetScene = None
+        self._CFSConfig = None
+        self._SceneTags = None
+        self._NumAnnotated = None
+        self._AnnotationSpecification = None
+        self._AnnotationSchemaConfigured = None
 
     @property
     def DatasetId(self):
@@ -4021,6 +4257,90 @@ class DatasetInfo(AbstractModel):
     def AnnotationKeyStatus(self, AnnotationKeyStatus):
         self._AnnotationKeyStatus = AnnotationKeyStatus
 
+    @property
+    def ContentType(self):
+        """内容类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def DatasetScene(self):
+        """数据集建模类别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasetScene
+
+    @DatasetScene.setter
+    def DatasetScene(self, DatasetScene):
+        self._DatasetScene = DatasetScene
+
+    @property
+    def CFSConfig(self):
+        """CFS配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
+        return self._CFSConfig
+
+    @CFSConfig.setter
+    def CFSConfig(self, CFSConfig):
+        self._CFSConfig = CFSConfig
+
+    @property
+    def SceneTags(self):
+        """数据集标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SceneTags
+
+    @SceneTags.setter
+    def SceneTags(self, SceneTags):
+        self._SceneTags = SceneTags
+
+    @property
+    def NumAnnotated(self):
+        """已标注数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumAnnotated
+
+    @NumAnnotated.setter
+    def NumAnnotated(self, NumAnnotated):
+        self._NumAnnotated = NumAnnotated
+
+    @property
+    def AnnotationSpecification(self):
+        """标注规范
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AnnotationSpecification
+
+    @AnnotationSpecification.setter
+    def AnnotationSpecification(self, AnnotationSpecification):
+        self._AnnotationSpecification = AnnotationSpecification
+
+    @property
+    def AnnotationSchemaConfigured(self):
+        """标注Schema是否配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AnnotationSchemaConfigured
+
+    @AnnotationSchemaConfigured.setter
+    def AnnotationSchemaConfigured(self, AnnotationSchemaConfigured):
+        self._AnnotationSchemaConfigured = AnnotationSchemaConfigured
+
 
     def _deserialize(self, params):
         self._DatasetId = params.get("DatasetId")
@@ -4056,6 +4376,15 @@ class DatasetInfo(AbstractModel):
         self._DatasetScope = params.get("DatasetScope")
         self._OcrScene = params.get("OcrScene")
         self._AnnotationKeyStatus = params.get("AnnotationKeyStatus")
+        self._ContentType = params.get("ContentType")
+        self._DatasetScene = params.get("DatasetScene")
+        if params.get("CFSConfig") is not None:
+            self._CFSConfig = CFSConfig()
+            self._CFSConfig._deserialize(params.get("CFSConfig"))
+        self._SceneTags = params.get("SceneTags")
+        self._NumAnnotated = params.get("NumAnnotated")
+        self._AnnotationSpecification = params.get("AnnotationSpecification")
+        self._AnnotationSchemaConfigured = params.get("AnnotationSchemaConfigured")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4854,10 +5183,7 @@ class DescribeBillingResourceGroupsRequest(AbstractModel):
 枚举值:
 空: 通用, TRAIN: 训练, INFERENCE: 推理
         :type Type: str
-        :param _Filters: Filter.Name: 枚举值: ResourceGroupId (资源组id列表)
-                    ResourceGroupName (资源组名称列表)
-Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-每次请求的Filters的上限为5，Filter.Values的上限为100
+        :param _Filters: Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量）Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
         :type Filters: list of Filter
         :param _TagFilters: 标签过滤
         :type TagFilters: list of TagFilter
@@ -4895,10 +5221,7 @@ true: 不展示，false 展示；
 
     @property
     def Filters(self):
-        """Filter.Name: 枚举值: ResourceGroupId (资源组id列表)
-                    ResourceGroupName (资源组名称列表)
-Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-每次请求的Filters的上限为5，Filter.Values的上限为100
+        """Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量）Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
         :rtype: list of Filter
         """
         return self._Filters
@@ -5159,6 +5482,209 @@ class DescribeBillingResourceInstanceRunningJobsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillingSpecsPriceRequest(AbstractModel):
+    """DescribeBillingSpecsPrice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecsParam: 询价参数，支持批量询价
+        :type SpecsParam: list of SpecUnit
+        """
+        self._SpecsParam = None
+
+    @property
+    def SpecsParam(self):
+        """询价参数，支持批量询价
+        :rtype: list of SpecUnit
+        """
+        return self._SpecsParam
+
+    @SpecsParam.setter
+    def SpecsParam(self, SpecsParam):
+        self._SpecsParam = SpecsParam
+
+
+    def _deserialize(self, params):
+        if params.get("SpecsParam") is not None:
+            self._SpecsParam = []
+            for item in params.get("SpecsParam"):
+                obj = SpecUnit()
+                obj._deserialize(item)
+                self._SpecsParam.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillingSpecsPriceResponse(AbstractModel):
+    """DescribeBillingSpecsPrice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecsPrice: 计费项价格，支持批量返回
+        :type SpecsPrice: list of SpecPrice
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpecsPrice = None
+        self._RequestId = None
+
+    @property
+    def SpecsPrice(self):
+        """计费项价格，支持批量返回
+        :rtype: list of SpecPrice
+        """
+        return self._SpecsPrice
+
+    @SpecsPrice.setter
+    def SpecsPrice(self, SpecsPrice):
+        self._SpecsPrice = SpecsPrice
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SpecsPrice") is not None:
+            self._SpecsPrice = []
+            for item in params.get("SpecsPrice"):
+                obj = SpecPrice()
+                obj._deserialize(item)
+                self._SpecsPrice.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillingSpecsRequest(AbstractModel):
+    """DescribeBillingSpecs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeType: 付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
+        :type ChargeType: str
+        :param _TaskType: 枚举值：空、TRAIN、NOTEBOOK、INFERENCE或EMS
+        :type TaskType: str
+        :param _ResourceType: 资源类型：["", "CALC", "CPU", "GPU", "GPU-SW"]
+        :type ResourceType: str
+        """
+        self._ChargeType = None
+        self._TaskType = None
+        self._ResourceType = None
+
+    @property
+    def ChargeType(self):
+        """付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def TaskType(self):
+        """枚举值：空、TRAIN、NOTEBOOK、INFERENCE或EMS
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ResourceType(self):
+        """资源类型：["", "CALC", "CPU", "GPU", "GPU-SW"]
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._ChargeType = params.get("ChargeType")
+        self._TaskType = params.get("TaskType")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillingSpecsResponse(AbstractModel):
+    """DescribeBillingSpecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Specs: 计费项列表
+        :type Specs: list of Spec
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Specs = None
+        self._RequestId = None
+
+    @property
+    def Specs(self):
+        """计费项列表
+        :rtype: list of Spec
+        """
+        return self._Specs
+
+    @Specs.setter
+    def Specs(self, Specs):
+        self._Specs = Specs
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Specs") is not None:
+            self._Specs = []
+            for item in params.get("Specs"):
+                obj = Spec()
+                obj._deserialize(item)
+                self._Specs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBuildInImagesRequest(AbstractModel):
     """DescribeBuildInImages请求参数结构体
 
@@ -5271,6 +5797,10 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
         :type Offset: int
         :param _Limit: 返回数据个数，默认20，最大支持200
         :type Limit: int
+        :param _CFSChecking: 是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。
+        :type CFSChecking: bool
+        :param _CFSDetail: 是否返回CFS详情。
+        :type CFSDetail: bool
         """
         self._DatasetIds = None
         self._Filters = None
@@ -5279,6 +5809,8 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
         self._OrderField = None
         self._Offset = None
         self._Limit = None
+        self._CFSChecking = None
+        self._CFSDetail = None
 
     @property
     def DatasetIds(self):
@@ -5359,6 +5891,28 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def CFSChecking(self):
+        """是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。
+        :rtype: bool
+        """
+        return self._CFSChecking
+
+    @CFSChecking.setter
+    def CFSChecking(self, CFSChecking):
+        self._CFSChecking = CFSChecking
+
+    @property
+    def CFSDetail(self):
+        """是否返回CFS详情。
+        :rtype: bool
+        """
+        return self._CFSDetail
+
+    @CFSDetail.setter
+    def CFSDetail(self, CFSDetail):
+        self._CFSDetail = CFSDetail
+
 
     def _deserialize(self, params):
         self._DatasetIds = params.get("DatasetIds")
@@ -5378,6 +5932,8 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
         self._OrderField = params.get("OrderField")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._CFSChecking = params.get("CFSChecking")
+        self._CFSDetail = params.get("CFSDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5404,12 +5960,15 @@ class DescribeDatasetsResponse(AbstractModel):
         :param _DatasetIdNums: 数据集ID总量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasetIdNums: int
+        :param _CFSNotReady: 若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。
+        :type CFSNotReady: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._DatasetGroups = None
         self._DatasetIdNums = None
+        self._CFSNotReady = None
         self._RequestId = None
 
     @property
@@ -5449,6 +6008,17 @@ class DescribeDatasetsResponse(AbstractModel):
         self._DatasetIdNums = DatasetIdNums
 
     @property
+    def CFSNotReady(self):
+        """若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。
+        :rtype: bool
+        """
+        return self._CFSNotReady
+
+    @CFSNotReady.setter
+    def CFSNotReady(self, CFSNotReady):
+        self._CFSNotReady = CFSNotReady
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5469,6 +6039,7 @@ class DescribeDatasetsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DatasetGroups.append(obj)
         self._DatasetIdNums = params.get("DatasetIdNums")
+        self._CFSNotReady = params.get("CFSNotReady")
         self._RequestId = params.get("RequestId")
 
 
@@ -6792,10 +7363,8 @@ class DescribeNotebooksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _NotebookSet: 详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotebookSet: list of NotebookSetItem
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6807,7 +7376,6 @@ class DescribeNotebooksResponse(AbstractModel):
     @property
     def NotebookSet(self):
         """详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NotebookSetItem
         """
         return self._NotebookSet
@@ -6819,7 +7387,6 @@ class DescribeNotebooksResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -8217,9 +8784,6 @@ class ImageInfo(AbstractModel):
         :param _SupportDataPipeline: 是否支持数据构建
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDataPipeline: bool
-        :param _ImageSecret: 镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageSecret: :class:`tencentcloud.tione.v20211111.models.ImageSecret`
         """
         self._ImageType = None
         self._ImageUrl = None
@@ -8228,7 +8792,6 @@ class ImageInfo(AbstractModel):
         self._AllowSaveAllContent = None
         self._ImageName = None
         self._SupportDataPipeline = None
-        self._ImageSecret = None
 
     @property
     def ImageType(self):
@@ -8312,18 +8875,6 @@ class ImageInfo(AbstractModel):
     def SupportDataPipeline(self, SupportDataPipeline):
         self._SupportDataPipeline = SupportDataPipeline
 
-    @property
-    def ImageSecret(self):
-        """镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageSecret`
-        """
-        return self._ImageSecret
-
-    @ImageSecret.setter
-    def ImageSecret(self, ImageSecret):
-        self._ImageSecret = ImageSecret
-
 
     def _deserialize(self, params):
         self._ImageType = params.get("ImageType")
@@ -8333,9 +8884,6 @@ class ImageInfo(AbstractModel):
         self._AllowSaveAllContent = params.get("AllowSaveAllContent")
         self._ImageName = params.get("ImageName")
         self._SupportDataPipeline = params.get("SupportDataPipeline")
-        if params.get("ImageSecret") is not None:
-            self._ImageSecret = ImageSecret()
-            self._ImageSecret._deserialize(params.get("ImageSecret"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8346,68 +8894,32 @@ class ImageInfo(AbstractModel):
         
 
 
-class ImageSecret(AbstractModel):
-    """自定义镜像仓库凭据
+class ImageUrl(AbstractModel):
+    """多模态对话图片信息
 
     """
 
     def __init__(self):
         r"""
-        :param _KeyId: 用于加密密码的KMS公钥ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeyId: str
-        :param _Username: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Username: str
-        :param _Password: 密码,base64编码； 当keyId不为空时，密码是加密后的
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Password: str
+        :param _Url: 图片url
+        :type Url: str
         """
-        self._KeyId = None
-        self._Username = None
-        self._Password = None
+        self._Url = None
 
     @property
-    def KeyId(self):
-        """用于加密密码的KMS公钥ID
-注意：此字段可能返回 null，表示取不到有效值。
+    def Url(self):
+        """图片url
         :rtype: str
         """
-        return self._KeyId
+        return self._Url
 
-    @KeyId.setter
-    def KeyId(self, KeyId):
-        self._KeyId = KeyId
-
-    @property
-    def Username(self):
-        """用户名
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Username
-
-    @Username.setter
-    def Username(self, Username):
-        self._Username = Username
-
-    @property
-    def Password(self):
-        """密码,base64编码； 当keyId不为空时，密码是加密后的
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Password
-
-    @Password.setter
-    def Password(self, Password):
-        self._Password = Password
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
 
 
     def _deserialize(self, params):
-        self._KeyId = params.get("KeyId")
-        self._Username = params.get("Username")
-        self._Password = params.get("Password")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9344,19 +9856,19 @@ class Message(AbstractModel):
     def __init__(self):
         r"""
         :param _Role: 角色名。支持三个角色：system、user、assistant，其中system仅开头可出现一次，也可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
         :param _Content: 对话输入内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
+        :param _MultiModalContents: 多模态对话输入内容，Content与MultiModalContents两者只需要填写其中一个即可，当对话中包含多模态对话信息时，则填写本参数
+        :type MultiModalContents: list of MultiModalContent
         """
         self._Role = None
         self._Content = None
+        self._MultiModalContents = None
 
     @property
     def Role(self):
         """角色名。支持三个角色：system、user、assistant，其中system仅开头可出现一次，也可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Role
@@ -9368,7 +9880,6 @@ class Message(AbstractModel):
     @property
     def Content(self):
         """对话输入内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -9377,10 +9888,27 @@ class Message(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def MultiModalContents(self):
+        """多模态对话输入内容，Content与MultiModalContents两者只需要填写其中一个即可，当对话中包含多模态对话信息时，则填写本参数
+        :rtype: list of MultiModalContent
+        """
+        return self._MultiModalContents
+
+    @MultiModalContents.setter
+    def MultiModalContents(self, MultiModalContents):
+        self._MultiModalContents = MultiModalContents
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
+        if params.get("MultiModalContents") is not None:
+            self._MultiModalContents = []
+            for item in params.get("MultiModalContents"):
+                obj = MultiModalContent()
+                obj._deserialize(item)
+                self._MultiModalContents.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9628,6 +10156,15 @@ class ModelAccelerateTask(AbstractModel):
         :param _FrameworkVersion: 加速引擎对应的框架版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkVersion: str
+        :param _ModelVersionId: 模型版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelVersionId: str
+        :param _ResourceGroupId: 资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param _ResourceGroupName: 资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
         """
         self._ModelAccTaskId = None
         self._ModelAccTaskName = None
@@ -9658,6 +10195,9 @@ class ModelAccelerateTask(AbstractModel):
         self._ModelSignature = None
         self._QATModel = None
         self._FrameworkVersion = None
+        self._ModelVersionId = None
+        self._ResourceGroupId = None
+        self._ResourceGroupName = None
 
     @property
     def ModelAccTaskId(self):
@@ -10007,6 +10547,42 @@ class ModelAccelerateTask(AbstractModel):
     def FrameworkVersion(self, FrameworkVersion):
         self._FrameworkVersion = FrameworkVersion
 
+    @property
+    def ModelVersionId(self):
+        """模型版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelVersionId
+
+    @ModelVersionId.setter
+    def ModelVersionId(self, ModelVersionId):
+        self._ModelVersionId = ModelVersionId
+
+    @property
+    def ResourceGroupId(self):
+        """资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceGroupName(self):
+        """资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         self._ModelAccTaskId = params.get("ModelAccTaskId")
@@ -10054,6 +10630,9 @@ class ModelAccelerateTask(AbstractModel):
         self._ModelSignature = params.get("ModelSignature")
         self._QATModel = params.get("QATModel")
         self._FrameworkVersion = params.get("FrameworkVersion")
+        self._ModelVersionId = params.get("ModelVersionId")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10378,6 +10957,8 @@ class ModelInfo(AbstractModel):
         :param _IsPrivateModel: 是否为私有化大模型
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPrivateModel: bool
+        :param _ModelCategory: 模型的类别 多模态MultiModal, 文本大模型 LLM
+        :type ModelCategory: str
         """
         self._ModelVersionId = None
         self._ModelId = None
@@ -10389,6 +10970,7 @@ class ModelInfo(AbstractModel):
         self._ModelType = None
         self._ModelFormat = None
         self._IsPrivateModel = None
+        self._ModelCategory = None
 
     @property
     def ModelVersionId(self):
@@ -10505,6 +11087,17 @@ class ModelInfo(AbstractModel):
     def IsPrivateModel(self, IsPrivateModel):
         self._IsPrivateModel = IsPrivateModel
 
+    @property
+    def ModelCategory(self):
+        """模型的类别 多模态MultiModal, 文本大模型 LLM
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
 
     def _deserialize(self, params):
         self._ModelVersionId = params.get("ModelVersionId")
@@ -10519,6 +11112,7 @@ class ModelInfo(AbstractModel):
         self._ModelType = params.get("ModelType")
         self._ModelFormat = params.get("ModelFormat")
         self._IsPrivateModel = params.get("IsPrivateModel")
+        self._ModelCategory = params.get("ModelCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10878,6 +11472,8 @@ HYBRID_PAID:
         :type CommandBase64: str
         :param _ServicePort: 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
         :type ServicePort: int
+        :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+        :type InstancePerReplicas: int
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -10904,6 +11500,7 @@ HYBRID_PAID:
         self._ServiceEIP = None
         self._CommandBase64 = None
         self._ServicePort = None
+        self._InstancePerReplicas = None
 
     @property
     def ServiceId(self):
@@ -11203,6 +11800,17 @@ HYBRID_PAID:
     def ServicePort(self, ServicePort):
         self._ServicePort = ServicePort
 
+    @property
+    def InstancePerReplicas(self):
+        """单副本下的实例数，仅在部署类型为DIST时生效，默认1
+        :rtype: int
+        """
+        return self._InstancePerReplicas
+
+    @InstancePerReplicas.setter
+    def InstancePerReplicas(self, InstancePerReplicas):
+        self._InstancePerReplicas = InstancePerReplicas
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -11258,6 +11866,7 @@ HYBRID_PAID:
             self._ServiceEIP._deserialize(params.get("ServiceEIP"))
         self._CommandBase64 = params.get("CommandBase64")
         self._ServicePort = params.get("ServicePort")
+        self._InstancePerReplicas = params.get("InstancePerReplicas")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11313,6 +11922,74 @@ class ModifyModelServiceResponse(AbstractModel):
             self._Service = Service()
             self._Service._deserialize(params.get("Service"))
         self._RequestId = params.get("RequestId")
+
+
+class MultiModalContent(AbstractModel):
+    """多模态对话内容,支持图片与文字信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 对话类型，text表示文本对话内容，image_url表示图片对话内容
+        :type Type: str
+        :param _Text: 文本对话内容，当Type为text时需要填写该值
+        :type Text: str
+        :param _ImageUrl: 图片对话内容，当Type为image_url时需要填写该值
+        :type ImageUrl: :class:`tencentcloud.tione.v20211111.models.ImageUrl`
+        """
+        self._Type = None
+        self._Text = None
+        self._ImageUrl = None
+
+    @property
+    def Type(self):
+        """对话类型，text表示文本对话内容，image_url表示图片对话内容
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Text(self):
+        """文本对话内容，当Type为text时需要填写该值
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def ImageUrl(self):
+        """图片对话内容，当Type为image_url时需要填写该值
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageUrl`
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Text = params.get("Text")
+        if params.get("ImageUrl") is not None:
+            self._ImageUrl = ImageUrl()
+            self._ImageUrl._deserialize(params.get("ImageUrl"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NotebookDetail(AbstractModel):
@@ -11431,6 +12108,14 @@ class NotebookDetail(AbstractModel):
         :param _VolumeSourceGooseFS: GooseFS存储配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeSourceGooseFS: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        :param _SubUin: 子用户ID
+        :type SubUin: str
+        :param _ResourceGroupInstanceId: 调度节点ID
+        :type ResourceGroupInstanceId: str
+        :param _SubUinName: 子用户名称
+        :type SubUinName: str
+        :param _JobCreateTime: 任务实例创建时间
+        :type JobCreateTime: str
         """
         self._Id = None
         self._Name = None
@@ -11471,6 +12156,10 @@ class NotebookDetail(AbstractModel):
         self._ImageType = None
         self._SSHConfig = None
         self._VolumeSourceGooseFS = None
+        self._SubUin = None
+        self._ResourceGroupInstanceId = None
+        self._SubUinName = None
+        self._JobCreateTime = None
 
     @property
     def Id(self):
@@ -11932,6 +12621,50 @@ class NotebookDetail(AbstractModel):
     def VolumeSourceGooseFS(self, VolumeSourceGooseFS):
         self._VolumeSourceGooseFS = VolumeSourceGooseFS
 
+    @property
+    def SubUin(self):
+        """子用户ID
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def ResourceGroupInstanceId(self):
+        """调度节点ID
+        :rtype: str
+        """
+        return self._ResourceGroupInstanceId
+
+    @ResourceGroupInstanceId.setter
+    def ResourceGroupInstanceId(self, ResourceGroupInstanceId):
+        self._ResourceGroupInstanceId = ResourceGroupInstanceId
+
+    @property
+    def SubUinName(self):
+        """子用户名称
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
+
+    @property
+    def JobCreateTime(self):
+        """任务实例创建时间
+        :rtype: str
+        """
+        return self._JobCreateTime
+
+    @JobCreateTime.setter
+    def JobCreateTime(self, JobCreateTime):
+        self._JobCreateTime = JobCreateTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -11995,6 +12728,10 @@ class NotebookDetail(AbstractModel):
         if params.get("VolumeSourceGooseFS") is not None:
             self._VolumeSourceGooseFS = GooseFS()
             self._VolumeSourceGooseFS._deserialize(params.get("VolumeSourceGooseFS"))
+        self._SubUin = params.get("SubUin")
+        self._ResourceGroupInstanceId = params.get("ResourceGroupInstanceId")
+        self._SubUinName = params.get("SubUinName")
+        self._JobCreateTime = params.get("JobCreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12089,6 +12826,8 @@ class NotebookSetItem(AbstractModel):
         :param _VolumeSourceGooseFS: GooseFS存储配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeSourceGooseFS: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        :param _SubUinName: 子用户名称
+        :type SubUinName: str
         """
         self._Id = None
         self._Name = None
@@ -12117,6 +12856,7 @@ class NotebookSetItem(AbstractModel):
         self._UserTypes = None
         self._SSHConfig = None
         self._VolumeSourceGooseFS = None
+        self._SubUinName = None
 
     @property
     def Id(self):
@@ -12438,6 +13178,17 @@ class NotebookSetItem(AbstractModel):
     def VolumeSourceGooseFS(self, VolumeSourceGooseFS):
         self._VolumeSourceGooseFS = VolumeSourceGooseFS
 
+    @property
+    def SubUinName(self):
+        """子用户名称
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12480,6 +13231,7 @@ class NotebookSetItem(AbstractModel):
         if params.get("VolumeSourceGooseFS") is not None:
             self._VolumeSourceGooseFS = GooseFS()
             self._VolumeSourceGooseFS._deserialize(params.get("VolumeSourceGooseFS"))
+        self._SubUinName = params.get("SubUinName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13833,11 +14585,15 @@ class SSHConfig(AbstractModel):
         :param _LoginCommand: 登录命令
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoginCommand: str
+        :param _IsAddressChanged: 登录地址是否改变
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAddressChanged: bool
         """
         self._Enable = None
         self._PublicKey = None
         self._Port = None
         self._LoginCommand = None
+        self._IsAddressChanged = None
 
     @property
     def Enable(self):
@@ -13887,12 +14643,25 @@ class SSHConfig(AbstractModel):
     def LoginCommand(self, LoginCommand):
         self._LoginCommand = LoginCommand
 
+    @property
+    def IsAddressChanged(self):
+        """登录地址是否改变
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsAddressChanged
+
+    @IsAddressChanged.setter
+    def IsAddressChanged(self, IsAddressChanged):
+        self._IsAddressChanged = IsAddressChanged
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
         self._PublicKey = params.get("PublicKey")
         self._Port = params.get("Port")
         self._LoginCommand = params.get("LoginCommand")
+        self._IsAddressChanged = params.get("IsAddressChanged")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14005,174 +14774,6 @@ class SchemaInfo(AbstractModel):
         
 
 
-class SendChatMessageRequest(AbstractModel):
-    """SendChatMessage请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SessionId: 会话id，标识一组对话的唯一id，id变更则重置会话
-        :type SessionId: str
-        :param _Question: 问题描述
-        :type Question: str
-        :param _ModelVersion: 会话模型版本。
-金融大模型：填写sn-finllm-13b-chat-v1。
-默认为sn-finllm-13b-chat-v1，即金融大模型。
-        :type ModelVersion: str
-        :param _Mode: 使用模式。
-通用问答：填写General。
-搜索增强问答：填写WithSearchPlugin。
-默认为General，即通用问答。
-当前可体验模型仅支持General。
-        :type Mode: str
-        :param _SearchSource: 搜索来源。仅当Mode为WithSearchPlugin时生效。
-预置文稿库：填写Preset。自定义：填写Custom。
-        :type SearchSource: str
-        """
-        self._SessionId = None
-        self._Question = None
-        self._ModelVersion = None
-        self._Mode = None
-        self._SearchSource = None
-
-    @property
-    def SessionId(self):
-        """会话id，标识一组对话的唯一id，id变更则重置会话
-        :rtype: str
-        """
-        return self._SessionId
-
-    @SessionId.setter
-    def SessionId(self, SessionId):
-        self._SessionId = SessionId
-
-    @property
-    def Question(self):
-        """问题描述
-        :rtype: str
-        """
-        return self._Question
-
-    @Question.setter
-    def Question(self, Question):
-        self._Question = Question
-
-    @property
-    def ModelVersion(self):
-        """会话模型版本。
-金融大模型：填写sn-finllm-13b-chat-v1。
-默认为sn-finllm-13b-chat-v1，即金融大模型。
-        :rtype: str
-        """
-        return self._ModelVersion
-
-    @ModelVersion.setter
-    def ModelVersion(self, ModelVersion):
-        self._ModelVersion = ModelVersion
-
-    @property
-    def Mode(self):
-        """使用模式。
-通用问答：填写General。
-搜索增强问答：填写WithSearchPlugin。
-默认为General，即通用问答。
-当前可体验模型仅支持General。
-        :rtype: str
-        """
-        return self._Mode
-
-    @Mode.setter
-    def Mode(self, Mode):
-        self._Mode = Mode
-
-    @property
-    def SearchSource(self):
-        """搜索来源。仅当Mode为WithSearchPlugin时生效。
-预置文稿库：填写Preset。自定义：填写Custom。
-        :rtype: str
-        """
-        return self._SearchSource
-
-    @SearchSource.setter
-    def SearchSource(self, SearchSource):
-        self._SearchSource = SearchSource
-
-
-    def _deserialize(self, params):
-        self._SessionId = params.get("SessionId")
-        self._Question = params.get("Question")
-        self._ModelVersion = params.get("ModelVersion")
-        self._Mode = params.get("Mode")
-        self._SearchSource = params.get("SearchSource")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SendChatMessageResponse(AbstractModel):
-    """SendChatMessage返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Answer: 答案
-        :type Answer: str
-        :param _SessionId: 会话id,返回请求的会话id
-        :type SessionId: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Answer = None
-        self._SessionId = None
-        self._RequestId = None
-
-    @property
-    def Answer(self):
-        """答案
-        :rtype: str
-        """
-        return self._Answer
-
-    @Answer.setter
-    def Answer(self, Answer):
-        self._Answer = Answer
-
-    @property
-    def SessionId(self):
-        """会话id,返回请求的会话id
-        :rtype: str
-        """
-        return self._SessionId
-
-    @SessionId.setter
-    def SessionId(self, SessionId):
-        self._SessionId = SessionId
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Answer = params.get("Answer")
-        self._SessionId = params.get("SessionId")
-        self._RequestId = params.get("RequestId")
-
-
 class Service(AbstractModel):
     """描述在线服务
 
@@ -14277,6 +14878,15 @@ DEFAULT: 其他来源
         :param _ResourceGroupSWType: 资源组类别 托管 NORMAL，纳管 SW
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupSWType: str
+        :param _ArchiveStatus: 服务的归档状态  Waiting 等待归档中，Archived 已归档
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArchiveStatus: str
+        :param _DeployType: 服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployType: str
+        :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancePerReplicas: str
         """
         self._ServiceGroupId = None
         self._ServiceId = None
@@ -14308,6 +14918,9 @@ DEFAULT: 其他来源
         self._Version = None
         self._LatestVersion = None
         self._ResourceGroupSWType = None
+        self._ArchiveStatus = None
+        self._DeployType = None
+        self._InstancePerReplicas = None
 
     @property
     def ServiceGroupId(self):
@@ -14684,6 +15297,42 @@ DEFAULT: 其他来源
     def ResourceGroupSWType(self, ResourceGroupSWType):
         self._ResourceGroupSWType = ResourceGroupSWType
 
+    @property
+    def ArchiveStatus(self):
+        """服务的归档状态  Waiting 等待归档中，Archived 已归档
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ArchiveStatus
+
+    @ArchiveStatus.setter
+    def ArchiveStatus(self, ArchiveStatus):
+        self._ArchiveStatus = ArchiveStatus
+
+    @property
+    def DeployType(self):
+        """服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def InstancePerReplicas(self):
+        """单副本下的实例数，仅在部署类型为DIST时生效，默认1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstancePerReplicas
+
+    @InstancePerReplicas.setter
+    def InstancePerReplicas(self, InstancePerReplicas):
+        self._InstancePerReplicas = InstancePerReplicas
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -14727,6 +15376,9 @@ DEFAULT: 其他来源
         self._Version = params.get("Version")
         self._LatestVersion = params.get("LatestVersion")
         self._ResourceGroupSWType = params.get("ResourceGroupSWType")
+        self._ArchiveStatus = params.get("ArchiveStatus")
+        self._DeployType = params.get("DeployType")
+        self._InstancePerReplicas = params.get("InstancePerReplicas")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15551,6 +16203,8 @@ HYBRID_PAID:
         :param _ModelHotUpdateEnable: 是否开启模型的热更新。默认不开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelHotUpdateEnable: bool
+        :param _InstanceAlias: 服务的规格别名
+        :type InstanceAlias: str
         :param _ScaleMode: 实例数量调节方式,默认为手动
 支持：自动 - "AUTO", 手动 - "MANUAL"
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15612,6 +16266,7 @@ HYBRID_PAID:
         self._HybridBillingPrepaidReplicas = None
         self._OldHybridBillingPrepaidReplicas = None
         self._ModelHotUpdateEnable = None
+        self._InstanceAlias = None
         self._ScaleMode = None
         self._CronScaleJobs = None
         self._ScaleStrategy = None
@@ -15839,6 +16494,17 @@ HYBRID_PAID:
         self._ModelHotUpdateEnable = ModelHotUpdateEnable
 
     @property
+    def InstanceAlias(self):
+        """服务的规格别名
+        :rtype: str
+        """
+        return self._InstanceAlias
+
+    @InstanceAlias.setter
+    def InstanceAlias(self, InstanceAlias):
+        self._InstanceAlias = InstanceAlias
+
+    @property
     def ScaleMode(self):
         """实例数量调节方式,默认为手动
 支持：自动 - "AUTO", 手动 - "MANUAL"
@@ -16053,6 +16719,7 @@ HYBRID_PAID:
         self._HybridBillingPrepaidReplicas = params.get("HybridBillingPrepaidReplicas")
         self._OldHybridBillingPrepaidReplicas = params.get("OldHybridBillingPrepaidReplicas")
         self._ModelHotUpdateEnable = params.get("ModelHotUpdateEnable")
+        self._InstanceAlias = params.get("InstanceAlias")
         self._ScaleMode = params.get("ScaleMode")
         if params.get("CronScaleJobs") is not None:
             self._CronScaleJobs = []
@@ -16168,6 +16835,302 @@ class ServiceLimit(AbstractModel):
         self._InstanceRpsLimit = params.get("InstanceRpsLimit")
         self._EnableInstanceReqLimit = params.get("EnableInstanceReqLimit")
         self._InstanceReqLimit = params.get("InstanceReqLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Spec(AbstractModel):
+    """计费项内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecId: 计费项标签
+        :type SpecId: str
+        :param _SpecName: 计费项名称
+        :type SpecName: str
+        :param _SpecAlias: 计费项显示名称
+        :type SpecAlias: str
+        :param _Available: 是否售罄
+        :type Available: bool
+        :param _AvailableRegion: 当前资源售罄时，可用的区域有哪些
+        :type AvailableRegion: list of str
+        :param _SpecFeatures: 当前计费项支持的特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecFeatures: list of str
+        :param _SpecType: 计费项类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecType: str
+        :param _GpuType: GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuType: str
+        :param _CategoryId: 计费项CategoryId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryId: str
+        """
+        self._SpecId = None
+        self._SpecName = None
+        self._SpecAlias = None
+        self._Available = None
+        self._AvailableRegion = None
+        self._SpecFeatures = None
+        self._SpecType = None
+        self._GpuType = None
+        self._CategoryId = None
+
+    @property
+    def SpecId(self):
+        """计费项标签
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def SpecName(self):
+        """计费项名称
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def SpecAlias(self):
+        """计费项显示名称
+        :rtype: str
+        """
+        return self._SpecAlias
+
+    @SpecAlias.setter
+    def SpecAlias(self, SpecAlias):
+        self._SpecAlias = SpecAlias
+
+    @property
+    def Available(self):
+        """是否售罄
+        :rtype: bool
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def AvailableRegion(self):
+        """当前资源售罄时，可用的区域有哪些
+        :rtype: list of str
+        """
+        return self._AvailableRegion
+
+    @AvailableRegion.setter
+    def AvailableRegion(self, AvailableRegion):
+        self._AvailableRegion = AvailableRegion
+
+    @property
+    def SpecFeatures(self):
+        """当前计费项支持的特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SpecFeatures
+
+    @SpecFeatures.setter
+    def SpecFeatures(self, SpecFeatures):
+        self._SpecFeatures = SpecFeatures
+
+    @property
+    def SpecType(self):
+        """计费项类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SpecType
+
+    @SpecType.setter
+    def SpecType(self, SpecType):
+        self._SpecType = SpecType
+
+    @property
+    def GpuType(self):
+        """GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def CategoryId(self):
+        """计费项CategoryId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+
+    def _deserialize(self, params):
+        self._SpecId = params.get("SpecId")
+        self._SpecName = params.get("SpecName")
+        self._SpecAlias = params.get("SpecAlias")
+        self._Available = params.get("Available")
+        self._AvailableRegion = params.get("AvailableRegion")
+        self._SpecFeatures = params.get("SpecFeatures")
+        self._SpecType = params.get("SpecType")
+        self._GpuType = params.get("GpuType")
+        self._CategoryId = params.get("CategoryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpecPrice(AbstractModel):
+    """计费项询价结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecName: 计费项名称
+        :type SpecName: str
+        :param _TotalCost: 原价，单位：分。最大值42亿，超过则返回0
+        :type TotalCost: int
+        :param _RealTotalCost: 优惠后的价格，单位：分
+        :type RealTotalCost: int
+        :param _SpecCount: 计费项数量
+        :type SpecCount: int
+        """
+        self._SpecName = None
+        self._TotalCost = None
+        self._RealTotalCost = None
+        self._SpecCount = None
+
+    @property
+    def SpecName(self):
+        """计费项名称
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def TotalCost(self):
+        """原价，单位：分。最大值42亿，超过则返回0
+        :rtype: int
+        """
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RealTotalCost(self):
+        """优惠后的价格，单位：分
+        :rtype: int
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def SpecCount(self):
+        """计费项数量
+        :rtype: int
+        """
+        return self._SpecCount
+
+    @SpecCount.setter
+    def SpecCount(self, SpecCount):
+        self._SpecCount = SpecCount
+
+
+    def _deserialize(self, params):
+        self._SpecName = params.get("SpecName")
+        self._TotalCost = params.get("TotalCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._SpecCount = params.get("SpecCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpecUnit(AbstractModel):
+    """计费项询价单元
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecName: 计费项名称
+        :type SpecName: str
+        :param _SpecCount: 计费项数量,建议不超过100万
+        :type SpecCount: int
+        """
+        self._SpecName = None
+        self._SpecCount = None
+
+    @property
+    def SpecName(self):
+        """计费项名称
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def SpecCount(self):
+        """计费项数量,建议不超过100万
+        :rtype: int
+        """
+        return self._SpecCount
+
+    @SpecCount.setter
+    def SpecCount(self, SpecCount):
+        self._SpecCount = SpecCount
+
+
+    def _deserialize(self, params):
+        self._SpecName = params.get("SpecName")
+        self._SpecCount = params.get("SpecCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17310,6 +18273,9 @@ class TrainingTaskDetail(AbstractModel):
         :type Uin: str
         :param _SubUin: 子账号uin
         :type SubUin: str
+        :param _SubUinName: 创建者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubUinName: str
         :param _Region: 地域
         :type Region: str
         :param _FrameworkName: 训练框架名称，eg：SPARK、PYSARK、TENSORFLOW、PYTORCH
@@ -17409,6 +18375,7 @@ class TrainingTaskDetail(AbstractModel):
         self._Name = None
         self._Uin = None
         self._SubUin = None
+        self._SubUinName = None
         self._Region = None
         self._FrameworkName = None
         self._FrameworkVersion = None
@@ -17488,6 +18455,18 @@ class TrainingTaskDetail(AbstractModel):
     @SubUin.setter
     def SubUin(self, SubUin):
         self._SubUin = SubUin
+
+    @property
+    def SubUinName(self):
+        """创建者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
 
     @property
     def Region(self):
@@ -17904,6 +18883,7 @@ class TrainingTaskDetail(AbstractModel):
         self._Name = params.get("Name")
         self._Uin = params.get("Uin")
         self._SubUin = params.get("SubUin")
+        self._SubUinName = params.get("SubUinName")
         self._Region = params.get("Region")
         self._FrameworkName = params.get("FrameworkName")
         self._FrameworkVersion = params.get("FrameworkVersion")
@@ -18405,13 +19385,10 @@ class Usage(AbstractModel):
     def __init__(self):
         r"""
         :param _CompletionTokens: 生成的token数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompletionTokens: int
         :param _PromptTokens: 输入的token数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type PromptTokens: int
         :param _TotalTokens: 总共token数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTokens: int
         """
         self._CompletionTokens = None
@@ -18421,7 +19398,6 @@ class Usage(AbstractModel):
     @property
     def CompletionTokens(self):
         """生成的token数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CompletionTokens
@@ -18433,7 +19409,6 @@ class Usage(AbstractModel):
     @property
     def PromptTokens(self):
         """输入的token数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PromptTokens
@@ -18445,7 +19420,6 @@ class Usage(AbstractModel):
     @property
     def TotalTokens(self):
         """总共token数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalTokens

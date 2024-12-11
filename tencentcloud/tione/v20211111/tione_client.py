@@ -371,6 +371,52 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillingSpecs(self, request):
+        """本接口(DescribeBillingSpecs) 提供查询计费项列表
+
+        :param request: Request instance for DescribeBillingSpecs.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillingSpecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillingSpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBillingSpecsPrice(self, request):
+        """本接口(DescribeBillingSpecsPrice)用于查询按量计费计费项价格。
+
+        :param request: Request instance for DescribeBillingSpecsPrice.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsPriceRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillingSpecsPrice", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillingSpecsPriceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBuildInImages(self, request):
         """获取内置镜像列表
 
@@ -799,29 +845,6 @@ class TioneClient(AbstractClient):
             body = self.call("PushTrainingMetrics", params, headers=headers)
             response = json.loads(body)
             model = models.PushTrainingMetricsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def SendChatMessage(self, request):
-        """这是一个供您体验大模型聊天的接口。
-
-        :param request: Request instance for SendChatMessage.
-        :type request: :class:`tencentcloud.tione.v20211111.models.SendChatMessageRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.SendChatMessageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SendChatMessage", params, headers=headers)
-            response = json.loads(body)
-            model = models.SendChatMessageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
