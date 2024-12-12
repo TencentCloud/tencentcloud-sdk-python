@@ -164,6 +164,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAlarmShield(self, request):
+        """创建告警屏蔽规则
+
+        :param request: Request instance for CreateAlarmShield.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmShieldRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlarmShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAlertRule(self, request):
         """创建 Prometheus 告警规则。
 

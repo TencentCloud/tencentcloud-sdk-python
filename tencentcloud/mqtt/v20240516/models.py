@@ -704,7 +704,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
         :type Status: str
         :param _Remark: 说明
         :type Remark: str
-        :param _From: 设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+        :param _From: 设备连接时传递jwt的key；
+username-使用用户名字段传递；
+password-使用密码字段传递
         :type From: str
         """
         self._InstanceId = None
@@ -783,7 +785,9 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     @property
     def From(self):
-        """设备连接时传递jwt的key；username-使用用户名字段传递；password-使用密码字段传递
+        """设备连接时传递jwt的key；
+username-使用用户名字段传递；
+password-使用密码字段传递
         :rtype: str
         """
         return self._From
@@ -1205,7 +1209,10 @@ class DeleteAuthenticatorRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _Type: 认证器类型
+        :param _Type: 认证器类型:
+JWT：JWT认证器
+JWKS：JWKS认证器
+BYOC：一端一证认证器
         :type Type: str
         """
         self._InstanceId = None
@@ -1224,7 +1231,10 @@ class DeleteAuthenticatorRequest(AbstractModel):
 
     @property
     def Type(self):
-        """认证器类型
+        """认证器类型:
+JWT：JWT认证器
+JWKS：JWKS认证器
+BYOC：一端一证认证器
         :rtype: str
         """
         return self._Type
@@ -1521,7 +1531,7 @@ class DescribeAuthenticatorRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _Type: 认证器类型
+        :param _Type: 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 HTTP:HTTP认证器
         :type Type: str
         """
         self._InstanceId = None
@@ -1540,7 +1550,7 @@ class DescribeAuthenticatorRequest(AbstractModel):
 
     @property
     def Type(self):
-        """认证器类型
+        """认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 HTTP:HTTP认证器
         :rtype: str
         """
         return self._Type
@@ -1765,13 +1775,13 @@ class DescribeDeviceCertificateResponse(AbstractModel):
         :type LastInactivationTime: int
         :param _Status: 证书状态
         :type Status: str
-        :param _CaSn: 证书序列号
+        :param _CaSn: Ca证书序列号
         :type CaSn: str
-        :param _DeviceCertificateSn: 设备证书sn
+        :param _DeviceCertificateSn: 设备证书序列号
         :type DeviceCertificateSn: str
-        :param _DeviceCertificate: 证书内容
+        :param _DeviceCertificate: 设备证书内容
         :type DeviceCertificate: str
-        :param _DeviceCertificateCn: 设备证书cn
+        :param _DeviceCertificateCn: 设备证书common name
         :type DeviceCertificateCn: str
         :param _Format: 证书格式
         :type Format: str
@@ -1870,7 +1880,7 @@ class DescribeDeviceCertificateResponse(AbstractModel):
 
     @property
     def CaSn(self):
-        """证书序列号
+        """Ca证书序列号
         :rtype: str
         """
         return self._CaSn
@@ -1881,7 +1891,7 @@ class DescribeDeviceCertificateResponse(AbstractModel):
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书sn
+        """设备证书序列号
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -1892,7 +1902,7 @@ class DescribeDeviceCertificateResponse(AbstractModel):
 
     @property
     def DeviceCertificate(self):
-        """证书内容
+        """设备证书内容
         :rtype: str
         """
         return self._DeviceCertificate
@@ -1903,7 +1913,7 @@ class DescribeDeviceCertificateResponse(AbstractModel):
 
     @property
     def DeviceCertificateCn(self):
-        """设备证书cn
+        """设备证书common name
         :rtype: str
         """
         return self._DeviceCertificateCn
@@ -2363,11 +2373,9 @@ class DescribeInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: 实例类型，
-EXPERIMENT 体验版
+        :param _InstanceType: 实例类型
 BASIC 基础版
 PRO  专业版
-PLATINUM 铂金版
         :type InstanceType: str
         :param _InstanceId: 实例ID
         :type InstanceId: str
@@ -2393,7 +2401,9 @@ PLATINUM 铂金版
         :type AuthorizationPolicyLimit: int
         :param _ClientNumLimit: 客户端数量上限
         :type ClientNumLimit: int
-        :param _DeviceCertificateProvisionType: 客户端证书注册方式：JITP，API
+        :param _DeviceCertificateProvisionType: 客户端证书注册方式：
+JITP：自动注册
+API：通过API手动注册
         :type DeviceCertificateProvisionType: str
         :param _AutomaticActivation: 自动注册设备证书时是否自动激活
         :type AutomaticActivation: bool
@@ -2405,9 +2415,7 @@ PLATINUM 铂金版
         :type ExpiryTime: int
         :param _DestroyTime: 预销毁时间
         :type DestroyTime: int
-        :param _X509Mode:     TLS,单向认证
-    mTLS,双向认证
-    BYOC;一机一证
+        :param _X509Mode: TLS,单向认证    mTLS,双向认证    BYOC;一机一证
         :type X509Mode: str
         :param _MaxCaNum: 最大Ca配额
         :type MaxCaNum: int
@@ -2445,11 +2453,9 @@ PLATINUM 铂金版
 
     @property
     def InstanceType(self):
-        """实例类型，
-EXPERIMENT 体验版
+        """实例类型
 BASIC 基础版
 PRO  专业版
-PLATINUM 铂金版
         :rtype: str
         """
         return self._InstanceType
@@ -2592,7 +2598,9 @@ PLATINUM 铂金版
 
     @property
     def DeviceCertificateProvisionType(self):
-        """客户端证书注册方式：JITP，API
+        """客户端证书注册方式：
+JITP：自动注册
+API：通过API手动注册
         :rtype: str
         """
         return self._DeviceCertificateProvisionType
@@ -2658,9 +2666,7 @@ PLATINUM 铂金版
 
     @property
     def X509Mode(self):
-        """    TLS,单向认证
-    mTLS,双向认证
-    BYOC;一机一证
+        """TLS,单向认证    mTLS,双向认证    BYOC;一机一证
         :rtype: str
         """
         return self._X509Mode

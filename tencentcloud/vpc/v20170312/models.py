@@ -13889,8 +13889,11 @@ class CreateSnapshotPoliciesRequest(AbstractModel):
         r"""
         :param _SnapshotPolicies: 快照策略详情。
         :type SnapshotPolicies: list of SnapshotPolicy
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._SnapshotPolicies = None
+        self._Tags = None
 
     @property
     def SnapshotPolicies(self):
@@ -13903,6 +13906,17 @@ class CreateSnapshotPoliciesRequest(AbstractModel):
     def SnapshotPolicies(self, SnapshotPolicies):
         self._SnapshotPolicies = SnapshotPolicies
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("SnapshotPolicies") is not None:
@@ -13911,6 +13925,12 @@ class CreateSnapshotPoliciesRequest(AbstractModel):
                 obj = SnapshotPolicy()
                 obj._deserialize(item)
                 self._SnapshotPolicies.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
