@@ -287,7 +287,6 @@ class InstanceListInfo(AbstractModel):
         :param _CmemId: 实例内置ID
         :type CmemId: int
         :param _Tags: 实例关联的标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
         :param _InstanceId: 实例ID
         :type InstanceId: str
@@ -418,7 +417,6 @@ class InstanceListInfo(AbstractModel):
     @property
     def Tags(self):
         """实例关联的标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -663,10 +661,8 @@ class TagInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -675,7 +671,6 @@ class TagInfo(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -687,7 +682,6 @@ class TagInfo(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

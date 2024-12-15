@@ -57561,9 +57561,13 @@ class Pair(AbstractModel):
         :type Key: str
         :param _Value: 值
         :type Value: str
+        :param _Id:  唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         """
         self._Key = None
         self._Value = None
+        self._Id = None
 
     @property
     def Key(self):
@@ -57587,10 +57591,23 @@ class Pair(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def Id(self):
+        """ 唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

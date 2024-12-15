@@ -30823,8 +30823,10 @@ class TemplateInfo(AbstractModel):
         :type OrganizationId: str
         :param _CreatorId: 模板创建人用户ID
         :type CreatorId: str
-        :param _PreviewUrl: 模板的H5预览链接,有效期5分钟。
-可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+        :param _PreviewUrl: 模板的 H5 预览链接，有效期为 5 分钟。
+您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
+
+注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
         :param _UserFlowType: 用户自定义合同类型。
@@ -31108,8 +31110,10 @@ class TemplateInfo(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        """模板的H5预览链接,有效期5分钟。
-可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+        """模板的 H5 预览链接，有效期为 5 分钟。
+您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
+
+注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

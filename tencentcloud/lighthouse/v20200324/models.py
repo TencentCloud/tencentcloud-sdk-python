@@ -11200,6 +11200,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
         :param _TemplateRuleSet: 模板规则列表。
         :type TemplateRuleSet: list of FirewallTemplateRule
         :param _ApplyState: 应用模板的执行状态。
+
+- SUCCESS：成功
+- FAILED：失败
         :type ApplyState: str
         :param _SuccessCount: 应用成功的实例数量。
         :type SuccessCount: int
@@ -11255,6 +11258,9 @@ class FirewallTemplateApplyRecord(AbstractModel):
     @property
     def ApplyState(self):
         """应用模板的执行状态。
+
+- SUCCESS：成功
+- FAILED：失败
         :rtype: str
         """
         return self._ApplyState
@@ -11347,6 +11353,9 @@ class FirewallTemplateApplyRecordDetail(AbstractModel):
         :param _Instance: 实例标识信息。
         :type Instance: :class:`tencentcloud.lighthouse.v20200324.models.InstanceIdentifier`
         :param _ApplyState: 防火墙模板应用状态。
+
+- SUCCESS：成功
+- FAILED：失败
         :type ApplyState: str
         :param _ErrorMessage: 防火墙模板应用错误信息。
         :type ErrorMessage: str
@@ -11369,6 +11378,9 @@ class FirewallTemplateApplyRecordDetail(AbstractModel):
     @property
     def ApplyState(self):
         """防火墙模板应用状态。
+
+- SUCCESS：成功
+- FAILED：失败
         :rtype: str
         """
         return self._ApplyState
@@ -11513,7 +11525,6 @@ class FirewallTemplateRuleInfo(AbstractModel):
 
 class GeneralResourceQuota(AbstractModel):
     """描述通用资源配额信息。
-
 
     """
 

@@ -50,7 +50,9 @@ class IotexplorerClient(AbstractClient):
 
 
     def AssignTWeCallLicense(self, request):
-        """分配License
+        """微信VOIP功能调整下线
+
+        分配License
 
         :param request: Request instance for AssignTWeCallLicense.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.AssignTWeCallLicenseRequest`
@@ -2419,7 +2421,9 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetTWeCallPkgList(self, request):
-        """查询TWeCall包列表
+        """微信VOIP功能调整下线
+
+        查询TWeCall包列表
 
         :param request: Request instance for GetTWeCallPkgList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeCallPkgListRequest`

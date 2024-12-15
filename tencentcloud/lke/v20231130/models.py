@@ -7857,9 +7857,9 @@ class DescribeTokenUsageRequest(AbstractModel):
         :type SubBizType: str
         :param _ModelName: 模型标识
         :type ModelName: str
-        :param _StartTime: 开始时间戳, 单位为秒
+        :param _StartTime: 开始时间戳, 单位为秒(默认值0)
         :type StartTime: str
-        :param _EndTime: 结束时间戳, 单位为秒
+        :param _EndTime: 结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)
         :type EndTime: str
         :param _AppBizIds: 应用id列表
         :type AppBizIds: list of str
@@ -7933,7 +7933,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间戳, 单位为秒
+        """开始时间戳, 单位为秒(默认值0)
         :rtype: str
         """
         return self._StartTime
@@ -7944,7 +7944,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间戳, 单位为秒
+        """结束时间戳, 单位为秒(默认值0， 必须大于开始时间戳)
         :rtype: str
         """
         return self._EndTime

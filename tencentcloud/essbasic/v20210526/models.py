@@ -12951,13 +12951,13 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MiniAppPath: 小程序路径
+        :param _MiniAppPath: 小程序路径，有效时间为7天
         :type MiniAppPath: str
-        :param _OperateLongUrl: 操作长链
+        :param _OperateLongUrl: 操作长链，有效时间为7天
         :type OperateLongUrl: str
-        :param _OperateShortUrl: 操作短链
+        :param _OperateShortUrl: 操作短链，有效时间为7天
         :type OperateShortUrl: str
-        :param _QRCodeUrl: 操作二维码
+        :param _QRCodeUrl: 操作二维码，有效时间为7天
         :type QRCodeUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12970,7 +12970,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        """小程序路径
+        """小程序路径，有效时间为7天
         :rtype: str
         """
         return self._MiniAppPath
@@ -12981,7 +12981,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def OperateLongUrl(self):
-        """操作长链
+        """操作长链，有效时间为7天
         :rtype: str
         """
         return self._OperateLongUrl
@@ -12992,7 +12992,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def OperateShortUrl(self):
-        """操作短链
+        """操作短链，有效时间为7天
         :rtype: str
         """
         return self._OperateShortUrl
@@ -13003,7 +13003,7 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
 
     @property
     def QRCodeUrl(self):
-        """操作二维码
+        """操作二维码，有效时间为7天
         :rtype: str
         """
         return self._QRCodeUrl
@@ -27367,12 +27367,23 @@ class TemplateInfo(AbstractModel):
         :param _Description: 模板描述信息
         :type Description: str
         :param _Components: 模板的填充控件列表
+
+[点击查看在模板中配置的填充控件的样子](https://qcloudimg.tencent-cloud.cn/raw/cb2f58529fca8d909258f9d45a56f7f4.png)
         :type Components: list of Component
         :param _Recipients: 此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
+
+[点击查看在模板中配置的签署参与方角色列表的样子](https://qcloudimg.tencent-cloud.cn/raw/e082bbcc0d923f8cb723d98382410aa2.png)
+
+
         :type Recipients: list of Recipient
         :param _SignComponents: 此模板中的签署控件列表
+
+[点击查看在模板中配置的签署控件的样子](https://qcloudimg.tencent-cloud.cn/raw/29bc6ed753a5a0fce4a3ab02e2c0d955.png)
         :type SignComponents: list of Component
-        :param _TemplateType: 模板类型：1-静默签；3-普通模板
+        :param _TemplateType: 模板类型可以分为以下两种：
+
+<b>1</b>：带有<b>本企业自动签署</b>的模板，即签署过程无需签署人手动操作，系统自动完成签署。
+<b>3</b>：普通模板，即签署人需要手动进行签署操作。
         :type TemplateType: int
         :param _IsPromoter: 是否是发起人 ,已弃用
         :type IsPromoter: bool
@@ -27380,8 +27391,10 @@ class TemplateInfo(AbstractModel):
         :type Creator: str
         :param _CreatedOn: 模板创建的时间戳，格式为Unix标准时间戳（秒）
         :type CreatedOn: int
-        :param _PreviewUrl: 模板的H5预览链接,有效期5分钟。
-可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+        :param _PreviewUrl: 模板的 H5 预览链接，有效期为 5 分钟。
+您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
+
+注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
         :param _PdfUrl: 第三方应用集成-模板PDF文件链接，有效期5分钟。
@@ -27463,6 +27476,8 @@ class TemplateInfo(AbstractModel):
     @property
     def Components(self):
         """模板的填充控件列表
+
+[点击查看在模板中配置的填充控件的样子](https://qcloudimg.tencent-cloud.cn/raw/cb2f58529fca8d909258f9d45a56f7f4.png)
         :rtype: list of Component
         """
         return self._Components
@@ -27474,6 +27489,10 @@ class TemplateInfo(AbstractModel):
     @property
     def Recipients(self):
         """此模块需要签署的各个参与方的角色列表。RecipientId标识每个参与方角色对应的唯一标识符，用于确定此角色的信息。
+
+[点击查看在模板中配置的签署参与方角色列表的样子](https://qcloudimg.tencent-cloud.cn/raw/e082bbcc0d923f8cb723d98382410aa2.png)
+
+
         :rtype: list of Recipient
         """
         return self._Recipients
@@ -27485,6 +27504,8 @@ class TemplateInfo(AbstractModel):
     @property
     def SignComponents(self):
         """此模板中的签署控件列表
+
+[点击查看在模板中配置的签署控件的样子](https://qcloudimg.tencent-cloud.cn/raw/29bc6ed753a5a0fce4a3ab02e2c0d955.png)
         :rtype: list of Component
         """
         return self._SignComponents
@@ -27495,7 +27516,10 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateType(self):
-        """模板类型：1-静默签；3-普通模板
+        """模板类型可以分为以下两种：
+
+<b>1</b>：带有<b>本企业自动签署</b>的模板，即签署过程无需签署人手动操作，系统自动完成签署。
+<b>3</b>：普通模板，即签署人需要手动进行签署操作。
         :rtype: int
         """
         return self._TemplateType
@@ -27543,8 +27567,10 @@ class TemplateInfo(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        """模板的H5预览链接,有效期5分钟。
-可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+        """模板的 H5 预览链接，有效期为 5 分钟。
+您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
+
+注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
