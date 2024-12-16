@@ -411,6 +411,8 @@ PLATINUM 铂金版
         :type TimeSpan: int
         :param _MaxTopicNum: 最大可创建主题数
         :type MaxTopicNum: int
+        :param _ZoneIds: 部署可用区列表
+        :type ZoneIds: list of int
         """
         self._InstanceType = None
         self._Name = None
@@ -427,6 +429,7 @@ PLATINUM 铂金版
         self._RenewFlag = None
         self._TimeSpan = None
         self._MaxTopicNum = None
+        self._ZoneIds = None
 
     @property
     def InstanceType(self):
@@ -597,6 +600,17 @@ PLATINUM 铂金版
     def MaxTopicNum(self, MaxTopicNum):
         self._MaxTopicNum = MaxTopicNum
 
+    @property
+    def ZoneIds(self):
+        """部署可用区列表
+        :rtype: list of int
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
 
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
@@ -629,6 +643,7 @@ PLATINUM 铂金版
         self._RenewFlag = params.get("RenewFlag")
         self._TimeSpan = params.get("TimeSpan")
         self._MaxTopicNum = params.get("MaxTopicNum")
+        self._ZoneIds = params.get("ZoneIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3207,6 +3222,8 @@ PLATINUM 铂金版
         :param _TopicNumUpperLimit: 最大可设置的topic个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicNumUpperLimit: int
+        :param _ZoneIds: 可用区列表
+        :type ZoneIds: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3240,6 +3257,7 @@ PLATINUM 铂金版
         self._AclEnabled = None
         self._TopicNumLowerLimit = None
         self._TopicNumUpperLimit = None
+        self._ZoneIds = None
         self._RequestId = None
 
     @property
@@ -3582,6 +3600,17 @@ PLATINUM 铂金版
         self._TopicNumUpperLimit = TopicNumUpperLimit
 
     @property
+    def ZoneIds(self):
+        """可用区列表
+        :rtype: list of int
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3634,6 +3663,7 @@ PLATINUM 铂金版
         self._AclEnabled = params.get("AclEnabled")
         self._TopicNumLowerLimit = params.get("TopicNumLowerLimit")
         self._TopicNumUpperLimit = params.get("TopicNumUpperLimit")
+        self._ZoneIds = params.get("ZoneIds")
         self._RequestId = params.get("RequestId")
 
 

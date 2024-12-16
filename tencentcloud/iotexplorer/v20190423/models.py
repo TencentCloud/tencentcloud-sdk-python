@@ -2722,6 +2722,100 @@ class CreateCloudStorageAIServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDeviceChannelRequest(AbstractModel):
+    """CreateDeviceChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeviceChannelResponse(AbstractModel):
+    """CreateDeviceChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDeviceRequest(AbstractModel):
     """CreateDevice请求参数结构体
 
@@ -3149,6 +3243,213 @@ class CreateFenceBindResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateFreeCloudStorageRequest(AbstractModel):
+    """CreateFreeCloudStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _PackageId: 云存套餐ID：
+lye1w3d：低功耗事件3天周套餐。
+ye1w3d：事件3天周套餐
+        :type PackageId: str
+        :param _Override: 如果当前设备已开启云存套餐，Override=1会使用新套餐覆盖原有套餐。不传此参数则默认为0。
+        :type Override: int
+        :param _PackageQueue: 套餐列表顺序：PackageQueue=front会立即使用新购买的套餐，新购套餐结束后，列表中下一个未过期的套餐继续生效；PackageQueue=end会等设备当前所有已购买套餐过期后才会生效新购套餐。与Override参数不能同时使用。
+        :type PackageQueue: str
+        :param _OrderId: 订单id
+        :type OrderId: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
+        :param _StorageRegion: 云存视频存储区域，国内默认为ap-guangzhou。海外默认为东南亚ap-singapore，可选美东na-ashburn、欧洲eu-frankfurt。
+        :type StorageRegion: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._PackageId = None
+        self._Override = None
+        self._PackageQueue = None
+        self._OrderId = None
+        self._ChannelId = None
+        self._StorageRegion = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def PackageId(self):
+        """云存套餐ID：
+lye1w3d：低功耗事件3天周套餐。
+ye1w3d：事件3天周套餐
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def Override(self):
+        """如果当前设备已开启云存套餐，Override=1会使用新套餐覆盖原有套餐。不传此参数则默认为0。
+        :rtype: int
+        """
+        return self._Override
+
+    @Override.setter
+    def Override(self, Override):
+        self._Override = Override
+
+    @property
+    def PackageQueue(self):
+        """套餐列表顺序：PackageQueue=front会立即使用新购买的套餐，新购套餐结束后，列表中下一个未过期的套餐继续生效；PackageQueue=end会等设备当前所有已购买套餐过期后才会生效新购套餐。与Override参数不能同时使用。
+        :rtype: str
+        """
+        return self._PackageQueue
+
+    @PackageQueue.setter
+    def PackageQueue(self, PackageQueue):
+        self._PackageQueue = PackageQueue
+
+    @property
+    def OrderId(self):
+        """订单id
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def StorageRegion(self):
+        """云存视频存储区域，国内默认为ap-guangzhou。海外默认为东南亚ap-singapore，可选美东na-ashburn、欧洲eu-frankfurt。
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._PackageId = params.get("PackageId")
+        self._Override = params.get("Override")
+        self._PackageQueue = params.get("PackageQueue")
+        self._OrderId = params.get("OrderId")
+        self._ChannelId = params.get("ChannelId")
+        self._StorageRegion = params.get("StorageRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFreeCloudStorageResponse(AbstractModel):
+    """CreateFreeCloudStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 订单金额，单位为分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: int
+        :param _Amount: 支付金额，单位为分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Amount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._Amount = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        """订单金额，单位为分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def Amount(self):
+        """支付金额，单位为分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Price = params.get("Price")
+        self._Amount = params.get("Amount")
         self._RequestId = params.get("RequestId")
 
 

@@ -937,13 +937,10 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BaseInfo: 服务基本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BaseInfo: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseInfo`
         :param _ServerConfig: 服务配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerConfig: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
         :param _OnlineVersionInfos: 在线版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineVersionInfos: list of OnlineVersionInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -956,7 +953,6 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
     @property
     def BaseInfo(self):
         """服务基本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseInfo`
         """
         return self._BaseInfo
@@ -968,7 +964,6 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
     @property
     def ServerConfig(self):
         """服务配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
         """
         return self._ServerConfig
@@ -980,7 +975,6 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
     @property
     def OnlineVersionInfos(self):
         """在线版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OnlineVersionInfo
         """
         return self._OnlineVersionInfos
@@ -1552,24 +1546,18 @@ class EnvInfo(AbstractModel):
 <li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
         :type Status: str
         :param _IsAutoDegrade: 是否到期自动降为免费版
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAutoDegrade: bool
         :param _EnvChannel: 环境渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvChannel: str
         :param _PayMode: 支付方式。包含以下取值：
 <li> prepayment：预付费</li>
 <li> postpaid：后付费</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
         :param _IsDefault: 是否为默认环境
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefault: bool
         :param _Region: 环境所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _EnvType: 环境类型：baas, run, hosting, weda,tcbr
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvType: str
         :param _Databases: 数据库列表
         :type Databases: list of DatabasesInfo
@@ -1578,22 +1566,16 @@ class EnvInfo(AbstractModel):
         :param _Functions: 函数列表
         :type Functions: list of FunctionInfo
         :param _LogServices: 云日志服务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogServices: list of LogServiceInfo
         :param _StaticStorages: 静态资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StaticStorages: list of StaticStorageInfo
         :param _Tags: 环境标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _CustomLogServices: 自定义日志服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomLogServices: list of ClsInfo
         :param _PackageId: tcb产品套餐ID，参考DescribePackages接口的返回值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageId: str
         :param _PackageName: 套餐中文名称，参考DescribePackages接口的返回值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageName: str
         """
         self._EnvId = None
@@ -1691,7 +1673,6 @@ class EnvInfo(AbstractModel):
     @property
     def IsAutoDegrade(self):
         """是否到期自动降为免费版
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAutoDegrade
@@ -1703,7 +1684,6 @@ class EnvInfo(AbstractModel):
     @property
     def EnvChannel(self):
         """环境渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvChannel
@@ -1717,7 +1697,6 @@ class EnvInfo(AbstractModel):
         """支付方式。包含以下取值：
 <li> prepayment：预付费</li>
 <li> postpaid：后付费</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayMode
@@ -1729,7 +1708,6 @@ class EnvInfo(AbstractModel):
     @property
     def IsDefault(self):
         """是否为默认环境
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDefault
@@ -1741,7 +1719,6 @@ class EnvInfo(AbstractModel):
     @property
     def Region(self):
         """环境所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -1753,7 +1730,6 @@ class EnvInfo(AbstractModel):
     @property
     def EnvType(self):
         """环境类型：baas, run, hosting, weda,tcbr
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvType
@@ -1798,7 +1774,6 @@ class EnvInfo(AbstractModel):
     @property
     def LogServices(self):
         """云日志服务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogServiceInfo
         """
         return self._LogServices
@@ -1810,7 +1785,6 @@ class EnvInfo(AbstractModel):
     @property
     def StaticStorages(self):
         """静态资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StaticStorageInfo
         """
         return self._StaticStorages
@@ -1822,7 +1796,6 @@ class EnvInfo(AbstractModel):
     @property
     def Tags(self):
         """环境标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -1834,7 +1807,6 @@ class EnvInfo(AbstractModel):
     @property
     def CustomLogServices(self):
         """自定义日志服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClsInfo
         """
         return self._CustomLogServices
@@ -1846,7 +1818,6 @@ class EnvInfo(AbstractModel):
     @property
     def PackageId(self):
         """tcb产品套餐ID，参考DescribePackages接口的返回值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageId
@@ -1858,7 +1829,6 @@ class EnvInfo(AbstractModel):
     @property
     def PackageName(self):
         """套餐中文名称，参考DescribePackages接口的返回值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageName
@@ -1996,10 +1966,8 @@ class HpaPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyType: 扩缩容类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
         :param _PolicyThreshold: 扩缩容阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyThreshold: int
         """
         self._PolicyType = None
@@ -2008,7 +1976,6 @@ class HpaPolicy(AbstractModel):
     @property
     def PolicyType(self):
         """扩缩容类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyType
@@ -2020,7 +1987,6 @@ class HpaPolicy(AbstractModel):
     @property
     def PolicyThreshold(self):
         """扩缩容阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyThreshold
@@ -2198,13 +2164,10 @@ class OnlineVersionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _VersionName: 版本名
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionName: str
         :param _ImageUrl: 镜像url
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
         :param _FlowRatio: 流量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowRatio: str
         """
         self._VersionName = None
@@ -2214,7 +2177,6 @@ class OnlineVersionInfo(AbstractModel):
     @property
     def VersionName(self):
         """版本名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VersionName
@@ -2226,7 +2188,6 @@ class OnlineVersionInfo(AbstractModel):
     @property
     def ImageUrl(self):
         """镜像url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageUrl
@@ -2238,7 +2199,6 @@ class OnlineVersionInfo(AbstractModel):
     @property
     def FlowRatio(self):
         """流量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowRatio
@@ -2659,7 +2619,6 @@ class ServerBaseConfig(AbstractModel):
         :param _LogParseType: 解析类型：json ｜ line
         :type LogParseType: str
         :param _Tag: 服务标签, function: 函数托管
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         """
         self._EnvId = None
@@ -2907,7 +2866,6 @@ class ServerBaseConfig(AbstractModel):
     @property
     def Tag(self):
         """服务标签, function: 函数托管
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Tag

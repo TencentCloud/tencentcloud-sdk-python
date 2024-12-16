@@ -15430,6 +15430,8 @@ class SubmitCertificateInformationRequest(AbstractModel):
         :type ContactNumber: str
         :param _ContactPosition: 联系人职位。
         :type ContactPosition: str
+        :param _IsDV: 是否DV证书。默认false
+        :type IsDV: bool
         """
         self._CertificateId = None
         self._CsrType = None
@@ -15457,6 +15459,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
         self._ContactEmail = None
         self._ContactNumber = None
         self._ContactPosition = None
+        self._IsDV = None
 
     @property
     def CertificateId(self):
@@ -15744,6 +15747,17 @@ class SubmitCertificateInformationRequest(AbstractModel):
     def ContactPosition(self, ContactPosition):
         self._ContactPosition = ContactPosition
 
+    @property
+    def IsDV(self):
+        """是否DV证书。默认false
+        :rtype: bool
+        """
+        return self._IsDV
+
+    @IsDV.setter
+    def IsDV(self, IsDV):
+        self._IsDV = IsDV
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
@@ -15772,6 +15786,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
         self._ContactEmail = params.get("ContactEmail")
         self._ContactNumber = params.get("ContactNumber")
         self._ContactPosition = params.get("ContactPosition")
+        self._IsDV = params.get("IsDV")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

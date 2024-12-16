@@ -12979,8 +12979,10 @@ class BashEventNew(AbstractModel):
         :type ModifyTime: str
         :param _RuleCategory: 规则类别  0=系统规则，1=用户规则
         :type RuleCategory: int
-        :param _RegexBashCmd: 自动生成的正则表达式
+        :param _RegexBashCmd: 转义后的正则表达式
         :type RegexBashCmd: str
+        :param _RegexExe: 转义后的正则表达式
+        :type RegexExe: str
         :param _MachineType: 0:普通 1:专业版 2:旗舰版
         :type MachineType: int
         :param _MachineExtraInfo: 机器额外信息
@@ -13005,6 +13007,7 @@ class BashEventNew(AbstractModel):
         self._ModifyTime = None
         self._RuleCategory = None
         self._RegexBashCmd = None
+        self._RegexExe = None
         self._MachineType = None
         self._MachineExtraInfo = None
 
@@ -13208,7 +13211,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def RegexBashCmd(self):
-        """自动生成的正则表达式
+        """转义后的正则表达式
         :rtype: str
         """
         return self._RegexBashCmd
@@ -13216,6 +13219,17 @@ class BashEventNew(AbstractModel):
     @RegexBashCmd.setter
     def RegexBashCmd(self, RegexBashCmd):
         self._RegexBashCmd = RegexBashCmd
+
+    @property
+    def RegexExe(self):
+        """转义后的正则表达式
+        :rtype: str
+        """
+        return self._RegexExe
+
+    @RegexExe.setter
+    def RegexExe(self, RegexExe):
+        self._RegexExe = RegexExe
 
     @property
     def MachineType(self):
@@ -13260,6 +13274,7 @@ class BashEventNew(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._RuleCategory = params.get("RuleCategory")
         self._RegexBashCmd = params.get("RegexBashCmd")
+        self._RegexExe = params.get("RegexExe")
         self._MachineType = params.get("MachineType")
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
@@ -21769,6 +21784,70 @@ class DeleteProtectDirRequest(AbstractModel):
 
 class DeleteProtectDirResponse(AbstractModel):
     """DeleteProtectDir返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRaspRulesRequest(AbstractModel):
+    """DeleteRaspRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IDs: 待删除的规则ID数组 (最大100条)
+        :type IDs: list of int non-negative
+        """
+        self._IDs = None
+
+    @property
+    def IDs(self):
+        """待删除的规则ID数组 (最大100条)
+        :rtype: list of int non-negative
+        """
+        return self._IDs
+
+    @IDs.setter
+    def IDs(self, IDs):
+        self._IDs = IDs
+
+
+    def _deserialize(self, params):
+        self._IDs = params.get("IDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRaspRulesResponse(AbstractModel):
+    """DeleteRaspRules返回参数结构体
 
     """
 
@@ -51724,6 +51803,355 @@ class DescribeRansomDefenseTrendResponse(AbstractModel):
         self._EventCount = params.get("EventCount")
         self._IndustryCount = params.get("IndustryCount")
         self._CompanyCount = params.get("CompanyCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRaspMaxCpuRequest(AbstractModel):
+    """DescribeRaspMaxCpu请求参数结构体
+
+    """
+
+
+class DescribeRaspMaxCpuResponse(AbstractModel):
+    """DescribeRaspMaxCpu返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RaspMaxCpu: rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+        :type RaspMaxCpu: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RaspMaxCpu = None
+        self._RequestId = None
+
+    @property
+    def RaspMaxCpu(self):
+        """rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+        :rtype: int
+        """
+        return self._RaspMaxCpu
+
+    @RaspMaxCpu.setter
+    def RaspMaxCpu(self, RaspMaxCpu):
+        self._RaspMaxCpu = RaspMaxCpu
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RaspMaxCpu = params.get("RaspMaxCpu")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRaspRuleVulsRequest(AbstractModel):
+    """DescribeRaspRuleVuls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。Name=WhiteType的必选，0：表示自定义范围的漏洞列表，1：表示全部请求范围的列表
+        :type Filters: list of Filter
+        :param _Limit: 返回数量，默认为10，最大值为1000。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Filters(self):
+        """过滤条件。Name=WhiteType的必选，0：表示自定义范围的漏洞列表，1：表示全部请求范围的列表
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """返回数量，默认为10，最大值为1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRaspRuleVulsResponse(AbstractModel):
+    """DescribeRaspRuleVuls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 列表内容
+        :type List: list of RaspRuleVul
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """列表内容
+        :rtype: list of RaspRuleVul
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = RaspRuleVul()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRaspRulesRequest(AbstractModel):
+    """DescribeRaspRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤条件。
+<li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+        :type Filters: list of Filter
+        :param _By: 排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序
+        :type By: str
+        :param _Order: 排序升序还是倒序，DESC有ASC、
+        :type Order: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def By(self):
+        """排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        """排序升序还是倒序，DESC有ASC、
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRaspRulesResponse(AbstractModel):
+    """DescribeRaspRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 列表内容
+        :type List: list of RaspRule
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """列表内容
+        :rtype: list of RaspRule
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = RaspRule()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -85507,6 +85935,179 @@ class ModifyRansomDefenseStrategyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRaspMaxCpuRequest(AbstractModel):
+    """ModifyRaspMaxCpu请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RaspMaxCpu: rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+        :type RaspMaxCpu: int
+        """
+        self._RaspMaxCpu = None
+
+    @property
+    def RaspMaxCpu(self):
+        """rasp当前最大cpu限制，0<cpu<=100，默认100表示不限制
+        :rtype: int
+        """
+        return self._RaspMaxCpu
+
+    @RaspMaxCpu.setter
+    def RaspMaxCpu(self, RaspMaxCpu):
+        self._RaspMaxCpu = RaspMaxCpu
+
+
+    def _deserialize(self, params):
+        self._RaspMaxCpu = params.get("RaspMaxCpu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRaspMaxCpuResponse(AbstractModel):
+    """ModifyRaspMaxCpu返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRaspRulesRequest(AbstractModel):
+    """ModifyRaspRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 规则ID(新增时请留空，编辑时候必传)
+        :type Id: int
+        :param _VulVulsIDs: 漏洞id数组
+        :type VulVulsIDs: list of int non-negative
+        :param _URLRegexp: 自定义请求范围加白正则表达式，选择全部请求范围时候为空，否则不能为空，base64编码
+        :type URLRegexp: str
+        :param _WhiteType: 加白方式，0：自定义请求范围加白。1：全部请求加白
+        :type WhiteType: int
+        """
+        self._Id = None
+        self._VulVulsIDs = None
+        self._URLRegexp = None
+        self._WhiteType = None
+
+    @property
+    def Id(self):
+        """规则ID(新增时请留空，编辑时候必传)
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def VulVulsIDs(self):
+        """漏洞id数组
+        :rtype: list of int non-negative
+        """
+        return self._VulVulsIDs
+
+    @VulVulsIDs.setter
+    def VulVulsIDs(self, VulVulsIDs):
+        self._VulVulsIDs = VulVulsIDs
+
+    @property
+    def URLRegexp(self):
+        """自定义请求范围加白正则表达式，选择全部请求范围时候为空，否则不能为空，base64编码
+        :rtype: str
+        """
+        return self._URLRegexp
+
+    @URLRegexp.setter
+    def URLRegexp(self, URLRegexp):
+        self._URLRegexp = URLRegexp
+
+    @property
+    def WhiteType(self):
+        """加白方式，0：自定义请求范围加白。1：全部请求加白
+        :rtype: int
+        """
+        return self._WhiteType
+
+    @WhiteType.setter
+    def WhiteType(self, WhiteType):
+        self._WhiteType = WhiteType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._VulVulsIDs = params.get("VulVulsIDs")
+        self._URLRegexp = params.get("URLRegexp")
+        self._WhiteType = params.get("WhiteType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRaspRulesResponse(AbstractModel):
+    """ModifyRaspRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyReverseShellRulesAggregationRequest(AbstractModel):
     """ModifyReverseShellRulesAggregation请求参数结构体
 
@@ -92909,6 +93510,258 @@ class RansomDefenseStrategyMachineInfo(AbstractModel):
     def _deserialize(self, params):
         self._Uuid = params.get("Uuid")
         self._DiskInfo = params.get("DiskInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RaspRule(AbstractModel):
+    """rasp白名单规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 规则ID
+        :type Id: int
+        :param _URLRegexp: 自定义请求url范围正则表达式，为空则保存不成功
+        :type URLRegexp: str
+        :param _VulVulsID: 漏洞id
+        :type VulVulsID: int
+        :param _VulVulsName: 漏洞名称
+        :type VulVulsName: str
+        :param _CveID: cve_id
+        :type CveID: str
+        :param _SupportDefense: 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+        :type SupportDefense: int
+        :param _WhiteType: 加白范围，0:全部请求加白，1:自定义请求范围加白
+        :type WhiteType: int
+        :param _Status: 状态 0: 有效
+        :type Status: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self._Id = None
+        self._URLRegexp = None
+        self._VulVulsID = None
+        self._VulVulsName = None
+        self._CveID = None
+        self._SupportDefense = None
+        self._WhiteType = None
+        self._Status = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def Id(self):
+        """规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def URLRegexp(self):
+        """自定义请求url范围正则表达式，为空则保存不成功
+        :rtype: str
+        """
+        return self._URLRegexp
+
+    @URLRegexp.setter
+    def URLRegexp(self, URLRegexp):
+        self._URLRegexp = URLRegexp
+
+    @property
+    def VulVulsID(self):
+        """漏洞id
+        :rtype: int
+        """
+        return self._VulVulsID
+
+    @VulVulsID.setter
+    def VulVulsID(self, VulVulsID):
+        self._VulVulsID = VulVulsID
+
+    @property
+    def VulVulsName(self):
+        """漏洞名称
+        :rtype: str
+        """
+        return self._VulVulsName
+
+    @VulVulsName.setter
+    def VulVulsName(self, VulVulsName):
+        self._VulVulsName = VulVulsName
+
+    @property
+    def CveID(self):
+        """cve_id
+        :rtype: str
+        """
+        return self._CveID
+
+    @CveID.setter
+    def CveID(self, CveID):
+        self._CveID = CveID
+
+    @property
+    def SupportDefense(self):
+        """漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+        :rtype: int
+        """
+        return self._SupportDefense
+
+    @SupportDefense.setter
+    def SupportDefense(self, SupportDefense):
+        self._SupportDefense = SupportDefense
+
+    @property
+    def WhiteType(self):
+        """加白范围，0:全部请求加白，1:自定义请求范围加白
+        :rtype: int
+        """
+        return self._WhiteType
+
+    @WhiteType.setter
+    def WhiteType(self, WhiteType):
+        self._WhiteType = WhiteType
+
+    @property
+    def Status(self):
+        """状态 0: 有效
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._URLRegexp = params.get("URLRegexp")
+        self._VulVulsID = params.get("VulVulsID")
+        self._VulVulsName = params.get("VulVulsName")
+        self._CveID = params.get("CveID")
+        self._SupportDefense = params.get("SupportDefense")
+        self._WhiteType = params.get("WhiteType")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RaspRuleVul(AbstractModel):
+    """rasp白名单漏洞列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulVulsID: 漏洞id
+        :type VulVulsID: int
+        :param _VulVulsName: 漏洞名称
+        :type VulVulsName: str
+        :param _CveID: cve_id
+        :type CveID: str
+        :param _SupportDefense: 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+        :type SupportDefense: int
+        """
+        self._VulVulsID = None
+        self._VulVulsName = None
+        self._CveID = None
+        self._SupportDefense = None
+
+    @property
+    def VulVulsID(self):
+        """漏洞id
+        :rtype: int
+        """
+        return self._VulVulsID
+
+    @VulVulsID.setter
+    def VulVulsID(self, VulVulsID):
+        self._VulVulsID = VulVulsID
+
+    @property
+    def VulVulsName(self):
+        """漏洞名称
+        :rtype: str
+        """
+        return self._VulVulsName
+
+    @VulVulsName.setter
+    def VulVulsName(self, VulVulsName):
+        self._VulVulsName = VulVulsName
+
+    @property
+    def CveID(self):
+        """cve_id
+        :rtype: str
+        """
+        return self._CveID
+
+    @CveID.setter
+    def CveID(self, CveID):
+        self._CveID = CveID
+
+    @property
+    def SupportDefense(self):
+        """漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+        :rtype: int
+        """
+        return self._SupportDefense
+
+    @SupportDefense.setter
+    def SupportDefense(self, SupportDefense):
+        self._SupportDefense = SupportDefense
+
+
+    def _deserialize(self, params):
+        self._VulVulsID = params.get("VulVulsID")
+        self._VulVulsName = params.get("VulVulsName")
+        self._CveID = params.get("CveID")
+        self._SupportDefense = params.get("SupportDefense")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

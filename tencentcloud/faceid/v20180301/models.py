@@ -7176,12 +7176,17 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         :param _Encryption: 敏感数据加密信息。
 - 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _Extra: 自定义描述字段。
+- 用于描述调用业务信息，出参中将返回此描述字段。 
+- 每个自定义描述字段支持[1,10]个字符。
+        :type Extra: str
         """
         self._IdCard = None
         self._Name = None
         self._ImageBase64 = None
         self._Optional = None
         self._Encryption = None
+        self._Extra = None
 
     @property
     def IdCard(self):
@@ -7242,6 +7247,19 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
     def Encryption(self, Encryption):
         self._Encryption = Encryption
 
+    @property
+    def Extra(self):
+        """自定义描述字段。
+- 用于描述调用业务信息，出参中将返回此描述字段。 
+- 每个自定义描述字段支持[1,10]个字符。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
 
     def _deserialize(self, params):
         self._IdCard = params.get("IdCard")
@@ -7251,6 +7269,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         if params.get("Encryption") is not None:
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7278,12 +7297,15 @@ class ImageRecognitionV2Response(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
+        :param _Extra: 调用接口中自定义的描述字段。
+        :type Extra: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Sim = None
         self._Result = None
         self._Description = None
+        self._Extra = None
         self._RequestId = None
 
     @property
@@ -7324,6 +7346,17 @@ class ImageRecognitionV2Response(AbstractModel):
         self._Description = Description
 
     @property
+    def Extra(self):
+        """调用接口中自定义的描述字段。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7339,6 +7372,7 @@ class ImageRecognitionV2Response(AbstractModel):
         self._Sim = params.get("Sim")
         self._Result = params.get("Result")
         self._Description = params.get("Description")
+        self._Extra = params.get("Extra")
         self._RequestId = params.get("RequestId")
 
 

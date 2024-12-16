@@ -327,6 +327,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDeviceChannel(self, request):
+        """创建设备通道
+
+        :param request: Request instance for CreateDeviceChannel.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceChannelRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeviceChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeviceChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateExternalSourceAIServiceTask(self, request):
         """创建外部视频 AI 分析任务
 
@@ -364,6 +387,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("CreateFenceBind", params, headers=headers)
             response = json.loads(body)
             model = models.CreateFenceBindResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateFreeCloudStorage(self, request):
+        """开通免费云存服务
+
+        :param request: Request instance for CreateFreeCloudStorage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateFreeCloudStorageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateFreeCloudStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFreeCloudStorage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFreeCloudStorageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

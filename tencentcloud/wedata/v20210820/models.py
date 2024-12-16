@@ -14079,6 +14079,117 @@ class DataServiceResponseParam(AbstractModel):
         
 
 
+class DataSourceConnectStatus(AbstractModel):
+    """数据源云梯连接状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id
+        :type Id: int
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: str
+        :param _ConnectResult: 连接结果
+        :type ConnectResult: int
+        :param _ConnectError: 错误信息
+        :type ConnectError: str
+        :param _Timestamp: 时间戳
+        :type Timestamp: int
+        """
+        self._Id = None
+        self._ProjectId = None
+        self._DatasourceId = None
+        self._ConnectResult = None
+        self._ConnectError = None
+        self._Timestamp = None
+
+    @property
+    def Id(self):
+        """id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def ConnectResult(self):
+        """连接结果
+        :rtype: int
+        """
+        return self._ConnectResult
+
+    @ConnectResult.setter
+    def ConnectResult(self, ConnectResult):
+        self._ConnectResult = ConnectResult
+
+    @property
+    def ConnectError(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._ConnectError
+
+    @ConnectError.setter
+    def ConnectError(self, ConnectError):
+        self._ConnectError = ConnectError
+
+    @property
+    def Timestamp(self):
+        """时间戳
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ProjectId = params.get("ProjectId")
+        self._DatasourceId = params.get("DatasourceId")
+        self._ConnectResult = params.get("ConnectResult")
+        self._ConnectError = params.get("ConnectError")
+        self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataSourceInfo(AbstractModel):
     """数据源对象
 
@@ -14188,6 +14299,9 @@ class DataSourceInfo(AbstractModel):
         :param _DevelopmentParams: 同params 内容为开发数据源的数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type DevelopmentParams: str
+        :param _ConnectStatus: 数据源连接状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectStatus: :class:`tencentcloud.wedata.v20210820.models.DataSourceConnectStatus`
         """
         self._DatabaseName = None
         self._Description = None
@@ -14223,6 +14337,7 @@ class DataSourceInfo(AbstractModel):
         self._ProductId = None
         self._DevelopmentId = None
         self._DevelopmentParams = None
+        self._ConnectStatus = None
 
     @property
     def DatabaseName(self):
@@ -14632,6 +14747,18 @@ class DataSourceInfo(AbstractModel):
     def DevelopmentParams(self, DevelopmentParams):
         self._DevelopmentParams = DevelopmentParams
 
+    @property
+    def ConnectStatus(self):
+        """数据源连接状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DataSourceConnectStatus`
+        """
+        return self._ConnectStatus
+
+    @ConnectStatus.setter
+    def ConnectStatus(self, ConnectStatus):
+        self._ConnectStatus = ConnectStatus
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -14668,6 +14795,9 @@ class DataSourceInfo(AbstractModel):
         self._ProductId = params.get("ProductId")
         self._DevelopmentId = params.get("DevelopmentId")
         self._DevelopmentParams = params.get("DevelopmentParams")
+        if params.get("ConnectStatus") is not None:
+            self._ConnectStatus = DataSourceConnectStatus()
+            self._ConnectStatus._deserialize(params.get("ConnectStatus"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -566,6 +566,7 @@ class AdvanceSettings(AbstractModel):
     def __init__(self):
         r"""
         :param _SubTaskConcurrency: 子任务单机并发数限制，默认值为2
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubTaskConcurrency: int
         """
         self._SubTaskConcurrency = None
@@ -573,6 +574,7 @@ class AdvanceSettings(AbstractModel):
     @property
     def SubTaskConcurrency(self):
         """子任务单机并发数限制，默认值为2
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubTaskConcurrency
@@ -601,10 +603,10 @@ class Affinity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scope: -
+        :param _Scope: 亲和性范围
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scope: str
-        :param _Weight: -
+        :param _Weight: 亲和规则的权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: str
         :param _Paths: -
@@ -617,7 +619,7 @@ class Affinity(AbstractModel):
 
     @property
     def Scope(self):
-        """-
+        """亲和性范围
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -629,7 +631,7 @@ class Affinity(AbstractModel):
 
     @property
     def Weight(self):
-        """-
+        """亲和规则的权重
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2425,10 +2427,18 @@ class ApplicationAttribute(AbstractModel):
         :param _GroupCount: 应用下部署组个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupCount: int
+        :param _RunningGroupCount: 运行中部署组个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningGroupCount: str
+        :param _AbnormalCount: 异常部署组个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AbnormalCount: str
         """
         self._InstanceCount = None
         self._RunInstanceCount = None
         self._GroupCount = None
+        self._RunningGroupCount = None
+        self._AbnormalCount = None
 
     @property
     def InstanceCount(self):
@@ -2466,11 +2476,37 @@ class ApplicationAttribute(AbstractModel):
     def GroupCount(self, GroupCount):
         self._GroupCount = GroupCount
 
+    @property
+    def RunningGroupCount(self):
+        """运行中部署组个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunningGroupCount
+
+    @RunningGroupCount.setter
+    def RunningGroupCount(self, RunningGroupCount):
+        self._RunningGroupCount = RunningGroupCount
+
+    @property
+    def AbnormalCount(self):
+        """异常部署组个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AbnormalCount
+
+    @AbnormalCount.setter
+    def AbnormalCount(self, AbnormalCount):
+        self._AbnormalCount = AbnormalCount
+
 
     def _deserialize(self, params):
         self._InstanceCount = params.get("InstanceCount")
         self._RunInstanceCount = params.get("RunInstanceCount")
         self._GroupCount = params.get("GroupCount")
+        self._RunningGroupCount = params.get("RunningGroupCount")
+        self._AbnormalCount = params.get("AbnormalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7361,6 +7397,9 @@ class ContainerGroupDeploy(AbstractModel):
         :param _InternalContainerList: 内部容器列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternalContainerList: list of GroupContainerInfo
+        :param _ServiceSettingList: service列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceSettingList: list of ServiceSetting
         """
         self._GroupId = None
         self._GroupName = None
@@ -7403,6 +7442,7 @@ class ContainerGroupDeploy(AbstractModel):
         self._ContainerName = None
         self._AdditionalContainerList = None
         self._InternalContainerList = None
+        self._ServiceSettingList = None
 
     @property
     def GroupId(self):
@@ -7896,6 +7936,18 @@ class ContainerGroupDeploy(AbstractModel):
     def InternalContainerList(self, InternalContainerList):
         self._InternalContainerList = InternalContainerList
 
+    @property
+    def ServiceSettingList(self):
+        """service列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceSetting
+        """
+        return self._ServiceSettingList
+
+    @ServiceSettingList.setter
+    def ServiceSettingList(self, ServiceSettingList):
+        self._ServiceSettingList = ServiceSettingList
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -7977,6 +8029,12 @@ class ContainerGroupDeploy(AbstractModel):
                 obj = GroupContainerInfo()
                 obj._deserialize(item)
                 self._InternalContainerList.append(obj)
+        if params.get("ServiceSettingList") is not None:
+            self._ServiceSettingList = []
+            for item in params.get("ServiceSettingList"):
+                obj = ServiceSetting()
+                obj._deserialize(item)
+                self._ServiceSettingList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9906,13 +9964,18 @@ class CreateApplicationRequest(AbstractModel):
         :type ServiceConfigList: list of ServiceConfig
         :param _IgnoreCreateImageRepository: 忽略创建镜像仓库
         :type IgnoreCreateImageRepository: bool
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 数据集id列表
         :type ProgramIdList: list of str
         :param _ApmInstanceId: apm业务系统id
         :type ApmInstanceId: str
-        :param _ProgramLanguage: 编程语言
+        :param _ProgramLanguage: 编程语言;
+J - JAVA；
+C - C/C++；
+P - Python；
+G - Go；
+O - Other；
         :type ProgramLanguage: str
-        :param _FrameworkType: 开发框架
+        :param _FrameworkType: 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
         :type FrameworkType: str
         :param _ServiceGovernanceConfig: 注册配置治理
         :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
@@ -10048,7 +10111,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """数据集id列表
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -10070,7 +10133,12 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ProgramLanguage(self):
-        """编程语言
+        """编程语言;
+J - JAVA；
+C - C/C++；
+P - Python；
+G - Go；
+O - Other；
         :rtype: str
         """
         return self._ProgramLanguage
@@ -10081,7 +10149,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def FrameworkType(self):
-        """开发框架
+        """开发框架-SpringCloud/Dubbo/Go-GRPC/Other
         :rtype: str
         """
         return self._FrameworkType
@@ -11204,7 +11272,9 @@ class CreateContainGroupRequest(AbstractModel):
         :type CpuRequest: str
         :param _MemRequest: 初始分配的内存 MiB 数，对应 K8S request
         :type MemRequest: str
-        :param _GroupResourceType: 部署组资源类型
+        :param _GroupResourceType: 部署组资源类型；
+DEF — 默认资源类型；
+GW — 网关资源类型；
         :type GroupResourceType: str
         :param _SubnetId: 子网ID
         :type SubnetId: str
@@ -11406,7 +11476,9 @@ class CreateContainGroupRequest(AbstractModel):
 
     @property
     def GroupResourceType(self):
-        """部署组资源类型
+        """部署组资源类型；
+DEF — 默认资源类型；
+GW — 网关资源类型；
         :rtype: str
         """
         return self._GroupResourceType
@@ -12193,7 +12265,7 @@ class CreateGroupRequest(AbstractModel):
         :type ClusterId: str
         :param _GroupDesc: 部署组描述
         :type GroupDesc: str
-        :param _GroupResourceType: 部署组资源类型
+        :param _GroupResourceType: 部署组资源类型；DEF 表示默认资源类型；GW 表示网关资源类型
         :type GroupResourceType: str
         :param _Alias: 部署组备注
         :type Alias: str
@@ -12266,7 +12338,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupResourceType(self):
-        """部署组资源类型
+        """部署组资源类型；DEF 表示默认资源类型；GW 表示网关资源类型
         :rtype: str
         """
         return self._GroupResourceType
@@ -12900,11 +12972,11 @@ class CreateNamespaceRequest(AbstractModel):
         :type NamespaceType: str
         :param _NamespaceId: 命名空间ID
         :type NamespaceId: str
-        :param _IsHaEnable: 是否开启高可用
+        :param _IsHaEnable: 是否开启高可用，1 表示开启，0 表示不开启
         :type IsHaEnable: str
         :param _ProgramId: 需要绑定的数据集ID
         :type ProgramId: str
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID
         :type ProgramIdList: list of str
         """
         self._NamespaceName = None
@@ -12985,7 +13057,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def IsHaEnable(self):
-        """是否开启高可用
+        """是否开启高可用，1 表示开启，0 表示不开启
         :rtype: str
         """
         return self._IsHaEnable
@@ -13007,7 +13079,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -17580,6 +17652,8 @@ class DeployContainerGroupRequest(AbstractModel):
 
     @property
     def Reponame(self):
+        warnings.warn("parameter `Reponame` is deprecated", DeprecationWarning) 
+
         """旧版镜像名，如/tsf/nginx
         :rtype: str
         """
@@ -17587,6 +17661,8 @@ class DeployContainerGroupRequest(AbstractModel):
 
     @Reponame.setter
     def Reponame(self, Reponame):
+        warnings.warn("parameter `Reponame` is deprecated", DeprecationWarning) 
+
         self._Reponame = Reponame
 
     @property
@@ -25150,9 +25226,9 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
         :type EndTime: str
         :param _Period: 查询时间粒度，单位秒可选值：60、3600、86400
         :type Period: int
-        :param _MetricDimensions: 查询指标维度
+        :param _MetricDimensions: 查询指标维度，不能为空，支持 ServiceName, OperationName, PeerServiceName, PeerOperationName
         :type MetricDimensions: list of MetricDimension
-        :param _Metrics: 查询指标名
+        :param _Metrics: 查询指标名，不能为空.
         :type Metrics: list of Metric
         :param _Kind: 视图视角。可选值：SERVER, CLIENT。默认为SERVER
         :type Kind: str
@@ -25202,7 +25278,7 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     @property
     def MetricDimensions(self):
-        """查询指标维度
+        """查询指标维度，不能为空，支持 ServiceName, OperationName, PeerServiceName, PeerOperationName
         :rtype: list of MetricDimension
         """
         return self._MetricDimensions
@@ -25213,7 +25289,7 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        """查询指标名
+        """查询指标名，不能为空.
         :rtype: list of Metric
         """
         return self._Metrics
@@ -25510,9 +25586,9 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
-        :param _MetricDimensionValues: 维度
+        :param _MetricDimensionValues: 维度，并且 维度 key value 不能为空
         :type MetricDimensionValues: list of MetricDimensionValue
-        :param _Metrics: 指标
+        :param _Metrics: 指标，并且 key, value 不能为空
         :type Metrics: list of Metric
         :param _Kind: 调用视角。可选值：SERVER, CLIENT。默认为SERVER
         :type Kind: str
@@ -25547,7 +25623,7 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
 
     @property
     def MetricDimensionValues(self):
-        """维度
+        """维度，并且 维度 key value 不能为空
         :rtype: list of MetricDimensionValue
         """
         return self._MetricDimensionValues
@@ -25558,7 +25634,7 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        """指标
+        """指标，并且 key, value 不能为空
         :rtype: list of Metric
         """
         return self._Metrics
@@ -29027,7 +29103,7 @@ class DescribeSimpleClustersRequest(AbstractModel):
         :type Limit: int
         :param _SearchWord: 对id和name进行关键词过滤
         :type SearchWord: str
-        :param _DisableProgramAuthCheck: 无
+        :param _DisableProgramAuthCheck: 是否关闭鉴权
         :type DisableProgramAuthCheck: bool
         """
         self._ClusterIdList = None
@@ -29094,7 +29170,7 @@ class DescribeSimpleClustersRequest(AbstractModel):
 
     @property
     def DisableProgramAuthCheck(self):
-        """无
+        """是否关闭鉴权
         :rtype: bool
         """
         return self._DisableProgramAuthCheck
@@ -29398,7 +29474,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         :type NamespaceName: str
         :param _IsDefault: 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间
         :type IsDefault: str
-        :param _DisableProgramAuthCheck: 无
+        :param _DisableProgramAuthCheck: 是否关闭鉴权查询
         :type DisableProgramAuthCheck: bool
         """
         self._NamespaceIdList = None
@@ -29525,7 +29601,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def DisableProgramAuthCheck(self):
-        """无
+        """是否关闭鉴权查询
         :rtype: bool
         """
         return self._DisableProgramAuthCheck

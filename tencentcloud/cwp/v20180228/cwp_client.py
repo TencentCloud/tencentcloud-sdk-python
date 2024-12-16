@@ -1294,6 +1294,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRaspRules(self, request):
+        """删除漏洞防御白名单
+
+        :param request: Request instance for DeleteRaspRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteRaspRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteReverseShellEvents(self, request):
         """根据Ids删除反弹Shell事件
 
@@ -6272,6 +6295,75 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRaspMaxCpu(self, request):
+        """查看漏洞防御最大cpu限制
+
+        :param request: Request instance for DescribeRaspMaxCpu.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMaxCpuRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMaxCpuResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspMaxCpu", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspMaxCpuResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspRuleVuls(self, request):
+        """获取漏洞防御白名单漏洞列表
+
+        :param request: Request instance for DescribeRaspRuleVuls.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRuleVulsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRuleVulsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspRuleVuls", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspRuleVulsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspRules(self, request):
+        """查询漏洞防御白名单
+
+        :param request: Request instance for DescribeRaspRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRecommendedProtectCpu(self, request):
         """查询推荐购买防护核数
 
@@ -10773,6 +10865,52 @@ class CwpClient(AbstractClient):
             body = self.call("ModifyRansomDefenseStrategyStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRansomDefenseStrategyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRaspMaxCpu(self, request):
+        """编辑漏洞防御最大cpu配置
+
+        :param request: Request instance for ModifyRaspMaxCpu.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspMaxCpuRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspMaxCpuResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRaspMaxCpu", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRaspMaxCpuResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRaspRules(self, request):
+        """添加漏洞防御白名单
+
+        :param request: Request instance for ModifyRaspRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRaspRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

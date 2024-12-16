@@ -177,6 +177,8 @@ class ChatCompletionsRequest(AbstractModel):
 1. 未传值时默认关闭。
 2. 开启后，将强制走AI搜索，当AI搜索结果为空时，由大模型回复兜底话术。
         :type ForceSearchEnhancement: bool
+        :param _Stop: 自定义结束生成字符串
+        :type Stop: list of str
         """
         self._Model = None
         self._Messages = None
@@ -195,6 +197,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._EnableDeepSearch = None
         self._Seed = None
         self._ForceSearchEnhancement = None
+        self._Stop = None
 
     @property
     def Model(self):
@@ -437,6 +440,17 @@ class ChatCompletionsRequest(AbstractModel):
     def ForceSearchEnhancement(self, ForceSearchEnhancement):
         self._ForceSearchEnhancement = ForceSearchEnhancement
 
+    @property
+    def Stop(self):
+        """自定义结束生成字符串
+        :rtype: list of str
+        """
+        return self._Stop
+
+    @Stop.setter
+    def Stop(self, Stop):
+        self._Stop = Stop
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -468,6 +482,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._EnableDeepSearch = params.get("EnableDeepSearch")
         self._Seed = params.get("Seed")
         self._ForceSearchEnhancement = params.get("ForceSearchEnhancement")
+        self._Stop = params.get("Stop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
