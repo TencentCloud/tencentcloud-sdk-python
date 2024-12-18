@@ -176,6 +176,29 @@ class VrsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetVRSVoiceTypeInfo(self, request):
+        """该接口用于查询复刻音色详细信息。
+
+        :param request: Request instance for GetVRSVoiceTypeInfo.
+        :type request: :class:`tencentcloud.vrs.v20200824.models.GetVRSVoiceTypeInfoRequest`
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.GetVRSVoiceTypeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetVRSVoiceTypeInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetVRSVoiceTypeInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetVRSVoiceTypes(self, request):
         """查询复刻音色
 

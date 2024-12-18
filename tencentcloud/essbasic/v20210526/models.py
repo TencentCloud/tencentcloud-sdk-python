@@ -4412,11 +4412,15 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
         :param _Approvers: 签署方信息，如角色ID、角色名称等
 注意：此字段可能返回 null，表示取不到有效值。
         :type Approvers: list of ApproverItem
+        :param _PreviewUrl: 预览链接，有效期5分钟
+注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
+        :type PreviewUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
         self._Approvers = None
+        self._PreviewUrl = None
         self._RequestId = None
 
     @property
@@ -4447,6 +4451,18 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
         self._Approvers = Approvers
 
     @property
+    def PreviewUrl(self):
+        """预览链接，有效期5分钟
+注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
+        :rtype: str
+        """
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4466,6 +4482,7 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
                 obj = ApproverItem()
                 obj._deserialize(item)
                 self._Approvers.append(obj)
+        self._PreviewUrl = params.get("PreviewUrl")
         self._RequestId = params.get("RequestId")
 
 

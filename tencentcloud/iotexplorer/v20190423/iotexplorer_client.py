@@ -304,6 +304,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudStorageAIServiceTask(self, request):
+        """创建设备云存 AI 分析任务
+
+        :param request: Request instance for CreateCloudStorageAIServiceTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateCloudStorageAIServiceTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateCloudStorageAIServiceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudStorageAIServiceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudStorageAIServiceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDevice(self, request):
         """创建设备
 
@@ -2998,7 +3021,9 @@ class IotexplorerClient(AbstractClient):
 
 
     def PublishBroadcastMessage(self, request):
-        """发布广播消息
+        """发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
+
+        发布广播消息
 
         :param request: Request instance for PublishBroadcastMessage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PublishBroadcastMessageRequest`
@@ -3067,7 +3092,9 @@ class IotexplorerClient(AbstractClient):
 
 
     def PublishRRPCMessage(self, request):
-        """下发RRPC消息
+        """发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
+
+        下发RRPC消息
 
         :param request: Request instance for PublishRRPCMessage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PublishRRPCMessageRequest`

@@ -1203,6 +1203,117 @@ class GetTrainingTextResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetVRSVoiceTypeInfoRequest(AbstractModel):
+    """GetVRSVoiceTypeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceType: 音色id。
+        :type VoiceType: int
+        :param _TaskType: 0 - 除快速声音复刻外其他复刻类型（默认）； 5 - 快速声音复刻。 默认为0。
+        :type TaskType: int
+        :param _FastVoiceType: 快速复刻音色id。
+        :type FastVoiceType: str
+        """
+        self._VoiceType = None
+        self._TaskType = None
+        self._FastVoiceType = None
+
+    @property
+    def VoiceType(self):
+        """音色id。
+        :rtype: int
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def TaskType(self):
+        """0 - 除快速声音复刻外其他复刻类型（默认）； 5 - 快速声音复刻。 默认为0。
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def FastVoiceType(self):
+        """快速复刻音色id。
+        :rtype: str
+        """
+        return self._FastVoiceType
+
+    @FastVoiceType.setter
+    def FastVoiceType(self, FastVoiceType):
+        self._FastVoiceType = FastVoiceType
+
+
+    def _deserialize(self, params):
+        self._VoiceType = params.get("VoiceType")
+        self._TaskType = params.get("TaskType")
+        self._FastVoiceType = params.get("FastVoiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVRSVoiceTypeInfoResponse(AbstractModel):
+    """GetVRSVoiceTypeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 音色信息
+        :type Data: :class:`tencentcloud.vrs.v20200824.models.VoiceTypeInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """音色信息
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.VoiceTypeInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VoiceTypeInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetVRSVoiceTypesRequest(AbstractModel):
     """GetVRSVoiceTypes请求参数结构体
 
@@ -1602,10 +1713,10 @@ class Words(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PronAccuracy: 准确度 (<75则认为不合格)
+        :param _PronAccuracy: 准确度 (小于75则认为不合格)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PronAccuracy: float
-        :param _PronFluency: 流畅度 (<0.95则认为不合格)
+        :param _PronFluency: 流畅度 (小于0.95则认为不合格)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PronFluency: float
         :param _Tag: tag: 
@@ -1628,7 +1739,7 @@ class Words(AbstractModel):
 
     @property
     def PronAccuracy(self):
-        """准确度 (<75则认为不合格)
+        """准确度 (小于75则认为不合格)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -1640,7 +1751,7 @@ class Words(AbstractModel):
 
     @property
     def PronFluency(self):
-        """流畅度 (<0.95则认为不合格)
+        """流畅度 (小于0.95则认为不合格)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
