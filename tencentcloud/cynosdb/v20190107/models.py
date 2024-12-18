@@ -14987,6 +14987,192 @@ class DescribeChangedParamsAfterUpgradeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterDatabaseTablesRequest(AbstractModel):
+    """DescribeClusterDatabaseTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _Db: 数据库名
+        :type Db: str
+        :param _Offset: 偏移
+        :type Offset: int
+        :param _Limit: 个数
+        :type Limit: int
+        :param _TableType: 数据表类型。
+"view"表示只返回 view，"base_table" 表示只返回基本表，"all" 表示返回 view 和表。默认为 all。
+        :type TableType: str
+        """
+        self._ClusterId = None
+        self._Db = None
+        self._Offset = None
+        self._Limit = None
+        self._TableType = None
+
+    @property
+    def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Db(self):
+        """数据库名
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Offset(self):
+        """偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """个数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TableType(self):
+        """数据表类型。
+"view"表示只返回 view，"base_table" 表示只返回基本表，"all" 表示返回 view 和表。默认为 all。
+        :rtype: str
+        """
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Db = params.get("Db")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TableType = params.get("TableType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterDatabaseTablesResponse(AbstractModel):
+    """DescribeClusterDatabaseTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _Limit: 分页限制数量
+        :type Limit: int
+        :param _Tables: 数据库表列表
+        :type Tables: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Offset = None
+        self._Limit = None
+        self._Tables = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Offset(self):
+        """分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Tables(self):
+        """数据库表列表
+        :rtype: list of str
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Tables = params.get("Tables")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterDatabasesRequest(AbstractModel):
     """DescribeClusterDatabases请求参数结构体
 

@@ -86,7 +86,7 @@ class AssignProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
         :param _ProjectId: 项目ID，用户已创建项目的唯一ID,非自定义
         :type ProjectId: int
@@ -96,7 +96,7 @@ class AssignProjectRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        """实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2427,45 +2427,49 @@ class CurrentOp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OpId: 操作序号
+        :param _OpId: 操作序号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpId: int
-        :param _Ns: 操作所在的命名空间，形式如db.collection
+        :param _Ns: 操作所在的命名空间，形式如db.collection。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ns: str
-        :param _Query: 操作执行语句
+        :param _Query: 操作执行语句。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Query: str
-        :param _Op: 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command
+        :param _Op: 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Op: str
-        :param _ReplicaSetName: 操作所在的分片名称
+        :param _ReplicaSetName: 操作所在的分片名称。
         :type ReplicaSetName: str
-        :param _State: 筛选条件，节点状态，可能的取值为：Primary、Secondary
-注意：此字段可能返回 null，表示取不到有效值。
-        :type State: str
-        :param _Operation: 操作详细信息
+        :param _NodeName: 操作所在的节点名称。
+        :type NodeName: str
+        :param _Operation: 操作详细信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: str
-        :param _NodeName: 操作所在的节点名称
-        :type NodeName: str
-        :param _MicrosecsRunning: 操作已执行时间（ms）
+        :param _State: 筛选条件，节点状态，可能的取值为：Primary、Secondary。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _MicrosecsRunning: 操作已执行时间（ms）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicrosecsRunning: int
+        :param _ExecNode: 当前操作所在节点信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecNode: str
         """
         self._OpId = None
         self._Ns = None
         self._Query = None
         self._Op = None
         self._ReplicaSetName = None
-        self._State = None
-        self._Operation = None
         self._NodeName = None
+        self._Operation = None
+        self._State = None
         self._MicrosecsRunning = None
+        self._ExecNode = None
 
     @property
     def OpId(self):
-        """操作序号
+        """操作序号。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2477,7 +2481,7 @@ class CurrentOp(AbstractModel):
 
     @property
     def Ns(self):
-        """操作所在的命名空间，形式如db.collection
+        """操作所在的命名空间，形式如db.collection。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2489,7 +2493,7 @@ class CurrentOp(AbstractModel):
 
     @property
     def Query(self):
-        """操作执行语句
+        """操作执行语句。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2501,7 +2505,7 @@ class CurrentOp(AbstractModel):
 
     @property
     def Op(self):
-        """操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command
+        """操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2513,7 +2517,7 @@ class CurrentOp(AbstractModel):
 
     @property
     def ReplicaSetName(self):
-        """操作所在的分片名称
+        """操作所在的分片名称。
         :rtype: str
         """
         return self._ReplicaSetName
@@ -2523,20 +2527,19 @@ class CurrentOp(AbstractModel):
         self._ReplicaSetName = ReplicaSetName
 
     @property
-    def State(self):
-        """筛选条件，节点状态，可能的取值为：Primary、Secondary
-注意：此字段可能返回 null，表示取不到有效值。
+    def NodeName(self):
+        """操作所在的节点名称。
         :rtype: str
         """
-        return self._State
+        return self._NodeName
 
-    @State.setter
-    def State(self, State):
-        self._State = State
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
 
     @property
     def Operation(self):
-        """操作详细信息
+        """操作详细信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2547,19 +2550,20 @@ class CurrentOp(AbstractModel):
         self._Operation = Operation
 
     @property
-    def NodeName(self):
-        """操作所在的节点名称
+    def State(self):
+        """筛选条件，节点状态，可能的取值为：Primary、Secondary。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
-        return self._NodeName
+        return self._State
 
-    @NodeName.setter
-    def NodeName(self, NodeName):
-        self._NodeName = NodeName
+    @State.setter
+    def State(self, State):
+        self._State = State
 
     @property
     def MicrosecsRunning(self):
-        """操作已执行时间（ms）
+        """操作已执行时间（ms）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2569,6 +2573,18 @@ class CurrentOp(AbstractModel):
     def MicrosecsRunning(self, MicrosecsRunning):
         self._MicrosecsRunning = MicrosecsRunning
 
+    @property
+    def ExecNode(self):
+        """当前操作所在节点信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecNode
+
+    @ExecNode.setter
+    def ExecNode(self, ExecNode):
+        self._ExecNode = ExecNode
+
 
     def _deserialize(self, params):
         self._OpId = params.get("OpId")
@@ -2576,10 +2592,11 @@ class CurrentOp(AbstractModel):
         self._Query = params.get("Query")
         self._Op = params.get("Op")
         self._ReplicaSetName = params.get("ReplicaSetName")
-        self._State = params.get("State")
-        self._Operation = params.get("Operation")
         self._NodeName = params.get("NodeName")
+        self._Operation = params.get("Operation")
+        self._State = params.get("State")
         self._MicrosecsRunning = params.get("MicrosecsRunning")
+        self._ExecNode = params.get("ExecNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3453,18 +3470,21 @@ class DescribeCurrentOpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 指定要查询的实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _Ns: 筛选条件，操作所属的命名空间namespace，格式为db.collection
+        :param _Ns: 操作所属的命名空间 namespace，格式为 db.collection。
         :type Ns: str
-        :param _MillisecondRunning: 筛选条件，操作已经执行的时间（单位：毫秒），结果将返回超过设置时间的操作，默认值为0，取值范围为[0, 3600000]
+        :param _MillisecondRunning: 设置查询筛选条件为操作任务已经执行的时间。
+- 默认值为0，取值范围为[0, 3600000]，单位：毫秒。
+- 结果将返回超过设置时间的操作。
         :type MillisecondRunning: int
-        :param _Op: 筛选条件，操作类型，可能的取值：none，update，insert，query，command，getmore，remove和killcursors
+        :param _Op: 设置查询筛选条件为操作任务类型。取值包括：none、update、insert，query、command、getmore、remove 和 killcursors。
         :type Op: str
-        :param _ReplicaSetName: 筛选条件，分片名称
+        :param _ReplicaSetName: 筛选条件，分片名称。
         :type ReplicaSetName: str
-        :param _State: 筛选条件，节点状态，可能的取值为：primary
-secondary
+        :param _State: 设置查询筛选条件为节点角色。
+- primary：主节点。
+- secondary：从节点。
         :type State: str
         :param _Limit: 单次请求返回的数量，默认值为100，取值范围为[0,100]
         :type Limit: int
@@ -3488,7 +3508,7 @@ secondary
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        """指定要查询的实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3499,7 +3519,7 @@ secondary
 
     @property
     def Ns(self):
-        """筛选条件，操作所属的命名空间namespace，格式为db.collection
+        """操作所属的命名空间 namespace，格式为 db.collection。
         :rtype: str
         """
         return self._Ns
@@ -3510,7 +3530,9 @@ secondary
 
     @property
     def MillisecondRunning(self):
-        """筛选条件，操作已经执行的时间（单位：毫秒），结果将返回超过设置时间的操作，默认值为0，取值范围为[0, 3600000]
+        """设置查询筛选条件为操作任务已经执行的时间。
+- 默认值为0，取值范围为[0, 3600000]，单位：毫秒。
+- 结果将返回超过设置时间的操作。
         :rtype: int
         """
         return self._MillisecondRunning
@@ -3521,7 +3543,7 @@ secondary
 
     @property
     def Op(self):
-        """筛选条件，操作类型，可能的取值：none，update，insert，query，command，getmore，remove和killcursors
+        """设置查询筛选条件为操作任务类型。取值包括：none、update、insert，query、command、getmore、remove 和 killcursors。
         :rtype: str
         """
         return self._Op
@@ -3532,7 +3554,7 @@ secondary
 
     @property
     def ReplicaSetName(self):
-        """筛选条件，分片名称
+        """筛选条件，分片名称。
         :rtype: str
         """
         return self._ReplicaSetName
@@ -3543,8 +3565,9 @@ secondary
 
     @property
     def State(self):
-        """筛选条件，节点状态，可能的取值为：primary
-secondary
+        """设置查询筛选条件为节点角色。
+- primary：主节点。
+- secondary：从节点。
         :rtype: str
         """
         return self._State
@@ -3626,9 +3649,9 @@ class DescribeCurrentOpResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合查询条件的操作总数
+        :param _TotalCount: 符合查询条件的操作总数。
         :type TotalCount: int
-        :param _CurrentOps: 当前操作列表
+        :param _CurrentOps: 当前操作列表。
         :type CurrentOps: list of CurrentOp
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3639,7 +3662,7 @@ class DescribeCurrentOpResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """符合查询条件的操作总数
+        """符合查询条件的操作总数。
         :rtype: int
         """
         return self._TotalCount
@@ -3650,7 +3673,7 @@ class DescribeCurrentOpResponse(AbstractModel):
 
     @property
     def CurrentOps(self):
-        """当前操作列表
+        """当前操作列表。
         :rtype: list of CurrentOp
         """
         return self._CurrentOps
@@ -6739,7 +6762,7 @@ class InquirePriceRenewDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+        :param _InstanceIds: 实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
         :type InstanceIds: list of str
         :param _InstanceChargePrepaid: 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
         :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`
@@ -6749,7 +6772,7 @@ class InquirePriceRenewDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+        """实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
         :rtype: list of str
         """
         return self._InstanceIds

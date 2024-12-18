@@ -13809,6 +13809,8 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def IsAllowArrears(self):
+        warnings.warn("parameter `IsAllowArrears` is deprecated", DeprecationWarning) 
+
         """是否允许欠费消费
         :rtype: bool
         """
@@ -13816,10 +13818,14 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @IsAllowArrears.setter
     def IsAllowArrears(self, IsAllowArrears):
+        warnings.warn("parameter `IsAllowArrears` is deprecated", DeprecationWarning) 
+
         self._IsAllowArrears = IsAllowArrears
 
     @property
     def IsCreditLimited(self):
+        warnings.warn("parameter `IsCreditLimited` is deprecated", DeprecationWarning) 
+
         """是否限制信用额度
         :rtype: bool
         """
@@ -13827,6 +13833,8 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @IsCreditLimited.setter
     def IsCreditLimited(self, IsCreditLimited):
+        warnings.warn("parameter `IsCreditLimited` is deprecated", DeprecationWarning) 
+
         self._IsCreditLimited = IsCreditLimited
 
     @property

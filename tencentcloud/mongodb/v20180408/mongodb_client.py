@@ -236,7 +236,6 @@ class MongodbClient(AbstractClient):
     def SetPassword(self, request):
         """本接口(SetPassword)用于设置（初始化）MongoDB云数据库实例账户密码。
 
-
         :param request: Request instance for SetPassword.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.SetPasswordRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.SetPasswordResponse`

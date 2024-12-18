@@ -4279,10 +4279,14 @@ class BatchOperateResultOpsDto(AbstractModel):
         :param _ErrorDesc: 错误说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDesc: str
+        :param _AsyncActionId: 异步操作id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncActionId: str
         """
         self._Result = None
         self._ErrorId = None
         self._ErrorDesc = None
+        self._AsyncActionId = None
 
     @property
     def Result(self):
@@ -4320,11 +4324,24 @@ class BatchOperateResultOpsDto(AbstractModel):
     def ErrorDesc(self, ErrorDesc):
         self._ErrorDesc = ErrorDesc
 
+    @property
+    def AsyncActionId(self):
+        """异步操作id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AsyncActionId
+
+    @AsyncActionId.setter
+    def AsyncActionId(self, AsyncActionId):
+        self._AsyncActionId = AsyncActionId
+
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._ErrorId = params.get("ErrorId")
         self._ErrorDesc = params.get("ErrorDesc")
+        self._AsyncActionId = params.get("AsyncActionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4351,10 +4368,14 @@ class BatchOperationOpsDto(AbstractModel):
         :param _TotalCount: 批量操作的总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
+        :param _AsyncActionId: 异步操作记录的唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncActionId: str
         """
         self._SuccessCount = None
         self._FailedCount = None
         self._TotalCount = None
+        self._AsyncActionId = None
 
     @property
     def SuccessCount(self):
@@ -4392,11 +4413,24 @@ class BatchOperationOpsDto(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def AsyncActionId(self):
+        """异步操作记录的唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AsyncActionId
+
+    @AsyncActionId.setter
+    def AsyncActionId(self, AsyncActionId):
+        self._AsyncActionId = AsyncActionId
+
 
     def _deserialize(self, params):
         self._SuccessCount = params.get("SuccessCount")
         self._FailedCount = params.get("FailedCount")
         self._TotalCount = params.get("TotalCount")
+        self._AsyncActionId = params.get("AsyncActionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5474,10 +5508,13 @@ class BatchStopOpsTasksRequest(AbstractModel):
         :type ProjectId: str
         :param _KillInstance: 是否终止已生成的实例
         :type KillInstance: bool
+        :param _AsyncMode: 是否异步模式
+        :type AsyncMode: bool
         """
         self._TaskIdList = None
         self._ProjectId = None
         self._KillInstance = None
+        self._AsyncMode = None
 
     @property
     def TaskIdList(self):
@@ -5512,11 +5549,23 @@ class BatchStopOpsTasksRequest(AbstractModel):
     def KillInstance(self, KillInstance):
         self._KillInstance = KillInstance
 
+    @property
+    def AsyncMode(self):
+        """是否异步模式
+        :rtype: bool
+        """
+        return self._AsyncMode
+
+    @AsyncMode.setter
+    def AsyncMode(self, AsyncMode):
+        self._AsyncMode = AsyncMode
+
 
     def _deserialize(self, params):
         self._TaskIdList = params.get("TaskIdList")
         self._ProjectId = params.get("ProjectId")
         self._KillInstance = params.get("KillInstance")
+        self._AsyncMode = params.get("AsyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5585,10 +5634,13 @@ class BatchStopWorkflowsByIdsRequest(AbstractModel):
         :type ProjectId: str
         :param _KillInstance: 是否终止已生成的实例
         :type KillInstance: bool
+        :param _AsyncMode: 是否异步模式
+        :type AsyncMode: bool
         """
         self._WorkflowIds = None
         self._ProjectId = None
         self._KillInstance = None
+        self._AsyncMode = None
 
     @property
     def WorkflowIds(self):
@@ -5623,11 +5675,23 @@ class BatchStopWorkflowsByIdsRequest(AbstractModel):
     def KillInstance(self, KillInstance):
         self._KillInstance = KillInstance
 
+    @property
+    def AsyncMode(self):
+        """是否异步模式
+        :rtype: bool
+        """
+        return self._AsyncMode
+
+    @AsyncMode.setter
+    def AsyncMode(self, AsyncMode):
+        self._AsyncMode = AsyncMode
+
 
     def _deserialize(self, params):
         self._WorkflowIds = params.get("WorkflowIds")
         self._ProjectId = params.get("ProjectId")
         self._KillInstance = params.get("KillInstance")
+        self._AsyncMode = params.get("AsyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9646,6 +9710,8 @@ class CreateCustomFunctionRequest(AbstractModel):
         :type DbName: str
         :param _ProjectId: 项目ID
         :type ProjectId: str
+        :param _FunctionResourceFileType: 函数资源文件类型
+        :type FunctionResourceFileType: str
         """
         self._Type = None
         self._Kind = None
@@ -9653,6 +9719,7 @@ class CreateCustomFunctionRequest(AbstractModel):
         self._ClusterIdentifier = None
         self._DbName = None
         self._ProjectId = None
+        self._FunctionResourceFileType = None
 
     @property
     def Type(self):
@@ -9720,6 +9787,17 @@ class CreateCustomFunctionRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def FunctionResourceFileType(self):
+        """函数资源文件类型
+        :rtype: str
+        """
+        return self._FunctionResourceFileType
+
+    @FunctionResourceFileType.setter
+    def FunctionResourceFileType(self, FunctionResourceFileType):
+        self._FunctionResourceFileType = FunctionResourceFileType
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -9728,6 +9806,7 @@ class CreateCustomFunctionRequest(AbstractModel):
         self._ClusterIdentifier = params.get("ClusterIdentifier")
         self._DbName = params.get("DbName")
         self._ProjectId = params.get("ProjectId")
+        self._FunctionResourceFileType = params.get("FunctionResourceFileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10454,6 +10533,8 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         :type Incharge: str
         :param _SchemaName: schema名称
         :type SchemaName: str
+        :param _Async: 是否异步建表
+        :type Async: bool
         """
         self._DatasourceId = None
         self._Database = None
@@ -10463,6 +10544,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._Type = None
         self._Incharge = None
         self._SchemaName = None
+        self._Async = None
 
     @property
     def DatasourceId(self):
@@ -10552,6 +10634,17 @@ class CreateHiveTableByDDLRequest(AbstractModel):
     def SchemaName(self, SchemaName):
         self._SchemaName = SchemaName
 
+    @property
+    def Async(self):
+        """是否异步建表
+        :rtype: bool
+        """
+        return self._Async
+
+    @Async.setter
+    def Async(self, Async):
+        self._Async = Async
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -10562,6 +10655,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._Type = params.get("Type")
         self._Incharge = params.get("Incharge")
         self._SchemaName = params.get("SchemaName")
+        self._Async = params.get("Async")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10579,17 +10673,20 @@ class CreateHiveTableByDDLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 表名称
+        :param _Data: 返回表名称，无论是否异步都有值
         :type Data: str
+        :param _TaskId: 异步任务轮询 id，只有异步才有值
+        :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def Data(self):
-        """表名称
+        """返回表名称，无论是否异步都有值
         :rtype: str
         """
         return self._Data
@@ -10597,6 +10694,17 @@ class CreateHiveTableByDDLResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def TaskId(self):
+        """异步任务轮询 id，只有异步才有值
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -10612,6 +10720,7 @@ class CreateHiveTableByDDLResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -11109,6 +11218,8 @@ class CreateOfflineTaskRequest(AbstractModel):
         :type TaskAction: str
         :param _TaskMode: 区分画布和表单
         :type TaskMode: str
+        :param _TaskImportInfo: 导入编排空间配置
+        :type TaskImportInfo: :class:`tencentcloud.wedata.v20210820.models.TaskImportInfo`
         """
         self._ProjectId = None
         self._CycleStep = None
@@ -11120,6 +11231,7 @@ class CreateOfflineTaskRequest(AbstractModel):
         self._TypeId = None
         self._TaskAction = None
         self._TaskMode = None
+        self._TaskImportInfo = None
 
     @property
     def ProjectId(self):
@@ -11231,6 +11343,17 @@ class CreateOfflineTaskRequest(AbstractModel):
     def TaskMode(self, TaskMode):
         self._TaskMode = TaskMode
 
+    @property
+    def TaskImportInfo(self):
+        """导入编排空间配置
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskImportInfo`
+        """
+        return self._TaskImportInfo
+
+    @TaskImportInfo.setter
+    def TaskImportInfo(self, TaskImportInfo):
+        self._TaskImportInfo = TaskImportInfo
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -11243,6 +11366,9 @@ class CreateOfflineTaskRequest(AbstractModel):
         self._TypeId = params.get("TypeId")
         self._TaskAction = params.get("TaskAction")
         self._TaskMode = params.get("TaskMode")
+        if params.get("TaskImportInfo") is not None:
+            self._TaskImportInfo = TaskImportInfo()
+            self._TaskImportInfo._deserialize(params.get("TaskImportInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11263,12 +11389,16 @@ class CreateOfflineTaskResponse(AbstractModel):
         :param _TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
+        :param _ArrangeSpaceTaskId: 导入到编排空间的任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArrangeSpaceTaskId: str
         :param _Data: 结果
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
+        self._ArrangeSpaceTaskId = None
         self._Data = None
         self._RequestId = None
 
@@ -11283,6 +11413,18 @@ class CreateOfflineTaskResponse(AbstractModel):
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def ArrangeSpaceTaskId(self):
+        """导入到编排空间的任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ArrangeSpaceTaskId
+
+    @ArrangeSpaceTaskId.setter
+    def ArrangeSpaceTaskId(self, ArrangeSpaceTaskId):
+        self._ArrangeSpaceTaskId = ArrangeSpaceTaskId
 
     @property
     def Data(self):
@@ -11309,6 +11451,7 @@ class CreateOfflineTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._ArrangeSpaceTaskId = params.get("ArrangeSpaceTaskId")
         self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
@@ -22699,6 +22842,10 @@ false 否
         :param _IncludeTaskFolder: 是否包含任务目录 true 是 
 false 否
         :type IncludeTaskFolder: bool
+        :param _NewFolderTreeMode: 是否使用最新模式展示目录树
+        :type NewFolderTreeMode: bool
+        :param _TaskNodeId: 节点分类ID
+        :type TaskNodeId: str
         """
         self._ProjectId = None
         self._FirstLevelPull = None
@@ -22711,6 +22858,8 @@ false 否
         self._TaskFolderId = None
         self._DisplayType = None
         self._IncludeTaskFolder = None
+        self._NewFolderTreeMode = None
+        self._TaskNodeId = None
 
     @property
     def ProjectId(self):
@@ -22837,6 +22986,28 @@ false 否
     def IncludeTaskFolder(self, IncludeTaskFolder):
         self._IncludeTaskFolder = IncludeTaskFolder
 
+    @property
+    def NewFolderTreeMode(self):
+        """是否使用最新模式展示目录树
+        :rtype: bool
+        """
+        return self._NewFolderTreeMode
+
+    @NewFolderTreeMode.setter
+    def NewFolderTreeMode(self, NewFolderTreeMode):
+        self._NewFolderTreeMode = NewFolderTreeMode
+
+    @property
+    def TaskNodeId(self):
+        """节点分类ID
+        :rtype: str
+        """
+        return self._TaskNodeId
+
+    @TaskNodeId.setter
+    def TaskNodeId(self, TaskNodeId):
+        self._TaskNodeId = TaskNodeId
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -22850,6 +23021,8 @@ false 否
         self._TaskFolderId = params.get("TaskFolderId")
         self._DisplayType = params.get("DisplayType")
         self._IncludeTaskFolder = params.get("IncludeTaskFolder")
+        self._NewFolderTreeMode = params.get("NewFolderTreeMode")
+        self._TaskNodeId = params.get("TaskNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22927,12 +23100,15 @@ class DescribeDsParentFolderTreeRequest(AbstractModel):
 -    classification:分类展示
 -    catalog:目录展示
         :type DisplayType: str
+        :param _NewFolderTreeMode: 是否新模式展示目录树
+        :type NewFolderTreeMode: bool
         """
         self._ProjectId = None
         self._FolderId = None
         self._WorkflowId = None
         self._TaskId = None
         self._DisplayType = None
+        self._NewFolderTreeMode = None
 
     @property
     def ProjectId(self):
@@ -22991,6 +23167,17 @@ class DescribeDsParentFolderTreeRequest(AbstractModel):
     def DisplayType(self, DisplayType):
         self._DisplayType = DisplayType
 
+    @property
+    def NewFolderTreeMode(self):
+        """是否新模式展示目录树
+        :rtype: bool
+        """
+        return self._NewFolderTreeMode
+
+    @NewFolderTreeMode.setter
+    def NewFolderTreeMode(self, NewFolderTreeMode):
+        self._NewFolderTreeMode = NewFolderTreeMode
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -22998,6 +23185,7 @@ class DescribeDsParentFolderTreeRequest(AbstractModel):
         self._WorkflowId = params.get("WorkflowId")
         self._TaskId = params.get("TaskId")
         self._DisplayType = params.get("DisplayType")
+        self._NewFolderTreeMode = params.get("NewFolderTreeMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27299,6 +27487,8 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         :type InitStrategy: str
         :param _RequestResourceTypes: 额外请求的资源类型
         :type RequestResourceTypes: list of str
+        :param _ProjectIds: 项目ID列表
+        :type ProjectIds: list of str
         """
         self._ProjectId = None
         self._FolderIdList = None
@@ -27325,6 +27515,7 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         self._KeyWord = None
         self._InitStrategy = None
         self._RequestResourceTypes = None
+        self._ProjectIds = None
 
     @property
     def ProjectId(self):
@@ -27601,6 +27792,17 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
     def RequestResourceTypes(self, RequestResourceTypes):
         self._RequestResourceTypes = RequestResourceTypes
 
+    @property
+    def ProjectIds(self):
+        """项目ID列表
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -27633,6 +27835,7 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         self._KeyWord = params.get("KeyWord")
         self._InitStrategy = params.get("InitStrategy")
         self._RequestResourceTypes = params.get("RequestResourceTypes")
+        self._ProjectIds = params.get("ProjectIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27958,6 +28161,8 @@ class DescribeOpsMakePlanTasksRequest(AbstractModel):
         :type ProjectId: str
         :param _PlanId: 补录计划ID
         :type PlanId: str
+        :param _StateList: 实例状态过滤条件
+        :type StateList: list of int
         :param _PageNumber: 分页页码，默认值1
         :type PageNumber: int
         :param _PageSize: 分页大小，默认值10
@@ -27965,6 +28170,7 @@ class DescribeOpsMakePlanTasksRequest(AbstractModel):
         """
         self._ProjectId = None
         self._PlanId = None
+        self._StateList = None
         self._PageNumber = None
         self._PageSize = None
 
@@ -27989,6 +28195,17 @@ class DescribeOpsMakePlanTasksRequest(AbstractModel):
     @PlanId.setter
     def PlanId(self, PlanId):
         self._PlanId = PlanId
+
+    @property
+    def StateList(self):
+        """实例状态过滤条件
+        :rtype: list of int
+        """
+        return self._StateList
+
+    @StateList.setter
+    def StateList(self, StateList):
+        self._StateList = StateList
 
     @property
     def PageNumber(self):
@@ -28016,6 +28233,7 @@ class DescribeOpsMakePlanTasksRequest(AbstractModel):
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._PlanId = params.get("PlanId")
+        self._StateList = params.get("StateList")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
@@ -28102,6 +28320,10 @@ class DescribeOpsMakePlansRequest(AbstractModel):
         :type MinCreateTime: str
         :param _MaxCreateTime: 补录计划最大创建时间
         :type MaxCreateTime: str
+        :param _StateList: 实例状态过滤条件
+        :type StateList: list of int
+        :param _Keyword: 模糊查询关键字
+        :type Keyword: str
         """
         self._ProjectId = None
         self._PageNumber = None
@@ -28113,6 +28335,8 @@ class DescribeOpsMakePlansRequest(AbstractModel):
         self._Creator = None
         self._MinCreateTime = None
         self._MaxCreateTime = None
+        self._StateList = None
+        self._Keyword = None
 
     @property
     def ProjectId(self):
@@ -28224,6 +28448,28 @@ class DescribeOpsMakePlansRequest(AbstractModel):
     def MaxCreateTime(self, MaxCreateTime):
         self._MaxCreateTime = MaxCreateTime
 
+    @property
+    def StateList(self):
+        """实例状态过滤条件
+        :rtype: list of int
+        """
+        return self._StateList
+
+    @StateList.setter
+    def StateList(self, StateList):
+        self._StateList = StateList
+
+    @property
+    def Keyword(self):
+        """模糊查询关键字
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -28236,6 +28482,8 @@ class DescribeOpsMakePlansRequest(AbstractModel):
         self._Creator = params.get("Creator")
         self._MinCreateTime = params.get("MinCreateTime")
         self._MaxCreateTime = params.get("MaxCreateTime")
+        self._StateList = params.get("StateList")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28326,6 +28574,8 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         :type SortItem: str
         :param _SortType: 排序方式，DESC或ASC
         :type SortType: str
+        :param _ProjectIds: 项目ID列表，用于多项目工作流筛选
+        :type ProjectIds: list of str
         """
         self._ProjectId = None
         self._ProductNameList = None
@@ -28340,6 +28590,7 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         self._PageSize = None
         self._SortItem = None
         self._SortType = None
+        self._ProjectIds = None
 
     @property
     def ProjectId(self):
@@ -28484,6 +28735,17 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
     def SortType(self, SortType):
         self._SortType = SortType
 
+    @property
+    def ProjectIds(self):
+        """项目ID列表，用于多项目工作流筛选
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -28499,6 +28761,7 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._SortItem = params.get("SortItem")
         self._SortType = params.get("SortType")
+        self._ProjectIds = params.get("ProjectIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32672,6 +32935,8 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
         :type InCharge: str
         :param _WorkflowId: 工作流ID
         :type WorkflowId: str
+        :param _ProjectIds: 任务ID列表
+        :type ProjectIds: list of str
         """
         self._ProjectId = None
         self._TaskTypeId = None
@@ -32681,6 +32946,7 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
         self._EndTime = None
         self._InCharge = None
         self._WorkflowId = None
+        self._ProjectIds = None
 
     @property
     def ProjectId(self):
@@ -32770,6 +33036,17 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
     def WorkflowId(self, WorkflowId):
         self._WorkflowId = WorkflowId
 
+    @property
+    def ProjectIds(self):
+        """任务ID列表
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -32780,6 +33057,7 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._InCharge = params.get("InCharge")
         self._WorkflowId = params.get("WorkflowId")
+        self._ProjectIds = params.get("ProjectIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32867,6 +33145,8 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
         :type SortItem: str
         :param _SortType: 升序降序
         :type SortType: str
+        :param _ProjectIds: 项目ID列表，如果传了 ProjectIds，则 ProjectId 不会生效，用于多项目筛选
+        :type ProjectIds: list of str
         """
         self._ProjectId = None
         self._CycleUnit = None
@@ -32878,6 +33158,7 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
         self._WorkflowId = None
         self._SortItem = None
         self._SortType = None
+        self._ProjectIds = None
 
     @property
     def ProjectId(self):
@@ -32989,6 +33270,17 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
     def SortType(self, SortType):
         self._SortType = SortType
 
+    @property
+    def ProjectIds(self):
+        """项目ID列表，如果传了 ProjectIds，则 ProjectId 不会生效，用于多项目筛选
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -33001,6 +33293,7 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
         self._WorkflowId = params.get("WorkflowId")
         self._SortItem = params.get("SortItem")
         self._SortType = params.get("SortType")
+        self._ProjectIds = params.get("ProjectIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33078,12 +33371,18 @@ class DescribeSchedulerTaskCntByStatusRequest(AbstractModel):
         :type InCharge: str
         :param _WorkflowId: 工作流ID
         :type WorkflowId: str
+        :param _ProjectIds: 项目ID列表，如果传了 ProjectIds ，ProjectId 不会生效
+        :type ProjectIds: list of str
+        :param _ResourceGroupIds: 资源组ID筛选
+        :type ResourceGroupIds: list of str
         """
         self._TaskType = None
         self._TypeName = None
         self._ProjectId = None
         self._InCharge = None
         self._WorkflowId = None
+        self._ProjectIds = None
+        self._ResourceGroupIds = None
 
     @property
     def TaskType(self):
@@ -33140,6 +33439,28 @@ class DescribeSchedulerTaskCntByStatusRequest(AbstractModel):
     def WorkflowId(self, WorkflowId):
         self._WorkflowId = WorkflowId
 
+    @property
+    def ProjectIds(self):
+        """项目ID列表，如果传了 ProjectIds ，ProjectId 不会生效
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def ResourceGroupIds(self):
+        """资源组ID筛选
+        :rtype: list of str
+        """
+        return self._ResourceGroupIds
+
+    @ResourceGroupIds.setter
+    def ResourceGroupIds(self, ResourceGroupIds):
+        self._ResourceGroupIds = ResourceGroupIds
+
 
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
@@ -33147,6 +33468,8 @@ class DescribeSchedulerTaskCntByStatusRequest(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._InCharge = params.get("InCharge")
         self._WorkflowId = params.get("WorkflowId")
+        self._ProjectIds = params.get("ProjectIds")
+        self._ResourceGroupIds = params.get("ResourceGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33343,6 +33666,10 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         :type AverageWindowSize: int
         :param _WorkflowId: 工作流ID
         :type WorkflowId: str
+        :param _ProjectIds: 项目ID列表，用于多项目实例趋势筛选，当指定了 ProjectIds 的时候，ProjectId 将只用来鉴权，不做筛选
+        :type ProjectIds: list of str
+        :param _TimePoint: 指定时间点，当统计时常为整天的时候使用，必须小于 24
+        :type TimePoint: int
         """
         self._ProjectId = None
         self._TaskTypeId = None
@@ -33358,6 +33685,8 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         self._AggregationUnit = None
         self._AverageWindowSize = None
         self._WorkflowId = None
+        self._ProjectIds = None
+        self._TimePoint = None
 
     @property
     def ProjectId(self):
@@ -33513,6 +33842,28 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
     def WorkflowId(self, WorkflowId):
         self._WorkflowId = WorkflowId
 
+    @property
+    def ProjectIds(self):
+        """项目ID列表，用于多项目实例趋势筛选，当指定了 ProjectIds 的时候，ProjectId 将只用来鉴权，不做筛选
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def TimePoint(self):
+        """指定时间点，当统计时常为整天的时候使用，必须小于 24
+        :rtype: int
+        """
+        return self._TimePoint
+
+    @TimePoint.setter
+    def TimePoint(self, TimePoint):
+        self._TimePoint = TimePoint
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -33529,6 +33880,8 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         self._AggregationUnit = params.get("AggregationUnit")
         self._AverageWindowSize = params.get("AverageWindowSize")
         self._WorkflowId = params.get("WorkflowId")
+        self._ProjectIds = params.get("ProjectIds")
+        self._TimePoint = params.get("TimePoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35971,10 +36324,19 @@ class DescribeTaskByCycleRequest(AbstractModel):
         :type InCharge: str
         :param _WorkflowId: 工作流ID
         :type WorkflowId: str
+        :param _ProjectIds: 项目ID列表筛选
+        :type ProjectIds: list of str
+        :param _ResourceGroupIds: 资源组ID列表筛选
+        :type ResourceGroupIds: list of str
+        :param _TaskTypeIdList: 任务类型ID筛选
+        :type TaskTypeIdList: list of str
         """
         self._ProjectId = None
         self._InCharge = None
         self._WorkflowId = None
+        self._ProjectIds = None
+        self._ResourceGroupIds = None
+        self._TaskTypeIdList = None
 
     @property
     def ProjectId(self):
@@ -36009,11 +36371,47 @@ class DescribeTaskByCycleRequest(AbstractModel):
     def WorkflowId(self, WorkflowId):
         self._WorkflowId = WorkflowId
 
+    @property
+    def ProjectIds(self):
+        """项目ID列表筛选
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def ResourceGroupIds(self):
+        """资源组ID列表筛选
+        :rtype: list of str
+        """
+        return self._ResourceGroupIds
+
+    @ResourceGroupIds.setter
+    def ResourceGroupIds(self, ResourceGroupIds):
+        self._ResourceGroupIds = ResourceGroupIds
+
+    @property
+    def TaskTypeIdList(self):
+        """任务类型ID筛选
+        :rtype: list of str
+        """
+        return self._TaskTypeIdList
+
+    @TaskTypeIdList.setter
+    def TaskTypeIdList(self, TaskTypeIdList):
+        self._TaskTypeIdList = TaskTypeIdList
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._InCharge = params.get("InCharge")
         self._WorkflowId = params.get("WorkflowId")
+        self._ProjectIds = params.get("ProjectIds")
+        self._ResourceGroupIds = params.get("ResourceGroupIds")
+        self._TaskTypeIdList = params.get("TaskTypeIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36101,6 +36499,8 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         :type InCharge: str
         :param _WorkflowId: 工作流ID
         :type WorkflowId: str
+        :param _ProjectIds: 项目ID列表，用于多项目实例趋势筛选，当指定了 ProjectIds 的时候，ProjectId 将只用来鉴权，不做筛选
+        :type ProjectIds: list of str
         """
         self._ProjectId = None
         self._Type = None
@@ -36113,6 +36513,7 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         self._Status = None
         self._InCharge = None
         self._WorkflowId = None
+        self._ProjectIds = None
 
     @property
     def ProjectId(self):
@@ -36235,6 +36636,17 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
     def WorkflowId(self, WorkflowId):
         self._WorkflowId = WorkflowId
 
+    @property
+    def ProjectIds(self):
+        """项目ID列表，用于多项目实例趋势筛选，当指定了 ProjectIds 的时候，ProjectId 将只用来鉴权，不做筛选
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -36248,6 +36660,7 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         self._Status = params.get("Status")
         self._InCharge = params.get("InCharge")
         self._WorkflowId = params.get("WorkflowId")
+        self._ProjectIds = params.get("ProjectIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42321,10 +42734,13 @@ class FreezeTasksByWorkflowIdsRequest(AbstractModel):
         :type ProjectId: str
         :param _KillInstance: 是否终止已生成的实例
         :type KillInstance: bool
+        :param _AsyncMode: 是否异步模式
+        :type AsyncMode: bool
         """
         self._WorkflowIds = None
         self._ProjectId = None
         self._KillInstance = None
+        self._AsyncMode = None
 
     @property
     def WorkflowIds(self):
@@ -42359,11 +42775,23 @@ class FreezeTasksByWorkflowIdsRequest(AbstractModel):
     def KillInstance(self, KillInstance):
         self._KillInstance = KillInstance
 
+    @property
+    def AsyncMode(self):
+        """是否异步模式
+        :rtype: bool
+        """
+        return self._AsyncMode
+
+    @AsyncMode.setter
+    def AsyncMode(self, AsyncMode):
+        self._AsyncMode = AsyncMode
+
 
     def _deserialize(self, params):
         self._WorkflowIds = params.get("WorkflowIds")
         self._ProjectId = params.get("ProjectId")
         self._KillInstance = params.get("KillInstance")
+        self._AsyncMode = params.get("AsyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48546,6 +48974,15 @@ class IntegrationTaskInfo(AbstractModel):
         :param _OfflineTaskStatus: 离线任务状态区分1.未提交2.已提交3.已导出
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTaskStatus: int
+        :param _TaskImportInfo: 导入到编排空间配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskImportInfo: :class:`tencentcloud.wedata.v20210820.models.TaskImportInfo`
+        :param _BusinessLatency: 业务延迟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessLatency: int
+        :param _CurrentSyncPosition: 当前同步位点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentSyncPosition: int
         """
         self._TaskName = None
         self._Description = None
@@ -48596,6 +49033,9 @@ class IntegrationTaskInfo(AbstractModel):
         self._InstanceVersion = None
         self._ArrangeSpaceTaskId = None
         self._OfflineTaskStatus = None
+        self._TaskImportInfo = None
+        self._BusinessLatency = None
+        self._CurrentSyncPosition = None
 
     @property
     def TaskName(self):
@@ -49182,6 +49622,42 @@ class IntegrationTaskInfo(AbstractModel):
     def OfflineTaskStatus(self, OfflineTaskStatus):
         self._OfflineTaskStatus = OfflineTaskStatus
 
+    @property
+    def TaskImportInfo(self):
+        """导入到编排空间配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskImportInfo`
+        """
+        return self._TaskImportInfo
+
+    @TaskImportInfo.setter
+    def TaskImportInfo(self, TaskImportInfo):
+        self._TaskImportInfo = TaskImportInfo
+
+    @property
+    def BusinessLatency(self):
+        """业务延迟
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BusinessLatency
+
+    @BusinessLatency.setter
+    def BusinessLatency(self, BusinessLatency):
+        self._BusinessLatency = BusinessLatency
+
+    @property
+    def CurrentSyncPosition(self):
+        """当前同步位点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CurrentSyncPosition
+
+    @CurrentSyncPosition.setter
+    def CurrentSyncPosition(self, CurrentSyncPosition):
+        self._CurrentSyncPosition = CurrentSyncPosition
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -49260,6 +49736,11 @@ class IntegrationTaskInfo(AbstractModel):
         self._InstanceVersion = params.get("InstanceVersion")
         self._ArrangeSpaceTaskId = params.get("ArrangeSpaceTaskId")
         self._OfflineTaskStatus = params.get("OfflineTaskStatus")
+        if params.get("TaskImportInfo") is not None:
+            self._TaskImportInfo = TaskImportInfo()
+            self._TaskImportInfo._deserialize(params.get("TaskImportInfo"))
+        self._BusinessLatency = params.get("BusinessLatency")
+        self._CurrentSyncPosition = params.get("CurrentSyncPosition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49375,9 +49856,15 @@ class KillOpsMakePlanInstancesRequest(AbstractModel):
         :type ProjectId: str
         :param _PlanId: 补录计划ID
         :type PlanId: str
+        :param _AsyncMode: 是否异步模式
+        :type AsyncMode: bool
+        :param _PlanName: 补录计划名
+        :type PlanName: str
         """
         self._ProjectId = None
         self._PlanId = None
+        self._AsyncMode = None
+        self._PlanName = None
 
     @property
     def ProjectId(self):
@@ -49401,10 +49888,34 @@ class KillOpsMakePlanInstancesRequest(AbstractModel):
     def PlanId(self, PlanId):
         self._PlanId = PlanId
 
+    @property
+    def AsyncMode(self):
+        """是否异步模式
+        :rtype: bool
+        """
+        return self._AsyncMode
+
+    @AsyncMode.setter
+    def AsyncMode(self, AsyncMode):
+        self._AsyncMode = AsyncMode
+
+    @property
+    def PlanName(self):
+        """补录计划名
+        :rtype: str
+        """
+        return self._PlanName
+
+    @PlanName.setter
+    def PlanName(self, PlanName):
+        self._PlanName = PlanName
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._PlanId = params.get("PlanId")
+        self._AsyncMode = params.get("AsyncMode")
+        self._PlanName = params.get("PlanName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49503,6 +50014,8 @@ class KillScheduleInstancesRequest(AbstractModel):
         :type RequestBaseInfo: :class:`tencentcloud.wedata.v20210820.models.ProjectBaseInfoOpsRequest`
         :param _IsCount: 是否计算总数
         :type IsCount: bool
+        :param _AsyncMode: 是否异步模式
+        :type AsyncMode: bool
         """
         self._Instances = None
         self._CheckFather = None
@@ -49522,6 +50035,7 @@ class KillScheduleInstancesRequest(AbstractModel):
         self._Count = None
         self._RequestBaseInfo = None
         self._IsCount = None
+        self._AsyncMode = None
 
     @property
     def Instances(self):
@@ -49721,6 +50235,17 @@ class KillScheduleInstancesRequest(AbstractModel):
     def IsCount(self, IsCount):
         self._IsCount = IsCount
 
+    @property
+    def AsyncMode(self):
+        """是否异步模式
+        :rtype: bool
+        """
+        return self._AsyncMode
+
+    @AsyncMode.setter
+    def AsyncMode(self, AsyncMode):
+        self._AsyncMode = AsyncMode
+
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
@@ -49750,6 +50275,7 @@ class KillScheduleInstancesRequest(AbstractModel):
             self._RequestBaseInfo = ProjectBaseInfoOpsRequest()
             self._RequestBaseInfo._deserialize(params.get("RequestBaseInfo"))
         self._IsCount = params.get("IsCount")
+        self._AsyncMode = params.get("AsyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50587,6 +51113,12 @@ class MakePlanOpsDto(AbstractModel):
 <li> MAKE_SCOPE: 只在（当前补录计划）选中任务中检查 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckParentType: str
+        :param _SameSelfWorkflowDependType: 是否和原任务保持相同工作流自依赖属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SameSelfWorkflowDependType: bool
+        :param _SelfWorkflowDependency: 工作流自依赖类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfWorkflowDependency: str
         """
         self._PlanId = None
         self._MakeName = None
@@ -50613,6 +51145,8 @@ class MakePlanOpsDto(AbstractModel):
         self._CompletePercent = None
         self._SuccessPercent = None
         self._CheckParentType = None
+        self._SameSelfWorkflowDependType = None
+        self._SelfWorkflowDependency = None
 
     @property
     def PlanId(self):
@@ -50917,6 +51451,30 @@ class MakePlanOpsDto(AbstractModel):
     def CheckParentType(self, CheckParentType):
         self._CheckParentType = CheckParentType
 
+    @property
+    def SameSelfWorkflowDependType(self):
+        """是否和原任务保持相同工作流自依赖属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SameSelfWorkflowDependType
+
+    @SameSelfWorkflowDependType.setter
+    def SameSelfWorkflowDependType(self, SameSelfWorkflowDependType):
+        self._SameSelfWorkflowDependType = SameSelfWorkflowDependType
+
+    @property
+    def SelfWorkflowDependency(self):
+        """工作流自依赖类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SelfWorkflowDependency
+
+    @SelfWorkflowDependency.setter
+    def SelfWorkflowDependency(self, SelfWorkflowDependency):
+        self._SelfWorkflowDependency = SelfWorkflowDependency
+
 
     def _deserialize(self, params):
         self._PlanId = params.get("PlanId")
@@ -50954,6 +51512,8 @@ class MakePlanOpsDto(AbstractModel):
         self._CompletePercent = params.get("CompletePercent")
         self._SuccessPercent = params.get("SuccessPercent")
         self._CheckParentType = params.get("CheckParentType")
+        self._SameSelfWorkflowDependType = params.get("SameSelfWorkflowDependType")
+        self._SelfWorkflowDependency = params.get("SelfWorkflowDependency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56035,11 +56595,14 @@ class OperationOpsDto(AbstractModel):
         :param _ErrorDesc: 操作失败描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDesc: str
+        :param _AsyncActionId: 异步操作记录id
+        :type AsyncActionId: str
         """
         self._Result = None
         self._ResultMsg = None
         self._ErrorId = None
         self._ErrorDesc = None
+        self._AsyncActionId = None
 
     @property
     def Result(self):
@@ -56089,12 +56652,24 @@ class OperationOpsDto(AbstractModel):
     def ErrorDesc(self, ErrorDesc):
         self._ErrorDesc = ErrorDesc
 
+    @property
+    def AsyncActionId(self):
+        """异步操作记录id
+        :rtype: str
+        """
+        return self._AsyncActionId
+
+    @AsyncActionId.setter
+    def AsyncActionId(self, AsyncActionId):
+        self._AsyncActionId = AsyncActionId
+
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._ResultMsg = params.get("ResultMsg")
         self._ErrorId = params.get("ErrorId")
         self._ErrorDesc = params.get("ErrorDesc")
+        self._AsyncActionId = params.get("AsyncActionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65787,6 +66362,8 @@ class RunForceSucScheduleInstancesRequest(AbstractModel):
         :type RequestBaseInfo: :class:`tencentcloud.wedata.v20210820.models.ProjectBaseInfoOpsRequest`
         :param _IsCount: 是否计算总数
         :type IsCount: bool
+        :param _AsyncMode: 是否异步模式
+        :type AsyncMode: bool
         """
         self._Instances = None
         self._CheckFather = None
@@ -65806,6 +66383,7 @@ class RunForceSucScheduleInstancesRequest(AbstractModel):
         self._Count = None
         self._RequestBaseInfo = None
         self._IsCount = None
+        self._AsyncMode = None
 
     @property
     def Instances(self):
@@ -66005,6 +66583,17 @@ class RunForceSucScheduleInstancesRequest(AbstractModel):
     def IsCount(self, IsCount):
         self._IsCount = IsCount
 
+    @property
+    def AsyncMode(self):
+        """是否异步模式
+        :rtype: bool
+        """
+        return self._AsyncMode
+
+    @AsyncMode.setter
+    def AsyncMode(self, AsyncMode):
+        self._AsyncMode = AsyncMode
+
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
@@ -66034,6 +66623,7 @@ class RunForceSucScheduleInstancesRequest(AbstractModel):
             self._RequestBaseInfo = ProjectBaseInfoOpsRequest()
             self._RequestBaseInfo._deserialize(params.get("RequestBaseInfo"))
         self._IsCount = params.get("IsCount")
+        self._AsyncMode = params.get("AsyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66132,6 +66722,8 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         :type RequestBaseInfo: :class:`tencentcloud.wedata.v20210820.models.ProjectBaseInfoOpsRequest`
         :param _IsCount: 是否计算总数
         :type IsCount: bool
+        :param _AsyncMode: 是否异步模式
+        :type AsyncMode: bool
         """
         self._Instances = None
         self._CheckFather = None
@@ -66151,6 +66743,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         self._Count = None
         self._RequestBaseInfo = None
         self._IsCount = None
+        self._AsyncMode = None
 
     @property
     def Instances(self):
@@ -66350,6 +66943,17 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
     def IsCount(self, IsCount):
         self._IsCount = IsCount
 
+    @property
+    def AsyncMode(self):
+        """是否异步模式
+        :rtype: bool
+        """
+        return self._AsyncMode
+
+    @AsyncMode.setter
+    def AsyncMode(self, AsyncMode):
+        self._AsyncMode = AsyncMode
+
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
@@ -66379,6 +66983,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
             self._RequestBaseInfo = ProjectBaseInfoOpsRequest()
             self._RequestBaseInfo._deserialize(params.get("RequestBaseInfo"))
         self._IsCount = params.get("IsCount")
+        self._AsyncMode = params.get("AsyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66578,6 +67183,12 @@ class RuntimeInstanceCntTop(AbstractModel):
         :param _WaitScheduleTime: 等待调度耗时
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaitScheduleTime: int
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -66587,6 +67198,8 @@ class RuntimeInstanceCntTop(AbstractModel):
         self._RunTime = None
         self._CurRunTime = None
         self._WaitScheduleTime = None
+        self._ProjectId = None
+        self._ProjectName = None
 
     @property
     def TaskId(self):
@@ -66684,6 +67297,30 @@ class RuntimeInstanceCntTop(AbstractModel):
     def WaitScheduleTime(self, WaitScheduleTime):
         self._WaitScheduleTime = WaitScheduleTime
 
+    @property
+    def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        """项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -66694,6 +67331,8 @@ class RuntimeInstanceCntTop(AbstractModel):
         self._RunTime = params.get("RunTime")
         self._CurRunTime = params.get("CurRunTime")
         self._WaitScheduleTime = params.get("WaitScheduleTime")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67161,6 +67800,8 @@ class ScreenInstanceInfo(AbstractModel):
         :param _FailedNum: 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedNum: int
+        :param _SkipRunningNum: 跳过运行总数
+        :type SkipRunningNum: int
         """
         self._CountTag = None
         self._TotalNum = None
@@ -67171,6 +67812,7 @@ class ScreenInstanceInfo(AbstractModel):
         self._StoppingNum = None
         self._SucceedNum = None
         self._FailedNum = None
+        self._SkipRunningNum = None
 
     @property
     def CountTag(self):
@@ -67280,6 +67922,17 @@ class ScreenInstanceInfo(AbstractModel):
     def FailedNum(self, FailedNum):
         self._FailedNum = FailedNum
 
+    @property
+    def SkipRunningNum(self):
+        """跳过运行总数
+        :rtype: int
+        """
+        return self._SkipRunningNum
+
+    @SkipRunningNum.setter
+    def SkipRunningNum(self, SkipRunningNum):
+        self._SkipRunningNum = SkipRunningNum
+
 
     def _deserialize(self, params):
         self._CountTag = params.get("CountTag")
@@ -67291,6 +67944,7 @@ class ScreenInstanceInfo(AbstractModel):
         self._StoppingNum = params.get("StoppingNum")
         self._SucceedNum = params.get("SucceedNum")
         self._FailedNum = params.get("FailedNum")
+        self._SkipRunningNum = params.get("SkipRunningNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67325,6 +67979,9 @@ class ScreenTaskInfo(AbstractModel):
         :param _FrozenNum: 暂停
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenNum: int
+        :param _InvalidNum: 无效任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvalidNum: int
         :param _YearNum: 年任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type YearNum: int
@@ -67350,6 +68007,7 @@ class ScreenTaskInfo(AbstractModel):
         self._StoppingNum = None
         self._StoppedNum = None
         self._FrozenNum = None
+        self._InvalidNum = None
         self._YearNum = None
         self._MonthNum = None
         self._WeekNum = None
@@ -67427,6 +68085,18 @@ class ScreenTaskInfo(AbstractModel):
     @FrozenNum.setter
     def FrozenNum(self, FrozenNum):
         self._FrozenNum = FrozenNum
+
+    @property
+    def InvalidNum(self):
+        """无效任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InvalidNum
+
+    @InvalidNum.setter
+    def InvalidNum(self, InvalidNum):
+        self._InvalidNum = InvalidNum
 
     @property
     def YearNum(self):
@@ -67508,6 +68178,7 @@ class ScreenTaskInfo(AbstractModel):
         self._StoppingNum = params.get("StoppingNum")
         self._StoppedNum = params.get("StoppedNum")
         self._FrozenNum = params.get("FrozenNum")
+        self._InvalidNum = params.get("InvalidNum")
         self._YearNum = params.get("YearNum")
         self._MonthNum = params.get("MonthNum")
         self._WeekNum = params.get("WeekNum")
@@ -75889,6 +76560,146 @@ class TaskExtInfo(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskImportInfo(AbstractModel):
+    """集成任务导入到编排空间配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsImport: 是否导入编排空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsImport: bool
+        :param _IsNewWorkFlow: 是否新建工作流
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewWorkFlow: bool
+        :param _WorkFlowFolderId: 工作流所属目录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkFlowFolderId: str
+        :param _WorkFlowFolderName: 工作流所属目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkFlowFolderName: str
+        :param _WorkFlowId: 工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkFlowId: str
+        :param _WorkFlowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkFlowName: str
+        :param _TaskNameExistMode: 重名任务处理策略, 0:跳过,不导入; 1: 重命名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskNameExistMode: int
+        """
+        self._IsImport = None
+        self._IsNewWorkFlow = None
+        self._WorkFlowFolderId = None
+        self._WorkFlowFolderName = None
+        self._WorkFlowId = None
+        self._WorkFlowName = None
+        self._TaskNameExistMode = None
+
+    @property
+    def IsImport(self):
+        """是否导入编排空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsImport
+
+    @IsImport.setter
+    def IsImport(self, IsImport):
+        self._IsImport = IsImport
+
+    @property
+    def IsNewWorkFlow(self):
+        """是否新建工作流
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsNewWorkFlow
+
+    @IsNewWorkFlow.setter
+    def IsNewWorkFlow(self, IsNewWorkFlow):
+        self._IsNewWorkFlow = IsNewWorkFlow
+
+    @property
+    def WorkFlowFolderId(self):
+        """工作流所属目录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkFlowFolderId
+
+    @WorkFlowFolderId.setter
+    def WorkFlowFolderId(self, WorkFlowFolderId):
+        self._WorkFlowFolderId = WorkFlowFolderId
+
+    @property
+    def WorkFlowFolderName(self):
+        """工作流所属目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkFlowFolderName
+
+    @WorkFlowFolderName.setter
+    def WorkFlowFolderName(self, WorkFlowFolderName):
+        self._WorkFlowFolderName = WorkFlowFolderName
+
+    @property
+    def WorkFlowId(self):
+        """工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkFlowId
+
+    @WorkFlowId.setter
+    def WorkFlowId(self, WorkFlowId):
+        self._WorkFlowId = WorkFlowId
+
+    @property
+    def WorkFlowName(self):
+        """工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkFlowName
+
+    @WorkFlowName.setter
+    def WorkFlowName(self, WorkFlowName):
+        self._WorkFlowName = WorkFlowName
+
+    @property
+    def TaskNameExistMode(self):
+        """重名任务处理策略, 0:跳过,不导入; 1: 重命名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskNameExistMode
+
+    @TaskNameExistMode.setter
+    def TaskNameExistMode(self, TaskNameExistMode):
+        self._TaskNameExistMode = TaskNameExistMode
+
+
+    def _deserialize(self, params):
+        self._IsImport = params.get("IsImport")
+        self._IsNewWorkFlow = params.get("IsNewWorkFlow")
+        self._WorkFlowFolderId = params.get("WorkFlowFolderId")
+        self._WorkFlowFolderName = params.get("WorkFlowFolderName")
+        self._WorkFlowId = params.get("WorkFlowId")
+        self._WorkFlowName = params.get("WorkFlowName")
+        self._TaskNameExistMode = params.get("TaskNameExistMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

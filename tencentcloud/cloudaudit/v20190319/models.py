@@ -26,14 +26,19 @@ class AttributeKeyDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _LabelType: 输入框类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type LabelType: str
         :param _Starter: 初始化展示
+注意：此字段可能返回 null，表示取不到有效值。
         :type Starter: str
         :param _Order: 展示排序
+注意：此字段可能返回 null，表示取不到有效值。
         :type Order: int
         :param _Value: AttributeKey值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Label: 中文标签
+注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         """
         self._LabelType = None
@@ -45,6 +50,7 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def LabelType(self):
         """输入框类型
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LabelType
@@ -56,6 +62,7 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def Starter(self):
         """初始化展示
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Starter
@@ -67,6 +74,7 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def Order(self):
         """展示排序
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Order
@@ -78,6 +86,7 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def Value(self):
         """AttributeKey值
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -89,6 +98,7 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def Label(self):
         """中文标签
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -1942,8 +1952,10 @@ class KeyMetadata(AbstractModel):
     def __init__(self):
         r"""
         :param _Alias: 作为密钥更容易辨识，更容易被人看懂的别名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _KeyId: CMK的全局唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyId: str
         """
         self._Alias = None
@@ -1952,6 +1964,7 @@ class KeyMetadata(AbstractModel):
     @property
     def Alias(self):
         """作为密钥更容易辨识，更容易被人看懂的别名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Alias
@@ -1963,6 +1976,7 @@ class KeyMetadata(AbstractModel):
     @property
     def KeyId(self):
         """CMK的全局唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeyId

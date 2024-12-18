@@ -145,7 +145,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 网关负载均衡后端目标设备所属的私有网络 ID，如vpc-12345678，可以通过 DescribeVpcEx 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。
+        :param _VpcId: 网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
         :type VpcId: str
         :param _SubnetId: 网关负载均衡后端目标设备所属的私有网络的子网ID。
         :type SubnetId: str
@@ -167,7 +167,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """网关负载均衡后端目标设备所属的私有网络 ID，如vpc-12345678，可以通过 DescribeVpcEx 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。
+        """网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
         :rtype: str
         """
         return self._VpcId
@@ -329,13 +329,13 @@ class CreateTargetGroupRequest(AbstractModel):
         :type TargetGroupName: str
         :param _VpcId: 目标组的vpcid属性，不填则使用默认vpc
         :type VpcId: str
-        :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
+        :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。仅支持6081。
         :type Port: int
         :param _TargetGroupInstances: 目标组绑定的后端服务器
         :type TargetGroupInstances: list of TargetGroupInstance
         :param _Protocol: 网关负载均衡目标组协议。
 - TENCENT_GENEVE ：GENEVE 标准协议
-- AWS_GENEVE：GENEVE 兼容协议（需要提交工单申请开白）
+- AWS_GENEVE：GENEVE 兼容协议
         :type Protocol: str
         :param _HealthCheck: 健康检查设置。
         :type HealthCheck: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
@@ -378,7 +378,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Port(self):
-        """目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
+        """目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。仅支持6081。
         :rtype: int
         """
         return self._Port
@@ -402,7 +402,7 @@ class CreateTargetGroupRequest(AbstractModel):
     def Protocol(self):
         """网关负载均衡目标组协议。
 - TENCENT_GENEVE ：GENEVE 标准协议
-- AWS_GENEVE：GENEVE 兼容协议（需要提交工单申请开白）
+- AWS_GENEVE：GENEVE 兼容协议
         :rtype: str
         """
         return self._Protocol
@@ -1006,6 +1006,10 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
+
+- TargetGroupId - String - 是否必填：否 - （过滤条件）目标组ID，如“lbtg-5xunivs0”。
+- BindIP - String - 是否必填：否 - （过滤条件）目标组绑定实例的IP地址，如“10.1.1.1”
+- InstanceId - String - 是否必填：否 - （过滤条件）目标组绑定实例的名称，如“ins_name”
         :type Filters: list of Filter
         :param _Limit: 显示数量限制，默认20。
         :type Limit: int
@@ -1019,6 +1023,10 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
+
+- TargetGroupId - String - 是否必填：否 - （过滤条件）目标组ID，如“lbtg-5xunivs0”。
+- BindIP - String - 是否必填：否 - （过滤条件）目标组绑定实例的IP地址，如“10.1.1.1”
+- InstanceId - String - 是否必填：否 - （过滤条件）目标组绑定实例的名称，如“ins_name”
         :rtype: list of Filter
         """
         return self._Filters
@@ -1156,7 +1164,10 @@ class DescribeTargetGroupListRequest(AbstractModel):
         r"""
         :param _TargetGroupIds: 目标组ID数组。
         :type TargetGroupIds: list of str
-        :param _Filters: 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。
+        :param _Filters: 过滤条件数组。
+
+- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，如“vpc-bhqk****”。
+- TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :type Filters: list of Filter
         :param _Offset: 显示的偏移起始量。
         :type Offset: int
@@ -1181,7 +1192,10 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件数组，支持TargetGroupVpcId和TargetGroupName。
+        """过滤条件数组。
+
+- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，如“vpc-bhqk****”。
+- TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :rtype: list of Filter
         """
         return self._Filters
@@ -1309,7 +1323,10 @@ class DescribeTargetGroupsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 显示的偏移起始量。
         :type Offset: int
-        :param _Filters: 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。
+        :param _Filters: 过滤条件数组。
+
+- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，如“vpc-bhqk****”。
+- TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :type Filters: list of Filter
         """
         self._TargetGroupIds = None
@@ -1352,7 +1369,10 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件数组，支持TargetGroupVpcId和TargetGroupName。
+        """过滤条件数组。
+
+- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，如“vpc-bhqk****”。
+- TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :rtype: list of Filter
         """
         return self._Filters
@@ -2653,7 +2673,7 @@ class TargetGroupBackend(AbstractModel):
         :type InstanceId: str
         :param _Port: 后端服务的监听端口
         :type Port: int
-        :param _Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+        :param _Weight: 后端服务的转发权重，取值为0或16
         :type Weight: int
         :param _PublicIpAddresses: 后端服务的外网 IP
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2732,7 +2752,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def Weight(self):
-        """后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+        """后端服务的转发权重，取值为0或16
         :rtype: int
         """
         return self._Weight
@@ -2845,10 +2865,10 @@ class TargetGroupHealthCheck(AbstractModel):
         r"""
         :param _HealthSwitch: 是否开启健康检查。
         :type HealthSwitch: bool
-        :param _Protocol: 健康检查使用的协议。支持ping和tcp，默认为ping。
+        :param _Protocol: 健康检查使用的协议。支持PING和TCP两种方式，默认为PING。
 
-- PING: icmp
-- TCP: tcp
+- icmp: 使用PING的方式进行健康检查
+- tcp: 使用TCP连接的方式进行健康检查
         :type Protocol: str
         :param _Port: 健康检查端口，探测协议为tcp时，该参数必填。
 
@@ -2883,10 +2903,10 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def Protocol(self):
-        """健康检查使用的协议。支持ping和tcp，默认为ping。
+        """健康检查使用的协议。支持PING和TCP两种方式，默认为PING。
 
-- PING: icmp
-- TCP: tcp
+- icmp: 使用PING的方式进行健康检查
+- tcp: 使用TCP连接的方式进行健康检查
         :rtype: str
         """
         return self._Protocol
@@ -2993,11 +3013,13 @@ class TargetGroupInfo(AbstractModel):
         :param _AssociatedRule: 关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedRule: list of AssociationItem
-        :param _Protocol: 后端协议类型。
+        :param _Protocol: 网关负载均衡目标组协议。
+- tencent_geneve ：GENEVE 标准协议
+- aws_geneve：GENEVE 兼容协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param _ScheduleAlgorithm: 调度算法。
-ip_hash_3：弹性哈希
+        :param _ScheduleAlgorithm: 均衡算法。
+- ip_hash_3_elastic：弹性哈希
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleAlgorithm: str
         :param _HealthCheck: 健康检查详情。
@@ -3108,7 +3130,9 @@ ip_hash_3：弹性哈希
 
     @property
     def Protocol(self):
-        """后端协议类型。
+        """网关负载均衡目标组协议。
+- tencent_geneve ：GENEVE 标准协议
+- aws_geneve：GENEVE 兼容协议
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3120,8 +3144,8 @@ ip_hash_3：弹性哈希
 
     @property
     def ScheduleAlgorithm(self):
-        """调度算法。
-ip_hash_3：弹性哈希
+        """均衡算法。
+- ip_hash_3_elastic：弹性哈希
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

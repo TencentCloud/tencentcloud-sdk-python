@@ -235,7 +235,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeAsyncRequestInfo(self, request):
-        """查询异步任务状态接口
+        """本接口（DescribeAsyncRequestInfo）用于查询异步任务状态接口。
 
         :param request: Request instance for DescribeAsyncRequestInfo.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAsyncRequestInfoRequest`
@@ -327,7 +327,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeCurrentOp(self, request):
-        """本接口(DescribeCurrentOp)用于查询MongoDB云数据库实例的当前正在执行的操作。
+        """本接口（DescribeCurrentOp）用于查询云数据库实例的当前正在执行的操作。
 
         :param request: Request instance for DescribeCurrentOp.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeCurrentOpRequest`

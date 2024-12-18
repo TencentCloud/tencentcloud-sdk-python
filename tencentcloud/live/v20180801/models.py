@@ -2834,7 +2834,7 @@ class CasterInputInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InputIndex: 输入源Index。
-范围[1, 20]
+范围[1, 24]
         :type InputIndex: int
         :param _InputType: 输入源类型。
 范围[0,1,2,3,4]。
@@ -2894,7 +2894,7 @@ class CasterInputInfo(AbstractModel):
     @property
     def InputIndex(self):
         """输入源Index。
-范围[1, 20]
+范围[1, 24]
         :rtype: int
         """
         return self._InputIndex
@@ -5110,7 +5110,7 @@ class CreateCasterInputPushUrlRequest(AbstractModel):
         :param _CasterId: 导播台ID
         :type CasterId: int
         :param _InputIndex: 请求生成推流地址的输入Index。
-允许范围[1,20]。
+允许范围[1,24]。
         :type InputIndex: int
         :param _Protocol: 生成推流地址协议。
 范围[rtmp,webrtc]。
@@ -5135,7 +5135,7 @@ class CreateCasterInputPushUrlRequest(AbstractModel):
     @property
     def InputIndex(self):
         """请求生成推流地址的输入Index。
-允许范围[1,20]。
+允许范围[1,24]。
         :rtype: int
         """
         return self._InputIndex
@@ -22334,12 +22334,12 @@ class DescribePushBandwidthAndFluxListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 查询开始时间点，精确到分钟粒度，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
         :type StartTime: str
         :param _EndTime: 查询结束时间点，精确到分钟粒度，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
         :type EndTime: str
@@ -22382,7 +22382,7 @@ https://cloud.tencent.com/document/product/267/34019。
     @property
     def StartTime(self):
         """查询开始时间点，精确到分钟粒度，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
         :rtype: str
@@ -22396,7 +22396,7 @@ https://cloud.tencent.com/document/product/267/34019。
     @property
     def EndTime(self):
         """查询结束时间点，精确到分钟粒度，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#52)。
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 支持最近两个月的查询，查询开始和结束时间跨度不支持超过31天。
         :rtype: str

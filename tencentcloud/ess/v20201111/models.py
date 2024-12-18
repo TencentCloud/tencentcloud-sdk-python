@@ -20378,6 +20378,114 @@ class DescribeOrganizationSealsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOrganizationVerifyStatusRequest(AbstractModel):
+    """DescribeOrganizationVerifyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationVerifyStatusResponse(AbstractModel):
+    """DescribeOrganizationVerifyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerifyStatus: 当前企业认证状态
+<ul>
+<li> <b>0 </b>:未认证</li>
+<li> <b>1 </b> : 认证中</li>
+<li> <b>2 </b> : 已认证</li>
+</ul>
+        :type VerifyStatus: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VerifyStatus = None
+        self._RequestId = None
+
+    @property
+    def VerifyStatus(self):
+        """当前企业认证状态
+<ul>
+<li> <b>0 </b>:未认证</li>
+<li> <b>1 </b> : 认证中</li>
+<li> <b>2 </b> : 已认证</li>
+</ul>
+        :rtype: int
+        """
+        return self._VerifyStatus
+
+    @VerifyStatus.setter
+    def VerifyStatus(self, VerifyStatus):
+        self._VerifyStatus = VerifyStatus
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VerifyStatus = params.get("VerifyStatus")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePersonCertificateRequest(AbstractModel):
     """DescribePersonCertificate请求参数结构体
 

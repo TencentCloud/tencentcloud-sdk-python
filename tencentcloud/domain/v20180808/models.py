@@ -6577,14 +6577,14 @@ class DescribeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID
+        :param _TemplateId: 模板ID(模板列表接口可获取)
         :type TemplateId: str
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        """模板ID
+        """模板ID(模板列表接口可获取)
         :rtype: str
         """
         return self._TemplateId

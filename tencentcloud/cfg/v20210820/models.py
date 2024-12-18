@@ -3076,6 +3076,8 @@ class ObjectType(AbstractModel):
         :param _ObjectSupportType: 1：平台支持的对象 2：应用支持的部分对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectSupportType: int
+        :param _ArchLayer: 1.接入层 2.逻辑层 3. 数据层
+        :type ArchLayer: int
         """
         self._ObjectTypeId = None
         self._ObjectTypeTitle = None
@@ -3085,6 +3087,7 @@ class ObjectType(AbstractModel):
         self._ObjectHasNewAction = None
         self._ObjectPlatformName = None
         self._ObjectSupportType = None
+        self._ArchLayer = None
 
     @property
     def ObjectTypeId(self):
@@ -3178,6 +3181,17 @@ class ObjectType(AbstractModel):
     def ObjectSupportType(self, ObjectSupportType):
         self._ObjectSupportType = ObjectSupportType
 
+    @property
+    def ArchLayer(self):
+        """1.接入层 2.逻辑层 3. 数据层
+        :rtype: int
+        """
+        return self._ArchLayer
+
+    @ArchLayer.setter
+    def ArchLayer(self, ArchLayer):
+        self._ArchLayer = ArchLayer
+
 
     def _deserialize(self, params):
         self._ObjectTypeId = params.get("ObjectTypeId")
@@ -3192,6 +3206,7 @@ class ObjectType(AbstractModel):
         self._ObjectHasNewAction = params.get("ObjectHasNewAction")
         self._ObjectPlatformName = params.get("ObjectPlatformName")
         self._ObjectSupportType = params.get("ObjectSupportType")
+        self._ArchLayer = params.get("ArchLayer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6705,6 +6720,8 @@ class TemplateGroupAction(AbstractModel):
         :param _ActionRisk: 动作风险等级，1:低风险 2:中风险 3:高风险
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionRisk: str
+        :param _FailurePerformance: 故障表现
+        :type FailurePerformance: str
         """
         self._TemplateGroupActionId = None
         self._ActionId = None
@@ -6721,6 +6738,7 @@ class TemplateGroupAction(AbstractModel):
         self._ActionAttribute = None
         self._ActionType = None
         self._ActionRisk = None
+        self._FailurePerformance = None
 
     @property
     def TemplateGroupActionId(self):
@@ -6896,6 +6914,17 @@ class TemplateGroupAction(AbstractModel):
     def ActionRisk(self, ActionRisk):
         self._ActionRisk = ActionRisk
 
+    @property
+    def FailurePerformance(self):
+        """故障表现
+        :rtype: str
+        """
+        return self._FailurePerformance
+
+    @FailurePerformance.setter
+    def FailurePerformance(self, FailurePerformance):
+        self._FailurePerformance = FailurePerformance
+
 
     def _deserialize(self, params):
         self._TemplateGroupActionId = params.get("TemplateGroupActionId")
@@ -6913,6 +6942,7 @@ class TemplateGroupAction(AbstractModel):
         self._ActionAttribute = params.get("ActionAttribute")
         self._ActionType = params.get("ActionType")
         self._ActionRisk = params.get("ActionRisk")
+        self._FailurePerformance = params.get("FailurePerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

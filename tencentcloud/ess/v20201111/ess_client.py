@@ -2506,6 +2506,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOrganizationVerifyStatus(self, request):
+        """仅且仅能查询企业本身在电子签的认证状态
+
+        :param request: Request instance for DescribeOrganizationVerifyStatus.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationVerifyStatusRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationVerifyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationVerifyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationVerifyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePersonCertificate(self, request):
         """此接口（DescribePersonCertificate）用于查询个人数字证书信息。<br />注：`1.目前仅用于查询开通了医疗自动签署功能的个人数字证书。`<br />`2.调用此接口需要开通白名单，使用前请联系相关人员开通白名单。`
 

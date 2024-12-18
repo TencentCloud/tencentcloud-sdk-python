@@ -285,7 +285,10 @@ class ApproverOption(AbstractModel):
         :type NoRefuse: bool
         :param _NoTransfer: 是否可以转发 默认false-可以转发 true-不可以转发
         :type NoTransfer: bool
-        :param _HideOneKeySign: 是否隐藏一键签署 默认false-不隐藏true-隐藏
+        :param _HideOneKeySign: 当签署方有多个签署区时候，是否隐藏一键所有的签署区
+
+false：（默认）不隐藏
+true：隐藏，每个签署区要单独选择印章或者签名
         :type HideOneKeySign: bool
         :param _FillType: 签署人信息补充类型，默认无需补充。
 
@@ -334,7 +337,10 @@ class ApproverOption(AbstractModel):
 
     @property
     def HideOneKeySign(self):
-        """是否隐藏一键签署 默认false-不隐藏true-隐藏
+        """当签署方有多个签署区时候，是否隐藏一键所有的签署区
+
+false：（默认）不隐藏
+true：隐藏，每个签署区要单独选择印章或者签名
         :rtype: bool
         """
         return self._HideOneKeySign

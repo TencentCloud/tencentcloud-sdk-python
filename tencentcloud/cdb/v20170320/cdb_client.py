@@ -3255,6 +3255,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyProtectMode(self, request):
+        """该接口（ModifyProtectMode）用于修改实例的同步方式。
+
+        :param request: Request instance for ModifyProtectMode.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyProtectModeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyProtectModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProtectMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProtectModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRemoteBackupConfig(self, request):
         """本接口(ModifyRemoteBackupConfig)用于修改数据库异地备份配置信息。
 

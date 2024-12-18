@@ -2022,28 +2022,15 @@ class DescribeGeneralMetricDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 要过滤的维度信息：
-service_metric视图支持：service.name（服务名）、span.kind（客户端/服务端视角）为维度进行过滤，service.name（服务名）必填。
-span.kind:
-	server:服务端视角
-	client:客户端视角
-默认为服务端视角进行查询。
-runtime_metric视图支持：service.name（服务名）维度进行过滤，service.name（服务名）必填。
-sql_metric视图支持：service.name（服务名）、db.instance（数据库名称）、db.ip（数据库实例ip）维度进行过滤，查询service_slow_sql_count（慢sql）指标时service.name必填，查询sql_duration_avg（耗时）指标时db.instance（数据库名称）必填。
-        :type Filters: list of GeneralFilter
-        :param _Metrics: 需要查询的指标，不可自定义输入。
-service_metric视图支持：service_request_count（总请求）、service_duration（平均响应时间）、service_error_req_rate（平均错误率）、service_slow_call_count（慢调用）、service_error_request_count（异常数量）。
-runtime_metric视图支持：service_gc_full_count（Full GC）。
-sql_metric视图支持：service_slow_sql_count（慢sql）、sql_duration_avg（耗时）。
+        :param _Metrics: 需要查询的指标名称，不可自定义输入，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :type Metrics: list of str
         :param _InstanceId: 业务系统ID
         :type InstanceId: str
-        :param _ViewName: 视图名称，不可自定义输入。支持：service_metric、runtime_metric、sql_metric。
+        :param _ViewName: 视图名称，不可自定义输入。[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :type ViewName: str
-        :param _GroupBy: 聚合维度：
-service_metric视图支持：service.name（服务名）、span.kind （客户端/服务端视角）维度进行聚合，service.name（服务名）必填。
-runtime_metric视图支持：service.name（服务名）维度进行聚合，service.name（服务名）必填。
-sql_metric视图支持：service.name（服务名）、db.statement（sql语句）维度进行聚合，查询service_slow_sql_count（慢sql）时service.name（服务名）必填，查询sql_duration_avg（耗时）指标时service.name（服务名）、db.statement（sql语句）必填。
+        :param _Filters: 要过滤的维度信息，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
+        :type Filters: list of GeneralFilter
+        :param _GroupBy: 聚合维度，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :type GroupBy: list of str
         :param _StartTime: 起始时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
         :type StartTime: int
@@ -2052,19 +2039,18 @@ sql_metric视图支持：service.name（服务名）、db.statement（sql语句�
         :param _Period: 聚合粒度，单位为秒，最小为60s，即一分钟的聚合粒度；如果为空或0则计算开始时间到截止时间的指标数据，上报其他值会报错。
         :type Period: int
         :param _OrderBy: 对查询指标进行排序：
-service_metric视图支持：service_request_count（总请求）、service_duration（平均响应时间）、service_error_req_rate（平均错误率）、service_slow_call_count（慢调用）、service_error_request_count（异常数量）。
-runtime_metric视图支持：service_gc_full_count（Full GC）。
-sql_metric视图支持：service_slow_sql_count（慢sql）、sql_duration_avg（耗时）。
-asc:对查询指标进行升序排序
-desc：对查询指标进行降序排序
+Key 填写云 API 指标名称，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
+Value 填写排序方式：     
+- asc:对查询指标进行升序排序
+- desc：对查询指标进行降序排序
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         :param _PageSize: 查询指标的限制条数，目前最多展示50条数据，PageSize取值为1-50，上送PageSize则根据PageSize的值展示限制条数。
         :type PageSize: int
         """
-        self._Filters = None
         self._Metrics = None
         self._InstanceId = None
         self._ViewName = None
+        self._Filters = None
         self._GroupBy = None
         self._StartTime = None
         self._EndTime = None
@@ -2073,29 +2059,8 @@ desc：对查询指标进行降序排序
         self._PageSize = None
 
     @property
-    def Filters(self):
-        """要过滤的维度信息：
-service_metric视图支持：service.name（服务名）、span.kind（客户端/服务端视角）为维度进行过滤，service.name（服务名）必填。
-span.kind:
-	server:服务端视角
-	client:客户端视角
-默认为服务端视角进行查询。
-runtime_metric视图支持：service.name（服务名）维度进行过滤，service.name（服务名）必填。
-sql_metric视图支持：service.name（服务名）、db.instance（数据库名称）、db.ip（数据库实例ip）维度进行过滤，查询service_slow_sql_count（慢sql）指标时service.name必填，查询sql_duration_avg（耗时）指标时db.instance（数据库名称）必填。
-        :rtype: list of GeneralFilter
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
     def Metrics(self):
-        """需要查询的指标，不可自定义输入。
-service_metric视图支持：service_request_count（总请求）、service_duration（平均响应时间）、service_error_req_rate（平均错误率）、service_slow_call_count（慢调用）、service_error_request_count（异常数量）。
-runtime_metric视图支持：service_gc_full_count（Full GC）。
-sql_metric视图支持：service_slow_sql_count（慢sql）、sql_duration_avg（耗时）。
+        """需要查询的指标名称，不可自定义输入，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :rtype: list of str
         """
         return self._Metrics
@@ -2117,7 +2082,7 @@ sql_metric视图支持：service_slow_sql_count（慢sql）、sql_duration_avg�
 
     @property
     def ViewName(self):
-        """视图名称，不可自定义输入。支持：service_metric、runtime_metric、sql_metric。
+        """视图名称，不可自定义输入。[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :rtype: str
         """
         return self._ViewName
@@ -2127,11 +2092,19 @@ sql_metric视图支持：service_slow_sql_count（慢sql）、sql_duration_avg�
         self._ViewName = ViewName
 
     @property
+    def Filters(self):
+        """要过滤的维度信息，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
+        :rtype: list of GeneralFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
     def GroupBy(self):
-        """聚合维度：
-service_metric视图支持：service.name（服务名）、span.kind （客户端/服务端视角）维度进行聚合，service.name（服务名）必填。
-runtime_metric视图支持：service.name（服务名）维度进行聚合，service.name（服务名）必填。
-sql_metric视图支持：service.name（服务名）、db.statement（sql语句）维度进行聚合，查询service_slow_sql_count（慢sql）时service.name（服务名）必填，查询sql_duration_avg（耗时）指标时service.name（服务名）、db.statement（sql语句）必填。
+        """聚合维度，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :rtype: list of str
         """
         return self._GroupBy
@@ -2176,11 +2149,10 @@ sql_metric视图支持：service.name（服务名）、db.statement（sql语句�
     @property
     def OrderBy(self):
         """对查询指标进行排序：
-service_metric视图支持：service_request_count（总请求）、service_duration（平均响应时间）、service_error_req_rate（平均错误率）、service_slow_call_count（慢调用）、service_error_request_count（异常数量）。
-runtime_metric视图支持：service_gc_full_count（Full GC）。
-sql_metric视图支持：service_slow_sql_count（慢sql）、sql_duration_avg（耗时）。
-asc:对查询指标进行升序排序
-desc：对查询指标进行降序排序
+Key 填写云 API 指标名称，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
+Value 填写排序方式：     
+- asc:对查询指标进行升序排序
+- desc：对查询指标进行降序排序
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
         return self._OrderBy
@@ -2202,15 +2174,15 @@ desc：对查询指标进行降序排序
 
 
     def _deserialize(self, params):
+        self._Metrics = params.get("Metrics")
+        self._InstanceId = params.get("InstanceId")
+        self._ViewName = params.get("ViewName")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = GeneralFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._Metrics = params.get("Metrics")
-        self._InstanceId = params.get("InstanceId")
-        self._ViewName = params.get("ViewName")
         self._GroupBy = params.get("GroupBy")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")

@@ -1984,6 +1984,8 @@ HoaiMy
         :type NotifyDuration: int
         :param _NotifyMessage: 用户NotifyDuration没说话，AI提示的语句，默认是"抱歉，我没听清。您可以重复下吗？"
         :type NotifyMessage: str
+        :param _NotifyMaxCount: 最大触发AI提示音次数，默认为不限制
+        :type NotifyMaxCount: int
         :param _CustomTTSConfig: <p>和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色</p>
 <ul>
 <li>Tencent TTS<br>
@@ -2084,6 +2086,7 @@ HoaiMy
         self._EndFunctionDesc = None
         self._NotifyDuration = None
         self._NotifyMessage = None
+        self._NotifyMaxCount = None
         self._CustomTTSConfig = None
 
     @property
@@ -2384,6 +2387,17 @@ HoaiMy
         self._NotifyMessage = NotifyMessage
 
     @property
+    def NotifyMaxCount(self):
+        """最大触发AI提示音次数，默认为不限制
+        :rtype: int
+        """
+        return self._NotifyMaxCount
+
+    @NotifyMaxCount.setter
+    def NotifyMaxCount(self, NotifyMaxCount):
+        self._NotifyMaxCount = NotifyMaxCount
+
+    @property
     def CustomTTSConfig(self):
         """<p>和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色</p>
 <ul>
@@ -2493,6 +2507,7 @@ HoaiMy
         self._EndFunctionDesc = params.get("EndFunctionDesc")
         self._NotifyDuration = params.get("NotifyDuration")
         self._NotifyMessage = params.get("NotifyMessage")
+        self._NotifyMaxCount = params.get("NotifyMaxCount")
         self._CustomTTSConfig = params.get("CustomTTSConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

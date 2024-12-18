@@ -4152,7 +4152,7 @@ class RunThreadRequest(AbstractModel):
         r"""
         :param _ThreadID: 会话 ID
         :type ThreadID: str
-        :param _AssistantID: 助手 ID
+        :param _AssistantID: 助手 ID（目前未使用，留空）
         :type AssistantID: str
         :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
         :type Model: str
@@ -4198,7 +4198,7 @@ class RunThreadRequest(AbstractModel):
 
     @property
     def AssistantID(self):
-        """助手 ID
+        """助手 ID（目前未使用，留空）
         :rtype: str
         """
         return self._AssistantID

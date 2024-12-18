@@ -15728,6 +15728,8 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type CdcId: str
         :param _MaxConnection: SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
         :type MaxConnection: int
+        :param _BgpAsn: BGP ASN。
+        :type BgpAsn: int
         """
         self._VpcId = None
         self._VpnGatewayName = None
@@ -15739,6 +15741,7 @@ class CreateVpnGatewayRequest(AbstractModel):
         self._Tags = None
         self._CdcId = None
         self._MaxConnection = None
+        self._BgpAsn = None
 
     @property
     def VpcId(self):
@@ -15850,6 +15853,17 @@ class CreateVpnGatewayRequest(AbstractModel):
     def MaxConnection(self, MaxConnection):
         self._MaxConnection = MaxConnection
 
+    @property
+    def BgpAsn(self):
+        """BGP ASN。
+        :rtype: int
+        """
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -15869,6 +15883,7 @@ class CreateVpnGatewayRequest(AbstractModel):
                 self._Tags.append(obj)
         self._CdcId = params.get("CdcId")
         self._MaxConnection = params.get("MaxConnection")
+        self._BgpAsn = params.get("BgpAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64854,6 +64869,8 @@ class VpnGateway(AbstractModel):
         :type CdcId: str
         :param _MaxConnection: SSL-VPN 客户端连接数。
         :type MaxConnection: int
+        :param _BgpAsn: Bgp ASN
+        :type BgpAsn: int
         """
         self._VpnGatewayId = None
         self._VpcId = None
@@ -64875,6 +64892,7 @@ class VpnGateway(AbstractModel):
         self._NetworkInstanceId = None
         self._CdcId = None
         self._MaxConnection = None
+        self._BgpAsn = None
 
     @property
     def VpnGatewayId(self):
@@ -65096,6 +65114,17 @@ class VpnGateway(AbstractModel):
     def MaxConnection(self, MaxConnection):
         self._MaxConnection = MaxConnection
 
+    @property
+    def BgpAsn(self):
+        """Bgp ASN
+        :rtype: int
+        """
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
@@ -65123,6 +65152,7 @@ class VpnGateway(AbstractModel):
         self._NetworkInstanceId = params.get("NetworkInstanceId")
         self._CdcId = params.get("CdcId")
         self._MaxConnection = params.get("MaxConnection")
+        self._BgpAsn = params.get("BgpAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
