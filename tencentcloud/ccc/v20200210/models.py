@@ -10670,6 +10670,8 @@ class ModifyStaffRequest(AbstractModel):
         :type UseMobileCallOut: bool
         :param _UseMobileAccept: 手机接听模式 0 - 关闭 | 1 - 仅离线 | 2 - 始终
         :type UseMobileAccept: int
+        :param _ExtensionNumber: 座席分机号（1 到 8 打头，4 - 6 位）
+        :type ExtensionNumber: str
         """
         self._SdkAppId = None
         self._Email = None
@@ -10680,6 +10682,7 @@ class ModifyStaffRequest(AbstractModel):
         self._SkillGroupIds = None
         self._UseMobileCallOut = None
         self._UseMobileAccept = None
+        self._ExtensionNumber = None
 
     @property
     def SdkAppId(self):
@@ -10780,6 +10783,17 @@ class ModifyStaffRequest(AbstractModel):
     def UseMobileAccept(self, UseMobileAccept):
         self._UseMobileAccept = UseMobileAccept
 
+    @property
+    def ExtensionNumber(self):
+        """座席分机号（1 到 8 打头，4 - 6 位）
+        :rtype: str
+        """
+        return self._ExtensionNumber
+
+    @ExtensionNumber.setter
+    def ExtensionNumber(self, ExtensionNumber):
+        self._ExtensionNumber = ExtensionNumber
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -10791,6 +10805,7 @@ class ModifyStaffRequest(AbstractModel):
         self._SkillGroupIds = params.get("SkillGroupIds")
         self._UseMobileCallOut = params.get("UseMobileCallOut")
         self._UseMobileAccept = params.get("UseMobileAccept")
+        self._ExtensionNumber = params.get("ExtensionNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12082,6 +12097,8 @@ class SeatUserInfo(AbstractModel):
 3:普通座席
 else:自定义角色ID
         :type Role: int
+        :param _ExtensionNumber: 座席分机号（1 到 8 打头，4 - 6 位）
+        :type ExtensionNumber: str
         """
         self._Name = None
         self._Mail = None
@@ -12091,6 +12108,7 @@ else:自定义角色ID
         self._UserId = None
         self._SkillGroupNameList = None
         self._Role = None
+        self._ExtensionNumber = None
 
     @property
     def Name(self):
@@ -12183,6 +12201,17 @@ else:自定义角色ID
     def Role(self, Role):
         self._Role = Role
 
+    @property
+    def ExtensionNumber(self):
+        """座席分机号（1 到 8 打头，4 - 6 位）
+        :rtype: str
+        """
+        return self._ExtensionNumber
+
+    @ExtensionNumber.setter
+    def ExtensionNumber(self, ExtensionNumber):
+        self._ExtensionNumber = ExtensionNumber
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12193,6 +12222,7 @@ else:自定义角色ID
         self._UserId = params.get("UserId")
         self._SkillGroupNameList = params.get("SkillGroupNameList")
         self._Role = params.get("Role")
+        self._ExtensionNumber = params.get("ExtensionNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12835,6 +12865,8 @@ class StaffInfo(AbstractModel):
         :type SkillGroupList: list of SkillGroupItem
         :param _LastModifyTimestamp: 最后修改时间
         :type LastModifyTimestamp: int
+        :param _ExtensionNumber: 座席分机号（1 到 8 打头，4 - 6 位）
+        :type ExtensionNumber: str
         """
         self._Name = None
         self._Mail = None
@@ -12844,6 +12876,7 @@ class StaffInfo(AbstractModel):
         self._RoleId = None
         self._SkillGroupList = None
         self._LastModifyTimestamp = None
+        self._ExtensionNumber = None
 
     @property
     def Name(self):
@@ -12933,6 +12966,17 @@ class StaffInfo(AbstractModel):
     def LastModifyTimestamp(self, LastModifyTimestamp):
         self._LastModifyTimestamp = LastModifyTimestamp
 
+    @property
+    def ExtensionNumber(self):
+        """座席分机号（1 到 8 打头，4 - 6 位）
+        :rtype: str
+        """
+        return self._ExtensionNumber
+
+    @ExtensionNumber.setter
+    def ExtensionNumber(self, ExtensionNumber):
+        self._ExtensionNumber = ExtensionNumber
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12948,6 +12992,7 @@ class StaffInfo(AbstractModel):
                 obj._deserialize(item)
                 self._SkillGroupList.append(obj)
         self._LastModifyTimestamp = params.get("LastModifyTimestamp")
+        self._ExtensionNumber = params.get("ExtensionNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

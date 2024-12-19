@@ -810,8 +810,10 @@ class ConstraintRange(AbstractModel):
     def __init__(self):
         r"""
         :param _Min: 约束类型为section时的最小值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Min: str
         :param _Max: 约束类型为section时的最大值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Max: str
         """
         self._Min = None
@@ -820,6 +822,7 @@ class ConstraintRange(AbstractModel):
     @property
     def Min(self):
         """约束类型为section时的最小值
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Min
@@ -831,6 +834,7 @@ class ConstraintRange(AbstractModel):
     @property
     def Max(self):
         """约束类型为section时的最大值
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Max
@@ -1707,7 +1711,7 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 子网Id
         :type SubnetId: str
-        :param _DbVersionId: db类型，不传默认0
+        :param _DbVersionId: db类型，不传默认8.0
         :type DbVersionId: str
         :param _Manual: （废弃）是否手动指定一组服务器分配, 运维使用
         :type Manual: int
@@ -1879,7 +1883,7 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
 
     @property
     def DbVersionId(self):
-        """db类型，不传默认0
+        """db类型，不传默认8.0
         :rtype: str
         """
         return self._DbVersionId
@@ -6937,9 +6941,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Tags: list of Tag
         :param _FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
         :type FilterInstanceType: str
-        :param _Status: 按照实例状态进行筛选
+        :param _Status: 按照实例状态进行筛选。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
         :type Status: list of int
-        :param _ExcludeStatus: 排除实例状态
+        :param _ExcludeStatus: 排除实例状态。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
         :type ExcludeStatus: list of int
         """
         self._InstanceIds = None
@@ -7163,7 +7167,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """按照实例状态进行筛选
+        """按照实例状态进行筛选。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
         :rtype: list of int
         """
         return self._Status
@@ -7174,7 +7178,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ExcludeStatus(self):
-        """排除实例状态
+        """排除实例状态。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
         :rtype: list of int
         """
         return self._ExcludeStatus
@@ -8501,14 +8505,14 @@ class DescribeDatabasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，形如：dcdbt-ow7t8lmc。
+        :param _InstanceId: 实例 ID，形如：tdsql-e9tklsgz。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例 ID，形如：dcdbt-ow7t8lmc。
+        """实例 ID，形如：tdsql-e9tklsgz。
         :rtype: str
         """
         return self._InstanceId

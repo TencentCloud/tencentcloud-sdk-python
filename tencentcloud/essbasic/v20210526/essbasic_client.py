@@ -2079,6 +2079,34 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrganizationAuthFile(self, request):
+        """生成合成后的各类企业授权书，包括：
+        - 企业认证超管授权书
+        - 超管变更授权书
+        - 企业注销授权书
+
+        注: 需自行保证传入真实的企业/法人/超管信息，否则后续的审核将会拒绝。
+
+        :param request: Request instance for CreateOrganizationAuthFile.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateOrganizationAuthFileRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateOrganizationAuthFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrganizationAuthFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrganizationAuthFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePartnerAutoSignAuthUrl(self, request):
         """创建一个用于他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权操作。
 

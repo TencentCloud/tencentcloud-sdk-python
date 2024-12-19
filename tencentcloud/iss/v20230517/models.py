@@ -2904,7 +2904,7 @@ class AddUserDeviceRequest(AbstractModel):
         r"""
         :param _Name: 设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
         :type Name: str
-        :param _AccessProtocol: 设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
+        :param _AccessProtocol: 设备接入协议（1:RTMP,2:GB,3:GW,6:ISUP）
         :type AccessProtocol: int
         :param _Type: 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
         :type Type: int
@@ -2965,7 +2965,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def AccessProtocol(self):
-        """设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
+        """设备接入协议（1:RTMP,2:GB,3:GW,6:ISUP）
         :rtype: int
         """
         return self._AccessProtocol

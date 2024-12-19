@@ -993,7 +993,7 @@ class DomainClient(AbstractClient):
 
 
     def ModifyDomainDNSBatch(self, request):
-        """本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
+        """本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
 
         :param request: Request instance for ModifyDomainDNSBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.ModifyDomainDNSBatchRequest`

@@ -1730,10 +1730,12 @@ class CreateOrgServiceAssignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
-        :type ServiceId: int
         :param _MemberUins: 委派管理员Uin列表。 最大长度20个
         :type MemberUins: list of int
+        :param _ServiceId: 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :type ServiceId: int
+        :param _Product: 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :type Product: str
         :param _ManagementScope: 委派管理员管理范围。 取值：1-全部成员 2-部分成员，默认值1
         :type ManagementScope: int
         :param _ManagementScopeUins: 管理的成员Uin列表。ManagementScope为2时该参数有效
@@ -1741,22 +1743,12 @@ class CreateOrgServiceAssignRequest(AbstractModel):
         :param _ManagementScopeNodeIds: 管理的部门ID列表。ManagementScope为2时该参数有效
         :type ManagementScopeNodeIds: list of int
         """
-        self._ServiceId = None
         self._MemberUins = None
+        self._ServiceId = None
+        self._Product = None
         self._ManagementScope = None
         self._ManagementScopeUins = None
         self._ManagementScopeNodeIds = None
-
-    @property
-    def ServiceId(self):
-        """集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
-        :rtype: int
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
 
     @property
     def MemberUins(self):
@@ -1768,6 +1760,28 @@ class CreateOrgServiceAssignRequest(AbstractModel):
     @MemberUins.setter
     def MemberUins(self, MemberUins):
         self._MemberUins = MemberUins
+
+    @property
+    def ServiceId(self):
+        """集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :rtype: int
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Product(self):
+        """集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
     @property
     def ManagementScope(self):
@@ -1804,8 +1818,9 @@ class CreateOrgServiceAssignRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
         self._MemberUins = params.get("MemberUins")
+        self._ServiceId = params.get("ServiceId")
+        self._Product = params.get("Product")
         self._ManagementScope = params.get("ManagementScope")
         self._ManagementScopeUins = params.get("ManagementScopeUins")
         self._ManagementScopeNodeIds = params.get("ManagementScopeNodeIds")
@@ -3581,24 +3596,16 @@ class DeleteOrgServiceAssignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
-        :type ServiceId: int
         :param _MemberUin: 委派管理员Uin。
         :type MemberUin: int
+        :param _ServiceId: 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :type ServiceId: int
+        :param _Product: 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :type Product: str
         """
-        self._ServiceId = None
         self._MemberUin = None
-
-    @property
-    def ServiceId(self):
-        """集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
-        :rtype: int
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
+        self._ServiceId = None
+        self._Product = None
 
     @property
     def MemberUin(self):
@@ -3611,10 +3618,33 @@ class DeleteOrgServiceAssignRequest(AbstractModel):
     def MemberUin(self, MemberUin):
         self._MemberUin = MemberUin
 
+    @property
+    def ServiceId(self):
+        """集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :rtype: int
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Product(self):
+        """集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
 
     def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
         self._MemberUin = params.get("MemberUin")
+        self._ServiceId = params.get("ServiceId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10835,12 +10865,15 @@ class ListOrgServiceAssignMemberRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 限制数目。取值范围：1~50，默认值：10
         :type Limit: int
-        :param _ServiceId: 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :param _ServiceId: 集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
         :type ServiceId: int
+        :param _Product: 集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :type Product: str
         """
         self._Offset = None
         self._Limit = None
         self._ServiceId = None
+        self._Product = None
 
     @property
     def Offset(self):
@@ -10866,7 +10899,7 @@ class ListOrgServiceAssignMemberRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        """集团服务ID。和集团服务产品标识二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
         :rtype: int
         """
         return self._ServiceId
@@ -10875,11 +10908,23 @@ class ListOrgServiceAssignMemberRequest(AbstractModel):
     def ServiceId(self, ServiceId):
         self._ServiceId = ServiceId
 
+    @property
+    def Product(self):
+        """集团服务产品标识。和集团服务ID二选一必填，可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._ServiceId = params.get("ServiceId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

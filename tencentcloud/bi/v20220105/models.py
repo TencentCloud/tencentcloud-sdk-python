@@ -4264,12 +4264,15 @@ class DescribeProjectListRequest(AbstractModel):
         :type AllPage: bool
         :param _ModuleCollection: 角色信息
         :type ModuleCollection: str
+        :param _ModuleIdList: moduleId集合
+        :type ModuleIdList: list of str
         """
         self._PageSize = None
         self._PageNo = None
         self._Keyword = None
         self._AllPage = None
         self._ModuleCollection = None
+        self._ModuleIdList = None
 
     @property
     def PageSize(self):
@@ -4326,6 +4329,17 @@ class DescribeProjectListRequest(AbstractModel):
     def ModuleCollection(self, ModuleCollection):
         self._ModuleCollection = ModuleCollection
 
+    @property
+    def ModuleIdList(self):
+        """moduleId集合
+        :rtype: list of str
+        """
+        return self._ModuleIdList
+
+    @ModuleIdList.setter
+    def ModuleIdList(self, ModuleIdList):
+        self._ModuleIdList = ModuleIdList
+
 
     def _deserialize(self, params):
         self._PageSize = params.get("PageSize")
@@ -4333,6 +4347,7 @@ class DescribeProjectListRequest(AbstractModel):
         self._Keyword = params.get("Keyword")
         self._AllPage = params.get("AllPage")
         self._ModuleCollection = params.get("ModuleCollection")
+        self._ModuleIdList = params.get("ModuleIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

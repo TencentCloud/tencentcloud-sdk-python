@@ -346,7 +346,8 @@ class ApproverInfo(AbstractModel):
 <li>**6**：设备面容识别，需要对比手机机主预留的人脸信息，校验一致才能成功进行合同签署。（Android系统暂不支持该校验方式）</li></ul>
 
 
-默认为1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)
+默认为：
+1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)
 
 注：
 1. 用<font color='red'>模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
@@ -673,7 +674,8 @@ class ApproverInfo(AbstractModel):
 <li>**6**：设备面容识别，需要对比手机机主预留的人脸信息，校验一致才能成功进行合同签署。（Android系统暂不支持该校验方式）</li></ul>
 
 
-默认为1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)
+默认为：
+1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)
 
 注：
 1. 用<font color='red'>模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
@@ -11011,6 +11013,142 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
         if params.get("SignUrls") is not None:
             self._SignUrls = SignUrl()
             self._SignUrls._deserialize(params.get("SignUrls"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOrganizationAuthFileRequest(AbstractModel):
+    """CreateOrganizationAuthFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationCommonInfo: 企业授权书信息参数， 需要自行保证这些参数跟营业执照中的信息一致。
+        :type OrganizationCommonInfo: :class:`tencentcloud.ess.v20201111.models.OrganizationCommonInfo`
+        :param _Agent: 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Type: 授权书类型：
+- 0: 企业认证超管授权书
+- 1: 超管变更授权书
+- 2: 企业注销授权书
+        :type Type: int
+        """
+        self._OrganizationCommonInfo = None
+        self._Agent = None
+        self._Operator = None
+        self._Type = None
+
+    @property
+    def OrganizationCommonInfo(self):
+        """企业授权书信息参数， 需要自行保证这些参数跟营业执照中的信息一致。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.OrganizationCommonInfo`
+        """
+        return self._OrganizationCommonInfo
+
+    @OrganizationCommonInfo.setter
+    def OrganizationCommonInfo(self, OrganizationCommonInfo):
+        self._OrganizationCommonInfo = OrganizationCommonInfo
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Type(self):
+        """授权书类型：
+- 0: 企业认证超管授权书
+- 1: 超管变更授权书
+- 2: 企业注销授权书
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        if params.get("OrganizationCommonInfo") is not None:
+            self._OrganizationCommonInfo = OrganizationCommonInfo()
+            self._OrganizationCommonInfo._deserialize(params.get("OrganizationCommonInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationAuthFileResponse(AbstractModel):
+    """CreateOrganizationAuthFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileUrl: 授权书链接，有效期5分钟。
+        :type FileUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FileUrl = None
+        self._RequestId = None
+
+    @property
+    def FileUrl(self):
+        """授权书链接，有效期5分钟。
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileUrl = params.get("FileUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -27836,6 +27974,260 @@ class OrganizationAuthUrl(AbstractModel):
         
 
 
+class OrganizationCommonInfo(AbstractModel):
+    """企业授权书信息参数， 需要保证这些参数跟营业执照中的信息一致。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationName: 组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationName: str
+        :param _UniformSocialCreditCode: 组织机构企业统一社会信用代码。
+请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniformSocialCreditCode: str
+        :param _LegalName: 组织机构法人的姓名。
+请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalName: str
+        :param _LegalIdCardType: 组织机构法人的证件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalIdCardType: str
+        :param _LegalIdCardNumber: 组织机构法人的证件号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalIdCardNumber: str
+        :param _AdminName: 组织机构超管姓名。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminName: str
+        :param _AdminMobile: 组织机构超管手机号。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminMobile: str
+        :param _AdminIdCardType: 组织机构超管证件类型
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminIdCardType: str
+        :param _AdminIdCardNumber: 组织机构超管证件号码
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminIdCardNumber: str
+        :param _OldAdminName: 原超管姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldAdminName: str
+        :param _OldAdminMobile: 原超管手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldAdminMobile: str
+        :param _OldAdminIdCardType: 原超管证件类型
+        :type OldAdminIdCardType: str
+        :param _OldAdminIdCardNumber: 原超管证件号码
+        :type OldAdminIdCardNumber: str
+        """
+        self._OrganizationName = None
+        self._UniformSocialCreditCode = None
+        self._LegalName = None
+        self._LegalIdCardType = None
+        self._LegalIdCardNumber = None
+        self._AdminName = None
+        self._AdminMobile = None
+        self._AdminIdCardType = None
+        self._AdminIdCardNumber = None
+        self._OldAdminName = None
+        self._OldAdminMobile = None
+        self._OldAdminIdCardType = None
+        self._OldAdminIdCardNumber = None
+
+    @property
+    def OrganizationName(self):
+        """组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def UniformSocialCreditCode(self):
+        """组织机构企业统一社会信用代码。
+请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UniformSocialCreditCode
+
+    @UniformSocialCreditCode.setter
+    def UniformSocialCreditCode(self, UniformSocialCreditCode):
+        self._UniformSocialCreditCode = UniformSocialCreditCode
+
+    @property
+    def LegalName(self):
+        """组织机构法人的姓名。
+请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def LegalIdCardType(self):
+        """组织机构法人的证件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LegalIdCardType
+
+    @LegalIdCardType.setter
+    def LegalIdCardType(self, LegalIdCardType):
+        self._LegalIdCardType = LegalIdCardType
+
+    @property
+    def LegalIdCardNumber(self):
+        """组织机构法人的证件号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LegalIdCardNumber
+
+    @LegalIdCardNumber.setter
+    def LegalIdCardNumber(self, LegalIdCardNumber):
+        self._LegalIdCardNumber = LegalIdCardNumber
+
+    @property
+    def AdminName(self):
+        """组织机构超管姓名。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AdminName
+
+    @AdminName.setter
+    def AdminName(self, AdminName):
+        self._AdminName = AdminName
+
+    @property
+    def AdminMobile(self):
+        """组织机构超管手机号。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AdminMobile
+
+    @AdminMobile.setter
+    def AdminMobile(self, AdminMobile):
+        self._AdminMobile = AdminMobile
+
+    @property
+    def AdminIdCardType(self):
+        """组织机构超管证件类型
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AdminIdCardType
+
+    @AdminIdCardType.setter
+    def AdminIdCardType(self, AdminIdCardType):
+        self._AdminIdCardType = AdminIdCardType
+
+    @property
+    def AdminIdCardNumber(self):
+        """组织机构超管证件号码
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AdminIdCardNumber
+
+    @AdminIdCardNumber.setter
+    def AdminIdCardNumber(self, AdminIdCardNumber):
+        self._AdminIdCardNumber = AdminIdCardNumber
+
+    @property
+    def OldAdminName(self):
+        """原超管姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OldAdminName
+
+    @OldAdminName.setter
+    def OldAdminName(self, OldAdminName):
+        self._OldAdminName = OldAdminName
+
+    @property
+    def OldAdminMobile(self):
+        """原超管手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OldAdminMobile
+
+    @OldAdminMobile.setter
+    def OldAdminMobile(self, OldAdminMobile):
+        self._OldAdminMobile = OldAdminMobile
+
+    @property
+    def OldAdminIdCardType(self):
+        """原超管证件类型
+        :rtype: str
+        """
+        return self._OldAdminIdCardType
+
+    @OldAdminIdCardType.setter
+    def OldAdminIdCardType(self, OldAdminIdCardType):
+        self._OldAdminIdCardType = OldAdminIdCardType
+
+    @property
+    def OldAdminIdCardNumber(self):
+        """原超管证件号码
+        :rtype: str
+        """
+        return self._OldAdminIdCardNumber
+
+    @OldAdminIdCardNumber.setter
+    def OldAdminIdCardNumber(self, OldAdminIdCardNumber):
+        self._OldAdminIdCardNumber = OldAdminIdCardNumber
+
+
+    def _deserialize(self, params):
+        self._OrganizationName = params.get("OrganizationName")
+        self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self._LegalName = params.get("LegalName")
+        self._LegalIdCardType = params.get("LegalIdCardType")
+        self._LegalIdCardNumber = params.get("LegalIdCardNumber")
+        self._AdminName = params.get("AdminName")
+        self._AdminMobile = params.get("AdminMobile")
+        self._AdminIdCardType = params.get("AdminIdCardType")
+        self._AdminIdCardNumber = params.get("AdminIdCardNumber")
+        self._OldAdminName = params.get("OldAdminName")
+        self._OldAdminMobile = params.get("OldAdminMobile")
+        self._OldAdminIdCardType = params.get("OldAdminIdCardType")
+        self._OldAdminIdCardNumber = params.get("OldAdminIdCardNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrganizationInfo(AbstractModel):
     """机构信息
 
@@ -29374,7 +29766,9 @@ class ReleasedApprover(AbstractModel):
 
 
 class RelieveInfo(AbstractModel):
-    """解除协议文档中内容信息，包括但不限于：解除理由、解除后仍然有效的条款-保留条款、原合同事项处理-费用结算、原合同事项处理-其他事项、其他约定等。
+    """解除协议文档中内容信息，包括但不限于：解除理由、解除后仍然有效的条款-保留条款、原合同事项处理-费用结算、原合同事项处理-其他事项、其他约定等。下面各种字段在解除协议中的位置参考：
+
+    ![image](https://qcloudimg.tencent-cloud.cn/raw/5087164cfe5a15fa3ced3180842d5da9.png)
 
     """
 
@@ -29389,7 +29783,7 @@ class RelieveInfo(AbstractModel):
         :type OriginalExpenseSettlement: str
         :param _OriginalOtherSettlement: 原合同事项处理-其他事项，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
         :type OriginalOtherSettlement: str
-        :param _OtherDeals: 其他约定，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
+        :param _OtherDeals: 其他约定（如约定的与解除协议存在冲突的，以【其他约定】为准），最大支持200个字，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
         :type OtherDeals: str
         """
         self._Reason = None
@@ -29445,7 +29839,7 @@ class RelieveInfo(AbstractModel):
 
     @property
     def OtherDeals(self):
-        """其他约定，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
+        """其他约定（如约定的与解除协议存在冲突的，以【其他约定】为准），最大支持200个字，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
         :rtype: str
         """
         return self._OtherDeals
@@ -29824,10 +30218,13 @@ class SignQrCode(AbstractModel):
         :param _ExpiredTime: 二维码的有截止时间，格式为Unix标准时间戳（秒）。
 一旦超过二维码的有效期限，该二维码将自动失效。
         :type ExpiredTime: int
+        :param _WeixinQrCodeUrl: 微信小程序二维码
+        :type WeixinQrCodeUrl: str
         """
         self._QrCodeId = None
         self._QrCodeUrl = None
         self._ExpiredTime = None
+        self._WeixinQrCodeUrl = None
 
     @property
     def QrCodeId(self):
@@ -29863,11 +30260,23 @@ class SignQrCode(AbstractModel):
     def ExpiredTime(self, ExpiredTime):
         self._ExpiredTime = ExpiredTime
 
+    @property
+    def WeixinQrCodeUrl(self):
+        """微信小程序二维码
+        :rtype: str
+        """
+        return self._WeixinQrCodeUrl
+
+    @WeixinQrCodeUrl.setter
+    def WeixinQrCodeUrl(self, WeixinQrCodeUrl):
+        self._WeixinQrCodeUrl = WeixinQrCodeUrl
+
 
     def _deserialize(self, params):
         self._QrCodeId = params.get("QrCodeId")
         self._QrCodeUrl = params.get("QrCodeUrl")
         self._ExpiredTime = params.get("ExpiredTime")
+        self._WeixinQrCodeUrl = params.get("WeixinQrCodeUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

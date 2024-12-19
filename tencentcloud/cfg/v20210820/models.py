@@ -964,6 +964,26 @@ class CreateTaskFromMultiActionRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskInstances: 参与演练的实例ID
+CVM ins-xxx
+MySQL cdb-xxx
+CLB lb-xxx
+Redis crs-xxx
+NAT网关 nat-xxx
+Redis crs-xxx
+专线-独享专用通道 dcx-xxx
+标准集群普通节点 {"ClusterId":"cls-xxx","InstanceId":"ins-xxx","LanIP":"1.1.1.1"}
+标准集群Pod {"ClusterId":"cls-xxx","PodName":"podname","NodeName":"1.1.1.1","NameSpace":"ns","Workload":"workload"}
+TDSQL-MySQL(InnoDB) tdsqlshard-xxx
+TDSQL-C cynosdbmysql-xxx
+VPC子网 subnet-xxxx
+CKafka ckafka-xxx
+MariaDB tdsql-xxxx
+PostgreSQL postgres-xxx
+云原生网关 gateway-xxx
+标准集群超级节点 {"ClusterId":"cls-xxx","InstanceId":"eklet-xxx","LanIP":"1.1.1.1,"NodePoolId":"np-xxx"}
+Serverless集群超级节点 {"ClusterId":"cls-xxxx","InstanceId":"eklet-xxxx","LanIP":"1.1.1.1"}
+Elasticsearch集群 es-xxxx
+RabbitMQ amqp-xxxx
         :type TaskInstances: list of str
         :param _TaskTitle: 演练名称，不填则默认取动作名称
         :type TaskTitle: str
@@ -983,6 +1003,26 @@ class CreateTaskFromMultiActionRequest(AbstractModel):
     @property
     def TaskInstances(self):
         """参与演练的实例ID
+CVM ins-xxx
+MySQL cdb-xxx
+CLB lb-xxx
+Redis crs-xxx
+NAT网关 nat-xxx
+Redis crs-xxx
+专线-独享专用通道 dcx-xxx
+标准集群普通节点 {"ClusterId":"cls-xxx","InstanceId":"ins-xxx","LanIP":"1.1.1.1"}
+标准集群Pod {"ClusterId":"cls-xxx","PodName":"podname","NodeName":"1.1.1.1","NameSpace":"ns","Workload":"workload"}
+TDSQL-MySQL(InnoDB) tdsqlshard-xxx
+TDSQL-C cynosdbmysql-xxx
+VPC子网 subnet-xxxx
+CKafka ckafka-xxx
+MariaDB tdsql-xxxx
+PostgreSQL postgres-xxx
+云原生网关 gateway-xxx
+标准集群超级节点 {"ClusterId":"cls-xxx","InstanceId":"eklet-xxx","LanIP":"1.1.1.1,"NodePoolId":"np-xxx"}
+Serverless集群超级节点 {"ClusterId":"cls-xxxx","InstanceId":"eklet-xxxx","LanIP":"1.1.1.1"}
+Elasticsearch集群 es-xxxx
+RabbitMQ amqp-xxxx
         :rtype: list of str
         """
         return self._TaskInstances
@@ -5140,6 +5180,25 @@ class TaskGroupConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskGroupInstances: 动作组所关联的实例对象
+CVM ins-xxx
+MySQL cdb-xxx
+CLB lb-xxx
+Redis crs-xxx
+NAT网关 nat-xxx
+专线-独享专用通道 dcx-xxx
+标准集群普通节点 {"ClusterId":"cls-xxx","InstanceId":"ins-xxx","LanIP":"1.1.1.1"}
+标准集群Pod {"ClusterId":"cls-xxx","PodName":"podname","NodeName":"1.1.1.1","NameSpace":"ns","Workload":"workload"}
+TDSQL-MySQL(InnoDB) tdsqlshard-xxx
+TDSQL-C cynosdbmysql-xxx
+VPC子网 subnet-xxxx
+CKafka ckafka-xxx
+MariaDB tdsql-xxxx
+PostgreSQL postgres-xxx
+云原生网关 gateway-xxx
+标准集群超级节点 {"ClusterId":"cls-xxx","InstanceId":"eklet-xxx","LanIP":"1.1.1.1,"NodePoolId":"np-xxx"}
+Serverless集群超级节点 {"ClusterId":"cls-xxxx","InstanceId":"eklet-xxxx","LanIP":"1.1.1.1"}
+Elasticsearch集群 es-xxxx
+RabbitMQ amqp-xxxx
         :type TaskGroupInstances: list of str
         :param _TaskGroupTitle: 动作组标题，不填默认取经验中的动作组名称
         :type TaskGroupTitle: str
@@ -5159,6 +5218,25 @@ class TaskGroupConfig(AbstractModel):
     @property
     def TaskGroupInstances(self):
         """动作组所关联的实例对象
+CVM ins-xxx
+MySQL cdb-xxx
+CLB lb-xxx
+Redis crs-xxx
+NAT网关 nat-xxx
+专线-独享专用通道 dcx-xxx
+标准集群普通节点 {"ClusterId":"cls-xxx","InstanceId":"ins-xxx","LanIP":"1.1.1.1"}
+标准集群Pod {"ClusterId":"cls-xxx","PodName":"podname","NodeName":"1.1.1.1","NameSpace":"ns","Workload":"workload"}
+TDSQL-MySQL(InnoDB) tdsqlshard-xxx
+TDSQL-C cynosdbmysql-xxx
+VPC子网 subnet-xxxx
+CKafka ckafka-xxx
+MariaDB tdsql-xxxx
+PostgreSQL postgres-xxx
+云原生网关 gateway-xxx
+标准集群超级节点 {"ClusterId":"cls-xxx","InstanceId":"eklet-xxx","LanIP":"1.1.1.1,"NodePoolId":"np-xxx"}
+Serverless集群超级节点 {"ClusterId":"cls-xxxx","InstanceId":"eklet-xxxx","LanIP":"1.1.1.1"}
+Elasticsearch集群 es-xxxx
+RabbitMQ amqp-xxxx
         :rtype: list of str
         """
         return self._TaskGroupInstances

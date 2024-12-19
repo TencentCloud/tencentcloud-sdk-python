@@ -23143,6 +23143,70 @@ class ModifyPublicNetworkAccessPointResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPublicNetworkSecurityPolicyRequest(AbstractModel):
+    """ModifyPublicNetworkSecurityPolicy请求参数结构体
+
+    """
+
+
+class ModifyPublicNetworkSecurityPolicyResponse(AbstractModel):
+    """ModifyPublicNetworkSecurityPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyResult: SUCCESS或者FAILURE
+        :type ModifyResult: str
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModifyResult = None
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def ModifyResult(self):
+        """SUCCESS或者FAILURE
+        :rtype: str
+        """
+        return self._ModifyResult
+
+    @ModifyResult.setter
+    def ModifyResult(self, ModifyResult):
+        self._ModifyResult = ModifyResult
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ModifyResult = params.get("ModifyResult")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRabbitMQUserRequest(AbstractModel):
     """ModifyRabbitMQUser请求参数结构体
 

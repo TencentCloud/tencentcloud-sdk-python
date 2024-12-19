@@ -14029,6 +14029,9 @@ class Options(AbstractModel):
         :param _AutoRetryTimeRangeMinutes: 自动重试的时间窗口设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
+        :param _StartPosition: 同步到kafka链路指定位点。目前只支持时间格式：yyyy-mm-dd hh:mm:ss。如果没有指定位点，为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartPosition: str
         :param _FilterBeginCommit: 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterBeginCommit: bool
@@ -14046,6 +14049,7 @@ class Options(AbstractModel):
         self._KafkaOption = None
         self._RateLimitOption = None
         self._AutoRetryTimeRangeMinutes = None
+        self._StartPosition = None
         self._FilterBeginCommit = None
         self._FilterCheckpoint = None
 
@@ -14170,6 +14174,18 @@ class Options(AbstractModel):
         self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
     @property
+    def StartPosition(self):
+        """同步到kafka链路指定位点。目前只支持时间格式：yyyy-mm-dd hh:mm:ss。如果没有指定位点，为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartPosition
+
+    @StartPosition.setter
+    def StartPosition(self, StartPosition):
+        self._StartPosition = StartPosition
+
+    @property
     def FilterBeginCommit(self):
         """同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14216,6 +14232,7 @@ class Options(AbstractModel):
             self._RateLimitOption = RateLimitOption()
             self._RateLimitOption._deserialize(params.get("RateLimitOption"))
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+        self._StartPosition = params.get("StartPosition")
         self._FilterBeginCommit = params.get("FilterBeginCommit")
         self._FilterCheckpoint = params.get("FilterCheckpoint")
         memeber_set = set(params.keys())

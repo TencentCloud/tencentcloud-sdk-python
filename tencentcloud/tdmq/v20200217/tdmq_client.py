@@ -2746,6 +2746,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPublicNetworkSecurityPolicy(self, request):
+        """修改pulsar专业版公网安全策略
+
+        :param request: Request instance for ModifyPublicNetworkSecurityPolicy.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyPublicNetworkSecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyPublicNetworkSecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPublicNetworkSecurityPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPublicNetworkSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRabbitMQUser(self, request):
         """修改RabbitMQ的用户
 
