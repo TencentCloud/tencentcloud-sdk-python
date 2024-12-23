@@ -284,7 +284,7 @@ class ApproverInfo(AbstractModel):
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _NotifyType: 通知签署方经办人的方式,  有以下途径:
@@ -513,7 +513,7 @@ class ApproverInfo(AbstractModel):
     def ApproverIdCardNumber(self):
         """签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
@@ -5107,7 +5107,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`请确保和合同中填入的一致`
@@ -5232,7 +5232,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
     def IdCardNumber(self):
         """证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`请确保和合同中填入的一致`
@@ -12351,7 +12351,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _Agent: 代理企业和员工的信息。
@@ -12411,7 +12411,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
     def IdCardNumber(self):
         """证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
@@ -13080,7 +13080,7 @@ class CreatePreparedPersonalEsignRequest(AbstractModel):
         :type UserName: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _SealName: 印章名称，长度1-50个字。
@@ -13163,7 +13163,7 @@ BLUE 蓝色。
     def IdCardNumber(self):
         """证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
@@ -13722,7 +13722,7 @@ class CreateSchemeUrlRequest(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _EndPoint: 要跳转的链接类型
@@ -13845,7 +13845,7 @@ class CreateSchemeUrlRequest(AbstractModel):
     def IdCardNumber(self):
         """证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
@@ -14741,9 +14741,7 @@ class CreateUserAutoSignEnableUrlRequest(AbstractModel):
 <ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
 <li> **H5SIGN** : 生成H5端开通链接</li></ul>
         :type UrlType: str
-        :param _NotifyType: 是否通知开通方，通知类型:
-<ul><li>默认不设置为不通知开通方</li>
-<li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+        :param _NotifyType: 是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
         :type NotifyType: str
         :param _NotifyAddress: 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
         :type NotifyAddress: str
@@ -14815,9 +14813,7 @@ class CreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def NotifyType(self):
-        """是否通知开通方，通知类型:
-<ul><li>默认不设置为不通知开通方</li>
-<li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+        """是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
         :rtype: str
         """
         return self._NotifyType
@@ -15283,7 +15279,7 @@ class CreateUserMobileChangeUrlRequest(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 要修改手机号用户的身份证号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 如果没有传递 userId且 userAccountType 是 0 或者没有传递， 此参数为<b>必填项。</b>
         :type IdCardNumber: str
@@ -15398,7 +15394,7 @@ class CreateUserMobileChangeUrlRequest(AbstractModel):
     def IdCardNumber(self):
         """要修改手机号用户的身份证号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 如果没有传递 userId且 userAccountType 是 0 或者没有传递， 此参数为<b>必填项。</b>
         :rtype: str
@@ -21278,7 +21274,7 @@ class DescribeUserVerifyStatusRequest(AbstractModel):
         :type Name: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _IdCardType: 证件类型，支持以下类型
@@ -21318,7 +21314,7 @@ class DescribeUserVerifyStatusRequest(AbstractModel):
     def IdCardNumber(self):
         """证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
@@ -22466,7 +22462,7 @@ WEWORKAPP: 企业微信
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
@@ -22580,7 +22576,7 @@ WEWORKAPP: 企业微信
     def ApproverIdCardNumber(self):
         """签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
@@ -23599,7 +23595,7 @@ class FlowCreateApprover(AbstractModel):
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
@@ -23861,7 +23857,7 @@ class FlowCreateApprover(AbstractModel):
     def ApproverIdCardNumber(self):
         """证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
@@ -27447,7 +27443,7 @@ class NeedReviewApproverInfo(AbstractModel):
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _OrganizationName: 组织机构名称。
@@ -27520,7 +27516,7 @@ class NeedReviewApproverInfo(AbstractModel):
     def ApproverIdCardNumber(self):
         """签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
@@ -32146,7 +32142,9 @@ class UploadFile(AbstractModel):
         r"""
         :param _FileBody: Base64编码后的文件内容
         :type FileBody: str
-        :param _FileName: 文件名，最大长度不超过200字符
+        :param _FileName: 文件的名字。
+文件名的最大长度应不超过200个字符，并且文件名的后缀必须反映其文件类型。
+例如，PDF文件应以“.pdf”结尾，如“XXX.pdf”，而Word文件应以“.doc”或“.docx”结尾，如“XXX.doc”或“XXX.docx”。
         :type FileName: str
         """
         self._FileBody = None
@@ -32165,7 +32163,9 @@ class UploadFile(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名，最大长度不超过200字符
+        """文件的名字。
+文件名的最大长度应不超过200个字符，并且文件名的后缀必须反映其文件类型。
+例如，PDF文件应以“.pdf”结尾，如“XXX.pdf”，而Word文件应以“.doc”或“.docx”结尾，如“XXX.doc”或“XXX.docx”。
         :rtype: str
         """
         return self._FileName
@@ -32203,7 +32203,9 @@ class UploadFilesRequest(AbstractModel):
         :param _Caller: 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
-        :param _FileInfos: 上传文件内容数组，最多支持上传20个文件。
+        :param _FileInfos: 请上传文件内容数组，最多可上传20个文件。
+
+<b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b>
         :type FileInfos: list of UploadFile
         :param _FileType: 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
 可支持的指定类型如下:
@@ -32271,7 +32273,9 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        """上传文件内容数组，最多支持上传20个文件。
+        """请上传文件内容数组，最多可上传20个文件。
+
+<b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b>
         :rtype: list of UploadFile
         """
         return self._FileInfos
@@ -32395,6 +32399,7 @@ class UploadFilesResponse(AbstractModel):
         r"""
         :param _FileIds: 文件资源ID数组，每个文件资源ID为32位字符串。
 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
+注:`有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用`
         :type FileIds: list of str
         :param _TotalCount: 上传成功文件数量
         :type TotalCount: int
@@ -32409,6 +32414,7 @@ class UploadFilesResponse(AbstractModel):
     def FileIds(self):
         """文件资源ID数组，每个文件资源ID为32位字符串。
 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
+注:`有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用`
         :rtype: list of str
         """
         return self._FileIds
@@ -32647,7 +32653,7 @@ class UserThreeFactor(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         """
@@ -32685,7 +32691,7 @@ class UserThreeFactor(AbstractModel):
     def IdCardNumber(self):
         """证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """

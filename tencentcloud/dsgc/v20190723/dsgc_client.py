@@ -1300,7 +1300,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskProcessHistory(self, request):
-        """修改最新评估风险项状态
+        """查询风险的处理历史
 
         :param request: Request instance for DescribeDSPAAssessmentRiskProcessHistory.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskProcessHistoryRequest`
@@ -2551,7 +2551,6 @@ class DsgcClient(AbstractClient):
     def EnableDSPADiscoveryRule(self, request):
         """打开或者关闭分类分级规则
         注：此API同时对该规则下的RDB跟COS规则操作。
-
 
         :param request: Request instance for EnableDSPADiscoveryRule.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.EnableDSPADiscoveryRuleRequest`

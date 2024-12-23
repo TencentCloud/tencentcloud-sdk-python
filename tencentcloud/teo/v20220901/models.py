@@ -4939,6 +4939,173 @@ class ConfigGroupVersionInfo(AbstractModel):
         
 
 
+class ContentIdentifier(AbstractModel):
+    """内容标识符。该功能仅白名单开放。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: 内容标识符 ID。
+        :type ContentId: str
+        :param _Description: 内容标识符描述。
+        :type Description: str
+        :param _ReferenceCount: 被规则引擎引用的次数。
+        :type ReferenceCount: int
+        :param _PlanId: 绑定的套餐 ID。
+        :type PlanId: str
+        :param _Tags: 绑定的标签。
+        :type Tags: list of Tag
+        :param _Status: 内容标识符状态，取值有：
+<li> active：已生效； </li>
+<li> deleted：已删除。</li>
+        :type Status: str
+        :param _CreatedOn: 创建时间，时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type CreatedOn: str
+        :param _ModifiedOn: 最新一次更新时间，时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type ModifiedOn: str
+        :param _DeletedOn: 删除时间，状态非 deleted 时候为空；时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletedOn: str
+        """
+        self._ContentId = None
+        self._Description = None
+        self._ReferenceCount = None
+        self._PlanId = None
+        self._Tags = None
+        self._Status = None
+        self._CreatedOn = None
+        self._ModifiedOn = None
+        self._DeletedOn = None
+
+    @property
+    def ContentId(self):
+        """内容标识符 ID。
+        :rtype: str
+        """
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def Description(self):
+        """内容标识符描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ReferenceCount(self):
+        """被规则引擎引用的次数。
+        :rtype: int
+        """
+        return self._ReferenceCount
+
+    @ReferenceCount.setter
+    def ReferenceCount(self, ReferenceCount):
+        self._ReferenceCount = ReferenceCount
+
+    @property
+    def PlanId(self):
+        """绑定的套餐 ID。
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def Tags(self):
+        """绑定的标签。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Status(self):
+        """内容标识符状态，取值有：
+<li> active：已生效； </li>
+<li> deleted：已删除。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedOn(self):
+        """创建时间，时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        """最新一次更新时间，时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :rtype: str
+        """
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+    @property
+    def DeletedOn(self):
+        """删除时间，状态非 deleted 时候为空；时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeletedOn
+
+    @DeletedOn.setter
+    def DeletedOn(self, DeletedOn):
+        self._DeletedOn = DeletedOn
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        self._Description = params.get("Description")
+        self._ReferenceCount = params.get("ReferenceCount")
+        self._PlanId = params.get("PlanId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Status = params.get("Status")
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
+        self._DeletedOn = params.get("DeletedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccelerationDomainRequest(AbstractModel):
     """CreateAccelerationDomain请求参数结构体
 
@@ -5969,6 +6136,120 @@ class CreateConfigGroupVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateContentIdentifierRequest(AbstractModel):
+    """CreateContentIdentifier请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: 内容标识符的描述，长度限制不超过 20 个字符。
+        :type Description: str
+        :param _PlanId: 待绑定的目标套餐 ID，仅限企业版可用。<li>当您账号下已存在套餐时，需要先前往 [套餐管理](https://console.cloud.tencent.com/edgeone/package) 获取套餐 ID，直接将内容标识符绑定至该套餐；</li><li>若您当前没有可绑定的套餐时，请先购买企业版套餐。</li>
+        :type PlanId: str
+        :param _Tags: 标签。该参数用于对内容标识符进行分权限管控。您需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建标签才可以在此处传入对应的标签键和标签值。
+        :type Tags: list of Tag
+        """
+        self._Description = None
+        self._PlanId = None
+        self._Tags = None
+
+    @property
+    def Description(self):
+        """内容标识符的描述，长度限制不超过 20 个字符。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PlanId(self):
+        """待绑定的目标套餐 ID，仅限企业版可用。<li>当您账号下已存在套餐时，需要先前往 [套餐管理](https://console.cloud.tencent.com/edgeone/package) 获取套餐 ID，直接将内容标识符绑定至该套餐；</li><li>若您当前没有可绑定的套餐时，请先购买企业版套餐。</li>
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def Tags(self):
+        """标签。该参数用于对内容标识符进行分权限管控。您需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建标签才可以在此处传入对应的标签键和标签值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        self._PlanId = params.get("PlanId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateContentIdentifierResponse(AbstractModel):
+    """CreateContentIdentifier返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: 生成的内容标识符 ID。创建完成之后您可以前往规则引擎在一定匹配条件下「设置内容标识符」。
+        :type ContentId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ContentId = None
+        self._RequestId = None
+
+    @property
+    def ContentId(self):
+        """生成的内容标识符 ID。创建完成之后您可以前往规则引擎在一定匹配条件下「设置内容标识符」。
+        :rtype: str
+        """
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCustomizeErrorPageRequest(AbstractModel):
     """CreateCustomizeErrorPage请求参数结构体
 
@@ -6105,6 +6386,198 @@ class CreateCustomizeErrorPageResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._PageId = params.get("PageId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDnsRecordRequest(AbstractModel):
+    """CreateDnsRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Name: DNS 记录名，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。
+        :type Name: str
+        :param _Type: DNS 记录类型，取值有：<li>A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；</li><li>AAAA：将域名指向一个外网 IPv6 地址；</li><li>MX：用于邮箱服务器。存在多条 MX 记录时，优先级越低越优先；</li><li>CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；</li><li>TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；</li><li>NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；</li><li>CAA：指定可为本站点颁发证书的 CA；</li><li>SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理。</li>
+不同的记录类型呢例如 SRV、CAA 记录对主机记录名称、记录值格式有不同的要求，各记录类型的详细说明介绍和格式示例请参考：[解析记录类型介绍](https://cloud.tencent.com/document/product/1552/90453#2f681022-91ab-4a9e-ac3d-0a6c454d954e)。
+        :type Type: str
+        :param _Content: DNS 记录内容，根据 Type 值填入与之相对应的内容，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。
+        :type Content: str
+        :param _Location: DNS 记录解析线路，不指定默认为 Default，表示默认解析线路，代表全部地域生效。
+
+- 解析线路配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。
+- 解析线路配置仅适用于标准版、企业版套餐使用，取值请参考：[解析线路及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+        :type Location: str
+        :param _TTL: 缓存时间，用户可指定值范围 60~86400，数值越小，修改记录各地生效时间越快，默认为 300，单位：秒。
+        :type TTL: int
+        :param _Weight: DNS 记录权重，用户可指定值范围 -1~100，设置为 0 时表示不解析，不指定默认为 -1，表示不设置权重。权重配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。<br>注意：同一个子域名下，相同解析线路的不同 DNS 记录，应保持同时设置权重或者同时都不设置权重。
+        :type Weight: int
+        :param _Priority: MX 记录优先级，该参数仅在当 Type（DNS 记录类型）为 MX 时生效，值越小优先级越高，用户可指定值范围0~50，不指定默认为0。
+        :type Priority: int
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._Type = None
+        self._Content = None
+        self._Location = None
+        self._TTL = None
+        self._Weight = None
+        self._Priority = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        """DNS 记录名，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """DNS 记录类型，取值有：<li>A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；</li><li>AAAA：将域名指向一个外网 IPv6 地址；</li><li>MX：用于邮箱服务器。存在多条 MX 记录时，优先级越低越优先；</li><li>CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；</li><li>TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；</li><li>NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；</li><li>CAA：指定可为本站点颁发证书的 CA；</li><li>SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理。</li>
+不同的记录类型呢例如 SRV、CAA 记录对主机记录名称、记录值格式有不同的要求，各记录类型的详细说明介绍和格式示例请参考：[解析记录类型介绍](https://cloud.tencent.com/document/product/1552/90453#2f681022-91ab-4a9e-ac3d-0a6c454d954e)。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Content(self):
+        """DNS 记录内容，根据 Type 值填入与之相对应的内容，如果是中文、韩文、日文域名，需要转换为 punycode 后输入。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Location(self):
+        """DNS 记录解析线路，不指定默认为 Default，表示默认解析线路，代表全部地域生效。
+
+- 解析线路配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。
+- 解析线路配置仅适用于标准版、企业版套餐使用，取值请参考：[解析线路及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def TTL(self):
+        """缓存时间，用户可指定值范围 60~86400，数值越小，修改记录各地生效时间越快，默认为 300，单位：秒。
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def Weight(self):
+        """DNS 记录权重，用户可指定值范围 -1~100，设置为 0 时表示不解析，不指定默认为 -1，表示不设置权重。权重配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。<br>注意：同一个子域名下，相同解析线路的不同 DNS 记录，应保持同时设置权重或者同时都不设置权重。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Priority(self):
+        """MX 记录优先级，该参数仅在当 Type（DNS 记录类型）为 MX 时生效，值越小优先级越高，用户可指定值范围0~50，不指定默认为0。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Content = params.get("Content")
+        self._Location = params.get("Location")
+        self._TTL = params.get("TTL")
+        self._Weight = params.get("Weight")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDnsRecordResponse(AbstractModel):
+    """CreateDnsRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: DNS 记录 ID。
+        :type RecordId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordId = None
+        self._RequestId = None
+
+    @property
+    def RecordId(self):
+        """DNS 记录 ID。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
         self._RequestId = params.get("RequestId")
 
 
@@ -9893,6 +10366,70 @@ class DeleteApplicationProxyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteContentIdentifierRequest(AbstractModel):
+    """DeleteContentIdentifier请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: 内容标识符 ID。
+        :type ContentId: str
+        """
+        self._ContentId = None
+
+    @property
+    def ContentId(self):
+        """内容标识符 ID。
+        :rtype: str
+        """
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteContentIdentifierResponse(AbstractModel):
+    """DeleteContentIdentifier返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCustomErrorPageRequest(AbstractModel):
     """DeleteCustomErrorPage请求参数结构体
 
@@ -9946,6 +10483,85 @@ class DeleteCustomErrorPageRequest(AbstractModel):
 
 class DeleteCustomErrorPageResponse(AbstractModel):
     """DeleteCustomErrorPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDnsRecordsRequest(AbstractModel):
+    """DeleteDnsRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _RecordIds: 待删除的 DNS 记录 ID 列表，上限：1000。
+        :type RecordIds: list of str
+        """
+        self._ZoneId = None
+        self._RecordIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RecordIds(self):
+        """待删除的 DNS 记录 ID 列表，上限：1000。
+        :rtype: list of str
+        """
+        return self._RecordIds
+
+    @RecordIds.setter
+    def RecordIds(self, RecordIds):
+        self._RecordIds = RecordIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RecordIds = params.get("RecordIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDnsRecordsResponse(AbstractModel):
+    """DeleteDnsRecords返回参数结构体
 
     """
 
@@ -12206,6 +12822,140 @@ class DescribeConfigGroupVersionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeContentIdentifiersRequest(AbstractModel):
+    """DescribeContentIdentifiers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Filters: 过滤条件，Filters 的上限为 20，Filters.Values 的上限为 20。该参数不填写时，默认返回当前 AppId 下有权限的内容标识符。详细的过滤条件如下：<li>description：按照内容标识符描述批量进行过滤；例如：test；</li><li>content-id：按照内容标识符 ID 批量进行过滤；例如：eocontent-2noz78a8ev6k；</li><li>tag-key：按照标签键进行过滤；</li> <li>tag-value： 按照标签值进行过滤；</li><li>status：按照内容标识符状态进行过滤，取值有：active：生效中；deleted：已删除。</li>仅支持按照 description 模糊查询，其余字段需要精准查询。
+        :type Filters: list of AdvancedFilter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """过滤条件，Filters 的上限为 20，Filters.Values 的上限为 20。该参数不填写时，默认返回当前 AppId 下有权限的内容标识符。详细的过滤条件如下：<li>description：按照内容标识符描述批量进行过滤；例如：test；</li><li>content-id：按照内容标识符 ID 批量进行过滤；例如：eocontent-2noz78a8ev6k；</li><li>tag-key：按照标签键进行过滤；</li> <li>tag-value： 按照标签值进行过滤；</li><li>status：按照内容标识符状态进行过滤，取值有：active：生效中；deleted：已删除。</li>仅支持按照 description 模糊查询，其余字段需要精准查询。
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContentIdentifiersResponse(AbstractModel):
+    """DescribeContentIdentifiers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的内容标识符总数。	
+        :type TotalCount: int
+        :param _ContentIdentifiers: 内容标识符详细内容列表。
+        :type ContentIdentifiers: list of ContentIdentifier
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ContentIdentifiers = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合过滤条件的内容标识符总数。	
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ContentIdentifiers(self):
+        """内容标识符详细内容列表。
+        :rtype: list of ContentIdentifier
+        """
+        return self._ContentIdentifiers
+
+    @ContentIdentifiers.setter
+    def ContentIdentifiers(self, ContentIdentifiers):
+        self._ContentIdentifiers = ContentIdentifiers
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ContentIdentifiers") is not None:
+            self._ContentIdentifiers = []
+            for item in params.get("ContentIdentifiers"):
+                obj = ContentIdentifier()
+                obj._deserialize(item)
+                self._ContentIdentifiers.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContentQuotaRequest(AbstractModel):
     """DescribeContentQuota请求参数结构体
 
@@ -13482,6 +14232,200 @@ class DescribeDeployHistoryResponse(AbstractModel):
                 obj = DeployRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDnsRecordsRequest(AbstractModel):
+    """DescribeDnsRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Offset: 分页查询偏移量，默认为 0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目，默认值：20，上限：1000。
+        :type Limit: int
+        :param _Filters: 过滤条件，Filters.Values 的上限为20。详细的过滤条件如下：<li>id： 按照 DNS 记录 ID 进行过滤，支持模糊查询；</li><li>name：按照 DNS 记录名称进行过滤，支持模糊查询；</li><li>content：按照 DNS 记录内容进行过滤，支持模糊查询；</li><li>type：按照 DNS 记录类型进行过滤，不支持模糊查询。可选项：<br>   A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；<br>   AAAA：将域名指向一个外网 IPv6 地址；<br>   CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；<br>   TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；<br>   NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；<br>   CAA：指定可为本站点颁发证书的 CA；<br>   SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理；<br>   MX：指定收件人邮件服务器。</li><li>ttl：按照解析生效时间进行过滤，不支持模糊查询。</li>
+        :type Filters: list of AdvancedFilter
+        :param _SortBy: 排序依据，取值有：<li>content：DNS 记录内容；</li><li>created-on：DNS 记录创建时间；</li><li>name：DNS 记录名称；</li><li>ttl：缓存时间；</li><li>type：DNS 记录类型。</li>默认根据 type, name 属性组合排序。
+        :type SortBy: str
+        :param _SortOrder: 列表排序方式，取值有：<li>asc：升序排列；</li><li>desc：降序排列。</li>默认值为 asc。
+        :type SortOrder: str
+        :param _Match: 匹配方式，取值有：<li>all：返回匹配所有查询条件的记录；</li><li>any：返回匹配任意一个查询条件的记录。</li>默认值为 all。
+        :type Match: str
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Match = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        """分页查询偏移量，默认为 0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页查询限制数目，默认值：20，上限：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """过滤条件，Filters.Values 的上限为20。详细的过滤条件如下：<li>id： 按照 DNS 记录 ID 进行过滤，支持模糊查询；</li><li>name：按照 DNS 记录名称进行过滤，支持模糊查询；</li><li>content：按照 DNS 记录内容进行过滤，支持模糊查询；</li><li>type：按照 DNS 记录类型进行过滤，不支持模糊查询。可选项：<br>   A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；<br>   AAAA：将域名指向一个外网 IPv6 地址；<br>   CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；<br>   TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；<br>   NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；<br>   CAA：指定可为本站点颁发证书的 CA；<br>   SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理；<br>   MX：指定收件人邮件服务器。</li><li>ttl：按照解析生效时间进行过滤，不支持模糊查询。</li>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        """排序依据，取值有：<li>content：DNS 记录内容；</li><li>created-on：DNS 记录创建时间；</li><li>name：DNS 记录名称；</li><li>ttl：缓存时间；</li><li>type：DNS 记录类型。</li>默认根据 type, name 属性组合排序。
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        """列表排序方式，取值有：<li>asc：升序排列；</li><li>desc：降序排列。</li>默认值为 asc。
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Match(self):
+        """匹配方式，取值有：<li>all：返回匹配所有查询条件的记录；</li><li>any：返回匹配任意一个查询条件的记录。</li>默认值为 all。
+        :rtype: str
+        """
+        return self._Match
+
+    @Match.setter
+    def Match(self, Match):
+        self._Match = Match
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Match = params.get("Match")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDnsRecordsResponse(AbstractModel):
+    """DescribeDnsRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: DNS 记录总数。
+        :type TotalCount: int
+        :param _DnsRecords: DNS 记录列表。
+        :type DnsRecords: list of DnsRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DnsRecords = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """DNS 记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DnsRecords(self):
+        """DNS 记录列表。
+        :rtype: list of DnsRecord
+        """
+        return self._DnsRecords
+
+    @DnsRecords.setter
+    def DnsRecords(self, DnsRecords):
+        self._DnsRecords = DnsRecords
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DnsRecords") is not None:
+            self._DnsRecords = []
+            for item in params.get("DnsRecords"):
+                obj = DnsRecord()
+                obj._deserialize(item)
+                self._DnsRecords.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18799,6 +19743,223 @@ class DiffIPWhitelist(AbstractModel):
         if params.get("NoChangeIPWhitelist") is not None:
             self._NoChangeIPWhitelist = IPWhitelist()
             self._NoChangeIPWhitelist._deserialize(params.get("NoChangeIPWhitelist"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DnsRecord(AbstractModel):
+    """DNS 记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。<br>注意：ZoneId 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+        :type ZoneId: str
+        :param _RecordId: DNS 记录 ID。
+        :type RecordId: str
+        :param _Name: DNS 记录名。
+        :type Name: str
+        :param _Type: DNS 记录类型，取值有：
+<li>A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；</li>
+<li>AAAA：将域名指向一个外网 IPv6 地址；</li>
+<li>MX：用于邮箱服务器。存在多条 MX 记录时，优先级越低越优先；</li>
+<li>CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；</li>
+<li>TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；</li>
+<li>NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；</li>
+<li>CAA：指定可为本站点颁发证书的 CA；</li>
+<li>SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理。</li>
+        :type Type: str
+        :param _Location: DNS 记录解析线路，不指定默认为 Default，表示默认解析线路，代表全部地域生效。<br>解析线路配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。<br>取值请参考：[解析线路及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+        :type Location: str
+        :param _Content: DNS 记录内容。根据 Type 值填入与之相对应的内容。
+        :type Content: str
+        :param _TTL: 缓存时间，取值范围 60~86400，数值越小，修改记录各地生效时间越快，单位：秒。
+        :type TTL: int
+        :param _Weight: DNS 记录权重，取值范围 -1~100，为 -1 时表示不分配权重，为 0 时表示不解析。权重配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。
+        :type Weight: int
+        :param _Priority: MX 记录优先级，取值范围 0~50，数值越小越优先。
+        :type Priority: int
+        :param _Status: DNS 记录解析状态，取值有：<li>enable：已生效；</li><li>disable：已停用。</li>注意：Status 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+        :type Status: str
+        :param _CreatedOn: 创建时间。<br>注意：CreatedOn 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+        :type CreatedOn: str
+        :param _ModifiedOn: 修改时间。<br>注意：ModifiedOn 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+        :type ModifiedOn: str
+        """
+        self._ZoneId = None
+        self._RecordId = None
+        self._Name = None
+        self._Type = None
+        self._Location = None
+        self._Content = None
+        self._TTL = None
+        self._Weight = None
+        self._Priority = None
+        self._Status = None
+        self._CreatedOn = None
+        self._ModifiedOn = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。<br>注意：ZoneId 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RecordId(self):
+        """DNS 记录 ID。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Name(self):
+        """DNS 记录名。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """DNS 记录类型，取值有：
+<li>A：将域名指向一个外网 IPv4 地址，如 8.8.8.8；</li>
+<li>AAAA：将域名指向一个外网 IPv6 地址；</li>
+<li>MX：用于邮箱服务器。存在多条 MX 记录时，优先级越低越优先；</li>
+<li>CNAME：将域名指向另一个域名，再由该域名解析出最终 IP 地址；</li>
+<li>TXT：对域名进行标识和说明，常用于域名验证和 SPF 记录（反垃圾邮件）；</li>
+<li>NS：如果需要将子域名交给其他 DNS 服务商解析，则需要添加 NS 记录。根域名无法添加 NS 记录；</li>
+<li>CAA：指定可为本站点颁发证书的 CA；</li>
+<li>SRV：标识某台服务器使用了某个服务，常见于微软系统的目录管理。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Location(self):
+        """DNS 记录解析线路，不指定默认为 Default，表示默认解析线路，代表全部地域生效。<br>解析线路配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。<br>取值请参考：[解析线路及对应代码枚举](https://cloud.tencent.com/document/product/1552/112542)。
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Content(self):
+        """DNS 记录内容。根据 Type 值填入与之相对应的内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def TTL(self):
+        """缓存时间，取值范围 60~86400，数值越小，修改记录各地生效时间越快，单位：秒。
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def Weight(self):
+        """DNS 记录权重，取值范围 -1~100，为 -1 时表示不分配权重，为 0 时表示不解析。权重配置仅适用于当 Type（DNS 记录类型）为 A、AAAA、CNAME 时。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Priority(self):
+        """MX 记录优先级，取值范围 0~50，数值越小越优先。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Status(self):
+        """DNS 记录解析状态，取值有：<li>enable：已生效；</li><li>disable：已停用。</li>注意：Status 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedOn(self):
+        """创建时间。<br>注意：CreatedOn 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        """修改时间。<br>注意：ModifiedOn 仅做出参使用，在 ModifyDnsRecords 不可作为入参使用，如有传此参数，会忽略。
+        :rtype: str
+        """
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RecordId = params.get("RecordId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Location = params.get("Location")
+        self._Content = params.get("Content")
+        self._TTL = params.get("TTL")
+        self._Weight = params.get("Weight")
+        self._Priority = params.get("Priority")
+        self._Status = params.get("Status")
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25348,6 +26509,85 @@ class ModifyApplicationProxyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyContentIdentifierRequest(AbstractModel):
+    """ModifyContentIdentifier请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: 内容标识符 ID。
+        :type ContentId: str
+        :param _Description: 内容标识符描述，长度限制不超过 20 个字符。
+        :type Description: str
+        """
+        self._ContentId = None
+        self._Description = None
+
+    @property
+    def ContentId(self):
+        """内容标识符 ID。
+        :rtype: str
+        """
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def Description(self):
+        """内容标识符描述，长度限制不超过 20 个字符。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyContentIdentifierResponse(AbstractModel):
+    """ModifyContentIdentifier返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCustomErrorPageRequest(AbstractModel):
     """ModifyCustomErrorPage请求参数结构体
 
@@ -25461,6 +26701,184 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
 class ModifyCustomErrorPageResponse(AbstractModel):
     """ModifyCustomErrorPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDnsRecordsRequest(AbstractModel):
+    """ModifyDnsRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID 。
+        :type ZoneId: str
+        :param _DnsRecords: DNS 记录修改数据列表，一次最多修改100条。
+        :type DnsRecords: list of DnsRecord
+        """
+        self._ZoneId = None
+        self._DnsRecords = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID 。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def DnsRecords(self):
+        """DNS 记录修改数据列表，一次最多修改100条。
+        :rtype: list of DnsRecord
+        """
+        return self._DnsRecords
+
+    @DnsRecords.setter
+    def DnsRecords(self, DnsRecords):
+        self._DnsRecords = DnsRecords
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("DnsRecords") is not None:
+            self._DnsRecords = []
+            for item in params.get("DnsRecords"):
+                obj = DnsRecord()
+                obj._deserialize(item)
+                self._DnsRecords.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDnsRecordsResponse(AbstractModel):
+    """ModifyDnsRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDnsRecordsStatusRequest(AbstractModel):
+    """ModifyDnsRecordsStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _RecordsToEnable: 待启用的 DNS 记录 ID 列表，上限：200。<br>注意：同个 DNS 记录 ID 不能同时存在于 RecordsToEnable 和 RecordsToDisable。
+        :type RecordsToEnable: list of str
+        :param _RecordsToDisable: 待停用的 DNS 记录 ID 列表，上限：200。<br>注意：同个 DNS 记录 ID 不能同时存在于 RecordsToEnable 和 RecordsToDisable。
+        :type RecordsToDisable: list of str
+        """
+        self._ZoneId = None
+        self._RecordsToEnable = None
+        self._RecordsToDisable = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RecordsToEnable(self):
+        """待启用的 DNS 记录 ID 列表，上限：200。<br>注意：同个 DNS 记录 ID 不能同时存在于 RecordsToEnable 和 RecordsToDisable。
+        :rtype: list of str
+        """
+        return self._RecordsToEnable
+
+    @RecordsToEnable.setter
+    def RecordsToEnable(self, RecordsToEnable):
+        self._RecordsToEnable = RecordsToEnable
+
+    @property
+    def RecordsToDisable(self):
+        """待停用的 DNS 记录 ID 列表，上限：200。<br>注意：同个 DNS 记录 ID 不能同时存在于 RecordsToEnable 和 RecordsToDisable。
+        :rtype: list of str
+        """
+        return self._RecordsToDisable
+
+    @RecordsToDisable.setter
+    def RecordsToDisable(self, RecordsToDisable):
+        self._RecordsToDisable = RecordsToDisable
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RecordsToEnable = params.get("RecordsToEnable")
+        self._RecordsToDisable = params.get("RecordsToDisable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDnsRecordsStatusResponse(AbstractModel):
+    """ModifyDnsRecordsStatus返回参数结构体
 
     """
 

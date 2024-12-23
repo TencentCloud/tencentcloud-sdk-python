@@ -6245,6 +6245,8 @@ class ElectronicFlightTicketFull(AbstractModel):
         :type BuyerTaxID: str
         :param _FlightItems: 机票详细信息元组
         :type FlightItems: list of FlightItemInfo
+        :param _InvoiceStatus: 机票开具状态
+        :type InvoiceStatus: str
         """
         self._UserName = None
         self._UserID = None
@@ -6269,6 +6271,7 @@ class ElectronicFlightTicketFull(AbstractModel):
         self._Seller = None
         self._BuyerTaxID = None
         self._FlightItems = None
+        self._InvoiceStatus = None
 
     @property
     def UserName(self):
@@ -6523,6 +6526,17 @@ class ElectronicFlightTicketFull(AbstractModel):
     def FlightItems(self, FlightItems):
         self._FlightItems = FlightItems
 
+    @property
+    def InvoiceStatus(self):
+        """机票开具状态
+        :rtype: str
+        """
+        return self._InvoiceStatus
+
+    @InvoiceStatus.setter
+    def InvoiceStatus(self, InvoiceStatus):
+        self._InvoiceStatus = InvoiceStatus
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -6553,6 +6567,7 @@ class ElectronicFlightTicketFull(AbstractModel):
                 obj = FlightItemInfo()
                 obj._deserialize(item)
                 self._FlightItems.append(obj)
+        self._InvoiceStatus = params.get("InvoiceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -201,10 +201,13 @@ class AgentRunningMode(AbstractModel):
     def __init__(self):
         r"""
         :param _Scene: 场景类型，支持WINDOWS
+注意：此字段可能返回 null，表示取不到有效值。
         :type Scene: str
         :param _User: 运行Agent的User
+注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Session: 运行Agent的Session
+注意：此字段可能返回 null，表示取不到有效值。
         :type Session: str
         """
         self._Scene = None
@@ -214,6 +217,7 @@ class AgentRunningMode(AbstractModel):
     @property
     def Scene(self):
         """场景类型，支持WINDOWS
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Scene
@@ -225,6 +229,7 @@ class AgentRunningMode(AbstractModel):
     @property
     def User(self):
         """运行Agent的User
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -236,6 +241,7 @@ class AgentRunningMode(AbstractModel):
     @property
     def Session(self):
         """运行Agent的Session
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Session
@@ -2291,8 +2297,10 @@ class Dependence(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTask: 依赖关系的起点任务名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTask: str
         :param _EndTask: 依赖关系的终点任务名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTask: str
         """
         self._StartTask = None
@@ -2301,6 +2309,7 @@ class Dependence(AbstractModel):
     @property
     def StartTask(self):
         """依赖关系的起点任务名称
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTask
@@ -2312,6 +2321,7 @@ class Dependence(AbstractModel):
     @property
     def EndTask(self):
         """依赖关系的终点任务名称
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTask

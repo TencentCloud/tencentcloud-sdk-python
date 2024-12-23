@@ -17579,11 +17579,11 @@ class SoftwareDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 详情唯一键。
+        :param _Key: 软件的属性标识
         :type Key: str
-        :param _Title: 详情标题。
+        :param _Title: 软件的属性标识描述
         :type Title: str
-        :param _Value: 详情值。
+        :param _Value: 软件的属性值
         :type Value: str
         """
         self._Key = None
@@ -17592,7 +17592,7 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Key(self):
-        """详情唯一键。
+        """软件的属性标识
         :rtype: str
         """
         return self._Key
@@ -17603,7 +17603,7 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Title(self):
-        """详情标题。
+        """软件的属性标识描述
         :rtype: str
         """
         return self._Title
@@ -17614,7 +17614,7 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Value(self):
-        """详情值。
+        """软件的属性值
         :rtype: str
         """
         return self._Value

@@ -2598,6 +2598,61 @@ class AlarmPolicyTriggerTask(AbstractModel):
         
 
 
+class BasicAuth(AbstractModel):
+    """url鉴权
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Password: 密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        """
+        self._UserName = None
+        self._Password = None
+
+    @property
+    def UserName(self):
+        """用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        """密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindPrometheusManagedGrafanaRequest(AbstractModel):
     """BindPrometheusManagedGrafana请求参数结构体
 
@@ -22804,6 +22859,105 @@ class DescribeRecordingRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRemoteURLsRequest(AbstractModel):
+    """DescribeRemoteURLs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _RemoteURLs: url数组
+        :type RemoteURLs: list of str
+        """
+        self._InstanceId = None
+        self._RemoteURLs = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RemoteURLs(self):
+        """url数组
+        :rtype: list of str
+        """
+        return self._RemoteURLs
+
+    @RemoteURLs.setter
+    def RemoteURLs(self, RemoteURLs):
+        self._RemoteURLs = RemoteURLs
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RemoteURLs = params.get("RemoteURLs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRemoteURLsResponse(AbstractModel):
+    """DescribeRemoteURLs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RemoteWrites: 多写配置
+        :type RemoteWrites: list of RemoteWrite
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RemoteWrites = None
+        self._RequestId = None
+
+    @property
+    def RemoteWrites(self):
+        """多写配置
+        :rtype: list of RemoteWrite
+        """
+        return self._RemoteWrites
+
+    @RemoteWrites.setter
+    def RemoteWrites(self, RemoteWrites):
+        self._RemoteWrites = RemoteWrites
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RemoteWrites") is not None:
+            self._RemoteWrites = []
+            for item in params.get("RemoteWrites"):
+                obj = RemoteWrite()
+                obj._deserialize(item)
+                self._RemoteWrites.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSSOAccountRequest(AbstractModel):
     """DescribeSSOAccount请求参数结构体
 
@@ -28927,6 +29081,90 @@ class ModifyPrometheusTempResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRemoteURLsRequest(AbstractModel):
+    """ModifyRemoteURLs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _RemoteWrites: 多写配置
+        :type RemoteWrites: list of RemoteWrite
+        """
+        self._InstanceId = None
+        self._RemoteWrites = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RemoteWrites(self):
+        """多写配置
+        :rtype: list of RemoteWrite
+        """
+        return self._RemoteWrites
+
+    @RemoteWrites.setter
+    def RemoteWrites(self, RemoteWrites):
+        self._RemoteWrites = RemoteWrites
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("RemoteWrites") is not None:
+            self._RemoteWrites = []
+            for item in params.get("RemoteWrites"):
+                obj = RemoteWrite()
+                obj._deserialize(item)
+                self._RemoteWrites.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRemoteURLsResponse(AbstractModel):
+    """ModifyRemoteURLs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MonitorTypeInfo(AbstractModel):
     """监控类型详细信息
 
@@ -34779,6 +35017,189 @@ class RecordingRuleSet(AbstractModel):
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
         self._RuleName = params.get("RuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteWrite(AbstractModel):
+    """多写配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _URL: 多写url
+        :type URL: str
+        :param _URLRelabelConfig: RelabelConfig
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URLRelabelConfig: str
+        :param _BasicAuth: 鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicAuth: :class:`tencentcloud.monitor.v20180724.models.BasicAuth`
+        :param _MaxBlockSize: 最大block
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxBlockSize: str
+        :param _Label: Label
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _Headers: HTTP 额外添加的头
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: list of RemoteWriteHeader
+        """
+        self._URL = None
+        self._URLRelabelConfig = None
+        self._BasicAuth = None
+        self._MaxBlockSize = None
+        self._Label = None
+        self._Headers = None
+
+    @property
+    def URL(self):
+        """多写url
+        :rtype: str
+        """
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+    @property
+    def URLRelabelConfig(self):
+        """RelabelConfig
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._URLRelabelConfig
+
+    @URLRelabelConfig.setter
+    def URLRelabelConfig(self, URLRelabelConfig):
+        self._URLRelabelConfig = URLRelabelConfig
+
+    @property
+    def BasicAuth(self):
+        """鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.BasicAuth`
+        """
+        return self._BasicAuth
+
+    @BasicAuth.setter
+    def BasicAuth(self, BasicAuth):
+        self._BasicAuth = BasicAuth
+
+    @property
+    def MaxBlockSize(self):
+        """最大block
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MaxBlockSize
+
+    @MaxBlockSize.setter
+    def MaxBlockSize(self, MaxBlockSize):
+        self._MaxBlockSize = MaxBlockSize
+
+    @property
+    def Label(self):
+        """Label
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Headers(self):
+        """HTTP 额外添加的头
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RemoteWriteHeader
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+
+    def _deserialize(self, params):
+        self._URL = params.get("URL")
+        self._URLRelabelConfig = params.get("URLRelabelConfig")
+        if params.get("BasicAuth") is not None:
+            self._BasicAuth = BasicAuth()
+            self._BasicAuth._deserialize(params.get("BasicAuth"))
+        self._MaxBlockSize = params.get("MaxBlockSize")
+        self._Label = params.get("Label")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = RemoteWriteHeader()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteWriteHeader(AbstractModel):
+    """Remote Write 协议额外添加的 HTTP 头
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: HTTP 头的键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: HTTP 头的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """HTTP 头的键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """HTTP 头的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

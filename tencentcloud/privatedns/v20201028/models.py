@@ -935,6 +935,8 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def Vpcs(self):
+        warnings.warn("parameter `Vpcs` is deprecated", DeprecationWarning) 
+
         """创建私有域的同时，将其关联至VPC
         :rtype: list of VpcInfo
         """
@@ -942,6 +944,8 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @Vpcs.setter
     def Vpcs(self, Vpcs):
+        warnings.warn("parameter `Vpcs` is deprecated", DeprecationWarning) 
+
         self._Vpcs = Vpcs
 
     @property

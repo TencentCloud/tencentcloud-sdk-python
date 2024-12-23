@@ -26,13 +26,10 @@ class AKSKLeak(AbstractModel):
     def __init__(self):
         r"""
         :param _AK: AK编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type AK: str
         :param _SK: SK编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SK: str
         :param _URL: URL编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type URL: str
         """
         self._AK = None
@@ -42,7 +39,6 @@ class AKSKLeak(AbstractModel):
     @property
     def AK(self):
         """AK编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AK
@@ -54,7 +50,6 @@ class AKSKLeak(AbstractModel):
     @property
     def SK(self):
         """SK编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SK
@@ -66,7 +61,6 @@ class AKSKLeak(AbstractModel):
     @property
     def URL(self):
         """URL编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._URL
@@ -98,10 +92,8 @@ class AccountRisk(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: id（可不参考）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _RiskAccount: 风险账户
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskAccount: str
         """
         self._Id = None
@@ -110,7 +102,6 @@ class AccountRisk(AbstractModel):
     @property
     def Id(self):
         """id（可不参考）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -122,7 +113,6 @@ class AccountRisk(AbstractModel):
     @property
     def RiskAccount(self):
         """风险账户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskAccount
@@ -157,7 +147,6 @@ class AssessmentControlItem(AbstractModel):
         :param _ItemName: 评估项名称
         :type ItemName: str
         :param _Description: 评估项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Source: 评估项来源，内置/用户自定，取值（system，user）
         :type Source: str
@@ -170,7 +159,6 @@ class AssessmentControlItem(AbstractModel):
         :param _Status: 评估项启用状态，启用/未启用，取值draft / launched
         :type Status: str
         :param _TemplateCount: 评估项关联的模板数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateCount: int
         """
         self._ItemId = None
@@ -208,7 +196,6 @@ class AssessmentControlItem(AbstractModel):
     @property
     def Description(self):
         """评估项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -275,7 +262,6 @@ class AssessmentControlItem(AbstractModel):
     @property
     def TemplateCount(self):
         """评估项关联的模板数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TemplateCount
@@ -315,7 +301,6 @@ class AssessmentRisk(AbstractModel):
         :param _RiskId: 风险项Id
         :type RiskId: str
         :param _RiskDescription: 风险项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDescription: str
         :param _TemplateId: 评估模板Id
         :type TemplateId: str
@@ -340,25 +325,18 @@ class AssessmentRisk(AbstractModel):
         :param _RelatedAsset: 风险涉及资产
         :type RelatedAsset: str
         :param _DataSourceId: 风险涉及资产id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceId: str
         :param _DataSourceName: 风险涉及资产名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _AssetName: 资产名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetName: str
         :param _SecurityProduct: 建议使用安全产品
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityProduct: list of SecurityProduct
         :param _RiskType: 风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: str
         :param _RiskSide: 风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSide: str
         :param _DataSourceType: 数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         """
         self._RiskId = None
@@ -396,7 +374,6 @@ class AssessmentRisk(AbstractModel):
     @property
     def RiskDescription(self):
         """风险项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskDescription
@@ -529,7 +506,6 @@ class AssessmentRisk(AbstractModel):
     @property
     def DataSourceId(self):
         """风险涉及资产id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceId
@@ -541,7 +517,6 @@ class AssessmentRisk(AbstractModel):
     @property
     def DataSourceName(self):
         """风险涉及资产名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -553,7 +528,6 @@ class AssessmentRisk(AbstractModel):
     @property
     def AssetName(self):
         """资产名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssetName
@@ -565,7 +539,6 @@ class AssessmentRisk(AbstractModel):
     @property
     def SecurityProduct(self):
         """建议使用安全产品
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityProduct
         """
         return self._SecurityProduct
@@ -577,7 +550,6 @@ class AssessmentRisk(AbstractModel):
     @property
     def RiskType(self):
         """风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskType
@@ -589,7 +561,6 @@ class AssessmentRisk(AbstractModel):
     @property
     def RiskSide(self):
         """风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskSide
@@ -601,7 +572,6 @@ class AssessmentRisk(AbstractModel):
     @property
     def DataSourceType(self):
         """数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceType
@@ -655,31 +625,22 @@ class AssessmentRiskItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 脆弱项id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _RiskName: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskName: str
         :param _Level: 脆弱性级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _Description: 说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _RiskType: 风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: str
         :param _ReferTemplateCount: 关联模板个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReferTemplateCount: int
         :param _SupportDataSource: 支持的数据源
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDataSource: list of str
         :param _RiskSide: 风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSide: str
         :param _ReferTemplateList: 关联模板列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReferTemplateList: list of TemplateInfo
         """
         self._Id = None
@@ -695,7 +656,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def Id(self):
         """脆弱项id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -707,7 +667,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def RiskName(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskName
@@ -719,7 +678,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def Level(self):
         """脆弱性级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -731,7 +689,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def Description(self):
         """说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -743,7 +700,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def RiskType(self):
         """风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskType
@@ -755,7 +711,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def ReferTemplateCount(self):
         """关联模板个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReferTemplateCount
@@ -767,7 +722,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def SupportDataSource(self):
         """支持的数据源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SupportDataSource
@@ -779,7 +733,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def RiskSide(self):
         """风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskSide
@@ -791,7 +744,6 @@ class AssessmentRiskItem(AbstractModel):
     @property
     def ReferTemplateList(self):
         """关联模板列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TemplateInfo
         """
         return self._ReferTemplateList
@@ -837,7 +789,6 @@ class AssessmentTask(AbstractModel):
         :type TaskId: str
         :param _TaskUid: 评估任务的自增ID
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskUid: int
         :param _TaskName: 评估任务名称
         :type TaskName: str
@@ -860,7 +811,6 @@ class AssessmentTask(AbstractModel):
         :param _RiskCount: 风险项数量（仅状态为finished的风险项不计入总数，其余状态均算入该数量）
         :type RiskCount: int
         :param _FinishedTime: 评估任务完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedTime: str
         :param _CreatedTime: 评估任务发起时间
         :type CreatedTime: str
@@ -869,15 +819,12 @@ class AssessmentTask(AbstractModel):
         :param _RiskCountInfoList: 待处理各等级风险项信息
         :type RiskCountInfoList: list of RiskCountInfo
         :param _DiscoveryCondition: 数据源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscoveryCondition: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
         :param _ErrorInfo: 评估任务失败信息
         :type ErrorInfo: str
         :param _TemplateUid: 模板主键id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateUid: int
         :param _ProgressPercent: 进度百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressPercent: int
         """
         self._TaskId = None
@@ -916,7 +863,6 @@ class AssessmentTask(AbstractModel):
     def TaskUid(self):
         """评估任务的自增ID
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskUid
@@ -1038,7 +984,6 @@ class AssessmentTask(AbstractModel):
     @property
     def FinishedTime(self):
         """评估任务完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishedTime
@@ -1083,7 +1028,6 @@ class AssessmentTask(AbstractModel):
     @property
     def DiscoveryCondition(self):
         """数据源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
         """
         return self._DiscoveryCondition
@@ -1106,7 +1050,6 @@ class AssessmentTask(AbstractModel):
     @property
     def TemplateUid(self):
         """模板主键id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TemplateUid
@@ -1118,7 +1061,6 @@ class AssessmentTask(AbstractModel):
     @property
     def ProgressPercent(self):
         """进度百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProgressPercent
@@ -1174,14 +1116,12 @@ class AssessmentTemplate(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _TemplateId: 评估模板Id
         :type TemplateId: str
         :param _TemplateName: 评估模板名称
         :type TemplateName: str
         :param _Description: 描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Source: 模板来源，内置/用户自定，取值（system，user）
         :type Source: str
@@ -1196,13 +1136,10 @@ class AssessmentTemplate(AbstractModel):
         :param _Status: 模板启用状态，草稿/已启用，取值draft / launched
         :type Status: str
         :param _SupportDataSource: 支持的数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDataSource: list of str
         :param _IsASMTemplate: 是否包含攻击面风险
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsASMTemplate: bool
         :param _IdentifyComplianceId: 合规组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyComplianceId: int
         """
         self._Id = None
@@ -1222,7 +1159,6 @@ class AssessmentTemplate(AbstractModel):
     @property
     def Id(self):
         """id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -1256,7 +1192,6 @@ class AssessmentTemplate(AbstractModel):
     @property
     def Description(self):
         """描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -1334,7 +1269,6 @@ class AssessmentTemplate(AbstractModel):
     @property
     def SupportDataSource(self):
         """支持的数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SupportDataSource
@@ -1346,7 +1280,6 @@ class AssessmentTemplate(AbstractModel):
     @property
     def IsASMTemplate(self):
         """是否包含攻击面风险
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsASMTemplate
@@ -1358,7 +1291,6 @@ class AssessmentTemplate(AbstractModel):
     @property
     def IdentifyComplianceId(self):
         """合规组id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentifyComplianceId
@@ -1400,22 +1332,16 @@ class AssetCosDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Bucket: 桶的名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         :param _DataType: 数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataType: str
         :param _FileNums: 文件的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileNums: int
         :param _SensitiveFileNums: 敏感的文件个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFileNums: int
         :param _DistributionData: 敏感分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type DistributionData: list of Note
         :param _MatchedNum: cos文件的敏感数据个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchedNum: int
         """
         self._Bucket = None
@@ -1428,7 +1354,6 @@ class AssetCosDetail(AbstractModel):
     @property
     def Bucket(self):
         """桶的名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -1440,7 +1365,6 @@ class AssetCosDetail(AbstractModel):
     @property
     def DataType(self):
         """数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataType
@@ -1452,7 +1376,6 @@ class AssetCosDetail(AbstractModel):
     @property
     def FileNums(self):
         """文件的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileNums
@@ -1464,7 +1387,6 @@ class AssetCosDetail(AbstractModel):
     @property
     def SensitiveFileNums(self):
         """敏感的文件个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFileNums
@@ -1476,7 +1398,6 @@ class AssetCosDetail(AbstractModel):
     @property
     def DistributionData(self):
         """敏感分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._DistributionData
@@ -1488,7 +1409,6 @@ class AssetCosDetail(AbstractModel):
     @property
     def MatchedNum(self):
         """cos文件的敏感数据个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MatchedNum
@@ -1528,28 +1448,20 @@ class AssetDBDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _DataSourceId: 数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceId: str
         :param _DdName: 数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DdName: str
         :param _DataType: 数据库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataType: str
         :param _TableNums: 表的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableNums: int
         :param _SensitiveTableNums: 敏感表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveTableNums: int
         :param _FieldNums: 字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldNums: int
         :param _SensitiveFieldNums: 敏感字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFieldNums: int
         :param _DistributionData: 敏感数据分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type DistributionData: list of Note
         """
         self._DataSourceId = None
@@ -1564,7 +1476,6 @@ class AssetDBDetail(AbstractModel):
     @property
     def DataSourceId(self):
         """数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceId
@@ -1576,7 +1487,6 @@ class AssetDBDetail(AbstractModel):
     @property
     def DdName(self):
         """数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DdName
@@ -1588,7 +1498,6 @@ class AssetDBDetail(AbstractModel):
     @property
     def DataType(self):
         """数据库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataType
@@ -1600,7 +1509,6 @@ class AssetDBDetail(AbstractModel):
     @property
     def TableNums(self):
         """表的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TableNums
@@ -1612,7 +1520,6 @@ class AssetDBDetail(AbstractModel):
     @property
     def SensitiveTableNums(self):
         """敏感表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveTableNums
@@ -1624,7 +1531,6 @@ class AssetDBDetail(AbstractModel):
     @property
     def FieldNums(self):
         """字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FieldNums
@@ -1636,7 +1542,6 @@ class AssetDBDetail(AbstractModel):
     @property
     def SensitiveFieldNums(self):
         """敏感字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -1648,7 +1553,6 @@ class AssetDBDetail(AbstractModel):
     @property
     def DistributionData(self):
         """敏感数据分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._DistributionData
@@ -1879,7 +1783,6 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
         :param _DspaId: DSPA实例ID。
         :type DspaId: str
         :param _Results: 授权结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of DspaTaskResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1902,7 +1805,6 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
     @property
     def Results(self):
         """授权结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaTaskResult
         """
         return self._Results
@@ -2356,16 +2258,12 @@ class CategoryRule(AbstractModel):
         :param _Id: 分类规则绑定关系id
         :type Id: int
         :param _AliasRuleId: 别名ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasRuleId: int
         :param _AliasRuleName: 别名规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasRuleName: str
         :param _RuleEffectItems: 各类分类分级规则数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleEffectItems: list of RuleEffectItem
         :param _RuleStatus: 规则状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleStatus: int
         """
         self._CategoryId = None
@@ -2448,7 +2346,6 @@ class CategoryRule(AbstractModel):
     @property
     def AliasRuleId(self):
         """别名ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AliasRuleId
@@ -2460,7 +2357,6 @@ class CategoryRule(AbstractModel):
     @property
     def AliasRuleName(self):
         """别名规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AliasRuleName
@@ -2472,7 +2368,6 @@ class CategoryRule(AbstractModel):
     @property
     def RuleEffectItems(self):
         """各类分类分级规则数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleEffectItem
         """
         return self._RuleEffectItems
@@ -2484,7 +2379,6 @@ class CategoryRule(AbstractModel):
     @property
     def RuleStatus(self):
         """规则状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleStatus
@@ -2654,23 +2548,18 @@ class ComplianceGroupDetail(AbstractModel):
         :param _Name: 模板名称
         :type Name: str
         :param _Description: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ComplianceGroupType: 模板类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceGroupType: int
         :param _LevelGroupId: 模板分级方案id
         :type LevelGroupId: int
         :param _LevelGroupName: 模板分级方案名称
         :type LevelGroupName: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ModifyTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _IsAlias: 是否开启别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAlias: bool
         """
         self._Id = None
@@ -2708,7 +2597,6 @@ class ComplianceGroupDetail(AbstractModel):
     @property
     def Description(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -2720,7 +2608,6 @@ class ComplianceGroupDetail(AbstractModel):
     @property
     def ComplianceGroupType(self):
         """模板类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ComplianceGroupType
@@ -2754,7 +2641,6 @@ class ComplianceGroupDetail(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -2766,7 +2652,6 @@ class ComplianceGroupDetail(AbstractModel):
     @property
     def ModifyTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -2778,7 +2663,6 @@ class ComplianceGroupDetail(AbstractModel):
     @property
     def IsAlias(self):
         """是否开启别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAlias
@@ -2976,16 +2860,12 @@ class CosAsset(AbstractModel):
     def __init__(self):
         r"""
         :param _BucketNums: 桶的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketNums: int
         :param _SensitiveBucketNums: 敏感桶的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveBucketNums: int
         :param _FileNums: 文件个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileNums: int
         :param _SensitiveFileNums: 敏感文件的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFileNums: int
         """
         self._BucketNums = None
@@ -2996,7 +2876,6 @@ class CosAsset(AbstractModel):
     @property
     def BucketNums(self):
         """桶的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BucketNums
@@ -3008,7 +2887,6 @@ class CosAsset(AbstractModel):
     @property
     def SensitiveBucketNums(self):
         """敏感桶的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveBucketNums
@@ -3020,7 +2898,6 @@ class CosAsset(AbstractModel):
     @property
     def FileNums(self):
         """文件个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileNums
@@ -3032,7 +2909,6 @@ class CosAsset(AbstractModel):
     @property
     def SensitiveFileNums(self):
         """敏感文件的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFileNums
@@ -3186,7 +3062,6 @@ class CosTaskResult(AbstractModel):
         :param _ResultDescription: 结果描述。
         :type ResultDescription: str
         :param _ErrDescription: 错误信息描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrDescription: :class:`tencentcloud.dsgc.v20190723.models.ErrDescription`
         :param _ResourceId: 资源ID。
         :type ResourceId: str
@@ -3221,7 +3096,6 @@ class CosTaskResult(AbstractModel):
     @property
     def ErrDescription(self):
         """错误信息描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ErrDescription`
         """
         return self._ErrDescription
@@ -3318,10 +3192,8 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReportTaskId: 任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTaskId: int
         :param _Remark: 提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3333,7 +3205,6 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
     @property
     def ReportTaskId(self):
         """任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReportTaskId
@@ -3345,7 +3216,6 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
     @property
     def Remark(self):
         """提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -3451,10 +3321,8 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReportTaskId: 报表任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTaskId: int
         :param _Remark: 提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3466,7 +3334,6 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
     @property
     def ReportTaskId(self):
         """报表任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReportTaskId
@@ -3478,7 +3345,6 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
     @property
     def Remark(self):
         """提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -4073,8 +3939,6 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
         :type Enable: int
         :param _Bucket: 桶名
         :type Bucket: str
-        :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
-        :type GeneralRuleSetEnable: int
         :param _Plan: 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次。
         :type Plan: int
         :param _Period: 扫描周期，0单次 1每天 2每周 3每月
@@ -4087,6 +3951,8 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
         :type ResourceRegion: str
         :param _Description: 任务描述，最大长度为1024个字符
         :type Description: str
+        :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
+        :type GeneralRuleSetEnable: int
         :param _ComplianceGroupIds: 合规组ID列表，最多支持添加5个
         :type ComplianceGroupIds: list of int
         :param _TimingStartTime: 任务定时启动时间，格式如：2006-01-02 15:04:05
@@ -4098,13 +3964,13 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
         self._DataSourceId = None
         self._Enable = None
         self._Bucket = None
-        self._GeneralRuleSetEnable = None
         self._Plan = None
         self._Period = None
         self._FileTypes = None
         self._FileSizeLimit = None
         self._ResourceRegion = None
         self._Description = None
+        self._GeneralRuleSetEnable = None
         self._ComplianceGroupIds = None
         self._TimingStartTime = None
 
@@ -4162,17 +4028,6 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
     @Bucket.setter
     def Bucket(self, Bucket):
         self._Bucket = Bucket
-
-    @property
-    def GeneralRuleSetEnable(self):
-        """通用规则集开关，0 关闭，1 启用
-        :rtype: int
-        """
-        return self._GeneralRuleSetEnable
-
-    @GeneralRuleSetEnable.setter
-    def GeneralRuleSetEnable(self, GeneralRuleSetEnable):
-        self._GeneralRuleSetEnable = GeneralRuleSetEnable
 
     @property
     def Plan(self):
@@ -4241,6 +4096,17 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
         self._Description = Description
 
     @property
+    def GeneralRuleSetEnable(self):
+        """通用规则集开关，0 关闭，1 启用
+        :rtype: int
+        """
+        return self._GeneralRuleSetEnable
+
+    @GeneralRuleSetEnable.setter
+    def GeneralRuleSetEnable(self, GeneralRuleSetEnable):
+        self._GeneralRuleSetEnable = GeneralRuleSetEnable
+
+    @property
     def ComplianceGroupIds(self):
         """合规组ID列表，最多支持添加5个
         :rtype: list of int
@@ -4270,13 +4136,13 @@ class CreateDSPACOSDiscoveryTaskRequest(AbstractModel):
         self._DataSourceId = params.get("DataSourceId")
         self._Enable = params.get("Enable")
         self._Bucket = params.get("Bucket")
-        self._GeneralRuleSetEnable = params.get("GeneralRuleSetEnable")
         self._Plan = params.get("Plan")
         self._Period = params.get("Period")
         self._FileTypes = params.get("FileTypes")
         self._FileSizeLimit = params.get("FileSizeLimit")
         self._ResourceRegion = params.get("ResourceRegion")
         self._Description = params.get("Description")
+        self._GeneralRuleSetEnable = params.get("GeneralRuleSetEnable")
         self._ComplianceGroupIds = params.get("ComplianceGroupIds")
         self._TimingStartTime = params.get("TimingStartTime")
         memeber_set = set(params.keys())
@@ -4299,7 +4165,6 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
         :param _TaskId: 任务ID
         :type TaskId: int
         :param _ResultId: 扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4322,7 +4187,6 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
     @property
     def ResultId(self):
         """扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResultId
@@ -4569,12 +4433,18 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
         :type ComplianceGroupRules: list of ComplianceGroupRuleIdInfo
         :param _LevelGroupId: 分级组ID，默认值为1，新增参数，可选
         :type LevelGroupId: int
+        :param _Status: 1代表模版开启，0代表模版关闭
+        :type Status: int
+        :param _CloseComplianceId: 该complianceId的开启状态将被关闭
+        :type CloseComplianceId: int
         """
         self._DspaId = None
         self._Name = None
         self._Description = None
         self._ComplianceGroupRules = None
         self._LevelGroupId = None
+        self._Status = None
+        self._CloseComplianceId = None
 
     @property
     def DspaId(self):
@@ -4631,6 +4501,28 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
     def LevelGroupId(self, LevelGroupId):
         self._LevelGroupId = LevelGroupId
 
+    @property
+    def Status(self):
+        """1代表模版开启，0代表模版关闭
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CloseComplianceId(self):
+        """该complianceId的开启状态将被关闭
+        :rtype: int
+        """
+        return self._CloseComplianceId
+
+    @CloseComplianceId.setter
+    def CloseComplianceId(self, CloseComplianceId):
+        self._CloseComplianceId = CloseComplianceId
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -4643,6 +4535,8 @@ class CreateDSPAComplianceGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ComplianceGroupRules.append(obj)
         self._LevelGroupId = params.get("LevelGroupId")
+        self._Status = params.get("Status")
+        self._CloseComplianceId = params.get("CloseComplianceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5353,8 +5247,6 @@ class CreateDSPADiscoveryTaskRequest(AbstractModel):
         :type DataSourceId: str
         :param _Enable: 任务开关，0 关闭，1 启用
         :type Enable: int
-        :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
-        :type GeneralRuleSetEnable: int
         :param _Plan: 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
         :type Plan: int
         :param _Period: 扫描周期，0单次 1每天 2每周 3每月
@@ -5370,6 +5262,8 @@ cynosdbpg 表示TDSQL-C PostgreSQL版,
 cynosdbmysql 表示TDSQL-C MySQL版,
 selfbuilt-db 表示自建数据库
         :type DataSourceType: str
+        :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
+        :type GeneralRuleSetEnable: int
         :param _Description: 任务描述，最大长度为1024个字符
         :type Description: str
         :param _Condition: 用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
@@ -5390,11 +5284,11 @@ selfbuilt-db 表示自建数据库
         self._Name = None
         self._DataSourceId = None
         self._Enable = None
-        self._GeneralRuleSetEnable = None
         self._Plan = None
         self._Period = None
         self._ResourceRegion = None
         self._DataSourceType = None
+        self._GeneralRuleSetEnable = None
         self._Description = None
         self._Condition = None
         self._ComplianceGroupIds = None
@@ -5448,17 +5342,6 @@ selfbuilt-db 表示自建数据库
         self._Enable = Enable
 
     @property
-    def GeneralRuleSetEnable(self):
-        """通用规则集开关，0 关闭，1 启用
-        :rtype: int
-        """
-        return self._GeneralRuleSetEnable
-
-    @GeneralRuleSetEnable.setter
-    def GeneralRuleSetEnable(self, GeneralRuleSetEnable):
-        self._GeneralRuleSetEnable = GeneralRuleSetEnable
-
-    @property
     def Plan(self):
         """执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
         :rtype: int
@@ -5508,6 +5391,21 @@ selfbuilt-db 表示自建数据库
     @DataSourceType.setter
     def DataSourceType(self, DataSourceType):
         self._DataSourceType = DataSourceType
+
+    @property
+    def GeneralRuleSetEnable(self):
+        warnings.warn("parameter `GeneralRuleSetEnable` is deprecated", DeprecationWarning) 
+
+        """通用规则集开关，0 关闭，1 启用
+        :rtype: int
+        """
+        return self._GeneralRuleSetEnable
+
+    @GeneralRuleSetEnable.setter
+    def GeneralRuleSetEnable(self, GeneralRuleSetEnable):
+        warnings.warn("parameter `GeneralRuleSetEnable` is deprecated", DeprecationWarning) 
+
+        self._GeneralRuleSetEnable = GeneralRuleSetEnable
 
     @property
     def Description(self):
@@ -5593,11 +5491,11 @@ selfbuilt-db 表示自建数据库
         self._Name = params.get("Name")
         self._DataSourceId = params.get("DataSourceId")
         self._Enable = params.get("Enable")
-        self._GeneralRuleSetEnable = params.get("GeneralRuleSetEnable")
         self._Plan = params.get("Plan")
         self._Period = params.get("Period")
         self._ResourceRegion = params.get("ResourceRegion")
         self._DataSourceType = params.get("DataSourceType")
+        self._GeneralRuleSetEnable = params.get("GeneralRuleSetEnable")
         self._Description = params.get("Description")
         self._Condition = params.get("Condition")
         self._ComplianceGroupIds = params.get("ComplianceGroupIds")
@@ -5625,7 +5523,6 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
         :param _TaskId: 任务ID
         :type TaskId: int
         :param _ResultId: 扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5648,7 +5545,6 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
     @property
     def ResultId(self):
         """扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResultId
@@ -6481,10 +6377,8 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AliasRuleId: 创建的别名规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasRuleId: int
         :param _AliasRuleName: 别名规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasRuleName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6496,7 +6390,6 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
     @property
     def AliasRuleId(self):
         """创建的别名规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AliasRuleId
@@ -6508,7 +6401,6 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
     @property
     def AliasRuleName(self):
         """别名规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AliasRuleName
@@ -6611,10 +6503,8 @@ class DBInstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _DbInfos: 数据源绑定的db信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbInfos: list of DbInfo
         """
         self._ResourceId = None
@@ -6623,7 +6513,6 @@ class DBInstanceInfo(AbstractModel):
     @property
     def ResourceId(self):
         """数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -6635,7 +6524,6 @@ class DBInstanceInfo(AbstractModel):
     @property
     def DbInfos(self):
         """数据源绑定的db信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DbInfo
         """
         return self._DbInfos
@@ -6863,7 +6751,6 @@ class DSPADataSourceDbInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DbName: 数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         """
         self._DbName = None
@@ -6871,7 +6758,6 @@ class DSPADataSourceDbInfo(AbstractModel):
     @property
     def DbName(self):
         """数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbName
@@ -6901,16 +6787,13 @@ class DSPAMetaType(AbstractModel):
     def __init__(self):
         r"""
         :param _MetaType: 元数据类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetaType: str
         :param _Regions: 支持的此元数据类型的地域列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Regions: list of str
         :param _SupportedAuthTypes: 此元数据类型支持的授权类型：
 account    -- 账户名密码授权，账户的最高只读权限需要由用户自行赋予；
 automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例中给账户名赋予最高只读权限；
 如果此列表为空，表明此类资源不支持以上的授权机制，无法通过后台进行授权。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportedAuthTypes: list of str
         """
         self._MetaType = None
@@ -6920,7 +6803,6 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
     @property
     def MetaType(self):
         """元数据类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MetaType
@@ -6932,7 +6814,6 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
     @property
     def Regions(self):
         """支持的此元数据类型的地域列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Regions
@@ -6947,7 +6828,6 @@ automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例
 account    -- 账户名密码授权，账户的最高只读权限需要由用户自行赋予；
 automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例中给账户名赋予最高只读权限；
 如果此列表为空，表明此类资源不支持以上的授权机制，无法通过后台进行授权。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SupportedAuthTypes
@@ -6979,7 +6859,6 @@ class DSPATableInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TableName: 表名
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         """
         self._TableName = None
@@ -6987,7 +6866,6 @@ class DSPATableInfo(AbstractModel):
     @property
     def TableName(self):
         """表名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -7232,7 +7110,6 @@ class DataRules(AbstractModel):
         :param _Operator: 操作符；只能取and, or的其中一种
         :type Operator: str
         :param _Contents: 规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Contents: list of DataRule
         """
         self._Operator = None
@@ -7252,7 +7129,6 @@ class DataRules(AbstractModel):
     @property
     def Contents(self):
         """规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataRule
         """
         return self._Contents
@@ -7341,10 +7217,8 @@ class DatagovRuleExtendParameter(AbstractModel):
         :param _Name: 扩展参数名称，目前支持如下两个扩展属性名称：
 IsFullWordMatch，表示是否全文匹配，该Name对应的Value可取值为"true"或"false":，默认值为"false"，
 IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"true"或"false"，默认值为"true"
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 扩展参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -7355,7 +7229,6 @@ IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"t
         """扩展参数名称，目前支持如下两个扩展属性名称：
 IsFullWordMatch，表示是否全文匹配，该Name对应的Value可取值为"true"或"false":，默认值为"false"，
 IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"true"或"false"，默认值为"true"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7367,7 +7240,6 @@ IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"t
     @property
     def Value(self):
         """扩展参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -7398,13 +7270,10 @@ class DbInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DbName: 数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         :param _ValidStatus: 绑定的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidStatus: str
         :param _BindType: 绑定的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindType: str
         """
         self._DbName = None
@@ -7414,7 +7283,6 @@ class DbInfo(AbstractModel):
     @property
     def DbName(self):
         """数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbName
@@ -7426,7 +7294,6 @@ class DbInfo(AbstractModel):
     @property
     def ValidStatus(self):
         """绑定的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidStatus
@@ -7438,7 +7305,6 @@ class DbInfo(AbstractModel):
     @property
     def BindType(self):
         """绑定的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BindType
@@ -7576,7 +7442,6 @@ class DbTaskResult(AbstractModel):
         :param _ResultDescription: 结果描述。
         :type ResultDescription: str
         :param _ErrDescription: 错误信息描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrDescription: :class:`tencentcloud.dsgc.v20190723.models.ErrDescription`
         :param _ResourceId: 资源ID。
         :type ResourceId: str
@@ -7614,7 +7479,6 @@ class DbTaskResult(AbstractModel):
     @property
     def ErrDescription(self):
         """错误信息描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ErrDescription`
         """
         return self._ErrDescription
@@ -7864,7 +7728,6 @@ class DeleteCosMetaResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Results: 结果集合。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of DspaTaskResult
         :param _DspaId: DSPA实例ID。
         :type DspaId: str
@@ -7878,7 +7741,6 @@ class DeleteCosMetaResourceResponse(AbstractModel):
     @property
     def Results(self):
         """结果集合。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaTaskResult
         """
         return self._Results
@@ -8633,52 +8495,36 @@ class DescribeAssetOverviewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DBInstanceNums: 数据库实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DBInstanceNums: int
         :param _DBNums: 数据库个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DBNums: int
         :param _TableNums: 表的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableNums: int
         :param _FieldNums: 字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldNums: int
         :param _DBInstanceDistribution: 数据库实例的分布情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type DBInstanceDistribution: list of Note
         :param _DBDistribution: db分布情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type DBDistribution: list of Note
         :param _BucketNums: cos桶的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketNums: int
         :param _FileNums: 文件个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileNums: int
         :param _Remark: 用于对用户进行提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _EsInstanceNums: es实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type EsInstanceNums: int
         :param _EsIndexNums: es索引数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type EsIndexNums: int
         :param _EsFieldNums: es字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type EsFieldNums: int
         :param _MongoInstanceNums: mongo实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MongoInstanceNums: int
         :param _MongoDbNums: mongo数据库数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MongoDbNums: int
         :param _MongoColNums: mongo集合数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MongoColNums: int
         :param _MongoFieldNums: mongo字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MongoFieldNums: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8704,7 +8550,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def DBInstanceNums(self):
         """数据库实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DBInstanceNums
@@ -8716,7 +8561,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def DBNums(self):
         """数据库个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DBNums
@@ -8728,7 +8572,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def TableNums(self):
         """表的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TableNums
@@ -8740,7 +8583,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def FieldNums(self):
         """字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FieldNums
@@ -8752,7 +8594,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def DBInstanceDistribution(self):
         """数据库实例的分布情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._DBInstanceDistribution
@@ -8764,7 +8605,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def DBDistribution(self):
         """db分布情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._DBDistribution
@@ -8776,7 +8616,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def BucketNums(self):
         """cos桶的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BucketNums
@@ -8788,7 +8627,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def FileNums(self):
         """文件个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileNums
@@ -8800,7 +8638,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def Remark(self):
         """用于对用户进行提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -8812,7 +8649,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def EsInstanceNums(self):
         """es实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EsInstanceNums
@@ -8824,7 +8660,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def EsIndexNums(self):
         """es索引数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EsIndexNums
@@ -8836,7 +8671,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def EsFieldNums(self):
         """es字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EsFieldNums
@@ -8848,7 +8682,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def MongoInstanceNums(self):
         """mongo实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MongoInstanceNums
@@ -8860,7 +8693,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def MongoDbNums(self):
         """mongo数据库数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MongoDbNums
@@ -8872,7 +8704,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def MongoColNums(self):
         """mongo集合数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MongoColNums
@@ -8884,7 +8715,6 @@ class DescribeAssetOverviewResponse(AbstractModel):
     @property
     def MongoFieldNums(self):
         """mongo字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MongoFieldNums
@@ -9009,10 +8839,8 @@ class DescribeBindDBListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BindDBList: 绑定的DB列表（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindDBList: list of str
         :param _BindList: 绑定信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindList: list of DBInstanceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9024,7 +8852,6 @@ class DescribeBindDBListResponse(AbstractModel):
     @property
     def BindDBList(self):
         """绑定的DB列表（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BindDBList
@@ -9036,7 +8863,6 @@ class DescribeBindDBListResponse(AbstractModel):
     @property
     def BindList(self):
         """绑定信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DBInstanceInfo
         """
         return self._BindList
@@ -9147,13 +8973,10 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CosAsset: cos的涉敏资产
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosAsset: :class:`tencentcloud.dsgc.v20190723.models.CosAsset`
         :param _TopAsset: 涉敏top
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopAsset: list of TopAsset
         :param _CosDetail: cos资产详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosDetail: list of AssetCosDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9166,7 +8989,6 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def CosAsset(self):
         """cos的涉敏资产
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.CosAsset`
         """
         return self._CosAsset
@@ -9178,7 +9000,6 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def TopAsset(self):
         """涉敏top
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopAsset
         """
         return self._TopAsset
@@ -9190,7 +9011,6 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def CosDetail(self):
         """cos资产详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssetCosDetail
         """
         return self._CosDetail
@@ -9374,7 +9194,6 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AssetsList: 含高风险资产TOP10的列表数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetsList: list of HighRiskAssetsDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9385,7 +9204,6 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
     @property
     def AssetsList(self):
         """含高风险资产TOP10的列表数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HighRiskAssetsDetail
         """
         return self._AssetsList
@@ -9490,61 +9308,42 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DataSourceId: 数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceId: str
         :param _DataSourceName: 数据源name
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _AssetName: 资产对象名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetName: str
         :param _AssessmentTemplateId: 风险评估模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssessmentTemplateId: int
         :param _IdentifyTemplateId: 分类分级的模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyTemplateId: int
         :param _RiskType: 风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: str
         :param _RiskName: 风险项
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskName: str
         :param _RiskDescription: 风险的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDescription: str
         :param _RiskLevel: 风险的级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _SuggestAction: 处置的建议
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuggestAction: str
         :param _Status: 处置状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _SecurityProduct: 安全产品
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityProduct: list of SecurityProduct
         :param _RiskDimension: 风险归属
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDimension: str
         :param _RelationAsset: 关联数据库（如果风险归属是instance）
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelationAsset: list of str
         :param _AccountRiskDetail: 风险账号详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountRiskDetail: list of AccountRisk
         :param _PrivilegeRiskDetail: 权限风险详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivilegeRiskDetail: list of PrivilegeRisk
         :param _PolicyRiskCosFileList: 策略风险的cos风险文件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyRiskCosFileList: list of str
         :param _AKSKLeak: AKSK泄漏列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AKSKLeak: list of AKSKLeak
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9573,7 +9372,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def DataSourceId(self):
         """数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceId
@@ -9585,7 +9383,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -9597,7 +9394,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def AssetName(self):
         """资产对象名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssetName
@@ -9609,7 +9405,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def AssessmentTemplateId(self):
         """风险评估模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AssessmentTemplateId
@@ -9621,7 +9416,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def IdentifyTemplateId(self):
         """分类分级的模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentifyTemplateId
@@ -9633,7 +9427,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def RiskType(self):
         """风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskType
@@ -9645,7 +9438,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def RiskName(self):
         """风险项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskName
@@ -9657,7 +9449,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def RiskDescription(self):
         """风险的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskDescription
@@ -9669,7 +9460,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def RiskLevel(self):
         """风险的级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -9681,7 +9471,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def SuggestAction(self):
         """处置的建议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SuggestAction
@@ -9693,7 +9482,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def Status(self):
         """处置状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -9705,7 +9493,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -9717,7 +9504,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def SecurityProduct(self):
         """安全产品
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityProduct
         """
         return self._SecurityProduct
@@ -9729,7 +9515,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def RiskDimension(self):
         """风险归属
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskDimension
@@ -9741,7 +9526,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def RelationAsset(self):
         """关联数据库（如果风险归属是instance）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._RelationAsset
@@ -9753,7 +9537,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def AccountRiskDetail(self):
         """风险账号详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AccountRisk
         """
         return self._AccountRiskDetail
@@ -9765,7 +9548,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def PrivilegeRiskDetail(self):
         """权限风险详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PrivilegeRisk
         """
         return self._PrivilegeRiskDetail
@@ -9777,7 +9559,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def PolicyRiskCosFileList(self):
         """策略风险的cos风险文件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PolicyRiskCosFileList
@@ -9789,7 +9570,6 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
     @property
     def AKSKLeak(self):
         """AKSK泄漏列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AKSKLeak
         """
         return self._AKSKLeak
@@ -10077,7 +9857,6 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LatestRiskList: 最新风险详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestRiskList: list of RiskItemInfo
         :param _TotalCount: 总条数
         :type TotalCount: int
@@ -10091,7 +9870,6 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
     @property
     def LatestRiskList(self):
         """最新风险详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskItemInfo
         """
         return self._LatestRiskList
@@ -10658,8 +10436,7 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: 无
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Items: 风险值
         :type Items: list of RiskItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10669,8 +10446,7 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
 
     @property
     def Items(self):
-        """无
-注意：此字段可能返回 null，表示取不到有效值。
+        """风险值
         :rtype: list of RiskItem
         """
         return self._Items
@@ -10914,7 +10690,6 @@ class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 趋势统计结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of RiskDealedTrendItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10925,7 +10700,6 @@ class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
     @property
     def Items(self):
         """趋势统计结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskDealedTrendItem
         """
         return self._Items
@@ -11032,13 +10806,10 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RiskTypeDistribution: 风险类型分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskTypeDistribution: list of Note
         :param _RiskDetailDistribution: 风险详情分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDetailDistribution: list of Note
         :param _RiskAssetsDistribution: 风险资产详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskAssetsDistribution: list of Note
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11051,7 +10822,6 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
     @property
     def RiskTypeDistribution(self):
         """风险类型分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._RiskTypeDistribution
@@ -11063,7 +10833,6 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
     @property
     def RiskDetailDistribution(self):
         """风险详情分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._RiskDetailDistribution
@@ -11075,7 +10844,6 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
     @property
     def RiskAssetsDistribution(self):
         """风险资产详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._RiskAssetsDistribution
@@ -11161,8 +10929,7 @@ class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: 无
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Items: 风险结果
         :type Items: list of RiskItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11172,8 +10939,7 @@ class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
 
     @property
     def Items(self):
-        """无
-注意：此字段可能返回 null，表示取不到有效值。
+        """风险结果
         :rtype: list of RiskItem
         """
         return self._Items
@@ -11265,15 +11031,12 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
         :param _RiskLevelName: 风险级别名称
         :type RiskLevelName: str
         :param _RiskLevelDescription: 风险级别描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelDescription: str
         :param _IdentifyComplianceId: 分类分级id
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyComplianceId: int
         :param _IdentifyComplianceName: 分类分级模板名称
         :type IdentifyComplianceName: str
         :param _RiskLevelMatrix: 风险数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelMatrix: list of RiskLevelMatrix
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11299,7 +11062,6 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
     @property
     def RiskLevelDescription(self):
         """风险级别描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevelDescription
@@ -11311,7 +11073,6 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
     @property
     def IdentifyComplianceId(self):
         """分类分级id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentifyComplianceId
@@ -11334,7 +11095,6 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
     @property
     def RiskLevelMatrix(self):
         """风险数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskLevelMatrix
         """
         return self._RiskLevelMatrix
@@ -11445,7 +11205,6 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
         :param _TotalCount: 总条数
         :type TotalCount: int
         :param _RiskLevelList: 风险等级列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelList: list of RiskLevelRisk
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11468,7 +11227,6 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
     @property
     def RiskLevelList(self):
         """风险等级列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskLevelRisk
         """
         return self._RiskLevelList
@@ -11589,7 +11347,6 @@ class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of RiskLevelTrendItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11600,7 +11357,6 @@ class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
     @property
     def Items(self):
         """结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskLevelTrendItem
         """
         return self._Items
@@ -11764,7 +11520,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _RiskId: xxx
+        :param _RiskId: 风险id
         :type RiskId: int
         """
         self._DspaId = None
@@ -11783,7 +11539,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryRequest(AbstractModel):
 
     @property
     def RiskId(self):
-        """xxx
+        """风险id
         :rtype: int
         """
         return self._RiskId
@@ -11814,7 +11570,6 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ProcessHistory: 处理的历史
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessHistory: list of ProcessHistory
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11825,7 +11580,6 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
     @property
     def ProcessHistory(self):
         """处理的历史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProcessHistory
         """
         return self._ProcessHistory
@@ -11915,7 +11669,6 @@ class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RiskSideDistributed: 风险面的分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSideDistributed: list of RiskSideDistributed
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11926,7 +11679,6 @@ class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
     @property
     def RiskSideDistributed(self):
         """风险面的分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskSideDistributed
         """
         return self._RiskSideDistributed
@@ -12016,7 +11768,6 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RiskSideItmeList: 风险面列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSideItmeList: list of Note
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12027,7 +11778,6 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
     @property
     def RiskSideItmeList(self):
         """风险面列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._RiskSideItmeList
@@ -12151,20 +11901,16 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
         :param _TemplateName: 模板名称
         :type TemplateName: str
         :param _TemplateDescription: 模板的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateDescription: str
         :param _RiskLevelId: 风险等级
         :type RiskLevelId: int
         :param _RiskLevelName: 风险等级名称
         :type RiskLevelName: str
         :param _RiskItemList: 脆弱项配置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskItemList: list of AssessmentRiskItem
         :param _TotalCount: 脆弱项配置条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _TaskCitations: 被任务引用次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCitations: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12204,7 +11950,6 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
     @property
     def TemplateDescription(self):
         """模板的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateDescription
@@ -12238,7 +11983,6 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
     @property
     def RiskItemList(self):
         """脆弱项配置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssessmentRiskItem
         """
         return self._RiskItemList
@@ -12250,7 +11994,6 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
     @property
     def TotalCount(self):
         """脆弱项配置条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -12262,7 +12005,6 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
     @property
     def TaskCitations(self):
         """被任务引用次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskCitations
@@ -12419,7 +12161,6 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RiskItemList: 脆弱项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskItemList: list of AssessmentRiskItem
         :param _TotalCount: 总条数
         :type TotalCount: int
@@ -12433,7 +12174,6 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
     @property
     def RiskItemList(self):
         """脆弱项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssessmentRiskItem
         """
         return self._RiskItemList
@@ -12661,13 +12401,7 @@ class DescribeDSPAAssessmentTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 结果集个数限制。默认为20，最大值为100
         :type Limit: int
-        :param _Filters: 过滤项。
-支持模糊搜索：TaskId，TaskName
-支持过滤：
-BusinessName：业务名称
-BusinessDept：业务部门名称
-TemplateName：评估模版名称
-Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
+        :param _Filters: 过滤项。支持模糊搜索：TaskId，TaskName支持过滤：BusinessName：业务名称BusinessDept：业务部门名称TemplateName：评估模板名称Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
         :type Filters: list of DspaAssessmentFilter
         """
         self._DspaId = None
@@ -12710,13 +12444,7 @@ Status：评估状态 (waiting待评估，processing评估中, , finished已评�
 
     @property
     def Filters(self):
-        """过滤项。
-支持模糊搜索：TaskId，TaskName
-支持过滤：
-BusinessName：业务名称
-BusinessDept：业务部门名称
-TemplateName：评估模版名称
-Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
+        """过滤项。支持模糊搜索：TaskId，TaskName支持过滤：BusinessName：业务名称BusinessDept：业务部门名称TemplateName：评估模板名称Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
         :rtype: list of DspaAssessmentFilter
         """
         return self._Filters
@@ -13193,7 +12921,6 @@ class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Buckets: COS对象存储敏感数据资产已扫描的桶集合。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Buckets: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13204,7 +12931,6 @@ class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
     @property
     def Buckets(self):
         """COS对象存储敏感数据资产已扫描的桶集合。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Buckets
@@ -13290,7 +13016,6 @@ class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
         r"""
         :param _Stats: 符合条件的COS存储对象的敏感数据资产统计记录
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stats: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDataAssetCount`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13301,7 +13026,6 @@ class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
     @property
     def Stats(self):
         """符合条件的COS存储对象的敏感数据资产统计记录
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDataAssetCount`
         """
@@ -13389,7 +13113,6 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Details: COS对象存储敏感数据资产详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of DspaCOSDataAssetDetail
         :param _TotalCount: 符合条件的COS对象存储敏感数据资产数量
         :type TotalCount: int
@@ -13403,7 +13126,6 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
     @property
     def Details(self):
         """COS对象存储敏感数据资产详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaCOSDataAssetDetail
         """
         return self._Details
@@ -13505,7 +13227,6 @@ class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Task: 任务详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Task: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13516,7 +13237,6 @@ class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
     @property
     def Task(self):
         """任务详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDetail`
         """
         return self._Task
@@ -13618,7 +13338,6 @@ class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Files: 文件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Files: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13629,7 +13348,6 @@ class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
     @property
     def Files(self):
         """文件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Files
@@ -13761,10 +13479,8 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 扫描任务结果项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaCOSDiscoveryTaskResult
         :param _TotalCount: 符合条件的数据结果数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13776,7 +13492,6 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
     @property
     def Items(self):
         """扫描任务结果项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaCOSDiscoveryTaskResult
         """
         return self._Items
@@ -13788,7 +13503,6 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的数据结果数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -13939,7 +13653,6 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaCOSDiscoveryTask
         :param _TotalCount: 符合条件的任务列表数
         :type TotalCount: int
@@ -13953,7 +13666,6 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
     @property
     def Items(self):
         """任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaCOSDiscoveryTask
         """
         return self._Items
@@ -14190,7 +13902,6 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 扫描结果详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaDiscoveryCOSTaskResultDetail
         :param _TotalCount: 符合条件的详情数量
         :type TotalCount: int
@@ -14204,7 +13915,6 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
     @property
     def Items(self):
         """扫描结果详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryCOSTaskResultDetail
         """
         return self._Items
@@ -14351,10 +14061,8 @@ class DescribeDSPACategoriesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 敏感数据分类列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DataCategory
         :param _TotalCount: 符合条件的敏感数据分类数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14366,7 +14074,6 @@ class DescribeDSPACategoriesResponse(AbstractModel):
     @property
     def Items(self):
         """敏感数据分类列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataCategory
         """
         return self._Items
@@ -14378,7 +14085,6 @@ class DescribeDSPACategoriesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的敏感数据分类数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -14469,7 +14175,6 @@ class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StatisticSet: 分类规则统计信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticSet: list of CategoryRuleStatistic
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14480,7 +14185,6 @@ class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
     @property
     def StatisticSet(self):
         """分类规则统计信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CategoryRuleStatistic
         """
         return self._StatisticSet
@@ -14585,7 +14289,6 @@ class DescribeDSPACategoryRulesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CategoryRules: 分类规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryRules: list of CategoryRule
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14596,7 +14299,6 @@ class DescribeDSPACategoryRulesResponse(AbstractModel):
     @property
     def CategoryRules(self):
         """分类规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CategoryRule
         """
         return self._CategoryRules
@@ -14686,7 +14388,6 @@ class DescribeDSPACategoryTreeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultJson: 分类树json
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultJson: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14697,7 +14398,6 @@ class DescribeDSPACategoryTreeResponse(AbstractModel):
     @property
     def ResultJson(self):
         """分类树json
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultJson
@@ -14797,7 +14497,6 @@ class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultJson: 分类树json
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultJson: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14808,7 +14507,6 @@ class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
     @property
     def ResultJson(self):
         """分类树json
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultJson
@@ -14893,7 +14591,6 @@ class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Detail: 模板详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.dsgc.v20190723.models.ComplianceGroupDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14904,7 +14601,6 @@ class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
     @property
     def Detail(self):
         """模板详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ComplianceGroupDetail`
         """
         return self._Detail
@@ -14951,6 +14647,8 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
         :type Limit: int
         :param _ComplianceGroupTypeList: 合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
         :type ComplianceGroupTypeList: list of int
+        :param _IsFilterCloseComplianceGroup: 是否仅显示已开启模版
+        :type IsFilterCloseComplianceGroup: bool
         """
         self._DspaId = None
         self._ComplianceGroupId = None
@@ -14958,6 +14656,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._ComplianceGroupTypeList = None
+        self._IsFilterCloseComplianceGroup = None
 
     @property
     def DspaId(self):
@@ -15025,6 +14724,17 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
     def ComplianceGroupTypeList(self, ComplianceGroupTypeList):
         self._ComplianceGroupTypeList = ComplianceGroupTypeList
 
+    @property
+    def IsFilterCloseComplianceGroup(self):
+        """是否仅显示已开启模版
+        :rtype: bool
+        """
+        return self._IsFilterCloseComplianceGroup
+
+    @IsFilterCloseComplianceGroup.setter
+    def IsFilterCloseComplianceGroup(self, IsFilterCloseComplianceGroup):
+        self._IsFilterCloseComplianceGroup = IsFilterCloseComplianceGroup
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -15033,6 +14743,7 @@ class DescribeDSPAComplianceGroupsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._ComplianceGroupTypeList = params.get("ComplianceGroupTypeList")
+        self._IsFilterCloseComplianceGroup = params.get("IsFilterCloseComplianceGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15051,10 +14762,8 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 合规组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaDiscoveryComplianceGroupInfo
         :param _TotalCount: 符合条件的合规组列表数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15066,7 +14775,6 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
     @property
     def Items(self):
         """合规组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryComplianceGroupInfo
         """
         return self._Items
@@ -15078,7 +14786,6 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的合规组列表数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -15169,10 +14876,8 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IsUpdated: 模板是否更新
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdated: bool
         :param _TaskNameSet: 任务名称集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNameSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15184,7 +14889,6 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
     @property
     def IsUpdated(self):
         """模板是否更新
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUpdated
@@ -15196,7 +14900,6 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
     @property
     def TaskNameSet(self):
         """任务名称集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TaskNameSet
@@ -15297,18 +15000,19 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 数据库信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DSPADataSourceDbInfo
+        :param _DataSourceId: 数据源id
+        :type DataSourceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
+        self._DataSourceId = None
         self._RequestId = None
 
     @property
     def Items(self):
         """数据库信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DSPADataSourceDbInfo
         """
         return self._Items
@@ -15316,6 +15020,17 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
     @Items.setter
     def Items(self, Items):
         self._Items = Items
+
+    @property
+    def DataSourceId(self):
+        """数据源id
+        :rtype: str
+        """
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
 
     @property
     def RequestId(self):
@@ -15336,6 +15051,7 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
                 obj = DSPADataSourceDbInfo()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._DataSourceId = params.get("DataSourceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -15460,7 +15176,6 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
         :param _TotalCount: 规则ID
         :type TotalCount: int
         :param _Items: 规则集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaDiscoveryRuleDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15483,7 +15198,6 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
     @property
     def Items(self):
         """规则集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryRuleDetail
         """
         return self._Items
@@ -15653,7 +15367,6 @@ class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Task: 任务详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Task: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15664,7 +15377,6 @@ class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
     @property
     def Task(self):
         """任务详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDetail`
         """
         return self._Task
@@ -15886,10 +15598,8 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 扫描结果详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaDiscoveryTaskResultDetail
         :param _TotalCount: 符合条件的扫描结果详情记录数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15901,7 +15611,6 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
     @property
     def Items(self):
         """扫描结果详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryTaskResultDetail
         """
         return self._Items
@@ -15913,7 +15622,6 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的扫描结果详情记录数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -16123,10 +15831,8 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 扫描任务结果项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaDiscoveryTaskDbResult
         :param _TotalCount: 符合条件的扫描任务结果记录数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16138,7 +15844,6 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
     @property
     def Items(self):
         """扫描任务结果项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryTaskDbResult
         """
         return self._Items
@@ -16150,7 +15855,6 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的扫描任务结果记录数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -16271,7 +15975,6 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 分类分级扫描表集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DSPATableInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16282,7 +15985,6 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
     @property
     def Items(self):
         """分类分级扫描表集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DSPATableInfo
         """
         return self._Items
@@ -16404,7 +16106,6 @@ class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Stats: 概览统计结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stats: :class:`tencentcloud.dsgc.v20190723.models.ESDataAssetCountDto`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16415,7 +16116,6 @@ class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
     @property
     def Stats(self):
         """概览统计结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ESDataAssetCountDto`
         """
         return self._Stats
@@ -16569,10 +16269,8 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Details: 概览详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of ESDataAssetDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16584,7 +16282,6 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -16596,7 +16293,6 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
     @property
     def Details(self):
         """概览详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ESDataAssetDetail
         """
         return self._Details
@@ -16717,7 +16413,6 @@ class DescribeDSPAESDataSampleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 数据样本列表，最多10条数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16728,7 +16423,6 @@ class DescribeDSPAESDataSampleResponse(AbstractModel):
     @property
     def Items(self):
         """数据样本列表，最多10条数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Items
@@ -16775,7 +16469,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
         :type CategoryIdList: list of int
         :param _LevelId: 敏感数据分级ID
         :type LevelId: int
-        :param _DbName: 索引名称
+        :param _DbName: 数据库名称
         :type DbName: str
         """
         self._DspaId = None
@@ -16866,7 +16560,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """索引名称
+        """数据库名称
         :rtype: str
         """
         return self._DbName
@@ -16903,10 +16597,8 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: ES扫描结果详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ESTaskResultDetail
         :param _TotalCount: 符合条件的扫描结果详情记录数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16918,7 +16610,6 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
     @property
     def Items(self):
         """ES扫描结果详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ESTaskResultDetail
         """
         return self._Items
@@ -16930,7 +16621,6 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的扫描结果详情记录数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -17149,10 +16839,8 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
         r"""
         :param _Items: 符合条件的敏感数据分级标识记录
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaDiscoveryLevelDetail
         :param _TotalCount: 符合条件的敏感数据分级标识记录数
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17166,7 +16854,6 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
     def Items(self):
         """符合条件的敏感数据分级标识记录
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryLevelDetail
         """
         return self._Items
@@ -17178,7 +16865,6 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的敏感数据分级标识记录数
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17483,7 +17169,6 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Details: RDB关系数据库敏感数据资产详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of DspaRDBDataAssetDetail
         :param _TotalCount: 符合条件的RDB关系数据库敏感数据资产数量
         :type TotalCount: int
@@ -17497,7 +17182,6 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
     @property
     def Details(self):
         """RDB关系数据库敏感数据资产详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaRDBDataAssetDetail
         """
         return self._Details
@@ -17584,7 +17268,6 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Metas: 支持的元数据类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metas: list of DSPAMetaType
         :param _MaxDBInstanceLimit: 最大支持每批次同步数量
         :type MaxDBInstanceLimit: int
@@ -17598,7 +17281,6 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
     @property
     def Metas(self):
         """支持的元数据类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DSPAMetaType
         """
         return self._Metas
@@ -17730,7 +17412,6 @@ class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 数据样本列表，最多10条数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaFieldResultDataSample
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17741,7 +17422,6 @@ class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
     @property
     def Items(self):
         """数据样本列表，最多10条数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaFieldResultDataSample
         """
         return self._Items
@@ -17851,13 +17531,10 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ESAsset: ES的资产统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type ESAsset: :class:`tencentcloud.dsgc.v20190723.models.ESAsset`
         :param _TopAsset: 涉敏top数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopAsset: list of TopAsset
         :param _ESDetail: ES的详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ESDetail: list of ESAssetDBDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17870,7 +17547,6 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def ESAsset(self):
         """ES的资产统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ESAsset`
         """
         return self._ESAsset
@@ -17882,7 +17558,6 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def TopAsset(self):
         """涉敏top数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopAsset
         """
         return self._TopAsset
@@ -17894,7 +17569,6 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def ESDetail(self):
         """ES的详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ESAssetDBDetail
         """
         return self._ESDetail
@@ -18156,13 +17830,10 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MongoAsset: mongo的资产统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type MongoAsset: :class:`tencentcloud.dsgc.v20190723.models.MongoAsset`
         :param _TopAsset: 涉敏top数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopAsset: list of TopAsset
         :param _MongoDetail: mongo的详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MongoDetail: list of MongoAssetDBDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18175,7 +17846,6 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def MongoAsset(self):
         """mongo的资产统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.MongoAsset`
         """
         return self._MongoAsset
@@ -18187,7 +17857,6 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def TopAsset(self):
         """涉敏top数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopAsset
         """
         return self._TopAsset
@@ -18199,7 +17868,6 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def MongoDetail(self):
         """mongo的详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MongoAssetDBDetail
         """
         return self._MongoDetail
@@ -18318,13 +17986,10 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RDBAsset: rdb的资产统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type RDBAsset: :class:`tencentcloud.dsgc.v20190723.models.RDBAsset`
         :param _TopAsset: 涉敏top数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopAsset: list of TopAsset
         :param _RDBDetail: rdb的详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RDBDetail: list of AssetDBDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18337,7 +18002,6 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def RDBAsset(self):
         """rdb的资产统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.RDBAsset`
         """
         return self._RDBAsset
@@ -18349,7 +18013,6 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def TopAsset(self):
         """涉敏top数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopAsset
         """
         return self._TopAsset
@@ -18361,7 +18024,6 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
     @property
     def RDBDetail(self):
         """rdb的详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssetDBDetail
         """
         return self._RDBDetail
@@ -18475,7 +18137,6 @@ class DescribeReportTaskDownloadUrlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadUrlSet: 下载链接集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrlSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18486,7 +18147,6 @@ class DescribeReportTaskDownloadUrlResponse(AbstractModel):
     @property
     def DownloadUrlSet(self):
         """下载链接集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DownloadUrlSet
@@ -18601,10 +18261,8 @@ class DescribeReportTasksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _ItemSet: 报表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemSet: list of ReportInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18616,7 +18274,6 @@ class DescribeReportTasksResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -18628,7 +18285,6 @@ class DescribeReportTasksResponse(AbstractModel):
     @property
     def ItemSet(self):
         """报表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ReportInfo
         """
         return self._ItemSet
@@ -18807,16 +18463,12 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LevelDistribution: 分级分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelDistribution: list of Note
         :param _CategoryDistribution: 分类分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryDistribution: list of Note
         :param _RuleDistribution: 规则分布详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleDistribution: list of RuleDistribution
         :param _SensitiveDataNum: 计算占比
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDataNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18830,7 +18482,6 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
     @property
     def LevelDistribution(self):
         """分级分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._LevelDistribution
@@ -18842,7 +18493,6 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
     @property
     def CategoryDistribution(self):
         """分类分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._CategoryDistribution
@@ -18854,7 +18504,6 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
     @property
     def RuleDistribution(self):
         """规则分布详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleDistribution
         """
         return self._RuleDistribution
@@ -18866,7 +18515,6 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
     @property
     def SensitiveDataNum(self):
         """计算占比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveDataNum
@@ -18989,16 +18637,12 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LevelDistribution: 分级分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelDistribution: list of Note
         :param _CategoryDistribution: 分类分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryDistribution: list of Note
         :param _RuleDistribution: 敏感规则分布详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleDistribution: list of RuleDistribution
         :param _SensitiveDataNum: 计算占比字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDataNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19012,7 +18656,6 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
     @property
     def LevelDistribution(self):
         """分级分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._LevelDistribution
@@ -19024,7 +18667,6 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
     @property
     def CategoryDistribution(self):
         """分类分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._CategoryDistribution
@@ -19036,7 +18678,6 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
     @property
     def RuleDistribution(self):
         """敏感规则分布详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleDistribution
         """
         return self._RuleDistribution
@@ -19048,7 +18689,6 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
     @property
     def SensitiveDataNum(self):
         """计算占比字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveDataNum
@@ -19183,7 +18823,6 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
         :param _DspaId: DSPA实例ID。
         :type DspaId: str
         :param _Results: 授权结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of DspaTaskResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19206,7 +18845,6 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
     @property
     def Results(self):
         """授权结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaTaskResult
         """
         return self._Results
@@ -19246,16 +18884,12 @@ class DiscoveryCondition(AbstractModel):
     def __init__(self):
         r"""
         :param _RDBInstances: RDB实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RDBInstances: list of RDBInstance
         :param _COSInstances: COS实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type COSInstances: list of COSInstance
         :param _NOSQLInstances: Mongo实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type NOSQLInstances: list of NOSQLInstance
         :param _ESInstances: ES实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ESInstances: list of ESInstance
         """
         self._RDBInstances = None
@@ -19266,7 +18900,6 @@ class DiscoveryCondition(AbstractModel):
     @property
     def RDBInstances(self):
         """RDB实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RDBInstance
         """
         return self._RDBInstances
@@ -19278,7 +18911,6 @@ class DiscoveryCondition(AbstractModel):
     @property
     def COSInstances(self):
         """COS实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of COSInstance
         """
         return self._COSInstances
@@ -19290,7 +18922,6 @@ class DiscoveryCondition(AbstractModel):
     @property
     def NOSQLInstances(self):
         """Mongo实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NOSQLInstance
         """
         return self._NOSQLInstances
@@ -19302,7 +18933,6 @@ class DiscoveryCondition(AbstractModel):
     @property
     def ESInstances(self):
         """ES实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ESInstance
         """
         return self._ESInstances
@@ -19406,31 +19036,22 @@ class DspaCOSDataAssetCount(AbstractModel):
     def __init__(self):
         r"""
         :param _DataAssetType: 数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataAssetType: int
         :param _TotalBucketCnt: 已扫描的存储桶的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalBucketCnt: int
         :param _TotalObjectCnt: 对象总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalObjectCnt: int
         :param _SensitiveCategoryCnt: 敏感数据类型个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveCategoryCnt: int
         :param _SensitiveDataCnt: 敏感数据条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDataCnt: int
         :param _SensitiveLevel: 敏感等级分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveLevel: list of SensitiveLevel
         :param _SensitiveBucketCnt: 敏感存储桶个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveBucketCnt: int
         :param _SensitiveObjectCnt: 敏感对象个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveObjectCnt: int
         :param _CategoryDistributed: 数据分类分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryDistributed: list of DspaDataCategoryDistributed
         """
         self._DataAssetType = None
@@ -19446,7 +19067,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def DataAssetType(self):
         """数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataAssetType
@@ -19458,7 +19078,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def TotalBucketCnt(self):
         """已扫描的存储桶的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalBucketCnt
@@ -19470,7 +19089,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def TotalObjectCnt(self):
         """对象总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalObjectCnt
@@ -19482,7 +19100,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def SensitiveCategoryCnt(self):
         """敏感数据类型个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveCategoryCnt
@@ -19494,7 +19111,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def SensitiveDataCnt(self):
         """敏感数据条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveDataCnt
@@ -19506,7 +19122,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def SensitiveLevel(self):
         """敏感等级分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SensitiveLevel
         """
         return self._SensitiveLevel
@@ -19518,7 +19133,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def SensitiveBucketCnt(self):
         """敏感存储桶个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveBucketCnt
@@ -19530,7 +19144,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def SensitiveObjectCnt(self):
         """敏感对象个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveObjectCnt
@@ -19542,7 +19155,6 @@ class DspaCOSDataAssetCount(AbstractModel):
     @property
     def CategoryDistributed(self):
         """数据分类分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDataCategoryDistributed
         """
         return self._CategoryDistributed
@@ -19614,30 +19226,22 @@ class DspaCOSDataAssetDetail(AbstractModel):
         :param _RuleId: 规则id
         :type RuleId: int
         :param _ResourceRegion: 资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _CategoryId: 分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _LevelId: 分级ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         :param _FileResultId: 文件扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileResultId: int
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _CategoryFullPath: 分类路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryFullPath: str
         :param _IdentifyType: 0-系统识别
 1-人工识别
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyType: int
         :param _CheckStatus: 0-系统识别
 1-人工识别
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckStatus: int
         """
         self._BucketName = None
@@ -19796,7 +19400,6 @@ class DspaCOSDataAssetDetail(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -19808,7 +19411,6 @@ class DspaCOSDataAssetDetail(AbstractModel):
     @property
     def CategoryId(self):
         """分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -19820,7 +19422,6 @@ class DspaCOSDataAssetDetail(AbstractModel):
     @property
     def LevelId(self):
         """分级ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -19832,7 +19433,6 @@ class DspaCOSDataAssetDetail(AbstractModel):
     @property
     def FileResultId(self):
         """文件扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileResultId
@@ -19844,7 +19444,6 @@ class DspaCOSDataAssetDetail(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -19856,7 +19455,6 @@ class DspaCOSDataAssetDetail(AbstractModel):
     @property
     def CategoryFullPath(self):
         """分类路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryFullPath
@@ -19869,7 +19467,6 @@ class DspaCOSDataAssetDetail(AbstractModel):
     def IdentifyType(self):
         """0-系统识别
 1-人工识别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentifyType
@@ -19882,7 +19479,6 @@ class DspaCOSDataAssetDetail(AbstractModel):
     def CheckStatus(self):
         """0-系统识别
 1-人工识别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckStatus
@@ -19945,13 +19541,10 @@ class DspaCOSDiscoveryTask(AbstractModel):
         :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
         :type GeneralRuleSetEnable: int
         :param _Result: 任务最新的一次执行结果信息，该字段用于查询任务列表接口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
         :param _TimingStartTime: 定时开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimingStartTime: str
         :param _ComplianceUpdate: 关联分类模板是否更新
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceUpdate: bool
         """
         self._Name = None
@@ -20045,7 +19638,6 @@ class DspaCOSDiscoveryTask(AbstractModel):
     @property
     def Result(self):
         """任务最新的一次执行结果信息，该字段用于查询任务列表接口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
         """
         return self._Result
@@ -20057,7 +19649,6 @@ class DspaCOSDiscoveryTask(AbstractModel):
     @property
     def TimingStartTime(self):
         """定时开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimingStartTime
@@ -20069,7 +19660,6 @@ class DspaCOSDiscoveryTask(AbstractModel):
     @property
     def ComplianceUpdate(self):
         """关联分类模板是否更新
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ComplianceUpdate
@@ -20114,16 +19704,12 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
         :param _DataSourceId: 数据源ID
         :type DataSourceId: str
         :param _ProxyAddress: 代理地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyAddress: list of str
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _Condition: 扫描任务条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Condition: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskCOSCondition`
         :param _ResourceRegion: 资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         """
         self._DataSourceId = None
@@ -20146,7 +19732,6 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
     @property
     def ProxyAddress(self):
         """代理地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ProxyAddress
@@ -20158,7 +19743,6 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -20170,7 +19754,6 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
     @property
     def Condition(self):
         """扫描任务条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskCOSCondition`
         """
         return self._Condition
@@ -20182,7 +19765,6 @@ class DspaCOSDiscoveryTaskDataSourceInfo(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -20232,13 +19814,10 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
         :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
         :type GeneralRuleSetEnable: int
         :param _DefaultComplianceInfo: 当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultComplianceInfo: list of ScanTaskComplianceInfo
         :param _CustomComplianceInfo: 该任务中用户选择的合规组信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomComplianceInfo: list of ScanTaskComplianceInfo
         :param _TimingStartTime: 定时开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimingStartTime: str
         """
         self._Name = None
@@ -20332,7 +19911,6 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
     @property
     def DefaultComplianceInfo(self):
         """当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScanTaskComplianceInfo
         """
         return self._DefaultComplianceInfo
@@ -20344,7 +19922,6 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
     @property
     def CustomComplianceInfo(self):
         """该任务中用户选择的合规组信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScanTaskComplianceInfo
         """
         return self._CustomComplianceInfo
@@ -20356,7 +19933,6 @@ class DspaCOSDiscoveryTaskDetail(AbstractModel):
     @property
     def TimingStartTime(self):
         """定时开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimingStartTime
@@ -20425,18 +20001,14 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
         :param _EndTime: Bucket扫描的结束时间，格式如：2006-01-02 15:04:05
         :type EndTime: str
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _Status: Bucket扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
         :type Status: int
         :param _ErrorInfo: Bucket扫描结果错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: str
         :param _ResourceRegion: 资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _OverSize: 是否超额
-注意：此字段可能返回 null，表示取不到有效值。
         :type OverSize: str
         """
         self._BucketResultId = None
@@ -20556,7 +20128,6 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -20579,7 +20150,6 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
     @property
     def ErrorInfo(self):
         """Bucket扫描结果错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorInfo
@@ -20591,7 +20161,6 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -20603,7 +20172,6 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
     @property
     def OverSize(self):
         """是否超额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OverSize
@@ -20772,16 +20340,12 @@ class DspaDataCategoryDistributed(AbstractModel):
     def __init__(self):
         r"""
         :param _CategoryId: 数据分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _CategoryName: 数据分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryName: str
         :param _Count: 数据分类统计个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _CategoryFullPath: 分类路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryFullPath: str
         """
         self._CategoryId = None
@@ -20792,7 +20356,6 @@ class DspaDataCategoryDistributed(AbstractModel):
     @property
     def CategoryId(self):
         """数据分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -20804,7 +20367,6 @@ class DspaDataCategoryDistributed(AbstractModel):
     @property
     def CategoryName(self):
         """数据分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryName
@@ -20816,7 +20378,6 @@ class DspaDataCategoryDistributed(AbstractModel):
     @property
     def Count(self):
         """数据分类统计个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -20828,7 +20389,6 @@ class DspaDataCategoryDistributed(AbstractModel):
     @property
     def CategoryFullPath(self):
         """分类路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryFullPath
@@ -20913,10 +20473,8 @@ class DspaDiscoveryCOSDataRule(AbstractModel):
         r"""
         :param _Operator: 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
 默认值为or
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param _Contents: 规则内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Contents: list of DspaDiscoveryDataContent
         """
         self._Operator = None
@@ -20926,7 +20484,6 @@ class DspaDiscoveryCOSDataRule(AbstractModel):
     def Operator(self):
         """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
 默认值为or
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Operator
@@ -20938,7 +20495,6 @@ class DspaDiscoveryCOSDataRule(AbstractModel):
     @property
     def Contents(self):
         """规则内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryDataContent
         """
         return self._Contents
@@ -20974,19 +20530,14 @@ class DspaDiscoveryCOSRules(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 规则状态；0 不启用, 1 启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _RegexRule: regex规则内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegexRule: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         :param _KeywordRule: 关键词规则内容组，最大支持5个关键词。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeywordRule: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         :param _IgnoreStringRule: 忽略词规则内容组，最大支持5个忽略词。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreStringRule: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         :param _MaxMatch: 最大匹配距离，默认值为100。上限为500.
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMatch: int
         """
         self._Status = None
@@ -20998,7 +20549,6 @@ class DspaDiscoveryCOSRules(AbstractModel):
     @property
     def Status(self):
         """规则状态；0 不启用, 1 启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -21010,7 +20560,6 @@ class DspaDiscoveryCOSRules(AbstractModel):
     @property
     def RegexRule(self):
         """regex规则内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         """
         return self._RegexRule
@@ -21022,7 +20571,6 @@ class DspaDiscoveryCOSRules(AbstractModel):
     @property
     def KeywordRule(self):
         """关键词规则内容组，最大支持5个关键词。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         """
         return self._KeywordRule
@@ -21034,7 +20582,6 @@ class DspaDiscoveryCOSRules(AbstractModel):
     @property
     def IgnoreStringRule(self):
         """忽略词规则内容组，最大支持5个忽略词。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSDataRule`
         """
         return self._IgnoreStringRule
@@ -21046,7 +20593,6 @@ class DspaDiscoveryCOSRules(AbstractModel):
     @property
     def MaxMatch(self):
         """最大匹配距离，默认值为100。上限为500.
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxMatch
@@ -21088,55 +20634,40 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
         :param _TaskId: 任务ID
         :type TaskId: int
         :param _FileResultId: 扫描File结果详情ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileResultId: int
         :param _BucketName: 所属桶名
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketName: str
         :param _FileName: 所属文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _CategoryId: 敏感数据分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _CategoryName: 敏感数据分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryName: str
         :param _LevelId: 敏感数据分级ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         :param _LevelName: 敏感数据分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelName: str
         :param _KMSEncrypted: KMS加密，true or false
-注意：此字段可能返回 null，表示取不到有效值。
         :type KMSEncrypted: bool
         :param _RuleName: 规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _RuleId: 规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _LevelRiskScore: 敏感数据分级分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelRiskScore: int
         :param _FileSize: 文件大小，单位为KB
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
         :param _FileType: 文件类型，如csv，txt
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         :param _SensitiveDataCount: 敏感数据出现次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDataCount: int
         :param _CategoryFullPath: 分类树路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryFullPath: list of str
+        :param _CategoryArr: 分类树路径
+        :type CategoryArr: list of str
         :param _ComplianceId: 合规组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceId: int
         :param _ResultId: 结果id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
         """
         self._TaskId = None
@@ -21155,6 +20686,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
         self._FileType = None
         self._SensitiveDataCount = None
         self._CategoryFullPath = None
+        self._CategoryArr = None
         self._ComplianceId = None
         self._ResultId = None
 
@@ -21172,7 +20704,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def FileResultId(self):
         """扫描File结果详情ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileResultId
@@ -21184,7 +20715,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def BucketName(self):
         """所属桶名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketName
@@ -21196,7 +20726,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def FileName(self):
         """所属文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileName
@@ -21208,7 +20737,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def CategoryId(self):
         """敏感数据分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -21220,7 +20748,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def CategoryName(self):
         """敏感数据分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryName
@@ -21232,7 +20759,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def LevelId(self):
         """敏感数据分级ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -21244,7 +20770,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def LevelName(self):
         """敏感数据分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelName
@@ -21256,7 +20781,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def KMSEncrypted(self):
         """KMS加密，true or false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._KMSEncrypted
@@ -21268,7 +20792,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def RuleName(self):
         """规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -21280,7 +20803,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def RuleId(self):
         """规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -21292,7 +20814,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def LevelRiskScore(self):
         """敏感数据分级分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelRiskScore
@@ -21304,7 +20825,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def FileSize(self):
         """文件大小，单位为KB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileSize
@@ -21316,7 +20836,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def FileType(self):
         """文件类型，如csv，txt
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileType
@@ -21328,7 +20847,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def SensitiveDataCount(self):
         """敏感数据出现次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveDataCount
@@ -21340,7 +20858,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def CategoryFullPath(self):
         """分类树路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CategoryFullPath
@@ -21350,9 +20867,19 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
         self._CategoryFullPath = CategoryFullPath
 
     @property
+    def CategoryArr(self):
+        """分类树路径
+        :rtype: list of str
+        """
+        return self._CategoryArr
+
+    @CategoryArr.setter
+    def CategoryArr(self, CategoryArr):
+        self._CategoryArr = CategoryArr
+
+    @property
     def ComplianceId(self):
         """合规组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ComplianceId
@@ -21364,7 +20891,6 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
     @property
     def ResultId(self):
         """结果id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResultId
@@ -21391,6 +20917,7 @@ class DspaDiscoveryCOSTaskResultDetail(AbstractModel):
         self._FileType = params.get("FileType")
         self._SensitiveDataCount = params.get("SensitiveDataCount")
         self._CategoryFullPath = params.get("CategoryFullPath")
+        self._CategoryArr = params.get("CategoryArr")
         self._ComplianceId = params.get("ComplianceId")
         self._ResultId = params.get("ResultId")
         memeber_set = set(params.keys())
@@ -21411,22 +20938,16 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
     def __init__(self):
         r"""
         :param _ComplianceGroupId: 合规组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceGroupId: int
         :param _Name: 合规组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 合规组描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ComplianceGroupType: 合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceGroupType: int
         :param _ComplianceGroupRules: 合规组对应的规则项
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceGroupRules: list of DspaDiscoveryComplianceGroupRuleInfo
         :param _LevelGroupId: 合规组对应的分级组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelGroupId: int
         """
         self._ComplianceGroupId = None
@@ -21439,7 +20960,6 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
     @property
     def ComplianceGroupId(self):
         """合规组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -21451,7 +20971,6 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
     @property
     def Name(self):
         """合规组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -21463,7 +20982,6 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
     @property
     def Description(self):
         """合规组描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -21475,7 +20993,6 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
     @property
     def ComplianceGroupType(self):
         """合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ComplianceGroupType
@@ -21487,7 +21004,6 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
     @property
     def ComplianceGroupRules(self):
         """合规组对应的规则项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryComplianceGroupRuleInfo
         """
         return self._ComplianceGroupRules
@@ -21499,7 +21015,6 @@ class DspaDiscoveryComplianceGroup(AbstractModel):
     @property
     def LevelGroupId(self):
         """合规组对应的分级组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelGroupId
@@ -21539,29 +21054,25 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ComplianceGroupId: 合规组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceGroupId: int
         :param _Name: 合规组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 合规组描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ComplianceGroupType: 合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceGroupType: int
         :param _ComplianceGroupRules: 合规组对应的规则项
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceGroupRules: list of DspaDiscoveryComplianceGroupRule
         :param _LevelGroupId: 合规组对应的分级组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelGroupId: int
         :param _Disabled: 是否禁止使用（true，禁止使用，false，可以使用）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Disabled: bool
         :param _IsAlias: 是否别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAlias: bool
+        :param _Status: 1代表模版开启，0代表模版关闭
+        :type Status: int
+        :param _ModifyTime: 模版最后修改时间
+        :type ModifyTime: str
         """
         self._ComplianceGroupId = None
         self._Name = None
@@ -21571,11 +21082,12 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
         self._LevelGroupId = None
         self._Disabled = None
         self._IsAlias = None
+        self._Status = None
+        self._ModifyTime = None
 
     @property
     def ComplianceGroupId(self):
         """合规组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ComplianceGroupId
@@ -21587,7 +21099,6 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     @property
     def Name(self):
         """合规组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -21599,7 +21110,6 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     @property
     def Description(self):
         """合规组描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -21611,7 +21121,6 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     @property
     def ComplianceGroupType(self):
         """合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ComplianceGroupType
@@ -21623,7 +21132,6 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     @property
     def ComplianceGroupRules(self):
         """合规组对应的规则项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryComplianceGroupRule
         """
         return self._ComplianceGroupRules
@@ -21635,7 +21143,6 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     @property
     def LevelGroupId(self):
         """合规组对应的分级组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelGroupId
@@ -21647,7 +21154,6 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     @property
     def Disabled(self):
         """是否禁止使用（true，禁止使用，false，可以使用）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Disabled
@@ -21659,7 +21165,6 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     @property
     def IsAlias(self):
         """是否别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAlias
@@ -21667,6 +21172,28 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
     @IsAlias.setter
     def IsAlias(self, IsAlias):
         self._IsAlias = IsAlias
+
+    @property
+    def Status(self):
+        """1代表模版开启，0代表模版关闭
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ModifyTime(self):
+        """模版最后修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
 
 
     def _deserialize(self, params):
@@ -21683,6 +21210,8 @@ class DspaDiscoveryComplianceGroupInfo(AbstractModel):
         self._LevelGroupId = params.get("LevelGroupId")
         self._Disabled = params.get("Disabled")
         self._IsAlias = params.get("IsAlias")
+        self._Status = params.get("Status")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21701,22 +21230,16 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleId: 敏感数据识别规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RuleName: 敏感数据识别规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _CategoryId: 敏感数据分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _LevelId: 敏感数据分级ID, 目前只支持高、中、低三级
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         :param _CategoryName: 合规组对应的分类信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryName: str
         :param _LevelRiskName: 分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelRiskName: str
         """
         self._RuleId = None
@@ -21729,7 +21252,6 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
     @property
     def RuleId(self):
         """敏感数据识别规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -21741,7 +21263,6 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
     @property
     def RuleName(self):
         """敏感数据识别规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -21753,7 +21274,6 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
     @property
     def CategoryId(self):
         """敏感数据分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -21765,7 +21285,6 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
     @property
     def LevelId(self):
         """敏感数据分级ID, 目前只支持高、中、低三级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -21777,7 +21296,6 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
     @property
     def CategoryName(self):
         """合规组对应的分类信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryName
@@ -21789,7 +21307,6 @@ class DspaDiscoveryComplianceGroupRule(AbstractModel):
     @property
     def LevelRiskName(self):
         """分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelRiskName
@@ -21824,16 +21341,12 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleId: 敏感数据识别规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RuleName: 敏感数据识别规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _CategoryId: 敏感数据分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _LevelId: 敏感数据分级ID, 目前只支持高、中、低三级
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         """
         self._RuleId = None
@@ -21844,7 +21357,6 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
     @property
     def RuleId(self):
         """敏感数据识别规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -21856,7 +21368,6 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
     @property
     def RuleName(self):
         """敏感数据识别规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -21868,7 +21379,6 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
     @property
     def CategoryId(self):
         """敏感数据分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -21880,7 +21390,6 @@ class DspaDiscoveryComplianceGroupRuleInfo(AbstractModel):
     @property
     def LevelId(self):
         """敏感数据分级ID, 目前只支持高、中、低三级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -21914,12 +21423,10 @@ class DspaDiscoveryDataContent(AbstractModel):
         r"""
         :param _RuleContent: 规则内容，可以是正则规则，关键词，
 忽略词扥
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleContent: str
         :param _IsIgnoreCase: 是否区分大小写
 false: 不区分大小写
 true:区分大小写
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsIgnoreCase: bool
         """
         self._RuleContent = None
@@ -21929,7 +21436,6 @@ true:区分大小写
     def RuleContent(self):
         """规则内容，可以是正则规则，关键词，
 忽略词扥
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleContent
@@ -21943,7 +21449,6 @@ true:区分大小写
         """是否区分大小写
 false: 不区分大小写
 true:区分大小写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsIgnoreCase
@@ -21976,13 +21481,10 @@ class DspaDiscoveryDataRule(AbstractModel):
         :param _RuleType: 规则类型；取值：
 keyword 关键字, 
 regex 正则
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: str
         :param _RuleContent: 内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleContent: str
         :param _ExtendParameters: 该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendParameters: list of DatagovRuleExtendParameter
         """
         self._RuleType = None
@@ -21994,7 +21496,6 @@ regex 正则
         """规则类型；取值：
 keyword 关键字, 
 regex 正则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleType
@@ -22006,7 +21507,6 @@ regex 正则
     @property
     def RuleContent(self):
         """内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleContent
@@ -22018,7 +21518,6 @@ regex 正则
     @property
     def ExtendParameters(self):
         """该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DatagovRuleExtendParameter
         """
         return self._ExtendParameters
@@ -22055,10 +21554,8 @@ class DspaDiscoveryDataRules(AbstractModel):
     def __init__(self):
         r"""
         :param _Operator: 操作符；只能取and, or的其中一种
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param _Contents: 规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Contents: list of DspaDiscoveryDataRule
         """
         self._Operator = None
@@ -22067,7 +21564,6 @@ class DspaDiscoveryDataRules(AbstractModel):
     @property
     def Operator(self):
         """操作符；只能取and, or的其中一种
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Operator
@@ -22079,7 +21575,6 @@ class DspaDiscoveryDataRules(AbstractModel):
     @property
     def Contents(self):
         """规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryDataRule
         """
         return self._Contents
@@ -22115,25 +21610,18 @@ class DspaDiscoveryLevelDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _LevelGroupName: 分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelGroupName: str
         :param _Source: 分级组来源，0为内置，1为自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
         :param _LevelGroupDesc: 分级组描述，最多1024字符
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelGroupDesc: str
         :param _LevelDetail: 具体分级标识详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelDetail: list of LevelItem
         :param _RefComplianceCnt: 引用合规组次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RefComplianceCnt: int
         :param _RefCompliance: 引用合规组
-注意：此字段可能返回 null，表示取不到有效值。
         :type RefCompliance: list of DspaDiscoveryComplianceGroup
         :param _LevelGroupId: 分级组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelGroupId: int
         """
         self._LevelGroupName = None
@@ -22147,7 +21635,6 @@ class DspaDiscoveryLevelDetail(AbstractModel):
     @property
     def LevelGroupName(self):
         """分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelGroupName
@@ -22159,7 +21646,6 @@ class DspaDiscoveryLevelDetail(AbstractModel):
     @property
     def Source(self):
         """分级组来源，0为内置，1为自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Source
@@ -22171,7 +21657,6 @@ class DspaDiscoveryLevelDetail(AbstractModel):
     @property
     def LevelGroupDesc(self):
         """分级组描述，最多1024字符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelGroupDesc
@@ -22183,7 +21668,6 @@ class DspaDiscoveryLevelDetail(AbstractModel):
     @property
     def LevelDetail(self):
         """具体分级标识详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LevelItem
         """
         return self._LevelDetail
@@ -22195,7 +21679,6 @@ class DspaDiscoveryLevelDetail(AbstractModel):
     @property
     def RefComplianceCnt(self):
         """引用合规组次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RefComplianceCnt
@@ -22207,7 +21690,6 @@ class DspaDiscoveryLevelDetail(AbstractModel):
     @property
     def RefCompliance(self):
         """引用合规组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDiscoveryComplianceGroup
         """
         return self._RefCompliance
@@ -22219,7 +21701,6 @@ class DspaDiscoveryLevelDetail(AbstractModel):
     @property
     def LevelGroupId(self):
         """分级组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelGroupId
@@ -22265,16 +21746,12 @@ class DspaDiscoveryRDBRules(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 规则状态；0 不启用, 1 启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _MatchOperator: 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchOperator: str
         :param _MetaRule: 字段名包含规则，最大支持选择9项
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetaRule: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryDataRules`
         :param _ContentRule: 内容包含规则，最大支持选择9项
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContentRule: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryDataRules`
         """
         self._Status = None
@@ -22285,7 +21762,6 @@ class DspaDiscoveryRDBRules(AbstractModel):
     @property
     def Status(self):
         """规则状态；0 不启用, 1 启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -22297,7 +21773,6 @@ class DspaDiscoveryRDBRules(AbstractModel):
     @property
     def MatchOperator(self):
         """只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MatchOperator
@@ -22309,7 +21784,6 @@ class DspaDiscoveryRDBRules(AbstractModel):
     @property
     def MetaRule(self):
         """字段名包含规则，最大支持选择9项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryDataRules`
         """
         return self._MetaRule
@@ -22321,7 +21795,6 @@ class DspaDiscoveryRDBRules(AbstractModel):
     @property
     def ContentRule(self):
         """内容包含规则，最大支持选择9项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryDataRules`
         """
         return self._ContentRule
@@ -22358,25 +21831,18 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleId: 规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _Name: 规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Source: 规则来源，取值：0 内置, 1 自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
         :param _RDBRules: RDB规则详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type RDBRules: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryRDBRules`
         :param _COSRules: COS规则详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type COSRules: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSRules`
         :param _Status: 0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._RuleId = None
@@ -22390,7 +21856,6 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     @property
     def RuleId(self):
         """规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -22402,7 +21867,6 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     @property
     def Name(self):
         """规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -22414,7 +21878,6 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     @property
     def Description(self):
         """规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -22426,7 +21889,6 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     @property
     def Source(self):
         """规则来源，取值：0 内置, 1 自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Source
@@ -22438,7 +21900,6 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     @property
     def RDBRules(self):
         """RDB规则详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryRDBRules`
         """
         return self._RDBRules
@@ -22450,7 +21911,6 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     @property
     def COSRules(self):
         """COS规则详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSRules`
         """
         return self._COSRules
@@ -22462,7 +21922,6 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     @property
     def Status(self):
         """0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -22502,13 +21961,10 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
     def __init__(self):
         r"""
         :param _Bucket: 数据桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         :param _FileTypes: 文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileTypes: list of str
         :param _FileSizeLimit: 文件大小上限，单位为KB，如1000, 目前单个文件最大只支持1GB（1048576KB）
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSizeLimit: int
         """
         self._Bucket = None
@@ -22518,7 +21974,6 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
     @property
     def Bucket(self):
         """数据桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -22530,7 +21985,6 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
     @property
     def FileTypes(self):
         """文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FileTypes
@@ -22542,7 +21996,6 @@ class DspaDiscoveryTaskCOSCondition(AbstractModel):
     @property
     def FileSizeLimit(self):
         """文件大小上限，单位为KB，如1000, 目前单个文件最大只支持1GB（1048576KB）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileSizeLimit
@@ -22578,16 +22031,12 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
         :param _Condition: 用于传入的数据源的条件，可以选择多个数据库，数据库之间通过逗号分隔，如果为空，默认是全部数据库
         :type Condition: str
         :param _ProxyAddress: 代理地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyAddress: list of str
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _ResourceRegion: 资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _DataSourceType: 数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         """
         self._DataSourceId = None
@@ -22622,7 +22071,6 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
     @property
     def ProxyAddress(self):
         """代理地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ProxyAddress
@@ -22634,7 +22082,6 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -22646,7 +22093,6 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -22658,7 +22104,6 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
     @property
     def DataSourceType(self):
         """数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceType
@@ -22711,21 +22156,16 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
         :param _EndTime: DB扫描的结束时间，格式如：2006-01-02 15:04:05
         :type EndTime: str
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _Status: DB扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
         :type Status: int
         :param _ErrorInfo: DB扫描结果错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: str
         :param _ResourceRegion: 资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _SensitiveField: 敏感字段数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveField: int
         :param _TotalField: 总的字段数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalField: int
         """
         self._DbResultId = None
@@ -22846,7 +22286,6 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -22869,7 +22308,6 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
     @property
     def ErrorInfo(self):
         """DB扫描结果错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorInfo
@@ -22881,7 +22319,6 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -22893,7 +22330,6 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
     @property
     def SensitiveField(self):
         """敏感字段数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveField
@@ -22905,7 +22341,6 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
     @property
     def TotalField(self):
         """总的字段数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalField
@@ -22951,7 +22386,6 @@ class DspaDiscoveryTaskDetail(AbstractModel):
         :param _Name: 任务名称
         :type Name: str
         :param _Description: 任务描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Period: 执行周期，0单次 1每天 2每周 3每月
         :type Period: int
@@ -22960,19 +22394,14 @@ class DspaDiscoveryTaskDetail(AbstractModel):
         :param _Enable: 任务开关；1 打开，0 关闭
         :type Enable: int
         :param _DataSourceInfo: 元数据对象信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceInfo: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDataSource`
         :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type GeneralRuleSetEnable: int
         :param _DefaultComplianceInfo: 当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultComplianceInfo: list of ScanTaskComplianceInfo
         :param _CustomComplianceInfo: 该任务中用户选择的合规组信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomComplianceInfo: list of ScanTaskComplianceInfo
         :param _TimingStartTime: 定时开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimingStartTime: str
         """
         self._Name = None
@@ -23000,7 +22429,6 @@ class DspaDiscoveryTaskDetail(AbstractModel):
     @property
     def Description(self):
         """任务描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -23045,7 +22473,6 @@ class DspaDiscoveryTaskDetail(AbstractModel):
     @property
     def DataSourceInfo(self):
         """元数据对象信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDataSource`
         """
         return self._DataSourceInfo
@@ -23057,7 +22484,6 @@ class DspaDiscoveryTaskDetail(AbstractModel):
     @property
     def GeneralRuleSetEnable(self):
         """通用规则集开关，0 关闭，1 启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GeneralRuleSetEnable
@@ -23069,7 +22495,6 @@ class DspaDiscoveryTaskDetail(AbstractModel):
     @property
     def DefaultComplianceInfo(self):
         """当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScanTaskComplianceInfo
         """
         return self._DefaultComplianceInfo
@@ -23081,7 +22506,6 @@ class DspaDiscoveryTaskDetail(AbstractModel):
     @property
     def CustomComplianceInfo(self):
         """该任务中用户选择的合规组信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScanTaskComplianceInfo
         """
         return self._CustomComplianceInfo
@@ -23093,7 +22517,6 @@ class DspaDiscoveryTaskDetail(AbstractModel):
     @property
     def TimingStartTime(self):
         """定时开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimingStartTime
@@ -23166,11 +22589,11 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
         :param _LevelRiskScore: 敏感数据分级分数
         :type LevelRiskScore: int
         :param _SafeGuard: 保护措施
-注意：此字段可能返回 null，表示取不到有效值。
         :type SafeGuard: :class:`tencentcloud.dsgc.v20190723.models.DspaSafeGuard`
         :param _CategoryFullPath: 分类路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryFullPath: str
+        :param _SchemaName: 模式名
+        :type SchemaName: str
         """
         self._TaskId = None
         self._FieldResultId = None
@@ -23185,6 +22608,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
         self._LevelRiskScore = None
         self._SafeGuard = None
         self._CategoryFullPath = None
+        self._SchemaName = None
 
     @property
     def TaskId(self):
@@ -23310,7 +22734,6 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
     @property
     def SafeGuard(self):
         """保护措施
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaSafeGuard`
         """
         return self._SafeGuard
@@ -23322,7 +22745,6 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
     @property
     def CategoryFullPath(self):
         """分类路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryFullPath
@@ -23330,6 +22752,17 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
     @CategoryFullPath.setter
     def CategoryFullPath(self, CategoryFullPath):
         self._CategoryFullPath = CategoryFullPath
+
+    @property
+    def SchemaName(self):
+        """模式名
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
 
 
     def _deserialize(self, params):
@@ -23348,6 +22781,7 @@ class DspaDiscoveryTaskResultDetail(AbstractModel):
             self._SafeGuard = DspaSafeGuard()
             self._SafeGuard._deserialize(params.get("SafeGuard"))
         self._CategoryFullPath = params.get("CategoryFullPath")
+        self._SchemaName = params.get("SchemaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23366,7 +22800,6 @@ class DspaFieldResultDataSample(AbstractModel):
     def __init__(self):
         r"""
         :param _DataSample: 数据样本
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSample: str
         """
         self._DataSample = None
@@ -23374,7 +22807,6 @@ class DspaFieldResultDataSample(AbstractModel):
     @property
     def DataSample(self):
         """数据样本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSample
@@ -23436,13 +22868,10 @@ class DspaInstance(AbstractModel):
 2: 明确不自动续费
         :type RenewFlag: int
         :param _Channel: 实例渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :type Channel: str
         :param _InsAuthCount: 已授权的实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InsAuthCount: int
         :param _InsTotalQuota: 已购买的实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InsTotalQuota: int
         """
         self._DspaId = None
@@ -23634,7 +23063,6 @@ class DspaInstance(AbstractModel):
     @property
     def Channel(self):
         """实例渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Channel
@@ -23646,7 +23074,6 @@ class DspaInstance(AbstractModel):
     @property
     def InsAuthCount(self):
         """已授权的实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InsAuthCount
@@ -23658,7 +23085,6 @@ class DspaInstance(AbstractModel):
     @property
     def InsTotalQuota(self):
         """已购买的实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InsTotalQuota
@@ -23705,34 +23131,24 @@ class DspaRDBDataAssetCount(AbstractModel):
     def __init__(self):
         r"""
         :param _DataAssetType: 数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataAssetType: int
         :param _TotalDbCnt: 已扫描的数据库的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalDbCnt: int
         :param _TotalTableCnt: 数据库表的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTableCnt: int
         :param _SensitiveCategoryCnt: 敏感数据类型个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveCategoryCnt: int
         :param _SensitiveFieldCnt: 敏感字段的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFieldCnt: int
         :param _SensitiveLevel: 敏感等级分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveLevel: list of SensitiveLevel
         :param _SensitiveDbCnt: 敏感数据库的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDbCnt: int
         :param _SensitiveTableCnt: 敏感数据库表的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveTableCnt: int
         :param _TotalFieldCnt: 扫描字段的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalFieldCnt: int
         :param _CategoryDistributed: 数据分类分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryDistributed: list of DspaDataCategoryDistributed
         """
         self._DataAssetType = None
@@ -23749,7 +23165,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def DataAssetType(self):
         """数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataAssetType
@@ -23761,7 +23176,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def TotalDbCnt(self):
         """已扫描的数据库的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalDbCnt
@@ -23773,7 +23187,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def TotalTableCnt(self):
         """数据库表的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalTableCnt
@@ -23785,7 +23198,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def SensitiveCategoryCnt(self):
         """敏感数据类型个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveCategoryCnt
@@ -23797,7 +23209,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def SensitiveFieldCnt(self):
         """敏感字段的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFieldCnt
@@ -23809,7 +23220,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def SensitiveLevel(self):
         """敏感等级分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SensitiveLevel
         """
         return self._SensitiveLevel
@@ -23821,7 +23231,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def SensitiveDbCnt(self):
         """敏感数据库的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveDbCnt
@@ -23833,7 +23242,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def SensitiveTableCnt(self):
         """敏感数据库表的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveTableCnt
@@ -23845,7 +23253,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def TotalFieldCnt(self):
         """扫描字段的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalFieldCnt
@@ -23857,7 +23264,6 @@ class DspaRDBDataAssetCount(AbstractModel):
     @property
     def CategoryDistributed(self):
         """数据分类分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDataCategoryDistributed
         """
         return self._CategoryDistributed
@@ -23922,44 +23328,33 @@ class DspaRDBDataAssetDetail(AbstractModel):
         :param _LevelRiskName: 敏感等级
         :type LevelRiskName: str
         :param _LevelRiskScore: 分级风险分数，1-10，最小值为1，最大值为10
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelRiskScore: int
         :param _TrustedScore: 可信分
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrustedScore: str
         :param _ResourceRegion: 资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _FieldResultId: 字段扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldResultId: str
         :param _RuleId: 规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _LevelId: 分级ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         :param _CategoryId: 分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _SafeGuard: 保护措施
-注意：此字段可能返回 null，表示取不到有效值。
         :type SafeGuard: :class:`tencentcloud.dsgc.v20190723.models.DspaSafeGuard`
         :param _CategoryFullPath: 分类路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryFullPath: str
         :param _IdentifyType: 0.系统识别，1人工打标
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyType: int
         :param _CheckStatus: 0未核查 1已核查
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckStatus: int
         :param _IsSensitiveData: 0非敏感，1敏感
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSensitiveData: int
+        :param _SchemaName: 模式名
+        :type SchemaName: str
         """
         self._DataSourceId = None
         self._DbType = None
@@ -23982,6 +23377,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
         self._IdentifyType = None
         self._CheckStatus = None
         self._IsSensitiveData = None
+        self._SchemaName = None
 
     @property
     def DataSourceId(self):
@@ -24074,7 +23470,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def LevelRiskScore(self):
         """分级风险分数，1-10，最小值为1，最大值为10
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelRiskScore
@@ -24086,7 +23481,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def TrustedScore(self):
         """可信分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrustedScore
@@ -24098,7 +23492,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -24110,7 +23503,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def FieldResultId(self):
         """字段扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FieldResultId
@@ -24122,7 +23514,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def RuleId(self):
         """规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -24134,7 +23525,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def LevelId(self):
         """分级ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -24146,7 +23536,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def CategoryId(self):
         """分类ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -24158,7 +23547,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -24170,7 +23558,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def SafeGuard(self):
         """保护措施
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaSafeGuard`
         """
         return self._SafeGuard
@@ -24182,7 +23569,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def CategoryFullPath(self):
         """分类路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryFullPath
@@ -24194,7 +23580,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def IdentifyType(self):
         """0.系统识别，1人工打标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentifyType
@@ -24206,7 +23591,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def CheckStatus(self):
         """0未核查 1已核查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckStatus
@@ -24218,7 +23602,6 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @property
     def IsSensitiveData(self):
         """0非敏感，1敏感
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsSensitiveData
@@ -24226,6 +23609,17 @@ class DspaRDBDataAssetDetail(AbstractModel):
     @IsSensitiveData.setter
     def IsSensitiveData(self, IsSensitiveData):
         self._IsSensitiveData = IsSensitiveData
+
+    @property
+    def SchemaName(self):
+        """模式名
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
 
 
     def _deserialize(self, params):
@@ -24252,6 +23646,7 @@ class DspaRDBDataAssetDetail(AbstractModel):
         self._IdentifyType = params.get("IdentifyType")
         self._CheckStatus = params.get("CheckStatus")
         self._IsSensitiveData = params.get("IsSensitiveData")
+        self._SchemaName = params.get("SchemaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24339,13 +23734,11 @@ class DspaSafeGuard(AbstractModel):
 UNSET 未设置
 DISABLE 规则设置未启用
 ENABLE 规则设置并启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: str
         :param _Desensitization: 脱敏状态，可取值如下：
 UNSET 未设置
 DISABLE 规则设置未启用
 ENABLE 规则设置并启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desensitization: str
         """
         self._Encrypt = None
@@ -24357,7 +23750,6 @@ ENABLE 规则设置并启用
 UNSET 未设置
 DISABLE 规则设置未启用
 ENABLE 规则设置并启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Encrypt
@@ -24372,7 +23764,6 @@ ENABLE 规则设置并启用
 UNSET 未设置
 DISABLE 规则设置未启用
 ENABLE 规则设置并启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desensitization
@@ -24522,15 +23913,12 @@ class DspaUserResourceMeta(AbstractModel):
         :param _ResourceAuthAccount: 授权账号名
         :type ResourceAuthAccount: str
         :param _InstanceType: 实例类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _InstanceValue: 实例值
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceValue: str
         :param _GovernAuthStatus: //治理授权状态（0：关闭 1：开启）
         :type GovernAuthStatus: int
         :param _AuthRange: 授权范围：all - 授权整个数据源 manual:手动指定数据源
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthRange: str
         """
         self._ResourceId = None
@@ -24769,7 +24157,6 @@ class DspaUserResourceMeta(AbstractModel):
     @property
     def InstanceType(self):
         """实例类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -24781,7 +24168,6 @@ class DspaUserResourceMeta(AbstractModel):
     @property
     def InstanceValue(self):
         """实例值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceValue
@@ -24804,7 +24190,6 @@ class DspaUserResourceMeta(AbstractModel):
     @property
     def AuthRange(self):
         """授权范围：all - 授权整个数据源 manual:手动指定数据源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthRange
@@ -24856,16 +24241,12 @@ class ESAsset(AbstractModel):
     def __init__(self):
         r"""
         :param _IndexNums: 索引总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexNums: int
         :param _SensitiveIndexNums: 敏感索引的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveIndexNums: int
         :param _FieldNums: 字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldNums: int
         :param _SensitiveFieldNums: 敏感的字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFieldNums: int
         """
         self._IndexNums = None
@@ -24876,7 +24257,6 @@ class ESAsset(AbstractModel):
     @property
     def IndexNums(self):
         """索引总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IndexNums
@@ -24888,7 +24268,6 @@ class ESAsset(AbstractModel):
     @property
     def SensitiveIndexNums(self):
         """敏感索引的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveIndexNums
@@ -24900,7 +24279,6 @@ class ESAsset(AbstractModel):
     @property
     def FieldNums(self):
         """字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FieldNums
@@ -24912,7 +24290,6 @@ class ESAsset(AbstractModel):
     @property
     def SensitiveFieldNums(self):
         """敏感的字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -24945,22 +24322,16 @@ class ESAssetDBDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _DataSourceId: 数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceId: str
         :param _IndexName: 索引名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
         :param _DataType: 数据库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataType: str
         :param _FieldNums: 字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldNums: int
         :param _SensitiveFieldNums: 敏感字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFieldNums: int
         :param _DistributionData: 敏感数据分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type DistributionData: list of Note
         """
         self._DataSourceId = None
@@ -24973,7 +24344,6 @@ class ESAssetDBDetail(AbstractModel):
     @property
     def DataSourceId(self):
         """数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceId
@@ -24985,7 +24355,6 @@ class ESAssetDBDetail(AbstractModel):
     @property
     def IndexName(self):
         """索引名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexName
@@ -24997,7 +24366,6 @@ class ESAssetDBDetail(AbstractModel):
     @property
     def DataType(self):
         """数据库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataType
@@ -25009,7 +24377,6 @@ class ESAssetDBDetail(AbstractModel):
     @property
     def FieldNums(self):
         """字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FieldNums
@@ -25021,7 +24388,6 @@ class ESAssetDBDetail(AbstractModel):
     @property
     def SensitiveFieldNums(self):
         """敏感字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -25033,7 +24399,6 @@ class ESAssetDBDetail(AbstractModel):
     @property
     def DistributionData(self):
         """敏感数据分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._DistributionData
@@ -25073,28 +24438,20 @@ class ESDataAssetCountDto(AbstractModel):
     def __init__(self):
         r"""
         :param _DataAssetType: es
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataAssetType: int
         :param _SensitiveIndexCnt: 敏感索引个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveIndexCnt: int
         :param _TotalIndexCnt: 总的索引个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalIndexCnt: int
         :param _SensitiveFieldCnt: 敏感字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFieldCnt: int
         :param _TotalFieldCnt: 总的字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalFieldCnt: int
         :param _SensitiveCategoryCnt: 敏感分类的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveCategoryCnt: int
         :param _SensitiveLevel: 敏感分级的分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveLevel: list of SensitiveLevel
         :param _CategoryDistributed: 敏感分类的分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryDistributed: list of DspaDataCategoryDistributed
         """
         self._DataAssetType = None
@@ -25109,7 +24466,6 @@ class ESDataAssetCountDto(AbstractModel):
     @property
     def DataAssetType(self):
         """es
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataAssetType
@@ -25121,7 +24477,6 @@ class ESDataAssetCountDto(AbstractModel):
     @property
     def SensitiveIndexCnt(self):
         """敏感索引个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveIndexCnt
@@ -25133,7 +24488,6 @@ class ESDataAssetCountDto(AbstractModel):
     @property
     def TotalIndexCnt(self):
         """总的索引个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalIndexCnt
@@ -25145,7 +24499,6 @@ class ESDataAssetCountDto(AbstractModel):
     @property
     def SensitiveFieldCnt(self):
         """敏感字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFieldCnt
@@ -25157,7 +24510,6 @@ class ESDataAssetCountDto(AbstractModel):
     @property
     def TotalFieldCnt(self):
         """总的字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalFieldCnt
@@ -25169,7 +24521,6 @@ class ESDataAssetCountDto(AbstractModel):
     @property
     def SensitiveCategoryCnt(self):
         """敏感分类的个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveCategoryCnt
@@ -25181,7 +24532,6 @@ class ESDataAssetCountDto(AbstractModel):
     @property
     def SensitiveLevel(self):
         """敏感分级的分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SensitiveLevel
         """
         return self._SensitiveLevel
@@ -25193,7 +24543,6 @@ class ESDataAssetCountDto(AbstractModel):
     @property
     def CategoryDistributed(self):
         """敏感分类的分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DspaDataCategoryDistributed
         """
         return self._CategoryDistributed
@@ -25240,52 +24589,36 @@ class ESDataAssetDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _FieldResultId: id
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldResultId: int
         :param _DataSourceId: 数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceId: str
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _DataSourceType: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         :param _ResourceRegion: 地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _IndexName: 索引名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
         :param _FieldName: 字段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldName: str
         :param _CategoryId: 分类id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _CategoryName: 分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryName: str
         :param _CategoryArr: 分类路径数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryArr: list of str
         :param _LevelId: 等级id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         :param _LevelRiskName: 分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelRiskName: str
         :param _LevelRiskScore: 分级分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelRiskScore: int
         :param _TrustedScore: 可信分
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrustedScore: float
         :param _RuleId: 规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RuleName: 规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _IdentifyType: 0系统识别，1人工打标
         :type IdentifyType: int
@@ -25314,7 +24647,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def FieldResultId(self):
         """id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FieldResultId
@@ -25326,7 +24658,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def DataSourceId(self):
         """数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceId
@@ -25338,7 +24669,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -25350,7 +24680,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def DataSourceType(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceType
@@ -25362,7 +24691,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def ResourceRegion(self):
         """地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -25374,7 +24702,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def IndexName(self):
         """索引名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexName
@@ -25386,7 +24713,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def FieldName(self):
         """字段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FieldName
@@ -25398,7 +24724,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def CategoryId(self):
         """分类id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -25410,7 +24735,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def CategoryName(self):
         """分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryName
@@ -25422,7 +24746,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def CategoryArr(self):
         """分类路径数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CategoryArr
@@ -25434,7 +24757,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def LevelId(self):
         """等级id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -25446,7 +24768,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def LevelRiskName(self):
         """分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelRiskName
@@ -25458,7 +24779,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def LevelRiskScore(self):
         """分级分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelRiskScore
@@ -25470,7 +24790,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def TrustedScore(self):
         """可信分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TrustedScore
@@ -25482,7 +24801,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def RuleId(self):
         """规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -25494,7 +24812,6 @@ class ESDataAssetDetail(AbstractModel):
     @property
     def RuleName(self):
         """规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -25659,37 +24976,26 @@ class ESTaskResultDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _TaskId: 任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _FieldName: 字段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldName: str
         :param _RuleId: 规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RuleName: 规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _CategoryId: 分类id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _CategoryName: 分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryName: str
         :param _CategoryArr: 多级分类的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryArr: list of str
         :param _LevelId: 分级id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         :param _LevelName: 分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelName: str
         :param _LevelRiskScore: 分级分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelRiskScore: int
         """
         self._Id = None
@@ -25707,7 +25013,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def Id(self):
         """id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -25719,7 +25024,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def TaskId(self):
         """任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -25731,7 +25035,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def FieldName(self):
         """字段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FieldName
@@ -25743,7 +25046,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def RuleId(self):
         """规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -25755,7 +25057,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def RuleName(self):
         """规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -25767,7 +25068,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def CategoryId(self):
         """分类id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -25779,7 +25079,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def CategoryName(self):
         """分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryName
@@ -25791,7 +25090,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def CategoryArr(self):
         """多级分类的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CategoryArr
@@ -25803,7 +25101,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def LevelId(self):
         """分级id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -25815,7 +25112,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def LevelName(self):
         """分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelName
@@ -25827,7 +25123,6 @@ class ESTaskResultDetail(AbstractModel):
     @property
     def LevelRiskScore(self):
         """分级分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelRiskScore
@@ -26388,7 +25683,6 @@ class GetResourceConnectionStatusResponse(AbstractModel):
         :param _ConnectionStatus: 连接状态，success -- 连接成功，failed -- 连接失败
         :type ConnectionStatus: str
         :param _ConnectionDesc: 连接状态的描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectionDesc: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26411,7 +25705,6 @@ class GetResourceConnectionStatusResponse(AbstractModel):
     @property
     def ConnectionDesc(self):
         """连接状态的描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConnectionDesc
@@ -26769,31 +26062,22 @@ class HighRiskAssetsDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _DataSourceType: 数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _AssetsName: 资产对象名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetsName: str
         :param _HighRiskCount: 高风险个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighRiskCount: int
         :param _RiskType: 风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: str
         :param _TotalRiskCount: 总的风险个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRiskCount: int
         :param _RiskSide: 风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSide: str
         :param _ResourceRegion: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         """
         self._InstanceId = None
@@ -26809,7 +26093,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -26821,7 +26104,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def DataSourceType(self):
         """数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceType
@@ -26833,7 +26115,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -26845,7 +26126,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def AssetsName(self):
         """资产对象名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssetsName
@@ -26857,7 +26137,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def HighRiskCount(self):
         """高风险个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HighRiskCount
@@ -26869,7 +26148,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def RiskType(self):
         """风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskType
@@ -26881,7 +26159,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def TotalRiskCount(self):
         """总的风险个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRiskCount
@@ -26893,7 +26170,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def RiskSide(self):
         """风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskSide
@@ -26905,7 +26181,6 @@ class HighRiskAssetsDetail(AbstractModel):
     @property
     def ResourceRegion(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -27079,12 +26354,19 @@ class ListDSPAClustersRequest(AbstractModel):
         :param _Offset: 分页偏移量，默认为0。
         :type Offset: int
         :param _Filters: 过滤项。
-支持的过滤项包括：DspaId、Status、Version、DspaName。
+支持的过滤项包括：DspaId、Status、Version、DspaName、Channel。
 DspaId和DspaName支持模糊搜索。
 Status支持的可选值：enabled、disabled。
 Version支持的可选值：trial、official。
+Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_wedata_dc（代表wedata实例）
         :type Filters: list of DspaDataSourceMngFilter
         :param _ListMode: 展示模式。
+
+目前只有两个值的处理逻辑：
+
+空值：需要查询每个实例的配额信息，因为是串行查询，所以速度很慢，limit最大为100
+
+"simple"：不需要查询每个实例的配额信息，速度快，limit最大为1000
         :type ListMode: str
         """
         self._Limit = None
@@ -27117,10 +26399,11 @@ Version支持的可选值：trial、official。
     @property
     def Filters(self):
         """过滤项。
-支持的过滤项包括：DspaId、Status、Version、DspaName。
+支持的过滤项包括：DspaId、Status、Version、DspaName、Channel。
 DspaId和DspaName支持模糊搜索。
 Status支持的可选值：enabled、disabled。
 Version支持的可选值：trial、official。
+Channel支持的可选值：sp_cds_dsgc_pre（代表dsgc实例）、sp_cds_dsgc_wedata_dc（代表wedata实例）
         :rtype: list of DspaDataSourceMngFilter
         """
         return self._Filters
@@ -27132,6 +26415,12 @@ Version支持的可选值：trial、official。
     @property
     def ListMode(self):
         """展示模式。
+
+目前只有两个值的处理逻辑：
+
+空值：需要查询每个实例的配额信息，因为是串行查询，所以速度很慢，limit最大为100
+
+"simple"：不需要查询每个实例的配额信息，速度快，limit最大为1000
         :rtype: str
         """
         return self._ListMode
@@ -27360,10 +26649,8 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
         :param _TotalCount: 符合条件的COS元数据数量。
         :type TotalCount: int
         :param _Items: COS元数据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DSPACosMetaDataInfo
         :param _DspaId: DSPA实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DspaId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27387,7 +26674,6 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
     @property
     def Items(self):
         """COS元数据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DSPACosMetaDataInfo
         """
         return self._Items
@@ -27399,7 +26685,6 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
     @property
     def DspaId(self):
         """DSPA实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DspaId
@@ -28095,20 +27380,20 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
         :type DspaId: str
         :param _TemplateName: 模板名称
         :type TemplateName: str
-        :param _TemplateDescription: 模板的描述
-        :type TemplateDescription: str
         :param _TemplateId: 模板id
         :type TemplateId: int
         :param _RiskLevelId: 修改的风险等级id
         :type RiskLevelId: int
+        :param _TemplateDescription: 模板的描述
+        :type TemplateDescription: str
         :param _RiskIdList: 脆弱项列表
         :type RiskIdList: list of int
         """
         self._DspaId = None
         self._TemplateName = None
-        self._TemplateDescription = None
         self._TemplateId = None
         self._RiskLevelId = None
+        self._TemplateDescription = None
         self._RiskIdList = None
 
     @property
@@ -28134,17 +27419,6 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
         self._TemplateName = TemplateName
 
     @property
-    def TemplateDescription(self):
-        """模板的描述
-        :rtype: str
-        """
-        return self._TemplateDescription
-
-    @TemplateDescription.setter
-    def TemplateDescription(self, TemplateDescription):
-        self._TemplateDescription = TemplateDescription
-
-    @property
     def TemplateId(self):
         """模板id
         :rtype: int
@@ -28167,6 +27441,17 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
         self._RiskLevelId = RiskLevelId
 
     @property
+    def TemplateDescription(self):
+        """模板的描述
+        :rtype: str
+        """
+        return self._TemplateDescription
+
+    @TemplateDescription.setter
+    def TemplateDescription(self, TemplateDescription):
+        self._TemplateDescription = TemplateDescription
+
+    @property
     def RiskIdList(self):
         """脆弱项列表
         :rtype: list of int
@@ -28181,9 +27466,9 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._TemplateName = params.get("TemplateName")
-        self._TemplateDescription = params.get("TemplateDescription")
         self._TemplateId = params.get("TemplateId")
         self._RiskLevelId = params.get("RiskLevelId")
+        self._TemplateDescription = params.get("TemplateDescription")
         self._RiskIdList = params.get("RiskIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -30156,22 +29441,16 @@ class MongoAsset(AbstractModel):
     def __init__(self):
         r"""
         :param _DbNums: DB总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbNums: int
         :param _SensitiveDbNums: 敏感DB数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDbNums: int
         :param _ColNums: 集合数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ColNums: int
         :param _SensitiveColNums: 敏感集合的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveColNums: int
         :param _FieldNums: 字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldNums: int
         :param _SensitiveFieldNums: 敏感的字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFieldNums: int
         """
         self._DbNums = None
@@ -30184,7 +29463,6 @@ class MongoAsset(AbstractModel):
     @property
     def DbNums(self):
         """DB总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DbNums
@@ -30196,7 +29474,6 @@ class MongoAsset(AbstractModel):
     @property
     def SensitiveDbNums(self):
         """敏感DB数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveDbNums
@@ -30208,7 +29485,6 @@ class MongoAsset(AbstractModel):
     @property
     def ColNums(self):
         """集合数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ColNums
@@ -30220,7 +29496,6 @@ class MongoAsset(AbstractModel):
     @property
     def SensitiveColNums(self):
         """敏感集合的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveColNums
@@ -30232,7 +29507,6 @@ class MongoAsset(AbstractModel):
     @property
     def FieldNums(self):
         """字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FieldNums
@@ -30244,7 +29518,6 @@ class MongoAsset(AbstractModel):
     @property
     def SensitiveFieldNums(self):
         """敏感的字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -30279,28 +29552,20 @@ class MongoAssetDBDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _DataSourceId: 数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceId: str
         :param _DdName: 数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DdName: str
         :param _DataType: 数据库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataType: str
         :param _ColNums: 集合的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ColNums: int
         :param _SensitiveColNums: 敏感集合数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveColNums: int
         :param _FieldNums: 字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldNums: int
         :param _SensitiveFieldNums: 敏感字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFieldNums: int
         :param _DistributionData: 敏感数据分布
-注意：此字段可能返回 null，表示取不到有效值。
         :type DistributionData: list of Note
         """
         self._DataSourceId = None
@@ -30315,7 +29580,6 @@ class MongoAssetDBDetail(AbstractModel):
     @property
     def DataSourceId(self):
         """数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceId
@@ -30327,7 +29591,6 @@ class MongoAssetDBDetail(AbstractModel):
     @property
     def DdName(self):
         """数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DdName
@@ -30339,7 +29602,6 @@ class MongoAssetDBDetail(AbstractModel):
     @property
     def DataType(self):
         """数据库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataType
@@ -30351,7 +29613,6 @@ class MongoAssetDBDetail(AbstractModel):
     @property
     def ColNums(self):
         """集合的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ColNums
@@ -30363,7 +29624,6 @@ class MongoAssetDBDetail(AbstractModel):
     @property
     def SensitiveColNums(self):
         """敏感集合数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveColNums
@@ -30375,7 +29635,6 @@ class MongoAssetDBDetail(AbstractModel):
     @property
     def FieldNums(self):
         """字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FieldNums
@@ -30387,7 +29646,6 @@ class MongoAssetDBDetail(AbstractModel):
     @property
     def SensitiveFieldNums(self):
         """敏感字段的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -30399,7 +29657,6 @@ class MongoAssetDBDetail(AbstractModel):
     @property
     def DistributionData(self):
         """敏感数据分布
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._DistributionData
@@ -30537,10 +29794,8 @@ class Note(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 通用key，例如分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 通用value，例如分类个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: int
         """
         self._Key = None
@@ -30549,7 +29804,6 @@ class Note(AbstractModel):
     @property
     def Key(self):
         """通用key，例如分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -30561,7 +29815,6 @@ class Note(AbstractModel):
     @property
     def Value(self):
         """通用value，例如分类个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Value
@@ -30592,13 +29845,10 @@ class PrivilegeRisk(AbstractModel):
     def __init__(self):
         r"""
         :param _AccountName: 账户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountName: list of str
         :param _TableName: 表名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _Description: 说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._AccountName = None
@@ -30608,7 +29858,6 @@ class PrivilegeRisk(AbstractModel):
     @property
     def AccountName(self):
         """账户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AccountName
@@ -30620,7 +29869,6 @@ class PrivilegeRisk(AbstractModel):
     @property
     def TableName(self):
         """表名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -30632,7 +29880,6 @@ class PrivilegeRisk(AbstractModel):
     @property
     def Description(self):
         """说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -30664,16 +29911,12 @@ class ProcessHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _Time: 处理时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Handler: 处理人
-注意：此字段可能返回 null，表示取不到有效值。
         :type Handler: str
         :param _Note: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
         """
         self._Time = None
@@ -30684,7 +29927,6 @@ class ProcessHistory(AbstractModel):
     @property
     def Time(self):
         """处理时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Time
@@ -30696,7 +29938,6 @@ class ProcessHistory(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -30708,7 +29949,6 @@ class ProcessHistory(AbstractModel):
     @property
     def Handler(self):
         """处理人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Handler
@@ -30720,7 +29960,6 @@ class ProcessHistory(AbstractModel):
     @property
     def Note(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Note
@@ -31021,22 +30260,16 @@ class RDBAsset(AbstractModel):
     def __init__(self):
         r"""
         :param _DbNums: DB总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbNums: int
         :param _SensitiveDbNums: 敏感DB数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDbNums: int
         :param _TableNums: 表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableNums: int
         :param _SensitiveTableNums: 敏感表的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveTableNums: int
         :param _FieldNums: 字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldNums: int
         :param _SensitiveFieldNums: 敏感的字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFieldNums: int
         """
         self._DbNums = None
@@ -31049,7 +30282,6 @@ class RDBAsset(AbstractModel):
     @property
     def DbNums(self):
         """DB总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DbNums
@@ -31061,7 +30293,6 @@ class RDBAsset(AbstractModel):
     @property
     def SensitiveDbNums(self):
         """敏感DB数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveDbNums
@@ -31073,7 +30304,6 @@ class RDBAsset(AbstractModel):
     @property
     def TableNums(self):
         """表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TableNums
@@ -31085,7 +30315,6 @@ class RDBAsset(AbstractModel):
     @property
     def SensitiveTableNums(self):
         """敏感表的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveTableNums
@@ -31097,7 +30326,6 @@ class RDBAsset(AbstractModel):
     @property
     def FieldNums(self):
         """字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FieldNums
@@ -31109,7 +30337,6 @@ class RDBAsset(AbstractModel):
     @property
     def SensitiveFieldNums(self):
         """敏感的字段数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveFieldNums
@@ -31150,7 +30377,6 @@ class RDBInstance(AbstractModel):
         :param _ResourceRegion: 资源所在地域
         :type ResourceRegion: str
         :param _DBs: 若未来扩展到DBName粒度，可采用
-注意：此字段可能返回 null，表示取不到有效值。
         :type DBs: list of DBStatements
         """
         self._DataSourceId = None
@@ -31194,7 +30420,6 @@ class RDBInstance(AbstractModel):
     @property
     def DBs(self):
         """若未来扩展到DBName粒度，可采用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DBStatements
         """
         return self._DBs
@@ -31236,43 +30461,30 @@ class ReportInfo(AbstractModel):
         :param _ReportName: 报告名称
         :type ReportName: str
         :param _ReportType: 报告类型（AssetSorting:资产梳理）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportType: str
         :param _ReportPeriod: 报告周期（0单次 1每天 2每周 3每月）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportPeriod: int
         :param _ReportPlan: 执行计划 （0:单次报告 1:定时报告）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportPlan: int
         :param _ReportStatus: 报告导出状态（Success 成功, Failed 失败, InProgress 进行中）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportStatus: str
         :param _TimingStartTime: 任务下次启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimingStartTime: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _FinishedTime: 完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedTime: str
         :param _SubUin: 子账号uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubUin: str
         :param _FailedMessage: 失败信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedMessage: str
         :param _Enable: 是否启用（0：否 1：是）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: int
         :param _ComplianceName: 识别模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceName: str
         :param _ProgressPercent: 进度百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressPercent: int
         :param _ReportTemplateName: 报告模版名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTemplateName: str
         """
         self._Id = None
@@ -31316,7 +30528,6 @@ class ReportInfo(AbstractModel):
     @property
     def ReportType(self):
         """报告类型（AssetSorting:资产梳理）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportType
@@ -31328,7 +30539,6 @@ class ReportInfo(AbstractModel):
     @property
     def ReportPeriod(self):
         """报告周期（0单次 1每天 2每周 3每月）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReportPeriod
@@ -31340,7 +30550,6 @@ class ReportInfo(AbstractModel):
     @property
     def ReportPlan(self):
         """执行计划 （0:单次报告 1:定时报告）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReportPlan
@@ -31352,7 +30561,6 @@ class ReportInfo(AbstractModel):
     @property
     def ReportStatus(self):
         """报告导出状态（Success 成功, Failed 失败, InProgress 进行中）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportStatus
@@ -31364,7 +30572,6 @@ class ReportInfo(AbstractModel):
     @property
     def TimingStartTime(self):
         """任务下次启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimingStartTime
@@ -31376,7 +30583,6 @@ class ReportInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -31388,7 +30594,6 @@ class ReportInfo(AbstractModel):
     @property
     def FinishedTime(self):
         """完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishedTime
@@ -31400,7 +30605,6 @@ class ReportInfo(AbstractModel):
     @property
     def SubUin(self):
         """子账号uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubUin
@@ -31412,7 +30616,6 @@ class ReportInfo(AbstractModel):
     @property
     def FailedMessage(self):
         """失败信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailedMessage
@@ -31424,7 +30627,6 @@ class ReportInfo(AbstractModel):
     @property
     def Enable(self):
         """是否启用（0：否 1：是）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Enable
@@ -31436,7 +30638,6 @@ class ReportInfo(AbstractModel):
     @property
     def ComplianceName(self):
         """识别模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComplianceName
@@ -31448,7 +30649,6 @@ class ReportInfo(AbstractModel):
     @property
     def ProgressPercent(self):
         """进度百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProgressPercent
@@ -31460,7 +30660,6 @@ class ReportInfo(AbstractModel):
     @property
     def ReportTemplateName(self):
         """报告模版名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportTemplateName
@@ -31587,7 +30786,6 @@ class RiskCountInfo(AbstractModel):
         :param _Count: 该等级风险项数量
         :type Count: int
         :param _RiskLevelName: 风险等级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelName: str
         """
         self._RiskLevel = None
@@ -31619,7 +30817,6 @@ class RiskCountInfo(AbstractModel):
     @property
     def RiskLevelName(self):
         """风险等级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevelName
@@ -31657,7 +30854,6 @@ class RiskDealedTrendItem(AbstractModel):
         :param _Handled: 已解决数量
         :type Handled: int
         :param _NewDiscoveryHandled: 新发现
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewDiscoveryHandled: int
         """
         self._Date = None
@@ -31701,7 +30897,6 @@ class RiskDealedTrendItem(AbstractModel):
     @property
     def NewDiscoveryHandled(self):
         """新发现
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NewDiscoveryHandled
@@ -31787,61 +30982,42 @@ class RiskItemInfo(AbstractModel):
         :param _Id: 最新风险项id
         :type Id: int
         :param _DataSourceId: 数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceId: str
         :param _DataSourceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceName: str
         :param _DataSourceType: 数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         :param _ResourceRegion: 资源地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _AssetName: 资产名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetName: str
         :param _RiskType: 风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: str
         :param _RiskName: 风险项
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskName: str
         :param _RiskLevel: 风险级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _RiskDescription: 风险描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDescription: str
         :param _SuggestAction: 建议措施
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuggestAction: str
         :param _SecurityProduct: 安全产品（可能有多个）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityProduct: list of SecurityProduct
         :param _Status: 状态(waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _ScanTime: 扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanTime: str
         :param _LastProcessTime: 最后处置时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastProcessTime: str
         :param _IdentifyComplianceId: 分类分级合规组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyComplianceId: int
         :param _ItemSubType: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemSubType: str
         :param _RiskSide: 风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSide: str
         :param _APIRiskLinkURL: API安全风险链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type APIRiskLinkURL: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._Id = None
@@ -31879,7 +31055,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def DataSourceId(self):
         """数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceId
@@ -31891,7 +31066,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def DataSourceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceName
@@ -31903,7 +31077,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def DataSourceType(self):
         """数据源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceType
@@ -31915,7 +31088,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -31927,7 +31099,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def AssetName(self):
         """资产名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssetName
@@ -31939,7 +31110,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def RiskType(self):
         """风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskType
@@ -31951,7 +31121,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def RiskName(self):
         """风险项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskName
@@ -31963,7 +31132,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def RiskLevel(self):
         """风险级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -31975,7 +31143,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def RiskDescription(self):
         """风险描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskDescription
@@ -31987,7 +31154,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def SuggestAction(self):
         """建议措施
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SuggestAction
@@ -31999,7 +31165,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def SecurityProduct(self):
         """安全产品（可能有多个）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityProduct
         """
         return self._SecurityProduct
@@ -32011,7 +31176,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def Status(self):
         """状态(waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -32023,7 +31187,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def ScanTime(self):
         """扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanTime
@@ -32035,7 +31198,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def LastProcessTime(self):
         """最后处置时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastProcessTime
@@ -32047,7 +31209,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def IdentifyComplianceId(self):
         """分类分级合规组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IdentifyComplianceId
@@ -32059,7 +31220,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def ItemSubType(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ItemSubType
@@ -32071,7 +31231,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def RiskSide(self):
         """风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskSide
@@ -32083,7 +31242,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def APIRiskLinkURL(self):
         """API安全风险链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._APIRiskLinkURL
@@ -32095,7 +31253,6 @@ class RiskItemInfo(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -32149,19 +31306,14 @@ class RiskLevelMatrix(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 存储id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _SensitiveLevelId: 分类分级levelID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveLevelId: int
         :param _SensitiveLevelName: 分类分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveLevelName: str
         :param _VulnerabilityLevel: 漏洞级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityLevel: str
         :param _RiskLevel: 风险级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         """
         self._Id = None
@@ -32173,7 +31325,6 @@ class RiskLevelMatrix(AbstractModel):
     @property
     def Id(self):
         """存储id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -32185,7 +31336,6 @@ class RiskLevelMatrix(AbstractModel):
     @property
     def SensitiveLevelId(self):
         """分类分级levelID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveLevelId
@@ -32197,7 +31347,6 @@ class RiskLevelMatrix(AbstractModel):
     @property
     def SensitiveLevelName(self):
         """分类分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SensitiveLevelName
@@ -32209,7 +31358,6 @@ class RiskLevelMatrix(AbstractModel):
     @property
     def VulnerabilityLevel(self):
         """漏洞级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VulnerabilityLevel
@@ -32221,7 +31369,6 @@ class RiskLevelMatrix(AbstractModel):
     @property
     def RiskLevel(self):
         """风险级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -32255,19 +31402,14 @@ class RiskLevelRisk(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 风险id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _RiskLevelName: 风险等级列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelName: str
         :param _RiskLevelDescription: 风险级别描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelDescription: str
         :param _IdentifyComplianceName: 引用的分类分级模板
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyComplianceName: str
         :param _Type: 类型，区分自定义还是系统内置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._Id = None
@@ -32279,7 +31421,6 @@ class RiskLevelRisk(AbstractModel):
     @property
     def Id(self):
         """风险id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -32291,7 +31432,6 @@ class RiskLevelRisk(AbstractModel):
     @property
     def RiskLevelName(self):
         """风险等级列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevelName
@@ -32303,7 +31443,6 @@ class RiskLevelRisk(AbstractModel):
     @property
     def RiskLevelDescription(self):
         """风险级别描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevelDescription
@@ -32315,7 +31454,6 @@ class RiskLevelRisk(AbstractModel):
     @property
     def IdentifyComplianceName(self):
         """引用的分类分级模板
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentifyComplianceName
@@ -32327,7 +31465,6 @@ class RiskLevelRisk(AbstractModel):
     @property
     def Type(self):
         """类型，区分自定义还是系统内置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -32457,13 +31594,10 @@ class RiskMatrixLevel(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Id: 就是id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Score: 分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: float
         """
         self._Name = None
@@ -32473,7 +31607,6 @@ class RiskMatrixLevel(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -32485,7 +31618,6 @@ class RiskMatrixLevel(AbstractModel):
     @property
     def Id(self):
         """就是id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -32497,7 +31629,6 @@ class RiskMatrixLevel(AbstractModel):
     @property
     def Score(self):
         """分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Score
@@ -32529,10 +31660,8 @@ class RiskSideDistributed(AbstractModel):
     def __init__(self):
         r"""
         :param _AssessmentRiskSide: 风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssessmentRiskSide: :class:`tencentcloud.dsgc.v20190723.models.Note`
         :param _AssessmentRisk: 风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssessmentRisk: list of Note
         """
         self._AssessmentRiskSide = None
@@ -32541,7 +31670,6 @@ class RiskSideDistributed(AbstractModel):
     @property
     def AssessmentRiskSide(self):
         """风险面
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.Note`
         """
         return self._AssessmentRiskSide
@@ -32553,7 +31681,6 @@ class RiskSideDistributed(AbstractModel):
     @property
     def AssessmentRisk(self):
         """风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Note
         """
         return self._AssessmentRisk
@@ -32591,19 +31718,14 @@ class RuleDistribution(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleId: 规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RuleName: 规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _LevelId: 分级id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         :param _LevelName: 分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelName: str
         :param _RuleCnt: 规则数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleCnt: int
         """
         self._RuleId = None
@@ -32615,7 +31737,6 @@ class RuleDistribution(AbstractModel):
     @property
     def RuleId(self):
         """规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -32627,7 +31748,6 @@ class RuleDistribution(AbstractModel):
     @property
     def RuleName(self):
         """规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -32639,7 +31759,6 @@ class RuleDistribution(AbstractModel):
     @property
     def LevelId(self):
         """分级id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -32651,7 +31770,6 @@ class RuleDistribution(AbstractModel):
     @property
     def LevelName(self):
         """分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelName
@@ -32663,7 +31781,6 @@ class RuleDistribution(AbstractModel):
     @property
     def RuleCnt(self):
         """规则数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleCnt
@@ -32697,10 +31814,8 @@ class RuleEffectItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 规则值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: int
         """
         self._Name = None
@@ -32709,7 +31824,6 @@ class RuleEffectItem(AbstractModel):
     @property
     def Name(self):
         """规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -32721,7 +31835,6 @@ class RuleEffectItem(AbstractModel):
     @property
     def Value(self):
         """规则值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Value
@@ -32752,15 +31865,12 @@ class ScanTaskCOSRules(AbstractModel):
     def __init__(self):
         r"""
         :param _RegexRule: regex规则内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegexRule: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         :param _Status: 规则状态；0 不启用, 1 启用
         :type Status: int
         :param _KeywordRule: 关键词规则内容组，最大支持5个关键词。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeywordRule: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         :param _IgnoreStringRule: 忽略词规则内容组，最大支持5个忽略词。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreStringRule: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         :param _MaxMatch: 最大匹配距离，默认值为100。上限为500.
         :type MaxMatch: int
@@ -32774,7 +31884,6 @@ class ScanTaskCOSRules(AbstractModel):
     @property
     def RegexRule(self):
         """regex规则内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         """
         return self._RegexRule
@@ -32797,7 +31906,6 @@ class ScanTaskCOSRules(AbstractModel):
     @property
     def KeywordRule(self):
         """关键词规则内容组，最大支持5个关键词。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         """
         return self._KeywordRule
@@ -32809,7 +31917,6 @@ class ScanTaskCOSRules(AbstractModel):
     @property
     def IgnoreStringRule(self):
         """忽略词规则内容组，最大支持5个忽略词。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.COSDataRule`
         """
         return self._IgnoreStringRule
@@ -33003,11 +32110,17 @@ class ScanTaskResult(AbstractModel):
         :type Status: int
         :param _Result: 扫描任务结果展示，如果扫描失败，则显示失败原因
         :type Result: str
+        :param _ResultDescription: 结果描述
+        :type ResultDescription: str
+        :param _Suggestion: 结果建议
+        :type Suggestion: str
         """
         self._Id = None
         self._EndTime = None
         self._Status = None
         self._Result = None
+        self._ResultDescription = None
+        self._Suggestion = None
 
     @property
     def Id(self):
@@ -33053,12 +32166,36 @@ class ScanTaskResult(AbstractModel):
     def Result(self, Result):
         self._Result = Result
 
+    @property
+    def ResultDescription(self):
+        """结果描述
+        :rtype: str
+        """
+        return self._ResultDescription
+
+    @ResultDescription.setter
+    def ResultDescription(self, ResultDescription):
+        self._ResultDescription = ResultDescription
+
+    @property
+    def Suggestion(self):
+        """结果建议
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._EndTime = params.get("EndTime")
         self._Status = params.get("Status")
         self._Result = params.get("Result")
+        self._ResultDescription = params.get("ResultDescription")
+        self._Suggestion = params.get("Suggestion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33077,10 +32214,8 @@ class SecurityProduct(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _ReferUrl: 产品链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReferUrl: str
         """
         self._ProductName = None
@@ -33089,7 +32224,6 @@ class SecurityProduct(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -33101,7 +32235,6 @@ class SecurityProduct(AbstractModel):
     @property
     def ReferUrl(self):
         """产品链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReferUrl
@@ -33264,7 +32397,6 @@ class StartDSPADiscoveryTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultId: 任务扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33275,7 +32407,6 @@ class StartDSPADiscoveryTaskResponse(AbstractModel):
     @property
     def ResultId(self):
         """任务扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResultId
@@ -33360,7 +32491,6 @@ class StopDSPADiscoveryTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultId: 任务扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33371,7 +32501,6 @@ class StopDSPADiscoveryTaskResponse(AbstractModel):
     @property
     def ResultId(self):
         """任务扫描结果ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResultId
@@ -33405,7 +32534,6 @@ class SuggestRiskLevelMatrix(AbstractModel):
     def __init__(self):
         r"""
         :param _RiskLevelMatrix: 矩阵
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelMatrix: list of SuggestRiskLevelMatrixItem
         """
         self._RiskLevelMatrix = None
@@ -33413,7 +32541,6 @@ class SuggestRiskLevelMatrix(AbstractModel):
     @property
     def RiskLevelMatrix(self):
         """矩阵
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SuggestRiskLevelMatrixItem
         """
         return self._RiskLevelMatrix
@@ -33448,16 +32575,12 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
     def __init__(self):
         r"""
         :param _SensitiveLevel: 分类分级等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveLevel: :class:`tencentcloud.dsgc.v20190723.models.RiskMatrixLevel`
         :param _VulnerabilityLevel: 脆弱项等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityLevel: :class:`tencentcloud.dsgc.v20190723.models.RiskMatrixLevel`
         :param _RiskName: 风险名
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskName: str
         :param _RiskScore: 分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskScore: float
         """
         self._SensitiveLevel = None
@@ -33468,7 +32591,6 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
     @property
     def SensitiveLevel(self):
         """分类分级等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.RiskMatrixLevel`
         """
         return self._SensitiveLevel
@@ -33480,7 +32602,6 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
     @property
     def VulnerabilityLevel(self):
         """脆弱项等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.RiskMatrixLevel`
         """
         return self._VulnerabilityLevel
@@ -33492,7 +32613,6 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
     @property
     def RiskName(self):
         """风险名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskName
@@ -33504,7 +32624,6 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
     @property
     def RiskScore(self):
         """分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._RiskScore
@@ -33534,17 +32653,15 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
 
 
 class TemplateInfo(AbstractModel):
-    """评估模版的详情数据
+    """评估模板的详情数据
 
     """
 
     def __init__(self):
         r"""
         :param _TemplateId: 模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: int
         :param _TemplateName: 模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
         """
         self._TemplateId = None
@@ -33553,7 +32670,6 @@ class TemplateInfo(AbstractModel):
     @property
     def TemplateId(self):
         """模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TemplateId
@@ -33565,7 +32681,6 @@ class TemplateInfo(AbstractModel):
     @property
     def TemplateName(self):
         """模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateName
@@ -33596,10 +32711,8 @@ class TopAsset(AbstractModel):
     def __init__(self):
         r"""
         :param _LevelName: 分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelName: str
         :param _TopStat: top数据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopStat: list of TopAssetStat
         """
         self._LevelName = None
@@ -33608,7 +32721,6 @@ class TopAsset(AbstractModel):
     @property
     def LevelName(self):
         """分级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelName
@@ -33620,7 +32732,6 @@ class TopAsset(AbstractModel):
     @property
     def TopStat(self):
         """top数据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopAssetStat
         """
         return self._TopStat
@@ -33656,13 +32767,10 @@ class TopAssetStat(AbstractModel):
     def __init__(self):
         r"""
         :param _DataSourceId: 数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceId: str
         :param _SubData: db_name
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubData: str
         :param _SensitiveCnt: 敏感个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveCnt: int
         """
         self._DataSourceId = None
@@ -33672,7 +32780,6 @@ class TopAssetStat(AbstractModel):
     @property
     def DataSourceId(self):
         """数据源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataSourceId
@@ -33684,7 +32791,6 @@ class TopAssetStat(AbstractModel):
     @property
     def SubData(self):
         """db_name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubData
@@ -33696,7 +32802,6 @@ class TopAssetStat(AbstractModel):
     @property
     def SensitiveCnt(self):
         """敏感个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveCnt

@@ -1544,7 +1544,7 @@ class CreateClusterRequest(AbstractModel):
         :type ComputeNode: :class:`tencentcloud.thpc.v20220401.models.ComputeNode`
         :param _ComputeNodeCount: 指定计算节点的数量。默认取值：0。
         :type ComputeNodeCount: int
-        :param _SchedulerType: 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+        :param _SchedulerType: 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
         :type SchedulerType: str
         :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
         :type ImageId: str
@@ -1562,8 +1562,7 @@ true：发送检查请求，不会创建实例。检查项包括是否填写了�
 如果检查通过，则返回RequestId.
 false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
-        :param _AccountType: 域名字服务类型。默认取值：NIS。
-<li>NIS：NIS域名字服务。
+        :param _AccountType: 域名字服务类型。默认取值：NIS。<li>NIS：NIS域名字服务。</li>
         :type AccountType: str
         :param _ClusterName: 集群显示名称。
         :type ClusterName: str
@@ -1575,7 +1574,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type LoginNodeCount: int
         :param _Tags: 创建集群时同时绑定的标签对说明。
         :type Tags: list of Tag
-        :param _AutoScalingType: 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。
+        :param _AutoScalingType: 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li><br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li>
         :type AutoScalingType: str
         """
         self._Placement = None
@@ -1655,7 +1654,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SchedulerType(self):
-        """调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+        """调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
         :rtype: str
         """
         return self._SchedulerType
@@ -1736,8 +1735,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def AccountType(self):
-        """域名字服务类型。默认取值：NIS。
-<li>NIS：NIS域名字服务。
+        """域名字服务类型。默认取值：NIS。<li>NIS：NIS域名字服务。</li>
         :rtype: str
         """
         return self._AccountType
@@ -1803,7 +1801,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def AutoScalingType(self):
-        """弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。
+        """弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li><br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li>
         :rtype: str
         """
         return self._AutoScalingType
@@ -3797,14 +3795,14 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        :param _Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li><br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
         :type Password: str
         """
         self._Password = None
 
     @property
     def Password(self):
-        """实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        """实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li><br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
         :rtype: str
         """
         return self._Password

@@ -280,7 +280,6 @@ class AttributesForBody(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
         :param _DetectConfidence: 人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetectConfidence: float
         :param _Attributes: 属性信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -305,7 +304,6 @@ class AttributesForBody(AbstractModel):
     @property
     def DetectConfidence(self):
         """人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DetectConfidence
@@ -356,13 +354,10 @@ class BodyAttributes(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 属性值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Confidence: 置信度，取值0-1之间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param _Name: 属性名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Label = None
@@ -372,7 +367,6 @@ class BodyAttributes(AbstractModel):
     @property
     def Label(self):
         """属性值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -384,7 +378,6 @@ class BodyAttributes(AbstractModel):
     @property
     def Confidence(self):
         """置信度，取值0-1之间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Confidence
@@ -396,7 +389,6 @@ class BodyAttributes(AbstractModel):
     @property
     def Name(self):
         """属性名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -496,28 +488,22 @@ class CarPlateContent(AbstractModel):
     def __init__(self):
         r"""
         :param _Plate: 车牌信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Plate: str
         :param _Color: 车牌颜色。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Color: str
         :param _Type: 车牌类型，包含：0普通蓝牌，1双层黄牌，2单层黄牌，3新能源车牌，4使馆车牌，5领馆车牌，6澳门车牌，7香港车牌，8警用车牌，9教练车牌，10武警车牌，11军用车牌   -2遮挡污损模糊车牌/异常   其他无牌
 注意：
 此字段可能返回 null，表示取不到有效值。
 此字段结果遮挡污损模糊车牌/异常：包含PlateStatus参数的“遮挡污损模糊车牌”，针对车牌异常，建议参考此字段，更全面
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _PlateLocation: 车牌在图片中的坐标信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateLocation: list of Coord
         :param _PlateStatus: 判断车牌是否遮挡：“遮挡污损模糊车牌”和"正常车牌"。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlateStatus: str
         :param _PlateStatusConfidence: 车牌遮挡的置信度，0-100。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlateStatusConfidence: int
         :param _PlateAngle: 车牌角度。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlateAngle: float
         """
         self._Plate = None
@@ -531,7 +517,6 @@ class CarPlateContent(AbstractModel):
     @property
     def Plate(self):
         """车牌信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Plate
@@ -543,7 +528,6 @@ class CarPlateContent(AbstractModel):
     @property
     def Color(self):
         """车牌颜色。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Color
@@ -558,7 +542,6 @@ class CarPlateContent(AbstractModel):
 注意：
 此字段可能返回 null，表示取不到有效值。
 此字段结果遮挡污损模糊车牌/异常：包含PlateStatus参数的“遮挡污损模糊车牌”，针对车牌异常，建议参考此字段，更全面
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -582,7 +565,6 @@ class CarPlateContent(AbstractModel):
     @property
     def PlateStatus(self):
         """判断车牌是否遮挡：“遮挡污损模糊车牌”和"正常车牌"。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlateStatus
@@ -594,7 +576,6 @@ class CarPlateContent(AbstractModel):
     @property
     def PlateStatusConfidence(self):
         """车牌遮挡的置信度，0-100。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PlateStatusConfidence
@@ -606,7 +587,6 @@ class CarPlateContent(AbstractModel):
     @property
     def PlateAngle(self):
         """车牌角度。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._PlateAngle
@@ -664,19 +644,14 @@ class CarTagItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateContent: :class:`tencentcloud.tiia.v20190529.models.CarPlateContent`
         :param _PlateConfidence: 车牌信息置信度，0-100，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlateConfidence: int
         :param _TypeConfidence: 车辆类型置信度，0-100，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type TypeConfidence: int
         :param _ColorConfidence: 车辆颜色置信度，0-100，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type ColorConfidence: int
         :param _Orientation: 车辆朝向，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type Orientation: str
         :param _OrientationConfidence: 车辆朝向置信度，0-100，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrientationConfidence: int
         """
         self._Serial = None
@@ -785,7 +760,6 @@ class CarTagItem(AbstractModel):
     @property
     def PlateConfidence(self):
         """车牌信息置信度，0-100，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PlateConfidence
@@ -797,7 +771,6 @@ class CarTagItem(AbstractModel):
     @property
     def TypeConfidence(self):
         """车辆类型置信度，0-100，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TypeConfidence
@@ -809,7 +782,6 @@ class CarTagItem(AbstractModel):
     @property
     def ColorConfidence(self):
         """车辆颜色置信度，0-100，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ColorConfidence
@@ -821,7 +793,6 @@ class CarTagItem(AbstractModel):
     @property
     def Orientation(self):
         """车辆朝向，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Orientation
@@ -833,7 +804,6 @@ class CarTagItem(AbstractModel):
     @property
     def OrientationConfidence(self):
         """车辆朝向置信度，0-100，仅车辆识别（增强版）支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OrientationConfidence
@@ -1848,7 +1818,6 @@ class DescribeGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Groups: 图库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GroupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1859,7 +1828,6 @@ class DescribeGroupsResponse(AbstractModel):
     @property
     def Groups(self):
         """图库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupInfo
         """
         return self._Groups
@@ -2149,7 +2117,6 @@ class DetectChefDressResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bodies: list of AttributesForBody
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2160,7 +2127,6 @@ class DetectChefDressResponse(AbstractModel):
     @property
     def Bodies(self):
         """识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AttributesForBody
         """
         return self._Bodies
@@ -2383,10 +2349,8 @@ class DetectEnvelopeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FirstTags: 一级标签结果数组。识别是否文件封。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstTags: list of ImageTag
         :param _SecondTags: 二级标签结果数组。识别文件封正反面。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecondTags: list of ImageTag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2398,7 +2362,6 @@ class DetectEnvelopeResponse(AbstractModel):
     @property
     def FirstTags(self):
         """一级标签结果数组。识别是否文件封。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageTag
         """
         return self._FirstTags
@@ -2410,7 +2373,6 @@ class DetectEnvelopeResponse(AbstractModel):
     @property
     def SecondTags(self):
         """二级标签结果数组。识别文件封正反面。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageTag
         """
         return self._SecondTags
@@ -2873,7 +2835,6 @@ class DetectLabelProResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Labels: 返回标签数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DetectLabelItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2884,7 +2845,6 @@ class DetectLabelProResponse(AbstractModel):
     @property
     def Labels(self):
         """返回标签数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetectLabelItem
         """
         return self._Labels
@@ -3601,7 +3561,6 @@ class DetectSecurityResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bodies: list of AttributesForBody
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3612,7 +3571,6 @@ class DetectSecurityResponse(AbstractModel):
     @property
     def Bodies(self):
         """识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AttributesForBody
         """
         return self._Bodies
@@ -4854,6 +4812,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
         :type MatchThreshold: int
         :param _Filter: 标签过滤条件。
 针对创建图片时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+最大支持64字符。
         :type Filter: str
         :param _ImageRect: 图像主体区域。
 若设置主体区域，提取指定的区域进行检索。
@@ -4978,6 +4937,7 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
     def Filter(self):
         """标签过滤条件。
 针对创建图片时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+最大支持64字符。
         :rtype: str
         """
         return self._Filter

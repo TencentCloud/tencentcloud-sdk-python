@@ -2000,7 +2000,7 @@ class CmqSubscription(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :param _SubscriptionName: 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscriptionName: str
         :param _SubscriptionId: 订阅 ID。订阅 ID 在拉取监控数据时会用到。
@@ -2060,7 +2060,7 @@ filterType = 2表示用户使用 bindingKey 过滤。
 
     @property
     def SubscriptionName(self):
-        """订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        """订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23147,6 +23147,56 @@ class ModifyPublicNetworkSecurityPolicyRequest(AbstractModel):
     """ModifyPublicNetworkSecurityPolicy请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _PolicyList: 策略列表
+        :type PolicyList: list of SecurityPolicy
+        """
+        self._InstanceId = None
+        self._PolicyList = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PolicyList(self):
+        """策略列表
+        :rtype: list of SecurityPolicy
+        """
+        return self._PolicyList
+
+    @PolicyList.setter
+    def PolicyList(self, PolicyList):
+        self._PolicyList = PolicyList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("PolicyList") is not None:
+            self._PolicyList = []
+            for item in params.get("PolicyList"):
+                obj = SecurityPolicy()
+                obj._deserialize(item)
+                self._PolicyList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyPublicNetworkSecurityPolicyResponse(AbstractModel):

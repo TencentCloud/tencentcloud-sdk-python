@@ -2646,7 +2646,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type UniqSubnetIds: list of str
         :param _Status: 实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
         :type Status: list of int
-        :param _AutoRenew: 包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</ul>
+        :param _AutoRenew: 续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。
         :type AutoRenew: list of int
         :param _BillingMode: 计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
         :type BillingMode: str
@@ -2831,7 +2831,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</ul>
+        """续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。
         :rtype: list of int
         """
         return self._AutoRenew
@@ -4690,6 +4690,9 @@ class InstanceInfo(AbstractModel):
         :type DiskShardNum: int
         :param _DiskReplicasNum: 1
         :type DiskReplicasNum: int
+        :param _Compression: 数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compression: str
         """
         self._InstanceName = None
         self._InstanceId = None
@@ -4742,6 +4745,7 @@ class InstanceInfo(AbstractModel):
         self._DiskShardSize = None
         self._DiskShardNum = None
         self._DiskReplicasNum = None
+        self._Compression = None
 
     @property
     def InstanceName(self):
@@ -5321,6 +5325,18 @@ class InstanceInfo(AbstractModel):
     def DiskReplicasNum(self, DiskReplicasNum):
         self._DiskReplicasNum = DiskReplicasNum
 
+    @property
+    def Compression(self):
+        """数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5384,6 +5400,7 @@ class InstanceInfo(AbstractModel):
         self._DiskShardSize = params.get("DiskShardSize")
         self._DiskShardNum = params.get("DiskShardNum")
         self._DiskReplicasNum = params.get("DiskReplicasNum")
+        self._Compression = params.get("Compression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

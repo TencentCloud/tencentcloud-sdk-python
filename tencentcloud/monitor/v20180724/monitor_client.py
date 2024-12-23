@@ -2387,6 +2387,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRemoteURLs(self, request):
+        """获取多写配置详情
+
+        :param request: Request instance for DescribeRemoteURLs.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeRemoteURLsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeRemoteURLsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRemoteURLs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRemoteURLsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSSOAccount(self, request):
         """列出当前grafana实例的所有授权账号
 
@@ -2987,6 +3010,29 @@ class MonitorClient(AbstractClient):
             body = self.call("ModifyPrometheusTemp", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPrometheusTempResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRemoteURLs(self, request):
+        """修改多写配置
+
+        :param request: Request instance for ModifyRemoteURLs.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyRemoteURLsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyRemoteURLsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRemoteURLs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRemoteURLsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

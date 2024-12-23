@@ -50,7 +50,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreatePrivateDNSAccount(self, request):
-        """创建私有域解析账号
+        """跨账号关联VPC时绑定其他账号
 
         :param request: Request instance for CreatePrivateDNSAccount.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateDNSAccountRequest`
