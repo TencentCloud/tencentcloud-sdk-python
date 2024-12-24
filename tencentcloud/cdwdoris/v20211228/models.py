@@ -11477,6 +11477,8 @@ class NodeInfos(AbstractModel):
         :param _Zone: 可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
         """
         self._NodeName = None
         self._Status = None
@@ -11486,6 +11488,7 @@ class NodeInfos(AbstractModel):
         self._LastRestartTime = None
         self._Id = None
         self._Zone = None
+        self._CreateTime = None
 
     @property
     def NodeName(self):
@@ -11577,6 +11580,17 @@ class NodeInfos(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -11587,6 +11601,7 @@ class NodeInfos(AbstractModel):
         self._LastRestartTime = params.get("LastRestartTime")
         self._Id = params.get("Id")
         self._Zone = params.get("Zone")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

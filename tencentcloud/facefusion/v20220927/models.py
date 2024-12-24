@@ -850,12 +850,19 @@ class FusionUltraParam(AbstractModel):
 1：牙齿增强打开
 该参数仅对SwapModelType（模型类型）取值1-5生效
         :type TeethEnhanceRadio: float
+        :param _MakeupTransferRadio: 妆容迁移开关，默认取值为0。
+将素材模板的妆容迁移到融合结果上。即：如果希望妆容效果与模板图保持一致，可以打开此开关。
+0：妆容迁移关闭
+1：妆容迁移打开
+该参数仅对SwapModelType（模型类型）取值1-5生效
+        :type MakeupTransferRadio: float
         """
         self._WarpRadio = None
         self._EnhanceRadio = None
         self._MpRadio = None
         self._BlurRadio = None
         self._TeethEnhanceRadio = None
+        self._MakeupTransferRadio = None
 
     @property
     def WarpRadio(self):
@@ -928,6 +935,21 @@ class FusionUltraParam(AbstractModel):
     def TeethEnhanceRadio(self, TeethEnhanceRadio):
         self._TeethEnhanceRadio = TeethEnhanceRadio
 
+    @property
+    def MakeupTransferRadio(self):
+        """妆容迁移开关，默认取值为0。
+将素材模板的妆容迁移到融合结果上。即：如果希望妆容效果与模板图保持一致，可以打开此开关。
+0：妆容迁移关闭
+1：妆容迁移打开
+该参数仅对SwapModelType（模型类型）取值1-5生效
+        :rtype: float
+        """
+        return self._MakeupTransferRadio
+
+    @MakeupTransferRadio.setter
+    def MakeupTransferRadio(self, MakeupTransferRadio):
+        self._MakeupTransferRadio = MakeupTransferRadio
+
 
     def _deserialize(self, params):
         self._WarpRadio = params.get("WarpRadio")
@@ -935,6 +957,7 @@ class FusionUltraParam(AbstractModel):
         self._MpRadio = params.get("MpRadio")
         self._BlurRadio = params.get("BlurRadio")
         self._TeethEnhanceRadio = params.get("TeethEnhanceRadio")
+        self._MakeupTransferRadio = params.get("MakeupTransferRadio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

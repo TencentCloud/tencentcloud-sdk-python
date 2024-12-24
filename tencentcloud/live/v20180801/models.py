@@ -6792,6 +6792,15 @@ rtmp、rtmps、rtsp、rtp、srt。
 
 注意：签名时间需要超过任务结束时间，避免因签名过期造成任务失败。
         :type ToUrl: str
+        :param _FileIndex: 指定播放文件索引。
+注意： 1. 从1开始，不大于SourceUrls中文件个数。
+2. 该偏移仅在首次轮播时有效。
+3. 提前创建的任务指定的偏移最长有效期为24小时，24小时后未开始的任务偏移失效。
+        :type FileIndex: int
+        :param _OffsetTime: 指定播放文件偏移。
+注意：
+1. 单位：秒，配合FileIndex使用。
+        :type OffsetTime: int
         :param _BackupSourceType: 备源的类型：
 PullLivePushLive -直播，
 PullVodPushLive -点播。
@@ -6838,6 +6847,8 @@ PullVodPushLive -点播。
         self._SpecifyTaskId = None
         self._Comment = None
         self._ToUrl = None
+        self._FileIndex = None
+        self._OffsetTime = None
         self._BackupSourceType = None
         self._BackupSourceUrl = None
         self._WatermarkList = None
@@ -7099,6 +7110,33 @@ rtmp、rtmps、rtsp、rtp、srt。
         self._ToUrl = ToUrl
 
     @property
+    def FileIndex(self):
+        """指定播放文件索引。
+注意： 1. 从1开始，不大于SourceUrls中文件个数。
+2. 该偏移仅在首次轮播时有效。
+3. 提前创建的任务指定的偏移最长有效期为24小时，24小时后未开始的任务偏移失效。
+        :rtype: int
+        """
+        return self._FileIndex
+
+    @FileIndex.setter
+    def FileIndex(self, FileIndex):
+        self._FileIndex = FileIndex
+
+    @property
+    def OffsetTime(self):
+        """指定播放文件偏移。
+注意：
+1. 单位：秒，配合FileIndex使用。
+        :rtype: int
+        """
+        return self._OffsetTime
+
+    @OffsetTime.setter
+    def OffsetTime(self, OffsetTime):
+        self._OffsetTime = OffsetTime
+
+    @property
     def BackupSourceType(self):
         """备源的类型：
 PullLivePushLive -直播，
@@ -7208,6 +7246,8 @@ PullVodPushLive -点播。
         self._SpecifyTaskId = params.get("SpecifyTaskId")
         self._Comment = params.get("Comment")
         self._ToUrl = params.get("ToUrl")
+        self._FileIndex = params.get("FileIndex")
+        self._OffsetTime = params.get("OffsetTime")
         self._BackupSourceType = params.get("BackupSourceType")
         self._BackupSourceUrl = params.get("BackupSourceUrl")
         if params.get("WatermarkList") is not None:

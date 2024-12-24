@@ -833,6 +833,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMessageTrace(self, request):
+        """根据消息 ID 查询消息轨迹。
+
+        :param request: Request instance for DescribeMessageTrace.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMessageTraceRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMessageTraceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMessageTrace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMessageTraceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProductSKUs(self, request):
         """查询产品售卖规格，针对 RocketMQ 5.x 集群。
 

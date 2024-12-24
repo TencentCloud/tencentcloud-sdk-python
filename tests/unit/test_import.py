@@ -24,6 +24,11 @@ def test_import_aai():
     from tencentcloud.aai.v20180522 import models
 
 
+def test_import_aca():
+    from tencentcloud.aca.v20210323 import aca_client
+    from tencentcloud.aca.v20210323 import models
+
+
 def test_import_acp():
     from tencentcloud.acp.v20220105 import acp_client
     from tencentcloud.acp.v20220105 import models

@@ -1429,6 +1429,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecondLevelBackupInfo(self, request):
+        """查询实例秒级备份信息
+
+        :param request: Request instance for DescribeSecondLevelBackupInfo.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSecondLevelBackupInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeSecondLevelBackupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecondLevelBackupInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecondLevelBackupInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSlowLog(self, request):
         """本接口（DescribeSlowLog）查询实例慢查询记录。
 
@@ -1928,6 +1951,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyInstanceAvailabilityZones", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceAvailabilityZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceBackupMode(self, request):
+        """修改实例的备份模式
+
+        :param request: Request instance for ModifyInstanceBackupMode.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceBackupModeRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceBackupModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceBackupMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceBackupModeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

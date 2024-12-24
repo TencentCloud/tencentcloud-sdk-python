@@ -26,10 +26,8 @@ class Account(AbstractModel):
     def __init__(self):
         r"""
         :param _User: 新账户的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Host: 新账户的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         """
         self._User = None
@@ -38,7 +36,6 @@ class Account(AbstractModel):
     @property
     def User(self):
         """新账户的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -50,7 +47,6 @@ class Account(AbstractModel):
     @property
     def Host(self):
         """新账户的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -1594,8 +1590,9 @@ class AuditLog(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrxLivingTime: int
         :param _TemplateInfo: 日志命中规则模板的基本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateInfo: list of LogRuleTemplateInfo
+        :param _TrxId:  事务ID
+        :type TrxId: int
         """
         self._AffectRows = None
         self._ErrCode = None
@@ -1616,6 +1613,7 @@ class AuditLog(AbstractModel):
         self._NsTime = None
         self._TrxLivingTime = None
         self._TemplateInfo = None
+        self._TrxId = None
 
     @property
     def AffectRows(self):
@@ -1824,7 +1822,6 @@ class AuditLog(AbstractModel):
     @property
     def TemplateInfo(self):
         """日志命中规则模板的基本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogRuleTemplateInfo
         """
         return self._TemplateInfo
@@ -1832,6 +1829,17 @@ class AuditLog(AbstractModel):
     @TemplateInfo.setter
     def TemplateInfo(self, TemplateInfo):
         self._TemplateInfo = TemplateInfo
+
+    @property
+    def TrxId(self):
+        """ 事务ID
+        :rtype: int
+        """
+        return self._TrxId
+
+    @TrxId.setter
+    def TrxId(self, TrxId):
+        self._TrxId = TrxId
 
 
     def _deserialize(self, params):
@@ -1859,6 +1867,7 @@ class AuditLog(AbstractModel):
                 obj = LogRuleTemplateInfo()
                 obj._deserialize(item)
                 self._TemplateInfo.append(obj)
+        self._TrxId = params.get("TrxId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5912,12 +5921,16 @@ class ColumnPrivilege(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: 数据库表名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Column: 数据库列名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Column: str
         :param _Privileges: 权限信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Privileges: list of str
         """
         self._Database = None
@@ -5928,6 +5941,7 @@ class ColumnPrivilege(AbstractModel):
     @property
     def Database(self):
         """数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Database
@@ -5939,6 +5953,7 @@ class ColumnPrivilege(AbstractModel):
     @property
     def Table(self):
         """数据库表名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -5950,6 +5965,7 @@ class ColumnPrivilege(AbstractModel):
     @property
     def Column(self):
         """数据库列名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Column
@@ -5961,6 +5977,7 @@ class ColumnPrivilege(AbstractModel):
     @property
     def Privileges(self):
         """权限信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Privileges
@@ -10473,8 +10490,10 @@ class DatabasePrivilege(AbstractModel):
     def __init__(self):
         r"""
         :param _Privileges: 权限信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Privileges: list of str
         :param _Database: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         """
         self._Privileges = None
@@ -10483,6 +10502,7 @@ class DatabasePrivilege(AbstractModel):
     @property
     def Privileges(self):
         """权限信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Privileges
@@ -10494,6 +10514,7 @@ class DatabasePrivilege(AbstractModel):
     @property
     def Database(self):
         """数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Database
@@ -12454,7 +12475,7 @@ class DescribeAuditLogsRequest(AbstractModel):
         :type EndTime: str
         :param _Limit: 分页参数，单次返回的数据条数。默认值为100，最大值为100。
         :type Limit: int
-        :param _Offset: 分页偏移量。
+        :param _Offset: 日志偏移量，最多支持偏移查询65535条日志。可填写范围：0 - 65535。
         :type Offset: int
         :param _Order: 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
         :type Order: str
@@ -12521,7 +12542,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页偏移量。
+        """日志偏移量，最多支持偏移查询65535条日志。可填写范围：0 - 65535。
         :rtype: int
         """
         return self._Offset
@@ -36683,10 +36704,13 @@ class TablePrivilege(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: 数据库表名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Privileges: 权限信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Privileges: list of str
         """
         self._Database = None
@@ -36696,6 +36720,7 @@ class TablePrivilege(AbstractModel):
     @property
     def Database(self):
         """数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Database
@@ -36707,6 +36732,7 @@ class TablePrivilege(AbstractModel):
     @property
     def Table(self):
         """数据库表名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -36718,6 +36744,7 @@ class TablePrivilege(AbstractModel):
     @property
     def Privileges(self):
         """权限信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Privileges
@@ -37014,11 +37041,9 @@ class TaskAttachInfo(AbstractModel):
         r"""
         :param _AttachKey: 升级任务：
 ”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttachKey: str
         :param _AttachValue: 升级任务：
 ”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttachValue: str
         """
         self._AttachKey = None
@@ -37028,7 +37053,6 @@ class TaskAttachInfo(AbstractModel):
     def AttachKey(self):
         """升级任务：
 ”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AttachKey
@@ -37041,7 +37065,6 @@ class TaskAttachInfo(AbstractModel):
     def AttachValue(self):
         """升级任务：
 ”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AttachValue
@@ -37114,7 +37137,6 @@ class TaskDetail(AbstractModel):
         :param _AsyncRequestId: 异步任务的请求 ID。
         :type AsyncRequestId: str
         :param _TaskAttachInfo: 任务的附加信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAttachInfo: list of TaskAttachInfo
         """
         self._Code = None
@@ -37264,7 +37286,6 @@ class TaskDetail(AbstractModel):
     @property
     def TaskAttachInfo(self):
         """任务的附加信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskAttachInfo
         """
         return self._TaskAttachInfo

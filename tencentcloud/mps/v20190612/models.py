@@ -16699,6 +16699,117 @@ class CreateInputSRTSettings(AbstractModel):
         
 
 
+class CreateLiveRecordTemplateRequest(AbstractModel):
+    """CreateLiveRecordTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HLSConfigure: HLS 配置参数
+        :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _Name: 录制模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self._HLSConfigure = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def HLSConfigure(self):
+        """HLS 配置参数
+        :rtype: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        """
+        return self._HLSConfigure
+
+    @HLSConfigure.setter
+    def HLSConfigure(self, HLSConfigure):
+        self._HLSConfigure = HLSConfigure
+
+    @property
+    def Name(self):
+        """录制模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        if params.get("HLSConfigure") is not None:
+            self._HLSConfigure = HLSConfigureInfo()
+            self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveRecordTemplateResponse(AbstractModel):
+    """CreateLiveRecordTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 录制模板唯一标识。
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        """录制模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOutputInfo(AbstractModel):
     """创建输出的配置信息。
 
@@ -20171,6 +20282,70 @@ class DeleteImageSpriteTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteLiveRecordTemplateRequest(AbstractModel):
+    """DeleteLiveRecordTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 录制模板唯一标识。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        """录制模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveRecordTemplateResponse(AbstractModel):
+    """DeleteLiveRecordTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeletePersonSampleRequest(AbstractModel):
     """DeletePersonSample请求参数结构体
 
@@ -23101,6 +23276,169 @@ class DescribeInputSRTSettings(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeLiveRecordTemplatesRequest(AbstractModel):
+    """DescribeLiveRecordTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: 录制模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param _Type: 模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :type Type: str
+        :param _Name: 录制模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Definitions(self):
+        """录制模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        """模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        """录制模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveRecordTemplatesResponse(AbstractModel):
+    """DescribeLiveRecordTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _LiveRecordTemplateSet: 录制模板详情列表。
+        :type LiveRecordTemplateSet: list of LiveRecordTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._LiveRecordTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LiveRecordTemplateSet(self):
+        """录制模板详情列表。
+        :rtype: list of LiveRecordTemplate
+        """
+        return self._LiveRecordTemplateSet
+
+    @LiveRecordTemplateSet.setter
+    def LiveRecordTemplateSet(self, LiveRecordTemplateSet):
+        self._LiveRecordTemplateSet = LiveRecordTemplateSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("LiveRecordTemplateSet") is not None:
+            self._LiveRecordTemplateSet = []
+            for item in params.get("LiveRecordTemplateSet"):
+                obj = LiveRecordTemplate()
+                obj._deserialize(item)
+                self._LiveRecordTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMediaMetaDataRequest(AbstractModel):
@@ -31455,6 +31793,88 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
         
 
 
+class HLSConfigureInfo(AbstractModel):
+    """HLS配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemDuration: 单个 TS 文件时长，单位：秒，取值范围 5-30 秒。
+
+不填默认为 30 秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemDuration: int
+        :param _Interval: 录制周期，单位：秒，取值范围 10 分钟到  12 小时。
+
+不填默认为 10分钟（3600 秒）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interval: int
+        :param _ContinueTimeout: 续录等待时间，单位：秒。取值范围为60秒-1800秒。
+不填默认为0（不启用续录）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContinueTimeout: int
+        """
+        self._ItemDuration = None
+        self._Interval = None
+        self._ContinueTimeout = None
+
+    @property
+    def ItemDuration(self):
+        """单个 TS 文件时长，单位：秒，取值范围 5-30 秒。
+
+不填默认为 30 秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ItemDuration
+
+    @ItemDuration.setter
+    def ItemDuration(self, ItemDuration):
+        self._ItemDuration = ItemDuration
+
+    @property
+    def Interval(self):
+        """录制周期，单位：秒，取值范围 10 分钟到  12 小时。
+
+不填默认为 10分钟（3600 秒）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def ContinueTimeout(self):
+        """续录等待时间，单位：秒。取值范围为60秒-1800秒。
+不填默认为0（不启用续录）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ContinueTimeout
+
+    @ContinueTimeout.setter
+    def ContinueTimeout(self, ContinueTimeout):
+        self._ContinueTimeout = ContinueTimeout
+
+
+    def _deserialize(self, params):
+        self._ItemDuration = params.get("ItemDuration")
+        self._Interval = params.get("Interval")
+        self._ContinueTimeout = params.get("ContinueTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HLSPullSourceAddress(AbstractModel):
     """创建的输入HLS拉流源站配置信息。
 
@@ -33080,6 +33500,138 @@ class LiveRecordTaskInput(AbstractModel):
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._OutputObjectPath = params.get("OutputObjectPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveRecordTemplate(AbstractModel):
+    """直播录制模板详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 录制模板唯一标识。
+        :type Definition: int
+        :param _HLSConfigure: HLS 配置参数
+        :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _Name: 录制模板名称。
+        :type Name: str
+        :param _Comment: 模板描述信息。
+        :type Comment: str
+        :param _Type: 模板类型，取值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._HLSConfigure = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        """录制模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def HLSConfigure(self):
+        """HLS 配置参数
+        :rtype: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        """
+        return self._HLSConfigure
+
+    @HLSConfigure.setter
+    def HLSConfigure(self, HLSConfigure):
+        self._HLSConfigure = HLSConfigure
+
+    @property
+    def Name(self):
+        """录制模板名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        """模板描述信息。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        """模板类型，取值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("HLSConfigure") is not None:
+            self._HLSConfigure = HLSConfigureInfo()
+            self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41175,6 +41727,117 @@ class ModifyInput(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyLiveRecordTemplateRequest(AbstractModel):
+    """ModifyLiveRecordTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 录制模板唯一标识。
+        :type Definition: int
+        :param _HLSConfigure: HLS 配置参数
+        :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _Name: 录制模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self._Definition = None
+        self._HLSConfigure = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def Definition(self):
+        """录制模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def HLSConfigure(self):
+        """HLS 配置参数
+        :rtype: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        """
+        return self._HLSConfigure
+
+    @HLSConfigure.setter
+    def HLSConfigure(self, HLSConfigure):
+        self._HLSConfigure = HLSConfigure
+
+    @property
+    def Name(self):
+        """录制模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("HLSConfigure") is not None:
+            self._HLSConfigure = HLSConfigureInfo()
+            self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveRecordTemplateResponse(AbstractModel):
+    """ModifyLiveRecordTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyOutputInfo(AbstractModel):

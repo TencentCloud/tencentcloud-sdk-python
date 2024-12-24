@@ -15861,10 +15861,10 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         r"""
         :param _TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
         :type TimeSpan: int
-        :param _ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
-        :type ResourceIds: list of str
         :param _PayMode: 实例计费模式。此处只支持取值为1，表示包年包月。
         :type PayMode: int
+        :param _ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
+        :type ResourceIds: list of str
         :param _TimeUnit: 实例续费的时间单位。取值范围：
 <li>m：表示月份。</li>
         :type TimeUnit: str
@@ -15875,14 +15875,20 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param _ModifyPayMode: 是否按量转包年包月。0：否，1：是。
         :type ModifyPayMode: int
+        :param _NeedDetail: 是否需要每个节点续费价格
+        :type NeedDetail: bool
+        :param _InstanceId: 集群id，如果需要集群所有包年包月节点续费信息，可以填写该参数
+        :type InstanceId: str
         """
         self._TimeSpan = None
-        self._ResourceIds = None
         self._PayMode = None
+        self._ResourceIds = None
         self._TimeUnit = None
         self._Currency = None
         self._Placement = None
         self._ModifyPayMode = None
+        self._NeedDetail = None
+        self._InstanceId = None
 
     @property
     def TimeSpan(self):
@@ -15896,17 +15902,6 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         self._TimeSpan = TimeSpan
 
     @property
-    def ResourceIds(self):
-        """待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
-        :rtype: list of str
-        """
-        return self._ResourceIds
-
-    @ResourceIds.setter
-    def ResourceIds(self, ResourceIds):
-        self._ResourceIds = ResourceIds
-
-    @property
     def PayMode(self):
         """实例计费模式。此处只支持取值为1，表示包年包月。
         :rtype: int
@@ -15916,6 +15911,17 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
     @PayMode.setter
     def PayMode(self, PayMode):
         self._PayMode = PayMode
+
+    @property
+    def ResourceIds(self):
+        """待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
 
     @property
     def TimeUnit(self):
@@ -15963,17 +15969,41 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
     def ModifyPayMode(self, ModifyPayMode):
         self._ModifyPayMode = ModifyPayMode
 
+    @property
+    def NeedDetail(self):
+        """是否需要每个节点续费价格
+        :rtype: bool
+        """
+        return self._NeedDetail
+
+    @NeedDetail.setter
+    def NeedDetail(self, NeedDetail):
+        self._NeedDetail = NeedDetail
+
+    @property
+    def InstanceId(self):
+        """集群id，如果需要集群所有包年包月节点续费信息，可以填写该参数
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._TimeSpan = params.get("TimeSpan")
-        self._ResourceIds = params.get("ResourceIds")
         self._PayMode = params.get("PayMode")
+        self._ResourceIds = params.get("ResourceIds")
         self._TimeUnit = params.get("TimeUnit")
         self._Currency = params.get("Currency")
         if params.get("Placement") is not None:
             self._Placement = Placement()
             self._Placement._deserialize(params.get("Placement"))
         self._ModifyPayMode = params.get("ModifyPayMode")
+        self._NeedDetail = params.get("NeedDetail")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16004,6 +16034,9 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
         :param _TimeSpan: 实例续费的时长。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
+        :param _PriceDetail: 价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceDetail: list of PriceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16011,6 +16044,7 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
         self._DiscountCost = None
         self._TimeUnit = None
         self._TimeSpan = None
+        self._PriceDetail = None
         self._RequestId = None
 
     @property
@@ -16063,6 +16097,18 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
         self._TimeSpan = TimeSpan
 
     @property
+    def PriceDetail(self):
+        """价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PriceDetail
+        """
+        return self._PriceDetail
+
+    @PriceDetail.setter
+    def PriceDetail(self, PriceDetail):
+        self._PriceDetail = PriceDetail
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16079,6 +16125,12 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
         self._DiscountCost = params.get("DiscountCost")
         self._TimeUnit = params.get("TimeUnit")
         self._TimeSpan = params.get("TimeSpan")
+        if params.get("PriceDetail") is not None:
+            self._PriceDetail = []
+            for item in params.get("PriceDetail"):
+                obj = PriceDetail()
+                obj._deserialize(item)
+                self._PriceDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -26675,6 +26727,12 @@ class ScaleOutClusterResponse(AbstractModel):
         :param _TraceId: 查询流程状态，流程额外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceId: str
+        :param _DealNames: 订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _BillId: 大订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -26682,6 +26740,8 @@ class ScaleOutClusterResponse(AbstractModel):
         self._ClientToken = None
         self._FlowId = None
         self._TraceId = None
+        self._DealNames = None
+        self._BillId = None
         self._RequestId = None
 
     @property
@@ -26732,6 +26792,30 @@ class ScaleOutClusterResponse(AbstractModel):
         self._TraceId = TraceId
 
     @property
+    def DealNames(self):
+        """订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def BillId(self):
+        """大订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -26748,6 +26832,8 @@ class ScaleOutClusterResponse(AbstractModel):
         self._ClientToken = params.get("ClientToken")
         self._FlowId = params.get("FlowId")
         self._TraceId = params.get("TraceId")
+        self._DealNames = params.get("DealNames")
+        self._BillId = params.get("BillId")
         self._RequestId = params.get("RequestId")
 
 

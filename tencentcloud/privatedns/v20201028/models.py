@@ -28,13 +28,10 @@ class AccountVpcInfo(AbstractModel):
         :param _UniqVpcId: VpcId： vpc-xadsafsdasd
         :type UniqVpcId: str
         :param _Region: Vpc所属地区: ap-guangzhou, ap-shanghai
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Uin: Vpc所属账号: 123456789
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _VpcName: vpc资源名称：testname
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
         """
         self._UniqVpcId = None
@@ -56,7 +53,6 @@ class AccountVpcInfo(AbstractModel):
     @property
     def Region(self):
         """Vpc所属地区: ap-guangzhou, ap-shanghai
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -68,7 +64,6 @@ class AccountVpcInfo(AbstractModel):
     @property
     def Uin(self):
         """Vpc所属账号: 123456789
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -80,7 +75,6 @@ class AccountVpcInfo(AbstractModel):
     @property
     def VpcName(self):
         """vpc资源名称：testname
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcName
@@ -357,7 +351,6 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
         :param _AccountVpcSet: 本次新增的关联账号vpc
         :type AccountVpcSet: list of AccountVpcInfo
         :param _UniqId: 唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -404,7 +397,6 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
     @property
     def UniqId(self):
         """唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqId
@@ -1463,7 +1455,6 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
         :param _AccountVpcSet: 本次删除的关联账户的VPC
         :type AccountVpcSet: list of AccountVpcInfo
         :param _UniqId: 唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1510,7 +1501,6 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
     @property
     def UniqId(self):
         """唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqId

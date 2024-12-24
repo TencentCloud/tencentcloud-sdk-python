@@ -10796,8 +10796,10 @@ class InstanceSpec(AbstractModel):
     def __init__(self):
         r"""
         :param _Machine: 设备型号
+注意：此字段可能返回 null，表示取不到有效值。
         :type Machine: str
         :param _SpecInfos: 该机型对应的可售卖规格列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type SpecInfos: list of SpecConfigInfo
         """
         self._Machine = None
@@ -10806,6 +10808,7 @@ class InstanceSpec(AbstractModel):
     @property
     def Machine(self):
         """设备型号
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Machine
@@ -10817,6 +10820,7 @@ class InstanceSpec(AbstractModel):
     @property
     def SpecInfos(self):
         """该机型对应的可售卖规格列表
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpecConfigInfo
         """
         return self._SpecInfos

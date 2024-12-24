@@ -283,9 +283,9 @@ class ApproverInfo(AbstractModel):
 2. 港澳居民来往内地通行证 和  港澳台居民居住证 类型的签署人<b>至少要过一次大陆的海关</b>才能使用。
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _NotifyType: 通知签署方经办人的方式,  有以下途径:
 <ul><li>  **sms**  :  (默认)短信</li>
@@ -512,9 +512,9 @@ class ApproverInfo(AbstractModel):
     @property
     def ApproverIdCardNumber(self):
         """签署方经办人的证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._ApproverIdCardNumber
@@ -4333,9 +4333,9 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
         :param _SubTaskIds: 企业批量认证链接的子任务 SubTaskId，该 SubTaskId 是通过接口 查询企业批量认证链接 DescribeBatchOrganizationRegistrationUrls 获得。此参数需与超管个人三要素（AdminName，AdminMobile，AdminIdCardNumber）配合使用。若 SubTaskId 不属于传入的超级管理员，将进行筛选。
         :type SubTaskIds: list of str
         :param _AdminIdCardType: 组织机构超管证件类型支持以下类型
-- ID_CARD : 居民身份证 (默认值)
--  HONGKONG_AND_MACAO : 港澳居民来往内地通行证
-- HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)
+- ID_CARD : 中国大陆居民身份证 (默认值)
+-  HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+- HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
 此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardType保持一致。
         :type AdminIdCardType: str
         :param _AdminIdCardNumber: 组织机构超管证件号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardNumber保持一致。
@@ -4412,9 +4412,9 @@ class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
     @property
     def AdminIdCardType(self):
         """组织机构超管证件类型支持以下类型
-- ID_CARD : 居民身份证 (默认值)
--  HONGKONG_AND_MACAO : 港澳居民来往内地通行证
-- HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)
+- ID_CARD : 中国大陆居民身份证 (默认值)
+-  HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证
+- HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)
 此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardType保持一致。
         :rtype: str
         """
@@ -5101,14 +5101,14 @@ class CreateBatchSignUrlRequest(AbstractModel):
         :param _IdCardType: 证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
 注：`请确保和合同中填入的一致`
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`请确保和合同中填入的一致`
         :type IdCardNumber: str
@@ -5217,7 +5217,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
         """证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
 <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
 注：`请确保和合同中填入的一致`
         :rtype: str
@@ -5231,9 +5231,9 @@ class CreateBatchSignUrlRequest(AbstractModel):
     @property
     def IdCardNumber(self):
         """证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`请确保和合同中填入的一致`
         :rtype: str
@@ -11194,8 +11194,8 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         :type AdminIdCardNumber: str
         :param _AdminIdCardType: 认证人证件类型， 支持以下类型
 <ul><li><b>ID_CARD</b> : 中国大陆居民身份证  (默认值)</li>
-<li><b>HONGKONG_AND_MACAO</b>  : 港澳居民来往内地通行证</li>
-<li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li><b>HONGKONG_AND_MACAO</b>  : 中国港澳居民来往内地通行证</li>
+<li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
         :type AdminIdCardType: str
         :param _UniformSocialCreditCodeSame: 对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
@@ -11380,8 +11380,8 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
     def AdminIdCardType(self):
         """认证人证件类型， 支持以下类型
 <ul><li><b>ID_CARD</b> : 中国大陆居民身份证  (默认值)</li>
-<li><b>HONGKONG_AND_MACAO</b>  : 港澳居民来往内地通行证</li>
-<li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li><b>HONGKONG_AND_MACAO</b>  : 中国港澳居民来往内地通行证</li>
+<li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
         :rtype: str
         """
@@ -12345,14 +12345,14 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
         :param _UserName: 个人用户名称
         :type UserName: str
         :param _IdCardType: 证件类型，支持以下类型
-<ul><li> ID_CARD  : 居民身份证 (默认值)</li>
-<li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li>
-<li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<ul><li> ID_CARD  : 中国大陆居民身份证 (默认值)</li>
+<li> HONGKONG_AND_MACAO  : 中国港澳居民来往内地通行证</li>
+<li> HONGKONG_MACAO_AND_TAIWAN  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -12396,9 +12396,9 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
     @property
     def IdCardType(self):
         """证件类型，支持以下类型
-<ul><li> ID_CARD  : 居民身份证 (默认值)</li>
-<li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li>
-<li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<ul><li> ID_CARD  : 中国大陆居民身份证 (默认值)</li>
+<li> HONGKONG_AND_MACAO  : 中国港澳居民来往内地通行证</li>
+<li> HONGKONG_MACAO_AND_TAIWAN  : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._IdCardType
@@ -12410,9 +12410,9 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
     @property
     def IdCardNumber(self):
         """证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._IdCardNumber
@@ -13079,9 +13079,9 @@ class CreatePreparedPersonalEsignRequest(AbstractModel):
         :param _UserName: 个人用户姓名
         :type UserName: str
         :param _IdCardNumber: 证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li> 中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _SealName: 印章名称，长度1-50个字。
         :type SealName: str
@@ -13090,8 +13090,8 @@ class CreatePreparedPersonalEsignRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _IdCardType: 证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
         :type IdCardType: str
         :param _SealImage: 印章图片的base64
 注：已废弃
@@ -13162,9 +13162,9 @@ BLUE 蓝色。
     @property
     def IdCardNumber(self):
         """证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li> 中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._IdCardNumber
@@ -13200,8 +13200,8 @@ BLUE 蓝色。
     def IdCardType(self):
         """证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._IdCardType
@@ -13716,14 +13716,14 @@ class CreateSchemeUrlRequest(AbstractModel):
         :param _Mobile: 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
         :type Mobile: str
         :param _IdCardType: 证件类型，支持以下类型
-<ul><li>ID_CARD : 居民身份证</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<ul><li>ID_CARD : 中国大陆居民身份证</li>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _EndPoint: 要跳转的链接类型
 
@@ -13830,9 +13830,9 @@ class CreateSchemeUrlRequest(AbstractModel):
     @property
     def IdCardType(self):
         """证件类型，支持以下类型
-<ul><li>ID_CARD : 居民身份证</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<ul><li>ID_CARD : 中国大陆居民身份证</li>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._IdCardType
@@ -13844,9 +13844,9 @@ class CreateSchemeUrlRequest(AbstractModel):
     @property
     def IdCardNumber(self):
         """证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._IdCardNumber
@@ -15274,11 +15274,11 @@ class CreateUserMobileChangeUrlRequest(AbstractModel):
 
 <ul><li><b>ID_CARD </b>: （默认）中国大陆居民身份证 </li>
 <li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
-<li><b>HONGKONG_MACAO_AND_TAIWAN </b>: 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li><b>HONGKONG_MACAO_AND_TAIWAN </b>: 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
         :type IdCardType: str
         :param _IdCardNumber: 要修改手机号用户的身份证号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 如果没有传递 userId且 userAccountType 是 0 或者没有传递， 此参数为<b>必填项。</b>
@@ -15380,7 +15380,7 @@ class CreateUserMobileChangeUrlRequest(AbstractModel):
 
 <ul><li><b>ID_CARD </b>: （默认）中国大陆居民身份证 </li>
 <li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
-<li><b>HONGKONG_MACAO_AND_TAIWAN </b>: 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li><b>HONGKONG_MACAO_AND_TAIWAN </b>: 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
         :rtype: str
         """
@@ -15393,7 +15393,7 @@ class CreateUserMobileChangeUrlRequest(AbstractModel):
     @property
     def IdCardNumber(self):
         """要修改手机号用户的身份证号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 如果没有传递 userId且 userAccountType 是 0 或者没有传递， 此参数为<b>必填项。</b>
@@ -21273,14 +21273,14 @@ class DescribeUserVerifyStatusRequest(AbstractModel):
         :param _Name: 姓名
         :type Name: str
         :param _IdCardNumber: 证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _IdCardType: 证件类型，支持以下类型
-<ul><li>ID_CARD : 居民身份证 (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :type IdCardType: str
         """
         self._Operator = None
@@ -21313,9 +21313,9 @@ class DescribeUserVerifyStatusRequest(AbstractModel):
     @property
     def IdCardNumber(self):
         """证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._IdCardNumber
@@ -21327,9 +21327,9 @@ class DescribeUserVerifyStatusRequest(AbstractModel):
     @property
     def IdCardType(self):
         """证件类型，支持以下类型
-<ul><li>ID_CARD : 居民身份证 (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._IdCardType
@@ -22461,9 +22461,9 @@ WEWORKAPP: 企业微信
 `2.补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
         :type ApproverIdCardNumber: str
@@ -22575,9 +22575,9 @@ WEWORKAPP: 企业微信
     @property
     def ApproverIdCardNumber(self):
         """签署方经办人的证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
         :rtype: str
@@ -23594,9 +23594,9 @@ class FlowCreateApprover(AbstractModel):
 <li><b>HONGKONG_MACAO_AND_TAIWAN</b> : 港澳台居民居住证(格式同居民身份证)</li></ul>
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
 
@@ -23856,9 +23856,9 @@ class FlowCreateApprover(AbstractModel):
     @property
     def ApproverIdCardNumber(self):
         """证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._ApproverIdCardNumber
@@ -27442,9 +27442,9 @@ class NeedReviewApproverInfo(AbstractModel):
 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _OrganizationName: 组织机构名称。
 请确认该名称与企业营业执照中注册的名称一致。
@@ -27515,9 +27515,9 @@ class NeedReviewApproverInfo(AbstractModel):
     @property
     def ApproverIdCardNumber(self):
         """签署方经办人的证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._ApproverIdCardNumber
@@ -29411,9 +29411,9 @@ class RegistrationOrganizationInfo(AbstractModel):
         :type AdminIdCardNumber: str
         :param _AdminIdCardType: 认证人证件类型 
 支持以下类型
-<ul><li>ID_CARD : 居民身份证  (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
         :type AdminIdCardType: str
         :param _BusinessLicense: 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
@@ -29550,9 +29550,9 @@ p.s. 如果上传授权书 ，需遵循以下条件
     def AdminIdCardType(self):
         """认证人证件类型 
 支持以下类型
-<ul><li>ID_CARD : 居民身份证  (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
         :rtype: str
         """
@@ -32648,13 +32648,13 @@ class UserThreeFactor(AbstractModel):
         :type Name: str
         :param _IdCardType: 证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         """
         self._Name = None
@@ -32677,8 +32677,8 @@ class UserThreeFactor(AbstractModel):
     def IdCardType(self):
         """证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._IdCardType
@@ -32690,9 +32690,9 @@ class UserThreeFactor(AbstractModel):
     @property
     def IdCardNumber(self):
         """证件号码，应符合以下规则
-<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._IdCardNumber

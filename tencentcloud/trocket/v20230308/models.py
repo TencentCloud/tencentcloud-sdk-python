@@ -5609,6 +5609,167 @@ class DescribeMQTTUserListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMessageTraceRequest(AbstractModel):
+    """DescribeMessageTrace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _Topic: 主题名称
+        :type Topic: str
+        :param _MsgId: 消息ID
+        :type MsgId: str
+        :param _QueryDeadLetterMessage: 是否是死信消息
+        :type QueryDeadLetterMessage: bool
+        :param _QueryDelayMessage: 是否是延时消息
+        :type QueryDelayMessage: bool
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._MsgId = None
+        self._QueryDeadLetterMessage = None
+        self._QueryDelayMessage = None
+
+    @property
+    def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def MsgId(self):
+        """消息ID
+        :rtype: str
+        """
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def QueryDeadLetterMessage(self):
+        """是否是死信消息
+        :rtype: bool
+        """
+        return self._QueryDeadLetterMessage
+
+    @QueryDeadLetterMessage.setter
+    def QueryDeadLetterMessage(self, QueryDeadLetterMessage):
+        self._QueryDeadLetterMessage = QueryDeadLetterMessage
+
+    @property
+    def QueryDelayMessage(self):
+        """是否是延时消息
+        :rtype: bool
+        """
+        return self._QueryDelayMessage
+
+    @QueryDelayMessage.setter
+    def QueryDelayMessage(self, QueryDelayMessage):
+        self._QueryDelayMessage = QueryDelayMessage
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._MsgId = params.get("MsgId")
+        self._QueryDeadLetterMessage = params.get("QueryDeadLetterMessage")
+        self._QueryDelayMessage = params.get("QueryDelayMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMessageTraceResponse(AbstractModel):
+    """DescribeMessageTrace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShowTopicName: 展示Topic名
+        :type ShowTopicName: str
+        :param _Data: 轨迹详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of MessageTraceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ShowTopicName = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ShowTopicName(self):
+        """展示Topic名
+        :rtype: str
+        """
+        return self._ShowTopicName
+
+    @ShowTopicName.setter
+    def ShowTopicName(self, ShowTopicName):
+        self._ShowTopicName = ShowTopicName
+
+    @property
+    def Data(self):
+        """轨迹详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MessageTraceItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ShowTopicName = params.get("ShowTopicName")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = MessageTraceItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProductSKUsRequest(AbstractModel):
     """DescribeProductSKUs请求参数结构体
 
@@ -8642,6 +8803,61 @@ class MQTTUserItem(AbstractModel):
         self._Remark = params.get("Remark")
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MessageTraceItem(AbstractModel):
+    """消息轨迹
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Stage: 步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stage: str
+        :param _Data: 轨迹详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        """
+        self._Stage = None
+        self._Data = None
+
+    @property
+    def Stage(self):
+        """步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def Data(self):
+        """轨迹详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Stage = params.get("Stage")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

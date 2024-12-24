@@ -5192,7 +5192,7 @@ class EnvData(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
         :type EnhancedService: :class:`tencentcloud.batch.v20170312.models.EnhancedService`
-        :param _InstanceChargeType: CVM实例计费类型<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :param _InstanceChargeType: CVM实例计费类型<br><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><br>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
         :type InstanceMarketOptions: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`
@@ -5334,7 +5334,7 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """CVM实例计费类型<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        """CVM实例计费类型<br><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><br>默认值：POSTPAID_BY_HOUR。
         :rtype: str
         """
         return self._InstanceChargeType

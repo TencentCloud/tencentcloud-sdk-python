@@ -17199,6 +17199,10 @@ class EnvBillingInfoItem(AbstractModel):
         :param _ExtPackageType: 环境套餐类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtPackageType: str
+        :param _EnvCharged: 是否付费期环境，可取值：yes/no。
+        :type EnvCharged: str
+        :param _EnvActivated: 是否已激活，可取值：yes/no。
+        :type EnvActivated: str
         """
         self._EnvId = None
         self._PackageId = None
@@ -17215,6 +17219,8 @@ class EnvBillingInfoItem(AbstractModel):
         self._FreeQuota = None
         self._EnableOverrun = None
         self._ExtPackageType = None
+        self._EnvCharged = None
+        self._EnvActivated = None
 
     @property
     def EnvId(self):
@@ -17393,6 +17399,28 @@ class EnvBillingInfoItem(AbstractModel):
     def ExtPackageType(self, ExtPackageType):
         self._ExtPackageType = ExtPackageType
 
+    @property
+    def EnvCharged(self):
+        """是否付费期环境，可取值：yes/no。
+        :rtype: str
+        """
+        return self._EnvCharged
+
+    @EnvCharged.setter
+    def EnvCharged(self, EnvCharged):
+        self._EnvCharged = EnvCharged
+
+    @property
+    def EnvActivated(self):
+        """是否已激活，可取值：yes/no。
+        :rtype: str
+        """
+        return self._EnvActivated
+
+    @EnvActivated.setter
+    def EnvActivated(self, EnvActivated):
+        self._EnvActivated = EnvActivated
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -17412,6 +17440,8 @@ class EnvBillingInfoItem(AbstractModel):
         self._FreeQuota = params.get("FreeQuota")
         self._EnableOverrun = params.get("EnableOverrun")
         self._ExtPackageType = params.get("ExtPackageType")
+        self._EnvCharged = params.get("EnvCharged")
+        self._EnvActivated = params.get("EnvActivated")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

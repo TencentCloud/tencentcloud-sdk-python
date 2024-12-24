@@ -211,7 +211,7 @@ class CdbClient(AbstractClient):
 
 
     def CloseCDBProxy(self, request):
-        """关闭数据库代理
+        """本接口（CloseCDBProxy）用于关闭数据库代理。
 
         :param request: Request instance for CloseCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CloseCDBProxyRequest`
@@ -621,7 +621,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDeployGroup(self, request):
-        """本接口(CreateDeployGroup)用于创建放置实例的置放群组
+        """本接口（CreateDeployGroup）用于创建放置实例的置放群组。
 
         :param request: Request instance for CreateDeployGroup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDeployGroupRequest`
@@ -1106,7 +1106,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditLogs(self, request):
-        """本接口(DescribeAuditLogs)用于查询数据库审计日志。
+        """本接口（DescribeAuditLogs）用于查询数据库审计日志。
 
         :param request: Request instance for DescribeAuditLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogsRequest`

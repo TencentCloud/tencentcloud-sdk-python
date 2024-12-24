@@ -4872,13 +4872,10 @@ NotAvailable：不可用
 Available:可用
         :type TieringState: str
         :param _TieringDetail: 分层存储详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type TieringDetail: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
         :param _AutoScaleUpRule: 文件系统自动扩容策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoScaleUpRule: :class:`tencentcloud.cfs.v20190719.models.AutoScaleUpRule`
         :param _Version: 文件系统版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._CreationTime = None
@@ -5173,7 +5170,6 @@ Available:可用
     @property
     def TieringDetail(self):
         """分层存储详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
         """
         return self._TieringDetail
@@ -5185,7 +5181,6 @@ Available:可用
     @property
     def AutoScaleUpRule(self):
         """文件系统自动扩容策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cfs.v20190719.models.AutoScaleUpRule`
         """
         return self._AutoScaleUpRule
@@ -5197,7 +5192,6 @@ Available:可用
     @property
     def Version(self):
         """文件系统版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -5322,19 +5316,14 @@ class MigrationTaskInfo(AbstractModel):
         :param _MigrationMode: 迁移模式，默认为0。0: 全量迁移
         :type MigrationMode: int
         :param _BucketName: 数据源桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketName: str
         :param _BucketRegion: 数据源桶地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketRegion: str
         :param _BucketAddress: 数据源桶地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketAddress: str
         :param _ListAddress: 清单地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListAddress: str
         :param _FsName: 文件系统实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FsName: str
         :param _FileSystemId: 文件系统实例Id
         :type FileSystemId: str
@@ -5345,39 +5334,28 @@ class MigrationTaskInfo(AbstractModel):
         :param _CreateTime: 创建时间
         :type CreateTime: int
         :param _EndTime: 完成/终止时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param _Status: 迁移状态。0: 已完成；1: 进行中；2: 已终止
         :type Status: int
         :param _FileTotalCount: 文件数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileTotalCount: int
         :param _FileMigratedCount: 已迁移文件数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileMigratedCount: int
         :param _FileFailedCount: 迁移失败文件数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileFailedCount: int
         :param _FileTotalSize: 文件容量，单位Byte
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileTotalSize: int
         :param _FileMigratedSize: 已迁移文件容量，单位Byte
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileMigratedSize: int
         :param _FileFailedSize: 迁移失败文件容量，单位Byte
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileFailedSize: int
         :param _FileTotalList: 全部清单
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileTotalList: str
         :param _FileCompletedList: 已完成文件清单
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileCompletedList: str
         :param _FileFailedList: 失败文件清单
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileFailedList: str
         :param _BucketPath: 源桶路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketPath: str
         :param _Direction: 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
         :type Direction: int
@@ -5456,7 +5434,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def BucketName(self):
         """数据源桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketName
@@ -5468,7 +5445,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def BucketRegion(self):
         """数据源桶地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketRegion
@@ -5480,7 +5456,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def BucketAddress(self):
         """数据源桶地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketAddress
@@ -5492,7 +5467,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def ListAddress(self):
         """清单地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ListAddress
@@ -5504,7 +5478,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FsName(self):
         """文件系统实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FsName
@@ -5560,7 +5533,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def EndTime(self):
         """完成/终止时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTime
@@ -5583,7 +5555,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileTotalCount(self):
         """文件数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileTotalCount
@@ -5595,7 +5566,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileMigratedCount(self):
         """已迁移文件数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileMigratedCount
@@ -5607,7 +5577,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileFailedCount(self):
         """迁移失败文件数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileFailedCount
@@ -5619,7 +5588,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileTotalSize(self):
         """文件容量，单位Byte
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileTotalSize
@@ -5631,7 +5599,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileMigratedSize(self):
         """已迁移文件容量，单位Byte
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileMigratedSize
@@ -5643,7 +5610,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileFailedSize(self):
         """迁移失败文件容量，单位Byte
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileFailedSize
@@ -5655,7 +5621,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileTotalList(self):
         """全部清单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileTotalList
@@ -5667,7 +5632,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileCompletedList(self):
         """已完成文件清单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileCompletedList
@@ -5679,7 +5643,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def FileFailedList(self):
         """失败文件清单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileFailedList
@@ -5691,7 +5654,6 @@ class MigrationTaskInfo(AbstractModel):
     @property
     def BucketPath(self):
         """源桶路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketPath
@@ -7255,7 +7217,6 @@ class TieringDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TieringSizeInBytes: 低频存储容量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TieringSizeInBytes: int
         :param _SecondaryTieringSizeInBytes: 冷存储容量
         :type SecondaryTieringSizeInBytes: int
@@ -7266,7 +7227,6 @@ class TieringDetailInfo(AbstractModel):
     @property
     def TieringSizeInBytes(self):
         """低频存储容量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TieringSizeInBytes
@@ -8474,16 +8434,13 @@ class UserQuota(AbstractModel):
         :param _FileSystemId: 文件系统ID
         :type FileSystemId: str
         :param _CapacityUsed: 容量使用，单位GiB
-注意：此字段可能返回 null，表示取不到有效值。
         :type CapacityUsed: int
         :param _FileUsed: 文件使用个数，单位个
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileUsed: int
         :param _DirectoryPath: 目录配额的目录绝对路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type DirectoryPath: str
         :param _Status: 配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._UserType = None
@@ -8554,7 +8511,6 @@ class UserQuota(AbstractModel):
     @property
     def CapacityUsed(self):
         """容量使用，单位GiB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CapacityUsed
@@ -8566,7 +8522,6 @@ class UserQuota(AbstractModel):
     @property
     def FileUsed(self):
         """文件使用个数，单位个
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileUsed
@@ -8590,7 +8545,6 @@ class UserQuota(AbstractModel):
     @property
     def Status(self):
         """配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status

@@ -10045,6 +10045,152 @@ class DescribeSSLStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecondLevelBackupInfoRequest(AbstractModel):
+    """DescribeSecondLevelBackupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录Redis控制台在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _BackupTimestamp: 秒级备份时间戳，7天内
+        :type BackupTimestamp: int
+        """
+        self._InstanceId = None
+        self._BackupTimestamp = None
+
+    @property
+    def InstanceId(self):
+        """指定实例 ID。例如：crs-xjhsdj****。请登录Redis控制台在实例列表复制实例 ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupTimestamp(self):
+        """秒级备份时间戳，7天内
+        :rtype: int
+        """
+        return self._BackupTimestamp
+
+    @BackupTimestamp.setter
+    def BackupTimestamp(self, BackupTimestamp):
+        self._BackupTimestamp = BackupTimestamp
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupTimestamp = params.get("BackupTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecondLevelBackupInfoResponse(AbstractModel):
+    """DescribeSecondLevelBackupInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: 备份记录ID 
+        :type BackupId: str
+        :param _BackupTimestamp: 备份时间戳
+        :type BackupTimestamp: int
+        :param _MissingTimestamps: 备份不存在的时间戳范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MissingTimestamps: list of SecondLevelBackupMissingTimestamps
+        :param _StartTimestamp: 实例开启秒级备份的时间戳
+        :type StartTimestamp: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupId = None
+        self._BackupTimestamp = None
+        self._MissingTimestamps = None
+        self._StartTimestamp = None
+        self._RequestId = None
+
+    @property
+    def BackupId(self):
+        """备份记录ID 
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def BackupTimestamp(self):
+        """备份时间戳
+        :rtype: int
+        """
+        return self._BackupTimestamp
+
+    @BackupTimestamp.setter
+    def BackupTimestamp(self, BackupTimestamp):
+        self._BackupTimestamp = BackupTimestamp
+
+    @property
+    def MissingTimestamps(self):
+        """备份不存在的时间戳范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecondLevelBackupMissingTimestamps
+        """
+        return self._MissingTimestamps
+
+    @MissingTimestamps.setter
+    def MissingTimestamps(self, MissingTimestamps):
+        self._MissingTimestamps = MissingTimestamps
+
+    @property
+    def StartTimestamp(self):
+        """实例开启秒级备份的时间戳
+        :rtype: int
+        """
+        return self._StartTimestamp
+
+    @StartTimestamp.setter
+    def StartTimestamp(self, StartTimestamp):
+        self._StartTimestamp = StartTimestamp
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._BackupTimestamp = params.get("BackupTimestamp")
+        if params.get("MissingTimestamps") is not None:
+            self._MissingTimestamps = []
+            for item in params.get("MissingTimestamps"):
+                obj = SecondLevelBackupMissingTimestamps()
+                obj._deserialize(item)
+                self._MissingTimestamps.append(obj)
+        self._StartTimestamp = params.get("StartTimestamp")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogRequest(AbstractModel):
     """DescribeSlowLog请求参数结构体
 
@@ -16501,6 +16647,104 @@ class ModifyInstanceAvailabilityZonesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceBackupModeRequest(AbstractModel):
+    """ModifyInstanceBackupMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例的ID，长度在12-36之间。
+        :type InstanceId: str
+        :param _BackupMode: 备份模式：
+- SecondLevelBackup   秒级备份
+- NormalLevelBackup    普通备份
+        :type BackupMode: str
+        """
+        self._InstanceId = None
+        self._BackupMode = None
+
+    @property
+    def InstanceId(self):
+        """实例的ID，长度在12-36之间。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupMode(self):
+        """备份模式：
+- SecondLevelBackup   秒级备份
+- NormalLevelBackup    普通备份
+        :rtype: str
+        """
+        return self._BackupMode
+
+    @BackupMode.setter
+    def BackupMode(self, BackupMode):
+        self._BackupMode = BackupMode
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupMode = params.get("BackupMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceBackupModeResponse(AbstractModel):
+    """ModifyInstanceBackupMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceEventRequest(AbstractModel):
     """ModifyInstanceEvent请求参数结构体
 
@@ -20643,6 +20887,61 @@ class RestoreInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class SecondLevelBackupMissingTimestamps(AbstractModel):
+    """秒级备份不存在的时间戳范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTimeStamp: 开始时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimeStamp: int
+        :param _EndTimeStamp: 结束时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTimeStamp: int
+        """
+        self._StartTimeStamp = None
+        self._EndTimeStamp = None
+
+    @property
+    def StartTimeStamp(self):
+        """开始时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StartTimeStamp
+
+    @StartTimeStamp.setter
+    def StartTimeStamp(self, StartTimeStamp):
+        self._StartTimeStamp = StartTimeStamp
+
+    @property
+    def EndTimeStamp(self):
+        """结束时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EndTimeStamp
+
+    @EndTimeStamp.setter
+    def EndTimeStamp(self, EndTimeStamp):
+        self._EndTimeStamp = EndTimeStamp
+
+
+    def _deserialize(self, params):
+        self._StartTimeStamp = params.get("StartTimeStamp")
+        self._EndTimeStamp = params.get("EndTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SecurityGroup(AbstractModel):

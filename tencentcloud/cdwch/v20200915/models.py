@@ -1065,7 +1065,7 @@ class CreateInstanceNewRequest(AbstractModel):
         :type UserVPCId: str
         :param _UserSubnetId: 子网
         :type UserSubnetId: str
-        :param _ProductVersion: 版本
+        :param _ProductVersion: 系统版本
         :type ProductVersion: str
         :param _ChargeProperties: 计费方式
         :type ChargeProperties: :class:`tencentcloud.cdwch.v20200915.models.Charge`
@@ -1080,7 +1080,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
         :type ClsLogSetId: str
         :param _CosBucketName: COS桶名称
         :type CosBucketName: str
-        :param _MountDiskType: 是否是裸盘挂载
+        :param _MountDiskType: 是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。
         :type MountDiskType: int
         :param _HAZk: 是否是ZK高可用
         :type HAZk: bool
@@ -1152,7 +1152,7 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
 
     @property
     def ProductVersion(self):
-        """版本
+        """系统版本
         :rtype: str
         """
         return self._ProductVersion
@@ -1234,7 +1234,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def MountDiskType(self):
-        """是否是裸盘挂载
+        """是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。
         :rtype: int
         """
         return self._MountDiskType
@@ -7151,7 +7151,7 @@ class ScheduleStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CosBucketName: 备份桶列表
+        :param _CosBucketName: 备份桶名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosBucketName: str
         :param _RetainDays: 备份保留天数
@@ -7175,7 +7175,7 @@ class ScheduleStrategy(AbstractModel):
 
     @property
     def CosBucketName(self):
-        """备份桶列表
+        """备份桶名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -1455,6 +1455,9 @@ class ApiGroupInfo(AbstractModel):
         :param _ServiceNameKeyPosition: 微服务名参数位置，path，header或query，默认是path
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceNameKeyPosition: str
+        :param _GatewayInstanceIdList: 网关实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayInstanceIdList: list of str
         """
         self._GroupId = None
         self._GroupName = None
@@ -1474,6 +1477,7 @@ class ApiGroupInfo(AbstractModel):
         self._ServiceNameKey = None
         self._NamespaceNameKeyPosition = None
         self._ServiceNameKeyPosition = None
+        self._GatewayInstanceIdList = None
 
     @property
     def GroupId(self):
@@ -1691,6 +1695,18 @@ class ApiGroupInfo(AbstractModel):
     def ServiceNameKeyPosition(self, ServiceNameKeyPosition):
         self._ServiceNameKeyPosition = ServiceNameKeyPosition
 
+    @property
+    def GatewayInstanceIdList(self):
+        """网关实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._GatewayInstanceIdList
+
+    @GatewayInstanceIdList.setter
+    def GatewayInstanceIdList(self, GatewayInstanceIdList):
+        self._GatewayInstanceIdList = GatewayInstanceIdList
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -1716,6 +1732,7 @@ class ApiGroupInfo(AbstractModel):
         self._ServiceNameKey = params.get("ServiceNameKey")
         self._NamespaceNameKeyPosition = params.get("NamespaceNameKeyPosition")
         self._ServiceNameKeyPosition = params.get("ServiceNameKeyPosition")
+        self._GatewayInstanceIdList = params.get("GatewayInstanceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12917,7 +12934,7 @@ class CreateMicroserviceWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: id
+        :param _Result: 微服务ID
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12927,7 +12944,7 @@ class CreateMicroserviceWithDetailRespResponse(AbstractModel):
 
     @property
     def Result(self):
-        """id
+        """微服务ID
         :rtype: str
         """
         return self._Result
@@ -22890,7 +22907,7 @@ class DescribeGatewayAllGroupApisRequest(AbstractModel):
         r"""
         :param _GatewayDeployGroupId: 网关部署组ID
         :type GatewayDeployGroupId: str
-        :param _SearchWord: 搜索关键字，支持分组名称或API Path
+        :param _SearchWord: 搜索关键字，支持命名空间名称或服务名称
         :type SearchWord: str
         """
         self._GatewayDeployGroupId = None
@@ -22909,7 +22926,7 @@ class DescribeGatewayAllGroupApisRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索关键字，支持分组名称或API Path
+        """搜索关键字，支持命名空间名称或服务名称
         :rtype: str
         """
         return self._SearchWord

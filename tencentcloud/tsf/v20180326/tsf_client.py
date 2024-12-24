@@ -1362,7 +1362,9 @@ class TsfClient(AbstractClient):
 
 
     def DeleteServerlessGroup(self, request):
-        """删除Serverless部署组
+        """serverless 能力已下线。下线对应接口。
+
+        删除Serverless部署组
 
         :param request: Request instance for DeleteServerlessGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteServerlessGroupRequest`
