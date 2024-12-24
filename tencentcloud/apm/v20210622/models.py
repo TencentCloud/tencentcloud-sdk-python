@@ -3182,10 +3182,13 @@ class Filter(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 过滤方式（=, !=, in）
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Key: 过滤维度名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 过滤值，in过滤方式用逗号分割多个值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Type = None
@@ -3195,6 +3198,7 @@ class Filter(AbstractModel):
     @property
     def Type(self):
         """过滤方式（=, !=, in）
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -3206,6 +3210,7 @@ class Filter(AbstractModel):
     @property
     def Key(self):
         """过滤维度名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -3217,6 +3222,7 @@ class Filter(AbstractModel):
     @property
     def Value(self):
         """过滤值，in过滤方式用逗号分割多个值
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value

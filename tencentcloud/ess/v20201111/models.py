@@ -18900,7 +18900,9 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 <li>**1**：仅模板列表</li></ul>
         :type ContentType: int
         :param _Filters: 搜索条件，本字段用于指定模板Id进行查询。
-Key：template-id Values：需要查询的模板Id列表
+- Key：template-id Values：需要查询的模板Id列表
+- Key：template-name Values：需要查询的模板名称列表
+
         :type Filters: list of Filter
         :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
 
@@ -18978,7 +18980,9 @@ Key：template-id Values：需要查询的模板Id列表
     @property
     def Filters(self):
         """搜索条件，本字段用于指定模板Id进行查询。
-Key：template-id Values：需要查询的模板Id列表
+- Key：template-id Values：需要查询的模板Id列表
+- Key：template-name Values：需要查询的模板名称列表
+
         :rtype: list of Filter
         """
         return self._Filters

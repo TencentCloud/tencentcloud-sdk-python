@@ -4320,36 +4320,36 @@ class SubscribeInfo(AbstractModel):
         :type SubscribeId: str
         :param _SubscribeName: 数据订阅实例的名称
         :type SubscribeName: str
-        :param _ChannelId: 数据订阅实例绑定的通道ID
+        :param _ChannelId: 数据订阅实例绑定的通道ID。kafka版订阅就是kafka topic
         :type ChannelId: str
-        :param _Product: 数据订阅绑定实例对应的产品名称
+        :param _Product: 订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
         :type Product: str
         :param _InstanceId: 数据订阅实例绑定的数据库实例ID
         :type InstanceId: str
-        :param _InstanceStatus: 数据订阅实例绑定的数据库实例状态
+        :param _InstanceStatus: 云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
         :type InstanceStatus: str
-        :param _SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+        :param _SubsStatus: 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
         :type SubsStatus: str
-        :param _ModifyTime: 上次修改时间
+        :param _ModifyTime: 上次修改时间，时间格式如：Y-m-d h:m:s
         :type ModifyTime: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param _IsolateTime: 隔离时间
+        :param _IsolateTime: 隔离时间，时间格式如：Y-m-d h:m:s
         :type IsolateTime: str
-        :param _ExpireTime: 到期时间
+        :param _ExpireTime: 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
         :type ExpireTime: str
         :param _OfflineTime: 下线时间
         :type OfflineTime: str
         :param _ConsumeStartTime: 最近一次修改的消费时间起点，如果从未修改则为零值
         :type ConsumeStartTime: str
-        :param _AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
+        :param _AutoRenewFlag: 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _Region: 数据订阅实例所属地域
         :type Region: str
         :param _PayType: 计费方式，0 - 包年包月，1 - 按量计费
         :type PayType: int
-        :param _Vip: 数据订阅实例的Vip
+        :param _Vip: 旧版订阅通道的vip
         :type Vip: str
         :param _Vport: 数据订阅实例的Vport
         :type Vport: int
@@ -4357,7 +4357,7 @@ class SubscribeInfo(AbstractModel):
         :type UniqVpcId: str
         :param _UniqSubnetId: 数据订阅实例Vip所在子网的唯一ID
         :type UniqSubnetId: str
-        :param _Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
+        :param _Status: 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
         :type Status: str
         :param _SdkConsumedTime: SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
         :type SdkConsumedTime: str
@@ -4417,7 +4417,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ChannelId(self):
-        """数据订阅实例绑定的通道ID
+        """数据订阅实例绑定的通道ID。kafka版订阅就是kafka topic
         :rtype: str
         """
         return self._ChannelId
@@ -4428,7 +4428,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Product(self):
-        """数据订阅绑定实例对应的产品名称
+        """订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
         :rtype: str
         """
         return self._Product
@@ -4450,7 +4450,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """数据订阅实例绑定的数据库实例状态
+        """云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
         :rtype: str
         """
         return self._InstanceStatus
@@ -4461,7 +4461,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubsStatus(self):
-        """数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+        """数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
         :rtype: str
         """
         return self._SubsStatus
@@ -4472,7 +4472,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """上次修改时间
+        """上次修改时间，时间格式如：Y-m-d h:m:s
         :rtype: str
         """
         return self._ModifyTime
@@ -4494,7 +4494,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def IsolateTime(self):
-        """隔离时间
+        """隔离时间，时间格式如：Y-m-d h:m:s
         :rtype: str
         """
         return self._IsolateTime
@@ -4505,7 +4505,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """到期时间
+        """包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
         :rtype: str
         """
         return self._ExpireTime
@@ -4538,7 +4538,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动续费标识。0-不自动续费，1-自动续费
+        """自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4572,7 +4572,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Vip(self):
-        """数据订阅实例的Vip
+        """旧版订阅通道的vip
         :rtype: str
         """
         return self._Vip
@@ -4616,7 +4616,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Status(self):
-        """数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
+        """数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
         :rtype: str
         """
         return self._Status

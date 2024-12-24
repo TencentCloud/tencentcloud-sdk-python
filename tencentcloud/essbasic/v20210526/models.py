@@ -481,6 +481,138 @@ class ApproverRestriction(AbstractModel):
         
 
 
+class ArchiveDynamicFlowRequest(AbstractModel):
+    """ArchiveDynamicFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _FlowId: 合同流程ID
+        :type FlowId: str
+        """
+        self._Agent = None
+        self._FlowId = None
+
+    @property
+    def Agent(self):
+        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经过实名认证
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FlowId(self):
+        """合同流程ID
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ArchiveDynamicFlowResponse(AbstractModel):
+    """ArchiveDynamicFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID
+        :type FlowId: str
+        :param _Approvers: 动态签署人的参与人信息
+        :type Approvers: list of ChannelArchiveDynamicApproverData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._Approvers = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        """合同流程ID
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Approvers(self):
+        """动态签署人的参与人信息
+        :rtype: list of ChannelArchiveDynamicApproverData
+        """
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = ChannelArchiveDynamicApproverData()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class AuthFailMessage(AbstractModel):
     """授权出错信息
 
@@ -1301,6 +1433,57 @@ class CcInfo(AbstractModel):
         self._Name = params.get("Name")
         self._CcType = params.get("CcType")
         self._CcPermission = params.get("CcPermission")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelArchiveDynamicApproverData(AbstractModel):
+    """动态签署2.0合同参与人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SignId: 签署方唯一编号，一个全局唯一的标识符，不同的流程不会出现冲突。 可以使用签署方的唯一编号来生成签署链接（也可以通过RecipientId来生成签署链接）。	
+        :type SignId: str
+        :param _RecipientId: 签署方角色编号，签署方角色编号是用于区分同一个流程中不同签署方的唯一标识。不同的流程会出现同样的签署方角色编号。 填写控件和签署控件都与特定的角色编号关联。	
+        :type RecipientId: str
+        """
+        self._SignId = None
+        self._RecipientId = None
+
+    @property
+    def SignId(self):
+        """签署方唯一编号，一个全局唯一的标识符，不同的流程不会出现冲突。 可以使用签署方的唯一编号来生成签署链接（也可以通过RecipientId来生成签署链接）。	
+        :rtype: str
+        """
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def RecipientId(self):
+        """签署方角色编号，签署方角色编号是用于区分同一个流程中不同签署方的唯一标识。不同的流程会出现同样的签署方角色编号。 填写控件和签署控件都与特定的角色编号关联。	
+        :rtype: str
+        """
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+
+    def _deserialize(self, params):
+        self._SignId = params.get("SignId")
+        self._RecipientId = params.get("RecipientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3433,6 +3616,114 @@ class ChannelCreateConvertTaskApiResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCreateDynamicFlowApproverRequest(AbstractModel):
+    """ChannelCreateDynamicFlowApprover请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FillDynamicFlowList: 动态合同信息
+
+        :type FillDynamicFlowList: list of DynamicFlowInfo
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self._FillDynamicFlowList = None
+        self._Agent = None
+
+    @property
+    def FillDynamicFlowList(self):
+        """动态合同信息
+
+        :rtype: list of DynamicFlowInfo
+        """
+        return self._FillDynamicFlowList
+
+    @FillDynamicFlowList.setter
+    def FillDynamicFlowList(self, FillDynamicFlowList):
+        self._FillDynamicFlowList = FillDynamicFlowList
+
+    @property
+    def Agent(self):
+        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("FillDynamicFlowList") is not None:
+            self._FillDynamicFlowList = []
+            for item in params.get("FillDynamicFlowList"):
+                obj = DynamicFlowInfo()
+                obj._deserialize(item)
+                self._FillDynamicFlowList.append(obj)
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateDynamicFlowApproverResponse(AbstractModel):
+    """ChannelCreateDynamicFlowApprover返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DynamicFlowResultList: 动态合同补充结果列表
+        :type DynamicFlowResultList: list of DynamicFlowResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DynamicFlowResultList = None
+        self._RequestId = None
+
+    @property
+    def DynamicFlowResultList(self):
+        """动态合同补充结果列表
+        :rtype: list of DynamicFlowResult
+        """
+        return self._DynamicFlowResultList
+
+    @DynamicFlowResultList.setter
+    def DynamicFlowResultList(self, DynamicFlowResultList):
+        self._DynamicFlowResultList = DynamicFlowResultList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DynamicFlowResultList") is not None:
+            self._DynamicFlowResultList = []
+            for item in params.get("DynamicFlowResultList"):
+                obj = DynamicFlowResult()
+                obj._deserialize(item)
+                self._DynamicFlowResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelCreateEmbedWebUrlRequest(AbstractModel):
     """ChannelCreateEmbedWebUrl请求参数结构体
 
@@ -4014,6 +4305,11 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 注: `此参数在NeedPreview 为true时有效`
 
         :type PreviewType: int
+        :param _OpenDynamicFlow: 是否开启动态合同（动态签署人2.0）
+<ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li>
+<li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+
+        :type OpenDynamicFlow: bool
         """
         self._Agent = None
         self._FlowName = None
@@ -4037,6 +4333,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
         self._FlowDisplayType = None
         self._NeedPreview = None
         self._PreviewType = None
+        self._OpenDynamicFlow = None
 
     @property
     def Agent(self):
@@ -4349,6 +4646,20 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
     def PreviewType(self, PreviewType):
         self._PreviewType = PreviewType
 
+    @property
+    def OpenDynamicFlow(self):
+        """是否开启动态合同（动态签署人2.0）
+<ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li>
+<li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+
+        :rtype: bool
+        """
+        return self._OpenDynamicFlow
+
+    @OpenDynamicFlow.setter
+    def OpenDynamicFlow(self, OpenDynamicFlow):
+        self._OpenDynamicFlow = OpenDynamicFlow
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -4392,6 +4703,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
         self._FlowDisplayType = params.get("FlowDisplayType")
         self._NeedPreview = params.get("NeedPreview")
         self._PreviewType = params.get("PreviewType")
+        self._OpenDynamicFlow = params.get("OpenDynamicFlow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19190,6 +19502,214 @@ class DownloadFlowInfo(AbstractModel):
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
         self._FlowIdList = params.get("FlowIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DynamicFlowApproverResult(AbstractModel):
+    """动态合同签署人结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecipientId: 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；	
+        :type RecipientId: str
+        :param _SignId: 签署ID - 发起流程时系统自动补充 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息	
+        :type SignId: str
+        :param _ApproverStatus: 签署人状态信息
+        :type ApproverStatus: int
+        """
+        self._RecipientId = None
+        self._SignId = None
+        self._ApproverStatus = None
+
+    @property
+    def RecipientId(self):
+        """签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；	
+        :rtype: str
+        """
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def SignId(self):
+        """签署ID - 发起流程时系统自动补充 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息	
+        :rtype: str
+        """
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def ApproverStatus(self):
+        """签署人状态信息
+        :rtype: int
+        """
+        return self._ApproverStatus
+
+    @ApproverStatus.setter
+    def ApproverStatus(self, ApproverStatus):
+        self._ApproverStatus = ApproverStatus
+
+
+    def _deserialize(self, params):
+        self._RecipientId = params.get("RecipientId")
+        self._SignId = params.get("SignId")
+        self._ApproverStatus = params.get("ApproverStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DynamicFlowInfo(AbstractModel):
+    """动态合同信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID，为32位字符串。 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同	
+        :type FlowId: str
+        :param _FlowApprovers: 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。	
+        :type FlowApprovers: list of FlowApproverInfo
+        :param _AutoSignScene: 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传： <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签） </li><li> **OTHER** : 通用场景</li></ul> 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`	
+        :type AutoSignScene: str
+        :param _ApproverVerifyType: 签署人校验方式 VerifyCheck: 人脸识别（默认） MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证） 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。	
+        :type ApproverVerifyType: str
+        """
+        self._FlowId = None
+        self._FlowApprovers = None
+        self._AutoSignScene = None
+        self._ApproverVerifyType = None
+
+    @property
+    def FlowId(self):
+        """合同流程ID，为32位字符串。 - 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 - 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。 - <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同	
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowApprovers(self):
+        """合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，不同类型的签署方传参方式可以参考文档 [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver)。 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。	
+        :rtype: list of FlowApproverInfo
+        """
+        return self._FlowApprovers
+
+    @FlowApprovers.setter
+    def FlowApprovers(self, FlowApprovers):
+        self._FlowApprovers = FlowApprovers
+
+    @property
+    def AutoSignScene(self):
+        """个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传： <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签） </li><li> **OTHER** : 通用场景</li></ul> 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`	
+        :rtype: str
+        """
+        return self._AutoSignScene
+
+    @AutoSignScene.setter
+    def AutoSignScene(self, AutoSignScene):
+        self._AutoSignScene = AutoSignScene
+
+    @property
+    def ApproverVerifyType(self):
+        """签署人校验方式 VerifyCheck: 人脸识别（默认） MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证） 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。	
+        :rtype: str
+        """
+        return self._ApproverVerifyType
+
+    @ApproverVerifyType.setter
+    def ApproverVerifyType(self, ApproverVerifyType):
+        self._ApproverVerifyType = ApproverVerifyType
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        if params.get("FlowApprovers") is not None:
+            self._FlowApprovers = []
+            for item in params.get("FlowApprovers"):
+                obj = FlowApproverInfo()
+                obj._deserialize(item)
+                self._FlowApprovers.append(obj)
+        self._AutoSignScene = params.get("AutoSignScene")
+        self._ApproverVerifyType = params.get("ApproverVerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DynamicFlowResult(AbstractModel):
+    """动态合同补充签署人结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)	
+        :type FlowId: str
+        :param _DynamicFlowApproverList: 动态合同签署人补充结果信息列表
+        :type DynamicFlowApproverList: list of DynamicFlowApproverResult
+        """
+        self._FlowId = None
+        self._DynamicFlowApproverList = None
+
+    @property
+    def FlowId(self):
+        """合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)	
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def DynamicFlowApproverList(self):
+        """动态合同签署人补充结果信息列表
+        :rtype: list of DynamicFlowApproverResult
+        """
+        return self._DynamicFlowApproverList
+
+    @DynamicFlowApproverList.setter
+    def DynamicFlowApproverList(self, DynamicFlowApproverList):
+        self._DynamicFlowApproverList = DynamicFlowApproverList
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        if params.get("DynamicFlowApproverList") is not None:
+            self._DynamicFlowApproverList = []
+            for item in params.get("DynamicFlowApproverList"):
+                obj = DynamicFlowApproverResult()
+                obj._deserialize(item)
+                self._DynamicFlowApproverList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

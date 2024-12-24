@@ -6048,6 +6048,10 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
         :type DestinationPorts: list of int non-negative
         :param _Headers: 路由的Headers
         :type Headers: list of KVMapping
+        :param _RequestBuffering: 是否缓存请求body，默认true
+        :type RequestBuffering: bool
+        :param _ResponseBuffering: 是否缓存响应body，默认true
+        :type ResponseBuffering: bool
         """
         self._GatewayId = None
         self._ServiceID = None
@@ -6062,6 +6066,8 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._ForceHttps = None
         self._DestinationPorts = None
         self._Headers = None
+        self._RequestBuffering = None
+        self._ResponseBuffering = None
 
     @property
     def GatewayId(self):
@@ -6228,6 +6234,28 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def Headers(self, Headers):
         self._Headers = Headers
 
+    @property
+    def RequestBuffering(self):
+        """是否缓存请求body，默认true
+        :rtype: bool
+        """
+        return self._RequestBuffering
+
+    @RequestBuffering.setter
+    def RequestBuffering(self, RequestBuffering):
+        self._RequestBuffering = RequestBuffering
+
+    @property
+    def ResponseBuffering(self):
+        """是否缓存响应body，默认true
+        :rtype: bool
+        """
+        return self._ResponseBuffering
+
+    @ResponseBuffering.setter
+    def ResponseBuffering(self, ResponseBuffering):
+        self._ResponseBuffering = ResponseBuffering
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -6248,6 +6276,8 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
                 obj = KVMapping()
                 obj._deserialize(item)
                 self._Headers.append(obj)
+        self._RequestBuffering = params.get("RequestBuffering")
+        self._ResponseBuffering = params.get("ResponseBuffering")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22151,6 +22181,10 @@ class KongRoutePreview(AbstractModel):
         :param _Headers: 路由的Headers
 注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of KVMapping
+        :param _RequestBuffering: 是否缓存请求body，默认true
+        :type RequestBuffering: bool
+        :param _ResponseBuffering: 是否缓存响应body，默认true
+        :type ResponseBuffering: bool
         """
         self._ID = None
         self._Name = None
@@ -22167,6 +22201,8 @@ class KongRoutePreview(AbstractModel):
         self._ServiceID = None
         self._DestinationPorts = None
         self._Headers = None
+        self._RequestBuffering = None
+        self._ResponseBuffering = None
 
     @property
     def ID(self):
@@ -22352,6 +22388,28 @@ class KongRoutePreview(AbstractModel):
     def Headers(self, Headers):
         self._Headers = Headers
 
+    @property
+    def RequestBuffering(self):
+        """是否缓存请求body，默认true
+        :rtype: bool
+        """
+        return self._RequestBuffering
+
+    @RequestBuffering.setter
+    def RequestBuffering(self, RequestBuffering):
+        self._RequestBuffering = RequestBuffering
+
+    @property
+    def ResponseBuffering(self):
+        """是否缓存响应body，默认true
+        :rtype: bool
+        """
+        return self._ResponseBuffering
+
+    @ResponseBuffering.setter
+    def ResponseBuffering(self, ResponseBuffering):
+        self._ResponseBuffering = ResponseBuffering
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -22374,6 +22432,8 @@ class KongRoutePreview(AbstractModel):
                 obj = KVMapping()
                 obj._deserialize(item)
                 self._Headers.append(obj)
+        self._RequestBuffering = params.get("RequestBuffering")
+        self._ResponseBuffering = params.get("ResponseBuffering")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24806,6 +24866,10 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         :type DestinationPorts: list of int non-negative
         :param _Headers: 路由的Headers
         :type Headers: list of KVMapping
+        :param _RequestBuffering: 是否缓存请求body，默认true
+        :type RequestBuffering: bool
+        :param _ResponseBuffering: 是否缓存响应body，默认true
+        :type ResponseBuffering: bool
         """
         self._GatewayId = None
         self._ServiceID = None
@@ -24821,6 +24885,8 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._ForceHttps = None
         self._DestinationPorts = None
         self._Headers = None
+        self._RequestBuffering = None
+        self._ResponseBuffering = None
 
     @property
     def GatewayId(self):
@@ -24998,6 +25064,28 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def Headers(self, Headers):
         self._Headers = Headers
 
+    @property
+    def RequestBuffering(self):
+        """是否缓存请求body，默认true
+        :rtype: bool
+        """
+        return self._RequestBuffering
+
+    @RequestBuffering.setter
+    def RequestBuffering(self, RequestBuffering):
+        self._RequestBuffering = RequestBuffering
+
+    @property
+    def ResponseBuffering(self):
+        """是否缓存响应body，默认true
+        :rtype: bool
+        """
+        return self._ResponseBuffering
+
+    @ResponseBuffering.setter
+    def ResponseBuffering(self, ResponseBuffering):
+        self._ResponseBuffering = ResponseBuffering
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -25019,6 +25107,8 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
                 obj = KVMapping()
                 obj._deserialize(item)
                 self._Headers.append(obj)
+        self._RequestBuffering = params.get("RequestBuffering")
+        self._ResponseBuffering = params.get("ResponseBuffering")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

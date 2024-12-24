@@ -132,12 +132,16 @@ class AuditSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _AuditStatus: 跟踪集状态，1：开启，0：关闭
+注意：此字段可能返回 null，表示取不到有效值。
         :type AuditStatus: int
         :param _CosBucketName: COS存储桶名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type CosBucketName: str
         :param _AuditName: 跟踪集名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type AuditName: str
         :param _LogFilePrefix: 日志前缀
+注意：此字段可能返回 null，表示取不到有效值。
         :type LogFilePrefix: str
         """
         self._AuditStatus = None
@@ -148,6 +152,7 @@ class AuditSummary(AbstractModel):
     @property
     def AuditStatus(self):
         """跟踪集状态，1：开启，0：关闭
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuditStatus
@@ -159,6 +164,7 @@ class AuditSummary(AbstractModel):
     @property
     def CosBucketName(self):
         """COS存储桶名称
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosBucketName
@@ -170,6 +176,7 @@ class AuditSummary(AbstractModel):
     @property
     def AuditName(self):
         """跟踪集名称
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuditName
@@ -181,6 +188,7 @@ class AuditSummary(AbstractModel):
     @property
     def LogFilePrefix(self):
         """日志前缀
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogFilePrefix

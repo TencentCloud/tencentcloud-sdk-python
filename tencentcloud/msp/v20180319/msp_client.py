@@ -27,7 +27,9 @@ class MspClient(AbstractClient):
 
 
     def DeregisterMigrationTask(self, request):
-        """取消注册迁移任务
+        """接口已经废弃不再使用
+
+        取消注册迁移任务
 
         :param request: Request instance for DeregisterMigrationTask.
         :type request: :class:`tencentcloud.msp.v20180319.models.DeregisterMigrationTaskRequest`

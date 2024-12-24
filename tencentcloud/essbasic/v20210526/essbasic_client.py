@@ -26,6 +26,36 @@ class EssbasicClient(AbstractClient):
     _service = 'essbasic'
 
 
+    def ArchiveDynamicFlow(self, request):
+        """该接口用于结束动态签署方2.0的合同流程。
+
+
+        **功能开通**
+        - 动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
+
+        **使用条件**
+        - 此接口只能在<font color="red">合同处于非终态且<b>所有的签署方都已经完成签署</b></font>。一旦合同进入终态（例如：过期、拒签、撤销或者调用过此接口成功过），将无法通过此接口结束合同流程。
+
+        :param request: Request instance for ArchiveDynamicFlow.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ArchiveDynamicFlowRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ArchiveDynamicFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ArchiveDynamicFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.ArchiveDynamicFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChannelBatchCancelFlows(self, request):
         """通过合同编号批量撤销合同，单次最多支持撤销100份合同。
 
@@ -307,6 +337,36 @@ class EssbasicClient(AbstractClient):
             body = self.call("ChannelCreateConvertTaskApi", params, headers=headers)
             response = json.loads(body)
             model = models.ChannelCreateConvertTaskApiResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ChannelCreateDynamicFlowApprover(self, request):
+        """接口（ChannelCreateDynamicFlowApprover）用来补充<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>发起的动态合同的签署人信息
+        **注**:
+        <ul>
+        <li>此接口需要保证：渠道企业已开启：模块化计费能力，</li>
+        <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
+        <li>此接口需要保证：合同发起时指定开启了动态合同</li>
+        <li>此接口补充的动态签署人传参规则，请参考接口：<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>的签署人传参规则</li>
+        </ul>
+
+        :param request: Request instance for ChannelCreateDynamicFlowApprover.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateDynamicFlowApproverRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateDynamicFlowApproverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateDynamicFlowApprover", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateDynamicFlowApproverResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

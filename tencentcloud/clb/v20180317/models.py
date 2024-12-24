@@ -672,10 +672,14 @@ class BatchDeregisterTargetsResponse(AbstractModel):
         r"""
         :param _FailListenerIdSet: 解绑失败的监听器ID。
         :type FailListenerIdSet: list of str
+        :param _Message: 解绑失败错误原因信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FailListenerIdSet = None
+        self._Message = None
         self._RequestId = None
 
     @property
@@ -688,6 +692,18 @@ class BatchDeregisterTargetsResponse(AbstractModel):
     @FailListenerIdSet.setter
     def FailListenerIdSet(self, FailListenerIdSet):
         self._FailListenerIdSet = FailListenerIdSet
+
+    @property
+    def Message(self):
+        """解绑失败错误原因信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
     @property
     def RequestId(self):
@@ -703,6 +719,7 @@ class BatchDeregisterTargetsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FailListenerIdSet = params.get("FailListenerIdSet")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 

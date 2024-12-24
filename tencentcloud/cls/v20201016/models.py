@@ -21780,7 +21780,7 @@ class ModifyConfigExtraRequest(AbstractModel):
 - multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
 - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）。
         :type LogType: str
-        :param _LogFormat: 日志格式化方式，用于容器采集场景。
+        :param _LogFormat: 日志格式化方式，用于容器采集场景。目前已经废弃
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :type LogFormat: str
@@ -21918,7 +21918,7 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        """日志格式化方式，用于容器采集场景。
+        """日志格式化方式，用于容器采集场景。目前已经废弃
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :rtype: str

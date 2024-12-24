@@ -27,7 +27,7 @@ class CloudappClient(AbstractClient):
 
 
     def VerifyLicense(self, request):
-        """通过运行时roleId查询对应的软件 LICENSE
+        """从软件进程读取 LICENSE。
 
         :param request: Request instance for VerifyLicense.
         :type request: :class:`tencentcloud.cloudapp.v20220530.models.VerifyLicenseRequest`

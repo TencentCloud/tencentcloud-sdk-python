@@ -5390,6 +5390,8 @@ class RunWorkflowRequest(AbstractModel):
         :type WorkDir: str
         :param _VolumeIds: 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
         :type VolumeIds: list of str
+        :param _Entrypoint: 工作流入口文件，不填使用默认入口文件。
+        :type Entrypoint: str
         """
         self._Name = None
         self._EnvironmentId = None
@@ -5403,6 +5405,7 @@ class RunWorkflowRequest(AbstractModel):
         self._CacheClearDelay = None
         self._WorkDir = None
         self._VolumeIds = None
+        self._Entrypoint = None
 
     @property
     def Name(self):
@@ -5542,6 +5545,17 @@ class RunWorkflowRequest(AbstractModel):
     def VolumeIds(self, VolumeIds):
         self._VolumeIds = VolumeIds
 
+    @property
+    def Entrypoint(self):
+        """工作流入口文件，不填使用默认入口文件。
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -5560,6 +5574,7 @@ class RunWorkflowRequest(AbstractModel):
         self._CacheClearDelay = params.get("CacheClearDelay")
         self._WorkDir = params.get("WorkDir")
         self._VolumeIds = params.get("VolumeIds")
+        self._Entrypoint = params.get("Entrypoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

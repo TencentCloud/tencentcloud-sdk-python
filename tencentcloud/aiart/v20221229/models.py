@@ -1843,6 +1843,9 @@ class ReplaceBackgroundRequest(AbstractModel):
         :param _Prompt: 对新背景的文本描述。
 最多支持256个 utf-8 字符，支持中、英文。
         :type Prompt: str
+        :param _NegativePrompt: 反向提示词。
+最多支持256个 utf-8 字符，支持中、英文。
+        :type NegativePrompt: str
         :param _Product: 商品图中的商品主体名称。
 建议说明商品主体，否则影响生成效果。
         :type Product: str
@@ -1870,6 +1873,7 @@ class ReplaceBackgroundRequest(AbstractModel):
         """
         self._ProductUrl = None
         self._Prompt = None
+        self._NegativePrompt = None
         self._Product = None
         self._MaskUrl = None
         self._Resolution = None
@@ -1900,6 +1904,18 @@ class ReplaceBackgroundRequest(AbstractModel):
     @Prompt.setter
     def Prompt(self, Prompt):
         self._Prompt = Prompt
+
+    @property
+    def NegativePrompt(self):
+        """反向提示词。
+最多支持256个 utf-8 字符，支持中、英文。
+        :rtype: str
+        """
+        return self._NegativePrompt
+
+    @NegativePrompt.setter
+    def NegativePrompt(self, NegativePrompt):
+        self._NegativePrompt = NegativePrompt
 
     @property
     def Product(self):
@@ -1983,6 +1999,7 @@ class ReplaceBackgroundRequest(AbstractModel):
     def _deserialize(self, params):
         self._ProductUrl = params.get("ProductUrl")
         self._Prompt = params.get("Prompt")
+        self._NegativePrompt = params.get("NegativePrompt")
         self._Product = params.get("Product")
         self._MaskUrl = params.get("MaskUrl")
         self._Resolution = params.get("Resolution")
@@ -2741,7 +2758,6 @@ class TextToImageRequest(AbstractModel):
 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
         :type Styles: list of str
         :param _ResultConfig: 生成图结果的配置，包括输出图片分辨率和尺寸等。
-
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
 
         :type ResultConfig: :class:`tencentcloud.aiart.v20221229.models.ResultConfig`
@@ -2807,7 +2823,6 @@ class TextToImageRequest(AbstractModel):
     @property
     def ResultConfig(self):
         """生成图结果的配置，包括输出图片分辨率和尺寸等。
-
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
 
         :rtype: :class:`tencentcloud.aiart.v20221229.models.ResultConfig`

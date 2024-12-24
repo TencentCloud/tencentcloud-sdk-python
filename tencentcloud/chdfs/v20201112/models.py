@@ -33,7 +33,7 @@ class AccessGroup(AbstractModel):
         :type Description: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param _VpcType: VPC网络类型（1：CVM；2：黑石1.0）
+        :param _VpcType: VPC网络类型（1：CVM）
         :type VpcType: int
         :param _VpcId: VPC网络ID
         :type VpcId: str
@@ -91,7 +91,7 @@ class AccessGroup(AbstractModel):
 
     @property
     def VpcType(self):
-        """VPC网络类型（1：CVM；2：黑石1.0）
+        """VPC网络类型（1：CVM）
         :rtype: int
         """
         return self._VpcType
@@ -313,7 +313,7 @@ class CreateAccessGroupRequest(AbstractModel):
         r"""
         :param _AccessGroupName: 权限组名称
         :type AccessGroupName: str
-        :param _VpcType: VPC网络类型（1：CVM；2：黑石1.0）
+        :param _VpcType: VPC网络类型（1：CVM）
         :type VpcType: int
         :param _VpcId: VPC网络ID
         :type VpcId: str
@@ -338,7 +338,7 @@ class CreateAccessGroupRequest(AbstractModel):
 
     @property
     def VpcType(self):
-        """VPC网络类型（1：CVM；2：黑石1.0）
+        """VPC网络类型（1：CVM）
         :rtype: int
         """
         return self._VpcType

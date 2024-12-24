@@ -5000,50 +5000,36 @@ class CCN(AbstractModel):
         :param _QosLevel: 实例服务质量，’PT’：白金，'AU'：金，'AG'：银。
         :type QosLevel: str
         :param _InstanceChargeType: 付费类型，PREPAID为预付费，POSTPAID为后付费。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargeType: str
         :param _BandwidthLimitType: 限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthLimitType: str
         :param _TagSet: 标签键值对。
         :type TagSet: list of Tag
         :param _RoutePriorityFlag: 是否支持云联网路由优先级的功能。`False`：不支持，`True`：支持。
         :type RoutePriorityFlag: bool
         :param _RouteTableCount: 实例关联的路由表个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableCount: int
         :param _RouteTableFlag: 是否开启云联网多路由表特性。`False`：未开启，`True`：开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableFlag: bool
         :param _IsSecurityLock: `true`：实例已被封禁，流量不通，`false`:解封禁。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSecurityLock: bool
         :param _RouteBroadcastPolicyFlag: 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteBroadcastPolicyFlag: bool
         :param _RouteECMPFlag: 是否开启等价路由功能。`False` 未开启，`True` 开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteECMPFlag: bool
         :param _RouteOverlapFlag: 是否开启路由重叠功能。`False` 未开启，`True` 开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteOverlapFlag: bool
         :param _TrafficMarkingPolicyFlag: 是否开启QOS。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficMarkingPolicyFlag: bool
         :param _RouteSelectPolicyFlag: 是否开启路由表选择策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteSelectPolicyFlag: bool
         :param _DirectConnectAccelerateChannelFlag: 是否开启二层云联网通道。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DirectConnectAccelerateChannelFlag: bool
         :param _Ipv6Flag: 是否支持ipv6路由表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6Flag: bool
         :param _MrtbAggregatePolicyFlag: 是否支持路由表聚合策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type MrtbAggregatePolicyFlag: bool
         :param _MrtbPolicyValueFlag: 是否支持策略值
-注意：此字段可能返回 null，表示取不到有效值。
         :type MrtbPolicyValueFlag: bool
         """
         self._CcnId = None
@@ -5150,7 +5136,6 @@ class CCN(AbstractModel):
     @property
     def InstanceChargeType(self):
         """付费类型，PREPAID为预付费，POSTPAID为后付费。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceChargeType
@@ -5162,7 +5147,6 @@ class CCN(AbstractModel):
     @property
     def BandwidthLimitType(self):
         """限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BandwidthLimitType
@@ -5196,7 +5180,6 @@ class CCN(AbstractModel):
     @property
     def RouteTableCount(self):
         """实例关联的路由表个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RouteTableCount
@@ -5208,7 +5191,6 @@ class CCN(AbstractModel):
     @property
     def RouteTableFlag(self):
         """是否开启云联网多路由表特性。`False`：未开启，`True`：开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RouteTableFlag
@@ -5220,7 +5202,6 @@ class CCN(AbstractModel):
     @property
     def IsSecurityLock(self):
         """`true`：实例已被封禁，流量不通，`false`:解封禁。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsSecurityLock
@@ -5232,7 +5213,6 @@ class CCN(AbstractModel):
     @property
     def RouteBroadcastPolicyFlag(self):
         """是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RouteBroadcastPolicyFlag
@@ -5244,7 +5224,6 @@ class CCN(AbstractModel):
     @property
     def RouteECMPFlag(self):
         """是否开启等价路由功能。`False` 未开启，`True` 开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RouteECMPFlag
@@ -5256,7 +5235,6 @@ class CCN(AbstractModel):
     @property
     def RouteOverlapFlag(self):
         """是否开启路由重叠功能。`False` 未开启，`True` 开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RouteOverlapFlag
@@ -5268,7 +5246,6 @@ class CCN(AbstractModel):
     @property
     def TrafficMarkingPolicyFlag(self):
         """是否开启QOS。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._TrafficMarkingPolicyFlag
@@ -5280,7 +5257,6 @@ class CCN(AbstractModel):
     @property
     def RouteSelectPolicyFlag(self):
         """是否开启路由表选择策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RouteSelectPolicyFlag
@@ -5292,7 +5268,6 @@ class CCN(AbstractModel):
     @property
     def DirectConnectAccelerateChannelFlag(self):
         """是否开启二层云联网通道。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DirectConnectAccelerateChannelFlag
@@ -5304,7 +5279,6 @@ class CCN(AbstractModel):
     @property
     def Ipv6Flag(self):
         """是否支持ipv6路由表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Ipv6Flag
@@ -5316,7 +5290,6 @@ class CCN(AbstractModel):
     @property
     def MrtbAggregatePolicyFlag(self):
         """是否支持路由表聚合策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._MrtbAggregatePolicyFlag
@@ -5328,7 +5301,6 @@ class CCN(AbstractModel):
     @property
     def MrtbPolicyValueFlag(self):
         """是否支持策略值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._MrtbPolicyValueFlag

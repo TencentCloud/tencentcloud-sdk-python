@@ -9519,6 +9519,21 @@ class DataEngineInfo(AbstractModel):
         :param _IsPoolMode: 是否使用预留池
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPoolMode: str
+        :param _IsSupportAI: 是否支持AI，false: 不支持；true：支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportAI: bool
+        :param _GatewayId: 网关id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _GatewayState: 网关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayState: int
+        :param _IsAIGateway: 是否能执行AI任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAIGateway: bool
+        :param _IsAIEngine: 1:AI引擎，0:非AI引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAIEngine: int
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -9574,6 +9589,11 @@ class DataEngineInfo(AbstractModel):
         self._AccessInfos = None
         self._EngineNetworkName = None
         self._IsPoolMode = None
+        self._IsSupportAI = None
+        self._GatewayId = None
+        self._GatewayState = None
+        self._IsAIGateway = None
+        self._IsAIEngine = None
 
     @property
     def DataEngineName(self):
@@ -10210,6 +10230,66 @@ class DataEngineInfo(AbstractModel):
     def IsPoolMode(self, IsPoolMode):
         self._IsPoolMode = IsPoolMode
 
+    @property
+    def IsSupportAI(self):
+        """是否支持AI，false: 不支持；true：支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsSupportAI
+
+    @IsSupportAI.setter
+    def IsSupportAI(self, IsSupportAI):
+        self._IsSupportAI = IsSupportAI
+
+    @property
+    def GatewayId(self):
+        """网关id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayState(self):
+        """网关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._GatewayState
+
+    @GatewayState.setter
+    def GatewayState(self, GatewayState):
+        self._GatewayState = GatewayState
+
+    @property
+    def IsAIGateway(self):
+        """是否能执行AI任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsAIGateway
+
+    @IsAIGateway.setter
+    def IsAIGateway(self, IsAIGateway):
+        self._IsAIGateway = IsAIGateway
+
+    @property
+    def IsAIEngine(self):
+        """1:AI引擎，0:非AI引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsAIEngine
+
+    @IsAIEngine.setter
+    def IsAIEngine(self, IsAIEngine):
+        self._IsAIEngine = IsAIEngine
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -10285,6 +10365,11 @@ class DataEngineInfo(AbstractModel):
                 self._AccessInfos.append(obj)
         self._EngineNetworkName = params.get("EngineNetworkName")
         self._IsPoolMode = params.get("IsPoolMode")
+        self._IsSupportAI = params.get("IsSupportAI")
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayState = params.get("GatewayState")
+        self._IsAIGateway = params.get("IsAIGateway")
+        self._IsAIEngine = params.get("IsAIEngine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25713,6 +25798,24 @@ class NotebookSessionInfo(AbstractModel):
         :param _ExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorMaxNumbers: int
+        :param _SessionType: session类型，group：资源组下session independent：独立资源session， 不依赖资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionType: str
+        :param _DataEngineId: 引擎id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineId: str
+        :param _ResourceGroupId: 资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param _ResourceGroupName: 资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param _PodSize: session，pod大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodSize: int
+        :param _PodNumbers: pod数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodNumbers: int
         """
         self._Name = None
         self._Kind = None
@@ -25734,6 +25837,12 @@ class NotebookSessionInfo(AbstractModel):
         self._AppInfo = None
         self._SparkUiUrl = None
         self._ExecutorMaxNumbers = None
+        self._SessionType = None
+        self._DataEngineId = None
+        self._ResourceGroupId = None
+        self._ResourceGroupName = None
+        self._PodSize = None
+        self._PodNumbers = None
 
     @property
     def Name(self):
@@ -25969,6 +26078,78 @@ class NotebookSessionInfo(AbstractModel):
     def ExecutorMaxNumbers(self, ExecutorMaxNumbers):
         self._ExecutorMaxNumbers = ExecutorMaxNumbers
 
+    @property
+    def SessionType(self):
+        """session类型，group：资源组下session independent：独立资源session， 不依赖资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionType
+
+    @SessionType.setter
+    def SessionType(self, SessionType):
+        self._SessionType = SessionType
+
+    @property
+    def DataEngineId(self):
+        """引擎id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def ResourceGroupId(self):
+        """资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceGroupName(self):
+        """资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def PodSize(self):
+        """session，pod大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PodSize
+
+    @PodSize.setter
+    def PodSize(self, PodSize):
+        self._PodSize = PodSize
+
+    @property
+    def PodNumbers(self):
+        """pod数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PodNumbers
+
+    @PodNumbers.setter
+    def PodNumbers(self, PodNumbers):
+        self._PodNumbers = PodNumbers
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -26001,6 +26182,12 @@ class NotebookSessionInfo(AbstractModel):
                 self._AppInfo.append(obj)
         self._SparkUiUrl = params.get("SparkUiUrl")
         self._ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        self._SessionType = params.get("SessionType")
+        self._DataEngineId = params.get("DataEngineId")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        self._PodSize = params.get("PodSize")
+        self._PodNumbers = params.get("PodNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26310,6 +26497,18 @@ class NotebookSessions(AbstractModel):
         :param _SparkUiUrl: spark ui地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkUiUrl: str
+        :param _SessionType: session类型，group：资源组session independent：独立资源session，不依赖资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionType: str
+        :param _DataEngineId: 引擎id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineId: str
+        :param _ResourceGroupId: 资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param _ResourceGroupName: 资源组名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
         """
         self._Kind = None
         self._SessionId = None
@@ -26322,6 +26521,10 @@ class NotebookSessions(AbstractModel):
         self._LastRunningTime = None
         self._Creator = None
         self._SparkUiUrl = None
+        self._SessionType = None
+        self._DataEngineId = None
+        self._ResourceGroupId = None
+        self._ResourceGroupName = None
 
     @property
     def Kind(self):
@@ -26448,6 +26651,54 @@ class NotebookSessions(AbstractModel):
     def SparkUiUrl(self, SparkUiUrl):
         self._SparkUiUrl = SparkUiUrl
 
+    @property
+    def SessionType(self):
+        """session类型，group：资源组session independent：独立资源session，不依赖资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionType
+
+    @SessionType.setter
+    def SessionType(self, SessionType):
+        self._SessionType = SessionType
+
+    @property
+    def DataEngineId(self):
+        """引擎id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def ResourceGroupId(self):
+        """资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceGroupName(self):
+        """资源组名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         self._Kind = params.get("Kind")
@@ -26461,6 +26712,10 @@ class NotebookSessions(AbstractModel):
         self._LastRunningTime = params.get("LastRunningTime")
         self._Creator = params.get("Creator")
         self._SparkUiUrl = params.get("SparkUiUrl")
+        self._SessionType = params.get("SessionType")
+        self._DataEngineId = params.get("DataEngineId")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

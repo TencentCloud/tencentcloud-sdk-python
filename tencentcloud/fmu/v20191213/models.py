@@ -27,12 +27,14 @@ class BeautifyPicRequest(AbstractModel):
         r"""
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :type Url: str
         :param _Whitening: 美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
         :type Whitening: int
@@ -57,6 +59,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
     def Image(self):
         """图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :rtype: str
         """
         return self._Image
@@ -72,6 +75,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :rtype: str
         """
         return self._Url
@@ -1346,12 +1350,14 @@ class StyleImageProRequest(AbstractModel):
         :type FilterType: int
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :type Image: str
         :param _Url: 图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :type Url: str
         :param _FilterDegree: 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
         :type FilterDegree: int
@@ -1380,6 +1386,7 @@ class StyleImageProRequest(AbstractModel):
     def Image(self):
         """图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :rtype: str
         """
         return self._Image
@@ -1395,6 +1402,7 @@ class StyleImageProRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :rtype: str
         """
         return self._Url
@@ -1516,12 +1524,14 @@ class StyleImageRequest(AbstractModel):
         :type FilterType: int
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :type Image: str
         :param _Url: 图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :type Url: str
         :param _FilterDegree: 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
         :type FilterDegree: int
@@ -1550,6 +1560,7 @@ class StyleImageRequest(AbstractModel):
     def Image(self):
         """图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :rtype: str
         """
         return self._Image
@@ -1565,6 +1576,7 @@ class StyleImageRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :rtype: str
         """
         return self._Url
@@ -1686,12 +1698,14 @@ class TryLipstickPicRequest(AbstractModel):
         :type LipColorInfos: list of LipColorInfo
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过6M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :type Image: str
         :param _Url: 图片的 Url ，对应图片 base64 编码后大小不可超过6M。 
 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :type Url: str
         :param _RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
         :type RspImgType: str
@@ -1717,6 +1731,7 @@ class TryLipstickPicRequest(AbstractModel):
     def Image(self):
         """图片 base64 数据，base64 编码后大小不可超过6M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :rtype: str
         """
         return self._Image
@@ -1732,6 +1747,7 @@ class TryLipstickPicRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+暂不支持带有alpha透明通道的图片。
         :rtype: str
         """
         return self._Url

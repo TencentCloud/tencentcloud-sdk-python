@@ -8410,9 +8410,9 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         :type Tags: list of Tag
         :param _FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
         :type FilterInstanceType: str
-        :param _Status: 按实例状态筛选
+        :param _Status: 按实例状态筛选。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
         :type Status: list of int
-        :param _ExcludeStatus: 排除实例状态
+        :param _ExcludeStatus: 排除实例状态。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
         :type ExcludeStatus: list of int
         """
         self._InstanceIds = None
@@ -8624,7 +8624,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """按实例状态筛选
+        """按实例状态筛选。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
         :rtype: list of int
         """
         return self._Status
@@ -8635,7 +8635,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
 
     @property
     def ExcludeStatus(self):
-        """排除实例状态
+        """排除实例状态。状态值 -2：已删除； -1：已隔离；0：创建中；1：流程处理中；2：运行中
         :rtype: list of int
         """
         return self._ExcludeStatus
