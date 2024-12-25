@@ -1467,7 +1467,6 @@ class AssignPrivateIpAddressesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PrivateIpAddressSet: 内网IP详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1478,7 +1477,6 @@ class AssignPrivateIpAddressesResponse(AbstractModel):
     @property
     def PrivateIpAddressSet(self):
         """内网IP详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PrivateIpAddressSpecification
         """
         return self._PrivateIpAddressSet
@@ -4374,7 +4372,6 @@ class CreateRoutesResponse(AbstractModel):
         :param _TotalCount: 新增的实例个数。
         :type TotalCount: int
         :param _RouteTableSet: 路由表对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableSet: list of RouteTable
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4397,7 +4394,6 @@ class CreateRoutesResponse(AbstractModel):
     @property
     def RouteTableSet(self):
         """路由表对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RouteTable
         """
         return self._RouteTableSet
@@ -7203,7 +7199,6 @@ class DescribeHaVipsResponse(AbstractModel):
         :param _TotalCount: 符合条件的对象数。
         :type TotalCount: int
         :param _HaVipSet: HAVIP对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HaVipSet: list of HaVip
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7226,7 +7221,6 @@ class DescribeHaVipsResponse(AbstractModel):
     @property
     def HaVipSet(self):
         """HAVIP对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HaVip
         """
         return self._HaVipSet
@@ -9820,7 +9814,6 @@ class DescribeRouteConflictsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RouteConflictSet: 路由策略冲突列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteConflictSet: list of RouteConflict
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9831,7 +9824,6 @@ class DescribeRouteConflictsResponse(AbstractModel):
     @property
     def RouteConflictSet(self):
         """路由策略冲突列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RouteConflict
         """
         return self._RouteConflictSet

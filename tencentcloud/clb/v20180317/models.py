@@ -3657,7 +3657,13 @@ class CreateListenerRequest(AbstractModel):
         :type ListenerNames: list of str
         :param _HealthCheck: 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Certificate: 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。此参数和MultiCertInfo不能同时传入。
+        :param _Certificate: 证书相关信息。参数限制如下：
+<li>
+此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
+</li>
+<li>
+创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。
+</li>
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
         :type SessionExpireTime: int
@@ -3676,7 +3682,13 @@ class CreateListenerRequest(AbstractModel):
         :type EndPort: int
         :param _DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
         :type DeregisterTargetRst: bool
-        :param _MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+        :param _MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
+<li>
+此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
+</li>
+<li>
+创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。
+</li>
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         :param _MaxConn: 监听器最大连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。
         :type MaxConn: int
@@ -3773,7 +3785,13 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def Certificate(self):
-        """证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。此参数和MultiCertInfo不能同时传入。
+        """证书相关信息。参数限制如下：
+<li>
+此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
+</li>
+<li>
+创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。
+</li>
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         """
         return self._Certificate
@@ -3873,7 +3891,13 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def MultiCertInfo(self):
-        """证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+        """证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
+<li>
+此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
+</li>
+<li>
+创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。
+</li>
         :rtype: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         return self._MultiCertInfo

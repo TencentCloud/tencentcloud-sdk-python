@@ -12155,6 +12155,10 @@ class RecoverBackUpJobRequest(AbstractModel):
         :type RecoverScope: str
         :param _RecoverDatabase: 恢复库：如果是按库备份，则需要该字段，库之间用","分割
         :type RecoverDatabase: str
+        :param _ReserveStoragePolicy: 1:恢复后，不保留降冷策略，数据变为热数据；
+2:恢复后，沿用备份表的降冷策略；
+0:默认值，该版本没有这个配置（2.1版本2.1.8之前；2.0版本2.0.16之前）
+        :type ReserveStoragePolicy: int
         """
         self._InstanceId = None
         self._BackUpJobId = None
@@ -12168,6 +12172,7 @@ class RecoverBackUpJobRequest(AbstractModel):
         self._OperationType = None
         self._RecoverScope = None
         self._RecoverDatabase = None
+        self._ReserveStoragePolicy = None
 
     @property
     def InstanceId(self):
@@ -12215,6 +12220,8 @@ class RecoverBackUpJobRequest(AbstractModel):
 
     @property
     def RecoverType(self):
+        warnings.warn("parameter `RecoverType` is deprecated", DeprecationWarning) 
+
         """0默认 1cos恢复
         :rtype: int
         """
@@ -12222,10 +12229,14 @@ class RecoverBackUpJobRequest(AbstractModel):
 
     @RecoverType.setter
     def RecoverType(self, RecoverType):
+        warnings.warn("parameter `RecoverType` is deprecated", DeprecationWarning) 
+
         self._RecoverType = RecoverType
 
     @property
     def CosSourceInfo(self):
+        warnings.warn("parameter `CosSourceInfo` is deprecated", DeprecationWarning) 
+
         """CosSourceInfo对象
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
         """
@@ -12233,10 +12244,14 @@ class RecoverBackUpJobRequest(AbstractModel):
 
     @CosSourceInfo.setter
     def CosSourceInfo(self, CosSourceInfo):
+        warnings.warn("parameter `CosSourceInfo` is deprecated", DeprecationWarning) 
+
         self._CosSourceInfo = CosSourceInfo
 
     @property
     def ScheduleType(self):
+        warnings.warn("parameter `ScheduleType` is deprecated", DeprecationWarning) 
+
         """0默认 1定期执行
         :rtype: int
         """
@@ -12244,10 +12259,14 @@ class RecoverBackUpJobRequest(AbstractModel):
 
     @ScheduleType.setter
     def ScheduleType(self, ScheduleType):
+        warnings.warn("parameter `ScheduleType` is deprecated", DeprecationWarning) 
+
         self._ScheduleType = ScheduleType
 
     @property
     def NextTime(self):
+        warnings.warn("parameter `NextTime` is deprecated", DeprecationWarning) 
+
         """年-月-日 时:分:秒
         :rtype: str
         """
@@ -12255,10 +12274,14 @@ class RecoverBackUpJobRequest(AbstractModel):
 
     @NextTime.setter
     def NextTime(self, NextTime):
+        warnings.warn("parameter `NextTime` is deprecated", DeprecationWarning) 
+
         self._NextTime = NextTime
 
     @property
     def ScheduleName(self):
+        warnings.warn("parameter `ScheduleName` is deprecated", DeprecationWarning) 
+
         """调度名称
         :rtype: str
         """
@@ -12266,10 +12289,14 @@ class RecoverBackUpJobRequest(AbstractModel):
 
     @ScheduleName.setter
     def ScheduleName(self, ScheduleName):
+        warnings.warn("parameter `ScheduleName` is deprecated", DeprecationWarning) 
+
         self._ScheduleName = ScheduleName
 
     @property
     def OperationType(self):
+        warnings.warn("parameter `OperationType` is deprecated", DeprecationWarning) 
+
         """create update
         :rtype: str
         """
@@ -12277,6 +12304,8 @@ class RecoverBackUpJobRequest(AbstractModel):
 
     @OperationType.setter
     def OperationType(self, OperationType):
+        warnings.warn("parameter `OperationType` is deprecated", DeprecationWarning) 
+
         self._OperationType = OperationType
 
     @property
@@ -12301,6 +12330,19 @@ class RecoverBackUpJobRequest(AbstractModel):
     def RecoverDatabase(self, RecoverDatabase):
         self._RecoverDatabase = RecoverDatabase
 
+    @property
+    def ReserveStoragePolicy(self):
+        """1:恢复后，不保留降冷策略，数据变为热数据；
+2:恢复后，沿用备份表的降冷策略；
+0:默认值，该版本没有这个配置（2.1版本2.1.8之前；2.0版本2.0.16之前）
+        :rtype: int
+        """
+        return self._ReserveStoragePolicy
+
+    @ReserveStoragePolicy.setter
+    def ReserveStoragePolicy(self, ReserveStoragePolicy):
+        self._ReserveStoragePolicy = ReserveStoragePolicy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12317,6 +12359,7 @@ class RecoverBackUpJobRequest(AbstractModel):
         self._OperationType = params.get("OperationType")
         self._RecoverScope = params.get("RecoverScope")
         self._RecoverDatabase = params.get("RecoverDatabase")
+        self._ReserveStoragePolicy = params.get("ReserveStoragePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

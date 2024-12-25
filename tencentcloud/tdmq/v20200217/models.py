@@ -30111,6 +30111,115 @@ class RetentionPolicy(AbstractModel):
         
 
 
+class RetryRocketMQDlqMessageRequest(AbstractModel):
+    """RetryRocketMQDlqMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        :param _GroupName: group名称
+        :type GroupName: str
+        :param _MessageIds: 死信消息ID
+        :type MessageIds: list of str
+        """
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._GroupName = None
+        self._MessageIds = None
+
+    @property
+    def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        """命名空间名称
+        :rtype: str
+        """
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def GroupName(self):
+        """group名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def MessageIds(self):
+        """死信消息ID
+        :rtype: list of str
+        """
+        return self._MessageIds
+
+    @MessageIds.setter
+    def MessageIds(self, MessageIds):
+        self._MessageIds = MessageIds
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._GroupName = params.get("GroupName")
+        self._MessageIds = params.get("MessageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryRocketMQDlqMessageResponse(AbstractModel):
+    """RetryRocketMQDlqMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RewindCmqQueueRequest(AbstractModel):
     """RewindCmqQueue请求参数结构体
 

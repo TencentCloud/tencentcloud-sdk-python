@@ -47907,7 +47907,7 @@ class SearchStdoutLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 机器实例ID
+        :param _InstanceId: 机器实例ID， 和  实例 ID 二者必选其一，不能同时为空
         :type InstanceId: str
         :param _Limit: 单页请求配置数量，取值范围[1, 500]，默认值为100
         :type Limit: int
@@ -47915,7 +47915,7 @@ class SearchStdoutLogRequest(AbstractModel):
         :type SearchWords: list of str
         :param _StartTime: 查询起始时间
         :type StartTime: str
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，和 InstanceId 二者必选其一，不能同时为空
         :type GroupId: str
         :param _EndTime: 查询结束时间
         :type EndTime: str
@@ -47951,7 +47951,7 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """机器实例ID
+        """机器实例ID， 和  实例 ID 二者必选其一，不能同时为空
         :rtype: str
         """
         return self._InstanceId
@@ -47995,7 +47995,7 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，和 InstanceId 二者必选其一，不能同时为空
         :rtype: str
         """
         return self._GroupId

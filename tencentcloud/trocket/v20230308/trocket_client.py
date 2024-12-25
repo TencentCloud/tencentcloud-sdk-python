@@ -833,6 +833,52 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMessage(self, request):
+        """查询消息详情
+
+        :param request: Request instance for DescribeMessage.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMessageRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMessageList(self, request):
+        """查询消息列表。如果查询死信消息，请设置ConsumerGroup参数。
+
+        :param request: Request instance for DescribeMessageList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMessageListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMessageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMessageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMessageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMessageTrace(self, request):
         """根据消息 ID 查询消息轨迹。
 
@@ -1200,6 +1246,29 @@ class TrocketClient(AbstractClient):
             body = self.call("ModifyTopic", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResendDeadLetterMessage(self, request):
+        """重新发送死信消息
+
+        :param request: Request instance for ResendDeadLetterMessage.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ResendDeadLetterMessageRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ResendDeadLetterMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResendDeadLetterMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResendDeadLetterMessageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

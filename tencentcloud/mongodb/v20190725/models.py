@@ -457,7 +457,7 @@ class BackupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
         :param _BackupType: 备份方式，0-自动备份，1-手动备份
         :type BackupType: int
@@ -502,7 +502,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -6012,7 +6012,6 @@ class FlashBackDBInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 回档数据异步任务 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6023,7 +6022,6 @@ class FlashBackDBInstanceResponse(AbstractModel):
     @property
     def FlowId(self):
         """回档数据异步任务 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowId
@@ -8407,6 +8405,8 @@ class KMSInfoDetail(AbstractModel):
         :param _KeyOrigin: 密钥来源。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyOrigin: str
+        :param _KmsRegion: kms所在地域。
+        :type KmsRegion: str
         """
         self._KeyId = None
         self._KeyName = None
@@ -8414,6 +8414,7 @@ class KMSInfoDetail(AbstractModel):
         self._Status = None
         self._KeyUsage = None
         self._KeyOrigin = None
+        self._KmsRegion = None
 
     @property
     def KeyId(self):
@@ -8487,6 +8488,17 @@ class KMSInfoDetail(AbstractModel):
     def KeyOrigin(self, KeyOrigin):
         self._KeyOrigin = KeyOrigin
 
+    @property
+    def KmsRegion(self):
+        """kms所在地域。
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -8495,6 +8507,7 @@ class KMSInfoDetail(AbstractModel):
         self._Status = params.get("Status")
         self._KeyUsage = params.get("KeyUsage")
         self._KeyOrigin = params.get("KeyOrigin")
+        self._KmsRegion = params.get("KmsRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

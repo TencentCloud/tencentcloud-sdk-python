@@ -27,7 +27,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ActivateInstance(self, request):
-        """本接口(ActivateInstance)用于恢复已隔离的实例访问。
+        """本接口（ActivateInstance）用于恢复已隔离的实例访问。
 
         :param request: Request instance for ActivateInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ActivateInstanceRequest`
@@ -211,7 +211,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CloseProxyEndPoint(self, request):
-        """关闭数据库代理连接地址
+        """本接口（CloseProxyEndPoint）用于关闭数据库代理连接地址。
 
         :param request: Request instance for CloseProxyEndPoint.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyEndPointRequest`
@@ -855,7 +855,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeAuditRuleWithInstanceIds(self, request):
-        """获取实例的审计规则
+        """本接口（DescribeAuditRuleWithInstanceIds）用于获取实例的审计规则。
 
         :param request: Request instance for DescribeAuditRuleWithInstanceIds.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditRuleWithInstanceIdsRequest`
@@ -1522,7 +1522,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeInstancesWithinSameCluster(self, request):
-        """本接口(DescribeInstancesWithinSameCluster)用于查询同一集群下实例列表
+        """本接口（DescribeInstancesWithinSameCluster）用于查询同一集群下实例列表
 
         :param request: Request instance for DescribeInstancesWithinSameCluster.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstancesWithinSameClusterRequest`

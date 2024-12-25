@@ -12482,16 +12482,16 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
         :type AccountName: str
         :param _ConsumerGroupName: 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}
         :type ConsumerGroupName: str
-        :param _OldPassword: 旧密码
-        :type OldPassword: str
         :param _NewPassword: 新密码。字符长度不小于3，不大于32
         :type NewPassword: str
+        :param _OldPassword: 旧密码，非必选
+        :type OldPassword: str
         """
         self._SubscribeId = None
         self._AccountName = None
         self._ConsumerGroupName = None
-        self._OldPassword = None
         self._NewPassword = None
+        self._OldPassword = None
 
     @property
     def SubscribeId(self):
@@ -12527,17 +12527,6 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
         self._ConsumerGroupName = ConsumerGroupName
 
     @property
-    def OldPassword(self):
-        """旧密码
-        :rtype: str
-        """
-        return self._OldPassword
-
-    @OldPassword.setter
-    def OldPassword(self, OldPassword):
-        self._OldPassword = OldPassword
-
-    @property
     def NewPassword(self):
         """新密码。字符长度不小于3，不大于32
         :rtype: str
@@ -12548,13 +12537,24 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
     def NewPassword(self, NewPassword):
         self._NewPassword = NewPassword
 
+    @property
+    def OldPassword(self):
+        """旧密码，非必选
+        :rtype: str
+        """
+        return self._OldPassword
+
+    @OldPassword.setter
+    def OldPassword(self, OldPassword):
+        self._OldPassword = OldPassword
+
 
     def _deserialize(self, params):
         self._SubscribeId = params.get("SubscribeId")
         self._AccountName = params.get("AccountName")
         self._ConsumerGroupName = params.get("ConsumerGroupName")
-        self._OldPassword = params.get("OldPassword")
         self._NewPassword = params.get("NewPassword")
+        self._OldPassword = params.get("OldPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14029,7 +14029,7 @@ class Options(AbstractModel):
         :param _AutoRetryTimeRangeMinutes: 自动重试的时间窗口设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
-        :param _StartPosition: 同步到kafka链路指定位点。目前只支持时间格式：yyyy-mm-dd hh:mm:ss。如果没有指定位点，为空。
+        :param _StartPosition: 同步到kafka链路指定位点。目前只支持时间格式：2023-12-20T19:24:23+08:00。如果没有指定位点，为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartPosition: str
         :param _FilterBeginCommit: 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
@@ -14175,7 +14175,7 @@ class Options(AbstractModel):
 
     @property
     def StartPosition(self):
-        """同步到kafka链路指定位点。目前只支持时间格式：yyyy-mm-dd hh:mm:ss。如果没有指定位点，为空。
+        """同步到kafka链路指定位点。目前只支持时间格式：2023-12-20T19:24:23+08:00。如果没有指定位点，为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

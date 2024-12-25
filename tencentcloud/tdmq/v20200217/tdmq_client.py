@@ -3179,6 +3179,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RetryRocketMQDlqMessage(self, request):
+        """重发RocketMQ死信消息
+
+        :param request: Request instance for RetryRocketMQDlqMessage.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.RetryRocketMQDlqMessageRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RetryRocketMQDlqMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RetryRocketMQDlqMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.RetryRocketMQDlqMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RewindCmqQueue(self, request):
         """回溯cmq队列
 

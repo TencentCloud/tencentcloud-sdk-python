@@ -568,9 +568,7 @@ class FuseFaceUltraRequest(AbstractModel):
 ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
 ●支持图片格式：支持jpg或png
         :type ModelImage: str
-        :param _FusionUltraParam: 图片人脸融合（专业版）效果参数。
-可用于设置拉脸、人脸增强、磨皮、牙齿增强等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
-
+        :param _FusionUltraParam: 图片人脸融合（专业版）效果参数。可用于设置拉脸、人脸增强、磨皮、牙齿增强、妆容迁移等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
         :type FusionUltraParam: :class:`tencentcloud.facefusion.v20220927.models.FusionUltraParam`
         :param _LogoAdd: 为融合结果图添加合成标识的开关，默认为1。
 1：添加标识。
@@ -652,9 +650,7 @@ class FuseFaceUltraRequest(AbstractModel):
 
     @property
     def FusionUltraParam(self):
-        """图片人脸融合（专业版）效果参数。
-可用于设置拉脸、人脸增强、磨皮、牙齿增强等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
-
+        """图片人脸融合（专业版）效果参数。可用于设置拉脸、人脸增强、磨皮、牙齿增强、妆容迁移等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FusionUltraParam`
         """
         return self._FusionUltraParam

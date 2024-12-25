@@ -101,21 +101,18 @@ class AccessPoint(AbstractModel):
         :type LineOperator: list of str
         :param _RegionId: 接入点管理的大区ID。
         :type RegionId: str
-        :param _AvailablePortType: 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _AvailablePortType: 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km。
         :type AvailablePortType: list of str
-        :param _Coordinate: 接入点经纬度
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Coordinate: 接入点经纬度。
         :type Coordinate: :class:`tencentcloud.dc.v20180410.models.Coordinate`
-        :param _City: 接入点所在城市
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _City: 接入点所在城市。
         :type City: str
-        :param _Area: 接入点地域名称
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Area: 接入点地域名称。
         :type Area: str
         :param _AccessPointType: 接入点类型。VXLAN/QCPL/QCAR
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPointType: str
+        :param _AvailablePortInfo: 端口规格信息。
+        :type AvailablePortInfo: list of PortSpecification
         """
         self._AccessPointName = None
         self._AccessPointId = None
@@ -128,6 +125,7 @@ class AccessPoint(AbstractModel):
         self._City = None
         self._Area = None
         self._AccessPointType = None
+        self._AvailablePortInfo = None
 
     @property
     def AccessPointName(self):
@@ -197,8 +195,7 @@ class AccessPoint(AbstractModel):
 
     @property
     def AvailablePortType(self):
-        """接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
-注意：此字段可能返回 null，表示取不到有效值。
+        """接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km。
         :rtype: list of str
         """
         return self._AvailablePortType
@@ -209,8 +206,7 @@ class AccessPoint(AbstractModel):
 
     @property
     def Coordinate(self):
-        """接入点经纬度
-注意：此字段可能返回 null，表示取不到有效值。
+        """接入点经纬度。
         :rtype: :class:`tencentcloud.dc.v20180410.models.Coordinate`
         """
         return self._Coordinate
@@ -221,8 +217,7 @@ class AccessPoint(AbstractModel):
 
     @property
     def City(self):
-        """接入点所在城市
-注意：此字段可能返回 null，表示取不到有效值。
+        """接入点所在城市。
         :rtype: str
         """
         return self._City
@@ -233,8 +228,7 @@ class AccessPoint(AbstractModel):
 
     @property
     def Area(self):
-        """接入点地域名称
-注意：此字段可能返回 null，表示取不到有效值。
+        """接入点地域名称。
         :rtype: str
         """
         return self._Area
@@ -246,7 +240,6 @@ class AccessPoint(AbstractModel):
     @property
     def AccessPointType(self):
         """接入点类型。VXLAN/QCPL/QCAR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessPointType
@@ -254,6 +247,17 @@ class AccessPoint(AbstractModel):
     @AccessPointType.setter
     def AccessPointType(self, AccessPointType):
         self._AccessPointType = AccessPointType
+
+    @property
+    def AvailablePortInfo(self):
+        """端口规格信息。
+        :rtype: list of PortSpecification
+        """
+        return self._AvailablePortInfo
+
+    @AvailablePortInfo.setter
+    def AvailablePortInfo(self, AvailablePortInfo):
+        self._AvailablePortInfo = AvailablePortInfo
 
 
     def _deserialize(self, params):
@@ -270,6 +274,12 @@ class AccessPoint(AbstractModel):
         self._City = params.get("City")
         self._Area = params.get("Area")
         self._AccessPointType = params.get("AccessPointType")
+        if params.get("AvailablePortInfo") is not None:
+            self._AvailablePortInfo = []
+            for item in params.get("AvailablePortInfo"):
+                obj = PortSpecification()
+                obj._deserialize(item)
+                self._AvailablePortInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2031,10 +2041,13 @@ class DescribeAccessPointsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
+        :param _Filters: 过滤参数，支持：access-point-id、isp
+        :type Filters: list of Filter
         """
         self._RegionId = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def RegionId(self):
@@ -2070,11 +2083,28 @@ class DescribeAccessPointsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        """过滤参数，支持：access-point-id、isp
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._RegionId = params.get("RegionId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6255,6 +6285,72 @@ class NQAInfo(AbstractModel):
         self._ProbeFailedTimes = params.get("ProbeFailedTimes")
         self._Interval = params.get("Interval")
         self._DestinationIp = params.get("DestinationIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PortSpecification(AbstractModel):
+    """端口规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternationalName: 端口名称
+        :type InternationalName: str
+        :param _Specification: 端口规格（M）
+        :type Specification: int
+        :param _PortType: 端口类型：T-电口，X-光口
+        :type PortType: str
+        """
+        self._InternationalName = None
+        self._Specification = None
+        self._PortType = None
+
+    @property
+    def InternationalName(self):
+        """端口名称
+        :rtype: str
+        """
+        return self._InternationalName
+
+    @InternationalName.setter
+    def InternationalName(self, InternationalName):
+        self._InternationalName = InternationalName
+
+    @property
+    def Specification(self):
+        """端口规格（M）
+        :rtype: int
+        """
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def PortType(self):
+        """端口类型：T-电口，X-光口
+        :rtype: str
+        """
+        return self._PortType
+
+    @PortType.setter
+    def PortType(self, PortType):
+        self._PortType = PortType
+
+
+    def _deserialize(self, params):
+        self._InternationalName = params.get("InternationalName")
+        self._Specification = params.get("Specification")
+        self._PortType = params.get("PortType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

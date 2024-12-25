@@ -4314,7 +4314,9 @@ class TsfClient(AbstractClient):
 
 
     def ReassociateBusinessLogConfig(self, request):
-        """重关联业务日志配置
+        """后端服务已经删除这个接口,  API 接口下线处理
+
+        重关联业务日志配置
 
         :param request: Request instance for ReassociateBusinessLogConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ReassociateBusinessLogConfigRequest`

@@ -487,7 +487,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CutXEvents(self, request):
-        """本接口(CutXEvents)用于手动切割阻塞日志和死锁日志。
+        """本接口（CutXEvents）用于手动切割阻塞日志和死锁日志。
 
         :param request: Request instance for CutXEvents.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CutXEventsRequest`
@@ -809,7 +809,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupFiles(self, request):
-        """本接口(DescribeBackupFiles)用于查询单库备份明细
+        """本接口（DescribeBackupFiles）用于查询单库备份明细。
 
         :param request: Request instance for DescribeBackupFiles.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupFilesRequest`

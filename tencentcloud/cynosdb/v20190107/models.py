@@ -21066,7 +21066,7 @@ class ExportInstanceErrorLogsRequest(AbstractModel):
         :type FileType: str
         :param _OrderBy: 可选值Timestamp
         :type OrderBy: str
-        :param _OrderByType: ASC或DESC
+        :param _OrderByType: 排序类型，ASC 或 DESC。
         :type OrderByType: str
         """
         self._InstanceId = None
@@ -21181,7 +21181,7 @@ class ExportInstanceErrorLogsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """ASC或DESC
+        """排序类型，ASC 或 DESC。
         :rtype: str
         """
         return self._OrderByType
@@ -22541,7 +22541,7 @@ class InstanceAuditLogFilter(AbstractModel):
 
 等于、不等于： sqlType - SQL类型； errCode - 错误码； threadId - 线程ID；
 
-范围搜索（时间类型统一为微秒）： execTime - 执行时间； lockWaitTime - 执行时间； ioWaitTime - IO等待时间； trxLivingTime - 事物持续时间； cpuTime - cpu时间； checkRows - 扫描行数； affectRows - 影响行数； sentRows - 返回行数。
+范围搜索（时间类型统一为微秒）： execTime - 执行时间； lockWaitTime - 执行时间； ioWaitTime - IO等待时间； trxLivingTime - 事务持续时间； cpuTime - cpu时间； checkRows - 扫描行数； affectRows - 影响行数； sentRows - 返回行数。
         :type Type: str
         :param _Compare: 过滤条件。支持以下条件：
 WINC-包含（分词维度），
@@ -22569,7 +22569,7 @@ RA - 范围。
 
 等于、不等于： sqlType - SQL类型； errCode - 错误码； threadId - 线程ID；
 
-范围搜索（时间类型统一为微秒）： execTime - 执行时间； lockWaitTime - 执行时间； ioWaitTime - IO等待时间； trxLivingTime - 事物持续时间； cpuTime - cpu时间； checkRows - 扫描行数； affectRows - 影响行数； sentRows - 返回行数。
+范围搜索（时间类型统一为微秒）： execTime - 执行时间； lockWaitTime - 执行时间； ioWaitTime - IO等待时间； trxLivingTime - 事务持续时间； cpuTime - cpu时间； checkRows - 扫描行数； affectRows - 影响行数； sentRows - 返回行数。
         :rtype: str
         """
         return self._Type

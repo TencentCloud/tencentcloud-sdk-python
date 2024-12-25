@@ -17815,8 +17815,11 @@ class CreateDomainVerifyRecordRequest(AbstractModel):
         r"""
         :param _Domain: 需要接入点播的加速域名。
         :type Domain: str
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2024年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>	
+        :type SubAppId: int
         """
         self._Domain = None
+        self._SubAppId = None
 
     @property
     def Domain(self):
@@ -17829,9 +17832,21 @@ class CreateDomainVerifyRecordRequest(AbstractModel):
     def Domain(self, Domain):
         self._Domain = Domain
 
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。从2024年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>	
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
+        self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29001,6 +29016,7 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li> MediaCast: 媒体转推</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 <li>VoiceTranslation: 语音翻译</li>
+<li>JITTranscoding: 即时转码</li>
         :type Type: str
         """
         self._StartTime = None
@@ -29065,6 +29081,7 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li> MediaCast: 媒体转推</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 <li>VoiceTranslation: 语音翻译</li>
+<li>JITTranscoding: 即时转码</li>
         :rtype: str
         """
         return self._Type
@@ -70329,6 +70346,7 @@ class TaskStatData(AbstractModel):
 <li> QualityInspect: 音画质检测</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 <li>VoiceTranslation: 语音翻译</li>
+<li>JITTranscoding: 即时转码</li>
         :type TaskType: str
         :param _Summary: 任务数统计数据概览，用量单位为秒。
         :type Summary: list of TaskStatDataItem
@@ -70385,6 +70403,13 @@ class TaskStatData(AbstractModel):
 <li>4K: 短边 ≤ 2160px</li>
 <li>8K: 短边 ≤ 4320px</li>
 <li>Audio: 音频</li>
+即时转码规格：
+<li>JITTranscoding.H264.SD: H.264编码方式标清即时转码</li>
+<li>JITTranscoding.H264.HD: H.264编码方式高清即时转码</li>
+<li>JITTranscoding.H264.FHD: H.264编码方式全高清即时转码</li>
+<li>JITTranscoding.H264.2K: H.264编码方式2K即时转码</li>
+<li>JITTranscoding.Audio: 音频即时转码</li>
+<li>JITTranscoding.Copy: 转封装即时转码</li>
         :type Details: list of SpecificationDataItem
         """
         self._TaskType = None
@@ -70408,6 +70433,7 @@ class TaskStatData(AbstractModel):
 <li> QualityInspect: 音画质检测</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 <li>VoiceTranslation: 语音翻译</li>
+<li>JITTranscoding: 即时转码</li>
         :rtype: str
         """
         return self._TaskType
@@ -70482,6 +70508,13 @@ class TaskStatData(AbstractModel):
 <li>4K: 短边 ≤ 2160px</li>
 <li>8K: 短边 ≤ 4320px</li>
 <li>Audio: 音频</li>
+即时转码规格：
+<li>JITTranscoding.H264.SD: H.264编码方式标清即时转码</li>
+<li>JITTranscoding.H264.HD: H.264编码方式高清即时转码</li>
+<li>JITTranscoding.H264.FHD: H.264编码方式全高清即时转码</li>
+<li>JITTranscoding.H264.2K: H.264编码方式2K即时转码</li>
+<li>JITTranscoding.Audio: 音频即时转码</li>
+<li>JITTranscoding.Copy: 转封装即时转码</li>
         :rtype: list of SpecificationDataItem
         """
         return self._Details
@@ -73250,6 +73283,8 @@ class VerifyDomainRecordRequest(AbstractModel):
         r"""
         :param _Domain: 需要接入点播的加速域名。
         :type Domain: str
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2024年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>	
+        :type SubAppId: int
         :param _VerifyType: 验证方式：
 <li>dns：DNS 解析验证；</li>
 <li>fIle：文件验证。</li>
@@ -73258,6 +73293,7 @@ class VerifyDomainRecordRequest(AbstractModel):
         :type VerifyType: str
         """
         self._Domain = None
+        self._SubAppId = None
         self._VerifyType = None
 
     @property
@@ -73270,6 +73306,17 @@ class VerifyDomainRecordRequest(AbstractModel):
     @Domain.setter
     def Domain(self, Domain):
         self._Domain = Domain
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。从2024年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>	
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def VerifyType(self):
@@ -73289,6 +73336,7 @@ class VerifyDomainRecordRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
+        self._SubAppId = params.get("SubAppId")
         self._VerifyType = params.get("VerifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

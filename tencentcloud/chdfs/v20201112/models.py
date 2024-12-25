@@ -545,12 +545,12 @@ class CreateFileSystemRequest(AbstractModel):
         r"""
         :param _FileSystemName: 文件系统名称
         :type FileSystemName: str
-        :param _CapacityQuota: 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
-        :type CapacityQuota: int
         :param _PosixAcl: 是否校验POSIX ACL
         :type PosixAcl: bool
         :param _Description: 文件系统描述，默认为空字符串
         :type Description: str
+        :param _CapacityQuota: 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
+        :type CapacityQuota: int
         :param _SuperUsers: 超级用户名列表，默认为空数组
         :type SuperUsers: list of str
         :param _RootInodeUser: 根目录Inode用户名，默认为hadoop
@@ -565,9 +565,9 @@ class CreateFileSystemRequest(AbstractModel):
         :type Tags: list of Tag
         """
         self._FileSystemName = None
-        self._CapacityQuota = None
         self._PosixAcl = None
         self._Description = None
+        self._CapacityQuota = None
         self._SuperUsers = None
         self._RootInodeUser = None
         self._RootInodeGroup = None
@@ -585,17 +585,6 @@ class CreateFileSystemRequest(AbstractModel):
     @FileSystemName.setter
     def FileSystemName(self, FileSystemName):
         self._FileSystemName = FileSystemName
-
-    @property
-    def CapacityQuota(self):
-        """文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
-        :rtype: int
-        """
-        return self._CapacityQuota
-
-    @CapacityQuota.setter
-    def CapacityQuota(self, CapacityQuota):
-        self._CapacityQuota = CapacityQuota
 
     @property
     def PosixAcl(self):
@@ -618,6 +607,17 @@ class CreateFileSystemRequest(AbstractModel):
     @Description.setter
     def Description(self, Description):
         self._Description = Description
+
+    @property
+    def CapacityQuota(self):
+        """文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
+        :rtype: int
+        """
+        return self._CapacityQuota
+
+    @CapacityQuota.setter
+    def CapacityQuota(self, CapacityQuota):
+        self._CapacityQuota = CapacityQuota
 
     @property
     def SuperUsers(self):
@@ -688,9 +688,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._FileSystemName = params.get("FileSystemName")
-        self._CapacityQuota = params.get("CapacityQuota")
         self._PosixAcl = params.get("PosixAcl")
         self._Description = params.get("Description")
+        self._CapacityQuota = params.get("CapacityQuota")
         self._SuperUsers = params.get("SuperUsers")
         self._RootInodeUser = params.get("RootInodeUser")
         self._RootInodeGroup = params.get("RootInodeGroup")
@@ -3566,22 +3566,16 @@ class Summary(AbstractModel):
     def __init__(self):
         r"""
         :param _CapacityUsed: 已使用容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type CapacityUsed: int
         :param _StandardCapacityUsed: 已使用COS标准存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type StandardCapacityUsed: int
         :param _DegradeCapacityUsed: 已使用COS低频存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DegradeCapacityUsed: int
         :param _ArchiveCapacityUsed: 已使用COS归档存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ArchiveCapacityUsed: int
         :param _DeepArchiveCapacityUsed: 已使用COS深度归档存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeepArchiveCapacityUsed: int
         :param _IntelligentCapacityUsed: 已使用COS智能分层存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntelligentCapacityUsed: int
         """
         self._CapacityUsed = None
@@ -3594,7 +3588,6 @@ class Summary(AbstractModel):
     @property
     def CapacityUsed(self):
         """已使用容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CapacityUsed
@@ -3606,7 +3599,6 @@ class Summary(AbstractModel):
     @property
     def StandardCapacityUsed(self):
         """已使用COS标准存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StandardCapacityUsed
@@ -3618,7 +3610,6 @@ class Summary(AbstractModel):
     @property
     def DegradeCapacityUsed(self):
         """已使用COS低频存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DegradeCapacityUsed
@@ -3630,7 +3621,6 @@ class Summary(AbstractModel):
     @property
     def ArchiveCapacityUsed(self):
         """已使用COS归档存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ArchiveCapacityUsed
@@ -3642,7 +3632,6 @@ class Summary(AbstractModel):
     @property
     def DeepArchiveCapacityUsed(self):
         """已使用COS深度归档存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeepArchiveCapacityUsed
@@ -3654,7 +3643,6 @@ class Summary(AbstractModel):
     @property
     def IntelligentCapacityUsed(self):
         """已使用COS智能分层存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IntelligentCapacityUsed

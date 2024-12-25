@@ -5609,6 +5609,591 @@ class DescribeMQTTUserListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMessageListRequest(AbstractModel):
+    """DescribeMessageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _Topic: 主题名称
+        :type Topic: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _TaskRequestId: 一次查询标识
+        :type TaskRequestId: str
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        :param _MsgId: 消息 ID
+        :type MsgId: str
+        :param _MsgKey: 消息 Key
+        :type MsgKey: str
+        :param _RecentMessageNum: 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
+        :type RecentMessageNum: int
+        :param _QueryDeadLetterMessage: 是否查询死信消息
+        :type QueryDeadLetterMessage: bool
+        :param _Tag: 消息 Tag
+        :type Tag: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskRequestId = None
+        self._Offset = None
+        self._Limit = None
+        self._ConsumerGroup = None
+        self._MsgId = None
+        self._MsgKey = None
+        self._RecentMessageNum = None
+        self._QueryDeadLetterMessage = None
+        self._Tag = None
+
+    @property
+    def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskRequestId(self):
+        """一次查询标识
+        :rtype: str
+        """
+        return self._TaskRequestId
+
+    @TaskRequestId.setter
+    def TaskRequestId(self, TaskRequestId):
+        self._TaskRequestId = TaskRequestId
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ConsumerGroup(self):
+        """消费组名称
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def MsgId(self):
+        """消息 ID
+        :rtype: str
+        """
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def MsgKey(self):
+        """消息 Key
+        :rtype: str
+        """
+        return self._MsgKey
+
+    @MsgKey.setter
+    def MsgKey(self, MsgKey):
+        self._MsgKey = MsgKey
+
+    @property
+    def RecentMessageNum(self):
+        """查询最近N条消息 最大不超过1024，默认-1为其他查询条件
+        :rtype: int
+        """
+        return self._RecentMessageNum
+
+    @RecentMessageNum.setter
+    def RecentMessageNum(self, RecentMessageNum):
+        self._RecentMessageNum = RecentMessageNum
+
+    @property
+    def QueryDeadLetterMessage(self):
+        """是否查询死信消息
+        :rtype: bool
+        """
+        return self._QueryDeadLetterMessage
+
+    @QueryDeadLetterMessage.setter
+    def QueryDeadLetterMessage(self, QueryDeadLetterMessage):
+        self._QueryDeadLetterMessage = QueryDeadLetterMessage
+
+    @property
+    def Tag(self):
+        """消息 Tag
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskRequestId = params.get("TaskRequestId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._MsgId = params.get("MsgId")
+        self._MsgKey = params.get("MsgKey")
+        self._RecentMessageNum = params.get("RecentMessageNum")
+        self._QueryDeadLetterMessage = params.get("QueryDeadLetterMessage")
+        self._Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMessageListResponse(AbstractModel):
+    """DescribeMessageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 消息记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of MessageItem
+        :param _TaskRequestId: 一次查询ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskRequestId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._TaskRequestId = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """消息记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MessageItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TaskRequestId(self):
+        """一次查询ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskRequestId
+
+    @TaskRequestId.setter
+    def TaskRequestId(self, TaskRequestId):
+        self._TaskRequestId = TaskRequestId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = MessageItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TaskRequestId = params.get("TaskRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMessageRequest(AbstractModel):
+    """DescribeMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _Topic: 主题名称
+        :type Topic: str
+        :param _MsgId: 消息ID
+        :type MsgId: str
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _QueryDeadLetterMessage: 是否是死信消息
+        :type QueryDeadLetterMessage: bool
+        :param _QueryDelayMessage: 是否是延时消息
+        :type QueryDelayMessage: bool
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._MsgId = None
+        self._Offset = None
+        self._Limit = None
+        self._QueryDeadLetterMessage = None
+        self._QueryDelayMessage = None
+
+    @property
+    def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def MsgId(self):
+        """消息ID
+        :rtype: str
+        """
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def QueryDeadLetterMessage(self):
+        """是否是死信消息
+        :rtype: bool
+        """
+        return self._QueryDeadLetterMessage
+
+    @QueryDeadLetterMessage.setter
+    def QueryDeadLetterMessage(self, QueryDeadLetterMessage):
+        self._QueryDeadLetterMessage = QueryDeadLetterMessage
+
+    @property
+    def QueryDelayMessage(self):
+        """是否是延时消息
+        :rtype: bool
+        """
+        return self._QueryDelayMessage
+
+    @QueryDelayMessage.setter
+    def QueryDelayMessage(self, QueryDelayMessage):
+        self._QueryDelayMessage = QueryDelayMessage
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._MsgId = params.get("MsgId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._QueryDeadLetterMessage = params.get("QueryDeadLetterMessage")
+        self._QueryDelayMessage = params.get("QueryDelayMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMessageResponse(AbstractModel):
+    """DescribeMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Body: 消息体
+        :type Body: str
+        :param _Properties: 详情参数
+        :type Properties: str
+        :param _ProduceTime: 生产时间
+        :type ProduceTime: str
+        :param _MessageId: 消息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageId: str
+        :param _ProducerAddr: 生产者地址
+        :type ProducerAddr: str
+        :param _MessageTracks: 消息消费情况列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageTracks: list of MessageTrackItem
+        :param _ShowTopicName: Topic
+        :type ShowTopicName: str
+        :param _MessageTracksCount: 消息消费情况列表总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageTracksCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Body = None
+        self._Properties = None
+        self._ProduceTime = None
+        self._MessageId = None
+        self._ProducerAddr = None
+        self._MessageTracks = None
+        self._ShowTopicName = None
+        self._MessageTracksCount = None
+        self._RequestId = None
+
+    @property
+    def Body(self):
+        """消息体
+        :rtype: str
+        """
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+    @property
+    def Properties(self):
+        """详情参数
+        :rtype: str
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def ProduceTime(self):
+        """生产时间
+        :rtype: str
+        """
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def MessageId(self):
+        """消息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def ProducerAddr(self):
+        """生产者地址
+        :rtype: str
+        """
+        return self._ProducerAddr
+
+    @ProducerAddr.setter
+    def ProducerAddr(self, ProducerAddr):
+        self._ProducerAddr = ProducerAddr
+
+    @property
+    def MessageTracks(self):
+        """消息消费情况列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MessageTrackItem
+        """
+        return self._MessageTracks
+
+    @MessageTracks.setter
+    def MessageTracks(self, MessageTracks):
+        self._MessageTracks = MessageTracks
+
+    @property
+    def ShowTopicName(self):
+        """Topic
+        :rtype: str
+        """
+        return self._ShowTopicName
+
+    @ShowTopicName.setter
+    def ShowTopicName(self, ShowTopicName):
+        self._ShowTopicName = ShowTopicName
+
+    @property
+    def MessageTracksCount(self):
+        """消息消费情况列表总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MessageTracksCount
+
+    @MessageTracksCount.setter
+    def MessageTracksCount(self, MessageTracksCount):
+        self._MessageTracksCount = MessageTracksCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Body = params.get("Body")
+        self._Properties = params.get("Properties")
+        self._ProduceTime = params.get("ProduceTime")
+        self._MessageId = params.get("MessageId")
+        self._ProducerAddr = params.get("ProducerAddr")
+        if params.get("MessageTracks") is not None:
+            self._MessageTracks = []
+            for item in params.get("MessageTracks"):
+                obj = MessageTrackItem()
+                obj._deserialize(item)
+                self._MessageTracks.append(obj)
+        self._ShowTopicName = params.get("ShowTopicName")
+        self._MessageTracksCount = params.get("MessageTracksCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMessageTraceRequest(AbstractModel):
     """DescribeMessageTrace请求参数结构体
 
@@ -8813,6 +9398,146 @@ class MQTTUserItem(AbstractModel):
         
 
 
+class MessageItem(AbstractModel):
+    """消息记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgId: 消息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgId: str
+        :param _Tags: 消息tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: str
+        :param _Keys: 消息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: str
+        :param _ProducerAddr: 客户端地址	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerAddr: str
+        :param _ProduceTime: 消息发送时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProduceTime: str
+        :param _DeadLetterResendTimes: 死信重发次数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterResendTimes: int
+        :param _DeadLetterResendSuccessTimes: 死信重发成功次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterResendSuccessTimes: int
+        """
+        self._MsgId = None
+        self._Tags = None
+        self._Keys = None
+        self._ProducerAddr = None
+        self._ProduceTime = None
+        self._DeadLetterResendTimes = None
+        self._DeadLetterResendSuccessTimes = None
+
+    @property
+    def MsgId(self):
+        """消息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def Tags(self):
+        """消息tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Keys(self):
+        """消息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def ProducerAddr(self):
+        """客户端地址	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProducerAddr
+
+    @ProducerAddr.setter
+    def ProducerAddr(self, ProducerAddr):
+        self._ProducerAddr = ProducerAddr
+
+    @property
+    def ProduceTime(self):
+        """消息发送时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def DeadLetterResendTimes(self):
+        """死信重发次数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeadLetterResendTimes
+
+    @DeadLetterResendTimes.setter
+    def DeadLetterResendTimes(self, DeadLetterResendTimes):
+        self._DeadLetterResendTimes = DeadLetterResendTimes
+
+    @property
+    def DeadLetterResendSuccessTimes(self):
+        """死信重发成功次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeadLetterResendSuccessTimes
+
+    @DeadLetterResendSuccessTimes.setter
+    def DeadLetterResendSuccessTimes(self, DeadLetterResendSuccessTimes):
+        self._DeadLetterResendSuccessTimes = DeadLetterResendSuccessTimes
+
+
+    def _deserialize(self, params):
+        self._MsgId = params.get("MsgId")
+        self._Tags = params.get("Tags")
+        self._Keys = params.get("Keys")
+        self._ProducerAddr = params.get("ProducerAddr")
+        self._ProduceTime = params.get("ProduceTime")
+        self._DeadLetterResendTimes = params.get("DeadLetterResendTimes")
+        self._DeadLetterResendSuccessTimes = params.get("DeadLetterResendSuccessTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MessageTraceItem(AbstractModel):
     """消息轨迹
 
@@ -8858,6 +9583,89 @@ class MessageTraceItem(AbstractModel):
     def _deserialize(self, params):
         self._Stage = params.get("Stage")
         self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MessageTrackItem(AbstractModel):
+    """MessageTrack
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        :param _ConsumeStatus: 消费状态, CONSUMED: 已消费 CONSUMED_BUT_FILTERED: 已过滤 NOT_CONSUME: 未消费 ENTER_RETRY: 进入重试队列 ENTER_DLQ: 进入死信队列 UNKNOWN: 查询不到消费状态
+        :type ConsumeStatus: str
+        :param _TrackType: track类型
+        :type TrackType: str
+        :param _ExceptionDesc: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptionDesc: str
+        """
+        self._ConsumerGroup = None
+        self._ConsumeStatus = None
+        self._TrackType = None
+        self._ExceptionDesc = None
+
+    @property
+    def ConsumerGroup(self):
+        """消费组名称
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def ConsumeStatus(self):
+        """消费状态, CONSUMED: 已消费 CONSUMED_BUT_FILTERED: 已过滤 NOT_CONSUME: 未消费 ENTER_RETRY: 进入重试队列 ENTER_DLQ: 进入死信队列 UNKNOWN: 查询不到消费状态
+        :rtype: str
+        """
+        return self._ConsumeStatus
+
+    @ConsumeStatus.setter
+    def ConsumeStatus(self, ConsumeStatus):
+        self._ConsumeStatus = ConsumeStatus
+
+    @property
+    def TrackType(self):
+        """track类型
+        :rtype: str
+        """
+        return self._TrackType
+
+    @TrackType.setter
+    def TrackType(self, TrackType):
+        self._TrackType = TrackType
+
+    @property
+    def ExceptionDesc(self):
+        """异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExceptionDesc
+
+    @ExceptionDesc.setter
+    def ExceptionDesc(self, ExceptionDesc):
+        self._ExceptionDesc = ExceptionDesc
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._ConsumeStatus = params.get("ConsumeStatus")
+        self._TrackType = params.get("TrackType")
+        self._ExceptionDesc = params.get("ExceptionDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10403,6 +11211,117 @@ class PublicAccessRule(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResendDeadLetterMessageRequest(AbstractModel):
+    """ResendDeadLetterMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _MessageIds: 死信消息ID列表
+        :type MessageIds: list of str
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        """
+        self._InstanceId = None
+        self._MessageIds = None
+        self._ConsumerGroup = None
+
+    @property
+    def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MessageIds(self):
+        """死信消息ID列表
+        :rtype: list of str
+        """
+        return self._MessageIds
+
+    @MessageIds.setter
+    def MessageIds(self, MessageIds):
+        self._MessageIds = MessageIds
+
+    @property
+    def ConsumerGroup(self):
+        """消费组名称
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MessageIds = params.get("MessageIds")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResendDeadLetterMessageResponse(AbstractModel):
+    """ResendDeadLetterMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResendResult: 重发消息结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResendResult: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResendResult = None
+        self._RequestId = None
+
+    @property
+    def ResendResult(self):
+        """重发消息结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ResendResult
+
+    @ResendResult.setter
+    def ResendResult(self, ResendResult):
+        self._ResendResult = ResendResult
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResendResult = params.get("ResendResult")
+        self._RequestId = params.get("RequestId")
 
 
 class RoleItem(AbstractModel):

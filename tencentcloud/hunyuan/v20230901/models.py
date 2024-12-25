@@ -179,6 +179,11 @@ class ChatCompletionsRequest(AbstractModel):
         :type ForceSearchEnhancement: bool
         :param _Stop: 自定义结束生成字符串
         :type Stop: list of str
+        :param _EnableRecommendedQuestions: 推荐问答开关。
+说明：
+1. 未传值时默认关闭。
+2. 开启后，返回值里将增加 RecommendedQuestions 字段返回推荐问答， 最多只返回3条。
+        :type EnableRecommendedQuestions: bool
         """
         self._Model = None
         self._Messages = None
@@ -198,6 +203,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._Seed = None
         self._ForceSearchEnhancement = None
         self._Stop = None
+        self._EnableRecommendedQuestions = None
 
     @property
     def Model(self):
@@ -451,6 +457,20 @@ class ChatCompletionsRequest(AbstractModel):
     def Stop(self, Stop):
         self._Stop = Stop
 
+    @property
+    def EnableRecommendedQuestions(self):
+        """推荐问答开关。
+说明：
+1. 未传值时默认关闭。
+2. 开启后，返回值里将增加 RecommendedQuestions 字段返回推荐问答， 最多只返回3条。
+        :rtype: bool
+        """
+        return self._EnableRecommendedQuestions
+
+    @EnableRecommendedQuestions.setter
+    def EnableRecommendedQuestions(self, EnableRecommendedQuestions):
+        self._EnableRecommendedQuestions = EnableRecommendedQuestions
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -483,6 +503,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._Seed = params.get("Seed")
         self._ForceSearchEnhancement = params.get("ForceSearchEnhancement")
         self._Stop = params.get("Stop")
+        self._EnableRecommendedQuestions = params.get("EnableRecommendedQuestions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -524,6 +545,8 @@ class ChatCompletionsResponse(AbstractModel):
 1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
 2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
         :type Replaces: list of Replace
+        :param _RecommendedQuestions: 推荐问答。
+        :type RecommendedQuestions: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
@@ -536,6 +559,7 @@ class ChatCompletionsResponse(AbstractModel):
         self._ModerationLevel = None
         self._SearchInfo = None
         self._Replaces = None
+        self._RecommendedQuestions = None
         self._RequestId = None
 
     @property
@@ -644,6 +668,17 @@ class ChatCompletionsResponse(AbstractModel):
         self._Replaces = Replaces
 
     @property
+    def RecommendedQuestions(self):
+        """推荐问答。
+        :rtype: list of str
+        """
+        return self._RecommendedQuestions
+
+    @RecommendedQuestions.setter
+    def RecommendedQuestions(self, RecommendedQuestions):
+        self._RecommendedQuestions = RecommendedQuestions
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
@@ -681,6 +716,7 @@ class ChatCompletionsResponse(AbstractModel):
                 obj = Replace()
                 obj._deserialize(item)
                 self._Replaces.append(obj)
+        self._RecommendedQuestions = params.get("RecommendedQuestions")
         self._RequestId = params.get("RequestId")
 
 
@@ -1083,6 +1119,7 @@ class Content(AbstractModel):
         :param _Type: 内容类型
 注意：
 当前只支持传入单张图片，传入多张图片时，以第一个图片为准。
+参数值可选范围：[text", "image_url"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Text: 当 Type 为 text 时使用，表示具体的文本内容
@@ -1102,6 +1139,7 @@ class Content(AbstractModel):
         """内容类型
 注意：
 当前只支持传入单张图片，传入多张图片时，以第一个图片为准。
+参数值可选范围：[text", "image_url"]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -96,7 +96,7 @@ class CdbClient(AbstractClient):
 
 
     def AnalyzeAuditLogs(self, request):
-        """在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
+        """本接口（AnalyzeAuditLogs）用于在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
 
         :param request: Request instance for AnalyzeAuditLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AnalyzeAuditLogsRequest`
@@ -397,7 +397,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateAuditRuleTemplate(self, request):
-        """创建审计规则模板
+        """本接口（CreateAuditRuleTemplate）用于创建审计规则模板。
 
         :param request: Request instance for CreateAuditRuleTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditRuleTemplateRequest`
@@ -420,7 +420,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateBackup(self, request):
-        """本接口(CreateBackup)用于创建数据库备份。
+        """本接口（CreateBackup）用于创建数据库备份。
 
         :param request: Request instance for CreateBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateBackupRequest`
@@ -466,7 +466,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateCdbProxyAddress(self, request):
-        """数据库代理增加代理地址
+        """本接口（CreateCdbProxyAddress）用于数据库代理增加代理地址。
 
         :param request: Request instance for CreateCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyAddressRequest`
@@ -489,7 +489,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateCloneInstance(self, request):
-        """本接口(CreateCloneInstance) 用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
+        """本接口（CreateCloneInstance）用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
 
         :param request: Request instance for CreateCloneInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCloneInstanceRequest`
@@ -512,8 +512,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBImportJob(self, request):
-        """本接口(CreateDBImportJob)用于创建云数据库数据导入任务。
-
+        """本接口（CreateDBImportJob）用于创建云数据库数据导入任务。
         注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户须在控制台进行文件导入。
 
         :param request: Request instance for CreateDBImportJob.
@@ -644,7 +643,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数Region均为ap-guangzhou。
+        """该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数 Region 均为 ap-guangzhou。
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateParamTemplateRequest`
@@ -690,7 +689,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateRotationPassword(self, request):
-        """开启密码轮转
+        """本接口（CreateRotationPassword）用于开启密码轮转。
 
         :param request: Request instance for CreateRotationPassword.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateRotationPasswordRequest`
@@ -713,7 +712,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteAccounts(self, request):
-        """本接口(DeleteAccounts)用于删除云数据库的账户。
+        """本接口（DeleteAccounts）用于删除云数据库的账户。
 
         :param request: Request instance for DeleteAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAccountsRequest`
@@ -899,7 +898,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteParamTemplate(self, request):
-        """该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数Region均为ap-guangzhou。
+        """该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数 Region 均为 ap-guangzhou。
 
         :param request: Request instance for DeleteParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateRequest`
@@ -922,7 +921,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteRotationPassword(self, request):
-        """关闭实例账户密码轮转
+        """本接口（DeleteRotationPassword）用于关闭实例账户密码轮转。
 
         :param request: Request instance for DeleteRotationPassword.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteRotationPasswordRequest`
@@ -991,7 +990,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """本接口(DescribeAccounts)用于查询云数据库的所有账户信息。
+        """本接口（DescribeAccounts）用于查询云数据库的所有账户信息。
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountsRequest`
@@ -1060,7 +1059,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditInstanceList(self, request):
-        """获取审计实例列表
+        """本接口（DescribeAuditInstanceList）用于获取审计实例列表。
 
         :param request: Request instance for DescribeAuditInstanceList.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditInstanceListRequest`
@@ -1083,7 +1082,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditLogFiles(self, request):
-        """本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
+        """本接口（DescribeAuditLogFiles）用于查询云数据库实例的审计日志文件。
 
         :param request: Request instance for DescribeAuditLogFiles.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogFilesRequest`
@@ -1129,7 +1128,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditPolicies(self, request):
-        """本接口(DescribeAuditPolicies)用于查询云数据库实例的审计策略。
+        """本接口（DescribeAuditPolicies）用于查询云数据库实例的审计策略。
 
         :param request: Request instance for DescribeAuditPolicies.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditPoliciesRequest`
@@ -1152,7 +1151,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditRuleTemplateModifyHistory(self, request):
-        """查询规则模板变更记录
+        """本接口（DescribeAuditRuleTemplateModifyHistory）用于查询规则模板变更记录。
 
         :param request: Request instance for DescribeAuditRuleTemplateModifyHistory.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplateModifyHistoryRequest`
@@ -1175,7 +1174,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditRuleTemplates(self, request):
-        """查询审计规则模板信息
+        """本接口（DescribeAuditRuleTemplates）用于查询审计规则模板信息。
 
         :param request: Request instance for DescribeAuditRuleTemplates.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplatesRequest`
@@ -1246,7 +1245,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupDecryptionKey(self, request):
-        """本接口(DescribeBackupDecryptionKey)用于查询备份文件解密密钥。
+        """本接口（DescribeBackupDecryptionKey）用于查询备份文件解密密钥。
 
         :param request: Request instance for DescribeBackupDecryptionKey.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDecryptionKeyRequest`
@@ -1430,7 +1429,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCdbProxyInfo(self, request):
-        """查询数据库代理详情信息
+        """本接口（DescribeCdbProxyInfo）用于查询数据库代理详情信息。
 
         :param request: Request instance for DescribeCdbProxyInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCdbProxyInfoRequest`
@@ -1476,7 +1475,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCloneList(self, request):
-        """本接口(DescribeCloneList) 用于查询用户实例的克隆任务列表。
+        """本接口（DescribeCloneList）用于查询用户实例的克隆任务列表。
 
         :param request: Request instance for DescribeCloneList.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCloneListRequest`
@@ -2353,7 +2352,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogData(self, request):
-        """条件检索实例的慢日志。只允许查看一个月之内的慢日志。
+        """本接口（DescribeSlowLogData）用于使用条件检索实例的慢日志。只允许查看一个月之内的慢日志。
         使用时需要注意：可能存在单条慢日志太大，导致整个http请求的回包太大，进而引发接口超时。一旦发生超时，建议您缩小查询时的Limit参数值，从而降低包的大小，让接口能够及时返回内容。
 
         :param request: Request instance for DescribeSlowLogData.
@@ -3141,7 +3140,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyInstancePasswordComplexity(self, request):
-        """本接口(ModifyInstancePasswordComplexity)用于修改云数据库实例的密码复杂度。
+        """本接口（ModifyInstancePasswordComplexity）用于修改云数据库实例的密码复杂度。
 
         :param request: Request instance for ModifyInstancePasswordComplexity.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstancePasswordComplexityRequest`

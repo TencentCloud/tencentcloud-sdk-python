@@ -8795,7 +8795,7 @@ class DescribeProductInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegionSet: 地域售卖信息。
+        :param _RegionSet: 地域售卖信息。即使指定具体地域，也返回所有地域的售卖信息。
         :type RegionSet: list of RegionConf
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8805,7 +8805,7 @@ class DescribeProductInfoResponse(AbstractModel):
 
     @property
     def RegionSet(self):
-        """地域售卖信息。
+        """地域售卖信息。即使指定具体地域，也返回所有地域的售卖信息。
         :rtype: list of RegionConf
         """
         return self._RegionSet

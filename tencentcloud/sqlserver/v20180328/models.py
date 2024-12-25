@@ -3267,6 +3267,10 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         :type Collation: str
         :param _TimeZone: 系统时区，默认：China Standard Time
         :type TimeZone: str
+        :param _MultiNodes: 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+        :type MultiNodes: bool
+        :param _DrZones: 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+        :type DrZones: list of str
         """
         self._Zone = None
         self._Memory = None
@@ -3291,6 +3295,8 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._Collation = None
         self._TimeZone = None
+        self._MultiNodes = None
+        self._DrZones = None
 
     @property
     def Zone(self):
@@ -3545,6 +3551,28 @@ class CreateCloudDBInstancesRequest(AbstractModel):
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
 
+    @property
+    def MultiNodes(self):
+        """是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+        :rtype: bool
+        """
+        return self._MultiNodes
+
+    @MultiNodes.setter
+    def MultiNodes(self, MultiNodes):
+        self._MultiNodes = MultiNodes
+
+    @property
+    def DrZones(self):
+        """备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+        :rtype: list of str
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3575,6 +3603,8 @@ class CreateCloudDBInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Collation = params.get("Collation")
         self._TimeZone = params.get("TimeZone")
+        self._MultiNodes = params.get("MultiNodes")
+        self._DrZones = params.get("DrZones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4108,6 +4138,10 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Collation: str
         :param _TimeZone: 系统时区，默认：China Standard Time
         :type TimeZone: str
+        :param _MultiNodes: 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+        :type MultiNodes: bool
+        :param _DrZones: 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+        :type DrZones: list of str
         """
         self._Zone = None
         self._Memory = None
@@ -4131,6 +4165,8 @@ class CreateDBInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._Collation = None
         self._TimeZone = None
+        self._MultiNodes = None
+        self._DrZones = None
 
     @property
     def Zone(self):
@@ -4374,6 +4410,28 @@ class CreateDBInstancesRequest(AbstractModel):
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
 
+    @property
+    def MultiNodes(self):
+        """是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+        :rtype: bool
+        """
+        return self._MultiNodes
+
+    @MultiNodes.setter
+    def MultiNodes(self, MultiNodes):
+        self._MultiNodes = MultiNodes
+
+    @property
+    def DrZones(self):
+        """备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+        :rtype: list of str
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -4403,6 +4461,8 @@ class CreateDBInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Collation = params.get("Collation")
         self._TimeZone = params.get("TimeZone")
+        self._MultiNodes = params.get("MultiNodes")
+        self._DrZones = params.get("DrZones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14020,7 +14080,7 @@ class DescribeInquiryPriceParameterRequest(AbstractModel):
         :type Memory: int
         :param _Storage: 实例容量大小，单位：GB。
         :type Storage: int
-        :param _InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读
+        :param _InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读，MultiHA-多节点，cvmMultiHA-云盘多节点
         :type InstanceType: str
         :param _InstanceChargeType: 计费类型，取值支持 PREPAID，POSTPAID。
         :type InstanceChargeType: str
@@ -14035,6 +14095,8 @@ class DescribeInquiryPriceParameterRequest(AbstractModel):
         :param _MachineType: 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-云服务器高性能云盘，CLOUD_SSD-云服务器SSD云盘,
 CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘
         :type MachineType: str
+        :param _DrZones: 备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+        :type DrZones: list of str
         """
         self._Zone = None
         self._Memory = None
@@ -14046,6 +14108,7 @@ CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD�
         self._GoodsNum = None
         self._DBVersion = None
         self._MachineType = None
+        self._DrZones = None
 
     @property
     def Zone(self):
@@ -14082,7 +14145,7 @@ CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD�
 
     @property
     def InstanceType(self):
-        """购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读
+        """购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读，MultiHA-多节点，cvmMultiHA-云盘多节点
         :rtype: str
         """
         return self._InstanceType
@@ -14158,6 +14221,17 @@ CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD�
     def MachineType(self, MachineType):
         self._MachineType = MachineType
 
+    @property
+    def DrZones(self):
+        """备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+        :rtype: list of str
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -14170,6 +14244,7 @@ CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD�
         self._GoodsNum = params.get("GoodsNum")
         self._DBVersion = params.get("DBVersion")
         self._MachineType = params.get("MachineType")
+        self._DrZones = params.get("DrZones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23342,10 +23417,19 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
         :type Type: str
         :param _WaitSwitch: 操作设置。0-立即执行，1- 维护时间内执行，默认取值0。
         :type WaitSwitch: int
+        :param _IsKMS: 是否被KMS加密保护，0-表示否，1表示被KMS保护，默认取值0
+        :type IsKMS: int
+        :param _KeyId: IsKMS为1时必填
+        :type KeyId: str
+        :param _KeyRegion: IsKMS为1时必填
+        :type KeyRegion: str
         """
         self._InstanceId = None
         self._Type = None
         self._WaitSwitch = None
+        self._IsKMS = None
+        self._KeyId = None
+        self._KeyRegion = None
 
     @property
     def InstanceId(self):
@@ -23380,11 +23464,47 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
     def WaitSwitch(self, WaitSwitch):
         self._WaitSwitch = WaitSwitch
 
+    @property
+    def IsKMS(self):
+        """是否被KMS加密保护，0-表示否，1表示被KMS保护，默认取值0
+        :rtype: int
+        """
+        return self._IsKMS
+
+    @IsKMS.setter
+    def IsKMS(self, IsKMS):
+        self._IsKMS = IsKMS
+
+    @property
+    def KeyId(self):
+        """IsKMS为1时必填
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyRegion(self):
+        """IsKMS为1时必填
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Type = params.get("Type")
         self._WaitSwitch = params.get("WaitSwitch")
+        self._IsKMS = params.get("IsKMS")
+        self._KeyId = params.get("KeyId")
+        self._KeyRegion = params.get("KeyRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23725,14 +23845,17 @@ class ModifyDReadableRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 备机网络子网ID，不填默认和主实例保持一致
         :type SubnetId: str
-        :param _Vip: 指定的备机只读vip，不填自动分配
+        :param _Vip: 指定的备机只读vip，不填自动分配。多节点SingleReadOnly模式不支持指定vip。
         :type Vip: str
+        :param _ReadMode: 备机只读模式，多节点架构默认取值BalancedReadOnly。SingleReadOnly-每个备机各对应一个只读地址（多节点架构），BalancedReadOnly-所有备机共用一个只读地址。当实例是双节点架构时，固定取值SingleReadOnly。
+        :type ReadMode: str
         """
         self._InstanceId = None
         self._Type = None
         self._VpcId = None
         self._SubnetId = None
         self._Vip = None
+        self._ReadMode = None
 
     @property
     def InstanceId(self):
@@ -23780,7 +23903,7 @@ class ModifyDReadableRequest(AbstractModel):
 
     @property
     def Vip(self):
-        """指定的备机只读vip，不填自动分配
+        """指定的备机只读vip，不填自动分配。多节点SingleReadOnly模式不支持指定vip。
         :rtype: str
         """
         return self._Vip
@@ -23789,6 +23912,17 @@ class ModifyDReadableRequest(AbstractModel):
     def Vip(self, Vip):
         self._Vip = Vip
 
+    @property
+    def ReadMode(self):
+        """备机只读模式，多节点架构默认取值BalancedReadOnly。SingleReadOnly-每个备机各对应一个只读地址（多节点架构），BalancedReadOnly-所有备机共用一个只读地址。当实例是双节点架构时，固定取值SingleReadOnly。
+        :rtype: str
+        """
+        return self._ReadMode
+
+    @ReadMode.setter
+    def ReadMode(self, ReadMode):
+        self._ReadMode = ReadMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -23796,6 +23930,7 @@ class ModifyDReadableRequest(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._Vip = params.get("Vip")
+        self._ReadMode = params.get("ReadMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24587,14 +24722,20 @@ class ModifyInstanceEncryptAttributesRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _CertificateAttribution: 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认取值self。
+        :param _CertificateAttribution: 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，kms-表示使用kms的CMK证书，默认取值self。
         :type CertificateAttribution: str
         :param _QuoteUin: 引用的其他主账号ID，当CertificateAttribution 为others时必填。
         :type QuoteUin: str
+        :param _KeyId: CertificateAttribution为kms时必填
+        :type KeyId: str
+        :param _KeyRegion: CertificateAttribution为kms时必填
+        :type KeyRegion: str
         """
         self._InstanceId = None
         self._CertificateAttribution = None
         self._QuoteUin = None
+        self._KeyId = None
+        self._KeyRegion = None
 
     @property
     def InstanceId(self):
@@ -24609,7 +24750,7 @@ class ModifyInstanceEncryptAttributesRequest(AbstractModel):
 
     @property
     def CertificateAttribution(self):
-        """证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认取值self。
+        """证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，kms-表示使用kms的CMK证书，默认取值self。
         :rtype: str
         """
         return self._CertificateAttribution
@@ -24629,11 +24770,35 @@ class ModifyInstanceEncryptAttributesRequest(AbstractModel):
     def QuoteUin(self, QuoteUin):
         self._QuoteUin = QuoteUin
 
+    @property
+    def KeyId(self):
+        """CertificateAttribution为kms时必填
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyRegion(self):
+        """CertificateAttribution为kms时必填
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._CertificateAttribution = params.get("CertificateAttribution")
         self._QuoteUin = params.get("QuoteUin")
+        self._KeyId = params.get("KeyId")
+        self._KeyRegion = params.get("KeyRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28702,10 +28867,19 @@ wait_doing-等待维护时间内执行
         :param _SSLValidity: SSL证书有效性，0-无效，1-有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type SSLValidity: int
+        :param _IsKMS: 是否是KMS的CMK证书
+        :type IsKMS: int
+        :param _CMKId: KMS中购买的用户主密钥ID（CMK）
+        :type CMKId: str
+        :param _CMKRegion: CMK所属的地域，不同地域的CMK数据不互通
+        :type CMKRegion: str
         """
         self._Encryption = None
         self._SSLValidityPeriod = None
         self._SSLValidity = None
+        self._IsKMS = None
+        self._CMKId = None
+        self._CMKRegion = None
 
     @property
     def Encryption(self):
@@ -28749,11 +28923,47 @@ wait_doing-等待维护时间内执行
     def SSLValidity(self, SSLValidity):
         self._SSLValidity = SSLValidity
 
+    @property
+    def IsKMS(self):
+        """是否是KMS的CMK证书
+        :rtype: int
+        """
+        return self._IsKMS
+
+    @IsKMS.setter
+    def IsKMS(self, IsKMS):
+        self._IsKMS = IsKMS
+
+    @property
+    def CMKId(self):
+        """KMS中购买的用户主密钥ID（CMK）
+        :rtype: str
+        """
+        return self._CMKId
+
+    @CMKId.setter
+    def CMKId(self, CMKId):
+        self._CMKId = CMKId
+
+    @property
+    def CMKRegion(self):
+        """CMK所属的地域，不同地域的CMK数据不互通
+        :rtype: str
+        """
+        return self._CMKRegion
+
+    @CMKRegion.setter
+    def CMKRegion(self, CMKRegion):
+        self._CMKRegion = CMKRegion
+
 
     def _deserialize(self, params):
         self._Encryption = params.get("Encryption")
         self._SSLValidityPeriod = params.get("SSLValidityPeriod")
         self._SSLValidity = params.get("SSLValidity")
+        self._IsKMS = params.get("IsKMS")
+        self._CMKId = params.get("CMKId")
+        self._CMKRegion = params.get("CMKRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29405,7 +29615,8 @@ class SpecInfo(AbstractModel):
         :type PostPid: list of int
         :param _PayModeStatus: 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
         :type PayModeStatus: str
-        :param _InstanceType: 产品类型，HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-基础版本型
+        :param _InstanceType: 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
+示例值：HA
         :type InstanceType: str
         :param _MultiZonesStatus: 跨可用区类型，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有
         :type MultiZonesStatus: str
@@ -29584,7 +29795,8 @@ class SpecInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        """产品类型，HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-基础版本型
+        """购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
+示例值：HA
         :rtype: str
         """
         return self._InstanceType
@@ -29645,11 +29857,12 @@ class SpecSellStatus(AbstractModel):
         :type SpecId: int
         :param _PayModeStatus: 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
         :type PayModeStatus: str
-        :param _InstanceType: 产品类型
+        :param _InstanceType: 产品类型，购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
         :type InstanceType: str
         :param _MultiZonesStatus: 该规格支持的是否跨可用去，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有
         :type MultiZonesStatus: str
-        :param _Architecture: 架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点
+        :param _Architecture: 架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点 MULTI-多节点
+示例值：SINGLE
         :type Architecture: str
         :param _Style: 类型标识，EXCLUSIVE-独享型，SHARED-共享型
         :type Style: str
@@ -29709,7 +29922,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def InstanceType(self):
-        """产品类型
+        """产品类型，购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
         :rtype: str
         """
         return self._InstanceType
@@ -29731,7 +29944,8 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Architecture(self):
-        """架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点
+        """架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点 MULTI-多节点
+示例值：SINGLE
         :rtype: str
         """
         return self._Architecture
@@ -30781,10 +30995,16 @@ class TDEConfigAttribute(AbstractModel):
         :param _QuoteUin: 开通TDE加密时引用的其他主账号ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuoteUin: str
+        :param _CMKId: KMS中购买的用户主密钥ID（CMK）
+        :type CMKId: str
+        :param _CMKRegion: CMK所属的地域，不同地域的CMK不互通
+        :type CMKRegion: str
         """
         self._Encryption = None
         self._CertificateAttribution = None
         self._QuoteUin = None
+        self._CMKId = None
+        self._CMKRegion = None
 
     @property
     def Encryption(self):
@@ -30820,11 +31040,35 @@ class TDEConfigAttribute(AbstractModel):
     def QuoteUin(self, QuoteUin):
         self._QuoteUin = QuoteUin
 
+    @property
+    def CMKId(self):
+        """KMS中购买的用户主密钥ID（CMK）
+        :rtype: str
+        """
+        return self._CMKId
+
+    @CMKId.setter
+    def CMKId(self, CMKId):
+        self._CMKId = CMKId
+
+    @property
+    def CMKRegion(self):
+        """CMK所属的地域，不同地域的CMK不互通
+        :rtype: str
+        """
+        return self._CMKRegion
+
+    @CMKRegion.setter
+    def CMKRegion(self, CMKRegion):
+        self._CMKRegion = CMKRegion
+
 
     def _deserialize(self, params):
         self._Encryption = params.get("Encryption")
         self._CertificateAttribution = params.get("CertificateAttribution")
         self._QuoteUin = params.get("QuoteUin")
+        self._CMKId = params.get("CMKId")
+        self._CMKRegion = params.get("CMKRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

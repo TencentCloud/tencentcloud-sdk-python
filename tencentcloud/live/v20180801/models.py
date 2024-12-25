@@ -5262,7 +5262,6 @@ class CreateCasterPgmFromPvwResponse(AbstractModel):
 注：该地址仅供预览，不可分发。
         :type PgmPlayUrl: str
         :param _CdnPlayUrl: 注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdnPlayUrl: str
         :param _CdnStreamId: 主监任务在腾讯云直播侧的流ID。
         :type CdnStreamId: str
@@ -5295,7 +5294,6 @@ class CreateCasterPgmFromPvwResponse(AbstractModel):
     @property
     def CdnPlayUrl(self):
         """注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdnPlayUrl
@@ -5411,19 +5409,15 @@ class CreateCasterPgmResponse(AbstractModel):
         r"""
         :param _PgmPlayUrl: 主监任务的rtmp协议预览地址。
 注：该地址仅供预览，不可分发。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PgmPlayUrl: str
         :param _CdnPlayUrl: 注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdnPlayUrl: str
         :param _CdnStreamId: 主监任务在腾讯云直播侧的流ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdnStreamId: str
         :param _PgmWebRTCPlayUrl: 主监任务的webrtc协议播放地址。
 注：
 1. 该预览地址仅作为预览，不可分发。
 2. webrtc播放地址需配合腾讯云快直播播放sdk使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PgmWebRTCPlayUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5438,7 +5432,6 @@ class CreateCasterPgmResponse(AbstractModel):
     def PgmPlayUrl(self):
         """主监任务的rtmp协议预览地址。
 注：该地址仅供预览，不可分发。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PgmPlayUrl
@@ -5450,7 +5443,6 @@ class CreateCasterPgmResponse(AbstractModel):
     @property
     def CdnPlayUrl(self):
         """注：该字段已废弃，请结合腾讯云直播播放地址生成策略生成cdn播放地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdnPlayUrl
@@ -5462,7 +5454,6 @@ class CreateCasterPgmResponse(AbstractModel):
     @property
     def CdnStreamId(self):
         """主监任务在腾讯云直播侧的流ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdnStreamId
@@ -5477,7 +5468,6 @@ class CreateCasterPgmResponse(AbstractModel):
 注：
 1. 该预览地址仅作为预览，不可分发。
 2. webrtc播放地址需配合腾讯云快直播播放sdk使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PgmWebRTCPlayUrl
@@ -12794,7 +12784,6 @@ class DescribeBackupStreamListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StreamInfoList: 主备流分组信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamInfoList: list of BackupStreamGroupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12805,7 +12794,6 @@ class DescribeBackupStreamListResponse(AbstractModel):
     @property
     def StreamInfoList(self):
         """主备流分组信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupStreamGroupInfo
         """
         return self._StreamInfoList
@@ -16904,7 +16892,6 @@ class DescribeLivePadProcessorListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StreamNameList: 当前正在拉取垫片的流名称列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamNameList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16915,7 +16902,6 @@ class DescribeLivePadProcessorListResponse(AbstractModel):
     @property
     def StreamNameList(self):
         """当前正在拉取垫片的流名称列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._StreamNameList
@@ -20326,7 +20312,6 @@ class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DataInfoList: 统计数据列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataInfoList: list of TranscodeTotalInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20337,7 +20322,6 @@ class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
     @property
     def DataInfoList(self):
         """统计数据列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TranscodeTotalInfo
         """
         return self._DataInfoList
@@ -36350,7 +36334,6 @@ class StopLivePadProcessorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultMessage: 处理结果信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -36361,7 +36344,6 @@ class StopLivePadProcessorResponse(AbstractModel):
     @property
     def ResultMessage(self):
         """处理结果信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultMessage
