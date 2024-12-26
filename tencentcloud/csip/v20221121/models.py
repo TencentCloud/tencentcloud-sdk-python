@@ -2392,6 +2392,461 @@ class AssetBaseInfoResponse(AbstractModel):
         
 
 
+class AssetCluster(AbstractModel):
+    """集群列表
+
+    集群防护状态，左边枚举,右边为显示
+    集群防护状态
+    0:未接入
+    1:未防护
+    2:部分防护
+    3:防护中
+    4:接入异常
+    5:接入中
+    6:卸载中
+    7:卸载异常
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 租户id
+        :type AppId: int
+        :param _Uin: 租户uin
+        :type Uin: str
+        :param _Nick: 租户昵称
+        :type Nick: str
+        :param _Region: 地域
+        :type Region: str
+        :param _AssetId: 集群id
+        :type AssetId: str
+        :param _AssetName: 集群名称
+        :type AssetName: str
+        :param _AssetType: 集群类型
+        :type AssetType: str
+        :param _InstanceCreateTime: 集群创建时间
+        :type InstanceCreateTime: str
+        :param _Status: 状态
+        :type Status: str
+        :param _ProtectStatus: 集群防护状态，左边枚举,右边为显示
+集群防护状态 
+0:未接入
+1:未防护 
+2:部分防护 
+3:防护中 
+4:接入异常 
+5:接入中 
+6:卸载中 
+7:卸载异常
+        :type ProtectStatus: int
+        :param _ProtectInfo: 接入信息，不为空表示有接入异常信息
+        :type ProtectInfo: str
+        :param _VpcId: 私有网络id
+        :type VpcId: str
+        :param _VpcName: 私有网络名称
+        :type VpcName: str
+        :param _KubernetesVersion: kubernetes版本
+        :type KubernetesVersion: str
+        :param _Component: 运行时组件
+        :type Component: str
+        :param _ComponentVersion: 运行时组件版本
+        :type ComponentVersion: str
+        :param _ComponentStatus: 组件状态
+        :type ComponentStatus: str
+        :param _CheckTime: 体检时间
+        :type CheckTime: str
+        :param _MachineCount: 关联主机数
+        :type MachineCount: int
+        :param _PodCount: 关联pod数
+        :type PodCount: int
+        :param _ServiceCount: 关联service数
+        :type ServiceCount: int
+        :param _VulRisk: 漏洞风险
+        :type VulRisk: int
+        :param _CFGRisk: 配置风险
+        :type CFGRisk: int
+        :param _CheckCount: 体检数
+        :type CheckCount: int
+        :param _IsCore: 是否核心：1:核心，2:非核心
+        :type IsCore: int
+        :param _IsNewAsset: 是否新资产 1新
+        :type IsNewAsset: int
+        :param _CloudType: 云资产类型：0：腾讯云，1：aws，2：azure
+        :type CloudType: int
+        """
+        self._AppId = None
+        self._Uin = None
+        self._Nick = None
+        self._Region = None
+        self._AssetId = None
+        self._AssetName = None
+        self._AssetType = None
+        self._InstanceCreateTime = None
+        self._Status = None
+        self._ProtectStatus = None
+        self._ProtectInfo = None
+        self._VpcId = None
+        self._VpcName = None
+        self._KubernetesVersion = None
+        self._Component = None
+        self._ComponentVersion = None
+        self._ComponentStatus = None
+        self._CheckTime = None
+        self._MachineCount = None
+        self._PodCount = None
+        self._ServiceCount = None
+        self._VulRisk = None
+        self._CFGRisk = None
+        self._CheckCount = None
+        self._IsCore = None
+        self._IsNewAsset = None
+        self._CloudType = None
+
+    @property
+    def AppId(self):
+        """租户id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        """租户uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Nick(self):
+        """租户昵称
+        :rtype: str
+        """
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Region(self):
+        """地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AssetId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        """集群名称
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetType(self):
+        """集群类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def InstanceCreateTime(self):
+        """集群创建时间
+        :rtype: str
+        """
+        return self._InstanceCreateTime
+
+    @InstanceCreateTime.setter
+    def InstanceCreateTime(self, InstanceCreateTime):
+        self._InstanceCreateTime = InstanceCreateTime
+
+    @property
+    def Status(self):
+        """状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProtectStatus(self):
+        """集群防护状态，左边枚举,右边为显示
+集群防护状态 
+0:未接入
+1:未防护 
+2:部分防护 
+3:防护中 
+4:接入异常 
+5:接入中 
+6:卸载中 
+7:卸载异常
+        :rtype: int
+        """
+        return self._ProtectStatus
+
+    @ProtectStatus.setter
+    def ProtectStatus(self, ProtectStatus):
+        self._ProtectStatus = ProtectStatus
+
+    @property
+    def ProtectInfo(self):
+        """接入信息，不为空表示有接入异常信息
+        :rtype: str
+        """
+        return self._ProtectInfo
+
+    @ProtectInfo.setter
+    def ProtectInfo(self, ProtectInfo):
+        self._ProtectInfo = ProtectInfo
+
+    @property
+    def VpcId(self):
+        """私有网络id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        """私有网络名称
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def KubernetesVersion(self):
+        """kubernetes版本
+        :rtype: str
+        """
+        return self._KubernetesVersion
+
+    @KubernetesVersion.setter
+    def KubernetesVersion(self, KubernetesVersion):
+        self._KubernetesVersion = KubernetesVersion
+
+    @property
+    def Component(self):
+        """运行时组件
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def ComponentVersion(self):
+        """运行时组件版本
+        :rtype: str
+        """
+        return self._ComponentVersion
+
+    @ComponentVersion.setter
+    def ComponentVersion(self, ComponentVersion):
+        self._ComponentVersion = ComponentVersion
+
+    @property
+    def ComponentStatus(self):
+        """组件状态
+        :rtype: str
+        """
+        return self._ComponentStatus
+
+    @ComponentStatus.setter
+    def ComponentStatus(self, ComponentStatus):
+        self._ComponentStatus = ComponentStatus
+
+    @property
+    def CheckTime(self):
+        """体检时间
+        :rtype: str
+        """
+        return self._CheckTime
+
+    @CheckTime.setter
+    def CheckTime(self, CheckTime):
+        self._CheckTime = CheckTime
+
+    @property
+    def MachineCount(self):
+        """关联主机数
+        :rtype: int
+        """
+        return self._MachineCount
+
+    @MachineCount.setter
+    def MachineCount(self, MachineCount):
+        self._MachineCount = MachineCount
+
+    @property
+    def PodCount(self):
+        """关联pod数
+        :rtype: int
+        """
+        return self._PodCount
+
+    @PodCount.setter
+    def PodCount(self, PodCount):
+        self._PodCount = PodCount
+
+    @property
+    def ServiceCount(self):
+        """关联service数
+        :rtype: int
+        """
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def VulRisk(self):
+        """漏洞风险
+        :rtype: int
+        """
+        return self._VulRisk
+
+    @VulRisk.setter
+    def VulRisk(self, VulRisk):
+        self._VulRisk = VulRisk
+
+    @property
+    def CFGRisk(self):
+        """配置风险
+        :rtype: int
+        """
+        return self._CFGRisk
+
+    @CFGRisk.setter
+    def CFGRisk(self, CFGRisk):
+        self._CFGRisk = CFGRisk
+
+    @property
+    def CheckCount(self):
+        """体检数
+        :rtype: int
+        """
+        return self._CheckCount
+
+    @CheckCount.setter
+    def CheckCount(self, CheckCount):
+        self._CheckCount = CheckCount
+
+    @property
+    def IsCore(self):
+        """是否核心：1:核心，2:非核心
+        :rtype: int
+        """
+        return self._IsCore
+
+    @IsCore.setter
+    def IsCore(self, IsCore):
+        self._IsCore = IsCore
+
+    @property
+    def IsNewAsset(self):
+        """是否新资产 1新
+        :rtype: int
+        """
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
+    @property
+    def CloudType(self):
+        """云资产类型：0：腾讯云，1：aws，2：azure
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._Nick = params.get("Nick")
+        self._Region = params.get("Region")
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._AssetType = params.get("AssetType")
+        self._InstanceCreateTime = params.get("InstanceCreateTime")
+        self._Status = params.get("Status")
+        self._ProtectStatus = params.get("ProtectStatus")
+        self._ProtectInfo = params.get("ProtectInfo")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._KubernetesVersion = params.get("KubernetesVersion")
+        self._Component = params.get("Component")
+        self._ComponentVersion = params.get("ComponentVersion")
+        self._ComponentStatus = params.get("ComponentStatus")
+        self._CheckTime = params.get("CheckTime")
+        self._MachineCount = params.get("MachineCount")
+        self._PodCount = params.get("PodCount")
+        self._ServiceCount = params.get("ServiceCount")
+        self._VulRisk = params.get("VulRisk")
+        self._CFGRisk = params.get("CFGRisk")
+        self._CheckCount = params.get("CheckCount")
+        self._IsCore = params.get("IsCore")
+        self._IsNewAsset = params.get("IsNewAsset")
+        self._CloudType = params.get("CloudType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetClusterPod(AbstractModel):
     """集群pod列表
 
@@ -6724,6 +7179,74 @@ class ClbListenerListInfo(AbstractModel):
         
 
 
+class CloudCountDesc(AbstractModel):
+    """多云账户统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudType: 0表示腾讯云
+1表示AWS
+        :type CloudType: int
+        :param _CloudCount: 账户数量
+        :type CloudCount: int
+        :param _CloudDesc: 该云账号类型描述
+        :type CloudDesc: str
+        """
+        self._CloudType = None
+        self._CloudCount = None
+        self._CloudDesc = None
+
+    @property
+    def CloudType(self):
+        """0表示腾讯云
+1表示AWS
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def CloudCount(self):
+        """账户数量
+        :rtype: int
+        """
+        return self._CloudCount
+
+    @CloudCount.setter
+    def CloudCount(self, CloudCount):
+        self._CloudCount = CloudCount
+
+    @property
+    def CloudDesc(self):
+        """该云账号类型描述
+        :rtype: str
+        """
+        return self._CloudDesc
+
+    @CloudDesc.setter
+    def CloudDesc(self, CloudDesc):
+        self._CloudDesc = CloudDesc
+
+
+    def _deserialize(self, params):
+        self._CloudType = params.get("CloudType")
+        self._CloudCount = params.get("CloudCount")
+        self._CloudDesc = params.get("CloudDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDomainAndIpRequest(AbstractModel):
     """CreateDomainAndIp请求参数结构体
 
@@ -9220,6 +9743,262 @@ class DescribeCVMAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterAssetsRequest(AbstractModel):
+    """DescribeClusterAssets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        """过滤
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterAssetsResponse(AbstractModel):
+    """DescribeClusterAssets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 列表
+        :type Data: list of AssetCluster
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _ClusterTypeList: 集群类型枚举
+        :type ClusterTypeList: list of FilterDataObject
+        :param _ClusterStatusList: 集群状态枚举
+        :type ClusterStatusList: list of FilterDataObject
+        :param _ComponentStatusList: 组件状态枚举
+        :type ComponentStatusList: list of FilterDataObject
+        :param _VpcList: 私有网络枚举
+        :type VpcList: list of FilterDataObject
+        :param _RegionList: 地域枚举
+        :type RegionList: list of FilterDataObject
+        :param _AppIdList: 租户枚举
+        :type AppIdList: list of FilterDataObject
+        :param _ProtectStatusList: 集群防护状态枚举
+        :type ProtectStatusList: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._ClusterTypeList = None
+        self._ClusterStatusList = None
+        self._ComponentStatusList = None
+        self._VpcList = None
+        self._RegionList = None
+        self._AppIdList = None
+        self._ProtectStatusList = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """列表
+        :rtype: list of AssetCluster
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClusterTypeList(self):
+        """集群类型枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._ClusterTypeList
+
+    @ClusterTypeList.setter
+    def ClusterTypeList(self, ClusterTypeList):
+        self._ClusterTypeList = ClusterTypeList
+
+    @property
+    def ClusterStatusList(self):
+        """集群状态枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._ClusterStatusList
+
+    @ClusterStatusList.setter
+    def ClusterStatusList(self, ClusterStatusList):
+        self._ClusterStatusList = ClusterStatusList
+
+    @property
+    def ComponentStatusList(self):
+        """组件状态枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._ComponentStatusList
+
+    @ComponentStatusList.setter
+    def ComponentStatusList(self, ComponentStatusList):
+        self._ComponentStatusList = ComponentStatusList
+
+    @property
+    def VpcList(self):
+        """私有网络枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+    @property
+    def RegionList(self):
+        """地域枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._RegionList
+
+    @RegionList.setter
+    def RegionList(self, RegionList):
+        self._RegionList = RegionList
+
+    @property
+    def AppIdList(self):
+        """租户枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._AppIdList
+
+    @AppIdList.setter
+    def AppIdList(self, AppIdList):
+        self._AppIdList = AppIdList
+
+    @property
+    def ProtectStatusList(self):
+        """集群防护状态枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._ProtectStatusList
+
+    @ProtectStatusList.setter
+    def ProtectStatusList(self, ProtectStatusList):
+        self._ProtectStatusList = ProtectStatusList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AssetCluster()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ClusterTypeList") is not None:
+            self._ClusterTypeList = []
+            for item in params.get("ClusterTypeList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._ClusterTypeList.append(obj)
+        if params.get("ClusterStatusList") is not None:
+            self._ClusterStatusList = []
+            for item in params.get("ClusterStatusList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._ClusterStatusList.append(obj)
+        if params.get("ComponentStatusList") is not None:
+            self._ComponentStatusList = []
+            for item in params.get("ComponentStatusList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._ComponentStatusList.append(obj)
+        if params.get("VpcList") is not None:
+            self._VpcList = []
+            for item in params.get("VpcList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._VpcList.append(obj)
+        if params.get("RegionList") is not None:
+            self._RegionList = []
+            for item in params.get("RegionList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._RegionList.append(obj)
+        if params.get("AppIdList") is not None:
+            self._AppIdList = []
+            for item in params.get("AppIdList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._AppIdList.append(obj)
+        if params.get("ProtectStatusList") is not None:
+            self._ProtectStatusList = []
+            for item in params.get("ProtectStatusList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._ProtectStatusList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterPodAssetsRequest(AbstractModel):
     """DescribeClusterPodAssets请求参数结构体
 
@@ -10449,6 +11228,105 @@ class DescribeNICAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._AppIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationInfoRequest(AbstractModel):
+    """DescribeOrganizationInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationInfoResponse(AbstractModel):
+    """DescribeOrganizationInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Data: 集团用户列表
+        :type Data: list of OrganizationInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """集团用户列表
+        :rtype: list of OrganizationInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = OrganizationInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13035,6 +13913,162 @@ class DescribeSearchBugInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSubUserInfoRequest(AbstractModel):
+    """DescribeSubUserInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        """过滤内容
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubUserInfoResponse(AbstractModel):
+    """DescribeSubUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Data: 子用户列表
+        :type Data: list of SubUserInfo
+        :param _CloudTypeLst: 厂商枚举列表
+        :type CloudTypeLst: list of FilterDataObject
+        :param _OwnerAppIDLst: 所属主账号appid枚举
+        :type OwnerAppIDLst: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._CloudTypeLst = None
+        self._OwnerAppIDLst = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """子用户列表
+        :rtype: list of SubUserInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CloudTypeLst(self):
+        """厂商枚举列表
+        :rtype: list of FilterDataObject
+        """
+        return self._CloudTypeLst
+
+    @CloudTypeLst.setter
+    def CloudTypeLst(self, CloudTypeLst):
+        self._CloudTypeLst = CloudTypeLst
+
+    @property
+    def OwnerAppIDLst(self):
+        """所属主账号appid枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._OwnerAppIDLst
+
+    @OwnerAppIDLst.setter
+    def OwnerAppIDLst(self, OwnerAppIDLst):
+        self._OwnerAppIDLst = OwnerAppIDLst
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SubUserInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("CloudTypeLst") is not None:
+            self._CloudTypeLst = []
+            for item in params.get("CloudTypeLst"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._CloudTypeLst.append(obj)
+        if params.get("OwnerAppIDLst") is not None:
+            self._OwnerAppIDLst = []
+            for item in params.get("OwnerAppIDLst"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._OwnerAppIDLst.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSubnetAssetsRequest(AbstractModel):
     """DescribeSubnetAssets请求参数结构体
 
@@ -13612,6 +14646,142 @@ class DescribeTopAttackInfoResponse(AbstractModel):
                 obj = TagCount()
                 obj._deserialize(item)
                 self._TopAttackInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUebaRuleRequest(AbstractModel):
+    """DescribeUebaRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        """过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUebaRuleResponse(AbstractModel):
+    """DescribeUebaRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Data: 策略列表
+        :type Data: list of UebaRule
+        :param _AlterType: 自定义策略对应的告警类别枚举
+        :type AlterType: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._AlterType = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """策略列表
+        :rtype: list of UebaRule
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def AlterType(self):
+        """自定义策略对应的告警类别枚举
+        :rtype: list of FilterDataObject
+        """
+        return self._AlterType
+
+    @AlterType.setter
+    def AlterType(self, AlterType):
+        self._AlterType = AlterType
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = UebaRule()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("AlterType") is not None:
+            self._AlterType = []
+            for item in params.get("AlterType"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._AlterType.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -16795,6 +17965,130 @@ class ModifyRiskCenterScanTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUebaRuleSwitchRequest(AbstractModel):
+    """ModifyUebaRuleSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 策略ID
+        :type RuleID: str
+        :param _Status: 开关状态
+        :type Status: bool
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._RuleID = None
+        self._Status = None
+        self._MemberId = None
+
+    @property
+    def RuleID(self):
+        """策略ID
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def Status(self):
+        """开关状态
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUebaRuleSwitchResponse(AbstractModel):
+    """ModifyUebaRuleSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 0成功，1失败
+        :type Code: int
+        :param _Msg: 返回信息
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Code = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Code(self):
+        """0成功，1失败
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        """返回信息
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class NICAsset(AbstractModel):
     """网卡资产
 
@@ -17327,6 +18621,437 @@ class NewAlertKey(AbstractModel):
         self._Key = params.get("Key")
         self._Date = params.get("Date")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrganizationInfo(AbstractModel):
+    """集团账号详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NickName: 成员账号名称
+        :type NickName: str
+        :param _NodeName: 部门节点名称，账号所属部门
+        :type NodeName: str
+        :param _Role: Member/Admin/DelegatedAdmin/EntityAdmin; 成员/管理员/委派管理员/主体管理员
+        :type Role: str
+        :param _MemberId: 成员账号id
+        :type MemberId: str
+        :param _JoinType: 账号加入方式,create/invite
+        :type JoinType: str
+        :param _GroupName: 集团名称
+        :type GroupName: str
+        :param _AdminName: 管理员账号名称
+        :type AdminName: str
+        :param _AdminUin: 管理员Uin
+        :type AdminUin: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _NodeCount: 部门数
+        :type NodeCount: int
+        :param _MemberCount: 成员数
+        :type MemberCount: int
+        :param _SubAccountCount: 子账号数
+        :type SubAccountCount: int
+        :param _AbnormalSubUserCount: 异常子账号数量
+        :type AbnormalSubUserCount: int
+        :param _GroupPermission: 集团关系策略权限
+        :type GroupPermission: list of str
+        :param _MemberPermission: 成员关系策略权限
+        :type MemberPermission: list of str
+        :param _GroupPayMode: 集团付费模式；0/自付费，1/代付费
+        :type GroupPayMode: int
+        :param _MemberPayMode: 个人付费模式；0/自付费，1/代付费
+        :type MemberPayMode: int
+        :param _CFWProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :type CFWProtect: str
+        :param _WAFProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :type WAFProtect: str
+        :param _CWPProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :type CWPProtect: str
+        :param _Departments: 所有部门的集合数组
+        :type Departments: list of str
+        :param _MemberCreateTime: 成员创建时间
+        :type MemberCreateTime: str
+        :param _CSIPProtect: Advanced/Enterprise/Ultimate 
+        :type CSIPProtect: str
+        :param _QuotaConsumer: 1表示配额消耗方
+        :type QuotaConsumer: int
+        :param _EnableAdminCount: 管理员/委派管理员 已开启数量
+        :type EnableAdminCount: int
+        :param _CloudCountDesc: 账户多云信息统计，数组形式，具体参考CloudCountDesc描述
+        :type CloudCountDesc: list of CloudCountDesc
+        :param _AdminCount: 管理员/委派管理员 总数量
+        :type AdminCount: int
+        """
+        self._NickName = None
+        self._NodeName = None
+        self._Role = None
+        self._MemberId = None
+        self._JoinType = None
+        self._GroupName = None
+        self._AdminName = None
+        self._AdminUin = None
+        self._CreateTime = None
+        self._NodeCount = None
+        self._MemberCount = None
+        self._SubAccountCount = None
+        self._AbnormalSubUserCount = None
+        self._GroupPermission = None
+        self._MemberPermission = None
+        self._GroupPayMode = None
+        self._MemberPayMode = None
+        self._CFWProtect = None
+        self._WAFProtect = None
+        self._CWPProtect = None
+        self._Departments = None
+        self._MemberCreateTime = None
+        self._CSIPProtect = None
+        self._QuotaConsumer = None
+        self._EnableAdminCount = None
+        self._CloudCountDesc = None
+        self._AdminCount = None
+
+    @property
+    def NickName(self):
+        """成员账号名称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def NodeName(self):
+        """部门节点名称，账号所属部门
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Role(self):
+        """Member/Admin/DelegatedAdmin/EntityAdmin; 成员/管理员/委派管理员/主体管理员
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def MemberId(self):
+        """成员账号id
+        :rtype: str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def JoinType(self):
+        """账号加入方式,create/invite
+        :rtype: str
+        """
+        return self._JoinType
+
+    @JoinType.setter
+    def JoinType(self, JoinType):
+        self._JoinType = JoinType
+
+    @property
+    def GroupName(self):
+        """集团名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def AdminName(self):
+        """管理员账号名称
+        :rtype: str
+        """
+        return self._AdminName
+
+    @AdminName.setter
+    def AdminName(self, AdminName):
+        self._AdminName = AdminName
+
+    @property
+    def AdminUin(self):
+        """管理员Uin
+        :rtype: str
+        """
+        return self._AdminUin
+
+    @AdminUin.setter
+    def AdminUin(self, AdminUin):
+        self._AdminUin = AdminUin
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def NodeCount(self):
+        """部门数
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def MemberCount(self):
+        """成员数
+        :rtype: int
+        """
+        return self._MemberCount
+
+    @MemberCount.setter
+    def MemberCount(self, MemberCount):
+        self._MemberCount = MemberCount
+
+    @property
+    def SubAccountCount(self):
+        """子账号数
+        :rtype: int
+        """
+        return self._SubAccountCount
+
+    @SubAccountCount.setter
+    def SubAccountCount(self, SubAccountCount):
+        self._SubAccountCount = SubAccountCount
+
+    @property
+    def AbnormalSubUserCount(self):
+        """异常子账号数量
+        :rtype: int
+        """
+        return self._AbnormalSubUserCount
+
+    @AbnormalSubUserCount.setter
+    def AbnormalSubUserCount(self, AbnormalSubUserCount):
+        self._AbnormalSubUserCount = AbnormalSubUserCount
+
+    @property
+    def GroupPermission(self):
+        """集团关系策略权限
+        :rtype: list of str
+        """
+        return self._GroupPermission
+
+    @GroupPermission.setter
+    def GroupPermission(self, GroupPermission):
+        self._GroupPermission = GroupPermission
+
+    @property
+    def MemberPermission(self):
+        """成员关系策略权限
+        :rtype: list of str
+        """
+        return self._MemberPermission
+
+    @MemberPermission.setter
+    def MemberPermission(self, MemberPermission):
+        self._MemberPermission = MemberPermission
+
+    @property
+    def GroupPayMode(self):
+        """集团付费模式；0/自付费，1/代付费
+        :rtype: int
+        """
+        return self._GroupPayMode
+
+    @GroupPayMode.setter
+    def GroupPayMode(self, GroupPayMode):
+        self._GroupPayMode = GroupPayMode
+
+    @property
+    def MemberPayMode(self):
+        """个人付费模式；0/自付费，1/代付费
+        :rtype: int
+        """
+        return self._MemberPayMode
+
+    @MemberPayMode.setter
+    def MemberPayMode(self, MemberPayMode):
+        self._MemberPayMode = MemberPayMode
+
+    @property
+    def CFWProtect(self):
+        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :rtype: str
+        """
+        return self._CFWProtect
+
+    @CFWProtect.setter
+    def CFWProtect(self, CFWProtect):
+        self._CFWProtect = CFWProtect
+
+    @property
+    def WAFProtect(self):
+        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :rtype: str
+        """
+        return self._WAFProtect
+
+    @WAFProtect.setter
+    def WAFProtect(self, WAFProtect):
+        self._WAFProtect = WAFProtect
+
+    @property
+    def CWPProtect(self):
+        """空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :rtype: str
+        """
+        return self._CWPProtect
+
+    @CWPProtect.setter
+    def CWPProtect(self, CWPProtect):
+        self._CWPProtect = CWPProtect
+
+    @property
+    def Departments(self):
+        """所有部门的集合数组
+        :rtype: list of str
+        """
+        return self._Departments
+
+    @Departments.setter
+    def Departments(self, Departments):
+        self._Departments = Departments
+
+    @property
+    def MemberCreateTime(self):
+        """成员创建时间
+        :rtype: str
+        """
+        return self._MemberCreateTime
+
+    @MemberCreateTime.setter
+    def MemberCreateTime(self, MemberCreateTime):
+        self._MemberCreateTime = MemberCreateTime
+
+    @property
+    def CSIPProtect(self):
+        """Advanced/Enterprise/Ultimate 
+        :rtype: str
+        """
+        return self._CSIPProtect
+
+    @CSIPProtect.setter
+    def CSIPProtect(self, CSIPProtect):
+        self._CSIPProtect = CSIPProtect
+
+    @property
+    def QuotaConsumer(self):
+        """1表示配额消耗方
+        :rtype: int
+        """
+        return self._QuotaConsumer
+
+    @QuotaConsumer.setter
+    def QuotaConsumer(self, QuotaConsumer):
+        self._QuotaConsumer = QuotaConsumer
+
+    @property
+    def EnableAdminCount(self):
+        """管理员/委派管理员 已开启数量
+        :rtype: int
+        """
+        return self._EnableAdminCount
+
+    @EnableAdminCount.setter
+    def EnableAdminCount(self, EnableAdminCount):
+        self._EnableAdminCount = EnableAdminCount
+
+    @property
+    def CloudCountDesc(self):
+        """账户多云信息统计，数组形式，具体参考CloudCountDesc描述
+        :rtype: list of CloudCountDesc
+        """
+        return self._CloudCountDesc
+
+    @CloudCountDesc.setter
+    def CloudCountDesc(self, CloudCountDesc):
+        self._CloudCountDesc = CloudCountDesc
+
+    @property
+    def AdminCount(self):
+        """管理员/委派管理员 总数量
+        :rtype: int
+        """
+        return self._AdminCount
+
+    @AdminCount.setter
+    def AdminCount(self, AdminCount):
+        self._AdminCount = AdminCount
+
+
+    def _deserialize(self, params):
+        self._NickName = params.get("NickName")
+        self._NodeName = params.get("NodeName")
+        self._Role = params.get("Role")
+        self._MemberId = params.get("MemberId")
+        self._JoinType = params.get("JoinType")
+        self._GroupName = params.get("GroupName")
+        self._AdminName = params.get("AdminName")
+        self._AdminUin = params.get("AdminUin")
+        self._CreateTime = params.get("CreateTime")
+        self._NodeCount = params.get("NodeCount")
+        self._MemberCount = params.get("MemberCount")
+        self._SubAccountCount = params.get("SubAccountCount")
+        self._AbnormalSubUserCount = params.get("AbnormalSubUserCount")
+        self._GroupPermission = params.get("GroupPermission")
+        self._MemberPermission = params.get("MemberPermission")
+        self._GroupPayMode = params.get("GroupPayMode")
+        self._MemberPayMode = params.get("MemberPayMode")
+        self._CFWProtect = params.get("CFWProtect")
+        self._WAFProtect = params.get("WAFProtect")
+        self._CWPProtect = params.get("CWPProtect")
+        self._Departments = params.get("Departments")
+        self._MemberCreateTime = params.get("MemberCreateTime")
+        self._CSIPProtect = params.get("CSIPProtect")
+        self._QuotaConsumer = params.get("QuotaConsumer")
+        self._EnableAdminCount = params.get("EnableAdminCount")
+        if params.get("CloudCountDesc") is not None:
+            self._CloudCountDesc = []
+            for item in params.get("CloudCountDesc"):
+                obj = CloudCountDesc()
+                obj._deserialize(item)
+                self._CloudCountDesc.append(obj)
+        self._AdminCount = params.get("AdminCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20183,6 +21908,67 @@ class ServiceSupport(AbstractModel):
         
 
 
+class StatisticalFilter(AbstractModel):
+    """用户行为分析 统计条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperatorType: 0:不基于统计检测
+1:发生次数高于固定值
+2:发生次数高于周期平均值的百分之
+3:发生次数高于用户平均值的百分之
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorType: int
+        :param _Value: 统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        """
+        self._OperatorType = None
+        self._Value = None
+
+    @property
+    def OperatorType(self):
+        """0:不基于统计检测
+1:发生次数高于固定值
+2:发生次数高于周期平均值的百分之
+3:发生次数高于用户平均值的百分之
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OperatorType
+
+    @OperatorType.setter
+    def OperatorType(self, OperatorType):
+        self._OperatorType = OperatorType
+
+    @property
+    def Value(self):
+        """统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._OperatorType = params.get("OperatorType")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StopRiskCenterTaskRequest(AbstractModel):
     """StopRiskCenterTask请求参数结构体
 
@@ -20280,6 +22066,299 @@ class StopRiskCenterTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
+
+
+class SubUserInfo(AbstractModel):
+    """子账号详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 主键ID，无业务意义
+仅作为唯一键
+        :type ID: int
+        :param _AppID: 子账号Appid
+        :type AppID: str
+        :param _Uin: 子账号UIn
+        :type Uin: str
+        :param _NickName: 子账号名称
+        :type NickName: str
+        :param _OwnerAppID: 主账号Appid
+        :type OwnerAppID: str
+        :param _OwnerUin: 主账号Uin
+        :type OwnerUin: str
+        :param _OwnerNickName: 主账号名称
+        :type OwnerNickName: str
+        :param _OwnerMemberID: 所属主账号memberid
+        :type OwnerMemberID: str
+        :param _CloudType: 账户类型，0为腾讯云账户，1为AWS账户
+        :type CloudType: int
+        :param _ServiceCount: 可访问服务数量
+        :type ServiceCount: int
+        :param _InterfaceCount: 可访问接口数量
+        :type InterfaceCount: int
+        :param _AssetCount: 可访问资源数量
+        :type AssetCount: int
+        :param _LogCount: 访问/行为日志数量
+        :type LogCount: int
+        :param _ConfigRiskCount: 权限配置风险
+        :type ConfigRiskCount: int
+        :param _ActionRiskCount: 危险行为告警
+        :type ActionRiskCount: int
+        :param _IsAccessCloudAudit: 是否接入云审计日志
+        :type IsAccessCloudAudit: bool
+        :param _IsAccessCheck: 是否配置风险的安全体检
+        :type IsAccessCheck: bool
+        :param _IsAccessUeba: 是否配置用户行为管理策略
+        :type IsAccessUeba: bool
+        """
+        self._ID = None
+        self._AppID = None
+        self._Uin = None
+        self._NickName = None
+        self._OwnerAppID = None
+        self._OwnerUin = None
+        self._OwnerNickName = None
+        self._OwnerMemberID = None
+        self._CloudType = None
+        self._ServiceCount = None
+        self._InterfaceCount = None
+        self._AssetCount = None
+        self._LogCount = None
+        self._ConfigRiskCount = None
+        self._ActionRiskCount = None
+        self._IsAccessCloudAudit = None
+        self._IsAccessCheck = None
+        self._IsAccessUeba = None
+
+    @property
+    def ID(self):
+        """主键ID，无业务意义
+仅作为唯一键
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def AppID(self):
+        """子账号Appid
+        :rtype: str
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Uin(self):
+        """子账号UIn
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def NickName(self):
+        """子账号名称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def OwnerAppID(self):
+        """主账号Appid
+        :rtype: str
+        """
+        return self._OwnerAppID
+
+    @OwnerAppID.setter
+    def OwnerAppID(self, OwnerAppID):
+        self._OwnerAppID = OwnerAppID
+
+    @property
+    def OwnerUin(self):
+        """主账号Uin
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OwnerNickName(self):
+        """主账号名称
+        :rtype: str
+        """
+        return self._OwnerNickName
+
+    @OwnerNickName.setter
+    def OwnerNickName(self, OwnerNickName):
+        self._OwnerNickName = OwnerNickName
+
+    @property
+    def OwnerMemberID(self):
+        """所属主账号memberid
+        :rtype: str
+        """
+        return self._OwnerMemberID
+
+    @OwnerMemberID.setter
+    def OwnerMemberID(self, OwnerMemberID):
+        self._OwnerMemberID = OwnerMemberID
+
+    @property
+    def CloudType(self):
+        """账户类型，0为腾讯云账户，1为AWS账户
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def ServiceCount(self):
+        """可访问服务数量
+        :rtype: int
+        """
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def InterfaceCount(self):
+        """可访问接口数量
+        :rtype: int
+        """
+        return self._InterfaceCount
+
+    @InterfaceCount.setter
+    def InterfaceCount(self, InterfaceCount):
+        self._InterfaceCount = InterfaceCount
+
+    @property
+    def AssetCount(self):
+        """可访问资源数量
+        :rtype: int
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def LogCount(self):
+        """访问/行为日志数量
+        :rtype: int
+        """
+        return self._LogCount
+
+    @LogCount.setter
+    def LogCount(self, LogCount):
+        self._LogCount = LogCount
+
+    @property
+    def ConfigRiskCount(self):
+        """权限配置风险
+        :rtype: int
+        """
+        return self._ConfigRiskCount
+
+    @ConfigRiskCount.setter
+    def ConfigRiskCount(self, ConfigRiskCount):
+        self._ConfigRiskCount = ConfigRiskCount
+
+    @property
+    def ActionRiskCount(self):
+        """危险行为告警
+        :rtype: int
+        """
+        return self._ActionRiskCount
+
+    @ActionRiskCount.setter
+    def ActionRiskCount(self, ActionRiskCount):
+        self._ActionRiskCount = ActionRiskCount
+
+    @property
+    def IsAccessCloudAudit(self):
+        """是否接入云审计日志
+        :rtype: bool
+        """
+        return self._IsAccessCloudAudit
+
+    @IsAccessCloudAudit.setter
+    def IsAccessCloudAudit(self, IsAccessCloudAudit):
+        self._IsAccessCloudAudit = IsAccessCloudAudit
+
+    @property
+    def IsAccessCheck(self):
+        """是否配置风险的安全体检
+        :rtype: bool
+        """
+        return self._IsAccessCheck
+
+    @IsAccessCheck.setter
+    def IsAccessCheck(self, IsAccessCheck):
+        self._IsAccessCheck = IsAccessCheck
+
+    @property
+    def IsAccessUeba(self):
+        """是否配置用户行为管理策略
+        :rtype: bool
+        """
+        return self._IsAccessUeba
+
+    @IsAccessUeba.setter
+    def IsAccessUeba(self, IsAccessUeba):
+        self._IsAccessUeba = IsAccessUeba
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._AppID = params.get("AppID")
+        self._Uin = params.get("Uin")
+        self._NickName = params.get("NickName")
+        self._OwnerAppID = params.get("OwnerAppID")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OwnerNickName = params.get("OwnerNickName")
+        self._OwnerMemberID = params.get("OwnerMemberID")
+        self._CloudType = params.get("CloudType")
+        self._ServiceCount = params.get("ServiceCount")
+        self._InterfaceCount = params.get("InterfaceCount")
+        self._AssetCount = params.get("AssetCount")
+        self._LogCount = params.get("LogCount")
+        self._ConfigRiskCount = params.get("ConfigRiskCount")
+        self._ActionRiskCount = params.get("ActionRiskCount")
+        self._IsAccessCloudAudit = params.get("IsAccessCloudAudit")
+        self._IsAccessCheck = params.get("IsAccessCheck")
+        self._IsAccessUeba = params.get("IsAccessUeba")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubnetAsset(AbstractModel):
@@ -21464,6 +23543,572 @@ class TaskLogURL(AbstractModel):
         self._LogId = params.get("LogId")
         self._TaskLogName = params.get("TaskLogName")
         self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UebaCustomRule(AbstractModel):
+    """用户行为分析  自定义策略结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 策略名称
+        :type RuleName: str
+        :param _UserType: 1: 云账号
+2: 自定义用户
+        :type UserType: int
+        :param _TimeInterval: 发生时间
+1：10分钟
+2：1小时
+3：一天
+4：一周
+5：一个月
+        :type TimeInterval: int
+        :param _EventContent: 发生事件
+        :type EventContent: :class:`tencentcloud.csip.v20221121.models.UebaEventContent`
+        :param _AlertName: 告警名称
+        :type AlertName: str
+        :param _AlterLevel: 告警类型
+0:  提示
+1:  低危
+2:  中危
+3:  高危
+4:  严重
+        :type AlterLevel: int
+        :param _Operator: 操作者
+        :type Operator: list of str
+        :param _OperateObject: 操作对象
+        :type OperateObject: list of str
+        :param _OperateMethod: 操作方式
+        :type OperateMethod: list of str
+        :param _LogType: 日志类型
+        :type LogType: str
+        :param _LogTypeStr: 日志中文名
+        :type LogTypeStr: str
+        """
+        self._RuleName = None
+        self._UserType = None
+        self._TimeInterval = None
+        self._EventContent = None
+        self._AlertName = None
+        self._AlterLevel = None
+        self._Operator = None
+        self._OperateObject = None
+        self._OperateMethod = None
+        self._LogType = None
+        self._LogTypeStr = None
+
+    @property
+    def RuleName(self):
+        """策略名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def UserType(self):
+        """1: 云账号
+2: 自定义用户
+        :rtype: int
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def TimeInterval(self):
+        """发生时间
+1：10分钟
+2：1小时
+3：一天
+4：一周
+5：一个月
+        :rtype: int
+        """
+        return self._TimeInterval
+
+    @TimeInterval.setter
+    def TimeInterval(self, TimeInterval):
+        self._TimeInterval = TimeInterval
+
+    @property
+    def EventContent(self):
+        """发生事件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.UebaEventContent`
+        """
+        return self._EventContent
+
+    @EventContent.setter
+    def EventContent(self, EventContent):
+        self._EventContent = EventContent
+
+    @property
+    def AlertName(self):
+        """告警名称
+        :rtype: str
+        """
+        return self._AlertName
+
+    @AlertName.setter
+    def AlertName(self, AlertName):
+        self._AlertName = AlertName
+
+    @property
+    def AlterLevel(self):
+        """告警类型
+0:  提示
+1:  低危
+2:  中危
+3:  高危
+4:  严重
+        :rtype: int
+        """
+        return self._AlterLevel
+
+    @AlterLevel.setter
+    def AlterLevel(self, AlterLevel):
+        self._AlterLevel = AlterLevel
+
+    @property
+    def Operator(self):
+        """操作者
+        :rtype: list of str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OperateObject(self):
+        """操作对象
+        :rtype: list of str
+        """
+        return self._OperateObject
+
+    @OperateObject.setter
+    def OperateObject(self, OperateObject):
+        self._OperateObject = OperateObject
+
+    @property
+    def OperateMethod(self):
+        """操作方式
+        :rtype: list of str
+        """
+        return self._OperateMethod
+
+    @OperateMethod.setter
+    def OperateMethod(self, OperateMethod):
+        self._OperateMethod = OperateMethod
+
+    @property
+    def LogType(self):
+        """日志类型
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def LogTypeStr(self):
+        """日志中文名
+        :rtype: str
+        """
+        return self._LogTypeStr
+
+    @LogTypeStr.setter
+    def LogTypeStr(self, LogTypeStr):
+        self._LogTypeStr = LogTypeStr
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._UserType = params.get("UserType")
+        self._TimeInterval = params.get("TimeInterval")
+        if params.get("EventContent") is not None:
+            self._EventContent = UebaEventContent()
+            self._EventContent._deserialize(params.get("EventContent"))
+        self._AlertName = params.get("AlertName")
+        self._AlterLevel = params.get("AlterLevel")
+        self._Operator = params.get("Operator")
+        self._OperateObject = params.get("OperateObject")
+        self._OperateMethod = params.get("OperateMethod")
+        self._LogType = params.get("LogType")
+        self._LogTypeStr = params.get("LogTypeStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UebaEventContent(AbstractModel):
+    """用户行为分析 发生事件结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventType: 发生事件类型
+1:语句检索
+2:过滤检索
+        :type EventType: int
+        :param _Content: 语句检索内容
+        :type Content: str
+        :param _Filters: 检索条件
+
+        :type Filters: list of WhereFilter
+        :param _StatisticalFilter: 统计条件
+        :type StatisticalFilter: :class:`tencentcloud.csip.v20221121.models.StatisticalFilter`
+        """
+        self._EventType = None
+        self._Content = None
+        self._Filters = None
+        self._StatisticalFilter = None
+
+    @property
+    def EventType(self):
+        """发生事件类型
+1:语句检索
+2:过滤检索
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def Content(self):
+        """语句检索内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Filters(self):
+        """检索条件
+
+        :rtype: list of WhereFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StatisticalFilter(self):
+        """统计条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.StatisticalFilter`
+        """
+        return self._StatisticalFilter
+
+    @StatisticalFilter.setter
+    def StatisticalFilter(self, StatisticalFilter):
+        self._StatisticalFilter = StatisticalFilter
+
+
+    def _deserialize(self, params):
+        self._EventType = params.get("EventType")
+        self._Content = params.get("Content")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = WhereFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("StatisticalFilter") is not None:
+            self._StatisticalFilter = StatisticalFilter()
+            self._StatisticalFilter._deserialize(params.get("StatisticalFilter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UebaRule(AbstractModel):
+    """用户行为分析策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 策略id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleID: str
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _RuleType: 策略类型
+0:系统策略
+1:自定义策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: int
+        :param _RuleLevel: 策略等级
+0:提示
+1:低危
+2:中危
+3:高危
+4:严重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleLevel: int
+        :param _RuleContent: 策略内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleContent: str
+        :param _RuleStatus: 策略开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleStatus: bool
+        :param _HitCount: 命中次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitCount: int
+        :param _AppID: 所属账号Appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppID: str
+        :param _MemberID: 多账号，成员ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberID: str
+        :param _Uin: Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _Nickname: 昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nickname: str
+        :param _CustomRuleDetail: 自定义规则具体内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRuleDetail: :class:`tencentcloud.csip.v20221121.models.UebaCustomRule`
+        :param _CloudType: 云类型
+腾讯云：0
+aws：1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: int
+        """
+        self._RuleID = None
+        self._RuleName = None
+        self._RuleType = None
+        self._RuleLevel = None
+        self._RuleContent = None
+        self._RuleStatus = None
+        self._HitCount = None
+        self._AppID = None
+        self._MemberID = None
+        self._Uin = None
+        self._Nickname = None
+        self._CustomRuleDetail = None
+        self._CloudType = None
+
+    @property
+    def RuleID(self):
+        """策略id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleName(self):
+        """规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleType(self):
+        """策略类型
+0:系统策略
+1:自定义策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RuleLevel(self):
+        """策略等级
+0:提示
+1:低危
+2:中危
+3:高危
+4:严重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleLevel
+
+    @RuleLevel.setter
+    def RuleLevel(self, RuleLevel):
+        self._RuleLevel = RuleLevel
+
+    @property
+    def RuleContent(self):
+        """策略内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleContent
+
+    @RuleContent.setter
+    def RuleContent(self, RuleContent):
+        self._RuleContent = RuleContent
+
+    @property
+    def RuleStatus(self):
+        """策略开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._RuleStatus
+
+    @RuleStatus.setter
+    def RuleStatus(self, RuleStatus):
+        self._RuleStatus = RuleStatus
+
+    @property
+    def HitCount(self):
+        """命中次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HitCount
+
+    @HitCount.setter
+    def HitCount(self, HitCount):
+        self._HitCount = HitCount
+
+    @property
+    def AppID(self):
+        """所属账号Appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def MemberID(self):
+        """多账号，成员ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MemberID
+
+    @MemberID.setter
+    def MemberID(self, MemberID):
+        self._MemberID = MemberID
+
+    @property
+    def Uin(self):
+        """Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Nickname(self):
+        """昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def CustomRuleDetail(self):
+        """自定义规则具体内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.UebaCustomRule`
+        """
+        return self._CustomRuleDetail
+
+    @CustomRuleDetail.setter
+    def CustomRuleDetail(self, CustomRuleDetail):
+        self._CustomRuleDetail = CustomRuleDetail
+
+    @property
+    def CloudType(self):
+        """云类型
+腾讯云：0
+aws：1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._RuleName = params.get("RuleName")
+        self._RuleType = params.get("RuleType")
+        self._RuleLevel = params.get("RuleLevel")
+        self._RuleContent = params.get("RuleContent")
+        self._RuleStatus = params.get("RuleStatus")
+        self._HitCount = params.get("HitCount")
+        self._AppID = params.get("AppID")
+        self._MemberID = params.get("MemberID")
+        self._Uin = params.get("Uin")
+        self._Nickname = params.get("Nickname")
+        if params.get("CustomRuleDetail") is not None:
+            self._CustomRuleDetail = UebaCustomRule()
+            self._CustomRuleDetail._deserialize(params.get("CustomRuleDetail"))
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

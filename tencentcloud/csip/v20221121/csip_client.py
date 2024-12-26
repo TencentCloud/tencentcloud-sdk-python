@@ -256,6 +256,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterAssets(self, request):
+        """集群列表
+
+        :param request: Request instance for DescribeClusterAssets.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeClusterAssetsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeClusterAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterPodAssets(self, request):
         """集群pod列表
 
@@ -408,6 +431,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeNICAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNICAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOrganizationInfo(self, request):
+        """查询集团账号详情
+
+        :param request: Request instance for DescribeOrganizationInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeOrganizationInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeOrganizationInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -716,6 +762,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSubUserInfo(self, request):
+        """查询集团的子账号列表
+
+        :param request: Request instance for DescribeSubUserInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSubUserInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSubUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubUserInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubUserInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSubnetAssets(self, request):
         """获取子网列表
 
@@ -799,6 +868,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeTopAttackInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTopAttackInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUebaRule(self, request):
+        """查询用户行为分析策略列表
+
+        :param request: Request instance for DescribeUebaRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeUebaRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeUebaRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUebaRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUebaRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -960,6 +1052,29 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyRiskCenterScanTask", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRiskCenterScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUebaRuleSwitch(self, request):
+        """更新自定义策略的开关
+
+        :param request: Request instance for ModifyUebaRuleSwitch.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyUebaRuleSwitchRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyUebaRuleSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUebaRuleSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUebaRuleSwitchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
