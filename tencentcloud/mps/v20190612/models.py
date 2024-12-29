@@ -51076,6 +51076,14 @@ class SegmentRecognitionItem(AbstractModel):
         :param _EndTime: 直播切片对应直播结束时间点，采用 ISO 日期格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
+        :param _AudioUrl: 直播拆条用，音频url。
+        :type AudioUrl: str
+        :param _AudioBeginTime: 直播拆条用，音频对应起始时间戳；
+        :type AudioBeginTime: float
+        :param _AudioEndTime: 直播拆条用，音频对应结束时间戳。
+        :type AudioEndTime: float
+        :param _PersonPositionUrl: 直播拆条用，人物位置参考信息用于横转竖。
+        :type PersonPositionUrl: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
@@ -51087,6 +51095,10 @@ class SegmentRecognitionItem(AbstractModel):
         self._Keywords = None
         self._BeginTime = None
         self._EndTime = None
+        self._AudioUrl = None
+        self._AudioBeginTime = None
+        self._AudioEndTime = None
+        self._PersonPositionUrl = None
 
     @property
     def Confidence(self):
@@ -51204,6 +51216,50 @@ class SegmentRecognitionItem(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def AudioUrl(self):
+        """直播拆条用，音频url。
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def AudioBeginTime(self):
+        """直播拆条用，音频对应起始时间戳；
+        :rtype: float
+        """
+        return self._AudioBeginTime
+
+    @AudioBeginTime.setter
+    def AudioBeginTime(self, AudioBeginTime):
+        self._AudioBeginTime = AudioBeginTime
+
+    @property
+    def AudioEndTime(self):
+        """直播拆条用，音频对应结束时间戳。
+        :rtype: float
+        """
+        return self._AudioEndTime
+
+    @AudioEndTime.setter
+    def AudioEndTime(self, AudioEndTime):
+        self._AudioEndTime = AudioEndTime
+
+    @property
+    def PersonPositionUrl(self):
+        """直播拆条用，人物位置参考信息用于横转竖。
+        :rtype: str
+        """
+        return self._PersonPositionUrl
+
+    @PersonPositionUrl.setter
+    def PersonPositionUrl(self, PersonPositionUrl):
+        self._PersonPositionUrl = PersonPositionUrl
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -51216,6 +51272,10 @@ class SegmentRecognitionItem(AbstractModel):
         self._Keywords = params.get("Keywords")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
+        self._AudioUrl = params.get("AudioUrl")
+        self._AudioBeginTime = params.get("AudioBeginTime")
+        self._AudioEndTime = params.get("AudioEndTime")
+        self._PersonPositionUrl = params.get("PersonPositionUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

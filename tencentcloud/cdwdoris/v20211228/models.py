@@ -4528,12 +4528,15 @@ class DescribeClusterConfigsResponse(AbstractModel):
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
+        :param _HasCN: 是否包含CN节点
+        :type HasCN: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClusterConfList = None
         self._BuildVersion = None
         self._ErrorMsg = None
+        self._HasCN = None
         self._RequestId = None
 
     @property
@@ -4571,6 +4574,17 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._ErrorMsg = ErrorMsg
 
     @property
+    def HasCN(self):
+        """是否包含CN节点
+        :rtype: bool
+        """
+        return self._HasCN
+
+    @HasCN.setter
+    def HasCN(self, HasCN):
+        self._HasCN = HasCN
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4591,6 +4605,7 @@ class DescribeClusterConfigsResponse(AbstractModel):
                 self._ClusterConfList.append(obj)
         self._BuildVersion = params.get("BuildVersion")
         self._ErrorMsg = params.get("ErrorMsg")
+        self._HasCN = params.get("HasCN")
         self._RequestId = params.get("RequestId")
 
 
@@ -8801,6 +8816,11 @@ Modify 集群变更中；
         :param _AccountType: 账户类型 0:普通用户 1:CAM用户
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountType: int
+        :param _MonitorMode: 监控模式 0: 老监控 1：新监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorMode: int
+        :param _CNSummary: cn节点信息
+        :type CNSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -8852,6 +8872,8 @@ Modify 集群变更中；
         self._Details = None
         self._EnableDlc = None
         self._AccountType = None
+        self._MonitorMode = None
+        self._CNSummary = None
 
     @property
     def InstanceId(self):
@@ -9464,6 +9486,29 @@ Modify 集群变更中；
     def AccountType(self, AccountType):
         self._AccountType = AccountType
 
+    @property
+    def MonitorMode(self):
+        """监控模式 0: 老监控 1：新监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorMode
+
+    @MonitorMode.setter
+    def MonitorMode(self, MonitorMode):
+        self._MonitorMode = MonitorMode
+
+    @property
+    def CNSummary(self):
+        """cn节点信息
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
+        """
+        return self._CNSummary
+
+    @CNSummary.setter
+    def CNSummary(self, CNSummary):
+        self._CNSummary = CNSummary
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9527,6 +9572,10 @@ Modify 集群变更中；
             self._Details._deserialize(params.get("Details"))
         self._EnableDlc = params.get("EnableDlc")
         self._AccountType = params.get("AccountType")
+        self._MonitorMode = params.get("MonitorMode")
+        if params.get("CNSummary") is not None:
+            self._CNSummary = NodesSummary()
+            self._CNSummary._deserialize(params.get("CNSummary"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9573,6 +9622,8 @@ class InstanceNode(AbstractModel):
         :param _Zone: 可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
         """
         self._Ip = None
         self._Spec = None
@@ -9586,6 +9637,7 @@ class InstanceNode(AbstractModel):
         self._FeRole = None
         self._UUID = None
         self._Zone = None
+        self._CreateTime = None
 
     @property
     def Ip(self):
@@ -9724,6 +9776,17 @@ class InstanceNode(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
@@ -9738,6 +9801,7 @@ class InstanceNode(AbstractModel):
         self._FeRole = params.get("FeRole")
         self._UUID = params.get("UUID")
         self._Zone = params.get("Zone")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

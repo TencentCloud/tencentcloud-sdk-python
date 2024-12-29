@@ -5692,7 +5692,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID，根据任务ID查询绑定云资源结果
+        :param _TaskId: 任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果
         :type TaskId: str
         :param _Limit: 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
         :type Limit: str
@@ -5711,7 +5711,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID，根据任务ID查询绑定云资源结果
+        """任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果
         :rtype: str
         """
         return self._TaskId
@@ -10431,7 +10431,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 每页数量，默认10。	
         :type Limit: int
-        :param _AsyncCache: 是否异步
+        :param _AsyncCache: 是否异步，1表示是，0表示否，默认为0
         :type AsyncCache: int
         """
         self._CertificateId = None
@@ -10522,7 +10522,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """是否异步
+        """是否异步，1表示是，0表示否，默认为0
         :rtype: int
         """
         return self._AsyncCache
@@ -10563,7 +10563,7 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: teo实例列表
+        :param _InstanceList: teo实例列表，如取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of TeoInstanceDetail
         :param _TotalCount: 总数
@@ -10577,7 +10577,7 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """teo实例列表
+        """teo实例列表，如取不到值返回空数组
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TeoInstanceDetail
         """

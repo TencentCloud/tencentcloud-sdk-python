@@ -256,6 +256,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAreaBanRule(self, request):
+        """添加（编辑）地域封禁中的地域信息
+
+        :param request: Request instance for CreateAreaBanRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateAreaBanRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateAreaBanRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAreaBanRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAreaBanRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDeals(self, request):
         """计费资源购买、续费下单接口
 
@@ -845,6 +868,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeAreaBanAreas", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAreaBanAreasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAreaBanRule(self, request):
+        """获取地域封禁规则配置
+
+        :param request: Request instance for DescribeAreaBanRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAreaBanRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAreaBanRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2418,6 +2464,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAreaBanRule(self, request):
+        """添加（编辑）地域封禁中的地域信息
+
+        :param request: Request instance for ModifyAreaBanRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAreaBanRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAreaBanRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAreaBanStatus(self, request):
         """修改防护域名的地域封禁状态
 
@@ -2949,7 +3018,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyProtectionStatus(self, request):
-        """获取基础安全防护（WAF开关）状态
+        """开启、关闭WAF开关
 
         :param request: Request instance for ModifyProtectionStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyProtectionStatusRequest`

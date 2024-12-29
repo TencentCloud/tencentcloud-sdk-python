@@ -15050,6 +15050,8 @@ class DescribeGovernanceNamespacesRequest(AbstractModel):
         :type InstanceId: str
         :param _Name: 根据命名空间名称过滤。
         :type Name: str
+        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心	
+        :type SyncToGlobalRegistry: str
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。
@@ -15057,6 +15059,7 @@ class DescribeGovernanceNamespacesRequest(AbstractModel):
         """
         self._InstanceId = None
         self._Name = None
+        self._SyncToGlobalRegistry = None
         self._Offset = None
         self._Limit = None
 
@@ -15081,6 +15084,17 @@ class DescribeGovernanceNamespacesRequest(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def SyncToGlobalRegistry(self):
+        """是否开启同步到全局注册中心	
+        :rtype: str
+        """
+        return self._SyncToGlobalRegistry
+
+    @SyncToGlobalRegistry.setter
+    def SyncToGlobalRegistry(self, SyncToGlobalRegistry):
+        self._SyncToGlobalRegistry = SyncToGlobalRegistry
 
     @property
     def Offset(self):
@@ -15108,6 +15122,7 @@ class DescribeGovernanceNamespacesRequest(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Name = params.get("Name")
+        self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -15560,6 +15575,8 @@ class DescribeGovernanceServicesRequest(AbstractModel):
         :type Host: str
         :param _OnlyExistHealthyInstance: 是否只查询存在健康实例的服务
         :type OnlyExistHealthyInstance: bool
+        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心	
+        :type SyncToGlobalRegistry: str
         """
         self._Name = None
         self._Namespace = None
@@ -15571,6 +15588,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
         self._Business = None
         self._Host = None
         self._OnlyExistHealthyInstance = None
+        self._SyncToGlobalRegistry = None
 
     @property
     def Name(self):
@@ -15682,6 +15700,17 @@ class DescribeGovernanceServicesRequest(AbstractModel):
     def OnlyExistHealthyInstance(self, OnlyExistHealthyInstance):
         self._OnlyExistHealthyInstance = OnlyExistHealthyInstance
 
+    @property
+    def SyncToGlobalRegistry(self):
+        """是否开启同步到全局注册中心	
+        :rtype: str
+        """
+        return self._SyncToGlobalRegistry
+
+    @SyncToGlobalRegistry.setter
+    def SyncToGlobalRegistry(self, SyncToGlobalRegistry):
+        self._SyncToGlobalRegistry = SyncToGlobalRegistry
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -15699,6 +15728,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
         self._Business = params.get("Business")
         self._Host = params.get("Host")
         self._OnlyExistHealthyInstance = params.get("OnlyExistHealthyInstance")
+        self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20116,6 +20146,9 @@ class GovernanceNamespace(AbstractModel):
         :param _RemoveGroupIds: 移除可以操作此命名空间的用户组ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoveGroupIds: list of str
+        :param _ServiceExportTo: 该命名空间下的服务对哪些命名空间可见
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceExportTo: list of str
         """
         self._Name = None
         self._Comment = None
@@ -20130,6 +20163,7 @@ class GovernanceNamespace(AbstractModel):
         self._GroupIds = None
         self._RemoveUserIds = None
         self._RemoveGroupIds = None
+        self._ServiceExportTo = None
 
     @property
     def Name(self):
@@ -20287,6 +20321,18 @@ class GovernanceNamespace(AbstractModel):
     def RemoveGroupIds(self, RemoveGroupIds):
         self._RemoveGroupIds = RemoveGroupIds
 
+    @property
+    def ServiceExportTo(self):
+        """该命名空间下的服务对哪些命名空间可见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ServiceExportTo
+
+    @ServiceExportTo.setter
+    def ServiceExportTo(self, ServiceExportTo):
+        self._ServiceExportTo = ServiceExportTo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20302,6 +20348,7 @@ class GovernanceNamespace(AbstractModel):
         self._GroupIds = params.get("GroupIds")
         self._RemoveUserIds = params.get("RemoveUserIds")
         self._RemoveGroupIds = params.get("RemoveGroupIds")
+        self._ServiceExportTo = params.get("ServiceExportTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20331,6 +20378,11 @@ class GovernanceNamespaceInput(AbstractModel):
         :type RemoveUserIds: list of str
         :param _RemoveGroupIds: 移除可以操作此命名空间的用户组ID列表
         :type RemoveGroupIds: list of str
+        :param _ServiceExportTo: 该命名空间下的服务对哪些命名空间下可见，
+1、为空或者不填写，表示仅当前命名空间可见
+2、列表内容仅一个元素，且为字符 *，表示所有命名空间可见（包括新增）
+3、列表内容为部份命名空间名称，则只对这些命名空间下可见
+        :type ServiceExportTo: list of str
         """
         self._Name = None
         self._Comment = None
@@ -20338,6 +20390,7 @@ class GovernanceNamespaceInput(AbstractModel):
         self._GroupIds = None
         self._RemoveUserIds = None
         self._RemoveGroupIds = None
+        self._ServiceExportTo = None
 
     @property
     def Name(self):
@@ -20405,6 +20458,20 @@ class GovernanceNamespaceInput(AbstractModel):
     def RemoveGroupIds(self, RemoveGroupIds):
         self._RemoveGroupIds = RemoveGroupIds
 
+    @property
+    def ServiceExportTo(self):
+        """该命名空间下的服务对哪些命名空间下可见，
+1、为空或者不填写，表示仅当前命名空间可见
+2、列表内容仅一个元素，且为字符 *，表示所有命名空间可见（包括新增）
+3、列表内容为部份命名空间名称，则只对这些命名空间下可见
+        :rtype: list of str
+        """
+        return self._ServiceExportTo
+
+    @ServiceExportTo.setter
+    def ServiceExportTo(self, ServiceExportTo):
+        self._ServiceExportTo = ServiceExportTo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20413,6 +20480,7 @@ class GovernanceNamespaceInput(AbstractModel):
         self._GroupIds = params.get("GroupIds")
         self._RemoveUserIds = params.get("RemoveUserIds")
         self._RemoveGroupIds = params.get("RemoveGroupIds")
+        self._ServiceExportTo = params.get("ServiceExportTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

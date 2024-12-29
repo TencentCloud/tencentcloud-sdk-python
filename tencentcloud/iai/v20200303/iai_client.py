@@ -407,6 +407,34 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DetectFaceSimilarity(self, request):
+        """对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
+
+        若您需要判断 “此人是否是某人”，即验证某张图片中的人是否是已知身份的某人，如常见的人脸登录场景，建议使用[人脸验证](https://www.tencentcloud.com/document/product/1059/36972)或[人员验证](https://www.tencentcloud.com/document/product/1059/36971)接口。
+
+        >
+        - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+
+        :param request: Request instance for DetectFaceSimilarity.
+        :type request: :class:`tencentcloud.iai.v20200303.models.DetectFaceSimilarityRequest`
+        :rtype: :class:`tencentcloud.iai.v20200303.models.DetectFaceSimilarityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetectFaceSimilarity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetectFaceSimilarityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DetectLiveFace(self, request):
         """用于对用户上传的静态图片进行人脸活体检测。与动态活体检测的区别是：静态活体检测中，用户不需要通过唇语或摇头眨眼等动作来识别。
 

@@ -34070,6 +34070,16 @@ class VatElectronicInfo(AbstractModel):
         :type VatElectronicItems: list of VatElectronicItemInfo
         :param _ServiceTypeLabel: 业务类型标志
         :type ServiceTypeLabel: str
+        :param _TotalCnMark: 价税合计(大写)前符号
+        :type TotalCnMark: str
+        :param _TotalMark: 价税合计(小写)前字样
+        :type TotalMark: str
+        :param _PretaxAmountMark: 合计金额前字样
+        :type PretaxAmountMark: str
+        :param _TaxMark: 合计税额前字样
+        :type TaxMark: str
+        :param _CompanySealMark: 是否有公司印章（0：没有，1：有）
+        :type CompanySealMark: int
         """
         self._Title = None
         self._Number = None
@@ -34088,6 +34098,11 @@ class VatElectronicInfo(AbstractModel):
         self._SubTax = None
         self._VatElectronicItems = None
         self._ServiceTypeLabel = None
+        self._TotalCnMark = None
+        self._TotalMark = None
+        self._PretaxAmountMark = None
+        self._TaxMark = None
+        self._CompanySealMark = None
 
     @property
     def Title(self):
@@ -34276,6 +34291,61 @@ class VatElectronicInfo(AbstractModel):
     def ServiceTypeLabel(self, ServiceTypeLabel):
         self._ServiceTypeLabel = ServiceTypeLabel
 
+    @property
+    def TotalCnMark(self):
+        """价税合计(大写)前符号
+        :rtype: str
+        """
+        return self._TotalCnMark
+
+    @TotalCnMark.setter
+    def TotalCnMark(self, TotalCnMark):
+        self._TotalCnMark = TotalCnMark
+
+    @property
+    def TotalMark(self):
+        """价税合计(小写)前字样
+        :rtype: str
+        """
+        return self._TotalMark
+
+    @TotalMark.setter
+    def TotalMark(self, TotalMark):
+        self._TotalMark = TotalMark
+
+    @property
+    def PretaxAmountMark(self):
+        """合计金额前字样
+        :rtype: str
+        """
+        return self._PretaxAmountMark
+
+    @PretaxAmountMark.setter
+    def PretaxAmountMark(self, PretaxAmountMark):
+        self._PretaxAmountMark = PretaxAmountMark
+
+    @property
+    def TaxMark(self):
+        """合计税额前字样
+        :rtype: str
+        """
+        return self._TaxMark
+
+    @TaxMark.setter
+    def TaxMark(self, TaxMark):
+        self._TaxMark = TaxMark
+
+    @property
+    def CompanySealMark(self):
+        """是否有公司印章（0：没有，1：有）
+        :rtype: int
+        """
+        return self._CompanySealMark
+
+    @CompanySealMark.setter
+    def CompanySealMark(self, CompanySealMark):
+        self._CompanySealMark = CompanySealMark
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -34300,6 +34370,11 @@ class VatElectronicInfo(AbstractModel):
                 obj._deserialize(item)
                 self._VatElectronicItems.append(obj)
         self._ServiceTypeLabel = params.get("ServiceTypeLabel")
+        self._TotalCnMark = params.get("TotalCnMark")
+        self._TotalMark = params.get("TotalMark")
+        self._PretaxAmountMark = params.get("PretaxAmountMark")
+        self._TaxMark = params.get("TaxMark")
+        self._CompanySealMark = params.get("CompanySealMark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

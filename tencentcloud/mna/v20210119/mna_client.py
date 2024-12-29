@@ -165,7 +165,9 @@ class MnaClient(AbstractClient):
 
 
     def CreateQos(self, request):
-        """移动网络发起Qos加速过程
+        """产品下线
+
+        移动网络发起Qos加速过程
 
         :param request: Request instance for CreateQos.
         :type request: :class:`tencentcloud.mna.v20210119.models.CreateQosRequest`
@@ -257,7 +259,9 @@ class MnaClient(AbstractClient):
 
 
     def DeleteQos(self, request):
-        """移动网络停止Qos加速过程
+        """产品下线
+
+        移动网络停止Qos加速过程
 
         :param request: Request instance for DeleteQos.
         :type request: :class:`tencentcloud.mna.v20210119.models.DeleteQosRequest`
@@ -280,7 +284,9 @@ class MnaClient(AbstractClient):
 
 
     def DescribeQos(self, request):
-        """获取Qos加速状态
+        """产品下线
+
+        获取Qos加速状态
 
         :param request: Request instance for DescribeQos.
         :type request: :class:`tencentcloud.mna.v20210119.models.DescribeQosRequest`

@@ -28,24 +28,18 @@ class Ability(AbstractModel):
         :param _IsSupportSlaveZone: 是否支持从可用区
         :type IsSupportSlaveZone: str
         :param _NonsupportSlaveZoneReason: 不支持从可用区的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type NonsupportSlaveZoneReason: str
         :param _IsSupportRo: 是否支持RO实例
         :type IsSupportRo: str
         :param _NonsupportRoReason: 不支持RO实例的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type NonsupportRoReason: str
         :param _IsSupportManualSnapshot: 是否支持手动发起快照备份
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportManualSnapshot: str
         :param _IsSupportTransparentDataEncryption: 是否支持透明数据加密
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportTransparentDataEncryption: str
         :param _NoSupportTransparentDataEncryptionReason: 不支持透明数据加密原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoSupportTransparentDataEncryptionReason: str
         :param _IsSupportManualLogic: 是否支持手动发起逻辑备份
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportManualLogic: str
         """
         self._IsSupportSlaveZone = None
@@ -71,7 +65,6 @@ class Ability(AbstractModel):
     @property
     def NonsupportSlaveZoneReason(self):
         """不支持从可用区的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NonsupportSlaveZoneReason
@@ -94,7 +87,6 @@ class Ability(AbstractModel):
     @property
     def NonsupportRoReason(self):
         """不支持RO实例的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NonsupportRoReason
@@ -106,7 +98,6 @@ class Ability(AbstractModel):
     @property
     def IsSupportManualSnapshot(self):
         """是否支持手动发起快照备份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsSupportManualSnapshot
@@ -118,7 +109,6 @@ class Ability(AbstractModel):
     @property
     def IsSupportTransparentDataEncryption(self):
         """是否支持透明数据加密
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsSupportTransparentDataEncryption
@@ -130,7 +120,6 @@ class Ability(AbstractModel):
     @property
     def NoSupportTransparentDataEncryptionReason(self):
         """不支持透明数据加密原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NoSupportTransparentDataEncryptionReason
@@ -142,7 +131,6 @@ class Ability(AbstractModel):
     @property
     def IsSupportManualLogic(self):
         """是否支持手动发起逻辑备份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsSupportManualLogic
@@ -1256,7 +1244,7 @@ class AuditLog(AbstractModel):
         :param _LockWaitTime: 锁等待时间，微秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LockWaitTime: int
-        :param _TrxLivingTime: 事物持续等待时间，微秒。
+        :param _TrxLivingTime: 事务持续等待时间，微秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrxLivingTime: int
         :param _NsTime: 开始时间，与timestamp构成一个精确到纳秒的时间。
@@ -1496,7 +1484,7 @@ class AuditLog(AbstractModel):
 
     @property
     def TrxLivingTime(self):
-        """事物持续等待时间，微秒。
+        """事务持续等待时间，微秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1598,13 +1586,10 @@ class AuditLogFile(AbstractModel):
 "success" - 已生成;
         :type Status: str
         :param _FileSize: 文件大小，单位为 KB。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
         :param _DownloadUrl: 审计日志下载地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _ErrMsg: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         """
         self._FileName = None
@@ -1653,7 +1638,6 @@ class AuditLogFile(AbstractModel):
     @property
     def FileSize(self):
         """文件大小，单位为 KB。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileSize
@@ -1665,7 +1649,6 @@ class AuditLogFile(AbstractModel):
     @property
     def DownloadUrl(self):
         """审计日志下载地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -1677,7 +1660,6 @@ class AuditLogFile(AbstractModel):
     @property
     def ErrMsg(self):
         """错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrMsg
@@ -9263,13 +9245,10 @@ class CynosdbErrorLogItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Timestamp: 日志时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
         :param _Level: 日志等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _Content: 日志内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         """
         self._Timestamp = None
@@ -9279,7 +9258,6 @@ class CynosdbErrorLogItem(AbstractModel):
     @property
     def Timestamp(self):
         """日志时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timestamp
@@ -9291,7 +9269,6 @@ class CynosdbErrorLogItem(AbstractModel):
     @property
     def Level(self):
         """日志等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -9303,7 +9280,6 @@ class CynosdbErrorLogItem(AbstractModel):
     @property
     def Content(self):
         """日志内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -10318,7 +10294,6 @@ pause
         :param _MaxCpu: serverless实例cpu上限
         :type MaxCpu: float
         :param _DbMode: Db类型:<li>NORMAL</li><li>SERVERLESS</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
         """
         self._Uin = None
@@ -10736,7 +10711,6 @@ pause
     @property
     def DbMode(self):
         """Db类型:<li>NORMAL</li><li>SERVERLESS</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbMode
@@ -10811,7 +10785,7 @@ class CynosdbInstanceGroup(AbstractModel):
         :type InstanceGroupId: str
         :param _Status: 状态
         :type Status: str
-        :param _Type: 实例组类型。ha-ha组；ro-只读组
+        :param _Type: 实例组（网络）类型。ha-ha组；ro-只读组；proxy-代理；singleRo-只读实例独占
         :type Type: str
         :param _UpdatedTime: 更新时间
         :type UpdatedTime: str
@@ -10935,7 +10909,7 @@ class CynosdbInstanceGroup(AbstractModel):
 
     @property
     def Type(self):
-        """实例组类型。ha-ha组；ro-只读组
+        """实例组（网络）类型。ha-ha组；ro-只读组；proxy-代理；singleRo-只读实例独占
         :rtype: str
         """
         return self._Type
@@ -13353,7 +13327,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
         :param _StartTime: 开始时间，格式为："2017-07-12 10:29:20"。
         :type StartTime: str
@@ -13371,6 +13345,7 @@ class DescribeAuditLogsRequest(AbstractModel):
         :param _Limit: 分页参数，单次返回的数据条数。默认值为100，最大值为100。
         :type Limit: int
         :param _Offset: 分页偏移量。
+说明：Limit 和 Offset 的取值之和需小于等于65536。
         :type Offset: int
         :param _LogFilter: 过滤条件。多个值之前是且的关系。
         :type LogFilter: list of InstanceAuditLogFilter
@@ -13387,7 +13362,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -13468,6 +13443,7 @@ class DescribeAuditLogsRequest(AbstractModel):
     @property
     def Offset(self):
         """分页偏移量。
+说明：Limit 和 Offset 的取值之和需小于等于65536。
         :rtype: int
         """
         return self._Offset

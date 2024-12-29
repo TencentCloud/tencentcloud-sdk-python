@@ -27,7 +27,7 @@ class ApmClient(AbstractClient):
 
 
     def CreateApmInstance(self, request):
-        """业务购买APM实例，调用该接口创建
+        """业务购买 APM 业务系统，调用该接口创建
 
         :param request: Request instance for CreateApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.CreateApmInstanceRequest`
@@ -50,7 +50,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmAgent(self, request):
-        """获取APM Agent信息
+        """获取 APM Agent信息
 
         :param request: Request instance for DescribeApmAgent.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmAgentRequest`
@@ -189,7 +189,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeServiceOverview(self, request):
-        """服务概览数据拉取
+        """应用概览数据拉取
 
         :param request: Request instance for DescribeServiceOverview.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeServiceOverviewRequest`
@@ -235,7 +235,7 @@ class ApmClient(AbstractClient):
 
 
     def ModifyApmInstance(self, request):
-        """修改APM实例接口
+        """修改APM业务系统接口
 
         :param request: Request instance for ModifyApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmInstanceRequest`
@@ -281,7 +281,7 @@ class ApmClient(AbstractClient):
 
 
     def TerminateApmInstance(self, request):
-        """apm销毁实例
+        """销毁 APM 业务系统
 
         :param request: Request instance for TerminateApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.TerminateApmInstanceRequest`

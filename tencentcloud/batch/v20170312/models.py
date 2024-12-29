@@ -7718,7 +7718,7 @@ class LocalDiskType(AbstractModel):
         :type MinSize: int
         :param _MaxSize: 本地磁盘最大值。
         :type MaxSize: int
-        :param _Required: 购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选<br><li>OPTIONAL：表示可选。
+        :param _Required: 购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选</li><li>OPTIONAL：表示可选。</li>
         :type Required: str
         """
         self._Type = None
@@ -7773,7 +7773,7 @@ class LocalDiskType(AbstractModel):
 
     @property
     def Required(self):
-        """购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选<br><li>OPTIONAL：表示可选。
+        """购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选</li><li>OPTIONAL：表示可选。</li>
         :rtype: str
         """
         return self._Required

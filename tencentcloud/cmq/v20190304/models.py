@@ -2890,38 +2890,18 @@ class Subscription(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubscriptionName: str
-        :param _SubscriptionId: 订阅 ID。订阅 ID 在拉取监控数据时会用到。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubscriptionId: str
-        :param _TopicOwner: 订阅拥有者的 APPID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TopicOwner: int
         :param _MsgCount: 该订阅待投递的消息数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MsgCount: int
-        :param _LastModifyTime: 最后一次修改订阅属性的时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifyTime: int
-        :param _CreateTime: 订阅的创建时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: int
         :param _BindingKey: 表示订阅接收消息的过滤策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindingKey: list of str
         :param _Endpoint: 接收通知的 endpoint，根据协议 protocol 区分：对于 HTTP，endpoint 必须以http://开头，host 可以是域名或 IP；对于 queue，则填 queueName。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Endpoint: str
-        :param _FilterTags: 描述用户创建订阅时选择的过滤策略：
-filterType = 1表示用户使用 filterTag 标签过滤
-filterType = 2表示用户使用 bindingKey 过滤。
+        :param _TopicOwner: 订阅拥有者的 APPID。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type FilterTags: list of str
-        :param _Protocol: 订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Protocol: str
+        :type TopicOwner: int
         :param _NotifyStrategy: 向 endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值有：
 （1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息；
 （2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始 1s，后面是 2s，4s，8s...由于 Topic 消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是 EXPONENTIAL_DECAY_RETRY。
@@ -2930,55 +2910,39 @@ filterType = 2表示用户使用 bindingKey 过滤。
         :param _NotifyContentFormat: 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 protocol 是 queue，则取值必须为 SIMPLIFIED。如果 protocol 是 HTTP，两个值均可以，默认值是 JSON。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotifyContentFormat: str
+        :param _LastModifyTime: 最后一次修改订阅属性的时间。返回 Unix 时间戳，精确到秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTime: int
+        :param _FilterTags: 描述用户创建订阅时选择的过滤策略：
+filterType = 1表示用户使用 filterTag 标签过滤
+filterType = 2表示用户使用 bindingKey 过滤。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterTags: list of str
+        :param _SubscriptionName: 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionName: str
+        :param _Protocol: 订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param _SubscriptionId: 订阅 ID。订阅 ID 在拉取监控数据时会用到。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionId: str
+        :param _CreateTime: 订阅的创建时间。返回 Unix 时间戳，精确到秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
-        self._SubscriptionName = None
-        self._SubscriptionId = None
-        self._TopicOwner = None
         self._MsgCount = None
-        self._LastModifyTime = None
-        self._CreateTime = None
         self._BindingKey = None
         self._Endpoint = None
-        self._FilterTags = None
-        self._Protocol = None
+        self._TopicOwner = None
         self._NotifyStrategy = None
         self._NotifyContentFormat = None
-
-    @property
-    def SubscriptionName(self):
-        """订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._SubscriptionName
-
-    @SubscriptionName.setter
-    def SubscriptionName(self, SubscriptionName):
-        self._SubscriptionName = SubscriptionName
-
-    @property
-    def SubscriptionId(self):
-        """订阅 ID。订阅 ID 在拉取监控数据时会用到。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._SubscriptionId
-
-    @SubscriptionId.setter
-    def SubscriptionId(self, SubscriptionId):
-        self._SubscriptionId = SubscriptionId
-
-    @property
-    def TopicOwner(self):
-        """订阅拥有者的 APPID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._TopicOwner
-
-    @TopicOwner.setter
-    def TopicOwner(self, TopicOwner):
-        self._TopicOwner = TopicOwner
+        self._LastModifyTime = None
+        self._FilterTags = None
+        self._SubscriptionName = None
+        self._Protocol = None
+        self._SubscriptionId = None
+        self._CreateTime = None
 
     @property
     def MsgCount(self):
@@ -2991,30 +2955,6 @@ filterType = 2表示用户使用 bindingKey 过滤。
     @MsgCount.setter
     def MsgCount(self, MsgCount):
         self._MsgCount = MsgCount
-
-    @property
-    def LastModifyTime(self):
-        """最后一次修改订阅属性的时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._LastModifyTime
-
-    @LastModifyTime.setter
-    def LastModifyTime(self, LastModifyTime):
-        self._LastModifyTime = LastModifyTime
-
-    @property
-    def CreateTime(self):
-        """订阅的创建时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
 
     @property
     def BindingKey(self):
@@ -3041,30 +2981,16 @@ filterType = 2表示用户使用 bindingKey 过滤。
         self._Endpoint = Endpoint
 
     @property
-    def FilterTags(self):
-        """描述用户创建订阅时选择的过滤策略：
-filterType = 1表示用户使用 filterTag 标签过滤
-filterType = 2表示用户使用 bindingKey 过滤。
+    def TopicOwner(self):
+        """订阅拥有者的 APPID。
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of str
+        :rtype: int
         """
-        return self._FilterTags
+        return self._TopicOwner
 
-    @FilterTags.setter
-    def FilterTags(self, FilterTags):
-        self._FilterTags = FilterTags
-
-    @property
-    def Protocol(self):
-        """订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Protocol
-
-    @Protocol.setter
-    def Protocol(self, Protocol):
-        self._Protocol = Protocol
+    @TopicOwner.setter
+    def TopicOwner(self, TopicOwner):
+        self._TopicOwner = TopicOwner
 
     @property
     def NotifyStrategy(self):
@@ -3092,20 +3018,94 @@ filterType = 2表示用户使用 bindingKey 过滤。
     def NotifyContentFormat(self, NotifyContentFormat):
         self._NotifyContentFormat = NotifyContentFormat
 
+    @property
+    def LastModifyTime(self):
+        """最后一次修改订阅属性的时间。返回 Unix 时间戳，精确到秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastModifyTime
+
+    @LastModifyTime.setter
+    def LastModifyTime(self, LastModifyTime):
+        self._LastModifyTime = LastModifyTime
+
+    @property
+    def FilterTags(self):
+        """描述用户创建订阅时选择的过滤策略：
+filterType = 1表示用户使用 filterTag 标签过滤
+filterType = 2表示用户使用 bindingKey 过滤。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._FilterTags
+
+    @FilterTags.setter
+    def FilterTags(self, FilterTags):
+        self._FilterTags = FilterTags
+
+    @property
+    def SubscriptionName(self):
+        """订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubscriptionName
+
+    @SubscriptionName.setter
+    def SubscriptionName(self, SubscriptionName):
+        self._SubscriptionName = SubscriptionName
+
+    @property
+    def Protocol(self):
+        """订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def SubscriptionId(self):
+        """订阅 ID。订阅 ID 在拉取监控数据时会用到。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubscriptionId
+
+    @SubscriptionId.setter
+    def SubscriptionId(self, SubscriptionId):
+        self._SubscriptionId = SubscriptionId
+
+    @property
+    def CreateTime(self):
+        """订阅的创建时间。返回 Unix 时间戳，精确到秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
-        self._SubscriptionName = params.get("SubscriptionName")
-        self._SubscriptionId = params.get("SubscriptionId")
-        self._TopicOwner = params.get("TopicOwner")
         self._MsgCount = params.get("MsgCount")
-        self._LastModifyTime = params.get("LastModifyTime")
-        self._CreateTime = params.get("CreateTime")
         self._BindingKey = params.get("BindingKey")
         self._Endpoint = params.get("Endpoint")
-        self._FilterTags = params.get("FilterTags")
-        self._Protocol = params.get("Protocol")
+        self._TopicOwner = params.get("TopicOwner")
         self._NotifyStrategy = params.get("NotifyStrategy")
         self._NotifyContentFormat = params.get("NotifyContentFormat")
+        self._LastModifyTime = params.get("LastModifyTime")
+        self._FilterTags = params.get("FilterTags")
+        self._SubscriptionName = params.get("SubscriptionName")
+        self._Protocol = params.get("Protocol")
+        self._SubscriptionId = params.get("SubscriptionId")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -49,6 +49,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddNodeResourceConfig(self, request):
+        """增加当前集群的节点规格配置
+
+        :param request: Request instance for AddNodeResourceConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.AddNodeResourceConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AddNodeResourceConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddNodeResourceConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddNodeResourceConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddUsersForUserManager(self, request):
         """该接口支持安装了OpenLdap组件的集群。
         新增用户列表（用户管理）。
@@ -64,6 +87,29 @@ class EmrClient(AbstractClient):
             body = self.call("AddUsersForUserManager", params, headers=headers)
             response = json.loads(body)
             model = models.AddUsersForUserManagerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AttachDisks(self, request):
+        """云盘挂载
+
+        :param request: Request instance for AttachDisks.
+        :type request: :class:`tencentcloud.emr.v20190103.models.AttachDisksRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AttachDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachDisksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -181,6 +227,29 @@ class EmrClient(AbstractClient):
             body = self.call("DeleteAutoScaleStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAutoScaleStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteNodeResourceConfig(self, request):
+        """删除当前集群的节点规格配置
+
+        :param request: Request instance for DeleteNodeResourceConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DeleteNodeResourceConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DeleteNodeResourceConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNodeResourceConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteNodeResourceConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -673,6 +742,52 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNodeDataDisks(self, request):
+        """查询节点数据盘信息
+
+        :param request: Request instance for DescribeNodeDataDisks.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeNodeDataDisksRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeNodeDataDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodeDataDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodeDataDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNodeResourceConfigFast(self, request):
+        """快速获取当前集群的节点规格配置
+
+        :param request: Request instance for DescribeNodeResourceConfigFast.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeNodeResourceConfigFastRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeNodeResourceConfigFastResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodeResourceConfigFast", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodeResourceConfigFastResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceSchedule(self, request):
         """查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
 
@@ -1135,6 +1250,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceBasic(self, request):
+        """修改集群名称
+
+        :param request: Request instance for ModifyInstanceBasic.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyInstanceBasicRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyInstanceBasicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceBasic", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceBasicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyPodNum(self, request):
         """调整Pod数量
 
@@ -1149,6 +1287,29 @@ class EmrClient(AbstractClient):
             body = self.call("ModifyPodNum", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPodNumResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyResource(self, request):
+        """变配实例
+
+        :param request: Request instance for ModifyResource.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1367,6 +1528,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResizeDataDisks(self, request):
+        """云盘扩容
+
+        :param request: Request instance for ResizeDataDisks.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ResizeDataDisksRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ResizeDataDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResizeDataDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResizeDataDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunJobFlow(self, request):
         """创建流程作业
 
@@ -1427,6 +1611,29 @@ class EmrClient(AbstractClient):
             body = self.call("ScaleOutInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ScaleOutInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetNodeResourceConfigDefault(self, request):
+        """设置当前集群的某个节点规格配置为默认或取消默认
+
+        :param request: Request instance for SetNodeResourceConfigDefault.
+        :type request: :class:`tencentcloud.emr.v20190103.models.SetNodeResourceConfigDefaultRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.SetNodeResourceConfigDefaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetNodeResourceConfigDefault", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetNodeResourceConfigDefaultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

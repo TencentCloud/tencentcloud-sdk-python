@@ -13110,14 +13110,19 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
 默认取值：RECREATE
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplaceMode: str
-        :param _AutoUpdateInstanceTags: 自动更新实例标签。默认取值为 false，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
+        :param _AutoUpdateInstanceTags: 自动更新实例标签。默认取值为 False，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
         :type AutoUpdateInstanceTags: bool
+        :param _DesiredCapacitySyncWithMaxMinSize: 期望实例数同步最大最小值。默认值为 False。该参数仅对修改伸缩组接口未传入期望数的场景生效。
+<li>True: 修改最大值或最小值时，如与当前期望数存在冲突，则同步调整期望数。例如修改时传入最小值 2，当前期望数为 1，则同步调整期望数为 2。</li>
+<li>False: 修改最大值或最小值时，如与当前期望数存在冲突，报错提示不允许修改。</li>
+        :type DesiredCapacitySyncWithMaxMinSize: bool
         """
         self._ReplaceMonitorUnhealthy = None
         self._ScalingMode = None
         self._ReplaceLoadBalancerUnhealthy = None
         self._ReplaceMode = None
         self._AutoUpdateInstanceTags = None
+        self._DesiredCapacitySyncWithMaxMinSize = None
 
     @property
     def ReplaceMonitorUnhealthy(self):
@@ -13172,7 +13177,7 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
 
     @property
     def AutoUpdateInstanceTags(self):
-        """自动更新实例标签。默认取值为 false，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
+        """自动更新实例标签。默认取值为 False，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
         :rtype: bool
         """
         return self._AutoUpdateInstanceTags
@@ -13181,6 +13186,19 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
     def AutoUpdateInstanceTags(self, AutoUpdateInstanceTags):
         self._AutoUpdateInstanceTags = AutoUpdateInstanceTags
 
+    @property
+    def DesiredCapacitySyncWithMaxMinSize(self):
+        """期望实例数同步最大最小值。默认值为 False。该参数仅对修改伸缩组接口未传入期望数的场景生效。
+<li>True: 修改最大值或最小值时，如与当前期望数存在冲突，则同步调整期望数。例如修改时传入最小值 2，当前期望数为 1，则同步调整期望数为 2。</li>
+<li>False: 修改最大值或最小值时，如与当前期望数存在冲突，报错提示不允许修改。</li>
+        :rtype: bool
+        """
+        return self._DesiredCapacitySyncWithMaxMinSize
+
+    @DesiredCapacitySyncWithMaxMinSize.setter
+    def DesiredCapacitySyncWithMaxMinSize(self, DesiredCapacitySyncWithMaxMinSize):
+        self._DesiredCapacitySyncWithMaxMinSize = DesiredCapacitySyncWithMaxMinSize
+
 
     def _deserialize(self, params):
         self._ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
@@ -13188,6 +13206,7 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
         self._ReplaceLoadBalancerUnhealthy = params.get("ReplaceLoadBalancerUnhealthy")
         self._ReplaceMode = params.get("ReplaceMode")
         self._AutoUpdateInstanceTags = params.get("AutoUpdateInstanceTags")
+        self._DesiredCapacitySyncWithMaxMinSize = params.get("DesiredCapacitySyncWithMaxMinSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

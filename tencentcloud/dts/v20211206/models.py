@@ -18185,6 +18185,9 @@ class SyncJobInfo(AbstractModel):
         :param _OfflineTime: 下线时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTime: str
+        :param _OptObjStatus: 动态修改对象，修改任务的状态等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptObjStatus: str
         :param _AutoRetryTimeRangeMinutes: 自动重试时间段设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
@@ -18225,6 +18228,7 @@ class SyncJobInfo(AbstractModel):
         self._InstanceClass = None
         self._AutoRenew = None
         self._OfflineTime = None
+        self._OptObjStatus = None
         self._AutoRetryTimeRangeMinutes = None
         self._DumperResumeCtrl = None
 
@@ -18625,6 +18629,18 @@ class SyncJobInfo(AbstractModel):
         self._OfflineTime = OfflineTime
 
     @property
+    def OptObjStatus(self):
+        """动态修改对象，修改任务的状态等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OptObjStatus
+
+    @OptObjStatus.setter
+    def OptObjStatus(self, OptObjStatus):
+        self._OptObjStatus = OptObjStatus
+
+    @property
     def AutoRetryTimeRangeMinutes(self):
         """自动重试时间段设置
 注意：此字段可能返回 null，表示取不到有效值。
@@ -18702,6 +18718,7 @@ class SyncJobInfo(AbstractModel):
         self._InstanceClass = params.get("InstanceClass")
         self._AutoRenew = params.get("AutoRenew")
         self._OfflineTime = params.get("OfflineTime")
+        self._OptObjStatus = params.get("OptObjStatus")
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         self._DumperResumeCtrl = params.get("DumperResumeCtrl")
         memeber_set = set(params.keys())

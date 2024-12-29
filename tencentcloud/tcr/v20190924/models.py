@@ -14980,11 +14980,14 @@ class ReplicationRule(AbstractModel):
         :type Override: bool
         :param _Filters: 同步过滤条件
         :type Filters: list of ReplicationFilter
+        :param _Deletion: 是否同步删除事件
+        :type Deletion: bool
         """
         self._Name = None
         self._DestNamespace = None
         self._Override = None
         self._Filters = None
+        self._Deletion = None
 
     @property
     def Name(self):
@@ -15030,6 +15033,17 @@ class ReplicationRule(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def Deletion(self):
+        """是否同步删除事件
+        :rtype: bool
+        """
+        return self._Deletion
+
+    @Deletion.setter
+    def Deletion(self, Deletion):
+        self._Deletion = Deletion
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -15041,6 +15055,7 @@ class ReplicationRule(AbstractModel):
                 obj = ReplicationFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Deletion = params.get("Deletion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -6544,6 +6544,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquiryPriceAllocateAddresses(self, request):
+        """本接口（InquiryPriceAllocateAddresses）用于新购弹性公网IP询价。
+
+        :param request: Request instance for InquiryPriceAllocateAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceAllocateAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceAllocateAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceAllocateAddresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceAllocateAddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquiryPriceCreateVpnGateway(self, request):
         """本接口（InquiryPriceCreateVpnGateway）用于创建VPN网关询价。
 
@@ -6558,6 +6581,52 @@ class VpcClient(AbstractClient):
             body = self.call("InquiryPriceCreateVpnGateway", params, headers=headers)
             response = json.loads(body)
             model = models.InquiryPriceCreateVpnGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceModifyAddressesBandwidth(self, request):
+        """EIP修改带宽询价
+
+        :param request: Request instance for InquiryPriceModifyAddressesBandwidth.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceModifyAddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceModifyAddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceModifyAddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceModifyAddressesBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceRenewAddresses(self, request):
+        """本接口（InquiryPriceRenewAddresses）用于续费预付费弹性公网IP询价。
+
+        :param request: Request instance for InquiryPriceRenewAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRenewAddresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceRenewAddressesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -27958,6 +27958,10 @@ class VoucherInfos(AbstractModel):
         :type ApplicableProducts: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
         :param _ExcludedProducts: 不适用商品信息
         :type ExcludedProducts: list of ExcludedProducts
+        :param _PolicyRemark: 使用说明/批次备注
+        :type PolicyRemark: str
+        :param _CreateTime: 发券时间
+        :type CreateTime: str
         """
         self._OwnerUin = None
         self._Status = None
@@ -27970,6 +27974,8 @@ class VoucherInfos(AbstractModel):
         self._EndTime = None
         self._ApplicableProducts = None
         self._ExcludedProducts = None
+        self._PolicyRemark = None
+        self._CreateTime = None
 
     @property
     def OwnerUin(self):
@@ -28092,6 +28098,28 @@ class VoucherInfos(AbstractModel):
     def ExcludedProducts(self, ExcludedProducts):
         self._ExcludedProducts = ExcludedProducts
 
+    @property
+    def PolicyRemark(self):
+        """使用说明/批次备注
+        :rtype: str
+        """
+        return self._PolicyRemark
+
+    @PolicyRemark.setter
+    def PolicyRemark(self, PolicyRemark):
+        self._PolicyRemark = PolicyRemark
+
+    @property
+    def CreateTime(self):
+        """发券时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -28112,6 +28140,8 @@ class VoucherInfos(AbstractModel):
                 obj = ExcludedProducts()
                 obj._deserialize(item)
                 self._ExcludedProducts.append(obj)
+        self._PolicyRemark = params.get("PolicyRemark")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -41,6 +41,8 @@ class AccountCreateInfo(AbstractModel):
         :type AccountType: str
         :param _IsCam: 是否开启CAM验证
         :type IsCam: bool
+        :param _EncryptedVersion: 加密密钥版本号，0表示不使用加密
+        :type EncryptedVersion: int
         """
         self._UserName = None
         self._Password = None
@@ -50,6 +52,7 @@ class AccountCreateInfo(AbstractModel):
         self._Authentication = None
         self._AccountType = None
         self._IsCam = None
+        self._EncryptedVersion = None
 
     @property
     def UserName(self):
@@ -139,6 +142,17 @@ class AccountCreateInfo(AbstractModel):
     def IsCam(self, IsCam):
         self._IsCam = IsCam
 
+    @property
+    def EncryptedVersion(self):
+        """加密密钥版本号，0表示不使用加密
+        :rtype: int
+        """
+        return self._EncryptedVersion
+
+    @EncryptedVersion.setter
+    def EncryptedVersion(self, EncryptedVersion):
+        self._EncryptedVersion = EncryptedVersion
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -154,6 +168,7 @@ class AccountCreateInfo(AbstractModel):
         self._Authentication = params.get("Authentication")
         self._AccountType = params.get("AccountType")
         self._IsCam = params.get("IsCam")
+        self._EncryptedVersion = params.get("EncryptedVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -396,9 +411,12 @@ class AccountPassword(AbstractModel):
         :type UserName: str
         :param _Password: 密码
         :type Password: str
+        :param _EncryptedVersion: 加密密钥版本号，0表示不使用加密
+        :type EncryptedVersion: int
         """
         self._UserName = None
         self._Password = None
+        self._EncryptedVersion = None
 
     @property
     def UserName(self):
@@ -422,10 +440,22 @@ class AccountPassword(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def EncryptedVersion(self):
+        """加密密钥版本号，0表示不使用加密
+        :rtype: int
+        """
+        return self._EncryptedVersion
+
+    @EncryptedVersion.setter
+    def EncryptedVersion(self, EncryptedVersion):
+        self._EncryptedVersion = EncryptedVersion
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
+        self._EncryptedVersion = params.get("EncryptedVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1487,7 +1517,6 @@ class CheckItem(AbstractModel):
     def __init__(self):
         r"""
         :param _CheckName: 检查项目名称，CK_CPU-变配后CPU风险检查；CK_MASTER_STORAGE-只读副本变配下，只读副本磁盘空间不小于主实例空间检查；CK_MEMORY-变配后内存风险检查；CK_STORAGE-变配后磁盘空间风险检查；CK_UPGRATE-变配是否需要迁移检查；
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckName: str
         :param _CurrentValue: 检查项目返回值，CK_CPU-当前CPU近7天最大的使用率(%) ；CK_MASTER_STORAGE-主实例的磁盘空间(GB)；CK_MEMORY-当前内存近7天最大的使用值（GB)；
 CK_STORAGE-当前磁盘近7天最大的使用值（GB)；CK_UPGRATE- 当前变配检查是否需要迁移，MIGRATE需要迁移变配，LOCAL本地变配；
@@ -1511,7 +1540,6 @@ CK_STORAGE-当前磁盘近7天最大的使用值（GB)；CK_UPGRATE- 当前变�
     @property
     def CheckName(self):
         """检查项目名称，CK_CPU-变配后CPU风险检查；CK_MASTER_STORAGE-只读副本变配下，只读副本磁盘空间不小于主实例空间检查；CK_MEMORY-变配后内存风险检查；CK_STORAGE-变配后磁盘空间风险检查；CK_UPGRATE-变配是否需要迁移检查；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckName
@@ -3023,10 +3051,8 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
         :param _DealName: 订单名称
         :type DealName: str
         :param _FlowId: 流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
         :param _InstanceIdSet: 实例ID集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIdSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3050,7 +3076,6 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
     @property
     def FlowId(self):
         """流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowId
@@ -3062,7 +3087,6 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
     @property
     def InstanceIdSet(self):
         """实例ID集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -6156,7 +6180,7 @@ class DBInstance(AbstractModel):
         :type VersionName: str
         :param _RenewFlag: 实例续费标记，0-正常续费，1-自动续费，2-到期不续费
         :type RenewFlag: int
-        :param _Model: 实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，9-自研机房
+        :param _Model: 实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，6-多节点集群，7-多节点集群跨可用区，9-自研机房
         :type Model: int
         :param _Region: 实例所在地域名称，如 ap-guangzhou
         :type Region: str
@@ -6181,25 +6205,19 @@ class DBInstance(AbstractModel):
         :param _UniqSubnetId: 实例所属子网的唯一字符串ID，格式如： subnet-xxx，基础网络时为空字符串
         :type UniqSubnetId: str
         :param _IsolateOperator: 实例隔离操作
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateOperator: str
         :param _SubFlag: 发布订阅标识，SUB-订阅实例，PUB-发布实例，空值-没有发布订阅的普通实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubFlag: str
         :param _ROFlag: 只读标识，RO-只读实例，MASTER-有RO实例的主实例，空值-没有只读组的非RO实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type ROFlag: str
         :param _HAFlag: 容灾类型，MIRROR-镜像，ALWAYSON-AlwaysOn, SINGLE-单例
-注意：此字段可能返回 null，表示取不到有效值。
         :type HAFlag: str
         :param _ResourceTags: 实例绑定的标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of ResourceTag
         :param _BackupModel: 备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupModel: str
         :param _InstanceNote: 实例备份信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNote: str
         :param _BackupCycle: 备份周期
         :type BackupCycle: list of int
@@ -6207,7 +6225,8 @@ class DBInstance(AbstractModel):
         :type BackupCycleType: str
         :param _BackupSaveDays: 数据(日志)备份保留时间
         :type BackupSaveDays: int
-        :param _InstanceType: 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+        :param _InstanceType: 实例类型 HA-高可用，RO-只读实例，SI-基础版，BI-商业智能服务，cvmHA-云盘高可用，cvmRO-云盘只读实例，MultiHA-多节点，cvmMultiHA-云盘多节点
+
         :type InstanceType: str
         :param _CrossRegions: 跨地域备份目的地域，如果为空，则表示未开启跨地域备份
         :type CrossRegions: list of str
@@ -6225,15 +6244,14 @@ class DBInstance(AbstractModel):
         :type TimeZone: str
         :param _IsDrZone: 是否跨AZ
         :type IsDrZone: bool
-        :param _SlaveZones: 备可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _SlaveZones: 双节点实例备可用区信息
         :type SlaveZones: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
         :param _Architecture: 架构标识，SINGLE-单节点 DOUBLE-双节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type Architecture: str
         :param _Style: 类型标识，EXCLUSIVE-独享型，SHARED-共享型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Style: str
+        :param _MultiSlaveZones: 多节点实例备可用区信息
+        :type MultiSlaveZones: list of SlaveZones
         """
         self._InstanceId = None
         self._Name = None
@@ -6289,6 +6307,7 @@ class DBInstance(AbstractModel):
         self._SlaveZones = None
         self._Architecture = None
         self._Style = None
+        self._MultiSlaveZones = None
 
     @property
     def InstanceId(self):
@@ -6512,7 +6531,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Model(self):
-        """实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，9-自研机房
+        """实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，6-多节点集群，7-多节点集群跨可用区，9-自研机房
         :rtype: int
         """
         return self._Model
@@ -6645,7 +6664,6 @@ class DBInstance(AbstractModel):
     @property
     def IsolateOperator(self):
         """实例隔离操作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateOperator
@@ -6657,7 +6675,6 @@ class DBInstance(AbstractModel):
     @property
     def SubFlag(self):
         """发布订阅标识，SUB-订阅实例，PUB-发布实例，空值-没有发布订阅的普通实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubFlag
@@ -6669,7 +6686,6 @@ class DBInstance(AbstractModel):
     @property
     def ROFlag(self):
         """只读标识，RO-只读实例，MASTER-有RO实例的主实例，空值-没有只读组的非RO实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ROFlag
@@ -6681,7 +6697,6 @@ class DBInstance(AbstractModel):
     @property
     def HAFlag(self):
         """容灾类型，MIRROR-镜像，ALWAYSON-AlwaysOn, SINGLE-单例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HAFlag
@@ -6705,7 +6720,6 @@ class DBInstance(AbstractModel):
     @property
     def BackupModel(self):
         """备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BackupModel
@@ -6717,7 +6731,6 @@ class DBInstance(AbstractModel):
     @property
     def InstanceNote(self):
         """实例备份信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceNote
@@ -6761,7 +6774,8 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+        """实例类型 HA-高可用，RO-只读实例，SI-基础版，BI-商业智能服务，cvmHA-云盘高可用，cvmRO-云盘只读实例，MultiHA-多节点，cvmMultiHA-云盘多节点
+
         :rtype: str
         """
         return self._InstanceType
@@ -6860,8 +6874,7 @@ class DBInstance(AbstractModel):
 
     @property
     def SlaveZones(self):
-        """备可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
+        """双节点实例备可用区信息
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
         """
         return self._SlaveZones
@@ -6873,7 +6886,6 @@ class DBInstance(AbstractModel):
     @property
     def Architecture(self):
         """架构标识，SINGLE-单节点 DOUBLE-双节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Architecture
@@ -6885,7 +6897,6 @@ class DBInstance(AbstractModel):
     @property
     def Style(self):
         """类型标识，EXCLUSIVE-独享型，SHARED-共享型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Style
@@ -6893,6 +6904,17 @@ class DBInstance(AbstractModel):
     @Style.setter
     def Style(self, Style):
         self._Style = Style
+
+    @property
+    def MultiSlaveZones(self):
+        """多节点实例备可用区信息
+        :rtype: list of SlaveZones
+        """
+        return self._MultiSlaveZones
+
+    @MultiSlaveZones.setter
+    def MultiSlaveZones(self, MultiSlaveZones):
+        self._MultiSlaveZones = MultiSlaveZones
 
 
     def _deserialize(self, params):
@@ -6957,6 +6979,12 @@ class DBInstance(AbstractModel):
             self._SlaveZones._deserialize(params.get("SlaveZones"))
         self._Architecture = params.get("Architecture")
         self._Style = params.get("Style")
+        if params.get("MultiSlaveZones") is not None:
+            self._MultiSlaveZones = []
+            for item in params.get("MultiSlaveZones"):
+                obj = SlaveZones()
+                obj._deserialize(item)
+                self._MultiSlaveZones.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7456,7 +7484,6 @@ class DbNormalDetail(AbstractModel):
         :param _CreateTime: 数据库创建时间
         :type CreateTime: str
         :param _IsFullTextEnabled: 是否全文启用 0：否 1：是
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFullTextEnabled: str
         """
         self._IsSubscribed = None
@@ -7696,7 +7723,6 @@ class DbNormalDetail(AbstractModel):
     @property
     def IsFullTextEnabled(self):
         """是否全文启用 0：否 1：是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsFullTextEnabled
@@ -14263,7 +14289,6 @@ class DescribeInquiryPriceParameterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Parameter: 计费参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Parameter: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14274,7 +14299,6 @@ class DescribeInquiryPriceParameterResponse(AbstractModel):
     @property
     def Parameter(self):
         """计费参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Parameter
@@ -14771,7 +14795,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
         :type Memory: int
         :param _Storage: 实例磁盘大小，单位GB
         :type Storage: int
-        :param _InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,BI-商业智能服务,cvmHA-新版高可用,cvmRO-新版只读
+        :param _InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,BI-商业智能服务,cvmHA-新版高可用,cvmRO-新版只读，MultiHA-多节点，cvmMultiHA-云盘多节点
         :type InstanceType: str
         :param _MachineType: 购买实例的宿主机磁盘类型,CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘
         :type MachineType: str
@@ -14807,6 +14831,10 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
         :type TimeZone: str
         :param _Collation: 系统字符集排序规则，默认：Chinese_PRC_CI_AS
         :type Collation: str
+        :param _MultiNodes: 是否多节点架构，默认值为false
+        :type MultiNodes: bool
+        :param _DrZones: 备节点可用区，默认为空。如果是多节点架构时必传，并且当MultiZones=true时备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+        :type DrZones: list of str
         """
         self._Zone = None
         self._Cpu = None
@@ -14830,6 +14858,8 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
         self._ResourceTags = None
         self._TimeZone = None
         self._Collation = None
+        self._MultiNodes = None
+        self._DrZones = None
 
     @property
     def Zone(self):
@@ -14877,7 +14907,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,BI-商业智能服务,cvmHA-新版高可用,cvmRO-新版只读
+        """购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,BI-商业智能服务,cvmHA-新版高可用,cvmRO-新版只读，MultiHA-多节点，cvmMultiHA-云盘多节点
         :rtype: str
         """
         return self._InstanceType
@@ -15073,6 +15103,28 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
     def Collation(self, Collation):
         self._Collation = Collation
 
+    @property
+    def MultiNodes(self):
+        """是否多节点架构，默认值为false
+        :rtype: bool
+        """
+        return self._MultiNodes
+
+    @MultiNodes.setter
+    def MultiNodes(self, MultiNodes):
+        self._MultiNodes = MultiNodes
+
+    @property
+    def DrZones(self):
+        """备节点可用区，默认为空。如果是多节点架构时必传，并且当MultiZones=true时备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+        :rtype: list of str
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -15102,6 +15154,8 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._TimeZone = params.get("TimeZone")
         self._Collation = params.get("Collation")
+        self._MultiNodes = params.get("MultiNodes")
+        self._DrZones = params.get("DrZones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15120,7 +15174,6 @@ class DescribeInstanceTradeParameterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Parameter: 计费参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Parameter: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15131,7 +15184,6 @@ class DescribeInstanceTradeParameterResponse(AbstractModel):
     @property
     def Parameter(self):
         """计费参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Parameter
@@ -19416,36 +19468,81 @@ class DrReadableInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SlaveStatus: 备机状态，enable-运行中，disable-不可用
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _DrInstanceId: 备机资源ID
+        :type DrInstanceId: str
+        :param _Zone: 备机可用区
+        :type Zone: str
+        :param _SlaveStatus: 备机状态
+DR_CREATING-备机创建中
+DR_RUNNING-备机运行中
+DR_UNAVAILABLE-备机不可用
+DR_ISOLATED-备机已隔离
+DR_RECYCLING-备机回收中
+DR_RECYCLED-备机已回收
+DR_JOB_RUNNING-备机执行任务中
+DR_OFFLINE-备机已下线
+DR_FAIL_OVER-备机只读故障转移中
         :type SlaveStatus: str
         :param _ReadableStatus: 备机可读状态，enable-已开启，disable-已关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadableStatus: str
         :param _Vip: 备机只读vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _VPort: 备机只读端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type VPort: int
         :param _UniqVpcId: 备机所在私有网络ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _UniqSubnetId: 备机所在私有网络子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqSubnetId: str
+        :param _RoWeight: 备机只读权重
+        :type RoWeight: int
+        :param _ReadMode: 备机只读模式，BalancedReadOnly-多备一读模式，SingleReadOnly-一备一读模式
+        :type ReadMode: str
         """
+        self._DrInstanceId = None
+        self._Zone = None
         self._SlaveStatus = None
         self._ReadableStatus = None
         self._Vip = None
         self._VPort = None
         self._UniqVpcId = None
         self._UniqSubnetId = None
+        self._RoWeight = None
+        self._ReadMode = None
+
+    @property
+    def DrInstanceId(self):
+        """备机资源ID
+        :rtype: str
+        """
+        return self._DrInstanceId
+
+    @DrInstanceId.setter
+    def DrInstanceId(self, DrInstanceId):
+        self._DrInstanceId = DrInstanceId
+
+    @property
+    def Zone(self):
+        """备机可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
     @property
     def SlaveStatus(self):
-        """备机状态，enable-运行中，disable-不可用
-注意：此字段可能返回 null，表示取不到有效值。
+        """备机状态
+DR_CREATING-备机创建中
+DR_RUNNING-备机运行中
+DR_UNAVAILABLE-备机不可用
+DR_ISOLATED-备机已隔离
+DR_RECYCLING-备机回收中
+DR_RECYCLED-备机已回收
+DR_JOB_RUNNING-备机执行任务中
+DR_OFFLINE-备机已下线
+DR_FAIL_OVER-备机只读故障转移中
         :rtype: str
         """
         return self._SlaveStatus
@@ -19457,7 +19554,6 @@ class DrReadableInfo(AbstractModel):
     @property
     def ReadableStatus(self):
         """备机可读状态，enable-已开启，disable-已关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReadableStatus
@@ -19469,7 +19565,6 @@ class DrReadableInfo(AbstractModel):
     @property
     def Vip(self):
         """备机只读vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -19481,7 +19576,6 @@ class DrReadableInfo(AbstractModel):
     @property
     def VPort(self):
         """备机只读端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VPort
@@ -19493,7 +19587,6 @@ class DrReadableInfo(AbstractModel):
     @property
     def UniqVpcId(self):
         """备机所在私有网络ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpcId
@@ -19505,7 +19598,6 @@ class DrReadableInfo(AbstractModel):
     @property
     def UniqSubnetId(self):
         """备机所在私有网络子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqSubnetId
@@ -19514,14 +19606,40 @@ class DrReadableInfo(AbstractModel):
     def UniqSubnetId(self, UniqSubnetId):
         self._UniqSubnetId = UniqSubnetId
 
+    @property
+    def RoWeight(self):
+        """备机只读权重
+        :rtype: int
+        """
+        return self._RoWeight
+
+    @RoWeight.setter
+    def RoWeight(self, RoWeight):
+        self._RoWeight = RoWeight
+
+    @property
+    def ReadMode(self):
+        """备机只读模式，BalancedReadOnly-多备一读模式，SingleReadOnly-一备一读模式
+        :rtype: str
+        """
+        return self._ReadMode
+
+    @ReadMode.setter
+    def ReadMode(self, ReadMode):
+        self._ReadMode = ReadMode
+
 
     def _deserialize(self, params):
+        self._DrInstanceId = params.get("DrInstanceId")
+        self._Zone = params.get("Zone")
         self._SlaveStatus = params.get("SlaveStatus")
         self._ReadableStatus = params.get("ReadableStatus")
         self._Vip = params.get("Vip")
         self._VPort = params.get("VPort")
         self._UniqVpcId = params.get("UniqVpcId")
         self._UniqSubnetId = params.get("UniqSubnetId")
+        self._RoWeight = params.get("RoWeight")
+        self._ReadMode = params.get("ReadMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21333,7 +21451,6 @@ class Migration(AbstractModel):
         :param _MigrationId: 备份导入任务ID 或 增量导入任务ID
         :type MigrationId: str
         :param _MigrationName: 备份导入名称，增量导入任务该字段为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type MigrationName: str
         :param _AppId: 应用ID
         :type AppId: int
@@ -21362,7 +21479,6 @@ class Migration(AbstractModel):
         :param _Action: 当前状态允许的操作
         :type Action: :class:`tencentcloud.sqlserver.v20180328.models.MigrationAction`
         :param _IsRecovery: 是否是最终恢复，全量导入任务该字段为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsRecovery: str
         :param _DBRename: 重命名的数据库名称集合
 注意：此字段可能返回 null，表示取不到有效值。
@@ -21400,7 +21516,6 @@ class Migration(AbstractModel):
     @property
     def MigrationName(self):
         """备份导入名称，增量导入任务该字段为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MigrationName
@@ -21555,7 +21670,6 @@ class Migration(AbstractModel):
     @property
     def IsRecovery(self):
         """是否是最终恢复，全量导入任务该字段为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsRecovery
@@ -21679,7 +21793,6 @@ class MigrationDetail(AbstractModel):
         :param _Progress: 总进度,如："30"表示30%
         :type Progress: int
         :param _StepInfo: 步骤信息，null表示还未开始迁移
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfo: list of MigrationStep
         """
         self._StepAll = None
@@ -21723,7 +21836,6 @@ class MigrationDetail(AbstractModel):
     @property
     def StepInfo(self):
         """步骤信息，null表示还未开始迁移
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MigrationStep
         """
         return self._StepInfo
@@ -25726,7 +25838,6 @@ class OldVip(AbstractModel):
         :param _RecycleTime: ip回收时间
         :type RecycleTime: str
         :param _OldIpRetainTime: 旧IP保留时间小时数
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldIpRetainTime: int
         """
         self._Vip = None
@@ -25758,7 +25869,6 @@ class OldVip(AbstractModel):
     @property
     def OldIpRetainTime(self):
         """旧IP保留时间小时数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OldIpRetainTime
@@ -26207,16 +26317,12 @@ class Price(AbstractModel):
     def __init__(self):
         r"""
         :param _PrepaidPrice: 包年包月参考价格，单位-分
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrepaidPrice: int
         :param _PrepaidPriceUnit: 包年包月价格单位，M-月
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrepaidPriceUnit: str
         :param _PostpaidPrice: 按量付费价格，单位-分
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostpaidPrice: int
         :param _PostpaidPriceUnit: 按量付费价格单位，H-小时
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostpaidPriceUnit: str
         """
         self._PrepaidPrice = None
@@ -26227,7 +26333,6 @@ class Price(AbstractModel):
     @property
     def PrepaidPrice(self):
         """包年包月参考价格，单位-分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PrepaidPrice
@@ -26239,7 +26344,6 @@ class Price(AbstractModel):
     @property
     def PrepaidPriceUnit(self):
         """包年包月价格单位，M-月
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PrepaidPriceUnit
@@ -26251,7 +26355,6 @@ class Price(AbstractModel):
     @property
     def PostpaidPrice(self):
         """按量付费价格，单位-分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PostpaidPrice
@@ -26263,7 +26366,6 @@ class Price(AbstractModel):
     @property
     def PostpaidPriceUnit(self):
         """按量付费价格单位，H-小时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PostpaidPriceUnit
@@ -28859,13 +28961,10 @@ enable_doing-开启中
 disable_doing-关闭中
 renew_doing-更新中
 wait_doing-等待维护时间内执行
-注意：此字段可能返回 null，表示取不到有效值。
         :type Encryption: str
         :param _SSLValidityPeriod: SSL证书有效期，时间格式 YYYY-MM-DD HH:MM:SS
-注意：此字段可能返回 null，表示取不到有效值。
         :type SSLValidityPeriod: str
         :param _SSLValidity: SSL证书有效性，0-无效，1-有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type SSLValidity: int
         :param _IsKMS: 是否是KMS的CMK证书
         :type IsKMS: int
@@ -28890,7 +28989,6 @@ enable_doing-开启中
 disable_doing-关闭中
 renew_doing-更新中
 wait_doing-等待维护时间内执行
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Encryption
@@ -28902,7 +29000,6 @@ wait_doing-等待维护时间内执行
     @property
     def SSLValidityPeriod(self):
         """SSL证书有效期，时间格式 YYYY-MM-DD HH:MM:SS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SSLValidityPeriod
@@ -28914,7 +29011,6 @@ wait_doing-等待维护时间内执行
     @property
     def SSLValidity(self):
         """SSL证书有效性，0-无效，1-有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SSLValidity
@@ -29253,9 +29349,12 @@ class SlaveZones(AbstractModel):
         :type SlaveZone: str
         :param _SlaveZoneName: 备可用区
         :type SlaveZoneName: str
+        :param _DrInstanceId: 备机资源ID
+        :type DrInstanceId: str
         """
         self._SlaveZone = None
         self._SlaveZoneName = None
+        self._DrInstanceId = None
 
     @property
     def SlaveZone(self):
@@ -29279,10 +29378,22 @@ class SlaveZones(AbstractModel):
     def SlaveZoneName(self, SlaveZoneName):
         self._SlaveZoneName = SlaveZoneName
 
+    @property
+    def DrInstanceId(self):
+        """备机资源ID
+        :rtype: str
+        """
+        return self._DrInstanceId
+
+    @DrInstanceId.setter
+    def DrInstanceId(self, DrInstanceId):
+        self._DrInstanceId = DrInstanceId
+
 
     def _deserialize(self, params):
         self._SlaveZone = params.get("SlaveZone")
         self._SlaveZoneName = params.get("SlaveZoneName")
+        self._DrInstanceId = params.get("DrInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29315,7 +29426,6 @@ class SlowLog(AbstractModel):
         :param _ExternalAddr: 外网下载地址
         :type ExternalAddr: str
         :param _Status: 状态（1成功 2失败）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._Id = None
@@ -29407,7 +29517,6 @@ class SlowLog(AbstractModel):
     @property
     def Status(self):
         """状态（1成功 2失败）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -29611,7 +29720,6 @@ class SpecInfo(AbstractModel):
         :param _Pid: 此规格对应的包年包月Pid
         :type Pid: int
         :param _PostPid: 此规格对应的按量计费Pid列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostPid: list of int
         :param _PayModeStatus: 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
         :type PayModeStatus: str
@@ -29773,7 +29881,6 @@ class SpecInfo(AbstractModel):
     @property
     def PostPid(self):
         """此规格对应的按量计费Pid列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._PostPid
@@ -30883,19 +30990,14 @@ class SwitchLog(AbstractModel):
     def __init__(self):
         r"""
         :param _EventId: 切换事件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: str
         :param _SwitchType: 切换模式 0-系统自动切换，1-手动切换
-注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchType: int
         :param _StartTime: 切换开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 切换结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Reason: 机器故障导致自动切换
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         """
         self._EventId = None
@@ -30907,7 +31009,6 @@ class SwitchLog(AbstractModel):
     @property
     def EventId(self):
         """切换事件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EventId
@@ -30919,7 +31020,6 @@ class SwitchLog(AbstractModel):
     @property
     def SwitchType(self):
         """切换模式 0-系统自动切换，1-手动切换
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SwitchType
@@ -30931,7 +31031,6 @@ class SwitchLog(AbstractModel):
     @property
     def StartTime(self):
         """切换开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -30943,7 +31042,6 @@ class SwitchLog(AbstractModel):
     @property
     def EndTime(self):
         """切换结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -30955,7 +31053,6 @@ class SwitchLog(AbstractModel):
     @property
     def Reason(self):
         """机器故障导致自动切换
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -30993,7 +31090,6 @@ class TDEConfigAttribute(AbstractModel):
         :param _CertificateAttribution: 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，none-表示没有证书
         :type CertificateAttribution: str
         :param _QuoteUin: 开通TDE加密时引用的其他主账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type QuoteUin: str
         :param _CMKId: KMS中购买的用户主密钥ID（CMK）
         :type CMKId: str
@@ -31031,7 +31127,6 @@ class TDEConfigAttribute(AbstractModel):
     @property
     def QuoteUin(self):
         """开通TDE加密时引用的其他主账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QuoteUin

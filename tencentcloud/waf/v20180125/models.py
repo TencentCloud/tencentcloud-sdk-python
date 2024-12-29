@@ -3651,6 +3651,205 @@ class ApiSecKey(AbstractModel):
         
 
 
+class Area(AbstractModel):
+    """地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Country: 国家，除了标准的国家外还支持国内、国外这两个特殊的标识
+        :type Country: str
+        :param _Region: 省份
+        :type Region: str
+        :param _City: 城市
+        :type City: str
+        """
+        self._Country = None
+        self._Region = None
+        self._City = None
+
+    @property
+    def Country(self):
+        """国家，除了标准的国家外还支持国内、国外这两个特殊的标识
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Region(self):
+        """省份
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def City(self):
+        """城市
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+
+    def _deserialize(self, params):
+        self._Country = params.get("Country")
+        self._Region = params.get("Region")
+        self._City = params.get("City")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AreaBanRule(AbstractModel):
+    """地域封禁规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态 0：未开启地域封禁、1：开启地域封禁
+        :type Status: int
+        :param _Source: 数据来源 custom：自定义(默认)、batch：批量防护
+        :type Source: str
+        :param _Areas: 配置的地域列表
+        :type Areas: list of Area
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: 如果是周期任务类型，那么表示周期的类型，支持 Week：按周、Month：按月
+        :type CronType: str
+        :param _Lang: 地域信息的语言，支持cn、en，默认为中文cn
+        :type Lang: str
+        """
+        self._Status = None
+        self._Source = None
+        self._Areas = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+        self._Lang = None
+
+    @property
+    def Status(self):
+        """状态 0：未开启地域封禁、1：开启地域封禁
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Source(self):
+        """数据来源 custom：自定义(默认)、batch：批量防护
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Areas(self):
+        """配置的地域列表
+        :rtype: list of Area
+        """
+        return self._Areas
+
+    @Areas.setter
+    def Areas(self, Areas):
+        self._Areas = Areas
+
+    @property
+    def JobType(self):
+        """规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        """如果是周期任务类型，那么表示周期的类型，支持 Week：按周、Month：按月
+        :rtype: str
+        """
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def Lang(self):
+        """地域信息的语言，支持cn、en，默认为中文cn
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Source = params.get("Source")
+        if params.get("Areas") is not None:
+            self._Areas = []
+            for item in params.get("Areas"):
+                obj = Area()
+                obj._deserialize(item)
+                self._Areas.append(obj)
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        self._Lang = params.get("Lang")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttackLogInfo(AbstractModel):
     """攻击日志详情
 
@@ -6513,6 +6712,137 @@ class CreateAccessExportResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ExportId = params.get("ExportId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAreaBanRuleRequest(AbstractModel):
+    """CreateAreaBanRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要修改的域名
+        :type Domain: str
+        :param _Areas: 需要新增的封禁地域
+        :type Areas: list of Area
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _Lang: 地域信息的语言，支持cn、en，默认为中文cn
+        :type Lang: str
+        """
+        self._Domain = None
+        self._Areas = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._Lang = None
+
+    @property
+    def Domain(self):
+        """需要修改的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Areas(self):
+        """需要新增的封禁地域
+        :rtype: list of Area
+        """
+        return self._Areas
+
+    @Areas.setter
+    def Areas(self, Areas):
+        self._Areas = Areas
+
+    @property
+    def JobType(self):
+        """规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def Lang(self):
+        """地域信息的语言，支持cn、en，默认为中文cn
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        if params.get("Areas") is not None:
+            self._Areas = []
+            for item in params.get("Areas"):
+                obj = Area()
+                obj._deserialize(item)
+                self._Areas.append(obj)
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._Lang = params.get("Lang")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAreaBanRuleResponse(AbstractModel):
+    """CreateAreaBanRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -9526,7 +9856,7 @@ class DescribeAntiFakeRulesRequest(AbstractModel):
         :type Filters: list of FiltersItemNew
         :param _Order: asc或者desc
         :type Order: str
-        :param _By: 目前支持根据ts排序
+        :param _By: 目前支持根据create_time、modify_time、id排序
         :type By: str
         """
         self._Domain = None
@@ -9593,7 +9923,7 @@ class DescribeAntiFakeRulesRequest(AbstractModel):
 
     @property
     def By(self):
-        """目前支持根据ts排序
+        """目前支持根据create_time、modify_time、id排序
         :rtype: str
         """
         return self._By
@@ -10796,6 +11126,87 @@ class DescribeAreaBanAreasRsp(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeAreaBanRuleRequest(AbstractModel):
+    """DescribeAreaBanRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要查询的域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        """需要查询的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAreaBanRuleResponse(AbstractModel):
+    """DescribeAreaBanRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 规则内容
+        :type Data: :class:`tencentcloud.waf.v20180125.models.AreaBanRule`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """规则内容
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AreaBanRule`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = AreaBanRule()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAreaBanSupportAreasRequest(AbstractModel):
@@ -27057,6 +27468,137 @@ class ModifyAreaBanAreasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyAreaBanRuleRequest(AbstractModel):
+    """ModifyAreaBanRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要修改的域名
+        :type Domain: str
+        :param _Areas: 需要新增的封禁地域
+        :type Areas: list of Area
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _Lang: 地域信息的语言，支持cn、en，默认为中文cn
+        :type Lang: str
+        """
+        self._Domain = None
+        self._Areas = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._Lang = None
+
+    @property
+    def Domain(self):
+        """需要修改的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Areas(self):
+        """需要新增的封禁地域
+        :rtype: list of Area
+        """
+        return self._Areas
+
+    @Areas.setter
+    def Areas(self, Areas):
+        self._Areas = Areas
+
+    @property
+    def JobType(self):
+        """规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def Lang(self):
+        """地域信息的语言，支持cn、en，默认为中文cn
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        if params.get("Areas") is not None:
+            self._Areas = []
+            for item in params.get("Areas"):
+                obj = Area()
+                obj._deserialize(item)
+                self._Areas.append(obj)
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._Lang = params.get("Lang")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAreaBanRuleResponse(AbstractModel):
+    """ModifyAreaBanRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAreaBanStatusRequest(AbstractModel):
     """ModifyAreaBanStatus请求参数结构体
 
@@ -30237,7 +30779,7 @@ class ModifyProtectionStatusRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _Status: 状态
+        :param _Status: 1：开启WAF开关，0：关闭WAF开关
         :type Status: int
         :param _Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
         :type Edition: str
@@ -30259,7 +30801,7 @@ class ModifyProtectionStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        """1：开启WAF开关，0：关闭WAF开关
         :rtype: int
         """
         return self._Status

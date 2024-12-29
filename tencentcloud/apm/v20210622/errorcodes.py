@@ -53,6 +53,9 @@ FAILEDOPERATION_DUPLICATETAGFIELD = 'FailedOperation.DuplicateTagField'
 # 该业务系统不允许修改
 FAILEDOPERATION_INSTANCECANNOTMODIFY = 'FailedOperation.InstanceCannotModify'
 
+# 该业务系统不允许销毁
+FAILEDOPERATION_INSTANCECANNOTTERMINATE = 'FailedOperation.InstanceCannotTerminate'
+
 # 业务系统ID为空。
 FAILEDOPERATION_INSTANCEIDISEMPTY = 'FailedOperation.InstanceIdIsEmpty'
 

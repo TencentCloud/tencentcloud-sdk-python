@@ -940,12 +940,20 @@ class ApproverOption(AbstractModel):
 <li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
 </ul>
         :type FlowReadLimit: str
+        :param _ForbidAddSignDate: 禁止在签署过程中添加签署日期控件
+ <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
+<ul>
+<li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
+<li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
+</ul>
+        :type ForbidAddSignDate: bool
         """
         self._NoRefuse = None
         self._NoTransfer = None
         self._CanEditApprover = None
         self._FillType = None
         self._FlowReadLimit = None
+        self._ForbidAddSignDate = None
 
     @property
     def NoRefuse(self):
@@ -1020,6 +1028,22 @@ class ApproverOption(AbstractModel):
     def FlowReadLimit(self, FlowReadLimit):
         self._FlowReadLimit = FlowReadLimit
 
+    @property
+    def ForbidAddSignDate(self):
+        """禁止在签署过程中添加签署日期控件
+ <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
+<ul>
+<li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
+<li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
+</ul>
+        :rtype: bool
+        """
+        return self._ForbidAddSignDate
+
+    @ForbidAddSignDate.setter
+    def ForbidAddSignDate(self, ForbidAddSignDate):
+        self._ForbidAddSignDate = ForbidAddSignDate
+
 
     def _deserialize(self, params):
         self._NoRefuse = params.get("NoRefuse")
@@ -1027,6 +1051,7 @@ class ApproverOption(AbstractModel):
         self._CanEditApprover = params.get("CanEditApprover")
         self._FillType = params.get("FillType")
         self._FlowReadLimit = params.get("FlowReadLimit")
+        self._ForbidAddSignDate = params.get("ForbidAddSignDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12684,7 +12709,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         :type UserData: str
         :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 
-        :type CcInfos: :class:`tencentcloud.ess.v20201111.models.CcInfo`
+        :type CcInfos: list of CcInfo
         :param _FlowId: 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
         :type FlowId: str
@@ -12923,7 +12948,7 @@ class CreatePrepareFlowRequest(AbstractModel):
     def CcInfos(self):
         """合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 
-        :rtype: :class:`tencentcloud.ess.v20201111.models.CcInfo`
+        :rtype: list of CcInfo
         """
         return self._CcInfos
 
@@ -13007,8 +13032,11 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._NeedCreateReview = params.get("NeedCreateReview")
         self._UserData = params.get("UserData")
         if params.get("CcInfos") is not None:
-            self._CcInfos = CcInfo()
-            self._CcInfos._deserialize(params.get("CcInfos"))
+            self._CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = CcInfo()
+                obj._deserialize(item)
+                self._CcInfos.append(obj)
         self._FlowId = params.get("FlowId")
         if params.get("Agent") is not None:
             self._Agent = Agent()
@@ -18937,10 +18965,8 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 <ul><li>**0**：模板列表及详情（默认）</li>
 <li>**1**：仅模板列表</li></ul>
         :type ContentType: int
-        :param _Filters: 搜索条件，本字段用于指定模板Id进行查询。
-- Key：template-id Values：需要查询的模板Id列表
-- Key：template-name Values：需要查询的模板名称列表
-
+        :param _Filters: 搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。
+<ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li></ul>
         :type Filters: list of Filter
         :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
 
@@ -18951,9 +18977,10 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
 注：`1.默认值为20，单页做大值为200。`
         :type Limit: int
-        :param _ApplicationId: 指定查询的应用号，指定后查询该应用号下的模板列表。
+        :param _ApplicationId: 通过指定[第三方应用的应用号（ApplicationId）](https://qcloudimg.tencent-cloud.cn/raw/60efa1e9049732e5246b20a268882b1a.png)，您可以查询<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中某个第三方应用下的模板。
 
-注：`1.ApplicationId为空时，查询所有应用下的模板列表。`
+<p><strong>注意事项：</strong></p>
+<ul><li>当 <strong>ApplicationId</strong> 为空时（默认），系统将查询<a href="https://qcloudimg.tencent-cloud.cn/raw/376943a1d472393dd5388592f2e85ee5.png" target="_blank">平台企业的所有模板</a>（自建应用使用的模板）。</li><li>当 <strong>ApplicationId</strong> 不为空时，系统将从<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中查询该特定应用下的模板（分享给第三方应用子企业的模板）。</li></ul>
         :type ApplicationId: str
         :param _IsChannel: 默认为false，查询SaaS模板库列表；
 为true，查询第三方应用集成平台企业模板库管理列表
@@ -18962,7 +18989,10 @@ class DescribeFlowTemplatesRequest(AbstractModel):
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         :param _GenerateSource: 暂未开放
         :type GenerateSource: int
-        :param _WithPreviewUrl: 是否获取模板预览链接
+        :param _WithPreviewUrl: 是否获取模板预览链接。
+
+<ul><li><strong>false</strong>：不获取（默认）</li><li><strong>true</strong>：需要获取</li></ul>
+设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接, 有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
         :type WithPreviewUrl: bool
         """
         self._Operator = None
@@ -19017,10 +19047,8 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """搜索条件，本字段用于指定模板Id进行查询。
-- Key：template-id Values：需要查询的模板Id列表
-- Key：template-name Values：需要查询的模板名称列表
-
+        """搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。
+<ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li></ul>
         :rtype: list of Filter
         """
         return self._Filters
@@ -19058,9 +19086,10 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """指定查询的应用号，指定后查询该应用号下的模板列表。
+        """通过指定[第三方应用的应用号（ApplicationId）](https://qcloudimg.tencent-cloud.cn/raw/60efa1e9049732e5246b20a268882b1a.png)，您可以查询<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中某个第三方应用下的模板。
 
-注：`1.ApplicationId为空时，查询所有应用下的模板列表。`
+<p><strong>注意事项：</strong></p>
+<ul><li>当 <strong>ApplicationId</strong> 为空时（默认），系统将查询<a href="https://qcloudimg.tencent-cloud.cn/raw/376943a1d472393dd5388592f2e85ee5.png" target="_blank">平台企业的所有模板</a>（自建应用使用的模板）。</li><li>当 <strong>ApplicationId</strong> 不为空时，系统将从<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中查询该特定应用下的模板（分享给第三方应用子企业的模板）。</li></ul>
         :rtype: str
         """
         return self._ApplicationId
@@ -19117,7 +19146,10 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def WithPreviewUrl(self):
-        """是否获取模板预览链接
+        """是否获取模板预览链接。
+
+<ul><li><strong>false</strong>：不获取（默认）</li><li><strong>true</strong>：需要获取</li></ul>
+设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接, 有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
         :rtype: bool
         """
         return self._WithPreviewUrl

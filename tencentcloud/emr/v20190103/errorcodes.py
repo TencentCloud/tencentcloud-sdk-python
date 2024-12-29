@@ -158,6 +158,9 @@ INVALIDPARAMETER_INVALIDBOOTSTRAPACTION = 'InvalidParameter.InvalidBootstrapActi
 # ExternalAccess.ClbSetting.VpcSetting参数无效。
 INVALIDPARAMETER_INVALIDCLBSERVERVPCSETTING = 'InvalidParameter.InvalidCLBServerVpcSetting'
 
+# Classification参数值无效。
+INVALIDPARAMETER_INVALIDCLASSIFICATION = 'InvalidParameter.InvalidClassification'
+
 # 无效的ClickHouse集群。
 INVALIDPARAMETER_INVALIDCLICKHOUSECLUSTER = 'InvalidParameter.InvalidClickHouseCluster'
 
@@ -208,6 +211,9 @@ INVALIDPARAMETER_INVALIDDISKNUM = 'InvalidParameter.InvalidDiskNum'
 
 # 无效的磁盘大小。
 INVALIDPARAMETER_INVALIDDISKSIZE = 'InvalidParameter.InvalidDiskSize'
+
+# 参数错误。
+INVALIDPARAMETER_INVALIDDISKTYPE = 'InvalidParameter.InvalidDiskType'
 
 # 无效的EKS实例。
 INVALIDPARAMETER_INVALIDEKSINSTANCE = 'InvalidParameter.InvalidEksInstance'
@@ -301,6 +307,9 @@ INVALIDPARAMETER_INVALIDPROJECTID = 'InvalidParameter.InvalidProjectId'
 
 # 不合法自动续费标识。
 INVALIDPARAMETER_INVALIDRENEWFLAG = 'InvalidParameter.InvalidRenewFlag'
+
+# 无效资源ID。
+INVALIDPARAMETER_INVALIDRESOURCEID = 'InvalidParameter.InvalidResourceId'
 
 # 资源ID无效。
 INVALIDPARAMETER_INVALIDRESOURCEIDS = 'InvalidParameter.InvalidResourceIds'
@@ -505,6 +514,12 @@ RESOURCENOTFOUND_TAGSNOTFOUND = 'ResourceNotFound.TagsNotFound'
 
 # 资源不可用。
 RESOURCEUNAVAILABLE_NOTSUPPORTCLUSTERTYPE = 'ResourceUnavailable.NotSupportClusterType'
+
+# 资源不可用。
+RESOURCEUNAVAILABLE_NOTSUPPORTRESOURCETYPE = 'ResourceUnavailable.NotSupportResourceType'
+
+# 资源规格重复。
+RESOURCEUNAVAILABLE_REPEATSPEC = 'ResourceUnavailable.RepeatSpec'
 
 # 当前资源规格不存在默认规格。
 RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSpecNotDefaultSpec'

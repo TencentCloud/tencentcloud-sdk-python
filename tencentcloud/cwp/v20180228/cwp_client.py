@@ -4637,31 +4637,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeIndexList(self, request):
-        """接口已废弃
-
-        获取索引列表
-
-        :param request: Request instance for DescribeIndexList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIndexListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeIndexListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeIndexList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeIndexListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeJavaMemShellInfo(self, request):
         """查询java内存马事件详细信息
 

@@ -131,6 +131,212 @@ class AddMetricScaleStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddNodeResourceConfigRequest(AbstractModel):
+    """AddNodeResourceConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param _ResourceType: 节点类型 CORE TASK ROUTER
+        :type ResourceType: str
+        :param _ResourceConfig: 资源详情
+        :type ResourceConfig: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param _PayMode: 付费模式
+        :type PayMode: int
+        :param _IsDefault: 是否默认配置,DEFAULT,BACKUP,不填默认不是默认配置
+        :type IsDefault: str
+        :param _ZoneId: 地域ID
+        :type ZoneId: int
+        :param _MultipleResourceConfig: 添加多个规格时，第1个规格详情在ResourceConfig参数，第2-n个在MultipleResourceConfig参数
+        :type MultipleResourceConfig: list of Resource
+        :param _ResourceBaseType: 类型为ComputeResource和EMR以及默认，默认为EMR
+        :type ResourceBaseType: str
+        :param _ComputeResourceId: 计算资源id
+        :type ComputeResourceId: str
+        :param _HardwareResourceType: 硬件类型
+        :type HardwareResourceType: str
+        """
+        self._InstanceId = None
+        self._ResourceType = None
+        self._ResourceConfig = None
+        self._PayMode = None
+        self._IsDefault = None
+        self._ZoneId = None
+        self._MultipleResourceConfig = None
+        self._ResourceBaseType = None
+        self._ComputeResourceId = None
+        self._HardwareResourceType = None
+
+    @property
+    def InstanceId(self):
+        """集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ResourceType(self):
+        """节点类型 CORE TASK ROUTER
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceConfig(self):
+        """资源详情
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Resource`
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def PayMode(self):
+        """付费模式
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def IsDefault(self):
+        """是否默认配置,DEFAULT,BACKUP,不填默认不是默认配置
+        :rtype: str
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def ZoneId(self):
+        """地域ID
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def MultipleResourceConfig(self):
+        """添加多个规格时，第1个规格详情在ResourceConfig参数，第2-n个在MultipleResourceConfig参数
+        :rtype: list of Resource
+        """
+        return self._MultipleResourceConfig
+
+    @MultipleResourceConfig.setter
+    def MultipleResourceConfig(self, MultipleResourceConfig):
+        self._MultipleResourceConfig = MultipleResourceConfig
+
+    @property
+    def ResourceBaseType(self):
+        """类型为ComputeResource和EMR以及默认，默认为EMR
+        :rtype: str
+        """
+        return self._ResourceBaseType
+
+    @ResourceBaseType.setter
+    def ResourceBaseType(self, ResourceBaseType):
+        self._ResourceBaseType = ResourceBaseType
+
+    @property
+    def ComputeResourceId(self):
+        """计算资源id
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+    @property
+    def HardwareResourceType(self):
+        """硬件类型
+        :rtype: str
+        """
+        return self._HardwareResourceType
+
+    @HardwareResourceType.setter
+    def HardwareResourceType(self, HardwareResourceType):
+        self._HardwareResourceType = HardwareResourceType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ResourceType = params.get("ResourceType")
+        if params.get("ResourceConfig") is not None:
+            self._ResourceConfig = Resource()
+            self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        self._PayMode = params.get("PayMode")
+        self._IsDefault = params.get("IsDefault")
+        self._ZoneId = params.get("ZoneId")
+        if params.get("MultipleResourceConfig") is not None:
+            self._MultipleResourceConfig = []
+            for item in params.get("MultipleResourceConfig"):
+                obj = Resource()
+                obj._deserialize(item)
+                self._MultipleResourceConfig.append(obj)
+        self._ResourceBaseType = params.get("ResourceBaseType")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        self._HardwareResourceType = params.get("HardwareResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddNodeResourceConfigResponse(AbstractModel):
+    """AddNodeResourceConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddUsersForUserManagerRequest(AbstractModel):
     """AddUsersForUserManager请求参数结构体
 
@@ -608,6 +814,183 @@ class Arg(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class AttachDisksRequest(AbstractModel):
+    """AttachDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR集群实例ID
+        :type InstanceId: str
+        :param _DiskIds: 需要挂载的云盘ID
+        :type DiskIds: list of str
+        :param _AlignType: 挂载模式，取值范围：
+AUTO_RENEW：自动续费
+ALIGN_DEADLINE：自动对其到期时间
+        :type AlignType: str
+        :param _CvmInstanceIds: 需要挂载的cvm节点id列表
+        :type CvmInstanceIds: list of str
+        :param _CreateDisk: 是否是新购云盘进行挂载
+        :type CreateDisk: bool
+        :param _DiskSpec: 新购云盘规格
+        :type DiskSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpecDiskV2`
+        :param _DeleteWithInstance: 可选参数，不传该参数则仅执行挂载操作。传入True时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+        :type DeleteWithInstance: bool
+        """
+        self._InstanceId = None
+        self._DiskIds = None
+        self._AlignType = None
+        self._CvmInstanceIds = None
+        self._CreateDisk = None
+        self._DiskSpec = None
+        self._DeleteWithInstance = None
+
+    @property
+    def InstanceId(self):
+        """EMR集群实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DiskIds(self):
+        """需要挂载的云盘ID
+        :rtype: list of str
+        """
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def AlignType(self):
+        """挂载模式，取值范围：
+AUTO_RENEW：自动续费
+ALIGN_DEADLINE：自动对其到期时间
+        :rtype: str
+        """
+        return self._AlignType
+
+    @AlignType.setter
+    def AlignType(self, AlignType):
+        self._AlignType = AlignType
+
+    @property
+    def CvmInstanceIds(self):
+        """需要挂载的cvm节点id列表
+        :rtype: list of str
+        """
+        return self._CvmInstanceIds
+
+    @CvmInstanceIds.setter
+    def CvmInstanceIds(self, CvmInstanceIds):
+        self._CvmInstanceIds = CvmInstanceIds
+
+    @property
+    def CreateDisk(self):
+        """是否是新购云盘进行挂载
+        :rtype: bool
+        """
+        return self._CreateDisk
+
+    @CreateDisk.setter
+    def CreateDisk(self, CreateDisk):
+        self._CreateDisk = CreateDisk
+
+    @property
+    def DiskSpec(self):
+        """新购云盘规格
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeSpecDiskV2`
+        """
+        return self._DiskSpec
+
+    @DiskSpec.setter
+    def DiskSpec(self, DiskSpec):
+        self._DiskSpec = DiskSpec
+
+    @property
+    def DeleteWithInstance(self):
+        """可选参数，不传该参数则仅执行挂载操作。传入True时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+        :rtype: bool
+        """
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DiskIds = params.get("DiskIds")
+        self._AlignType = params.get("AlignType")
+        self._CvmInstanceIds = params.get("CvmInstanceIds")
+        self._CreateDisk = params.get("CreateDisk")
+        if params.get("DiskSpec") is not None:
+            self._DiskSpec = NodeSpecDiskV2()
+            self._DiskSpec._deserialize(params.get("DiskSpec"))
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachDisksResponse(AbstractModel):
+    """AttachDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        """流程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class AutoScaleRecord(AbstractModel):
@@ -1215,6 +1598,282 @@ clusterAfter 表示在集群初始化后执行。
         self._Path = params.get("Path")
         self._WhenRun = params.get("WhenRun")
         self._Args = params.get("Args")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CBSInstance(AbstractModel):
+    """CBS实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskId: 云硬盘ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskId: str
+        :param _DiskUsage: 云硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskUsage: str
+        :param _DiskName: 云硬盘名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskName: str
+        :param _DiskSize: 云硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param _DiskType: 云盘介质类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param _DeleteWithInstance: 是否跟随实例删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteWithInstance: bool
+        :param _DiskChargeType: 云硬盘收费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskChargeType: str
+        :param _DiskState: 云硬盘运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskState: str
+        :param _RenewFlag: 是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: str
+        :param _DeadlineTime: 到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadlineTime: str
+        :param _Attached: 云盘是否挂载到云主机上
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attached: bool
+        :param _DifferDaysOfDeadline: 当前时间距离盘到期的天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DifferDaysOfDeadline: int
+        :param _InstanceIdList: 该云盘当前被挂载到的CVM实例InstanceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIdList: list of str
+        :param _InstanceId: 云硬盘挂载的云主机ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _Shareable: 云盘是否为共享型云盘。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Shareable: bool
+        """
+        self._DiskId = None
+        self._DiskUsage = None
+        self._DiskName = None
+        self._DiskSize = None
+        self._DiskType = None
+        self._DeleteWithInstance = None
+        self._DiskChargeType = None
+        self._DiskState = None
+        self._RenewFlag = None
+        self._DeadlineTime = None
+        self._Attached = None
+        self._DifferDaysOfDeadline = None
+        self._InstanceIdList = None
+        self._InstanceId = None
+        self._Shareable = None
+
+    @property
+    def DiskId(self):
+        """云硬盘ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def DiskUsage(self):
+        """云硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskUsage
+
+    @DiskUsage.setter
+    def DiskUsage(self, DiskUsage):
+        self._DiskUsage = DiskUsage
+
+    @property
+    def DiskName(self):
+        """云硬盘名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
+    @property
+    def DiskSize(self):
+        """云硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskType(self):
+        """云盘介质类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DeleteWithInstance(self):
+        """是否跟随实例删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+    @property
+    def DiskChargeType(self):
+        """云硬盘收费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskChargeType
+
+    @DiskChargeType.setter
+    def DiskChargeType(self, DiskChargeType):
+        self._DiskChargeType = DiskChargeType
+
+    @property
+    def DiskState(self):
+        """云硬盘运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskState
+
+    @DiskState.setter
+    def DiskState(self, DiskState):
+        self._DiskState = DiskState
+
+    @property
+    def RenewFlag(self):
+        """是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def DeadlineTime(self):
+        """到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeadlineTime
+
+    @DeadlineTime.setter
+    def DeadlineTime(self, DeadlineTime):
+        self._DeadlineTime = DeadlineTime
+
+    @property
+    def Attached(self):
+        """云盘是否挂载到云主机上
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Attached
+
+    @Attached.setter
+    def Attached(self, Attached):
+        self._Attached = Attached
+
+    @property
+    def DifferDaysOfDeadline(self):
+        """当前时间距离盘到期的天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DifferDaysOfDeadline
+
+    @DifferDaysOfDeadline.setter
+    def DifferDaysOfDeadline(self, DifferDaysOfDeadline):
+        self._DifferDaysOfDeadline = DifferDaysOfDeadline
+
+    @property
+    def InstanceIdList(self):
+        """该云盘当前被挂载到的CVM实例InstanceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def InstanceId(self):
+        """云硬盘挂载的云主机ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Shareable(self):
+        """云盘是否为共享型云盘。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Shareable
+
+    @Shareable.setter
+    def Shareable(self, Shareable):
+        self._Shareable = Shareable
+
+
+    def _deserialize(self, params):
+        self._DiskId = params.get("DiskId")
+        self._DiskUsage = params.get("DiskUsage")
+        self._DiskName = params.get("DiskName")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        self._DiskChargeType = params.get("DiskChargeType")
+        self._DiskState = params.get("DiskState")
+        self._RenewFlag = params.get("RenewFlag")
+        self._DeadlineTime = params.get("DeadlineTime")
+        self._Attached = params.get("Attached")
+        self._DifferDaysOfDeadline = params.get("DifferDaysOfDeadline")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._InstanceId = params.get("InstanceId")
+        self._Shareable = params.get("Shareable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5766,6 +6425,130 @@ class DeleteAutoScaleStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteNodeResourceConfigRequest(AbstractModel):
+    """DeleteNodeResourceConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param _ResourceConfigId: 节点配置Id
+        :type ResourceConfigId: int
+        :param _ResourceType: 节点类型 CORE TASK ROUTER
+        :type ResourceType: str
+        :param _ResourceBaseType: 类型为ComputeResource和EMR以及默认，默认为EMR
+        :type ResourceBaseType: str
+        :param _ComputeResourceId: 计算资源id
+        :type ComputeResourceId: str
+        """
+        self._InstanceId = None
+        self._ResourceConfigId = None
+        self._ResourceType = None
+        self._ResourceBaseType = None
+        self._ComputeResourceId = None
+
+    @property
+    def InstanceId(self):
+        """集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ResourceConfigId(self):
+        """节点配置Id
+        :rtype: int
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def ResourceType(self):
+        """节点类型 CORE TASK ROUTER
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceBaseType(self):
+        """类型为ComputeResource和EMR以及默认，默认为EMR
+        :rtype: str
+        """
+        return self._ResourceBaseType
+
+    @ResourceBaseType.setter
+    def ResourceBaseType(self, ResourceBaseType):
+        self._ResourceBaseType = ResourceBaseType
+
+    @property
+    def ComputeResourceId(self):
+        """计算资源id
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceBaseType = params.get("ResourceBaseType")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNodeResourceConfigResponse(AbstractModel):
+    """DeleteNodeResourceConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteUserManagerUserListRequest(AbstractModel):
     """DeleteUserManagerUserList请求参数结构体
 
@@ -9413,6 +10196,352 @@ class DescribeKyuubiQueryInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self._KyuubiQueryInfoList.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DescribeNodeDataDisksRequest(AbstractModel):
+    """DescribeNodeDataDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR集群实例ID
+        :type InstanceId: str
+        :param _CvmInstanceIds: 节点CVM实例Id列表
+        :type CvmInstanceIds: list of str
+        """
+        self._InstanceId = None
+        self._CvmInstanceIds = None
+
+    @property
+    def InstanceId(self):
+        """EMR集群实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CvmInstanceIds(self):
+        """节点CVM实例Id列表
+        :rtype: list of str
+        """
+        return self._CvmInstanceIds
+
+    @CvmInstanceIds.setter
+    def CvmInstanceIds(self, CvmInstanceIds):
+        self._CvmInstanceIds = CvmInstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CvmInstanceIds = params.get("CvmInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodeDataDisksResponse(AbstractModel):
+    """DescribeNodeDataDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _CBSList: 云盘列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CBSList: list of CBSInstance
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._CBSList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CBSList(self):
+        """云盘列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CBSInstance
+        """
+        return self._CBSList
+
+    @CBSList.setter
+    def CBSList(self, CBSList):
+        self._CBSList = CBSList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("CBSList") is not None:
+            self._CBSList = []
+            for item in params.get("CBSList"):
+                obj = CBSInstance()
+                obj._deserialize(item)
+                self._CBSList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNodeResourceConfigFastRequest(AbstractModel):
+    """DescribeNodeResourceConfigFast请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param _ResourceType: 节点类型 CORE TASK ROUTER ALL
+        :type ResourceType: str
+        :param _PayMode: 计费类型
+        :type PayMode: int
+        :param _ZoneId: 可用区ID
+        :type ZoneId: int
+        :param _ResourceBaseType: 类型为ComputeResource和EMR以及默认，默认为EMR
+        :type ResourceBaseType: str
+        :param _ComputeResourceId: 计算资源id
+        :type ComputeResourceId: str
+        :param _HardwareResourceType: 硬件类型
+        :type HardwareResourceType: str
+        """
+        self._InstanceId = None
+        self._ResourceType = None
+        self._PayMode = None
+        self._ZoneId = None
+        self._ResourceBaseType = None
+        self._ComputeResourceId = None
+        self._HardwareResourceType = None
+
+    @property
+    def InstanceId(self):
+        """集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ResourceType(self):
+        """节点类型 CORE TASK ROUTER ALL
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def PayMode(self):
+        """计费类型
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ZoneId(self):
+        """可用区ID
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ResourceBaseType(self):
+        """类型为ComputeResource和EMR以及默认，默认为EMR
+        :rtype: str
+        """
+        return self._ResourceBaseType
+
+    @ResourceBaseType.setter
+    def ResourceBaseType(self, ResourceBaseType):
+        self._ResourceBaseType = ResourceBaseType
+
+    @property
+    def ComputeResourceId(self):
+        """计算资源id
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+    @property
+    def HardwareResourceType(self):
+        """硬件类型
+        :rtype: str
+        """
+        return self._HardwareResourceType
+
+    @HardwareResourceType.setter
+    def HardwareResourceType(self, HardwareResourceType):
+        self._HardwareResourceType = HardwareResourceType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ResourceType = params.get("ResourceType")
+        self._PayMode = params.get("PayMode")
+        self._ZoneId = params.get("ZoneId")
+        self._ResourceBaseType = params.get("ResourceBaseType")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        self._HardwareResourceType = params.get("HardwareResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodeResourceConfigFastResponse(AbstractModel):
+    """DescribeNodeResourceConfigFast返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: DescribeResourceConfig接口返回值
+        :type Data: list of DescribeResourceConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """DescribeResourceConfig接口返回值
+        :rtype: list of DescribeResourceConfig
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescribeResourceConfig()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceConfig(AbstractModel):
+    """DescribeResourceConfig接口出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 规格管理类型
+        :type ResourceType: str
+        :param _ResourceData: 规格管理数据
+        :type ResourceData: list of NodeResource
+        """
+        self._ResourceType = None
+        self._ResourceData = None
+
+    @property
+    def ResourceType(self):
+        """规格管理类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceData(self):
+        """规格管理数据
+        :rtype: list of NodeResource
+        """
+        return self._ResourceData
+
+    @ResourceData.setter
+    def ResourceData(self, ResourceData):
+        self._ResourceData = ResourceData
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("ResourceData") is not None:
+            self._ResourceData = []
+            for item in params.get("ResourceData"):
+                obj = NodeResource()
+                obj._deserialize(item)
+                self._ResourceData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeResourceScheduleDiffDetailRequest(AbstractModel):
@@ -18805,6 +19934,115 @@ class ModifyGlobalConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceBasicRequest(AbstractModel):
+    """ModifyInstanceBasic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ResourceBaseType: 用来标注修改计算资源
+        :type ResourceBaseType: str
+        :param _ComputeResourceId: 需要修改的计算资源id，与ResourceBaseType 配合使用
+        :type ComputeResourceId: str
+        """
+        self._InstanceId = None
+        self._ClusterName = None
+        self._ResourceBaseType = None
+        self._ComputeResourceId = None
+
+    @property
+    def InstanceId(self):
+        """集群实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterName(self):
+        """集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ResourceBaseType(self):
+        """用来标注修改计算资源
+        :rtype: str
+        """
+        return self._ResourceBaseType
+
+    @ResourceBaseType.setter
+    def ResourceBaseType(self, ResourceBaseType):
+        self._ResourceBaseType = ResourceBaseType
+
+    @property
+    def ComputeResourceId(self):
+        """需要修改的计算资源id，与ResourceBaseType 配合使用
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterName = params.get("ClusterName")
+        self._ResourceBaseType = params.get("ResourceBaseType")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceBasicResponse(AbstractModel):
+    """ModifyInstanceBasic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyPodNumRequest(AbstractModel):
     """ModifyPodNum请求参数结构体
 
@@ -19060,6 +20298,177 @@ class ModifyResourcePoolsResponse(AbstractModel):
     def _deserialize(self, params):
         self._IsDraft = params.get("IsDraft")
         self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyResourceRequest(AbstractModel):
+    """ModifyResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _PayMode: 计费类型
+        :type PayMode: int
+        :param _NewCpu: 变配CPU
+        :type NewCpu: int
+        :param _NewMem: 变配内存
+        :type NewMem: int
+        :param _ClientToken: Token
+        :type ClientToken: str
+        :param _InstanceType: 变配机器规格
+        :type InstanceType: str
+        :param _ResourceIdList: 节点ID列表
+        :type ResourceIdList: list of str
+        """
+        self._InstanceId = None
+        self._PayMode = None
+        self._NewCpu = None
+        self._NewMem = None
+        self._ClientToken = None
+        self._InstanceType = None
+        self._ResourceIdList = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PayMode(self):
+        """计费类型
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def NewCpu(self):
+        """变配CPU
+        :rtype: int
+        """
+        return self._NewCpu
+
+    @NewCpu.setter
+    def NewCpu(self, NewCpu):
+        self._NewCpu = NewCpu
+
+    @property
+    def NewMem(self):
+        """变配内存
+        :rtype: int
+        """
+        return self._NewMem
+
+    @NewMem.setter
+    def NewMem(self, NewMem):
+        self._NewMem = NewMem
+
+    @property
+    def ClientToken(self):
+        """Token
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def InstanceType(self):
+        """变配机器规格
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def ResourceIdList(self):
+        """节点ID列表
+        :rtype: list of str
+        """
+        return self._ResourceIdList
+
+    @ResourceIdList.setter
+    def ResourceIdList(self, ResourceIdList):
+        self._ResourceIdList = ResourceIdList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PayMode = params.get("PayMode")
+        self._NewCpu = params.get("NewCpu")
+        self._NewMem = params.get("NewMem")
+        self._ClientToken = params.get("ClientToken")
+        self._InstanceType = params.get("InstanceType")
+        self._ResourceIdList = params.get("ResourceIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceResponse(AbstractModel):
+    """ModifyResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TraceId: 流程traceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TraceId = None
+        self._RequestId = None
+
+    @property
+    def TraceId(self):
+        """流程traceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TraceId = params.get("TraceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -20178,12 +21587,24 @@ class MultiDiskMC(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Type: 磁盘类型
+1  :本地盘
+2  :云硬盘
+3  : 本地SSD
+4  : 云SSD
+5  : 高效云盘
+6  : 增强型SSD云硬盘
+11 : 吞吐型云硬盘
+12 : 极速型SSD云硬盘
+13 : 通用型SSD云硬盘
+14 : 大数据型云硬盘
+15 : 高IO型云硬盘
+16 : 远端SSD盘
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _Size: 磁盘大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: str
-        :param _Volume: 云盘大小
+        :param _Volume: 云盘大小,单位b
 注意：此字段可能返回 null，表示取不到有效值。
         :type Volume: int
         """
@@ -20207,6 +21628,18 @@ class MultiDiskMC(AbstractModel):
     @property
     def Type(self):
         """磁盘类型
+1  :本地盘
+2  :云硬盘
+3  : 本地SSD
+4  : 云SSD
+5  : 高效云盘
+6  : 增强型SSD云硬盘
+11 : 吞吐型云硬盘
+12 : 极速型SSD云硬盘
+13 : 通用型SSD云硬盘
+14 : 大数据型云硬盘
+15 : 高IO型云硬盘
+16 : 远端SSD盘
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -20230,7 +21663,7 @@ class MultiDiskMC(AbstractModel):
 
     @property
     def Volume(self):
-        """云盘大小
+        """云盘大小,单位b
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21569,6 +23002,146 @@ class NodeHardwareInfo(AbstractModel):
         
 
 
+class NodeResource(AbstractModel):
+    """规格管理，规格类型描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceConfigId: 配置Id
+        :type ResourceConfigId: int
+        :param _Resource: Resource
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _IsDefault: 是否默认配置,DEFAULT,BACKUP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: str
+        :param _MaxResourceNum: 该类型剩余
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxResourceNum: int
+        :param _PrepaidUnderwritePeriods: 支持的包销时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrepaidUnderwritePeriods: list of int
+        """
+        self._ResourceConfigId = None
+        self._Resource = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._IsDefault = None
+        self._MaxResourceNum = None
+        self._PrepaidUnderwritePeriods = None
+
+    @property
+    def ResourceConfigId(self):
+        """配置Id
+        :rtype: int
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Resource(self):
+        """Resource
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Resource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def IsDefault(self):
+        """是否默认配置,DEFAULT,BACKUP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def MaxResourceNum(self):
+        """该类型剩余
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxResourceNum
+
+    @MaxResourceNum.setter
+    def MaxResourceNum(self, MaxResourceNum):
+        self._MaxResourceNum = MaxResourceNum
+
+    @property
+    def PrepaidUnderwritePeriods(self):
+        """支持的包销时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._PrepaidUnderwritePeriods
+
+    @PrepaidUnderwritePeriods.setter
+    def PrepaidUnderwritePeriods(self, PrepaidUnderwritePeriods):
+        self._PrepaidUnderwritePeriods = PrepaidUnderwritePeriods
+
+
+    def _deserialize(self, params):
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        if params.get("Resource") is not None:
+            self._Resource = Resource()
+            self._Resource._deserialize(params.get("Resource"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._IsDefault = params.get("IsDefault")
+        self._MaxResourceNum = params.get("MaxResourceNum")
+        self._PrepaidUnderwritePeriods = params.get("PrepaidUnderwritePeriods")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeResourceSpec(AbstractModel):
     """资源详情
 
@@ -21843,6 +23416,95 @@ class NodeSelectorTerm(AbstractModel):
                 obj = NodeSelectorRequirement()
                 obj._deserialize(item)
                 self._MatchExpressions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeSpecDiskV2(AbstractModel):
+    """节点磁盘类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _DiskType: 磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param _DefaultDiskSize: 指定磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultDiskSize: int
+        """
+        self._Count = None
+        self._Name = None
+        self._DiskType = None
+        self._DefaultDiskSize = None
+
+    @property
+    def Count(self):
+        """数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Name(self):
+        """名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DiskType(self):
+        """磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DefaultDiskSize(self):
+        """指定磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DefaultDiskSize
+
+    @DefaultDiskSize.setter
+    def DefaultDiskSize(self, DefaultDiskSize):
+        self._DefaultDiskSize = DefaultDiskSize
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Name = params.get("Name")
+        self._DiskType = params.get("DiskType")
+        self._DefaultDiskSize = params.get("DefaultDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25220,6 +26882,132 @@ class ResetYarnConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResizeDataDisksRequest(AbstractModel):
+    """ResizeDataDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR集群实例ID
+        :type InstanceId: str
+        :param _DiskIds: 需要扩容的云盘ID
+        :type DiskIds: list of str
+        :param _DiskSize: 需要扩充的容量值，容量值需要大于原容量，并且为10的整数倍
+        :type DiskSize: int
+        :param _CvmInstanceIds: 需要扩容的节点ID列表
+        :type CvmInstanceIds: list of str
+        """
+        self._InstanceId = None
+        self._DiskIds = None
+        self._DiskSize = None
+        self._CvmInstanceIds = None
+
+    @property
+    def InstanceId(self):
+        """EMR集群实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DiskIds(self):
+        """需要扩容的云盘ID
+        :rtype: list of str
+        """
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def DiskSize(self):
+        """需要扩充的容量值，容量值需要大于原容量，并且为10的整数倍
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def CvmInstanceIds(self):
+        """需要扩容的节点ID列表
+        :rtype: list of str
+        """
+        return self._CvmInstanceIds
+
+    @CvmInstanceIds.setter
+    def CvmInstanceIds(self, CvmInstanceIds):
+        self._CvmInstanceIds = CvmInstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DiskIds = params.get("DiskIds")
+        self._DiskSize = params.get("DiskSize")
+        self._CvmInstanceIds = params.get("CvmInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResizeDataDisksResponse(AbstractModel):
+    """ResizeDataDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流程Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        """流程Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class Resource(AbstractModel):
     """资源详情
 
@@ -25236,7 +27024,7 @@ class Resource(AbstractModel):
 <li>5：表示高效云盘。</li>
 <li>6：表示增强型SSD云硬盘。</li>
 <li>11：表示吞吐型云硬盘。</li>
-<li>12：表示极速型SSD云硬盘。</li>
+<li>12：表示极速型SSD云硬盘。</li>：创建时该类型无效，会根据数据盘类型和节点类型自动判断
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageType: int
         :param _DiskType: 磁盘类型
@@ -25307,7 +27095,7 @@ class Resource(AbstractModel):
 <li>5：表示高效云盘。</li>
 <li>6：表示增强型SSD云硬盘。</li>
 <li>11：表示吞吐型云硬盘。</li>
-<li>12：表示极速型SSD云硬盘。</li>
+<li>12：表示极速型SSD云硬盘。</li>：创建时该类型无效，会根据数据盘类型和节点类型自动判断
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28561,6 +30349,145 @@ class ServiceProcessFunctionInfo(AbstractModel):
         
 
 
+class SetNodeResourceConfigDefaultRequest(AbstractModel):
+    """SetNodeResourceConfigDefault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param _ResourceConfigId: 配置Id
+        :type ResourceConfigId: int
+        :param _ResourceType: 规格节点类型 CORE TASK ROUTER
+        :type ResourceType: str
+        :param _ResourceBaseType: 类型为ComputeResource和EMR以及默认，默认为EMR
+        :type ResourceBaseType: str
+        :param _ComputeResourceId: 计算资源id
+        :type ComputeResourceId: str
+        :param _HardwareResourceType: 硬件类型
+        :type HardwareResourceType: str
+        """
+        self._InstanceId = None
+        self._ResourceConfigId = None
+        self._ResourceType = None
+        self._ResourceBaseType = None
+        self._ComputeResourceId = None
+        self._HardwareResourceType = None
+
+    @property
+    def InstanceId(self):
+        """集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ResourceConfigId(self):
+        """配置Id
+        :rtype: int
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def ResourceType(self):
+        """规格节点类型 CORE TASK ROUTER
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceBaseType(self):
+        """类型为ComputeResource和EMR以及默认，默认为EMR
+        :rtype: str
+        """
+        return self._ResourceBaseType
+
+    @ResourceBaseType.setter
+    def ResourceBaseType(self, ResourceBaseType):
+        self._ResourceBaseType = ResourceBaseType
+
+    @property
+    def ComputeResourceId(self):
+        """计算资源id
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+    @property
+    def HardwareResourceType(self):
+        """硬件类型
+        :rtype: str
+        """
+        return self._HardwareResourceType
+
+    @HardwareResourceType.setter
+    def HardwareResourceType(self, HardwareResourceType):
+        self._HardwareResourceType = HardwareResourceType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceBaseType = params.get("ResourceBaseType")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        self._HardwareResourceType = params.get("HardwareResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetNodeResourceConfigDefaultResponse(AbstractModel):
+    """SetNodeResourceConfigDefault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ShortNodeInfo(AbstractModel):
     """节点信息
 
@@ -28942,7 +30869,7 @@ class StageInfoDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Stage: 步骤id
+        :param _Stage: 步骤
         :type Stage: str
         :param _Name: 步骤名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -29002,7 +30929,7 @@ class StageInfoDetail(AbstractModel):
 
     @property
     def Stage(self):
-        """步骤id
+        """步骤
         :rtype: str
         """
         return self._Stage

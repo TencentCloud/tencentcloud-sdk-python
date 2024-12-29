@@ -42088,6 +42088,168 @@ class InquirePriceCreateDirectConnectGatewayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InquiryPriceAllocateAddressesRequest(AbstractModel):
+    """InquiryPriceAllocateAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetChargeType: EIP计费方式。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+<li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
+</ul>
+        :type InternetChargeType: str
+        :param _InternetMaxBandwidthOut: EIP出带宽上限，单位：Mbps。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值范围取决于EIP计费方式：<ul>
+<li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
+<li>账号为传统账户类型的用户，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+        :type InternetMaxBandwidthOut: int
+        :param _AddressChargePrepaid: 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递
+        :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        :param _AddressType: EIP类型。默认值：EIP。
+
+<ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul><ul style="margin:0">
+        <li>高防IP，可选值：<ul>
+                <li>AntiDDoSEIP：高防IP</li>
+            </ul>
+        </li>
+    </ul>
+        :type AddressType: str
+        """
+        self._InternetChargeType = None
+        self._InternetMaxBandwidthOut = None
+        self._AddressChargePrepaid = None
+        self._AddressType = None
+
+    @property
+    def InternetChargeType(self):
+        """EIP计费方式。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
+<li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
+</ul>
+        :rtype: str
+        """
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """EIP出带宽上限，单位：Mbps。
+<ul style="margin:0"><li>账号为标准账户类型的用户，可选值范围取决于EIP计费方式：<ul>
+<li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
+<li>账号为传统账户类型的用户，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def AddressChargePrepaid(self):
+        """包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        return self._AddressChargePrepaid
+
+    @AddressChargePrepaid.setter
+    def AddressChargePrepaid(self, AddressChargePrepaid):
+        self._AddressChargePrepaid = AddressChargePrepaid
+
+    @property
+    def AddressType(self):
+        """EIP类型。默认值：EIP。
+
+<ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul><ul style="margin:0">
+        <li>高防IP，可选值：<ul>
+                <li>AntiDDoSEIP：高防IP</li>
+            </ul>
+        </li>
+    </ul>
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+
+    def _deserialize(self, params):
+        self._InternetChargeType = params.get("InternetChargeType")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        if params.get("AddressChargePrepaid") is not None:
+            self._AddressChargePrepaid = AddressChargePrepaid()
+            self._AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
+        self._AddressType = params.get("AddressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceAllocateAddressesResponse(AbstractModel):
+    """InquiryPriceAllocateAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 弹性公网IP价格
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        """弹性公网IP价格
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = InternetPrice()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
 class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
     """InquiryPriceCreateVpnGateway请求参数结构体
 
@@ -42227,6 +42389,200 @@ class InquiryPriceCreateVpnGatewayResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Price") is not None:
             self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceModifyAddressesBandwidthRequest(AbstractModel):
+    """InquiryPriceModifyAddressesBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressIds: EIP唯一ID
+        :type AddressIds: list of str
+        :param _InternetMaxBandwidthOut: 新带宽值
+        :type InternetMaxBandwidthOut: int
+        """
+        self._AddressIds = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def AddressIds(self):
+        """EIP唯一ID
+        :rtype: list of str
+        """
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """新带宽值
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+
+    def _deserialize(self, params):
+        self._AddressIds = params.get("AddressIds")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceModifyAddressesBandwidthResponse(AbstractModel):
+    """InquiryPriceModifyAddressesBandwidth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 弹性公网IP调整带宽询价结果
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        """弹性公网IP调整带宽询价结果
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = InternetPrice()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewAddressesRequest(AbstractModel):
+    """InquiryPriceRenewAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressIds: 续费资源实例ID。
+        :type AddressIds: list of str
+        :param _AddressChargePrepaid: 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递。
+        :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        self._AddressIds = None
+        self._AddressChargePrepaid = None
+
+    @property
+    def AddressIds(self):
+        """续费资源实例ID。
+        :rtype: list of str
+        """
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
+
+    @property
+    def AddressChargePrepaid(self):
+        """包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        return self._AddressChargePrepaid
+
+    @AddressChargePrepaid.setter
+    def AddressChargePrepaid(self, AddressChargePrepaid):
+        self._AddressChargePrepaid = AddressChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._AddressIds = params.get("AddressIds")
+        if params.get("AddressChargePrepaid") is not None:
+            self._AddressChargePrepaid = AddressChargePrepaid()
+            self._AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRenewAddressesResponse(AbstractModel):
+    """InquiryPriceRenewAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 弹性公网IP续费价格。
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        """弹性公网IP续费价格。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = InternetPrice()
             self._Price._deserialize(params.get("Price"))
         self._RequestId = params.get("RequestId")
 
@@ -42691,6 +43047,129 @@ class InstanceStatistic(AbstractModel):
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
         self._InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternetPrice(AbstractModel):
+    """公网询价出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressPrice: 公网IP询价详细参数。
+        :type AddressPrice: :class:`tencentcloud.vpc.v20170312.models.InternetPriceDetail`
+        """
+        self._AddressPrice = None
+
+    @property
+    def AddressPrice(self):
+        """公网IP询价详细参数。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPriceDetail`
+        """
+        return self._AddressPrice
+
+    @AddressPrice.setter
+    def AddressPrice(self, AddressPrice):
+        self._AddressPrice = AddressPrice
+
+
+    def _deserialize(self, params):
+        if params.get("AddressPrice") is not None:
+            self._AddressPrice = InternetPriceDetail()
+            self._AddressPrice._deserialize(params.get("AddressPrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternetPriceDetail(AbstractModel):
+    """公网IP询价出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitPrice: 付费单价，单位：元，仅后付费价格查询返回。
+        :type UnitPrice: float
+        :param _DiscountPrice: 折扣后的价格，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPrice: float
+        :param _ChargeUnit: 计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeUnit: str
+        :param _OriginalPrice: 原价，单位：元，仅预付费价格查询返回。
+        :type OriginalPrice: float
+        """
+        self._UnitPrice = None
+        self._DiscountPrice = None
+        self._ChargeUnit = None
+        self._OriginalPrice = None
+
+    @property
+    def UnitPrice(self):
+        """付费单价，单位：元，仅后付费价格查询返回。
+        :rtype: float
+        """
+        return self._UnitPrice
+
+    @UnitPrice.setter
+    def UnitPrice(self, UnitPrice):
+        self._UnitPrice = UnitPrice
+
+    @property
+    def DiscountPrice(self):
+        """折扣后的价格，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def ChargeUnit(self):
+        """计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChargeUnit
+
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
+
+    @property
+    def OriginalPrice(self):
+        """原价，单位：元，仅预付费价格查询返回。
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+
+    def _deserialize(self, params):
+        self._UnitPrice = params.get("UnitPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._ChargeUnit = params.get("ChargeUnit")
+        self._OriginalPrice = params.get("OriginalPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

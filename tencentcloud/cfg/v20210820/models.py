@@ -3330,11 +3330,14 @@ class ObjectTypeConfigFields(AbstractModel):
         :param _JsonParse: tke的pod字段信息解析
 注意：此字段可能返回 null，表示取不到有效值。
         :type JsonParse: str
+        :param _Type: 字段类型 0:str 1:list
+        :type Type: int
         """
         self._Key = None
         self._Header = None
         self._Transfer = None
         self._JsonParse = None
+        self._Type = None
 
     @property
     def Key(self):
@@ -3382,12 +3385,24 @@ class ObjectTypeConfigFields(AbstractModel):
     def JsonParse(self, JsonParse):
         self._JsonParse = JsonParse
 
+    @property
+    def Type(self):
+        """字段类型 0:str 1:list
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Header = params.get("Header")
         self._Transfer = params.get("Transfer")
         self._JsonParse = params.get("JsonParse")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

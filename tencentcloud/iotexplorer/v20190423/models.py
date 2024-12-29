@@ -24395,10 +24395,13 @@ class TWeCallActiveInfo(AbstractModel):
         :param _ExpireTime: 过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
+        :param _PkgType: 类型
+        :type PkgType: int
         """
         self._ModelId = None
         self._Sn = None
         self._ExpireTime = None
+        self._PkgType = None
 
     @property
     def ModelId(self):
@@ -24440,11 +24443,23 @@ class TWeCallActiveInfo(AbstractModel):
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def PkgType(self):
+        """类型
+        :rtype: int
+        """
+        return self._PkgType
+
+    @PkgType.setter
+    def PkgType(self, PkgType):
+        self._PkgType = PkgType
+
 
     def _deserialize(self, params):
         self._ModelId = params.get("ModelId")
         self._Sn = params.get("Sn")
         self._ExpireTime = params.get("ExpireTime")
+        self._PkgType = params.get("PkgType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

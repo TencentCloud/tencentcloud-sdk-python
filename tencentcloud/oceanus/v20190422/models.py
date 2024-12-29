@@ -429,6 +429,14 @@ class Cluster(AbstractModel):
         :type MemRatio: int
         :param _CrossTenantEniMode: 是否开启跨租户弹性网卡
         :type CrossTenantEniMode: int
+        :param _TotalCpu: 总的CPU
+        :type TotalCpu: float
+        :param _TotalMem: 总的内存
+        :type TotalMem: float
+        :param _RunningCpu: 运行的CPU
+        :type RunningCpu: float
+        :param _RunningMem: 运行的内存
+        :type RunningMem: float
         """
         self._ClusterId = None
         self._Name = None
@@ -478,6 +486,10 @@ class Cluster(AbstractModel):
         self._BillingResourceMode = None
         self._MemRatio = None
         self._CrossTenantEniMode = None
+        self._TotalCpu = None
+        self._TotalMem = None
+        self._RunningCpu = None
+        self._RunningMem = None
 
     @property
     def ClusterId(self):
@@ -1037,6 +1049,50 @@ class Cluster(AbstractModel):
     def CrossTenantEniMode(self, CrossTenantEniMode):
         self._CrossTenantEniMode = CrossTenantEniMode
 
+    @property
+    def TotalCpu(self):
+        """总的CPU
+        :rtype: float
+        """
+        return self._TotalCpu
+
+    @TotalCpu.setter
+    def TotalCpu(self, TotalCpu):
+        self._TotalCpu = TotalCpu
+
+    @property
+    def TotalMem(self):
+        """总的内存
+        :rtype: float
+        """
+        return self._TotalMem
+
+    @TotalMem.setter
+    def TotalMem(self, TotalMem):
+        self._TotalMem = TotalMem
+
+    @property
+    def RunningCpu(self):
+        """运行的CPU
+        :rtype: float
+        """
+        return self._RunningCpu
+
+    @RunningCpu.setter
+    def RunningCpu(self, RunningCpu):
+        self._RunningCpu = RunningCpu
+
+    @property
+    def RunningMem(self):
+        """运行的内存
+        :rtype: float
+        """
+        return self._RunningMem
+
+    @RunningMem.setter
+    def RunningMem(self, RunningMem):
+        self._RunningMem = RunningMem
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1121,6 +1177,10 @@ class Cluster(AbstractModel):
         self._BillingResourceMode = params.get("BillingResourceMode")
         self._MemRatio = params.get("MemRatio")
         self._CrossTenantEniMode = params.get("CrossTenantEniMode")
+        self._TotalCpu = params.get("TotalCpu")
+        self._TotalMem = params.get("TotalMem")
+        self._RunningCpu = params.get("RunningCpu")
+        self._RunningMem = params.get("RunningMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1182,6 +1242,14 @@ class ClusterGroupSetItem(AbstractModel):
         :param _BillingResourceMode: 默认 "" 包销模式 "exclusiveSale"
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingResourceMode: str
+        :param _TotalCpu: TotalCpu
+        :type TotalCpu: float
+        :param _TotalMem: TotalMem
+        :type TotalMem: float
+        :param _RunningCpu: RunningCpu
+        :type RunningCpu: float
+        :param _RunningMem: RunningMem
+        :type RunningMem: float
         """
         self._ClusterId = None
         self._Name = None
@@ -1204,6 +1272,10 @@ class ClusterGroupSetItem(AbstractModel):
         self._PayMode = None
         self._SubEks = None
         self._BillingResourceMode = None
+        self._TotalCpu = None
+        self._TotalMem = None
+        self._RunningCpu = None
+        self._RunningMem = None
 
     @property
     def ClusterId(self):
@@ -1438,6 +1510,50 @@ class ClusterGroupSetItem(AbstractModel):
     def BillingResourceMode(self, BillingResourceMode):
         self._BillingResourceMode = BillingResourceMode
 
+    @property
+    def TotalCpu(self):
+        """TotalCpu
+        :rtype: float
+        """
+        return self._TotalCpu
+
+    @TotalCpu.setter
+    def TotalCpu(self, TotalCpu):
+        self._TotalCpu = TotalCpu
+
+    @property
+    def TotalMem(self):
+        """TotalMem
+        :rtype: float
+        """
+        return self._TotalMem
+
+    @TotalMem.setter
+    def TotalMem(self, TotalMem):
+        self._TotalMem = TotalMem
+
+    @property
+    def RunningCpu(self):
+        """RunningCpu
+        :rtype: float
+        """
+        return self._RunningCpu
+
+    @RunningCpu.setter
+    def RunningCpu(self, RunningCpu):
+        self._RunningCpu = RunningCpu
+
+    @property
+    def RunningMem(self):
+        """RunningMem
+        :rtype: float
+        """
+        return self._RunningMem
+
+    @RunningMem.setter
+    def RunningMem(self, RunningMem):
+        self._RunningMem = RunningMem
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1463,6 +1579,10 @@ class ClusterGroupSetItem(AbstractModel):
             self._SubEks = SubEks()
             self._SubEks._deserialize(params.get("SubEks"))
         self._BillingResourceMode = params.get("BillingResourceMode")
+        self._TotalCpu = params.get("TotalCpu")
+        self._TotalMem = params.get("TotalMem")
+        self._RunningCpu = params.get("RunningCpu")
+        self._RunningMem = params.get("RunningMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2507,6 +2627,14 @@ class CreateJobConfigRequest(AbstractModel):
         :type EsServerlessSpace: str
         :param _FlinkVersion: flink版本
         :type FlinkVersion: str
+        :param _JobManagerCpu: JobManager cpu
+        :type JobManagerCpu: float
+        :param _JobManagerMem: JobManager 内存
+        :type JobManagerMem: float
+        :param _TaskManagerCpu: TaskManager cpu
+        :type TaskManagerCpu: float
+        :param _TaskManagerMem: TaskManager 内存
+        :type TaskManagerMem: float
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -2537,6 +2665,10 @@ class CreateJobConfigRequest(AbstractModel):
         self._EsServerlessIndex = None
         self._EsServerlessSpace = None
         self._FlinkVersion = None
+        self._JobManagerCpu = None
+        self._JobManagerMem = None
+        self._TaskManagerCpu = None
+        self._TaskManagerMem = None
 
     @property
     def JobId(self):
@@ -2857,6 +2989,50 @@ class CreateJobConfigRequest(AbstractModel):
     def FlinkVersion(self, FlinkVersion):
         self._FlinkVersion = FlinkVersion
 
+    @property
+    def JobManagerCpu(self):
+        """JobManager cpu
+        :rtype: float
+        """
+        return self._JobManagerCpu
+
+    @JobManagerCpu.setter
+    def JobManagerCpu(self, JobManagerCpu):
+        self._JobManagerCpu = JobManagerCpu
+
+    @property
+    def JobManagerMem(self):
+        """JobManager 内存
+        :rtype: float
+        """
+        return self._JobManagerMem
+
+    @JobManagerMem.setter
+    def JobManagerMem(self, JobManagerMem):
+        self._JobManagerMem = JobManagerMem
+
+    @property
+    def TaskManagerCpu(self):
+        """TaskManager cpu
+        :rtype: float
+        """
+        return self._TaskManagerCpu
+
+    @TaskManagerCpu.setter
+    def TaskManagerCpu(self, TaskManagerCpu):
+        self._TaskManagerCpu = TaskManagerCpu
+
+    @property
+    def TaskManagerMem(self):
+        """TaskManager 内存
+        :rtype: float
+        """
+        return self._TaskManagerMem
+
+    @TaskManagerMem.setter
+    def TaskManagerMem(self, TaskManagerMem):
+        self._TaskManagerMem = TaskManagerMem
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -2909,6 +3085,10 @@ class CreateJobConfigRequest(AbstractModel):
         self._EsServerlessIndex = params.get("EsServerlessIndex")
         self._EsServerlessSpace = params.get("EsServerlessSpace")
         self._FlinkVersion = params.get("FlinkVersion")
+        self._JobManagerCpu = params.get("JobManagerCpu")
+        self._JobManagerMem = params.get("JobManagerMem")
+        self._TaskManagerCpu = params.get("TaskManagerCpu")
+        self._TaskManagerMem = params.get("TaskManagerMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6178,12 +6358,15 @@ class DescribeResourcesRequest(AbstractModel):
         :type Filters: list of Filter
         :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
+        :param _SystemResource: 资源类型，0=用户，1系统connector，2=用户自定义connector
+        :type SystemResource: int
         """
         self._ResourceIds = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
         self._WorkSpaceId = None
+        self._SystemResource = None
 
     @property
     def ResourceIds(self):
@@ -6241,6 +6424,17 @@ class DescribeResourcesRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def SystemResource(self):
+        """资源类型，0=用户，1系统connector，2=用户自定义connector
+        :rtype: int
+        """
+        return self._SystemResource
+
+    @SystemResource.setter
+    def SystemResource(self, SystemResource):
+        self._SystemResource = SystemResource
+
 
     def _deserialize(self, params):
         self._ResourceIds = params.get("ResourceIds")
@@ -6253,6 +6447,7 @@ class DescribeResourcesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._SystemResource = params.get("SystemResource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6345,6 +6540,8 @@ class DescribeSystemResourcesRequest(AbstractModel):
         :type ClusterId: str
         :param _FlinkVersion: 查询对应Flink版本的内置connector
         :type FlinkVersion: str
+        :param _WorkSpaceId: 空间
+        :type WorkSpaceId: str
         """
         self._ResourceIds = None
         self._Offset = None
@@ -6352,6 +6549,7 @@ class DescribeSystemResourcesRequest(AbstractModel):
         self._Filters = None
         self._ClusterId = None
         self._FlinkVersion = None
+        self._WorkSpaceId = None
 
     @property
     def ResourceIds(self):
@@ -6419,6 +6617,17 @@ class DescribeSystemResourcesRequest(AbstractModel):
     def FlinkVersion(self, FlinkVersion):
         self._FlinkVersion = FlinkVersion
 
+    @property
+    def WorkSpaceId(self):
+        """空间
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
 
     def _deserialize(self, params):
         self._ResourceIds = params.get("ResourceIds")
@@ -6432,6 +6641,7 @@ class DescribeSystemResourcesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._ClusterId = params.get("ClusterId")
         self._FlinkVersion = params.get("FlinkVersion")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8064,6 +8274,21 @@ class JobConfig(AbstractModel):
         :param _FlinkVersion: flink 版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlinkVersion: str
+        :param _JobManagerCpu: jm使用cpu数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobManagerCpu: float
+        :param _JobManagerMem: jm使用内存数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobManagerMem: float
+        :param _TaskManagerCpu: tm使用cpu数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskManagerCpu: float
+        :param _TaskManagerMem: tm使用mem数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskManagerMem: float
+        :param _JobConfigItem: 运行中配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobConfigItem: :class:`tencentcloud.oceanus.v20190422.models.JobConfig`
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -8098,6 +8323,11 @@ class JobConfig(AbstractModel):
         self._IndexName = None
         self._WorkspaceName = None
         self._FlinkVersion = None
+        self._JobManagerCpu = None
+        self._JobManagerMem = None
+        self._TaskManagerCpu = None
+        self._TaskManagerMem = None
+        self._JobConfigItem = None
 
     @property
     def JobId(self):
@@ -8492,6 +8722,66 @@ class JobConfig(AbstractModel):
     def FlinkVersion(self, FlinkVersion):
         self._FlinkVersion = FlinkVersion
 
+    @property
+    def JobManagerCpu(self):
+        """jm使用cpu数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._JobManagerCpu
+
+    @JobManagerCpu.setter
+    def JobManagerCpu(self, JobManagerCpu):
+        self._JobManagerCpu = JobManagerCpu
+
+    @property
+    def JobManagerMem(self):
+        """jm使用内存数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._JobManagerMem
+
+    @JobManagerMem.setter
+    def JobManagerMem(self, JobManagerMem):
+        self._JobManagerMem = JobManagerMem
+
+    @property
+    def TaskManagerCpu(self):
+        """tm使用cpu数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TaskManagerCpu
+
+    @TaskManagerCpu.setter
+    def TaskManagerCpu(self, TaskManagerCpu):
+        self._TaskManagerCpu = TaskManagerCpu
+
+    @property
+    def TaskManagerMem(self):
+        """tm使用mem数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TaskManagerMem
+
+    @TaskManagerMem.setter
+    def TaskManagerMem(self, TaskManagerMem):
+        self._TaskManagerMem = TaskManagerMem
+
+    @property
+    def JobConfigItem(self):
+        """运行中配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobConfig`
+        """
+        return self._JobConfigItem
+
+    @JobConfigItem.setter
+    def JobConfigItem(self, JobConfigItem):
+        self._JobConfigItem = JobConfigItem
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -8548,6 +8838,13 @@ class JobConfig(AbstractModel):
         self._IndexName = params.get("IndexName")
         self._WorkspaceName = params.get("WorkspaceName")
         self._FlinkVersion = params.get("FlinkVersion")
+        self._JobManagerCpu = params.get("JobManagerCpu")
+        self._JobManagerMem = params.get("JobManagerMem")
+        self._TaskManagerCpu = params.get("TaskManagerCpu")
+        self._TaskManagerMem = params.get("TaskManagerMem")
+        if params.get("JobConfigItem") is not None:
+            self._JobConfigItem = JobConfig()
+            self._JobConfigItem._deserialize(params.get("JobConfigItem"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10841,7 +11138,6 @@ class ResourceItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefJobCount: int
         :param _IsJobRun: 作业运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsJobRun: int
         :param _FileName: 文件名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10852,6 +11148,20 @@ class ResourceItem(AbstractModel):
         :param _RefJobStatusCountSet: 分状态统计关联作业数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefJobStatusCountSet: list of RefJobStatusCountItem
+        :param _Connector: 连接器名称
+        :type Connector: str
+        :param _ConnectorVersion: 连接器版本
+        :type ConnectorVersion: str
+        :param _ConnectionMethod: 连接方式
+        :type ConnectionMethod: str
+        :param _RelatedResourceId: connector关联的资源id
+        :type RelatedResourceId: str
+        :param _Icon: 图标
+        :type Icon: str
+        :param _ConnectorName: 连接器中文名
+        :type ConnectorName: str
+        :param _ConnectorUrl: 连接器官网链接
+        :type ConnectorUrl: str
         """
         self._ResourceId = None
         self._Name = None
@@ -10871,6 +11181,13 @@ class ResourceItem(AbstractModel):
         self._FileName = None
         self._WorkSpaceId = None
         self._RefJobStatusCountSet = None
+        self._Connector = None
+        self._ConnectorVersion = None
+        self._ConnectionMethod = None
+        self._RelatedResourceId = None
+        self._Icon = None
+        self._ConnectorName = None
+        self._ConnectorUrl = None
 
     @property
     def ResourceId(self):
@@ -11032,7 +11349,6 @@ class ResourceItem(AbstractModel):
     @property
     def IsJobRun(self):
         """作业运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsJobRun
@@ -11077,6 +11393,83 @@ class ResourceItem(AbstractModel):
     def RefJobStatusCountSet(self, RefJobStatusCountSet):
         self._RefJobStatusCountSet = RefJobStatusCountSet
 
+    @property
+    def Connector(self):
+        """连接器名称
+        :rtype: str
+        """
+        return self._Connector
+
+    @Connector.setter
+    def Connector(self, Connector):
+        self._Connector = Connector
+
+    @property
+    def ConnectorVersion(self):
+        """连接器版本
+        :rtype: str
+        """
+        return self._ConnectorVersion
+
+    @ConnectorVersion.setter
+    def ConnectorVersion(self, ConnectorVersion):
+        self._ConnectorVersion = ConnectorVersion
+
+    @property
+    def ConnectionMethod(self):
+        """连接方式
+        :rtype: str
+        """
+        return self._ConnectionMethod
+
+    @ConnectionMethod.setter
+    def ConnectionMethod(self, ConnectionMethod):
+        self._ConnectionMethod = ConnectionMethod
+
+    @property
+    def RelatedResourceId(self):
+        """connector关联的资源id
+        :rtype: str
+        """
+        return self._RelatedResourceId
+
+    @RelatedResourceId.setter
+    def RelatedResourceId(self, RelatedResourceId):
+        self._RelatedResourceId = RelatedResourceId
+
+    @property
+    def Icon(self):
+        """图标
+        :rtype: str
+        """
+        return self._Icon
+
+    @Icon.setter
+    def Icon(self, Icon):
+        self._Icon = Icon
+
+    @property
+    def ConnectorName(self):
+        """连接器中文名
+        :rtype: str
+        """
+        return self._ConnectorName
+
+    @ConnectorName.setter
+    def ConnectorName(self, ConnectorName):
+        self._ConnectorName = ConnectorName
+
+    @property
+    def ConnectorUrl(self):
+        """连接器官网链接
+        :rtype: str
+        """
+        return self._ConnectorUrl
+
+    @ConnectorUrl.setter
+    def ConnectorUrl(self, ConnectorUrl):
+        self._ConnectorUrl = ConnectorUrl
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -11104,6 +11497,13 @@ class ResourceItem(AbstractModel):
                 obj = RefJobStatusCountItem()
                 obj._deserialize(item)
                 self._RefJobStatusCountSet.append(obj)
+        self._Connector = params.get("Connector")
+        self._ConnectorVersion = params.get("ConnectorVersion")
+        self._ConnectionMethod = params.get("ConnectionMethod")
+        self._RelatedResourceId = params.get("RelatedResourceId")
+        self._Icon = params.get("Icon")
+        self._ConnectorName = params.get("ConnectorName")
+        self._ConnectorUrl = params.get("ConnectorUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11318,12 +11718,15 @@ class ResourceRefDetail(AbstractModel):
         :type Type: int
         :param _SystemProvide: 1: 系统内置资源
         :type SystemProvide: int
+        :param _Connector: Connector
+        :type Connector: str
         """
         self._ResourceId = None
         self._Version = None
         self._Name = None
         self._Type = None
         self._SystemProvide = None
+        self._Connector = None
 
     @property
     def ResourceId(self):
@@ -11380,6 +11783,17 @@ class ResourceRefDetail(AbstractModel):
     def SystemProvide(self, SystemProvide):
         self._SystemProvide = SystemProvide
 
+    @property
+    def Connector(self):
+        """Connector
+        :rtype: str
+        """
+        return self._Connector
+
+    @Connector.setter
+    def Connector(self, Connector):
+        self._Connector = Connector
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -11387,6 +11801,7 @@ class ResourceRefDetail(AbstractModel):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._SystemProvide = params.get("SystemProvide")
+        self._Connector = params.get("Connector")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12751,6 +13166,10 @@ class SqlGatewayItem(AbstractModel):
         :param _Properties: 配置参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
+        :param _Cpu: Cpu
+        :type Cpu: float
+        :param _Mem: Mem
+        :type Mem: float
         """
         self._SerialId = None
         self._FlinkVersion = None
@@ -12761,6 +13180,8 @@ class SqlGatewayItem(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._Properties = None
+        self._Cpu = None
+        self._Mem = None
 
     @property
     def SerialId(self):
@@ -12870,6 +13291,28 @@ class SqlGatewayItem(AbstractModel):
     def Properties(self, Properties):
         self._Properties = Properties
 
+    @property
+    def Cpu(self):
+        """Cpu
+        :rtype: float
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        """Mem
+        :rtype: float
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
 
     def _deserialize(self, params):
         self._SerialId = params.get("SerialId")
@@ -12891,6 +13334,8 @@ class SqlGatewayItem(AbstractModel):
                 obj = Property()
                 obj._deserialize(item)
                 self._Properties.append(obj)
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13140,12 +13585,24 @@ class SubEks(AbstractModel):
         :param _RunningCu: 运行cu
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCu: float
+        :param _TotalCpu: 总的CPU
+        :type TotalCpu: float
+        :param _TotalMem: 总的内存
+        :type TotalMem: float
+        :param _RunningCpu: 运行的CPU
+        :type RunningCpu: float
+        :param _RunningMem: 运行的内存
+        :type RunningMem: float
         """
         self._SerialId = None
         self._CuNum = None
         self._Status = None
         self._StatusDesc = None
         self._RunningCu = None
+        self._TotalCpu = None
+        self._TotalMem = None
+        self._RunningCpu = None
+        self._RunningMem = None
 
     @property
     def SerialId(self):
@@ -13207,6 +13664,50 @@ class SubEks(AbstractModel):
     def RunningCu(self, RunningCu):
         self._RunningCu = RunningCu
 
+    @property
+    def TotalCpu(self):
+        """总的CPU
+        :rtype: float
+        """
+        return self._TotalCpu
+
+    @TotalCpu.setter
+    def TotalCpu(self, TotalCpu):
+        self._TotalCpu = TotalCpu
+
+    @property
+    def TotalMem(self):
+        """总的内存
+        :rtype: float
+        """
+        return self._TotalMem
+
+    @TotalMem.setter
+    def TotalMem(self, TotalMem):
+        self._TotalMem = TotalMem
+
+    @property
+    def RunningCpu(self):
+        """运行的CPU
+        :rtype: float
+        """
+        return self._RunningCpu
+
+    @RunningCpu.setter
+    def RunningCpu(self, RunningCpu):
+        self._RunningCpu = RunningCpu
+
+    @property
+    def RunningMem(self):
+        """运行的内存
+        :rtype: float
+        """
+        return self._RunningMem
+
+    @RunningMem.setter
+    def RunningMem(self, RunningMem):
+        self._RunningMem = RunningMem
+
 
     def _deserialize(self, params):
         self._SerialId = params.get("SerialId")
@@ -13214,6 +13715,10 @@ class SubEks(AbstractModel):
         self._Status = params.get("Status")
         self._StatusDesc = params.get("StatusDesc")
         self._RunningCu = params.get("RunningCu")
+        self._TotalCpu = params.get("TotalCpu")
+        self._TotalMem = params.get("TotalMem")
+        self._RunningCpu = params.get("RunningCpu")
+        self._RunningMem = params.get("RunningMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13294,6 +13799,8 @@ class SystemResourceItem(AbstractModel):
         :type Region: str
         :param _LatestResourceConfigVersion: 资源的最新版本
         :type LatestResourceConfigVersion: int
+        :param _SystemProvide: 1 是系统提供资源 2 用户提供CONNECTOR
+        :type SystemProvide: int
         """
         self._ResourceId = None
         self._Name = None
@@ -13301,6 +13808,7 @@ class SystemResourceItem(AbstractModel):
         self._Remark = None
         self._Region = None
         self._LatestResourceConfigVersion = None
+        self._SystemProvide = None
 
     @property
     def ResourceId(self):
@@ -13368,6 +13876,17 @@ class SystemResourceItem(AbstractModel):
     def LatestResourceConfigVersion(self, LatestResourceConfigVersion):
         self._LatestResourceConfigVersion = LatestResourceConfigVersion
 
+    @property
+    def SystemProvide(self):
+        """1 是系统提供资源 2 用户提供CONNECTOR
+        :rtype: int
+        """
+        return self._SystemProvide
+
+    @SystemProvide.setter
+    def SystemProvide(self, SystemProvide):
+        self._SystemProvide = SystemProvide
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -13376,6 +13895,7 @@ class SystemResourceItem(AbstractModel):
         self._Remark = params.get("Remark")
         self._Region = params.get("Region")
         self._LatestResourceConfigVersion = params.get("LatestResourceConfigVersion")
+        self._SystemProvide = params.get("SystemProvide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13523,12 +14043,23 @@ class TreeJobSets(AbstractModel):
         :param _Status: 作业状态 启动或者停止或者暂停
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param _ScalingType: 0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScalingType: int
+        :param _RunningCpu: RunningCpu
+        :type RunningCpu: float
+        :param _RunningMem: RunningMem
+        :type RunningMem: float
         """
         self._JobId = None
         self._Name = None
         self._JobType = None
         self._RunningCu = None
         self._Status = None
+        self._ScalingType = None
+        self._RunningCpu = None
+        self._RunningMem = None
 
     @property
     def JobId(self):
@@ -13590,6 +14121,41 @@ class TreeJobSets(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def ScalingType(self):
+        """0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScalingType
+
+    @ScalingType.setter
+    def ScalingType(self, ScalingType):
+        self._ScalingType = ScalingType
+
+    @property
+    def RunningCpu(self):
+        """RunningCpu
+        :rtype: float
+        """
+        return self._RunningCpu
+
+    @RunningCpu.setter
+    def RunningCpu(self, RunningCpu):
+        self._RunningCpu = RunningCpu
+
+    @property
+    def RunningMem(self):
+        """RunningMem
+        :rtype: float
+        """
+        return self._RunningMem
+
+    @RunningMem.setter
+    def RunningMem(self, RunningMem):
+        self._RunningMem = RunningMem
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -13597,6 +14163,9 @@ class TreeJobSets(AbstractModel):
         self._JobType = params.get("JobType")
         self._RunningCu = params.get("RunningCu")
         self._Status = params.get("Status")
+        self._ScalingType = params.get("ScalingType")
+        self._RunningCpu = params.get("RunningCpu")
+        self._RunningMem = params.get("RunningMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

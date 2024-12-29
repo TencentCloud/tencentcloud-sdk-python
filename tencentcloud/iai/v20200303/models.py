@@ -3299,6 +3299,209 @@ class DetectFaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetectFaceSimilarityRequest(AbstractModel):
+    """DetectFaceSimilarity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageA: A 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中置信度最高的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type ImageA: str
+        :param _ImageB: B 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中置信度最高的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type ImageB: str
+        :param _UrlA: A 图片的 Url。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type UrlA: str
+        :param _UrlB: B 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type UrlB: str
+        :param _QualityControl: 图片质量控制。 
+- 取值范围：
+0: 不进行控制； 
+1: 较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多，在某一维度上存在轻微问题； 
+默认 0。 
+
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
+        """
+        self._ImageA = None
+        self._ImageB = None
+        self._UrlA = None
+        self._UrlB = None
+        self._QualityControl = None
+
+    @property
+    def ImageA(self):
+        """A 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中置信度最高的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
+        return self._ImageA
+
+    @ImageA.setter
+    def ImageA(self, ImageA):
+        self._ImageA = ImageA
+
+    @property
+    def ImageB(self):
+        """B 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中置信度最高的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
+        return self._ImageB
+
+    @ImageB.setter
+    def ImageB(self, ImageB):
+        self._ImageB = ImageB
+
+    @property
+    def UrlA(self):
+        """A 图片的 Url。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
+        return self._UrlA
+
+    @UrlA.setter
+    def UrlA(self, UrlA):
+        self._UrlA = UrlA
+
+    @property
+    def UrlB(self):
+        """B 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
+        return self._UrlB
+
+    @UrlB.setter
+    def UrlB(self, UrlB):
+        self._UrlB = UrlB
+
+    @property
+    def QualityControl(self):
+        """图片质量控制。 
+- 取值范围：
+0: 不进行控制； 
+1: 较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多，在某一维度上存在轻微问题； 
+默认 0。 
+
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :rtype: int
+        """
+        return self._QualityControl
+
+    @QualityControl.setter
+    def QualityControl(self, QualityControl):
+        self._QualityControl = QualityControl
+
+
+    def _deserialize(self, params):
+        self._ImageA = params.get("ImageA")
+        self._ImageB = params.get("ImageB")
+        self._UrlA = params.get("UrlA")
+        self._UrlB = params.get("UrlB")
+        self._QualityControl = params.get("QualityControl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectFaceSimilarityResponse(AbstractModel):
+    """DetectFaceSimilarity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Score: 取值范围 [0.00, 100.00]。
+推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+        :type Score: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Score = None
+        self._RequestId = None
+
+    @property
+    def Score(self):
+        """取值范围 [0.00, 100.00]。
+推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Score = params.get("Score")
+        self._RequestId = params.get("RequestId")
+
+
 class DetectLiveFaceAccurateRequest(AbstractModel):
     """DetectLiveFaceAccurate请求参数结构体
 

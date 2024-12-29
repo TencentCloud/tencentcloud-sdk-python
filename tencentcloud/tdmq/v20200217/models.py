@@ -6810,6 +6810,8 @@ class CreateTopicRequest(AbstractModel):
         :type PulsarTopicType: int
         :param _MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
         :type MsgTTL: int
+        :param _UnackPolicy: 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
+        :type UnackPolicy: str
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -6819,6 +6821,7 @@ class CreateTopicRequest(AbstractModel):
         self._TopicType = None
         self._PulsarTopicType = None
         self._MsgTTL = None
+        self._UnackPolicy = None
 
     @property
     def EnvironmentId(self):
@@ -6917,6 +6920,17 @@ class CreateTopicRequest(AbstractModel):
     def MsgTTL(self, MsgTTL):
         self._MsgTTL = MsgTTL
 
+    @property
+    def UnackPolicy(self):
+        """不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
+        :rtype: str
+        """
+        return self._UnackPolicy
+
+    @UnackPolicy.setter
+    def UnackPolicy(self, UnackPolicy):
+        self._UnackPolicy = UnackPolicy
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -6927,6 +6941,7 @@ class CreateTopicRequest(AbstractModel):
         self._TopicType = params.get("TopicType")
         self._PulsarTopicType = params.get("PulsarTopicType")
         self._MsgTTL = params.get("MsgTTL")
+        self._UnackPolicy = params.get("UnackPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24812,6 +24827,8 @@ class ModifyTopicRequest(AbstractModel):
         :param _MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 
         :type MsgTTL: int
+        :param _UnackPolicy: 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
+        :type UnackPolicy: str
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -24819,6 +24836,7 @@ class ModifyTopicRequest(AbstractModel):
         self._ClusterId = None
         self._Remark = None
         self._MsgTTL = None
+        self._UnackPolicy = None
 
     @property
     def EnvironmentId(self):
@@ -24887,6 +24905,17 @@ class ModifyTopicRequest(AbstractModel):
     def MsgTTL(self, MsgTTL):
         self._MsgTTL = MsgTTL
 
+    @property
+    def UnackPolicy(self):
+        """不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
+        :rtype: str
+        """
+        return self._UnackPolicy
+
+    @UnackPolicy.setter
+    def UnackPolicy(self, UnackPolicy):
+        self._UnackPolicy = UnackPolicy
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -24895,6 +24924,7 @@ class ModifyTopicRequest(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._Remark = params.get("Remark")
         self._MsgTTL = params.get("MsgTTL")
+        self._UnackPolicy = params.get("UnackPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

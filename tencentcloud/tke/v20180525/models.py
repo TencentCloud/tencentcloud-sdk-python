@@ -694,12 +694,15 @@ class Addon(AbstractModel):
         :param _Reason: addon失败的原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
+        :param _CreateTime: addon的创建时间
+        :type CreateTime: str
         """
         self._AddonName = None
         self._AddonVersion = None
         self._RawValues = None
         self._Phase = None
         self._Reason = None
+        self._CreateTime = None
 
     @property
     def AddonName(self):
@@ -759,6 +762,17 @@ class Addon(AbstractModel):
     def Reason(self, Reason):
         self._Reason = Reason
 
+    @property
+    def CreateTime(self):
+        """addon的创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._AddonName = params.get("AddonName")
@@ -766,6 +780,7 @@ class Addon(AbstractModel):
         self._RawValues = params.get("RawValues")
         self._Phase = params.get("Phase")
         self._Reason = params.get("Reason")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13074,9 +13089,9 @@ class DescribeAddonValuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Values: 参数列表，如果addon已安装，会使用已设置的参数做渲染，是一个json格式的字符串
+        :param _Values: 参数列表，如果addon已安装，会使用已设置的参数和chart里的默认参数做渲染，是一个json格式的字符串，未安装addon时返回为空值。
         :type Values: str
-        :param _DefaultValues: addon支持的参数列表，使用默认值，是一个json格式的字符串
+        :param _DefaultValues: addon支持的参数列表，值为chart的默认值，是一个json格式的字符串。
         :type DefaultValues: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13087,7 +13102,7 @@ class DescribeAddonValuesResponse(AbstractModel):
 
     @property
     def Values(self):
-        """参数列表，如果addon已安装，会使用已设置的参数做渲染，是一个json格式的字符串
+        """参数列表，如果addon已安装，会使用已设置的参数和chart里的默认参数做渲染，是一个json格式的字符串，未安装addon时返回为空值。
         :rtype: str
         """
         return self._Values
@@ -13098,7 +13113,7 @@ class DescribeAddonValuesResponse(AbstractModel):
 
     @property
     def DefaultValues(self):
-        """addon支持的参数列表，使用默认值，是一个json格式的字符串
+        """addon支持的参数列表，值为chart的默认值，是一个json格式的字符串。
         :rtype: str
         """
         return self._DefaultValues
@@ -30866,7 +30881,7 @@ class InstallAddonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID（仅支持标准tke集群）
         :type ClusterId: str
         :param _AddonName: addon名称
         :type AddonName: str
@@ -30882,7 +30897,7 @@ class InstallAddonRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID（仅支持标准tke集群）
         :rtype: str
         """
         return self._ClusterId

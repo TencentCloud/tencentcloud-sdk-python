@@ -8332,6 +8332,10 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
         :type AiFormatDiagnose: int
         :param _AiQualityControl: 是否开启内容质检。
         :type AiQualityControl: int
+        :param _CasterId: 导播台监播对应的导播台场次id。
+        :type CasterId: str
+        :param _PullPushTaskId: 拉流转推监播任务对应的拉流转推场次id
+        :type PullPushTaskId: str
         """
         self._OutputInfo = None
         self._InputList = None
@@ -8346,6 +8350,8 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
         self._AllowMonitorReport = None
         self._AiFormatDiagnose = None
         self._AiQualityControl = None
+        self._CasterId = None
+        self._PullPushTaskId = None
 
     @property
     def OutputInfo(self):
@@ -8495,6 +8501,28 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
     def AiQualityControl(self, AiQualityControl):
         self._AiQualityControl = AiQualityControl
 
+    @property
+    def CasterId(self):
+        """导播台监播对应的导播台场次id。
+        :rtype: str
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def PullPushTaskId(self):
+        """拉流转推监播任务对应的拉流转推场次id
+        :rtype: str
+        """
+        return self._PullPushTaskId
+
+    @PullPushTaskId.setter
+    def PullPushTaskId(self, PullPushTaskId):
+        self._PullPushTaskId = PullPushTaskId
+
 
     def _deserialize(self, params):
         if params.get("OutputInfo") is not None:
@@ -8519,6 +8547,8 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
         self._AllowMonitorReport = params.get("AllowMonitorReport")
         self._AiFormatDiagnose = params.get("AiFormatDiagnose")
         self._AiQualityControl = params.get("AiQualityControl")
+        self._CasterId = params.get("CasterId")
+        self._PullPushTaskId = params.get("PullPushTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8537,7 +8567,6 @@ class CreateLiveStreamMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MonitorId: 监播任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8548,7 +8577,6 @@ class CreateLiveStreamMonitorResponse(AbstractModel):
     @property
     def MonitorId(self):
         """监播任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MonitorId
@@ -13429,16 +13457,12 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
 1：无预监，有主监 
 2：有预监，无主监 
 3：有预监，有主监
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _PvwDisplayInfo: 预监使用的展示参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PvwDisplayInfo: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
         :param _PgmDisplayInfo: 主监使用的展示参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PgmDisplayInfo: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
         :param _StartLiveTime: 启动直播的时间，值为unix时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartLiveTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13456,7 +13480,6 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
 1：无预监，有主监 
 2：有预监，无主监 
 3：有预监，有主监
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -13468,7 +13491,6 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
     @property
     def PvwDisplayInfo(self):
         """预监使用的展示参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
         """
         return self._PvwDisplayInfo
@@ -13480,7 +13502,6 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
     @property
     def PgmDisplayInfo(self):
         """主监使用的展示参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.CasterDisplayInfo`
         """
         return self._PgmDisplayInfo
@@ -13492,7 +13513,6 @@ class DescribeCasterDisplayInfoResponse(AbstractModel):
     @property
     def StartLiveTime(self):
         """启动直播的时间，值为unix时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartLiveTime
@@ -13707,7 +13727,6 @@ class DescribeCasterListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CasterList: 用户对应的导播台简要信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CasterList: list of CasterBriefInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13718,7 +13737,6 @@ class DescribeCasterListResponse(AbstractModel):
     @property
     def CasterList(self):
         """用户对应的导播台简要信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CasterBriefInfo
         """
         return self._CasterList
@@ -13793,7 +13811,6 @@ class DescribeCasterMarkPicInfosResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MarkPicInfos: 导播台的水印信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkPicInfos: list of CasterMarkPicInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13804,7 +13821,6 @@ class DescribeCasterMarkPicInfosResponse(AbstractModel):
     @property
     def MarkPicInfos(self):
         """导播台的水印信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CasterMarkPicInfo
         """
         return self._MarkPicInfos
@@ -13879,7 +13895,6 @@ class DescribeCasterMarkWordInfosResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MarkWordInfos: 导播台的文本信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordInfos: list of CasterMarkWordInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13890,7 +13905,6 @@ class DescribeCasterMarkWordInfosResponse(AbstractModel):
     @property
     def MarkWordInfos(self):
         """导播台的文本信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CasterMarkWordInfo
         """
         return self._MarkWordInfos
@@ -13965,7 +13979,6 @@ class DescribeCasterOutputInfosResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OutputInfos: 导播台的推流信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputInfos: list of CasterOutputInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13976,7 +13989,6 @@ class DescribeCasterOutputInfosResponse(AbstractModel):
     @property
     def OutputInfos(self):
         """导播台的推流信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CasterOutputInfo
         """
         return self._OutputInfos
@@ -14092,12 +14104,10 @@ class DescribeCasterPlayUrlResponse(AbstractModel):
         r"""
         :param _PlayUrl: 播放url。
 当导播台不存在预监或主监时，若请求预监或主监的播放地址，该字段为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlayUrl: str
         :param _WebRTCPlayUrl: webrtc协议播放地址。
 当导播台不存在预监或主监时，若请求预监或主监的webrtc播放地址，该字段为空。
 注：webrtc协议播放地址需配合腾讯云快直播播放sdk方可使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebRTCPlayUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14110,7 +14120,6 @@ class DescribeCasterPlayUrlResponse(AbstractModel):
     def PlayUrl(self):
         """播放url。
 当导播台不存在预监或主监时，若请求预监或主监的播放地址，该字段为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlayUrl
@@ -14124,7 +14133,6 @@ class DescribeCasterPlayUrlResponse(AbstractModel):
         """webrtc协议播放地址。
 当导播台不存在预监或主监时，若请求预监或主监的webrtc播放地址，该字段为空。
 注：webrtc协议播放地址需配合腾讯云快直播播放sdk方可使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WebRTCPlayUrl
@@ -14276,7 +14284,6 @@ class DescribeCasterTransitionTypesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TransitionTypes: 转场信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransitionTypes: list of TransitionTypeInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14287,7 +14294,6 @@ class DescribeCasterTransitionTypesResponse(AbstractModel):
     @property
     def TransitionTypes(self):
         """转场信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TransitionTypeInfo
         """
         return self._TransitionTypes
@@ -15920,7 +15926,6 @@ class DescribeLiveDomainResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainInfo: 域名信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainInfo: :class:`tencentcloud.live.v20180801.models.DomainInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15931,7 +15936,6 @@ class DescribeLiveDomainResponse(AbstractModel):
     @property
     def DomainInfo(self):
         """域名信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.DomainInfo`
         """
         return self._DomainInfo
@@ -16103,10 +16107,8 @@ class DescribeLiveDomainsResponse(AbstractModel):
         :param _DomainList: 域名详细信息列表。
         :type DomainList: list of DomainInfo
         :param _CreateLimitCount: 可继续添加域名数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateLimitCount: int
         :param _PlayTypeCount: 启用的播放域名加速区域统计，数组元素分别为：中国大陆（境内），全球地区，国际/港澳台（境外）域名数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlayTypeCount: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16142,7 +16144,6 @@ class DescribeLiveDomainsResponse(AbstractModel):
     @property
     def CreateLimitCount(self):
         """可继续添加域名数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateLimitCount
@@ -16154,7 +16155,6 @@ class DescribeLiveDomainsResponse(AbstractModel):
     @property
     def PlayTypeCount(self):
         """启用的播放域名加速区域统计，数组元素分别为：中国大陆（境内），全球地区，国际/港澳台（境外）域名数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._PlayTypeCount
@@ -16663,7 +16663,6 @@ class DescribeLivePackageInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LivePackageInfoList: 套餐包信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LivePackageInfoList: list of LivePackageInfo
         :param _PackageBillMode: 套餐包当前计费方式:
 -1: 无计费方式或获取失败
@@ -16675,7 +16674,6 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 205: 日结时长
 206: 月结时长
 304: 日结流量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageBillMode: int
         :param _TotalPage: 总页数。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16694,7 +16692,6 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 标准直播，国际/港澳台（境外多地区）计费方式。
 快直播，中国大陆（境内全地区）计费方式。
 快直播，国际/港澳台（境外多地区）计费方式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FluxPackageBillMode: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16711,7 +16708,6 @@ class DescribeLivePackageInfoResponse(AbstractModel):
     @property
     def LivePackageInfoList(self):
         """套餐包信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LivePackageInfo
         """
         return self._LivePackageInfoList
@@ -16732,7 +16728,6 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 205: 日结时长
 206: 月结时长
 304: 日结流量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PackageBillMode
@@ -16796,7 +16791,6 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 标准直播，国际/港澳台（境外多地区）计费方式。
 快直播，中国大陆（境内全地区）计费方式。
 快直播，国际/港澳台（境外多地区）计费方式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FluxPackageBillMode
@@ -18359,10 +18353,8 @@ class DescribeLiveStreamMonitorListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalNum: 账号下的直播流监播任务个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
         :param _LiveStreamMonitors: 直播流监播任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStreamMonitors: list of LiveStreamMonitorInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18374,7 +18366,6 @@ class DescribeLiveStreamMonitorListResponse(AbstractModel):
     @property
     def TotalNum(self):
         """账号下的直播流监播任务个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalNum
@@ -18386,7 +18377,6 @@ class DescribeLiveStreamMonitorListResponse(AbstractModel):
     @property
     def LiveStreamMonitors(self):
         """直播流监播任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveStreamMonitorInfo
         """
         return self._LiveStreamMonitors
@@ -18462,7 +18452,6 @@ class DescribeLiveStreamMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LiveStreamMonitor: 直播监播任务相关信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStreamMonitor: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18473,7 +18462,6 @@ class DescribeLiveStreamMonitorResponse(AbstractModel):
     @property
     def LiveStreamMonitor(self):
         """直播监播任务相关信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorInfo`
         """
         return self._LiveStreamMonitor
@@ -20949,10 +20937,8 @@ class DescribeMonitorReportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MPSResult: 媒体处理结果信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MPSResult: :class:`tencentcloud.live.v20180801.models.MPSResult`
         :param _DiagnoseResult: 媒体诊断结果信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnoseResult: :class:`tencentcloud.live.v20180801.models.DiagnoseResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20964,7 +20950,6 @@ class DescribeMonitorReportResponse(AbstractModel):
     @property
     def MPSResult(self):
         """媒体处理结果信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.MPSResult`
         """
         return self._MPSResult
@@ -20976,7 +20961,6 @@ class DescribeMonitorReportResponse(AbstractModel):
     @property
     def DiagnoseResult(self):
         """媒体诊断结果信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.DiagnoseResult`
         """
         return self._DiagnoseResult
@@ -23855,7 +23839,6 @@ class DescribeTimeShiftRecordDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordList: 时移录制会话数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of TimeShiftRecord
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23866,7 +23849,6 @@ class DescribeTimeShiftRecordDetailResponse(AbstractModel):
     @property
     def RecordList(self):
         """时移录制会话数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimeShiftRecord
         """
         return self._RecordList
@@ -24035,7 +24017,6 @@ class DescribeTimeShiftStreamListResponse(AbstractModel):
         :param _TotalSize: 时间段内所有的数据量。
         :type TotalSize: int
         :param _StreamList: 流列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamList: list of TimeShiftStreamInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24058,7 +24039,6 @@ class DescribeTimeShiftStreamListResponse(AbstractModel):
     @property
     def StreamList(self):
         """流列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimeShiftStreamInfo
         """
         return self._StreamList
@@ -27127,6 +27107,10 @@ class LiveStreamMonitorInfo(AbstractModel):
         :param _AiQualityControl: 是否开启内容质检。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiQualityControl: int
+        :param _CasterId: 导播台监播对应的导播台场次id
+        :type CasterId: str
+        :param _PullPushTaskId: 拉流转推监播对应的拉流转推任务id
+        :type PullPushTaskId: str
         """
         self._MonitorId = None
         self._MonitorName = None
@@ -27148,6 +27132,8 @@ class LiveStreamMonitorInfo(AbstractModel):
         self._AllowMonitorReport = None
         self._AiFormatDiagnose = None
         self._AiQualityControl = None
+        self._CasterId = None
+        self._PullPushTaskId = None
 
     @property
     def MonitorId(self):
@@ -27393,6 +27379,28 @@ class LiveStreamMonitorInfo(AbstractModel):
     def AiQualityControl(self, AiQualityControl):
         self._AiQualityControl = AiQualityControl
 
+    @property
+    def CasterId(self):
+        """导播台监播对应的导播台场次id
+        :rtype: str
+        """
+        return self._CasterId
+
+    @CasterId.setter
+    def CasterId(self, CasterId):
+        self._CasterId = CasterId
+
+    @property
+    def PullPushTaskId(self):
+        """拉流转推监播对应的拉流转推任务id
+        :rtype: str
+        """
+        return self._PullPushTaskId
+
+    @PullPushTaskId.setter
+    def PullPushTaskId(self, PullPushTaskId):
+        self._PullPushTaskId = PullPushTaskId
+
 
     def _deserialize(self, params):
         self._MonitorId = params.get("MonitorId")
@@ -27424,6 +27432,8 @@ class LiveStreamMonitorInfo(AbstractModel):
         self._AllowMonitorReport = params.get("AllowMonitorReport")
         self._AiFormatDiagnose = params.get("AiFormatDiagnose")
         self._AiQualityControl = params.get("AiQualityControl")
+        self._CasterId = params.get("CasterId")
+        self._PullPushTaskId = params.get("PullPushTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27456,12 +27466,18 @@ class LiveStreamMonitorInputInfo(AbstractModel):
         :param _Description: 描述。256字节以内。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _CasterInputIndex: 导播台输入源索引（10000 pvw， 10001 pgm， 其余代表输入下标）
+        :type CasterInputIndex: int
+        :param _NeedMonitor: 该输入源是否正在监播
+        :type NeedMonitor: bool
         """
         self._InputStreamName = None
         self._InputDomain = None
         self._InputApp = None
         self._InputUrl = None
         self._Description = None
+        self._CasterInputIndex = None
+        self._NeedMonitor = None
 
     @property
     def InputStreamName(self):
@@ -27523,6 +27539,28 @@ class LiveStreamMonitorInputInfo(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def CasterInputIndex(self):
+        """导播台输入源索引（10000 pvw， 10001 pgm， 其余代表输入下标）
+        :rtype: int
+        """
+        return self._CasterInputIndex
+
+    @CasterInputIndex.setter
+    def CasterInputIndex(self, CasterInputIndex):
+        self._CasterInputIndex = CasterInputIndex
+
+    @property
+    def NeedMonitor(self):
+        """该输入源是否正在监播
+        :rtype: bool
+        """
+        return self._NeedMonitor
+
+    @NeedMonitor.setter
+    def NeedMonitor(self, NeedMonitor):
+        self._NeedMonitor = NeedMonitor
+
 
     def _deserialize(self, params):
         self._InputStreamName = params.get("InputStreamName")
@@ -27530,6 +27568,8 @@ class LiveStreamMonitorInputInfo(AbstractModel):
         self._InputApp = params.get("InputApp")
         self._InputUrl = params.get("InputUrl")
         self._Description = params.get("Description")
+        self._CasterInputIndex = params.get("CasterInputIndex")
+        self._NeedMonitor = params.get("NeedMonitor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27801,19 +27841,23 @@ class MPSResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AiAsrResults: 智能语音识别结果
+        :param _AiAsrResults: 智能语音识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiAsrResults: list of str
-        :param _AiOcrResults: 智能文字识别结果
+        :param _AiOcrResults: 智能文字识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiOcrResults: list of str
+        :param _StreamQuaCtrlResults: 内容质检结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamQuaCtrlResults: list of str
         """
         self._AiAsrResults = None
         self._AiOcrResults = None
+        self._StreamQuaCtrlResults = None
 
     @property
     def AiAsrResults(self):
-        """智能语音识别结果
+        """智能语音识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -27825,7 +27869,7 @@ class MPSResult(AbstractModel):
 
     @property
     def AiOcrResults(self):
-        """智能文字识别结果
+        """智能文字识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -27835,10 +27879,23 @@ class MPSResult(AbstractModel):
     def AiOcrResults(self, AiOcrResults):
         self._AiOcrResults = AiOcrResults
 
+    @property
+    def StreamQuaCtrlResults(self):
+        """内容质检结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._StreamQuaCtrlResults
+
+    @StreamQuaCtrlResults.setter
+    def StreamQuaCtrlResults(self, StreamQuaCtrlResults):
+        self._StreamQuaCtrlResults = StreamQuaCtrlResults
+
 
     def _deserialize(self, params):
         self._AiAsrResults = params.get("AiAsrResults")
         self._AiOcrResults = params.get("AiOcrResults")
+        self._StreamQuaCtrlResults = params.get("StreamQuaCtrlResults")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29018,7 +29075,6 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
         :param _MismatchedDomainNames: DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
         :type MismatchedDomainNames: list of str
         :param _Errors: 操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of BatchDomainOperateErrors
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29041,7 +29097,6 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
     @property
     def Errors(self):
         """操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BatchDomainOperateErrors
         """
         return self._Errors

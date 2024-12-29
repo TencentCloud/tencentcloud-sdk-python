@@ -996,7 +996,9 @@ class TemClient(AbstractClient):
 
 
     def ModifyIngress(self, request):
-        """创建或者更新 Ingress 规则
+        """此接口没有被使用了
+
+        创建或者更新 Ingress 规则
 
         :param request: Request instance for ModifyIngress.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyIngressRequest`

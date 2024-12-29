@@ -123,7 +123,7 @@ class BackupInfo(AbstractModel):
         :type StartTime: str
         :param _BackupId: 备份 ID。
         :type BackupId: str
-        :param _BackupType: 备份类型。<ul><li>1：手动备份，指根据业务运维排障需求，立即执行备份任务的操作。</li> <li>0：自动备份，指根据自动备份策略定时自动发起的备份任务。</li></ul>
+        :param _BackupType: 备份类型。<ul><li>1：手动备份，指根据业务运维排障需求，立即执行备份任务的操作。</li> <li>0：自动备份，指根据自动备份策略定时自动发起的备份任务。</li><li>2：生成RDB，指根据业务需求，发起的生成文件为rdb类型的备份任务。</li></ul>
         :type BackupType: str
         :param _Remark: 备份的备注信息.
         :type Remark: str
@@ -163,7 +163,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupType(self):
-        """备份类型。<ul><li>1：手动备份，指根据业务运维排障需求，立即执行备份任务的操作。</li> <li>0：自动备份，指根据自动备份策略定时自动发起的备份任务。</li></ul>
+        """备份类型。<ul><li>1：手动备份，指根据业务运维排障需求，立即执行备份任务的操作。</li> <li>0：自动备份，指根据自动备份策略定时自动发起的备份任务。</li><li>2：生成RDB，指根据业务需求，发起的生成文件为rdb类型的备份任务。</li></ul>
         :rtype: str
         """
         return self._BackupType

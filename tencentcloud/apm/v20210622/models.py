@@ -1456,17 +1456,17 @@ class CreateApmInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 实例名
+        :param _Name: 业务系统名
         :type Name: str
-        :param _Description: 实例描述信息
+        :param _Description: 业务系统描述信息
         :type Description: str
         :param _TraceDuration: Trace数据保存时长，单位为天默认存储为3天
         :type TraceDuration: int
         :param _Tags: 标签列表
         :type Tags: list of ApmTag
-        :param _SpanDailyCounters: 实例上报额度值，默认赋值为0表示不限制上报额度
+        :param _SpanDailyCounters: 业务系统上报额度值，默认赋值为0表示不限制上报额度
         :type SpanDailyCounters: int
-        :param _PayMode: 实例的计费模式
+        :param _PayMode: 业务系统的计费模式
         :type PayMode: int
         :param _Free: （0=付费版；1=tsf受限免费版；2=免费版）
         :type Free: int
@@ -1481,7 +1481,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """实例名
+        """业务系统名
         :rtype: str
         """
         return self._Name
@@ -1492,7 +1492,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """实例描述信息
+        """业务系统描述信息
         :rtype: str
         """
         return self._Description
@@ -1525,7 +1525,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """实例上报额度值，默认赋值为0表示不限制上报额度
+        """业务系统上报额度值，默认赋值为0表示不限制上报额度
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -1536,7 +1536,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """实例的计费模式
+        """业务系统的计费模式
         :rtype: int
         """
         return self._PayMode
@@ -1587,7 +1587,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 业务系统ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1598,7 +1598,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """业务系统ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1632,7 +1632,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 业务系统ID
         :type InstanceId: str
         :param _AgentType: 接入方式
         :type AgentType: str
@@ -1651,7 +1651,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -2266,7 +2266,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         :param _StartTime: span查询开始时间戳（单位:秒）
         :type StartTime: int
-        :param _InstanceId: 实例名
+        :param _InstanceId: 业务系统ID
         :type InstanceId: str
         :param _Filters: 通用过滤参数
         :type Filters: list of Filter
@@ -2330,7 +2330,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例名
+        """业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -2477,7 +2477,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
         :type GroupBy: list of str
         :param _OrderBy: 排序
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 业务系统ID
         :type InstanceId: str
         :param _Limit: 每页大小
         :type Limit: int
@@ -2559,7 +2559,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -2792,7 +2792,7 @@ class DescribeServiceOverviewRequest(AbstractModel):
         :type GroupBy: list of str
         :param _OrderBy: 排序
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 业务系统ID
         :type InstanceId: str
         :param _Limit: 每页大小
         :type Limit: int
@@ -2859,7 +2859,7 @@ class DescribeServiceOverviewRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -3004,7 +3004,7 @@ class DescribeTagValuesRequest(AbstractModel):
         r"""
         :param _TagKey: 维度名
         :type TagKey: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 业务系统ID
         :type InstanceId: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -3038,7 +3038,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -3464,19 +3464,19 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 业务系统ID
         :type InstanceId: str
-        :param _Name: 实例名
+        :param _Name: 业务系统名
         :type Name: str
         :param _Tags: 标签列表
         :type Tags: list of ApmTag
-        :param _Description: 实例详情
+        :param _Description: 业务系统详情
         :type Description: str
         :param _TraceDuration: Trace数据保存时长
         :type TraceDuration: int
         :param _OpenBilling: 是否开启计费
         :type OpenBilling: bool
-        :param _SpanDailyCounters: 实例上报额度
+        :param _SpanDailyCounters: 业务系统上报额度
         :type SpanDailyCounters: int
         :param _ErrRateThreshold: 错误率阈值
         :type ErrRateThreshold: int
@@ -3542,7 +3542,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """业务系统ID
         :rtype: str
         """
         return self._InstanceId
@@ -3553,7 +3553,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """实例名
+        """业务系统名
         :rtype: str
         """
         return self._Name
@@ -3575,7 +3575,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """实例详情
+        """业务系统详情
         :rtype: str
         """
         return self._Description
@@ -3608,7 +3608,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """实例上报额度
+        """业务系统上报额度
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -4606,14 +4606,14 @@ class TerminateApmInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 业务系统ID
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """业务系统ID
         :rtype: str
         """
         return self._InstanceId

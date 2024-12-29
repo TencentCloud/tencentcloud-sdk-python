@@ -27,7 +27,9 @@ class CmqClient(AbstractClient):
 
 
     def ClearQueue(self, request):
-        """清除queue中的所有消息
+        """下线老cmq云API 3.0 无调用量接口
+
+        清除queue中的所有消息
 
         :param request: Request instance for ClearQueue.
         :type request: :class:`tencentcloud.cmq.v20190304.models.ClearQueueRequest`
@@ -50,7 +52,9 @@ class CmqClient(AbstractClient):
 
 
     def ClearSubscriptionFilterTags(self, request):
-        """清空订阅者消息标签
+        """下线老cmq云API 3.0 无调用量接口
+
+        清空订阅者消息标签
 
         :param request: Request instance for ClearSubscriptionFilterTags.
         :type request: :class:`tencentcloud.cmq.v20190304.models.ClearSubscriptionFilterTagsRequest`
@@ -96,7 +100,9 @@ class CmqClient(AbstractClient):
 
 
     def CreateSubscribe(self, request):
-        """创建订阅接口
+        """下线老cmq云API 3.0 无调用量接口
+
+        创建订阅接口
 
         :param request: Request instance for CreateSubscribe.
         :type request: :class:`tencentcloud.cmq.v20190304.models.CreateSubscribeRequest`
@@ -165,7 +171,9 @@ class CmqClient(AbstractClient):
 
 
     def DeleteSubscribe(self, request):
-        """删除订阅
+        """下线老cmq云API 3.0 无调用量接口
+
+        删除订阅
 
         :param request: Request instance for DeleteSubscribe.
         :type request: :class:`tencentcloud.cmq.v20190304.models.DeleteSubscribeRequest`
@@ -188,7 +196,9 @@ class CmqClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        """删除主题
+        """下线老cmq云API 3.0 无调用量接口
+
+        删除主题
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.cmq.v20190304.models.DeleteTopicRequest`
@@ -211,7 +221,9 @@ class CmqClient(AbstractClient):
 
 
     def DescribeDeadLetterSourceQueues(self, request):
-        """枚举死信队列源队列
+        """下线老cmq云API 3.0 无调用量接口
+
+        枚举死信队列源队列
 
         :param request: Request instance for DescribeDeadLetterSourceQueues.
         :type request: :class:`tencentcloud.cmq.v20190304.models.DescribeDeadLetterSourceQueuesRequest`
@@ -326,7 +338,9 @@ class CmqClient(AbstractClient):
 
 
     def ModifySubscriptionAttribute(self, request):
-        """修改订阅属性
+        """下线老cmq云API 3.0 无调用量接口
+
+        修改订阅属性
 
         :param request: Request instance for ModifySubscriptionAttribute.
         :type request: :class:`tencentcloud.cmq.v20190304.models.ModifySubscriptionAttributeRequest`
@@ -349,7 +363,9 @@ class CmqClient(AbstractClient):
 
 
     def ModifyTopicAttribute(self, request):
-        """修改主题属性
+        """下线老cmq云API 3.0 无调用量接口
+
+        修改主题属性
 
         :param request: Request instance for ModifyTopicAttribute.
         :type request: :class:`tencentcloud.cmq.v20190304.models.ModifyTopicAttributeRequest`
@@ -372,7 +388,9 @@ class CmqClient(AbstractClient):
 
 
     def RewindQueue(self, request):
-        """回溯队列
+        """下线老cmq云API 3.0 无调用量接口
+
+        回溯队列
 
         :param request: Request instance for RewindQueue.
         :type request: :class:`tencentcloud.cmq.v20190304.models.RewindQueueRequest`
@@ -395,7 +413,9 @@ class CmqClient(AbstractClient):
 
 
     def UnbindDeadLetter(self, request):
-        """解绑死信队列
+        """下线老cmq云API 3.0 无调用量接口
+
+        解绑死信队列
 
         :param request: Request instance for UnbindDeadLetter.
         :type request: :class:`tencentcloud.cmq.v20190304.models.UnbindDeadLetterRequest`

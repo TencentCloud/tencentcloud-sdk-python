@@ -1545,7 +1545,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeInstanceTradeParameter(self, request):
-        """本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数，当前接口默认返回创建实例时需要的计费参数。内部接口用于活动页售卖场景。
+        """本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数
 
         :param request: Request instance for DescribeInstanceTradeParameter.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTradeParameterRequest`
