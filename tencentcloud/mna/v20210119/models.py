@@ -345,7 +345,7 @@ class AddDeviceRequest(AbstractModel):
         :param _LicensePayMode: license付费方式： 
 0，月度授权 
 1，永久授权 
-若不传则默认为月度授权
+若不传则默认为月度授权，永久授权设备需要调用OrderPerLicense接口支付授权费，否则设备无法使用
         :type LicensePayMode: int
         :param _GroupName: 设备分组名称，非必选，预留参数，需要分组时传入GroupId
         :type GroupName: str
@@ -428,7 +428,7 @@ class AddDeviceRequest(AbstractModel):
         """license付费方式： 
 0，月度授权 
 1，永久授权 
-若不传则默认为月度授权
+若不传则默认为月度授权，永久授权设备需要调用OrderPerLicense接口支付授权费，否则设备无法使用
         :rtype: int
         """
         return self._LicensePayMode

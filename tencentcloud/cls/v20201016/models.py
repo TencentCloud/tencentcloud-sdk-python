@@ -1873,7 +1873,6 @@ class AnalysisDimensional(AbstractModel):
     "Key": "SyntaxRule", // 查不到这个字段也是老语法
     "Value": "0"//0:Lucene, 1:CQL
 }
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigInfo: list of AlarmAnalysisConfig
         """
         self._Name = None
@@ -1960,7 +1959,6 @@ class AnalysisDimensional(AbstractModel):
     "Key": "SyntaxRule", // 查不到这个字段也是老语法
     "Value": "0"//0:Lucene, 1:CQL
 }
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmAnalysisConfig
         """
         return self._ConfigInfo
@@ -6116,7 +6114,7 @@ class CreateConfigExtraRequest(AbstractModel):
         :type ContainerFile: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
         :param _ContainerStdout: 容器标准输出类型配置。
         :type ContainerStdout: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
-        :param _LogFormat: 日志格式化方式，用于容器采集场景。
+        :param _LogFormat: 日志格式化方式，用于容器采集场景。 - 已废弃
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :type LogFormat: str
@@ -6294,7 +6292,7 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        """日志格式化方式，用于容器采集场景。
+        """日志格式化方式，用于容器采集场景。 - 已废弃
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :rtype: str
@@ -9484,6 +9482,153 @@ class CreateTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateWebCallbackRequest(AbstractModel):
+    """CreateWebCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 通知内容名称。
+        :type Name: str
+        :param _Type: 渠道类型。
+
+WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
+        :type Type: str
+        :param _Webhook: Webhook地址。
+        :type Webhook: str
+        :param _Method: 请求方式。 支持POST、PUT。
+
+当Type为Http时，必填。
+        :type Method: str
+        :param _Key: 秘钥。
+        :type Key: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Webhook = None
+        self._Method = None
+        self._Key = None
+
+    @property
+    def Name(self):
+        """通知内容名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """渠道类型。
+
+WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Webhook(self):
+        """Webhook地址。
+        :rtype: str
+        """
+        return self._Webhook
+
+    @Webhook.setter
+    def Webhook(self, Webhook):
+        self._Webhook = Webhook
+
+    @property
+    def Method(self):
+        """请求方式。 支持POST、PUT。
+
+当Type为Http时，必填。
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Key(self):
+        """秘钥。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Webhook = params.get("Webhook")
+        self._Method = params.get("Method")
+        self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWebCallbackResponse(AbstractModel):
+    """CreateWebCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebCallbackId: 回调配置ID。
+        :type WebCallbackId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WebCallbackId = None
+        self._RequestId = None
+
+    @property
+    def WebCallbackId(self):
+        """回调配置ID。
+        :rtype: str
+        """
+        return self._WebCallbackId
+
+    @WebCallbackId.setter
+    def WebCallbackId(self, WebCallbackId):
+        self._WebCallbackId = WebCallbackId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WebCallbackId = params.get("WebCallbackId")
+        self._RequestId = params.get("RequestId")
+
+
 class CsvInfo(AbstractModel):
     """csv内容描述
 
@@ -11936,6 +12081,70 @@ class DeleteTopicRequest(AbstractModel):
 
 class DeleteTopicResponse(AbstractModel):
     """DeleteTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteWebCallbackRequest(AbstractModel):
+    """DeleteWebCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebCallbackId: 告警渠道回调配置ID。
+        :type WebCallbackId: str
+        """
+        self._WebCallbackId = None
+
+    @property
+    def WebCallbackId(self):
+        """告警渠道回调配置ID。
+        :rtype: str
+        """
+        return self._WebCallbackId
+
+    @WebCallbackId.setter
+    def WebCallbackId(self, WebCallbackId):
+        self._WebCallbackId = WebCallbackId
+
+
+    def _deserialize(self, params):
+        self._WebCallbackId = params.get("WebCallbackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWebCallbackResponse(AbstractModel):
+    """DeleteWebCallback返回参数结构体
 
     """
 
@@ -16587,8 +16796,8 @@ class DescribeTopicsRequest(AbstractModel):
 <li>3: topicName 和logsetName 都精确匹配</li></ul>
         :type PreciseSearch: int
         :param _BizType: 主题类型
-<ul><li>0:日志主题，默认值</li>
-<li>1:指标主题</li></ul>
+- 0:日志主题，默认值
+- 1:指标主题
         :type BizType: int
         """
         self._Filters = None
@@ -16655,8 +16864,8 @@ class DescribeTopicsRequest(AbstractModel):
     @property
     def BizType(self):
         """主题类型
-<ul><li>0:日志主题，默认值</li>
-<li>1:指标主题</li></ul>
+- 0:日志主题，默认值
+- 1:指标主题
         :rtype: int
         """
         return self._BizType
@@ -16746,6 +16955,168 @@ class DescribeTopicsResponse(AbstractModel):
                 obj = TopicInfo()
                 obj._deserialize(item)
                 self._Topics.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWebCallbacksRequest(AbstractModel):
+    """DescribeWebCallbacks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <li> name
+按照【告警渠道回调配置名称】进行过滤。
+类型：String
+必选：否
+<li> webCallbackId
+按照【告警渠道回调配置ID】进行过滤。
+类型：String
+必选：否
+<li> type
+按照【告警渠道回调配置渠道类型】进行过滤。
+类型：String
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        """<li> name
+按照【告警渠道回调配置名称】进行过滤。
+类型：String
+必选：否
+<li> webCallbackId
+按照【告警渠道回调配置ID】进行过滤。
+类型：String
+必选：否
+<li> type
+按照【告警渠道回调配置渠道类型】进行过滤。
+类型：String
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWebCallbacksResponse(AbstractModel):
+    """DescribeWebCallbacks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebCallbacks: 告警渠道回调配置列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebCallbacks: list of WebCallbackInfo
+        :param _TotalCount: 符合条件的通知内容配置总数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WebCallbacks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def WebCallbacks(self):
+        """告警渠道回调配置列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WebCallbackInfo
+        """
+        return self._WebCallbacks
+
+    @WebCallbacks.setter
+    def WebCallbacks(self, WebCallbacks):
+        self._WebCallbacks = WebCallbacks
+
+    @property
+    def TotalCount(self):
+        """符合条件的通知内容配置总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("WebCallbacks") is not None:
+            self._WebCallbacks = []
+            for item in params.get("WebCallbacks"):
+                obj = WebCallbackInfo()
+                obj._deserialize(item)
+                self._WebCallbacks.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -24716,6 +25087,157 @@ class ModifyTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyWebCallbackRequest(AbstractModel):
+    """ModifyWebCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebCallbackId: 告警渠道回调配置ID。
+        :type WebCallbackId: str
+        :param _Name: 告警渠道回调配置名称。
+        :type Name: str
+        :param _Type: 渠道类型
+
+WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+        :type Type: str
+        :param _Webhook: 回调地址。
+        :type Webhook: str
+        :param _Method: 请求方式。
+
+支持POST、PUT。
+
+注意：当Type为Http时，必填。
+        :type Method: str
+        :param _Key: 秘钥信息。
+        :type Key: str
+        """
+        self._WebCallbackId = None
+        self._Name = None
+        self._Type = None
+        self._Webhook = None
+        self._Method = None
+        self._Key = None
+
+    @property
+    def WebCallbackId(self):
+        """告警渠道回调配置ID。
+        :rtype: str
+        """
+        return self._WebCallbackId
+
+    @WebCallbackId.setter
+    def WebCallbackId(self, WebCallbackId):
+        self._WebCallbackId = WebCallbackId
+
+    @property
+    def Name(self):
+        """告警渠道回调配置名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """渠道类型
+
+WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Webhook(self):
+        """回调地址。
+        :rtype: str
+        """
+        return self._Webhook
+
+    @Webhook.setter
+    def Webhook(self, Webhook):
+        self._Webhook = Webhook
+
+    @property
+    def Method(self):
+        """请求方式。
+
+支持POST、PUT。
+
+注意：当Type为Http时，必填。
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Key(self):
+        """秘钥信息。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+
+    def _deserialize(self, params):
+        self._WebCallbackId = params.get("WebCallbackId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Webhook = params.get("Webhook")
+        self._Method = params.get("Method")
+        self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWebCallbackResponse(AbstractModel):
+    """ModifyWebCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MonitorTime(AbstractModel):
     """告警策略中监控任务的执行时间点
 
@@ -30108,6 +30630,201 @@ class WebCallback(AbstractModel):
         self._Headers = params.get("Headers")
         self._Body = params.get("Body")
         self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebCallbackInfo(AbstractModel):
+    """告警渠道回调配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebCallbackId: 告警渠道回调配置id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebCallbackId: str
+        :param _Name: 告警渠道回调配置名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: 渠道类型
+
+WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Webhook: 回调地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Webhook: str
+        :param _Method: 请求方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param _Key: 秘钥信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Uin: 主账号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: int
+        :param _SubUin: 子账号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubUin: int
+        :param _CreateTime: 创建时间。秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间。秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        """
+        self._WebCallbackId = None
+        self._Name = None
+        self._Type = None
+        self._Webhook = None
+        self._Method = None
+        self._Key = None
+        self._Uin = None
+        self._SubUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def WebCallbackId(self):
+        """告警渠道回调配置id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WebCallbackId
+
+    @WebCallbackId.setter
+    def WebCallbackId(self, WebCallbackId):
+        self._WebCallbackId = WebCallbackId
+
+    @property
+    def Name(self):
+        """告警渠道回调配置名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """渠道类型
+
+WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Webhook(self):
+        """回调地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Webhook
+
+    @Webhook.setter
+    def Webhook(self, Webhook):
+        self._Webhook = Webhook
+
+    @property
+    def Method(self):
+        """请求方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Key(self):
+        """秘钥信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Uin(self):
+        """主账号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        """子账号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def CreateTime(self):
+        """创建时间。秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间。秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._WebCallbackId = params.get("WebCallbackId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Webhook = params.get("Webhook")
+        self._Method = params.get("Method")
+        self._Key = params.get("Key")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

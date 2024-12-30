@@ -7765,6 +7765,100 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRabbitMQPermissionRequest(AbstractModel):
+    """DeleteRabbitMQPermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param _User: 用户名，登录时使用
+        :type User: str
+        :param _VirtualHost: vhost名
+        :type VirtualHost: str
+        """
+        self._InstanceId = None
+        self._User = None
+        self._VirtualHost = None
+
+    @property
+    def InstanceId(self):
+        """集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        """用户名，登录时使用
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def VirtualHost(self):
+        """vhost名
+        :rtype: str
+        """
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._VirtualHost = params.get("VirtualHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRabbitMQPermissionResponse(AbstractModel):
+    """DeleteRabbitMQPermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRabbitMQUserRequest(AbstractModel):
     """DeleteRabbitMQUser请求参数结构体
 
@@ -13245,6 +13339,165 @@ class DescribeRabbitMQNodeListResponse(AbstractModel):
                 obj = RabbitMQPrivateNode()
                 obj._deserialize(item)
                 self._NodeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRabbitMQPermissionRequest(AbstractModel):
+    """DescribeRabbitMQPermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例id
+        :type InstanceId: str
+        :param _User: 用户名，用于查询过滤，不传则查询全部
+        :type User: str
+        :param _VirtualHost: vhost名，用于查询过滤，不传则查询全部
+        :type VirtualHost: str
+        :param _Offset: 分页Offset
+        :type Offset: int
+        :param _Limit: 分页Limit
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._User = None
+        self._VirtualHost = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        """集群实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        """用户名，用于查询过滤，不传则查询全部
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def VirtualHost(self):
+        """vhost名，用于查询过滤，不传则查询全部
+        :rtype: str
+        """
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Offset(self):
+        """分页Offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页Limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQPermissionResponse(AbstractModel):
+    """DescribeRabbitMQPermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 返回权限数量
+        :type TotalCount: int
+        :param _RabbitMQPermissionList: 权限详情列表
+        :type RabbitMQPermissionList: list of RabbitMQPermission
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RabbitMQPermissionList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """返回权限数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RabbitMQPermissionList(self):
+        """权限详情列表
+        :rtype: list of RabbitMQPermission
+        """
+        return self._RabbitMQPermissionList
+
+    @RabbitMQPermissionList.setter
+    def RabbitMQPermissionList(self, RabbitMQPermissionList):
+        self._RabbitMQPermissionList = RabbitMQPermissionList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RabbitMQPermissionList") is not None:
+            self._RabbitMQPermissionList = []
+            for item in params.get("RabbitMQPermissionList"):
+                obj = RabbitMQPermission()
+                obj._deserialize(item)
+                self._RabbitMQPermissionList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23272,6 +23525,145 @@ class ModifyPublicNetworkSecurityPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRabbitMQPermissionRequest(AbstractModel):
+    """ModifyRabbitMQPermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param _User: 用户名，权限关联的用户
+        :type User: str
+        :param _VirtualHost: vhost名称
+        :type VirtualHost: str
+        :param _ConfigRegexp: 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+        :type ConfigRegexp: str
+        :param _WriteRegexp: 权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+        :type WriteRegexp: str
+        :param _ReadRegexp: 权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+        :type ReadRegexp: str
+        """
+        self._InstanceId = None
+        self._User = None
+        self._VirtualHost = None
+        self._ConfigRegexp = None
+        self._WriteRegexp = None
+        self._ReadRegexp = None
+
+    @property
+    def InstanceId(self):
+        """集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        """用户名，权限关联的用户
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def VirtualHost(self):
+        """vhost名称
+        :rtype: str
+        """
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def ConfigRegexp(self):
+        """权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+        :rtype: str
+        """
+        return self._ConfigRegexp
+
+    @ConfigRegexp.setter
+    def ConfigRegexp(self, ConfigRegexp):
+        self._ConfigRegexp = ConfigRegexp
+
+    @property
+    def WriteRegexp(self):
+        """权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+        :rtype: str
+        """
+        return self._WriteRegexp
+
+    @WriteRegexp.setter
+    def WriteRegexp(self, WriteRegexp):
+        self._WriteRegexp = WriteRegexp
+
+    @property
+    def ReadRegexp(self):
+        """权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+        :rtype: str
+        """
+        return self._ReadRegexp
+
+    @ReadRegexp.setter
+    def ReadRegexp(self, ReadRegexp):
+        self._ReadRegexp = ReadRegexp
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._VirtualHost = params.get("VirtualHost")
+        self._ConfigRegexp = params.get("ConfigRegexp")
+        self._WriteRegexp = params.get("WriteRegexp")
+        self._ReadRegexp = params.get("ReadRegexp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRabbitMQPermissionResponse(AbstractModel):
+    """ModifyRabbitMQPermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRabbitMQUserRequest(AbstractModel):
     """ModifyRabbitMQUser请求参数结构体
 
@@ -28152,6 +28544,157 @@ class RabbitMQExchangeListInfo(AbstractModel):
         self._Policy = params.get("Policy")
         self._Arguments = params.get("Arguments")
         self._MessagesDelayed = params.get("MessagesDelayed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQPermission(AbstractModel):
+    """RabbitMQ权限详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param _User: 用户名，权限关联的用户
+        :type User: str
+        :param _VirtualHost: vhost名
+        :type VirtualHost: str
+        :param _ConfigRegexp: 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigRegexp: str
+        :param _WriteRegexp: 权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteRegexp: str
+        :param _ReadRegexp: 权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadRegexp: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
+        self._InstanceId = None
+        self._User = None
+        self._VirtualHost = None
+        self._ConfigRegexp = None
+        self._WriteRegexp = None
+        self._ReadRegexp = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def InstanceId(self):
+        """集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        """用户名，权限关联的用户
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def VirtualHost(self):
+        """vhost名
+        :rtype: str
+        """
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def ConfigRegexp(self):
+        """权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigRegexp
+
+    @ConfigRegexp.setter
+    def ConfigRegexp(self, ConfigRegexp):
+        self._ConfigRegexp = ConfigRegexp
+
+    @property
+    def WriteRegexp(self):
+        """权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WriteRegexp
+
+    @WriteRegexp.setter
+    def WriteRegexp(self, WriteRegexp):
+        self._WriteRegexp = WriteRegexp
+
+    @property
+    def ReadRegexp(self):
+        """权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReadRegexp
+
+    @ReadRegexp.setter
+    def ReadRegexp(self, ReadRegexp):
+        self._ReadRegexp = ReadRegexp
+
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._VirtualHost = params.get("VirtualHost")
+        self._ConfigRegexp = params.get("ConfigRegexp")
+        self._WriteRegexp = params.get("WriteRegexp")
+        self._ReadRegexp = params.get("ReadRegexp")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

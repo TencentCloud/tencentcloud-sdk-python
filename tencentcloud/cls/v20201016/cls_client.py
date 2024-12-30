@@ -631,6 +631,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWebCallback(self, request):
+        """该接口用于创建告警渠道回调配置。
+
+        :param request: Request instance for CreateWebCallback.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateWebCallbackRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateWebCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWebCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWebCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAlarm(self, request):
         """本接口用于删除告警策略。
 
@@ -1105,6 +1128,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteTopic", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWebCallback(self, request):
+        """该接口用于删除告警渠道回调配置。
+
+        :param request: Request instance for DeleteWebCallback.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteWebCallbackRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteWebCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWebCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWebCallbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1805,6 +1851,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWebCallbacks(self, request):
+        """获取告警渠道回调配置列表。
+
+        :param request: Request instance for DescribeWebCallbacks.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeWebCallbacksRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeWebCallbacksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebCallbacks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWebCallbacksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetAlarmLog(self, request):
         """本接口用于获取告警策略执行详情
 
@@ -2302,6 +2371,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyTopic", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyWebCallback(self, request):
+        """该接口用于修改告警渠道回调配置。
+
+        :param request: Request instance for ModifyWebCallback.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyWebCallbackRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyWebCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWebCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWebCallbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

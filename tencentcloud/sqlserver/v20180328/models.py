@@ -16009,7 +16009,7 @@ class DescribeProductConfigRequest(AbstractModel):
         r"""
         :param _Zone: 可用区英文ID，形如ap-guangzhou-1
         :type Zone: str
-        :param _InstanceType: 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本
+        :param _InstanceType: 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
         :type InstanceType: str
         """
         self._Zone = None
@@ -16028,7 +16028,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本
+        """购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
         :rtype: str
         """
         return self._InstanceType
@@ -18490,6 +18490,8 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
         :type HAType: str
         :param _MultiZones: 实例变配后的跨可用区类型，可选值： SameZones-修改为同可用区 MultiZones-修改为跨可用区，不填则不修改
         :type MultiZones: str
+        :param _DrZones: 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+        :type DrZones: list of DrZoneInfo
         """
         self._InstanceId = None
         self._Cpu = None
@@ -18498,6 +18500,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
         self._DBVersion = None
         self._HAType = None
         self._MultiZones = None
+        self._DrZones = None
 
     @property
     def InstanceId(self):
@@ -18576,6 +18579,17 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
     def MultiZones(self, MultiZones):
         self._MultiZones = MultiZones
 
+    @property
+    def DrZones(self):
+        """多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+        :rtype: list of DrZoneInfo
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -18585,6 +18599,12 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
         self._DBVersion = params.get("DBVersion")
         self._HAType = params.get("HAType")
         self._MultiZones = params.get("MultiZones")
+        if params.get("DrZones") is not None:
+            self._DrZones = []
+            for item in params.get("DrZones"):
+                obj = DrZoneInfo()
+                obj._deserialize(item)
+                self._DrZones.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19640,6 +19660,57 @@ DR_FAIL_OVER-备机只读故障转移中
         self._UniqSubnetId = params.get("UniqSubnetId")
         self._RoWeight = params.get("RoWeight")
         self._ReadMode = params.get("ReadMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DrZoneInfo(AbstractModel):
+    """备机可用区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DrInstanceId: 备机资源ID
+        :type DrInstanceId: str
+        :param _Zone: 备机可用区
+        :type Zone: str
+        """
+        self._DrInstanceId = None
+        self._Zone = None
+
+    @property
+    def DrInstanceId(self):
+        """备机资源ID
+        :rtype: str
+        """
+        return self._DrInstanceId
+
+    @DrInstanceId.setter
+    def DrInstanceId(self, DrInstanceId):
+        self._DrInstanceId = DrInstanceId
+
+    @property
+    def Zone(self):
+        """备机可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._DrInstanceId = params.get("DrInstanceId")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

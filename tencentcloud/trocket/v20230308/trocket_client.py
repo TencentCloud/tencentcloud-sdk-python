@@ -394,6 +394,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConsumerClient(self, request):
+        """查询消费者客户端详情
+
+        :param request: Request instance for DescribeConsumerClient.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerClientRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerClient", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerClientResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConsumerGroup(self, request):
         """查询消费组详情
 

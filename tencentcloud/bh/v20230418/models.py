@@ -4401,6 +4401,8 @@ class DescribeAclsRequest(AbstractModel):
         :type Status: int
         :param _DepartmentId: 部门ID，用于过滤属于某个部门的访问权限
         :type DepartmentId: str
+        :param _ExactAccount: 是否根据AuthorizedDeviceIdSet,对资产账号进行精确匹配，默认false, 设置true时，确保AuthorizedDeviceIdSet只有一个元素
+        :type ExactAccount: bool
         :param _Filters: 过滤数组
         :type Filters: list of Filter
         """
@@ -4413,6 +4415,7 @@ class DescribeAclsRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = None
         self._Status = None
         self._DepartmentId = None
+        self._ExactAccount = None
         self._Filters = None
 
     @property
@@ -4515,6 +4518,17 @@ class DescribeAclsRequest(AbstractModel):
         self._DepartmentId = DepartmentId
 
     @property
+    def ExactAccount(self):
+        """是否根据AuthorizedDeviceIdSet,对资产账号进行精确匹配，默认false, 设置true时，确保AuthorizedDeviceIdSet只有一个元素
+        :rtype: bool
+        """
+        return self._ExactAccount
+
+    @ExactAccount.setter
+    def ExactAccount(self, ExactAccount):
+        self._ExactAccount = ExactAccount
+
+    @property
     def Filters(self):
         """过滤数组
         :rtype: list of Filter
@@ -4536,6 +4550,7 @@ class DescribeAclsRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
         self._Status = params.get("Status")
         self._DepartmentId = params.get("DepartmentId")
+        self._ExactAccount = params.get("ExactAccount")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):

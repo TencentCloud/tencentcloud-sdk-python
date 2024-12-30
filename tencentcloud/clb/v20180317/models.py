@@ -115,6 +115,9 @@ class AssociationItem(AbstractModel):
         :type LoadBalancerName: str
         :param _ListenerName: 监听器名称
         :type ListenerName: str
+        :param _Weight: 关联目标组的权重， 该参数只有v2新版目标组生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
         """
         self._LoadBalancerId = None
         self._ListenerId = None
@@ -125,6 +128,7 @@ class AssociationItem(AbstractModel):
         self._Url = None
         self._LoadBalancerName = None
         self._ListenerName = None
+        self._Weight = None
 
     @property
     def LoadBalancerId(self):
@@ -228,6 +232,18 @@ class AssociationItem(AbstractModel):
     def ListenerName(self, ListenerName):
         self._ListenerName = ListenerName
 
+    @property
+    def Weight(self):
+        """关联目标组的权重， 该参数只有v2新版目标组生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -239,6 +255,7 @@ class AssociationItem(AbstractModel):
         self._Url = params.get("Url")
         self._LoadBalancerName = params.get("LoadBalancerName")
         self._ListenerName = params.get("ListenerName")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -567,9 +584,12 @@ class BasicTargetGroupInfo(AbstractModel):
         :type TargetGroupId: str
         :param _TargetGroupName: 目标组名称
         :type TargetGroupName: str
+        :param _Weight: 权重
+        :type Weight: int
         """
         self._TargetGroupId = None
         self._TargetGroupName = None
+        self._Weight = None
 
     @property
     def TargetGroupId(self):
@@ -593,10 +613,22 @@ class BasicTargetGroupInfo(AbstractModel):
     def TargetGroupName(self, TargetGroupName):
         self._TargetGroupName = TargetGroupName
 
+    @property
+    def Weight(self):
+        """权重
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
         self._TargetGroupName = params.get("TargetGroupName")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

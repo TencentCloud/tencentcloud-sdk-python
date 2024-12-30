@@ -12860,24 +12860,24 @@ class ModifyDynamicDNSRequest(AbstractModel):
         :type RecordId: int
         :param _RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
         :type RecordLine: str
-        :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
-        :type Value: str
         :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
         :type SubDomain: str
         :param _RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :type RecordLineId: str
+        :param _Value: IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::
+        :type Value: str
         :param _Ttl: TTL值，如果不传，默认为域名的TTL值。
         :type Ttl: int
         """
         self._Domain = None
         self._RecordId = None
         self._RecordLine = None
-        self._Value = None
         self._DomainId = None
         self._SubDomain = None
         self._RecordLineId = None
+        self._Value = None
         self._Ttl = None
 
     @property
@@ -12914,17 +12914,6 @@ class ModifyDynamicDNSRequest(AbstractModel):
         self._RecordLine = RecordLine
 
     @property
-    def Value(self):
-        """记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
-        :rtype: str
-        """
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-    @property
     def DomainId(self):
         """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
@@ -12958,6 +12947,17 @@ class ModifyDynamicDNSRequest(AbstractModel):
         self._RecordLineId = RecordLineId
 
     @property
+    def Value(self):
+        """IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
     def Ttl(self):
         """TTL值，如果不传，默认为域名的TTL值。
         :rtype: int
@@ -12973,10 +12973,10 @@ class ModifyDynamicDNSRequest(AbstractModel):
         self._Domain = params.get("Domain")
         self._RecordId = params.get("RecordId")
         self._RecordLine = params.get("RecordLine")
-        self._Value = params.get("Value")
         self._DomainId = params.get("DomainId")
         self._SubDomain = params.get("SubDomain")
         self._RecordLineId = params.get("RecordLineId")
+        self._Value = params.get("Value")
         self._Ttl = params.get("Ttl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -17457,40 +17457,40 @@ class WhoisContactAddress(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _City: 无
+        :param _City: 城市
 注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
-        :param _Country: 无
+        :param _Country: 国家
 注意：此字段可能返回 null，表示取不到有效值。
         :type Country: str
-        :param _Email: 无
+        :param _Email: 电子邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param _Fax: 无
+        :param _Fax: 传真
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fax: str
-        :param _FaxExt: 无
+        :param _FaxExt: 传真分机号
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaxExt: str
         :param _Handle: 无
 注意：此字段可能返回 null，表示取不到有效值。
         :type Handle: str
-        :param _Name: 无
+        :param _Name: 名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Organization: 无
+        :param _Organization: 组织机构
 注意：此字段可能返回 null，表示取不到有效值。
         :type Organization: str
-        :param _Phone: 无
+        :param _Phone: 电话
 注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
-        :param _PostalCode: 无
+        :param _PostalCode: 邮编
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostalCode: str
-        :param _State: 无
+        :param _State: 省份/州
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
-        :param _Street: 无
+        :param _Street: 街道地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Street: str
         """
@@ -17509,7 +17509,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def City(self):
-        """无
+        """城市
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17521,7 +17521,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def Country(self):
-        """无
+        """国家
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17533,7 +17533,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def Email(self):
-        """无
+        """电子邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17545,7 +17545,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def Fax(self):
-        """无
+        """传真
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17557,7 +17557,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def FaxExt(self):
-        """无
+        """传真分机号
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17581,7 +17581,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def Name(self):
-        """无
+        """名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17593,7 +17593,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def Organization(self):
-        """无
+        """组织机构
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17605,7 +17605,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def Phone(self):
-        """无
+        """电话
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17617,7 +17617,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def PostalCode(self):
-        """无
+        """邮编
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17629,7 +17629,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def State(self):
-        """无
+        """省份/州
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17641,7 +17641,7 @@ class WhoisContactAddress(AbstractModel):
 
     @property
     def Street(self):
-        """无
+        """街道地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

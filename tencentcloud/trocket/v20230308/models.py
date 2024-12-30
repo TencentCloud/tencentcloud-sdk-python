@@ -199,6 +199,104 @@ class ConsumeGroupItem(AbstractModel):
         
 
 
+class ConsumerClient(AbstractModel):
+    """消费者客户端
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 客户端ID
+        :type ClientId: str
+        :param _ClientAddr: 客户端地址
+        :type ClientAddr: str
+        :param _Language: 客户端SDK语言
+        :type Language: str
+        :param _Version: 客户端SDK版本
+        :type Version: str
+        :param _ConsumerLag: 客户端消费堆积
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerLag: int
+        """
+        self._ClientId = None
+        self._ClientAddr = None
+        self._Language = None
+        self._Version = None
+        self._ConsumerLag = None
+
+    @property
+    def ClientId(self):
+        """客户端ID
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientAddr(self):
+        """客户端地址
+        :rtype: str
+        """
+        return self._ClientAddr
+
+    @ClientAddr.setter
+    def ClientAddr(self, ClientAddr):
+        self._ClientAddr = ClientAddr
+
+    @property
+    def Language(self):
+        """客户端SDK语言
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Version(self):
+        """客户端SDK版本
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ConsumerLag(self):
+        """客户端消费堆积
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ConsumerLag
+
+    @ConsumerLag.setter
+    def ConsumerLag(self, ConsumerLag):
+        self._ConsumerLag = ConsumerLag
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientAddr = params.get("ClientAddr")
+        self._Language = params.get("Language")
+        self._Version = params.get("Version")
+        self._ConsumerLag = params.get("ConsumerLag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateConsumerGroupRequest(AbstractModel):
     """CreateConsumerGroup请求参数结构体
 
@@ -2270,6 +2368,191 @@ class DeleteTopicResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerClientRequest(AbstractModel):
+    """DescribeConsumerClient请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _ClientId: 客户端ID
+        :type ClientId: str
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        """
+        self._InstanceId = None
+        self._ClientId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._ConsumerGroup = None
+
+    @property
+    def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClientId(self):
+        """客户端ID
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Filters(self):
+        """查询条件列表
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ConsumerGroup(self):
+        """消费组名称
+        :rtype: str
+        """
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClientId = params.get("ClientId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerClientResponse(AbstractModel):
+    """DescribeConsumerClient返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Client: 客户端详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Client: :class:`tencentcloud.trocket.v20230308.models.ConsumerClient`
+        :param _TopicList: 主题消费信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicList: list of TopicConsumeStats
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Client = None
+        self._TopicList = None
+        self._RequestId = None
+
+    @property
+    def Client(self):
+        """客户端详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerClient`
+        """
+        return self._Client
+
+    @Client.setter
+    def Client(self, Client):
+        self._Client = Client
+
+    @property
+    def TopicList(self):
+        """主题消费信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopicConsumeStats
+        """
+        return self._TopicList
+
+    @TopicList.setter
+    def TopicList(self, TopicList):
+        self._TopicList = TopicList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Client") is not None:
+            self._Client = ConsumerClient()
+            self._Client._deserialize(params.get("Client"))
+        if params.get("TopicList") is not None:
+            self._TopicList = []
+            for item in params.get("TopicList"):
+                obj = TopicConsumeStats()
+                obj._deserialize(item)
+                self._TopicList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12308,6 +12591,119 @@ class TagFilter(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValues = params.get("TagValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicConsumeStats(AbstractModel):
+    """主题消费进度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称
+        :type Topic: str
+        :param _TopicType: 主题类型
+        :type TopicType: str
+        :param _QueueNum: 单节点主题队列数量
+        :type QueueNum: int
+        :param _ConsumerLag: 消费堆积
+        :type ConsumerLag: int
+        :param _SubString: 订阅规则
+        :type SubString: str
+        :param _LastUpdateTime: 最后消费进度更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: int
+        """
+        self._Topic = None
+        self._TopicType = None
+        self._QueueNum = None
+        self._ConsumerLag = None
+        self._SubString = None
+        self._LastUpdateTime = None
+
+    @property
+    def Topic(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def TopicType(self):
+        """主题类型
+        :rtype: str
+        """
+        return self._TopicType
+
+    @TopicType.setter
+    def TopicType(self, TopicType):
+        self._TopicType = TopicType
+
+    @property
+    def QueueNum(self):
+        """单节点主题队列数量
+        :rtype: int
+        """
+        return self._QueueNum
+
+    @QueueNum.setter
+    def QueueNum(self, QueueNum):
+        self._QueueNum = QueueNum
+
+    @property
+    def ConsumerLag(self):
+        """消费堆积
+        :rtype: int
+        """
+        return self._ConsumerLag
+
+    @ConsumerLag.setter
+    def ConsumerLag(self, ConsumerLag):
+        self._ConsumerLag = ConsumerLag
+
+    @property
+    def SubString(self):
+        """订阅规则
+        :rtype: str
+        """
+        return self._SubString
+
+    @SubString.setter
+    def SubString(self, SubString):
+        self._SubString = SubString
+
+    @property
+    def LastUpdateTime(self):
+        """最后消费进度更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._TopicType = params.get("TopicType")
+        self._QueueNum = params.get("QueueNum")
+        self._ConsumerLag = params.get("ConsumerLag")
+        self._SubString = params.get("SubString")
+        self._LastUpdateTime = params.get("LastUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

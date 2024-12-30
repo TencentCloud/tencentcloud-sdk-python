@@ -184,7 +184,6 @@ class AccessPolicy(AbstractModel):
         :param _UpdateTime: 更新时间
         :type UpdateTime: str
         :param _Remark: Remark
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._TargetCidr = None
@@ -252,7 +251,6 @@ class AccessPolicy(AbstractModel):
     @property
     def Remark(self):
         """Remark
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -4880,19 +4878,14 @@ class BgpConfigAndAsn(AbstractModel):
     def __init__(self):
         r"""
         :param _TunnelCidr: BGP通道CIDR
-注意：此字段可能返回 null，表示取不到有效值。
         :type TunnelCidr: str
         :param _LocalBgpIp: 本端BGP IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalBgpIp: str
         :param _RemoteBgpIp: 对端BGP IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteBgpIp: str
         :param _LocalBgpAsn: 本端BGP ASN号
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalBgpAsn: str
         :param _RemoteBgpAsn: 对端BGP ASN号
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteBgpAsn: str
         """
         self._TunnelCidr = None
@@ -4904,7 +4897,6 @@ class BgpConfigAndAsn(AbstractModel):
     @property
     def TunnelCidr(self):
         """BGP通道CIDR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TunnelCidr
@@ -4916,7 +4908,6 @@ class BgpConfigAndAsn(AbstractModel):
     @property
     def LocalBgpIp(self):
         """本端BGP IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalBgpIp
@@ -4928,7 +4919,6 @@ class BgpConfigAndAsn(AbstractModel):
     @property
     def RemoteBgpIp(self):
         """对端BGP IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemoteBgpIp
@@ -4940,7 +4930,6 @@ class BgpConfigAndAsn(AbstractModel):
     @property
     def LocalBgpAsn(self):
         """本端BGP ASN号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalBgpAsn
@@ -4952,7 +4941,6 @@ class BgpConfigAndAsn(AbstractModel):
     @property
     def RemoteBgpAsn(self):
         """对端BGP ASN号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemoteBgpAsn
@@ -5837,29 +5825,25 @@ class CcnBandwidthInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CcnId: 带宽所属的云联网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
         :param _CreatedTime: 实例的创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _ExpiredTime: 实例的过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
         :param _RegionFlowControlId: 带宽实例的唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionFlowControlId: str
         :param _RenewFlag: 带宽是否自动续费的标记。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: str
         :param _CcnRegionBandwidthLimit: 描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
         :param _MarketId: 云市场实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarketId: str
         :param _TagSet: 资源绑定的标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
+        :param _DefaultQosBandwidthFlag: `true表示`Qos默认带宽；`false`表示非Qos默认带宽；
+        :type DefaultQosBandwidthFlag: bool
+        :param _QosLevel: 服务等级信息。
+        :type QosLevel: str
         """
         self._CcnId = None
         self._CreatedTime = None
@@ -5869,11 +5853,12 @@ class CcnBandwidthInfo(AbstractModel):
         self._CcnRegionBandwidthLimit = None
         self._MarketId = None
         self._TagSet = None
+        self._DefaultQosBandwidthFlag = None
+        self._QosLevel = None
 
     @property
     def CcnId(self):
         """带宽所属的云联网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnId
@@ -5885,7 +5870,6 @@ class CcnBandwidthInfo(AbstractModel):
     @property
     def CreatedTime(self):
         """实例的创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -5897,7 +5881,6 @@ class CcnBandwidthInfo(AbstractModel):
     @property
     def ExpiredTime(self):
         """实例的过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpiredTime
@@ -5909,7 +5892,6 @@ class CcnBandwidthInfo(AbstractModel):
     @property
     def RegionFlowControlId(self):
         """带宽实例的唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionFlowControlId
@@ -5921,7 +5903,6 @@ class CcnBandwidthInfo(AbstractModel):
     @property
     def RenewFlag(self):
         """带宽是否自动续费的标记。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RenewFlag
@@ -5933,7 +5914,6 @@ class CcnBandwidthInfo(AbstractModel):
     @property
     def CcnRegionBandwidthLimit(self):
         """描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
         """
         return self._CcnRegionBandwidthLimit
@@ -5945,7 +5925,6 @@ class CcnBandwidthInfo(AbstractModel):
     @property
     def MarketId(self):
         """云市场实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarketId
@@ -5957,7 +5936,6 @@ class CcnBandwidthInfo(AbstractModel):
     @property
     def TagSet(self):
         """资源绑定的标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -5965,6 +5943,28 @@ class CcnBandwidthInfo(AbstractModel):
     @TagSet.setter
     def TagSet(self, TagSet):
         self._TagSet = TagSet
+
+    @property
+    def DefaultQosBandwidthFlag(self):
+        """`true表示`Qos默认带宽；`false`表示非Qos默认带宽；
+        :rtype: bool
+        """
+        return self._DefaultQosBandwidthFlag
+
+    @DefaultQosBandwidthFlag.setter
+    def DefaultQosBandwidthFlag(self, DefaultQosBandwidthFlag):
+        self._DefaultQosBandwidthFlag = DefaultQosBandwidthFlag
+
+    @property
+    def QosLevel(self):
+        """服务等级信息。
+        :rtype: str
+        """
+        return self._QosLevel
+
+    @QosLevel.setter
+    def QosLevel(self, QosLevel):
+        self._QosLevel = QosLevel
 
 
     def _deserialize(self, params):
@@ -5983,6 +5983,8 @@ class CcnBandwidthInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagSet.append(obj)
+        self._DefaultQosBandwidthFlag = params.get("DefaultQosBandwidthFlag")
+        self._QosLevel = params.get("QosLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6145,10 +6147,8 @@ class CcnInstance(AbstractModel):
         :param _Description: 备注
         :type Description: str
         :param _RouteTableId: 实例关联的路由表ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableId: str
         :param _OrderType: 实例付费方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderType: str
         """
         self._InstanceId = None
@@ -6209,7 +6209,6 @@ class CcnInstance(AbstractModel):
     @property
     def RouteTableId(self):
         """实例关联的路由表ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RouteTableId
@@ -6221,7 +6220,6 @@ class CcnInstance(AbstractModel):
     @property
     def OrderType(self):
         """实例付费方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderType
@@ -6252,6 +6250,36 @@ class CcnInstanceInfo(AbstractModel):
     """云联网实例对象，该对象特用于运营端使用，不建议给租户的接口中提供该复杂类型。
 
     """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网唯一ID。
+        :type CcnId: str
+        """
+        self._CcnId = None
+
+    @property
+    def CcnId(self):
+        """云联网唯一ID。
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CcnInstanceWithoutRegion(AbstractModel):
@@ -6333,7 +6361,6 @@ class CcnRegionBandwidthLimit(AbstractModel):
         :param _IsBm: 是否黑石地域，默认`false`。
         :type IsBm: bool
         :param _DstRegion: 目的地域，例如：ap-shanghai
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstRegion: str
         :param _DstIsBm: 目的地域是否为黑石地域，默认`false`。
         :type DstIsBm: bool
@@ -6380,7 +6407,6 @@ class CcnRegionBandwidthLimit(AbstractModel):
     @property
     def DstRegion(self):
         """目的地域，例如：ap-shanghai
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstRegion
@@ -6425,13 +6451,10 @@ class CcnRegionBandwidthLimitInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SourceRegion: 源地域，例如：ap-shanghai
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceRegion: str
         :param _DestinationRegion: 目的地域， 例如：ap-shanghai
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationRegion: str
         :param _BandwidthLimit: 出带宽上限，单位：Mbps。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthLimit: int
         """
         self._SourceRegion = None
@@ -6441,7 +6464,6 @@ class CcnRegionBandwidthLimitInfo(AbstractModel):
     @property
     def SourceRegion(self):
         """源地域，例如：ap-shanghai
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SourceRegion
@@ -6453,7 +6475,6 @@ class CcnRegionBandwidthLimitInfo(AbstractModel):
     @property
     def DestinationRegion(self):
         """目的地域， 例如：ap-shanghai
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DestinationRegion
@@ -6465,7 +6486,6 @@ class CcnRegionBandwidthLimitInfo(AbstractModel):
     @property
     def BandwidthLimit(self):
         """出带宽上限，单位：Mbps。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BandwidthLimit
@@ -6523,10 +6543,8 @@ class CcnRoute(AbstractModel):
         :param _InstanceExtraName: 下一跳扩展名称（关联实例的扩展名称）
         :type InstanceExtraName: str
         :param _AliasType: 实例类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasType: str
         :param _AliasInstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasInstanceId: str
         """
         self._RouteId = None
@@ -6691,7 +6709,6 @@ class CcnRoute(AbstractModel):
     @property
     def AliasType(self):
         """实例类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AliasType
@@ -6703,7 +6720,6 @@ class CcnRoute(AbstractModel):
     @property
     def AliasInstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AliasInstanceId
@@ -6932,16 +6948,12 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
         :param _Description: 策略描述
         :type Description: str
         :param _OperateAsPath: as-path操作
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateAsPath: str
         :param _AsPathOperateMode: as-path操作模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsPathOperateMode: str
         :param _OperateCommunitySet: community操作
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateCommunitySet: list of str
         :param _CommunityOperateMode: community操作模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type CommunityOperateMode: str
         """
         self._RouteConditions = None
@@ -7000,7 +7012,6 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
     @property
     def OperateAsPath(self):
         """as-path操作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperateAsPath
@@ -7012,7 +7023,6 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
     @property
     def AsPathOperateMode(self):
         """as-path操作模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsPathOperateMode
@@ -7024,7 +7034,6 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
     @property
     def OperateCommunitySet(self):
         """community操作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._OperateCommunitySet
@@ -7036,7 +7045,6 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
     @property
     def CommunityOperateMode(self):
         """community操作模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CommunityOperateMode
@@ -7255,13 +7263,10 @@ class CcnRouteTableInputPolicys(AbstractModel):
     def __init__(self):
         r"""
         :param _Policys: 策略列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Policys: list of CcnRouteTableInputPolicy
         :param _PolicyVersion: 版本号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyVersion: int
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self._Policys = None
@@ -7271,7 +7276,6 @@ class CcnRouteTableInputPolicys(AbstractModel):
     @property
     def Policys(self):
         """策略列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CcnRouteTableInputPolicy
         """
         return self._Policys
@@ -7283,7 +7287,6 @@ class CcnRouteTableInputPolicys(AbstractModel):
     @property
     def PolicyVersion(self):
         """版本号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyVersion
@@ -7295,7 +7298,6 @@ class CcnRouteTableInputPolicys(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -16490,10 +16492,8 @@ class CrossBorderCompliance(AbstractModel):
         :param _CreatedTime: 审批单创建时间。
         :type CreatedTime: str
         :param _LegalPersonId: 法定代表人身份证号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LegalPersonId: str
         :param _LegalPersonIdCard: 法定代表人身份证。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LegalPersonIdCard: str
         """
         self._ServiceProvider = None
@@ -16766,7 +16766,6 @@ class CrossBorderCompliance(AbstractModel):
     @property
     def LegalPersonId(self):
         """法定代表人身份证号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LegalPersonId
@@ -16778,7 +16777,6 @@ class CrossBorderCompliance(AbstractModel):
     @property
     def LegalPersonIdCard(self):
         """法定代表人身份证。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LegalPersonIdCard
@@ -17008,10 +17006,13 @@ class CustomerGatewayVendor(AbstractModel):
     def __init__(self):
         r"""
         :param _Platform: 平台。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Platform: str
         :param _SoftwareVersion: 软件版本。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SoftwareVersion: str
         :param _VendorName: 供应商名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type VendorName: str
         """
         self._Platform = None
@@ -17021,6 +17022,7 @@ class CustomerGatewayVendor(AbstractModel):
     @property
     def Platform(self):
         """平台。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Platform
@@ -17032,6 +17034,7 @@ class CustomerGatewayVendor(AbstractModel):
     @property
     def SoftwareVersion(self):
         """软件版本。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SoftwareVersion
@@ -17043,6 +17046,7 @@ class CustomerGatewayVendor(AbstractModel):
     @property
     def VendorName(self):
         """供应商名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VendorName
@@ -24209,7 +24213,6 @@ class DescribeCrossBorderFlowMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CrossBorderFlowMonitorData: 云联网跨境带宽监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type CrossBorderFlowMonitorData: list of CrossBorderFlowMonitorData
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24220,7 +24223,6 @@ class DescribeCrossBorderFlowMonitorResponse(AbstractModel):
     @property
     def CrossBorderFlowMonitorData(self):
         """云联网跨境带宽监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CrossBorderFlowMonitorData
         """
         return self._CrossBorderFlowMonitorData
@@ -33003,7 +33005,6 @@ class DescribeTenantCcnsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CcnSet: 云联网（CCN）对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnSet: list of CcnInstanceInfo
         :param _TotalCount: 符合条件的对象总数。
         :type TotalCount: int
@@ -33017,7 +33018,6 @@ class DescribeTenantCcnsResponse(AbstractModel):
     @property
     def CcnSet(self):
         """云联网（CCN）对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CcnInstanceInfo
         """
         return self._CcnSet
@@ -35405,7 +35405,6 @@ class DescribeVpnGatewayRoutesResponse(AbstractModel):
         :param _Routes: VPN网关目的路由。
         :type Routes: list of VpnGatewayRoute
         :param _TotalCount: 路由条数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35428,7 +35427,6 @@ class DescribeVpnGatewayRoutesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """路由条数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -40684,10 +40682,8 @@ class GetCcnRegionBandwidthLimitsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CcnBandwidthSet: 云联网（CCN）各地域出带宽详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnBandwidthSet: list of CcnBandwidthInfo
         :param _TotalCount: 符合条件的对象数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40699,7 +40695,6 @@ class GetCcnRegionBandwidthLimitsResponse(AbstractModel):
     @property
     def CcnBandwidthSet(self):
         """云联网（CCN）各地域出带宽详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CcnBandwidthInfo
         """
         return self._CcnBandwidthSet
@@ -40711,7 +40706,6 @@ class GetCcnRegionBandwidthLimitsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的对象数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -51263,7 +51257,6 @@ class ModifyVpnGatewayRoutesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Routes: VPN路由信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Routes: list of VpnGatewayRoute
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -51274,7 +51267,6 @@ class ModifyVpnGatewayRoutesResponse(AbstractModel):
     @property
     def Routes(self):
         """VPN路由信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpnGatewayRoute
         """
         return self._Routes
@@ -59205,7 +59197,6 @@ class RouteSelectionPolicy(AbstractModel):
         :param _SourceCidrBlock: 源端cidr。
         :type SourceCidrBlock: str
         :param _Description: 路由表描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _InstanceId: 实例ID。
         :type InstanceId: str
@@ -59291,7 +59282,6 @@ class RouteSelectionPolicy(AbstractModel):
     @property
     def Description(self):
         """路由表描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -64878,24 +64868,18 @@ class VpnConnection(AbstractModel):
         :param _HealthCheckStatus: 通道健康检查状态，AVAILABLE：正常，UNAVAILABLE：不正常。 未配置健康检查不返回该对象
         :type HealthCheckStatus: str
         :param _DpdEnable: DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DpdEnable: int
         :param _DpdTimeout: DPD超时时间。即探测确认对端不存在需要的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DpdTimeout: str
         :param _DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DpdAction: str
         :param _TagSet: 标签键值对数组
         :type TagSet: list of Tag
         :param _NegotiationType: 协商类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type NegotiationType: str
         :param _BgpConfig: Bgp配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfigAndAsn`
         :param _HealthCheckConfig: Nqa配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckConfig: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         self._VpnConnectionId = None
@@ -65137,7 +65121,6 @@ class VpnConnection(AbstractModel):
     @property
     def DpdEnable(self):
         """DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DpdEnable
@@ -65149,7 +65132,6 @@ class VpnConnection(AbstractModel):
     @property
     def DpdTimeout(self):
         """DPD超时时间。即探测确认对端不存在需要的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DpdTimeout
@@ -65161,7 +65143,6 @@ class VpnConnection(AbstractModel):
     @property
     def DpdAction(self):
         """DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DpdAction
@@ -65184,7 +65165,6 @@ class VpnConnection(AbstractModel):
     @property
     def NegotiationType(self):
         """协商类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NegotiationType
@@ -65196,7 +65176,6 @@ class VpnConnection(AbstractModel):
     @property
     def BgpConfig(self):
         """Bgp配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.BgpConfigAndAsn`
         """
         return self._BgpConfig
@@ -65208,7 +65187,6 @@ class VpnConnection(AbstractModel):
     @property
     def HealthCheckConfig(self):
         """Nqa配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         return self._HealthCheckConfig

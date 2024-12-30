@@ -197,6 +197,8 @@ class AgentConfig(AbstractModel):
 - 0表示当服务端语音识别检测出的完整一句话后，自动触发一轮新的对话。
 - 1表示客户端在收到字幕消息后，自行决定是否手动发送聊天信令触发一轮新的对话。
         :type TurnDetectionMode: int
+        :param _FilterOneWord: 是否过滤掉用户只说了一个字的句子，true表示过滤，false表示不过滤，默认值为true
+        :type FilterOneWord: bool
         """
         self._UserId = None
         self._UserSig = None
@@ -206,6 +208,7 @@ class AgentConfig(AbstractModel):
         self._InterruptMode = None
         self._InterruptSpeechDuration = None
         self._TurnDetectionMode = None
+        self._FilterOneWord = None
 
     @property
     def UserId(self):
@@ -297,6 +300,17 @@ class AgentConfig(AbstractModel):
     def TurnDetectionMode(self, TurnDetectionMode):
         self._TurnDetectionMode = TurnDetectionMode
 
+    @property
+    def FilterOneWord(self):
+        """是否过滤掉用户只说了一个字的句子，true表示过滤，false表示不过滤，默认值为true
+        :rtype: bool
+        """
+        return self._FilterOneWord
+
+    @FilterOneWord.setter
+    def FilterOneWord(self, FilterOneWord):
+        self._FilterOneWord = FilterOneWord
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -307,6 +321,7 @@ class AgentConfig(AbstractModel):
         self._InterruptMode = params.get("InterruptMode")
         self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
         self._TurnDetectionMode = params.get("TurnDetectionMode")
+        self._FilterOneWord = params.get("FilterOneWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14062,6 +14077,7 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         :param _TargetUserId: TranscriptionMode为1时必填，机器人只会拉该userid的流，忽略房间里其他用户。
         :type TargetUserId: str
         :param _TargetUserIdList: 机器人订阅的用户列表
+仅 TranscriptionMode 为 1或者 TranscriptionMode 为无限上麦模式支持传入多个用户列表
         :type TargetUserIdList: list of str
         """
         self._UserId = None
@@ -14162,6 +14178,7 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
     @property
     def TargetUserIdList(self):
         """机器人订阅的用户列表
+仅 TranscriptionMode 为 1或者 TranscriptionMode 为无限上麦模式支持传入多个用户列表
         :rtype: list of str
         """
         return self._TargetUserIdList

@@ -20149,6 +20149,9 @@ class GovernanceNamespace(AbstractModel):
         :param _ServiceExportTo: 该命名空间下的服务对哪些命名空间可见
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceExportTo: list of str
+        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncToGlobalRegistry: bool
         """
         self._Name = None
         self._Comment = None
@@ -20164,6 +20167,7 @@ class GovernanceNamespace(AbstractModel):
         self._RemoveUserIds = None
         self._RemoveGroupIds = None
         self._ServiceExportTo = None
+        self._SyncToGlobalRegistry = None
 
     @property
     def Name(self):
@@ -20333,6 +20337,18 @@ class GovernanceNamespace(AbstractModel):
     def ServiceExportTo(self, ServiceExportTo):
         self._ServiceExportTo = ServiceExportTo
 
+    @property
+    def SyncToGlobalRegistry(self):
+        """是否开启同步到全局注册中心	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SyncToGlobalRegistry
+
+    @SyncToGlobalRegistry.setter
+    def SyncToGlobalRegistry(self, SyncToGlobalRegistry):
+        self._SyncToGlobalRegistry = SyncToGlobalRegistry
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20349,6 +20365,7 @@ class GovernanceNamespace(AbstractModel):
         self._RemoveUserIds = params.get("RemoveUserIds")
         self._RemoveGroupIds = params.get("RemoveGroupIds")
         self._ServiceExportTo = params.get("ServiceExportTo")
+        self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20550,6 +20567,8 @@ class GovernanceService(AbstractModel):
         :param _Revision: 该服务信息摘要签名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Revision: str
+        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心
+        :type SyncToGlobalRegistry: bool
         """
         self._Name = None
         self._Namespace = None
@@ -20569,6 +20588,7 @@ class GovernanceService(AbstractModel):
         self._RemoveGroupIds = None
         self._ExportTo = None
         self._Revision = None
+        self._SyncToGlobalRegistry = None
 
     @property
     def Name(self):
@@ -20784,6 +20804,17 @@ class GovernanceService(AbstractModel):
     def Revision(self, Revision):
         self._Revision = Revision
 
+    @property
+    def SyncToGlobalRegistry(self):
+        """是否开启同步到全局注册中心
+        :rtype: bool
+        """
+        return self._SyncToGlobalRegistry
+
+    @SyncToGlobalRegistry.setter
+    def SyncToGlobalRegistry(self, SyncToGlobalRegistry):
+        self._SyncToGlobalRegistry = SyncToGlobalRegistry
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20809,6 +20840,7 @@ class GovernanceService(AbstractModel):
         self._RemoveGroupIds = params.get("RemoveGroupIds")
         self._ExportTo = params.get("ExportTo")
         self._Revision = params.get("Revision")
+        self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

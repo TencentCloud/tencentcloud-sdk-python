@@ -10984,6 +10984,198 @@ Finger：由手指导致的不完整，仅在不完整告警中返回
         
 
 
+class GetOCRResultRequest(AbstractModel):
+    """GetOCRResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OCRToken: token值
+        :type OCRToken: str
+        """
+        self._OCRToken = None
+
+    @property
+    def OCRToken(self):
+        """token值
+        :rtype: str
+        """
+        return self._OCRToken
+
+    @OCRToken.setter
+    def OCRToken(self, OCRToken):
+        self._OCRToken = OCRToken
+
+
+    def _deserialize(self, params):
+        self._OCRToken = params.get("OCRToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetOCRResultResponse(AbstractModel):
+    """GetOCRResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: ocr业务类型
+        :type Type: str
+        :param _OCRResult: ocr结果
+        :type OCRResult: :class:`tencentcloud.ocr.v20181119.models.OCRResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Type = None
+        self._OCRResult = None
+        self._RequestId = None
+
+    @property
+    def Type(self):
+        """ocr业务类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def OCRResult(self):
+        """ocr结果
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.OCRResult`
+        """
+        return self._OCRResult
+
+    @OCRResult.setter
+    def OCRResult(self, OCRResult):
+        self._OCRResult = OCRResult
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("OCRResult") is not None:
+            self._OCRResult = OCRResult()
+            self._OCRResult._deserialize(params.get("OCRResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetOCRTokenRequest(AbstractModel):
+    """GetOCRToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 业务类型，如身份证识别为IDCardOCR
+        :type Type: str
+        :param _IDCardConfig: 身份证配置信息
+        :type IDCardConfig: :class:`tencentcloud.ocr.v20181119.models.IDCardConfig`
+        """
+        self._Type = None
+        self._IDCardConfig = None
+
+    @property
+    def Type(self):
+        """业务类型，如身份证识别为IDCardOCR
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IDCardConfig(self):
+        """身份证配置信息
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardConfig`
+        """
+        return self._IDCardConfig
+
+    @IDCardConfig.setter
+    def IDCardConfig(self, IDCardConfig):
+        self._IDCardConfig = IDCardConfig
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("IDCardConfig") is not None:
+            self._IDCardConfig = IDCardConfig()
+            self._IDCardConfig._deserialize(params.get("IDCardConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetOCRTokenResponse(AbstractModel):
+    """GetOCRToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OCRToken: token值
+        :type OCRToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OCRToken = None
+        self._RequestId = None
+
+    @property
+    def OCRToken(self):
+        """token值
+        :rtype: str
+        """
+        return self._OCRToken
+
+    @OCRToken.setter
+    def OCRToken(self, OCRToken):
+        self._OCRToken = OCRToken
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OCRToken = params.get("OCRToken")
+        self._RequestId = params.get("RequestId")
+
+
 class GetTaskStateRequest(AbstractModel):
     """GetTaskState请求参数结构体
 
@@ -11787,6 +11979,132 @@ class HmtResidentPermitOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IDCardConfig(AbstractModel):
+    """身份证配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CopyWarn: 默认为false
+        :type CopyWarn: bool
+        :param _BorderCheckWarn: 默认为false
+        :type BorderCheckWarn: bool
+        :param _ReshootWarn: 默认为false
+        :type ReshootWarn: bool
+        :param _DetectPsWarn: 默认为false
+        :type DetectPsWarn: bool
+        :param _TempIdWarn: 默认为false
+        :type TempIdWarn: bool
+        :param _InvalidDateWarn: 默认为false
+        :type InvalidDateWarn: bool
+        :param _ReflectWarn: 默认为false
+        :type ReflectWarn: bool
+        """
+        self._CopyWarn = None
+        self._BorderCheckWarn = None
+        self._ReshootWarn = None
+        self._DetectPsWarn = None
+        self._TempIdWarn = None
+        self._InvalidDateWarn = None
+        self._ReflectWarn = None
+
+    @property
+    def CopyWarn(self):
+        """默认为false
+        :rtype: bool
+        """
+        return self._CopyWarn
+
+    @CopyWarn.setter
+    def CopyWarn(self, CopyWarn):
+        self._CopyWarn = CopyWarn
+
+    @property
+    def BorderCheckWarn(self):
+        """默认为false
+        :rtype: bool
+        """
+        return self._BorderCheckWarn
+
+    @BorderCheckWarn.setter
+    def BorderCheckWarn(self, BorderCheckWarn):
+        self._BorderCheckWarn = BorderCheckWarn
+
+    @property
+    def ReshootWarn(self):
+        """默认为false
+        :rtype: bool
+        """
+        return self._ReshootWarn
+
+    @ReshootWarn.setter
+    def ReshootWarn(self, ReshootWarn):
+        self._ReshootWarn = ReshootWarn
+
+    @property
+    def DetectPsWarn(self):
+        """默认为false
+        :rtype: bool
+        """
+        return self._DetectPsWarn
+
+    @DetectPsWarn.setter
+    def DetectPsWarn(self, DetectPsWarn):
+        self._DetectPsWarn = DetectPsWarn
+
+    @property
+    def TempIdWarn(self):
+        """默认为false
+        :rtype: bool
+        """
+        return self._TempIdWarn
+
+    @TempIdWarn.setter
+    def TempIdWarn(self, TempIdWarn):
+        self._TempIdWarn = TempIdWarn
+
+    @property
+    def InvalidDateWarn(self):
+        """默认为false
+        :rtype: bool
+        """
+        return self._InvalidDateWarn
+
+    @InvalidDateWarn.setter
+    def InvalidDateWarn(self, InvalidDateWarn):
+        self._InvalidDateWarn = InvalidDateWarn
+
+    @property
+    def ReflectWarn(self):
+        """默认为false
+        :rtype: bool
+        """
+        return self._ReflectWarn
+
+    @ReflectWarn.setter
+    def ReflectWarn(self, ReflectWarn):
+        self._ReflectWarn = ReflectWarn
+
+
+    def _deserialize(self, params):
+        self._CopyWarn = params.get("CopyWarn")
+        self._BorderCheckWarn = params.get("BorderCheckWarn")
+        self._ReshootWarn = params.get("ReshootWarn")
+        self._DetectPsWarn = params.get("DetectPsWarn")
+        self._TempIdWarn = params.get("TempIdWarn")
+        self._InvalidDateWarn = params.get("InvalidDateWarn")
+        self._ReflectWarn = params.get("ReflectWarn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IDCardInfo(AbstractModel):
     """身份证信息返回
 
@@ -11985,6 +12303,246 @@ class IDCardInfo(AbstractModel):
         if params.get("PortraitImage") is not None:
             self._PortraitImage = ContentInfo()
             self._PortraitImage._deserialize(params.get("PortraitImage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IDCardInfoResult(AbstractModel):
+    """身份证ocr信息结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WarnCodes: 警告代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnCodes: list of int
+        :param _Address: 地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param _Authority: 签发机关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Authority: str
+        :param _Birth: 出生日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Birth: str
+        :param _IdNum: 身份证号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdNum: str
+        :param _Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Nation: 地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nation: str
+        :param _Sex: 性别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sex: str
+        :param _ValidDate: 到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidDate: str
+        :param _RequestId: 请求的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestId: str
+        :param _ErrorCode: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: str
+        :param _ErrorMessage: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param _ImageUrl: 原图地址
+        :type ImageUrl: str
+        """
+        self._WarnCodes = None
+        self._Address = None
+        self._Authority = None
+        self._Birth = None
+        self._IdNum = None
+        self._Name = None
+        self._Nation = None
+        self._Sex = None
+        self._ValidDate = None
+        self._RequestId = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ImageUrl = None
+
+    @property
+    def WarnCodes(self):
+        """警告代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._WarnCodes
+
+    @WarnCodes.setter
+    def WarnCodes(self, WarnCodes):
+        self._WarnCodes = WarnCodes
+
+    @property
+    def Address(self):
+        """地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Authority(self):
+        """签发机关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Authority
+
+    @Authority.setter
+    def Authority(self, Authority):
+        self._Authority = Authority
+
+    @property
+    def Birth(self):
+        """出生日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Birth
+
+    @Birth.setter
+    def Birth(self, Birth):
+        self._Birth = Birth
+
+    @property
+    def IdNum(self):
+        """身份证号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdNum
+
+    @IdNum.setter
+    def IdNum(self, IdNum):
+        self._IdNum = IdNum
+
+    @property
+    def Name(self):
+        """名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Nation(self):
+        """地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Nation
+
+    @Nation.setter
+    def Nation(self, Nation):
+        self._Nation = Nation
+
+    @property
+    def Sex(self):
+        """性别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def ValidDate(self):
+        """到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
+    @property
+    def RequestId(self):
+        """请求的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def ErrorCode(self):
+        """错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ImageUrl(self):
+        """原图地址
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._WarnCodes = params.get("WarnCodes")
+        self._Address = params.get("Address")
+        self._Authority = params.get("Authority")
+        self._Birth = params.get("Birth")
+        self._IdNum = params.get("IdNum")
+        self._Name = params.get("Name")
+        self._Nation = params.get("Nation")
+        self._Sex = params.get("Sex")
+        self._ValidDate = params.get("ValidDate")
+        self._RequestId = params.get("RequestId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ImageUrl = params.get("ImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12382,6 +12940,65 @@ WarnInfos，告警信息，Code 告警码列表和释义：
                 obj._deserialize(item)
                 self._ReflectDetailInfos.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class IDCardResult(AbstractModel):
+    """IDCardResult
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Front: 正面结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Front: :class:`tencentcloud.ocr.v20181119.models.IDCardInfoResult`
+        :param _Back: 反面结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Back: :class:`tencentcloud.ocr.v20181119.models.IDCardInfoResult`
+        """
+        self._Front = None
+        self._Back = None
+
+    @property
+    def Front(self):
+        """正面结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardInfoResult`
+        """
+        return self._Front
+
+    @Front.setter
+    def Front(self, Front):
+        self._Front = Front
+
+    @property
+    def Back(self):
+        """反面结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardInfoResult`
+        """
+        return self._Back
+
+    @Back.setter
+    def Back(self, Back):
+        self._Back = Back
+
+
+    def _deserialize(self, params):
+        if params.get("Front") is not None:
+            self._Front = IDCardInfoResult()
+            self._Front._deserialize(params.get("Front"))
+        if params.get("Back") is not None:
+            self._Back = IDCardInfoResult()
+            self._Back._deserialize(params.get("Back"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ImageCoordinates(AbstractModel):
@@ -17925,6 +18542,46 @@ class NonTaxItem(AbstractModel):
         self._Quantity = params.get("Quantity")
         self._Standard = params.get("Standard")
         self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OCRResult(AbstractModel):
+    """ocr结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IDCardResult: 身份证结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IDCardResult: :class:`tencentcloud.ocr.v20181119.models.IDCardResult`
+        """
+        self._IDCardResult = None
+
+    @property
+    def IDCardResult(self):
+        """身份证结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardResult`
+        """
+        return self._IDCardResult
+
+    @IDCardResult.setter
+    def IDCardResult(self, IDCardResult):
+        self._IDCardResult = IDCardResult
+
+
+    def _deserialize(self, params):
+        if params.get("IDCardResult") is not None:
+            self._IDCardResult = IDCardResult()
+            self._IDCardResult._deserialize(params.get("IDCardResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37179,7 +37836,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         :type InvoiceNo: str
         :param _InvoiceDate: 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
         :type InvoiceDate: str
-        :param _InvoiceCode: 发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
+        :param _InvoiceCode: 发票代码（10或12 位），全电发票为空。查验超过5次后当日无法再查。
         :type InvoiceCode: str
         :param _InvoiceKind: 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票，16:财务发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
         :type InvoiceKind: str
@@ -37195,9 +37852,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         :type SellerTaxCode: str
         :param _EnableCommonElectronic: 是否开启通用机打电子发票，默认为关闭。
         :type EnableCommonElectronic: bool
-        :param _EnableTodayInvoice: 是否允许查验当日发票，默认值为false。
-
-请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的发票。
+        :param _EnableTodayInvoice: 是否允许查验当日发票，默认值为false。请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的当日发票。
         :type EnableTodayInvoice: bool
         """
         self._InvoiceNo = None
@@ -37235,7 +37890,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def InvoiceCode(self):
-        """发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
+        """发票代码（10或12 位），全电发票为空。查验超过5次后当日无法再查。
         :rtype: str
         """
         return self._InvoiceCode
@@ -37314,9 +37969,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
 
     @property
     def EnableTodayInvoice(self):
-        """是否允许查验当日发票，默认值为false。
-
-请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的发票。
+        """是否允许查验当日发票，默认值为false。请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的当日发票。
         :rtype: bool
         """
         return self._EnableTodayInvoice

@@ -867,6 +867,52 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetOCRResult(self, request):
+        """获取ocr结果
+
+        :param request: Request instance for GetOCRResult.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.GetOCRResultRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GetOCRResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetOCRResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetOCRResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetOCRToken(self, request):
+        """获取ocr的token值
+
+        :param request: Request instance for GetOCRToken.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.GetOCRTokenRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GetOCRTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetOCRToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetOCRTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetTaskState(self, request):
         """智慧表单产品已下线，需要下线相关API
 
@@ -945,7 +991,7 @@ class OcrClient(AbstractClient):
     def IDCardOCR(self, request):
         """本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别准确度达到99%以上。
 
-        另外，本接口还支持多种增值能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备8种告警功能，如下表所示。
+        另外，本接口还支持多种扩展能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备8种告警功能，如下表所示。
 
         <table style="width:650px">
               <thead>
@@ -1443,7 +1489,7 @@ class OcrClient(AbstractClient):
 
         本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别准确度达到99%以上。
 
-        另外，本接口还支持多种增值能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备9种告警功能，如下表所示。
+        另外，本接口还支持多种扩展能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备9种告警功能，如下表所示。
 
         <table style="width:650px">
               <thead>
@@ -1832,7 +1878,7 @@ class OcrClient(AbstractClient):
 
 
     def RecognizeTableAccurateOCR(self, request):
-        """本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。点击[立即体验](https://ocrdemo.cloud.tencent.com?action=RecognizeTableAccurateOCR)。
+        """本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。
 
         默认接口请求频率限制：2次/秒。
 

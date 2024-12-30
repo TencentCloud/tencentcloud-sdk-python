@@ -2074,7 +2074,9 @@ class WafClient(AbstractClient):
 
 
     def DescribeWafAutoDenyStatus(self, request):
-        """描述WAF自动封禁模块详情
+        """废弃接口
+
+        描述WAF自动封禁模块详情
 
         :param request: Request instance for DescribeWafAutoDenyStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyStatusRequest`

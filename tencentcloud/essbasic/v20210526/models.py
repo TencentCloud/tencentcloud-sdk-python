@@ -14311,6 +14311,19 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 <b>注</b>：如果<b>应用扩展服务</b>中的<b>自动激活子客企业</b>为打开态， 则忽略本接口的AutoActive这个参数（若持有的许可证充足，子客户企业注册完成后将自动激活），具体位置参考下图：
 ![image](https://qcloudimg.tencent-cloud.cn/raw/c3639b05503d3735bac483d17aa6b0a3.png)
         :type AutoActive: bool
+        :param _BusinessLicense: 营业执照正面照（支持PNG或JPG格式）需以base64格式提供，且文件大小不得超过5MB。
+        :type BusinessLicense: str
+        :param _ProxyAddress: 组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。	
+        :type ProxyAddress: str
+        :param _ProxyLegalName: 组织机构法人的姓名。 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。	
+        :type ProxyLegalName: str
+        :param _PowerOfAttorneys: 授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+ p.s. 如果上传授权书 ，需遵循以下条件 
+1. 超管的信息（超管姓名，超管手机号）必须为必填参数。 
+2. 认证方式AuthorizationTypes必须只能是上传授权书方式	
+        :type PowerOfAttorneys: list of str
+        :param _OrganizationAuthorizationOptions: 企业认证时个性化能力信息
+        :type OrganizationAuthorizationOptions: :class:`tencentcloud.essbasic.v20210526.models.OrganizationAuthorizationOptions`
         """
         self._Agent = None
         self._ProxyOrganizationName = None
@@ -14328,6 +14341,11 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._AutoJumpUrl = None
         self._TopNavigationStatus = None
         self._AutoActive = None
+        self._BusinessLicense = None
+        self._ProxyAddress = None
+        self._ProxyLegalName = None
+        self._PowerOfAttorneys = None
+        self._OrganizationAuthorizationOptions = None
 
     @property
     def Agent(self):
@@ -14573,6 +14591,64 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
     def AutoActive(self, AutoActive):
         self._AutoActive = AutoActive
 
+    @property
+    def BusinessLicense(self):
+        """营业执照正面照（支持PNG或JPG格式）需以base64格式提供，且文件大小不得超过5MB。
+        :rtype: str
+        """
+        return self._BusinessLicense
+
+    @BusinessLicense.setter
+    def BusinessLicense(self, BusinessLicense):
+        self._BusinessLicense = BusinessLicense
+
+    @property
+    def ProxyAddress(self):
+        """组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。	
+        :rtype: str
+        """
+        return self._ProxyAddress
+
+    @ProxyAddress.setter
+    def ProxyAddress(self, ProxyAddress):
+        self._ProxyAddress = ProxyAddress
+
+    @property
+    def ProxyLegalName(self):
+        """组织机构法人的姓名。 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。	
+        :rtype: str
+        """
+        return self._ProxyLegalName
+
+    @ProxyLegalName.setter
+    def ProxyLegalName(self, ProxyLegalName):
+        self._ProxyLegalName = ProxyLegalName
+
+    @property
+    def PowerOfAttorneys(self):
+        """授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+ p.s. 如果上传授权书 ，需遵循以下条件 
+1. 超管的信息（超管姓名，超管手机号）必须为必填参数。 
+2. 认证方式AuthorizationTypes必须只能是上传授权书方式	
+        :rtype: list of str
+        """
+        return self._PowerOfAttorneys
+
+    @PowerOfAttorneys.setter
+    def PowerOfAttorneys(self, PowerOfAttorneys):
+        self._PowerOfAttorneys = PowerOfAttorneys
+
+    @property
+    def OrganizationAuthorizationOptions(self):
+        """企业认证时个性化能力信息
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.OrganizationAuthorizationOptions`
+        """
+        return self._OrganizationAuthorizationOptions
+
+    @OrganizationAuthorizationOptions.setter
+    def OrganizationAuthorizationOptions(self, OrganizationAuthorizationOptions):
+        self._OrganizationAuthorizationOptions = OrganizationAuthorizationOptions
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -14595,6 +14671,13 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._AutoJumpUrl = params.get("AutoJumpUrl")
         self._TopNavigationStatus = params.get("TopNavigationStatus")
         self._AutoActive = params.get("AutoActive")
+        self._BusinessLicense = params.get("BusinessLicense")
+        self._ProxyAddress = params.get("ProxyAddress")
+        self._ProxyLegalName = params.get("ProxyLegalName")
+        self._PowerOfAttorneys = params.get("PowerOfAttorneys")
+        if params.get("OrganizationAuthorizationOptions") is not None:
+            self._OrganizationAuthorizationOptions = OrganizationAuthorizationOptions()
+            self._OrganizationAuthorizationOptions._deserialize(params.get("OrganizationAuthorizationOptions"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24834,6 +24917,75 @@ class OrganizationAuthUrl(AbstractModel):
     def _deserialize(self, params):
         self._AuthUrl = params.get("AuthUrl")
         self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrganizationAuthorizationOptions(AbstractModel):
+    """企业认证可选项，其中包括 社会信用代码是否一致，企业名称是否一致，法人是否一致等信息。
+    代表生成链接的时候指定的这些信息不能被用户修改。
+
+    p.s. 注意这些选项一旦传递，相关的信息也不会被上传的营业执照里面包含的信息所覆盖。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniformSocialCreditCodeSame: 对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+        :type UniformSocialCreditCodeSame: bool
+        :param _OrganizationNameSame: 对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效
+        :type OrganizationNameSame: bool
+        :param _LegalNameSame: 对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
+        :type LegalNameSame: bool
+        """
+        self._UniformSocialCreditCodeSame = None
+        self._OrganizationNameSame = None
+        self._LegalNameSame = None
+
+    @property
+    def UniformSocialCreditCodeSame(self):
+        """对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+        :rtype: bool
+        """
+        return self._UniformSocialCreditCodeSame
+
+    @UniformSocialCreditCodeSame.setter
+    def UniformSocialCreditCodeSame(self, UniformSocialCreditCodeSame):
+        self._UniformSocialCreditCodeSame = UniformSocialCreditCodeSame
+
+    @property
+    def OrganizationNameSame(self):
+        """对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效
+        :rtype: bool
+        """
+        return self._OrganizationNameSame
+
+    @OrganizationNameSame.setter
+    def OrganizationNameSame(self, OrganizationNameSame):
+        self._OrganizationNameSame = OrganizationNameSame
+
+    @property
+    def LegalNameSame(self):
+        """对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
+        :rtype: bool
+        """
+        return self._LegalNameSame
+
+    @LegalNameSame.setter
+    def LegalNameSame(self, LegalNameSame):
+        self._LegalNameSame = LegalNameSame
+
+
+    def _deserialize(self, params):
+        self._UniformSocialCreditCodeSame = params.get("UniformSocialCreditCodeSame")
+        self._OrganizationNameSame = params.get("OrganizationNameSame")
+        self._LegalNameSame = params.get("LegalNameSame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

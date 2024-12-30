@@ -73,7 +73,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmInstances(self, request):
-        """APM实例列表拉取
+        """拉取 APM 业务系统列表
 
         :param request: Request instance for DescribeApmInstances.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmInstancesRequest`

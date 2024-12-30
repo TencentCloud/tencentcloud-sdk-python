@@ -19,17 +19,15 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class APMKV(AbstractModel):
-    """APM浮点数类型键值对
+    """APM 浮点数类型键值对
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: Key值定义
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Key: Key 值定义
         :type Key: str
-        :param _Value: Value值定义
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Value: Value 值定义
         :type Value: float
         """
         self._Key = None
@@ -37,8 +35,7 @@ class APMKV(AbstractModel):
 
     @property
     def Key(self):
-        """Key值定义
-注意：此字段可能返回 null，表示取不到有效值。
+        """Key 值定义
         :rtype: str
         """
         return self._Key
@@ -49,8 +46,7 @@ class APMKV(AbstractModel):
 
     @property
     def Value(self):
-        """Value值定义
-注意：此字段可能返回 null，表示取不到有效值。
+        """Value 值定义
         :rtype: float
         """
         return self._Value
@@ -74,17 +70,15 @@ class APMKV(AbstractModel):
 
 
 class APMKVItem(AbstractModel):
-    """Apm通用KV结构
+    """APM 通用 KV 结构
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: Key值定义
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Key: Key 值定义
         :type Key: str
-        :param _Value: Value值定义
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Value: Value 值定义
         :type Value: str
         """
         self._Key = None
@@ -92,8 +86,7 @@ class APMKVItem(AbstractModel):
 
     @property
     def Key(self):
-        """Key值定义
-注意：此字段可能返回 null，表示取不到有效值。
+        """Key 值定义
         :rtype: str
         """
         return self._Key
@@ -104,8 +97,7 @@ class APMKVItem(AbstractModel):
 
     @property
     def Value(self):
-        """Value值定义
-注意：此字段可能返回 null，表示取不到有效值。
+        """Value 值定义
         :rtype: str
         """
         return self._Value
@@ -129,29 +121,23 @@ class APMKVItem(AbstractModel):
 
 
 class ApmAgentInfo(AbstractModel):
-    """apm Agent信息
+    """APM Agent 信息
 
     """
 
     def __init__(self):
         r"""
-        :param _AgentDownloadURL: Agent下载地址
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _AgentDownloadURL: Agent 下载地址
         :type AgentDownloadURL: str
-        :param _CollectorURL: Collector上报地址
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _CollectorURL: Collector 上报地址
         :type CollectorURL: str
-        :param _Token: Token信息
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Token: Token 信息
         :type Token: str
         :param _PublicCollectorURL: 外网上报地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicCollectorURL: str
-        :param _InnerCollectorURL: 自研VPC上报地址
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _InnerCollectorURL: 自研 VPC 上报地址
         :type InnerCollectorURL: str
-        :param _PrivateLinkCollectorURL: 内网上报地址(Private Link上报地址)
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _PrivateLinkCollectorURL: 内网上报地址( Private Link 上报地址)
         :type PrivateLinkCollectorURL: str
         """
         self._AgentDownloadURL = None
@@ -163,8 +149,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def AgentDownloadURL(self):
-        """Agent下载地址
-注意：此字段可能返回 null，表示取不到有效值。
+        """Agent 下载地址
         :rtype: str
         """
         return self._AgentDownloadURL
@@ -175,8 +160,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def CollectorURL(self):
-        """Collector上报地址
-注意：此字段可能返回 null，表示取不到有效值。
+        """Collector 上报地址
         :rtype: str
         """
         return self._CollectorURL
@@ -187,8 +171,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def Token(self):
-        """Token信息
-注意：此字段可能返回 null，表示取不到有效值。
+        """Token 信息
         :rtype: str
         """
         return self._Token
@@ -200,7 +183,6 @@ class ApmAgentInfo(AbstractModel):
     @property
     def PublicCollectorURL(self):
         """外网上报地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicCollectorURL
@@ -211,8 +193,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def InnerCollectorURL(self):
-        """自研VPC上报地址
-注意：此字段可能返回 null，表示取不到有效值。
+        """自研 VPC 上报地址
         :rtype: str
         """
         return self._InnerCollectorURL
@@ -223,8 +204,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def PrivateLinkCollectorURL(self):
-        """内网上报地址(Private Link上报地址)
-注意：此字段可能返回 null，表示取不到有效值。
+        """内网上报地址( Private Link 上报地址)
         :rtype: str
         """
         return self._PrivateLinkCollectorURL
@@ -258,7 +238,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceKey: 业务系统ID	
+        :param _InstanceKey: 业务系统 ID
         :type InstanceKey: str
         :param _ServiceName: 应用名	
         :type ServiceName: str
@@ -266,23 +246,21 @@ class ApmApplicationConfigView(AbstractModel):
         :type OperationNameFilter: str
         :param _ExceptionFilter: 错误类型过滤
         :type ExceptionFilter: str
-        :param _ErrorCodeFilter: HTTP状态码过滤
+        :param _ErrorCodeFilter: HTTP 状态码过滤
         :type ErrorCodeFilter: str
         :param _EventEnable: 应用诊断开关（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventEnable: bool
-        :param _UrlConvergenceSwitch: URL收敛开关 0 关 1 开
+        :param _UrlConvergenceSwitch: URL 收敛开关 0 关 1 开
         :type UrlConvergenceSwitch: int
-        :param _UrlConvergenceThreshold: URL收敛阈值	
+        :param _UrlConvergenceThreshold: URL 收敛阈值	
         :type UrlConvergenceThreshold: int
-        :param _UrlConvergence: URL收敛规则正则	
+        :param _UrlConvergence: URL 收敛规则正则	
         :type UrlConvergence: str
-        :param _UrlExclude: URL排除规则正则
+        :param _UrlExclude: URL 排除规则正则
         :type UrlExclude: str
         :param _IsRelatedLog: 是否开启日志 0 关 1 开
         :type IsRelatedLog: int
         :param _LogSource: 日志源	
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogSource: str
         :param _LogSet: 日志集 
         :type LogSet: str
@@ -295,7 +273,6 @@ class ApmApplicationConfigView(AbstractModel):
         :param _AgentEnable: 探针总开关
         :type AgentEnable: bool
         :param _InstrumentList: 组件列表开关（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstrumentList: list of Instrument
         :param _TraceSquash: 链路压缩开关（已废弃）
         :type TraceSquash: bool
@@ -322,7 +299,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def InstanceKey(self):
-        """业务系统ID	
+        """业务系统 ID
         :rtype: str
         """
         return self._InstanceKey
@@ -366,7 +343,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ErrorCodeFilter(self):
-        """HTTP状态码过滤
+        """HTTP 状态码过滤
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -378,7 +355,6 @@ class ApmApplicationConfigView(AbstractModel):
     @property
     def EventEnable(self):
         """应用诊断开关（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EventEnable
@@ -389,7 +365,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceSwitch(self):
-        """URL收敛开关 0 关 1 开
+        """URL 收敛开关 0 关 1 开
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -400,7 +376,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceThreshold(self):
-        """URL收敛阈值	
+        """URL 收敛阈值	
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -411,7 +387,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergence(self):
-        """URL收敛规则正则	
+        """URL 收敛规则正则	
         :rtype: str
         """
         return self._UrlConvergence
@@ -422,7 +398,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlExclude(self):
-        """URL排除规则正则
+        """URL 排除规则正则
         :rtype: str
         """
         return self._UrlExclude
@@ -445,7 +421,6 @@ class ApmApplicationConfigView(AbstractModel):
     @property
     def LogSource(self):
         """日志源	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogSource
@@ -512,7 +487,6 @@ class ApmApplicationConfigView(AbstractModel):
     @property
     def InstrumentList(self):
         """组件列表开关（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Instrument
         """
         return self._InstrumentList
@@ -576,16 +550,13 @@ class ApmField(AbstractModel):
     def __init__(self):
         r"""
         :param _CompareVal: 昨日同比指标值，已弃用，不建议使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompareVal: str
         :param _CompareVals: Compare值结果数组，推荐使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareVals: list of APMKVItem
         :param _Value: 指标值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: float
         :param _Unit: 指标所对应的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Key: 请求数
         :type Key: str
@@ -603,7 +574,6 @@ class ApmField(AbstractModel):
     @property
     def CompareVal(self):
         """昨日同比指标值，已弃用，不建议使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CompareVal
@@ -627,7 +597,6 @@ class ApmField(AbstractModel):
     @property
     def Value(self):
         """指标值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Value
@@ -639,7 +608,6 @@ class ApmField(AbstractModel):
     @property
     def Unit(self):
         """指标所对应的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -700,119 +668,85 @@ class ApmField(AbstractModel):
 
 
 class ApmInstanceDetail(AbstractModel):
-    """apm实例信息
+    """APM 业务系统信息
 
     """
 
     def __init__(self):
         r"""
-        :param _AmountOfUsedStorage: 存储使用量(MB)
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _AmountOfUsedStorage: 存储使用量( MB )
         :type AmountOfUsedStorage: float
-        :param _Name: 实例名
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Name: 业务系统名
         :type Name: str
-        :param _Tags: 实例所属tag列表
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Tags: 业务系统所属 Tag 列表
         :type Tags: list of ApmTag
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 业务系统 ID
         :type InstanceId: str
-        :param _CreateUin: 创建人Uin
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _CreateUin: 创建人 Uin
         :type CreateUin: str
-        :param _ServiceCount: 该实例已上报的服务端应用数量
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ServiceCount: 该业务系统已上报的服务端应用数量
         :type ServiceCount: int
-        :param _CountOfReportSpanPerDay: 日均上报Span数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _CountOfReportSpanPerDay: 日均上报 Span 数
         :type CountOfReportSpanPerDay: int
-        :param _AppId: AppId信息
+        :param _AppId: AppID 信息
         :type AppId: int
-        :param _TraceDuration: Trace数据保存时长
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _TraceDuration: Trace 数据保存时长
         :type TraceDuration: int
-        :param _Description: 实例描述信息
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Description: 业务系统描述信息
         :type Description: str
-        :param _Status: 实例状态
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Status: 业务系统状态
         :type Status: int
-        :param _Region: 实例所属地域
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Region: 业务系统所属地域
         :type Region: str
-        :param _SpanDailyCounters: 实例上报额度
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _SpanDailyCounters: 业务系统上报额度
         :type SpanDailyCounters: int
-        :param _BillingInstance: 实例是否开通计费
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _BillingInstance: 业务系统是否开通计费
         :type BillingInstance: int
         :param _ErrRateThreshold: 错误率阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrRateThreshold: int
         :param _SampleRate: 采样率阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleRate: int
         :param _ErrorSample: 是否开启错误采样 0  关 1 开
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorSample: int
         :param _SlowRequestSavedThreshold: 慢调用保存阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlowRequestSavedThreshold: int
-        :param _LogRegion: cls日志所在地域
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _LogRegion: CLS 日志所在地域
         :type LogRegion: str
         :param _LogSource: 日志来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogSource: str
         :param _IsRelatedLog: 日志功能开关 0 关 | 1 开
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsRelatedLog: int
         :param _LogTopicID: 日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogTopicID: str
         :param _ClientCount: 该实例已上报的客户端应用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientCount: int
         :param _TotalCount: 该实例已上报的总应用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _LogSet: CLS日志集 | ES集群ID
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _LogSet: CLS 日志集 | ES 集群ID
         :type LogSet: str
-        :param _MetricDuration: Metric数据保存时长
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _MetricDuration: Metric 数据保存时长
         :type MetricDuration: int
         :param _CustomShowTags: 用户自定义展示标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomShowTags: list of str
-        :param _PayMode: 实例计费模式
+        :param _PayMode: 业务系统计费模式
 1为预付费
 0为按量付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
-        :param _PayModeEffective: 实例计费模式是否生效
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _PayModeEffective: 业务系统计费模式是否生效
         :type PayModeEffective: bool
         :param _ResponseDurationWarningThreshold: 响应时间满意阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseDurationWarningThreshold: int
         :param _Free: 是否免费（0=否，1=限额免费，2=完全免费），默认0
-注意：此字段可能返回 null，表示取不到有效值。
         :type Free: int
-        :param _DefaultTSF: 是否tsf默认业务系统（0=否，1-是）
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _DefaultTSF: 是否 tsf 默认业务系统（0=否，1-是）
         :type DefaultTSF: int
-        :param _IsRelatedDashboard: 是否关联dashboard： 0 关 1 开
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _IsRelatedDashboard: 是否关联 Dashboard： 0 关 1 开
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: dashboard ID
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _DashboardTopicID: Dashboard ID
         :type DashboardTopicID: str
         :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsInstrumentationVulnerabilityScan: int
-        :param _IsSqlInjectionAnalysis: 是否开启SQL注入分析
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _IsSqlInjectionAnalysis: 是否开启 SQL 注入分析
         :type IsSqlInjectionAnalysis: int
         """
         self._AmountOfUsedStorage = None
@@ -854,8 +788,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def AmountOfUsedStorage(self):
-        """存储使用量(MB)
-注意：此字段可能返回 null，表示取不到有效值。
+        """存储使用量( MB )
         :rtype: float
         """
         return self._AmountOfUsedStorage
@@ -866,8 +799,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Name(self):
-        """实例名
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统名
         :rtype: str
         """
         return self._Name
@@ -878,8 +810,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Tags(self):
-        """实例所属tag列表
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统所属 Tag 列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -890,7 +821,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -901,8 +832,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def CreateUin(self):
-        """创建人Uin
-注意：此字段可能返回 null，表示取不到有效值。
+        """创建人 Uin
         :rtype: str
         """
         return self._CreateUin
@@ -913,8 +843,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ServiceCount(self):
-        """该实例已上报的服务端应用数量
-注意：此字段可能返回 null，表示取不到有效值。
+        """该业务系统已上报的服务端应用数量
         :rtype: int
         """
         return self._ServiceCount
@@ -925,8 +854,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def CountOfReportSpanPerDay(self):
-        """日均上报Span数
-注意：此字段可能返回 null，表示取不到有效值。
+        """日均上报 Span 数
         :rtype: int
         """
         return self._CountOfReportSpanPerDay
@@ -937,7 +865,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def AppId(self):
-        """AppId信息
+        """AppID 信息
         :rtype: int
         """
         return self._AppId
@@ -948,8 +876,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Trace数据保存时长
-注意：此字段可能返回 null，表示取不到有效值。
+        """Trace 数据保存时长
         :rtype: int
         """
         return self._TraceDuration
@@ -960,8 +887,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Description(self):
-        """实例描述信息
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统描述信息
         :rtype: str
         """
         return self._Description
@@ -972,8 +898,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """实例状态
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统状态
         :rtype: int
         """
         return self._Status
@@ -984,8 +909,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Region(self):
-        """实例所属地域
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统所属地域
         :rtype: str
         """
         return self._Region
@@ -996,8 +920,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """实例上报额度
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统上报额度
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -1008,8 +931,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def BillingInstance(self):
-        """实例是否开通计费
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统是否开通计费
         :rtype: int
         """
         return self._BillingInstance
@@ -1021,7 +943,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def ErrRateThreshold(self):
         """错误率阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -1033,7 +954,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def SampleRate(self):
         """采样率阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SampleRate
@@ -1045,7 +965,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def ErrorSample(self):
         """是否开启错误采样 0  关 1 开
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ErrorSample
@@ -1057,7 +976,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def SlowRequestSavedThreshold(self):
         """慢调用保存阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -1068,8 +986,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogRegion(self):
-        """cls日志所在地域
-注意：此字段可能返回 null，表示取不到有效值。
+        """CLS 日志所在地域
         :rtype: str
         """
         return self._LogRegion
@@ -1081,7 +998,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def LogSource(self):
         """日志来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogSource
@@ -1093,7 +1009,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def IsRelatedLog(self):
         """日志功能开关 0 关 | 1 开
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsRelatedLog
@@ -1105,7 +1020,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def LogTopicID(self):
         """日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogTopicID
@@ -1117,7 +1031,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def ClientCount(self):
         """该实例已上报的客户端应用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientCount
@@ -1129,7 +1042,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def TotalCount(self):
         """该实例已上报的总应用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -1140,8 +1052,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogSet(self):
-        """CLS日志集 | ES集群ID
-注意：此字段可能返回 null，表示取不到有效值。
+        """CLS 日志集 | ES 集群ID
         :rtype: str
         """
         return self._LogSet
@@ -1152,8 +1063,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def MetricDuration(self):
-        """Metric数据保存时长
-注意：此字段可能返回 null，表示取不到有效值。
+        """Metric 数据保存时长
         :rtype: int
         """
         return self._MetricDuration
@@ -1165,7 +1075,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def CustomShowTags(self):
         """用户自定义展示标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CustomShowTags
@@ -1176,10 +1085,9 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """实例计费模式
+        """业务系统计费模式
 1为预付费
 0为按量付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayMode
@@ -1190,8 +1098,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def PayModeEffective(self):
-        """实例计费模式是否生效
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统计费模式是否生效
         :rtype: bool
         """
         return self._PayModeEffective
@@ -1203,7 +1110,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def ResponseDurationWarningThreshold(self):
         """响应时间满意阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -1215,7 +1121,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def Free(self):
         """是否免费（0=否，1=限额免费，2=完全免费），默认0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Free
@@ -1226,8 +1131,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def DefaultTSF(self):
-        """是否tsf默认业务系统（0=否，1-是）
-注意：此字段可能返回 null，表示取不到有效值。
+        """是否 tsf 默认业务系统（0=否，1-是）
         :rtype: int
         """
         return self._DefaultTSF
@@ -1238,8 +1142,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        """是否关联dashboard： 0 关 1 开
-注意：此字段可能返回 null，表示取不到有效值。
+        """是否关联 Dashboard： 0 关 1 开
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -1250,8 +1153,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        """dashboard ID
-注意：此字段可能返回 null，表示取不到有效值。
+        """Dashboard ID
         :rtype: str
         """
         return self._DashboardTopicID
@@ -1263,7 +1165,6 @@ class ApmInstanceDetail(AbstractModel):
     @property
     def IsInstrumentationVulnerabilityScan(self):
         """是否开启组件漏洞检测
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -1274,8 +1175,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        """是否开启SQL注入分析
-注意：此字段可能返回 null，表示取不到有效值。
+        """是否开启 SQL 注入分析
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -1460,7 +1360,7 @@ class CreateApmInstanceRequest(AbstractModel):
         :type Name: str
         :param _Description: 业务系统描述信息
         :type Description: str
-        :param _TraceDuration: Trace数据保存时长，单位为天默认存储为3天
+        :param _TraceDuration: Trace 数据保存时长，单位为天默认存储为3天
         :type TraceDuration: int
         :param _Tags: 标签列表
         :type Tags: list of ApmTag
@@ -1468,7 +1368,7 @@ class CreateApmInstanceRequest(AbstractModel):
         :type SpanDailyCounters: int
         :param _PayMode: 业务系统的计费模式
         :type PayMode: int
-        :param _Free: （0=付费版；1=tsf受限免费版；2=免费版）
+        :param _Free: （0=付费版；1=tsf 受限免费版；2=免费版）
         :type Free: int
         """
         self._Name = None
@@ -1503,7 +1403,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Trace数据保存时长，单位为天默认存储为3天
+        """Trace 数据保存时长，单位为天默认存储为3天
         :rtype: int
         """
         return self._TraceDuration
@@ -1547,7 +1447,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Free(self):
-        """（0=付费版；1=tsf受限免费版；2=免费版）
+        """（0=付费版；1=tsf 受限免费版；2=免费版）
         :rtype: int
         """
         return self._Free
@@ -1587,8 +1487,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统ID
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _InstanceId: 业务系统 ID
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1598,8 +1497,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统ID
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -1632,7 +1530,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: 业务系统 ID
         :type InstanceId: str
         :param _AgentType: 接入方式
         :type AgentType: str
@@ -1651,7 +1549,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统ID
+        """业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -1728,8 +1626,7 @@ class DescribeApmAgentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApmAgent: Agent信息
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ApmAgent: Agent 信息
         :type ApmAgent: :class:`tencentcloud.apm.v20210622.models.ApmAgentInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1739,8 +1636,7 @@ class DescribeApmAgentResponse(AbstractModel):
 
     @property
     def ApmAgent(self):
-        """Agent信息
-注意：此字段可能返回 null，表示取不到有效值。
+        """Agent 信息
         :rtype: :class:`tencentcloud.apm.v20210622.models.ApmAgentInfo`
         """
         return self._ApmAgent
@@ -1775,15 +1671,15 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Tags: Tag列表
+        :param _Tags: Tag 列表
         :type Tags: list of ApmTag
-        :param _InstanceName: 搜索实例名
+        :param _InstanceName: 搜索业务系统名
         :type InstanceName: str
-        :param _InstanceIds: 过滤实例ID
+        :param _InstanceIds: 过滤业务系统 ID
         :type InstanceIds: list of str
-        :param _DemoInstanceFlag: 是否查询官方demo实例
+        :param _DemoInstanceFlag: 是否查询官方 Demo 业务系统
         :type DemoInstanceFlag: int
-        :param _AllRegionsFlag: 是否查询全地域实例
+        :param _AllRegionsFlag: 是否查询全地域业务系统
         :type AllRegionsFlag: int
         """
         self._Tags = None
@@ -1794,7 +1690,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag列表
+        """Tag 列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -1805,7 +1701,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """搜索实例名
+        """搜索业务系统名
         :rtype: str
         """
         return self._InstanceName
@@ -1816,7 +1712,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """过滤实例ID
+        """过滤业务系统 ID
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1827,7 +1723,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def DemoInstanceFlag(self):
-        """是否查询官方demo实例
+        """是否查询官方 Demo 业务系统
         :rtype: int
         """
         return self._DemoInstanceFlag
@@ -1838,7 +1734,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def AllRegionsFlag(self):
-        """是否查询全地域实例
+        """是否查询全地域业务系统
         :rtype: int
         """
         return self._AllRegionsFlag
@@ -1876,8 +1772,7 @@ class DescribeApmInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Instances: apm实例列表
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Instances: APM 业务系统列表
         :type Instances: list of ApmInstanceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1887,8 +1782,7 @@ class DescribeApmInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        """apm实例列表
-注意：此字段可能返回 null，表示取不到有效值。
+        """APM 业务系统列表
         :rtype: list of ApmInstanceDetail
         """
         return self._Instances
@@ -2209,7 +2103,6 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Records: 指标结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :type Records: list of Line
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2220,7 +2113,6 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
     @property
     def Records(self):
         """指标结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Line
         """
         return self._Records
@@ -2264,15 +2156,15 @@ class DescribeGeneralSpanListRequest(AbstractModel):
         :type Limit: int
         :param _OrderBy: 排序
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _StartTime: span查询开始时间戳（单位:秒）
+        :param _StartTime: Span查询开始时间戳（单位:秒）
         :type StartTime: int
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: 业务系统 ID
         :type InstanceId: str
         :param _Filters: 通用过滤参数
         :type Filters: list of Filter
         :param _BusinessName: 业务自身服务名
         :type BusinessName: str
-        :param _EndTime: span查询结束时间戳（单位:秒）
+        :param _EndTime: Span查询结束时间戳（单位:秒）
         :type EndTime: int
         """
         self._Offset = None
@@ -2319,7 +2211,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """span查询开始时间戳（单位:秒）
+        """Span查询开始时间戳（单位:秒）
         :rtype: int
         """
         return self._StartTime
@@ -2330,7 +2222,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统ID
+        """业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -2363,7 +2255,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """span查询结束时间戳（单位:秒）
+        """Span查询结束时间戳（单位:秒）
         :rtype: int
         """
         return self._EndTime
@@ -2408,7 +2300,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
         r"""
         :param _TotalCount: 总数量
         :type TotalCount: int
-        :param _Spans: Span分页列表
+        :param _Spans: Span 分页列表
         :type Spans: list of Span
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2430,7 +2322,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        """Span分页列表
+        """Span 分页列表
         :rtype: list of Span
         """
         return self._Spans
@@ -2718,10 +2610,8 @@ class DescribeMetricRecordsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Records: 指标结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :type Records: list of ApmMetricRecord
         :param _TotalCount: 查询指标结果集条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2733,7 +2623,6 @@ class DescribeMetricRecordsResponse(AbstractModel):
     @property
     def Records(self):
         """指标结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApmMetricRecord
         """
         return self._Records
@@ -2745,7 +2634,6 @@ class DescribeMetricRecordsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询指标结果集条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2953,7 +2841,6 @@ class DescribeServiceOverviewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Records: 指标结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :type Records: list of ApmMetricRecord
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2964,7 +2851,6 @@ class DescribeServiceOverviewResponse(AbstractModel):
     @property
     def Records(self):
         """指标结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApmMetricRecord
         """
         return self._Records
@@ -3182,13 +3068,10 @@ class Filter(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 过滤方式（=, !=, in）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Key: 过滤维度名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 过滤值，in过滤方式用逗号分割多个值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Type = None
@@ -3198,7 +3081,6 @@ class Filter(AbstractModel):
     @property
     def Type(self):
         """过滤方式（=, !=, in）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -3210,7 +3092,6 @@ class Filter(AbstractModel):
     @property
     def Key(self):
         """过滤维度名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -3222,7 +3103,6 @@ class Filter(AbstractModel):
     @property
     def Value(self):
         """过滤值，in过滤方式用逗号分割多个值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -3305,10 +3185,8 @@ class Instrument(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Enable: 组件开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: bool
         """
         self._Name = None
@@ -3317,7 +3195,6 @@ class Instrument(AbstractModel):
     @property
     def Name(self):
         """组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3329,7 +3206,6 @@ class Instrument(AbstractModel):
     @property
     def Enable(self):
         """组件开关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enable
@@ -3366,10 +3242,8 @@ class Line(AbstractModel):
         :param _TimeSerial: 时间序列
         :type TimeSerial: list of int
         :param _DataSerial: 数据序列
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSerial: list of float
         :param _Tags: 维度列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of ApmTag
         """
         self._MetricName = None
@@ -3414,7 +3288,6 @@ class Line(AbstractModel):
     @property
     def DataSerial(self):
         """数据序列
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._DataSerial
@@ -3426,7 +3299,6 @@ class Line(AbstractModel):
     @property
     def Tags(self):
         """维度列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -4109,47 +3981,35 @@ class QueryMetricItem(AbstractModel):
 
 
 class Span(AbstractModel):
-    """Span对象
+    """Span 对象
 
     """
 
     def __init__(self):
         r"""
-        :param _TraceID: Trace Id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _TraceID: Trace ID
         :type TraceID: str
         :param _Logs: 日志
-注意：此字段可能返回 null，表示取不到有效值。
         :type Logs: list of SpanLog
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of SpanTag
         :param _Process: 上报应用服务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Process: :class:`tencentcloud.apm.v20210622.models.SpanProcess`
         :param _Timestamp: 产生时间戳(毫秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
-        :param _OperationName: Span名称
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _OperationName: Span 名称
         :type OperationName: str
         :param _References: 关联关系
-注意：此字段可能返回 null，表示取不到有效值。
         :type References: list of SpanReference
         :param _StartTime: 产生时间戳(微秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
         :param _Duration: 持续耗时(微妙)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
-        :param _SpanID: Span Id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _SpanID: Span ID
         :type SpanID: str
         :param _StartTimeMillis: 产生时间戳(毫秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeMillis: int
-        :param _ParentSpanID: Parent Span Id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ParentSpanID: Parent Span ID
         :type ParentSpanID: str
         """
         self._TraceID = None
@@ -4167,8 +4027,7 @@ class Span(AbstractModel):
 
     @property
     def TraceID(self):
-        """Trace Id
-注意：此字段可能返回 null，表示取不到有效值。
+        """Trace ID
         :rtype: str
         """
         return self._TraceID
@@ -4180,7 +4039,6 @@ class Span(AbstractModel):
     @property
     def Logs(self):
         """日志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpanLog
         """
         return self._Logs
@@ -4192,7 +4050,6 @@ class Span(AbstractModel):
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpanTag
         """
         return self._Tags
@@ -4204,7 +4061,6 @@ class Span(AbstractModel):
     @property
     def Process(self):
         """上报应用服务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apm.v20210622.models.SpanProcess`
         """
         return self._Process
@@ -4216,7 +4072,6 @@ class Span(AbstractModel):
     @property
     def Timestamp(self):
         """产生时间戳(毫秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timestamp
@@ -4227,8 +4082,7 @@ class Span(AbstractModel):
 
     @property
     def OperationName(self):
-        """Span名称
-注意：此字段可能返回 null，表示取不到有效值。
+        """Span 名称
         :rtype: str
         """
         return self._OperationName
@@ -4240,7 +4094,6 @@ class Span(AbstractModel):
     @property
     def References(self):
         """关联关系
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpanReference
         """
         return self._References
@@ -4252,7 +4105,6 @@ class Span(AbstractModel):
     @property
     def StartTime(self):
         """产生时间戳(微秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTime
@@ -4264,7 +4116,6 @@ class Span(AbstractModel):
     @property
     def Duration(self):
         """持续耗时(微妙)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Duration
@@ -4275,8 +4126,7 @@ class Span(AbstractModel):
 
     @property
     def SpanID(self):
-        """Span Id
-注意：此字段可能返回 null，表示取不到有效值。
+        """Span ID
         :rtype: str
         """
         return self._SpanID
@@ -4288,7 +4138,6 @@ class Span(AbstractModel):
     @property
     def StartTimeMillis(self):
         """产生时间戳(毫秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTimeMillis
@@ -4299,8 +4148,7 @@ class Span(AbstractModel):
 
     @property
     def ParentSpanID(self):
-        """Parent Span Id
-注意：此字段可能返回 null，表示取不到有效值。
+        """Parent Span ID
         :rtype: str
         """
         return self._ParentSpanID

@@ -762,6 +762,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRabbitMQPermission(self, request):
+        """删除RabbitMQ的权限
+
+        :param request: Request instance for DeleteRabbitMQPermission.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQPermissionRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQPermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRabbitMQPermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRabbitMQPermissionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRabbitMQUser(self, request):
         """删除RabbitMQ的用户
 
@@ -1652,6 +1675,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribeRabbitMQNodeList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRabbitMQNodeListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRabbitMQPermission(self, request):
+        """查询RabbitMQ权限列表
+
+        :param request: Request instance for DescribeRabbitMQPermission.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQPermissionRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQPermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQPermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQPermissionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2760,6 +2806,29 @@ class TdmqClient(AbstractClient):
             body = self.call("ModifyPublicNetworkSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPublicNetworkSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRabbitMQPermission(self, request):
+        """修改RabbitMQ的权限
+
+        :param request: Request instance for ModifyRabbitMQPermission.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQPermissionRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQPermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRabbitMQPermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRabbitMQPermissionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

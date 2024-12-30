@@ -13216,10 +13216,19 @@ class DescribeDatahubTopicsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 本次返回结果的最大个数，默认为50，最大值为50
         :type Limit: int
+        :param _QueryFromConnectResource: 是否从连接查询topic列表
+        :type QueryFromConnectResource: bool
+        :param _ConnectResourceId: 连接的ID
+        :type ConnectResourceId: str
+        :param _TopicRegularExpression: topic资源表达式
+        :type TopicRegularExpression: str
         """
         self._SearchWord = None
         self._Offset = None
         self._Limit = None
+        self._QueryFromConnectResource = None
+        self._ConnectResourceId = None
+        self._TopicRegularExpression = None
 
     @property
     def SearchWord(self):
@@ -13254,11 +13263,47 @@ class DescribeDatahubTopicsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def QueryFromConnectResource(self):
+        """是否从连接查询topic列表
+        :rtype: bool
+        """
+        return self._QueryFromConnectResource
+
+    @QueryFromConnectResource.setter
+    def QueryFromConnectResource(self, QueryFromConnectResource):
+        self._QueryFromConnectResource = QueryFromConnectResource
+
+    @property
+    def ConnectResourceId(self):
+        """连接的ID
+        :rtype: str
+        """
+        return self._ConnectResourceId
+
+    @ConnectResourceId.setter
+    def ConnectResourceId(self, ConnectResourceId):
+        self._ConnectResourceId = ConnectResourceId
+
+    @property
+    def TopicRegularExpression(self):
+        """topic资源表达式
+        :rtype: str
+        """
+        return self._TopicRegularExpression
+
+    @TopicRegularExpression.setter
+    def TopicRegularExpression(self, TopicRegularExpression):
+        self._TopicRegularExpression = TopicRegularExpression
+
 
     def _deserialize(self, params):
         self._SearchWord = params.get("SearchWord")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._QueryFromConnectResource = params.get("QueryFromConnectResource")
+        self._ConnectResourceId = params.get("ConnectResourceId")
+        self._TopicRegularExpression = params.get("TopicRegularExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

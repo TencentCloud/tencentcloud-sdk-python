@@ -41872,6 +41872,8 @@ class ModifyOutputInfo(AbstractModel):
         :type Zones: list of str
         :param _RISTSettings: 转推RIST的配置。
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
+        :param _OutputType: 输出类型：Internet/TencentCSS/StreamLive
+        :type OutputType: str
         """
         self._OutputId = None
         self._OutputName = None
@@ -41885,6 +41887,7 @@ class ModifyOutputInfo(AbstractModel):
         self._SecurityGroupIds = None
         self._Zones = None
         self._RISTSettings = None
+        self._OutputType = None
 
     @property
     def OutputId(self):
@@ -42019,6 +42022,17 @@ class ModifyOutputInfo(AbstractModel):
     def RISTSettings(self, RISTSettings):
         self._RISTSettings = RISTSettings
 
+    @property
+    def OutputType(self):
+        """输出类型：Internet/TencentCSS/StreamLive
+        :rtype: str
+        """
+        return self._OutputType
+
+    @OutputType.setter
+    def OutputType(self, OutputType):
+        self._OutputType = OutputType
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -42041,6 +42055,7 @@ class ModifyOutputInfo(AbstractModel):
         if params.get("RISTSettings") is not None:
             self._RISTSettings = CreateOutputRistSettings()
             self._RISTSettings._deserialize(params.get("RISTSettings"))
+        self._OutputType = params.get("OutputType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
