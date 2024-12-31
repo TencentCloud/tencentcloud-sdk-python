@@ -996,7 +996,7 @@ class OcrClient(AbstractClient):
         <table style="width:650px">
               <thead>
                 <tr>
-               <th width="150">增值能力</th>
+               <th width="150">扩展能力</th>
                   <th width="500">能力项</th>
                 </tr>
               </thead>
@@ -1494,7 +1494,7 @@ class OcrClient(AbstractClient):
         <table style="width:650px">
               <thead>
                 <tr>
-               <th width="150">增值能力</th>
+               <th width="150">扩展能力</th>
                   <th width="500">能力项</th>
                 </tr>
               </thead>
@@ -2202,7 +2202,7 @@ class OcrClient(AbstractClient):
 
 
     def SmartStructuralPro(self, request):
-        """本接口支持智能提取各类证照、票据、表单、合同等结构化场景的key:value字段信息，并支持提取表格信息的key:value组的结构化，灵活高效，适用于各类非标准材料的信息录入场景，点击[立即体验](https://cloud.tencent.com/product/smart-ocr)。
+        """本接口支持智能提取各类证照、票据、表单、合同等结构化场景的key:value字段信息，并支持提取表格信息的key:value组的结构化，灵活高效，适用于各类非标准材料的信息录入场景，点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
 
         默认接口请求频率限制：5次/秒。
 

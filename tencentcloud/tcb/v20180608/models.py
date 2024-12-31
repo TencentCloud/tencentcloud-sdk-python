@@ -13099,7 +13099,6 @@ class DescribeEndUserLoginStatisticResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LoginStatistics: 环境终端用户新增与登录统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoginStatistics: list of LoginStatistic
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13110,7 +13109,6 @@ class DescribeEndUserLoginStatisticResponse(AbstractModel):
     @property
     def LoginStatistics(self):
         """环境终端用户新增与登录统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LoginStatistic
         """
         return self._LoginStatistics
@@ -13185,7 +13183,6 @@ class DescribeEndUserStatisticResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PlatformStatistics: 终端用户各平台统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlatformStatistics: list of PlatformStatistic
         :param _TotalCount: 终端用户总数
         :type TotalCount: int
@@ -13199,7 +13196,6 @@ class DescribeEndUserStatisticResponse(AbstractModel):
     @property
     def PlatformStatistics(self):
         """终端用户各平台统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PlatformStatistic
         """
         return self._PlatformStatistics
@@ -19874,16 +19870,12 @@ class LoginStatistic(AbstractModel):
     def __init__(self):
         r"""
         :param _StatisticalType: 统计类型 新增NEWUSER 和登录 LOGIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticalType: str
         :param _StatisticalCycle: 统计周期：日DAY，周WEEK，月MONTH
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticalCycle: str
         :param _Count: 统计总量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._StatisticalType = None
@@ -19894,7 +19886,6 @@ class LoginStatistic(AbstractModel):
     @property
     def StatisticalType(self):
         """统计类型 新增NEWUSER 和登录 LOGIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatisticalType
@@ -19906,7 +19897,6 @@ class LoginStatistic(AbstractModel):
     @property
     def StatisticalCycle(self):
         """统计周期：日DAY，周WEEK，月MONTH
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatisticalCycle
@@ -19918,7 +19908,6 @@ class LoginStatistic(AbstractModel):
     @property
     def Count(self):
         """统计总量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -19930,7 +19919,6 @@ class LoginStatistic(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime

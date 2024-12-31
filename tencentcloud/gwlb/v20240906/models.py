@@ -1710,7 +1710,6 @@ class GatewayLoadBalancer(AbstractModel):
         :param _LoadBalancerName: 网关负载均衡实例的名称。
         :type LoadBalancerName: str
         :param _VpcId: 网关负载均衡所属私有网络。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 网关负载均衡所属子网。
         :type SubnetId: str
@@ -1720,24 +1719,18 @@ class GatewayLoadBalancer(AbstractModel):
 0：创建中，1：正常运行，3：删除中。
         :type Status: int
         :param _TargetGroupId: 关联的目标组唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetGroupId: str
         :param _DeleteProtect: 是否开启删除保护功能。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteProtect: bool
         :param _Tags: 负载均衡实例的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
         :param _CreateTime: 创建时间。
         :type CreateTime: str
         :param _ChargeType: 网关负载均衡实例的计费类型，POSTPAID_BY_HOUR：按量计费
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: str
         :param _Isolation: 0：表示未被隔离，1：表示被隔离。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Isolation: int
         :param _IsolatedTime: 负载均衡实例被隔离的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTime: str
         """
         self._LoadBalancerId = None
@@ -1779,7 +1772,6 @@ class GatewayLoadBalancer(AbstractModel):
     @property
     def VpcId(self):
         """网关负载均衡所属私有网络。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -1825,7 +1817,6 @@ class GatewayLoadBalancer(AbstractModel):
     @property
     def TargetGroupId(self):
         """关联的目标组唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TargetGroupId
@@ -1837,7 +1828,6 @@ class GatewayLoadBalancer(AbstractModel):
     @property
     def DeleteProtect(self):
         """是否开启删除保护功能。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DeleteProtect
@@ -1849,7 +1839,6 @@ class GatewayLoadBalancer(AbstractModel):
     @property
     def Tags(self):
         """负载均衡实例的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -1872,7 +1861,6 @@ class GatewayLoadBalancer(AbstractModel):
     @property
     def ChargeType(self):
         """网关负载均衡实例的计费类型，POSTPAID_BY_HOUR：按量计费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeType
@@ -1884,7 +1872,6 @@ class GatewayLoadBalancer(AbstractModel):
     @property
     def Isolation(self):
         """0：表示未被隔离，1：表示被隔离。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Isolation
@@ -1896,7 +1883,6 @@ class GatewayLoadBalancer(AbstractModel):
     @property
     def IsolatedTime(self):
         """负载均衡实例被隔离的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolatedTime

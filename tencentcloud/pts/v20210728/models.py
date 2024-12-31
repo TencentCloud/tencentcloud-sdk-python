@@ -6476,7 +6476,7 @@ class DescribeSampleMatrixQueryRequest(AbstractModel):
         :type Aggregation: str
         :param _Filters: 用标签过滤规则来过滤指标，规则中包含标签名 LabelName、标签值 LabelValue、操作符 Operator（0代表相等，1代表不等）
         :type Filters: list of Filter
-        :param _GroupBy: 分组
+        :param _GroupBy: 分组；取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
         :type GroupBy: list of str
         """
         self._JobId = None
@@ -6555,7 +6555,7 @@ class DescribeSampleMatrixQueryRequest(AbstractModel):
 
     @property
     def GroupBy(self):
-        """分组
+        """分组；取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
         :rtype: list of str
         """
         return self._GroupBy

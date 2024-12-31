@@ -1505,12 +1505,11 @@ class LoginNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>	
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20211109.models.InstanceChargePrepaid`
-        :param _InstanceType: 节点机型。不同实例机型指定了不同的资源规格。
-<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :param _InstanceType: 节点机型。不同实例机型指定了不同的资源规格。 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>	
         :type InstanceType: str
         :param _SystemDisk: 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: list of SystemDisk
@@ -1518,9 +1517,7 @@ class LoginNode(AbstractModel):
         :type DataDisks: list of DataDisk
         :param _InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :type InternetAccessible: list of InternetAccessible
-        :param _InstanceName: 节点显示名称。<br><li>
-不指定节点显示名称则默认显示‘未命名’。
-最多支持60个字符。
+        :param _InstanceName: 节点显示名称。<br><li> 不指定节点显示名称则默认显示‘未命名’。 最多支持60个字符。</li>	
         :type InstanceName: str
         """
         self._InstanceChargeType = None
@@ -1533,7 +1530,7 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>	
         :rtype: str
         """
         return self._InstanceChargeType
@@ -1555,8 +1552,7 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceType(self):
-        """节点机型。不同实例机型指定了不同的资源规格。
-<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        """节点机型。不同实例机型指定了不同的资源规格。 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>	
         :rtype: str
         """
         return self._InstanceType
@@ -1600,9 +1596,7 @@ class LoginNode(AbstractModel):
 
     @property
     def InstanceName(self):
-        """节点显示名称。<br><li>
-不指定节点显示名称则默认显示‘未命名’。
-最多支持60个字符。
+        """节点显示名称。<br><li> 不指定节点显示名称则默认显示‘未命名’。 最多支持60个字符。</li>	
         :rtype: str
         """
         return self._InstanceName
@@ -1726,12 +1720,11 @@ class ManagerNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
+        :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>	
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20211109.models.InstanceChargePrepaid`
-        :param _InstanceType: 节点机型。不同实例机型指定了不同的资源规格。
-<br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :param _InstanceType: 节点机型。不同实例机型指定了不同的资源规格。 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>	
         :type InstanceType: str
         :param _SystemDisk: 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.thpc.v20211109.models.SystemDisk`
@@ -1739,11 +1732,7 @@ class ManagerNode(AbstractModel):
         :type DataDisks: list of DataDisk
         :param _InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :type InternetAccessible: :class:`tencentcloud.thpc.v20211109.models.InternetAccessible`
-        :param _InstanceName: 节点显示名称。<br><li>
-不指定节点显示名称则默认显示‘未命名’。
-</li><li>购买多个节点，如果指定模式串`{R:x}`，表示生成数字[`[x, x+n-1]`，其中`n`表示购买节点的数量，例如`server_{R:3}`，购买1个时，节点显示名称为`server_3`；购买2个时，节点显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。
-购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li>
-最多支持60个字符（包含模式串）。
+        :param _InstanceName: 节点显示名称。<br><li> 不指定节点显示名称则默认显示‘未命名’。 </li><li>购买多个节点，如果指定模式串`{R:x}`，表示生成数字[`[x, x+n-1]`，其中`n`表示购买节点的数量，例如`server_{R:3}`，购买1个时，节点显示名称为`server_3`；购买2个时，节点显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。 购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li> 最多支持60个字符（包含模式串）。</li>
         :type InstanceName: str
         """
         self._InstanceChargeType = None
@@ -1756,7 +1745,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
+        """节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。</li>	
         :rtype: str
         """
         return self._InstanceChargeType
@@ -1778,8 +1767,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceType(self):
-        """节点机型。不同实例机型指定了不同的资源规格。
-<br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        """节点机型。不同实例机型指定了不同的资源规格。 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>	
         :rtype: str
         """
         return self._InstanceType
@@ -1823,11 +1811,7 @@ class ManagerNode(AbstractModel):
 
     @property
     def InstanceName(self):
-        """节点显示名称。<br><li>
-不指定节点显示名称则默认显示‘未命名’。
-</li><li>购买多个节点，如果指定模式串`{R:x}`，表示生成数字[`[x, x+n-1]`，其中`n`表示购买节点的数量，例如`server_{R:3}`，购买1个时，节点显示名称为`server_3`；购买2个时，节点显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。
-购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li>
-最多支持60个字符（包含模式串）。
+        """节点显示名称。<br><li> 不指定节点显示名称则默认显示‘未命名’。 </li><li>购买多个节点，如果指定模式串`{R:x}`，表示生成数字[`[x, x+n-1]`，其中`n`表示购买节点的数量，例如`server_{R:3}`，购买1个时，节点显示名称为`server_3`；购买2个时，节点显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。 购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li> 最多支持60个字符（包含模式串）。</li>
         :rtype: str
         """
         return self._InstanceName

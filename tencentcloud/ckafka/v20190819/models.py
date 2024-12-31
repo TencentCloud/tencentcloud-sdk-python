@@ -22494,6 +22494,9 @@ class KafkaParam(AbstractModel):
         :param _KeepPartition: 数据同步专用参数, 当通过时,希望下游的消息写入分区与上游的一致,则填true,但下游分区小于上游时,会报错; 不需要一致则为false, 默认为false
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeepPartition: bool
+        :param _TopicRegularExpression: 正则匹配Topic列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicRegularExpression: str
         """
         self._SelfBuilt = None
         self._Resource = None
@@ -22513,6 +22516,7 @@ class KafkaParam(AbstractModel):
         self._MsgMultiple = None
         self._ConnectorSyncType = None
         self._KeepPartition = None
+        self._TopicRegularExpression = None
 
     @property
     def SelfBuilt(self):
@@ -22727,6 +22731,18 @@ class KafkaParam(AbstractModel):
     def KeepPartition(self, KeepPartition):
         self._KeepPartition = KeepPartition
 
+    @property
+    def TopicRegularExpression(self):
+        """正则匹配Topic列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicRegularExpression
+
+    @TopicRegularExpression.setter
+    def TopicRegularExpression(self, TopicRegularExpression):
+        self._TopicRegularExpression = TopicRegularExpression
+
 
     def _deserialize(self, params):
         self._SelfBuilt = params.get("SelfBuilt")
@@ -22752,6 +22768,7 @@ class KafkaParam(AbstractModel):
         self._MsgMultiple = params.get("MsgMultiple")
         self._ConnectorSyncType = params.get("ConnectorSyncType")
         self._KeepPartition = params.get("KeepPartition")
+        self._TopicRegularExpression = params.get("TopicRegularExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -20002,11 +20002,13 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type DBVersion: str
         :param _Cpu: 预购买实例的CPU核心数
         :type Cpu: int
-        :param _InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读
+        :param _InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读，MultiHA-多节点，cvmMultiHA-云盘
         :type InstanceType: str
         :param _MachineType: 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘,
 CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
         :type MachineType: str
+        :param _DrZones: 备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+        :type DrZones: list of str
         """
         self._Zone = None
         self._Memory = None
@@ -20018,6 +20020,7 @@ CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘�
         self._Cpu = None
         self._InstanceType = None
         self._MachineType = None
+        self._DrZones = None
 
     @property
     def Zone(self):
@@ -20109,7 +20112,7 @@ CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘�
 
     @property
     def InstanceType(self):
-        """购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读
+        """购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读，MultiHA-多节点，cvmMultiHA-云盘
         :rtype: str
         """
         return self._InstanceType
@@ -20130,6 +20133,17 @@ CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘�
     def MachineType(self, MachineType):
         self._MachineType = MachineType
 
+    @property
+    def DrZones(self):
+        """备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+        :rtype: list of str
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -20142,6 +20156,7 @@ CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘�
         self._Cpu = params.get("Cpu")
         self._InstanceType = params.get("InstanceType")
         self._MachineType = params.get("MachineType")
+        self._DrZones = params.get("DrZones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26846,6 +26861,10 @@ class ReadOnlyGroup(AbstractModel):
         :type DnsPodDomain: str
         :param _TgwWanVPort: RO组外网地址端口
         :type TgwWanVPort: int
+        :param _ReadOnlyGroupType: RO只读组类型，1-按照一个实例一个只读组的方式发货，2-新建只读组后发货的所有实例都在这个只读组下面， 3-发货的所有实例都在已有的只读组下面
+        :type ReadOnlyGroupType: int
+        :param _ReadOnlyGroupForcedUpgrade: 部署RO副本模式，0-默认不升级主实例，1-强制升级主实例完成RO部署
+        :type ReadOnlyGroupForcedUpgrade: int
         """
         self._ReadOnlyGroupId = None
         self._ReadOnlyGroupName = None
@@ -26863,6 +26882,8 @@ class ReadOnlyGroup(AbstractModel):
         self._ReadOnlyInstanceSet = None
         self._DnsPodDomain = None
         self._TgwWanVPort = None
+        self._ReadOnlyGroupType = None
+        self._ReadOnlyGroupForcedUpgrade = None
 
     @property
     def ReadOnlyGroupId(self):
@@ -27040,6 +27061,28 @@ class ReadOnlyGroup(AbstractModel):
     def TgwWanVPort(self, TgwWanVPort):
         self._TgwWanVPort = TgwWanVPort
 
+    @property
+    def ReadOnlyGroupType(self):
+        """RO只读组类型，1-按照一个实例一个只读组的方式发货，2-新建只读组后发货的所有实例都在这个只读组下面， 3-发货的所有实例都在已有的只读组下面
+        :rtype: int
+        """
+        return self._ReadOnlyGroupType
+
+    @ReadOnlyGroupType.setter
+    def ReadOnlyGroupType(self, ReadOnlyGroupType):
+        self._ReadOnlyGroupType = ReadOnlyGroupType
+
+    @property
+    def ReadOnlyGroupForcedUpgrade(self):
+        """部署RO副本模式，0-默认不升级主实例，1-强制升级主实例完成RO部署
+        :rtype: int
+        """
+        return self._ReadOnlyGroupForcedUpgrade
+
+    @ReadOnlyGroupForcedUpgrade.setter
+    def ReadOnlyGroupForcedUpgrade(self, ReadOnlyGroupForcedUpgrade):
+        self._ReadOnlyGroupForcedUpgrade = ReadOnlyGroupForcedUpgrade
+
 
     def _deserialize(self, params):
         self._ReadOnlyGroupId = params.get("ReadOnlyGroupId")
@@ -27063,6 +27106,8 @@ class ReadOnlyGroup(AbstractModel):
                 self._ReadOnlyInstanceSet.append(obj)
         self._DnsPodDomain = params.get("DnsPodDomain")
         self._TgwWanVPort = params.get("TgwWanVPort")
+        self._ReadOnlyGroupType = params.get("ReadOnlyGroupType")
+        self._ReadOnlyGroupForcedUpgrade = params.get("ReadOnlyGroupForcedUpgrade")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

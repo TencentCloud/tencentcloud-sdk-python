@@ -7988,29 +7988,22 @@ class VendorHardware(AbstractModel):
     def __init__(self):
         r"""
         :param _HardwareId: 硬件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type HardwareId: str
         :param _SN: 硬件序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Status: 激活状态， 空：全部； 1:待激活； 2:已激活
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _ActiveTime: 激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveTime: str
         :param _Description: 厂商备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _DeviceId: 设备id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _LicenseChargingMode: license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
 注：设备为租户付费且未激活（未选择月付还是永久付费）时，此参数返回1，仅代表租户付费。后续将废弃此参数，新接入请使用LicensePayMode和Payer
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseChargingMode: int
         :param _LastOnlineTime: 最后在线时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8019,12 +8012,10 @@ class VendorHardware(AbstractModel):
 0：月度授权
 1：永久授权
 -1：未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicensePayMode: int
         :param _Payer: 付费方
 0：客户付费
 1：厂商付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type Payer: int
         """
         self._HardwareId = None
@@ -8042,7 +8033,6 @@ class VendorHardware(AbstractModel):
     @property
     def HardwareId(self):
         """硬件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HardwareId
@@ -8054,7 +8044,6 @@ class VendorHardware(AbstractModel):
     @property
     def SN(self):
         """硬件序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SN
@@ -8066,7 +8055,6 @@ class VendorHardware(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -8078,7 +8066,6 @@ class VendorHardware(AbstractModel):
     @property
     def Status(self):
         """激活状态， 空：全部； 1:待激活； 2:已激活
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -8102,7 +8089,6 @@ class VendorHardware(AbstractModel):
     @property
     def Description(self):
         """厂商备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -8114,7 +8100,6 @@ class VendorHardware(AbstractModel):
     @property
     def DeviceId(self):
         """设备id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -8127,7 +8112,6 @@ class VendorHardware(AbstractModel):
     def LicenseChargingMode(self):
         """license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
 注：设备为租户付费且未激活（未选择月付还是永久付费）时，此参数返回1，仅代表租户付费。后续将废弃此参数，新接入请使用LicensePayMode和Payer
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicenseChargingMode
@@ -8154,7 +8138,6 @@ class VendorHardware(AbstractModel):
 0：月度授权
 1：永久授权
 -1：未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicensePayMode
@@ -8168,7 +8151,6 @@ class VendorHardware(AbstractModel):
         """付费方
 0：客户付费
 1：厂商付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Payer

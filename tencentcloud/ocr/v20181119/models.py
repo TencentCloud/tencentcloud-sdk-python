@@ -28689,6 +28689,8 @@ class SmartStructuralProRequest(AbstractModel):
         :type ReturnFullText: bool
         :param _ConfigId: 配置id支持：General -- 通用场景 InvoiceEng -- 海运提单、国际invoice模版 WayBillEng --海运订单模板
         :type ConfigId: str
+        :param _EnableCoord: 是否开启全文字段坐标值的识别
+        :type EnableCoord: bool
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -28696,6 +28698,7 @@ class SmartStructuralProRequest(AbstractModel):
         self._ItemNames = None
         self._ReturnFullText = None
         self._ConfigId = None
+        self._EnableCoord = None
 
     @property
     def ImageUrl(self):
@@ -28763,6 +28766,17 @@ class SmartStructuralProRequest(AbstractModel):
     def ConfigId(self, ConfigId):
         self._ConfigId = ConfigId
 
+    @property
+    def EnableCoord(self):
+        """是否开启全文字段坐标值的识别
+        :rtype: bool
+        """
+        return self._EnableCoord
+
+    @EnableCoord.setter
+    def EnableCoord(self, EnableCoord):
+        self._EnableCoord = EnableCoord
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -28771,6 +28785,7 @@ class SmartStructuralProRequest(AbstractModel):
         self._ItemNames = params.get("ItemNames")
         self._ReturnFullText = params.get("ReturnFullText")
         self._ConfigId = params.get("ConfigId")
+        self._EnableCoord = params.get("EnableCoord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
