@@ -81,16 +81,12 @@ class Alias(AbstractModel):
         :param _Name: 别名的名称
         :type Name: str
         :param _RoutingConfig: 别名的路由信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         :param _Description: 描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _AddTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         :param _ModTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModTime: str
         """
         self._FunctionVersion = None
@@ -125,7 +121,6 @@ class Alias(AbstractModel):
     @property
     def RoutingConfig(self):
         """别名的路由信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         """
         return self._RoutingConfig
@@ -137,7 +132,6 @@ class Alias(AbstractModel):
     @property
     def Description(self):
         """描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -149,7 +143,6 @@ class Alias(AbstractModel):
     @property
     def AddTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddTime
@@ -161,7 +154,6 @@ class Alias(AbstractModel):
     @property
     def ModTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModTime
@@ -431,7 +423,6 @@ class CertConf(AbstractModel):
     def __init__(self):
         r"""
         :param _CertificateId: ssl证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateId: str
         """
         self._CertificateId = None
@@ -439,7 +430,6 @@ class CertConf(AbstractModel):
     @property
     def CertificateId(self):
         """ssl证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateId
@@ -1251,7 +1241,7 @@ class CreateCustomDomainRequest(AbstractModel):
         :type Protocol: str
         :param _EndpointsConfig: 路由配置
         :type EndpointsConfig: list of EndpointsConf
-        :param _CertConfig: 证书配置信息，HTTPS协议必穿
+        :param _CertConfig: 证书配置信息，有使用HTTPS协议时候必须传
         :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
         :param _WafConfig: web 应用防火墙配置
         :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
@@ -1297,7 +1287,7 @@ class CreateCustomDomainRequest(AbstractModel):
 
     @property
     def CertConfig(self):
-        """证书配置信息，HTTPS协议必穿
+        """证书配置信息，有使用HTTPS协议时候必须传
         :rtype: :class:`tencentcloud.scf.v20180416.models.CertConf`
         """
         return self._CertConfig
@@ -2528,6 +2518,115 @@ class DeleteFunctionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteFunctionVersionRequest(AbstractModel):
+    """DeleteFunctionVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionName: 要删除的函数名称
+        :type FunctionName: str
+        :param _Qualifier: 填写需要删除的版本号
+        :type Qualifier: str
+        :param _Namespace: 函数所属命名空间
+        :type Namespace: str
+        :param _ForceDelete: 强制删除标记，传true会直接删除容器，并强制关闭还在执行中的函数
+        :type ForceDelete: str
+        """
+        self._FunctionName = None
+        self._Qualifier = None
+        self._Namespace = None
+        self._ForceDelete = None
+
+    @property
+    def FunctionName(self):
+        """要删除的函数名称
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Qualifier(self):
+        """填写需要删除的版本号
+        :rtype: str
+        """
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Namespace(self):
+        """函数所属命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ForceDelete(self):
+        """强制删除标记，传true会直接删除容器，并强制关闭还在执行中的函数
+        :rtype: str
+        """
+        return self._ForceDelete
+
+    @ForceDelete.setter
+    def ForceDelete(self, ForceDelete):
+        self._ForceDelete = ForceDelete
+
+
+    def _deserialize(self, params):
+        self._FunctionName = params.get("FunctionName")
+        self._Qualifier = params.get("Qualifier")
+        self._Namespace = params.get("Namespace")
+        self._ForceDelete = params.get("ForceDelete")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFunctionVersionResponse(AbstractModel):
+    """DeleteFunctionVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLayerVersionRequest(AbstractModel):
     """DeleteLayerVersion请求参数结构体
 
@@ -2995,13 +3094,10 @@ class DomainInfo(AbstractModel):
         :param _Protocol: 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
         :type Protocol: str
         :param _EndpointsConfig: 路由配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndpointsConfig: list of EndpointsConf
         :param _CertConfig: 证书配置信息，HTTPS协议必传路由配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
         :param _WafConfig: web 应用防火墙配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
         """
         self._Domain = None
@@ -3035,7 +3131,6 @@ class DomainInfo(AbstractModel):
     @property
     def EndpointsConfig(self):
         """路由配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EndpointsConf
         """
         return self._EndpointsConfig
@@ -3047,7 +3142,6 @@ class DomainInfo(AbstractModel):
     @property
     def CertConfig(self):
         """证书配置信息，HTTPS协议必传路由配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.scf.v20180416.models.CertConf`
         """
         return self._CertConfig
@@ -3059,7 +3153,6 @@ class DomainInfo(AbstractModel):
     @property
     def WafConfig(self):
         """web 应用防火墙配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.scf.v20180416.models.WafConf`
         """
         return self._WafConfig
@@ -3140,7 +3233,6 @@ class EipConfigOut(AbstractModel):
         :param _EipStatus: 是否是固定IP，["ENABLE","DISABLE"]
         :type EipStatus: str
         :param _EipAddress: IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type EipAddress: list of str
         """
         self._EipStatus = None
@@ -3160,7 +3252,6 @@ class EipConfigOut(AbstractModel):
     @property
     def EipAddress(self):
         """IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._EipAddress
@@ -3242,16 +3333,12 @@ class EndpointsConf(AbstractModel):
     def __init__(self):
         r"""
         :param _Namespace: 函数命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _FunctionName: 函数名
-注意：此字段可能返回 null，表示取不到有效值。
         :type FunctionName: str
         :param _Qualifier: 函数别名或版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Qualifier: str
         :param _PathMatch: 路径,取值规范：/，/*，/xxx，/xxx/a，/xxx/*"
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathMatch: str
         :param _PathRewrite: 路径重写策略
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3266,7 +3353,6 @@ class EndpointsConf(AbstractModel):
     @property
     def Namespace(self):
         """函数命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -3278,7 +3364,6 @@ class EndpointsConf(AbstractModel):
     @property
     def FunctionName(self):
         """函数名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FunctionName
@@ -3290,7 +3375,6 @@ class EndpointsConf(AbstractModel):
     @property
     def Qualifier(self):
         """函数别名或版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Qualifier
@@ -3302,7 +3386,6 @@ class EndpointsConf(AbstractModel):
     @property
     def PathMatch(self):
         """路径,取值规范：/，/*，/xxx，/xxx/a，/xxx/*"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PathMatch
@@ -3882,6 +3965,8 @@ class FunctionLog(AbstractModel):
 
     @property
     def Level(self):
+        warnings.warn("parameter `Level` is deprecated", DeprecationWarning) 
+
         """日志等级
         :rtype: str
         """
@@ -3889,10 +3974,14 @@ class FunctionLog(AbstractModel):
 
     @Level.setter
     def Level(self, Level):
+        warnings.warn("parameter `Level` is deprecated", DeprecationWarning) 
+
         self._Level = Level
 
     @property
     def Source(self):
+        warnings.warn("parameter `Source` is deprecated", DeprecationWarning) 
+
         """日志来源
         :rtype: str
         """
@@ -3900,6 +3989,8 @@ class FunctionLog(AbstractModel):
 
     @Source.setter
     def Source(self, Source):
+        warnings.warn("parameter `Source` is deprecated", DeprecationWarning) 
+
         self._Source = Source
 
     @property
@@ -4190,13 +4281,10 @@ class GetAliasResponse(AbstractModel):
         :param _RoutingConfig: 别名的路由信息
         :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         :param _Description: 别名的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _AddTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         :param _ModTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4245,7 +4333,6 @@ class GetAliasResponse(AbstractModel):
     @property
     def Description(self):
         """别名的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -4257,7 +4344,6 @@ class GetAliasResponse(AbstractModel):
     @property
     def AddTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddTime
@@ -4269,7 +4355,6 @@ class GetAliasResponse(AbstractModel):
     @property
     def ModTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModTime
@@ -5221,24 +5306,18 @@ class GetFunctionResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnsEnable: str
         :param _CfsConfig: 文件系统配置参数，用于云函数挂载文件系统
-注意：此字段可能返回 null，表示取不到有效值。
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         :param _AvailableStatus: 函数的计费状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableStatus: str
         :param _Qualifier: 函数版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Qualifier: str
         :param _InitTimeout: 函数初始化超时时间
         :type InitTimeout: int
         :param _StatusReasons: 函数状态失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusReasons: list of StatusReason
         :param _AsyncRunEnable: 是否开启异步属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRunEnable: str
         :param _TraceEnable: 是否开启事件追踪
-注意：此字段可能返回 null，表示取不到有效值。
         :type TraceEnable: str
         :param _ImageConfig: 镜像配置
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5250,7 +5329,6 @@ class GetFunctionResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         :param _DnsCache: 是否开启DNS缓存
-注意：此字段可能返回 null，表示取不到有效值。
         :type DnsCache: str
         :param _IntranetConfig: 内网访问配置
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5698,7 +5776,6 @@ class GetFunctionResponse(AbstractModel):
     @property
     def CfsConfig(self):
         """文件系统配置参数，用于云函数挂载文件系统
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         """
         return self._CfsConfig
@@ -5710,7 +5787,6 @@ class GetFunctionResponse(AbstractModel):
     @property
     def AvailableStatus(self):
         """函数的计费状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AvailableStatus
@@ -5722,7 +5798,6 @@ class GetFunctionResponse(AbstractModel):
     @property
     def Qualifier(self):
         """函数版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Qualifier
@@ -5745,7 +5820,6 @@ class GetFunctionResponse(AbstractModel):
     @property
     def StatusReasons(self):
         """函数状态失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatusReason
         """
         return self._StatusReasons
@@ -5757,7 +5831,6 @@ class GetFunctionResponse(AbstractModel):
     @property
     def AsyncRunEnable(self):
         """是否开启异步属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsyncRunEnable
@@ -5769,7 +5842,6 @@ class GetFunctionResponse(AbstractModel):
     @property
     def TraceEnable(self):
         """是否开启事件追踪
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TraceEnable
@@ -5817,7 +5889,6 @@ class GetFunctionResponse(AbstractModel):
     @property
     def DnsCache(self):
         """是否开启DNS缓存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DnsCache
@@ -7351,12 +7422,10 @@ class LayerVersionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CompatibleRuntimes: 版本适用的运行时
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompatibleRuntimes: list of str
         :param _AddTime: 创建时间
         :type AddTime: str
         :param _Description: 版本描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _LicenseInfo: 许可证信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7368,7 +7437,6 @@ class LayerVersionInfo(AbstractModel):
         :param _Status: 层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :type Status: str
         :param _Stamp: Stamp
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stamp: str
         :param _Tags: 返回层绑定的标签信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7387,7 +7455,6 @@ class LayerVersionInfo(AbstractModel):
     @property
     def CompatibleRuntimes(self):
         """版本适用的运行时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CompatibleRuntimes
@@ -7410,7 +7477,6 @@ class LayerVersionInfo(AbstractModel):
     @property
     def Description(self):
         """版本描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -7467,7 +7533,6 @@ class LayerVersionInfo(AbstractModel):
     @property
     def Stamp(self):
         """Stamp
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Stamp
@@ -7727,7 +7792,6 @@ class ListAliasesResponse(AbstractModel):
         :param _Aliases: 别名列表
         :type Aliases: list of Alias
         :param _TotalCount: 别名总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7750,7 +7814,6 @@ class ListAliasesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """别名总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -8237,10 +8300,7 @@ class ListFunctionsRequest(AbstractModel):
         :type Namespace: str
         :param _Description: 函数描述，支持模糊搜索
         :type Description: str
-        :param _Filters: 过滤条件。
-- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-
-每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :param _Filters: `过滤特定属性或者有特定标签的函数。`- 传值方式key-value 进行传值  例如："Filters": [{ "Name": "Status", "Values": ["CreateFailed","Creating"]}, {"Name": "Type","Values": ["HTTP"]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数`如果通过标签进行过滤：`- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值："Filters": [{"Name":"tag-dmtest","Values":["dmtest"]}]`入参限制：`1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip'] 过滤的Name 为这些属性时， values 只能传一个值3.['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp'] 过滤的Name 为这些属性时 ，values 可以传多个值
         :type Filters: list of Filter
         """
         self._Order = None
@@ -8331,10 +8391,7 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件。
-- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-
-每次请求的Filters的上限为10，Filter.Values的上限为5。
+        """`过滤特定属性或者有特定标签的函数。`- 传值方式key-value 进行传值  例如："Filters": [{ "Name": "Status", "Values": ["CreateFailed","Creating"]}, {"Name": "Type","Values": ["HTTP"]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数`如果通过标签进行过滤：`- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值："Filters": [{"Name":"tag-dmtest","Values":["dmtest"]}]`入参限制：`1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId', 'SubnetId', 'ClsTopicId', 'ClsLogsetId', 'Role', 'CfsId', 'CfsMountInsId', 'Eip'] 过滤的Name 为这些属性时， values 只能传一个值3.['Status', 'Runtime', 'Type', 'PublicNetStatus', 'AsyncRunEnable', 'TraceEnable', 'Stamp'] 过滤的Name 为这些属性时 ，values 可以传多个值
         :rtype: list of Filter
         """
         return self._Filters
@@ -9157,10 +9214,8 @@ class ListVersionByFunctionResponse(AbstractModel):
         :param _FunctionVersion: 函数版本。
         :type FunctionVersion: list of str
         :param _Versions: 函数版本列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of FunctionVersion
         :param _TotalCount: 函数版本总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9184,7 +9239,6 @@ class ListVersionByFunctionResponse(AbstractModel):
     @property
     def Versions(self):
         """函数版本列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FunctionVersion
         """
         return self._Versions
@@ -9196,7 +9250,6 @@ class ListVersionByFunctionResponse(AbstractModel):
     @property
     def TotalCount(self):
         """函数版本总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -9865,13 +9918,10 @@ class NamespaceUsage(AbstractModel):
         :param _FunctionsCount: 命名空间函数个数
         :type FunctionsCount: int
         :param _TotalConcurrencyMem: 命名空间配额总量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalConcurrencyMem: int
         :param _TotalAllocatedConcurrencyMem: 命名空间并发使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalAllocatedConcurrencyMem: int
         :param _TotalAllocatedProvisionedMem: 命名空间预置使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalAllocatedProvisionedMem: int
         """
         self._Functions = None
@@ -9917,7 +9967,6 @@ class NamespaceUsage(AbstractModel):
     @property
     def TotalConcurrencyMem(self):
         """命名空间配额总量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalConcurrencyMem
@@ -9929,7 +9978,6 @@ class NamespaceUsage(AbstractModel):
     @property
     def TotalAllocatedConcurrencyMem(self):
         """命名空间并发使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalAllocatedConcurrencyMem
@@ -9941,7 +9989,6 @@ class NamespaceUsage(AbstractModel):
     @property
     def TotalAllocatedProvisionedMem(self):
         """命名空间预置使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalAllocatedProvisionedMem
@@ -9976,13 +10023,10 @@ class PathRewriteRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Path: 需要重路由的路径，取值规范：/，/*，/xxx，/xxx/a，/xxx/*
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Type: 匹配规，取值范围： WildcardRules 通配符匹配， ExactRules 精确匹配
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Rewrite: 替换值：比如/, /$
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rewrite: str
         """
         self._Path = None
@@ -9992,7 +10036,6 @@ class PathRewriteRule(AbstractModel):
     @property
     def Path(self):
         """需要重路由的路径，取值规范：/，/*，/xxx，/xxx/a，/xxx/*
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -10004,7 +10047,6 @@ class PathRewriteRule(AbstractModel):
     @property
     def Type(self):
         """匹配规，取值范围： WildcardRules 通配符匹配， ExactRules 精确匹配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -10016,7 +10058,6 @@ class PathRewriteRule(AbstractModel):
     @property
     def Rewrite(self):
         """替换值：比如/, /$
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rewrite
@@ -11864,13 +11905,10 @@ class TriggerAction(AbstractModel):
     def __init__(self):
         r"""
         :param _TriggerName: 定时预置名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerName: str
         :param _TriggerProvisionedConcurrencyNum: 定时预置并发数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerProvisionedConcurrencyNum: int
         :param _TriggerCronConfig: 设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerCronConfig: str
         :param _ProvisionedType: 预置类型 Default
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11884,7 +11922,6 @@ class TriggerAction(AbstractModel):
     @property
     def TriggerName(self):
         """定时预置名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TriggerName
@@ -11896,7 +11933,6 @@ class TriggerAction(AbstractModel):
     @property
     def TriggerProvisionedConcurrencyNum(self):
         """定时预置并发数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TriggerProvisionedConcurrencyNum
@@ -11908,7 +11944,6 @@ class TriggerAction(AbstractModel):
     @property
     def TriggerCronConfig(self):
         """设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TriggerCronConfig
@@ -11975,7 +12010,6 @@ class TriggerCount(AbstractModel):
         :param _Vod: Vod触发器数量
         :type Vod: int
         :param _Eb: Eb触发器数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Eb: int
         """
         self._Cos = None
@@ -12115,7 +12149,6 @@ class TriggerCount(AbstractModel):
     @property
     def Eb(self):
         """Eb触发器数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Eb
@@ -14343,10 +14376,8 @@ class WafConf(AbstractModel):
     def __init__(self):
         r"""
         :param _WafOpen: web应用防火墙是否打开， 取值范围:OPEN, CLOSE
-注意：此字段可能返回 null，表示取不到有效值。
         :type WafOpen: str
         :param _WafInstanceId: web应用防火墙实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type WafInstanceId: str
         """
         self._WafOpen = None
@@ -14355,7 +14386,6 @@ class WafConf(AbstractModel):
     @property
     def WafOpen(self):
         """web应用防火墙是否打开， 取值范围:OPEN, CLOSE
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WafOpen
@@ -14367,7 +14397,6 @@ class WafConf(AbstractModel):
     @property
     def WafInstanceId(self):
         """web应用防火墙实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WafInstanceId

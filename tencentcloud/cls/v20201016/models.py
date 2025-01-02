@@ -16966,15 +16966,17 @@ class DescribeWebCallbacksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <li> name
+        :param _Filters: - name
 按照【告警渠道回调配置名称】进行过滤。
 类型：String
 必选：否
-<li> webCallbackId
+
+- webCallbackId
 按照【告警渠道回调配置ID】进行过滤。
 类型：String
 必选：否
-<li> type
+
+- type
 按照【告警渠道回调配置渠道类型】进行过滤。
 类型：String
 必选：否
@@ -16992,15 +16994,17 @@ class DescribeWebCallbacksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<li> name
+        """- name
 按照【告警渠道回调配置名称】进行过滤。
 类型：String
 必选：否
-<li> webCallbackId
+
+- webCallbackId
 按照【告警渠道回调配置ID】进行过滤。
 类型：String
 必选：否
-<li> type
+
+- type
 按照【告警渠道回调配置渠道类型】进行过滤。
 类型：String
 必选：否
@@ -17311,6 +17315,10 @@ class EventLog(AbstractModel):
         :param _Timestamp: 时间，用户选择自定义时间类型时，需要指定时间
         :type Timestamp: int
         :param _EventIDs: 事件ID过滤列表
+	
+选填，为空表示不做过滤
+支持正向过滤单个值（例：20）或范围（例：0-20），也支持反向过滤单个值(例：-20)
+多个过滤项之间可由逗号隔开，例：1-200,-100表示采集1-200范围内除了100以外的事件日志
         :type EventIDs: list of str
         """
         self._EventChannel = None
@@ -17355,6 +17363,10 @@ class EventLog(AbstractModel):
     @property
     def EventIDs(self):
         """事件ID过滤列表
+	
+选填，为空表示不做过滤
+支持正向过滤单个值（例：20）或范围（例：0-20），也支持反向过滤单个值(例：-20)
+多个过滤项之间可由逗号隔开，例：1-200,-100表示采集1-200范围内除了100以外的事件日志
         :rtype: list of str
         """
         return self._EventIDs
@@ -17757,6 +17769,12 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 - COS导入不支持此字段。
         :type MetadataType: int
         :param _PathRegex: 采集配置路径正则表达式。
+
+```
+请用"()"标识路径中目标字段对应的正则表达式，解析时将"()"视为捕获组，并以__TAG__.{i}:{目标字段}的形式与日志一起上报，其中i为捕获组的序号。
+若不希望以序号为键名，可以通过命名捕获组"(?<{键名}>{正则})"自定义键名，并以__TAG__.{键名}:{目标字段}的形式与日志一起上报。最多支持5个捕获组
+```
+
 注意：
 - MetadataType为3时必填。
 - COS导入不支持此字段。
@@ -18013,6 +18031,12 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
     @property
     def PathRegex(self):
         """采集配置路径正则表达式。
+
+```
+请用"()"标识路径中目标字段对应的正则表达式，解析时将"()"视为捕获组，并以__TAG__.{i}:{目标字段}的形式与日志一起上报，其中i为捕获组的序号。
+若不希望以序号为键名，可以通过命名捕获组"(?<{键名}>{正则})"自定义键名，并以__TAG__.{键名}:{目标字段}的形式与日志一起上报。最多支持5个捕获组
+```
+
 注意：
 - MetadataType为3时必填。
 - COS导入不支持此字段。
@@ -25329,7 +25353,8 @@ class MultiCondition(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Condition: str
         :param _AlarmLevel: 告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-<li> 不填则默认为0。
+
+- 不填则默认为0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
         """
@@ -25351,7 +25376,8 @@ class MultiCondition(AbstractModel):
     @property
     def AlarmLevel(self):
         """告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-<li> 不填则默认为0。
+
+- 不填则默认为0。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

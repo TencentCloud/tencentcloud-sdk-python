@@ -1597,6 +1597,8 @@ class CreateDisksRequest(AbstractModel):
         :type DiskBackupQuota: int
         :param _BurstPerformance: 创建云盘时是否开启性能突发
         :type BurstPerformance: bool
+        :param _EncryptType: 指定云硬盘加密类型，取值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容。推荐优先使用第二代加密技术ENCRYPT_V2，第一代加密技术仅支持在部分老旧机型使用。该参数仅当创建加密云硬盘时有效。
+        :type EncryptType: str
         """
         self._Placement = None
         self._DiskChargeType = None
@@ -1615,6 +1617,7 @@ class CreateDisksRequest(AbstractModel):
         self._AutoMountConfiguration = None
         self._DiskBackupQuota = None
         self._BurstPerformance = None
+        self._EncryptType = None
 
     @property
     def Placement(self):
@@ -1803,6 +1806,17 @@ class CreateDisksRequest(AbstractModel):
     def BurstPerformance(self, BurstPerformance):
         self._BurstPerformance = BurstPerformance
 
+    @property
+    def EncryptType(self):
+        """指定云硬盘加密类型，取值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容。推荐优先使用第二代加密技术ENCRYPT_V2，第一代加密技术仅支持在部分老旧机型使用。该参数仅当创建加密云硬盘时有效。
+        :rtype: str
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -1833,6 +1847,7 @@ class CreateDisksRequest(AbstractModel):
             self._AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
         self._DiskBackupQuota = params.get("DiskBackupQuota")
         self._BurstPerformance = params.get("BurstPerformance")
+        self._EncryptType = params.get("EncryptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

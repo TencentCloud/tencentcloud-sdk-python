@@ -3307,6 +3307,8 @@ class CreateSyncJobRequest(AbstractModel):
         :type DstRegion: str
         :param _Specification: 同步任务规格，Standard:标准版
         :type Specification: str
+        :param _TimeSpan: 购买时长（单位：月），当PayMode值为PrePay则此项配置有意义，默认为1月，取值范围为[1,100]
+        :type TimeSpan: int
         :param _Tags: 标签信息
         :type Tags: list of TagItem
         :param _Count: 一次购买的同步任务数量，取值范围为[1, 10]，默认为1
@@ -3326,6 +3328,7 @@ class CreateSyncJobRequest(AbstractModel):
         self._DstDatabaseType = None
         self._DstRegion = None
         self._Specification = None
+        self._TimeSpan = None
         self._Tags = None
         self._Count = None
         self._AutoRenew = None
@@ -3398,6 +3401,17 @@ class CreateSyncJobRequest(AbstractModel):
     @Specification.setter
     def Specification(self, Specification):
         self._Specification = Specification
+
+    @property
+    def TimeSpan(self):
+        """购买时长（单位：月），当PayMode值为PrePay则此项配置有意义，默认为1月，取值范围为[1,100]
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
 
     @property
     def Tags(self):
@@ -3473,6 +3487,7 @@ class CreateSyncJobRequest(AbstractModel):
         self._DstDatabaseType = params.get("DstDatabaseType")
         self._DstRegion = params.get("DstRegion")
         self._Specification = params.get("Specification")
+        self._TimeSpan = params.get("TimeSpan")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):

@@ -240,6 +240,29 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteFunctionVersion(self, request):
+        """该接口根据传入参数删除函数的指定版本。
+
+        :param request: Request instance for DeleteFunctionVersion.
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteFunctionVersionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteFunctionVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFunctionVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFunctionVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteLayerVersion(self, request):
         """删除指定层的指定版本，被删除的版本无法再关联到函数上，但不会影响正在引用这个层的函数。
 

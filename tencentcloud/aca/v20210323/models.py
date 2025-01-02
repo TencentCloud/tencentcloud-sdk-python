@@ -93,7 +93,7 @@ class CommonHeader(AbstractModel):
         r"""
         :param _HospitalId: 机构ID
         :type HospitalId: str
-        :param _Token: 合作方ID
+        :param _Token: token
         :type Token: str
         """
         self._HospitalId = None
@@ -112,7 +112,7 @@ class CommonHeader(AbstractModel):
 
     @property
     def Token(self):
-        """合作方ID
+        """token
         :rtype: str
         """
         return self._Token
@@ -260,19 +260,14 @@ class Department(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 科室ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Name: 科室名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Scope: 科室类型 0:门诊  1:住院  2:门诊+住院
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scope: int
         :param _OutpatientOn: 门诊区开关 true:此科室对应的门诊区开启智能审方功能, false:此科室对应的门诊区关闭智能审方功能; 仅对scope为0/2的科室生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutpatientOn: bool
         :param _InHospitalOn: 住院区开关 true:此科室对应的住院区开启智能审方功能, false:此科室对应的住院区关闭智能审方功能; 仅对scope为1/2的科室生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type InHospitalOn: bool
         """
         self._Id = None
@@ -284,7 +279,6 @@ class Department(AbstractModel):
     @property
     def Id(self):
         """科室ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -296,7 +290,6 @@ class Department(AbstractModel):
     @property
     def Name(self):
         """科室名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -308,7 +301,6 @@ class Department(AbstractModel):
     @property
     def Scope(self):
         """科室类型 0:门诊  1:住院  2:门诊+住院
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Scope
@@ -320,7 +312,6 @@ class Department(AbstractModel):
     @property
     def OutpatientOn(self):
         """门诊区开关 true:此科室对应的门诊区开启智能审方功能, false:此科室对应的门诊区关闭智能审方功能; 仅对scope为0/2的科室生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._OutpatientOn
@@ -332,7 +323,6 @@ class Department(AbstractModel):
     @property
     def InHospitalOn(self):
         """住院区开关 true:此科室对应的住院区开启智能审方功能, false:此科室对应的住院区关闭智能审方功能; 仅对scope为1/2的科室生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._InHospitalOn

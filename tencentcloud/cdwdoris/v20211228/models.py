@@ -5802,11 +5802,14 @@ class DescribeInstanceNodesResponse(AbstractModel):
         :param _InstanceNodesList: 实例节点总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNodesList: list of InstanceNode
+        :param _NodeRoles: 节点类型
+        :type NodeRoles: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._InstanceNodesList = None
+        self._NodeRoles = None
         self._RequestId = None
 
     @property
@@ -5833,6 +5836,17 @@ class DescribeInstanceNodesResponse(AbstractModel):
         self._InstanceNodesList = InstanceNodesList
 
     @property
+    def NodeRoles(self):
+        """节点类型
+        :rtype: list of str
+        """
+        return self._NodeRoles
+
+    @NodeRoles.setter
+    def NodeRoles(self, NodeRoles):
+        self._NodeRoles = NodeRoles
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5852,6 +5866,7 @@ class DescribeInstanceNodesResponse(AbstractModel):
                 obj = InstanceNode()
                 obj._deserialize(item)
                 self._InstanceNodesList.append(obj)
+        self._NodeRoles = params.get("NodeRoles")
         self._RequestId = params.get("RequestId")
 
 
@@ -7530,24 +7545,27 @@ class DescribeSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MasterSpec: zookeeper节点规格描述
+        :param _MasterSpec: fe节点规格描述
         :type MasterSpec: list of ResourceSpec
-        :param _CoreSpec: 数据节点规格描述
+        :param _CoreSpec: be节点规格描述
         :type CoreSpec: list of ResourceSpec
         :param _AttachCBSSpec: 云盘列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachCBSSpec: list of DiskSpec
+        :param _CNSpec: cn节点列表
+        :type CNSpec: list of ResourceSpec
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MasterSpec = None
         self._CoreSpec = None
         self._AttachCBSSpec = None
+        self._CNSpec = None
         self._RequestId = None
 
     @property
     def MasterSpec(self):
-        """zookeeper节点规格描述
+        """fe节点规格描述
         :rtype: list of ResourceSpec
         """
         return self._MasterSpec
@@ -7558,7 +7576,7 @@ class DescribeSpecResponse(AbstractModel):
 
     @property
     def CoreSpec(self):
-        """数据节点规格描述
+        """be节点规格描述
         :rtype: list of ResourceSpec
         """
         return self._CoreSpec
@@ -7578,6 +7596,17 @@ class DescribeSpecResponse(AbstractModel):
     @AttachCBSSpec.setter
     def AttachCBSSpec(self, AttachCBSSpec):
         self._AttachCBSSpec = AttachCBSSpec
+
+    @property
+    def CNSpec(self):
+        """cn节点列表
+        :rtype: list of ResourceSpec
+        """
+        return self._CNSpec
+
+    @CNSpec.setter
+    def CNSpec(self, CNSpec):
+        self._CNSpec = CNSpec
 
     @property
     def RequestId(self):
@@ -7610,6 +7639,12 @@ class DescribeSpecResponse(AbstractModel):
                 obj = DiskSpec()
                 obj._deserialize(item)
                 self._AttachCBSSpec.append(obj)
+        if params.get("CNSpec") is not None:
+            self._CNSpec = []
+            for item in params.get("CNSpec"):
+                obj = ResourceSpec()
+                obj._deserialize(item)
+                self._CNSpec.append(obj)
         self._RequestId = params.get("RequestId")
 
 

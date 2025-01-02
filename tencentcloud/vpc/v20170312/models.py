@@ -5602,37 +5602,26 @@ class CcnBandwidth(AbstractModel):
         :param _CcnId: 带宽所属的云联网ID。
         :type CcnId: str
         :param _CreatedTime: 实例的创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _ExpiredTime: 实例的过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
         :param _RegionFlowControlId: 带宽实例的唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionFlowControlId: str
         :param _RenewFlag: 带宽是否自动续费的标记。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: str
         :param _CcnRegionBandwidthLimit: 描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimitInfo`
         :param _MarketId: 云市场实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarketId: str
         :param _UserAccountID: 实例所属用户主账号ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserAccountID: str
         :param _IsCrossBorder: 是否跨境，`true`表示跨境，反之不跨境。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCrossBorder: bool
         :param _IsSecurityLock: `true`表示封禁，地域间流量不通，`false`解禁，地域间流量正常
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSecurityLock: bool
         :param _InstanceChargeType: `POSTPAID`表示后付费，`PREPAID`表示预付费。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargeType: str
         :param _UpdateTime: 实例更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._CcnId = None
@@ -5662,7 +5651,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def CreatedTime(self):
         """实例的创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -5674,7 +5662,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def ExpiredTime(self):
         """实例的过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpiredTime
@@ -5686,7 +5673,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def RegionFlowControlId(self):
         """带宽实例的唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionFlowControlId
@@ -5698,7 +5684,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def RenewFlag(self):
         """带宽是否自动续费的标记。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RenewFlag
@@ -5710,7 +5695,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def CcnRegionBandwidthLimit(self):
         """描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimitInfo`
         """
         return self._CcnRegionBandwidthLimit
@@ -5722,7 +5706,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def MarketId(self):
         """云市场实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarketId
@@ -5734,7 +5717,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def UserAccountID(self):
         """实例所属用户主账号ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserAccountID
@@ -5746,7 +5728,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def IsCrossBorder(self):
         """是否跨境，`true`表示跨境，反之不跨境。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCrossBorder
@@ -5758,7 +5739,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def IsSecurityLock(self):
         """`true`表示封禁，地域间流量不通，`false`解禁，地域间流量正常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsSecurityLock
@@ -5770,7 +5750,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def InstanceChargeType(self):
         """`POSTPAID`表示后付费，`PREPAID`表示预付费。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceChargeType
@@ -5782,7 +5761,6 @@ class CcnBandwidth(AbstractModel):
     @property
     def UpdateTime(self):
         """实例更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -10033,18 +10011,24 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         :type GatewayType: str
         :param _ModeType: 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持`ModeType`。
         :type ModeType: str
+        :param _GatewayAsn: 专线网关自定义ASN，范围：45090，64512-65534 和4200000000-4294967294
+        :type GatewayAsn: int
         :param _Zone: 专线网关可用区
         :type Zone: str
         :param _HaZoneGroupId: 专线网关高可用区容灾组ID
         :type HaZoneGroupId: str
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._DirectConnectGatewayName = None
         self._NetworkType = None
         self._NetworkInstanceId = None
         self._GatewayType = None
         self._ModeType = None
+        self._GatewayAsn = None
         self._Zone = None
         self._HaZoneGroupId = None
+        self._Tags = None
 
     @property
     def DirectConnectGatewayName(self):
@@ -10107,6 +10091,17 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         self._ModeType = ModeType
 
     @property
+    def GatewayAsn(self):
+        """专线网关自定义ASN，范围：45090，64512-65534 和4200000000-4294967294
+        :rtype: int
+        """
+        return self._GatewayAsn
+
+    @GatewayAsn.setter
+    def GatewayAsn(self, GatewayAsn):
+        self._GatewayAsn = GatewayAsn
+
+    @property
     def Zone(self):
         """专线网关可用区
         :rtype: str
@@ -10128,6 +10123,17 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
     def HaZoneGroupId(self, HaZoneGroupId):
         self._HaZoneGroupId = HaZoneGroupId
 
+    @property
+    def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DirectConnectGatewayName = params.get("DirectConnectGatewayName")
@@ -10135,8 +10141,15 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         self._NetworkInstanceId = params.get("NetworkInstanceId")
         self._GatewayType = params.get("GatewayType")
         self._ModeType = params.get("ModeType")
+        self._GatewayAsn = params.get("GatewayAsn")
         self._Zone = params.get("Zone")
         self._HaZoneGroupId = params.get("HaZoneGroupId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17006,13 +17019,10 @@ class CustomerGatewayVendor(AbstractModel):
     def __init__(self):
         r"""
         :param _Platform: 平台。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Platform: str
         :param _SoftwareVersion: 软件版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SoftwareVersion: str
         :param _VendorName: 供应商名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VendorName: str
         """
         self._Platform = None
@@ -17022,7 +17032,6 @@ class CustomerGatewayVendor(AbstractModel):
     @property
     def Platform(self):
         """平台。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Platform
@@ -17034,7 +17043,6 @@ class CustomerGatewayVendor(AbstractModel):
     @property
     def SoftwareVersion(self):
         """软件版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SoftwareVersion
@@ -17046,7 +17054,6 @@ class CustomerGatewayVendor(AbstractModel):
     @property
     def VendorName(self):
         """供应商名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VendorName
@@ -36847,42 +36854,34 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         :param _EnableBGPCommunity: 开启和关闭BGP的community属性。
         :type EnableBGPCommunity: bool
         :param _NatGatewayId: 绑定的NAT网关ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NatGatewayId: str
         :param _VXLANSupport: 专线网关是否支持VXLAN架构
-注意：此字段可能返回 null，表示取不到有效值。
         :type VXLANSupport: list of bool
         :param _ModeType: 云联网路由发布模式：`standard`（标准模式）、`exquisite`（精细模式）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModeType: str
         :param _LocalZone: 是否为localZone专线网关。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalZone: bool
         :param _Zone: 专线网关所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _EnableFlowDetails: 网关流控明细启用状态：
 0：关闭
 1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableFlowDetails: int
         :param _FlowDetailsUpdateTime: 开启、关闭网关流控明细时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowDetailsUpdateTime: str
         :param _NewAfc: 是否支持开启网关流控明细
 0：不支持
 1：支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewAfc: int
         :param _AccessNetworkType: 专线网关接入网络类型：
 <li>`VXLAN` - VXLAN类型。</li>
 <li>`MPLS` - MPLS类型。</li>
 <li>`Hybrid` - Hybrid类型。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessNetworkType: str
         :param _HaZoneList: 跨可用区容灾专线网关的可用区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type HaZoneList: list of str
+        :param _GatewayAsn: 专线网关自定义ASN
+        :type GatewayAsn: int
         """
         self._DirectConnectGatewayId = None
         self._DirectConnectGatewayName = None
@@ -36906,6 +36905,7 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self._NewAfc = None
         self._AccessNetworkType = None
         self._HaZoneList = None
+        self._GatewayAsn = None
 
     @property
     def DirectConnectGatewayId(self):
@@ -37051,7 +37051,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
     @property
     def NatGatewayId(self):
         """绑定的NAT网关ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NatGatewayId
@@ -37063,7 +37062,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
     @property
     def VXLANSupport(self):
         """专线网关是否支持VXLAN架构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of bool
         """
         return self._VXLANSupport
@@ -37075,7 +37073,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
     @property
     def ModeType(self):
         """云联网路由发布模式：`standard`（标准模式）、`exquisite`（精细模式）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModeType
@@ -37087,7 +37084,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
     @property
     def LocalZone(self):
         """是否为localZone专线网关。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._LocalZone
@@ -37099,7 +37095,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
     @property
     def Zone(self):
         """专线网关所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -37113,7 +37108,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         """网关流控明细启用状态：
 0：关闭
 1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnableFlowDetails
@@ -37125,7 +37119,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
     @property
     def FlowDetailsUpdateTime(self):
         """开启、关闭网关流控明细时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowDetailsUpdateTime
@@ -37139,7 +37132,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         """是否支持开启网关流控明细
 0：不支持
 1：支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NewAfc
@@ -37154,7 +37146,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
 <li>`VXLAN` - VXLAN类型。</li>
 <li>`MPLS` - MPLS类型。</li>
 <li>`Hybrid` - Hybrid类型。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessNetworkType
@@ -37166,7 +37157,6 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
     @property
     def HaZoneList(self):
         """跨可用区容灾专线网关的可用区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._HaZoneList
@@ -37174,6 +37164,17 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
     @HaZoneList.setter
     def HaZoneList(self, HaZoneList):
         self._HaZoneList = HaZoneList
+
+    @property
+    def GatewayAsn(self):
+        """专线网关自定义ASN
+        :rtype: int
+        """
+        return self._GatewayAsn
+
+    @GatewayAsn.setter
+    def GatewayAsn(self, GatewayAsn):
+        self._GatewayAsn = GatewayAsn
 
 
     def _deserialize(self, params):
@@ -37199,6 +37200,7 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self._NewAfc = params.get("NewAfc")
         self._AccessNetworkType = params.get("AccessNetworkType")
         self._HaZoneList = params.get("HaZoneList")
+        self._GatewayAsn = params.get("GatewayAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41245,16 +41247,12 @@ class HealthCheckConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _ProbeType: 探测模式，默认值NQA，不可修改。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProbeType: str
         :param _ProbeInterval: 探测间隔，腾讯云两次健康检查间隔时间，范围【1000-5000】，单位ms。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProbeInterval: int
         :param _ProbeThreshold: 探测次数，连续N次健康检查失败后执行路由切换，范围【3-8】，单位次。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProbeThreshold: int
         :param _ProbeTimeout: 探测超时时间，范围【10-5000】，单位ms。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProbeTimeout: int
         """
         self._ProbeType = None
@@ -41265,7 +41263,6 @@ class HealthCheckConfig(AbstractModel):
     @property
     def ProbeType(self):
         """探测模式，默认值NQA，不可修改。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProbeType
@@ -41277,7 +41274,6 @@ class HealthCheckConfig(AbstractModel):
     @property
     def ProbeInterval(self):
         """探测间隔，腾讯云两次健康检查间隔时间，范围【1000-5000】，单位ms。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProbeInterval
@@ -41289,7 +41285,6 @@ class HealthCheckConfig(AbstractModel):
     @property
     def ProbeThreshold(self):
         """探测次数，连续N次健康检查失败后执行路由切换，范围【3-8】，单位次。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProbeThreshold
@@ -41301,7 +41296,6 @@ class HealthCheckConfig(AbstractModel):
     @property
     def ProbeTimeout(self):
         """探测超时时间，范围【10-5000】，单位ms。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProbeTimeout
@@ -60324,10 +60318,8 @@ class SecurityPolicyDatabase(AbstractModel):
     def __init__(self):
         r"""
         :param _LocalCidrBlock: 本端网段
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalCidrBlock: str
         :param _RemoteCidrBlock: 对端网段
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteCidrBlock: list of str
         """
         self._LocalCidrBlock = None
@@ -60336,7 +60328,6 @@ class SecurityPolicyDatabase(AbstractModel):
     @property
     def LocalCidrBlock(self):
         """本端网段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalCidrBlock
@@ -60348,7 +60339,6 @@ class SecurityPolicyDatabase(AbstractModel):
     @property
     def RemoteCidrBlock(self):
         """对端网段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._RemoteCidrBlock
@@ -61747,7 +61737,6 @@ class SslVpnSever(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: VPC实例ID.
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SslVpnServerId: SSL-VPN-SERVER 实例ID。
         :type SslVpnServerId: str
@@ -61794,7 +61783,6 @@ class SslVpnSever(AbstractModel):
         :param _AccessPolicy: 策略信息
         :type AccessPolicy: list of AccessPolicy
         :param _SpName: CAM服务提供商Name
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpName: str
         """
         self._VpcId = None
@@ -61821,7 +61809,6 @@ class SslVpnSever(AbstractModel):
     @property
     def VpcId(self):
         """VPC实例ID.
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -62039,7 +62026,6 @@ class SslVpnSever(AbstractModel):
     @property
     def SpName(self):
         """CAM服务提供商Name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpName
@@ -62900,22 +62886,16 @@ class TrafficQosPolicySet(AbstractModel):
     def __init__(self):
         r"""
         :param _CcnId: CCN实例ID。形如：ccn-f49l6u0z。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
         :param _QosId: qos id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QosId: int
         :param _QosPolicyDescription: 描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QosPolicyDescription: str
         :param _QosPolicyName: 名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QosPolicyName: str
         :param _Bandwidth: 带宽。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bandwidth: int
         :param _QosPolicyId: 流量调度策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QosPolicyId: str
         """
         self._CcnId = None
@@ -62928,7 +62908,6 @@ class TrafficQosPolicySet(AbstractModel):
     @property
     def CcnId(self):
         """CCN实例ID。形如：ccn-f49l6u0z。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnId
@@ -62940,7 +62919,6 @@ class TrafficQosPolicySet(AbstractModel):
     @property
     def QosId(self):
         """qos id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._QosId
@@ -62952,7 +62930,6 @@ class TrafficQosPolicySet(AbstractModel):
     @property
     def QosPolicyDescription(self):
         """描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QosPolicyDescription
@@ -62964,7 +62941,6 @@ class TrafficQosPolicySet(AbstractModel):
     @property
     def QosPolicyName(self):
         """名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QosPolicyName
@@ -62976,7 +62952,6 @@ class TrafficQosPolicySet(AbstractModel):
     @property
     def Bandwidth(self):
         """带宽。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Bandwidth
@@ -62988,7 +62963,6 @@ class TrafficQosPolicySet(AbstractModel):
     @property
     def QosPolicyId(self):
         """流量调度策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QosPolicyId

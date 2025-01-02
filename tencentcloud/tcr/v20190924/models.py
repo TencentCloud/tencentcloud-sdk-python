@@ -9298,7 +9298,7 @@ class DescribeServiceAccountsRequest(AbstractModel):
         :type All: bool
         :param _EmbedPermission: 是否填充权限信息
         :type EmbedPermission: bool
-        :param _Filters: 过滤条件
+        :param _Filters: 过滤条件，key 目前只支持ServiceAccountName
         :type Filters: list of Filter
         :param _Offset: 偏移量,默认0
         :type Offset: int
@@ -9347,7 +9347,7 @@ class DescribeServiceAccountsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        """过滤条件，key 目前只支持ServiceAccountName
         :rtype: list of Filter
         """
         return self._Filters
@@ -18440,6 +18440,9 @@ class WebhookTrigger(AbstractModel):
         :type Description: str
         :param _NamespaceId: 触发器所属命名空间 Id
         :type NamespaceId: int
+        :param _NamespaceName: 触发器所属命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
         """
         self._Name = None
         self._Targets = None
@@ -18449,6 +18452,7 @@ class WebhookTrigger(AbstractModel):
         self._Id = None
         self._Description = None
         self._NamespaceId = None
+        self._NamespaceName = None
 
     @property
     def Name(self):
@@ -18538,6 +18542,18 @@ class WebhookTrigger(AbstractModel):
     def NamespaceId(self, NamespaceId):
         self._NamespaceId = NamespaceId
 
+    @property
+    def NamespaceName(self):
+        """触发器所属命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NamespaceName
+
+    @NamespaceName.setter
+    def NamespaceName(self, NamespaceName):
+        self._NamespaceName = NamespaceName
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -18553,6 +18569,7 @@ class WebhookTrigger(AbstractModel):
         self._Id = params.get("Id")
         self._Description = params.get("Description")
         self._NamespaceId = params.get("NamespaceId")
+        self._NamespaceName = params.get("NamespaceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

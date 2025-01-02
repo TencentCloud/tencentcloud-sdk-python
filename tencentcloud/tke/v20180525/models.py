@@ -3089,7 +3089,7 @@ class ClusterBasicSettings(AbstractModel):
         :type ClusterName: str
         :param _ClusterDescription: 集群描述
         :type ClusterDescription: str
-        :param _VpcId: 私有网络ID，形如vpc-xxx。创建托管空集群时必传。
+        :param _VpcId: 私有网络ID，形如vpc-e55paxnt。创建托管空集群时必传。
         :type VpcId: str
         :param _ProjectId: 集群内新增资源所属项目ID。
         :type ProjectId: int
@@ -3165,7 +3165,7 @@ class ClusterBasicSettings(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID，形如vpc-xxx。创建托管空集群时必传。
+        """私有网络ID，形如vpc-e55paxnt。创建托管空集群时必传。
         :rtype: str
         """
         return self._VpcId
@@ -15445,7 +15445,7 @@ class DescribeClusterNodePoolsRequest(AbstractModel):
     类型：String
     必选：否
 
-·  "Name":"Tags","Values": ["abc:1"]
+·  "Name":"Tags","Values": ["product:tke"]
     按照【标签键值对】进行过滤。
     类型：String
     必选：否
@@ -15477,7 +15477,7 @@ class DescribeClusterNodePoolsRequest(AbstractModel):
     类型：String
     必选：否
 
-·  "Name":"Tags","Values": ["abc:1"]
+·  "Name":"Tags","Values": ["product:tke"]
     按照【标签键值对】进行过滤。
     类型：String
     必选：否
@@ -17000,7 +17000,7 @@ class DescribeClustersRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 最大输出条数，默认20，最大为100
         :type Limit: int
-        :param _Filters: · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-123qajzs"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["abc:1"] 按照【标签键值对】进行过滤。 类型：String 必选：否
+        :param _Filters: · "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-2wds9k9p"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["product:tke"] 按照【标签键值对】进行过滤。 类型：String 必选：否
         :type Filters: list of Filter
         :param _ClusterType: 集群类型，例如：MANAGED_CLUSTER
         :type ClusterType: str
@@ -17047,7 +17047,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """· "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-123qajzs"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["abc:1"] 按照【标签键值对】进行过滤。 类型：String 必选：否
+        """· "Name":"ClusterName","Values": ["test"] 按照【集群名】进行过滤。 类型：String 必选：否 · "Name":"ClusterType","Values": ["MANAGED_CLUSTER"] 按照【集群类型】进行过滤。 类型：String 必选：否 · "Name":"ClusterStatus","Values": ["Running"] 按照【集群状态】进行过滤。 类型：String 必选：否 · "Name":"vpc-id","Values": ["vpc-2wds9k9p"] 按照【VPC】进行过滤。 类型：String 必选：否 · "Name":"tag-key","Values": ["testKey"] 按照【标签键】进行过滤。 类型：String 必选：否 · "Name":"tag-value","Values": ["testValue"] 按照【标签值】进行过滤。 类型：String 必选：否 · "Name":"Tags","Values": ["product:tke"] 按照【标签键值对】进行过滤。 类型：String 必选：否
         :rtype: list of Filter
         """
         return self._Filters
@@ -28685,7 +28685,7 @@ class ExistedInstance(AbstractModel):
         :param _AlreadyInCluster: 实例已经所在的集群ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlreadyInCluster: str
-        :param _InstanceId: 实例ID形如：ins-xxxxxxxx。
+        :param _InstanceId: 实例ID形如：ins-e55paxnt。
         :type InstanceId: str
         :param _InstanceName: 实例名称。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -28777,7 +28777,7 @@ class ExistedInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID形如：ins-xxxxxxxx。
+        """实例ID形如：ins-e55paxnt。
         :rtype: str
         """
         return self._InstanceId
@@ -34178,7 +34178,7 @@ class ModifyClusterImageRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _ImageId: 指定有效的镜像ID，格式形如img-xxxx。可通过登录控制台查询，也可调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715)，取返回信息中的ImageId字段。
+        :param _ImageId: 指定有效的镜像ID，格式形如img-e55paxnt。可通过登录控制台查询，也可调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715)，取返回信息中的ImageId字段。
         :type ImageId: str
         """
         self._ClusterId = None
@@ -34197,7 +34197,7 @@ class ModifyClusterImageRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """指定有效的镜像ID，格式形如img-xxxx。可通过登录控制台查询，也可调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715)，取返回信息中的ImageId字段。
+        """指定有效的镜像ID，格式形如img-e55paxnt。可通过登录控制台查询，也可调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715)，取返回信息中的ImageId字段。
         :rtype: str
         """
         return self._ImageId
