@@ -946,6 +946,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRedisTopHotKeys(self, request):
+        """热Key分析
+
+        :param request: Request instance for DescribeRedisTopHotKeys.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisTopHotKeysRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisTopHotKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisTopHotKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisTopHotKeysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRedisTopKeyPrefixList(self, request):
         """查询redis实例top key前缀列表。
 

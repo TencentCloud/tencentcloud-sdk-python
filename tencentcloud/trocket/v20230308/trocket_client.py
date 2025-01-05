@@ -1024,6 +1024,31 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTopicListByGroup(self, request):
+        """根据消费组获取主题列表，Filter参数使用说明如下：
+
+        TopicName，主题名称过滤
+
+        :param request: Request instance for DescribeTopicListByGroup.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicListByGroupRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicListByGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopicListByGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopicListByGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImportSourceClusterConsumerGroups(self, request):
         """导入消费者组列表
 

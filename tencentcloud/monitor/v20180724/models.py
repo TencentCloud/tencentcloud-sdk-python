@@ -4139,6 +4139,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type MigrateFlag: int
         :param _EbSubject: 事件配置的告警
         :type EbSubject: str
+        :param _AdditionalAlarmContent: 附加告警内容
+        :type AdditionalAlarmContent: str
+        :param _NoticeContentTmplBindInfos: 通知模板绑定信息
+        :type NoticeContentTmplBindInfos: list of NoticeContentTmplBindInfo
         """
         self._Module = None
         self._PolicyName = None
@@ -4159,6 +4163,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self._HierarchicalNotices = None
         self._MigrateFlag = None
         self._EbSubject = None
+        self._AdditionalAlarmContent = None
+        self._NoticeContentTmplBindInfos = None
 
     @property
     def Module(self):
@@ -4369,6 +4375,28 @@ class CreateAlarmPolicyRequest(AbstractModel):
     def EbSubject(self, EbSubject):
         self._EbSubject = EbSubject
 
+    @property
+    def AdditionalAlarmContent(self):
+        """附加告警内容
+        :rtype: str
+        """
+        return self._AdditionalAlarmContent
+
+    @AdditionalAlarmContent.setter
+    def AdditionalAlarmContent(self, AdditionalAlarmContent):
+        self._AdditionalAlarmContent = AdditionalAlarmContent
+
+    @property
+    def NoticeContentTmplBindInfos(self):
+        """通知模板绑定信息
+        :rtype: list of NoticeContentTmplBindInfo
+        """
+        return self._NoticeContentTmplBindInfos
+
+    @NoticeContentTmplBindInfos.setter
+    def NoticeContentTmplBindInfos(self, NoticeContentTmplBindInfos):
+        self._NoticeContentTmplBindInfos = NoticeContentTmplBindInfos
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -4413,6 +4441,13 @@ class CreateAlarmPolicyRequest(AbstractModel):
                 self._HierarchicalNotices.append(obj)
         self._MigrateFlag = params.get("MigrateFlag")
         self._EbSubject = params.get("EbSubject")
+        self._AdditionalAlarmContent = params.get("AdditionalAlarmContent")
+        if params.get("NoticeContentTmplBindInfos") is not None:
+            self._NoticeContentTmplBindInfos = []
+            for item in params.get("NoticeContentTmplBindInfos"):
+                obj = NoticeContentTmplBindInfo()
+                obj._deserialize(item)
+                self._NoticeContentTmplBindInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27481,12 +27516,15 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
         :type PolicyIds: list of str
         :param _HierarchicalNotices: 告警分级通知规则配置
         :type HierarchicalNotices: list of AlarmHierarchicalNotice
+        :param _NoticeContentTmplBindInfos: 通知内容模板绑定信息
+        :type NoticeContentTmplBindInfos: list of NoticeContentTmplBindInfo
         """
         self._Module = None
         self._PolicyId = None
         self._NoticeIds = None
         self._PolicyIds = None
         self._HierarchicalNotices = None
+        self._NoticeContentTmplBindInfos = None
 
     @property
     def Module(self):
@@ -27543,6 +27581,17 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
     def HierarchicalNotices(self, HierarchicalNotices):
         self._HierarchicalNotices = HierarchicalNotices
 
+    @property
+    def NoticeContentTmplBindInfos(self):
+        """通知内容模板绑定信息
+        :rtype: list of NoticeContentTmplBindInfo
+        """
+        return self._NoticeContentTmplBindInfos
+
+    @NoticeContentTmplBindInfos.setter
+    def NoticeContentTmplBindInfos(self, NoticeContentTmplBindInfos):
+        self._NoticeContentTmplBindInfos = NoticeContentTmplBindInfos
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -27555,6 +27604,12 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
                 obj = AlarmHierarchicalNotice()
                 obj._deserialize(item)
                 self._HierarchicalNotices.append(obj)
+        if params.get("NoticeContentTmplBindInfos") is not None:
+            self._NoticeContentTmplBindInfos = []
+            for item in params.get("NoticeContentTmplBindInfos"):
+                obj = NoticeContentTmplBindInfo()
+                obj._deserialize(item)
+                self._NoticeContentTmplBindInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29323,6 +29378,57 @@ class NoticeBindPolicys(AbstractModel):
     def _deserialize(self, params):
         self._NoticeId = params.get("NoticeId")
         self._PolicyIds = params.get("PolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeContentTmplBindInfo(AbstractModel):
+    """通知内容模板绑定信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentTmplID: 通知内容模板ID
+        :type ContentTmplID: str
+        :param _NoticeID: 通知模板ID
+        :type NoticeID: str
+        """
+        self._ContentTmplID = None
+        self._NoticeID = None
+
+    @property
+    def ContentTmplID(self):
+        """通知内容模板ID
+        :rtype: str
+        """
+        return self._ContentTmplID
+
+    @ContentTmplID.setter
+    def ContentTmplID(self, ContentTmplID):
+        self._ContentTmplID = ContentTmplID
+
+    @property
+    def NoticeID(self):
+        """通知模板ID
+        :rtype: str
+        """
+        return self._NoticeID
+
+    @NoticeID.setter
+    def NoticeID(self, NoticeID):
+        self._NoticeID = NoticeID
+
+
+    def _deserialize(self, params):
+        self._ContentTmplID = params.get("ContentTmplID")
+        self._NoticeID = params.get("NoticeID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

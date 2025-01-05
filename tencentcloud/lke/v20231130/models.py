@@ -5999,11 +5999,14 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
         :type AvailableCharSize: str
         :param _ExceedCharSize: 超过可用字符数上限的字符数
         :type ExceedCharSize: str
+        :param _UsedCharSize: 知识库使用字符总数
+        :type UsedCharSize: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AvailableCharSize = None
         self._ExceedCharSize = None
+        self._UsedCharSize = None
         self._RequestId = None
 
     @property
@@ -6029,6 +6032,17 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
         self._ExceedCharSize = ExceedCharSize
 
     @property
+    def UsedCharSize(self):
+        """知识库使用字符总数
+        :rtype: str
+        """
+        return self._UsedCharSize
+
+    @UsedCharSize.setter
+    def UsedCharSize(self, UsedCharSize):
+        self._UsedCharSize = UsedCharSize
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6043,6 +6057,7 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
     def _deserialize(self, params):
         self._AvailableCharSize = params.get("AvailableCharSize")
         self._ExceedCharSize = params.get("ExceedCharSize")
+        self._UsedCharSize = params.get("UsedCharSize")
         self._RequestId = params.get("RequestId")
 
 
@@ -8015,6 +8030,10 @@ class DescribeTokenUsageResponse(AbstractModel):
         :type SearchUsage: float
         :param _PageUsage: 文档解析消耗页数
         :type PageUsage: int
+        :param _SplitTokenUsage: 拆分token消耗量
+        :type SplitTokenUsage: float
+        :param _RagSearchUsage: Rag检索次数
+        :type RagSearchUsage: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8024,6 +8043,8 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._ApiCallStats = None
         self._SearchUsage = None
         self._PageUsage = None
+        self._SplitTokenUsage = None
+        self._RagSearchUsage = None
         self._RequestId = None
 
     @property
@@ -8093,6 +8114,28 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._PageUsage = PageUsage
 
     @property
+    def SplitTokenUsage(self):
+        """拆分token消耗量
+        :rtype: float
+        """
+        return self._SplitTokenUsage
+
+    @SplitTokenUsage.setter
+    def SplitTokenUsage(self, SplitTokenUsage):
+        self._SplitTokenUsage = SplitTokenUsage
+
+    @property
+    def RagSearchUsage(self):
+        """Rag检索次数
+        :rtype: float
+        """
+        return self._RagSearchUsage
+
+    @RagSearchUsage.setter
+    def RagSearchUsage(self, RagSearchUsage):
+        self._RagSearchUsage = RagSearchUsage
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8111,6 +8154,8 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._ApiCallStats = params.get("ApiCallStats")
         self._SearchUsage = params.get("SearchUsage")
         self._PageUsage = params.get("PageUsage")
+        self._SplitTokenUsage = params.get("SplitTokenUsage")
+        self._RagSearchUsage = params.get("RagSearchUsage")
         self._RequestId = params.get("RequestId")
 
 

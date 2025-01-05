@@ -7243,6 +7243,165 @@ class DescribeRedisTopBigKeysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRedisTopHotKeysRequest(AbstractModel):
+    """DescribeRedisTopHotKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param _StartTime: 开始时间，如“2024-09-22T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+        :type StartTime: str
+        :param _EndTime: 结束时间，如“2024-09-22T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+        :type EndTime: str
+        :param _Product: 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _InstanceNodeIds: Redis 节点数组。
+        :type InstanceNodeIds: list of str
+        :param _Limit: top 数目，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+        self._InstanceNodeIds = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间，如“2024-09-22T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间，如“2024-09-22T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        """服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceNodeIds(self):
+        """Redis 节点数组。
+        :rtype: list of str
+        """
+        return self._InstanceNodeIds
+
+    @InstanceNodeIds.setter
+    def InstanceNodeIds(self, InstanceNodeIds):
+        self._InstanceNodeIds = InstanceNodeIds
+
+    @property
+    def Limit(self):
+        """top 数目，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        self._InstanceNodeIds = params.get("InstanceNodeIds")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisTopHotKeysResponse(AbstractModel):
+    """DescribeRedisTopHotKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopHotKeys: 热Key分析结果
+        :type TopHotKeys: list of TopHotKeys
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TopHotKeys = None
+        self._RequestId = None
+
+    @property
+    def TopHotKeys(self):
+        """热Key分析结果
+        :rtype: list of TopHotKeys
+        """
+        return self._TopHotKeys
+
+    @TopHotKeys.setter
+    def TopHotKeys(self, TopHotKeys):
+        self._TopHotKeys = TopHotKeys
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TopHotKeys") is not None:
+            self._TopHotKeys = []
+            for item in params.get("TopHotKeys"):
+                obj = TopHotKeys()
+                obj._deserialize(item)
+                self._TopHotKeys.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
     """DescribeRedisTopKeyPrefixList请求参数结构体
 
@@ -16271,6 +16430,102 @@ class TimeSlice(AbstractModel):
     def _deserialize(self, params):
         self._Count = params.get("Count")
         self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopHotKeys(AbstractModel):
+    """热key分析返回信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 访问频次。
+        :type Count: int
+        :param _Db: 热Key所属数据库。
+        :type Db: str
+        :param _InstanceNodeId: Redis节点。
+        :type InstanceNodeId: str
+        :param _Key: 热Key。
+        :type Key: str
+        :param _Type: 数据类型。
+        :type Type: str
+        """
+        self._Count = None
+        self._Db = None
+        self._InstanceNodeId = None
+        self._Key = None
+        self._Type = None
+
+    @property
+    def Count(self):
+        """访问频次。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Db(self):
+        """热Key所属数据库。
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def InstanceNodeId(self):
+        """Redis节点。
+        :rtype: str
+        """
+        return self._InstanceNodeId
+
+    @InstanceNodeId.setter
+    def InstanceNodeId(self, InstanceNodeId):
+        self._InstanceNodeId = InstanceNodeId
+
+    @property
+    def Key(self):
+        """热Key。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Type(self):
+        """数据类型。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Db = params.get("Db")
+        self._InstanceNodeId = params.get("InstanceNodeId")
+        self._Key = params.get("Key")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

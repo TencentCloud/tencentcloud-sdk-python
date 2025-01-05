@@ -1884,7 +1884,7 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
 fps 要求：【15-60】fps
 分辨率要求：单边像素要求在 【360~4096】 之间。
 大小要求：不超过500MB
-
+请保证文件的下载速度，否则会下载失败。
         :type VideoUrl: str
         :param _SrcLang: 输入视频中音频语种
 目前支持语种范围：zh(中文), en(英文)
@@ -1893,8 +1893,9 @@ fps 要求：【15-60】fps
 格式要求：支持 mp3、m4a、aac、wav 格式。
 时长要求：【5~600】秒，音频时长要匹配视频时长。
 大小要求：不超过 100MB。
+请保证文件的下载速度，否则会下载失败。
         :type AudioUrl: str
-        :param _DstLang: 输出视频中翻译语种
+        :param _DstLang: 输出视频中翻译语种。默认是en(英语)。
 目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
         :type DstLang: str
         :param _VoiceType: 翻译语种匹配音色种别，其他说明如下：
@@ -1932,7 +1933,7 @@ fps 要求：【15-60】fps
 fps 要求：【15-60】fps
 分辨率要求：单边像素要求在 【360~4096】 之间。
 大小要求：不超过500MB
-
+请保证文件的下载速度，否则会下载失败。
         :rtype: str
         """
         return self._VideoUrl
@@ -1959,6 +1960,7 @@ fps 要求：【15-60】fps
 格式要求：支持 mp3、m4a、aac、wav 格式。
 时长要求：【5~600】秒，音频时长要匹配视频时长。
 大小要求：不超过 100MB。
+请保证文件的下载速度，否则会下载失败。
         :rtype: str
         """
         return self._AudioUrl
@@ -1969,7 +1971,7 @@ fps 要求：【15-60】fps
 
     @property
     def DstLang(self):
-        """输出视频中翻译语种
+        """输出视频中翻译语种。默认是en(英语)。
 目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
         :rtype: str
         """

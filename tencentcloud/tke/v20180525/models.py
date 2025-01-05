@@ -27669,7 +27669,7 @@ class EksCluster(AbstractModel):
         :type SubnetIds: list of str
         :param _K8SVersion: k8s 版本号
         :type K8SVersion: str
-        :param _Status: 集群状态(running运行中，initializing 初始化中，failed异常)
+        :param _Status: 集群状态(running 运行中，initializing 初始化中，Failed 异常，Idling 空闲中，Activating 激活中，Terminating 删除中)
         :type Status: str
         :param _ClusterDesc: 集群描述信息
         :type ClusterDesc: str
@@ -27758,7 +27758,7 @@ class EksCluster(AbstractModel):
 
     @property
     def Status(self):
-        """集群状态(running运行中，initializing 初始化中，failed异常)
+        """集群状态(running 运行中，initializing 初始化中，Failed 异常，Idling 空闲中，Activating 激活中，Terminating 删除中)
         :rtype: str
         """
         return self._Status
@@ -39194,7 +39194,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 集群ID
+        :param _Region: 地域
         :type Region: str
         :param _ClusterType: 集群类型
         :type ClusterType: str
@@ -39222,7 +39222,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def Region(self):
-        """集群ID
+        """地域
         :rtype: str
         """
         return self._Region
@@ -42439,6 +42439,15 @@ class ReleaseDetails(AbstractModel):
         :param _ComputedValues: 应用参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComputedValues: str
+        :param _ChartFrom: chart 的来源， tke-market, others
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChartFrom: str
+        :param _ChartURL: 第三方chart 的安装地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChartURL: str
+        :param _Resources: 通过chart 创建的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: str
         """
         self._Name = None
         self._Namespace = None
@@ -42455,6 +42464,9 @@ class ReleaseDetails(AbstractModel):
         self._FirstDeployedTime = None
         self._LastDeployedTime = None
         self._ComputedValues = None
+        self._ChartFrom = None
+        self._ChartURL = None
+        self._Resources = None
 
     @property
     def Name(self):
@@ -42634,6 +42646,42 @@ class ReleaseDetails(AbstractModel):
     def ComputedValues(self, ComputedValues):
         self._ComputedValues = ComputedValues
 
+    @property
+    def ChartFrom(self):
+        """chart 的来源， tke-market, others
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChartFrom
+
+    @ChartFrom.setter
+    def ChartFrom(self, ChartFrom):
+        self._ChartFrom = ChartFrom
+
+    @property
+    def ChartURL(self):
+        """第三方chart 的安装地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChartURL
+
+    @ChartURL.setter
+    def ChartURL(self, ChartURL):
+        self._ChartURL = ChartURL
+
+    @property
+    def Resources(self):
+        """通过chart 创建的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -42651,6 +42699,9 @@ class ReleaseDetails(AbstractModel):
         self._FirstDeployedTime = params.get("FirstDeployedTime")
         self._LastDeployedTime = params.get("LastDeployedTime")
         self._ComputedValues = params.get("ComputedValues")
+        self._ChartFrom = params.get("ChartFrom")
+        self._ChartURL = params.get("ChartURL")
+        self._Resources = params.get("Resources")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
