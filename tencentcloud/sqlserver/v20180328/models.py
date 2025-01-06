@@ -12009,10 +12009,14 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type TDEConfig: :class:`tencentcloud.sqlserver.v20180328.models.TDEConfigAttribute`
         :param _SSLConfig: SSL加密
         :type SSLConfig: :class:`tencentcloud.sqlserver.v20180328.models.SSLConfig`
-        :param _DrReadableInfo: 备机只读信息
+        :param _DrReadableInfo: 双节点备机只读信息
         :type DrReadableInfo: :class:`tencentcloud.sqlserver.v20180328.models.DrReadableInfo`
         :param _OldVipList: 等待回收的IP列表
         :type OldVipList: list of OldVip
+        :param _XEventStatus: 操作日志采集状态，enable-采集中，disable-不可用，renew_doing-配置开启或关闭中
+        :type XEventStatus: str
+        :param _MultiDrReadableInfo: 多节点备机只读信息
+        :type MultiDrReadableInfo: list of DrReadableInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12028,6 +12032,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._SSLConfig = None
         self._DrReadableInfo = None
         self._OldVipList = None
+        self._XEventStatus = None
+        self._MultiDrReadableInfo = None
         self._RequestId = None
 
     @property
@@ -12142,7 +12148,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def DrReadableInfo(self):
-        """备机只读信息
+        """双节点备机只读信息
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DrReadableInfo`
         """
         return self._DrReadableInfo
@@ -12161,6 +12167,28 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
     @OldVipList.setter
     def OldVipList(self, OldVipList):
         self._OldVipList = OldVipList
+
+    @property
+    def XEventStatus(self):
+        """操作日志采集状态，enable-采集中，disable-不可用，renew_doing-配置开启或关闭中
+        :rtype: str
+        """
+        return self._XEventStatus
+
+    @XEventStatus.setter
+    def XEventStatus(self, XEventStatus):
+        self._XEventStatus = XEventStatus
+
+    @property
+    def MultiDrReadableInfo(self):
+        """多节点备机只读信息
+        :rtype: list of DrReadableInfo
+        """
+        return self._MultiDrReadableInfo
+
+    @MultiDrReadableInfo.setter
+    def MultiDrReadableInfo(self, MultiDrReadableInfo):
+        self._MultiDrReadableInfo = MultiDrReadableInfo
 
     @property
     def RequestId(self):
@@ -12198,6 +12226,13 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
                 obj = OldVip()
                 obj._deserialize(item)
                 self._OldVipList.append(obj)
+        self._XEventStatus = params.get("XEventStatus")
+        if params.get("MultiDrReadableInfo") is not None:
+            self._MultiDrReadableInfo = []
+            for item in params.get("MultiDrReadableInfo"):
+                obj = DrReadableInfo()
+                obj._deserialize(item)
+                self._MultiDrReadableInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12250,7 +12285,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SearchKey: str
         :param _UidSet: 实例唯一Uid列表
         :type UidSet: list of str
-        :param _InstanceType: 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+        :param _InstanceType: 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务,cvmHA-云盘双机高可用，cvmRO-云盘只读副本,MultiHA-多节点,cvmMultiHA-云盘多节点
         :type InstanceType: str
         :param _PaginationType: 分页查询方式 offset-按照偏移量分页查询，pageNumber-按照页数分页查询，默认取值pageNumber
         :type PaginationType: str
@@ -12452,7 +12487,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+        """实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务,cvmHA-云盘双机高可用，cvmRO-云盘只读副本,MultiHA-多节点,cvmMultiHA-云盘多节点
         :rtype: str
         """
         return self._InstanceType
@@ -23209,6 +23244,8 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         :param _DRNetwork: 目标节点，0-修改主节点网络，1-修改备节点网络，默认取值0
 
         :type DRNetwork: int
+        :param _DrInstanceId: 备机资源ID。当DRNetwork = 1时必填
+        :type DrInstanceId: str
         """
         self._InstanceId = None
         self._NewVpcId = None
@@ -23216,6 +23253,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         self._OldIpRetainTime = None
         self._Vip = None
         self._DRNetwork = None
+        self._DrInstanceId = None
 
     @property
     def InstanceId(self):
@@ -23284,6 +23322,17 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
     def DRNetwork(self, DRNetwork):
         self._DRNetwork = DRNetwork
 
+    @property
+    def DrInstanceId(self):
+        """备机资源ID。当DRNetwork = 1时必填
+        :rtype: str
+        """
+        return self._DrInstanceId
+
+    @DrInstanceId.setter
+    def DrInstanceId(self, DrInstanceId):
+        self._DrInstanceId = DrInstanceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -23292,6 +23341,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         self._OldIpRetainTime = params.get("OldIpRetainTime")
         self._Vip = params.get("Vip")
         self._DRNetwork = params.get("DRNetwork")
+        self._DrInstanceId = params.get("DrInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31381,6 +31431,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type MultiZones: str
         :param _WaitSwitch: 执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行
         :type WaitSwitch: int
+        :param _DrZones: 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+
+        :type DrZones: list of DrZoneInfo
         """
         self._InstanceId = None
         self._Memory = None
@@ -31392,6 +31445,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._HAType = None
         self._MultiZones = None
         self._WaitSwitch = None
+        self._DrZones = None
 
     @property
     def InstanceId(self):
@@ -31503,6 +31557,18 @@ class UpgradeDBInstanceRequest(AbstractModel):
     def WaitSwitch(self, WaitSwitch):
         self._WaitSwitch = WaitSwitch
 
+    @property
+    def DrZones(self):
+        """多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+
+        :rtype: list of DrZoneInfo
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -31515,6 +31581,12 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._HAType = params.get("HAType")
         self._MultiZones = params.get("MultiZones")
         self._WaitSwitch = params.get("WaitSwitch")
+        if params.get("DrZones") is not None:
+            self._DrZones = []
+            for item in params.get("DrZones"):
+                obj = DrZoneInfo()
+                obj._deserialize(item)
+                self._DrZones.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

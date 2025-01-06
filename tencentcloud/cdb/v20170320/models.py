@@ -21519,6 +21519,130 @@ class DescribeSupportedPrivilegesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTableColumnsRequest(AbstractModel):
+    """DescribeTableColumns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :type InstanceId: str
+        :param _Database: 数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/253/7167)接口获得。
+        :type Database: str
+        :param _Table: 数据库中的表的名称。
+        :type Table: str
+        """
+        self._InstanceId = None
+        self._Database = None
+        self._Table = None
+
+    @property
+    def InstanceId(self):
+        """实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Database(self):
+        """数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/253/7167)接口获得。
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        """数据库中的表的名称。
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableColumnsResponse(AbstractModel):
+    """DescribeTableColumns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合查询条件的实例总数。
+        :type TotalCount: int
+        :param _Items: 返回的数据库列信息。
+        :type Items: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合查询条件的实例总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        """返回的数据库列信息。
+        :rtype: list of str
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Items = params.get("Items")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTablesRequest(AbstractModel):
     """DescribeTables请求参数结构体
 

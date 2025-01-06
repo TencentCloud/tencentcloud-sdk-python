@@ -3020,6 +3020,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PauseTWeCallDevice(self, request):
+        """暂停设备
+
+        :param request: Request instance for PauseTWeCallDevice.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PauseTWeCallDeviceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.PauseTWeCallDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseTWeCallDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseTWeCallDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def PublishBroadcastMessage(self, request):
         """发布广播消息、发布RRPC消息属于早期服务，目前已停止维护，需要从官网下线。
 
@@ -3231,6 +3254,52 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetTWeCallDevice(self, request):
+        """重置设备
+
+        :param request: Request instance for ResetTWeCallDevice.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResetTWeCallDeviceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ResetTWeCallDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetTWeCallDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetTWeCallDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeWeCallDevice(self, request):
+        """恢复设备
+
+        :param request: Request instance for ResumeWeCallDevice.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResumeWeCallDeviceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ResumeWeCallDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeWeCallDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeWeCallDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchPositionSpace(self, request):
         """搜索位置空间
 
@@ -3314,6 +3383,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("TransferCloudStorage", params, headers=headers)
             response = json.loads(body)
             model = models.TransferCloudStorageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TransferTWeCallDevice(self, request):
+        """转移设备
+
+        :param request: Request instance for TransferTWeCallDevice.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.TransferTWeCallDeviceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TransferTWeCallDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferTWeCallDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferTWeCallDeviceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

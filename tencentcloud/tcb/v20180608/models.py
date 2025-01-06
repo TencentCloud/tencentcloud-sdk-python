@@ -372,7 +372,7 @@ class AuthDomain(AbstractModel):
 
 
 class BaasPackageInfo(AbstractModel):
-    """新套餐套餐详情
+    """云开发新套餐详情
 
     """
 

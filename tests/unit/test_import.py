@@ -814,6 +814,11 @@ def test_import_lke():
     from tencentcloud.lke.v20231130 import models
 
 
+def test_import_lkeap():
+    from tencentcloud.lkeap.v20240522 import lkeap_client
+    from tencentcloud.lkeap.v20240522 import models
+
+
 def test_import_lowcode():
     from tencentcloud.lowcode.v20210108 import lowcode_client
     from tencentcloud.lowcode.v20210108 import models

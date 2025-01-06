@@ -1405,6 +1405,8 @@ class AlarmPolicy(AbstractModel):
         :param _TagOperation: 多标签交/并集关系
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagOperation: str
+        :param _NoticeTmplBindInfos: 通知模板绑定内容模板信息
+        :type NoticeTmplBindInfos: list of NoticeContentTmplBindInfo
         """
         self._PolicyId = None
         self._PolicyName = None
@@ -1445,6 +1447,7 @@ class AlarmPolicy(AbstractModel):
         self._Tags = None
         self._IsSupportAlarmTag = None
         self._TagOperation = None
+        self._NoticeTmplBindInfos = None
 
     @property
     def PolicyId(self):
@@ -1917,6 +1920,17 @@ class AlarmPolicy(AbstractModel):
     def TagOperation(self, TagOperation):
         self._TagOperation = TagOperation
 
+    @property
+    def NoticeTmplBindInfos(self):
+        """通知模板绑定内容模板信息
+        :rtype: list of NoticeContentTmplBindInfo
+        """
+        return self._NoticeTmplBindInfos
+
+    @NoticeTmplBindInfos.setter
+    def NoticeTmplBindInfos(self, NoticeTmplBindInfos):
+        self._NoticeTmplBindInfos = NoticeTmplBindInfos
+
 
     def _deserialize(self, params):
         self._PolicyId = params.get("PolicyId")
@@ -1991,6 +2005,12 @@ class AlarmPolicy(AbstractModel):
                 self._Tags.append(obj)
         self._IsSupportAlarmTag = params.get("IsSupportAlarmTag")
         self._TagOperation = params.get("TagOperation")
+        if params.get("NoticeTmplBindInfos") is not None:
+            self._NoticeTmplBindInfos = []
+            for item in params.get("NoticeTmplBindInfos"):
+                obj = NoticeContentTmplBindInfo()
+                obj._deserialize(item)
+                self._NoticeTmplBindInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11142,6 +11162,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type PromInsId: str
         :param _ReceiverOnCallFormIDs: 根据排班表搜索
         :type ReceiverOnCallFormIDs: list of str
+        :param _NoticeContentTmplIDs: 通知内容模板ID筛选
+        :type NoticeContentTmplIDs: list of str
         """
         self._Module = None
         self._PageNumber = None
@@ -11169,6 +11191,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self._Tags = None
         self._PromInsId = None
         self._ReceiverOnCallFormIDs = None
+        self._NoticeContentTmplIDs = None
 
     @property
     def Module(self):
@@ -11465,6 +11488,17 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
     def ReceiverOnCallFormIDs(self, ReceiverOnCallFormIDs):
         self._ReceiverOnCallFormIDs = ReceiverOnCallFormIDs
 
+    @property
+    def NoticeContentTmplIDs(self):
+        """通知内容模板ID筛选
+        :rtype: list of str
+        """
+        return self._NoticeContentTmplIDs
+
+    @NoticeContentTmplIDs.setter
+    def NoticeContentTmplIDs(self, NoticeContentTmplIDs):
+        self._NoticeContentTmplIDs = NoticeContentTmplIDs
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -11503,6 +11537,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
                 self._Tags.append(obj)
         self._PromInsId = params.get("PromInsId")
         self._ReceiverOnCallFormIDs = params.get("ReceiverOnCallFormIDs")
+        self._NoticeContentTmplIDs = params.get("NoticeContentTmplIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

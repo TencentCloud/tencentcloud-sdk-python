@@ -972,6 +972,15 @@ class AlarmEventInfo(AbstractModel):
         :param _AlarmReason: 告警原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmReason: str
+        :param _IndicatorTimeRangeValue: 近范围值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorTimeRangeValue: int
+        :param _IndicatorTimeRangeUnit: 近范围单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorTimeRangeUnit: str
+        :param _SyncType: 同步类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncType: int
         """
         self._AlarmId = None
         self._AlarmTime = None
@@ -1000,6 +1009,9 @@ class AlarmEventInfo(AbstractModel):
         self._MonitorObjectName = None
         self._Threshold = None
         self._AlarmReason = None
+        self._IndicatorTimeRangeValue = None
+        self._IndicatorTimeRangeUnit = None
+        self._SyncType = None
 
     @property
     def AlarmId(self):
@@ -1316,6 +1328,42 @@ class AlarmEventInfo(AbstractModel):
     def AlarmReason(self, AlarmReason):
         self._AlarmReason = AlarmReason
 
+    @property
+    def IndicatorTimeRangeValue(self):
+        """近范围值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndicatorTimeRangeValue
+
+    @IndicatorTimeRangeValue.setter
+    def IndicatorTimeRangeValue(self, IndicatorTimeRangeValue):
+        self._IndicatorTimeRangeValue = IndicatorTimeRangeValue
+
+    @property
+    def IndicatorTimeRangeUnit(self):
+        """近范围单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IndicatorTimeRangeUnit
+
+    @IndicatorTimeRangeUnit.setter
+    def IndicatorTimeRangeUnit(self, IndicatorTimeRangeUnit):
+        self._IndicatorTimeRangeUnit = IndicatorTimeRangeUnit
+
+    @property
+    def SyncType(self):
+        """同步类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SyncType
+
+    @SyncType.setter
+    def SyncType(self, SyncType):
+        self._SyncType = SyncType
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -1345,6 +1393,9 @@ class AlarmEventInfo(AbstractModel):
         self._MonitorObjectName = params.get("MonitorObjectName")
         self._Threshold = params.get("Threshold")
         self._AlarmReason = params.get("AlarmReason")
+        self._IndicatorTimeRangeValue = params.get("IndicatorTimeRangeValue")
+        self._IndicatorTimeRangeUnit = params.get("IndicatorTimeRangeUnit")
+        self._SyncType = params.get("SyncType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12692,7 +12743,16 @@ class CreateTaskFolderRequest(AbstractModel):
         :type WorkflowId: str
         :param _ParentFolderId: 父文件夹ID
         :type ParentFolderId: str
-        :param _TaskNodeType: 目录分类
+        :param _TaskNodeType: 目录分类，该值必传，枚举值如下：
+ETL：数据集成
+EMR：EMR
+TBDS：TBDS
+DLC：DLC
+TDSQL：TDSQL
+TCHOUSE：TCHOUSE
+GENERAL：通用
+TI_ONE：TI-ONE机器学习
+ACROSS_WORKFLOWS：跨工作流
         :type TaskNodeType: str
         """
         self._ProjectId = None
@@ -12747,7 +12807,16 @@ class CreateTaskFolderRequest(AbstractModel):
 
     @property
     def TaskNodeType(self):
-        """目录分类
+        """目录分类，该值必传，枚举值如下：
+ETL：数据集成
+EMR：EMR
+TBDS：TBDS
+DLC：DLC
+TDSQL：TDSQL
+TCHOUSE：TCHOUSE
+GENERAL：通用
+TI_ONE：TI-ONE机器学习
+ACROSS_WORKFLOWS：跨工作流
         :rtype: str
         """
         return self._TaskNodeType

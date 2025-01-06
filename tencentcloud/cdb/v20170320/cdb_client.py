@@ -2421,6 +2421,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTableColumns(self, request):
+        """本接口(DescribeTableColumns)用于查询云数据库实例的指定数据库表的列信息，仅支持主实例和灾备实例。
+
+        :param request: Request instance for DescribeTableColumns.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTableColumnsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeTableColumnsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableColumns", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableColumnsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTables(self, request):
         """本接口(DescribeTables)用于查询云数据库实例的数据库表信息，仅支持主实例和灾备实例，不支持只读实例。
 
