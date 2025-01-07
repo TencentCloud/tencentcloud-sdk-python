@@ -23993,6 +23993,18 @@ class DescribeVoucherInfoRequest(AbstractModel):
         :type VoucherMainType: str
         :param _VoucherSubType: 代金券副类型 discount 为折扣券 deduct 为抵扣券
         :type VoucherSubType: str
+        :param _StartTimeFrom: 券有效时间开始时间
+        :type StartTimeFrom: str
+        :param _StartTimeTo: 券有效时间结束时间
+        :type StartTimeTo: str
+        :param _EndTimeFrom: 券失效时间开始时间
+        :type EndTimeFrom: str
+        :param _EndTimeTo: 券失效时间结束时间
+        :type EndTimeTo: str
+        :param _CreateTimeFrom: 发券时间开始时间
+        :type CreateTimeFrom: str
+        :param _CreateTimeTo: 发券时间结束时间
+        :type CreateTimeTo: str
         """
         self._Limit = None
         self._Offset = None
@@ -24011,6 +24023,12 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._Operator = None
         self._VoucherMainType = None
         self._VoucherSubType = None
+        self._StartTimeFrom = None
+        self._StartTimeTo = None
+        self._EndTimeFrom = None
+        self._EndTimeTo = None
+        self._CreateTimeFrom = None
+        self._CreateTimeTo = None
 
     @property
     def Limit(self):
@@ -24199,6 +24217,72 @@ class DescribeVoucherInfoRequest(AbstractModel):
     def VoucherSubType(self, VoucherSubType):
         self._VoucherSubType = VoucherSubType
 
+    @property
+    def StartTimeFrom(self):
+        """券有效时间开始时间
+        :rtype: str
+        """
+        return self._StartTimeFrom
+
+    @StartTimeFrom.setter
+    def StartTimeFrom(self, StartTimeFrom):
+        self._StartTimeFrom = StartTimeFrom
+
+    @property
+    def StartTimeTo(self):
+        """券有效时间结束时间
+        :rtype: str
+        """
+        return self._StartTimeTo
+
+    @StartTimeTo.setter
+    def StartTimeTo(self, StartTimeTo):
+        self._StartTimeTo = StartTimeTo
+
+    @property
+    def EndTimeFrom(self):
+        """券失效时间开始时间
+        :rtype: str
+        """
+        return self._EndTimeFrom
+
+    @EndTimeFrom.setter
+    def EndTimeFrom(self, EndTimeFrom):
+        self._EndTimeFrom = EndTimeFrom
+
+    @property
+    def EndTimeTo(self):
+        """券失效时间结束时间
+        :rtype: str
+        """
+        return self._EndTimeTo
+
+    @EndTimeTo.setter
+    def EndTimeTo(self, EndTimeTo):
+        self._EndTimeTo = EndTimeTo
+
+    @property
+    def CreateTimeFrom(self):
+        """发券时间开始时间
+        :rtype: str
+        """
+        return self._CreateTimeFrom
+
+    @CreateTimeFrom.setter
+    def CreateTimeFrom(self, CreateTimeFrom):
+        self._CreateTimeFrom = CreateTimeFrom
+
+    @property
+    def CreateTimeTo(self):
+        """发券时间结束时间
+        :rtype: str
+        """
+        return self._CreateTimeTo
+
+    @CreateTimeTo.setter
+    def CreateTimeTo(self, CreateTimeTo):
+        self._CreateTimeTo = CreateTimeTo
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -24218,6 +24302,12 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._Operator = params.get("Operator")
         self._VoucherMainType = params.get("VoucherMainType")
         self._VoucherSubType = params.get("VoucherSubType")
+        self._StartTimeFrom = params.get("StartTimeFrom")
+        self._StartTimeTo = params.get("StartTimeTo")
+        self._EndTimeFrom = params.get("EndTimeFrom")
+        self._EndTimeTo = params.get("EndTimeTo")
+        self._CreateTimeFrom = params.get("CreateTimeFrom")
+        self._CreateTimeTo = params.get("CreateTimeTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

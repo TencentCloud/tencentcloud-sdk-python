@@ -41,6 +41,9 @@ INVALIDPARAMETERVALUE_INSTANCEHASBEENDELETED = 'InvalidParameterValue.InstanceHa
 # 实例已隔离。
 INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = 'InvalidParameterValue.InstanceHasBeenIsolated'
 
+# 实例类型取值错误，需要指定实例类型为副本集或分片。
+INVALIDPARAMETERVALUE_INSTANCETYPEERROR = 'InvalidParameterValue.InstanceTypeError'
+
 # limit取值范围[1,100]。
 INVALIDPARAMETERVALUE_LIMITPARAOUTOFRANGE = 'InvalidParameterValue.LimitParaOutOfRange'
 

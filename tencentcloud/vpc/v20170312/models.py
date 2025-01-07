@@ -1484,9 +1484,9 @@ class AddressTemplateItem(AbstractModel):
         r"""
         :param _AddressTemplateId: IP地址模板ID
         :type AddressTemplateId: str
-        :param _AddressTemplateName: IP模板名称
+        :param _AddressTemplateName: IP模板名称。
         :type AddressTemplateName: str
-        :param _From: 废弃字段
+        :param _From: 废弃字段。
         :type From: str
         :param _To: 废弃字段
         :type To: str
@@ -1509,7 +1509,7 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def AddressTemplateName(self):
-        """IP模板名称
+        """IP模板名称。
         :rtype: str
         """
         return self._AddressTemplateName
@@ -1520,7 +1520,7 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def From(self):
-        """废弃字段
+        """废弃字段。
         :rtype: str
         """
         return self._From
@@ -41110,31 +41110,19 @@ class HaVipAssociation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HaVipId: HaVip实例唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HaVipId: str
         :param _InstanceId: HaVip绑定的子机或网卡唯一ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _HaVipId: HaVip实例唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HaVipId: str
         :param _InstanceType: HaVip绑定的类型。取值:CVM, ENI。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         """
-        self._HaVipId = None
         self._InstanceId = None
+        self._HaVipId = None
         self._InstanceType = None
-
-    @property
-    def HaVipId(self):
-        """HaVip实例唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._HaVipId
-
-    @HaVipId.setter
-    def HaVipId(self, HaVipId):
-        self._HaVipId = HaVipId
 
     @property
     def InstanceId(self):
@@ -41147,6 +41135,18 @@ class HaVipAssociation(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def HaVipId(self):
+        """HaVip实例唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HaVipId
+
+    @HaVipId.setter
+    def HaVipId(self, HaVipId):
+        self._HaVipId = HaVipId
 
     @property
     def InstanceType(self):
@@ -41162,8 +41162,8 @@ class HaVipAssociation(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._HaVipId = params.get("HaVipId")
         self._InstanceId = params.get("InstanceId")
+        self._HaVipId = params.get("HaVipId")
         self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -53449,6 +53449,14 @@ class NetworkInterface(AbstractModel):
 <li>`DETACHING`：解绑中</li>
 <li>`DELETING`：删除中</li>
         :type State: str
+        :param _NetworkInterfaceState: 弹性网卡状态：
+<li>`PENDING`：创建中</li>
+<li>`AVAILABLE`：可用的</li>
+<li>`ATTACHING`：绑定中</li>
+<li>`DETACHING`：解绑中</li>
+<li>`DELETING`：删除中</li>
+<li>`INUSE`：已绑定</li>
+        :type NetworkInterfaceState: str
         :param _PrivateIpAddressSet: 内网IP信息。
         :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
         :param _Attachment: 绑定的云服务器对象。
@@ -53493,6 +53501,7 @@ class NetworkInterface(AbstractModel):
         self._Primary = None
         self._MacAddress = None
         self._State = None
+        self._NetworkInterfaceState = None
         self._PrivateIpAddressSet = None
         self._Attachment = None
         self._Zone = None
@@ -53609,6 +53618,23 @@ class NetworkInterface(AbstractModel):
     @State.setter
     def State(self, State):
         self._State = State
+
+    @property
+    def NetworkInterfaceState(self):
+        """弹性网卡状态：
+<li>`PENDING`：创建中</li>
+<li>`AVAILABLE`：可用的</li>
+<li>`ATTACHING`：绑定中</li>
+<li>`DETACHING`：解绑中</li>
+<li>`DELETING`：删除中</li>
+<li>`INUSE`：已绑定</li>
+        :rtype: str
+        """
+        return self._NetworkInterfaceState
+
+    @NetworkInterfaceState.setter
+    def NetworkInterfaceState(self, NetworkInterfaceState):
+        self._NetworkInterfaceState = NetworkInterfaceState
 
     @property
     def PrivateIpAddressSet(self):
@@ -53763,6 +53789,7 @@ class NetworkInterface(AbstractModel):
         self._Primary = params.get("Primary")
         self._MacAddress = params.get("MacAddress")
         self._State = params.get("State")
+        self._NetworkInterfaceState = params.get("NetworkInterfaceState")
         if params.get("PrivateIpAddressSet") is not None:
             self._PrivateIpAddressSet = []
             for item in params.get("PrivateIpAddressSet"):
@@ -60668,7 +60695,6 @@ class ServicesInfo(AbstractModel):
         :param _Service: 协议端口。
         :type Service: str
         :param _Description: 备注。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._Service = None
@@ -60688,7 +60714,6 @@ class ServicesInfo(AbstractModel):
     @property
     def Description(self):
         """备注。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description

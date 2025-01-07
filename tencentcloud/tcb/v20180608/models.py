@@ -6096,7 +6096,6 @@ class CreatePostpayPackageResponse(AbstractModel):
         :param _TranId: 后付费订单号
         :type TranId: str
         :param _EnvId: 环境ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6119,7 +6118,6 @@ class CreatePostpayPackageResponse(AbstractModel):
     @property
     def EnvId(self):
         """环境ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvId
@@ -6359,7 +6357,6 @@ class CreateStaticStoreResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 创建静态资源结果(succ/fail)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6370,7 +6367,6 @@ class CreateStaticStoreResponse(AbstractModel):
     @property
     def Result(self):
         """创建静态资源结果(succ/fail)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -12965,13 +12961,10 @@ class DescribeDownloadFileResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FilePath: 文件路径，该字段已废弃
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilePath: str
         :param _CustomKey: 加密key，用于计算下载加密文件的header。参考SSE-C https://cloud.tencent.com/document/product/436/7728#sse-c
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomKey: str
         :param _DownloadUrl: 下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12984,7 +12977,6 @@ class DescribeDownloadFileResponse(AbstractModel):
     @property
     def FilePath(self):
         """文件路径，该字段已废弃
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FilePath
@@ -12996,7 +12988,6 @@ class DescribeDownloadFileResponse(AbstractModel):
     @property
     def CustomKey(self):
         """加密key，用于计算下载加密文件的header。参考SSE-C https://cloud.tencent.com/document/product/436/7728#sse-c
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomKey
@@ -13008,7 +12999,6 @@ class DescribeDownloadFileResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -13636,7 +13626,6 @@ class DescribeEnvFreeQuotaResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _QuotaItems: 免费抵扣配额详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaItems: list of PostpayEnvQuota
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13647,7 +13636,6 @@ class DescribeEnvFreeQuotaResponse(AbstractModel):
     @property
     def QuotaItems(self):
         """免费抵扣配额详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PostpayEnvQuota
         """
         return self._QuotaItems
@@ -14011,7 +13999,6 @@ class DescribeEnvPostpaidDeductResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PostPaidEnvDeductInfoList: 指标抵扣详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostPaidEnvDeductInfoList: list of PostPaidEnvDeductInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14022,7 +14009,6 @@ class DescribeEnvPostpaidDeductResponse(AbstractModel):
     @property
     def PostPaidEnvDeductInfoList(self):
         """指标抵扣详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PostPaidEnvDeductInfo
         """
         return self._PostPaidEnvDeductInfoList
@@ -15145,7 +15131,6 @@ class DescribePostpayFreeQuotasResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FreequotaInfoList: 免费量资源信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FreequotaInfoList: list of FreequotaInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15156,7 +15141,6 @@ class DescribePostpayFreeQuotasResponse(AbstractModel):
     @property
     def FreequotaInfoList(self):
         """免费量资源信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FreequotaInfo
         """
         return self._FreequotaInfoList
@@ -15246,7 +15230,6 @@ class DescribePostpayPackageFreeQuotasResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PackageFreeQuotaInfos: 免费量资源信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageFreeQuotaInfos: list of PackageFreeQuotaInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15257,7 +15240,6 @@ class DescribePostpayPackageFreeQuotasResponse(AbstractModel):
     @property
     def PackageFreeQuotaInfos(self):
         """免费量资源信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PackageFreeQuotaInfo
         """
         return self._PackageFreeQuotaInfos
@@ -15325,6 +15307,10 @@ class DescribeQuotaDataRequest(AbstractModel):
 <li> TkeMemUsedPkgDay: 当天容器托管内存使用量，单位MB*秒 </li>
 <li> CodingBuildTimePkgDay: 当天容器托管构建时间使用量，单位毫秒 </li>
 <li> TkeHttpServiceNatPkgDay: 当天容器托管流量使用量，单位B </li>
+<li> CynosdbCcupkg: 当月微信云托管MySQL CCU使用量，单位个  （需要除以1000）</li>
+<li> CynosdbStoragepkg: 当月微信云托管MySQL 存储使用量，单位MB  （需要除以1000）</li>
+<li> CynosdbCcupkgDay: 当天微信云托管MySQL 存储使用量，单位个 （需要除以1000） </li>
+<li> CynosdbStoragepkgDay: 当天微信云托管MySQL 存储使用量，单位MB （需要除以1000） </li>
         :type MetricName: str
         :param _ResourceID: 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocationpkg, FunctionGBspkg, FunctionFluxpkg)、容器托管（服务名称）。如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传。
         :type ResourceID: str
@@ -15374,6 +15360,10 @@ class DescribeQuotaDataRequest(AbstractModel):
 <li> TkeMemUsedPkgDay: 当天容器托管内存使用量，单位MB*秒 </li>
 <li> CodingBuildTimePkgDay: 当天容器托管构建时间使用量，单位毫秒 </li>
 <li> TkeHttpServiceNatPkgDay: 当天容器托管流量使用量，单位B </li>
+<li> CynosdbCcupkg: 当月微信云托管MySQL CCU使用量，单位个  （需要除以1000）</li>
+<li> CynosdbStoragepkg: 当月微信云托管MySQL 存储使用量，单位MB  （需要除以1000）</li>
+<li> CynosdbCcupkgDay: 当天微信云托管MySQL 存储使用量，单位个 （需要除以1000） </li>
+<li> CynosdbStoragepkgDay: 当天微信云托管MySQL 存储使用量，单位MB （需要除以1000） </li>
         :rtype: str
         """
         return self._MetricName
@@ -15420,7 +15410,6 @@ class DescribeQuotaDataResponse(AbstractModel):
         :param _Value: 指标的值
         :type Value: int
         :param _SubValue: 指标的附加值信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubValue: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15455,7 +15444,6 @@ class DescribeQuotaDataResponse(AbstractModel):
     @property
     def SubValue(self):
         """指标的附加值信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubValue
@@ -15527,7 +15515,6 @@ class DescribeSmsQuotasResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SmsFreeQuotaList: 短信免费量信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SmsFreeQuotaList: list of SmsFreeQuota
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15538,7 +15525,6 @@ class DescribeSmsQuotasResponse(AbstractModel):
     @property
     def SmsFreeQuotaList(self):
         """短信免费量信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SmsFreeQuota
         """
         return self._SmsFreeQuotaList
@@ -15643,7 +15629,6 @@ class DescribeSpecialCostItemsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SpecialCostItems: 1分钱抵扣详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialCostItems: list of SpecialCostItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15654,7 +15639,6 @@ class DescribeSpecialCostItemsResponse(AbstractModel):
     @property
     def SpecialCostItems(self):
         """1分钱抵扣详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpecialCostItem
         """
         return self._SpecialCostItems
@@ -16025,7 +16009,6 @@ class DescribeUserActivityInfoResponse(AbstractModel):
         :param _GroupTimeLeft: 拼团剩余时间，单位为s.1元钱裂变需求中即为time(成团时间)+24H-Now()，过期后为0，即返回必为自然数
         :type GroupTimeLeft: int
         :param _NickNameList: 昵称列表,通过","拼接， 1元钱裂变活动中与Notes中uin一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :type NickNameList: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16084,7 +16067,6 @@ class DescribeUserActivityInfoResponse(AbstractModel):
     @property
     def NickNameList(self):
         """昵称列表,通过","拼接， 1元钱裂变活动中与Notes中uin一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NickNameList
@@ -18395,7 +18377,9 @@ class ExtensionFileInfo(AbstractModel):
         :type CodeUri: str
         :param _UploadUrl: 上传文件的临时地址，含签名
         :type UploadUrl: str
-        :param _CustomKey: 自定义密钥。如果为空，则表示不需要加密
+        :param _CustomKey: 自定义密钥。如果为空，则表示不需要加密。
+参考cos预签名url上传https://cloud.tencent.com/document/product/436/36121
+上传的时候要按照 SSE-C 的方式设置header：https://cloud.tencent.com/document/product/436/7728
         :type CustomKey: str
         :param _MaxSize: 文件大小限制，单位M，客户端上传前需要主动检查文件大小，超过限制的文件会被删除。
         :type MaxSize: int
@@ -18429,7 +18413,9 @@ class ExtensionFileInfo(AbstractModel):
 
     @property
     def CustomKey(self):
-        """自定义密钥。如果为空，则表示不需要加密
+        """自定义密钥。如果为空，则表示不需要加密。
+参考cos预签名url上传https://cloud.tencent.com/document/product/436/36121
+上传的时候要按照 SSE-C 的方式设置header：https://cloud.tencent.com/document/product/436/7728
         :rtype: str
         """
         return self._CustomKey

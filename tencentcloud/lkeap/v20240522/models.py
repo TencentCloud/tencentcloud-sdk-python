@@ -2051,6 +2051,57 @@ class ListQAsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Message(AbstractModel):
+    """会话内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色
+        :type Role: str
+        :param _Content: 内容
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        """角色
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        """内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAttributeLabelRequest(AbstractModel):
     """ModifyAttributeLabel请求参数结构体
 
@@ -2315,6 +2366,122 @@ class QaItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryRewriteRequest(AbstractModel):
+    """QueryRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Messages: 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写
+        :type Messages: list of Message
+        :param _Model: 模型名称
+        :type Model: str
+        """
+        self._Messages = None
+        self._Model = None
+
+    @property
+    def Messages(self):
+        """需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写
+        :rtype: list of Message
+        """
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def Model(self):
+        """模型名称
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = Message()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryRewriteResponse(AbstractModel):
+    """QueryRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 改写结果
+        :type Content: str
+        :param _Usage: 消耗量，返回输入token数，输出token数以及总token数
+        :type Usage: :class:`tencentcloud.lkeap.v20240522.models.Usage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Content = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def Content(self):
+        """改写结果
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Usage(self):
+        """消耗量，返回输入token数，输出token数以及总token数
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.Usage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
 
 
 class ReconstructDocumentFailedPage(AbstractModel):

@@ -21419,6 +21419,150 @@ class FilterSubscription(AbstractModel):
         
 
 
+class GetTopicListRequest(AbstractModel):
+    """GetTopicList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param _ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param _Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        """
+        self._EnvironmentId = None
+        self._ClusterId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def EnvironmentId(self):
+        """环境（命名空间）名称。
+        :rtype: str
+        """
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def ClusterId(self):
+        """Pulsar 集群的ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Offset(self):
+        """起始下标，不填默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，不填则默认为10，最大值为20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._ClusterId = params.get("ClusterId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTopicListResponse(AbstractModel):
+    """GetTopicList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 主题数量。
+        :type TotalCount: int
+        :param _TopicList: 主题列表
+        :type TopicList: list of Topic_Simplification
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TopicList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """主题数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TopicList(self):
+        """主题列表
+        :rtype: list of Topic_Simplification
+        """
+        return self._TopicList
+
+    @TopicList.setter
+    def TopicList(self, TopicList):
+        self._TopicList = TopicList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TopicList") is not None:
+            self._TopicList = []
+            for item in params.get("TopicList"):
+                obj = Topic_Simplification()
+                obj._deserialize(item)
+                self._TopicList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ImportRocketMQConsumerGroupsRequest(AbstractModel):
     """ImportRocketMQConsumerGroups请求参数结构体
 
@@ -36692,6 +36836,67 @@ class TopicStats(AbstractModel):
         self._MaxOffset = params.get("MaxOffset")
         self._MessageCount = params.get("MessageCount")
         self._LastUpdateTimestamp = params.get("LastUpdateTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Topic_Simplification(AbstractModel):
+    """主题实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicName: 主题名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _PulsarTopicType: 0: 非持久非分区
+1: 非持久分区
+2: 持久非分区
+3: 持久分区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PulsarTopicType: int
+        """
+        self._TopicName = None
+        self._PulsarTopicType = None
+
+    @property
+    def TopicName(self):
+        """主题名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def PulsarTopicType(self):
+        """0: 非持久非分区
+1: 非持久分区
+2: 持久非分区
+3: 持久分区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PulsarTopicType
+
+    @PulsarTopicType.setter
+    def PulsarTopicType(self, PulsarTopicType):
+        self._PulsarTopicType = PulsarTopicType
+
+
+    def _deserialize(self, params):
+        self._TopicName = params.get("TopicName")
+        self._PulsarTopicType = params.get("PulsarTopicType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

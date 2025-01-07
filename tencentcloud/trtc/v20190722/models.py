@@ -1642,7 +1642,7 @@ class DeleteBasicModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :param _SdkAppId: TRTC的SDKAppId，和TRTC的房间所使用的SDKAppId相同。
         :type SdkAppId: int
         :param _TaskId: 审核任务的唯一Id，在启动审核任务成功后会返回。
         :type TaskId: str
@@ -1652,7 +1652,7 @@ class DeleteBasicModerationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        """TRTC的SDKAppId，和TRTC的房间所使用的SDKAppId相同。
         :rtype: int
         """
         return self._SdkAppId
@@ -1693,7 +1693,7 @@ class DeleteBasicModerationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 审核任务的唯一Id，在启动审核任务成功后会返回。
+        :param _TaskId: 审核任务的唯一Id。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1703,7 +1703,7 @@ class DeleteBasicModerationResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """审核任务的唯一Id，在启动审核任务成功后会返回。
+        """审核任务的唯一Id。
         :rtype: str
         """
         return self._TaskId
@@ -5698,10 +5698,8 @@ class DescribeWebRecordResponse(AbstractModel):
         :param _Status: 1: 正在录制中
         :type Status: int
         :param _TaskId: 在使用RecordId查询时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RecordId: 在使用TaskId查询时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5725,7 +5723,6 @@ class DescribeWebRecordResponse(AbstractModel):
     @property
     def TaskId(self):
         """在使用RecordId查询时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -5737,7 +5734,6 @@ class DescribeWebRecordResponse(AbstractModel):
     @property
     def RecordId(self):
         """在使用TaskId查询时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordId

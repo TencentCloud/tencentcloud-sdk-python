@@ -4890,7 +4890,7 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
         r"""
         :param _SAMLMetadata: SAML元数据文档
         :type SAMLMetadata: str
-        :param _Status: 状态：0:未设置，1:已开启，2:已禁用
+        :param _Status: 状态：0:未设置，11:已开启，2:已禁用
         :type Status: int
         :param _AuxiliaryDomain: 辅助域名
         :type AuxiliaryDomain: str
@@ -4915,7 +4915,7 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态：0:未设置，1:已开启，2:已禁用
+        """状态：0:未设置，11:已开启，2:已禁用
         :rtype: int
         """
         return self._Status

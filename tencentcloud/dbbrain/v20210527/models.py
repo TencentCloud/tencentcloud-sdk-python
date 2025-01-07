@@ -7415,13 +7415,16 @@ class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
         :type Date: str
         :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
         :type Product: str
-        :param _Limit: 查询数目，默认为20，最大值为100。
+        :param _Limit: 查询数目，默认为20，最大值为500。
         :type Limit: int
+        :param _ShardIds: 分片ID数组。
+        :type ShardIds: list of int
         """
         self._InstanceId = None
         self._Date = None
         self._Product = None
         self._Limit = None
+        self._ShardIds = None
 
     @property
     def InstanceId(self):
@@ -7458,7 +7461,7 @@ class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询数目，默认为20，最大值为100。
+        """查询数目，默认为20，最大值为500。
         :rtype: int
         """
         return self._Limit
@@ -7467,12 +7470,24 @@ class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def ShardIds(self):
+        """分片ID数组。
+        :rtype: list of int
+        """
+        return self._ShardIds
+
+    @ShardIds.setter
+    def ShardIds(self, ShardIds):
+        self._ShardIds = ShardIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Date = params.get("Date")
         self._Product = params.get("Product")
         self._Limit = params.get("Limit")
+        self._ShardIds = params.get("ShardIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

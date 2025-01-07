@@ -467,6 +467,30 @@ class LkeapClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryRewrite(self, request):
+        """多轮改写（QueryRewrite）主要用于多轮对话中，进行指代消解和省略补全。使用本接口，无需输入prompt描述，根据对话历史即可生成更精确的用户查询。在应用场景上，本接口可应用于智能问答、对话式搜索等多种场景。
+        开通[产品体验](https://lke.cloud.tencent.com/lke/#/trialProduct)后可获得50wtoken体验额度。本接口（QueryRewrite）有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
+
+        :param request: Request instance for QueryRewrite.
+        :type request: :class:`tencentcloud.lkeap.v20240522.models.QueryRewriteRequest`
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.QueryRewriteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryRewrite", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryRewriteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReconstructDocumentSSE(self, request):
         """准实时文档解析接口，使用HTTP SSE 协议通信。
 

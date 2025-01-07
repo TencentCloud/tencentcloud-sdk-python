@@ -180,13 +180,13 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type SecondaryNum: int
         :param _EngineVersion: MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
         :type EngineVersion: str
-        :param _Machine: 实例类型，GIO：高IO版；TGIO：高IO万兆
+        :param _Machine: 实例类型，HIO10G：高IO万兆。
         :type Machine: str
         :param _GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10
         :type GoodsNum: int
         :param _Zone: 可用区信息，格式如：ap-guangzhou-2
         :type Zone: str
-        :param _InstanceRole: 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
+        :param _InstanceRole: 实例角色，默认传MASTER即可
         :type InstanceRole: str
         :param _InstanceType: 实例类型，REPLSET-副本集，SHARD-分片集群
         :type InstanceType: str
@@ -200,6 +200,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ProjectId: int
         :param _SecurityGroup: 安全组参数
         :type SecurityGroup: list of str
+        :param _UniqVpcId: 私有网络ID，如果不传则默认选择基础网络
+        :type UniqVpcId: str
+        :param _UniqSubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        :type UniqSubnetId: str
         """
         self._Memory = None
         self._Volume = None
@@ -216,6 +220,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._SubnetId = None
         self._ProjectId = None
         self._SecurityGroup = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
 
     @property
     def Memory(self):
@@ -274,7 +280,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Machine(self):
-        """实例类型，GIO：高IO版；TGIO：高IO万兆
+        """实例类型，HIO10G：高IO万兆。
         :rtype: str
         """
         return self._Machine
@@ -307,7 +313,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        """实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
+        """实例角色，默认传MASTER即可
         :rtype: str
         """
         return self._InstanceRole
@@ -382,6 +388,28 @@ class CreateDBInstanceHourRequest(AbstractModel):
     def SecurityGroup(self, SecurityGroup):
         self._SecurityGroup = SecurityGroup
 
+    @property
+    def UniqVpcId(self):
+        """私有网络ID，如果不传则默认选择基础网络
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        """私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        :rtype: str
+        """
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
 
     def _deserialize(self, params):
         self._Memory = params.get("Memory")
@@ -399,6 +427,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._ProjectId = params.get("ProjectId")
         self._SecurityGroup = params.get("SecurityGroup")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -800,10 +830,8 @@ class DescribeClientConnectionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Clients: list of ClientConnection
         :param _TotalCount: 连接数总结
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -815,7 +843,6 @@ class DescribeClientConnectionsResponse(AbstractModel):
     @property
     def Clients(self):
         """客户端连接信息，包括客户端IP和对应IP的连接数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClientConnection
         """
         return self._Clients
@@ -827,7 +854,6 @@ class DescribeClientConnectionsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """连接数总结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -1486,19 +1512,14 @@ class MongoDBInstanceDetail(AbstractModel):
         :param _ReplicaSets: 分片信息
         :type ReplicaSets: list of MongodbShardInfo
         :param _ReadonlyInstances: 只读实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadonlyInstances: list of MongoDBInstance
         :param _StandbyInstances: 灾备实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StandbyInstances: list of MongoDBInstance
         :param _CloneInstances: 临时实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloneInstances: list of MongoDBInstance
         :param _RelatedInstance: 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedInstance: :class:`tencentcloud.mongodb.v20180408.models.MongoDBInstance`
         :param _Tags: 实例标签信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
         :param _InstanceVer: 实例标记
         :type InstanceVer: int
@@ -1852,7 +1873,6 @@ class MongoDBInstanceDetail(AbstractModel):
     @property
     def ReadonlyInstances(self):
         """只读实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MongoDBInstance
         """
         return self._ReadonlyInstances
@@ -1864,7 +1884,6 @@ class MongoDBInstanceDetail(AbstractModel):
     @property
     def StandbyInstances(self):
         """灾备实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MongoDBInstance
         """
         return self._StandbyInstances
@@ -1876,7 +1895,6 @@ class MongoDBInstanceDetail(AbstractModel):
     @property
     def CloneInstances(self):
         """临时实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MongoDBInstance
         """
         return self._CloneInstances
@@ -1888,7 +1906,6 @@ class MongoDBInstanceDetail(AbstractModel):
     @property
     def RelatedInstance(self):
         """关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.MongoDBInstance`
         """
         return self._RelatedInstance
@@ -1900,7 +1917,6 @@ class MongoDBInstanceDetail(AbstractModel):
     @property
     def Tags(self):
         """实例标签信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -2474,46 +2490,67 @@ class SpecItem(AbstractModel):
     def __init__(self):
         r"""
         :param _SpecCode: 规格信息标识
+注意：此字段可能返回 null，表示取不到有效值。
         :type SpecCode: str
         :param _Status: 规格有效标志，取值：0-停止售卖，1-开放售卖
+注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _MachineType: 机器类型，取值：0-HIO，4-HIO10G
+注意：此字段可能返回 null，表示取不到有效值。
         :type MachineType: str
         :param _Cpu: cpu核心数
+注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: int
         :param _Memory: 内存规格，单位为MB
+注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: int
         :param _DefaultStorage: 默认磁盘规格，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultStorage: int
         :param _MaxStorage: 最大磁盘规格，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxStorage: int
         :param _MinStorage: 最小磁盘规格，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinStorage: int
         :param _Qps: 可承载qps信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Qps: int
         :param _Conns: 连接数限制
+注意：此字段可能返回 null，表示取不到有效值。
         :type Conns: int
         :param _MongoVersionCode: 实例mongodb版本信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type MongoVersionCode: str
         :param _MongoVersionValue: 实例mongodb版本号
+注意：此字段可能返回 null，表示取不到有效值。
         :type MongoVersionValue: int
         :param _Version: 实例mongodb版本号（短）
+注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _EngineName: 存储引擎
+注意：此字段可能返回 null，表示取不到有效值。
         :type EngineName: str
         :param _ClusterType: 集群类型，取值：1-分片集群，0-副本集集群
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: int
         :param _MinNodeNum: 最小副本集从节点数
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinNodeNum: int
         :param _MaxNodeNum: 最大副本集从节点数
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxNodeNum: int
         :param _MinReplicateSetNum: 最小分片数
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinReplicateSetNum: int
         :param _MaxReplicateSetNum: 最大分片数
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxReplicateSetNum: int
         :param _MinReplicateSetNodeNum: 最小分片从节点数
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinReplicateSetNodeNum: int
         :param _MaxReplicateSetNodeNum: 最大分片从节点数
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxReplicateSetNodeNum: int
         """
         self._SpecCode = None
@@ -2541,6 +2578,7 @@ class SpecItem(AbstractModel):
     @property
     def SpecCode(self):
         """规格信息标识
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpecCode
@@ -2552,6 +2590,7 @@ class SpecItem(AbstractModel):
     @property
     def Status(self):
         """规格有效标志，取值：0-停止售卖，1-开放售卖
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -2563,6 +2602,7 @@ class SpecItem(AbstractModel):
     @property
     def MachineType(self):
         """机器类型，取值：0-HIO，4-HIO10G
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MachineType
@@ -2574,6 +2614,7 @@ class SpecItem(AbstractModel):
     @property
     def Cpu(self):
         """cpu核心数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Cpu
@@ -2585,6 +2626,7 @@ class SpecItem(AbstractModel):
     @property
     def Memory(self):
         """内存规格，单位为MB
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Memory
@@ -2596,6 +2638,7 @@ class SpecItem(AbstractModel):
     @property
     def DefaultStorage(self):
         """默认磁盘规格，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultStorage
@@ -2607,6 +2650,7 @@ class SpecItem(AbstractModel):
     @property
     def MaxStorage(self):
         """最大磁盘规格，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxStorage
@@ -2618,6 +2662,7 @@ class SpecItem(AbstractModel):
     @property
     def MinStorage(self):
         """最小磁盘规格，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinStorage
@@ -2629,6 +2674,7 @@ class SpecItem(AbstractModel):
     @property
     def Qps(self):
         """可承载qps信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Qps
@@ -2640,6 +2686,7 @@ class SpecItem(AbstractModel):
     @property
     def Conns(self):
         """连接数限制
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Conns
@@ -2651,6 +2698,7 @@ class SpecItem(AbstractModel):
     @property
     def MongoVersionCode(self):
         """实例mongodb版本信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MongoVersionCode
@@ -2662,6 +2710,7 @@ class SpecItem(AbstractModel):
     @property
     def MongoVersionValue(self):
         """实例mongodb版本号
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MongoVersionValue
@@ -2673,6 +2722,7 @@ class SpecItem(AbstractModel):
     @property
     def Version(self):
         """实例mongodb版本号（短）
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -2684,6 +2734,7 @@ class SpecItem(AbstractModel):
     @property
     def EngineName(self):
         """存储引擎
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EngineName
@@ -2695,6 +2746,7 @@ class SpecItem(AbstractModel):
     @property
     def ClusterType(self):
         """集群类型，取值：1-分片集群，0-副本集集群
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClusterType
@@ -2706,6 +2758,7 @@ class SpecItem(AbstractModel):
     @property
     def MinNodeNum(self):
         """最小副本集从节点数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinNodeNum
@@ -2717,6 +2770,7 @@ class SpecItem(AbstractModel):
     @property
     def MaxNodeNum(self):
         """最大副本集从节点数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxNodeNum
@@ -2728,6 +2782,7 @@ class SpecItem(AbstractModel):
     @property
     def MinReplicateSetNum(self):
         """最小分片数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinReplicateSetNum
@@ -2739,6 +2794,7 @@ class SpecItem(AbstractModel):
     @property
     def MaxReplicateSetNum(self):
         """最大分片数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxReplicateSetNum
@@ -2750,6 +2806,7 @@ class SpecItem(AbstractModel):
     @property
     def MinReplicateSetNodeNum(self):
         """最小分片从节点数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinReplicateSetNodeNum
@@ -2761,6 +2818,7 @@ class SpecItem(AbstractModel):
     @property
     def MaxReplicateSetNodeNum(self):
         """最大分片从节点数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxReplicateSetNodeNum

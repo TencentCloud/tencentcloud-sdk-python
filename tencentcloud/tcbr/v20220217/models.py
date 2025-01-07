@@ -33,11 +33,14 @@ class BuildPacksInfo(AbstractModel):
         :type RepoLanguage: str
         :param _UploadFilename: 上传文件名
         :type UploadFilename: str
+        :param _LanguageVersion: 语言版本
+        :type LanguageVersion: str
         """
         self._BaseImage = None
         self._EntryPoint = None
         self._RepoLanguage = None
         self._UploadFilename = None
+        self._LanguageVersion = None
 
     @property
     def BaseImage(self):
@@ -83,12 +86,24 @@ class BuildPacksInfo(AbstractModel):
     def UploadFilename(self, UploadFilename):
         self._UploadFilename = UploadFilename
 
+    @property
+    def LanguageVersion(self):
+        """语言版本
+        :rtype: str
+        """
+        return self._LanguageVersion
+
+    @LanguageVersion.setter
+    def LanguageVersion(self, LanguageVersion):
+        self._LanguageVersion = LanguageVersion
+
 
     def _deserialize(self, params):
         self._BaseImage = params.get("BaseImage")
         self._EntryPoint = params.get("EntryPoint")
         self._RepoLanguage = params.get("RepoLanguage")
         self._UploadFilename = params.get("UploadFilename")
+        self._LanguageVersion = params.get("LanguageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -203,11 +218,11 @@ Activity：活动来源
         :type SubNetIds: list of str
         :param _ReqKey: 请求key 用于防重
         :type ReqKey: str
-        :param _Source: 来源：wechat | cloud
+        :param _Source: 来源：wechat | cloud | weda
         :type Source: str
-        :param _Channel: 渠道：wechat | cloud
+        :param _Channel: 渠道：wechat | cloud | weda
         :type Channel: str
-        :param _EnvId: 环境ID
+        :param _EnvId: 环境ID 云开发平台必填
         :type EnvId: str
         """
         self._PackageType = None
@@ -302,7 +317,7 @@ Activity：活动来源
 
     @property
     def Source(self):
-        """来源：wechat | cloud
+        """来源：wechat | cloud | weda
         :rtype: str
         """
         return self._Source
@@ -313,7 +328,7 @@ Activity：活动来源
 
     @property
     def Channel(self):
-        """渠道：wechat | cloud
+        """渠道：wechat | cloud | weda
         :rtype: str
         """
         return self._Channel
@@ -324,7 +339,7 @@ Activity：活动来源
 
     @property
     def EnvId(self):
-        """环境ID
+        """环境ID 云开发平台必填
         :rtype: str
         """
         return self._EnvId
@@ -1189,10 +1204,13 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
         r"""
         :param _EnvBaseInfo: 环境基础信息
         :type EnvBaseInfo: :class:`tencentcloud.tcbr.v20220217.models.EnvBaseInfo`
+        :param _IsExist: 是否存在
+        :type IsExist: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EnvBaseInfo = None
+        self._IsExist = None
         self._RequestId = None
 
     @property
@@ -1205,6 +1223,17 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
     @EnvBaseInfo.setter
     def EnvBaseInfo(self, EnvBaseInfo):
         self._EnvBaseInfo = EnvBaseInfo
+
+    @property
+    def IsExist(self):
+        """是否存在
+        :rtype: bool
+        """
+        return self._IsExist
+
+    @IsExist.setter
+    def IsExist(self, IsExist):
+        self._IsExist = IsExist
 
     @property
     def RequestId(self):
@@ -1222,6 +1251,7 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
         if params.get("EnvBaseInfo") is not None:
             self._EnvBaseInfo = EnvBaseInfo()
             self._EnvBaseInfo._deserialize(params.get("EnvBaseInfo"))
+        self._IsExist = params.get("IsExist")
         self._RequestId = params.get("RequestId")
 
 
@@ -2933,6 +2963,8 @@ class ServerBaseInfo(AbstractModel):
         :type AccessTypes: list of str
         :param _CustomDomainNames: 展示自定义域名
         :type CustomDomainNames: list of str
+        :param _ServerType: 服务类型: function 云函数2.0；container 容器服务
+        :type ServerType: str
         """
         self._ServerName = None
         self._DefaultDomainName = None
@@ -2941,6 +2973,7 @@ class ServerBaseInfo(AbstractModel):
         self._UpdateTime = None
         self._AccessTypes = None
         self._CustomDomainNames = None
+        self._ServerType = None
 
     @property
     def ServerName(self):
@@ -3019,6 +3052,17 @@ class ServerBaseInfo(AbstractModel):
     def CustomDomainNames(self, CustomDomainNames):
         self._CustomDomainNames = CustomDomainNames
 
+    @property
+    def ServerType(self):
+        """服务类型: function 云函数2.0；container 容器服务
+        :rtype: str
+        """
+        return self._ServerType
+
+    @ServerType.setter
+    def ServerType(self, ServerType):
+        self._ServerType = ServerType
+
 
     def _deserialize(self, params):
         self._ServerName = params.get("ServerName")
@@ -3028,6 +3072,7 @@ class ServerBaseInfo(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._AccessTypes = params.get("AccessTypes")
         self._CustomDomainNames = params.get("CustomDomainNames")
+        self._ServerType = params.get("ServerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2560,6 +2560,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetTopicList(self, request):
+        """获取环境下主题列表
+
+        :param request: Request instance for GetTopicList.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.GetTopicListRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.GetTopicListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTopicList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTopicListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImportRocketMQConsumerGroups(self, request):
         """输入迁移任务id和要导入的Group，导入后台
 

@@ -18,6 +18,72 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AITransferItem(AbstractModel):
+    """AI转人工配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransferFunctionName: 转人工的function calling 名称
+        :type TransferFunctionName: str
+        :param _TransferFunctionDesc: TransferFunctionEnable为true时生效；transfer_to_human function calling的desc，默认为 "Transfer to human when the user has to transfer to human (like says transfer to human) or you are instructed to do so."
+        :type TransferFunctionDesc: str
+        :param _TransferSkillGroupId: 转人工的技能组ID
+        :type TransferSkillGroupId: int
+        """
+        self._TransferFunctionName = None
+        self._TransferFunctionDesc = None
+        self._TransferSkillGroupId = None
+
+    @property
+    def TransferFunctionName(self):
+        """转人工的function calling 名称
+        :rtype: str
+        """
+        return self._TransferFunctionName
+
+    @TransferFunctionName.setter
+    def TransferFunctionName(self, TransferFunctionName):
+        self._TransferFunctionName = TransferFunctionName
+
+    @property
+    def TransferFunctionDesc(self):
+        """TransferFunctionEnable为true时生效；transfer_to_human function calling的desc，默认为 "Transfer to human when the user has to transfer to human (like says transfer to human) or you are instructed to do so."
+        :rtype: str
+        """
+        return self._TransferFunctionDesc
+
+    @TransferFunctionDesc.setter
+    def TransferFunctionDesc(self, TransferFunctionDesc):
+        self._TransferFunctionDesc = TransferFunctionDesc
+
+    @property
+    def TransferSkillGroupId(self):
+        """转人工的技能组ID
+        :rtype: int
+        """
+        return self._TransferSkillGroupId
+
+    @TransferSkillGroupId.setter
+    def TransferSkillGroupId(self, TransferSkillGroupId):
+        self._TransferSkillGroupId = TransferSkillGroupId
+
+
+    def _deserialize(self, params):
+        self._TransferFunctionName = params.get("TransferFunctionName")
+        self._TransferFunctionDesc = params.get("TransferFunctionDesc")
+        self._TransferSkillGroupId = params.get("TransferSkillGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AbortPredictiveDialingCampaignRequest(AbstractModel):
     """AbortPredictiveDialingCampaign请求参数结构体
 
@@ -1980,6 +2046,10 @@ HoaiMy
         :type EndFunctionEnable: bool
         :param _EndFunctionDesc: EndFunctionEnable为true时生效；call_end function calling的desc，默认为 "End the call when user has to leave (like says bye) or you are instructed to do so."
         :type EndFunctionDesc: str
+        :param _TransferFunctionEnable: 模型是否支持(或者开启)transfer_to_human function calling
+        :type TransferFunctionEnable: bool
+        :param _TransferItems: TransferFunctionEnable为true的时候生效: 转人工配置
+        :type TransferItems: list of AITransferItem
         :param _NotifyDuration: 用户多久没说话提示时长,最小10秒,默认10秒
         :type NotifyDuration: int
         :param _NotifyMessage: 用户NotifyDuration没说话，AI提示的语句，默认是"抱歉，我没听清。您可以重复下吗？"
@@ -2066,6 +2136,8 @@ HoaiMy
 
 </div></div>
         :type CustomTTSConfig: str
+        :param _PromptVariables: 提示词变量
+        :type PromptVariables: list of Variable
         """
         self._SdkAppId = None
         self._Callee = None
@@ -2084,10 +2156,13 @@ HoaiMy
         self._InterruptSpeechDuration = None
         self._EndFunctionEnable = None
         self._EndFunctionDesc = None
+        self._TransferFunctionEnable = None
+        self._TransferItems = None
         self._NotifyDuration = None
         self._NotifyMessage = None
         self._NotifyMaxCount = None
         self._CustomTTSConfig = None
+        self._PromptVariables = None
 
     @property
     def SdkAppId(self):
@@ -2365,6 +2440,28 @@ HoaiMy
         self._EndFunctionDesc = EndFunctionDesc
 
     @property
+    def TransferFunctionEnable(self):
+        """模型是否支持(或者开启)transfer_to_human function calling
+        :rtype: bool
+        """
+        return self._TransferFunctionEnable
+
+    @TransferFunctionEnable.setter
+    def TransferFunctionEnable(self, TransferFunctionEnable):
+        self._TransferFunctionEnable = TransferFunctionEnable
+
+    @property
+    def TransferItems(self):
+        """TransferFunctionEnable为true的时候生效: 转人工配置
+        :rtype: list of AITransferItem
+        """
+        return self._TransferItems
+
+    @TransferItems.setter
+    def TransferItems(self, TransferItems):
+        self._TransferItems = TransferItems
+
+    @property
     def NotifyDuration(self):
         """用户多久没说话提示时长,最小10秒,默认10秒
         :rtype: int
@@ -2486,6 +2583,17 @@ HoaiMy
     def CustomTTSConfig(self, CustomTTSConfig):
         self._CustomTTSConfig = CustomTTSConfig
 
+    @property
+    def PromptVariables(self):
+        """提示词变量
+        :rtype: list of Variable
+        """
+        return self._PromptVariables
+
+    @PromptVariables.setter
+    def PromptVariables(self, PromptVariables):
+        self._PromptVariables = PromptVariables
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -2505,10 +2613,23 @@ HoaiMy
         self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
         self._EndFunctionEnable = params.get("EndFunctionEnable")
         self._EndFunctionDesc = params.get("EndFunctionDesc")
+        self._TransferFunctionEnable = params.get("TransferFunctionEnable")
+        if params.get("TransferItems") is not None:
+            self._TransferItems = []
+            for item in params.get("TransferItems"):
+                obj = AITransferItem()
+                obj._deserialize(item)
+                self._TransferItems.append(obj)
         self._NotifyDuration = params.get("NotifyDuration")
         self._NotifyMessage = params.get("NotifyMessage")
         self._NotifyMaxCount = params.get("NotifyMaxCount")
         self._CustomTTSConfig = params.get("CustomTTSConfig")
+        if params.get("PromptVariables") is not None:
+            self._PromptVariables = []
+            for item in params.get("PromptVariables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._PromptVariables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

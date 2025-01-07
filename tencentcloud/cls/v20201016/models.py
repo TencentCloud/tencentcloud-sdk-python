@@ -3707,7 +3707,7 @@ class ConsoleSharingConfig(AbstractModel):
 - datasight内网匿名分享(若开启)：datasight内网域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
-        :param _VerifyCode: 验证码
+        :param _VerifyCode: 分享链接加密访问验证码。支持0-9和a-z(不区分大小写)在内的6个字符，可为空，代表免验证码访问
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyCode: str
         :param _StartTime: 默认查询范围的开始时间点，支持绝对时间(13位Unix时间戳)或相对时间表达式
@@ -3802,7 +3802,7 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def VerifyCode(self):
-        """验证码
+        """分享链接加密访问验证码。支持0-9和a-z(不区分大小写)在内的6个字符，可为空，代表免验证码访问
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
