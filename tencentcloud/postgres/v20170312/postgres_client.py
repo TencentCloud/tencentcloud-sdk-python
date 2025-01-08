@@ -1180,6 +1180,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMaintainTimeWindow(self, request):
+        """本接口 (DescribeMaintainTimeWindow) 用于查询实例的维护时间窗口
+
+        :param request: Request instance for DescribeMaintainTimeWindow.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeMaintainTimeWindowRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeMaintainTimeWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMaintainTimeWindow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMaintainTimeWindowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrders(self, request):
         """本接口（DescribeOrders）用于查询订单信息。
 
@@ -1955,6 +1978,29 @@ class PostgresClient(AbstractClient):
             body = self.call("ModifyDatabaseOwner", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDatabaseOwnerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMaintainTimeWindow(self, request):
+        """本接口 (ModifyMaintainTimeWindow) 用于实例维护时间窗口的修改。
+
+        :param request: Request instance for ModifyMaintainTimeWindow.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyMaintainTimeWindowRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyMaintainTimeWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMaintainTimeWindow", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMaintainTimeWindowResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -326,7 +326,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """创建参数模板。
+        """该接口（CreateParamTemplate）用于创建参数模板。
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateParamTemplateRequest`
@@ -395,7 +395,7 @@ class RedisClient(AbstractClient):
 
 
     def DeleteParamTemplate(self, request):
-        """删除参数模板
+        """本接口（DeleteParamTemplate）用于删除参数模板。
 
         :param request: Request instance for DeleteParamTemplate.
         :type request: :class:`tencentcloud.redis.v20180412.models.DeleteParamTemplateRequest`
@@ -602,7 +602,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeGlobalReplicationArea(self, request):
-        """查询全球复制支持地域信息
+        """本接口（DescribeGlobalReplicationArea）用于查询全球复制支持地域信息。
 
         :param request: Request instance for DescribeGlobalReplicationArea.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeGlobalReplicationAreaRequest`
@@ -855,7 +855,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorSIP(self, request):
-        """该接口已下线，请使用数据库智能管家 DBbrain 接口 [DescribeProxyProcessStatistics] (https://cloud.tencent.com/document/product/1130/84544) 获取实例访问来源。
+        """该接口已下线，请使用数据库智能管家 DBbrain 接口 [DescribeProxyProcessStatistics](https://cloud.tencent.com/document/product/1130/84544) 获取实例访问来源。
 
         :param request: Request instance for DescribeInstanceMonitorSIP.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorSIPRequest`
@@ -901,7 +901,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorTopNCmd(self, request):
-        """查询实例访问命令
+        """本接口（DescribeInstanceMonitorTopNCmd）用于查询实例访问命令。
 
         :param request: Request instance for DescribeInstanceMonitorTopNCmd.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTopNCmdRequest`
@@ -970,7 +970,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceParamRecords(self, request):
-        """查询参数修改历史列表
+        """本接口（DescribeInstanceParamRecords）用于查询参数修改历史列表。
 
         :param request: Request instance for DescribeInstanceParamRecords.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceParamRecordsRequest`
@@ -1200,7 +1200,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        """查询参数模板列表
+        """本接口（DescribeParamTemplates）用于查询参数模板列表。
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplatesRequest`
@@ -2306,7 +2306,7 @@ class RedisClient(AbstractClient):
 
 
     def RestoreInstance(self, request):
-        """恢复 CRS 实例
+        """本接口（RestoreInstance）用于恢复实例。
 
         :param request: Request instance for RestoreInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.RestoreInstanceRequest`

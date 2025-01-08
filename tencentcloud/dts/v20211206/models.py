@@ -7976,6 +7976,8 @@ class DescribeSubscribeJobsRequest(AbstractModel):
         r"""
         :param _SubscribeId: 订阅 ID 筛选，精确匹配
         :type SubscribeId: str
+        :param _SubscribeIds: 订阅 ID 筛选，精确匹配
+        :type SubscribeIds: list of str
         :param _SubscribeName: 订阅名称，前缀模糊匹配
         :type SubscribeName: str
         :param _InstanceId: 订阅的云上数据库实例的 ID，精确匹配
@@ -8000,6 +8002,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
         :type TagFilters: list of TagFilter
         """
         self._SubscribeId = None
+        self._SubscribeIds = None
         self._SubscribeName = None
         self._InstanceId = None
         self._Topic = None
@@ -8022,6 +8025,17 @@ class DescribeSubscribeJobsRequest(AbstractModel):
     @SubscribeId.setter
     def SubscribeId(self, SubscribeId):
         self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeIds(self):
+        """订阅 ID 筛选，精确匹配
+        :rtype: list of str
+        """
+        return self._SubscribeIds
+
+    @SubscribeIds.setter
+    def SubscribeIds(self, SubscribeIds):
+        self._SubscribeIds = SubscribeIds
 
     @property
     def SubscribeName(self):
@@ -8147,6 +8161,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeIds = params.get("SubscribeIds")
         self._SubscribeName = params.get("SubscribeName")
         self._InstanceId = params.get("InstanceId")
         self._Topic = params.get("Topic")
@@ -8341,6 +8356,8 @@ class DescribeSyncJobsRequest(AbstractModel):
         r"""
         :param _JobId: 同步任务id，如sync-werwfs23
         :type JobId: str
+        :param _JobIds: 同步任务id列表，如sync-werwfs23
+        :type JobIds: list of str
         :param _JobName: 同步任务名
         :type JobName: str
         :param _Order: 排序字段，可以取值为CreateTime
@@ -8361,8 +8378,13 @@ class DescribeSyncJobsRequest(AbstractModel):
         :type PayMode: str
         :param _TagFilters: tag
         :type TagFilters: list of TagFilter
+        :param _SrcInfoPattern: 源端数据库连接信息，可以输入实例ID或者IP等
+        :type SrcInfoPattern: str
+        :param _DstInfoPattern: 目标端数据库连接信息，可以输入实例ID或者IP等
+        :type DstInfoPattern: str
         """
         self._JobId = None
+        self._JobIds = None
         self._JobName = None
         self._Order = None
         self._OrderSeq = None
@@ -8373,6 +8395,8 @@ class DescribeSyncJobsRequest(AbstractModel):
         self._JobType = None
         self._PayMode = None
         self._TagFilters = None
+        self._SrcInfoPattern = None
+        self._DstInfoPattern = None
 
     @property
     def JobId(self):
@@ -8384,6 +8408,17 @@ class DescribeSyncJobsRequest(AbstractModel):
     @JobId.setter
     def JobId(self, JobId):
         self._JobId = JobId
+
+    @property
+    def JobIds(self):
+        """同步任务id列表，如sync-werwfs23
+        :rtype: list of str
+        """
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
 
     @property
     def JobName(self):
@@ -8495,9 +8530,32 @@ class DescribeSyncJobsRequest(AbstractModel):
     def TagFilters(self, TagFilters):
         self._TagFilters = TagFilters
 
+    @property
+    def SrcInfoPattern(self):
+        """源端数据库连接信息，可以输入实例ID或者IP等
+        :rtype: str
+        """
+        return self._SrcInfoPattern
+
+    @SrcInfoPattern.setter
+    def SrcInfoPattern(self, SrcInfoPattern):
+        self._SrcInfoPattern = SrcInfoPattern
+
+    @property
+    def DstInfoPattern(self):
+        """目标端数据库连接信息，可以输入实例ID或者IP等
+        :rtype: str
+        """
+        return self._DstInfoPattern
+
+    @DstInfoPattern.setter
+    def DstInfoPattern(self, DstInfoPattern):
+        self._DstInfoPattern = DstInfoPattern
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._JobIds = params.get("JobIds")
         self._JobName = params.get("JobName")
         self._Order = params.get("Order")
         self._OrderSeq = params.get("OrderSeq")
@@ -8513,6 +8571,8 @@ class DescribeSyncJobsRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self._TagFilters.append(obj)
+        self._SrcInfoPattern = params.get("SrcInfoPattern")
+        self._DstInfoPattern = params.get("DstInfoPattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10278,7 +10338,10 @@ class EndpointItem(AbstractModel):
         :param _CcnOwnerUin: 云联网网关所属的主账号uin、跨账号云联网需要。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnOwnerUin: str
-        :param _ExtraAttr: 为业务添加的额外信息。参数名作key，参数值作value。 tdpg必填参数：PgDatabase-订阅的库名。
+        :param _ExtraAttr: 为业务添加的额外信息。参数名作key，参数值作value。 
+tdpg必填参数：PgDatabase-订阅的库名；
+mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-分片集，主要用于控制台跳转到mongo实例页面，如不填不影响任务运行；
+全业务选填参数：EngineVersion-内核版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
         :param _ChildInstanceId: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
@@ -10489,7 +10552,10 @@ class EndpointItem(AbstractModel):
 
     @property
     def ExtraAttr(self):
-        """为业务添加的额外信息。参数名作key，参数值作value。 tdpg必填参数：PgDatabase-订阅的库名。
+        """为业务添加的额外信息。参数名作key，参数值作value。 
+tdpg必填参数：PgDatabase-订阅的库名；
+mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-分片集，主要用于控制台跳转到mongo实例页面，如不填不影响任务运行；
+全业务选填参数：EngineVersion-内核版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValuePairOption
         """

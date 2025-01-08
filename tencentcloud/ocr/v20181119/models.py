@@ -11986,19 +11986,19 @@ class IDCardConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CopyWarn: 默认为false
+        :param _CopyWarn: 复印件告警，默认为false
         :type CopyWarn: bool
-        :param _BorderCheckWarn: 默认为false
+        :param _BorderCheckWarn: 边框和框内遮挡告警，默认为false
         :type BorderCheckWarn: bool
-        :param _ReshootWarn: 默认为false
+        :param _ReshootWarn: 翻拍告警，默认为false
         :type ReshootWarn: bool
-        :param _DetectPsWarn: 默认为false
+        :param _DetectPsWarn: 疑似存在PS痕迹告警，默认为false
         :type DetectPsWarn: bool
-        :param _TempIdWarn: 默认为false
+        :param _TempIdWarn: 临时身份证告警，默认为false
         :type TempIdWarn: bool
-        :param _InvalidDateWarn: 默认为false
+        :param _InvalidDateWarn: 身份证有效日期不合法告警，默认为false
         :type InvalidDateWarn: bool
-        :param _ReflectWarn: 默认为false
+        :param _ReflectWarn: 是否开启反光检测，默认为false
         :type ReflectWarn: bool
         """
         self._CopyWarn = None
@@ -12011,7 +12011,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def CopyWarn(self):
-        """默认为false
+        """复印件告警，默认为false
         :rtype: bool
         """
         return self._CopyWarn
@@ -12022,7 +12022,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def BorderCheckWarn(self):
-        """默认为false
+        """边框和框内遮挡告警，默认为false
         :rtype: bool
         """
         return self._BorderCheckWarn
@@ -12033,7 +12033,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def ReshootWarn(self):
-        """默认为false
+        """翻拍告警，默认为false
         :rtype: bool
         """
         return self._ReshootWarn
@@ -12044,7 +12044,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def DetectPsWarn(self):
-        """默认为false
+        """疑似存在PS痕迹告警，默认为false
         :rtype: bool
         """
         return self._DetectPsWarn
@@ -12055,7 +12055,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def TempIdWarn(self):
-        """默认为false
+        """临时身份证告警，默认为false
         :rtype: bool
         """
         return self._TempIdWarn
@@ -12066,7 +12066,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def InvalidDateWarn(self):
-        """默认为false
+        """身份证有效日期不合法告警，默认为false
         :rtype: bool
         """
         return self._InvalidDateWarn
@@ -12077,7 +12077,7 @@ class IDCardConfig(AbstractModel):
 
     @property
     def ReflectWarn(self):
-        """默认为false
+        """是否开启反光检测，默认为false
         :rtype: bool
         """
         return self._ReflectWarn

@@ -15051,7 +15051,6 @@ class CreateVpcPeeringConnectionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PeeringConnectionId: 对等连接ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PeeringConnectionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15062,7 +15061,6 @@ class CreateVpcPeeringConnectionResponse(AbstractModel):
     @property
     def PeeringConnectionId(self):
         """对等连接ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PeeringConnectionId
@@ -54029,11 +54027,11 @@ class PeerConnection(AbstractModel):
         :param _TagSet: 资源标签数据。
         :type TagSet: list of Tag
         :param _QosLevel: 服务分级：PT、AU、AG。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QosLevel: str
         :param _Type: 互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
+        :param _DestinationVpcId: 对端VPC唯一ID。
+        :type DestinationVpcId: str
         """
         self._SourceVpcId = None
         self._PeerVpcId = None
@@ -54053,6 +54051,7 @@ class PeerConnection(AbstractModel):
         self._TagSet = None
         self._QosLevel = None
         self._Type = None
+        self._DestinationVpcId = None
 
     @property
     def SourceVpcId(self):
@@ -54233,7 +54232,6 @@ class PeerConnection(AbstractModel):
     @property
     def QosLevel(self):
         """服务分级：PT、AU、AG。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QosLevel
@@ -54245,7 +54243,6 @@ class PeerConnection(AbstractModel):
     @property
     def Type(self):
         """互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -54253,6 +54250,17 @@ class PeerConnection(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def DestinationVpcId(self):
+        """对端VPC唯一ID。
+        :rtype: str
+        """
+        return self._DestinationVpcId
+
+    @DestinationVpcId.setter
+    def DestinationVpcId(self, DestinationVpcId):
+        self._DestinationVpcId = DestinationVpcId
 
 
     def _deserialize(self, params):
@@ -54279,6 +54287,7 @@ class PeerConnection(AbstractModel):
                 self._TagSet.append(obj)
         self._QosLevel = params.get("QosLevel")
         self._Type = params.get("Type")
+        self._DestinationVpcId = params.get("DestinationVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

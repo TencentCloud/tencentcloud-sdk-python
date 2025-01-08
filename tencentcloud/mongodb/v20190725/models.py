@@ -254,10 +254,8 @@ class BackupDownloadTask(AbstractModel):
         :param _BackupDesc: 发起备份时指定的备注信息
         :type BackupDesc: str
         :param _Region: 地区信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Bucket: Bucket信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         """
         self._CreateTime = None
@@ -386,7 +384,6 @@ class BackupDownloadTask(AbstractModel):
     @property
     def Region(self):
         """地区信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -398,7 +395,6 @@ class BackupDownloadTask(AbstractModel):
     @property
     def Bucket(self):
         """Bucket信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -2450,32 +2446,24 @@ class CurrentOp(AbstractModel):
     def __init__(self):
         r"""
         :param _OpId: 操作序号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpId: int
         :param _Ns: 操作所在的命名空间，形式如db.collection。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ns: str
         :param _Query: 操作执行语句。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Query: str
         :param _Op: 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Op: str
         :param _ReplicaSetName: 操作所在的分片名称。
         :type ReplicaSetName: str
         :param _NodeName: 操作所在的节点名称。
         :type NodeName: str
         :param _Operation: 操作详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: str
         :param _State: 筛选条件，节点状态，可能的取值为：Primary、Secondary。
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         :param _MicrosecsRunning: 操作已执行时间（ms）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MicrosecsRunning: int
         :param _ExecNode: 当前操作所在节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecNode: str
         """
         self._OpId = None
@@ -2492,7 +2480,6 @@ class CurrentOp(AbstractModel):
     @property
     def OpId(self):
         """操作序号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OpId
@@ -2504,7 +2491,6 @@ class CurrentOp(AbstractModel):
     @property
     def Ns(self):
         """操作所在的命名空间，形式如db.collection。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ns
@@ -2516,7 +2502,6 @@ class CurrentOp(AbstractModel):
     @property
     def Query(self):
         """操作执行语句。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Query
@@ -2528,7 +2513,6 @@ class CurrentOp(AbstractModel):
     @property
     def Op(self):
         """操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Op
@@ -2562,7 +2546,6 @@ class CurrentOp(AbstractModel):
     @property
     def Operation(self):
         """操作详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Operation
@@ -2574,7 +2557,6 @@ class CurrentOp(AbstractModel):
     @property
     def State(self):
         """筛选条件，节点状态，可能的取值为：Primary、Secondary。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._State
@@ -2586,7 +2568,6 @@ class CurrentOp(AbstractModel):
     @property
     def MicrosecsRunning(self):
         """操作已执行时间（ms）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MicrosecsRunning
@@ -2598,7 +2579,6 @@ class CurrentOp(AbstractModel):
     @property
     def ExecNode(self):
         """当前操作所在节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExecNode
@@ -9425,7 +9405,7 @@ class NodeProperty(AbstractModel):
         :type NodeName: str
         :param _Address: 节点访问地址。
         :type Address: str
-        :param _WanServiceAddress: 节点公网访问地址(IP或域名)。
+        :param _WanServiceAddress: 节点公网访问外网地址(IP或域名，示例为IP方式)。
         :type WanServiceAddress: str
         :param _Role: 角色。
         :type Role: str
@@ -9492,7 +9472,7 @@ class NodeProperty(AbstractModel):
 
     @property
     def WanServiceAddress(self):
-        """节点公网访问地址(IP或域名)。
+        """节点公网访问外网地址(IP或域名，示例为IP方式)。
         :rtype: str
         """
         return self._WanServiceAddress

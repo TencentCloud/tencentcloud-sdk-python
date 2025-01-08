@@ -4424,7 +4424,7 @@ class Inbound(AbstractModel):
 
 
 class InstanceEnumParam(AbstractModel):
-    """实例枚举类型参数描述
+    """实例枚举类型参数描述，keewidb暂无枚举值
 
     """
 

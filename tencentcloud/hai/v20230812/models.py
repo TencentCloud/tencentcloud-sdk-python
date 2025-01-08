@@ -198,6 +198,115 @@ class ApplicationInfo(AbstractModel):
         
 
 
+class CreateMuskPromptRequest(AbstractModel):
+    """CreateMuskPrompt请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkgroupId: workgroup id
+        :type WorkgroupId: str
+        :param _WorkflowId: workflow id
+        :type WorkflowId: str
+        :param _PromptParams: prompt 参数
+        :type PromptParams: str
+        """
+        self._WorkgroupId = None
+        self._WorkflowId = None
+        self._PromptParams = None
+
+    @property
+    def WorkgroupId(self):
+        """workgroup id
+        :rtype: str
+        """
+        return self._WorkgroupId
+
+    @WorkgroupId.setter
+    def WorkgroupId(self, WorkgroupId):
+        self._WorkgroupId = WorkgroupId
+
+    @property
+    def WorkflowId(self):
+        """workflow id
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def PromptParams(self):
+        """prompt 参数
+        :rtype: str
+        """
+        return self._PromptParams
+
+    @PromptParams.setter
+    def PromptParams(self, PromptParams):
+        self._PromptParams = PromptParams
+
+
+    def _deserialize(self, params):
+        self._WorkgroupId = params.get("WorkgroupId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._PromptParams = params.get("PromptParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMuskPromptResponse(AbstractModel):
+    """CreateMuskPrompt返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptId: prompt id
+        :type PromptId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PromptId = None
+        self._RequestId = None
+
+    @property
+    def PromptId(self):
+        """prompt id
+        :rtype: str
+        """
+        return self._PromptId
+
+    @PromptId.setter
+    def PromptId(self, PromptId):
+        self._PromptId = PromptId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PromptId = params.get("PromptId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeApplicationsRequest(AbstractModel):
     """DescribeApplications请求参数结构体
 

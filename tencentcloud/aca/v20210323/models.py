@@ -4472,7 +4472,7 @@ class SmartDrugInfoResp(AbstractModel):
         :type DrugRoute: str
         :param _DrugBasicCode: 药品本位码
         :type DrugBasicCode: str
-        :param _OctTag: OCT标签
+        :param _OctTag: OTC标签
         :type OctTag: str
         """
         self._DrugId = None
@@ -5019,7 +5019,7 @@ class SmartDrugInfoResp(AbstractModel):
 
     @property
     def OctTag(self):
-        """OCT标签
+        """OTC标签
         :rtype: str
         """
         return self._OctTag

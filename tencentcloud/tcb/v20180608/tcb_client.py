@@ -740,7 +740,7 @@ class TcbClient(AbstractClient):
 
 
     def DescribeCloudBaseRunPodList(self, request):
-        """查询云应用服务版本容器列表
+        """查询云托管服务版本容器列表
 
         :param request: Request instance for DescribeCloudBaseRunPodList.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunPodListRequest`

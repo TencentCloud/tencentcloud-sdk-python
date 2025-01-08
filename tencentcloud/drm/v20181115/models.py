@@ -318,12 +318,16 @@ class CreateLicenseRequest(AbstractModel):
         :type Tracks: list of str
         :param _PlaybackPolicy: 播放策略参数。
         :type PlaybackPolicy: :class:`tencentcloud.drm.v20181115.models.PlaybackPolicy`
+        :param _WidevineSecurityLevel: Widevine安全级别，接口取值[L1, L2, L3]。
+安全级别定义参考Widevine安全级别定义。
+        :type WidevineSecurityLevel: str
         """
         self._DrmType = None
         self._LicenseRequest = None
         self._ContentType = None
         self._Tracks = None
         self._PlaybackPolicy = None
+        self._WidevineSecurityLevel = None
 
     @property
     def DrmType(self):
@@ -381,6 +385,18 @@ class CreateLicenseRequest(AbstractModel):
     def PlaybackPolicy(self, PlaybackPolicy):
         self._PlaybackPolicy = PlaybackPolicy
 
+    @property
+    def WidevineSecurityLevel(self):
+        """Widevine安全级别，接口取值[L1, L2, L3]。
+安全级别定义参考Widevine安全级别定义。
+        :rtype: str
+        """
+        return self._WidevineSecurityLevel
+
+    @WidevineSecurityLevel.setter
+    def WidevineSecurityLevel(self, WidevineSecurityLevel):
+        self._WidevineSecurityLevel = WidevineSecurityLevel
+
 
     def _deserialize(self, params):
         self._DrmType = params.get("DrmType")
@@ -390,6 +406,7 @@ class CreateLicenseRequest(AbstractModel):
         if params.get("PlaybackPolicy") is not None:
             self._PlaybackPolicy = PlaybackPolicy()
             self._PlaybackPolicy._deserialize(params.get("PlaybackPolicy"))
+        self._WidevineSecurityLevel = params.get("WidevineSecurityLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

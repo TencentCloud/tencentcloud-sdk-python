@@ -4890,11 +4890,22 @@ class CreateTargetGroupRequest(AbstractModel):
         :type Port: int
         :param _TargetGroupInstances: 目标组绑定的后端服务器
         :type TargetGroupInstances: list of TargetGroupInstance
+        :param _Tags: 标签。
+        :type Tags: list of TagInfo
+        :param _Weight: 后端服务默认权重。
+<ul>
+    <li>取值范围[0, 100]</li>
+    <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
+</ul>
+
+        :type Weight: int
         """
         self._TargetGroupName = None
         self._VpcId = None
         self._Port = None
         self._TargetGroupInstances = None
+        self._Tags = None
+        self._Weight = None
 
     @property
     def TargetGroupName(self):
@@ -4941,6 +4952,33 @@ class CreateTargetGroupRequest(AbstractModel):
     def TargetGroupInstances(self, TargetGroupInstances):
         self._TargetGroupInstances = TargetGroupInstances
 
+    @property
+    def Tags(self):
+        """标签。
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Weight(self):
+        """后端服务默认权重。
+<ul>
+    <li>取值范围[0, 100]</li>
+    <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
+</ul>
+
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
 
     def _deserialize(self, params):
         self._TargetGroupName = params.get("TargetGroupName")
@@ -4952,6 +4990,13 @@ class CreateTargetGroupRequest(AbstractModel):
                 obj = TargetGroupInstance()
                 obj._deserialize(item)
                 self._TargetGroupInstances.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16546,10 +16591,17 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         :type TargetGroupName: str
         :param _Port: 目标组的新默认端口。
         :type Port: int
+        :param _Weight: 后端服务默认权重。
+<ul>
+    <li>取值范围[0, 100]</li>
+    <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
+</ul>
+        :type Weight: int
         """
         self._TargetGroupId = None
         self._TargetGroupName = None
         self._Port = None
+        self._Weight = None
 
     @property
     def TargetGroupId(self):
@@ -16584,11 +16636,27 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     def Port(self, Port):
         self._Port = Port
 
+    @property
+    def Weight(self):
+        """后端服务默认权重。
+<ul>
+    <li>取值范围[0, 100]</li>
+    <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
+</ul>
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
         self._TargetGroupName = params.get("TargetGroupName")
         self._Port = params.get("Port")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

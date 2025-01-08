@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 欠费账户不能创建实例
 FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = 'FailedOperation.ArrearsAccountCannotRunInstances'
 
@@ -25,6 +28,9 @@ FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = 'FailedOperation.OperateInstanceRepe
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
+
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
 
 # 两个指定的入参每次只能使用其中一个
 INVALIDPARAMETER_ATMOSTONE = 'InvalidParameter.AtMostOne'

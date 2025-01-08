@@ -4354,6 +4354,8 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 <li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
 
         :type OpenDynamicFlow: bool
+        :param _OpenDynamicSignFlow: 是否开启动态合同（动态签署人2.0）<ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li><li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+        :type OpenDynamicSignFlow: bool
         """
         self._Agent = None
         self._FlowName = None
@@ -4378,6 +4380,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
         self._NeedPreview = None
         self._PreviewType = None
         self._OpenDynamicFlow = None
+        self._OpenDynamicSignFlow = None
 
     @property
     def Agent(self):
@@ -4692,6 +4695,8 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def OpenDynamicFlow(self):
+        warnings.warn("parameter `OpenDynamicFlow` is deprecated", DeprecationWarning) 
+
         """是否开启动态合同（动态签署人2.0）
 <ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li>
 <li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
@@ -4702,7 +4707,20 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @OpenDynamicFlow.setter
     def OpenDynamicFlow(self, OpenDynamicFlow):
+        warnings.warn("parameter `OpenDynamicFlow` is deprecated", DeprecationWarning) 
+
         self._OpenDynamicFlow = OpenDynamicFlow
+
+    @property
+    def OpenDynamicSignFlow(self):
+        """是否开启动态合同（动态签署人2.0）<ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li><li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+        :rtype: bool
+        """
+        return self._OpenDynamicSignFlow
+
+    @OpenDynamicSignFlow.setter
+    def OpenDynamicSignFlow(self, OpenDynamicSignFlow):
+        self._OpenDynamicSignFlow = OpenDynamicSignFlow
 
 
     def _deserialize(self, params):
@@ -4748,6 +4766,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
         self._NeedPreview = params.get("NeedPreview")
         self._PreviewType = params.get("PreviewType")
         self._OpenDynamicFlow = params.get("OpenDynamicFlow")
+        self._OpenDynamicSignFlow = params.get("OpenDynamicSignFlow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20514,6 +20533,8 @@ class FlowApproverDetail(AbstractModel):
         :param _SignId: 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignId: str
+        :param _RecipientId: 模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
+        :type RecipientId: str
         """
         self._ReceiptId = None
         self._ProxyOrganizationOpenId = None
@@ -20528,9 +20549,12 @@ class FlowApproverDetail(AbstractModel):
         self._ApproveType = None
         self._ApproverRoleName = None
         self._SignId = None
+        self._RecipientId = None
 
     @property
     def ReceiptId(self):
+        warnings.warn("parameter `ReceiptId` is deprecated", DeprecationWarning) 
+
         """模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
         :rtype: str
         """
@@ -20538,6 +20562,8 @@ class FlowApproverDetail(AbstractModel):
 
     @ReceiptId.setter
     def ReceiptId(self, ReceiptId):
+        warnings.warn("parameter `ReceiptId` is deprecated", DeprecationWarning) 
+
         self._ReceiptId = ReceiptId
 
     @property
@@ -20694,6 +20720,17 @@ class FlowApproverDetail(AbstractModel):
     def SignId(self, SignId):
         self._SignId = SignId
 
+    @property
+    def RecipientId(self):
+        """模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
+        :rtype: str
+        """
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
 
     def _deserialize(self, params):
         self._ReceiptId = params.get("ReceiptId")
@@ -20709,6 +20746,7 @@ class FlowApproverDetail(AbstractModel):
         self._ApproveType = params.get("ApproveType")
         self._ApproverRoleName = params.get("ApproverRoleName")
         self._SignId = params.get("SignId")
+        self._RecipientId = params.get("RecipientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

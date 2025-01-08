@@ -8212,7 +8212,7 @@ class GetRoomEventRequest(AbstractModel):
         :type SdkAppId: int
         :param _Page: 起始页，1开始。keyword为空时有效。
         :type Page: int
-        :param _Limit: 每页个数。keyword为空时有效。一次性最多200条。
+        :param _Limit: 每页个数。keyword为空时有效。一次性最多100条。
         :type Limit: int
         :param _Keyword: 搜索事件类型。有以下事件类型:
 RoomStart:房间开始
@@ -8271,7 +8271,7 @@ VisibleOff: 页面不可见
 
     @property
     def Limit(self):
-        """每页个数。keyword为空时有效。一次性最多200条。
+        """每页个数。keyword为空时有效。一次性最多100条。
         :rtype: int
         """
         return self._Limit

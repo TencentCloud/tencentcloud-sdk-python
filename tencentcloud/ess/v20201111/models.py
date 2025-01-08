@@ -22952,6 +22952,8 @@ class FlowApproverDetail(AbstractModel):
         :param _ApproverRoleName: 自定义签署人角色
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverRoleName: str
+        :param _RecipientId: 模板配置中的参与方ID,与控件绑定
+        :type RecipientId: str
         """
         self._ApproveMessage = None
         self._ApproveName = None
@@ -22968,6 +22970,7 @@ class FlowApproverDetail(AbstractModel):
         self._OrganizationName = None
         self._SignId = None
         self._ApproverRoleName = None
+        self._RecipientId = None
 
     @property
     def ApproveMessage(self):
@@ -23018,6 +23021,8 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ReceiptId(self):
+        warnings.warn("parameter `ReceiptId` is deprecated", DeprecationWarning) 
+
         """模板配置中的参与方ID,与控件绑定
         :rtype: str
         """
@@ -23025,6 +23030,8 @@ class FlowApproverDetail(AbstractModel):
 
     @ReceiptId.setter
     def ReceiptId(self, ReceiptId):
+        warnings.warn("parameter `ReceiptId` is deprecated", DeprecationWarning) 
+
         self._ReceiptId = ReceiptId
 
     @property
@@ -23156,6 +23163,17 @@ class FlowApproverDetail(AbstractModel):
     def ApproverRoleName(self, ApproverRoleName):
         self._ApproverRoleName = ApproverRoleName
 
+    @property
+    def RecipientId(self):
+        """模板配置中的参与方ID,与控件绑定
+        :rtype: str
+        """
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
 
     def _deserialize(self, params):
         self._ApproveMessage = params.get("ApproveMessage")
@@ -23173,6 +23191,7 @@ class FlowApproverDetail(AbstractModel):
         self._OrganizationName = params.get("OrganizationName")
         self._SignId = params.get("SignId")
         self._ApproverRoleName = params.get("ApproverRoleName")
+        self._RecipientId = params.get("RecipientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29671,6 +29690,8 @@ class ReleasedApprover(AbstractModel):
         :type ApproverSignRole: str
         :param _ApproverSignSealId: 印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
         :type ApproverSignSealId: str
+        :param _RelievedApproverRecipientId: 要更换的原合同参与人RecipientId编号。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
+        :type RelievedApproverRecipientId: str
         """
         self._Name = None
         self._Mobile = None
@@ -29679,6 +29700,7 @@ class ReleasedApprover(AbstractModel):
         self._ApproverSignComponentType = None
         self._ApproverSignRole = None
         self._ApproverSignSealId = None
+        self._RelievedApproverRecipientId = None
 
     @property
     def Name(self):
@@ -29705,6 +29727,8 @@ class ReleasedApprover(AbstractModel):
 
     @property
     def RelievedApproverReceiptId(self):
+        warnings.warn("parameter `RelievedApproverReceiptId` is deprecated", DeprecationWarning) 
+
         """要更换的原合同参与人RecipientId编号。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
         :rtype: str
         """
@@ -29712,6 +29736,8 @@ class ReleasedApprover(AbstractModel):
 
     @RelievedApproverReceiptId.setter
     def RelievedApproverReceiptId(self, RelievedApproverReceiptId):
+        warnings.warn("parameter `RelievedApproverReceiptId` is deprecated", DeprecationWarning) 
+
         self._RelievedApproverReceiptId = RelievedApproverReceiptId
 
     @property
@@ -29767,6 +29793,17 @@ class ReleasedApprover(AbstractModel):
     def ApproverSignSealId(self, ApproverSignSealId):
         self._ApproverSignSealId = ApproverSignSealId
 
+    @property
+    def RelievedApproverRecipientId(self):
+        """要更换的原合同参与人RecipientId编号。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
+        :rtype: str
+        """
+        return self._RelievedApproverRecipientId
+
+    @RelievedApproverRecipientId.setter
+    def RelievedApproverRecipientId(self, RelievedApproverRecipientId):
+        self._RelievedApproverRecipientId = RelievedApproverRecipientId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -29776,6 +29813,7 @@ class ReleasedApprover(AbstractModel):
         self._ApproverSignComponentType = params.get("ApproverSignComponentType")
         self._ApproverSignRole = params.get("ApproverSignRole")
         self._ApproverSignSealId = params.get("ApproverSignSealId")
+        self._RelievedApproverRecipientId = params.get("RelievedApproverRecipientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

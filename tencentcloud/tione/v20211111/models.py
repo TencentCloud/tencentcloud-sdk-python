@@ -12116,6 +12116,9 @@ class NotebookDetail(AbstractModel):
         :type SubUinName: str
         :param _JobCreateTime: 任务实例创建时间
         :type JobCreateTime: str
+        :param _AppId: Appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
         """
         self._Id = None
         self._Name = None
@@ -12160,6 +12163,7 @@ class NotebookDetail(AbstractModel):
         self._ResourceGroupInstanceId = None
         self._SubUinName = None
         self._JobCreateTime = None
+        self._AppId = None
 
     @property
     def Id(self):
@@ -12665,6 +12669,18 @@ class NotebookDetail(AbstractModel):
     def JobCreateTime(self, JobCreateTime):
         self._JobCreateTime = JobCreateTime
 
+    @property
+    def AppId(self):
+        """Appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12732,6 +12748,7 @@ class NotebookDetail(AbstractModel):
         self._ResourceGroupInstanceId = params.get("ResourceGroupInstanceId")
         self._SubUinName = params.get("SubUinName")
         self._JobCreateTime = params.get("JobCreateTime")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12828,6 +12845,9 @@ class NotebookSetItem(AbstractModel):
         :type VolumeSourceGooseFS: :class:`tencentcloud.tione.v20211111.models.GooseFS`
         :param _SubUinName: 子用户名称
         :type SubUinName: str
+        :param _AppId: AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
         """
         self._Id = None
         self._Name = None
@@ -12857,6 +12877,7 @@ class NotebookSetItem(AbstractModel):
         self._SSHConfig = None
         self._VolumeSourceGooseFS = None
         self._SubUinName = None
+        self._AppId = None
 
     @property
     def Id(self):
@@ -13189,6 +13210,18 @@ class NotebookSetItem(AbstractModel):
     def SubUinName(self, SubUinName):
         self._SubUinName = SubUinName
 
+    @property
+    def AppId(self):
+        """AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -13232,6 +13265,7 @@ class NotebookSetItem(AbstractModel):
             self._VolumeSourceGooseFS = GooseFS()
             self._VolumeSourceGooseFS._deserialize(params.get("VolumeSourceGooseFS"))
         self._SubUinName = params.get("SubUinName")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

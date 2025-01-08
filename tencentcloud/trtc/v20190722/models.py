@@ -2421,10 +2421,8 @@ class DescribeCallDetailInfoResponse(AbstractModel):
         :param _Total: 返回的用户总条数
         :type Total: int
         :param _UserList: 用户信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserList: list of UserInformation
         :param _Data: 质量数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of QualityData
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2448,7 +2446,6 @@ class DescribeCallDetailInfoResponse(AbstractModel):
     @property
     def UserList(self):
         """用户信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserInformation
         """
         return self._UserList
@@ -2460,7 +2457,6 @@ class DescribeCallDetailInfoResponse(AbstractModel):
     @property
     def Data(self):
         """质量数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityData
         """
         return self._Data
@@ -3561,7 +3557,6 @@ class DescribeScaleInfoResponse(AbstractModel):
         :param _Total: 返回的数据条数
         :type Total: int
         :param _ScaleList: 返回的数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleList: list of ScaleInfomation
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3584,7 +3579,6 @@ class DescribeScaleInfoResponse(AbstractModel):
     @property
     def ScaleList(self):
         """返回的数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScaleInfomation
         """
         return self._ScaleList
@@ -5567,7 +5561,6 @@ class DescribeUserInfoResponse(AbstractModel):
         :param _Total: 返回的用户总条数
         :type Total: int
         :param _UserList: 用户信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserList: list of UserInformation
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5590,7 +5583,6 @@ class DescribeUserInfoResponse(AbstractModel):
     @property
     def UserList(self):
         """用户信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserInformation
         """
         return self._UserList

@@ -2836,6 +2836,8 @@ class BizTaskInfo(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCLSDeliveryInfos: list of InstanceCLSDeliveryInfo
+        :param _TaskProgressInfo: 任务进度信息
+        :type TaskProgressInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
         """
         self._ID = None
         self._AppId = None
@@ -2873,6 +2875,7 @@ class BizTaskInfo(AbstractModel):
         self._ModifyInstanceParamsData = None
         self._TaskMaintainInfo = None
         self._InstanceCLSDeliveryInfos = None
+        self._TaskProgressInfo = None
 
     @property
     def ID(self):
@@ -3293,6 +3296,17 @@ class BizTaskInfo(AbstractModel):
     def InstanceCLSDeliveryInfos(self, InstanceCLSDeliveryInfos):
         self._InstanceCLSDeliveryInfos = InstanceCLSDeliveryInfos
 
+    @property
+    def TaskProgressInfo(self):
+        """任务进度信息
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
+        """
+        return self._TaskProgressInfo
+
+    @TaskProgressInfo.setter
+    def TaskProgressInfo(self, TaskProgressInfo):
+        self._TaskProgressInfo = TaskProgressInfo
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -3359,6 +3373,9 @@ class BizTaskInfo(AbstractModel):
                 obj = InstanceCLSDeliveryInfo()
                 obj._deserialize(item)
                 self._InstanceCLSDeliveryInfos.append(obj)
+        if params.get("TaskProgressInfo") is not None:
+            self._TaskProgressInfo = TaskProgressInfo()
+            self._TaskProgressInfo._deserialize(params.get("TaskProgressInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17280,6 +17297,8 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
         :type OrderBy: str
         :param _OrderByType: 排序类型，可选值：asc,desc
         :type OrderByType: str
+        :param _SqlText: sql语句
+        :type SqlText: str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -17291,6 +17310,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
         self._Database = None
         self._OrderBy = None
         self._OrderByType = None
+        self._SqlText = None
 
     @property
     def InstanceId(self):
@@ -17402,6 +17422,17 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
     def OrderByType(self, OrderByType):
         self._OrderByType = OrderByType
 
+    @property
+    def SqlText(self):
+        """sql语句
+        :rtype: str
+        """
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17414,6 +17445,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
         self._Database = params.get("Database")
         self._OrderBy = params.get("OrderBy")
         self._OrderByType = params.get("OrderByType")
+        self._SqlText = params.get("SqlText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35005,6 +35037,8 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type RollbackTables: list of RollbackTable
         :param _OriginalROInstanceList: 原ro实例信息
         :type OriginalROInstanceList: list of str
+        :param _ProjectId: 项目id
+        :type ProjectId: int
         """
         self._Zone = None
         self._OriginalClusterId = None
@@ -35032,6 +35066,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._RollbackDatabases = None
         self._RollbackTables = None
         self._OriginalROInstanceList = None
+        self._ProjectId = None
 
     @property
     def Zone(self):
@@ -35328,6 +35363,17 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
     def OriginalROInstanceList(self, OriginalROInstanceList):
         self._OriginalROInstanceList = OriginalROInstanceList
 
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -35381,6 +35427,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
                 obj._deserialize(item)
                 self._RollbackTables.append(obj)
         self._OriginalROInstanceList = params.get("OriginalROInstanceList")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38129,6 +38176,72 @@ class TaskMaintainInfo(AbstractModel):
         self._MaintainStartTime = params.get("MaintainStartTime")
         self._MaintainDuration = params.get("MaintainDuration")
         self._MaintainWeekDays = params.get("MaintainWeekDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskProgressInfo(AbstractModel):
+    """任务进度查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentStep: 当前步骤
+        :type CurrentStep: str
+        :param _CurrentStepProgress: 当前进度
+        :type CurrentStepProgress: int
+        :param _CurrentStepRemainingTime: 预估时间
+        :type CurrentStepRemainingTime: str
+        """
+        self._CurrentStep = None
+        self._CurrentStepProgress = None
+        self._CurrentStepRemainingTime = None
+
+    @property
+    def CurrentStep(self):
+        """当前步骤
+        :rtype: str
+        """
+        return self._CurrentStep
+
+    @CurrentStep.setter
+    def CurrentStep(self, CurrentStep):
+        self._CurrentStep = CurrentStep
+
+    @property
+    def CurrentStepProgress(self):
+        """当前进度
+        :rtype: int
+        """
+        return self._CurrentStepProgress
+
+    @CurrentStepProgress.setter
+    def CurrentStepProgress(self, CurrentStepProgress):
+        self._CurrentStepProgress = CurrentStepProgress
+
+    @property
+    def CurrentStepRemainingTime(self):
+        """预估时间
+        :rtype: str
+        """
+        return self._CurrentStepRemainingTime
+
+    @CurrentStepRemainingTime.setter
+    def CurrentStepRemainingTime(self, CurrentStepRemainingTime):
+        self._CurrentStepRemainingTime = CurrentStepRemainingTime
+
+
+    def _deserialize(self, params):
+        self._CurrentStep = params.get("CurrentStep")
+        self._CurrentStepProgress = params.get("CurrentStepProgress")
+        self._CurrentStepRemainingTime = params.get("CurrentStepRemainingTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

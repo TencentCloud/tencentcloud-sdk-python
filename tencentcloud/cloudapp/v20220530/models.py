@@ -27,7 +27,7 @@ class License(AbstractModel):
         r"""
         :param _LicenseId: License ID
         :type LicenseId: str
-        :param _LicenseMode: 软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr></tbody></table>
+        :param _LicenseMode: 软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr><tr><td>Accept</td><td>验收期授权。用于需要验收的软件处于验收期间的授权，授权如果过了验收有效期，则会进入过期状态。</td></tr></tbody></table>
         :type LicenseMode: str
         :param _LicenseStatus: 软件的授权状态。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Issued</td><td>已颁发，等待激活。一般来说，如果软件已经在运行，不会出现该状态。</td></tr><tr><td>Active</td><td>授权在有效期内，这是软件运行期间最常见的状态。</td></tr><tr><td>Expired</td><td>授权已过期。订阅类的软件授权有有效期，如果服务器时间已晚于有效期，则会进入过期状态。</td></tr><tr><td>Isolated</td><td>授权已隔离。有截止日期的授权，当用户授权到期时，先进入此状态，用户可以去续费，超过7天不续费则授权进入Destroyed状态。</td></tr><tr><td>Destroyed</td><td>授权已失效/销毁。用户如果退货软件，则授权会自动失效。</td></tr></tbody></table>
         :type LicenseStatus: str
@@ -93,7 +93,7 @@ class License(AbstractModel):
 
     @property
     def LicenseMode(self):
-        """软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr></tbody></table>
+        """软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr><tr><td>Accept</td><td>验收期授权。用于需要验收的软件处于验收期间的授权，授权如果过了验收有效期，则会进入过期状态。</td></tr></tbody></table>
         :rtype: str
         """
         return self._LicenseMode
@@ -312,19 +312,24 @@ class SaleParam(AbstractModel):
         r"""
         :param _ParamKey: 售卖参数标识
         :type ParamKey: str
-        :param _ParamValue: 售卖参数值
-        :type ParamValue: str
         :param _ParamKeyName: 售卖参数的展示名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamKeyName: str
+        :param _ParamValue: 售卖参数值，当ParamType=Quant时，该值有可能为Null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamValue: str
         :param _ParamValueName: 售卖参数值的展示名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamValueName: str
+        :param _ParamType: 售卖参数的类型，目前支持枚举类Enum/数量类Quant
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamType: str
         """
         self._ParamKey = None
-        self._ParamValue = None
         self._ParamKeyName = None
+        self._ParamValue = None
         self._ParamValueName = None
+        self._ParamType = None
 
     @property
     def ParamKey(self):
@@ -336,17 +341,6 @@ class SaleParam(AbstractModel):
     @ParamKey.setter
     def ParamKey(self, ParamKey):
         self._ParamKey = ParamKey
-
-    @property
-    def ParamValue(self):
-        """售卖参数值
-        :rtype: str
-        """
-        return self._ParamValue
-
-    @ParamValue.setter
-    def ParamValue(self, ParamValue):
-        self._ParamValue = ParamValue
 
     @property
     def ParamKeyName(self):
@@ -361,6 +355,18 @@ class SaleParam(AbstractModel):
         self._ParamKeyName = ParamKeyName
 
     @property
+    def ParamValue(self):
+        """售卖参数值，当ParamType=Quant时，该值有可能为Null
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParamValue
+
+    @ParamValue.setter
+    def ParamValue(self, ParamValue):
+        self._ParamValue = ParamValue
+
+    @property
     def ParamValueName(self):
         """售卖参数值的展示名称
 注意：此字段可能返回 null，表示取不到有效值。
@@ -372,12 +378,25 @@ class SaleParam(AbstractModel):
     def ParamValueName(self, ParamValueName):
         self._ParamValueName = ParamValueName
 
+    @property
+    def ParamType(self):
+        """售卖参数的类型，目前支持枚举类Enum/数量类Quant
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
 
     def _deserialize(self, params):
         self._ParamKey = params.get("ParamKey")
-        self._ParamValue = params.get("ParamValue")
         self._ParamKeyName = params.get("ParamKeyName")
+        self._ParamValue = params.get("ParamValue")
         self._ParamValueName = params.get("ParamValueName")
+        self._ParamType = params.get("ParamType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -403,10 +422,16 @@ class VerifyLicenseResponse(AbstractModel):
         r"""
         :param _License: 软件的详细授权信息。
         :type License: :class:`tencentcloud.cloudapp.v20220530.models.License`
+        :param _Timestamp: 当前请求服务端的时间戳，格式为RFC3339
+        :type Timestamp: str
+        :param _Signature: 对License字段对应的json数据的签名
+        :type Signature: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._License = None
+        self._Timestamp = None
+        self._Signature = None
         self._RequestId = None
 
     @property
@@ -419,6 +444,28 @@ class VerifyLicenseResponse(AbstractModel):
     @License.setter
     def License(self, License):
         self._License = License
+
+    @property
+    def Timestamp(self):
+        """当前请求服务端的时间戳，格式为RFC3339
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Signature(self):
+        """对License字段对应的json数据的签名
+        :rtype: str
+        """
+        return self._Signature
+
+    @Signature.setter
+    def Signature(self, Signature):
+        self._Signature = Signature
 
     @property
     def RequestId(self):
@@ -436,4 +483,6 @@ class VerifyLicenseResponse(AbstractModel):
         if params.get("License") is not None:
             self._License = License()
             self._License._deserialize(params.get("License"))
+        self._Timestamp = params.get("Timestamp")
+        self._Signature = params.get("Signature")
         self._RequestId = params.get("RequestId")

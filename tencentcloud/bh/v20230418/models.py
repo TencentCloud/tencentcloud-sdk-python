@@ -3163,9 +3163,9 @@ class CreateUserRequest(AbstractModel):
         :type UserName: str
         :param _RealName: 用户姓名，最大长度20个字符，不能包含空白字符
         :type RealName: str
-        :param _Phone: 大陆手机号直接填写，如果是其他国家、地区号码， 按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+        :param _Phone: 按照"国家地区代码|手机号"的格式输入，如: "+86|xxxxxxxx"。手机号和邮箱参数至少传一项
         :type Phone: str
-        :param _Email: 电子邮件
+        :param _Email: 电子邮件。手机号和邮箱参数至少传一项
         :type Email: str
         :param _ValidateFrom: 用户生效时间，如:"2021-09-22T00:00:00+00:00"
 生效、失效时间不填则用户长期有效
@@ -3217,7 +3217,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Phone(self):
-        """大陆手机号直接填写，如果是其他国家、地区号码， 按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+        """按照"国家地区代码|手机号"的格式输入，如: "+86|xxxxxxxx"。手机号和邮箱参数至少传一项
         :rtype: str
         """
         return self._Phone
@@ -3228,7 +3228,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        """电子邮件
+        """电子邮件。手机号和邮箱参数至少传一项
         :rtype: str
         """
         return self._Email

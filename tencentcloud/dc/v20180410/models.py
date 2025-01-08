@@ -512,26 +512,37 @@ class BGPStatus(AbstractModel):
 
 
 class BgpPeer(AbstractModel):
-    """bgp参数，包括Asn，AuthKey
+    """bgp参数，包括CloudAsn，Asn，AuthKey
 
     """
 
     def __init__(self):
         r"""
+        :param _CloudAsn: 腾讯侧BGP ASN
+        :type CloudAsn: str
         :param _Asn: 用户侧BGP ASN
-注意：此字段可能返回 null，表示取不到有效值。
         :type Asn: int
         :param _AuthKey: 用户侧BGP密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthKey: str
         """
+        self._CloudAsn = None
         self._Asn = None
         self._AuthKey = None
 
     @property
+    def CloudAsn(self):
+        """腾讯侧BGP ASN
+        :rtype: str
+        """
+        return self._CloudAsn
+
+    @CloudAsn.setter
+    def CloudAsn(self, CloudAsn):
+        self._CloudAsn = CloudAsn
+
+    @property
     def Asn(self):
         """用户侧BGP ASN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Asn
@@ -543,7 +554,6 @@ class BgpPeer(AbstractModel):
     @property
     def AuthKey(self):
         """用户侧BGP密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthKey
@@ -554,6 +564,7 @@ class BgpPeer(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CloudAsn = params.get("CloudAsn")
         self._Asn = params.get("Asn")
         self._AuthKey = params.get("AuthKey")
         memeber_set = set(params.keys())
@@ -3107,74 +3118,52 @@ class DirectConnect(AbstractModel):
         :param _PortType: 用户侧物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）
         :type PortType: str
         :param _CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CircuitCode: str
         :param _RedundantDirectConnectId: 冗余物理专线的ID。
         :type RedundantDirectConnectId: str
         :param _Vlan: 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vlan: int
         :param _TencentAddress: 物理专线调试腾讯侧互联IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TencentAddress: str
         :param _CustomerAddress: 物理专线调试用户侧互联IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomerAddress: str
         :param _CustomerName: 物理专线申请者姓名。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomerName: str
         :param _CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomerContactMail: str
         :param _CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomerContactNumber: str
         :param _ExpiredTime: 物理专线的过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
         :param _ChargeType: 物理专线计费类型。 NON_RECURRING_CHARGE：一次性接入费用；PREPAID_BY_YEAR：按年预付费。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: str
         :param _FaultReportContactPerson: 报障联系人。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaultReportContactPerson: str
         :param _FaultReportContactNumber: 报障联系电话。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaultReportContactNumber: str
         :param _TagSet: 标签键值对
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         :param _AccessPointType: 物理专线的接入点类型。
         :type AccessPointType: str
         :param _IdcCity: IDC所在城市
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdcCity: str
         :param _ChargeState: 计费状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeState: str
         :param _StartTime: 物理专线开通时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _SignLaw: 物理专线是否已签署用户协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignLaw: bool
         :param _LocalZone: 物理专线是否为LocalZone
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalZone: bool
         :param _VlanZeroDirectConnectTunnelCount: 该物理专线下vlan 0的专用通道数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type VlanZeroDirectConnectTunnelCount: int
         :param _OtherVlanDirectConnectTunnelCount: 该物理专线下非vlan 0的专用通道数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type OtherVlanDirectConnectTunnelCount: int
         :param _MinBandwidth: 物理专线最小带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinBandwidth: int
         :param _Construct: 建设模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Construct: int
         :param _AccessPointName: 物理专线的接入点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPointName: str
         """
         self._DirectConnectId = None
@@ -3333,7 +3322,6 @@ class DirectConnect(AbstractModel):
     @property
     def CircuitCode(self):
         """运营商或者服务商为物理专线提供的电路编码。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CircuitCode
@@ -3356,7 +3344,6 @@ class DirectConnect(AbstractModel):
     @property
     def Vlan(self):
         """物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Vlan
@@ -3368,7 +3355,6 @@ class DirectConnect(AbstractModel):
     @property
     def TencentAddress(self):
         """物理专线调试腾讯侧互联IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TencentAddress
@@ -3380,7 +3366,6 @@ class DirectConnect(AbstractModel):
     @property
     def CustomerAddress(self):
         """物理专线调试用户侧互联IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomerAddress
@@ -3392,7 +3377,6 @@ class DirectConnect(AbstractModel):
     @property
     def CustomerName(self):
         """物理专线申请者姓名。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomerName
@@ -3404,7 +3388,6 @@ class DirectConnect(AbstractModel):
     @property
     def CustomerContactMail(self):
         """物理专线申请者联系邮箱。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomerContactMail
@@ -3416,7 +3399,6 @@ class DirectConnect(AbstractModel):
     @property
     def CustomerContactNumber(self):
         """物理专线申请者联系号码。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomerContactNumber
@@ -3428,7 +3410,6 @@ class DirectConnect(AbstractModel):
     @property
     def ExpiredTime(self):
         """物理专线的过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpiredTime
@@ -3440,7 +3421,6 @@ class DirectConnect(AbstractModel):
     @property
     def ChargeType(self):
         """物理专线计费类型。 NON_RECURRING_CHARGE：一次性接入费用；PREPAID_BY_YEAR：按年预付费。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeType
@@ -3452,7 +3432,6 @@ class DirectConnect(AbstractModel):
     @property
     def FaultReportContactPerson(self):
         """报障联系人。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FaultReportContactPerson
@@ -3464,7 +3443,6 @@ class DirectConnect(AbstractModel):
     @property
     def FaultReportContactNumber(self):
         """报障联系电话。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FaultReportContactNumber
@@ -3476,7 +3454,6 @@ class DirectConnect(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -3499,7 +3476,6 @@ class DirectConnect(AbstractModel):
     @property
     def IdcCity(self):
         """IDC所在城市
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdcCity
@@ -3511,7 +3487,6 @@ class DirectConnect(AbstractModel):
     @property
     def ChargeState(self):
         """计费状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeState
@@ -3523,7 +3498,6 @@ class DirectConnect(AbstractModel):
     @property
     def StartTime(self):
         """物理专线开通时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -3535,7 +3509,6 @@ class DirectConnect(AbstractModel):
     @property
     def SignLaw(self):
         """物理专线是否已签署用户协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SignLaw
@@ -3547,7 +3520,6 @@ class DirectConnect(AbstractModel):
     @property
     def LocalZone(self):
         """物理专线是否为LocalZone
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._LocalZone
@@ -3559,7 +3531,6 @@ class DirectConnect(AbstractModel):
     @property
     def VlanZeroDirectConnectTunnelCount(self):
         """该物理专线下vlan 0的专用通道数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VlanZeroDirectConnectTunnelCount
@@ -3571,7 +3542,6 @@ class DirectConnect(AbstractModel):
     @property
     def OtherVlanDirectConnectTunnelCount(self):
         """该物理专线下非vlan 0的专用通道数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OtherVlanDirectConnectTunnelCount
@@ -3583,7 +3553,6 @@ class DirectConnect(AbstractModel):
     @property
     def MinBandwidth(self):
         """物理专线最小带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinBandwidth
@@ -3595,7 +3564,6 @@ class DirectConnect(AbstractModel):
     @property
     def Construct(self):
         """建设模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Construct
@@ -3607,7 +3575,6 @@ class DirectConnect(AbstractModel):
     @property
     def AccessPointName(self):
         """物理专线的接入点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessPointName
@@ -3704,7 +3671,7 @@ REJECTED:拒绝
         :type DirectConnectGatewayId: str
         :param _RouteType: BGP ：BGP路由 STATIC：静态 默认为 BGP 路由
         :type RouteType: str
-        :param _BgpPeer: 用户侧BGP，Asn，AuthKey
+        :param _BgpPeer: 用户侧BGP，包括： CloudAsn，Asn，AuthKey
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
         :param _RouteFilterPrefixes: 用户侧网段地址
         :type RouteFilterPrefixes: list of RouteFilterPrefix
@@ -3723,40 +3690,28 @@ REJECTED:拒绝
         :param _TagSet: 专用通道标签值
         :type TagSet: list of Tag
         :param _NetDetectId: 关联的网络自定义探测ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetDetectId: str
         :param _EnableBGPCommunity: BGP community开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableBGPCommunity: bool
         :param _NatType: 是否为Nat通道
-注意：此字段可能返回 null，表示取不到有效值。
         :type NatType: int
         :param _VpcRegion: VPC地域简码，如gz、cd
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcRegion: str
         :param _BfdEnable: 是否开启BFD
-注意：此字段可能返回 null，表示取不到有效值。
         :type BfdEnable: int
         :param _AccessPointType: 专用通道接入点类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPointType: str
         :param _DirectConnectGatewayName: 专线网关名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DirectConnectGatewayName: str
         :param _VpcName: VPC名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
         :param _TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type TencentBackupAddress: str
         :param _SignLaw: 专用通道关联的物理专线是否签署了用户协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignLaw: bool
         :param _CloudAttachId: 高速上云服务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudAttachId: str
         :param _ShareOrNot: 是否共享通道
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShareOrNot: int
         """
         self._DirectConnectTunnelId = None
@@ -3913,7 +3868,7 @@ REJECTED:拒绝
 
     @property
     def BgpPeer(self):
-        """用户侧BGP，Asn，AuthKey
+        """用户侧BGP，包括： CloudAsn，Asn，AuthKey
         :rtype: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
         """
         return self._BgpPeer
@@ -4013,7 +3968,6 @@ REJECTED:拒绝
     @property
     def NetDetectId(self):
         """关联的网络自定义探测ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetDetectId
@@ -4025,7 +3979,6 @@ REJECTED:拒绝
     @property
     def EnableBGPCommunity(self):
         """BGP community开关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableBGPCommunity
@@ -4037,7 +3990,6 @@ REJECTED:拒绝
     @property
     def NatType(self):
         """是否为Nat通道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NatType
@@ -4049,7 +4001,6 @@ REJECTED:拒绝
     @property
     def VpcRegion(self):
         """VPC地域简码，如gz、cd
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcRegion
@@ -4061,7 +4012,6 @@ REJECTED:拒绝
     @property
     def BfdEnable(self):
         """是否开启BFD
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BfdEnable
@@ -4073,7 +4023,6 @@ REJECTED:拒绝
     @property
     def AccessPointType(self):
         """专用通道接入点类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessPointType
@@ -4085,7 +4034,6 @@ REJECTED:拒绝
     @property
     def DirectConnectGatewayName(self):
         """专线网关名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DirectConnectGatewayName
@@ -4097,7 +4045,6 @@ REJECTED:拒绝
     @property
     def VpcName(self):
         """VPC名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcName
@@ -4109,7 +4056,6 @@ REJECTED:拒绝
     @property
     def TencentBackupAddress(self):
         """TencentBackupAddress，腾讯侧备用互联 IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TencentBackupAddress
@@ -4121,7 +4067,6 @@ REJECTED:拒绝
     @property
     def SignLaw(self):
         """专用通道关联的物理专线是否签署了用户协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SignLaw
@@ -4133,7 +4078,6 @@ REJECTED:拒绝
     @property
     def CloudAttachId(self):
         """高速上云服务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CloudAttachId
@@ -4145,7 +4089,6 @@ REJECTED:拒绝
     @property
     def ShareOrNot(self):
         """是否共享通道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ShareOrNot
@@ -4293,25 +4236,18 @@ REJECTED:拒绝
         :param _BgpStatus: BGP状态
         :type BgpStatus: :class:`tencentcloud.dc.v20180410.models.BGPStatus`
         :param _IPv6Enable: 是否开启IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPv6Enable: int
         :param _TencentIPv6Address: 腾讯侧互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type TencentIPv6Address: str
         :param _TencentBackupIPv6Address: 腾讯侧备用互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type TencentBackupIPv6Address: str
         :param _BgpIPv6Status: BGPv6状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type BgpIPv6Status: :class:`tencentcloud.dc.v20180410.models.BGPStatus`
         :param _CustomerIPv6Address: 用户侧互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomerIPv6Address: str
         :param _JumboEnable: 专用通道是否支持巨帧。1 支持，0 不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type JumboEnable: int
         :param _HighPrecisionBFDEnable: 专用通道是否支持高精度BFD。1支持，0不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighPrecisionBFDEnable: int
         """
         self._DirectConnectTunnelId = None
@@ -4731,7 +4667,6 @@ REJECTED:拒绝
     @property
     def IPv6Enable(self):
         """是否开启IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IPv6Enable
@@ -4743,7 +4678,6 @@ REJECTED:拒绝
     @property
     def TencentIPv6Address(self):
         """腾讯侧互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TencentIPv6Address
@@ -4755,7 +4689,6 @@ REJECTED:拒绝
     @property
     def TencentBackupIPv6Address(self):
         """腾讯侧备用互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TencentBackupIPv6Address
@@ -4767,7 +4700,6 @@ REJECTED:拒绝
     @property
     def BgpIPv6Status(self):
         """BGPv6状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dc.v20180410.models.BGPStatus`
         """
         return self._BgpIPv6Status
@@ -4779,7 +4711,6 @@ REJECTED:拒绝
     @property
     def CustomerIPv6Address(self):
         """用户侧互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomerIPv6Address
@@ -4791,7 +4722,6 @@ REJECTED:拒绝
     @property
     def JumboEnable(self):
         """专用通道是否支持巨帧。1 支持，0 不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._JumboEnable
@@ -4803,7 +4733,6 @@ REJECTED:拒绝
     @property
     def HighPrecisionBFDEnable(self):
         """专用通道是否支持高精度BFD。1支持，0不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HighPrecisionBFDEnable
@@ -4903,6 +4832,11 @@ class DirectConnectTunnelRoute(AbstractModel):
         :type ASPath: list of str
         :param _NextHop: 路由下一跳IP
         :type NextHop: str
+        :param _UpdateTime: 路由更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _ApplyOnTunnelEnable: 是否配置在通道上
+        :type ApplyOnTunnelEnable: bool
         """
         self._RouteId = None
         self._DestinationCidrBlock = None
@@ -4910,6 +4844,8 @@ class DirectConnectTunnelRoute(AbstractModel):
         self._Status = None
         self._ASPath = None
         self._NextHop = None
+        self._UpdateTime = None
+        self._ApplyOnTunnelEnable = None
 
     @property
     def RouteId(self):
@@ -4977,6 +4913,29 @@ class DirectConnectTunnelRoute(AbstractModel):
     def NextHop(self, NextHop):
         self._NextHop = NextHop
 
+    @property
+    def UpdateTime(self):
+        """路由更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ApplyOnTunnelEnable(self):
+        """是否配置在通道上
+        :rtype: bool
+        """
+        return self._ApplyOnTunnelEnable
+
+    @ApplyOnTunnelEnable.setter
+    def ApplyOnTunnelEnable(self, ApplyOnTunnelEnable):
+        self._ApplyOnTunnelEnable = ApplyOnTunnelEnable
+
 
     def _deserialize(self, params):
         self._RouteId = params.get("RouteId")
@@ -4985,6 +4944,8 @@ class DirectConnectTunnelRoute(AbstractModel):
         self._Status = params.get("Status")
         self._ASPath = params.get("ASPath")
         self._NextHop = params.get("NextHop")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ApplyOnTunnelEnable = params.get("ApplyOnTunnelEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5182,44 +5143,33 @@ class InternetAddressDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 互联网地址ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _Subnet: 互联网网络地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Subnet: str
         :param _MaskLen: 网络地址掩码长度
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaskLen: int
         :param _AddrType: 0:BGP
 1:电信
 2:移动
 3:联通
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddrType: int
         :param _Status: 0:使用中
 1:已停用
 2:已退还
         :type Status: int
         :param _ApplyTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyTime: str
         :param _StopTime: 停用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StopTime: str
         :param _ReleaseTime: 退还时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseTime: str
         :param _Region: 地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _AddrProto: 0:IPv4 1:IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddrProto: int
         :param _ReserveTime: 释放状态的IP地址保留的天数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReserveTime: int
         """
         self._InstanceId = None
@@ -5238,7 +5188,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def InstanceId(self):
         """互联网地址ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -5250,7 +5199,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def Subnet(self):
         """互联网网络地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Subnet
@@ -5262,7 +5210,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def MaskLen(self):
         """网络地址掩码长度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaskLen
@@ -5277,7 +5224,6 @@ class InternetAddressDetail(AbstractModel):
 1:电信
 2:移动
 3:联通
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AddrType
@@ -5302,7 +5248,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def ApplyTime(self):
         """申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplyTime
@@ -5314,7 +5259,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def StopTime(self):
         """停用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StopTime
@@ -5326,7 +5270,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def ReleaseTime(self):
         """退还时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReleaseTime
@@ -5338,7 +5281,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def Region(self):
         """地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -5350,7 +5292,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def AppId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -5362,7 +5303,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def AddrProto(self):
         """0:IPv4 1:IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AddrProto
@@ -5374,7 +5314,6 @@ class InternetAddressDetail(AbstractModel):
     @property
     def ReserveTime(self):
         """释放状态的IP地址保留的天数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReserveTime
@@ -5415,10 +5354,8 @@ class InternetAddressStatistics(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _SubnetNum: 互联网公网地址数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetNum: int
         """
         self._Region = None
@@ -5427,7 +5364,6 @@ class InternetAddressStatistics(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -5439,7 +5375,6 @@ class InternetAddressStatistics(AbstractModel):
     @property
     def SubnetNum(self):
         """互联网公网地址数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubnetNum
@@ -6497,7 +6432,6 @@ class RouteFilterPrefix(AbstractModel):
     def __init__(self):
         r"""
         :param _Cidr: 用户侧网段地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cidr: str
         """
         self._Cidr = None
@@ -6505,7 +6439,6 @@ class RouteFilterPrefix(AbstractModel):
     @property
     def Cidr(self):
         """用户侧网段地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Cidr
@@ -6535,10 +6468,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -6547,7 +6478,6 @@ class Tag(AbstractModel):
     @property
     def Key(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -6559,7 +6489,6 @@ class Tag(AbstractModel):
     @property
     def Value(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value

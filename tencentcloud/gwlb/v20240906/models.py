@@ -2653,7 +2653,7 @@ class TargetGroupBackend(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组ID
         :type TargetGroupId: str
-        :param _Type: 后端服务的类型，可取：CVM、ENI（即将支持）
+        :param _Type: 后端服务的类型，可取：CVM、ENI
         :type Type: str
         :param _InstanceId: 后端服务的唯一 ID
         :type InstanceId: str
@@ -2705,7 +2705,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def Type(self):
-        """后端服务的类型，可取：CVM、ENI（即将支持）
+        """后端服务的类型，可取：CVM、ENI
         :rtype: str
         """
         return self._Type

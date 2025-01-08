@@ -355,6 +355,9 @@ class AlarmInfo(AbstractModel):
         :param _AlarmLevel: 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
+        :param _Classifications: 告警附加分类字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Classifications: list of AlarmClassification
         :param _MultiConditions: 多触发条件。与
 Condition互斥。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -378,6 +381,7 @@ Condition互斥。
         self._GroupTriggerCondition = None
         self._MonitorObjectType = None
         self._AlarmLevel = None
+        self._Classifications = None
         self._MultiConditions = None
 
     @property
@@ -586,6 +590,18 @@ Condition互斥。
         self._AlarmLevel = AlarmLevel
 
     @property
+    def Classifications(self):
+        """告警附加分类字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmClassification
+        """
+        return self._Classifications
+
+    @Classifications.setter
+    def Classifications(self, Classifications):
+        self._Classifications = Classifications
+
+    @property
     def MultiConditions(self):
         """多触发条件。与
 Condition互斥。
@@ -632,6 +648,12 @@ Condition互斥。
         self._GroupTriggerCondition = params.get("GroupTriggerCondition")
         self._MonitorObjectType = params.get("MonitorObjectType")
         self._AlarmLevel = params.get("AlarmLevel")
+        if params.get("Classifications") is not None:
+            self._Classifications = []
+            for item in params.get("Classifications"):
+                obj = AlarmClassification()
+                obj._deserialize(item)
+                self._Classifications.append(obj)
         if params.get("MultiConditions") is not None:
             self._MultiConditions = []
             for item in params.get("MultiConditions"):
