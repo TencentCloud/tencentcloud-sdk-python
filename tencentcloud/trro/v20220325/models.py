@@ -2248,6 +2248,8 @@ class Device(AbstractModel):
         :param _MonthlyRemainTime: 每月license的限定时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonthlyRemainTime: int
+        :param _LimitedTime: 月封顶时长（分钟)
+        :type LimitedTime: int
         """
         self._DeviceId = None
         self._DeviceName = None
@@ -2257,6 +2259,7 @@ class Device(AbstractModel):
         self._Duration = None
         self._LicenseIds = None
         self._MonthlyRemainTime = None
+        self._LimitedTime = None
 
     @property
     def DeviceId(self):
@@ -2354,6 +2357,17 @@ class Device(AbstractModel):
     def MonthlyRemainTime(self, MonthlyRemainTime):
         self._MonthlyRemainTime = MonthlyRemainTime
 
+    @property
+    def LimitedTime(self):
+        """月封顶时长（分钟)
+        :rtype: int
+        """
+        return self._LimitedTime
+
+    @LimitedTime.setter
+    def LimitedTime(self, LimitedTime):
+        self._LimitedTime = LimitedTime
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -2364,6 +2378,7 @@ class Device(AbstractModel):
         self._Duration = params.get("Duration")
         self._LicenseIds = params.get("LicenseIds")
         self._MonthlyRemainTime = params.get("MonthlyRemainTime")
+        self._LimitedTime = params.get("LimitedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

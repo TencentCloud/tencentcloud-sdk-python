@@ -18,6 +18,228 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AggregateResourceInfo(AbstractModel):
+    """资源列列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型
+        :type ResourceType: str
+        :param _ResourceName: 资源名称
+        :type ResourceName: str
+        :param _ResourceId: 资源ID
+        :type ResourceId: str
+        :param _ResourceRegion: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRegion: str
+        :param _ResourceStatus: 资源状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceStatus: str
+        :param _ResourceDelete: 是否删除 1:已删除 0:未删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceDelete: int
+        :param _ResourceCreateTime: 资源创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceCreateTime: str
+        :param _Tags: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _ResourceZone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceZone: str
+        :param _ComplianceResult: 合规状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplianceResult: str
+        :param _ResourceOwnerId: 资源所属用户ID
+        :type ResourceOwnerId: int
+        :param _ResourceOwnerName: 用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceOwnerName: str
+        """
+        self._ResourceType = None
+        self._ResourceName = None
+        self._ResourceId = None
+        self._ResourceRegion = None
+        self._ResourceStatus = None
+        self._ResourceDelete = None
+        self._ResourceCreateTime = None
+        self._Tags = None
+        self._ResourceZone = None
+        self._ComplianceResult = None
+        self._ResourceOwnerId = None
+        self._ResourceOwnerName = None
+
+    @property
+    def ResourceType(self):
+        """资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceName(self):
+        """资源名称
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceRegion(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
+    def ResourceStatus(self):
+        """资源状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
+    @property
+    def ResourceDelete(self):
+        """是否删除 1:已删除 0:未删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResourceDelete
+
+    @ResourceDelete.setter
+    def ResourceDelete(self, ResourceDelete):
+        self._ResourceDelete = ResourceDelete
+
+    @property
+    def ResourceCreateTime(self):
+        """资源创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceCreateTime
+
+    @ResourceCreateTime.setter
+    def ResourceCreateTime(self, ResourceCreateTime):
+        self._ResourceCreateTime = ResourceCreateTime
+
+    @property
+    def Tags(self):
+        """标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ResourceZone(self):
+        """可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceZone
+
+    @ResourceZone.setter
+    def ResourceZone(self, ResourceZone):
+        self._ResourceZone = ResourceZone
+
+    @property
+    def ComplianceResult(self):
+        """合规状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComplianceResult
+
+    @ComplianceResult.setter
+    def ComplianceResult(self, ComplianceResult):
+        self._ComplianceResult = ComplianceResult
+
+    @property
+    def ResourceOwnerId(self):
+        """资源所属用户ID
+        :rtype: int
+        """
+        return self._ResourceOwnerId
+
+    @ResourceOwnerId.setter
+    def ResourceOwnerId(self, ResourceOwnerId):
+        self._ResourceOwnerId = ResourceOwnerId
+
+    @property
+    def ResourceOwnerName(self):
+        """用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceOwnerName
+
+    @ResourceOwnerName.setter
+    def ResourceOwnerName(self, ResourceOwnerName):
+        self._ResourceOwnerName = ResourceOwnerName
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceRegion = params.get("ResourceRegion")
+        self._ResourceStatus = params.get("ResourceStatus")
+        self._ResourceDelete = params.get("ResourceDelete")
+        self._ResourceCreateTime = params.get("ResourceCreateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ResourceZone = params.get("ResourceZone")
+        self._ComplianceResult = params.get("ComplianceResult")
+        self._ResourceOwnerId = params.get("ResourceOwnerId")
+        self._ResourceOwnerName = params.get("ResourceOwnerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Annotation(AbstractModel):
     """合规详情
 
@@ -634,6 +856,288 @@ ConfigurationItemChangeNotification：变更触发
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeAggregateDiscoveredResourceRequest(AbstractModel):
+    """DescribeAggregateDiscoveredResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源ID
+        :type ResourceId: str
+        :param _ResourceType: 资源类型
+        :type ResourceType: str
+        :param _ResourceRegion: 资源地域
+        :type ResourceRegion: str
+        :param _AccountGroupId: 账号组ID
+        :type AccountGroupId: str
+        :param _ResourceOwnerId: 资源所属用户ID
+        :type ResourceOwnerId: int
+        """
+        self._ResourceId = None
+        self._ResourceType = None
+        self._ResourceRegion = None
+        self._AccountGroupId = None
+        self._ResourceOwnerId = None
+
+    @property
+    def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        """资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceRegion(self):
+        """资源地域
+        :rtype: str
+        """
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
+    def AccountGroupId(self):
+        """账号组ID
+        :rtype: str
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def ResourceOwnerId(self):
+        """资源所属用户ID
+        :rtype: int
+        """
+        return self._ResourceOwnerId
+
+    @ResourceOwnerId.setter
+    def ResourceOwnerId(self, ResourceOwnerId):
+        self._ResourceOwnerId = ResourceOwnerId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceRegion = params.get("ResourceRegion")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._ResourceOwnerId = params.get("ResourceOwnerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
+    """DescribeAggregateDiscoveredResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _ResourceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _ResourceName: 资源名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _ResourceRegion: 资源地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRegion: str
+        :param _ResourceZone: 资源可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceZone: str
+        :param _Configuration: 资源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Configuration: str
+        :param _ResourceCreateTime: 资源创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceCreateTime: str
+        :param _Tags: 资源标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _UpdateTime: 资源更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._ResourceType = None
+        self._ResourceName = None
+        self._ResourceRegion = None
+        self._ResourceZone = None
+        self._Configuration = None
+        self._ResourceCreateTime = None
+        self._Tags = None
+        self._UpdateTime = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        """资源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        """资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceName(self):
+        """资源名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceRegion(self):
+        """资源地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
+    def ResourceZone(self):
+        """资源可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceZone
+
+    @ResourceZone.setter
+    def ResourceZone(self, ResourceZone):
+        self._ResourceZone = ResourceZone
+
+    @property
+    def Configuration(self):
+        """资源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Configuration
+
+    @Configuration.setter
+    def Configuration(self, Configuration):
+        self._Configuration = Configuration
+
+    @property
+    def ResourceCreateTime(self):
+        """资源创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceCreateTime
+
+    @ResourceCreateTime.setter
+    def ResourceCreateTime(self, ResourceCreateTime):
+        self._ResourceCreateTime = ResourceCreateTime
+
+    @property
+    def Tags(self):
+        """资源标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def UpdateTime(self):
+        """资源更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceRegion = params.get("ResourceRegion")
+        self._ResourceZone = params.get("ResourceZone")
+        self._Configuration = params.get("Configuration")
+        self._ResourceCreateTime = params.get("ResourceCreateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._UpdateTime = params.get("UpdateTime")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDiscoveredResourceRequest(AbstractModel):
@@ -1443,6 +1947,192 @@ class ListAggregateConfigRulesResponse(AbstractModel):
                 obj = ConfigRule()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListAggregateDiscoveredResourcesRequest(AbstractModel):
+    """ListAggregateDiscoveredResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxResults: 每页显示数量
+        :type MaxResults: int
+        :param _AccountGroupId: 账号组ID
+        :type AccountGroupId: str
+        :param _Filters: resourceName：资源名  resourceId ：资源ID
+        :type Filters: list of Filter
+        :param _Tags: 标签
+        :type Tags: list of Tag
+        :param _NextToken: 下一页token
+        :type NextToken: str
+        :param _OrderType: 排序方式 asc、desc
+        :type OrderType: str
+        """
+        self._MaxResults = None
+        self._AccountGroupId = None
+        self._Filters = None
+        self._Tags = None
+        self._NextToken = None
+        self._OrderType = None
+
+    @property
+    def MaxResults(self):
+        """每页显示数量
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def AccountGroupId(self):
+        """账号组ID
+        :rtype: str
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def Filters(self):
+        """resourceName：资源名  resourceId ：资源ID
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def NextToken(self):
+        """下一页token
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def OrderType(self):
+        """排序方式 asc、desc
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+
+    def _deserialize(self, params):
+        self._MaxResults = params.get("MaxResults")
+        self._AccountGroupId = params.get("AccountGroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAggregateDiscoveredResourcesResponse(AbstractModel):
+    """ListAggregateDiscoveredResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 详情
+        :type Items: list of AggregateResourceInfo
+        :param _NextToken: 下一页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        """详情
+        :rtype: list of AggregateResourceInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextToken(self):
+        """下一页
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AggregateResourceInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
 
 

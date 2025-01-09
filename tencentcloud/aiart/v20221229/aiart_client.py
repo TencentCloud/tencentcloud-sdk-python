@@ -176,6 +176,33 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryMemeJob(self, request):
+        """表情动图生成接口将静态照片制作成动态的表情包。分为提交任务和查询任务2个接口。
+        - 提交任务：提交一个表情动图生成异步任务，获得任务 ID。
+        - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+
+        表情动图生成默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for QueryMemeJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.QueryMemeJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.QueryMemeJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryMemeJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryMemeJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryTextToImageProJob(self, request):
         """本接口已迁移至腾讯混元大模型-混元生图，即将停止此处维护，可切换至 [混元生图 API](https://cloud.tencent.com/document/product/1729/105970) 继续使用。
         文生图（高级版）接口基于高级版文生图大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
@@ -303,6 +330,34 @@ class AiartClient(AbstractClient):
             body = self.call("SubmitDrawPortraitJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitDrawPortraitJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitMemeJob(self, request):
+        """表情动图生成接口将静态照片制作成动态的表情包。分为提交任务和查询任务2个接口。
+
+        - 提交任务：提交一个表情动图生成异步任务，获得任务 ID。
+        - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+
+        表情动图生成默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for SubmitMemeJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.SubmitMemeJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.SubmitMemeJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitMemeJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitMemeJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

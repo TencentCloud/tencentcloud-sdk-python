@@ -948,6 +948,52 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeActivateDevice(self, request):
+        """获取设备激活详情
+
+        :param request: Request instance for DescribeActivateDevice.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeActivateDeviceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeActivateDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeActivateDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeActivateDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeActivateLicenseService(self, request):
+        """获取增值服务激活码详情
+
+        :param request: Request instance for DescribeActivateLicenseService.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeActivateLicenseServiceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeActivateLicenseServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeActivateLicenseService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeActivateLicenseServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBatchProduction(self, request):
         """获取量产详情信息。
 
@@ -1684,6 +1730,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFreeCloudStorageNum(self, request):
+        """查询云存卡套餐信息
+
+        :param request: Request instance for DescribeFreeCloudStorageNum.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFreeCloudStorageNumRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFreeCloudStorageNumResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFreeCloudStorageNum", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFreeCloudStorageNumResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGatewayBindDevices(self, request):
         """获取网关绑定的子设备列表
 
@@ -2020,6 +2089,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DescribeTopicRule", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTopicRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVideoLicense(self, request):
+        """用于查询视频激活码统计概览
+
+        :param request: Request instance for DescribeVideoLicense.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeVideoLicenseRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeVideoLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoLicenseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

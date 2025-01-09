@@ -764,6 +764,170 @@ class DescribeInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMuskPromptsRequest(AbstractModel):
+    """DescribeMuskPrompts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkgroupId: workgroup id
+        :type WorkgroupId: str
+        :param _WorkflowId: workflow id
+        :type WorkflowId: str
+        :param _Offset: offset 
+        :type Offset: int
+        :param _Limit: limit
+        :type Limit: int
+        :param _Filters: 过滤参数 支持过滤的键值： PromptId，Status
+        :type Filters: list of Filter
+        """
+        self._WorkgroupId = None
+        self._WorkflowId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def WorkgroupId(self):
+        """workgroup id
+        :rtype: str
+        """
+        return self._WorkgroupId
+
+    @WorkgroupId.setter
+    def WorkgroupId(self, WorkgroupId):
+        self._WorkgroupId = WorkgroupId
+
+    @property
+    def WorkflowId(self):
+        """workflow id
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def Offset(self):
+        """offset 
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """过滤参数 支持过滤的键值： PromptId，Status
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._WorkgroupId = params.get("WorkgroupId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMuskPromptsResponse(AbstractModel):
+    """DescribeMuskPrompts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: total count
+        :type TotalCount: int
+        :param _MuskPromptInfos: prompt列表详情
+        :type MuskPromptInfos: list of MuskPromptInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._MuskPromptInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """total count
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MuskPromptInfos(self):
+        """prompt列表详情
+        :rtype: list of MuskPromptInfo
+        """
+        return self._MuskPromptInfos
+
+    @MuskPromptInfos.setter
+    def MuskPromptInfos(self, MuskPromptInfos):
+        self._MuskPromptInfos = MuskPromptInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("MuskPromptInfos") is not None:
+            self._MuskPromptInfos = []
+            for item in params.get("MuskPromptInfos"):
+                obj = MuskPromptInfo()
+                obj._deserialize(item)
+                self._MuskPromptInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRegionsRequest(AbstractModel):
     """DescribeRegions请求参数结构体
 
@@ -2064,6 +2228,168 @@ class LoginSetting(AbstractModel):
     def _deserialize(self, params):
         self._ServiceName = params.get("ServiceName")
         self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MuskPromptInfo(AbstractModel):
+    """musk prompt详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowId: workflow id
+        :type WorkflowId: str
+        :param _WorkgroupId: workgroup id
+        :type WorkgroupId: str
+        :param _PromptId: prompt id
+        :type PromptId: str
+        :param _OutputResource: 生成的内容
+        :type OutputResource: list of str
+        :param _Status: prompt status 
+0: 执行中
+1: 执行成功
+2: 执行失败
+        :type Status: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _Cost: 任务执行耗时，单位毫秒
+        :type Cost: int
+        :param _ErrorMessage: 任务执行失败错误信息
+        :type ErrorMessage: str
+        """
+        self._WorkflowId = None
+        self._WorkgroupId = None
+        self._PromptId = None
+        self._OutputResource = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Cost = None
+        self._ErrorMessage = None
+
+    @property
+    def WorkflowId(self):
+        """workflow id
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkgroupId(self):
+        """workgroup id
+        :rtype: str
+        """
+        return self._WorkgroupId
+
+    @WorkgroupId.setter
+    def WorkgroupId(self, WorkgroupId):
+        self._WorkgroupId = WorkgroupId
+
+    @property
+    def PromptId(self):
+        """prompt id
+        :rtype: str
+        """
+        return self._PromptId
+
+    @PromptId.setter
+    def PromptId(self, PromptId):
+        self._PromptId = PromptId
+
+    @property
+    def OutputResource(self):
+        """生成的内容
+        :rtype: list of str
+        """
+        return self._OutputResource
+
+    @OutputResource.setter
+    def OutputResource(self, OutputResource):
+        self._OutputResource = OutputResource
+
+    @property
+    def Status(self):
+        """prompt status 
+0: 执行中
+1: 执行成功
+2: 执行失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Cost(self):
+        """任务执行耗时，单位毫秒
+        :rtype: int
+        """
+        return self._Cost
+
+    @Cost.setter
+    def Cost(self, Cost):
+        self._Cost = Cost
+
+    @property
+    def ErrorMessage(self):
+        """任务执行失败错误信息
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkgroupId = params.get("WorkgroupId")
+        self._PromptId = params.get("PromptId")
+        self._OutputResource = params.get("OutputResource")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Cost = params.get("Cost")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

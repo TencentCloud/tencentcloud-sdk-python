@@ -20517,7 +20517,7 @@ class SystemDisk(AbstractModel):
 <li>CLOUD_BASIC：普通云硬盘</li>
 <li>CLOUD_SSD：SSD云硬盘</li>
 <li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_BSSD：通用性SSD云硬盘</li>
+<li>CLOUD_BSSD：通用型SSD云硬盘</li>
 <li>CLOUD_HSSD：增强型SSD云硬盘</li>
 <li>CLOUD_TSSD：极速型SSD云硬盘</li><br>
 默认取值：当前有库存的硬盘类型。
@@ -20550,7 +20550,7 @@ class SystemDisk(AbstractModel):
 <li>CLOUD_BASIC：普通云硬盘</li>
 <li>CLOUD_SSD：SSD云硬盘</li>
 <li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_BSSD：通用性SSD云硬盘</li>
+<li>CLOUD_BSSD：通用型SSD云硬盘</li>
 <li>CLOUD_HSSD：增强型SSD云硬盘</li>
 <li>CLOUD_TSSD：极速型SSD云硬盘</li><br>
 默认取值：当前有库存的硬盘类型。

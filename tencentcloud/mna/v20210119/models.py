@@ -26,15 +26,12 @@ class ActivateHardware(AbstractModel):
     def __init__(self):
         r"""
         :param _Vendor: 厂商名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vendor: str
         :param _SN: 设备SN序列号
         :type SN: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _Description: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _DataKey: 设备密钥
         :type DataKey: str
@@ -46,19 +43,14 @@ class ActivateHardware(AbstractModel):
 若不传则默认为月度授权。
 当付费方为厂商时，此参数无效
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicensePayMode: int
         :param _GroupId: 设备分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 设备分组名称，预留参数，需要分组时传入GroupId
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowTrunc: int
         :param _DeviceId: 激活后的设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         """
         self._Vendor = None
@@ -76,7 +68,6 @@ class ActivateHardware(AbstractModel):
     @property
     def Vendor(self):
         """厂商名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vendor
@@ -99,7 +90,6 @@ class ActivateHardware(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -111,7 +101,6 @@ class ActivateHardware(AbstractModel):
     @property
     def Description(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -150,7 +139,6 @@ class ActivateHardware(AbstractModel):
 若不传则默认为月度授权。
 当付费方为厂商时，此参数无效
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicensePayMode
@@ -162,7 +150,6 @@ class ActivateHardware(AbstractModel):
     @property
     def GroupId(self):
         """设备分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -174,7 +161,6 @@ class ActivateHardware(AbstractModel):
     @property
     def GroupName(self):
         """设备分组名称，预留参数，需要分组时传入GroupId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -186,7 +172,6 @@ class ActivateHardware(AbstractModel):
     @property
     def FlowTrunc(self):
         """设备无流量包处理方式，0: 按量付费，1: 截断加速
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowTrunc
@@ -198,7 +183,6 @@ class ActivateHardware(AbstractModel):
     @property
     def DeviceId(self):
         """激活后的设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -1814,10 +1798,8 @@ class DeviceBaseInfo(AbstractModel):
         :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
         :type AccessScope: int
         :param _LicensePayMode: license授权有效期 0：月度授权 1：永久授权
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicensePayMode: int
         :param _Payer: 付费方 0：厂商付费 1：客户付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type Payer: int
         :param _GroupId: 设备分组ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1918,7 +1900,6 @@ class DeviceBaseInfo(AbstractModel):
     @property
     def LicensePayMode(self):
         """license授权有效期 0：月度授权 1：永久授权
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicensePayMode
@@ -1930,7 +1911,6 @@ class DeviceBaseInfo(AbstractModel):
     @property
     def Payer(self):
         """付费方 0：厂商付费 1：客户付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Payer

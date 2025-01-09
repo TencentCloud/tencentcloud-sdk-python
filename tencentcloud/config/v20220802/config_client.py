@@ -26,6 +26,29 @@ class ConfigClient(AbstractClient):
     _service = 'config'
 
 
+    def DescribeAggregateDiscoveredResource(self, request):
+        """账号组资源详情
+
+        :param request: Request instance for DescribeAggregateDiscoveredResource.
+        :type request: :class:`tencentcloud.config.v20220802.models.DescribeAggregateDiscoveredResourceRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.DescribeAggregateDiscoveredResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAggregateDiscoveredResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAggregateDiscoveredResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDiscoveredResource(self, request):
         """资源详情
 
@@ -63,6 +86,29 @@ class ConfigClient(AbstractClient):
             body = self.call("ListAggregateConfigRules", params, headers=headers)
             response = json.loads(body)
             model = models.ListAggregateConfigRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListAggregateDiscoveredResources(self, request):
+        """账号组获取资源列表
+
+        :param request: Request instance for ListAggregateDiscoveredResources.
+        :type request: :class:`tencentcloud.config.v20220802.models.ListAggregateDiscoveredResourcesRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.ListAggregateDiscoveredResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAggregateDiscoveredResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAggregateDiscoveredResourcesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

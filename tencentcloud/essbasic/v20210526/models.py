@@ -4194,7 +4194,6 @@ class ChannelCreateFlowApproversResponse(AbstractModel):
         r"""
         :param _FillError: 批量补充签署人时，补充失败的报错说明 
 注:`目前仅补充动态签署人时会返回补充失败的原因`	
-注意：此字段可能返回 null，表示取不到有效值。
         :type FillError: list of FillError
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4206,7 +4205,6 @@ class ChannelCreateFlowApproversResponse(AbstractModel):
     def FillError(self):
         """批量补充签署人时，补充失败的报错说明 
 注:`目前仅补充动态签署人时会返回补充失败的原因`	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FillError
         """
         return self._FillError
@@ -4788,10 +4786,8 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 
 [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _Approvers: 签署方信息，如角色ID、角色名称等
-注意：此字段可能返回 null，表示取不到有效值。
         :type Approvers: list of ApproverItem
         :param _PreviewUrl: 预览链接，有效期5分钟
 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
@@ -4810,7 +4806,6 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 
 [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -4822,7 +4817,6 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
     @property
     def Approvers(self):
         """签署方信息，如角色ID、角色名称等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApproverItem
         """
         return self._Approvers
@@ -5028,13 +5022,11 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
         r"""
         :param _FlowGroupId: 合同组ID，为32位字符串。
 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupId: str
         :param _FlowIds: 合同组中每个合同流程ID，每个ID均为32位字符串。
 
 注:
 `此数组的顺序和入参中的FlowGroupInfos顺序一致`
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowIds: list of str
         :param _Approvers: 合同组签署方信息。
         :type Approvers: list of FlowGroupApprovers
@@ -5050,7 +5042,6 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
     def FlowGroupId(self):
         """合同组ID，为32位字符串。
 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowGroupId
@@ -5065,7 +5056,6 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
 
 注:
 `此数组的顺序和入参中的FlowGroupInfos顺序一致`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FlowIds
@@ -7655,9 +7645,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 <ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
 <li> **H5SIGN** : 生成H5端开通链接</li></ul>
         :type UrlType: str
-        :param _NotifyType: 是否通知开通方，通知类型:
-<ul><li>默认不设置为不通知开通方</li>
-<li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+        :param _NotifyType: 是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
         :type NotifyType: str
         :param _NotifyAddress: 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
         :type NotifyAddress: str
@@ -7737,9 +7725,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def NotifyType(self):
-        """是否通知开通方，通知类型:
-<ul><li>默认不设置为不通知开通方</li>
-<li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+        """是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
         :rtype: str
         """
         return self._NotifyType
@@ -10952,7 +10938,7 @@ class ChannelOrganizationInfo(AbstractModel):
   <li>**1**： 已激活</li>
 </ul>
         :type ActiveStatus: int
-        :param _LicenseExpireTime: 账号过期时间，时间戳
+        :param _LicenseExpireTime: 账号到期时间，时间戳
         :type LicenseExpireTime: int
         """
         self._OrganizationId = None
@@ -11122,7 +11108,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def LicenseExpireTime(self):
-        """账号过期时间，时间戳
+        """账号到期时间，时间戳
         :rtype: int
         """
         return self._LicenseExpireTime

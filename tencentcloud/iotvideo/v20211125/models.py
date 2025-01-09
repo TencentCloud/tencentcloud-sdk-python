@@ -1933,6 +1933,87 @@ class CloudStorageEvent(AbstractModel):
         
 
 
+class CloudStoragePackageInfo(AbstractModel):
+    """云存套餐包信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageId: 套餐包id
+        :type PackageId: str
+        :param _PackageName: 套餐包名字
+        :type PackageName: str
+        :param _Num: 套餐包数量
+        :type Num: int
+        :param _UsedNum: 已使用数量
+        :type UsedNum: int
+        """
+        self._PackageId = None
+        self._PackageName = None
+        self._Num = None
+        self._UsedNum = None
+
+    @property
+    def PackageId(self):
+        """套餐包id
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def PackageName(self):
+        """套餐包名字
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+    @property
+    def Num(self):
+        """套餐包数量
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def UsedNum(self):
+        """已使用数量
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+
+    def _deserialize(self, params):
+        self._PackageId = params.get("PackageId")
+        self._PackageName = params.get("PackageName")
+        self._Num = params.get("Num")
+        self._UsedNum = params.get("UsedNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudStorageTimeData(AbstractModel):
     """云存时间轴接口返回数据
 
@@ -10927,6 +11008,60 @@ class DescribeForwardRuleResponse(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
         self._ErrMsg = params.get("ErrMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFreeCloudStorageNumRequest(AbstractModel):
+    """DescribeFreeCloudStorageNum请求参数结构体
+
+    """
+
+
+class DescribeFreeCloudStorageNumResponse(AbstractModel):
+    """DescribeFreeCloudStorageNum返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageInfos: 套餐包信息
+        :type PackageInfos: list of CloudStoragePackageInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PackageInfos = None
+        self._RequestId = None
+
+    @property
+    def PackageInfos(self):
+        """套餐包信息
+        :rtype: list of CloudStoragePackageInfo
+        """
+        return self._PackageInfos
+
+    @PackageInfos.setter
+    def PackageInfos(self, PackageInfos):
+        self._PackageInfos = PackageInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PackageInfos") is not None:
+            self._PackageInfos = []
+            for item in params.get("PackageInfos"):
+                obj = CloudStoragePackageInfo()
+                obj._deserialize(item)
+                self._PackageInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -116,6 +116,8 @@ class AddSmsSignRequest(AbstractModel):
         :type CommissionImage: str
         :param _Remark: 签名的申请备注。
         :type Remark: str
+        :param _QualificationId: 已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        :type QualificationId: int
         """
         self._SignName = None
         self._SignType = None
@@ -125,6 +127,7 @@ class AddSmsSignRequest(AbstractModel):
         self._ProofImage = None
         self._CommissionImage = None
         self._Remark = None
+        self._QualificationId = None
 
     @property
     def SignName(self):
@@ -238,6 +241,17 @@ class AddSmsSignRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def QualificationId(self):
+        """已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        :rtype: int
+        """
+        return self._QualificationId
+
+    @QualificationId.setter
+    def QualificationId(self, QualificationId):
+        self._QualificationId = QualificationId
+
 
     def _deserialize(self, params):
         self._SignName = params.get("SignName")
@@ -248,6 +262,7 @@ class AddSmsSignRequest(AbstractModel):
         self._ProofImage = params.get("ProofImage")
         self._CommissionImage = params.get("CommissionImage")
         self._Remark = params.get("Remark")
+        self._QualificationId = params.get("QualificationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1074,6 +1089,15 @@ class DescribeSignListStatus(AbstractModel):
         :type SignName: str
         :param _CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
         :type CreateTime: int
+        :param _QualificationId: 国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
+注：国际短信不涉及，默认为0。
+        :type QualificationId: int
+        :param _QualificationName: 国内短信的资质名称。
+注：国际短信不涉及，默认为空。
+        :type QualificationName: str
+        :param _QualificationStatusCode: 国内短信的资质状态。其中0表示待审核，1表示已通过，2表示已拒绝，3表示待补充后提交，4表示变更后待审核，5表示变更后被驳回。可参考 [实名资质审核状态说明](https://cloud.tencent.com/document/product/382/13444#.E5.AE.A1.E6.A0.B8.E7.8A.B6.E6.80.81.E8.AF.B4.E6.98.8E) 。
+注：国际短信不涉及，默认为0。
+        :type QualificationStatusCode: int
         """
         self._SignId = None
         self._International = None
@@ -1081,6 +1105,9 @@ class DescribeSignListStatus(AbstractModel):
         self._ReviewReply = None
         self._SignName = None
         self._CreateTime = None
+        self._QualificationId = None
+        self._QualificationName = None
+        self._QualificationStatusCode = None
 
     @property
     def SignId(self):
@@ -1150,6 +1177,42 @@ class DescribeSignListStatus(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def QualificationId(self):
+        """国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
+注：国际短信不涉及，默认为0。
+        :rtype: int
+        """
+        return self._QualificationId
+
+    @QualificationId.setter
+    def QualificationId(self, QualificationId):
+        self._QualificationId = QualificationId
+
+    @property
+    def QualificationName(self):
+        """国内短信的资质名称。
+注：国际短信不涉及，默认为空。
+        :rtype: str
+        """
+        return self._QualificationName
+
+    @QualificationName.setter
+    def QualificationName(self, QualificationName):
+        self._QualificationName = QualificationName
+
+    @property
+    def QualificationStatusCode(self):
+        """国内短信的资质状态。其中0表示待审核，1表示已通过，2表示已拒绝，3表示待补充后提交，4表示变更后待审核，5表示变更后被驳回。可参考 [实名资质审核状态说明](https://cloud.tencent.com/document/product/382/13444#.E5.AE.A1.E6.A0.B8.E7.8A.B6.E6.80.81.E8.AF.B4.E6.98.8E) 。
+注：国际短信不涉及，默认为0。
+        :rtype: int
+        """
+        return self._QualificationStatusCode
+
+    @QualificationStatusCode.setter
+    def QualificationStatusCode(self, QualificationStatusCode):
+        self._QualificationStatusCode = QualificationStatusCode
+
 
     def _deserialize(self, params):
         self._SignId = params.get("SignId")
@@ -1158,6 +1221,9 @@ class DescribeSignListStatus(AbstractModel):
         self._ReviewReply = params.get("ReviewReply")
         self._SignName = params.get("SignName")
         self._CreateTime = params.get("CreateTime")
+        self._QualificationId = params.get("QualificationId")
+        self._QualificationName = params.get("QualificationName")
+        self._QualificationStatusCode = params.get("QualificationStatusCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1589,6 +1655,8 @@ class ModifySmsSignRequest(AbstractModel):
         :type CommissionImage: str
         :param _Remark: 签名的申请备注。
         :type Remark: str
+        :param _QualificationId: 已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        :type QualificationId: int
         """
         self._SignId = None
         self._SignName = None
@@ -1599,6 +1667,7 @@ class ModifySmsSignRequest(AbstractModel):
         self._ProofImage = None
         self._CommissionImage = None
         self._Remark = None
+        self._QualificationId = None
 
     @property
     def SignId(self):
@@ -1723,6 +1792,17 @@ class ModifySmsSignRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def QualificationId(self):
+        """已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        :rtype: int
+        """
+        return self._QualificationId
+
+    @QualificationId.setter
+    def QualificationId(self, QualificationId):
+        self._QualificationId = QualificationId
+
 
     def _deserialize(self, params):
         self._SignId = params.get("SignId")
@@ -1734,6 +1814,7 @@ class ModifySmsSignRequest(AbstractModel):
         self._ProofImage = params.get("ProofImage")
         self._CommissionImage = params.get("CommissionImage")
         self._Remark = params.get("Remark")
+        self._QualificationId = params.get("QualificationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

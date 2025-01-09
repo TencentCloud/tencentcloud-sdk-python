@@ -8937,7 +8937,6 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
         :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
         :param _NetworkInterfaceSet: 实例详细信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkInterfaceSet: list of NetworkInterface
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8960,7 +8959,6 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
     @property
     def NetworkInterfaceSet(self):
         """实例详细信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkInterface
         """
         return self._NetworkInterfaceSet
@@ -9973,7 +9971,6 @@ class DescribeRouteTablesResponse(AbstractModel):
         :param _TotalCount: 符合条件的实例数量
         :type TotalCount: int
         :param _RouteTableSet: 路由表列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableSet: list of RouteTable
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9996,7 +9993,6 @@ class DescribeRouteTablesResponse(AbstractModel):
     @property
     def RouteTableSet(self):
         """路由表列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RouteTable
         """
         return self._RouteTableSet
@@ -10730,7 +10726,6 @@ class DescribeSubnetsResponse(AbstractModel):
         :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
         :param _SubnetSet: 子网对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetSet: list of Subnet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10753,7 +10748,6 @@ class DescribeSubnetsResponse(AbstractModel):
     @property
     def SubnetSet(self):
         """子网对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Subnet
         """
         return self._SubnetSet
@@ -11342,7 +11336,6 @@ class DescribeVpcsResponse(AbstractModel):
         :param _TotalCount: 符合条件的对象数。
         :type TotalCount: int
         :param _VpcSet: 私有网络对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcSet: list of VpcInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11365,7 +11358,6 @@ class DescribeVpcsResponse(AbstractModel):
     @property
     def VpcSet(self):
         """私有网络对象。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -22284,7 +22276,6 @@ class PrivateIpAddressSpecification(AbstractModel):
         :param _PrivateIpAddress: 内网IP地址。
         :type PrivateIpAddress: str
         :param _Primary: 是否是主IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Primary: bool
         :param _PublicIpAddress: 公网IP地址。
         :type PublicIpAddress: str
@@ -22293,7 +22284,6 @@ class PrivateIpAddressSpecification(AbstractModel):
         :param _Description: 内网IP描述信息。
         :type Description: str
         :param _IsWanIpBlocked: 公网IP是否被封堵。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsWanIpBlocked: bool
         :param _State: IP状态：
 PENDING：生产中
@@ -22324,7 +22314,6 @@ AVAILABLE：可用的
     @property
     def Primary(self):
         """是否是主IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Primary
@@ -22369,7 +22358,6 @@ AVAILABLE：可用的
     @property
     def IsWanIpBlocked(self):
         """公网IP是否被封堵。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsWanIpBlocked
@@ -25431,7 +25419,6 @@ class SecurityGroupPolicy(AbstractModel):
         :param _PolicyDescription: 安全组规则描述。
         :type PolicyDescription: str
         :param _ModifyTime: 修改时间，例如 2020-07-22 19：27：23
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _Ipv6CidrBlock: 网段或IPv6(互斥)。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -25551,7 +25538,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def ModifyTime(self):
         """修改时间，例如 2020-07-22 19：27：23
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -27024,10 +27010,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 标签健。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 标签值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -27036,7 +27020,6 @@ class Tag(AbstractModel):
     @property
     def Key(self):
         """标签健。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -27048,7 +27031,6 @@ class Tag(AbstractModel):
     @property
     def Value(self):
         """标签值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value

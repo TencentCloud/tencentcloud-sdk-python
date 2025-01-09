@@ -7361,7 +7361,7 @@ class DeleteGatewayVersionRequest(AbstractModel):
         :type IsDeleteImage: bool
         :param _IsForce: 是否强制删除
         :type IsForce: bool
-        :param _OperatorRemark: 操作记录
+        :param _OperatorRemark: 操作者记录
         :type OperatorRemark: str
         """
         self._EnvId = None
@@ -7440,7 +7440,7 @@ class DeleteGatewayVersionRequest(AbstractModel):
 
     @property
     def OperatorRemark(self):
-        """操作记录
+        """操作者记录
         :rtype: str
         """
         return self._OperatorRemark
@@ -16378,10 +16378,8 @@ class DescribeWxGatewayRoutesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 返回的服务个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _WxGatewayRouteSet: 返回的服务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type WxGatewayRouteSet: list of WxGatewayRountItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16393,7 +16391,6 @@ class DescribeWxGatewayRoutesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """返回的服务个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -16405,7 +16402,6 @@ class DescribeWxGatewayRoutesResponse(AbstractModel):
     @property
     def WxGatewayRouteSet(self):
         """返回的服务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WxGatewayRountItem
         """
         return self._WxGatewayRouteSet
@@ -16541,10 +16537,8 @@ class DescribeWxGatewaysResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Gateways: 返回的服务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gateways: list of GatewayItem
         :param _TotalCount: 网关总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16556,7 +16550,6 @@ class DescribeWxGatewaysResponse(AbstractModel):
     @property
     def Gateways(self):
         """返回的服务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewayItem
         """
         return self._Gateways
@@ -16568,7 +16561,6 @@ class DescribeWxGatewaysResponse(AbstractModel):
     @property
     def TotalCount(self):
         """网关总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -18667,10 +18659,8 @@ class FrequencyLimitConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _LimitObject: 限额对象 "ConnectionsLimit" 或 "QPSLimit"
-注意：此字段可能返回 null，表示取不到有效值。
         :type LimitObject: str
         :param _LimitConfig: 限额配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type LimitConfig: str
         """
         self._LimitObject = None
@@ -18679,7 +18669,6 @@ class FrequencyLimitConfig(AbstractModel):
     @property
     def LimitObject(self):
         """限额对象 "ConnectionsLimit" 或 "QPSLimit"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LimitObject
@@ -18691,7 +18680,6 @@ class FrequencyLimitConfig(AbstractModel):
     @property
     def LimitConfig(self):
         """限额配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LimitConfig
@@ -18777,79 +18765,54 @@ class GatewayItem(AbstractModel):
         :param _Uin: 用户uin
         :type Uin: str
         :param _AppId: 用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _WxAppId: WxAppId
-注意：此字段可能返回 null，表示取不到有效值。
         :type WxAppId: str
         :param _EnvId: 环境id
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvId: str
         :param _GatewayId: Gateway唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _GatewayName: Gateway名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayName: str
         :param _GatewayType: Gateway类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayType: str
         :param _GatewayDesc: Gateway描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayDesc: str
         :param _PackageVersion: 套餐版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageVersion: str
         :param _PackageId: 套餐唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageId: int
         :param _VpcId: vpc唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetIds: 子网id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: list of str
         :param _Status: 网关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _L5Addr: l5地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type L5Addr: str
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _CanRenew: 是否可以续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanRenew: bool
         :param _AutoRenewFlag: 自动续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _IsolateTime: 隔离时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
         :param _ExpireTime: 到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 变更时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _CanDowngrade: 是否可以降配
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanDowngrade: bool
         :param _AllowUncertified: 允许未登录访问
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowUncertified: int
         :param _VersionNumLimit: 网关版本限额
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionNumLimit: int
         :param _LongAccessId: Donut接入ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LongAccessId: str
         :param _AccessDomain: Donut接入域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessDomain: str
         """
         self._Uin = None
@@ -18893,7 +18856,6 @@ class GatewayItem(AbstractModel):
     @property
     def AppId(self):
         """用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -18905,7 +18867,6 @@ class GatewayItem(AbstractModel):
     @property
     def WxAppId(self):
         """WxAppId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WxAppId
@@ -18917,7 +18878,6 @@ class GatewayItem(AbstractModel):
     @property
     def EnvId(self):
         """环境id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvId
@@ -18929,7 +18889,6 @@ class GatewayItem(AbstractModel):
     @property
     def GatewayId(self):
         """Gateway唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -18941,7 +18900,6 @@ class GatewayItem(AbstractModel):
     @property
     def GatewayName(self):
         """Gateway名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayName
@@ -18953,7 +18911,6 @@ class GatewayItem(AbstractModel):
     @property
     def GatewayType(self):
         """Gateway类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayType
@@ -18965,7 +18922,6 @@ class GatewayItem(AbstractModel):
     @property
     def GatewayDesc(self):
         """Gateway描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayDesc
@@ -18977,7 +18933,6 @@ class GatewayItem(AbstractModel):
     @property
     def PackageVersion(self):
         """套餐版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageVersion
@@ -18989,7 +18944,6 @@ class GatewayItem(AbstractModel):
     @property
     def PackageId(self):
         """套餐唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PackageId
@@ -19001,7 +18955,6 @@ class GatewayItem(AbstractModel):
     @property
     def VpcId(self):
         """vpc唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -19013,7 +18966,6 @@ class GatewayItem(AbstractModel):
     @property
     def SubnetIds(self):
         """子网id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SubnetIds
@@ -19025,7 +18977,6 @@ class GatewayItem(AbstractModel):
     @property
     def Status(self):
         """网关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -19037,7 +18988,6 @@ class GatewayItem(AbstractModel):
     @property
     def L5Addr(self):
         """l5地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._L5Addr
@@ -19049,7 +18999,6 @@ class GatewayItem(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -19061,7 +19010,6 @@ class GatewayItem(AbstractModel):
     @property
     def CanRenew(self):
         """是否可以续费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CanRenew
@@ -19073,7 +19021,6 @@ class GatewayItem(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -19085,7 +19032,6 @@ class GatewayItem(AbstractModel):
     @property
     def IsolateTime(self):
         """隔离时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateTime
@@ -19097,7 +19043,6 @@ class GatewayItem(AbstractModel):
     @property
     def ExpireTime(self):
         """到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -19109,7 +19054,6 @@ class GatewayItem(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -19121,7 +19065,6 @@ class GatewayItem(AbstractModel):
     @property
     def UpdateTime(self):
         """变更时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -19133,7 +19076,6 @@ class GatewayItem(AbstractModel):
     @property
     def CanDowngrade(self):
         """是否可以降配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CanDowngrade
@@ -19145,7 +19087,6 @@ class GatewayItem(AbstractModel):
     @property
     def AllowUncertified(self):
         """允许未登录访问
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AllowUncertified
@@ -19157,7 +19098,6 @@ class GatewayItem(AbstractModel):
     @property
     def VersionNumLimit(self):
         """网关版本限额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VersionNumLimit
@@ -19169,7 +19109,6 @@ class GatewayItem(AbstractModel):
     @property
     def LongAccessId(self):
         """Donut接入ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LongAccessId
@@ -19181,7 +19120,6 @@ class GatewayItem(AbstractModel):
     @property
     def AccessDomain(self):
         """Donut接入域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessDomain
@@ -23725,37 +23663,26 @@ class WxGatewayRountItem(AbstractModel):
         :param _GatewayRouteCreateTime: 安全网关创建时间
         :type GatewayRouteCreateTime: str
         :param _FrequencyLimitConfig: 安全网关路由限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type FrequencyLimitConfig: list of FrequencyLimitConfig
         :param _GatewayRouteServerType: ip代表绑定后端ip。cbr代表云托管服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRouteServerType: str
         :param _GatewayRouteServerName: 服务名
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRouteServerName: str
         :param _GatewayRewriteHost: ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRewriteHost: str
         :param _GatewayVersion: 网关版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayVersion: str
         :param _GatewayRoutePath: 请求路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRoutePath: str
         :param _GatewayRouteMethod: 请求模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRouteMethod: str
         :param _GatewayRoutePort: 4层端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRoutePort: int
         :param _GatewayRouteEnvId: 路由环境ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRouteEnvId: str
         :param _GatewayRoutePathMatchType: 路径匹配类型，支持prefix(前缀匹配)，regex(正则匹配)， 默认prefix
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRoutePathMatchType: str
         :param _CustomHeader: 安全网关自定义头部
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomHeader: :class:`tencentcloud.tcb.v20180608.models.CustomHeader`
         """
         self._GatewayRouteName = None
@@ -23845,7 +23772,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def FrequencyLimitConfig(self):
         """安全网关路由限制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FrequencyLimitConfig
         """
         return self._FrequencyLimitConfig
@@ -23857,7 +23783,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayRouteServerType(self):
         """ip代表绑定后端ip。cbr代表云托管服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayRouteServerType
@@ -23869,7 +23794,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayRouteServerName(self):
         """服务名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayRouteServerName
@@ -23881,7 +23805,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayRewriteHost(self):
         """ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayRewriteHost
@@ -23893,7 +23816,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayVersion(self):
         """网关版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayVersion
@@ -23905,7 +23827,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayRoutePath(self):
         """请求路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayRoutePath
@@ -23917,7 +23838,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayRouteMethod(self):
         """请求模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayRouteMethod
@@ -23929,7 +23849,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayRoutePort(self):
         """4层端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GatewayRoutePort
@@ -23941,7 +23860,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayRouteEnvId(self):
         """路由环境ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayRouteEnvId
@@ -23953,7 +23871,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def GatewayRoutePathMatchType(self):
         """路径匹配类型，支持prefix(前缀匹配)，regex(正则匹配)， 默认prefix
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayRoutePathMatchType
@@ -23965,7 +23882,6 @@ class WxGatewayRountItem(AbstractModel):
     @property
     def CustomHeader(self):
         """安全网关自定义头部
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcb.v20180608.models.CustomHeader`
         """
         return self._CustomHeader

@@ -7872,10 +7872,8 @@ class ClassicLinkInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: VPC实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _InstanceId: 云服务器实例唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         """
         self._VpcId = None
@@ -7884,7 +7882,6 @@ class ClassicLinkInstance(AbstractModel):
     @property
     def VpcId(self):
         """VPC实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -7896,7 +7893,6 @@ class ClassicLinkInstance(AbstractModel):
     @property
     def InstanceId(self):
         """云服务器实例唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -36644,7 +36640,6 @@ class DhcpIp(AbstractModel):
         :param _CreatedTime: 创建时间。
         :type CreatedTime: str
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._DhcpIpId = None
@@ -36774,7 +36769,6 @@ class DhcpIp(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -44122,7 +44116,7 @@ class Ipv6SubnetCidrBlock(AbstractModel):
         r"""
         :param _SubnetId: 子网实例`ID`。形如：`subnet-pxir56ns`。
         :type SubnetId: str
-        :param _Ipv6CidrBlock: `IPv6`子网段。形如：`3402:4e00:20:1001::/64`
+        :param _Ipv6CidrBlock: `IPv6`子网段。形如：`3402:4e00:20:1001::/64`。作为AssignIpv6SubnetCidrBlock接口入参时，该参数必填。
         :type Ipv6CidrBlock: str
         """
         self._SubnetId = None
@@ -44141,7 +44135,7 @@ class Ipv6SubnetCidrBlock(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
-        """`IPv6`子网段。形如：`3402:4e00:20:1001::/64`
+        """`IPv6`子网段。形如：`3402:4e00:20:1001::/64`。作为AssignIpv6SubnetCidrBlock接口入参时，该参数必填。
         :rtype: str
         """
         return self._Ipv6CidrBlock
@@ -52387,10 +52381,8 @@ NONEXTHOP：无下一跳；
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetDetectDescription: str
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._VpcId = None
@@ -52559,7 +52551,6 @@ NONEXTHOP：无下一跳；
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -52571,7 +52562,6 @@ NONEXTHOP：无下一跳；
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet

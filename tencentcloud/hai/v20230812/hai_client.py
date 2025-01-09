@@ -118,6 +118,29 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMuskPrompts(self, request):
+        """获取prompt任务列表
+
+        :param request: Request instance for DescribeMuskPrompts.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeMuskPromptsRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeMuskPromptsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMuskPrompts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMuskPromptsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRegions(self, request):
         """查询地域列表
 

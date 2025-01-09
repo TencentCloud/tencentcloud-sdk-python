@@ -1544,6 +1544,29 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFreeCloudStorageNum(self, request):
+        """查询云存卡套餐信息
+
+        :param request: Request instance for DescribeFreeCloudStorageNum.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFreeCloudStorageNumRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.DescribeFreeCloudStorageNumResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFreeCloudStorageNum", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFreeCloudStorageNumResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMessageDataStats(self, request):
         """查询设备消息数量统计
 

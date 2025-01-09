@@ -5820,10 +5820,8 @@ class CreateDocumentResponse(AbstractModel):
 
 注: `1.如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL`
 `2.当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容`
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewFileUrl: str
         :param _Approvers: 签署方信息，如角色ID、角色名称等
-注意：此字段可能返回 null，表示取不到有效值。
         :type Approvers: list of ApproverItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5853,7 +5851,6 @@ class CreateDocumentResponse(AbstractModel):
 
 注: `1.如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL`
 `2.当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PreviewFileUrl
@@ -5865,7 +5862,6 @@ class CreateDocumentResponse(AbstractModel):
     @property
     def Approvers(self):
         """签署方信息，如角色ID、角色名称等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApproverItem
         """
         return self._Approvers
@@ -6698,7 +6694,6 @@ class CreateFlowApproversResponse(AbstractModel):
         :param _FillError: 批量补充签署人时，补充失败的报错说明
 
 注:`目前仅补充动态签署人时会返回补充失败的原因`
-注意：此字段可能返回 null，表示取不到有效值。
         :type FillError: list of FillError
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6711,7 +6706,6 @@ class CreateFlowApproversResponse(AbstractModel):
         """批量补充签署人时，补充失败的报错说明
 
 注:`目前仅补充动态签署人时会返回补充失败的原因`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FillError
         """
         return self._FillError
@@ -7452,10 +7446,8 @@ class CreateFlowByFilesResponse(AbstractModel):
         :param _PreviewUrl: 合同预览链接URL。
 
 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
         :param _Approvers: 签署方信息，如角色ID、角色名称等
-注意：此字段可能返回 null，表示取不到有效值。
         :type Approvers: list of ApproverItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7486,7 +7478,6 @@ class CreateFlowByFilesResponse(AbstractModel):
         """合同预览链接URL。
 
 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PreviewUrl
@@ -7498,7 +7489,6 @@ class CreateFlowByFilesResponse(AbstractModel):
     @property
     def Approvers(self):
         """签署方信息，如角色ID、角色名称等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApproverItem
         """
         return self._Approvers
@@ -7634,7 +7624,6 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReportId: 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/companyApis/certificate/DescribeFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
         :param _Status: 出证任务执行的状态, 状态含义如下：
 
@@ -7657,7 +7646,6 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
     @property
     def ReportId(self):
         """出证报告 ID，可用于<a href="https://qian.tencent.com/developers/companyApis/certificate/DescribeFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportId
@@ -8045,10 +8033,8 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowGroupId: 合同(流程)组的合同组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupId: str
         :param _FlowIds: 合同(流程)组中子合同列表.
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowIds: list of str
         :param _Approvers: 合同组签署人信息。
         :type Approvers: list of FlowGroupApprovers
@@ -8063,7 +8049,6 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
     @property
     def FlowGroupId(self):
         """合同(流程)组的合同组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowGroupId
@@ -8075,7 +8060,6 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
     @property
     def FlowIds(self):
         """合同(流程)组中子合同列表.
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FlowIds
@@ -12485,18 +12469,14 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 该编号会合成到个人用户证书证明图片。
 
 注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCertId: str
         :param _SerialNumber: 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SerialNumber: str
         :param _ValidFrom: CA证书颁发时间，格式为Unix标准时间戳（秒）   
 该时间格式化后会合成到个人用户证书证明图片
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidFrom: int
         :param _ValidTo: CA证书有效截止时间，格式为Unix标准时间戳（秒）
 该时间格式化后会合成到个人用户证书证明图片
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidTo: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12525,7 +12505,6 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
 该编号会合成到个人用户证书证明图片。
 
 注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageCertId
@@ -12537,7 +12516,6 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
     @property
     def SerialNumber(self):
         """在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SerialNumber
@@ -12550,7 +12528,6 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
     def ValidFrom(self):
         """CA证书颁发时间，格式为Unix标准时间戳（秒）   
 该时间格式化后会合成到个人用户证书证明图片
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ValidFrom
@@ -12563,7 +12540,6 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
     def ValidTo(self):
         """CA证书有效截止时间，格式为Unix标准时间戳（秒）
 该时间格式化后会合成到个人用户证书证明图片
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ValidTo
@@ -17453,7 +17429,6 @@ class DescribeBillUsageResponse(AbstractModel):
         :param _Summary: 企业套餐余额及使用情况
         :type Summary: list of OrgBillSummary
         :param _SubOrgSummary: 集团子企业套餐使用情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubOrgSummary: list of SubOrgBillSummary
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17476,7 +17451,6 @@ class DescribeBillUsageResponse(AbstractModel):
     @property
     def SubOrgSummary(self):
         """集团子企业套餐使用情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SubOrgBillSummary
         """
         return self._SubOrgSummary
@@ -18518,7 +18492,6 @@ class DescribeFlowComponentsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RecipientComponentInfos: 合同流程关联的填写控件信息，包括填写控件的归属方以及是否填写等内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientComponentInfos: list of RecipientComponentInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18529,7 +18502,6 @@ class DescribeFlowComponentsResponse(AbstractModel):
     @property
     def RecipientComponentInfos(self):
         """合同流程关联的填写控件信息，包括填写控件的归属方以及是否填写等内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecipientComponentInfo
         """
         return self._RecipientComponentInfos
@@ -18661,7 +18633,6 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReportUrl: 出证报告PDF的下载 URL，`有效期为5分钟`，超过有效期后将无法再下载。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
         :param _Status: 出证任务执行的状态, 状态含义如下：
 
@@ -18679,7 +18650,6 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
     @property
     def ReportUrl(self):
         """出证报告PDF的下载 URL，`有效期为5分钟`，超过有效期后将无法再下载。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportUrl
@@ -19392,7 +19362,7 @@ class DescribeIntegrationEmployeesRequest(AbstractModel):
   <li>Key:**"RoleId"**，根据电子签角色ID查询员工，Values为指定的角色ID，满足其中任意一个角色即可：**["RoleId1","RoleId2",...]**</li>
 </ul>
         :type Filters: list of Filter
-        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大20000。
+        :param _Offset: 偏移量，默认为0，最大20000。。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
         :type Offset: int
         """
         self._Operator = None
@@ -19458,7 +19428,7 @@ class DescribeIntegrationEmployeesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大20000。
+        """偏移量，默认为0，最大20000。。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
         :rtype: int
         """
         return self._Offset
@@ -19501,10 +19471,8 @@ class DescribeIntegrationEmployeesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Employees: 员工信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Employees: list of Staff
-        :param _Offset: 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Offset: 偏移量
         :type Offset: int
         :param _Limit: 指定分页每页返回的数据条数，单页最大支持 20。
         :type Limit: int
@@ -19522,7 +19490,6 @@ class DescribeIntegrationEmployeesResponse(AbstractModel):
     @property
     def Employees(self):
         """员工信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Staff
         """
         return self._Employees
@@ -19533,8 +19500,7 @@ class DescribeIntegrationEmployeesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
-注意：此字段可能返回 null，表示取不到有效值。
+        """偏移量
         :rtype: int
         """
         return self._Offset
@@ -20882,10 +20848,8 @@ class DescribeSignFaceVideoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VideoData: 核身视频结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoData: :class:`tencentcloud.ess.v20201111.models.DetectInfoVideoData`
         :param _IntentionQuestionResult: 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionQuestionResult: :class:`tencentcloud.ess.v20201111.models.IntentionQuestionResult`
         :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20901,7 +20865,6 @@ class DescribeSignFaceVideoResponse(AbstractModel):
     @property
     def VideoData(self):
         """核身视频结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ess.v20201111.models.DetectInfoVideoData`
         """
         return self._VideoData
@@ -20913,7 +20876,6 @@ class DescribeSignFaceVideoResponse(AbstractModel):
     @property
     def IntentionQuestionResult(self):
         """意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ess.v20201111.models.IntentionQuestionResult`
         """
         return self._IntentionQuestionResult
@@ -25409,8 +25371,7 @@ class GetTaskResultApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>或<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateMergeFileTask" target="_blank">创建多文件转换任务接口</a>
-得到的转换任务id
+        :param _TaskId: 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>得到的转换任务id
         :type TaskId: str
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -25428,8 +25389,7 @@ class GetTaskResultApiRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>或<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateMergeFileTask" target="_blank">创建多文件转换任务接口</a>
-得到的转换任务id
+        """转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>得到的转换任务id
         :rtype: str
         """
         return self._TaskId

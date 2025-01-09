@@ -1521,6 +1521,151 @@ URL 有效期1小时，请及时保存。
         self._RequestId = params.get("RequestId")
 
 
+class QueryMemeJobRequest(AbstractModel):
+    """QueryMemeJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 查询表情动图生成任务 ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        """查询表情动图生成任务 ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMemeJobResponse(AbstractModel):
+    """QueryMemeJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobStatusCode: 当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :type JobStatusCode: str
+        :param _JobStatusMsg: 当前任务状态：排队中、处理中、处理失败或者处理完成。
+        :type JobStatusMsg: str
+        :param _JobErrorCode: 任务处理失败错误码。
+
+        :type JobErrorCode: str
+        :param _JobErrorMsg: 任务处理失败错误信息。
+
+        :type JobErrorMsg: str
+        :param _ResultImage: 生成图 URL，有效期1小时，请及时保存。
+        :type ResultImage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobStatusCode = None
+        self._JobStatusMsg = None
+        self._JobErrorCode = None
+        self._JobErrorMsg = None
+        self._ResultImage = None
+        self._RequestId = None
+
+    @property
+    def JobStatusCode(self):
+        """当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :rtype: str
+        """
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
+    def JobStatusMsg(self):
+        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+        :rtype: str
+        """
+        return self._JobStatusMsg
+
+    @JobStatusMsg.setter
+    def JobStatusMsg(self, JobStatusMsg):
+        self._JobStatusMsg = JobStatusMsg
+
+    @property
+    def JobErrorCode(self):
+        """任务处理失败错误码。
+
+        :rtype: str
+        """
+        return self._JobErrorCode
+
+    @JobErrorCode.setter
+    def JobErrorCode(self, JobErrorCode):
+        self._JobErrorCode = JobErrorCode
+
+    @property
+    def JobErrorMsg(self):
+        """任务处理失败错误信息。
+
+        :rtype: str
+        """
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
+
+    @property
+    def ResultImage(self):
+        """生成图 URL，有效期1小时，请及时保存。
+        :rtype: str
+        """
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobStatusCode = params.get("JobStatusCode")
+        self._JobStatusMsg = params.get("JobStatusMsg")
+        self._JobErrorCode = params.get("JobErrorCode")
+        self._JobErrorMsg = params.get("JobErrorMsg")
+        self._ResultImage = params.get("ResultImage")
+        self._RequestId = params.get("RequestId")
+
+
 class QueryTextToImageProJobRequest(AbstractModel):
     """QueryTextToImageProJob请求参数结构体
 
@@ -2461,6 +2606,228 @@ class SubmitDrawPortraitJobResponse(AbstractModel):
     def JobId(self):
         """提交生成写真图片任务 ID。
 
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitMemeJobRequest(AbstractModel):
+    """SubmitMemeJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Pose: 表情模板。
+请在 [表情动图模板列表](https://cloud.tencent.com/document/product/1668/115327)  中选择期望的模板，传入 Pose 名称。
+        :type Pose: str
+        :param _InputImage: 人像参考图 Base64 数据。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type InputImage: str
+        :param _InputUrl: 人像参考图 Url。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type InputUrl: str
+        :param _Resolution: 生成分辨率。
+真人类型支持256、512，默认为256，
+卡通类型仅支持512。
+        :type Resolution: int
+        :param _Text: 自定义文案。
+仅对真人类型的 Pose 生效，将在生成的表情动图中显示指定的文字。如果传入的字符串长度大于10，只截取前10个显示。
+如果不传，默认使用自带的文案。
+如果 text = "" 空字符串，代表不在表情动图中添加文案。
+        :type Text: str
+        :param _Haircut: 头发遮罩开关。
+true：裁剪过长的头发。
+false：不裁剪过长的头发。
+仅对卡通类型的 Pose 生效，默认为 false。
+        :type Haircut: bool
+        :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        self._Pose = None
+        self._InputImage = None
+        self._InputUrl = None
+        self._Resolution = None
+        self._Text = None
+        self._Haircut = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def Pose(self):
+        """表情模板。
+请在 [表情动图模板列表](https://cloud.tencent.com/document/product/1668/115327)  中选择期望的模板，传入 Pose 名称。
+        :rtype: str
+        """
+        return self._Pose
+
+    @Pose.setter
+    def Pose(self, Pose):
+        self._Pose = Pose
+
+    @property
+    def InputImage(self):
+        """人像参考图 Base64 数据。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: str
+        """
+        return self._InputImage
+
+    @InputImage.setter
+    def InputImage(self, InputImage):
+        self._InputImage = InputImage
+
+    @property
+    def InputUrl(self):
+        """人像参考图 Url。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: str
+        """
+        return self._InputUrl
+
+    @InputUrl.setter
+    def InputUrl(self, InputUrl):
+        self._InputUrl = InputUrl
+
+    @property
+    def Resolution(self):
+        """生成分辨率。
+真人类型支持256、512，默认为256，
+卡通类型仅支持512。
+        :rtype: int
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Text(self):
+        """自定义文案。
+仅对真人类型的 Pose 生效，将在生成的表情动图中显示指定的文字。如果传入的字符串长度大于10，只截取前10个显示。
+如果不传，默认使用自带的文案。
+如果 text = "" 空字符串，代表不在表情动图中添加文案。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Haircut(self):
+        """头发遮罩开关。
+true：裁剪过长的头发。
+false：不裁剪过长的头发。
+仅对卡通类型的 Pose 生效，默认为 false。
+        :rtype: bool
+        """
+        return self._Haircut
+
+    @Haircut.setter
+    def Haircut(self, Haircut):
+        self._Haircut = Haircut
+
+    @property
+    def LogoAdd(self):
+        """为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图是 AI 生成的图片。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        """标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+
+    def _deserialize(self, params):
+        self._Pose = params.get("Pose")
+        self._InputImage = params.get("InputImage")
+        self._InputUrl = params.get("InputUrl")
+        self._Resolution = params.get("Resolution")
+        self._Text = params.get("Text")
+        self._Haircut = params.get("Haircut")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitMemeJobResponse(AbstractModel):
+    """SubmitMemeJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务id
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """任务id
         :rtype: str
         """
         return self._JobId

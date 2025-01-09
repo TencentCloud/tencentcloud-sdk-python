@@ -18,6 +18,108 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivateDeviceInfo(AbstractModel):
+    """设备激活详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceType: 实例类型
+        :type InstanceType: int
+        :param _DeviceActivationDetails: 设备激活信息
+        :type DeviceActivationDetails: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceActivationDetail`
+        :param _RegisteredDeviceType: 已注册设备类型信息
+        :type RegisteredDeviceType: :class:`tencentcloud.iotexplorer.v20190423.models.RegisteredDeviceTypeInfo`
+        :param _RegisteredDeviceNetType: 已注册设备通信类型信息
+        :type RegisteredDeviceNetType: :class:`tencentcloud.iotexplorer.v20190423.models.RegisteredDeviceNetTypeInfo`
+        """
+        self._InstanceId = None
+        self._InstanceType = None
+        self._DeviceActivationDetails = None
+        self._RegisteredDeviceType = None
+        self._RegisteredDeviceNetType = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceType(self):
+        """实例类型
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def DeviceActivationDetails(self):
+        """设备激活信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceActivationDetail`
+        """
+        return self._DeviceActivationDetails
+
+    @DeviceActivationDetails.setter
+    def DeviceActivationDetails(self, DeviceActivationDetails):
+        self._DeviceActivationDetails = DeviceActivationDetails
+
+    @property
+    def RegisteredDeviceType(self):
+        """已注册设备类型信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.RegisteredDeviceTypeInfo`
+        """
+        return self._RegisteredDeviceType
+
+    @RegisteredDeviceType.setter
+    def RegisteredDeviceType(self, RegisteredDeviceType):
+        self._RegisteredDeviceType = RegisteredDeviceType
+
+    @property
+    def RegisteredDeviceNetType(self):
+        """已注册设备通信类型信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.RegisteredDeviceNetTypeInfo`
+        """
+        return self._RegisteredDeviceNetType
+
+    @RegisteredDeviceNetType.setter
+    def RegisteredDeviceNetType(self, RegisteredDeviceNetType):
+        self._RegisteredDeviceNetType = RegisteredDeviceNetType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceType = params.get("InstanceType")
+        if params.get("DeviceActivationDetails") is not None:
+            self._DeviceActivationDetails = DeviceActivationDetail()
+            self._DeviceActivationDetails._deserialize(params.get("DeviceActivationDetails"))
+        if params.get("RegisteredDeviceType") is not None:
+            self._RegisteredDeviceType = RegisteredDeviceTypeInfo()
+            self._RegisteredDeviceType._deserialize(params.get("RegisteredDeviceType"))
+        if params.get("RegisteredDeviceNetType") is not None:
+            self._RegisteredDeviceNetType = RegisteredDeviceNetTypeInfo()
+            self._RegisteredDeviceNetType._deserialize(params.get("RegisteredDeviceNetType"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActivateTWeCallLicenseRequest(AbstractModel):
     """ActivateTWeCallLicense请求参数结构体
 
@@ -2028,6 +2130,87 @@ class CloudStorageEvent(AbstractModel):
         self._EventId = params.get("EventId")
         self._UploadStatus = params.get("UploadStatus")
         self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudStoragePackageInfo(AbstractModel):
+    """云存套餐包信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageId: 套餐包id
+        :type PackageId: str
+        :param _PackageName: 套餐包名字
+        :type PackageName: str
+        :param _Num: 套餐包数量
+        :type Num: int
+        :param _UsedNum: 已使用数量
+        :type UsedNum: int
+        """
+        self._PackageId = None
+        self._PackageName = None
+        self._Num = None
+        self._UsedNum = None
+
+    @property
+    def PackageId(self):
+        """套餐包id
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def PackageName(self):
+        """套餐包名字
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+    @property
+    def Num(self):
+        """套餐包数量
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def UsedNum(self):
+        """已使用数量
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+
+    def _deserialize(self, params):
+        self._PackageId = params.get("PackageId")
+        self._PackageName = params.get("PackageName")
+        self._Num = params.get("Num")
+        self._UsedNum = params.get("UsedNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6166,6 +6349,190 @@ class DeleteTopicRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeActivateDeviceRequest(AbstractModel):
+    """DescribeActivateDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeActivateDeviceResponse(AbstractModel):
+    """DescribeActivateDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 设备激活详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateDeviceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """设备激活详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateDeviceInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ActivateDeviceInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeActivateLicenseServiceRequest(AbstractModel):
+    """DescribeActivateLicenseService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _LicenseType: 激活码类型
+        :type LicenseType: str
+        """
+        self._InstanceId = None
+        self._LicenseType = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LicenseType(self):
+        """激活码类型
+        :rtype: str
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LicenseType = params.get("LicenseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeActivateLicenseServiceResponse(AbstractModel):
+    """DescribeActivateLicenseService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 增值服务激活码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of LicenseServiceNumInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """增值服务激活码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LicenseServiceNumInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = LicenseServiceNumInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11160,6 +11527,60 @@ class DescribeFirmwareUpdateStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFreeCloudStorageNumRequest(AbstractModel):
+    """DescribeFreeCloudStorageNum请求参数结构体
+
+    """
+
+
+class DescribeFreeCloudStorageNumResponse(AbstractModel):
+    """DescribeFreeCloudStorageNum返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageInfos: 套餐包信息
+        :type PackageInfos: list of CloudStoragePackageInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PackageInfos = None
+        self._RequestId = None
+
+    @property
+    def PackageInfos(self):
+        """套餐包信息
+        :rtype: list of CloudStoragePackageInfo
+        """
+        return self._PackageInfos
+
+    @PackageInfos.setter
+    def PackageInfos(self, PackageInfos):
+        self._PackageInfos = PackageInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PackageInfos") is not None:
+            self._PackageInfos = []
+            for item in params.get("PackageInfos"):
+                obj = CloudStoragePackageInfo()
+                obj._deserialize(item)
+                self._PackageInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGatewayBindDevicesRequest(AbstractModel):
     """DescribeGatewayBindDevices请求参数结构体
 
@@ -12903,6 +13324,203 @@ class DescribeTopicRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self._CamTag.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DescribeVideoLicenseRequest(AbstractModel):
+    """DescribeVideoLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoLicenseResponse(AbstractModel):
+    """DescribeVideoLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _License: 视频激活码分类概览
+注意：此字段可能返回 null，表示取不到有效值。
+        :type License: list of VideoLicenseEntity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._License = None
+        self._RequestId = None
+
+    @property
+    def License(self):
+        """视频激活码分类概览
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VideoLicenseEntity
+        """
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("License") is not None:
+            self._License = []
+            for item in params.get("License"):
+                obj = VideoLicenseEntity()
+                obj._deserialize(item)
+                self._License.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeviceActivationDetail(AbstractModel):
+    """设备激活详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalDeviceNum: 可注册设备数
+        :type TotalDeviceNum: int
+        :param _UsedDeviceNum: 已注册设备数
+        :type UsedDeviceNum: int
+        :param _TotalNormalLicense: 设备授权数
+        :type TotalNormalLicense: int
+        :param _UsedNormalLicense: 已使用设备授权数
+        :type UsedNormalLicense: int
+        :param _TotalBluetoothLicense: 蓝牙授权数
+        :type TotalBluetoothLicense: int
+        :param _UsedBluetoothLicense: 已使用蓝牙授权数
+        :type UsedBluetoothLicense: int
+        """
+        self._TotalDeviceNum = None
+        self._UsedDeviceNum = None
+        self._TotalNormalLicense = None
+        self._UsedNormalLicense = None
+        self._TotalBluetoothLicense = None
+        self._UsedBluetoothLicense = None
+
+    @property
+    def TotalDeviceNum(self):
+        """可注册设备数
+        :rtype: int
+        """
+        return self._TotalDeviceNum
+
+    @TotalDeviceNum.setter
+    def TotalDeviceNum(self, TotalDeviceNum):
+        self._TotalDeviceNum = TotalDeviceNum
+
+    @property
+    def UsedDeviceNum(self):
+        """已注册设备数
+        :rtype: int
+        """
+        return self._UsedDeviceNum
+
+    @UsedDeviceNum.setter
+    def UsedDeviceNum(self, UsedDeviceNum):
+        self._UsedDeviceNum = UsedDeviceNum
+
+    @property
+    def TotalNormalLicense(self):
+        """设备授权数
+        :rtype: int
+        """
+        return self._TotalNormalLicense
+
+    @TotalNormalLicense.setter
+    def TotalNormalLicense(self, TotalNormalLicense):
+        self._TotalNormalLicense = TotalNormalLicense
+
+    @property
+    def UsedNormalLicense(self):
+        """已使用设备授权数
+        :rtype: int
+        """
+        return self._UsedNormalLicense
+
+    @UsedNormalLicense.setter
+    def UsedNormalLicense(self, UsedNormalLicense):
+        self._UsedNormalLicense = UsedNormalLicense
+
+    @property
+    def TotalBluetoothLicense(self):
+        """蓝牙授权数
+        :rtype: int
+        """
+        return self._TotalBluetoothLicense
+
+    @TotalBluetoothLicense.setter
+    def TotalBluetoothLicense(self, TotalBluetoothLicense):
+        self._TotalBluetoothLicense = TotalBluetoothLicense
+
+    @property
+    def UsedBluetoothLicense(self):
+        """已使用蓝牙授权数
+        :rtype: int
+        """
+        return self._UsedBluetoothLicense
+
+    @UsedBluetoothLicense.setter
+    def UsedBluetoothLicense(self, UsedBluetoothLicense):
+        self._UsedBluetoothLicense = UsedBluetoothLicense
+
+
+    def _deserialize(self, params):
+        self._TotalDeviceNum = params.get("TotalDeviceNum")
+        self._UsedDeviceNum = params.get("UsedDeviceNum")
+        self._TotalNormalLicense = params.get("TotalNormalLicense")
+        self._UsedNormalLicense = params.get("UsedNormalLicense")
+        self._TotalBluetoothLicense = params.get("TotalBluetoothLicense")
+        self._UsedBluetoothLicense = params.get("UsedBluetoothLicense")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeviceActiveResult(AbstractModel):
@@ -18651,6 +19269,94 @@ class InvokeExternalSourceAIServiceTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LicenseServiceNumInfo(AbstractModel):
+    """增值服务数量统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LicenseType: 服务类型
+        :type LicenseType: str
+        :param _TotalNum: 授权总数
+        :type TotalNum: int
+        :param _UsedNum: 已使用授权数
+        :type UsedNum: int
+        :param _TWeCallLicense: TWeCall激活码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TWeCallLicense: list of TWeCallLicenseInfo
+        """
+        self._LicenseType = None
+        self._TotalNum = None
+        self._UsedNum = None
+        self._TWeCallLicense = None
+
+    @property
+    def LicenseType(self):
+        """服务类型
+        :rtype: str
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+    @property
+    def TotalNum(self):
+        """授权总数
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def UsedNum(self):
+        """已使用授权数
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def TWeCallLicense(self):
+        """TWeCall激活码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TWeCallLicenseInfo
+        """
+        return self._TWeCallLicense
+
+    @TWeCallLicense.setter
+    def TWeCallLicense(self, TWeCallLicense):
+        self._TWeCallLicense = TWeCallLicense
+
+
+    def _deserialize(self, params):
+        self._LicenseType = params.get("LicenseType")
+        self._TotalNum = params.get("TotalNum")
+        self._UsedNum = params.get("UsedNum")
+        if params.get("TWeCallLicense") is not None:
+            self._TWeCallLicense = []
+            for item in params.get("TWeCallLicense"):
+                obj = TWeCallLicenseInfo()
+                obj._deserialize(item)
+                self._TWeCallLicense.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListEventHistoryRequest(AbstractModel):
     """ListEventHistory请求参数结构体
 
@@ -23356,6 +24062,123 @@ class PublishRRPCMessageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RegisteredDeviceNetTypeInfo(AbstractModel):
+    """已注册通信类型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NormalDeviceNum: 普通设备数
+        :type NormalDeviceNum: int
+        :param _BluetoothDeviceNum: 蓝牙设备数
+        :type BluetoothDeviceNum: int
+        """
+        self._NormalDeviceNum = None
+        self._BluetoothDeviceNum = None
+
+    @property
+    def NormalDeviceNum(self):
+        """普通设备数
+        :rtype: int
+        """
+        return self._NormalDeviceNum
+
+    @NormalDeviceNum.setter
+    def NormalDeviceNum(self, NormalDeviceNum):
+        self._NormalDeviceNum = NormalDeviceNum
+
+    @property
+    def BluetoothDeviceNum(self):
+        """蓝牙设备数
+        :rtype: int
+        """
+        return self._BluetoothDeviceNum
+
+    @BluetoothDeviceNum.setter
+    def BluetoothDeviceNum(self, BluetoothDeviceNum):
+        self._BluetoothDeviceNum = BluetoothDeviceNum
+
+
+    def _deserialize(self, params):
+        self._NormalDeviceNum = params.get("NormalDeviceNum")
+        self._BluetoothDeviceNum = params.get("BluetoothDeviceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegisteredDeviceTypeInfo(AbstractModel):
+    """已注册设备类型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NormalDeviceNum: 已注册设备数
+        :type NormalDeviceNum: int
+        :param _GatewayDeviceNum: 已注册网关数
+        :type GatewayDeviceNum: int
+        :param _SubDeviceNum: 已注册子设备数
+        :type SubDeviceNum: int
+        """
+        self._NormalDeviceNum = None
+        self._GatewayDeviceNum = None
+        self._SubDeviceNum = None
+
+    @property
+    def NormalDeviceNum(self):
+        """已注册设备数
+        :rtype: int
+        """
+        return self._NormalDeviceNum
+
+    @NormalDeviceNum.setter
+    def NormalDeviceNum(self, NormalDeviceNum):
+        self._NormalDeviceNum = NormalDeviceNum
+
+    @property
+    def GatewayDeviceNum(self):
+        """已注册网关数
+        :rtype: int
+        """
+        return self._GatewayDeviceNum
+
+    @GatewayDeviceNum.setter
+    def GatewayDeviceNum(self, GatewayDeviceNum):
+        self._GatewayDeviceNum = GatewayDeviceNum
+
+    @property
+    def SubDeviceNum(self):
+        """已注册子设备数
+        :rtype: int
+        """
+        return self._SubDeviceNum
+
+    @SubDeviceNum.setter
+    def SubDeviceNum(self, SubDeviceNum):
+        self._SubDeviceNum = SubDeviceNum
+
+
+    def _deserialize(self, params):
+        self._NormalDeviceNum = params.get("NormalDeviceNum")
+        self._GatewayDeviceNum = params.get("GatewayDeviceNum")
+        self._SubDeviceNum = params.get("SubDeviceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReleaseStudioProductRequest(AbstractModel):
     """ReleaseStudioProduct请求参数结构体
 
@@ -24819,6 +25642,78 @@ class TWeCallInfo(AbstractModel):
         self._Sn = params.get("Sn")
         self._ModelId = params.get("ModelId")
         self._ActiveNum = params.get("ActiveNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TWeCallLicenseInfo(AbstractModel):
+    """TWeCall信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TWeCallType: voip类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TWeCallType: str
+        :param _TotalNum: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalNum: int
+        :param _UsedNum: 已使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedNum: int
+        """
+        self._TWeCallType = None
+        self._TotalNum = None
+        self._UsedNum = None
+
+    @property
+    def TWeCallType(self):
+        """voip类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TWeCallType
+
+    @TWeCallType.setter
+    def TWeCallType(self, TWeCallType):
+        self._TWeCallType = TWeCallType
+
+    @property
+    def TotalNum(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def UsedNum(self):
+        """已使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+
+    def _deserialize(self, params):
+        self._TWeCallType = params.get("TWeCallType")
+        self._TotalNum = params.get("TotalNum")
+        self._UsedNum = params.get("UsedNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26344,6 +27239,87 @@ class UploadFirmwareResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class VideoLicenseEntity(AbstractModel):
+    """视频设备激活码统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 激活码类型，取值范围如下：0_5_mbps、1_mbps、1_5_mbps、2_mbps
+        :type Type: str
+        :param _TotalCount: 有效激活码总数
+        :type TotalCount: int
+        :param _UsedCount: 待使用的激活码数量
+        :type UsedCount: int
+        :param _ExpiresSoonCount: 即将过期的激活码数量
+        :type ExpiresSoonCount: int
+        """
+        self._Type = None
+        self._TotalCount = None
+        self._UsedCount = None
+        self._ExpiresSoonCount = None
+
+    @property
+    def Type(self):
+        """激活码类型，取值范围如下：0_5_mbps、1_mbps、1_5_mbps、2_mbps
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TotalCount(self):
+        """有效激活码总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def UsedCount(self):
+        """待使用的激活码数量
+        :rtype: int
+        """
+        return self._UsedCount
+
+    @UsedCount.setter
+    def UsedCount(self, UsedCount):
+        self._UsedCount = UsedCount
+
+    @property
+    def ExpiresSoonCount(self):
+        """即将过期的激活码数量
+        :rtype: int
+        """
+        return self._ExpiresSoonCount
+
+    @ExpiresSoonCount.setter
+    def ExpiresSoonCount(self, ExpiresSoonCount):
+        self._ExpiresSoonCount = ExpiresSoonCount
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._TotalCount = params.get("TotalCount")
+        self._UsedCount = params.get("UsedCount")
+        self._ExpiresSoonCount = params.get("ExpiresSoonCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WXDeviceInfo(AbstractModel):

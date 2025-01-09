@@ -1443,6 +1443,12 @@ class AlarmIndicatorInfo(AbstractModel):
         :param _Threshold: 指标阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Threshold: float
+        :param _IndicatorTimeRangeUnit: 时间范围单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorTimeRangeUnit: str
+        :param _IndicatorTimeRangeValue: 时间范围值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorTimeRangeValue: int
         """
         self._Id = None
         self._AlarmIndicator = None
@@ -1455,6 +1461,8 @@ class AlarmIndicatorInfo(AbstractModel):
         self._DurationUnit = None
         self._MaxTimes = None
         self._Threshold = None
+        self._IndicatorTimeRangeUnit = None
+        self._IndicatorTimeRangeValue = None
 
     @property
     def Id(self):
@@ -1585,6 +1593,30 @@ class AlarmIndicatorInfo(AbstractModel):
     def Threshold(self, Threshold):
         self._Threshold = Threshold
 
+    @property
+    def IndicatorTimeRangeUnit(self):
+        """时间范围单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IndicatorTimeRangeUnit
+
+    @IndicatorTimeRangeUnit.setter
+    def IndicatorTimeRangeUnit(self, IndicatorTimeRangeUnit):
+        self._IndicatorTimeRangeUnit = IndicatorTimeRangeUnit
+
+    @property
+    def IndicatorTimeRangeValue(self):
+        """时间范围值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndicatorTimeRangeValue
+
+    @IndicatorTimeRangeValue.setter
+    def IndicatorTimeRangeValue(self, IndicatorTimeRangeValue):
+        self._IndicatorTimeRangeValue = IndicatorTimeRangeValue
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1598,6 +1630,8 @@ class AlarmIndicatorInfo(AbstractModel):
         self._DurationUnit = params.get("DurationUnit")
         self._MaxTimes = params.get("MaxTimes")
         self._Threshold = params.get("Threshold")
+        self._IndicatorTimeRangeUnit = params.get("IndicatorTimeRangeUnit")
+        self._IndicatorTimeRangeValue = params.get("IndicatorTimeRangeValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10586,6 +10620,10 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         :type SchemaName: str
         :param _Async: 是否异步建表
         :type Async: bool
+        :param _DataOptimizationResource: 数据优化使用的资源
+        :type DataOptimizationResource: str
+        :param _SmartOptimizerWritten: 是否开启数据优化
+        :type SmartOptimizerWritten: str
         """
         self._DatasourceId = None
         self._Database = None
@@ -10596,6 +10634,8 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._Incharge = None
         self._SchemaName = None
         self._Async = None
+        self._DataOptimizationResource = None
+        self._SmartOptimizerWritten = None
 
     @property
     def DatasourceId(self):
@@ -10696,6 +10736,28 @@ class CreateHiveTableByDDLRequest(AbstractModel):
     def Async(self, Async):
         self._Async = Async
 
+    @property
+    def DataOptimizationResource(self):
+        """数据优化使用的资源
+        :rtype: str
+        """
+        return self._DataOptimizationResource
+
+    @DataOptimizationResource.setter
+    def DataOptimizationResource(self, DataOptimizationResource):
+        self._DataOptimizationResource = DataOptimizationResource
+
+    @property
+    def SmartOptimizerWritten(self):
+        """是否开启数据优化
+        :rtype: str
+        """
+        return self._SmartOptimizerWritten
+
+    @SmartOptimizerWritten.setter
+    def SmartOptimizerWritten(self, SmartOptimizerWritten):
+        self._SmartOptimizerWritten = SmartOptimizerWritten
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -10707,6 +10769,8 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._Incharge = params.get("Incharge")
         self._SchemaName = params.get("SchemaName")
         self._Async = params.get("Async")
+        self._DataOptimizationResource = params.get("DataOptimizationResource")
+        self._SmartOptimizerWritten = params.get("SmartOptimizerWritten")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10794,6 +10858,10 @@ class CreateHiveTableRequest(AbstractModel):
         :type ProjectId: str
         :param _Incharge: 责任人
         :type Incharge: str
+        :param _DataOptimizationResource: 数据优化引擎
+        :type DataOptimizationResource: str
+        :param _SmartOptimizerWritten: 是否开启数据优化
+        :type SmartOptimizerWritten: str
         """
         self._DatasourceId = None
         self._Database = None
@@ -10801,6 +10869,8 @@ class CreateHiveTableRequest(AbstractModel):
         self._Privilege = None
         self._ProjectId = None
         self._Incharge = None
+        self._DataOptimizationResource = None
+        self._SmartOptimizerWritten = None
 
     @property
     def DatasourceId(self):
@@ -10868,6 +10938,28 @@ class CreateHiveTableRequest(AbstractModel):
     def Incharge(self, Incharge):
         self._Incharge = Incharge
 
+    @property
+    def DataOptimizationResource(self):
+        """数据优化引擎
+        :rtype: str
+        """
+        return self._DataOptimizationResource
+
+    @DataOptimizationResource.setter
+    def DataOptimizationResource(self, DataOptimizationResource):
+        self._DataOptimizationResource = DataOptimizationResource
+
+    @property
+    def SmartOptimizerWritten(self):
+        """是否开启数据优化
+        :rtype: str
+        """
+        return self._SmartOptimizerWritten
+
+    @SmartOptimizerWritten.setter
+    def SmartOptimizerWritten(self, SmartOptimizerWritten):
+        self._SmartOptimizerWritten = SmartOptimizerWritten
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -10876,6 +10968,8 @@ class CreateHiveTableRequest(AbstractModel):
         self._Privilege = params.get("Privilege")
         self._ProjectId = params.get("ProjectId")
         self._Incharge = params.get("Incharge")
+        self._DataOptimizationResource = params.get("DataOptimizationResource")
+        self._SmartOptimizerWritten = params.get("SmartOptimizerWritten")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43273,6 +43367,8 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         :type TableBaseInfo: :class:`tencentcloud.wedata.v20210820.models.TableBaseInfo`
         :param _SinkSchemaName: 目标端schema名称
         :type SinkSchemaName: str
+        :param _Env: 获取源信息的环境
+        :type Env: str
         """
         self._ProjectId = None
         self._SinkDatabase = None
@@ -43298,6 +43394,7 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         self._UpsertKeys = None
         self._TableBaseInfo = None
         self._SinkSchemaName = None
+        self._Env = None
 
     @property
     def ProjectId(self):
@@ -43563,6 +43660,17 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
     def SinkSchemaName(self, SinkSchemaName):
         self._SinkSchemaName = SinkSchemaName
 
+    @property
+    def Env(self):
+        """获取源信息的环境
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -43606,6 +43714,7 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
             self._TableBaseInfo = TableBaseInfo()
             self._TableBaseInfo._deserialize(params.get("TableBaseInfo"))
         self._SinkSchemaName = params.get("SinkSchemaName")
+        self._Env = params.get("Env")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75919,6 +76028,9 @@ class TaskAlarmInfo(AbstractModel):
         :param _DingDingWebHooks: 钉钉群Hook地址，多个hook地址使用,隔开
 注意：此字段可能返回 null，表示取不到有效值。
         :type DingDingWebHooks: str
+        :param _BusinessType: 业务类型, 0-非默认, 1-默认
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessType: int
         """
         self._TaskId = None
         self._RegularName = None
@@ -75953,6 +76065,7 @@ class TaskAlarmInfo(AbstractModel):
         self._Description = None
         self._LarkWebHooks = None
         self._DingDingWebHooks = None
+        self._BusinessType = None
 
     @property
     def TaskId(self):
@@ -76342,6 +76455,18 @@ class TaskAlarmInfo(AbstractModel):
     def DingDingWebHooks(self, DingDingWebHooks):
         self._DingDingWebHooks = DingDingWebHooks
 
+    @property
+    def BusinessType(self):
+        """业务类型, 0-非默认, 1-默认
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -76387,6 +76512,7 @@ class TaskAlarmInfo(AbstractModel):
         self._Description = params.get("Description")
         self._LarkWebHooks = params.get("LarkWebHooks")
         self._DingDingWebHooks = params.get("DingDingWebHooks")
+        self._BusinessType = params.get("BusinessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
