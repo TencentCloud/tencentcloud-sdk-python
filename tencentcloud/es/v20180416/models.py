@@ -9336,6 +9336,9 @@ class IndexMetaField(AbstractModel):
         :param _IndexSettingsField: 索引配置字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexSettingsField: :class:`tencentcloud.es.v20180416.models.IndexSettingsField`
+        :param _IndexAliasesField: 索引别名字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexAliasesField: list of str
         :param _AppId: 索引所属集群APP ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
@@ -9356,6 +9359,7 @@ class IndexMetaField(AbstractModel):
         self._IndexPolicyField = None
         self._IndexOptionsField = None
         self._IndexSettingsField = None
+        self._IndexAliasesField = None
         self._AppId = None
         self._IndexDocs = None
 
@@ -9516,6 +9520,18 @@ class IndexMetaField(AbstractModel):
         self._IndexSettingsField = IndexSettingsField
 
     @property
+    def IndexAliasesField(self):
+        """索引别名字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._IndexAliasesField
+
+    @IndexAliasesField.setter
+    def IndexAliasesField(self, IndexAliasesField):
+        self._IndexAliasesField = IndexAliasesField
+
+    @property
     def AppId(self):
         """索引所属集群APP ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9565,6 +9581,7 @@ class IndexMetaField(AbstractModel):
         if params.get("IndexSettingsField") is not None:
             self._IndexSettingsField = IndexSettingsField()
             self._IndexSettingsField._deserialize(params.get("IndexSettingsField"))
+        self._IndexAliasesField = params.get("IndexAliasesField")
         self._AppId = params.get("AppId")
         self._IndexDocs = params.get("IndexDocs")
         memeber_set = set(params.keys())

@@ -372,7 +372,6 @@ class ApplyInternetAddressResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 互联网公网地址ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -383,7 +382,6 @@ class ApplyInternetAddressResponse(AbstractModel):
     @property
     def InstanceId(self):
         """互联网公网地址ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -2525,7 +2523,6 @@ class DescribeDirectConnectsResponse(AbstractModel):
         :param _TotalCount: 符合物理专线列表数量。
         :type TotalCount: int
         :param _AllSignLaw: 用户名下物理专线是否都签署了用户协议。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllSignLaw: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2560,7 +2557,6 @@ class DescribeDirectConnectsResponse(AbstractModel):
     @property
     def AllSignLaw(self):
         """用户名下物理专线是否都签署了用户协议。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AllSignLaw
@@ -2607,19 +2603,14 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Ipv6PrefixLen: IPv6互联网公网允许的最小前缀长度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6PrefixLen: int
         :param _Ipv4BgpQuota: BGP类型IPv4互联网地址配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv4BgpQuota: int
         :param _Ipv4OtherQuota: 非BGP类型IPv4互联网地址配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv4OtherQuota: int
         :param _Ipv4BgpNum: BGP类型IPv4互联网地址已使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv4BgpNum: int
         :param _Ipv4OtherNum: 非BGP类型互联网地址已使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv4OtherNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2634,7 +2625,6 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     @property
     def Ipv6PrefixLen(self):
         """IPv6互联网公网允许的最小前缀长度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Ipv6PrefixLen
@@ -2646,7 +2636,6 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     @property
     def Ipv4BgpQuota(self):
         """BGP类型IPv4互联网地址配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Ipv4BgpQuota
@@ -2658,7 +2647,6 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     @property
     def Ipv4OtherQuota(self):
         """非BGP类型IPv4互联网地址配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Ipv4OtherQuota
@@ -2670,7 +2658,6 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     @property
     def Ipv4BgpNum(self):
         """BGP类型IPv4互联网地址已使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Ipv4BgpNum
@@ -2682,7 +2669,6 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     @property
     def Ipv4OtherNum(self):
         """非BGP类型互联网地址已使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Ipv4OtherNum
@@ -2874,7 +2860,6 @@ class DescribeInternetAddressStatisticsResponse(AbstractModel):
         :param _TotalCount: 互联网公网地址统计信息数量
         :type TotalCount: int
         :param _InternetAddressStatistics: 互联网公网地址统计信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternetAddressStatistics: list of InternetAddressStatistics
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2897,7 +2882,6 @@ class DescribeInternetAddressStatisticsResponse(AbstractModel):
     @property
     def InternetAddressStatistics(self):
         """互联网公网地址统计信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InternetAddressStatistics
         """
         return self._InternetAddressStatistics
@@ -2936,15 +2920,15 @@ class DescribePublicDirectConnectTunnelRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 专用通道ID
+        :param _DirectConnectTunnelId: 专用通道ID。
         :type DirectConnectTunnelId: str
         :param _Filters: 过滤条件：
-route-type：路由类型，取值：BGP/STATIC
-route-subnet：路由cidr，取值如：192.68.1.0/24
+route-type：路由类型，取值：BGP/STATIC；
+route-subnet：路由cidr，取值如：192.68.1.0/24。
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
         self._DirectConnectTunnelId = None
@@ -2954,7 +2938,7 @@ route-subnet：路由cidr，取值如：192.68.1.0/24
 
     @property
     def DirectConnectTunnelId(self):
-        """专用通道ID
+        """专用通道ID。
         :rtype: str
         """
         return self._DirectConnectTunnelId
@@ -2966,8 +2950,8 @@ route-subnet：路由cidr，取值如：192.68.1.0/24
     @property
     def Filters(self):
         """过滤条件：
-route-type：路由类型，取值：BGP/STATIC
-route-subnet：路由cidr，取值如：192.68.1.0/24
+route-type：路由类型，取值：BGP/STATIC；
+route-subnet：路由cidr，取值如：192.68.1.0/24。
         :rtype: list of Filter
         """
         return self._Filters
@@ -2978,7 +2962,7 @@ route-subnet：路由cidr，取值如：192.68.1.0/24
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -2989,7 +2973,7 @@ route-subnet：路由cidr，取值如：192.68.1.0/24
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -3026,9 +3010,9 @@ class DescribePublicDirectConnectTunnelRoutesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Routes: 互联网通道路由列表
+        :param _Routes: 互联网通道路由列表。
         :type Routes: list of DirectConnectTunnelRoute
-        :param _TotalCount: 记录总数
+        :param _TotalCount: 路由总数量。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3039,7 +3023,7 @@ class DescribePublicDirectConnectTunnelRoutesResponse(AbstractModel):
 
     @property
     def Routes(self):
-        """互联网通道路由列表
+        """互联网通道路由列表。
         :rtype: list of DirectConnectTunnelRoute
         """
         return self._Routes
@@ -3050,7 +3034,7 @@ class DescribePublicDirectConnectTunnelRoutesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """记录总数
+        """路由总数量。
         :rtype: int
         """
         return self._TotalCount
@@ -4833,7 +4817,6 @@ class DirectConnectTunnelRoute(AbstractModel):
         :param _NextHop: 路由下一跳IP
         :type NextHop: str
         :param _UpdateTime: 路由更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _ApplyOnTunnelEnable: 是否配置在通道上
         :type ApplyOnTunnelEnable: bool
@@ -4916,7 +4899,6 @@ class DirectConnectTunnelRoute(AbstractModel):
     @property
     def UpdateTime(self):
         """路由更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime

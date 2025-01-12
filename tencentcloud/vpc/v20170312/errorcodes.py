@@ -851,6 +851,9 @@ UNSUPPORTEDOPERATION_DCGATEWAYNATRULEEXISTS = 'UnsupportedOperation.DCGatewayNat
 # 指定的VPC未发现专线网关。
 UNSUPPORTEDOPERATION_DCGATEWAYSNOTFOUNDINVPC = 'UnsupportedOperation.DcGatewaysNotFoundInVpc'
 
+# 当前专线网关有流日志，不支持删除。
+UNSUPPORTEDOPERATION_DCGHASFLOWLOG = 'UnsupportedOperation.DcgHasFlowLog'
+
 # 禁止删除默认路由表。
 UNSUPPORTEDOPERATION_DELDEFAULTROUTE = 'UnsupportedOperation.DelDefaultRoute'
 

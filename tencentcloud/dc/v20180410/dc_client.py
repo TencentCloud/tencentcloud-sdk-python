@@ -352,7 +352,7 @@ class DcClient(AbstractClient):
 
 
     def DescribePublicDirectConnectTunnelRoutes(self, request):
-        """本接口（DescribePublicDirectConnectTunnelRoutes）用于查询互联网通道路由列表
+        """查询互联网通道路由列表。
 
         :param request: Request instance for DescribePublicDirectConnectTunnelRoutes.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribePublicDirectConnectTunnelRoutesRequest`

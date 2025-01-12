@@ -2225,28 +2225,20 @@ class Device(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _LicenseCount: 已经绑定license数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseCount: int
         :param _RemainDay: 剩余天数：天
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainDay: int
         :param _ExpireTime: 过期时间：s
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _Duration: 服务时长：s
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
         :param _LicenseIds: 已经绑定licenseId列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseIds: list of str
         :param _MonthlyRemainTime: 每月license的限定时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonthlyRemainTime: int
         :param _LimitedTime: 月封顶时长（分钟)
         :type LimitedTime: int
@@ -2264,7 +2256,6 @@ class Device(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -2276,7 +2267,6 @@ class Device(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -2288,7 +2278,6 @@ class Device(AbstractModel):
     @property
     def LicenseCount(self):
         """已经绑定license数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicenseCount
@@ -2300,7 +2289,6 @@ class Device(AbstractModel):
     @property
     def RemainDay(self):
         """剩余天数：天
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RemainDay
@@ -2312,7 +2300,6 @@ class Device(AbstractModel):
     @property
     def ExpireTime(self):
         """过期时间：s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -2324,7 +2311,6 @@ class Device(AbstractModel):
     @property
     def Duration(self):
         """服务时长：s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Duration
@@ -2336,7 +2322,6 @@ class Device(AbstractModel):
     @property
     def LicenseIds(self):
         """已经绑定licenseId列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._LicenseIds
@@ -2348,7 +2333,6 @@ class Device(AbstractModel):
     @property
     def MonthlyRemainTime(self):
         """每月license的限定时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonthlyRemainTime
@@ -3924,70 +3908,49 @@ class SessionDeviceDetail(AbstractModel):
         :param _DeviceId: 设备ID
         :type DeviceId: str
         :param _Ver: sdk版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ver: str
         :param _SdkMode: 模式(p2p/server)
-注意：此字段可能返回 null，表示取不到有效值。
         :type SdkMode: str
         :param _DecodeCost: 解码耗时，单位：ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type DecodeCost: list of int
         :param _RenderConst: 【已废弃，使用RenderCost】
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenderConst: list of int
         :param _K100: 卡顿k100
-注意：此字段可能返回 null，表示取不到有效值。
         :type K100: list of float
         :param _K150: 卡顿k150
-注意：此字段可能返回 null，表示取不到有效值。
         :type K150: list of float
         :param _NACK: nack请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NACK: list of int
         :param _BitRateEstimate: 服务端调控码率,单位：kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type BitRateEstimate: list of int
         :param _Width: 宽度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param _Height: 高度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param _EncodeCost: 编码耗时，单位：ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncodeCost: list of int
         :param _CaptureCost: 采集耗时，单位：ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptureCost: list of int
         :param _RenderCost: 渲染耗时，单位：ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenderCost: list of int
         :param _ConfigWidth: 配置宽度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigWidth: int
         :param _ConfigHeight: 配置高度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigHeight: int
         :param _FrameDelta: 平均帧间隔
-注意：此字段可能返回 null，表示取不到有效值。
         :type FrameDelta: list of int
         :param _MaxFrameDelta: 最大帧间隔
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxFrameDelta: list of int
         :param _TotalBitrateEstimate: 总码率评估,单位：kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalBitrateEstimate: list of int
         :param _Lag100Duration: 帧间隔大于100ms的卡顿时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type Lag100Duration: list of int
         :param _Lag150Duration: 帧间隔大于150ms的卡顿时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type Lag150Duration: list of int
         :param _MultiMode: 是否开启多网：0 单网，1 多网
-注意：此字段可能返回 null，表示取不到有效值。
         :type MultiMode: int
         :param _MultiNet: 多网卡信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MultiNet: list of MultiNet
         """
         self._DeviceType = None
@@ -4184,7 +4147,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def Ver(self):
         """sdk版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ver
@@ -4196,7 +4158,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def SdkMode(self):
         """模式(p2p/server)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SdkMode
@@ -4208,7 +4169,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def DecodeCost(self):
         """解码耗时，单位：ms
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._DecodeCost
@@ -4236,7 +4196,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def K100(self):
         """卡顿k100
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._K100
@@ -4248,7 +4207,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def K150(self):
         """卡顿k150
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._K150
@@ -4260,7 +4218,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def NACK(self):
         """nack请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._NACK
@@ -4272,7 +4229,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def BitRateEstimate(self):
         """服务端调控码率,单位：kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._BitRateEstimate
@@ -4284,7 +4240,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def Width(self):
         """宽度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Width
@@ -4296,7 +4251,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def Height(self):
         """高度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Height
@@ -4308,7 +4262,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def EncodeCost(self):
         """编码耗时，单位：ms
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._EncodeCost
@@ -4320,7 +4273,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def CaptureCost(self):
         """采集耗时，单位：ms
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._CaptureCost
@@ -4332,7 +4284,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def RenderCost(self):
         """渲染耗时，单位：ms
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._RenderCost
@@ -4344,7 +4295,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def ConfigWidth(self):
         """配置宽度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ConfigWidth
@@ -4356,7 +4306,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def ConfigHeight(self):
         """配置高度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ConfigHeight
@@ -4368,7 +4317,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def FrameDelta(self):
         """平均帧间隔
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._FrameDelta
@@ -4380,7 +4328,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def MaxFrameDelta(self):
         """最大帧间隔
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._MaxFrameDelta
@@ -4392,7 +4339,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def TotalBitrateEstimate(self):
         """总码率评估,单位：kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._TotalBitrateEstimate
@@ -4404,7 +4350,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def Lag100Duration(self):
         """帧间隔大于100ms的卡顿时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Lag100Duration
@@ -4416,7 +4361,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def Lag150Duration(self):
         """帧间隔大于150ms的卡顿时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Lag150Duration
@@ -4428,7 +4372,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def MultiMode(self):
         """是否开启多网：0 单网，1 多网
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MultiMode
@@ -4440,7 +4383,6 @@ class SessionDeviceDetail(AbstractModel):
     @property
     def MultiNet(self):
         """多网卡信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MultiNet
         """
         return self._MultiNet
