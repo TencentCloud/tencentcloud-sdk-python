@@ -4583,10 +4583,16 @@ class SearchResult(AbstractModel):
         :param _Url: 搜索引文链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
+        :param _Text: 搜索引文站点名
+        :type Text: str
+        :param _Icon: 搜索引文图标
+        :type Icon: str
         """
         self._Index = None
         self._Title = None
         self._Url = None
+        self._Text = None
+        self._Icon = None
 
     @property
     def Index(self):
@@ -4624,11 +4630,35 @@ class SearchResult(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Text(self):
+        """搜索引文站点名
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Icon(self):
+        """搜索引文图标
+        :rtype: str
+        """
+        return self._Icon
+
+    @Icon.setter
+    def Icon(self, Icon):
+        self._Icon = Icon
+
 
     def _deserialize(self, params):
         self._Index = params.get("Index")
         self._Title = params.get("Title")
         self._Url = params.get("Url")
+        self._Text = params.get("Text")
+        self._Icon = params.get("Icon")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

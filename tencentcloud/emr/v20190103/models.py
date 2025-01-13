@@ -4460,7 +4460,6 @@ class CreateCloudInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4471,7 +4470,6 @@ class CreateCloudInstanceResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -4907,7 +4905,6 @@ class CreateClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4918,7 +4915,6 @@ class CreateClusterResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -21011,7 +21007,6 @@ class MonthRepeatStrategy(AbstractModel):
     def __init__(self):
         r"""
         :param _ExecuteAtTimeOfDay: 重复任务执行的具体时刻，例如"01:02:00"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteAtTimeOfDay: str
         :param _DaysOfMonthRange: 每月中的天数时间段描述，长度只能为2，例如[2,10]表示每月2-10号。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -21023,7 +21018,6 @@ class MonthRepeatStrategy(AbstractModel):
     @property
     def ExecuteAtTimeOfDay(self):
         """重复任务执行的具体时刻，例如"01:02:00"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExecuteAtTimeOfDay

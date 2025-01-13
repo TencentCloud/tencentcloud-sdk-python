@@ -1845,7 +1845,7 @@ class BillUsageDetail(AbstractModel):
 <li>**7**: 还没有预发起</li>
 <li>**8**: 等待填写</li>
 <li>**9**: 部分填写 </li>
-<li>**10**: 拒填</li>
+<li>**10**: 拒签</li>
 <li>**11**: 已解除</li>
 </ul>
         :type Status: int
@@ -1954,7 +1954,7 @@ class BillUsageDetail(AbstractModel):
 <li>**7**: 还没有预发起</li>
 <li>**8**: 等待填写</li>
 <li>**9**: 部分填写 </li>
-<li>**10**: 拒填</li>
+<li>**10**: 拒签</li>
 <li>**11**: 已解除</li>
 </ul>
         :rtype: int
@@ -7629,11 +7629,10 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :type Status: str
         :param _ReportUrl: 此字段已经废除,不再使用.
 出证的PDF下载地址请调用DescribeChannelFlowEvidenceReport接口获取
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7660,7 +7659,7 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -7675,7 +7674,6 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
         """此字段已经废除,不再使用.
 出证的PDF下载地址请调用DescribeChannelFlowEvidenceReport接口获取
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportUrl
@@ -18638,7 +18636,7 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18664,7 +18662,7 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -24611,7 +24609,6 @@ class FlowGroupInfo(AbstractModel):
 可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
         :type TemplateId: str
         :param _FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-示例值：劳务合同
         :type FlowType: str
         :param _FlowDescription: 签署流程描述,最大长度1000个字符
         :type FlowDescription: str
@@ -24647,7 +24644,7 @@ false：有序签
 示例值：true
         :type NeedSignReview: bool
         :param _AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
-示例值：E_PRESCRIPTION_AUTO_SIGN
+
         :type AutoSignScene: str
         :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :type FlowDisplayType: int
@@ -24719,7 +24716,6 @@ false：有序签
     @property
     def FlowType(self):
         """签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-示例值：劳务合同
         :rtype: str
         """
         return self._FlowType
@@ -24831,7 +24827,7 @@ false：有序签
     @property
     def AutoSignScene(self):
         """个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
-示例值：E_PRESCRIPTION_AUTO_SIGN
+
         :rtype: str
         """
         return self._AutoSignScene
@@ -31207,7 +31203,6 @@ class SuccessUpdateStaffData(AbstractModel):
 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
         :type UserId: str
         :param _Url: H5端员工实名链接
-
 只有入参 InvitationNotifyType = H5的时候才会进行返回。
         :type Url: str
         """
@@ -31253,7 +31248,6 @@ class SuccessUpdateStaffData(AbstractModel):
     @property
     def Url(self):
         """H5端员工实名链接
-
 只有入参 InvitationNotifyType = H5的时候才会进行返回。
         :rtype: str
         """

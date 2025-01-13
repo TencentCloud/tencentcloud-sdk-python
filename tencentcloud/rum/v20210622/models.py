@@ -12010,7 +12010,7 @@ class ScoreInfo(AbstractModel):
         :type PageUv: str
         :param _ApiDuration: 请求次数
         :type ApiDuration: str
-        :param _Score: 分数
+        :param _Score: 项目总分
         :type Score: str
         :param _PageError: error
         :type PageError: str
@@ -12023,6 +12023,18 @@ class ScoreInfo(AbstractModel):
         :param _CreateTime: 时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _PagePerformanceScore: 页面性能评分
+        :type PagePerformanceScore: str
+        :param _JsErrorScore: js错误评分
+        :type JsErrorScore: str
+        :param _ApiPerformanceScore: API性能评分
+        :type ApiPerformanceScore: str
+        :param _ApiAvaliableScore: API可用性评分
+        :type ApiAvaliableScore: str
+        :param _StaticPerformanceScore: 静态资源性能评分
+        :type StaticPerformanceScore: str
+        :param _StaticAvaliableScore: 静态资源可用性评分
+        :type StaticAvaliableScore: str
         """
         self._StaticDuration = None
         self._PagePv = None
@@ -12038,6 +12050,12 @@ class ScoreInfo(AbstractModel):
         self._RecordNum = None
         self._PageDuration = None
         self._CreateTime = None
+        self._PagePerformanceScore = None
+        self._JsErrorScore = None
+        self._ApiPerformanceScore = None
+        self._ApiAvaliableScore = None
+        self._StaticPerformanceScore = None
+        self._StaticAvaliableScore = None
 
     @property
     def StaticDuration(self):
@@ -12129,7 +12147,7 @@ class ScoreInfo(AbstractModel):
 
     @property
     def Score(self):
-        """分数
+        """项目总分
         :rtype: str
         """
         return self._Score
@@ -12194,6 +12212,72 @@ class ScoreInfo(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def PagePerformanceScore(self):
+        """页面性能评分
+        :rtype: str
+        """
+        return self._PagePerformanceScore
+
+    @PagePerformanceScore.setter
+    def PagePerformanceScore(self, PagePerformanceScore):
+        self._PagePerformanceScore = PagePerformanceScore
+
+    @property
+    def JsErrorScore(self):
+        """js错误评分
+        :rtype: str
+        """
+        return self._JsErrorScore
+
+    @JsErrorScore.setter
+    def JsErrorScore(self, JsErrorScore):
+        self._JsErrorScore = JsErrorScore
+
+    @property
+    def ApiPerformanceScore(self):
+        """API性能评分
+        :rtype: str
+        """
+        return self._ApiPerformanceScore
+
+    @ApiPerformanceScore.setter
+    def ApiPerformanceScore(self, ApiPerformanceScore):
+        self._ApiPerformanceScore = ApiPerformanceScore
+
+    @property
+    def ApiAvaliableScore(self):
+        """API可用性评分
+        :rtype: str
+        """
+        return self._ApiAvaliableScore
+
+    @ApiAvaliableScore.setter
+    def ApiAvaliableScore(self, ApiAvaliableScore):
+        self._ApiAvaliableScore = ApiAvaliableScore
+
+    @property
+    def StaticPerformanceScore(self):
+        """静态资源性能评分
+        :rtype: str
+        """
+        return self._StaticPerformanceScore
+
+    @StaticPerformanceScore.setter
+    def StaticPerformanceScore(self, StaticPerformanceScore):
+        self._StaticPerformanceScore = StaticPerformanceScore
+
+    @property
+    def StaticAvaliableScore(self):
+        """静态资源可用性评分
+        :rtype: str
+        """
+        return self._StaticAvaliableScore
+
+    @StaticAvaliableScore.setter
+    def StaticAvaliableScore(self, StaticAvaliableScore):
+        self._StaticAvaliableScore = StaticAvaliableScore
+
 
     def _deserialize(self, params):
         self._StaticDuration = params.get("StaticDuration")
@@ -12210,6 +12294,12 @@ class ScoreInfo(AbstractModel):
         self._RecordNum = params.get("RecordNum")
         self._PageDuration = params.get("PageDuration")
         self._CreateTime = params.get("CreateTime")
+        self._PagePerformanceScore = params.get("PagePerformanceScore")
+        self._JsErrorScore = params.get("JsErrorScore")
+        self._ApiPerformanceScore = params.get("ApiPerformanceScore")
+        self._ApiAvaliableScore = params.get("ApiAvaliableScore")
+        self._StaticPerformanceScore = params.get("StaticPerformanceScore")
+        self._StaticAvaliableScore = params.get("StaticAvaliableScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

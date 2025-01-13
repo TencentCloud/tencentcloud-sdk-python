@@ -359,10 +359,8 @@ class AlertChannel(AbstractModel):
     def __init__(self):
         r"""
         :param _NoticeId: 通知模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeId: str
         :param _AMPConsumerId: AMP consumer ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AMPConsumerId: str
         """
         self._NoticeId = None
@@ -371,7 +369,6 @@ class AlertChannel(AbstractModel):
     @property
     def NoticeId(self):
         """通知模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NoticeId
@@ -383,7 +380,6 @@ class AlertChannel(AbstractModel):
     @property
     def AMPConsumerId(self):
         """AMP consumer ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AMPConsumerId
@@ -414,31 +410,22 @@ class AlertChannelRecord(AbstractModel):
     def __init__(self):
         r"""
         :param _NoticeId: Notice ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeId: str
         :param _AMPConsumerId: Consumer ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AMPConsumerId: str
         :param _ProjectId: 项目 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreatedAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _UpdatedAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _AppId: App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _Uin: 主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _SubAccountUin: 子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
         """
         self._NoticeId = None
@@ -454,7 +441,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def NoticeId(self):
         """Notice ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NoticeId
@@ -466,7 +452,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def AMPConsumerId(self):
         """Consumer ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AMPConsumerId
@@ -478,7 +463,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def ProjectId(self):
         """项目 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -490,7 +474,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -502,7 +485,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def CreatedAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -514,7 +496,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def UpdatedAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -526,7 +507,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def AppId(self):
         """App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -538,7 +518,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def Uin(self):
         """主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -550,7 +529,6 @@ class AlertChannelRecord(AbstractModel):
     @property
     def SubAccountUin(self):
         """子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubAccountUin
@@ -591,43 +569,30 @@ class AlertRecord(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertRecordId: str
         :param _ProjectId: 项目 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _ScenarioId: 场景 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScenarioId: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: :class:`tencentcloud.pts.v20210728.models.AlertRecordStatus`
         :param _CreatedAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _UpdatedAt: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _JobId: 任务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _AppId: App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _Uin: 主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _SubAccountUin: 子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
         :param _ScenarioName: 场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScenarioName: str
         :param _Target: 告警对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Target: str
         :param _JobSLAId: 告警规则 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobSLAId: str
         :param _JobSLADescription: 告警规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobSLADescription: str
         """
         self._AlertRecordId = None
@@ -660,7 +625,6 @@ class AlertRecord(AbstractModel):
     @property
     def ProjectId(self):
         """项目 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -672,7 +636,6 @@ class AlertRecord(AbstractModel):
     @property
     def ScenarioId(self):
         """场景 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScenarioId
@@ -684,7 +647,6 @@ class AlertRecord(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.AlertRecordStatus`
         """
         return self._Status
@@ -696,7 +658,6 @@ class AlertRecord(AbstractModel):
     @property
     def CreatedAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -708,7 +669,6 @@ class AlertRecord(AbstractModel):
     @property
     def UpdatedAt(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -720,7 +680,6 @@ class AlertRecord(AbstractModel):
     @property
     def JobId(self):
         """任务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -732,7 +691,6 @@ class AlertRecord(AbstractModel):
     @property
     def AppId(self):
         """App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -744,7 +702,6 @@ class AlertRecord(AbstractModel):
     @property
     def Uin(self):
         """主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -756,7 +713,6 @@ class AlertRecord(AbstractModel):
     @property
     def SubAccountUin(self):
         """子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubAccountUin
@@ -768,7 +724,6 @@ class AlertRecord(AbstractModel):
     @property
     def ScenarioName(self):
         """场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScenarioName
@@ -780,7 +735,6 @@ class AlertRecord(AbstractModel):
     @property
     def Target(self):
         """告警对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Target
@@ -792,7 +746,6 @@ class AlertRecord(AbstractModel):
     @property
     def JobSLAId(self):
         """告警规则 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobSLAId
@@ -804,7 +757,6 @@ class AlertRecord(AbstractModel):
     @property
     def JobSLADescription(self):
         """告警规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobSLADescription
@@ -849,10 +801,8 @@ class AlertRecordStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _AbortJob: 停止压测任务成功与否
-注意：此字段可能返回 null，表示取不到有效值。
         :type AbortJob: int
         :param _SendNotice: 发送告警通知成功与否
-注意：此字段可能返回 null，表示取不到有效值。
         :type SendNotice: int
         """
         self._AbortJob = None
@@ -861,7 +811,6 @@ class AlertRecordStatus(AbstractModel):
     @property
     def AbortJob(self):
         """停止压测任务成功与否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AbortJob
@@ -873,7 +822,6 @@ class AlertRecordStatus(AbstractModel):
     @property
     def SendNotice(self):
         """发送告警通知成功与否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SendNotice
@@ -904,19 +852,14 @@ class Attributes(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 采用请求返回码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Result: 采样请求结果码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _Service: 采样请求API
-注意：此字段可能返回 null，表示取不到有效值。
         :type Service: str
         :param _Method: 采样请求调用方法
-注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param _Duration: 采样请求延时时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
         """
         self._Status = None
@@ -928,7 +871,6 @@ class Attributes(AbstractModel):
     @property
     def Status(self):
         """采用请求返回码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -940,7 +882,6 @@ class Attributes(AbstractModel):
     @property
     def Result(self):
         """采样请求结果码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -952,7 +893,6 @@ class Attributes(AbstractModel):
     @property
     def Service(self):
         """采样请求API
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Service
@@ -964,7 +904,6 @@ class Attributes(AbstractModel):
     @property
     def Method(self):
         """采样请求调用方法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Method
@@ -976,7 +915,6 @@ class Attributes(AbstractModel):
     @property
     def Duration(self):
         """采样请求延时时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Duration
@@ -1109,16 +1047,12 @@ class Concurrency(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stages: list of Stage
         :param _IterationCount: 运行次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type IterationCount: int
         :param _MaxRequestsPerSecond: 最大RPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRequestsPerSecond: int
         :param _GracefulStopSeconds: 优雅终止任务的等待时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type GracefulStopSeconds: int
         :param _Resources: 资源数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: int
         """
         self._Stages = None
@@ -1142,7 +1076,6 @@ class Concurrency(AbstractModel):
     @property
     def IterationCount(self):
         """运行次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IterationCount
@@ -1154,7 +1087,6 @@ class Concurrency(AbstractModel):
     @property
     def MaxRequestsPerSecond(self):
         """最大RPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxRequestsPerSecond
@@ -1166,7 +1098,6 @@ class Concurrency(AbstractModel):
     @property
     def GracefulStopSeconds(self):
         """优雅终止任务的等待时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GracefulStopSeconds
@@ -1178,7 +1109,6 @@ class Concurrency(AbstractModel):
     @property
     def Resources(self):
         """资源数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Resources
@@ -2435,31 +2365,23 @@ class CronJob(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CronJobId: str
         :param _Name: 定时任务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _ScenarioId: 场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScenarioId: str
         :param _ScenarioName: 场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScenarioName: str
         :param _CronExpression: cron 表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronExpression: str
         :param _EndTime: 结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _AbortReason: 中止原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type AbortReason: int
         :param _Status: 定时任务状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _NoticeId: Notice ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeId: str
         :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2468,22 +2390,16 @@ class CronJob(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _FrequencyType: 执行频率类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type FrequencyType: int
         :param _Note: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
         :param _JobOwner: tom
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobOwner: str
         :param _AppId: App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _Uin: 主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _SubAccountUin: 子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
         """
         self._CronJobId = None
@@ -2520,7 +2436,6 @@ class CronJob(AbstractModel):
     @property
     def Name(self):
         """定时任务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2532,7 +2447,6 @@ class CronJob(AbstractModel):
     @property
     def ProjectId(self):
         """项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -2544,7 +2458,6 @@ class CronJob(AbstractModel):
     @property
     def ScenarioId(self):
         """场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScenarioId
@@ -2556,7 +2469,6 @@ class CronJob(AbstractModel):
     @property
     def ScenarioName(self):
         """场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScenarioName
@@ -2568,7 +2480,6 @@ class CronJob(AbstractModel):
     @property
     def CronExpression(self):
         """cron 表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CronExpression
@@ -2592,7 +2503,6 @@ class CronJob(AbstractModel):
     @property
     def AbortReason(self):
         """中止原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AbortReason
@@ -2604,7 +2514,6 @@ class CronJob(AbstractModel):
     @property
     def Status(self):
         """定时任务状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -2616,7 +2525,6 @@ class CronJob(AbstractModel):
     @property
     def NoticeId(self):
         """Notice ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NoticeId
@@ -2652,7 +2560,6 @@ class CronJob(AbstractModel):
     @property
     def FrequencyType(self):
         """执行频率类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FrequencyType
@@ -2664,7 +2571,6 @@ class CronJob(AbstractModel):
     @property
     def Note(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Note
@@ -2676,7 +2582,6 @@ class CronJob(AbstractModel):
     @property
     def JobOwner(self):
         """tom
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobOwner
@@ -2688,7 +2593,6 @@ class CronJob(AbstractModel):
     @property
     def AppId(self):
         """App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -2700,7 +2604,6 @@ class CronJob(AbstractModel):
     @property
     def Uin(self):
         """主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -2712,7 +2615,6 @@ class CronJob(AbstractModel):
     @property
     def SubAccountUin(self):
         """子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubAccountUin
@@ -2773,7 +2675,6 @@ class CustomSample(AbstractModel):
         :param _Unit: 指标对应的单位，当前单位有：s,bytes,bytes/s,reqs,reqs/s,checks,checks/s,iters,iters/s,VUs, %
         :type Unit: str
         :param _Name: 指标序列名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Metric = None
@@ -2855,7 +2756,6 @@ class CustomSample(AbstractModel):
     @property
     def Name(self):
         """指标序列名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2900,7 +2800,6 @@ class CustomSampleMatrix(AbstractModel):
         :param _Aggregation: 聚合函数
         :type Aggregation: str
         :param _Unit: 指标单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _Streams: 指标序列数组
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2936,7 +2835,6 @@ class CustomSampleMatrix(AbstractModel):
     @property
     def Unit(self):
         """指标单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -3691,7 +3589,6 @@ class DescribeAlertChannelsResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertChannelSet: list of AlertChannelRecord
         :param _Total: 告警通知接收组数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3715,7 +3612,6 @@ class DescribeAlertChannelsResponse(AbstractModel):
     @property
     def Total(self):
         """告警通知接收组数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -3899,7 +3795,6 @@ class DescribeAlertRecordsResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertRecordSet: list of AlertRecord
         :param _Total: 告警历史记录的总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3923,7 +3818,6 @@ class DescribeAlertRecordsResponse(AbstractModel):
     @property
     def Total(self):
         """告警历史记录的总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -4623,7 +4517,6 @@ class DescribeFilesResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSet: list of File
         :param _Total: 文件总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4647,7 +4540,6 @@ class DescribeFilesResponse(AbstractModel):
     @property
     def Total(self):
         """文件总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -4876,7 +4768,6 @@ class DescribeJobsResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobSet: list of Job
         :param _Total: 任务数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4900,7 +4791,6 @@ class DescribeJobsResponse(AbstractModel):
     @property
     def Total(self):
         """任务数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -5383,7 +5273,6 @@ class DescribeNormalLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Context: 日志上下文，加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
-注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
         :param _NormalLogs: 日志数组
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5398,7 +5287,6 @@ class DescribeNormalLogsResponse(AbstractModel):
     @property
     def Context(self):
         """日志上下文，加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Context
@@ -6249,7 +6137,6 @@ class DescribeSampleLogsResponse(AbstractModel):
         :param _Total: 日志总数
         :type Total: int
         :param _Context: 日志上下文，加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
-注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
         :param _SampleLogs: 采样日志数组
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6276,7 +6163,6 @@ class DescribeSampleLogsResponse(AbstractModel):
     @property
     def Context(self):
         """日志上下文，加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Context
@@ -7372,22 +7258,16 @@ class ErrorSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 状态码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Result: 结果码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _Count: 错误出现次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Rate: 错误率
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rate: float
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Proto: 请求协议类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Proto: str
         """
         self._Status = None
@@ -7400,7 +7280,6 @@ class ErrorSummary(AbstractModel):
     @property
     def Status(self):
         """状态码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -7412,7 +7291,6 @@ class ErrorSummary(AbstractModel):
     @property
     def Result(self):
         """结果码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -7424,7 +7302,6 @@ class ErrorSummary(AbstractModel):
     @property
     def Count(self):
         """错误出现次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -7436,7 +7313,6 @@ class ErrorSummary(AbstractModel):
     @property
     def Rate(self):
         """错误率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Rate
@@ -7448,7 +7324,6 @@ class ErrorSummary(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -7460,7 +7335,6 @@ class ErrorSummary(AbstractModel):
     @property
     def Proto(self):
         """请求协议类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Proto
@@ -7507,7 +7381,6 @@ class File(AbstractModel):
         :param _UpdatedAt: 更新时间
         :type UpdatedAt: str
         :param _LineCount: 文件行数
-注意：此字段可能返回 null，表示取不到有效值。
         :type LineCount: int
         :param _HeadLines: 头部数据行
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7516,7 +7389,6 @@ class File(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TailLines: list of str
         :param _HeaderInFile: 首行是否为参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderInFile: bool
         :param _HeaderColumns: 参数名数组
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7528,25 +7400,19 @@ class File(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScenarioSet: list of Scenario
         :param _Status: 文件状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _ProjectId: 项目 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _AppID: 此字段不再使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppID: int
         :param _Uin: 用户主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _SubAccountUin: 用户子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
         :param _AppId: 用户账号的 App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         """
         self._FileId = None
@@ -7639,7 +7505,6 @@ class File(AbstractModel):
     @property
     def LineCount(self):
         """文件行数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LineCount
@@ -7675,7 +7540,6 @@ class File(AbstractModel):
     @property
     def HeaderInFile(self):
         """首行是否为参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HeaderInFile
@@ -7723,7 +7587,6 @@ class File(AbstractModel):
     @property
     def Status(self):
         """文件状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -7747,7 +7610,6 @@ class File(AbstractModel):
     @property
     def ProjectId(self):
         """项目 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -7759,7 +7621,6 @@ class File(AbstractModel):
     @property
     def AppID(self):
         """此字段不再使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppID
@@ -7771,7 +7632,6 @@ class File(AbstractModel):
     @property
     def Uin(self):
         """用户主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -7783,7 +7643,6 @@ class File(AbstractModel):
     @property
     def SubAccountUin(self):
         """用户子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubAccountUin
@@ -7795,7 +7654,6 @@ class File(AbstractModel):
     @property
     def AppId(self):
         """用户账号的 App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -7854,19 +7712,15 @@ class FileInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Size: 文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param _Type: 文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _UpdatedAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _FileId: 文件 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         """
         self._Name = None
@@ -7878,7 +7732,6 @@ class FileInfo(AbstractModel):
     @property
     def Name(self):
         """文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7890,7 +7743,6 @@ class FileInfo(AbstractModel):
     @property
     def Size(self):
         """文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Size
@@ -7902,7 +7754,6 @@ class FileInfo(AbstractModel):
     @property
     def Type(self):
         """文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -7926,7 +7777,6 @@ class FileInfo(AbstractModel):
     @property
     def FileId(self):
         """文件 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -8245,7 +8095,6 @@ class HostAlias(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostNames: list of str
         :param _IP: 需绑定的 IP 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
         """
         self._HostNames = None
@@ -8266,7 +8115,6 @@ class HostAlias(AbstractModel):
     @property
     def IP(self):
         """需绑定的 IP 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IP
@@ -8406,10 +8254,8 @@ class Job(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _ScenarioId: 任务的场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScenarioId: str
         :param _Load: 任务的施压配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Load: :class:`tencentcloud.pts.v20210728.models.Load`
         :param _Configs: 此字段不再使用
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8423,7 +8269,6 @@ class Job(AbstractModel):
         :param _Status: 任务的运行状态, JobUnknown: 0,JobCreated:1,JobPending:2, JobPreparing:3,JobSelectClustering:4,JobCreateTasking:5,JobSyncTasking:6
 JobRunning:11,JobFinished:12,JobPrepareException:13,JobFinishException:14,JobAborting:15,JobAborted:16,JobAbortException:17,JobDeleted:18,
 JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _StartTime: 任务的开始时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8432,52 +8277,38 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _MaxVirtualUserCount: 任务的最大VU数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxVirtualUserCount: int
         :param _Note: 任务的备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
         :param _ErrorRate: 错误率百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorRate: float
         :param _JobOwner: 任务发起人
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobOwner: str
         :param _LoadSources: 此字段不再使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadSources: :class:`tencentcloud.pts.v20210728.models.LoadSource`
         :param _Duration: 任务时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param _MaxRequestsPerSecond: 最大每秒请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRequestsPerSecond: int
         :param _RequestTotal: 总请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RequestTotal: float
         :param _RequestsPerSecond: 平均每秒请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RequestsPerSecond: float
         :param _ResponseTimeAverage: 平均响应时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseTimeAverage: float
         :param _ResponseTimeP99: 响应时间第99百分位
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseTimeP99: float
         :param _ResponseTimeP95: 响应时间第95百分位
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseTimeP95: float
         :param _ResponseTimeP90: 响应时间第90百分位
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseTimeP90: float
         :param _Scripts: 此字段不再使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scripts: list of str
         :param _ResponseTimeMax: 最大响应时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseTimeMax: float
         :param _ResponseTimeMin: 最小响应时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseTimeMin: float
         :param _LoadSourceInfos: 发压host信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8495,49 +8326,36 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
 注意：此字段可能返回 null，表示取不到有效值。
         :type Plugins: list of FileInfo
         :param _CronId: 定时任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronId: str
         :param _Type: 场景类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _DomainNameConfig: 域名绑定配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainNameConfig: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
         :param _Debug: false
-注意：此字段可能返回 null，表示取不到有效值。
         :type Debug: bool
         :param _AbortReason: 中断原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type AbortReason: int
         :param _CreatedAt: 任务的创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _NotificationHooks: 通知事件回调
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotificationHooks: list of NotificationHook
         :param _NetworkReceiveRate: 每秒接收字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkReceiveRate: float
         :param _NetworkSendRate: 每秒发送字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkSendRate: float
         :param _Message: 任务状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _ProjectName: test-project
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         :param _ScenarioName: test-scenario
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScenarioName: str
         :param _PayMode: 付费类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
         :param _Usage: job VUM用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Usage: int
         """
         self._JobId = None
@@ -8601,7 +8419,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ScenarioId(self):
         """任务的场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScenarioId
@@ -8613,7 +8430,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def Load(self):
         """任务的施压配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.Load`
         """
         return self._Load
@@ -8663,7 +8479,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         """任务的运行状态, JobUnknown: 0,JobCreated:1,JobPending:2, JobPreparing:3,JobSelectClustering:4,JobCreateTasking:5,JobSyncTasking:6
 JobRunning:11,JobFinished:12,JobPrepareException:13,JobFinishException:14,JobAborting:15,JobAborted:16,JobAbortException:17,JobDeleted:18,
 JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -8699,7 +8514,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def MaxVirtualUserCount(self):
         """任务的最大VU数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxVirtualUserCount
@@ -8711,7 +8525,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def Note(self):
         """任务的备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Note
@@ -8723,7 +8536,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ErrorRate(self):
         """错误率百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ErrorRate
@@ -8735,7 +8547,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def JobOwner(self):
         """任务发起人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobOwner
@@ -8759,7 +8570,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def Duration(self):
         """任务时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Duration
@@ -8771,7 +8581,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def MaxRequestsPerSecond(self):
         """最大每秒请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxRequestsPerSecond
@@ -8783,7 +8592,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def RequestTotal(self):
         """总请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._RequestTotal
@@ -8795,7 +8603,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def RequestsPerSecond(self):
         """平均每秒请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._RequestsPerSecond
@@ -8807,7 +8614,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ResponseTimeAverage(self):
         """平均响应时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ResponseTimeAverage
@@ -8819,7 +8625,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ResponseTimeP99(self):
         """响应时间第99百分位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ResponseTimeP99
@@ -8831,7 +8636,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ResponseTimeP95(self):
         """响应时间第95百分位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ResponseTimeP95
@@ -8843,7 +8647,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ResponseTimeP90(self):
         """响应时间第90百分位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ResponseTimeP90
@@ -8867,7 +8670,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ResponseTimeMax(self):
         """最大响应时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ResponseTimeMax
@@ -8879,7 +8681,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ResponseTimeMin(self):
         """最小响应时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ResponseTimeMin
@@ -8951,7 +8752,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def CronId(self):
         """定时任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CronId
@@ -8963,7 +8763,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def Type(self):
         """场景类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -8975,7 +8774,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def DomainNameConfig(self):
         """域名绑定配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
         """
         return self._DomainNameConfig
@@ -8987,7 +8785,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def Debug(self):
         """false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Debug
@@ -8999,7 +8796,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def AbortReason(self):
         """中断原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AbortReason
@@ -9023,7 +8819,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ProjectId(self):
         """项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -9047,7 +8842,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def NetworkReceiveRate(self):
         """每秒接收字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._NetworkReceiveRate
@@ -9059,7 +8853,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def NetworkSendRate(self):
         """每秒发送字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._NetworkSendRate
@@ -9071,7 +8864,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def Message(self):
         """任务状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -9083,7 +8875,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ProjectName(self):
         """test-project
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -9095,7 +8886,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def ScenarioName(self):
         """test-scenario
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScenarioName
@@ -9107,7 +8897,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def PayMode(self):
         """付费类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayMode
@@ -9119,7 +8908,6 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     @property
     def Usage(self):
         """job VUM用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Usage
@@ -9336,7 +9124,6 @@ class Load(AbstractModel):
     def __init__(self):
         r"""
         :param _LoadSpec: 施压配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadSpec: :class:`tencentcloud.pts.v20210728.models.LoadSpec`
         :param _VpcLoadDistribution: 压力来源
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9352,7 +9139,6 @@ class Load(AbstractModel):
     @property
     def LoadSpec(self):
         """施压配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.LoadSpec`
         """
         return self._LoadSpec
@@ -9417,13 +9203,10 @@ class LoadSource(AbstractModel):
     def __init__(self):
         r"""
         :param _IP: 发压host的IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
         :param _PodName: 发压host所在的pod
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodName: str
         :param _Region: 所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
         self._IP = None
@@ -9433,7 +9216,6 @@ class LoadSource(AbstractModel):
     @property
     def IP(self):
         """发压host的IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IP
@@ -9445,7 +9227,6 @@ class LoadSource(AbstractModel):
     @property
     def PodName(self):
         """发压host所在的pod
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PodName
@@ -9457,7 +9238,6 @@ class LoadSource(AbstractModel):
     @property
     def Region(self):
         """所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -9571,7 +9351,6 @@ class MetricInfo(AbstractModel):
         :param _Alias: 前台展示指标名称
         :type Alias: str
         :param _Description: 指标描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _MetricType: 指标类型
         :type MetricType: str
@@ -9615,7 +9394,6 @@ class MetricInfo(AbstractModel):
     @property
     def Description(self):
         """指标描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -9756,13 +9534,10 @@ class NormalLog(AbstractModel):
     def __init__(self):
         r"""
         :param _Timestamp: 毫秒时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
         :param _SeverityText: 日志级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type SeverityText: str
         :param _Body: 日志输出内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         """
         self._Timestamp = None
@@ -9772,7 +9547,6 @@ class NormalLog(AbstractModel):
     @property
     def Timestamp(self):
         """毫秒时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timestamp
@@ -9784,7 +9558,6 @@ class NormalLog(AbstractModel):
     @property
     def SeverityText(self):
         """日志级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SeverityText
@@ -9796,7 +9569,6 @@ class NormalLog(AbstractModel):
     @property
     def Body(self):
         """日志输出内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Body
@@ -9882,7 +9654,6 @@ class NotificationHook(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of str
         :param _URL: 回调 URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type URL: str
         """
         self._Events = None
@@ -9903,7 +9674,6 @@ class NotificationHook(AbstractModel):
     @property
     def URL(self):
         """回调 URL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._URL
@@ -9938,7 +9708,6 @@ class Project(AbstractModel):
         :param _Name: 项目名
         :type Name: str
         :param _Description: 项目描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Tags: 标签数组
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9992,7 +9761,6 @@ class Project(AbstractModel):
     @property
     def Description(self):
         """项目描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -10114,19 +9882,15 @@ class ProtocolInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 协议详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Size: 文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param _Type: 文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _UpdatedAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _FileId: 文件 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         """
         self._Name = None
@@ -10138,7 +9902,6 @@ class ProtocolInfo(AbstractModel):
     @property
     def Name(self):
         """协议详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -10150,7 +9913,6 @@ class ProtocolInfo(AbstractModel):
     @property
     def Size(self):
         """文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Size
@@ -10162,7 +9924,6 @@ class ProtocolInfo(AbstractModel):
     @property
     def Type(self):
         """文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -10186,7 +9947,6 @@ class ProtocolInfo(AbstractModel):
     @property
     def FileId(self):
         """文件 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -10628,25 +10388,18 @@ class RequestsPerSecond(AbstractModel):
     def __init__(self):
         r"""
         :param _MaxRequestsPerSecond: 最大RPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRequestsPerSecond: int
         :param _DurationSeconds: 施压时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DurationSeconds: int
         :param _TargetVirtualUsers: deprecated
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetVirtualUsers: int
         :param _Resources: 资源数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: int
         :param _StartRequestsPerSecond: 起始RPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartRequestsPerSecond: int
         :param _TargetRequestsPerSecond: 目标RPS，入参无效
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetRequestsPerSecond: int
         :param _GracefulStopSeconds: 优雅关停的等待时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type GracefulStopSeconds: int
         """
         self._MaxRequestsPerSecond = None
@@ -10660,7 +10413,6 @@ class RequestsPerSecond(AbstractModel):
     @property
     def MaxRequestsPerSecond(self):
         """最大RPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxRequestsPerSecond
@@ -10672,7 +10424,6 @@ class RequestsPerSecond(AbstractModel):
     @property
     def DurationSeconds(self):
         """施压时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DurationSeconds
@@ -10684,7 +10435,6 @@ class RequestsPerSecond(AbstractModel):
     @property
     def TargetVirtualUsers(self):
         """deprecated
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TargetVirtualUsers
@@ -10696,7 +10446,6 @@ class RequestsPerSecond(AbstractModel):
     @property
     def Resources(self):
         """资源数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Resources
@@ -10708,7 +10457,6 @@ class RequestsPerSecond(AbstractModel):
     @property
     def StartRequestsPerSecond(self):
         """起始RPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartRequestsPerSecond
@@ -10720,7 +10468,6 @@ class RequestsPerSecond(AbstractModel):
     @property
     def TargetRequestsPerSecond(self):
         """目标RPS，入参无效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TargetRequestsPerSecond
@@ -10732,7 +10479,6 @@ class RequestsPerSecond(AbstractModel):
     @property
     def GracefulStopSeconds(self):
         """优雅关停的等待时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GracefulStopSeconds
@@ -10847,10 +10593,8 @@ class SLALabel(AbstractModel):
     def __init__(self):
         r"""
         :param _LabelName: 标签名
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelName: str
         :param _LabelValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelValue: str
         """
         self._LabelName = None
@@ -10859,7 +10603,6 @@ class SLALabel(AbstractModel):
     @property
     def LabelName(self):
         """标签名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LabelName
@@ -10871,7 +10614,6 @@ class SLALabel(AbstractModel):
     @property
     def LabelValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LabelValue
@@ -10964,25 +10706,19 @@ class SLARule(AbstractModel):
     def __init__(self):
         r"""
         :param _Metric: 压测指标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
         :param _Aggregation: 压测指标聚合方法
-注意：此字段可能返回 null，表示取不到有效值。
         :type Aggregation: str
         :param _Condition: 压测指标条件判断符号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Condition: str
         :param _Value: 阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: float
         :param _LabelFilter: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelFilter: list of SLALabel
         :param _AbortFlag: 是否停止压测任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type AbortFlag: bool
         :param _For: 持续时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type For: str
         """
         self._Metric = None
@@ -10996,7 +10732,6 @@ class SLARule(AbstractModel):
     @property
     def Metric(self):
         """压测指标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Metric
@@ -11008,7 +10743,6 @@ class SLARule(AbstractModel):
     @property
     def Aggregation(self):
         """压测指标聚合方法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Aggregation
@@ -11020,7 +10754,6 @@ class SLARule(AbstractModel):
     @property
     def Condition(self):
         """压测指标条件判断符号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Condition
@@ -11032,7 +10765,6 @@ class SLARule(AbstractModel):
     @property
     def Value(self):
         """阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Value
@@ -11056,7 +10788,6 @@ class SLARule(AbstractModel):
     @property
     def AbortFlag(self):
         """是否停止压测任务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AbortFlag
@@ -11068,7 +10799,6 @@ class SLARule(AbstractModel):
     @property
     def For(self):
         """持续时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._For
@@ -11109,13 +10839,10 @@ class SampleLog(AbstractModel):
     def __init__(self):
         r"""
         :param _Timestamp: 日志毫秒时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
         :param _Attributes: 采样日志属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Attributes: :class:`tencentcloud.pts.v20210728.models.Attributes`
         :param _Body: har格式的采样请求
-注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         """
         self._Timestamp = None
@@ -11125,7 +10852,6 @@ class SampleLog(AbstractModel):
     @property
     def Timestamp(self):
         """日志毫秒时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timestamp
@@ -11137,7 +10863,6 @@ class SampleLog(AbstractModel):
     @property
     def Attributes(self):
         """采样日志属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.Attributes`
         """
         return self._Attributes
@@ -11149,7 +10874,6 @@ class SampleLog(AbstractModel):
     @property
     def Body(self):
         """har格式的采样请求
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Body
@@ -11239,7 +10963,6 @@ class SampleStream(AbstractModel):
         :param _Values: 指标采样数组
         :type Values: list of SamplePair
         :param _Name: 指标序列名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Labels = None
@@ -11272,7 +10995,6 @@ class SampleStream(AbstractModel):
     @property
     def Name(self):
         """指标序列名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -11318,19 +11040,14 @@ class Scenario(AbstractModel):
         :param _Name: 场景名
         :type Name: str
         :param _Description: 场景描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Type: 场景类型，如pts-http, pts-js, pts-trpc, pts-jmeter
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Status: 场景状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Load: 施压配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Load: :class:`tencentcloud.pts.v20210728.models.Load`
         :param _EncodedScripts: deprecated
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncodedScripts: str
         :param _Configs: deprecated
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11342,26 +11059,20 @@ class Scenario(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Datasets: list of TestData
         :param _SLAId: SLA规则的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SLAId: str
         :param _CronId: Cron Job规则的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronId: str
         :param _CreatedAt: 场景创建时间
         :type CreatedAt: str
         :param _UpdatedAt: 场景修改时间
         :type UpdatedAt: str
         :param _ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _AppId: App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _Uin: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _SubAccountUin: 子用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
         :param _TestScripts: 测试脚本信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11373,22 +11084,18 @@ class Scenario(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestFiles: list of FileInfo
         :param _SLAPolicy: SLA 策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type SLAPolicy: :class:`tencentcloud.pts.v20210728.models.SLAPolicy`
         :param _Plugins: 扩展包信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Plugins: list of FileInfo
         :param _DomainNameConfig: 域名解析配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainNameConfig: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
         :param _NotificationHooks: 通知事件回调
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotificationHooks: list of NotificationHook
         :param _Owner: 创建人员
-注意：此字段可能返回 null，表示取不到有效值。
         :type Owner: str
         :param _ProjectName: 场景所在的项目的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         """
         self._ScenarioId = None
@@ -11444,7 +11151,6 @@ class Scenario(AbstractModel):
     @property
     def Description(self):
         """场景描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -11456,7 +11162,6 @@ class Scenario(AbstractModel):
     @property
     def Type(self):
         """场景类型，如pts-http, pts-js, pts-trpc, pts-jmeter
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -11468,7 +11173,6 @@ class Scenario(AbstractModel):
     @property
     def Status(self):
         """场景状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -11480,7 +11184,6 @@ class Scenario(AbstractModel):
     @property
     def Load(self):
         """施压配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.Load`
         """
         return self._Load
@@ -11492,7 +11195,6 @@ class Scenario(AbstractModel):
     @property
     def EncodedScripts(self):
         """deprecated
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncodedScripts
@@ -11540,7 +11242,6 @@ class Scenario(AbstractModel):
     @property
     def SLAId(self):
         """SLA规则的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SLAId
@@ -11552,7 +11253,6 @@ class Scenario(AbstractModel):
     @property
     def CronId(self):
         """Cron Job规则的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CronId
@@ -11586,7 +11286,6 @@ class Scenario(AbstractModel):
     @property
     def ProjectId(self):
         """项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -11598,7 +11297,6 @@ class Scenario(AbstractModel):
     @property
     def AppId(self):
         """App ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -11610,7 +11308,6 @@ class Scenario(AbstractModel):
     @property
     def Uin(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -11622,7 +11319,6 @@ class Scenario(AbstractModel):
     @property
     def SubAccountUin(self):
         """子用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubAccountUin
@@ -11670,7 +11366,6 @@ class Scenario(AbstractModel):
     @property
     def SLAPolicy(self):
         """SLA 策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.SLAPolicy`
         """
         return self._SLAPolicy
@@ -11694,7 +11389,6 @@ class Scenario(AbstractModel):
     @property
     def DomainNameConfig(self):
         """域名解析配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
         """
         return self._DomainNameConfig
@@ -11718,7 +11412,6 @@ class Scenario(AbstractModel):
     @property
     def Owner(self):
         """创建人员
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Owner
@@ -11730,7 +11423,6 @@ class Scenario(AbstractModel):
     @property
     def ProjectName(self):
         """场景所在的项目的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -11903,7 +11595,6 @@ class ScenarioWithJobs(AbstractModel):
     def __init__(self):
         r"""
         :param _Scenario: scecario结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scenario: :class:`tencentcloud.pts.v20210728.models.Scenario`
         :param _Jobs: job结果
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11915,7 +11606,6 @@ class ScenarioWithJobs(AbstractModel):
     @property
     def Scenario(self):
         """scecario结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.pts.v20210728.models.Scenario`
         """
         return self._Scenario
@@ -11965,28 +11655,21 @@ class ScriptInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Size: 文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param _Type: 文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _UpdatedAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _EncodedContent: base64编码后的文件内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncodedContent: str
         :param _EncodedHttpArchive: base64编码后的har结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncodedHttpArchive: str
         :param _LoadWeight: 脚本权重，范围 1-100
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadWeight: int
         :param _FileId: 文件 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         """
         self._Name = None
@@ -12001,7 +11684,6 @@ class ScriptInfo(AbstractModel):
     @property
     def Name(self):
         """文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -12013,7 +11695,6 @@ class ScriptInfo(AbstractModel):
     @property
     def Size(self):
         """文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Size
@@ -12025,7 +11706,6 @@ class ScriptInfo(AbstractModel):
     @property
     def Type(self):
         """文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -12049,7 +11729,6 @@ class ScriptInfo(AbstractModel):
     @property
     def EncodedContent(self):
         """base64编码后的文件内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncodedContent
@@ -12061,7 +11740,6 @@ class ScriptInfo(AbstractModel):
     @property
     def EncodedHttpArchive(self):
         """base64编码后的har结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncodedHttpArchive
@@ -12073,7 +11751,6 @@ class ScriptInfo(AbstractModel):
     @property
     def LoadWeight(self):
         """脚本权重，范围 1-100
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LoadWeight
@@ -12085,7 +11762,6 @@ class ScriptInfo(AbstractModel):
     @property
     def FileId(self):
         """文件 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -12188,10 +11864,8 @@ class Stage(AbstractModel):
     def __init__(self):
         r"""
         :param _DurationSeconds: 施压时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DurationSeconds: int
         :param _TargetVirtualUsers: 虚拟用户数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetVirtualUsers: int
         """
         self._DurationSeconds = None
@@ -12200,7 +11874,6 @@ class Stage(AbstractModel):
     @property
     def DurationSeconds(self):
         """施压时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DurationSeconds
@@ -12212,7 +11885,6 @@ class Stage(AbstractModel):
     @property
     def TargetVirtualUsers(self):
         """虚拟用户数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TargetVirtualUsers
@@ -12382,10 +12054,8 @@ class TagSpec(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -12394,7 +12064,6 @@ class TagSpec(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -12406,7 +12075,6 @@ class TagSpec(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue
@@ -12437,25 +12105,20 @@ class TestData(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 测试数据集所在的文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Split: 测试数据集是否分片
-注意：此字段可能返回 null，表示取不到有效值。
         :type Split: bool
         :param _HeaderInFile: 首行是否为参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderInFile: bool
         :param _HeaderColumns: 参数名数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderColumns: list of str
         :param _LineCount: 文件行数
-注意：此字段可能返回 null，表示取不到有效值。
         :type LineCount: int
         :param _UpdatedAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _Size: 文件字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param _HeadLines: 头部数据行
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12464,10 +12127,8 @@ class TestData(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TailLines: list of str
         :param _Type: 文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _FileId: 文件 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         """
         self._Name = None
@@ -12485,7 +12146,6 @@ class TestData(AbstractModel):
     @property
     def Name(self):
         """测试数据集所在的文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -12497,7 +12157,6 @@ class TestData(AbstractModel):
     @property
     def Split(self):
         """测试数据集是否分片
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Split
@@ -12509,7 +12168,6 @@ class TestData(AbstractModel):
     @property
     def HeaderInFile(self):
         """首行是否为参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HeaderInFile
@@ -12533,7 +12191,6 @@ class TestData(AbstractModel):
     @property
     def LineCount(self):
         """文件行数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LineCount
@@ -12557,7 +12214,6 @@ class TestData(AbstractModel):
     @property
     def Size(self):
         """文件字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Size
@@ -12593,7 +12249,6 @@ class TestData(AbstractModel):
     @property
     def Type(self):
         """文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -12605,7 +12260,6 @@ class TestData(AbstractModel):
     @property
     def FileId(self):
         """文件 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -13644,7 +13298,6 @@ class VpcLoadDistribution(AbstractModel):
         :param _Region: 地域
         :type Region: str
         :param _VpcId: VPC ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetIds: 子网ID列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13680,7 +13333,6 @@ class VpcLoadDistribution(AbstractModel):
     @property
     def VpcId(self):
         """VPC ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId

@@ -19481,7 +19481,7 @@ class HeuristicCache(AbstractModel):
         r"""
         :param _Switch: 启发式缓存配置开关，取值有：
 on：开启
-off：关闭
+off：关闭（默认）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param _CacheConfig: 自定义启发式缓存时间配置
@@ -19495,7 +19495,7 @@ off：关闭
     def Switch(self):
         """启发式缓存配置开关，取值有：
 on：开启
-off：关闭
+off：关闭（默认）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

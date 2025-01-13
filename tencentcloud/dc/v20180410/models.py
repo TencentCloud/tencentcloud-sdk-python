@@ -2709,12 +2709,7 @@ class DescribeInternetAddressRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值100
         :type Limit: int
-        :param _Filters: 过滤条件：
-<li>AddrType, 地址类型。0：BGP 1; 1: 电信， 2：移动， 3：联通</li>
-<li>AddrProto地址类型。0：IPv4 1:IPv6</li>
-<li>Status 地址状态。 0：使用中， 1：已停用， 2：已退还</li>
-<li>Subnet 互联网公网地址，数组</li>
-<InstanceIds>互联网公网地址ID，数组</li>
+        :param _Filters: 过滤条件： <li>AddrType，地址类型。0：BGP 1；1: 电信；2：移动；3：联通</li> <li>AddrProto，地址类型。0：IPv4；1:IPv6</li> <li>Status，地址状态。 0：使用中；1：已停用； 2：已退还</li> <li>Subnet，互联网公网地址。数组</li> <li>InstanceIds，互联网公网地址ID。数组</li>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -2745,12 +2740,7 @@ class DescribeInternetAddressRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件：
-<li>AddrType, 地址类型。0：BGP 1; 1: 电信， 2：移动， 3：联通</li>
-<li>AddrProto地址类型。0：IPv4 1:IPv6</li>
-<li>Status 地址状态。 0：使用中， 1：已停用， 2：已退还</li>
-<li>Subnet 互联网公网地址，数组</li>
-<InstanceIds>互联网公网地址ID，数组</li>
+        """过滤条件： <li>AddrType，地址类型。0：BGP 1；1: 电信；2：移动；3：联通</li> <li>AddrProto，地址类型。0：IPv4；1:IPv6</li> <li>Status，地址状态。 0：使用中；1：已停用； 2：已退还</li> <li>Subnet，互联网公网地址。数组</li> <li>InstanceIds，互联网公网地址ID。数组</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -2789,7 +2779,6 @@ class DescribeInternetAddressResponse(AbstractModel):
         :param _TotalCount: 互联网公网地址数量
         :type TotalCount: int
         :param _Subnets: 互联网公网地址列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Subnets: list of InternetAddressDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2812,7 +2801,6 @@ class DescribeInternetAddressResponse(AbstractModel):
     @property
     def Subnets(self):
         """互联网公网地址列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InternetAddressDetail
         """
         return self._Subnets

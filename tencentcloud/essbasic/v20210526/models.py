@@ -3792,8 +3792,8 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
 <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
 <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-<li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（支持移动端）</li>
-<li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC端）</li>
+<li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li>
+<li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li>
 <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
@@ -3868,8 +3868,8 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
 <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
 <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-<li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（支持移动端）</li>
-<li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC端）</li>
+<li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li>
+<li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li>
 <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
@@ -9325,10 +9325,8 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Employees: 员工信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Employees: list of Staff
         :param _Offset: 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         :param _Limit: 指定分页每页返回的数据条数，单页最大支持 20。
         :type Limit: int
@@ -9346,7 +9344,6 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
     @property
     def Employees(self):
         """员工信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Staff
         """
         return self._Employees
@@ -9358,7 +9355,6 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
     @property
     def Offset(self):
         """指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offset
@@ -9921,7 +9917,6 @@ class ChannelDescribeRolesResponse(AbstractModel):
         :param _TotalCount: 查询角色的总数量
         :type TotalCount: int
         :param _ChannelRoles: 查询的角色信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelRoles: list of ChannelRole
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9968,7 +9963,6 @@ class ChannelDescribeRolesResponse(AbstractModel):
     @property
     def ChannelRoles(self):
         """查询的角色信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChannelRole
         """
         return self._ChannelRoles
@@ -10098,10 +10092,8 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VideoData: 核身视频结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoData: :class:`tencentcloud.essbasic.v20210526.models.DetectInfoVideoData`
         :param _IntentionQuestionResult: 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionQuestionResult: :class:`tencentcloud.essbasic.v20210526.models.IntentionQuestionResult`
         :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10117,7 +10109,6 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
     @property
     def VideoData(self):
         """核身视频结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.DetectInfoVideoData`
         """
         return self._VideoData
@@ -10129,7 +10120,6 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
     @property
     def IntentionQuestionResult(self):
         """意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.IntentionQuestionResult`
         """
         return self._IntentionQuestionResult
@@ -10636,7 +10626,6 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
         :type ResourceId: str
         :param _PreviewUrl: 预览文件Url，有效期30分钟 
 当前字段返回为空，发起的时候，将ResourceId 放入发起即可
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10710,7 +10699,6 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 
         """预览文件Url，有效期30分钟 
 当前字段返回为空，发起的时候，将ResourceId 放入发起即可
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PreviewUrl
@@ -13614,16 +13602,14 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReportId: 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
         :param _Status: 出证任务执行的状态, 状态含义如下：
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :type Status: str
         :param _ReportUrl: 废除，字段无效
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13636,7 +13622,6 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
     @property
     def ReportId(self):
         """出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportId
@@ -13651,7 +13636,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -13663,7 +13648,6 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
     @property
     def ReportUrl(self):
         """废除，字段无效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportUrl
@@ -15748,9 +15732,8 @@ class CreateOrganizationAuthFileRequest(AbstractModel):
         :param _OrganizationCommonInfo: 企业授权书信息参数， 需要自行保证这些参数跟营业执照中的信息一致。
         :type OrganizationCommonInfo: :class:`tencentcloud.essbasic.v20210526.models.OrganizationCommonInfo`
         :param _Type: 授权书类型：
-- 0: 企业认证超管授权书
-- 1: 超管变更授权书
-- 2: 企业注销授权书
+
+<ul><li>0: 企业认证超管授权书</li><li>1: 超管变更授权书</li><li>2: 企业注销授权书</li></ul>
         :type Type: int
         """
         self._Agent = None
@@ -15790,9 +15773,8 @@ class CreateOrganizationAuthFileRequest(AbstractModel):
     @property
     def Type(self):
         """授权书类型：
-- 0: 企业认证超管授权书
-- 1: 超管变更授权书
-- 2: 企业注销授权书
+
+<ul><li>0: 企业认证超管授权书</li><li>1: 超管变更授权书</li><li>2: 企业注销授权书</li></ul>
         :rtype: int
         """
         return self._Type
@@ -15828,7 +15810,6 @@ class CreateOrganizationAuthFileResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FileUrl: 授权书链接，有效期5分钟。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15839,7 +15820,6 @@ class CreateOrganizationAuthFileResponse(AbstractModel):
     @property
     def FileUrl(self):
         """授权书链接，有效期5分钟。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileUrl
@@ -16050,7 +16030,6 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _MiniAppPath: 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
 
@@ -16068,7 +16047,6 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
     @property
     def Url(self):
         """授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -16227,16 +16205,12 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
         :param _AuthCertUrl: 个人用户认证证书图片下载URL，`有效期为5分钟`，超过有效期后将无法再下载。
         :type AuthCertUrl: str
         :param _ImageCertId: 个人用户认证证书的编号, 为20位数字组成的字符串,  由腾讯电子签下发此编号 。该编号会合成到个人用户证书证明图片。注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCertId: str
         :param _SerialNumber: 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SerialNumber: str
         :param _ValidFrom: CA证书颁发时间，格式为Unix标准时间戳（秒）   该时间格式化后会合成到个人用户证书证明图片
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidFrom: int
         :param _ValidTo: CA证书有效截止时间，格式为Unix标准时间戳（秒）该时间格式化后会合成到个人用户证书证明图片
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidTo: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16262,7 +16236,6 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
     @property
     def ImageCertId(self):
         """个人用户认证证书的编号, 为20位数字组成的字符串,  由腾讯电子签下发此编号 。该编号会合成到个人用户证书证明图片。注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageCertId
@@ -16274,7 +16247,6 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
     @property
     def SerialNumber(self):
         """在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SerialNumber
@@ -16286,7 +16258,6 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
     @property
     def ValidFrom(self):
         """CA证书颁发时间，格式为Unix标准时间戳（秒）   该时间格式化后会合成到个人用户证书证明图片
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ValidFrom
@@ -16298,7 +16269,6 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
     @property
     def ValidTo(self):
         """CA证书有效截止时间，格式为Unix标准时间戳（秒）该时间格式化后会合成到个人用户证书证明图片
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ValidTo
@@ -16578,7 +16548,6 @@ class CreateSealByImageResponse(AbstractModel):
         :param _ImageUrl: 电子印章预览链接地址，地址默认失效时间为24小时。
 
 注:`图片上传生成的电子印章无预览链接地址`
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16604,7 +16573,6 @@ class CreateSealByImageResponse(AbstractModel):
         """电子印章预览链接地址，地址默认失效时间为24小时。
 
 注:`图片上传生成的电子印章无预览链接地址`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageUrl
@@ -17793,13 +17761,12 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReportUrl: 出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
         :param _Status: 出证任务执行的状态, 状态含义如下：
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17811,7 +17778,6 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
     @property
     def ReportUrl(self):
         """出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportUrl
@@ -17826,7 +17792,7 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
 <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -18326,7 +18292,6 @@ class DescribeExtendedServiceAuthDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AuthInfoDetail: 服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthInfoDetail: :class:`tencentcloud.essbasic.v20210526.models.AuthInfoDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18337,7 +18302,6 @@ class DescribeExtendedServiceAuthDetailResponse(AbstractModel):
     @property
     def AuthInfoDetail(self):
         """服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.AuthInfoDetail`
         """
         return self._AuthInfoDetail
@@ -18427,7 +18391,6 @@ class DescribeExtendedServiceAuthInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AuthInfo: 服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthInfo: list of ExtentServiceAuthInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18438,7 +18401,6 @@ class DescribeExtendedServiceAuthInfoResponse(AbstractModel):
     @property
     def AuthInfo(self):
         """服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExtentServiceAuthInfo
         """
         return self._AuthInfo
@@ -18593,13 +18555,10 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
         :type ProxyOrganizationOpenId: str
         :param _FlowInfo: 合同流程的详细信息。
 如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowInfo: list of FlowDetailInfo
         :param _FlowGroupId: 合同组ID，只有在查询合同组信息时才会返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupId: str
         :param _FlowGroupName: 合同组名称，只有在查询合同组信息时才会返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18637,7 +18596,6 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
     def FlowInfo(self):
         """合同流程的详细信息。
 如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FlowDetailInfo
         """
         return self._FlowInfo
@@ -18649,7 +18607,6 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
     @property
     def FlowGroupId(self):
         """合同组ID，只有在查询合同组信息时才会返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowGroupId
@@ -18661,7 +18618,6 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
     @property
     def FlowGroupName(self):
         """合同组名称，只有在查询合同组信息时才会返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowGroupName
@@ -19419,7 +19375,6 @@ class DescribeUsageResponse(AbstractModel):
         :param _Total: 用量明细条数
         :type Total: int
         :param _Details: 用量明细
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of UsageDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19442,7 +19397,6 @@ class DescribeUsageResponse(AbstractModel):
     @property
     def Details(self):
         """用量明细
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UsageDetail
         """
         return self._Details
@@ -21966,7 +21920,7 @@ class FlowFileInfo(AbstractModel):
         :type FlowType: str
         :param _CallbackUrl: 已废弃，请使用【应用号配置】中的回调地址统一接收消息
         :type CallbackUrl: str
-        :param _CustomerData: 第三方应用的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :param _CustomerData: 第三方应用的业务信息，最大长度1000个字符。
         :type CustomerData: str
         :param _Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
         :type Unordered: bool
@@ -22076,7 +22030,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def CustomerData(self):
-        """第三方应用的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        """第三方应用的业务信息，最大长度1000个字符。
         :rtype: str
         """
         return self._CustomerData
@@ -24653,10 +24607,8 @@ class OperateChannelTemplateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AppId: 第三方应用平台的应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _TemplateId: 合同模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
         :param _OperateResult: 描述模板可见性更改的结果。
 <ul>
@@ -24664,18 +24616,14 @@ class OperateChannelTemplateResponse(AbstractModel):
 <li>part-success: 部分成功,失败的会在FailMessageList中展示</li>
 <li>fail:全部失败, 失败的会在FailMessageList中展示</li>
 </ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateResult: str
         :param _AuthTag: 模板可见范围:
 **all**: 所有本第三方应用合作企业可见
 **part**: 指定的本第三方应用合作企业
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthTag: str
         :param _ProxyOrganizationOpenIds: 第三方平台子客企业标识列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationOpenIds: list of str
         :param _FailMessageList: 操作失败信息数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailMessageList: list of AuthFailMessage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24691,7 +24639,6 @@ class OperateChannelTemplateResponse(AbstractModel):
     @property
     def AppId(self):
         """第三方应用平台的应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppId
@@ -24703,7 +24650,6 @@ class OperateChannelTemplateResponse(AbstractModel):
     @property
     def TemplateId(self):
         """合同模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateId
@@ -24720,7 +24666,6 @@ class OperateChannelTemplateResponse(AbstractModel):
 <li>part-success: 部分成功,失败的会在FailMessageList中展示</li>
 <li>fail:全部失败, 失败的会在FailMessageList中展示</li>
 </ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperateResult
@@ -24734,7 +24679,6 @@ class OperateChannelTemplateResponse(AbstractModel):
         """模板可见范围:
 **all**: 所有本第三方应用合作企业可见
 **part**: 指定的本第三方应用合作企业
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthTag
@@ -24746,7 +24690,6 @@ class OperateChannelTemplateResponse(AbstractModel):
     @property
     def ProxyOrganizationOpenIds(self):
         """第三方平台子客企业标识列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ProxyOrganizationOpenIds
@@ -24758,7 +24701,6 @@ class OperateChannelTemplateResponse(AbstractModel):
     @property
     def FailMessageList(self):
         """操作失败信息数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuthFailMessage
         """
         return self._FailMessageList
@@ -28112,10 +28054,8 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
 
 <ul><li> **1** :全部成功</li>
 <li> **2** :部分成功</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _FailedList: 同步失败员工ID及其失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedList: list of SyncFailReason
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28130,7 +28070,6 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
 
 <ul><li> **1** :全部成功</li>
 <li> **2** :部分成功</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -28142,7 +28081,6 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
     @property
     def FailedList(self):
         """同步失败员工ID及其失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SyncFailReason
         """
         return self._FailedList

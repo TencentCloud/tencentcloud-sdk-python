@@ -21661,18 +21661,15 @@ class FollowOrigin(AbstractModel):
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
-        :param _DefaultCache: 源站未返回 Cache-Control 头时，缓存/不缓存开关。当 Switch 为 on 时，此字段必填，否则此字段不生效。取值有：
+        :param _DefaultCache: 源站未返回 Cache-Control 头时，缓存/不缓存开关。当 Switch 为 on 时，此字段必填，当 Switch 为 off 时，无需填写此字段，若填写则不生效。取值有：
 <li>on：缓存；</li>
 <li>off：不缓存。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultCache: str
         :param _DefaultCacheStrategy: 源站未返回 Cache-Control 头时，使用/不使用默认缓存策略开关。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheTime 不为 0 时，此字段必须为 off。取值有：
 <li>on：使用默认缓存策略；</li>
 <li>off：不使用默认缓存策略。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultCacheStrategy: str
-        :param _DefaultCacheTime: 源站未返回 Cache-Control 头时，表示默认的缓存时间，单位为秒，取值：0～315360000。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheStrategy 为 on 时， 此字段必须为 0。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _DefaultCacheTime: 源站未返回 Cache-Control 头时，表示默认的缓存时间，单位为秒，取值：0-315360000。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheStrategy 为 on 时， 此字段必须为 0。
         :type DefaultCacheTime: int
         """
         self._Switch = None
@@ -21695,10 +21692,9 @@ class FollowOrigin(AbstractModel):
 
     @property
     def DefaultCache(self):
-        """源站未返回 Cache-Control 头时，缓存/不缓存开关。当 Switch 为 on 时，此字段必填，否则此字段不生效。取值有：
+        """源站未返回 Cache-Control 头时，缓存/不缓存开关。当 Switch 为 on 时，此字段必填，当 Switch 为 off 时，无需填写此字段，若填写则不生效。取值有：
 <li>on：缓存；</li>
 <li>off：不缓存。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultCache
@@ -21712,7 +21708,6 @@ class FollowOrigin(AbstractModel):
         """源站未返回 Cache-Control 头时，使用/不使用默认缓存策略开关。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheTime 不为 0 时，此字段必须为 off。取值有：
 <li>on：使用默认缓存策略；</li>
 <li>off：不使用默认缓存策略。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultCacheStrategy
@@ -21723,8 +21718,7 @@ class FollowOrigin(AbstractModel):
 
     @property
     def DefaultCacheTime(self):
-        """源站未返回 Cache-Control 头时，表示默认的缓存时间，单位为秒，取值：0～315360000。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheStrategy 为 on 时， 此字段必须为 0。
-注意：此字段可能返回 null，表示取不到有效值。
+        """源站未返回 Cache-Control 头时，表示默认的缓存时间，单位为秒，取值：0-315360000。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheStrategy 为 on 时， 此字段必须为 0。
         :rtype: int
         """
         return self._DefaultCacheTime
@@ -34237,7 +34231,7 @@ class RulesProperties(AbstractModel):
 <li> TOGGLE：参数值为开关类型，可在 ChoicesValue 中选择；</li>
 <li> OBJECT：参数值为对象类型，ChoiceProperties 为改对象类型关联的属性；</li>
 <li> CUSTOM_NUM：参数值用户自定义，整型类型；</li>
-<li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>注意：当参数类型为 OBJECT 类型时，请注意参考 [示例2 参数为 OBJECT 类型的创建](https://cloud.tencent.com/document/product/1552/80622#.E7.A4.BA.E4.BE.8B2-.E5.8F.82.E6.95.B0.E4.B8.BA-OBJECT-.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.88.9B.E5.BB.BA)
+<li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>注意：当参数类型为 OBJECT 类型时，请注意参考 [示例2 参数为 OBJECT 类型的创建](https://cloud.tencent.com/document/product/1552/80622#.E7.A4.BA.E4.BE.8B2-.E4.BF.AE.E6.94.B9.E6.BA.90.E7.AB.99.E4.B8.BAIP.E5.9F.9F.E5.90.8D)
         :type Type: str
         :param _Max: 数值参数的最大值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
         :type Max: int
@@ -34303,7 +34297,7 @@ class RulesProperties(AbstractModel):
 <li> TOGGLE：参数值为开关类型，可在 ChoicesValue 中选择；</li>
 <li> OBJECT：参数值为对象类型，ChoiceProperties 为改对象类型关联的属性；</li>
 <li> CUSTOM_NUM：参数值用户自定义，整型类型；</li>
-<li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>注意：当参数类型为 OBJECT 类型时，请注意参考 [示例2 参数为 OBJECT 类型的创建](https://cloud.tencent.com/document/product/1552/80622#.E7.A4.BA.E4.BE.8B2-.E5.8F.82.E6.95.B0.E4.B8.BA-OBJECT-.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.88.9B.E5.BB.BA)
+<li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>注意：当参数类型为 OBJECT 类型时，请注意参考 [示例2 参数为 OBJECT 类型的创建](https://cloud.tencent.com/document/product/1552/80622#.E7.A4.BA.E4.BE.8B2-.E4.BF.AE.E6.94.B9.E6.BA.90.E7.AB.99.E4.B8.BAIP.E5.9F.9F.E5.90.8D)
         :rtype: str
         """
         return self._Type
