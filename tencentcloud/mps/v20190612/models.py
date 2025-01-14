@@ -17342,13 +17342,13 @@ class CreateOutputSRTSettings(AbstractModel):
         :type Destinations: list of CreateOutputSRTSettingsDestinations
         :param _StreamId: 转推SRT的流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。
         :type StreamId: str
-        :param _Latency: 转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。
+        :param _Latency: 转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。此参数同时设置了发送方和接收方的延迟（recvlatency和peerlatency）为相同的值。建议配置为至少3倍RTT，以确保在网络拥塞时能够有效处理数据包的重传和确认
         :type Latency: int
-        :param _RecvLatency: 转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。
+        :param _RecvLatency: 转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。 此参数表示接收方用于缓存数据包的时间长度
         :type RecvLatency: int
-        :param _PeerLatency: 转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。
+        :param _PeerLatency: 转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。 此参数由发送方设置，用于告知接收方其期望的延迟缓冲时间
         :type PeerLatency: int
-        :param _PeerIdleTimeout: 转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+        :param _PeerIdleTimeout: 转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。 如果连接在设定的超时时间内没有活动，将会被关闭
         :type PeerIdleTimeout: int
         :param _Passphrase: 转推SRT的加密密钥，默认为空，表示不加密。只可填ascii码值，长度为[10, 79]。
         :type Passphrase: str
@@ -17391,7 +17391,7 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def Latency(self):
-        """转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。
+        """转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。此参数同时设置了发送方和接收方的延迟（recvlatency和peerlatency）为相同的值。建议配置为至少3倍RTT，以确保在网络拥塞时能够有效处理数据包的重传和确认
         :rtype: int
         """
         return self._Latency
@@ -17402,7 +17402,7 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def RecvLatency(self):
-        """转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。
+        """转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。 此参数表示接收方用于缓存数据包的时间长度
         :rtype: int
         """
         return self._RecvLatency
@@ -17413,7 +17413,7 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def PeerLatency(self):
-        """转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。
+        """转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。 此参数由发送方设置，用于告知接收方其期望的延迟缓冲时间
         :rtype: int
         """
         return self._PeerLatency
@@ -17424,7 +17424,7 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def PeerIdleTimeout(self):
-        """转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+        """转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。 如果连接在设定的超时时间内没有活动，将会被关闭
         :rtype: int
         """
         return self._PeerIdleTimeout
@@ -18883,6 +18883,100 @@ class CreateStreamLinkOutputInfoResponse(AbstractModel):
         if params.get("Info") is not None:
             self._Info = DescribeOutput()
             self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamLinkSecurityGroupRequest(AbstractModel):
+    """CreateStreamLinkSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 安全组名称，限制大小写、数字和下划线，Region下唯一。
+        :type Name: str
+        :param _Whitelist: 白名单列表，数量限制[1, 10]。
+        :type Whitelist: list of str
+        """
+        self._Name = None
+        self._Whitelist = None
+
+    @property
+    def Name(self):
+        """安全组名称，限制大小写、数字和下划线，Region下唯一。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Whitelist(self):
+        """白名单列表，数量限制[1, 10]。
+        :rtype: list of str
+        """
+        return self._Whitelist
+
+    @Whitelist.setter
+    def Whitelist(self, Whitelist):
+        self._Whitelist = Whitelist
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Whitelist = params.get("Whitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLinkSecurityGroupResponse(AbstractModel):
+    """CreateStreamLinkSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 安全组 ID。
+        :type Id: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """安全组 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -20873,6 +20967,70 @@ class DeleteStreamLinkOutputResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteStreamLinkSecurityGroupRequest(AbstractModel):
+    """DeleteStreamLinkSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 安全组 ID。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """安全组 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamLinkSecurityGroupResponse(AbstractModel):
+    """DeleteStreamLinkSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteTranscodeTemplateRequest(AbstractModel):
     """DeleteTranscodeTemplate请求参数结构体
 
@@ -21473,6 +21631,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 <li>Custom：用户自定义模板。</li>
         :type Type: str
         :param _PureAudio: 是否为纯音频，0表示视频，1表示纯音频
+默认值：0
         :type PureAudio: int
         :param _Name: 自适应转码模板标识过滤条件，长度限制：64 个字符
         :type Name: str
@@ -21533,6 +21692,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
     @property
     def PureAudio(self):
         """是否为纯音频，0表示视频，1表示纯音频
+默认值：0
         :rtype: int
         """
         return self._PureAudio
@@ -22283,6 +22443,90 @@ class DescribeFlowId(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeGroupAttachFlowsByIdRequest(AbstractModel):
+    """DescribeGroupAttachFlowsById请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 媒体传输安全组ID。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """媒体传输安全组ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGroupAttachFlowsByIdResponse(AbstractModel):
+    """DescribeGroupAttachFlowsById返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: 安全组反查的Flow信息列表。
+        :type Infos: list of FlowInOutResp
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """安全组反查的Flow信息列表。
+        :rtype: list of FlowInOutResp
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = FlowInOutResp()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeHLSPullSourceAddress(AbstractModel):
@@ -27117,6 +27361,60 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeStreamLinkSecurityGroupsRequest(AbstractModel):
+    """DescribeStreamLinkSecurityGroups请求参数结构体
+
+    """
+
+
+class DescribeStreamLinkSecurityGroupsResponse(AbstractModel):
+    """DescribeStreamLinkSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: 安全组信息列表。
+        :type Infos: list of SecurityGroupInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """安全组信息列表。
+        :rtype: list of SecurityGroupInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SecurityGroupInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskDetailRequest(AbstractModel):
     """DescribeTaskDetail请求参数结构体
 
@@ -28971,6 +29269,90 @@ class DisableWorkflowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisassociateSecurityGroupRequest(AbstractModel):
+    """DisassociateSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 媒体传输安全组ID。
+        :type Id: str
+        :param _UnattachInOutInfos: 要解绑的输入输出信息列表。
+        :type UnattachInOutInfos: list of UnattachSecurityGroupInOutInfo
+        """
+        self._Id = None
+        self._UnattachInOutInfos = None
+
+    @property
+    def Id(self):
+        """媒体传输安全组ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def UnattachInOutInfos(self):
+        """要解绑的输入输出信息列表。
+        :rtype: list of UnattachSecurityGroupInOutInfo
+        """
+        return self._UnattachInOutInfos
+
+    @UnattachInOutInfos.setter
+    def UnattachInOutInfos(self, UnattachInOutInfos):
+        self._UnattachInOutInfos = UnattachInOutInfos
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("UnattachInOutInfos") is not None:
+            self._UnattachInOutInfos = []
+            for item in params.get("UnattachInOutInfos"):
+                obj = UnattachSecurityGroupInOutInfo()
+                obj._deserialize(item)
+                self._UnattachInOutInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateSecurityGroupResponse(AbstractModel):
+    """DisassociateSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DrmInfo(AbstractModel):
     """Drm 加密信息。
 
@@ -30308,6 +30690,181 @@ class FlowAudio(AbstractModel):
         self._Fps = params.get("Fps")
         self._Rate = params.get("Rate")
         self._Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowInOutResp(AbstractModel):
+    """查询Flow的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流Id。
+        :type FlowId: str
+        :param _FlowName: 流名称。
+        :type FlowName: str
+        :param _EventId: 该Flow关联的媒体传输事件EventId。
+        :type EventId: str
+        :param _FlowRegion: 媒体传输输入流所属的区域，取值和InputRegion相同。
+        :type FlowRegion: str
+        :param _OutputRegion: 当返回是输出类型时非空，output所在Region。
+        :type OutputRegion: str
+        :param _EventName: EventName。
+        :type EventName: str
+        :param _InputName: InOutType为Input有效。
+        :type InputName: str
+        :param _OutputName: InOutType为Output有效。
+        :type OutputName: str
+        :param _InOutId: Input或者Output的Id。
+        :type InOutId: str
+        :param _InOutType: 输入/输出类型，可选值：
+Input：输入
+Outpu：输出。
+        :type InOutType: str
+        """
+        self._FlowId = None
+        self._FlowName = None
+        self._EventId = None
+        self._FlowRegion = None
+        self._OutputRegion = None
+        self._EventName = None
+        self._InputName = None
+        self._OutputName = None
+        self._InOutId = None
+        self._InOutType = None
+
+    @property
+    def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowName(self):
+        """流名称。
+        :rtype: str
+        """
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def EventId(self):
+        """该Flow关联的媒体传输事件EventId。
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def FlowRegion(self):
+        """媒体传输输入流所属的区域，取值和InputRegion相同。
+        :rtype: str
+        """
+        return self._FlowRegion
+
+    @FlowRegion.setter
+    def FlowRegion(self, FlowRegion):
+        self._FlowRegion = FlowRegion
+
+    @property
+    def OutputRegion(self):
+        """当返回是输出类型时非空，output所在Region。
+        :rtype: str
+        """
+        return self._OutputRegion
+
+    @OutputRegion.setter
+    def OutputRegion(self, OutputRegion):
+        self._OutputRegion = OutputRegion
+
+    @property
+    def EventName(self):
+        """EventName。
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def InputName(self):
+        """InOutType为Input有效。
+        :rtype: str
+        """
+        return self._InputName
+
+    @InputName.setter
+    def InputName(self, InputName):
+        self._InputName = InputName
+
+    @property
+    def OutputName(self):
+        """InOutType为Output有效。
+        :rtype: str
+        """
+        return self._OutputName
+
+    @OutputName.setter
+    def OutputName(self, OutputName):
+        self._OutputName = OutputName
+
+    @property
+    def InOutId(self):
+        """Input或者Output的Id。
+        :rtype: str
+        """
+        return self._InOutId
+
+    @InOutId.setter
+    def InOutId(self, InOutId):
+        self._InOutId = InOutId
+
+    @property
+    def InOutType(self):
+        """输入/输出类型，可选值：
+Input：输入
+Outpu：输出。
+        :rtype: str
+        """
+        return self._InOutType
+
+    @InOutType.setter
+    def InOutType(self, InOutType):
+        self._InOutType = InOutType
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._FlowName = params.get("FlowName")
+        self._EventId = params.get("EventId")
+        self._FlowRegion = params.get("FlowRegion")
+        self._OutputRegion = params.get("OutputRegion")
+        self._EventName = params.get("EventName")
+        self._InputName = params.get("InputName")
+        self._OutputName = params.get("OutputName")
+        self._InOutId = params.get("InOutId")
+        self._InOutType = params.get("InOutType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43369,6 +43926,100 @@ class ModifyStreamLinkOutputInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyStreamLinkSecurityGroupRequest(AbstractModel):
+    """ModifyStreamLinkSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 安全组Id。
+        :type Id: str
+        :param _Name: 安全组名称，限制大小写、数字和下划线，长度[1, 32]，Region下唯一。
+        :type Name: str
+        :param _Whitelist: 白名单列表，最多10个。
+        :type Whitelist: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._Whitelist = None
+
+    @property
+    def Id(self):
+        """安全组Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """安全组名称，限制大小写、数字和下划线，长度[1, 32]，Region下唯一。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Whitelist(self):
+        """白名单列表，最多10个。
+        :rtype: list of str
+        """
+        return self._Whitelist
+
+    @Whitelist.setter
+    def Whitelist(self, Whitelist):
+        self._Whitelist = Whitelist
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Whitelist = params.get("Whitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamLinkSecurityGroupResponse(AbstractModel):
+    """ModifyStreamLinkSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTranscodeTemplateRequest(AbstractModel):
     """ModifyTranscodeTemplate请求参数结构体
 
@@ -51058,6 +51709,121 @@ Text：文本检索
         
 
 
+class SecurityGroupInfo(AbstractModel):
+    """安全组信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 安全组 ID。
+        :type Id: str
+        :param _Name: 安全组名称。
+        :type Name: str
+        :param _Whitelist: 白名单列表。
+        :type Whitelist: list of str
+        :param _OccupiedInputs: 绑定的输入流列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OccupiedInputs: list of str
+        :param _Region: 安全组地址。
+        :type Region: str
+        :param _OccupiedOutputs: 绑定的输出流列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OccupiedOutputs: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._Whitelist = None
+        self._OccupiedInputs = None
+        self._Region = None
+        self._OccupiedOutputs = None
+
+    @property
+    def Id(self):
+        """安全组 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """安全组名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Whitelist(self):
+        """白名单列表。
+        :rtype: list of str
+        """
+        return self._Whitelist
+
+    @Whitelist.setter
+    def Whitelist(self, Whitelist):
+        self._Whitelist = Whitelist
+
+    @property
+    def OccupiedInputs(self):
+        """绑定的输入流列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._OccupiedInputs
+
+    @OccupiedInputs.setter
+    def OccupiedInputs(self, OccupiedInputs):
+        self._OccupiedInputs = OccupiedInputs
+
+    @property
+    def Region(self):
+        """安全组地址。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def OccupiedOutputs(self):
+        """绑定的输出流列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._OccupiedOutputs
+
+    @OccupiedOutputs.setter
+    def OccupiedOutputs(self, OccupiedOutputs):
+        self._OccupiedOutputs = OccupiedOutputs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Whitelist = params.get("Whitelist")
+        self._OccupiedInputs = params.get("OccupiedInputs")
+        self._Region = params.get("Region")
+        self._OccupiedOutputs = params.get("OccupiedOutputs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SegmentRecognitionItem(AbstractModel):
     """智能拆条片段。
 
@@ -54409,6 +55175,91 @@ class TranslateConfigureInfoForUpdate(AbstractModel):
         
 
 
+class UnattachSecurityGroupInOutInfo(AbstractModel):
+    """安全组解绑输入/输出请求信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 该安全组关联的FlowId。
+        :type FlowId: str
+        :param _InOutId: 要解绑的输入/输出ID。
+        :type InOutId: str
+        :param _InOutType: 输入/输出类型，可选值：
+Input：输入
+Output：输出。
+        :type InOutType: str
+        :param _FlowRegion: Flow所在的Region，和input共用。
+        :type FlowRegion: str
+        """
+        self._FlowId = None
+        self._InOutId = None
+        self._InOutType = None
+        self._FlowRegion = None
+
+    @property
+    def FlowId(self):
+        """该安全组关联的FlowId。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def InOutId(self):
+        """要解绑的输入/输出ID。
+        :rtype: str
+        """
+        return self._InOutId
+
+    @InOutId.setter
+    def InOutId(self, InOutId):
+        self._InOutId = InOutId
+
+    @property
+    def InOutType(self):
+        """输入/输出类型，可选值：
+Input：输入
+Output：输出。
+        :rtype: str
+        """
+        return self._InOutType
+
+    @InOutType.setter
+    def InOutType(self, InOutType):
+        self._InOutType = InOutType
+
+    @property
+    def FlowRegion(self):
+        """Flow所在的Region，和input共用。
+        :rtype: str
+        """
+        return self._FlowRegion
+
+    @FlowRegion.setter
+    def FlowRegion(self, FlowRegion):
+        self._FlowRegion = FlowRegion
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._InOutId = params.get("InOutId")
+        self._InOutType = params.get("InOutType")
+        self._FlowRegion = params.get("FlowRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UrlInputInfo(AbstractModel):
     """媒体处理 URL 对象信息。
 
@@ -55488,6 +56339,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
+注意：Codec为MV-HEVC时可以支持到7680
         :type Width: int
         :param _Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
@@ -55495,6 +56347,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
+注意：Codec为MV-HEVC时可以支持到7680
         :type Height: int
         :param _Gop: 关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]，
 当填 0 或不填时，系统将自动设置 gop 长度。
@@ -55727,6 +56580,7 @@ low_compress：画质优先：优先保证画质，压缩出来的文件体积�
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
+注意：Codec为MV-HEVC时可以支持到7680
         :rtype: int
         """
         return self._Width
@@ -55743,6 +56597,7 @@ low_compress：画质优先：优先保证画质，压缩出来的文件体积�
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
+注意：Codec为MV-HEVC时可以支持到7680
         :rtype: int
         """
         return self._Height
@@ -56154,9 +57009,11 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+注意：Codec为MV-HEVC时可以支持到7680
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param _Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+注意：Codec为MV-HEVC时可以支持到7680
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param _Gop: 关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]。
@@ -56403,6 +57260,7 @@ low_compress：画质优先：优先保证画质，压缩出来的文件体积�
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+注意：Codec为MV-HEVC时可以支持到7680
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56415,6 +57273,7 @@ low_compress：画质优先：优先保证画质，压缩出来的文件体积�
     @property
     def Height(self):
         """视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+注意：Codec为MV-HEVC时可以支持到7680
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

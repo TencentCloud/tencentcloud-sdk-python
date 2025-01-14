@@ -3088,6 +3088,8 @@ class BackupInfo(AbstractModel):
         :type EncryptionFlag: str
         :param _ExecutedGTIDSet: 备份GTID点位
         :type ExecutedGTIDSet: str
+        :param _MD5: 备份文件MD5值
+        :type MD5: str
         """
         self._Name = None
         self._Size = None
@@ -3110,6 +3112,7 @@ class BackupInfo(AbstractModel):
         self._InstanceId = None
         self._EncryptionFlag = None
         self._ExecutedGTIDSet = None
+        self._MD5 = None
 
     @property
     def Name(self):
@@ -3342,6 +3345,17 @@ class BackupInfo(AbstractModel):
     def ExecutedGTIDSet(self, ExecutedGTIDSet):
         self._ExecutedGTIDSet = ExecutedGTIDSet
 
+    @property
+    def MD5(self):
+        """备份文件MD5值
+        :rtype: str
+        """
+        return self._MD5
+
+    @MD5.setter
+    def MD5(self, MD5):
+        self._MD5 = MD5
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3370,6 +3384,7 @@ class BackupInfo(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._EncryptionFlag = params.get("EncryptionFlag")
         self._ExecutedGTIDSet = params.get("ExecutedGTIDSet")
+        self._MD5 = params.get("MD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

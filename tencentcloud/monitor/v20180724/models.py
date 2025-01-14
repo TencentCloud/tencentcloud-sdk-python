@@ -33369,9 +33369,9 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
         :type Name: str
         :param _UpdateTime: 最近更新时间
         :type UpdateTime: str
-        :param _TemplateId: Yaml内容
+        :param _TemplateId: 如果该聚合规则来至模板，则TemplateId为模板id
         :type TemplateId: str
-        :param _Content: 如果该聚合规则来至模板，则TemplateId为模板id
+        :param _Content: Yaml内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _ClusterId: 该聚合规则如果来源于用户集群crd资源定义，则ClusterId为所属集群ID
@@ -33420,7 +33420,7 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Yaml内容
+        """如果该聚合规则来至模板，则TemplateId为模板id
         :rtype: str
         """
         return self._TemplateId
@@ -33431,7 +33431,7 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
 
     @property
     def Content(self):
-        """如果该聚合规则来至模板，则TemplateId为模板id
+        """Yaml内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34063,6 +34063,57 @@ class PrometheusTarget(AbstractModel):
     """prometheus一个抓取目标的信息
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Url: 抓取目标的URL
+        :type Url: str
+        :param _State: target当前状态,当前支持
+up = 健康
+down = 不健康
+unknown = 未知
+        :type State: str
+        """
+        self._Url = None
+        self._State = None
+
+    @property
+    def Url(self):
+        """抓取目标的URL
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def State(self):
+        """target当前状态,当前支持
+up = 健康
+down = 不健康
+unknown = 未知
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PrometheusTemp(AbstractModel):

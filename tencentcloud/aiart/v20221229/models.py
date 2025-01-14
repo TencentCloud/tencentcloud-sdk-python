@@ -1987,6 +1987,7 @@ class ReplaceBackgroundRequest(AbstractModel):
         :type ProductUrl: str
         :param _Prompt: 对新背景的文本描述。
 最多支持256个 utf-8 字符，支持中、英文。
+如果 Prompt = "BackgroundTemplate" 代表启用背景模板，需要在参数 BackgroundTemplate 中指定一个背景名称。
         :type Prompt: str
         :param _NegativePrompt: 反向提示词。
 最多支持256个 utf-8 字符，支持中、英文。
@@ -1994,6 +1995,9 @@ class ReplaceBackgroundRequest(AbstractModel):
         :param _Product: 商品图中的商品主体名称。
 建议说明商品主体，否则影响生成效果。
         :type Product: str
+        :param _BackgroundTemplate: 背景模板。
+仅当 Prompt = "BackgroundTemplate" 时生效，可支持的模板详见 [商品背景模板列表](https://cloud.tencent.com/document/product/1668/115391) ，请传入字段“背景名称”中的值。
+        :type BackgroundTemplate: str
         :param _MaskUrl: 商品 Mask 图 Url，要求背景透明，保留商品主体。
 如果不传，将自动使用内置的商品分割算法得到 Mask。
 支持自定义上传 Mask，如果该参数不为空，则以实际上传的数据为准。
@@ -2020,6 +2024,7 @@ class ReplaceBackgroundRequest(AbstractModel):
         self._Prompt = None
         self._NegativePrompt = None
         self._Product = None
+        self._BackgroundTemplate = None
         self._MaskUrl = None
         self._Resolution = None
         self._LogoAdd = None
@@ -2042,6 +2047,7 @@ class ReplaceBackgroundRequest(AbstractModel):
     def Prompt(self):
         """对新背景的文本描述。
 最多支持256个 utf-8 字符，支持中、英文。
+如果 Prompt = "BackgroundTemplate" 代表启用背景模板，需要在参数 BackgroundTemplate 中指定一个背景名称。
         :rtype: str
         """
         return self._Prompt
@@ -2073,6 +2079,18 @@ class ReplaceBackgroundRequest(AbstractModel):
     @Product.setter
     def Product(self, Product):
         self._Product = Product
+
+    @property
+    def BackgroundTemplate(self):
+        """背景模板。
+仅当 Prompt = "BackgroundTemplate" 时生效，可支持的模板详见 [商品背景模板列表](https://cloud.tencent.com/document/product/1668/115391) ，请传入字段“背景名称”中的值。
+        :rtype: str
+        """
+        return self._BackgroundTemplate
+
+    @BackgroundTemplate.setter
+    def BackgroundTemplate(self, BackgroundTemplate):
+        self._BackgroundTemplate = BackgroundTemplate
 
     @property
     def MaskUrl(self):
@@ -2146,6 +2164,7 @@ class ReplaceBackgroundRequest(AbstractModel):
         self._Prompt = params.get("Prompt")
         self._NegativePrompt = params.get("NegativePrompt")
         self._Product = params.get("Product")
+        self._BackgroundTemplate = params.get("BackgroundTemplate")
         self._MaskUrl = params.get("MaskUrl")
         self._Resolution = params.get("Resolution")
         self._LogoAdd = params.get("LogoAdd")

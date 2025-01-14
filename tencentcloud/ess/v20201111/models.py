@@ -3960,7 +3960,6 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         :type FailMessages: list of str
         :param _UrlExpireOn: 签署连接过期时间字符串：年月日-时分秒
 
-例如:2023-07-28 17:25:59
         :type UrlExpireOn: str
         :param _TaskId: 批量撤销任务编号，为32位字符串，可用于[查询批量撤销签署流程任务结果](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl) 或关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
         :type TaskId: str
@@ -4000,7 +3999,6 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
     def UrlExpireOn(self):
         """签署连接过期时间字符串：年月日-时分秒
 
-例如:2023-07-28 17:25:59
         :rtype: str
         """
         return self._UrlExpireOn
@@ -9478,6 +9476,12 @@ class CreateFlowSignUrlRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _FlowApproverInfos: 流程签署人列表中，结构体的ApproverName、ApproverMobile和ApproverType为必传字段。如果是企业签署人，还需传递OrganizationName。
 
+此结构体和CreateFlow发起接口参与方结构体复用，除了上述参数外，可传递的参数有：
+1. RecipientId: 发起合同会返回，可以直接用于指定需要生成链接的签署方。
+2. ApproverSignTypes: 指定签署方签署时候的认证方式，仅此链接生效。
+3. SignTypeSelector: 可以指定签署方签署合同的认证校验方式的选择模式。
+4. Intention: 指定H5签署视频核身的意图配置，仅视频签署需要使用。
+
 注：
 1. 签署人<b>只能使用手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件</b>，其他类型的签署控件暂时不支持。
 2. 生成发起方预览链接时，该字段（FlowApproverInfos）可以传空或者不传。
@@ -9548,6 +9552,12 @@ class CreateFlowSignUrlRequest(AbstractModel):
     @property
     def FlowApproverInfos(self):
         """流程签署人列表中，结构体的ApproverName、ApproverMobile和ApproverType为必传字段。如果是企业签署人，还需传递OrganizationName。
+
+此结构体和CreateFlow发起接口参与方结构体复用，除了上述参数外，可传递的参数有：
+1. RecipientId: 发起合同会返回，可以直接用于指定需要生成链接的签署方。
+2. ApproverSignTypes: 指定签署方签署时候的认证方式，仅此链接生效。
+3. SignTypeSelector: 可以指定签署方签署合同的认证校验方式的选择模式。
+4. Intention: 指定H5签署视频核身的意图配置，仅视频签署需要使用。
 
 注：
 1. 签署人<b>只能使用手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件</b>，其他类型的签署控件暂时不支持。

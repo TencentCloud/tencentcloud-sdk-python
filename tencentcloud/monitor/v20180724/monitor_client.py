@@ -2974,7 +2974,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusRecordRuleYaml(self, request):
-        """通过yaml的方式修改Prometheus聚合实例
+        """通过yaml的方式修改Prometheus预聚合规则
 
         :param request: Request instance for ModifyPrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusRecordRuleYamlRequest`

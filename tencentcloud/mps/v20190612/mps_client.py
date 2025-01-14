@@ -474,6 +474,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStreamLinkSecurityGroup(self, request):
+        """创建安全组，数量限制5个。
+
+        :param request: Request instance for CreateStreamLinkSecurityGroup.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamLinkSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamLinkSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTranscodeTemplate(self, request):
         """创建用户自定义转码模板，数量上限：1000
 
@@ -971,6 +994,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteStreamLinkSecurityGroup(self, request):
+        """删除安全组。
+
+        :param request: Request instance for DeleteStreamLinkSecurityGroup.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamLinkSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamLinkSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamLinkSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamLinkSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteTranscodeTemplate(self, request):
         """删除用户自定义转码模板。
 
@@ -1169,6 +1215,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeContentReviewTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeContentReviewTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGroupAttachFlowsById(self, request):
+        """根据安全组反差关联的Flow信息。
+
+        :param request: Request instance for DescribeGroupAttachFlowsById.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeGroupAttachFlowsByIdRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeGroupAttachFlowsByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroupAttachFlowsById", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupAttachFlowsByIdResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1638,6 +1707,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamLinkSecurityGroups(self, request):
+        """批量查询安全组信息。
+
+        :param request: Request instance for DescribeStreamLinkSecurityGroups.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamLinkSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskDetail(self, request):
         """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
 
@@ -1861,6 +1953,29 @@ class MpsClient(AbstractClient):
             body = self.call("DisableWorkflow", params, headers=headers)
             response = json.loads(body)
             model = models.DisableWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisassociateSecurityGroup(self, request):
+        """批量解绑安全组下面关联的输入输出。
+
+        :param request: Request instance for DisassociateSecurityGroup.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DisassociateSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DisassociateSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateSecurityGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2358,6 +2473,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifyStreamLinkOutputInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyStreamLinkOutputInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamLinkSecurityGroup(self, request):
+        """更新安全组。
+
+        :param request: Request instance for ModifyStreamLinkSecurityGroup.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamLinkSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamLinkSecurityGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

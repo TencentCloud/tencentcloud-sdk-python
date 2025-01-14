@@ -791,25 +791,18 @@ class BackupTableContent(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: 数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: 表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _TotalBytes: 表总字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalBytes: int
         :param _SingleReplicaBytes: 表单个副本的大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type SingleReplicaBytes: str
         :param _BackupStatus: 备份状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupStatus: int
         :param _BackupErrorMsg: 备份的错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupErrorMsg: str
         :param _IsOpenCoolDown: 该库表是否绑定降冷策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsOpenCoolDown: bool
         """
         self._Database = None
@@ -823,7 +816,6 @@ class BackupTableContent(AbstractModel):
     @property
     def Database(self):
         """数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Database
@@ -835,7 +827,6 @@ class BackupTableContent(AbstractModel):
     @property
     def Table(self):
         """表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -847,7 +838,6 @@ class BackupTableContent(AbstractModel):
     @property
     def TotalBytes(self):
         """表总字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalBytes
@@ -859,7 +849,6 @@ class BackupTableContent(AbstractModel):
     @property
     def SingleReplicaBytes(self):
         """表单个副本的大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SingleReplicaBytes
@@ -871,7 +860,6 @@ class BackupTableContent(AbstractModel):
     @property
     def BackupStatus(self):
         """备份状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackupStatus
@@ -883,7 +871,6 @@ class BackupTableContent(AbstractModel):
     @property
     def BackupErrorMsg(self):
         """备份的错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BackupErrorMsg
@@ -895,7 +882,6 @@ class BackupTableContent(AbstractModel):
     @property
     def IsOpenCoolDown(self):
         """该库表是否绑定降冷策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsOpenCoolDown
@@ -1082,16 +1068,12 @@ class ChargeProperties(AbstractModel):
     def __init__(self):
         r"""
         :param _ChargeType: 计费类型，“PREPAID” 预付费，“POSTPAID_BY_HOUR” 后付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: str
         :param _RenewFlag: 是否自动续费，1表示自动续费开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _TimeSpan: 计费时间长度
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
         :param _TimeUnit: 计费时间单位，“m”表示月等
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         """
         self._ChargeType = None
@@ -1102,7 +1084,6 @@ class ChargeProperties(AbstractModel):
     @property
     def ChargeType(self):
         """计费类型，“PREPAID” 预付费，“POSTPAID_BY_HOUR” 后付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeType
@@ -1114,7 +1095,6 @@ class ChargeProperties(AbstractModel):
     @property
     def RenewFlag(self):
         """是否自动续费，1表示自动续费开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RenewFlag
@@ -1126,7 +1106,6 @@ class ChargeProperties(AbstractModel):
     @property
     def TimeSpan(self):
         """计费时间长度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TimeSpan
@@ -1138,7 +1117,6 @@ class ChargeProperties(AbstractModel):
     @property
     def TimeUnit(self):
         """计费时间单位，“m”表示月等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeUnit
@@ -1207,7 +1185,6 @@ class CheckCoolDownWorkingVariableConfigCorrectResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1218,7 +1195,6 @@ class CheckCoolDownWorkingVariableConfigCorrectResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -1258,7 +1234,6 @@ class ClusterConfigsHistory(AbstractModel):
         :param _OldConfValue: 修改前的配置文件内容，base64编码
         :type OldConfValue: str
         :param _Remark: 修改原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _ModifyTime: 修改时间
         :type ModifyTime: str
@@ -1308,7 +1283,6 @@ class ClusterConfigsHistory(AbstractModel):
     @property
     def Remark(self):
         """修改原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -1375,13 +1349,11 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
         :param _NeedRestart: 用于表示当前配置文件是不是有过修改后没有重启，提醒用户需要重启
         :type NeedRestart: int
         :param _FilePath: 配置文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilePath: str
         :param _FileKeyValues: 配置文件kv值
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileKeyValues: str
         :param _FileKeyValuesNew: 配置文件kv值
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileKeyValuesNew: list of ConfigKeyValue
         """
         self._FileName = None
@@ -1451,7 +1423,6 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
     @property
     def FilePath(self):
         """配置文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FilePath
@@ -1479,7 +1450,6 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
     @property
     def FileKeyValuesNew(self):
         """配置文件kv值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConfigKeyValue
         """
         return self._FileKeyValuesNew
@@ -1521,19 +1491,14 @@ class ConfigKeyValue(AbstractModel):
     def __init__(self):
         r"""
         :param _KeyName: key
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyName: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Message: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Display: 1-只读，2-可修改但不可删除，3-可删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type Display: int
         :param _SupportHotUpdate: 0不支持 1支持热更新
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportHotUpdate: int
         """
         self._KeyName = None
@@ -1545,7 +1510,6 @@ class ConfigKeyValue(AbstractModel):
     @property
     def KeyName(self):
         """key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeyName
@@ -1557,7 +1521,6 @@ class ConfigKeyValue(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -1569,7 +1532,6 @@ class ConfigKeyValue(AbstractModel):
     @property
     def Message(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -1581,7 +1543,6 @@ class ConfigKeyValue(AbstractModel):
     @property
     def Display(self):
         """1-只读，2-可修改但不可删除，3-可删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Display
@@ -1593,7 +1554,6 @@ class ConfigKeyValue(AbstractModel):
     @property
     def SupportHotUpdate(self):
         """0不支持 1支持热更新
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SupportHotUpdate
@@ -1708,16 +1668,12 @@ class CoolDownBackend(AbstractModel):
     def __init__(self):
         r"""
         :param _Host: 字段：Host
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         :param _DataUsedCapacity: 字段：DataUsedCapacity
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataUsedCapacity: str
         :param _TotalCapacity: 字段：TotalCapacity
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCapacity: str
         :param _RemoteUsedCapacity: 字段：RemoteUsedCapacity
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteUsedCapacity: str
         """
         self._Host = None
@@ -1728,7 +1684,6 @@ class CoolDownBackend(AbstractModel):
     @property
     def Host(self):
         """字段：Host
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -1740,7 +1695,6 @@ class CoolDownBackend(AbstractModel):
     @property
     def DataUsedCapacity(self):
         """字段：DataUsedCapacity
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataUsedCapacity
@@ -1752,7 +1706,6 @@ class CoolDownBackend(AbstractModel):
     @property
     def TotalCapacity(self):
         """字段：TotalCapacity
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TotalCapacity
@@ -1764,7 +1717,6 @@ class CoolDownBackend(AbstractModel):
     @property
     def RemoteUsedCapacity(self):
         """字段：RemoteUsedCapacity
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemoteUsedCapacity
@@ -1797,13 +1749,10 @@ class CoolDownPolicyInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyName: 策略名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         :param _CooldownDatetime: cooldown_ttl
-注意：此字段可能返回 null，表示取不到有效值。
         :type CooldownDatetime: str
         :param _CooldownTtl: cooldown_datetime
-注意：此字段可能返回 null，表示取不到有效值。
         :type CooldownTtl: str
         """
         self._PolicyName = None
@@ -1813,7 +1762,6 @@ class CoolDownPolicyInfo(AbstractModel):
     @property
     def PolicyName(self):
         """策略名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -1825,7 +1773,6 @@ class CoolDownPolicyInfo(AbstractModel):
     @property
     def CooldownDatetime(self):
         """cooldown_ttl
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CooldownDatetime
@@ -1837,7 +1784,6 @@ class CoolDownPolicyInfo(AbstractModel):
     @property
     def CooldownTtl(self):
         """cooldown_datetime
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CooldownTtl
@@ -1869,16 +1815,12 @@ class CoolDownTableDataInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DatabaseName: 列：DatabaseName
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
         :param _TableName: 列：TableName
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _Size: 列：Size
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: str
         :param _RemoteSize: 列：RemoteSize
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteSize: str
         """
         self._DatabaseName = None
@@ -1889,7 +1831,6 @@ class CoolDownTableDataInfo(AbstractModel):
     @property
     def DatabaseName(self):
         """列：DatabaseName
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseName
@@ -1901,7 +1842,6 @@ class CoolDownTableDataInfo(AbstractModel):
     @property
     def TableName(self):
         """列：TableName
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -1913,7 +1853,6 @@ class CoolDownTableDataInfo(AbstractModel):
     @property
     def Size(self):
         """列：Size
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Size
@@ -1925,7 +1864,6 @@ class CoolDownTableDataInfo(AbstractModel):
     @property
     def RemoteSize(self):
         """列：RemoteSize
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemoteSize
@@ -1958,13 +1896,10 @@ class CosSourceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SecretId: cos认证中的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretId: str
         :param _SecretKey: cos认证中的key
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param _CosPath: cos认证中的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosPath: str
         """
         self._SecretId = None
@@ -1974,7 +1909,6 @@ class CosSourceInfo(AbstractModel):
     @property
     def SecretId(self):
         """cos认证中的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecretId
@@ -1986,7 +1920,6 @@ class CosSourceInfo(AbstractModel):
     @property
     def SecretKey(self):
         """cos认证中的key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecretKey
@@ -1998,7 +1931,6 @@ class CosSourceInfo(AbstractModel):
     @property
     def CosPath(self):
         """cos认证中的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosPath
@@ -2320,7 +2252,6 @@ class CreateBackUpScheduleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2331,7 +2262,6 @@ class CreateBackUpScheduleResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -2446,7 +2376,6 @@ class CreateCoolDownPolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2457,7 +2386,6 @@ class CreateCoolDownPolicyResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -2991,47 +2919,35 @@ class DataBaseAuditRecord(AbstractModel):
     def __init__(self):
         r"""
         :param _OsUser: 查询用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type OsUser: str
         :param _InitialQueryId: 查询ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InitialQueryId: str
         :param _Sql: SQL语句
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sql: str
         :param _QueryStartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueryStartTime: str
         :param _DurationMs: 执行耗时
-注意：此字段可能返回 null，表示取不到有效值。
         :type DurationMs: int
         :param _ReadRows: 读取行数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadRows: int
         :param _ResultRows: 读取字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultRows: int
         :param _ResultBytes: 结果字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultBytes: int
         :param _MemoryUsage: 内存
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemoryUsage: int
         :param _InitialAddress: 初始查询IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type InitialAddress: str
         :param _DbName: 数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         :param _SqlType: sql类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type SqlType: str
         :param _Catalog: catalog名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Catalog: str
         :param _State: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
+        :param _IsQuery: 是否是查询
+        :type IsQuery: bool
         """
         self._OsUser = None
         self._InitialQueryId = None
@@ -3047,11 +2963,11 @@ class DataBaseAuditRecord(AbstractModel):
         self._SqlType = None
         self._Catalog = None
         self._State = None
+        self._IsQuery = None
 
     @property
     def OsUser(self):
         """查询用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OsUser
@@ -3063,7 +2979,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def InitialQueryId(self):
         """查询ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InitialQueryId
@@ -3075,7 +2990,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def Sql(self):
         """SQL语句
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sql
@@ -3087,7 +3001,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def QueryStartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QueryStartTime
@@ -3099,7 +3012,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def DurationMs(self):
         """执行耗时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DurationMs
@@ -3111,7 +3023,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def ReadRows(self):
         """读取行数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReadRows
@@ -3123,7 +3034,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def ResultRows(self):
         """读取字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResultRows
@@ -3135,7 +3045,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def ResultBytes(self):
         """结果字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResultBytes
@@ -3147,7 +3056,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def MemoryUsage(self):
         """内存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MemoryUsage
@@ -3159,7 +3067,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def InitialAddress(self):
         """初始查询IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InitialAddress
@@ -3171,7 +3078,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def DbName(self):
         """数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbName
@@ -3183,7 +3089,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def SqlType(self):
         """sql类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SqlType
@@ -3195,7 +3100,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def Catalog(self):
         """catalog名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Catalog
@@ -3207,7 +3111,6 @@ class DataBaseAuditRecord(AbstractModel):
     @property
     def State(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._State
@@ -3215,6 +3118,17 @@ class DataBaseAuditRecord(AbstractModel):
     @State.setter
     def State(self, State):
         self._State = State
+
+    @property
+    def IsQuery(self):
+        """是否是查询
+        :rtype: bool
+        """
+        return self._IsQuery
+
+    @IsQuery.setter
+    def IsQuery(self, IsQuery):
+        self._IsQuery = IsQuery
 
 
     def _deserialize(self, params):
@@ -3232,6 +3146,7 @@ class DataBaseAuditRecord(AbstractModel):
         self._SqlType = params.get("SqlType")
         self._Catalog = params.get("Catalog")
         self._State = params.get("State")
+        self._IsQuery = params.get("IsQuery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5242,6 +5157,8 @@ class DescribeDatabaseAuditRecordsRequest(AbstractModel):
         :type SqlTypes: list of str
         :param _Catalogs: catalog名称（多选）
         :type Catalogs: list of str
+        :param _IsQuery: 是否是查询 
+        :type IsQuery: list of bool
         """
         self._InstanceId = None
         self._StartTime = None
@@ -5257,6 +5174,7 @@ class DescribeDatabaseAuditRecordsRequest(AbstractModel):
         self._DbNames = None
         self._SqlTypes = None
         self._Catalogs = None
+        self._IsQuery = None
 
     @property
     def InstanceId(self):
@@ -5412,6 +5330,17 @@ class DescribeDatabaseAuditRecordsRequest(AbstractModel):
     def Catalogs(self, Catalogs):
         self._Catalogs = Catalogs
 
+    @property
+    def IsQuery(self):
+        """是否是查询 
+        :rtype: list of bool
+        """
+        return self._IsQuery
+
+    @IsQuery.setter
+    def IsQuery(self, IsQuery):
+        self._IsQuery = IsQuery
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5428,6 +5357,7 @@ class DescribeDatabaseAuditRecordsRequest(AbstractModel):
         self._DbNames = params.get("DbNames")
         self._SqlTypes = params.get("SqlTypes")
         self._Catalogs = params.get("Catalogs")
+        self._IsQuery = params.get("IsQuery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5450,10 +5380,8 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         :param _SlowQueryRecords: 记录列表
         :type SlowQueryRecords: :class:`tencentcloud.cdwdoris.v20211228.models.DataBaseAuditRecord`
         :param _Records: 记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Records: list of DataBaseAuditRecord
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5489,7 +5417,6 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
     @property
     def Records(self):
         """记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataBaseAuditRecord
         """
         return self._Records
@@ -5501,7 +5428,6 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -14378,26 +14304,21 @@ class SlowQueryRecord(AbstractModel):
         :param _InitialAddress: 初始查询IP
         :type InitialAddress: str
         :param _DbName: 数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         :param _IsQuery: 是否是查询，0：否，1：查询语句
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsQuery: int
         :param _ResultBytesMB: ResultBytes的MB格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultBytesMB: float
         :param _MemoryUsageMB: MemoryUsage的MB表示
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemoryUsageMB: float
         :param _DurationSec: DurationMs的秒表示
-注意：此字段可能返回 null，表示取不到有效值。
         :type DurationSec: float
         :param _State: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         :param _CatalogName: Catalog  Name
-注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogName: str
+        :param _CpuTimeMs: cpu执行时间 
+        :type CpuTimeMs: int
         """
         self._OsUser = None
         self._InitialQueryId = None
@@ -14416,6 +14337,7 @@ class SlowQueryRecord(AbstractModel):
         self._DurationSec = None
         self._State = None
         self._CatalogName = None
+        self._CpuTimeMs = None
 
     @property
     def OsUser(self):
@@ -14530,7 +14452,6 @@ class SlowQueryRecord(AbstractModel):
     @property
     def DbName(self):
         """数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbName
@@ -14542,7 +14463,6 @@ class SlowQueryRecord(AbstractModel):
     @property
     def IsQuery(self):
         """是否是查询，0：否，1：查询语句
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsQuery
@@ -14554,7 +14474,6 @@ class SlowQueryRecord(AbstractModel):
     @property
     def ResultBytesMB(self):
         """ResultBytes的MB格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ResultBytesMB
@@ -14566,7 +14485,6 @@ class SlowQueryRecord(AbstractModel):
     @property
     def MemoryUsageMB(self):
         """MemoryUsage的MB表示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MemoryUsageMB
@@ -14578,7 +14496,6 @@ class SlowQueryRecord(AbstractModel):
     @property
     def DurationSec(self):
         """DurationMs的秒表示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DurationSec
@@ -14590,7 +14507,6 @@ class SlowQueryRecord(AbstractModel):
     @property
     def State(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._State
@@ -14602,7 +14518,6 @@ class SlowQueryRecord(AbstractModel):
     @property
     def CatalogName(self):
         """Catalog  Name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CatalogName
@@ -14610,6 +14525,17 @@ class SlowQueryRecord(AbstractModel):
     @CatalogName.setter
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
+
+    @property
+    def CpuTimeMs(self):
+        """cpu执行时间 
+        :rtype: int
+        """
+        return self._CpuTimeMs
+
+    @CpuTimeMs.setter
+    def CpuTimeMs(self, CpuTimeMs):
+        self._CpuTimeMs = CpuTimeMs
 
 
     def _deserialize(self, params):
@@ -14630,6 +14556,7 @@ class SlowQueryRecord(AbstractModel):
         self._DurationSec = params.get("DurationSec")
         self._State = params.get("State")
         self._CatalogName = params.get("CatalogName")
+        self._CpuTimeMs = params.get("CpuTimeMs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

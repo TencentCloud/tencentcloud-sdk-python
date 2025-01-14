@@ -1961,7 +1961,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
         :type MaxResults: int
         :param _AccountGroupId: 账号组ID
         :type AccountGroupId: str
-        :param _Filters: resourceName：资源名  resourceId ：资源ID
+        :param _Filters: resourceName：资源名  resourceId ：资源ID resourceType：资源类型
         :type Filters: list of Filter
         :param _Tags: 标签
         :type Tags: list of Tag
@@ -2001,7 +2001,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """resourceName：资源名  resourceId ：资源ID
+        """resourceName：资源名  resourceId ：资源ID resourceType：资源类型
         :rtype: list of Filter
         """
         return self._Filters

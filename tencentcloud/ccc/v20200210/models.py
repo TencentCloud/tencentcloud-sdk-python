@@ -1917,6 +1917,150 @@ class CompanyStateInfo(AbstractModel):
         
 
 
+class CreateAIAgentCallRequest(AbstractModel):
+    """CreateAIAgentCall请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _AIAgentId: AI智能体ID
+        :type AIAgentId: int
+        :param _Callee: 被叫号码
+        :type Callee: str
+        :param _Callers: 主叫号码列表
+        :type Callers: list of str
+        :param _PromptVariables: 提示词变量
+        :type PromptVariables: list of Variable
+        """
+        self._SdkAppId = None
+        self._AIAgentId = None
+        self._Callee = None
+        self._Callers = None
+        self._PromptVariables = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AIAgentId(self):
+        """AI智能体ID
+        :rtype: int
+        """
+        return self._AIAgentId
+
+    @AIAgentId.setter
+    def AIAgentId(self, AIAgentId):
+        self._AIAgentId = AIAgentId
+
+    @property
+    def Callee(self):
+        """被叫号码
+        :rtype: str
+        """
+        return self._Callee
+
+    @Callee.setter
+    def Callee(self, Callee):
+        self._Callee = Callee
+
+    @property
+    def Callers(self):
+        """主叫号码列表
+        :rtype: list of str
+        """
+        return self._Callers
+
+    @Callers.setter
+    def Callers(self, Callers):
+        self._Callers = Callers
+
+    @property
+    def PromptVariables(self):
+        """提示词变量
+        :rtype: list of Variable
+        """
+        return self._PromptVariables
+
+    @PromptVariables.setter
+    def PromptVariables(self, PromptVariables):
+        self._PromptVariables = PromptVariables
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._AIAgentId = params.get("AIAgentId")
+        self._Callee = params.get("Callee")
+        self._Callers = params.get("Callers")
+        if params.get("PromptVariables") is not None:
+            self._PromptVariables = []
+            for item in params.get("PromptVariables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._PromptVariables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIAgentCallResponse(AbstractModel):
+    """CreateAIAgentCall返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 新创建的会话 ID
+        :type SessionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def SessionId(self):
+        """新创建的会话 ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAICallRequest(AbstractModel):
     """CreateAICall请求参数结构体
 
@@ -2138,6 +2282,8 @@ HoaiMy
         :type CustomTTSConfig: str
         :param _PromptVariables: 提示词变量
         :type PromptVariables: list of Variable
+        :param _VadSilenceTime: 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+        :type VadSilenceTime: int
         """
         self._SdkAppId = None
         self._Callee = None
@@ -2163,6 +2309,7 @@ HoaiMy
         self._NotifyMaxCount = None
         self._CustomTTSConfig = None
         self._PromptVariables = None
+        self._VadSilenceTime = None
 
     @property
     def SdkAppId(self):
@@ -2594,6 +2741,17 @@ HoaiMy
     def PromptVariables(self, PromptVariables):
         self._PromptVariables = PromptVariables
 
+    @property
+    def VadSilenceTime(self):
+        """语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+        :rtype: int
+        """
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -2630,6 +2788,7 @@ HoaiMy
                 obj = Variable()
                 obj._deserialize(item)
                 self._PromptVariables.append(obj)
+        self._VadSilenceTime = params.get("VadSilenceTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

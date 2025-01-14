@@ -235,7 +235,7 @@ class CatClient(AbstractClient):
 
 
     def SuspendProbeTask(self, request):
-        """暂停拨测任务
+        """暂停任务
 
         :param request: Request instance for SuspendProbeTask.
         :type request: :class:`tencentcloud.cat.v20180409.models.SuspendProbeTaskRequest`

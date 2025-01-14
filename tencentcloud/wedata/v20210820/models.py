@@ -10624,6 +10624,8 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         :type DataOptimizationResource: str
         :param _SmartOptimizerWritten: 是否开启数据优化
         :type SmartOptimizerWritten: str
+        :param _TableName: 数据优化表名
+        :type TableName: str
         """
         self._DatasourceId = None
         self._Database = None
@@ -10636,6 +10638,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._Async = None
         self._DataOptimizationResource = None
         self._SmartOptimizerWritten = None
+        self._TableName = None
 
     @property
     def DatasourceId(self):
@@ -10758,6 +10761,17 @@ class CreateHiveTableByDDLRequest(AbstractModel):
     def SmartOptimizerWritten(self, SmartOptimizerWritten):
         self._SmartOptimizerWritten = SmartOptimizerWritten
 
+    @property
+    def TableName(self):
+        """数据优化表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -10771,6 +10785,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._Async = params.get("Async")
         self._DataOptimizationResource = params.get("DataOptimizationResource")
         self._SmartOptimizerWritten = params.get("SmartOptimizerWritten")
+        self._TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10862,6 +10877,8 @@ class CreateHiveTableRequest(AbstractModel):
         :type DataOptimizationResource: str
         :param _SmartOptimizerWritten: 是否开启数据优化
         :type SmartOptimizerWritten: str
+        :param _TableName: 数据优化针对的表
+        :type TableName: str
         """
         self._DatasourceId = None
         self._Database = None
@@ -10871,6 +10888,7 @@ class CreateHiveTableRequest(AbstractModel):
         self._Incharge = None
         self._DataOptimizationResource = None
         self._SmartOptimizerWritten = None
+        self._TableName = None
 
     @property
     def DatasourceId(self):
@@ -10960,6 +10978,17 @@ class CreateHiveTableRequest(AbstractModel):
     def SmartOptimizerWritten(self, SmartOptimizerWritten):
         self._SmartOptimizerWritten = SmartOptimizerWritten
 
+    @property
+    def TableName(self):
+        """数据优化针对的表
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -10970,6 +10999,7 @@ class CreateHiveTableRequest(AbstractModel):
         self._Incharge = params.get("Incharge")
         self._DataOptimizationResource = params.get("DataOptimizationResource")
         self._SmartOptimizerWritten = params.get("SmartOptimizerWritten")
+        self._TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13332,11 +13362,18 @@ class CreateWorkflowDsRequest(AbstractModel):
         :type FolderId: str
         :param _WorkflowDesc: 工作流描述
         :type WorkflowDesc: str
+        :param _WorkflowType: 工作流类型,取值示例
+
+- cycle 周期工作流
+- manual 手动工作流
+
+        :type WorkflowType: str
         """
         self._ProjectId = None
         self._WorkflowName = None
         self._FolderId = None
         self._WorkflowDesc = None
+        self._WorkflowType = None
 
     @property
     def ProjectId(self):
@@ -13382,12 +13419,28 @@ class CreateWorkflowDsRequest(AbstractModel):
     def WorkflowDesc(self, WorkflowDesc):
         self._WorkflowDesc = WorkflowDesc
 
+    @property
+    def WorkflowType(self):
+        """工作流类型,取值示例
+
+- cycle 周期工作流
+- manual 手动工作流
+
+        :rtype: str
+        """
+        return self._WorkflowType
+
+    @WorkflowType.setter
+    def WorkflowType(self, WorkflowType):
+        self._WorkflowType = WorkflowType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._WorkflowName = params.get("WorkflowName")
         self._FolderId = params.get("FolderId")
         self._WorkflowDesc = params.get("WorkflowDesc")
+        self._WorkflowType = params.get("WorkflowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23009,6 +23062,11 @@ false 否
         :type NewFolderTreeMode: bool
         :param _TaskNodeId: 节点分类ID
         :type TaskNodeId: str
+        :param _WorkflowType: 工作流类型, 使用场景: 任务复制,选择工作流. 取值范围
+
+- cycle    周期工作流
+- manual    手动工作流
+        :type WorkflowType: str
         """
         self._ProjectId = None
         self._FirstLevelPull = None
@@ -23023,6 +23081,7 @@ false 否
         self._IncludeTaskFolder = None
         self._NewFolderTreeMode = None
         self._TaskNodeId = None
+        self._WorkflowType = None
 
     @property
     def ProjectId(self):
@@ -23171,6 +23230,20 @@ false 否
     def TaskNodeId(self, TaskNodeId):
         self._TaskNodeId = TaskNodeId
 
+    @property
+    def WorkflowType(self):
+        """工作流类型, 使用场景: 任务复制,选择工作流. 取值范围
+
+- cycle    周期工作流
+- manual    手动工作流
+        :rtype: str
+        """
+        return self._WorkflowType
+
+    @WorkflowType.setter
+    def WorkflowType(self, WorkflowType):
+        self._WorkflowType = WorkflowType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -23186,6 +23259,7 @@ false 否
         self._IncludeTaskFolder = params.get("IncludeTaskFolder")
         self._NewFolderTreeMode = params.get("NewFolderTreeMode")
         self._TaskNodeId = params.get("TaskNodeId")
+        self._WorkflowType = params.get("WorkflowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25360,6 +25434,16 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
         :type ExtInfo: str
         :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
         :type RequestFromSource: str
+        :param _InstanceLifeDetailDtoList: 生命周期为基础数据进行日志匹配
+        :type InstanceLifeDetailDtoList: list of InstanceLifeDetailDto
+        :param _CurrentLifeRound: 当前生命周期
+        :type CurrentLifeRound: int
+        :param _MaxLifeRound: 生命周期总数
+        :type MaxLifeRound: int
+        :param _Tries: 当前生命周期重试次数
+        :type Tries: int
+        :param _Dynamic: 动态加载日志
+        :type Dynamic: bool
         """
         self._ProjectId = None
         self._TaskId = None
@@ -25373,6 +25457,11 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
         self._LineCount = None
         self._ExtInfo = None
         self._RequestFromSource = None
+        self._InstanceLifeDetailDtoList = None
+        self._CurrentLifeRound = None
+        self._MaxLifeRound = None
+        self._Tries = None
+        self._Dynamic = None
 
     @property
     def ProjectId(self):
@@ -25506,6 +25595,61 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
     def RequestFromSource(self, RequestFromSource):
         self._RequestFromSource = RequestFromSource
 
+    @property
+    def InstanceLifeDetailDtoList(self):
+        """生命周期为基础数据进行日志匹配
+        :rtype: list of InstanceLifeDetailDto
+        """
+        return self._InstanceLifeDetailDtoList
+
+    @InstanceLifeDetailDtoList.setter
+    def InstanceLifeDetailDtoList(self, InstanceLifeDetailDtoList):
+        self._InstanceLifeDetailDtoList = InstanceLifeDetailDtoList
+
+    @property
+    def CurrentLifeRound(self):
+        """当前生命周期
+        :rtype: int
+        """
+        return self._CurrentLifeRound
+
+    @CurrentLifeRound.setter
+    def CurrentLifeRound(self, CurrentLifeRound):
+        self._CurrentLifeRound = CurrentLifeRound
+
+    @property
+    def MaxLifeRound(self):
+        """生命周期总数
+        :rtype: int
+        """
+        return self._MaxLifeRound
+
+    @MaxLifeRound.setter
+    def MaxLifeRound(self, MaxLifeRound):
+        self._MaxLifeRound = MaxLifeRound
+
+    @property
+    def Tries(self):
+        """当前生命周期重试次数
+        :rtype: int
+        """
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def Dynamic(self):
+        """动态加载日志
+        :rtype: bool
+        """
+        return self._Dynamic
+
+    @Dynamic.setter
+    def Dynamic(self, Dynamic):
+        self._Dynamic = Dynamic
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -25520,6 +25664,16 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
         self._LineCount = params.get("LineCount")
         self._ExtInfo = params.get("ExtInfo")
         self._RequestFromSource = params.get("RequestFromSource")
+        if params.get("InstanceLifeDetailDtoList") is not None:
+            self._InstanceLifeDetailDtoList = []
+            for item in params.get("InstanceLifeDetailDtoList"):
+                obj = InstanceLifeDetailDto()
+                obj._deserialize(item)
+                self._InstanceLifeDetailDtoList.append(obj)
+        self._CurrentLifeRound = params.get("CurrentLifeRound")
+        self._MaxLifeRound = params.get("MaxLifeRound")
+        self._Tries = params.get("Tries")
+        self._Dynamic = params.get("Dynamic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25602,6 +25756,14 @@ class DescribeInstanceLogFileRequest(AbstractModel):
         :type LogLevelType: str
         :param _ExecutionFileType: 文件类型,Log/Code
         :type ExecutionFileType: str
+        :param _InstanceLifeDetailDtoList: 生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用
+        :type InstanceLifeDetailDtoList: list of InstanceLifeDetailDto
+        :param _CurrentLifeRound: 当前生命周期数
+        :type CurrentLifeRound: int
+        :param _Tries: 当前生命周期重试次数
+        :type Tries: int
+        :param _Dynamic: 动态获取日志信息标识
+        :type Dynamic: bool
         """
         self._ProjectId = None
         self._TaskId = None
@@ -25612,6 +25774,10 @@ class DescribeInstanceLogFileRequest(AbstractModel):
         self._ExecutionJobId = None
         self._LogLevelType = None
         self._ExecutionFileType = None
+        self._InstanceLifeDetailDtoList = None
+        self._CurrentLifeRound = None
+        self._Tries = None
+        self._Dynamic = None
 
     @property
     def ProjectId(self):
@@ -25712,6 +25878,50 @@ class DescribeInstanceLogFileRequest(AbstractModel):
     def ExecutionFileType(self, ExecutionFileType):
         self._ExecutionFileType = ExecutionFileType
 
+    @property
+    def InstanceLifeDetailDtoList(self):
+        """生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用
+        :rtype: list of InstanceLifeDetailDto
+        """
+        return self._InstanceLifeDetailDtoList
+
+    @InstanceLifeDetailDtoList.setter
+    def InstanceLifeDetailDtoList(self, InstanceLifeDetailDtoList):
+        self._InstanceLifeDetailDtoList = InstanceLifeDetailDtoList
+
+    @property
+    def CurrentLifeRound(self):
+        """当前生命周期数
+        :rtype: int
+        """
+        return self._CurrentLifeRound
+
+    @CurrentLifeRound.setter
+    def CurrentLifeRound(self, CurrentLifeRound):
+        self._CurrentLifeRound = CurrentLifeRound
+
+    @property
+    def Tries(self):
+        """当前生命周期重试次数
+        :rtype: int
+        """
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def Dynamic(self):
+        """动态获取日志信息标识
+        :rtype: bool
+        """
+        return self._Dynamic
+
+    @Dynamic.setter
+    def Dynamic(self, Dynamic):
+        self._Dynamic = Dynamic
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -25723,6 +25933,15 @@ class DescribeInstanceLogFileRequest(AbstractModel):
         self._ExecutionJobId = params.get("ExecutionJobId")
         self._LogLevelType = params.get("LogLevelType")
         self._ExecutionFileType = params.get("ExecutionFileType")
+        if params.get("InstanceLifeDetailDtoList") is not None:
+            self._InstanceLifeDetailDtoList = []
+            for item in params.get("InstanceLifeDetailDtoList"):
+                obj = InstanceLifeDetailDto()
+                obj._deserialize(item)
+                self._InstanceLifeDetailDtoList.append(obj)
+        self._CurrentLifeRound = params.get("CurrentLifeRound")
+        self._Tries = params.get("Tries")
+        self._Dynamic = params.get("Dynamic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28739,6 +28958,10 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         :type SortType: str
         :param _ProjectIds: 项目ID列表，用于多项目工作流筛选
         :type ProjectIds: list of str
+        :param _WorkflowTypeList: 工作流类型列表 多个用英文逗号连接 cycle,manual. 默认只查询 cycle
+        :type WorkflowTypeList: list of str
+        :param _KeyWord: 工作流过滤keyword，支持工作流 id/name 模糊匹配， 多个用|分割
+        :type KeyWord: str
         """
         self._ProjectId = None
         self._ProductNameList = None
@@ -28754,6 +28977,8 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         self._SortItem = None
         self._SortType = None
         self._ProjectIds = None
+        self._WorkflowTypeList = None
+        self._KeyWord = None
 
     @property
     def ProjectId(self):
@@ -28909,6 +29134,28 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
     def ProjectIds(self, ProjectIds):
         self._ProjectIds = ProjectIds
 
+    @property
+    def WorkflowTypeList(self):
+        """工作流类型列表 多个用英文逗号连接 cycle,manual. 默认只查询 cycle
+        :rtype: list of str
+        """
+        return self._WorkflowTypeList
+
+    @WorkflowTypeList.setter
+    def WorkflowTypeList(self, WorkflowTypeList):
+        self._WorkflowTypeList = WorkflowTypeList
+
+    @property
+    def KeyWord(self):
+        """工作流过滤keyword，支持工作流 id/name 模糊匹配， 多个用|分割
+        :rtype: str
+        """
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -28925,6 +29172,8 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         self._SortItem = params.get("SortItem")
         self._SortType = params.get("SortType")
         self._ProjectIds = params.get("ProjectIds")
+        self._WorkflowTypeList = params.get("WorkflowTypeList")
+        self._KeyWord = params.get("KeyWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45270,6 +45519,9 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         :param _TaskId: 任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
+        :param _TaskName: 任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
         :param _CurRunDate: 数据时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurRunDate: str
@@ -45309,8 +45561,14 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         :param _InstanceRunType: 实例运行类型: 0: 普通运行, 1: 空跑运行
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceRunType: int
+        :param _TotalLifeRound: 实例当前总生命周期数
+        :type TotalLifeRound: int
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
         """
         self._TaskId = None
+        self._TaskName = None
         self._CurRunDate = None
         self._LifeRound = None
         self._RunType = None
@@ -45324,6 +45582,8 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         self._ScheduleRunType = None
         self._ExecutionJobId = None
         self._InstanceRunType = None
+        self._TotalLifeRound = None
+        self._TaskType = None
 
     @property
     def TaskId(self):
@@ -45336,6 +45596,18 @@ class InstanceLifeCycleOpsDto(AbstractModel):
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        """任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
 
     @property
     def CurRunDate(self):
@@ -45493,9 +45765,33 @@ class InstanceLifeCycleOpsDto(AbstractModel):
     def InstanceRunType(self, InstanceRunType):
         self._InstanceRunType = InstanceRunType
 
+    @property
+    def TotalLifeRound(self):
+        """实例当前总生命周期数
+        :rtype: int
+        """
+        return self._TotalLifeRound
+
+    @TotalLifeRound.setter
+    def TotalLifeRound(self, TotalLifeRound):
+        self._TotalLifeRound = TotalLifeRound
+
+    @property
+    def TaskType(self):
+        """任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
         self._CurRunDate = params.get("CurRunDate")
         self._LifeRound = params.get("LifeRound")
         self._RunType = params.get("RunType")
@@ -45516,6 +45812,10 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         self._ScheduleRunType = params.get("ScheduleRunType")
         self._ExecutionJobId = params.get("ExecutionJobId")
         self._InstanceRunType = params.get("InstanceRunType")
+        self._TotalLifeRound = params.get("TotalLifeRound")
+        if params.get("TaskType") is not None:
+            self._TaskType = TaskTypeOpsDto()
+            self._TaskType._deserialize(params.get("TaskType"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46155,6 +46455,8 @@ class InstanceLogInfoOpsDto(AbstractModel):
         :param _FileSize: 文件大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: str
+        :param _MatchedBrokerIp: 日志匹配节点信息
+        :type MatchedBrokerIp: str
         """
         self._LogInfo = None
         self._YarnLogInfo = None
@@ -46165,6 +46467,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
         self._ExtInfo = None
         self._IsEnd = None
         self._FileSize = None
+        self._MatchedBrokerIp = None
 
     @property
     def LogInfo(self):
@@ -46274,6 +46577,17 @@ class InstanceLogInfoOpsDto(AbstractModel):
     def FileSize(self, FileSize):
         self._FileSize = FileSize
 
+    @property
+    def MatchedBrokerIp(self):
+        """日志匹配节点信息
+        :rtype: str
+        """
+        return self._MatchedBrokerIp
+
+    @MatchedBrokerIp.setter
+    def MatchedBrokerIp(self, MatchedBrokerIp):
+        self._MatchedBrokerIp = MatchedBrokerIp
+
 
     def _deserialize(self, params):
         self._LogInfo = params.get("LogInfo")
@@ -46285,6 +46599,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
         self._ExtInfo = params.get("ExtInfo")
         self._IsEnd = params.get("IsEnd")
         self._FileSize = params.get("FileSize")
+        self._MatchedBrokerIp = params.get("MatchedBrokerIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51297,6 +51612,11 @@ class MakePlanOpsDto(AbstractModel):
         :param _SelfWorkflowDependency: 工作流自依赖类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfWorkflowDependency: str
+        :param _MakeDataTimeOrder: 补录时间顺序
+NORMAL： 正常
+ORDER ： 按照实例时间顺序执行
+REVERSE： 实例数据时间逆序
+        :type MakeDataTimeOrder: str
         """
         self._PlanId = None
         self._MakeName = None
@@ -51325,6 +51645,7 @@ class MakePlanOpsDto(AbstractModel):
         self._CheckParentType = None
         self._SameSelfWorkflowDependType = None
         self._SelfWorkflowDependency = None
+        self._MakeDataTimeOrder = None
 
     @property
     def PlanId(self):
@@ -51653,6 +51974,20 @@ class MakePlanOpsDto(AbstractModel):
     def SelfWorkflowDependency(self, SelfWorkflowDependency):
         self._SelfWorkflowDependency = SelfWorkflowDependency
 
+    @property
+    def MakeDataTimeOrder(self):
+        """补录时间顺序
+NORMAL： 正常
+ORDER ： 按照实例时间顺序执行
+REVERSE： 实例数据时间逆序
+        :rtype: str
+        """
+        return self._MakeDataTimeOrder
+
+    @MakeDataTimeOrder.setter
+    def MakeDataTimeOrder(self, MakeDataTimeOrder):
+        self._MakeDataTimeOrder = MakeDataTimeOrder
+
 
     def _deserialize(self, params):
         self._PlanId = params.get("PlanId")
@@ -51692,6 +52027,7 @@ class MakePlanOpsDto(AbstractModel):
         self._CheckParentType = params.get("CheckParentType")
         self._SameSelfWorkflowDependType = params.get("SameSelfWorkflowDependType")
         self._SelfWorkflowDependency = params.get("SelfWorkflowDependency")
+        self._MakeDataTimeOrder = params.get("MakeDataTimeOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66902,6 +67238,20 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         :type IsCount: bool
         :param _AsyncMode: 是否异步模式
         :type AsyncMode: bool
+        :param _CheckParentType: 是否检查上游任务： ALL（全部）、 MAKE_SCOPE（选中）、NONE （全部不检查）
+        :type CheckParentType: str
+        :param _SameSelfDependType: 任务原有自依赖配置 true（是）、false（否）
+        :type SameSelfDependType: bool
+        :param _ParallelNum: 实例运行并发度
+        :type ParallelNum: int
+        :param _SameSelfWorkflowDependType: 任务原有自依赖配置 true（是）、false（否）
+        :type SameSelfWorkflowDependType: bool
+        :param _SelfWorkflowDependency: 代表重新指定 的  是 或者 否  yes、 no
+        :type SelfWorkflowDependency: str
+        :param _DataTimeOrder: 运行实例数据时间排序 0---正常  1--正序  2 – 逆序
+        :type DataTimeOrder: int
+        :param _ReDoParams: 重跑参数
+        :type ReDoParams: str
         """
         self._Instances = None
         self._CheckFather = None
@@ -66922,6 +67272,13 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         self._RequestBaseInfo = None
         self._IsCount = None
         self._AsyncMode = None
+        self._CheckParentType = None
+        self._SameSelfDependType = None
+        self._ParallelNum = None
+        self._SameSelfWorkflowDependType = None
+        self._SelfWorkflowDependency = None
+        self._DataTimeOrder = None
+        self._ReDoParams = None
 
     @property
     def Instances(self):
@@ -67132,6 +67489,83 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
     def AsyncMode(self, AsyncMode):
         self._AsyncMode = AsyncMode
 
+    @property
+    def CheckParentType(self):
+        """是否检查上游任务： ALL（全部）、 MAKE_SCOPE（选中）、NONE （全部不检查）
+        :rtype: str
+        """
+        return self._CheckParentType
+
+    @CheckParentType.setter
+    def CheckParentType(self, CheckParentType):
+        self._CheckParentType = CheckParentType
+
+    @property
+    def SameSelfDependType(self):
+        """任务原有自依赖配置 true（是）、false（否）
+        :rtype: bool
+        """
+        return self._SameSelfDependType
+
+    @SameSelfDependType.setter
+    def SameSelfDependType(self, SameSelfDependType):
+        self._SameSelfDependType = SameSelfDependType
+
+    @property
+    def ParallelNum(self):
+        """实例运行并发度
+        :rtype: int
+        """
+        return self._ParallelNum
+
+    @ParallelNum.setter
+    def ParallelNum(self, ParallelNum):
+        self._ParallelNum = ParallelNum
+
+    @property
+    def SameSelfWorkflowDependType(self):
+        """任务原有自依赖配置 true（是）、false（否）
+        :rtype: bool
+        """
+        return self._SameSelfWorkflowDependType
+
+    @SameSelfWorkflowDependType.setter
+    def SameSelfWorkflowDependType(self, SameSelfWorkflowDependType):
+        self._SameSelfWorkflowDependType = SameSelfWorkflowDependType
+
+    @property
+    def SelfWorkflowDependency(self):
+        """代表重新指定 的  是 或者 否  yes、 no
+        :rtype: str
+        """
+        return self._SelfWorkflowDependency
+
+    @SelfWorkflowDependency.setter
+    def SelfWorkflowDependency(self, SelfWorkflowDependency):
+        self._SelfWorkflowDependency = SelfWorkflowDependency
+
+    @property
+    def DataTimeOrder(self):
+        """运行实例数据时间排序 0---正常  1--正序  2 – 逆序
+        :rtype: int
+        """
+        return self._DataTimeOrder
+
+    @DataTimeOrder.setter
+    def DataTimeOrder(self, DataTimeOrder):
+        self._DataTimeOrder = DataTimeOrder
+
+    @property
+    def ReDoParams(self):
+        """重跑参数
+        :rtype: str
+        """
+        return self._ReDoParams
+
+    @ReDoParams.setter
+    def ReDoParams(self, ReDoParams):
+        self._ReDoParams = ReDoParams
+
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
@@ -67162,6 +67596,13 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
             self._RequestBaseInfo._deserialize(params.get("RequestBaseInfo"))
         self._IsCount = params.get("IsCount")
         self._AsyncMode = params.get("AsyncMode")
+        self._CheckParentType = params.get("CheckParentType")
+        self._SameSelfDependType = params.get("SameSelfDependType")
+        self._ParallelNum = params.get("ParallelNum")
+        self._SameSelfWorkflowDependType = params.get("SameSelfWorkflowDependType")
+        self._SelfWorkflowDependency = params.get("SelfWorkflowDependency")
+        self._DataTimeOrder = params.get("DataTimeOrder")
+        self._ReDoParams = params.get("ReDoParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -82307,6 +82748,9 @@ class WorkflowCanvasOpsDto(AbstractModel):
         :param _OwnerId: 责任人UserId
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerId: str
+        :param _WorkflowType: 工作流类型，周期cycle，手动manual
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowType: str
         """
         self._WorkflowId = None
         self._WorkflowDesc = None
@@ -82322,6 +82766,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
         self._ProjectName = None
         self._Owner = None
         self._OwnerId = None
+        self._WorkflowType = None
 
     @property
     def WorkflowId(self):
@@ -82491,6 +82936,18 @@ class WorkflowCanvasOpsDto(AbstractModel):
     def OwnerId(self, OwnerId):
         self._OwnerId = OwnerId
 
+    @property
+    def WorkflowType(self):
+        """工作流类型，周期cycle，手动manual
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowType
+
+    @WorkflowType.setter
+    def WorkflowType(self, WorkflowType):
+        self._WorkflowType = WorkflowType
+
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
@@ -82517,6 +82974,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
         self._ProjectName = params.get("ProjectName")
         self._Owner = params.get("Owner")
         self._OwnerId = params.get("OwnerId")
+        self._WorkflowType = params.get("WorkflowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -82576,6 +83034,9 @@ class WorkflowExtOpsDto(AbstractModel):
         :param _ModifyTime: 最近更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
+        :param _WorkflowType: 工作流类型，周期cycle，手动manual
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowType: str
         """
         self._TaskCount = None
         self._FolderName = None
@@ -82591,6 +83052,7 @@ class WorkflowExtOpsDto(AbstractModel):
         self._Status = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._WorkflowType = None
 
     @property
     def TaskCount(self):
@@ -82760,6 +83222,18 @@ class WorkflowExtOpsDto(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def WorkflowType(self):
+        """工作流类型，周期cycle，手动manual
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowType
+
+    @WorkflowType.setter
+    def WorkflowType(self, WorkflowType):
+        self._WorkflowType = WorkflowType
+
 
     def _deserialize(self, params):
         self._TaskCount = params.get("TaskCount")
@@ -82776,6 +83250,7 @@ class WorkflowExtOpsDto(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        self._WorkflowType = params.get("WorkflowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

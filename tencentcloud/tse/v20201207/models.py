@@ -27188,6 +27188,9 @@ class NativeGatewayServerGroup(AbstractModel):
         :param _DefaultWeight: 分组默认权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultWeight: int
+        :param _ElasticNumber: 弹性节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticNumber: int
         """
         self._GroupId = None
         self._Name = None
@@ -27202,6 +27205,7 @@ class NativeGatewayServerGroup(AbstractModel):
         self._ModifyTime = None
         self._SubnetIds = None
         self._DefaultWeight = None
+        self._ElasticNumber = None
 
     @property
     def GroupId(self):
@@ -27354,6 +27358,18 @@ class NativeGatewayServerGroup(AbstractModel):
     def DefaultWeight(self, DefaultWeight):
         self._DefaultWeight = DefaultWeight
 
+    @property
+    def ElasticNumber(self):
+        """弹性节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ElasticNumber
+
+    @ElasticNumber.setter
+    def ElasticNumber(self, ElasticNumber):
+        self._ElasticNumber = ElasticNumber
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -27373,6 +27389,7 @@ class NativeGatewayServerGroup(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._SubnetIds = params.get("SubnetIds")
         self._DefaultWeight = params.get("DefaultWeight")
+        self._ElasticNumber = params.get("ElasticNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

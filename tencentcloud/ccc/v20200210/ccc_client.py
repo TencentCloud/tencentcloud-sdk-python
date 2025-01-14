@@ -95,6 +95,31 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAIAgentCall(self, request):
+        """用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
+
+        发起通话前，请先确认您的AI模型是否兼容 OpenAI、Azure 或 Minimax 协议，并前往模型服务商网站获取相关鉴权信息。 具体功能说明请参考文档 [腾讯云联络中心AI通话平台](https://cloud.tencent.com/document/product/679/112100)。
+
+        :param request: Request instance for CreateAIAgentCall.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAIAgentCallRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateAIAgentCallResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAIAgentCall", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAIAgentCallResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAICall(self, request):
         """用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
 

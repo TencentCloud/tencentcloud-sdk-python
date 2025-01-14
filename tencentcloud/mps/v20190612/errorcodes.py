@@ -56,6 +56,9 @@ INTERNALERROR_UPLOADWATERMARKERROR = 'InternalError.UploadWatermarkError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# InvalidParameter.AlreadyAssociatedInput
+INVALIDPARAMETER_ALREADYASSOCIATEDINPUT = 'InvalidParameter.AlreadyAssociatedInput'
+
 # InvalidParameter.EndTime
 INVALIDPARAMETER_ENDTIME = 'InvalidParameter.EndTime'
 
@@ -115,6 +118,9 @@ INVALIDPARAMETER_STATE = 'InvalidParameter.State'
 
 # InvalidParameter.Type
 INVALIDPARAMETER_TYPE = 'InvalidParameter.Type'
+
+# InvalidParameter.Whitelist
+INVALIDPARAMETER_WHITELIST = 'InvalidParameter.Whitelist'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
