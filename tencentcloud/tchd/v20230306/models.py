@@ -269,7 +269,6 @@ class ProductEventList(AbstractModel):
     def __init__(self):
         r"""
         :param _EventList: 事件详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventList: list of EventDetail
         """
         self._EventList = None
@@ -277,7 +276,6 @@ class ProductEventList(AbstractModel):
     @property
     def EventList(self):
         """事件详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EventDetail
         """
         return self._EventList

@@ -24483,15 +24483,21 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
         :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
+        :param _BackImageBase64: 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type BackImageBase64: str
         :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :type ImageUrl: str
+        :param _BackImageUrl: 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type BackImageUrl: str
         :param _CropPortrait: 图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
 设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
         :type CropPortrait: bool
         """
         self._ImageBase64 = None
+        self._BackImageBase64 = None
         self._ImageUrl = None
+        self._BackImageUrl = None
         self._CropPortrait = None
 
     @property
@@ -24507,6 +24513,17 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
         self._ImageBase64 = ImageBase64
 
     @property
+    def BackImageBase64(self):
+        """卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
+
+    @property
     def ImageUrl(self):
         """图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
@@ -24517,6 +24534,17 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
     @ImageUrl.setter
     def ImageUrl(self, ImageUrl):
         self._ImageUrl = ImageUrl
+
+    @property
+    def BackImageUrl(self):
+        """卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
 
     @property
     def CropPortrait(self):
@@ -24533,7 +24561,9 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
+        self._BackImageBase64 = params.get("BackImageBase64")
         self._ImageUrl = params.get("ImageUrl")
+        self._BackImageUrl = params.get("BackImageUrl")
         self._CropPortrait = params.get("CropPortrait")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -24578,6 +24608,8 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type SerialNumber: str
         :param _Address: 地址
         :type Address: str
+        :param _LaserID: 背面号码
+        :type LaserID: str
         :param _PortraitImage: 证件人像照片抠取
         :type PortraitImage: str
         :param _WarnCardInfos: 告警码
@@ -24614,6 +24646,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Religion = None
         self._SerialNumber = None
         self._Address = None
+        self._LaserID = None
         self._PortraitImage = None
         self._WarnCardInfos = None
         self._AdvancedInfo = None
@@ -24763,6 +24796,17 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Address = Address
 
     @property
+    def LaserID(self):
+        """背面号码
+        :rtype: str
+        """
+        return self._LaserID
+
+    @LaserID.setter
+    def LaserID(self, LaserID):
+        self._LaserID = LaserID
+
+    @property
     def PortraitImage(self):
         """证件人像照片抠取
         :rtype: str
@@ -24835,6 +24879,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Religion = params.get("Religion")
         self._SerialNumber = params.get("SerialNumber")
         self._Address = params.get("Address")
+        self._LaserID = params.get("LaserID")
         self._PortraitImage = params.get("PortraitImage")
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._AdvancedInfo = params.get("AdvancedInfo")

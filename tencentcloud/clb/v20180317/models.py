@@ -2825,6 +2825,9 @@ class Cluster(AbstractModel):
         :param _IPVersion: IP版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPVersion: str
+        :param _Tag: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of TagInfo
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -2851,6 +2854,7 @@ class Cluster(AbstractModel):
         self._DisasterRecoveryType = None
         self._Egress = None
         self._IPVersion = None
+        self._Tag = None
 
     @property
     def ClusterId(self):
@@ -3146,6 +3150,18 @@ class Cluster(AbstractModel):
     def IPVersion(self, IPVersion):
         self._IPVersion = IPVersion
 
+    @property
+    def Tag(self):
+        """标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfo
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -3175,6 +3191,12 @@ class Cluster(AbstractModel):
         self._DisasterRecoveryType = params.get("DisasterRecoveryType")
         self._Egress = params.get("Egress")
         self._IPVersion = params.get("IPVersion")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tag.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7735,7 +7757,7 @@ class DescribeExclusiveClustersRequest(AbstractModel):
 <li> cluster-name - String - 是否必填：否 - （过滤条件）按照 集群 的名称过滤。</li>
 <li> cluster-tag - String - 是否必填：否 - （过滤条件）按照 集群 的标签过滤。（只有TGW/STGW集群有集群标签） </li>
 <li> vip - String - 是否必填：否 - （过滤条件）按照 集群 内的vip过滤。</li>
-<li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照 集群 内的负载均衡唯一ID过滤。</li>
+<li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 集群 内的负载均衡唯一ID过滤。</li>
 <li> network - String - 是否必填：否 - （过滤条件）按照 集群 的网络类型过滤，如："Public","Private"。</li>
 <li> zone - String - 是否必填：否 - （过滤条件）按照 集群 所在可用区过滤，如："ap-guangzhou-1"（广州一区）。</li>
 <li> isp -- String - 是否必填：否 - （过滤条件）按照TGW集群的 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。</li>
@@ -7775,7 +7797,7 @@ class DescribeExclusiveClustersRequest(AbstractModel):
 <li> cluster-name - String - 是否必填：否 - （过滤条件）按照 集群 的名称过滤。</li>
 <li> cluster-tag - String - 是否必填：否 - （过滤条件）按照 集群 的标签过滤。（只有TGW/STGW集群有集群标签） </li>
 <li> vip - String - 是否必填：否 - （过滤条件）按照 集群 内的vip过滤。</li>
-<li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照 集群 内的负载均衡唯一ID过滤。</li>
+<li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 集群 内的负载均衡唯一ID过滤。</li>
 <li> network - String - 是否必填：否 - （过滤条件）按照 集群 的网络类型过滤，如："Public","Private"。</li>
 <li> zone - String - 是否必填：否 - （过滤条件）按照 集群 所在可用区过滤，如："ap-guangzhou-1"（广州一区）。</li>
 <li> isp -- String - 是否必填：否 - （过滤条件）按照TGW集群的 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。</li>
@@ -8731,16 +8753,11 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SecurityGroup: str
         :param _MasterZone: 主可用区ID，如 ："100001" （对应的是广州一区）。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)获取可用区列表。
         :type MasterZone: str
-        :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：
-<li> charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的实例计费模式过滤，包括"PREPAID","POSTPAID_BY_HOUR"。</li>
-<li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li>
-<li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li>
-<li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
-<li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li>
-<li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
-<li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li>
-<li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge"。</li>
+        :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：<li> charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的实例计费模式过滤，包括"PREPAID","POSTPAID_BY_HOUR"。</li><li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li><li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li><li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li><li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li><li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li><li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li><li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c1.small","clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge","others"。</li><li> exclusive - uint64 - 是否必填：否 - （过滤条件）按照独占实例进行过滤。</li>
         :type Filters: list of Filter
+        :param _AdditionalFields: 选择返回的扩充字段，不指定时，扩充字段默认不返回。详细支持的扩充字段如下：
+<li> TargetCount：绑定的后端服务数量</li>
+        :type AdditionalFields: list of str
         """
         self._LoadBalancerIds = None
         self._LoadBalancerType = None
@@ -8761,6 +8778,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._SecurityGroup = None
         self._MasterZone = None
         self._Filters = None
+        self._AdditionalFields = None
 
     @property
     def LoadBalancerIds(self):
@@ -8964,15 +8982,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def Filters(self):
-        """每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：
-<li> charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的实例计费模式过滤，包括"PREPAID","POSTPAID_BY_HOUR"。</li>
-<li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li>
-<li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li>
-<li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
-<li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li>
-<li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
-<li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li>
-<li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge"。</li>
+        """每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：<li> charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的实例计费模式过滤，包括"PREPAID","POSTPAID_BY_HOUR"。</li><li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li><li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li><li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li><li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li><li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li><li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li><li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c1.small","clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge","others"。</li><li> exclusive - uint64 - 是否必填：否 - （过滤条件）按照独占实例进行过滤。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -8980,6 +8990,18 @@ OPEN：公网属性， INTERNAL：内网属性。
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def AdditionalFields(self):
+        """选择返回的扩充字段，不指定时，扩充字段默认不返回。详细支持的扩充字段如下：
+<li> TargetCount：绑定的后端服务数量</li>
+        :rtype: list of str
+        """
+        return self._AdditionalFields
+
+    @AdditionalFields.setter
+    def AdditionalFields(self, AdditionalFields):
+        self._AdditionalFields = AdditionalFields
 
 
     def _deserialize(self, params):
@@ -9007,6 +9029,7 @@ OPEN：公网属性， INTERNAL：内网属性。
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._AdditionalFields = params.get("AdditionalFields")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13014,6 +13037,8 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
         :param _Exclusive: 实例类型是否为独占型。1：独占型实例。0：非独占型实例。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Exclusive: int
+        :param _TargetCount: 已绑定的后端服务数量。
+        :type TargetCount: int
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -13071,6 +13096,7 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
         self._LoadBalancerDomain = None
         self._Egress = None
         self._Exclusive = None
+        self._TargetCount = None
 
     @property
     def LoadBalancerId(self):
@@ -13745,6 +13771,17 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
     def Exclusive(self, Exclusive):
         self._Exclusive = Exclusive
 
+    @property
+    def TargetCount(self):
+        """已绑定的后端服务数量。
+        :rtype: int
+        """
+        return self._TargetCount
+
+    @TargetCount.setter
+    def TargetCount(self, TargetCount):
+        self._TargetCount = TargetCount
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -13830,6 +13867,7 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
         self._Egress = params.get("Egress")
         self._Exclusive = params.get("Exclusive")
+        self._TargetCount = params.get("TargetCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20736,6 +20774,20 @@ class TargetGroupInfo(AbstractModel):
         :param _AssociatedRule: 关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedRule: list of AssociationItem
+        :param _TargetGroupType: 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), gwlb(全局负载均衡目标组)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetGroupType: str
+        :param _AssociatedRuleCount: 目标组已关联的规则数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedRuleCount: int
+        :param _RegisteredInstancesCount: 目标组内的实例数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegisteredInstancesCount: int
+        :param _Tag: 标签。
+        :type Tag: list of TagInfo
+        :param _Weight: 默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
         """
         self._TargetGroupId = None
         self._VpcId = None
@@ -20744,6 +20796,11 @@ class TargetGroupInfo(AbstractModel):
         self._CreatedTime = None
         self._UpdatedTime = None
         self._AssociatedRule = None
+        self._TargetGroupType = None
+        self._AssociatedRuleCount = None
+        self._RegisteredInstancesCount = None
+        self._Tag = None
+        self._Weight = None
 
     @property
     def TargetGroupId(self):
@@ -20824,6 +20881,65 @@ class TargetGroupInfo(AbstractModel):
     def AssociatedRule(self, AssociatedRule):
         self._AssociatedRule = AssociatedRule
 
+    @property
+    def TargetGroupType(self):
+        """目标组类型，当前支持v1(旧版目标组), v2(新版目标组), gwlb(全局负载均衡目标组)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetGroupType
+
+    @TargetGroupType.setter
+    def TargetGroupType(self, TargetGroupType):
+        self._TargetGroupType = TargetGroupType
+
+    @property
+    def AssociatedRuleCount(self):
+        """目标组已关联的规则数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssociatedRuleCount
+
+    @AssociatedRuleCount.setter
+    def AssociatedRuleCount(self, AssociatedRuleCount):
+        self._AssociatedRuleCount = AssociatedRuleCount
+
+    @property
+    def RegisteredInstancesCount(self):
+        """目标组内的实例数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RegisteredInstancesCount
+
+    @RegisteredInstancesCount.setter
+    def RegisteredInstancesCount(self, RegisteredInstancesCount):
+        self._RegisteredInstancesCount = RegisteredInstancesCount
+
+    @property
+    def Tag(self):
+        """标签。
+        :rtype: list of TagInfo
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Weight(self):
+        """默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
@@ -20838,6 +20954,16 @@ class TargetGroupInfo(AbstractModel):
                 obj = AssociationItem()
                 obj._deserialize(item)
                 self._AssociatedRule.append(obj)
+        self._TargetGroupType = params.get("TargetGroupType")
+        self._AssociatedRuleCount = params.get("AssociatedRuleCount")
+        self._RegisteredInstancesCount = params.get("RegisteredInstancesCount")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

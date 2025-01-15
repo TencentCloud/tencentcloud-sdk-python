@@ -19863,6 +19863,8 @@ class QAQuery(AbstractModel):
         :param _QueryAnswer: 查询答案
 
         :type QueryAnswer: str
+        :param _QueryType: 查询类型 filename 名称、 attribute 标签
+        :type QueryType: str
         """
         self._PageNumber = None
         self._PageSize = None
@@ -19875,6 +19877,7 @@ class QAQuery(AbstractModel):
         self._QaBizId = None
         self._Source = None
         self._QueryAnswer = None
+        self._QueryType = None
 
     @property
     def PageNumber(self):
@@ -20008,6 +20011,17 @@ class QAQuery(AbstractModel):
     def QueryAnswer(self, QueryAnswer):
         self._QueryAnswer = QueryAnswer
 
+    @property
+    def QueryType(self):
+        """查询类型 filename 名称、 attribute 标签
+        :rtype: str
+        """
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
@@ -20021,6 +20035,7 @@ class QAQuery(AbstractModel):
         self._QaBizId = params.get("QaBizId")
         self._Source = params.get("Source")
         self._QueryAnswer = params.get("QueryAnswer")
+        self._QueryType = params.get("QueryType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

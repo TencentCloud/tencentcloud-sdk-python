@@ -29007,6 +29007,44 @@ class SessionResourceTemplate(AbstractModel):
         
 
 
+class SmartOptimizerChangeTablePolicy(AbstractModel):
+    """混合表中，change表的数据保存时间，单位为天
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRetentionTime: change表的数据保存时间，单位为天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataRetentionTime: int
+        """
+        self._DataRetentionTime = None
+
+    @property
+    def DataRetentionTime(self):
+        """change表的数据保存时间，单位为天
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataRetentionTime
+
+    @DataRetentionTime.setter
+    def DataRetentionTime(self, DataRetentionTime):
+        self._DataRetentionTime = DataRetentionTime
+
+
+    def _deserialize(self, params):
+        self._DataRetentionTime = params.get("DataRetentionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmartOptimizerIndexPolicy(AbstractModel):
     """SmartOptimizerIndexPolicy
 
@@ -29173,12 +29211,16 @@ class SmartOptimizerPolicy(AbstractModel):
         :param _Index: SmartOptimizerIndexPolicy
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerIndexPolicy`
+        :param _ChangeTable: SmartOptimizerChangeTablePolicy
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeTable: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerChangeTablePolicy`
         """
         self._Inherit = None
         self._Resources = None
         self._Written = None
         self._Lifecycle = None
         self._Index = None
+        self._ChangeTable = None
 
     @property
     def Inherit(self):
@@ -29240,6 +29282,18 @@ class SmartOptimizerPolicy(AbstractModel):
     def Index(self, Index):
         self._Index = Index
 
+    @property
+    def ChangeTable(self):
+        """SmartOptimizerChangeTablePolicy
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerChangeTablePolicy`
+        """
+        return self._ChangeTable
+
+    @ChangeTable.setter
+    def ChangeTable(self, ChangeTable):
+        self._ChangeTable = ChangeTable
+
 
     def _deserialize(self, params):
         self._Inherit = params.get("Inherit")
@@ -29258,6 +29312,9 @@ class SmartOptimizerPolicy(AbstractModel):
         if params.get("Index") is not None:
             self._Index = SmartOptimizerIndexPolicy()
             self._Index._deserialize(params.get("Index"))
+        if params.get("ChangeTable") is not None:
+            self._ChangeTable = SmartOptimizerChangeTablePolicy()
+            self._ChangeTable._deserialize(params.get("ChangeTable"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31555,6 +31612,9 @@ class TableBaseInfo(AbstractModel):
         :param _SmartPolicy: 智能数据治理配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartPolicy: :class:`tencentcloud.dlc.v20210125.models.SmartPolicy`
+        :param _PrimaryKeys: T-ICEBERG表的主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrimaryKeys: list of str
         """
         self._DatabaseName = None
         self._TableName = None
@@ -31567,6 +31627,7 @@ class TableBaseInfo(AbstractModel):
         self._GovernPolicy = None
         self._DbGovernPolicyIsDisable = None
         self._SmartPolicy = None
+        self._PrimaryKeys = None
 
     @property
     def DatabaseName(self):
@@ -31706,6 +31767,18 @@ class TableBaseInfo(AbstractModel):
     def SmartPolicy(self, SmartPolicy):
         self._SmartPolicy = SmartPolicy
 
+    @property
+    def PrimaryKeys(self):
+        """T-ICEBERG表的主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._PrimaryKeys
+
+    @PrimaryKeys.setter
+    def PrimaryKeys(self, PrimaryKeys):
+        self._PrimaryKeys = PrimaryKeys
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -31723,6 +31796,7 @@ class TableBaseInfo(AbstractModel):
         if params.get("SmartPolicy") is not None:
             self._SmartPolicy = SmartPolicy()
             self._SmartPolicy._deserialize(params.get("SmartPolicy"))
+        self._PrimaryKeys = params.get("PrimaryKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31885,6 +31959,8 @@ class TableResponseInfo(AbstractModel):
         :param _HeatValue: 访问热点
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeatValue: int
+        :param _InputFormatShort: InputFormat的缩写
+        :type InputFormatShort: str
         """
         self._TableBaseInfo = None
         self._Columns = None
@@ -31898,6 +31974,7 @@ class TableResponseInfo(AbstractModel):
         self._RecordCount = None
         self._MapMaterializedViewName = None
         self._HeatValue = None
+        self._InputFormatShort = None
 
     @property
     def TableBaseInfo(self):
@@ -32042,6 +32119,17 @@ class TableResponseInfo(AbstractModel):
     def HeatValue(self, HeatValue):
         self._HeatValue = HeatValue
 
+    @property
+    def InputFormatShort(self):
+        """InputFormat的缩写
+        :rtype: str
+        """
+        return self._InputFormatShort
+
+    @InputFormatShort.setter
+    def InputFormatShort(self, InputFormatShort):
+        self._InputFormatShort = InputFormatShort
+
 
     def _deserialize(self, params):
         if params.get("TableBaseInfo") is not None:
@@ -32073,6 +32161,7 @@ class TableResponseInfo(AbstractModel):
         self._RecordCount = params.get("RecordCount")
         self._MapMaterializedViewName = params.get("MapMaterializedViewName")
         self._HeatValue = params.get("HeatValue")
+        self._InputFormatShort = params.get("InputFormatShort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

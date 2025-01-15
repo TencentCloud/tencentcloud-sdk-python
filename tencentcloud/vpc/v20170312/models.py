@@ -1186,11 +1186,13 @@ class AddressInfo(AbstractModel):
         :param _Address: ip地址。
         :type Address: str
         :param _Description: 备注。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _UpdatedTime: 更新时间。
+        :type UpdatedTime: str
         """
         self._Address = None
         self._Description = None
+        self._UpdatedTime = None
 
     @property
     def Address(self):
@@ -1206,7 +1208,6 @@ class AddressInfo(AbstractModel):
     @property
     def Description(self):
         """备注。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -1215,10 +1216,22 @@ class AddressInfo(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def UpdatedTime(self):
+        """更新时间。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
 
     def _deserialize(self, params):
         self._Address = params.get("Address")
         self._Description = params.get("Description")
+        self._UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1244,16 +1257,18 @@ class AddressTemplate(AbstractModel):
         :type AddressSet: list of str
         :param _CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param _UpdatedTime: 最后更新时间。
+        :type UpdatedTime: str
         :param _AddressExtraSet: 带备注的IP地址信息。
         :type AddressExtraSet: list of AddressInfo
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._AddressTemplateName = None
         self._AddressTemplateId = None
         self._AddressSet = None
         self._CreatedTime = None
+        self._UpdatedTime = None
         self._AddressExtraSet = None
         self._TagSet = None
 
@@ -1302,6 +1317,17 @@ class AddressTemplate(AbstractModel):
         self._CreatedTime = CreatedTime
 
     @property
+    def UpdatedTime(self):
+        """最后更新时间。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
     def AddressExtraSet(self):
         """带备注的IP地址信息。
         :rtype: list of AddressInfo
@@ -1315,7 +1341,6 @@ class AddressTemplate(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -1330,6 +1355,7 @@ class AddressTemplate(AbstractModel):
         self._AddressTemplateId = params.get("AddressTemplateId")
         self._AddressSet = params.get("AddressSet")
         self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
         if params.get("AddressExtraSet") is not None:
             self._AddressExtraSet = []
             for item in params.get("AddressExtraSet"):
@@ -1367,16 +1393,18 @@ class AddressTemplateGroup(AbstractModel):
         :type AddressTemplateIdSet: list of str
         :param _CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param _UpdatedTime: 最后更新时间。
+        :type UpdatedTime: str
         :param _AddressTemplateSet: IP地址模板实例。
         :type AddressTemplateSet: list of AddressTemplateItem
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._AddressTemplateGroupName = None
         self._AddressTemplateGroupId = None
         self._AddressTemplateIdSet = None
         self._CreatedTime = None
+        self._UpdatedTime = None
         self._AddressTemplateSet = None
         self._TagSet = None
 
@@ -1425,6 +1453,17 @@ class AddressTemplateGroup(AbstractModel):
         self._CreatedTime = CreatedTime
 
     @property
+    def UpdatedTime(self):
+        """最后更新时间。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
     def AddressTemplateSet(self):
         """IP地址模板实例。
         :rtype: list of AddressTemplateItem
@@ -1438,7 +1477,6 @@ class AddressTemplateGroup(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -1453,6 +1491,7 @@ class AddressTemplateGroup(AbstractModel):
         self._AddressTemplateGroupId = params.get("AddressTemplateGroupId")
         self._AddressTemplateIdSet = params.get("AddressTemplateIdSet")
         self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
         if params.get("AddressTemplateSet") is not None:
             self._AddressTemplateSet = []
             for item in params.get("AddressTemplateSet"):
@@ -1484,17 +1523,23 @@ class AddressTemplateItem(AbstractModel):
         r"""
         :param _AddressTemplateId: IP地址模板ID
         :type AddressTemplateId: str
-        :param _AddressTemplateName: IP模板名称。
+        :param _AddressTemplateName: IP模板名称，废弃字段。
         :type AddressTemplateName: str
         :param _From: 废弃字段。
         :type From: str
         :param _To: 废弃字段
         :type To: str
+        :param _Description: 备注。
+        :type Description: str
+        :param _UpdatedTime: 最后更新时间。
+        :type UpdatedTime: str
         """
         self._AddressTemplateId = None
         self._AddressTemplateName = None
         self._From = None
         self._To = None
+        self._Description = None
+        self._UpdatedTime = None
 
     @property
     def AddressTemplateId(self):
@@ -1509,7 +1554,7 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def AddressTemplateName(self):
-        """IP模板名称。
+        """IP模板名称，废弃字段。
         :rtype: str
         """
         return self._AddressTemplateName
@@ -1540,12 +1585,36 @@ class AddressTemplateItem(AbstractModel):
     def To(self, To):
         self._To = To
 
+    @property
+    def Description(self):
+        """备注。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UpdatedTime(self):
+        """最后更新时间。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
 
     def _deserialize(self, params):
         self._AddressTemplateId = params.get("AddressTemplateId")
         self._AddressTemplateName = params.get("AddressTemplateName")
         self._From = params.get("From")
         self._To = params.get("To")
+        self._Description = params.get("Description")
+        self._UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21218,11 +21287,23 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
         :type Limit: str
         :param _NeedMemberInfo: 是否查询IP地址模板成员标识。
         :type NeedMemberInfo: bool
+        :param _OrderField: 排序字段。支持：`AddressTemplateGroupId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :type OrderField: str
+        :param _OrderDirection: 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :type OrderDirection: str
+        :param _MemberOrderField: IP地址成员排序字段。支持：`AddressTemplateId` `UpdateTime`。注意：该字段没有默认值。
+        :type MemberOrderField: str
+        :param _MemberOrderDirection: IP地址成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :type MemberOrderDirection: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._NeedMemberInfo = None
+        self._OrderField = None
+        self._OrderDirection = None
+        self._MemberOrderField = None
+        self._MemberOrderDirection = None
 
     @property
     def Filters(self):
@@ -21270,6 +21351,50 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
     def NeedMemberInfo(self, NeedMemberInfo):
         self._NeedMemberInfo = NeedMemberInfo
 
+    @property
+    def OrderField(self):
+        """排序字段。支持：`AddressTemplateGroupId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        """排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def MemberOrderField(self):
+        """IP地址成员排序字段。支持：`AddressTemplateId` `UpdateTime`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._MemberOrderField
+
+    @MemberOrderField.setter
+    def MemberOrderField(self, MemberOrderField):
+        self._MemberOrderField = MemberOrderField
+
+    @property
+    def MemberOrderDirection(self):
+        """IP地址成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._MemberOrderDirection
+
+    @MemberOrderDirection.setter
+    def MemberOrderDirection(self, MemberOrderDirection):
+        self._MemberOrderDirection = MemberOrderDirection
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -21281,6 +21406,10 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._NeedMemberInfo = params.get("NeedMemberInfo")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
+        self._MemberOrderField = params.get("MemberOrderField")
+        self._MemberOrderDirection = params.get("MemberOrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21372,11 +21501,23 @@ class DescribeAddressTemplatesRequest(AbstractModel):
         :type Limit: str
         :param _NeedMemberInfo: 是否获取IP地址模板成员标识。
         :type NeedMemberInfo: bool
+        :param _OrderField: 排序字段。支持：`AddressTemplateId` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :type OrderField: str
+        :param _OrderDirection: 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :type OrderDirection: str
+        :param _MemberOrderField: IP成员排序字段。支持：`Address` `UpdateTime`。注意：该字段没有默认值。
+        :type MemberOrderField: str
+        :param _MemberOrderDirection: IP成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :type MemberOrderDirection: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._NeedMemberInfo = None
+        self._OrderField = None
+        self._OrderDirection = None
+        self._MemberOrderField = None
+        self._MemberOrderDirection = None
 
     @property
     def Filters(self):
@@ -21425,6 +21566,50 @@ class DescribeAddressTemplatesRequest(AbstractModel):
     def NeedMemberInfo(self, NeedMemberInfo):
         self._NeedMemberInfo = NeedMemberInfo
 
+    @property
+    def OrderField(self):
+        """排序字段。支持：`AddressTemplateId` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        """排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def MemberOrderField(self):
+        """IP成员排序字段。支持：`Address` `UpdateTime`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._MemberOrderField
+
+    @MemberOrderField.setter
+    def MemberOrderField(self, MemberOrderField):
+        self._MemberOrderField = MemberOrderField
+
+    @property
+    def MemberOrderDirection(self):
+        """IP成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._MemberOrderDirection
+
+    @MemberOrderDirection.setter
+    def MemberOrderDirection(self, MemberOrderDirection):
+        self._MemberOrderDirection = MemberOrderDirection
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -21436,6 +21621,10 @@ class DescribeAddressTemplatesRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._NeedMemberInfo = params.get("NeedMemberInfo")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
+        self._MemberOrderField = params.get("MemberOrderField")
+        self._MemberOrderDirection = params.get("MemberOrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31313,11 +31502,23 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
         :type Limit: str
         :param _NeedMemberInfo: 是否获取协议端口模板成员标识。
         :type NeedMemberInfo: bool
+        :param _OrderField: 排序字段。支持：`ServiceTemplateGroupId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :type OrderField: str
+        :param _OrderDirection: 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :type OrderDirection: str
+        :param _MemberOrderField: 协议端口成员排序字段。支持：`ServiceTemplateId ` `UpdateTime`。注意：该字段没有默认值。
+        :type MemberOrderField: str
+        :param _MemberOrderDirection: 协议端口成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :type MemberOrderDirection: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._NeedMemberInfo = None
+        self._OrderField = None
+        self._OrderDirection = None
+        self._MemberOrderField = None
+        self._MemberOrderDirection = None
 
     @property
     def Filters(self):
@@ -31365,6 +31566,50 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
     def NeedMemberInfo(self, NeedMemberInfo):
         self._NeedMemberInfo = NeedMemberInfo
 
+    @property
+    def OrderField(self):
+        """排序字段。支持：`ServiceTemplateGroupId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        """排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def MemberOrderField(self):
+        """协议端口成员排序字段。支持：`ServiceTemplateId ` `UpdateTime`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._MemberOrderField
+
+    @MemberOrderField.setter
+    def MemberOrderField(self, MemberOrderField):
+        self._MemberOrderField = MemberOrderField
+
+    @property
+    def MemberOrderDirection(self):
+        """协议端口成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._MemberOrderDirection
+
+    @MemberOrderDirection.setter
+    def MemberOrderDirection(self, MemberOrderDirection):
+        self._MemberOrderDirection = MemberOrderDirection
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -31376,6 +31621,10 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._NeedMemberInfo = params.get("NeedMemberInfo")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
+        self._MemberOrderField = params.get("MemberOrderField")
+        self._MemberOrderDirection = params.get("MemberOrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31467,11 +31716,23 @@ class DescribeServiceTemplatesRequest(AbstractModel):
         :type Limit: str
         :param _NeedMemberInfo: 是否获取协议端口成员标识。
         :type NeedMemberInfo: bool
+        :param _OrderField: 排序字段。支持：`ServiceTemplateId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :type OrderField: str
+        :param _OrderDirection: 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :type OrderDirection: str
+        :param _MemberOrderField: 协议端口排序字段。支持：`Service ` `UpdateTime`。注意：该字段没有默认值。
+        :type MemberOrderField: str
+        :param _MemberOrderDirection: 协议端口排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :type MemberOrderDirection: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._NeedMemberInfo = None
+        self._OrderField = None
+        self._OrderDirection = None
+        self._MemberOrderField = None
+        self._MemberOrderDirection = None
 
     @property
     def Filters(self):
@@ -31520,6 +31781,50 @@ class DescribeServiceTemplatesRequest(AbstractModel):
     def NeedMemberInfo(self, NeedMemberInfo):
         self._NeedMemberInfo = NeedMemberInfo
 
+    @property
+    def OrderField(self):
+        """排序字段。支持：`ServiceTemplateId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        """排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def MemberOrderField(self):
+        """协议端口排序字段。支持：`Service ` `UpdateTime`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._MemberOrderField
+
+    @MemberOrderField.setter
+    def MemberOrderField(self, MemberOrderField):
+        self._MemberOrderField = MemberOrderField
+
+    @property
+    def MemberOrderDirection(self):
+        """协议端口排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+        :rtype: str
+        """
+        return self._MemberOrderDirection
+
+    @MemberOrderDirection.setter
+    def MemberOrderDirection(self, MemberOrderDirection):
+        self._MemberOrderDirection = MemberOrderDirection
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -31531,6 +31836,10 @@ class DescribeServiceTemplatesRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._NeedMemberInfo = params.get("NeedMemberInfo")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
+        self._MemberOrderField = params.get("MemberOrderField")
+        self._MemberOrderDirection = params.get("MemberOrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60388,16 +60697,18 @@ class ServiceTemplate(AbstractModel):
         :type ServiceSet: list of str
         :param _CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param _UpdatedTime: 最后更新时间。
+        :type UpdatedTime: str
         :param _ServiceExtraSet: 带备注的协议端口信息。
         :type ServiceExtraSet: list of ServicesInfo
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._ServiceTemplateId = None
         self._ServiceTemplateName = None
         self._ServiceSet = None
         self._CreatedTime = None
+        self._UpdatedTime = None
         self._ServiceExtraSet = None
         self._TagSet = None
 
@@ -60446,6 +60757,17 @@ class ServiceTemplate(AbstractModel):
         self._CreatedTime = CreatedTime
 
     @property
+    def UpdatedTime(self):
+        """最后更新时间。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
     def ServiceExtraSet(self):
         """带备注的协议端口信息。
         :rtype: list of ServicesInfo
@@ -60459,7 +60781,6 @@ class ServiceTemplate(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -60474,6 +60795,7 @@ class ServiceTemplate(AbstractModel):
         self._ServiceTemplateName = params.get("ServiceTemplateName")
         self._ServiceSet = params.get("ServiceSet")
         self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
         if params.get("ServiceExtraSet") is not None:
             self._ServiceExtraSet = []
             for item in params.get("ServiceExtraSet"):
@@ -60511,16 +60833,18 @@ class ServiceTemplateGroup(AbstractModel):
         :type ServiceTemplateIdSet: list of str
         :param _CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param _UpdatedTime: 最后更新时间。
+        :type UpdatedTime: str
         :param _ServiceTemplateSet: 协议端口模板实例信息。
         :type ServiceTemplateSet: list of ServiceTemplate
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._ServiceTemplateGroupId = None
         self._ServiceTemplateGroupName = None
         self._ServiceTemplateIdSet = None
         self._CreatedTime = None
+        self._UpdatedTime = None
         self._ServiceTemplateSet = None
         self._TagSet = None
 
@@ -60569,6 +60893,17 @@ class ServiceTemplateGroup(AbstractModel):
         self._CreatedTime = CreatedTime
 
     @property
+    def UpdatedTime(self):
+        """最后更新时间。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
     def ServiceTemplateSet(self):
         """协议端口模板实例信息。
         :rtype: list of ServiceTemplate
@@ -60582,7 +60917,6 @@ class ServiceTemplateGroup(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -60597,6 +60931,7 @@ class ServiceTemplateGroup(AbstractModel):
         self._ServiceTemplateGroupName = params.get("ServiceTemplateGroupName")
         self._ServiceTemplateIdSet = params.get("ServiceTemplateIdSet")
         self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
         if params.get("ServiceTemplateSet") is not None:
             self._ServiceTemplateSet = []
             for item in params.get("ServiceTemplateSet"):
@@ -60681,9 +61016,12 @@ class ServicesInfo(AbstractModel):
         :type Service: str
         :param _Description: 备注。
         :type Description: str
+        :param _UpdatedTime: 更新时间。
+        :type UpdatedTime: str
         """
         self._Service = None
         self._Description = None
+        self._UpdatedTime = None
 
     @property
     def Service(self):
@@ -60707,10 +61045,22 @@ class ServicesInfo(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def UpdatedTime(self):
+        """更新时间。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
         self._Description = params.get("Description")
+        self._UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

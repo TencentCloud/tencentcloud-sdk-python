@@ -3050,7 +3050,9 @@ class Component(AbstractModel):
 <ul><li> <b>OFFICIAL</b> :  企业公章</li>
 <li> <b>CONTRACT</b> : 合同专用章</li>
 <li> <b>FINANCE</b> : 财务专用章</li>
-<li> <b>PERSONNEL</b> : 人事专用章</li></ul>
+<li> <b>PERSONNEL</b> : 人事专用章</li>
+<li> <b>OTHER</b> : 其他</li>
+</ul>
 <b>参考样例</b>：`{\"ComponentTypeLimit\":[\"PERSONNEL\",\"FINANCE\"]}` 表示改印章签署区,客户需使用人事专用章或财务专用章盖章签署。<br><br>
 
 <font color="red">ComponentType为SIGN_DATE时</font>，支持以下参数：
@@ -3465,7 +3467,9 @@ ChildrenComponent结构体定义:
 <ul><li> <b>OFFICIAL</b> :  企业公章</li>
 <li> <b>CONTRACT</b> : 合同专用章</li>
 <li> <b>FINANCE</b> : 财务专用章</li>
-<li> <b>PERSONNEL</b> : 人事专用章</li></ul>
+<li> <b>PERSONNEL</b> : 人事专用章</li>
+<li> <b>OTHER</b> : 其他</li>
+</ul>
 <b>参考样例</b>：`{\"ComponentTypeLimit\":[\"PERSONNEL\",\"FINANCE\"]}` 表示改印章签署区,客户需使用人事专用章或财务专用章盖章签署。<br><br>
 
 <font color="red">ComponentType为SIGN_DATE时</font>，支持以下参数：
@@ -3791,7 +3795,9 @@ class ComponentLimit(AbstractModel):
 <ul><li> <b>OFFICIAL</b> :  企业公章</li>
 <li> <b>CONTRACT</b> : 合同专用章</li>
 <li> <b>FINANCE</b> : 财务专用章</li>
-<li> <b>PERSONNEL</b> : 人事专用章</li></ul>
+<li> <b>PERSONNEL</b> : 人事专用章</li>
+<li> <b>OTHER</b> : 其他</li>
+</ul>
 
 **注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个),他方企业签署人只能限制类型.若同时指定了印章类型和印章Id,以印章Id为主,印章类型会被忽略`**
 
@@ -3834,7 +3840,9 @@ class ComponentLimit(AbstractModel):
 <ul><li> <b>OFFICIAL</b> :  企业公章</li>
 <li> <b>CONTRACT</b> : 合同专用章</li>
 <li> <b>FINANCE</b> : 财务专用章</li>
-<li> <b>PERSONNEL</b> : 人事专用章</li></ul>
+<li> <b>PERSONNEL</b> : 人事专用章</li>
+<li> <b>OTHER</b> : 其他</li>
+</ul>
 
 **注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个),他方企业签署人只能限制类型.若同时指定了印章类型和印章Id,以印章Id为主,印章类型会被忽略`**
 
@@ -5610,7 +5618,9 @@ class CreateDocumentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
+        :param _Operator: 本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
+
+注：支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _TemplateId: 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
 
@@ -5658,7 +5668,9 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
+        """本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
+
+注：支持填入集团子公司经办人 userId代发合同。
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -6909,10 +6921,10 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-支持填入集团子公司经办人 userId 代发合同。
+        :param _Operator: 本合同的发起人  <a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
 
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+注： 支持填入集团子公司经办人 userId 代发合同。
+
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowName: 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
 
@@ -7052,10 +7064,10 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。使用此接口时，必须填写userId。
-支持填入集团子公司经办人 userId 代发合同。
+        """本合同的发起人  <a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
 
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+注： 支持填入集团子公司经办人 userId 代发合同。
+
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -8797,10 +8809,9 @@ class CreateFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-支持填入集团子公司经办人 userId 代发合同。
+        :param _Operator: 本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
 
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+注： 支持填入集团子公司经办人 userId 代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowName: 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
 
@@ -8908,10 +8919,9 @@ class CreateFlowRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。使用此接口时，必须填写userId。
-支持填入集团子公司经办人 userId 代发合同。
+        """本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
 
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+注： 支持填入集团子公司经办人 userId 代发合同。
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -30719,8 +30729,7 @@ class StartFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: 本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowId: 合同流程ID，为32位字符串。
 此处需要传入[创建签署流程接口](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)得到的FlowId。
@@ -30743,8 +30752,7 @@ class StartFlowRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        """本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator

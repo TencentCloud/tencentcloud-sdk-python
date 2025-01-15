@@ -2260,13 +2260,17 @@ class GetThreadMessageListResponse(AbstractModel):
         :param _FirstID: 第一条消息 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstID: str
-        :param _LastID: 最后一条消息 ID
+        :param _LastID: 已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastID: int
         :param _HasMore: 是否还有更多消息
         :type HasMore: bool
         :param _Object: 对象类型
         :type Object: str
+        :param _FirstMsgID: 第一条消息 ID
+        :type FirstMsgID: str
+        :param _LastMsgID: 最后一条消息 ID
+        :type LastMsgID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
@@ -2275,6 +2279,8 @@ class GetThreadMessageListResponse(AbstractModel):
         self._LastID = None
         self._HasMore = None
         self._Object = None
+        self._FirstMsgID = None
+        self._LastMsgID = None
         self._RequestId = None
 
     @property
@@ -2290,6 +2296,8 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @property
     def FirstID(self):
+        warnings.warn("parameter `FirstID` is deprecated", DeprecationWarning) 
+
         """第一条消息 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -2298,11 +2306,15 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @FirstID.setter
     def FirstID(self, FirstID):
+        warnings.warn("parameter `FirstID` is deprecated", DeprecationWarning) 
+
         self._FirstID = FirstID
 
     @property
     def LastID(self):
-        """最后一条消息 ID
+        warnings.warn("parameter `LastID` is deprecated", DeprecationWarning) 
+
+        """已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2310,6 +2322,8 @@ class GetThreadMessageListResponse(AbstractModel):
 
     @LastID.setter
     def LastID(self, LastID):
+        warnings.warn("parameter `LastID` is deprecated", DeprecationWarning) 
+
         self._LastID = LastID
 
     @property
@@ -2335,6 +2349,28 @@ class GetThreadMessageListResponse(AbstractModel):
         self._Object = Object
 
     @property
+    def FirstMsgID(self):
+        """第一条消息 ID
+        :rtype: str
+        """
+        return self._FirstMsgID
+
+    @FirstMsgID.setter
+    def FirstMsgID(self, FirstMsgID):
+        self._FirstMsgID = FirstMsgID
+
+    @property
+    def LastMsgID(self):
+        """最后一条消息 ID
+        :rtype: str
+        """
+        return self._LastMsgID
+
+    @LastMsgID.setter
+    def LastMsgID(self, LastMsgID):
+        self._LastMsgID = LastMsgID
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
@@ -2357,6 +2393,8 @@ class GetThreadMessageListResponse(AbstractModel):
         self._LastID = params.get("LastID")
         self._HasMore = params.get("HasMore")
         self._Object = params.get("Object")
+        self._FirstMsgID = params.get("FirstMsgID")
+        self._LastMsgID = params.get("LastMsgID")
         self._RequestId = params.get("RequestId")
 
 

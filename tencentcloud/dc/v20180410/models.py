@@ -608,7 +608,6 @@ stoped：终止状态
         :param _ApplyTime: 敏捷上云申请的时间
         :type ApplyTime: str
         :param _ReadyTime: 敏捷上云建设完成的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadyTime: str
         :param _ExpireTime: 敏捷上云过期时间
         :type ExpireTime: str
@@ -630,6 +629,8 @@ cross-region：跨地域
         :type CloudAttachServiceGatewaysSupport: bool
         :param _BUpdateBandwidth: 敏捷上云服务是否处于升降配中
         :type BUpdateBandwidth: bool
+        :param _ArRegion: 接入地域
+        :type ArRegion: str
         """
         self._InstanceId = None
         self._Name = None
@@ -650,6 +651,7 @@ cross-region：跨地域
         self._DirectConnectId = None
         self._CloudAttachServiceGatewaysSupport = None
         self._BUpdateBandwidth = None
+        self._ArRegion = None
 
     @property
     def InstanceId(self):
@@ -760,7 +762,6 @@ stoped：终止状态
     @property
     def ReadyTime(self):
         """敏捷上云建设完成的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReadyTime
@@ -870,6 +871,17 @@ cross-region：跨地域
     def BUpdateBandwidth(self, BUpdateBandwidth):
         self._BUpdateBandwidth = BUpdateBandwidth
 
+    @property
+    def ArRegion(self):
+        """接入地域
+        :rtype: str
+        """
+        return self._ArRegion
+
+    @ArRegion.setter
+    def ArRegion(self, ArRegion):
+        self._ArRegion = ArRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -891,6 +903,7 @@ cross-region：跨地域
         self._DirectConnectId = params.get("DirectConnectId")
         self._CloudAttachServiceGatewaysSupport = params.get("CloudAttachServiceGatewaysSupport")
         self._BUpdateBandwidth = params.get("BUpdateBandwidth")
+        self._ArRegion = params.get("ArRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -971,6 +984,8 @@ class CreateCasInput(AbstractModel):
         :type Telephone: str
         :param _Remarks: 备注信息
         :type Remarks: str
+        :param _ArRegion: 接入地域
+        :type ArRegion: str
         """
         self._Name = None
         self._IdcAddress = None
@@ -978,6 +993,7 @@ class CreateCasInput(AbstractModel):
         self._Bandwidth = None
         self._Telephone = None
         self._Remarks = None
+        self._ArRegion = None
 
     @property
     def Name(self):
@@ -1045,6 +1061,17 @@ class CreateCasInput(AbstractModel):
     def Remarks(self, Remarks):
         self._Remarks = Remarks
 
+    @property
+    def ArRegion(self):
+        """接入地域
+        :rtype: str
+        """
+        return self._ArRegion
+
+    @ArRegion.setter
+    def ArRegion(self, ArRegion):
+        self._ArRegion = ArRegion
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1053,6 +1080,7 @@ class CreateCasInput(AbstractModel):
         self._Bandwidth = params.get("Bandwidth")
         self._Telephone = params.get("Telephone")
         self._Remarks = params.get("Remarks")
+        self._ArRegion = params.get("ArRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

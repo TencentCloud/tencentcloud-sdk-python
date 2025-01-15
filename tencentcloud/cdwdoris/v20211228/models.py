@@ -1023,7 +1023,6 @@ class CancelBackupJobResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1034,7 +1033,6 @@ class CancelBackupJobResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -7476,7 +7474,6 @@ class DescribeSpecResponse(AbstractModel):
         :param _CoreSpec: be节点规格描述
         :type CoreSpec: list of ResourceSpec
         :param _AttachCBSSpec: 云盘列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttachCBSSpec: list of DiskSpec
         :param _CNSpec: cn节点列表
         :type CNSpec: list of ResourceSpec
@@ -7514,7 +7511,6 @@ class DescribeSpecResponse(AbstractModel):
     @property
     def AttachCBSSpec(self):
         """云盘列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiskSpec
         """
         return self._AttachCBSSpec
@@ -7733,10 +7729,8 @@ class DescribeSqlApisResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReturnData: 返回的查询数据，大部分情况是list，也可能是bool
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnData: str
         :param _ErrorMsg: 错误消息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7748,7 +7742,6 @@ class DescribeSqlApisResponse(AbstractModel):
     @property
     def ReturnData(self):
         """返回的查询数据，大部分情况是list，也可能是bool
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReturnData
@@ -7760,7 +7753,6 @@ class DescribeSqlApisResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误消息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -7891,10 +7883,8 @@ class DescribeTableListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TableNames: 表名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableNames: list of str
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7906,7 +7896,6 @@ class DescribeTableListResponse(AbstractModel):
     @property
     def TableNames(self):
         """表名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TableNames
@@ -7918,7 +7907,6 @@ class DescribeTableListResponse(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -8371,16 +8359,12 @@ class DorisSourceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Host: doris集群的fe的ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         :param _Port: doris集群的fe的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _User: doris集群的账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Password: base64编码的doris集群对应用户的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         """
         self._Host = None
@@ -8391,7 +8375,6 @@ class DorisSourceInfo(AbstractModel):
     @property
     def Host(self):
         """doris集群的fe的ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -8403,7 +8386,6 @@ class DorisSourceInfo(AbstractModel):
     @property
     def Port(self):
         """doris集群的fe的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -8415,7 +8397,6 @@ class DorisSourceInfo(AbstractModel):
     @property
     def User(self):
         """doris集群的账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -8427,7 +8408,6 @@ class DorisSourceInfo(AbstractModel):
     @property
     def Password(self):
         """base64编码的doris集群对应用户的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -8460,13 +8440,10 @@ class FrontEndRule(AbstractModel):
     def __init__(self):
         r"""
         :param _ID: id序列
-注意：此字段可能返回 null，表示取不到有效值。
         :type ID: int
         :param _Name: 规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Rule: 详细规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: str
         """
         self._ID = None
@@ -8476,7 +8453,6 @@ class FrontEndRule(AbstractModel):
     @property
     def ID(self):
         """id序列
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ID
@@ -8488,7 +8464,6 @@ class FrontEndRule(AbstractModel):
     @property
     def Name(self):
         """规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -8500,7 +8475,6 @@ class FrontEndRule(AbstractModel):
     @property
     def Rule(self):
         """详细规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rule
@@ -8583,7 +8557,6 @@ class InstanceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _EnableAlarmStrategy: 告警策略是否可用	
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableAlarmStrategy: bool
         """
         self._EnableAlarmStrategy = None
@@ -8591,7 +8564,6 @@ class InstanceDetail(AbstractModel):
     @property
     def EnableAlarmStrategy(self):
         """告警策略是否可用	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableAlarmStrategy
@@ -8621,164 +8593,114 @@ class InstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 集群实例ID, "cdw-xxxx" 字符串类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 集群实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _Status: 状态,
 Init 创建中; Serving 运行中； 
 Deleted已销毁；Deleting 销毁中；
 Modify 集群变更中；
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Version: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Region: 地域, ap-guangzhou
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Zone: 可用区， ap-guangzhou-3
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _VpcId: 私有网络名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _PayMode: 付费类型，"hour", "prepay"
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ExpireTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _MasterSummary: 数据节点描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MasterSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         :param _CoreSummary: zookeeper节点描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoreSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         :param _HA: 高可用，“true" "false"
-注意：此字段可能返回 null，表示取不到有效值。
         :type HA: str
         :param _HaType: 高可用类型：
 0：非高可用
 1：读高可用
 2：读写高可用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HaType: int
         :param _AccessInfo: 访问地址，例如 "10.0.0.1:9000"
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessInfo: str
         :param _Id: 记录ID，数值型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _RegionId: regionId, 表示地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _ZoneDesc: 可用区说明，例如 "广州二区"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneDesc: str
         :param _FlowMsg: 错误流程说明信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMsg: str
         :param _StatusDesc: 状态描述，例如“运行中”等
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param _RenewFlag: 自动续费标记
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: bool
         :param _Tags: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _Monitor: 监控信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Monitor: str
         :param _HasClsTopic: 是否开通日志
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasClsTopic: bool
         :param _ClsTopicId: 日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClsTopicId: str
         :param _ClsLogSetId: 日志集ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClsLogSetId: str
         :param _EnableXMLConfig: 是否支持xml配置管理
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableXMLConfig: int
         :param _RegionDesc: 区域
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionDesc: str
         :param _Eip: 弹性网卡地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Eip: str
         :param _CosMoveFactor: 冷热分层系数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosMoveFactor: int
         :param _Kind: external/local/yunti
-注意：此字段可能返回 null，表示取不到有效值。
         :type Kind: str
         :param _CosBucketName: cos桶
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosBucketName: str
         :param _CanAttachCbs: cbs
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanAttachCbs: bool
         :param _BuildVersion: 小版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildVersion: str
         :param _Components: 组件信息
 注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Components: str
         :param _IfExistCatalog: 判断审计日志表是否有catalog字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type IfExistCatalog: int
         :param _Characteristic: 页面特性，用于前端屏蔽一些页面入口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Characteristic: list of str
         :param _RestartTimeout: 超时时间 单位s
-注意：此字段可能返回 null，表示取不到有效值。
         :type RestartTimeout: str
         :param _GraceShutdownWaitSeconds: 内核优雅重启超时时间，如果为-1说明未设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type GraceShutdownWaitSeconds: str
         :param _CaseSensitive: 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaseSensitive: int
         :param _IsWhiteSGs: 用户是否可以绑定安全组
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsWhiteSGs: bool
         :param _BindSGs: 已绑定的安全组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindSGs: list of str
         :param _EnableMultiZones: 是否为多可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableMultiZones: bool
         :param _UserNetworkInfos: 用户可用区和子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserNetworkInfos: str
         :param _EnableCoolDown: 是否启用冷热分层。0：未开启 1：已开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableCoolDown: int
         :param _CoolDownBucket: 冷热分层使用COS桶
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoolDownBucket: str
         :param _Details: 实例扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceDetail`
         :param _EnableDlc: 是否启用DLC 0:关闭 1:开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableDlc: int
         :param _AccountType: 账户类型 0:普通用户 1:CAM用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountType: int
         :param _MonitorMode: 监控模式 0: 老监控 1：新监控
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorMode: int
         :param _CNSummary: cn节点信息
         :type CNSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
@@ -8839,7 +8761,6 @@ Modify 集群变更中；
     @property
     def InstanceId(self):
         """集群实例ID, "cdw-xxxx" 字符串类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -8851,7 +8772,6 @@ Modify 集群变更中；
     @property
     def InstanceName(self):
         """集群实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -8866,7 +8786,6 @@ Modify 集群变更中；
 Init 创建中; Serving 运行中； 
 Deleted已销毁；Deleting 销毁中；
 Modify 集群变更中；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -8878,7 +8797,6 @@ Modify 集群变更中；
     @property
     def Version(self):
         """版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -8890,7 +8808,6 @@ Modify 集群变更中；
     @property
     def Region(self):
         """地域, ap-guangzhou
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -8902,7 +8819,6 @@ Modify 集群变更中；
     @property
     def Zone(self):
         """可用区， ap-guangzhou-3
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -8914,7 +8830,6 @@ Modify 集群变更中；
     @property
     def VpcId(self):
         """私有网络名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -8926,7 +8841,6 @@ Modify 集群变更中；
     @property
     def SubnetId(self):
         """子网名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -8938,7 +8852,6 @@ Modify 集群变更中；
     @property
     def PayMode(self):
         """付费类型，"hour", "prepay"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayMode
@@ -8950,7 +8863,6 @@ Modify 集群变更中；
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -8962,7 +8874,6 @@ Modify 集群变更中；
     @property
     def ExpireTime(self):
         """过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -8974,7 +8885,6 @@ Modify 集群变更中；
     @property
     def MasterSummary(self):
         """数据节点描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         """
         return self._MasterSummary
@@ -8986,7 +8896,6 @@ Modify 集群变更中；
     @property
     def CoreSummary(self):
         """zookeeper节点描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         """
         return self._CoreSummary
@@ -8998,7 +8907,6 @@ Modify 集群变更中；
     @property
     def HA(self):
         """高可用，“true" "false"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HA
@@ -9013,7 +8921,6 @@ Modify 集群变更中；
 0：非高可用
 1：读高可用
 2：读写高可用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HaType
@@ -9025,7 +8932,6 @@ Modify 集群变更中；
     @property
     def AccessInfo(self):
         """访问地址，例如 "10.0.0.1:9000"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessInfo
@@ -9037,7 +8943,6 @@ Modify 集群变更中；
     @property
     def Id(self):
         """记录ID，数值型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -9049,7 +8954,6 @@ Modify 集群变更中；
     @property
     def RegionId(self):
         """regionId, 表示地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -9061,7 +8965,6 @@ Modify 集群变更中；
     @property
     def ZoneDesc(self):
         """可用区说明，例如 "广州二区"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneDesc
@@ -9073,7 +8976,6 @@ Modify 集群变更中；
     @property
     def FlowMsg(self):
         """错误流程说明信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowMsg
@@ -9085,7 +8987,6 @@ Modify 集群变更中；
     @property
     def StatusDesc(self):
         """状态描述，例如“运行中”等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusDesc
@@ -9097,7 +8998,6 @@ Modify 集群变更中；
     @property
     def RenewFlag(self):
         """自动续费标记
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RenewFlag
@@ -9109,7 +9009,6 @@ Modify 集群变更中；
     @property
     def Tags(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -9121,7 +9020,6 @@ Modify 集群变更中；
     @property
     def Monitor(self):
         """监控信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Monitor
@@ -9133,7 +9031,6 @@ Modify 集群变更中；
     @property
     def HasClsTopic(self):
         """是否开通日志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HasClsTopic
@@ -9145,7 +9042,6 @@ Modify 集群变更中；
     @property
     def ClsTopicId(self):
         """日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClsTopicId
@@ -9157,7 +9053,6 @@ Modify 集群变更中；
     @property
     def ClsLogSetId(self):
         """日志集ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClsLogSetId
@@ -9169,7 +9064,6 @@ Modify 集群变更中；
     @property
     def EnableXMLConfig(self):
         """是否支持xml配置管理
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnableXMLConfig
@@ -9181,7 +9075,6 @@ Modify 集群变更中；
     @property
     def RegionDesc(self):
         """区域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionDesc
@@ -9193,7 +9086,6 @@ Modify 集群变更中；
     @property
     def Eip(self):
         """弹性网卡地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Eip
@@ -9205,7 +9097,6 @@ Modify 集群变更中；
     @property
     def CosMoveFactor(self):
         """冷热分层系数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CosMoveFactor
@@ -9217,7 +9108,6 @@ Modify 集群变更中；
     @property
     def Kind(self):
         """external/local/yunti
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Kind
@@ -9229,7 +9119,6 @@ Modify 集群变更中；
     @property
     def CosBucketName(self):
         """cos桶
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosBucketName
@@ -9241,7 +9130,6 @@ Modify 集群变更中；
     @property
     def CanAttachCbs(self):
         """cbs
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CanAttachCbs
@@ -9253,7 +9141,6 @@ Modify 集群变更中；
     @property
     def BuildVersion(self):
         """小版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildVersion
@@ -9266,7 +9153,6 @@ Modify 集群变更中；
     def Components(self):
         """组件信息
 注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Components
@@ -9294,7 +9180,6 @@ Modify 集群变更中；
     @property
     def Characteristic(self):
         """页面特性，用于前端屏蔽一些页面入口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Characteristic
@@ -9306,7 +9191,6 @@ Modify 集群变更中；
     @property
     def RestartTimeout(self):
         """超时时间 单位s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RestartTimeout
@@ -9318,7 +9202,6 @@ Modify 集群变更中；
     @property
     def GraceShutdownWaitSeconds(self):
         """内核优雅重启超时时间，如果为-1说明未设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GraceShutdownWaitSeconds
@@ -9330,7 +9213,6 @@ Modify 集群变更中；
     @property
     def CaseSensitive(self):
         """表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CaseSensitive
@@ -9342,7 +9224,6 @@ Modify 集群变更中；
     @property
     def IsWhiteSGs(self):
         """用户是否可以绑定安全组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsWhiteSGs
@@ -9354,7 +9235,6 @@ Modify 集群变更中；
     @property
     def BindSGs(self):
         """已绑定的安全组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BindSGs
@@ -9366,7 +9246,6 @@ Modify 集群变更中；
     @property
     def EnableMultiZones(self):
         """是否为多可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableMultiZones
@@ -9378,7 +9257,6 @@ Modify 集群变更中；
     @property
     def UserNetworkInfos(self):
         """用户可用区和子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserNetworkInfos
@@ -9390,7 +9268,6 @@ Modify 集群变更中；
     @property
     def EnableCoolDown(self):
         """是否启用冷热分层。0：未开启 1：已开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnableCoolDown
@@ -9402,7 +9279,6 @@ Modify 集群变更中；
     @property
     def CoolDownBucket(self):
         """冷热分层使用COS桶
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CoolDownBucket
@@ -9414,7 +9290,6 @@ Modify 集群变更中；
     @property
     def Details(self):
         """实例扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceDetail`
         """
         return self._Details
@@ -9426,7 +9301,6 @@ Modify 集群变更中；
     @property
     def EnableDlc(self):
         """是否启用DLC 0:关闭 1:开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnableDlc
@@ -9438,7 +9312,6 @@ Modify 集群变更中；
     @property
     def AccountType(self):
         """账户类型 0:普通用户 1:CAM用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AccountType
@@ -9450,7 +9323,6 @@ Modify 集群变更中；
     @property
     def MonitorMode(self):
         """监控模式 0: 老监控 1：新监控
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorMode
@@ -9569,19 +9441,14 @@ class InstanceNode(AbstractModel):
         :param _Role: 所属clickhouse cluster名称
         :type Role: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Rip: rip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rip: str
         :param _FeRole: FE节点角色
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeRole: str
         :param _UUID: UUID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UUID: str
         :param _Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
@@ -9680,7 +9547,6 @@ class InstanceNode(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -9692,7 +9558,6 @@ class InstanceNode(AbstractModel):
     @property
     def Rip(self):
         """rip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rip
@@ -9704,7 +9569,6 @@ class InstanceNode(AbstractModel):
     @property
     def FeRole(self):
         """FE节点角色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FeRole
@@ -9716,7 +9580,6 @@ class InstanceNode(AbstractModel):
     @property
     def UUID(self):
         """UUID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UUID
@@ -9728,7 +9591,6 @@ class InstanceNode(AbstractModel):
     @property
     def Zone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -10177,7 +10039,6 @@ class ModifyCoolDownPolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10188,7 +10049,6 @@ class ModifyCoolDownPolicyResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -10400,7 +10260,6 @@ class ModifyInstanceKeyValConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _FlowId: ID
         :type FlowId: int
@@ -10414,7 +10273,6 @@ class ModifyInstanceKeyValConfigsResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -10749,7 +10607,6 @@ class ModifySecurityGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10760,7 +10617,6 @@ class ModifySecurityGroupsResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -11006,7 +10862,6 @@ class ModifyUserPrivilegesV3Response(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息，为空就是没有错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _InstanceId: 集群id
         :type InstanceId: str
@@ -11020,7 +10875,6 @@ class ModifyUserPrivilegesV3Response(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息，为空就是没有错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -11256,13 +11110,10 @@ class NetworkInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _SubnetId: 子网id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _SubnetIpNum: 当前子网可用ip数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIpNum: int
         """
         self._Zone = None
@@ -11272,7 +11123,6 @@ class NetworkInfo(AbstractModel):
     @property
     def Zone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -11284,7 +11134,6 @@ class NetworkInfo(AbstractModel):
     @property
     def SubnetId(self):
         """子网id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -11296,7 +11145,6 @@ class NetworkInfo(AbstractModel):
     @property
     def SubnetIpNum(self):
         """当前子网可用ip数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubnetIpNum
@@ -11328,28 +11176,20 @@ class NodeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Ip: 用户IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Status: 节点状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _NodeName: 节点角色名
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
         :param _ComponentName: 组件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentName: str
         :param _NodeRole: 节点角色
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeRole: str
         :param _LastRestartTime: 节点上次重启的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastRestartTime: str
         :param _Zone: 节点所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _Id: Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         """
         self._Ip = None
@@ -11364,7 +11204,6 @@ class NodeInfo(AbstractModel):
     @property
     def Ip(self):
         """用户IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -11376,7 +11215,6 @@ class NodeInfo(AbstractModel):
     @property
     def Status(self):
         """节点状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -11388,7 +11226,6 @@ class NodeInfo(AbstractModel):
     @property
     def NodeName(self):
         """节点角色名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeName
@@ -11400,7 +11237,6 @@ class NodeInfo(AbstractModel):
     @property
     def ComponentName(self):
         """组件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentName
@@ -11412,7 +11248,6 @@ class NodeInfo(AbstractModel):
     @property
     def NodeRole(self):
         """节点角色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeRole
@@ -11424,7 +11259,6 @@ class NodeInfo(AbstractModel):
     @property
     def LastRestartTime(self):
         """节点上次重启的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastRestartTime
@@ -11436,7 +11270,6 @@ class NodeInfo(AbstractModel):
     @property
     def Zone(self):
         """节点所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -11448,7 +11281,6 @@ class NodeInfo(AbstractModel):
     @property
     def Id(self):
         """Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -11497,10 +11329,8 @@ class NodeInfos(AbstractModel):
         :param _LastRestartTime: 上一次重启时间
         :type LastRestartTime: str
         :param _Id: id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
@@ -11584,7 +11414,6 @@ class NodeInfos(AbstractModel):
     @property
     def Id(self):
         """id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -11596,7 +11425,6 @@ class NodeInfos(AbstractModel):
     @property
     def Zone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -11659,25 +11487,18 @@ class NodesSummary(AbstractModel):
         :param _DiskDesc: 磁盘描述
         :type DiskDesc: str
         :param _AttachCBSSpec: 挂载云盘信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttachCBSSpec: :class:`tencentcloud.cdwdoris.v20211228.models.AttachCBSSpec`
         :param _SubProductType: 子产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductType: str
         :param _SpecCore: 规格核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecCore: int
         :param _SpecMemory: 规格内存
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecMemory: int
         :param _DiskCount: 磁盘大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskCount: int
         :param _Encrypt: 是否加密
-注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: int
         :param _MaxDiskSize: 最大磁盘
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDiskSize: int
         """
         self._Spec = None
@@ -11775,7 +11596,6 @@ class NodesSummary(AbstractModel):
     @property
     def AttachCBSSpec(self):
         """挂载云盘信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.AttachCBSSpec`
         """
         return self._AttachCBSSpec
@@ -11787,7 +11607,6 @@ class NodesSummary(AbstractModel):
     @property
     def SubProductType(self):
         """子产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubProductType
@@ -11799,7 +11618,6 @@ class NodesSummary(AbstractModel):
     @property
     def SpecCore(self):
         """规格核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SpecCore
@@ -11811,7 +11629,6 @@ class NodesSummary(AbstractModel):
     @property
     def SpecMemory(self):
         """规格内存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SpecMemory
@@ -11823,7 +11640,6 @@ class NodesSummary(AbstractModel):
     @property
     def DiskCount(self):
         """磁盘大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskCount
@@ -11835,7 +11651,6 @@ class NodesSummary(AbstractModel):
     @property
     def Encrypt(self):
         """是否加密
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Encrypt
@@ -11847,7 +11662,6 @@ class NodesSummary(AbstractModel):
     @property
     def MaxDiskSize(self):
         """最大磁盘
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxDiskSize
@@ -12112,7 +11926,6 @@ class OpenCoolDownResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12123,7 +11936,6 @@ class OpenCoolDownResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg

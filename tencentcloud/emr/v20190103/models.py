@@ -21591,95 +21591,66 @@ class NodeHardwareInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _AppId: 用户APPID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _SerialNo: 序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SerialNo: str
         :param _OrderNo: 机器实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderNo: str
         :param _WanIp: master节点绑定外网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanIp: str
         :param _Flag: 节点类型。0:common节点；1:master节点
 ；2:core节点；3:task节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type Flag: int
         :param _Spec: 节点规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type Spec: str
         :param _CpuNum: 节点核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuNum: int
-        :param _MemSize: 节点内存
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _MemSize: 节点内存,单位b
         :type MemSize: int
-        :param _MemDesc: 节点内存描述
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _MemDesc: 节点内存描述，单位GB
         :type MemDesc: str
         :param _RegionId: 节点所在region
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _ZoneId: 节点所在Zone
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _ApplyTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyTime: str
         :param _FreeTime: 释放时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FreeTime: str
         :param _DiskSize: 硬盘大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: str
         :param _NameTag: 节点描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type NameTag: str
         :param _Services: 节点部署服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type Services: str
-        :param _StorageType: 磁盘类型
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _StorageType: 磁盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
+
         :type StorageType: int
-        :param _RootSize: 系统盘大小
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _RootSize: 系统盘大小，单位GB
         :type RootSize: int
-        :param _ChargeType: 付费类型
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ChargeType: 付费类型，0：按量计费；1：包年包月
         :type ChargeType: int
         :param _CdbIp: 数据库IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdbIp: str
         :param _CdbPort: 数据库端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdbPort: int
-        :param _HwDiskSize: 硬盘容量
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _HwDiskSize: 硬盘容量,单位b
         :type HwDiskSize: int
         :param _HwDiskSizeDesc: 硬盘容量描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type HwDiskSizeDesc: str
-        :param _HwMemSize: 内存容量
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _HwMemSize: 内存容量，单位b
         :type HwMemSize: int
         :param _HwMemSizeDesc: 内存容量描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type HwMemSizeDesc: str
         :param _ExpireTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _EmrResourceId: 节点资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EmrResourceId: str
         :param _IsAutoRenew: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAutoRenew: int
         :param _DeviceClass: 设备标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceClass: str
         :param _Mutable: 支持变配
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mutable: int
         :param _MCMultiDisk: 多云盘
 注意：此字段可能返回 null，表示取不到有效值。
@@ -21688,71 +21659,56 @@ class NodeHardwareInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
         :param _Ip: 内网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Destroyable: 此节点是否可销毁，1可销毁，0不可销毁
-注意：此字段可能返回 null，表示取不到有效值。
         :type Destroyable: int
         :param _Tags: 节点绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _AutoFlag: 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoFlag: int
         :param _HardwareResourceType: 资源类型, host/pod
-注意：此字段可能返回 null，表示取不到有效值。
         :type HardwareResourceType: str
         :param _IsDynamicSpec: 是否浮动规格，1是，0否
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDynamicSpec: int
         :param _DynamicPodSpec: 浮动规格值json字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type DynamicPodSpec: str
         :param _SupportModifyPayMode: 是否支持变更计费类型 1是，0否
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportModifyPayMode: int
-        :param _RootStorageType: 系统盘类型
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _RootStorageType: 系统盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
+
         :type RootStorageType: int
         :param _Zone: 可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _SubnetInfo: 子网
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetInfo: :class:`tencentcloud.emr.v20190103.models.SubnetInfo`
         :param _Clients: 客户端
-注意：此字段可能返回 null，表示取不到有效值。
         :type Clients: str
         :param _CurrentTime: 系统当前时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentTime: str
         :param _IsFederation: 是否用于联邦 ,1是，0否
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFederation: int
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _ServiceClient: 服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceClient: str
         :param _DisableApiTermination: 该实例是否开启实例保护，true为开启 false为关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisableApiTermination: bool
         :param _TradeVersion: 0表示老计费，1表示新计费
-注意：此字段可能返回 null，表示取不到有效值。
         :type TradeVersion: int
         :param _ServicesStatus: 各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServicesStatus: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _SharedClusterId: 共享集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SharedClusterId: str
         :param _SharedClusterIdDesc: 共享集群id描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type SharedClusterIdDesc: str
+        :param _TimingResource: 是否是定时销毁资源
+        :type TimingResource: bool
+        :param _TkeClusterId: 资源类型（HardwareResourceType）为pod时，对应的TKE集群id
+        :type TkeClusterId: str
         """
         self._AppId = None
         self._SerialNo = None
@@ -21808,11 +21764,12 @@ class NodeHardwareInfo(AbstractModel):
         self._Remark = None
         self._SharedClusterId = None
         self._SharedClusterIdDesc = None
+        self._TimingResource = None
+        self._TkeClusterId = None
 
     @property
     def AppId(self):
         """用户APPID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -21824,7 +21781,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def SerialNo(self):
         """序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SerialNo
@@ -21836,7 +21792,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def OrderNo(self):
         """机器实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderNo
@@ -21848,7 +21803,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def WanIp(self):
         """master节点绑定外网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WanIp
@@ -21861,7 +21815,6 @@ class NodeHardwareInfo(AbstractModel):
     def Flag(self):
         """节点类型。0:common节点；1:master节点
 ；2:core节点；3:task节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Flag
@@ -21873,7 +21826,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def Spec(self):
         """节点规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Spec
@@ -21885,7 +21837,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def CpuNum(self):
         """节点核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CpuNum
@@ -21896,8 +21847,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def MemSize(self):
-        """节点内存
-注意：此字段可能返回 null，表示取不到有效值。
+        """节点内存,单位b
         :rtype: int
         """
         return self._MemSize
@@ -21908,8 +21858,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def MemDesc(self):
-        """节点内存描述
-注意：此字段可能返回 null，表示取不到有效值。
+        """节点内存描述，单位GB
         :rtype: str
         """
         return self._MemDesc
@@ -21921,7 +21870,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def RegionId(self):
         """节点所在region
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -21933,7 +21881,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def ZoneId(self):
         """节点所在Zone
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -21945,7 +21892,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def ApplyTime(self):
         """申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplyTime
@@ -21957,7 +21903,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def FreeTime(self):
         """释放时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FreeTime
@@ -21969,7 +21914,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def DiskSize(self):
         """硬盘大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiskSize
@@ -21981,7 +21925,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def NameTag(self):
         """节点描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NameTag
@@ -21993,7 +21936,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def Services(self):
         """节点部署服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Services
@@ -22004,8 +21946,8 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def StorageType(self):
-        """磁盘类型
-注意：此字段可能返回 null，表示取不到有效值。
+        """磁盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
+
         :rtype: int
         """
         return self._StorageType
@@ -22016,8 +21958,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def RootSize(self):
-        """系统盘大小
-注意：此字段可能返回 null，表示取不到有效值。
+        """系统盘大小，单位GB
         :rtype: int
         """
         return self._RootSize
@@ -22028,8 +21969,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def ChargeType(self):
-        """付费类型
-注意：此字段可能返回 null，表示取不到有效值。
+        """付费类型，0：按量计费；1：包年包月
         :rtype: int
         """
         return self._ChargeType
@@ -22041,7 +21981,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def CdbIp(self):
         """数据库IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdbIp
@@ -22053,7 +21992,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def CdbPort(self):
         """数据库端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CdbPort
@@ -22064,8 +22002,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def HwDiskSize(self):
-        """硬盘容量
-注意：此字段可能返回 null，表示取不到有效值。
+        """硬盘容量,单位b
         :rtype: int
         """
         return self._HwDiskSize
@@ -22077,7 +22014,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def HwDiskSizeDesc(self):
         """硬盘容量描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HwDiskSizeDesc
@@ -22088,8 +22024,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def HwMemSize(self):
-        """内存容量
-注意：此字段可能返回 null，表示取不到有效值。
+        """内存容量，单位b
         :rtype: int
         """
         return self._HwMemSize
@@ -22101,7 +22036,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def HwMemSizeDesc(self):
         """内存容量描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HwMemSizeDesc
@@ -22113,7 +22047,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -22125,7 +22058,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def EmrResourceId(self):
         """节点资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EmrResourceId
@@ -22137,7 +22069,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def IsAutoRenew(self):
         """续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsAutoRenew
@@ -22149,7 +22080,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def DeviceClass(self):
         """设备标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceClass
@@ -22161,7 +22091,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def Mutable(self):
         """支持变配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Mutable
@@ -22197,7 +22126,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def Ip(self):
         """内网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -22209,7 +22137,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def Destroyable(self):
         """此节点是否可销毁，1可销毁，0不可销毁
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Destroyable
@@ -22233,7 +22160,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def AutoFlag(self):
         """是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoFlag
@@ -22245,7 +22171,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def HardwareResourceType(self):
         """资源类型, host/pod
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HardwareResourceType
@@ -22257,7 +22182,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def IsDynamicSpec(self):
         """是否浮动规格，1是，0否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsDynamicSpec
@@ -22269,7 +22193,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def DynamicPodSpec(self):
         """浮动规格值json字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DynamicPodSpec
@@ -22281,7 +22204,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def SupportModifyPayMode(self):
         """是否支持变更计费类型 1是，0否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SupportModifyPayMode
@@ -22292,8 +22214,8 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def RootStorageType(self):
-        """系统盘类型
-注意：此字段可能返回 null，表示取不到有效值。
+        """系统盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
+
         :rtype: int
         """
         return self._RootStorageType
@@ -22305,7 +22227,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def Zone(self):
         """可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -22329,7 +22250,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def Clients(self):
         """客户端
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Clients
@@ -22341,7 +22261,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def CurrentTime(self):
         """系统当前时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurrentTime
@@ -22353,7 +22272,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def IsFederation(self):
         """是否用于联邦 ,1是，0否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsFederation
@@ -22365,7 +22283,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -22377,7 +22294,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def ServiceClient(self):
         """服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceClient
@@ -22389,7 +22305,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def DisableApiTermination(self):
         """该实例是否开启实例保护，true为开启 false为关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -22401,7 +22316,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def TradeVersion(self):
         """0表示老计费，1表示新计费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TradeVersion
@@ -22413,7 +22327,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def ServicesStatus(self):
         """各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServicesStatus
@@ -22425,7 +22338,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -22437,7 +22349,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def SharedClusterId(self):
         """共享集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SharedClusterId
@@ -22449,7 +22360,6 @@ class NodeHardwareInfo(AbstractModel):
     @property
     def SharedClusterIdDesc(self):
         """共享集群id描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SharedClusterIdDesc
@@ -22457,6 +22367,28 @@ class NodeHardwareInfo(AbstractModel):
     @SharedClusterIdDesc.setter
     def SharedClusterIdDesc(self, SharedClusterIdDesc):
         self._SharedClusterIdDesc = SharedClusterIdDesc
+
+    @property
+    def TimingResource(self):
+        """是否是定时销毁资源
+        :rtype: bool
+        """
+        return self._TimingResource
+
+    @TimingResource.setter
+    def TimingResource(self, TimingResource):
+        self._TimingResource = TimingResource
+
+    @property
+    def TkeClusterId(self):
+        """资源类型（HardwareResourceType）为pod时，对应的TKE集群id
+        :rtype: str
+        """
+        return self._TkeClusterId
+
+    @TkeClusterId.setter
+    def TkeClusterId(self, TkeClusterId):
+        self._TkeClusterId = TkeClusterId
 
 
     def _deserialize(self, params):
@@ -22528,6 +22460,8 @@ class NodeHardwareInfo(AbstractModel):
         self._Remark = params.get("Remark")
         self._SharedClusterId = params.get("SharedClusterId")
         self._SharedClusterIdDesc = params.get("SharedClusterIdDesc")
+        self._TimingResource = params.get("TimingResource")
+        self._TkeClusterId = params.get("TkeClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

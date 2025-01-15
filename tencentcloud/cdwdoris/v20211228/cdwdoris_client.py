@@ -809,7 +809,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSpec(self, request):
-        """购买页拉取集群的数据节点和zookeeper节点的规格列表
+        """拉取集群节点规格列表
 
         :param request: Request instance for DescribeSpec.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSpecRequest`
