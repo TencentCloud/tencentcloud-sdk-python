@@ -1854,6 +1854,30 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstancesDisasterRecoverGroup(self, request):
+        """本接口 (ModifyInstancesDisasterRecoverGroup) 用于调整实例所在置放群组。
+        * 目前只支持基础网络或私有网络实例。
+
+        :param request: Request instance for ModifyInstancesDisasterRecoverGroup.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesDisasterRecoverGroupRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesDisasterRecoverGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancesDisasterRecoverGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstancesDisasterRecoverGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstancesProject(self, request):
         """本接口 (ModifyInstancesProject) 用于修改实例所属项目。
 

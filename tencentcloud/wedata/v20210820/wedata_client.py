@@ -3893,6 +3893,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskTableMetricOverview(self, request):
+        """查询实时任务表粒度指标概览
+
+        :param request: Request instance for DescribeTaskTableMetricOverview.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskTableMetricOverviewRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskTableMetricOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskTableMetricOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskTableMetricOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTemplateDimCount(self, request):
         """查询规则模板维度分布情况
 

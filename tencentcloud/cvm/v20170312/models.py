@@ -3965,14 +3965,14 @@ class DeleteDisasterRecoverGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisasterRecoverGroupIds: 分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。每次请求允许操作的分散置放群组数量上限是100。
+        :param _DisasterRecoverGroupIds: 分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。每次请求允许操作的分散置放群组数量上限是10。
         :type DisasterRecoverGroupIds: list of str
         """
         self._DisasterRecoverGroupIds = None
 
     @property
     def DisasterRecoverGroupIds(self):
-        """分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。每次请求允许操作的分散置放群组数量上限是100。
+        """分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。每次请求允许操作的分散置放群组数量上限是10。
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -4933,7 +4933,7 @@ class DescribeDisasterRecoverGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisasterRecoverGroupIds: 分散置放群组ID列表。每次请求允许操作的分散置放群组数量上限是100。
+        :param _DisasterRecoverGroupIds: 分散置放群组ID列表。每次请求允许操作的分散置放群组数量上限是10。
         :type DisasterRecoverGroupIds: list of str
         :param _Name: 分散置放群组名称，支持模糊匹配。
         :type Name: str
@@ -4949,7 +4949,7 @@ class DescribeDisasterRecoverGroupsRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupIds(self):
-        """分散置放群组ID列表。每次请求允许操作的分散置放群组数量上限是100。
+        """分散置放群组ID列表。每次请求允许操作的分散置放群组数量上限是10。
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -16326,6 +16326,100 @@ class ModifyInstancesChargeTypeRequest(AbstractModel):
 
 class ModifyInstancesChargeTypeResponse(AbstractModel):
     """ModifyInstancesChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
+    """ModifyInstancesDisasterRecoverGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为1
+        :type InstanceIds: list of str
+        :param _DisasterRecoverGroupId: 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取
+        :type DisasterRecoverGroupId: str
+        :param _Force: 是否强制更换实例宿主机。取值范围：<br><li>true：表示允许实例更换宿主机，允许重启实例。本地盘子机不支持指定此参数。</li><br><li>false：不允许实例更换宿主机，只在当前宿主机上加入置放群组。这可能导致更换置放群组失败。</li><br><br>默认取值：false
+        :type Force: bool
+        """
+        self._InstanceIds = None
+        self._DisasterRecoverGroupId = None
+        self._Force = None
+
+    @property
+    def InstanceIds(self):
+        """一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为1
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def DisasterRecoverGroupId(self):
+        """分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取
+        :rtype: str
+        """
+        return self._DisasterRecoverGroupId
+
+    @DisasterRecoverGroupId.setter
+    def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        self._DisasterRecoverGroupId = DisasterRecoverGroupId
+
+    @property
+    def Force(self):
+        """是否强制更换实例宿主机。取值范围：<br><li>true：表示允许实例更换宿主机，允许重启实例。本地盘子机不支持指定此参数。</li><br><li>false：不允许实例更换宿主机，只在当前宿主机上加入置放群组。这可能导致更换置放群组失败。</li><br><br>默认取值：false
+        :rtype: bool
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self._Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancesDisasterRecoverGroupResponse(AbstractModel):
+    """ModifyInstancesDisasterRecoverGroup返回参数结构体
 
     """
 

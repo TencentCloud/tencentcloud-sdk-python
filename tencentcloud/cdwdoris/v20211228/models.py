@@ -12214,10 +12214,52 @@ class RecoverBackUpJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 恢复任务总数量
+        :type TotalCount: int
+        :param _DuplicateTables: 重复的表名
+        :type DuplicateTables: list of str
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._DuplicateTables = None
+        self._ErrorMsg = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """恢复任务总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DuplicateTables(self):
+        """重复的表名
+        :rtype: list of str
+        """
+        return self._DuplicateTables
+
+    @DuplicateTables.setter
+    def DuplicateTables(self, DuplicateTables):
+        self._DuplicateTables = DuplicateTables
+
+    @property
+    def ErrorMsg(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
     @property
     def RequestId(self):
@@ -12232,6 +12274,9 @@ class RecoverBackUpJobResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._DuplicateTables = params.get("DuplicateTables")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -12474,15 +12519,12 @@ class RegionInfo(AbstractModel):
         :param _RegionId: 地域唯一标记
         :type RegionId: int
         :param _Zones: 地域下所有可用区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zones: list of ZoneInfo
         :param _Count: 该地域下集群数目
         :type Count: int
         :param _IsInternationalSite: 0代表是国际站 1代表不是
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsInternationalSite: int
         :param _Bucket: 桶
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         """
         self._Name = None
@@ -12529,7 +12571,6 @@ class RegionInfo(AbstractModel):
     @property
     def Zones(self):
         """地域下所有可用区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ZoneInfo
         """
         return self._Zones
@@ -12552,7 +12593,6 @@ class RegionInfo(AbstractModel):
     @property
     def IsInternationalSite(self):
         """0代表是国际站 1代表不是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsInternationalSite
@@ -12564,7 +12604,6 @@ class RegionInfo(AbstractModel):
     @property
     def Bucket(self):
         """桶
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -12752,22 +12791,16 @@ class ResourceSpec(AbstractModel):
         :param _Type: 分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO
         :type Type: str
         :param _SystemDisk: 系统盘描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDisk: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
         :param _DataDisk: 数据盘描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisk: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
         :param _MaxNodeSize: 最大节点数目限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxNodeSize: int
         :param _Available: 是否可用，false代表售罄
-注意：此字段可能返回 null，表示取不到有效值。
         :type Available: bool
         :param _ComputeSpecDesc: 规格描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeSpecDesc: str
         :param _InstanceQuota: cvm库存
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceQuota: int
         """
         self._Name = None
@@ -12828,7 +12861,6 @@ class ResourceSpec(AbstractModel):
     @property
     def SystemDisk(self):
         """系统盘描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
         """
         return self._SystemDisk
@@ -12840,7 +12872,6 @@ class ResourceSpec(AbstractModel):
     @property
     def DataDisk(self):
         """数据盘描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
         """
         return self._DataDisk
@@ -12852,7 +12883,6 @@ class ResourceSpec(AbstractModel):
     @property
     def MaxNodeSize(self):
         """最大节点数目限制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxNodeSize
@@ -12864,7 +12894,6 @@ class ResourceSpec(AbstractModel):
     @property
     def Available(self):
         """是否可用，false代表售罄
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Available
@@ -12876,7 +12905,6 @@ class ResourceSpec(AbstractModel):
     @property
     def ComputeSpecDesc(self):
         """规格描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComputeSpecDesc
@@ -12888,7 +12916,6 @@ class ResourceSpec(AbstractModel):
     @property
     def InstanceQuota(self):
         """cvm库存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceQuota
@@ -13251,10 +13278,8 @@ class RestoreStatus(AbstractModel):
         :param _ReserveDynamicPartitionEnable: 是否保持源表中的动态分区
         :type ReserveDynamicPartitionEnable: bool
         :param _BackupJobId: 备份实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupJobId: int
         :param _TaskId: 实例对应snapshot的id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         """
         self._JobId = None
@@ -13515,7 +13540,6 @@ class RestoreStatus(AbstractModel):
     @property
     def BackupJobId(self):
         """备份实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackupJobId
@@ -13527,7 +13551,6 @@ class RestoreStatus(AbstractModel):
     @property
     def TaskId(self):
         """实例对应snapshot的id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -13872,7 +13895,6 @@ class ScheduleInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _EffectivePeriod: 生效周期
-注意：此字段可能返回 null，表示取不到有效值。
         :type EffectivePeriod: str
         :param _ScheduleType: 调度类型，不传该参数时为立即执行：
 Day-天
@@ -13880,26 +13902,20 @@ Week-周
 Month-月
 Once-单次
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleType: str
         :param _ScheduleData: 执行调度的日期。调度类型为周和月时以英文逗号分隔；
 调度类型为单次时，该值是个日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleData: str
         :param _ScheduleHour: 执行时间：时
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleHour: int
         :param _ScheduleMin: 执行时间：分
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleMin: int
         :param _BackupScope: 备份粒度：
 All-全量
 Database-按库
 Table-按表
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupScope: str
         :param _BackupDatabase: 备份库：如果是按库备份，则需要该字段，库之间用英文逗号分割
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupDatabase: str
         """
         self._EffectivePeriod = None
@@ -13913,7 +13929,6 @@ Table-按表
     @property
     def EffectivePeriod(self):
         """生效周期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EffectivePeriod
@@ -13930,7 +13945,6 @@ Week-周
 Month-月
 Once-单次
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScheduleType
@@ -13943,7 +13957,6 @@ Once-单次
     def ScheduleData(self):
         """执行调度的日期。调度类型为周和月时以英文逗号分隔；
 调度类型为单次时，该值是个日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScheduleData
@@ -13955,7 +13968,6 @@ Once-单次
     @property
     def ScheduleHour(self):
         """执行时间：时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScheduleHour
@@ -13967,7 +13979,6 @@ Once-单次
     @property
     def ScheduleMin(self):
         """执行时间：分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScheduleMin
@@ -13982,7 +13993,6 @@ Once-单次
 All-全量
 Database-按库
 Table-按表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BackupScope
@@ -13994,7 +14004,6 @@ Table-按表
     @property
     def BackupDatabase(self):
         """备份库：如果是按库备份，则需要该字段，库之间用英文逗号分割
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BackupDatabase
@@ -14504,7 +14513,6 @@ class UpdateCoolDownResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14515,7 +14523,6 @@ class UpdateCoolDownResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -14741,10 +14748,8 @@ class UserWorkloadGroup(AbstractModel):
     def __init__(self):
         r"""
         :param _UserName: test
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _WorkloadGroupName: normal
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkloadGroupName: str
         """
         self._UserName = None
@@ -14753,7 +14758,6 @@ class UserWorkloadGroup(AbstractModel):
     @property
     def UserName(self):
         """test
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -14765,7 +14769,6 @@ class UserWorkloadGroup(AbstractModel):
     @property
     def WorkloadGroupName(self):
         """normal
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkloadGroupName
@@ -14796,19 +14799,14 @@ class WorkloadGroupConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkloadGroupName: 资源组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkloadGroupName: str
         :param _CpuShare: CPU权重
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuShare: int
         :param _MemoryLimit: 内存限制，所有资源组的内存限制值之和应该小于等于100
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemoryLimit: int
         :param _EnableMemoryOverCommit: 是否允许超配分配
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableMemoryOverCommit: bool
         :param _CpuHardLimit: cpu硬限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuHardLimit: str
         """
         self._WorkloadGroupName = None
@@ -14820,7 +14818,6 @@ class WorkloadGroupConfig(AbstractModel):
     @property
     def WorkloadGroupName(self):
         """资源组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkloadGroupName
@@ -14832,7 +14829,6 @@ class WorkloadGroupConfig(AbstractModel):
     @property
     def CpuShare(self):
         """CPU权重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CpuShare
@@ -14844,7 +14840,6 @@ class WorkloadGroupConfig(AbstractModel):
     @property
     def MemoryLimit(self):
         """内存限制，所有资源组的内存限制值之和应该小于等于100
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MemoryLimit
@@ -14856,7 +14851,6 @@ class WorkloadGroupConfig(AbstractModel):
     @property
     def EnableMemoryOverCommit(self):
         """是否允许超配分配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableMemoryOverCommit
@@ -14868,7 +14862,6 @@ class WorkloadGroupConfig(AbstractModel):
     @property
     def CpuHardLimit(self):
         """cpu硬限制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CpuHardLimit
@@ -14908,10 +14901,8 @@ class ZoneInfo(AbstractModel):
         :param _ZoneId: 可用区唯一标记
         :type ZoneId: int
         :param _Encrypt: Encryptid
-注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: int
         :param _Main: 是否为主力园区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Main: bool
         """
         self._Name = None
@@ -14956,7 +14947,6 @@ class ZoneInfo(AbstractModel):
     @property
     def Encrypt(self):
         """Encryptid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Encrypt
@@ -14968,7 +14958,6 @@ class ZoneInfo(AbstractModel):
     @property
     def Main(self):
         """是否为主力园区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Main

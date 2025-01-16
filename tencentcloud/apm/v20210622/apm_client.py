@@ -50,7 +50,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmAgent(self, request):
-        """获取 APM Agent信息
+        """获取 APM 接入点
 
         :param request: Request instance for DescribeApmAgent.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmAgentRequest`
@@ -73,7 +73,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmInstances(self, request):
-        """拉取 APM 业务系统列表
+        """获取 APM 业务系统列表
 
         :param request: Request instance for DescribeApmInstances.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmInstancesRequest`
@@ -166,7 +166,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeMetricRecords(self, request):
-        """拉取通用指标列表
+        """查询指标列表接口，查询指标更推荐使用DescribeGeneralMetricData接口
 
         :param request: Request instance for DescribeMetricRecords.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeMetricRecordsRequest`

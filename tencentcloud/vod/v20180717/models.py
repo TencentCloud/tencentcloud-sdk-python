@@ -34572,7 +34572,7 @@ class EditMediaVideoStream(AbstractModel):
 <li>av1：AOMedia Video 1 编码；</li>
 <li>H.266：H.266 编码。</li>
         :type Codec: str
-        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 当取值为 0 或不填时，表示自动选择最佳视频码率。
         :type Bitrate: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
@@ -34623,7 +34623,7 @@ class EditMediaVideoStream(AbstractModel):
 
     @property
     def Bitrate(self):
-        """视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+        """视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 当取值为 0 或不填时，表示自动选择最佳视频码率。
         :rtype: int
         """
@@ -73756,7 +73756,7 @@ class VideoTemplateInfo(AbstractModel):
         :param _Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
         :type Fps: int
-        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 当取值为 0，表示视频码率和原始视频保持一致。
         :type Bitrate: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
@@ -73850,7 +73850,7 @@ class VideoTemplateInfo(AbstractModel):
 
     @property
     def Bitrate(self):
-        """视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+        """视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 当取值为 0，表示视频码率和原始视频保持一致。
         :rtype: int
         """
@@ -74020,7 +74020,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :param _Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
         :type Fps: int
-        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 当取值为 0，表示视频码率和原始视频保持一致。
         :type Bitrate: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
@@ -74105,7 +74105,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Bitrate(self):
-        """视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+        """视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 当取值为 0，表示视频码率和原始视频保持一致。
         :rtype: int
         """

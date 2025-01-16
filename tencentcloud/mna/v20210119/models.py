@@ -485,7 +485,6 @@ class AddDeviceResponse(AbstractModel):
         :param _DeviceId: 设备ID
         :type DeviceId: str
         :param _Signature: 签名字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type Signature: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -520,7 +519,6 @@ class AddDeviceResponse(AbstractModel):
     @property
     def Signature(self):
         """签名字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Signature
@@ -1800,19 +1798,14 @@ class DeviceBaseInfo(AbstractModel):
         :param _Payer: 付费方 0：厂商付费 1：客户付费
         :type Payer: int
         :param _GroupId: 设备分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 设备分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowTrunc: int
         :param _Sn: 设备sn
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sn: str
         :param _Vendor: 厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vendor: str
         """
         self._DeviceId = None
@@ -1920,7 +1913,6 @@ class DeviceBaseInfo(AbstractModel):
     @property
     def GroupId(self):
         """设备分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -1932,7 +1924,6 @@ class DeviceBaseInfo(AbstractModel):
     @property
     def GroupName(self):
         """设备分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -1944,7 +1935,6 @@ class DeviceBaseInfo(AbstractModel):
     @property
     def FlowTrunc(self):
         """设备无流量包处理方式，0: 按量付费，1: 截断加速
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowTrunc
@@ -1956,7 +1946,6 @@ class DeviceBaseInfo(AbstractModel):
     @property
     def Sn(self):
         """设备sn
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sn
@@ -1968,7 +1957,6 @@ class DeviceBaseInfo(AbstractModel):
     @property
     def Vendor(self):
         """厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vendor
@@ -2012,16 +2000,12 @@ class DeviceDetails(AbstractModel):
         :param _DeviceBaseInfo: 设备基本信息
         :type DeviceBaseInfo: :class:`tencentcloud.mna.v20210119.models.DeviceBaseInfo`
         :param _DeviceNetInfo: 设备网络信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceNetInfo: list of DeviceNetInfo
         :param _GatewaySite: 聚合服务器地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewaySite: str
         :param _BusinessDownRate: 业务下行速率
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessDownRate: float
         :param _BusinessUpRate: 业务上行速率
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessUpRate: float
         """
         self._DeviceBaseInfo = None
@@ -2044,7 +2028,6 @@ class DeviceDetails(AbstractModel):
     @property
     def DeviceNetInfo(self):
         """设备网络信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceNetInfo
         """
         return self._DeviceNetInfo
@@ -2056,7 +2039,6 @@ class DeviceDetails(AbstractModel):
     @property
     def GatewaySite(self):
         """聚合服务器地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewaySite
@@ -2068,7 +2050,6 @@ class DeviceDetails(AbstractModel):
     @property
     def BusinessDownRate(self):
         """业务下行速率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BusinessDownRate
@@ -2080,7 +2061,6 @@ class DeviceDetails(AbstractModel):
     @property
     def BusinessUpRate(self):
         """业务上行速率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BusinessUpRate
@@ -2248,7 +2228,6 @@ class DeviceNetInfo(AbstractModel):
 0:数据
 1:Wi-Fi
 2:有线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _DataEnable: 启用/禁用
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2322,7 +2301,6 @@ class DeviceNetInfo(AbstractModel):
 0:数据
 1:Wi-Fi
 2:有线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -3381,13 +3359,10 @@ class GetFlowAlarmInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AlarmValue: 流量包的告警阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmValue: int
         :param _NotifyUrl: 告警通知回调url
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotifyUrl: str
         :param _CallbackKey: 告警通知回调key
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackKey: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3400,7 +3375,6 @@ class GetFlowAlarmInfoResponse(AbstractModel):
     @property
     def AlarmValue(self):
         """流量包的告警阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmValue
@@ -3412,7 +3386,6 @@ class GetFlowAlarmInfoResponse(AbstractModel):
     @property
     def NotifyUrl(self):
         """告警通知回调url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NotifyUrl
@@ -3424,7 +3397,6 @@ class GetFlowAlarmInfoResponse(AbstractModel):
     @property
     def CallbackKey(self):
         """告警通知回调key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CallbackKey
@@ -5156,7 +5128,6 @@ class GetNetMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MonitorData: 监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorData: list of MonitorData
         :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM']
 MC=中国大陆
@@ -5174,7 +5145,6 @@ AM=美洲
     @property
     def MonitorData(self):
         """监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MonitorData
         """
         return self._MonitorData

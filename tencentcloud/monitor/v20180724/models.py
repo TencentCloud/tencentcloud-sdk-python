@@ -25269,7 +25269,7 @@ class GrafanaIntegrationConfig(AbstractModel):
         :type Content: str
         :param _Description: 集成描述
         :type Description: str
-        :param _GrafanaURL: Grafana 跳转地址
+        :param _GrafanaURL: Grafana 跳转地址(目前未使用，默认为空)
 注意：此字段可能返回 null，表示取不到有效值。
         :type GrafanaURL: str
         """
@@ -25325,7 +25325,7 @@ class GrafanaIntegrationConfig(AbstractModel):
 
     @property
     def GrafanaURL(self):
-        """Grafana 跳转地址
+        """Grafana 跳转地址(目前未使用，默认为空)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

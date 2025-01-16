@@ -17271,9 +17271,7 @@ class DescribeSecurityIPGroupRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID ，用于指定查询的站点范围。
         :type ZoneId: str
-        :param _GroupIds: 指定安全 IP 组 ID。
-<li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li>
-<li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
+        :param _GroupIds: 指定安全 IP 组 ID。 <li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li> <li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
         :type GroupIds: list of int
         """
         self._ZoneId = None
@@ -17292,9 +17290,7 @@ class DescribeSecurityIPGroupRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """指定安全 IP 组 ID。
-<li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li>
-<li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
+        """指定安全 IP 组 ID。 <li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li> <li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
         :rtype: list of int
         """
         return self._GroupIds

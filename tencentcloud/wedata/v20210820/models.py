@@ -10606,7 +10606,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         :type DatasourceId: str
         :param _Database: 数据库
         :type Database: str
-        :param _DDLSql: 建hive表ddl
+        :param _DDLSql: 建hive表ddl的base64编码
         :type DDLSql: str
         :param _Privilege: 表权限 ，默认为0:项目共享;1:仅个人与管理员
         :type Privilege: int
@@ -10664,7 +10664,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
 
     @property
     def DDLSql(self):
-        """建hive表ddl
+        """建hive表ddl的base64编码
         :rtype: str
         """
         return self._DDLSql
@@ -11568,6 +11568,7 @@ class CreateOfflineTaskResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ArrangeSpaceTaskId: str
         :param _Data: 结果
+注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11604,6 +11605,7 @@ class CreateOfflineTaskResponse(AbstractModel):
     @property
     def Data(self):
         """结果
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -37588,6 +37590,237 @@ class DescribeTaskScriptResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTaskTableMetricOverviewRequest(AbstractModel):
+    """DescribeTaskTableMetricOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务TaskId
+        :type TaskId: str
+        :param _NodeType: 来源类型，支持枚举： SOURCE、SINK
+        :type NodeType: str
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskType: 任务类型：201. stream, 202. offline，当前只支持实时201
+        :type TaskType: int
+        :param _Filters: 根据SchemaName来模糊搜索
+        :type Filters: list of Filter
+        :param _OrderFields: 排序
+        :type OrderFields: list of OrderFields
+        """
+        self._TaskId = None
+        self._NodeType = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._ProjectId = None
+        self._TaskType = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def TaskId(self):
+        """任务TaskId
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def NodeType(self):
+        """来源类型，支持枚举： SOURCE、SINK
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def PageNumber(self):
+        """页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskType(self):
+        """任务类型：201. stream, 202. offline，当前只支持实时201
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Filters(self):
+        """根据SchemaName来模糊搜索
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        """排序
+        :rtype: list of OrderFields
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._NodeType = params.get("NodeType")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ProjectId = params.get("ProjectId")
+        self._TaskType = params.get("TaskType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderFields()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskTableMetricOverviewResponse(AbstractModel):
+    """DescribeTaskTableMetricOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskTableMetricInfos: 表粒度指标集合
+        :type TaskTableMetricInfos: list of TaskTableMetricInfo
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _MetricType: 返回列表类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskTableMetricInfos = None
+        self._TotalCount = None
+        self._MetricType = None
+        self._RequestId = None
+
+    @property
+    def TaskTableMetricInfos(self):
+        """表粒度指标集合
+        :rtype: list of TaskTableMetricInfo
+        """
+        return self._TaskTableMetricInfos
+
+    @TaskTableMetricInfos.setter
+    def TaskTableMetricInfos(self, TaskTableMetricInfos):
+        self._TaskTableMetricInfos = TaskTableMetricInfos
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MetricType(self):
+        """返回列表类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskTableMetricInfos") is not None:
+            self._TaskTableMetricInfos = []
+            for item in params.get("TaskTableMetricInfos"):
+                obj = TaskTableMetricInfo()
+                obj._deserialize(item)
+                self._TaskTableMetricInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._MetricType = params.get("MetricType")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTemplateDimCountRequest(AbstractModel):
     """DescribeTemplateDimCount请求参数结构体
 
@@ -58219,6 +58452,57 @@ class OrderFieldOptional(AbstractModel):
     @property
     def Direction(self):
         """排序方向：ASC|DESC
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderFields(AbstractModel):
+    """排序
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 字段
+        :type Name: str
+        :param _Direction: 排序
+        :type Direction: str
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        """字段
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        """排序
         :rtype: str
         """
         return self._Direction
@@ -79788,6 +80072,487 @@ class TaskSubmitPreCheckDetailInfo(AbstractModel):
         self._ProjectName = params.get("ProjectName")
         self._InChargeId = params.get("InChargeId")
         self._InCharge = params.get("InCharge")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskTableMetricInfo(AbstractModel):
+    """任务表粒度指标信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TotalRecordNum: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRecordNum: int
+        :param _TotalRecordByteNum: 总字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRecordByteNum: int
+        :param _TotalDirtyRecordNum: 总脏记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalDirtyRecordNum: int
+        :param _SchemaName: Schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _Topic: topic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _Collection: Collection名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Collection: str
+        :param _DataSourceName: 数据源名称
+        :type DataSourceName: str
+        :param _NodeId: 节点id
+        :type NodeId: str
+        :param _LogicDatabase: 逻辑库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicDatabase: str
+        :param _LogicTable: 逻辑表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicTable: str
+        :param _LogicSchema: 逻辑schema名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicSchema: str
+        :param _TaskTableMetricInfos: 物理表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTableMetricInfos: list of TaskTableMetricInfo
+        :param _SyncStatus: 同步状态，0-未知，1-正常， 2-异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncStatus: int
+        :param _TargetDatabaseName: Target数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDatabaseName: str
+        :param _TargetTableName: Target表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTableName: str
+        :param _WriteTotalRecordNum: Write总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteTotalRecordNum: int
+        :param _WriteTotalRecordByteNum: Write总字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteTotalRecordByteNum: str
+        :param _TargetSchemaName: TargetSchema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSchemaName: str
+        :param _TargetTopic: Targettopic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTopic: str
+        :param _TargetCollection: TargetCollection名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetCollection: str
+        :param _TargetDataSourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDataSourceName: str
+        :param _TargetNodeId: 节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetNodeId: str
+        :param _TotalRecordSpeed: 读取条数的速度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRecordSpeed: float
+        :param _WriteTotalRecordSpeed: 写入条数的速度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteTotalRecordSpeed: float
+        :param _ExceptionReason: 异常原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptionReason: str
+        """
+        self._DatabaseName = None
+        self._TableName = None
+        self._TotalRecordNum = None
+        self._TotalRecordByteNum = None
+        self._TotalDirtyRecordNum = None
+        self._SchemaName = None
+        self._Topic = None
+        self._Collection = None
+        self._DataSourceName = None
+        self._NodeId = None
+        self._LogicDatabase = None
+        self._LogicTable = None
+        self._LogicSchema = None
+        self._TaskTableMetricInfos = None
+        self._SyncStatus = None
+        self._TargetDatabaseName = None
+        self._TargetTableName = None
+        self._WriteTotalRecordNum = None
+        self._WriteTotalRecordByteNum = None
+        self._TargetSchemaName = None
+        self._TargetTopic = None
+        self._TargetCollection = None
+        self._TargetDataSourceName = None
+        self._TargetNodeId = None
+        self._TotalRecordSpeed = None
+        self._WriteTotalRecordSpeed = None
+        self._ExceptionReason = None
+
+    @property
+    def DatabaseName(self):
+        """数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        """表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TotalRecordNum(self):
+        """总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalRecordNum
+
+    @TotalRecordNum.setter
+    def TotalRecordNum(self, TotalRecordNum):
+        self._TotalRecordNum = TotalRecordNum
+
+    @property
+    def TotalRecordByteNum(self):
+        """总字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalRecordByteNum
+
+    @TotalRecordByteNum.setter
+    def TotalRecordByteNum(self, TotalRecordByteNum):
+        self._TotalRecordByteNum = TotalRecordByteNum
+
+    @property
+    def TotalDirtyRecordNum(self):
+        """总脏记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalDirtyRecordNum
+
+    @TotalDirtyRecordNum.setter
+    def TotalDirtyRecordNum(self, TotalDirtyRecordNum):
+        self._TotalDirtyRecordNum = TotalDirtyRecordNum
+
+    @property
+    def SchemaName(self):
+        """Schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Topic(self):
+        """topic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Collection(self):
+        """Collection名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Collection
+
+    @Collection.setter
+    def Collection(self, Collection):
+        self._Collection = Collection
+
+    @property
+    def DataSourceName(self):
+        """数据源名称
+        :rtype: str
+        """
+        return self._DataSourceName
+
+    @DataSourceName.setter
+    def DataSourceName(self, DataSourceName):
+        self._DataSourceName = DataSourceName
+
+    @property
+    def NodeId(self):
+        """节点id
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def LogicDatabase(self):
+        """逻辑库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogicDatabase
+
+    @LogicDatabase.setter
+    def LogicDatabase(self, LogicDatabase):
+        self._LogicDatabase = LogicDatabase
+
+    @property
+    def LogicTable(self):
+        """逻辑表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogicTable
+
+    @LogicTable.setter
+    def LogicTable(self, LogicTable):
+        self._LogicTable = LogicTable
+
+    @property
+    def LogicSchema(self):
+        """逻辑schema名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogicSchema
+
+    @LogicSchema.setter
+    def LogicSchema(self, LogicSchema):
+        self._LogicSchema = LogicSchema
+
+    @property
+    def TaskTableMetricInfos(self):
+        """物理表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskTableMetricInfo
+        """
+        return self._TaskTableMetricInfos
+
+    @TaskTableMetricInfos.setter
+    def TaskTableMetricInfos(self, TaskTableMetricInfos):
+        self._TaskTableMetricInfos = TaskTableMetricInfos
+
+    @property
+    def SyncStatus(self):
+        """同步状态，0-未知，1-正常， 2-异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def TargetDatabaseName(self):
+        """Target数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetDatabaseName
+
+    @TargetDatabaseName.setter
+    def TargetDatabaseName(self, TargetDatabaseName):
+        self._TargetDatabaseName = TargetDatabaseName
+
+    @property
+    def TargetTableName(self):
+        """Target表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetTableName
+
+    @TargetTableName.setter
+    def TargetTableName(self, TargetTableName):
+        self._TargetTableName = TargetTableName
+
+    @property
+    def WriteTotalRecordNum(self):
+        """Write总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WriteTotalRecordNum
+
+    @WriteTotalRecordNum.setter
+    def WriteTotalRecordNum(self, WriteTotalRecordNum):
+        self._WriteTotalRecordNum = WriteTotalRecordNum
+
+    @property
+    def WriteTotalRecordByteNum(self):
+        """Write总字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WriteTotalRecordByteNum
+
+    @WriteTotalRecordByteNum.setter
+    def WriteTotalRecordByteNum(self, WriteTotalRecordByteNum):
+        self._WriteTotalRecordByteNum = WriteTotalRecordByteNum
+
+    @property
+    def TargetSchemaName(self):
+        """TargetSchema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetSchemaName
+
+    @TargetSchemaName.setter
+    def TargetSchemaName(self, TargetSchemaName):
+        self._TargetSchemaName = TargetSchemaName
+
+    @property
+    def TargetTopic(self):
+        """Targettopic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetTopic
+
+    @TargetTopic.setter
+    def TargetTopic(self, TargetTopic):
+        self._TargetTopic = TargetTopic
+
+    @property
+    def TargetCollection(self):
+        """TargetCollection名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetCollection
+
+    @TargetCollection.setter
+    def TargetCollection(self, TargetCollection):
+        self._TargetCollection = TargetCollection
+
+    @property
+    def TargetDataSourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetDataSourceName
+
+    @TargetDataSourceName.setter
+    def TargetDataSourceName(self, TargetDataSourceName):
+        self._TargetDataSourceName = TargetDataSourceName
+
+    @property
+    def TargetNodeId(self):
+        """节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetNodeId
+
+    @TargetNodeId.setter
+    def TargetNodeId(self, TargetNodeId):
+        self._TargetNodeId = TargetNodeId
+
+    @property
+    def TotalRecordSpeed(self):
+        """读取条数的速度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TotalRecordSpeed
+
+    @TotalRecordSpeed.setter
+    def TotalRecordSpeed(self, TotalRecordSpeed):
+        self._TotalRecordSpeed = TotalRecordSpeed
+
+    @property
+    def WriteTotalRecordSpeed(self):
+        """写入条数的速度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._WriteTotalRecordSpeed
+
+    @WriteTotalRecordSpeed.setter
+    def WriteTotalRecordSpeed(self, WriteTotalRecordSpeed):
+        self._WriteTotalRecordSpeed = WriteTotalRecordSpeed
+
+    @property
+    def ExceptionReason(self):
+        """异常原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExceptionReason
+
+    @ExceptionReason.setter
+    def ExceptionReason(self, ExceptionReason):
+        self._ExceptionReason = ExceptionReason
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        self._TotalRecordNum = params.get("TotalRecordNum")
+        self._TotalRecordByteNum = params.get("TotalRecordByteNum")
+        self._TotalDirtyRecordNum = params.get("TotalDirtyRecordNum")
+        self._SchemaName = params.get("SchemaName")
+        self._Topic = params.get("Topic")
+        self._Collection = params.get("Collection")
+        self._DataSourceName = params.get("DataSourceName")
+        self._NodeId = params.get("NodeId")
+        self._LogicDatabase = params.get("LogicDatabase")
+        self._LogicTable = params.get("LogicTable")
+        self._LogicSchema = params.get("LogicSchema")
+        if params.get("TaskTableMetricInfos") is not None:
+            self._TaskTableMetricInfos = []
+            for item in params.get("TaskTableMetricInfos"):
+                obj = TaskTableMetricInfo()
+                obj._deserialize(item)
+                self._TaskTableMetricInfos.append(obj)
+        self._SyncStatus = params.get("SyncStatus")
+        self._TargetDatabaseName = params.get("TargetDatabaseName")
+        self._TargetTableName = params.get("TargetTableName")
+        self._WriteTotalRecordNum = params.get("WriteTotalRecordNum")
+        self._WriteTotalRecordByteNum = params.get("WriteTotalRecordByteNum")
+        self._TargetSchemaName = params.get("TargetSchemaName")
+        self._TargetTopic = params.get("TargetTopic")
+        self._TargetCollection = params.get("TargetCollection")
+        self._TargetDataSourceName = params.get("TargetDataSourceName")
+        self._TargetNodeId = params.get("TargetNodeId")
+        self._TotalRecordSpeed = params.get("TotalRecordSpeed")
+        self._WriteTotalRecordSpeed = params.get("WriteTotalRecordSpeed")
+        self._ExceptionReason = params.get("ExceptionReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

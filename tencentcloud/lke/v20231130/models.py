@@ -3390,9 +3390,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
 
         :type Question: str
-        :param _BusinessSource: 拒答问题来源的数据源唯一id，取值1，2
-
-
+        :param _BusinessSource: 拒答问题来源的数据源唯一id， - 拒答来源于不满意回复  2 - 拒答来源于手动添加
         :type BusinessSource: int
         :param _BusinessId: 拒答问题来源的数据源唯一id
 
@@ -3430,9 +3428,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def BusinessSource(self):
-        """拒答问题来源的数据源唯一id，取值1，2
-
-
+        """拒答问题来源的数据源唯一id， - 拒答来源于不满意回复  2 - 拒答来源于手动添加
         :rtype: int
         """
         return self._BusinessSource
@@ -6762,14 +6758,14 @@ class DescribeReleaseInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         """
         self._BotBizId = None
 
     @property
     def BotBizId(self):
-        """机器人ID
+        """应用ID
         :rtype: str
         """
         return self._BotBizId
@@ -6800,10 +6796,9 @@ class DescribeReleaseInfoResponse(AbstractModel):
         r"""
         :param _LastTime: 最后发布时间
         :type LastTime: str
-        :param _Status: 发布状态
+        :param _Status: 发布状态 ， 1-待发布 , 2-发布中 , 3-发布成功 , 4-发布失败 , 5-审核中 , 6-审核成功 , 7-审核失败 , 8-发布成功回调处理中 , 9-发布暂停 , 10-申诉审核中 , 11-申诉审核通过 , 12-申诉审核不通过
         :type Status: int
-        :param _IsUpdated: 是否编辑过
-
+        :param _IsUpdated: 是否编辑过, 当为true的时候表示可以发布
         :type IsUpdated: bool
         :param _Msg: 失败原因
 
@@ -6830,7 +6825,7 @@ class DescribeReleaseInfoResponse(AbstractModel):
 
     @property
     def Status(self):
-        """发布状态
+        """发布状态 ， 1-待发布 , 2-发布中 , 3-发布成功 , 4-发布失败 , 5-审核中 , 6-审核成功 , 7-审核失败 , 8-发布成功回调处理中 , 9-发布暂停 , 10-申诉审核中 , 11-申诉审核通过 , 12-申诉审核不通过
         :rtype: int
         """
         return self._Status
@@ -6841,8 +6836,7 @@ class DescribeReleaseInfoResponse(AbstractModel):
 
     @property
     def IsUpdated(self):
-        """是否编辑过
-
+        """是否编辑过, 当为true的时候表示可以发布
         :rtype: bool
         """
         return self._IsUpdated

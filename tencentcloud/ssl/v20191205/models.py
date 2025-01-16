@@ -7938,6 +7938,8 @@ class DescribeCertificatesRequest(AbstractModel):
         :type Tags: list of Tags
         :param _IsPendingIssue: 是否筛选等待签发的证书，传1是筛选，0和null不筛选
         :type IsPendingIssue: int
+        :param _CertIds: 筛选指定证书ID的证书，只支持有权限的证书ID
+        :type CertIds: list of str
         """
         self._Offset = None
         self._Limit = None
@@ -7955,6 +7957,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self._Hostable = None
         self._Tags = None
         self._IsPendingIssue = None
+        self._CertIds = None
 
     @property
     def Offset(self):
@@ -8132,6 +8135,17 @@ class DescribeCertificatesRequest(AbstractModel):
     def IsPendingIssue(self, IsPendingIssue):
         self._IsPendingIssue = IsPendingIssue
 
+    @property
+    def CertIds(self):
+        """筛选指定证书ID的证书，只支持有权限的证书ID
+        :rtype: list of str
+        """
+        return self._CertIds
+
+    @CertIds.setter
+    def CertIds(self, CertIds):
+        self._CertIds = CertIds
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -8155,6 +8169,7 @@ class DescribeCertificatesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._IsPendingIssue = params.get("IsPendingIssue")
+        self._CertIds = params.get("CertIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

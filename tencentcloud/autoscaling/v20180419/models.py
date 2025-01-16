@@ -1598,6 +1598,8 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         :param _ClearInstanceTags: 是否清空实例标签列表，非必填，默认为 false。
 填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。
         :type ClearInstanceTags: bool
+        :param _ClearMetadata: 是否清空 MetaData，非必填，默认为 false。填 true 代表清空 MetaData，清空后基于此新创建的云主机将不会关联自定义的 Metadata。
+        :type ClearMetadata: bool
         """
         self._LaunchConfigurationId = None
         self._ClearDataDisks = None
@@ -1605,6 +1607,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         self._ClearInstanceNameSettings = None
         self._ClearDisasterRecoverGroupIds = None
         self._ClearInstanceTags = None
+        self._ClearMetadata = None
 
     @property
     def LaunchConfigurationId(self):
@@ -1677,6 +1680,17 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
     def ClearInstanceTags(self, ClearInstanceTags):
         self._ClearInstanceTags = ClearInstanceTags
 
+    @property
+    def ClearMetadata(self):
+        """是否清空 MetaData，非必填，默认为 false。填 true 代表清空 MetaData，清空后基于此新创建的云主机将不会关联自定义的 Metadata。
+        :rtype: bool
+        """
+        return self._ClearMetadata
+
+    @ClearMetadata.setter
+    def ClearMetadata(self, ClearMetadata):
+        self._ClearMetadata = ClearMetadata
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -1685,6 +1699,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         self._ClearInstanceNameSettings = params.get("ClearInstanceNameSettings")
         self._ClearDisasterRecoverGroupIds = params.get("ClearDisasterRecoverGroupIds")
         self._ClearInstanceTags = params.get("ClearInstanceTags")
+        self._ClearMetadata = params.get("ClearMetadata")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2570,6 +2585,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type ImageFamily: str
         :param _DedicatedClusterId: 本地专用集群ID。
         :type DedicatedClusterId: str
+        :param _Metadata: 自定义metadata。
+        :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
         """
         self._LaunchConfigurationName = None
         self._ImageId = None
@@ -2598,6 +2615,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self._DisasterRecoverGroupIds = None
         self._ImageFamily = None
         self._DedicatedClusterId = None
+        self._Metadata = None
 
     @property
     def LaunchConfigurationName(self):
@@ -2912,6 +2930,17 @@ class CreateLaunchConfigurationRequest(AbstractModel):
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
 
+    @property
+    def Metadata(self):
+        """自定义metadata。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationName = params.get("LaunchConfigurationName")
@@ -2974,6 +3003,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         self._ImageFamily = params.get("ImageFamily")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9186,6 +9218,98 @@ class LoginSettings(AbstractModel):
         
 
 
+class Metadata(AbstractModel):
+    """自定义 Metadata
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 自定义 Metadata 键值对列表
+        :type Items: list of MetadataItem
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        """自定义 Metadata 键值对列表
+        :rtype: list of MetadataItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = MetadataItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetadataItem(AbstractModel):
+    """自定义 Metadata 的一组键值对信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 自定义 MetaData 键
+        :type Key: str
+        :param _Value: 自定义 MetaData 值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """自定义 MetaData 键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """自定义 MetaData 值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MetricAlarm(AbstractModel):
     """弹性伸缩告警指标
 
@@ -9953,6 +10077,8 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         :type ImageFamily: str
         :param _DedicatedClusterId: 本地专用集群ID。
         :type DedicatedClusterId: str
+        :param _Metadata: 自定义metadata。
+        :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
         """
         self._LaunchConfigurationId = None
         self._ImageId = None
@@ -9979,6 +10105,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         self._InstanceTags = None
         self._ImageFamily = None
         self._DedicatedClusterId = None
+        self._Metadata = None
 
     @property
     def LaunchConfigurationId(self):
@@ -10282,6 +10409,17 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
 
+    @property
+    def Metadata(self):
+        """自定义metadata。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -10337,6 +10475,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
                 self._InstanceTags.append(obj)
         self._ImageFamily = params.get("ImageFamily")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

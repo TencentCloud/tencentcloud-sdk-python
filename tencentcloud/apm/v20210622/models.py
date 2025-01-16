@@ -549,54 +549,42 @@ class ApmField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompareVal: 昨日同比指标值，已弃用，不建议使用
-        :type CompareVal: str
-        :param _CompareVals: Compare值结果数组，推荐使用
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CompareVals: list of APMKVItem
-        :param _Value: 指标值
+        :param _Key: 指标名
+        :type Key: str
+        :param _Value: 指标数值
         :type Value: float
         :param _Unit: 指标所对应的单位
         :type Unit: str
-        :param _Key: 请求数
-        :type Key: str
-        :param _LastPeriodValue: 同环比上周期具体数值
+        :param _CompareVals: 同比结果数组，推荐使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareVals: list of APMKVItem
+        :param _LastPeriodValue: 同比上一个周期的具体指标数值
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastPeriodValue: list of APMKV
+        :param _CompareVal: 同比指标值，已弃用，不建议使用
+        :type CompareVal: str
         """
-        self._CompareVal = None
-        self._CompareVals = None
+        self._Key = None
         self._Value = None
         self._Unit = None
-        self._Key = None
+        self._CompareVals = None
         self._LastPeriodValue = None
+        self._CompareVal = None
 
     @property
-    def CompareVal(self):
-        """昨日同比指标值，已弃用，不建议使用
+    def Key(self):
+        """指标名
         :rtype: str
         """
-        return self._CompareVal
+        return self._Key
 
-    @CompareVal.setter
-    def CompareVal(self, CompareVal):
-        self._CompareVal = CompareVal
-
-    @property
-    def CompareVals(self):
-        """Compare值结果数组，推荐使用
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of APMKVItem
-        """
-        return self._CompareVals
-
-    @CompareVals.setter
-    def CompareVals(self, CompareVals):
-        self._CompareVals = CompareVals
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
 
     @property
     def Value(self):
-        """指标值
+        """指标数值
         :rtype: float
         """
         return self._Value
@@ -617,19 +605,20 @@ class ApmField(AbstractModel):
         self._Unit = Unit
 
     @property
-    def Key(self):
-        """请求数
-        :rtype: str
+    def CompareVals(self):
+        """同比结果数组，推荐使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of APMKVItem
         """
-        return self._Key
+        return self._CompareVals
 
-    @Key.setter
-    def Key(self, Key):
-        self._Key = Key
+    @CompareVals.setter
+    def CompareVals(self, CompareVals):
+        self._CompareVals = CompareVals
 
     @property
     def LastPeriodValue(self):
-        """同环比上周期具体数值
+        """同比上一个周期的具体指标数值
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of APMKV
         """
@@ -639,24 +628,35 @@ class ApmField(AbstractModel):
     def LastPeriodValue(self, LastPeriodValue):
         self._LastPeriodValue = LastPeriodValue
 
+    @property
+    def CompareVal(self):
+        """同比指标值，已弃用，不建议使用
+        :rtype: str
+        """
+        return self._CompareVal
+
+    @CompareVal.setter
+    def CompareVal(self, CompareVal):
+        self._CompareVal = CompareVal
+
 
     def _deserialize(self, params):
-        self._CompareVal = params.get("CompareVal")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Unit = params.get("Unit")
         if params.get("CompareVals") is not None:
             self._CompareVals = []
             for item in params.get("CompareVals"):
                 obj = APMKVItem()
                 obj._deserialize(item)
                 self._CompareVals.append(obj)
-        self._Value = params.get("Value")
-        self._Unit = params.get("Unit")
-        self._Key = params.get("Key")
         if params.get("LastPeriodValue") is not None:
             self._LastPeriodValue = []
             for item in params.get("LastPeriodValue"):
                 obj = APMKV()
                 obj._deserialize(item)
                 self._LastPeriodValue.append(obj)
+        self._CompareVal = params.get("CompareVal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -674,93 +674,91 @@ class ApmInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AmountOfUsedStorage: 存储使用量( MB )
-        :type AmountOfUsedStorage: float
-        :param _Name: 业务系统名
-        :type Name: str
-        :param _Tags: 业务系统所属 Tag 列表
-        :type Tags: list of ApmTag
         :param _InstanceId: 业务系统 ID
         :type InstanceId: str
-        :param _CreateUin: 创建人 Uin
-        :type CreateUin: str
-        :param _ServiceCount: 该业务系统已上报的服务端应用数量
-        :type ServiceCount: int
-        :param _CountOfReportSpanPerDay: 日均上报 Span 数
-        :type CountOfReportSpanPerDay: int
-        :param _AppId: AppID 信息
-        :type AppId: int
-        :param _TraceDuration: Trace 数据保存时长
-        :type TraceDuration: int
+        :param _Name: 业务系统名
+        :type Name: str
         :param _Description: 业务系统描述信息
         :type Description: str
         :param _Status: 业务系统状态
         :type Status: int
         :param _Region: 业务系统所属地域
         :type Region: str
+        :param _Tags: 业务系统 Tag 列表
+        :type Tags: list of ApmTag
+        :param _AppId: AppID 信息
+        :type AppId: int
+        :param _CreateUin: 创建人 Uin
+        :type CreateUin: str
+        :param _AmountOfUsedStorage: 存储使用量(单位：MB)
+        :type AmountOfUsedStorage: float
+        :param _ServiceCount: 该业务系统服务端应用数量
+        :type ServiceCount: int
+        :param _CountOfReportSpanPerDay: 日均上报 Span 数
+        :type CountOfReportSpanPerDay: int
+        :param _TraceDuration: Trace 数据保存时长（单位：天）
+        :type TraceDuration: int
         :param _SpanDailyCounters: 业务系统上报额度
         :type SpanDailyCounters: int
-        :param _BillingInstance: 业务系统是否开通计费
+        :param _BillingInstance: 业务系统是否已开通计费（0=未开通，1=已开通）
         :type BillingInstance: int
-        :param _ErrRateThreshold: 错误率阈值
+        :param _ErrRateThreshold: 错误警示线（单位：%）
         :type ErrRateThreshold: int
-        :param _SampleRate: 采样率阈值
+        :param _SampleRate: 采样率（单位：%）
         :type SampleRate: int
-        :param _ErrorSample: 是否开启错误采样 0  关 1 开
+        :param _ErrorSample: 是否开启错误采样（0=关, 1=开）
         :type ErrorSample: int
-        :param _SlowRequestSavedThreshold: 慢调用保存阈值
+        :param _SlowRequestSavedThreshold: 采样慢调用保存阈值（单位：ms）
         :type SlowRequestSavedThreshold: int
         :param _LogRegion: CLS 日志所在地域
         :type LogRegion: str
-        :param _LogSource: 日志来源
+        :param _LogSource: 日志源
         :type LogSource: str
-        :param _IsRelatedLog: 日志功能开关 0 关 | 1 开
+        :param _IsRelatedLog: 日志功能开关（0=关， 1=开）
         :type IsRelatedLog: int
-        :param _LogTopicID: 日志主题ID
+        :param _LogTopicID: 日志主题 ID
         :type LogTopicID: str
-        :param _ClientCount: 该实例已上报的客户端应用数量
+        :param _ClientCount: 该业务系统客户端应用数量
         :type ClientCount: int
-        :param _TotalCount: 该实例已上报的总应用数量
+        :param _TotalCount: 该业务系统最近2天活跃应用数量
         :type TotalCount: int
-        :param _LogSet: CLS 日志集 | ES 集群ID
+        :param _LogSet: CLS 日志集
         :type LogSet: str
-        :param _MetricDuration: Metric 数据保存时长
+        :param _MetricDuration: Metric 数据保存时长（单位：天）
         :type MetricDuration: int
         :param _CustomShowTags: 用户自定义展示标签列表
         :type CustomShowTags: list of str
-        :param _PayMode: 业务系统计费模式
-1为预付费
-0为按量付费
+        :param _PayMode: 业务系统计费模式（1为预付费，0为按量付费）
         :type PayMode: int
         :param _PayModeEffective: 业务系统计费模式是否生效
         :type PayModeEffective: bool
-        :param _ResponseDurationWarningThreshold: 响应时间满意阈值
+        :param _ResponseDurationWarningThreshold: 响应时间警示线（单位：ms）
         :type ResponseDurationWarningThreshold: int
         :param _Free: 是否免费（0=否，1=限额免费，2=完全免费），默认0
         :type Free: int
-        :param _DefaultTSF: 是否 tsf 默认业务系统（0=否，1-是）
+        :param _DefaultTSF: 是否 TSF 默认业务系统（0=否，1=是）
         :type DefaultTSF: int
-        :param _IsRelatedDashboard: 是否关联 Dashboard： 0 关 1 开
+        :param _IsRelatedDashboard: 是否关联 Dashboard（0=关, 1=开）
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: Dashboard ID
+        :param _DashboardTopicID: 关联的 Dashboard ID
         :type DashboardTopicID: str
-        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测
+        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测（0=关， 1=开）
         :type IsInstrumentationVulnerabilityScan: int
-        :param _IsSqlInjectionAnalysis: 是否开启 SQL 注入分析
+        :param _IsSqlInjectionAnalysis: 是否开启 SQL 注入分析（0=关， 1=开）
         :type IsSqlInjectionAnalysis: int
         """
-        self._AmountOfUsedStorage = None
-        self._Name = None
-        self._Tags = None
         self._InstanceId = None
-        self._CreateUin = None
-        self._ServiceCount = None
-        self._CountOfReportSpanPerDay = None
-        self._AppId = None
-        self._TraceDuration = None
+        self._Name = None
         self._Description = None
         self._Status = None
         self._Region = None
+        self._Tags = None
+        self._AppId = None
+        self._CreateUin = None
+        self._AmountOfUsedStorage = None
+        self._ServiceCount = None
+        self._CountOfReportSpanPerDay = None
+        self._TraceDuration = None
         self._SpanDailyCounters = None
         self._BillingInstance = None
         self._ErrRateThreshold = None
@@ -787,39 +785,6 @@ class ApmInstanceDetail(AbstractModel):
         self._IsSqlInjectionAnalysis = None
 
     @property
-    def AmountOfUsedStorage(self):
-        """存储使用量( MB )
-        :rtype: float
-        """
-        return self._AmountOfUsedStorage
-
-    @AmountOfUsedStorage.setter
-    def AmountOfUsedStorage(self, AmountOfUsedStorage):
-        self._AmountOfUsedStorage = AmountOfUsedStorage
-
-    @property
-    def Name(self):
-        """业务系统名
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Tags(self):
-        """业务系统所属 Tag 列表
-        :rtype: list of ApmTag
-        """
-        return self._Tags
-
-    @Tags.setter
-    def Tags(self, Tags):
-        self._Tags = Tags
-
-    @property
     def InstanceId(self):
         """业务系统 ID
         :rtype: str
@@ -831,59 +796,15 @@ class ApmInstanceDetail(AbstractModel):
         self._InstanceId = InstanceId
 
     @property
-    def CreateUin(self):
-        """创建人 Uin
+    def Name(self):
+        """业务系统名
         :rtype: str
         """
-        return self._CreateUin
+        return self._Name
 
-    @CreateUin.setter
-    def CreateUin(self, CreateUin):
-        self._CreateUin = CreateUin
-
-    @property
-    def ServiceCount(self):
-        """该业务系统已上报的服务端应用数量
-        :rtype: int
-        """
-        return self._ServiceCount
-
-    @ServiceCount.setter
-    def ServiceCount(self, ServiceCount):
-        self._ServiceCount = ServiceCount
-
-    @property
-    def CountOfReportSpanPerDay(self):
-        """日均上报 Span 数
-        :rtype: int
-        """
-        return self._CountOfReportSpanPerDay
-
-    @CountOfReportSpanPerDay.setter
-    def CountOfReportSpanPerDay(self, CountOfReportSpanPerDay):
-        self._CountOfReportSpanPerDay = CountOfReportSpanPerDay
-
-    @property
-    def AppId(self):
-        """AppID 信息
-        :rtype: int
-        """
-        return self._AppId
-
-    @AppId.setter
-    def AppId(self, AppId):
-        self._AppId = AppId
-
-    @property
-    def TraceDuration(self):
-        """Trace 数据保存时长
-        :rtype: int
-        """
-        return self._TraceDuration
-
-    @TraceDuration.setter
-    def TraceDuration(self, TraceDuration):
-        self._TraceDuration = TraceDuration
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
     def Description(self):
@@ -919,6 +840,83 @@ class ApmInstanceDetail(AbstractModel):
         self._Region = Region
 
     @property
+    def Tags(self):
+        """业务系统 Tag 列表
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AppId(self):
+        """AppID 信息
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateUin(self):
+        """创建人 Uin
+        :rtype: str
+        """
+        return self._CreateUin
+
+    @CreateUin.setter
+    def CreateUin(self, CreateUin):
+        self._CreateUin = CreateUin
+
+    @property
+    def AmountOfUsedStorage(self):
+        """存储使用量(单位：MB)
+        :rtype: float
+        """
+        return self._AmountOfUsedStorage
+
+    @AmountOfUsedStorage.setter
+    def AmountOfUsedStorage(self, AmountOfUsedStorage):
+        self._AmountOfUsedStorage = AmountOfUsedStorage
+
+    @property
+    def ServiceCount(self):
+        """该业务系统服务端应用数量
+        :rtype: int
+        """
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def CountOfReportSpanPerDay(self):
+        """日均上报 Span 数
+        :rtype: int
+        """
+        return self._CountOfReportSpanPerDay
+
+    @CountOfReportSpanPerDay.setter
+    def CountOfReportSpanPerDay(self, CountOfReportSpanPerDay):
+        self._CountOfReportSpanPerDay = CountOfReportSpanPerDay
+
+    @property
+    def TraceDuration(self):
+        """Trace 数据保存时长（单位：天）
+        :rtype: int
+        """
+        return self._TraceDuration
+
+    @TraceDuration.setter
+    def TraceDuration(self, TraceDuration):
+        self._TraceDuration = TraceDuration
+
+    @property
     def SpanDailyCounters(self):
         """业务系统上报额度
         :rtype: int
@@ -931,7 +929,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def BillingInstance(self):
-        """业务系统是否开通计费
+        """业务系统是否已开通计费（0=未开通，1=已开通）
         :rtype: int
         """
         return self._BillingInstance
@@ -942,7 +940,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ErrRateThreshold(self):
-        """错误率阈值
+        """错误警示线（单位：%）
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -953,7 +951,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SampleRate(self):
-        """采样率阈值
+        """采样率（单位：%）
         :rtype: int
         """
         return self._SampleRate
@@ -964,7 +962,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ErrorSample(self):
-        """是否开启错误采样 0  关 1 开
+        """是否开启错误采样（0=关, 1=开）
         :rtype: int
         """
         return self._ErrorSample
@@ -975,7 +973,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SlowRequestSavedThreshold(self):
-        """慢调用保存阈值
+        """采样慢调用保存阈值（单位：ms）
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -997,7 +995,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogSource(self):
-        """日志来源
+        """日志源
         :rtype: str
         """
         return self._LogSource
@@ -1008,7 +1006,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        """日志功能开关 0 关 | 1 开
+        """日志功能开关（0=关， 1=开）
         :rtype: int
         """
         return self._IsRelatedLog
@@ -1019,7 +1017,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogTopicID(self):
-        """日志主题ID
+        """日志主题 ID
         :rtype: str
         """
         return self._LogTopicID
@@ -1030,7 +1028,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ClientCount(self):
-        """该实例已上报的客户端应用数量
+        """该业务系统客户端应用数量
         :rtype: int
         """
         return self._ClientCount
@@ -1041,7 +1039,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def TotalCount(self):
-        """该实例已上报的总应用数量
+        """该业务系统最近2天活跃应用数量
         :rtype: int
         """
         return self._TotalCount
@@ -1052,7 +1050,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogSet(self):
-        """CLS 日志集 | ES 集群ID
+        """CLS 日志集
         :rtype: str
         """
         return self._LogSet
@@ -1063,7 +1061,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def MetricDuration(self):
-        """Metric 数据保存时长
+        """Metric 数据保存时长（单位：天）
         :rtype: int
         """
         return self._MetricDuration
@@ -1085,9 +1083,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """业务系统计费模式
-1为预付费
-0为按量付费
+        """业务系统计费模式（1为预付费，0为按量付费）
         :rtype: int
         """
         return self._PayMode
@@ -1109,7 +1105,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ResponseDurationWarningThreshold(self):
-        """响应时间满意阈值
+        """响应时间警示线（单位：ms）
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -1131,7 +1127,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def DefaultTSF(self):
-        """是否 tsf 默认业务系统（0=否，1-是）
+        """是否 TSF 默认业务系统（0=否，1=是）
         :rtype: int
         """
         return self._DefaultTSF
@@ -1142,7 +1138,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        """是否关联 Dashboard： 0 关 1 开
+        """是否关联 Dashboard（0=关, 1=开）
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -1153,7 +1149,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        """Dashboard ID
+        """关联的 Dashboard ID
         :rtype: str
         """
         return self._DashboardTopicID
@@ -1164,7 +1160,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        """是否开启组件漏洞检测
+        """是否开启组件漏洞检测（0=关， 1=开）
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -1175,7 +1171,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        """是否开启 SQL 注入分析
+        """是否开启 SQL 注入分析（0=关， 1=开）
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -1186,23 +1182,23 @@ class ApmInstanceDetail(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._AmountOfUsedStorage = params.get("AmountOfUsedStorage")
+        self._InstanceId = params.get("InstanceId")
         self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
                 obj = ApmTag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
-        self._InstanceId = params.get("InstanceId")
+        self._AppId = params.get("AppId")
         self._CreateUin = params.get("CreateUin")
+        self._AmountOfUsedStorage = params.get("AmountOfUsedStorage")
         self._ServiceCount = params.get("ServiceCount")
         self._CountOfReportSpanPerDay = params.get("CountOfReportSpanPerDay")
-        self._AppId = params.get("AppId")
         self._TraceDuration = params.get("TraceDuration")
-        self._Description = params.get("Description")
-        self._Status = params.get("Status")
-        self._Region = params.get("Region")
         self._SpanDailyCounters = params.get("SpanDailyCounters")
         self._BillingInstance = params.get("BillingInstance")
         self._ErrRateThreshold = params.get("ErrRateThreshold")
@@ -1244,9 +1240,9 @@ class ApmMetricRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Fields: field数组
+        :param _Fields: field数组，用于指标的查询结果
         :type Fields: list of ApmField
-        :param _Tags: tag数组
+        :param _Tags: tag数组，用于区分 Groupby 的对象
         :type Tags: list of ApmTag
         """
         self._Fields = None
@@ -1254,7 +1250,7 @@ class ApmMetricRecord(AbstractModel):
 
     @property
     def Fields(self):
-        """field数组
+        """field数组，用于指标的查询结果
         :rtype: list of ApmField
         """
         return self._Fields
@@ -1265,7 +1261,7 @@ class ApmMetricRecord(AbstractModel):
 
     @property
     def Tags(self):
-        """tag数组
+        """tag数组，用于区分 Groupby 的对象
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -1360,15 +1356,15 @@ class CreateApmInstanceRequest(AbstractModel):
         :type Name: str
         :param _Description: 业务系统描述信息
         :type Description: str
-        :param _TraceDuration: Trace 数据保存时长，单位为天默认存储为3天
+        :param _TraceDuration: Trace 数据保存时长（单位：天，默认存储时长为3天）
         :type TraceDuration: int
-        :param _Tags: 标签列表
+        :param _Tags: 业务系统 Tag 列表
         :type Tags: list of ApmTag
-        :param _SpanDailyCounters: 业务系统上报额度值，默认赋值为0表示不限制上报额度
+        :param _SpanDailyCounters: 业务系统上报额度值，默认赋值为0表示不限制上报额度，已废弃
         :type SpanDailyCounters: int
-        :param _PayMode: 业务系统的计费模式
+        :param _PayMode: 业务系统的计费模式（0=按量付费，1=预付费）
         :type PayMode: int
-        :param _Free: （0=付费版；1=tsf 受限免费版；2=免费版）
+        :param _Free: 是否为免费版业务系统（0=付费版；1=TSF 受限免费版；2=免费版）
         :type Free: int
         """
         self._Name = None
@@ -1403,7 +1399,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Trace 数据保存时长，单位为天默认存储为3天
+        """Trace 数据保存时长（单位：天，默认存储时长为3天）
         :rtype: int
         """
         return self._TraceDuration
@@ -1414,7 +1410,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        """业务系统 Tag 列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -1425,7 +1421,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """业务系统上报额度值，默认赋值为0表示不限制上报额度
+        """业务系统上报额度值，默认赋值为0表示不限制上报额度，已废弃
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -1436,7 +1432,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """业务系统的计费模式
+        """业务系统的计费模式（0=按量付费，1=预付费）
         :rtype: int
         """
         return self._PayMode
@@ -1447,7 +1443,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Free(self):
-        """（0=付费版；1=tsf 受限免费版；2=免费版）
+        """是否为免费版业务系统（0=付费版；1=TSF 受限免费版；2=免费版）
         :rtype: int
         """
         return self._Free
@@ -1532,13 +1528,13 @@ class DescribeApmAgentRequest(AbstractModel):
         r"""
         :param _InstanceId: 业务系统 ID
         :type InstanceId: str
-        :param _AgentType: 接入方式
+        :param _AgentType: 接入方式，现支持 skywalking, ot, ebpf 方式接入上报，不填默认为 ot
         :type AgentType: str
-        :param _NetworkMode: 环境
+        :param _NetworkMode: 上报环境，现支持 pl (内网上报), public (外网), inner (自研 VPC )环境上报，不传默认为 public
         :type NetworkMode: str
-        :param _LanguageEnvironment: 语言
+        :param _LanguageEnvironment: 语言，现支持 java, golang, php, python, dotNet, nodejs 语言上报，不传默认为 golang
         :type LanguageEnvironment: str
-        :param _ReportMethod: 上报方式
+        :param _ReportMethod: 上报方式，已弃用
         :type ReportMethod: str
         """
         self._InstanceId = None
@@ -1560,7 +1556,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def AgentType(self):
-        """接入方式
+        """接入方式，现支持 skywalking, ot, ebpf 方式接入上报，不填默认为 ot
         :rtype: str
         """
         return self._AgentType
@@ -1571,7 +1567,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def NetworkMode(self):
-        """环境
+        """上报环境，现支持 pl (内网上报), public (外网), inner (自研 VPC )环境上报，不传默认为 public
         :rtype: str
         """
         return self._NetworkMode
@@ -1582,7 +1578,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def LanguageEnvironment(self):
-        """语言
+        """语言，现支持 java, golang, php, python, dotNet, nodejs 语言上报，不传默认为 golang
         :rtype: str
         """
         return self._LanguageEnvironment
@@ -1593,7 +1589,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def ReportMethod(self):
-        """上报方式
+        """上报方式，已弃用
         :rtype: str
         """
         return self._ReportMethod
@@ -1673,13 +1669,13 @@ class DescribeApmInstancesRequest(AbstractModel):
         r"""
         :param _Tags: Tag 列表
         :type Tags: list of ApmTag
-        :param _InstanceName: 搜索业务系统名
+        :param _InstanceName: 按业务系统名过滤
         :type InstanceName: str
-        :param _InstanceIds: 过滤业务系统 ID
+        :param _InstanceIds: 按业务系统 ID 过滤
         :type InstanceIds: list of str
-        :param _DemoInstanceFlag: 是否查询官方 Demo 业务系统
+        :param _DemoInstanceFlag: 是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
         :type DemoInstanceFlag: int
-        :param _AllRegionsFlag: 是否查询全地域业务系统
+        :param _AllRegionsFlag: 是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）
         :type AllRegionsFlag: int
         """
         self._Tags = None
@@ -1701,7 +1697,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """搜索业务系统名
+        """按业务系统名过滤
         :rtype: str
         """
         return self._InstanceName
@@ -1712,7 +1708,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """过滤业务系统 ID
+        """按业务系统 ID 过滤
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1723,7 +1719,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def DemoInstanceFlag(self):
-        """是否查询官方 Demo 业务系统
+        """是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
         :rtype: int
         """
         return self._DemoInstanceFlag
@@ -1734,7 +1730,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def AllRegionsFlag(self):
-        """是否查询全地域业务系统
+        """是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）
         :rtype: int
         """
         return self._AllRegionsFlag
@@ -1918,7 +1914,7 @@ class DescribeGeneralMetricDataRequest(AbstractModel):
         r"""
         :param _Metrics: 需要查询的指标名称，不可自定义输入，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :type Metrics: list of str
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: 业务系统 ID
         :type InstanceId: str
         :param _ViewName: 视图名称，不可自定义输入。[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :type ViewName: str
@@ -1926,16 +1922,21 @@ class DescribeGeneralMetricDataRequest(AbstractModel):
         :type Filters: list of GeneralFilter
         :param _GroupBy: 聚合维度，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
         :type GroupBy: list of str
-        :param _StartTime: 起始时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+        :param _StartTime: 起始时间的时间戳，支持查询30天内的指标数据。（单位：秒）
         :type StartTime: int
-        :param _EndTime: 结束时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+        :param _EndTime: 结束时间的时间戳，支持查询30天内的指标数据。（单位：秒）
         :type EndTime: int
-        :param _Period: 聚合粒度，单位为秒，最小为60s，即一分钟的聚合粒度；如果为空或0则计算开始时间到截止时间的指标数据，上报其他值会报错。
+        :param _Period: 是否按固定时间跨度聚合，填入1及大于1的值按1处理，不填按0处理。
+- 填入0，则计算开始时间到截止时间的指标数据。
+- 填入1，则会按照开始时间到截止时间的时间跨度选择聚合粒度：
+ - 时间跨度 (0,12) 小时，则按一分钟粒度聚合。
+ - 时间跨度 [12,48] 小时，则按五分钟粒度聚合。
+ - 时间跨度 (48, +∞) 小时，则按一小时粒度聚合。
         :type Period: int
         :param _OrderBy: 对查询指标进行排序：
 Key 填写云 API 指标名称，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 Value 填写排序方式：     
-- asc:对查询指标进行升序排序
+- asc：对查询指标进行升序排序
 - desc：对查询指标进行降序排序
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         :param _PageSize: 查询指标的限制条数，目前最多展示50条数据，PageSize取值为1-50，上送PageSize则根据PageSize的值展示限制条数。
@@ -1965,7 +1966,7 @@ Value 填写排序方式：
 
     @property
     def InstanceId(self):
-        """业务系统ID
+        """业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -2009,7 +2010,7 @@ Value 填写排序方式：
 
     @property
     def StartTime(self):
-        """起始时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+        """起始时间的时间戳，支持查询30天内的指标数据。（单位：秒）
         :rtype: int
         """
         return self._StartTime
@@ -2020,7 +2021,7 @@ Value 填写排序方式：
 
     @property
     def EndTime(self):
-        """结束时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+        """结束时间的时间戳，支持查询30天内的指标数据。（单位：秒）
         :rtype: int
         """
         return self._EndTime
@@ -2031,7 +2032,12 @@ Value 填写排序方式：
 
     @property
     def Period(self):
-        """聚合粒度，单位为秒，最小为60s，即一分钟的聚合粒度；如果为空或0则计算开始时间到截止时间的指标数据，上报其他值会报错。
+        """是否按固定时间跨度聚合，填入1及大于1的值按1处理，不填按0处理。
+- 填入0，则计算开始时间到截止时间的指标数据。
+- 填入1，则会按照开始时间到截止时间的时间跨度选择聚合粒度：
+ - 时间跨度 (0,12) 小时，则按一分钟粒度聚合。
+ - 时间跨度 [12,48] 小时，则按五分钟粒度聚合。
+ - 时间跨度 (48, +∞) 小时，则按一小时粒度聚合。
         :rtype: int
         """
         return self._Period
@@ -2045,7 +2051,7 @@ Value 填写排序方式：
         """对查询指标进行排序：
 Key 填写云 API 指标名称，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 Value 填写排序方式：     
-- asc:对查询指标进行升序排序
+- asc：对查询指标进行升序排序
 - desc：对查询指标进行降序排序
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
@@ -2150,75 +2156,41 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 分页
-        :type Offset: int
-        :param _Limit: 列表项个数
-        :type Limit: int
-        :param _OrderBy: 排序
-        :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _StartTime: Span查询开始时间戳（单位:秒）
-        :type StartTime: int
         :param _InstanceId: 业务系统 ID
         :type InstanceId: str
+        :param _StartTime: Span 查询开始时间戳（单位：秒）
+        :type StartTime: int
+        :param _EndTime: Span 查询结束时间戳（单位：秒）
+        :type EndTime: int
         :param _Filters: 通用过滤参数
         :type Filters: list of Filter
-        :param _BusinessName: 业务自身服务名
+        :param _OrderBy: 排序
+现支持的 Key 有：
+
+- startTime(开始时间)
+- endTime(结束时间)
+- duration(响应时间)
+
+现支持的 Value 有：
+
+- desc(降序排序)
+- asc(升序排序)
+        :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        :param _BusinessName: 业务自身服务名，控制台用户请填写taw
         :type BusinessName: str
-        :param _EndTime: Span查询结束时间戳（单位:秒）
-        :type EndTime: int
+        :param _Limit: 单页项目个数，默认为10000，合法取值范围为0～10000
+        :type Limit: int
+        :param _Offset: 分页
+        :type Offset: int
         """
-        self._Offset = None
-        self._Limit = None
-        self._OrderBy = None
-        self._StartTime = None
         self._InstanceId = None
-        self._Filters = None
-        self._BusinessName = None
+        self._StartTime = None
         self._EndTime = None
-
-    @property
-    def Offset(self):
-        """分页
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        """列表项个数
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def OrderBy(self):
-        """排序
-        :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        """
-        return self._OrderBy
-
-    @OrderBy.setter
-    def OrderBy(self, OrderBy):
-        self._OrderBy = OrderBy
-
-    @property
-    def StartTime(self):
-        """Span查询开始时间戳（单位:秒）
-        :rtype: int
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
+        self._Filters = None
+        self._OrderBy = None
+        self._BusinessName = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def InstanceId(self):
@@ -2232,6 +2204,28 @@ class DescribeGeneralSpanListRequest(AbstractModel):
         self._InstanceId = InstanceId
 
     @property
+    def StartTime(self):
+        """Span 查询开始时间戳（单位：秒）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Span 查询结束时间戳（单位：秒）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
     def Filters(self):
         """通用过滤参数
         :rtype: list of Filter
@@ -2243,8 +2237,29 @@ class DescribeGeneralSpanListRequest(AbstractModel):
         self._Filters = Filters
 
     @property
+    def OrderBy(self):
+        """排序
+现支持的 Key 有：
+
+- startTime(开始时间)
+- endTime(结束时间)
+- duration(响应时间)
+
+现支持的 Value 有：
+
+- desc(降序排序)
+- asc(升序排序)
+        :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
     def BusinessName(self):
-        """业务自身服务名
+        """业务自身服务名，控制台用户请填写taw
         :rtype: str
         """
         return self._BusinessName
@@ -2254,33 +2269,44 @@ class DescribeGeneralSpanListRequest(AbstractModel):
         self._BusinessName = BusinessName
 
     @property
-    def EndTime(self):
-        """Span查询结束时间戳（单位:秒）
+    def Limit(self):
+        """单页项目个数，默认为10000，合法取值范围为0～10000
         :rtype: int
         """
-        return self._EndTime
+        return self._Limit
 
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
-        if params.get("OrderBy") is not None:
-            self._OrderBy = OrderBy()
-            self._OrderBy._deserialize(params.get("OrderBy"))
-        self._StartTime = params.get("StartTime")
         self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        if params.get("OrderBy") is not None:
+            self._OrderBy = OrderBy()
+            self._OrderBy._deserialize(params.get("OrderBy"))
         self._BusinessName = params.get("BusinessName")
-        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2361,49 +2387,103 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件
-        :type Filters: list of Filter
         :param _Metrics: 指标列表
         :type Metrics: list of QueryMetricItem
+        :param _InstanceId: 业务系统 ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间（单位为秒）
+        :type StartTime: int
+        :param _EndTime: 结束时间（单位为秒）
+        :type EndTime: int
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        :param _OrFilters: Or 过滤条件
+        :type OrFilters: list of Filter
         :param _GroupBy: 聚合维度
         :type GroupBy: list of str
         :param _OrderBy: 排序
+现支持的 Key 有：
+
+- startTime(开始时间)
+- endTime(结束时间)
+- duration(响应时间)
+
+现支持的 Value 有：
+
+- desc(降序排序)
+- asc(升序排序)
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _InstanceId: 业务系统ID
-        :type InstanceId: str
-        :param _Limit: 每页大小
+        :param _BusinessName: 业务名称，控制台用户请填写taw。
+        :type BusinessName: str
+        :param _Type: 特殊处理查询结果
+        :type Type: str
+        :param _Limit: 每页大小，默认为1000，合法取值范围为0~1000
         :type Limit: int
-        :param _StartTime: 开始时间
-        :type StartTime: int
         :param _Offset: 分页起始点
         :type Offset: int
-        :param _EndTime: 结束时间
-        :type EndTime: int
-        :param _BusinessName: 业务名称（默认值：taw）
-        :type BusinessName: str
         :param _PageIndex: 页码
         :type PageIndex: int
         :param _PageSize: 页长
         :type PageSize: int
-        :param _OrFilters: Or过滤条件
-        :type OrFilters: list of Filter
-        :param _Type: 数据来源
-        :type Type: str
         """
-        self._Filters = None
         self._Metrics = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._OrFilters = None
         self._GroupBy = None
         self._OrderBy = None
-        self._InstanceId = None
-        self._Limit = None
-        self._StartTime = None
-        self._Offset = None
-        self._EndTime = None
         self._BusinessName = None
+        self._Type = None
+        self._Limit = None
+        self._Offset = None
         self._PageIndex = None
         self._PageSize = None
-        self._OrFilters = None
-        self._Type = None
+
+    @property
+    def Metrics(self):
+        """指标列表
+        :rtype: list of QueryMetricItem
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def InstanceId(self):
+        """业务系统 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间（单位为秒）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间（单位为秒）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
     @property
     def Filters(self):
@@ -2417,15 +2497,15 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self._Filters = Filters
 
     @property
-    def Metrics(self):
-        """指标列表
-        :rtype: list of QueryMetricItem
+    def OrFilters(self):
+        """Or 过滤条件
+        :rtype: list of Filter
         """
-        return self._Metrics
+        return self._OrFilters
 
-    @Metrics.setter
-    def Metrics(self, Metrics):
-        self._Metrics = Metrics
+    @OrFilters.setter
+    def OrFilters(self, OrFilters):
+        self._OrFilters = OrFilters
 
     @property
     def GroupBy(self):
@@ -2441,6 +2521,16 @@ class DescribeMetricRecordsRequest(AbstractModel):
     @property
     def OrderBy(self):
         """排序
+现支持的 Key 有：
+
+- startTime(开始时间)
+- endTime(结束时间)
+- duration(响应时间)
+
+现支持的 Value 有：
+
+- desc(降序排序)
+- asc(升序排序)
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
         return self._OrderBy
@@ -2450,19 +2540,30 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self._OrderBy = OrderBy
 
     @property
-    def InstanceId(self):
-        """业务系统ID
+    def BusinessName(self):
+        """业务名称，控制台用户请填写taw。
         :rtype: str
         """
-        return self._InstanceId
+        return self._BusinessName
 
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
+    @BusinessName.setter
+    def BusinessName(self, BusinessName):
+        self._BusinessName = BusinessName
+
+    @property
+    def Type(self):
+        """特殊处理查询结果
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def Limit(self):
-        """每页大小
+        """每页大小，默认为1000，合法取值范围为0~1000
         :rtype: int
         """
         return self._Limit
@@ -2470,17 +2571,6 @@ class DescribeMetricRecordsRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
-
-    @property
-    def StartTime(self):
-        """开始时间
-        :rtype: int
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
 
     @property
     def Offset(self):
@@ -2492,28 +2582,6 @@ class DescribeMetricRecordsRequest(AbstractModel):
     @Offset.setter
     def Offset(self, Offset):
         self._Offset = Offset
-
-    @property
-    def EndTime(self):
-        """结束时间
-        :rtype: int
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def BusinessName(self):
-        """业务名称（默认值：taw）
-        :rtype: str
-        """
-        return self._BusinessName
-
-    @BusinessName.setter
-    def BusinessName(self, BusinessName):
-        self._BusinessName = BusinessName
 
     @property
     def PageIndex(self):
@@ -2537,61 +2605,39 @@ class DescribeMetricRecordsRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
-    @property
-    def OrFilters(self):
-        """Or过滤条件
-        :rtype: list of Filter
-        """
-        return self._OrFilters
-
-    @OrFilters.setter
-    def OrFilters(self, OrFilters):
-        self._OrFilters = OrFilters
-
-    @property
-    def Type(self):
-        """数据来源
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
 
     def _deserialize(self, params):
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self._Filters.append(obj)
         if params.get("Metrics") is not None:
             self._Metrics = []
             for item in params.get("Metrics"):
                 obj = QueryMetricItem()
                 obj._deserialize(item)
                 self._Metrics.append(obj)
-        self._GroupBy = params.get("GroupBy")
-        if params.get("OrderBy") is not None:
-            self._OrderBy = OrderBy()
-            self._OrderBy._deserialize(params.get("OrderBy"))
         self._InstanceId = params.get("InstanceId")
-        self._Limit = params.get("Limit")
         self._StartTime = params.get("StartTime")
-        self._Offset = params.get("Offset")
         self._EndTime = params.get("EndTime")
-        self._BusinessName = params.get("BusinessName")
-        self._PageIndex = params.get("PageIndex")
-        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         if params.get("OrFilters") is not None:
             self._OrFilters = []
             for item in params.get("OrFilters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._OrFilters.append(obj)
+        self._GroupBy = params.get("GroupBy")
+        if params.get("OrderBy") is not None:
+            self._OrderBy = OrderBy()
+            self._OrderBy._deserialize(params.get("OrderBy"))
+        self._BusinessName = params.get("BusinessName")
         self._Type = params.get("Type")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2672,45 +2718,37 @@ class DescribeServiceOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件
-        :type Filters: list of Filter
         :param _Metrics: 指标列表
         :type Metrics: list of QueryMetricItem
+        :param _InstanceId: 业务系统 ID
+        :type InstanceId: str
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
         :param _GroupBy: 聚合维度
         :type GroupBy: list of str
-        :param _OrderBy: 排序
+        :param _StartTime: 开始时间（单位：秒）
+        :type StartTime: int
+        :param _EndTime: 结束时间（单位：秒）
+        :type EndTime: int
+        :param _OrderBy: 排序方式
+Value 填写：
+- asc：对查询指标进行升序排序
+- desc：对查询指标进行降序排序
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _InstanceId: 业务系统ID
-        :type InstanceId: str
         :param _Limit: 每页大小
         :type Limit: int
-        :param _StartTime: 开始时间
-        :type StartTime: int
         :param _Offset: 分页起始点
         :type Offset: int
-        :param _EndTime: 结束时间
-        :type EndTime: int
         """
-        self._Filters = None
         self._Metrics = None
-        self._GroupBy = None
-        self._OrderBy = None
         self._InstanceId = None
-        self._Limit = None
+        self._Filters = None
+        self._GroupBy = None
         self._StartTime = None
-        self._Offset = None
         self._EndTime = None
-
-    @property
-    def Filters(self):
-        """过滤条件
-        :rtype: list of Filter
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
+        self._OrderBy = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def Metrics(self):
@@ -2724,6 +2762,28 @@ class DescribeServiceOverviewRequest(AbstractModel):
         self._Metrics = Metrics
 
     @property
+    def InstanceId(self):
+        """业务系统 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
     def GroupBy(self):
         """聚合维度
         :rtype: list of str
@@ -2735,8 +2795,33 @@ class DescribeServiceOverviewRequest(AbstractModel):
         self._GroupBy = GroupBy
 
     @property
+    def StartTime(self):
+        """开始时间（单位：秒）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间（单位：秒）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
     def OrderBy(self):
-        """排序
+        """排序方式
+Value 填写：
+- asc：对查询指标进行升序排序
+- desc：对查询指标进行降序排序
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
         return self._OrderBy
@@ -2744,17 +2829,6 @@ class DescribeServiceOverviewRequest(AbstractModel):
     @OrderBy.setter
     def OrderBy(self, OrderBy):
         self._OrderBy = OrderBy
-
-    @property
-    def InstanceId(self):
-        """业务系统ID
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
 
     @property
     def Limit(self):
@@ -2768,17 +2842,6 @@ class DescribeServiceOverviewRequest(AbstractModel):
         self._Limit = Limit
 
     @property
-    def StartTime(self):
-        """开始时间
-        :rtype: int
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
     def Offset(self):
         """分页起始点
         :rtype: int
@@ -2789,40 +2852,29 @@ class DescribeServiceOverviewRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
-    @property
-    def EndTime(self):
-        """结束时间
-        :rtype: int
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
 
     def _deserialize(self, params):
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self._Filters.append(obj)
         if params.get("Metrics") is not None:
             self._Metrics = []
             for item in params.get("Metrics"):
                 obj = QueryMetricItem()
                 obj._deserialize(item)
                 self._Metrics.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         self._GroupBy = params.get("GroupBy")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("OrderBy") is not None:
             self._OrderBy = OrderBy()
             self._OrderBy._deserialize(params.get("OrderBy"))
-        self._InstanceId = params.get("InstanceId")
         self._Limit = params.get("Limit")
-        self._StartTime = params.get("StartTime")
         self._Offset = params.get("Offset")
-        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2890,24 +2942,24 @@ class DescribeTagValuesRequest(AbstractModel):
         r"""
         :param _TagKey: 维度名
         :type TagKey: str
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: 业务系统 ID
         :type InstanceId: str
-        :param _EndTime: 结束时间
-        :type EndTime: int
         :param _Filters: 过滤条件
         :type Filters: list of Filter
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间（单位为秒）
         :type StartTime: int
-        :param _OrFilters: Or过滤条件
+        :param _EndTime: 结束时间（单位为秒）
+        :type EndTime: int
+        :param _OrFilters: Or 过滤条件
         :type OrFilters: list of Filter
         :param _Type: 使用类型
         :type Type: str
         """
         self._TagKey = None
         self._InstanceId = None
-        self._EndTime = None
         self._Filters = None
         self._StartTime = None
+        self._EndTime = None
         self._OrFilters = None
         self._Type = None
 
@@ -2924,7 +2976,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统ID
+        """业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -2932,17 +2984,6 @@ class DescribeTagValuesRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
-
-    @property
-    def EndTime(self):
-        """结束时间
-        :rtype: int
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
 
     @property
     def Filters(self):
@@ -2957,7 +2998,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        """开始时间（单位为秒）
         :rtype: int
         """
         return self._StartTime
@@ -2967,8 +3008,19 @@ class DescribeTagValuesRequest(AbstractModel):
         self._StartTime = StartTime
 
     @property
+    def EndTime(self):
+        """结束时间（单位为秒）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
     def OrFilters(self):
-        """Or过滤条件
+        """Or 过滤条件
         :rtype: list of Filter
         """
         return self._OrFilters
@@ -2992,7 +3044,6 @@ class DescribeTagValuesRequest(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._InstanceId = params.get("InstanceId")
-        self._EndTime = params.get("EndTime")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -3000,6 +3051,7 @@ class DescribeTagValuesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("OrFilters") is not None:
             self._OrFilters = []
             for item in params.get("OrFilters"):
@@ -3336,55 +3388,53 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: 业务系统 ID
         :type InstanceId: str
         :param _Name: 业务系统名
         :type Name: str
-        :param _Tags: 标签列表
+        :param _Tags: Tag 列表
         :type Tags: list of ApmTag
-        :param _Description: 业务系统详情
+        :param _Description: 业务系统描述
         :type Description: str
-        :param _TraceDuration: Trace数据保存时长
+        :param _TraceDuration: Trace 数据保存时长（单位：天）
         :type TraceDuration: int
         :param _OpenBilling: 是否开启计费
         :type OpenBilling: bool
         :param _SpanDailyCounters: 业务系统上报额度
         :type SpanDailyCounters: int
-        :param _ErrRateThreshold: 错误率阈值
+        :param _ErrRateThreshold: 错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
         :type ErrRateThreshold: int
-        :param _SampleRate: 采样率
+        :param _SampleRate: 采样率（单位：%）
         :type SampleRate: int
-        :param _ErrorSample: 是否开启错误采样 0 关 1 开
+        :param _ErrorSample: 是否开启错误采样（0=关, 1=开）
         :type ErrorSample: int
-        :param _SlowRequestSavedThreshold: 慢请求阈值
+        :param _SlowRequestSavedThreshold: 采样慢调用保存阈值（单位：ms）
         :type SlowRequestSavedThreshold: int
-        :param _IsRelatedLog: 是否开启日志功能 0 关 1 开
+        :param _IsRelatedLog: 是否开启日志功能（0=关, 1=开）
         :type IsRelatedLog: int
-        :param _LogRegion: 日志地域
+        :param _LogRegion: 日志地域，开启日志功能后才会生效
         :type LogRegion: str
-        :param _LogTopicID: CLS日志主题ID | ES 索引名
+        :param _LogTopicID: CLS 日志主题 ID，开启日志功能后才会生效
         :type LogTopicID: str
-        :param _LogSet: CLS日志集 | ES集群ID
+        :param _LogSet: 日志集，开启日志功能后才会生效
         :type LogSet: str
-        :param _LogSource: CLS | ES
+        :param _LogSource: 日志源，开启日志功能后才会生效
         :type LogSource: str
         :param _CustomShowTags: 用户自定义展示标签列表
         :type CustomShowTags: list of str
-        :param _PayMode: 修改计费模式
-1为预付费
-0为按量付费
+        :param _PayMode: 修改计费模式（1为预付费，0为按量付费）
         :type PayMode: int
-        :param _ResponseDurationWarningThreshold: 响应时间满意阈值
+        :param _ResponseDurationWarningThreshold: 响应时间警示线
         :type ResponseDurationWarningThreshold: int
-        :param _Free: （0=付费版；1=tsf受限免费版；2=免费版）
+        :param _Free: 是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
         :type Free: int
-        :param _IsRelatedDashboard: 是否关联dashboard： 0 关 1 开
+        :param _IsRelatedDashboard: 是否关联 Dashboard（0=关,1=开）
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: dashboard ID
+        :param _DashboardTopicID: 关联的 Dashboard ID，开启关联 Dashboard 后才会生效
         :type DashboardTopicID: str
-        :param _IsSqlInjectionAnalysis: 是否开启SQL注入检测
+        :param _IsSqlInjectionAnalysis: 是否开启 SQL 注入检测（0=关,1=开）
         :type IsSqlInjectionAnalysis: int
-        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测
+        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测（0=关,1=开）
         :type IsInstrumentationVulnerabilityScan: int
         """
         self._InstanceId = None
@@ -3414,7 +3464,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """业务系统ID
+        """业务系统 ID
         :rtype: str
         """
         return self._InstanceId
@@ -3436,7 +3486,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """标签列表
+        """Tag 列表
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -3447,7 +3497,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """业务系统详情
+        """业务系统描述
         :rtype: str
         """
         return self._Description
@@ -3458,7 +3508,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Trace数据保存时长
+        """Trace 数据保存时长（单位：天）
         :rtype: int
         """
         return self._TraceDuration
@@ -3491,7 +3541,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ErrRateThreshold(self):
-        """错误率阈值
+        """错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -3502,7 +3552,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """采样率
+        """采样率（单位：%）
         :rtype: int
         """
         return self._SampleRate
@@ -3513,7 +3563,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ErrorSample(self):
-        """是否开启错误采样 0 关 1 开
+        """是否开启错误采样（0=关, 1=开）
         :rtype: int
         """
         return self._ErrorSample
@@ -3524,7 +3574,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SlowRequestSavedThreshold(self):
-        """慢请求阈值
+        """采样慢调用保存阈值（单位：ms）
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -3535,7 +3585,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        """是否开启日志功能 0 关 1 开
+        """是否开启日志功能（0=关, 1=开）
         :rtype: int
         """
         return self._IsRelatedLog
@@ -3546,7 +3596,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogRegion(self):
-        """日志地域
+        """日志地域，开启日志功能后才会生效
         :rtype: str
         """
         return self._LogRegion
@@ -3557,7 +3607,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogTopicID(self):
-        """CLS日志主题ID | ES 索引名
+        """CLS 日志主题 ID，开启日志功能后才会生效
         :rtype: str
         """
         return self._LogTopicID
@@ -3568,7 +3618,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSet(self):
-        """CLS日志集 | ES集群ID
+        """日志集，开启日志功能后才会生效
         :rtype: str
         """
         return self._LogSet
@@ -3579,7 +3629,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSource(self):
-        """CLS | ES
+        """日志源，开启日志功能后才会生效
         :rtype: str
         """
         return self._LogSource
@@ -3601,9 +3651,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """修改计费模式
-1为预付费
-0为按量付费
+        """修改计费模式（1为预付费，0为按量付费）
         :rtype: int
         """
         return self._PayMode
@@ -3614,7 +3662,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ResponseDurationWarningThreshold(self):
-        """响应时间满意阈值
+        """响应时间警示线
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -3625,7 +3673,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Free(self):
-        """（0=付费版；1=tsf受限免费版；2=免费版）
+        """是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
         :rtype: int
         """
         return self._Free
@@ -3636,7 +3684,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        """是否关联dashboard： 0 关 1 开
+        """是否关联 Dashboard（0=关,1=开）
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -3647,7 +3695,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        """dashboard ID
+        """关联的 Dashboard ID，开启关联 Dashboard 后才会生效
         :rtype: str
         """
         return self._DashboardTopicID
@@ -3658,7 +3706,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        """是否开启SQL注入检测
+        """是否开启 SQL 注入检测（0=关,1=开）
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -3669,7 +3717,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        """是否开启组件漏洞检测
+        """是否开启组件漏洞检测（0=关,1=开）
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -3864,15 +3912,15 @@ class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
 
 
 class OrderBy(AbstractModel):
-    """sql排序字段
+    """排序字段
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: 需要排序的字段
+        :param _Key: 需要排序的字段，现支持 startTIme, endTime, duration
         :type Key: str
-        :param _Value: 顺序排序/倒序排序
+        :param _Value: asc 顺序排序 / desc 倒序排序
         :type Value: str
         """
         self._Key = None
@@ -3880,7 +3928,7 @@ class OrderBy(AbstractModel):
 
     @property
     def Key(self):
-        """需要排序的字段
+        """需要排序的字段，现支持 startTIme, endTime, duration
         :rtype: str
         """
         return self._Key
@@ -3891,7 +3939,7 @@ class OrderBy(AbstractModel):
 
     @property
     def Value(self):
-        """顺序排序/倒序排序
+        """asc 顺序排序 / desc 倒序排序
         :rtype: str
         """
         return self._Value
@@ -3923,14 +3971,14 @@ class QueryMetricItem(AbstractModel):
         r"""
         :param _MetricName: 指标名
         :type MetricName: str
+        :param _Compares: 同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比) 
+        :type Compares: list of str
         :param _Compare: 同比，已弃用，不建议使用
         :type Compare: str
-        :param _Compares: 同比，支持多种同比方式
-        :type Compares: list of str
         """
         self._MetricName = None
-        self._Compare = None
         self._Compares = None
+        self._Compare = None
 
     @property
     def MetricName(self):
@@ -3944,6 +3992,17 @@ class QueryMetricItem(AbstractModel):
         self._MetricName = MetricName
 
     @property
+    def Compares(self):
+        """同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比) 
+        :rtype: list of str
+        """
+        return self._Compares
+
+    @Compares.setter
+    def Compares(self, Compares):
+        self._Compares = Compares
+
+    @property
     def Compare(self):
         """同比，已弃用，不建议使用
         :rtype: str
@@ -3954,22 +4013,11 @@ class QueryMetricItem(AbstractModel):
     def Compare(self, Compare):
         self._Compare = Compare
 
-    @property
-    def Compares(self):
-        """同比，支持多种同比方式
-        :rtype: list of str
-        """
-        return self._Compares
-
-    @Compares.setter
-    def Compares(self, Compares):
-        self._Compares = Compares
-
 
     def _deserialize(self, params):
         self._MetricName = params.get("MetricName")
-        self._Compare = params.get("Compare")
         self._Compares = params.get("Compares")
+        self._Compare = params.get("Compare")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
