@@ -482,6 +482,9 @@ OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = 'OperationDenied.InstanceStatusLimi
 # 实例类型错误
 OPERATIONDENIED_INSTANCETYPEDENIED = 'OperationDenied.InstanceTypeDenied'
 
+# 账号余额不足。
+OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceError'
+
 # 内核版本过低，导致实例无法创建tencentDBSuper账号。如果您想使用此功能，请升级内核版本。
 OPERATIONDENIED_KERNELVERSIONERROR = 'OperationDenied.KernelVersionError'
 
@@ -505,6 +508,9 @@ OPERATIONDENIED_ROINSTANCESTATUSLIMITOPERROR = 'OperationDenied.ROInstanceStatus
 
 # 只读节点总数不能超过上限值。
 OPERATIONDENIED_ROINSTANCECOUNTEXEEDERROR = 'OperationDenied.RoInstanceCountExeedError'
+
+# 无支付权限，开通失败。
+OPERATIONDENIED_TRADEPERMISSIONERROR = 'OperationDenied.TradePermissionError'
 
 # 用户未进行实名认证，请先进行实名认证才可购买。
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'

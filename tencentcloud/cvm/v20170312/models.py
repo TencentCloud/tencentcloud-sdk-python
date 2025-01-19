@@ -2211,12 +2211,15 @@ class CreateHpcClusterRequest(AbstractModel):
         :type HpcClusterType: str
         :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC。
         :type HpcClusterBusinessId: str
+        :param _TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。
+        :type TagSpecification: list of TagSpecification
         """
         self._Zone = None
         self._Name = None
         self._Remark = None
         self._HpcClusterType = None
         self._HpcClusterBusinessId = None
+        self._TagSpecification = None
 
     @property
     def Zone(self):
@@ -2273,6 +2276,17 @@ class CreateHpcClusterRequest(AbstractModel):
     def HpcClusterBusinessId(self, HpcClusterBusinessId):
         self._HpcClusterBusinessId = HpcClusterBusinessId
 
+    @property
+    def TagSpecification(self):
+        """标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。
+        :rtype: list of TagSpecification
+        """
+        return self._TagSpecification
+
+    @TagSpecification.setter
+    def TagSpecification(self, TagSpecification):
+        self._TagSpecification = TagSpecification
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2280,6 +2294,12 @@ class CreateHpcClusterRequest(AbstractModel):
         self._Remark = params.get("Remark")
         self._HpcClusterType = params.get("HpcClusterType")
         self._HpcClusterBusinessId = params.get("HpcClusterBusinessId")
+        if params.get("TagSpecification") is not None:
+            self._TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._TagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5251,6 +5271,10 @@ class DescribeHpcClustersRequest(AbstractModel):
         :type HpcClusterType: str
         :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC。	
         :type HpcClusterBusinessId: str
+        :param _InstanceType: 高性能计算集群实例类型
+        :type InstanceType: str
+        :param _Filters: <li><strong>tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+        :type Filters: list of Filter
         """
         self._HpcClusterIds = None
         self._Name = None
@@ -5259,6 +5283,8 @@ class DescribeHpcClustersRequest(AbstractModel):
         self._Limit = None
         self._HpcClusterType = None
         self._HpcClusterBusinessId = None
+        self._InstanceType = None
+        self._Filters = None
 
     @property
     def HpcClusterIds(self):
@@ -5337,6 +5363,28 @@ class DescribeHpcClustersRequest(AbstractModel):
     def HpcClusterBusinessId(self, HpcClusterBusinessId):
         self._HpcClusterBusinessId = HpcClusterBusinessId
 
+    @property
+    def InstanceType(self):
+        """高性能计算集群实例类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Filters(self):
+        """<li><strong>tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._HpcClusterIds = params.get("HpcClusterIds")
@@ -5346,6 +5394,13 @@ class DescribeHpcClustersRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._HpcClusterType = params.get("HpcClusterType")
         self._HpcClusterBusinessId = params.get("HpcClusterBusinessId")
+        self._InstanceType = params.get("InstanceType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9567,6 +9622,10 @@ class HpcClusterInfo(AbstractModel):
         :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC。	
 注意：此字段可能返回 null，表示取不到有效值。
         :type HpcClusterBusinessId: str
+        :param _HpcClusterNetMode: 高性能计算集群网络模式
+        :type HpcClusterNetMode: int
+        :param _Tags: 高性能计算集群关联的标签列表
+        :type Tags: list of Tag
         """
         self._HpcClusterId = None
         self._Name = None
@@ -9578,6 +9637,8 @@ class HpcClusterInfo(AbstractModel):
         self._InstanceIds = None
         self._HpcClusterType = None
         self._HpcClusterBusinessId = None
+        self._HpcClusterNetMode = None
+        self._Tags = None
 
     @property
     def HpcClusterId(self):
@@ -9695,6 +9756,28 @@ class HpcClusterInfo(AbstractModel):
     def HpcClusterBusinessId(self, HpcClusterBusinessId):
         self._HpcClusterBusinessId = HpcClusterBusinessId
 
+    @property
+    def HpcClusterNetMode(self):
+        """高性能计算集群网络模式
+        :rtype: int
+        """
+        return self._HpcClusterNetMode
+
+    @HpcClusterNetMode.setter
+    def HpcClusterNetMode(self, HpcClusterNetMode):
+        self._HpcClusterNetMode = HpcClusterNetMode
+
+    @property
+    def Tags(self):
+        """高性能计算集群关联的标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._HpcClusterId = params.get("HpcClusterId")
@@ -9707,6 +9790,13 @@ class HpcClusterInfo(AbstractModel):
         self._InstanceIds = params.get("InstanceIds")
         self._HpcClusterType = params.get("HpcClusterType")
         self._HpcClusterBusinessId = params.get("HpcClusterBusinessId")
+        self._HpcClusterNetMode = params.get("HpcClusterNetMode")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

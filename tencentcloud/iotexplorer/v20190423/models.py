@@ -1822,6 +1822,7 @@ class CloudStorageAIServiceTask(AbstractModel):
 
 - `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
         :type ServiceType: str
         :param _StartTime: 对应云存视频的起始时间
         :type StartTime: int
@@ -1904,6 +1905,7 @@ class CloudStorageAIServiceTask(AbstractModel):
 
 - `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
         :rtype: str
         """
         return self._ServiceType
@@ -2130,6 +2132,137 @@ class CloudStorageEvent(AbstractModel):
         self._EventId = params.get("EventId")
         self._UploadStatus = params.get("UploadStatus")
         self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudStorageEventWithAITasks(AbstractModel):
+    """云存事件及其关联的云存 AI 任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 事件起始时间（Unix 时间戳，秒级
+        :type StartTime: int
+        :param _EndTime: 事件结束时间（Unix 时间戳，秒级
+        :type EndTime: int
+        :param _Thumbnail: 事件缩略图
+        :type Thumbnail: str
+        :param _EventId: 事件ID
+        :type EventId: str
+        :param _UploadStatus: 事件录像上传状态，Finished: 全部上传成功 Partial: 部分上传成功 Failed: 上传失败	
+        :type UploadStatus: str
+        :param _Data: 事件自定义数据	
+        :type Data: str
+        :param _AITasks: 事件关联的云存 AI 任务列表
+        :type AITasks: list of CloudStorageAIServiceTask
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Thumbnail = None
+        self._EventId = None
+        self._UploadStatus = None
+        self._Data = None
+        self._AITasks = None
+
+    @property
+    def StartTime(self):
+        """事件起始时间（Unix 时间戳，秒级
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """事件结束时间（Unix 时间戳，秒级
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Thumbnail(self):
+        """事件缩略图
+        :rtype: str
+        """
+        return self._Thumbnail
+
+    @Thumbnail.setter
+    def Thumbnail(self, Thumbnail):
+        self._Thumbnail = Thumbnail
+
+    @property
+    def EventId(self):
+        """事件ID
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def UploadStatus(self):
+        """事件录像上传状态，Finished: 全部上传成功 Partial: 部分上传成功 Failed: 上传失败	
+        :rtype: str
+        """
+        return self._UploadStatus
+
+    @UploadStatus.setter
+    def UploadStatus(self, UploadStatus):
+        self._UploadStatus = UploadStatus
+
+    @property
+    def Data(self):
+        """事件自定义数据	
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def AITasks(self):
+        """事件关联的云存 AI 任务列表
+        :rtype: list of CloudStorageAIServiceTask
+        """
+        return self._AITasks
+
+    @AITasks.setter
+    def AITasks(self, AITasks):
+        self._AITasks = AITasks
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Thumbnail = params.get("Thumbnail")
+        self._EventId = params.get("EventId")
+        self._UploadStatus = params.get("UploadStatus")
+        self._Data = params.get("Data")
+        if params.get("AITasks") is not None:
+            self._AITasks = []
+            for item in params.get("AITasks"):
+                obj = CloudStorageAIServiceTask()
+                obj._deserialize(item)
+                self._AITasks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7325,6 +7458,7 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         :param _ServiceType: 云存 AI 服务类型。可选值：
 - `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
         :type ServiceType: str
         :param _Limit: 分页拉取数量
         :type Limit: int
@@ -7378,6 +7512,7 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         """云存 AI 服务类型。可选值：
 - `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
         :rtype: str
         """
         return self._ServiceType
@@ -7908,6 +8043,293 @@ class DescribeCloudStorageEventsResponse(AbstractModel):
             self._Events = []
             for item in params.get("Events"):
                 obj = CloudStorageEvent()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._Context = params.get("Context")
+        self._Listover = params.get("Listover")
+        self._Total = params.get("Total")
+        self._VideoURL = params.get("VideoURL")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageEventsWithAITasksRequest(AbstractModel):
+    """DescribeCloudStorageEventsWithAITasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceTypes: 事件关联的视频 AI 分析服务类型（支持多选）。可选值：
+
+- `RealtimeObjectDetect`：目标检测
+- `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
+        :type ServiceTypes: list of str
+        :param _StartTime: 起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
+        :type StartTime: int
+        :param _EndTime: 结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
+        :type EndTime: int
+        :param _Context: 请求上下文, 用作查询游标
+        :type Context: str
+        :param _Size: 查询数据项目的最大数量, 默认为10。假设传Size=10，返回的实际事件数量为N，则 5 <= N <= 10。
+        :type Size: int
+        :param _EventId: 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
+        :type EventId: str
+        :param _UserId: 用户ID
+        :type UserId: str
+        :param _ChannelId: 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceTypes = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Context = None
+        self._Size = None
+        self._EventId = None
+        self._UserId = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceTypes(self):
+        """事件关联的视频 AI 分析服务类型（支持多选）。可选值：
+
+- `RealtimeObjectDetect`：目标检测
+- `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
+        :rtype: list of str
+        """
+        return self._ServiceTypes
+
+    @ServiceTypes.setter
+    def ServiceTypes(self, ServiceTypes):
+        self._ServiceTypes = ServiceTypes
+
+    @property
+    def StartTime(self):
+        """起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Context(self):
+        """请求上下文, 用作查询游标
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Size(self):
+        """查询数据项目的最大数量, 默认为10。假设传Size=10，返回的实际事件数量为N，则 5 <= N <= 10。
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def EventId(self):
+        """事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def UserId(self):
+        """用户ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def ChannelId(self):
+        """通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceTypes = params.get("ServiceTypes")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Context = params.get("Context")
+        self._Size = params.get("Size")
+        self._EventId = params.get("EventId")
+        self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageEventsWithAITasksResponse(AbstractModel):
+    """DescribeCloudStorageEventsWithAITasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: 云存事件列表
+        :type Events: list of CloudStorageEventWithAITasks
+        :param _Context: 请求上下文, 用作查询游标
+        :type Context: str
+        :param _Listover: 拉取结果是否已经结束
+        :type Listover: bool
+        :param _Total: 内部结果数量，并不等同于事件总数。
+        :type Total: int
+        :param _VideoURL: 视频播放URL
+        :type VideoURL: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._Context = None
+        self._Listover = None
+        self._Total = None
+        self._VideoURL = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        """云存事件列表
+        :rtype: list of CloudStorageEventWithAITasks
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def Context(self):
+        """请求上下文, 用作查询游标
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Listover(self):
+        """拉取结果是否已经结束
+        :rtype: bool
+        """
+        return self._Listover
+
+    @Listover.setter
+    def Listover(self, Listover):
+        self._Listover = Listover
+
+    @property
+    def Total(self):
+        """内部结果数量，并不等同于事件总数。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def VideoURL(self):
+        """视频播放URL
+        :rtype: str
+        """
+        return self._VideoURL
+
+    @VideoURL.setter
+    def VideoURL(self, VideoURL):
+        self._VideoURL = VideoURL
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = CloudStorageEventWithAITasks()
                 obj._deserialize(item)
                 self._Events.append(obj)
         self._Context = params.get("Context")

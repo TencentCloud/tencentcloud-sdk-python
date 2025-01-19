@@ -49,6 +49,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAccessCert(self, request):
+        """创建用于访问文件系统的凭证
+
+        :param request: Request instance for CreateAccessCert.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateAccessCertRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateAccessCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccessCert", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAccessCertResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAutoSnapshotPolicy(self, request):
         """创建定期快照策略
 

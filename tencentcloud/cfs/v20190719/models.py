@@ -825,6 +825,85 @@ class BucketInfo(AbstractModel):
         
 
 
+class CreateAccessCertRequest(AbstractModel):
+    """CreateAccessCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertDesc: 证书描述
+        :type CertDesc: str
+        """
+        self._CertDesc = None
+
+    @property
+    def CertDesc(self):
+        """证书描述
+        :rtype: str
+        """
+        return self._CertDesc
+
+    @CertDesc.setter
+    def CertDesc(self, CertDesc):
+        self._CertDesc = CertDesc
+
+
+    def _deserialize(self, params):
+        self._CertDesc = params.get("CertDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccessCertResponse(AbstractModel):
+    """CreateAccessCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: 凭证唯一标识
+        :type CertId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CertId = None
+        self._RequestId = None
+
+    @property
+    def CertId(self):
+        """凭证唯一标识
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAutoSnapshotPolicyRequest(AbstractModel):
     """CreateAutoSnapshotPolicy请求参数结构体
 

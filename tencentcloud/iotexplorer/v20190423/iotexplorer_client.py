@@ -1201,6 +1201,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudStorageEventsWithAITasks(self, request):
+        """拉取云存事件列表
+
+        :param request: Request instance for DescribeCloudStorageEventsWithAITasks.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageEventsWithAITasksRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageEventsWithAITasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageEventsWithAITasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageEventsWithAITasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudStorageMultiThumbnail(self, request):
         """拉取多个云存事件缩略图
 

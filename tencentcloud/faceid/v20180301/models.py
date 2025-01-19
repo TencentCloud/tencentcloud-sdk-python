@@ -1032,14 +1032,14 @@ class CheckEidTokenStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
+        :param _EidToken: E证通流程的唯一标识，调用[GetEidToken](https://cloud.tencent.com/document/product/1007/54089)接口时生成。
         :type EidToken: str
         """
         self._EidToken = None
 
     @property
     def EidToken(self):
-        """E证通流程的唯一标识，调用GetEidToken接口时生成。
+        """E证通流程的唯一标识，调用[GetEidToken](https://cloud.tencent.com/document/product/1007/54089)接口时生成。
         :rtype: str
         """
         return self._EidToken
@@ -4077,7 +4077,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizToken: 人脸核身流程的标识，调用DetectAuth接口时生成。
+        :param _BizToken: 人脸核身流程的标识，调用[DetectAuth](https://cloud.tencent.com/document/product/1007/31816)接口时生成。
         :type BizToken: str
         :param _RuleId: 用于细分客户使用场景，由腾讯侧在线下对接时分配。
         :type RuleId: str
@@ -4120,7 +4120,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     @property
     def BizToken(self):
-        """人脸核身流程的标识，调用DetectAuth接口时生成。
+        """人脸核身流程的标识，调用[DetectAuth](https://cloud.tencent.com/document/product/1007/31816)接口时生成。
         :rtype: str
         """
         return self._BizToken
@@ -5217,7 +5217,7 @@ class GetEidTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MerchantId: EID商户id。
+        :param _MerchantId: EID商户ID。通过人脸核身控制台[自助接入](https://console.cloud.tencent.com/faceid/access)申请。
 - 字段长度最长50位。
         :type MerchantId: str
         :param _IdCard: 身份标识。
@@ -5253,7 +5253,7 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """EID商户id。
+        """EID商户ID。通过人脸核身控制台[自助接入](https://console.cloud.tencent.com/faceid/access)申请。
 - 字段长度最长50位。
         :rtype: str
         """
@@ -5434,7 +5434,7 @@ class GetFaceIdResultRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _FaceIdToken: SDK人脸核身流程的标识。
-- 调用GetFaceIdToken接口时生成。
+- 调用[GetFaceIdToken](https://cloud.tencent.com/document/product/1007/49198)接口时生成。
         :type FaceIdToken: str
         :param _IsNeedVideo: 是否需要拉取视频。
 - 默认false：不需要。
@@ -5450,7 +5450,7 @@ class GetFaceIdResultRequest(AbstractModel):
     @property
     def FaceIdToken(self):
         """SDK人脸核身流程的标识。
-- 调用GetFaceIdToken接口时生成。
+- 调用[GetFaceIdToken](https://cloud.tencent.com/document/product/1007/49198)接口时生成。
         :rtype: str
         """
         return self._FaceIdToken
@@ -5807,14 +5807,14 @@ class GetFaceIdRiskInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceIdToken: SDK人脸核身流程的标识，调用GetFaceidRiskInfoToken接口时生成。
+        :param _FaceIdToken: SDK人脸核身流程的标识，调用[GetFaceidRiskInfoToken](https://cloud.tencent.com/document/product/1007/104581)接口时生成。
         :type FaceIdToken: str
         """
         self._FaceIdToken = None
 
     @property
     def FaceIdToken(self):
-        """SDK人脸核身流程的标识，调用GetFaceidRiskInfoToken接口时生成。
+        """SDK人脸核身流程的标识，调用[GetFaceidRiskInfoToken](https://cloud.tencent.com/document/product/1007/104581)接口时生成。
         :rtype: str
         """
         return self._FaceIdToken
@@ -9054,7 +9054,7 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
         :param _Description: 业务结果描述。
         :type Description: str
         :param _Range: 在网时长区间。
-- 格式为(a,b]，表示在网时长在a个月以上，b个月以下。
+- 格式为[a,b)，表示在网时长在a个月以上，b个月以下。
 - 若b为+时表示没有上限。
         :type Range: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9099,7 +9099,7 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
     @property
     def Range(self):
         """在网时长区间。
-- 格式为(a,b]，表示在网时长在a个月以上，b个月以下。
+- 格式为[a,b)，表示在网时长在a个月以上，b个月以下。
 - 若b为+时表示没有上限。
         :rtype: str
         """
@@ -9395,7 +9395,7 @@ class ParseNfcDataResponse(AbstractModel):
         :type PersonalNumber: str
         :param _CheckMRTD: 旅行证件类的核验结果。
 - JSON格式如下：
-{"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
+{"result_issuer ":"签发者证书合法性验证结果 ","result_paper":"证件安全对象合法性验证结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
 - 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckMRTD: str
@@ -9647,7 +9647,7 @@ class ParseNfcDataResponse(AbstractModel):
     def CheckMRTD(self):
         """旅行证件类的核验结果。
 - JSON格式如下：
-{"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
+{"result_issuer ":"签发者证书合法性验证结果 ","result_paper":"证件安全对象合法性验证结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
 - 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str

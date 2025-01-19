@@ -454,13 +454,10 @@ class BackupCosInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CosBucket: 备份文件所在的cos桶
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosBucket: str
         :param _CosPath: 备份文件所在的完整cos路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosPath: str
         :param _SnapShotPath: 备份文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapShotPath: str
         """
         self._CosBucket = None
@@ -470,7 +467,6 @@ class BackupCosInfo(AbstractModel):
     @property
     def CosBucket(self):
         """备份文件所在的cos桶
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosBucket
@@ -482,7 +478,6 @@ class BackupCosInfo(AbstractModel):
     @property
     def CosPath(self):
         """备份文件所在的完整cos路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosPath
@@ -494,7 +489,6 @@ class BackupCosInfo(AbstractModel):
     @property
     def SnapShotPath(self):
         """备份文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SnapShotPath
@@ -554,10 +548,8 @@ class BackupStatus(AbstractModel):
         :param _Timeout: 超时信息
         :type Timeout: int
         :param _BackupJobId: 备份实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupJobId: int
         :param _TaskId: 实例对应snapshoit的id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         """
         self._JobId = None
@@ -734,7 +726,6 @@ class BackupStatus(AbstractModel):
     @property
     def BackupJobId(self):
         """备份实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackupJobId
@@ -746,7 +737,6 @@ class BackupStatus(AbstractModel):
     @property
     def TaskId(self):
         """实例对应snapshoit的id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -917,10 +907,8 @@ class BindUser(AbstractModel):
     def __init__(self):
         r"""
         :param _UserName: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Host: 主机信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         """
         self._UserName = None
@@ -929,7 +917,6 @@ class BindUser(AbstractModel):
     @property
     def UserName(self):
         """用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -941,7 +928,6 @@ class BindUser(AbstractModel):
     @property
     def Host(self):
         """主机信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -4881,6 +4867,8 @@ class DescribeDatabaseAuditDownloadRequest(AbstractModel):
         :type SqlTypes: list of str
         :param _Catalogs: catalog名称 （多选）
         :type Catalogs: list of str
+        :param _IsQuery: 是否是查询	
+        :type IsQuery: list of bool
         """
         self._InstanceId = None
         self._StartTime = None
@@ -4896,6 +4884,7 @@ class DescribeDatabaseAuditDownloadRequest(AbstractModel):
         self._DbNames = None
         self._SqlTypes = None
         self._Catalogs = None
+        self._IsQuery = None
 
     @property
     def InstanceId(self):
@@ -5051,6 +5040,17 @@ class DescribeDatabaseAuditDownloadRequest(AbstractModel):
     def Catalogs(self, Catalogs):
         self._Catalogs = Catalogs
 
+    @property
+    def IsQuery(self):
+        """是否是查询	
+        :rtype: list of bool
+        """
+        return self._IsQuery
+
+    @IsQuery.setter
+    def IsQuery(self, IsQuery):
+        self._IsQuery = IsQuery
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5067,6 +5067,7 @@ class DescribeDatabaseAuditDownloadRequest(AbstractModel):
         self._DbNames = params.get("DbNames")
         self._SqlTypes = params.get("SqlTypes")
         self._Catalogs = params.get("Catalogs")
+        self._IsQuery = params.get("IsQuery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6840,6 +6841,10 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         :type DbName: list of str
         :param _CatalogName: catalog名称
         :type CatalogName: list of str
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortOrder: 排序方式
+        :type SortOrder: str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -6853,6 +6858,8 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._IsQuery = None
         self._DbName = None
         self._CatalogName = None
+        self._SortField = None
+        self._SortOrder = None
 
     @property
     def InstanceId(self):
@@ -6986,6 +6993,28 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
 
+    @property
+    def SortField(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortOrder(self):
+        """排序方式
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7000,6 +7029,8 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._IsQuery = params.get("IsQuery")
         self._DbName = params.get("DbName")
         self._CatalogName = params.get("CatalogName")
+        self._SortField = params.get("SortField")
+        self._SortOrder = params.get("SortOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7088,6 +7119,10 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         :type ResultBytes: str
         :param _MemoryUsage: MemoryUsage排序字段
         :type MemoryUsage: str
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortOrder: 排序方式
+        :type SortOrder: str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -7103,6 +7138,8 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         self._ReadRows = None
         self._ResultBytes = None
         self._MemoryUsage = None
+        self._SortField = None
+        self._SortOrder = None
 
     @property
     def InstanceId(self):
@@ -7258,6 +7295,28 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
     def MemoryUsage(self, MemoryUsage):
         self._MemoryUsage = MemoryUsage
 
+    @property
+    def SortField(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortOrder(self):
+        """排序方式
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7274,6 +7333,8 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         self._ReadRows = params.get("ReadRows")
         self._ResultBytes = params.get("ResultBytes")
         self._MemoryUsage = params.get("MemoryUsage")
+        self._SortField = params.get("SortField")
+        self._SortOrder = params.get("SortOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7296,10 +7357,8 @@ class DescribeSlowQueryRecordsResponse(AbstractModel):
         :param _SlowQueryRecords: 记录列表
         :type SlowQueryRecords: list of SlowQueryRecord
         :param _DBNameList: 所有数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DBNameList: list of str
         :param _CatalogNameList: 所有catalog名
-注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogNameList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7335,7 +7394,6 @@ class DescribeSlowQueryRecordsResponse(AbstractModel):
     @property
     def DBNameList(self):
         """所有数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DBNameList
@@ -7347,7 +7405,6 @@ class DescribeSlowQueryRecordsResponse(AbstractModel):
     @property
     def CatalogNameList(self):
         """所有catalog名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CatalogNameList

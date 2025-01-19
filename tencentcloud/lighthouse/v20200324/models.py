@@ -2635,6 +2635,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type Tags: list of Tag
         :param _InitCommand: 创建实例后自动执行的命令。
         :type InitCommand: :class:`tencentcloud.lighthouse.v20200324.models.Command`
+        :param _DomainName: 主域名。
+        :type DomainName: str
+        :param _Subdomain: 子域名。
+        :type Subdomain: str
         """
         self._BundleId = None
         self._BlueprintId = None
@@ -2650,6 +2654,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._FirewallTemplateId = None
         self._Tags = None
         self._InitCommand = None
+        self._DomainName = None
+        self._Subdomain = None
 
     @property
     def BundleId(self):
@@ -2814,6 +2820,28 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     def InitCommand(self, InitCommand):
         self._InitCommand = InitCommand
 
+    @property
+    def DomainName(self):
+        """主域名。
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Subdomain(self):
+        """子域名。
+        :rtype: str
+        """
+        return self._Subdomain
+
+    @Subdomain.setter
+    def Subdomain(self, Subdomain):
+        self._Subdomain = Subdomain
+
 
     def _deserialize(self, params):
         self._BundleId = params.get("BundleId")
@@ -2846,6 +2874,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         if params.get("InitCommand") is not None:
             self._InitCommand = Command()
             self._InitCommand._deserialize(params.get("InitCommand"))
+        self._DomainName = params.get("DomainName")
+        self._Subdomain = params.get("Subdomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
