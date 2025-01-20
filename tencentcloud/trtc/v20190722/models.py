@@ -199,6 +199,8 @@ class AgentConfig(AbstractModel):
         :type TurnDetectionMode: int
         :param _FilterOneWord: 是否过滤掉用户只说了一个字的句子，true表示过滤，false表示不过滤，默认值为true
         :type FilterOneWord: bool
+        :param _WelcomeMessagePriority: 欢迎消息优先级，0默认，1高优，高优不能被打断。
+        :type WelcomeMessagePriority: int
         """
         self._UserId = None
         self._UserSig = None
@@ -209,6 +211,7 @@ class AgentConfig(AbstractModel):
         self._InterruptSpeechDuration = None
         self._TurnDetectionMode = None
         self._FilterOneWord = None
+        self._WelcomeMessagePriority = None
 
     @property
     def UserId(self):
@@ -311,6 +314,17 @@ class AgentConfig(AbstractModel):
     def FilterOneWord(self, FilterOneWord):
         self._FilterOneWord = FilterOneWord
 
+    @property
+    def WelcomeMessagePriority(self):
+        """欢迎消息优先级，0默认，1高优，高优不能被打断。
+        :rtype: int
+        """
+        return self._WelcomeMessagePriority
+
+    @WelcomeMessagePriority.setter
+    def WelcomeMessagePriority(self, WelcomeMessagePriority):
+        self._WelcomeMessagePriority = WelcomeMessagePriority
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -322,6 +336,7 @@ class AgentConfig(AbstractModel):
         self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
         self._TurnDetectionMode = params.get("TurnDetectionMode")
         self._FilterOneWord = params.get("FilterOneWord")
+        self._WelcomeMessagePriority = params.get("WelcomeMessagePriority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

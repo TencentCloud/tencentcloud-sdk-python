@@ -10764,7 +10764,7 @@ class ModifyUserProfileRequest(AbstractModel):
         r"""
         :param _UserId: 待修改用户ID
         :type UserId: str
-        :param _Nickname: 待修改的用户名
+        :param _Nickname: 待修改的用户名。对应注册用户下“Name“字段，本次修改是对此内容进行修改。
         :type Nickname: str
         :param _Avatar: 待修改头像url
         :type Avatar: str
@@ -10786,7 +10786,7 @@ class ModifyUserProfileRequest(AbstractModel):
 
     @property
     def Nickname(self):
-        """待修改的用户名
+        """待修改的用户名。对应注册用户下“Name“字段，本次修改是对此内容进行修改。
         :rtype: str
         """
         return self._Nickname

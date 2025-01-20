@@ -12021,7 +12021,6 @@ class ScoreInfo(AbstractModel):
         :param _PageDuration: Duration
         :type PageDuration: str
         :param _CreateTime: 时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _PagePerformanceScore: 页面性能评分
         :type PagePerformanceScore: str
@@ -12203,7 +12202,6 @@ class ScoreInfo(AbstractModel):
     @property
     def CreateTime(self):
         """时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime

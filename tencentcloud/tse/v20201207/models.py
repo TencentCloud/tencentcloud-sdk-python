@@ -11554,6 +11554,89 @@ class DescribeCloudNativeAPIGatewayConfigResult(AbstractModel):
         
 
 
+class DescribeCloudNativeAPIGatewayInfoByIpRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayInfoByIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicNetworkIP: 云原生网关的公网ip
+        :type PublicNetworkIP: str
+        """
+        self._PublicNetworkIP = None
+
+    @property
+    def PublicNetworkIP(self):
+        """云原生网关的公网ip
+        :rtype: str
+        """
+        return self._PublicNetworkIP
+
+    @PublicNetworkIP.setter
+    def PublicNetworkIP(self, PublicNetworkIP):
+        self._PublicNetworkIP = PublicNetworkIP
+
+
+    def _deserialize(self, params):
+        self._PublicNetworkIP = params.get("PublicNetworkIP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayInfoByIpResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayInfoByIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribeInstanceInfoByIpResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeInstanceInfoByIpResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeInstanceInfoByIpResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayNodesRequest(AbstractModel):
     """DescribeCloudNativeAPIGatewayNodes请求参数结构体
 
@@ -15800,6 +15883,61 @@ class DescribeGovernanceServicesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Content.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceInfoByIpResult(AbstractModel):
+    """根据公网IP查询云原生网关实例信息出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _GroupId: 分组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+
+    @property
+    def GatewayId(self):
+        """实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        """分组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeInstanceRegionInfo(AbstractModel):
