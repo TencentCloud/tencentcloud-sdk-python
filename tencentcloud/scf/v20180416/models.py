@@ -5313,7 +5313,7 @@ class GetFunctionResponse(AbstractModel):
         :type Role: str
         :param _InstallDependency: 是否自动安装依赖
         :type InstallDependency: str
-        :param _Status: 函数状态，状态值及流转[参考说明](https://cloud.tencent.com/document/product/583/47175)
+        :param _Status: 函数状态，状态值及流转[参考说明](https://cloud.tencent.com/document/product/583/115197)
         :type Status: str
         :param _StatusDesc: 状态描述
         :type StatusDesc: str
@@ -5648,7 +5648,7 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Status(self):
-        """函数状态，状态值及流转[参考说明](https://cloud.tencent.com/document/product/583/47175)
+        """函数状态，状态值及流转[参考说明](https://cloud.tencent.com/document/product/583/115197)
         :rtype: str
         """
         return self._Status
@@ -6126,7 +6126,7 @@ class GetLayerVersionResponse(AbstractModel):
         :type LayerVersion: int
         :param _LayerName: 层名称
         :type LayerName: str
-        :param _Status: 层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        :param _Status: 层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/115197#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6232,7 +6232,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Status(self):
-        """层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        """层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/115197#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :rtype: str
         """
         return self._Status

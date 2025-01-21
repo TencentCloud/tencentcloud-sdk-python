@@ -647,6 +647,8 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def ModerationLevel(self):
+        warnings.warn("parameter `ModerationLevel` is deprecated", DeprecationWarning) 
+
         """多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
         :rtype: str
         """
@@ -654,6 +656,8 @@ class ChatCompletionsResponse(AbstractModel):
 
     @ModerationLevel.setter
     def ModerationLevel(self, ModerationLevel):
+        warnings.warn("parameter `ModerationLevel` is deprecated", DeprecationWarning) 
+
         self._ModerationLevel = ModerationLevel
 
     @property
@@ -1048,11 +1052,14 @@ tool_calls 标识函数调用。
         :type Message: :class:`tencentcloud.hunyuan.v20230901.models.Message`
         :param _Index: 索引值，流式调用时使用该字段。
         :type Index: int
+        :param _ModerationLevel: 多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
+        :type ModerationLevel: str
         """
         self._FinishReason = None
         self._Delta = None
         self._Message = None
         self._Index = None
+        self._ModerationLevel = None
 
     @property
     def FinishReason(self):
@@ -1103,6 +1110,17 @@ tool_calls 标识函数调用。
     def Index(self, Index):
         self._Index = Index
 
+    @property
+    def ModerationLevel(self):
+        """多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
+        :rtype: str
+        """
+        return self._ModerationLevel
+
+    @ModerationLevel.setter
+    def ModerationLevel(self, ModerationLevel):
+        self._ModerationLevel = ModerationLevel
+
 
     def _deserialize(self, params):
         self._FinishReason = params.get("FinishReason")
@@ -1113,6 +1131,7 @@ tool_calls 标识函数调用。
             self._Message = Message()
             self._Message._deserialize(params.get("Message"))
         self._Index = params.get("Index")
+        self._ModerationLevel = params.get("ModerationLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

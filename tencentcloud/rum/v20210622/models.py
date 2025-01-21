@@ -625,8 +625,7 @@ class CreateTawInstanceResponse(AbstractModel):
         r"""
         :param _InstanceId: 实例Id
         :type InstanceId: str
-        :param _DealName: 预付费订单 id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _DealName: 预付费订单 ，预付费不为null，后付费为null
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -648,8 +647,7 @@ class CreateTawInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """预付费订单 id
-注意：此字段可能返回 null，表示取不到有效值。
+        """预付费订单 ，预付费不为null，后付费为null
         :rtype: str
         """
         return self._DealName
@@ -1044,7 +1042,7 @@ class DeleteStarProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例ID：taw-123
+        :param _InstanceID: 实例ID：****-1792
         :type InstanceID: str
         :param _ID: 项目ID
         :type ID: int
@@ -1054,7 +1052,7 @@ class DeleteStarProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """实例ID：taw-123
+        """实例ID：****-1792
         :rtype: str
         """
         return self._InstanceID
@@ -1095,8 +1093,7 @@ class DeleteStarProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Msg: 返回消息
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Msg: 返回消息,请求成功才会返回，出现异常默认为null
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1106,8 +1103,7 @@ class DeleteStarProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """返回消息
-注意：此字段可能返回 null，表示取不到有效值。
+        """返回消息,请求成功才会返回，出现异常默认为null
         :rtype: str
         """
         return self._Msg
@@ -8571,7 +8567,6 @@ class DescribePvListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ProjectPvSet: pv列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectPvSet: list of RumPvInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8582,7 +8577,6 @@ class DescribePvListResponse(AbstractModel):
     @property
     def ProjectPvSet(self):
         """pv列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RumPvInfo
         """
         return self._ProjectPvSet
@@ -10445,6 +10439,151 @@ class Filter(AbstractModel):
         
 
 
+class Kafka(AbstractModel):
+    """旁路kafka配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableKafka: 1：开启
+0：关闭
+        :type EnableKafka: int
+        :param _KafkaHost: host地址
+        :type KafkaHost: str
+        :param _KafkaTopic: topic
+        :type KafkaTopic: str
+        :param _KafkaVersion: 版本
+        :type KafkaVersion: str
+        :param _SaslUserName: username
+        :type SaslUserName: str
+        :param _SaslPassword: password
+        :type SaslPassword: str
+        :param _SaslMechanism: ssl
+        :type SaslMechanism: str
+        :param _SinkId: 默认算子id为0新增算子
+一旦算子新增成功会返回正确的算子id值
+        :type SinkId: int
+        """
+        self._EnableKafka = None
+        self._KafkaHost = None
+        self._KafkaTopic = None
+        self._KafkaVersion = None
+        self._SaslUserName = None
+        self._SaslPassword = None
+        self._SaslMechanism = None
+        self._SinkId = None
+
+    @property
+    def EnableKafka(self):
+        """1：开启
+0：关闭
+        :rtype: int
+        """
+        return self._EnableKafka
+
+    @EnableKafka.setter
+    def EnableKafka(self, EnableKafka):
+        self._EnableKafka = EnableKafka
+
+    @property
+    def KafkaHost(self):
+        """host地址
+        :rtype: str
+        """
+        return self._KafkaHost
+
+    @KafkaHost.setter
+    def KafkaHost(self, KafkaHost):
+        self._KafkaHost = KafkaHost
+
+    @property
+    def KafkaTopic(self):
+        """topic
+        :rtype: str
+        """
+        return self._KafkaTopic
+
+    @KafkaTopic.setter
+    def KafkaTopic(self, KafkaTopic):
+        self._KafkaTopic = KafkaTopic
+
+    @property
+    def KafkaVersion(self):
+        """版本
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def SaslUserName(self):
+        """username
+        :rtype: str
+        """
+        return self._SaslUserName
+
+    @SaslUserName.setter
+    def SaslUserName(self, SaslUserName):
+        self._SaslUserName = SaslUserName
+
+    @property
+    def SaslPassword(self):
+        """password
+        :rtype: str
+        """
+        return self._SaslPassword
+
+    @SaslPassword.setter
+    def SaslPassword(self, SaslPassword):
+        self._SaslPassword = SaslPassword
+
+    @property
+    def SaslMechanism(self):
+        """ssl
+        :rtype: str
+        """
+        return self._SaslMechanism
+
+    @SaslMechanism.setter
+    def SaslMechanism(self, SaslMechanism):
+        self._SaslMechanism = SaslMechanism
+
+    @property
+    def SinkId(self):
+        """默认算子id为0新增算子
+一旦算子新增成功会返回正确的算子id值
+        :rtype: int
+        """
+        return self._SinkId
+
+    @SinkId.setter
+    def SinkId(self, SinkId):
+        self._SinkId = SinkId
+
+
+    def _deserialize(self, params):
+        self._EnableKafka = params.get("EnableKafka")
+        self._KafkaHost = params.get("KafkaHost")
+        self._KafkaTopic = params.get("KafkaTopic")
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._SaslUserName = params.get("SaslUserName")
+        self._SaslPassword = params.get("SaslPassword")
+        self._SaslMechanism = params.get("SaslMechanism")
+        self._SinkId = params.get("SinkId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyInstanceRequest(AbstractModel):
     """ModifyInstance请求参数结构体
 
@@ -10643,7 +10782,6 @@ class ModifyProjectLimitResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10654,7 +10792,6 @@ class ModifyProjectLimitResponse(AbstractModel):
     @property
     def Msg(self):
         """返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -11006,7 +11143,6 @@ class ReleaseFile(AbstractModel):
         :param _FileHash: 文件哈希值
         :type FileHash: str
         :param _ID: 文件 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ID: int
         """
         self._Version = None
@@ -11062,7 +11198,6 @@ class ReleaseFile(AbstractModel):
     @property
     def ID(self):
         """文件 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ID
@@ -11374,7 +11509,6 @@ class RumInstanceInfo(AbstractModel):
         :param _CreatedAt: 创建时间
         :type CreatedAt: str
         :param _InstanceType: 实例类型 1:原web相关类型 2:app端类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: int
         """
         self._InstanceStatus = None
@@ -11526,7 +11660,6 @@ class RumInstanceInfo(AbstractModel):
     @property
     def InstanceType(self):
         """实例类型 1:原web相关类型 2:app端类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceType
@@ -11583,10 +11716,8 @@ class RumProject(AbstractModel):
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _Repo: 项目仓库地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Repo: str
         :param _URL: 项目网址地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type URL: str
         :param _Rate: 项目采样频率
         :type Rate: str
@@ -11601,17 +11732,15 @@ class RumProject(AbstractModel):
         :param _InstanceKey: 实例 key
         :type InstanceKey: str
         :param _Desc: 项目描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _IsStar: 是否星标  1:是 0:否
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsStar: int
         :param _ProjectStatus: 项目状态(1 创建中，2 运行中，3 异常，4 重启中，5 停止中，6 已停止， 7 销毁中，8 已销毁)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectStatus: int
         :param _AccessPoint: 日志接入点，用户忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPoint: str
+        :param _Kafka: kafka旁路配置信息
+        :type Kafka: :class:`tencentcloud.rum.v20210622.models.Kafka`
         """
         self._Name = None
         self._Creator = None
@@ -11630,6 +11759,7 @@ class RumProject(AbstractModel):
         self._IsStar = None
         self._ProjectStatus = None
         self._AccessPoint = None
+        self._Kafka = None
 
     @property
     def Name(self):
@@ -11689,7 +11819,6 @@ class RumProject(AbstractModel):
     @property
     def Repo(self):
         """项目仓库地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Repo
@@ -11701,7 +11830,6 @@ class RumProject(AbstractModel):
     @property
     def URL(self):
         """项目网址地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._URL
@@ -11779,7 +11907,6 @@ class RumProject(AbstractModel):
     @property
     def Desc(self):
         """项目描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -11791,7 +11918,6 @@ class RumProject(AbstractModel):
     @property
     def IsStar(self):
         """是否星标  1:是 0:否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsStar
@@ -11803,7 +11929,6 @@ class RumProject(AbstractModel):
     @property
     def ProjectStatus(self):
         """项目状态(1 创建中，2 运行中，3 异常，4 重启中，5 停止中，6 已停止， 7 销毁中，8 已销毁)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectStatus
@@ -11815,7 +11940,6 @@ class RumProject(AbstractModel):
     @property
     def AccessPoint(self):
         """日志接入点，用户忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessPoint
@@ -11823,6 +11947,17 @@ class RumProject(AbstractModel):
     @AccessPoint.setter
     def AccessPoint(self, AccessPoint):
         self._AccessPoint = AccessPoint
+
+    @property
+    def Kafka(self):
+        """kafka旁路配置信息
+        :rtype: :class:`tencentcloud.rum.v20210622.models.Kafka`
+        """
+        return self._Kafka
+
+    @Kafka.setter
+    def Kafka(self, Kafka):
+        self._Kafka = Kafka
 
 
     def _deserialize(self, params):
@@ -11843,6 +11978,9 @@ class RumProject(AbstractModel):
         self._IsStar = params.get("IsStar")
         self._ProjectStatus = params.get("ProjectStatus")
         self._AccessPoint = params.get("AccessPoint")
+        if params.get("Kafka") is not None:
+            self._Kafka = Kafka()
+            self._Kafka._deserialize(params.get("Kafka"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11863,7 +12001,6 @@ class RumPvInfo(AbstractModel):
         :param _ProjectId: 项目ID
         :type ProjectId: int
         :param _Pv: pv访问量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pv: str
         :param _CreateTime: 时间
         :type CreateTime: str
@@ -11886,7 +12023,6 @@ class RumPvInfo(AbstractModel):
     @property
     def Pv(self):
         """pv访问量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Pv

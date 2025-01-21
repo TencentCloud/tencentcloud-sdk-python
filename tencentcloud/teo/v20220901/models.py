@@ -58,6 +58,46 @@ class AccelerateMainland(AbstractModel):
         
 
 
+class AccelerateMainlandParameters(AbstractModel):
+    """中国大陆加速优化配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 中国大陆加速优化配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """中国大陆加速优化配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateType(AbstractModel):
     """加速类型
 
@@ -455,6 +495,160 @@ class AccelerationDomainCertificate(AbstractModel):
         if params.get("UpstreamCertInfo") is not None:
             self._UpstreamCertInfo = UpstreamCertInfo()
             self._UpstreamCertInfo._deserialize(params.get("UpstreamCertInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessURLRedirectParameters(AbstractModel):
+    """访问 URL 重定向 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: 状态码，取值为 301、302、303、307、308 之一。
+        :type StatusCode: int
+        :param _Protocol: 目标请求协议，取值有：
+<li>http：目标请求协议 HTTP；</li>
+<li>https：目标请求协议 HTTPS；</li>
+<li>follow：跟随请求。</li>
+        :type Protocol: str
+        :param _HostName: 目标 HostName 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: :class:`tencentcloud.teo.v20220901.models.HostName`
+        :param _URLPath: 目标路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URLPath: :class:`tencentcloud.teo.v20220901.models.URLPath`
+        :param _QueryString: 携带查询参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryString: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
+        """
+        self._StatusCode = None
+        self._Protocol = None
+        self._HostName = None
+        self._URLPath = None
+        self._QueryString = None
+
+    @property
+    def StatusCode(self):
+        """状态码，取值为 301、302、303、307、308 之一。
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def Protocol(self):
+        """目标请求协议，取值有：
+<li>http：目标请求协议 HTTP；</li>
+<li>https：目标请求协议 HTTPS；</li>
+<li>follow：跟随请求。</li>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def HostName(self):
+        """目标 HostName 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HostName`
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def URLPath(self):
+        """目标路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.URLPath`
+        """
+        return self._URLPath
+
+    @URLPath.setter
+    def URLPath(self, URLPath):
+        self._URLPath = URLPath
+
+    @property
+    def QueryString(self):
+        """携带查询参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._Protocol = params.get("Protocol")
+        if params.get("HostName") is not None:
+            self._HostName = HostName()
+            self._HostName._deserialize(params.get("HostName"))
+        if params.get("URLPath") is not None:
+            self._URLPath = URLPath()
+            self._URLPath._deserialize(params.get("URLPath"))
+        if params.get("QueryString") is not None:
+            self._QueryString = AccessURLRedirectQueryString()
+            self._QueryString._deserialize(params.get("QueryString"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessURLRedirectQueryString(AbstractModel):
+    """访问 URL 重定向 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: 执行动作，取值有：
+<li>full：全部保留；</li>
+<li>ignore：全部忽略。</li>
+        :type Action: str
+        """
+        self._Action = None
+
+    @property
+    def Action(self):
+        """执行动作，取值有：
+<li>full：全部保留；</li>
+<li>ignore：全部忽略。</li>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2481,6 +2675,152 @@ class AscriptionInfo(AbstractModel):
         
 
 
+class AuthenticationParameters(AbstractModel):
+    """Token 鉴权 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthType: 鉴权类型。取值有：
+
+<li>TypeA：鉴权方式 A 类型，具体含义请参考 [鉴权方式 A](https://cloud.tencent.com/document/product/1552/109329)；</li>
+<li>TypeB：鉴权方式 B 类型，具体含义请参考 [鉴权方式 B](https://cloud.tencent.com/document/product/1552/109330)；</li>
+<li>TypeC：鉴权方式 C 类型，具体含义请参考 [鉴权方式 C](https://cloud.tencent.com/document/product/1552/109331)；</li>
+<li>TypeD：鉴权方式 D 类型，具体含义请参考 [鉴权方式 D](https://cloud.tencent.com/document/product/1552/109332)；</li>
+<li>TypeVOD：鉴权方式 V 类型，具体含义请参考 [鉴权方式 V](https://cloud.tencent.com/document/product/1552/109333)。</li>
+        :type AuthType: str
+        :param _SecretKey: 主鉴权密钥，由 6～40 位大小写英文字母或数字组成，不能包含 " 和 $。
+        :type SecretKey: str
+        :param _Timeout: 鉴权 URL 的有效时长，单位为秒，取值：1～630720000。用于判断客户端访问请求是否过期：
+<li>若当前时间超过 “timestamp + 有效时长” 时间，则为过期请求，直接返回 403。</li>
+<li>若当前时间未超过 “timestamp + 有效时长” 时间，则请求未过期，继续校验 md5 字符串。</li>注意：当 AuthType 为 TypeA、TypeB、TypeC、TypeD 之一时，此字段必填。
+        :type Timeout: int
+        :param _BackupSecretKey: 备鉴权密钥，由 6～40 位大小写英文字母或数字组成，不能包含 " 和 $。
+        :type BackupSecretKey: str
+        :param _AuthParam: 鉴权参数名称，节点将校验此参数名对应的值。由 1～100 位大小写字母、数字或下划线组成。<br>注意：当 AuthType 为 TypeA、TypeD 之一时，此字段必填。
+        :type AuthParam: str
+        :param _TimeParam: 鉴权时间戳，和 AuthParam 字段的值不能相同。<br>注意：当 AuthType 为 TypeD 时，此字段必填。
+        :type TimeParam: str
+        :param _TimeFormat: 鉴权时间格式，取值有：
+<li>dec：十进制；</li>
+<li>hex：十六进制。</li>注意：当 AuthType 为 TypeD 时，此字段必填。默认为 hex。
+        :type TimeFormat: str
+        """
+        self._AuthType = None
+        self._SecretKey = None
+        self._Timeout = None
+        self._BackupSecretKey = None
+        self._AuthParam = None
+        self._TimeParam = None
+        self._TimeFormat = None
+
+    @property
+    def AuthType(self):
+        """鉴权类型。取值有：
+
+<li>TypeA：鉴权方式 A 类型，具体含义请参考 [鉴权方式 A](https://cloud.tencent.com/document/product/1552/109329)；</li>
+<li>TypeB：鉴权方式 B 类型，具体含义请参考 [鉴权方式 B](https://cloud.tencent.com/document/product/1552/109330)；</li>
+<li>TypeC：鉴权方式 C 类型，具体含义请参考 [鉴权方式 C](https://cloud.tencent.com/document/product/1552/109331)；</li>
+<li>TypeD：鉴权方式 D 类型，具体含义请参考 [鉴权方式 D](https://cloud.tencent.com/document/product/1552/109332)；</li>
+<li>TypeVOD：鉴权方式 V 类型，具体含义请参考 [鉴权方式 V](https://cloud.tencent.com/document/product/1552/109333)。</li>
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def SecretKey(self):
+        """主鉴权密钥，由 6～40 位大小写英文字母或数字组成，不能包含 " 和 $。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Timeout(self):
+        """鉴权 URL 的有效时长，单位为秒，取值：1～630720000。用于判断客户端访问请求是否过期：
+<li>若当前时间超过 “timestamp + 有效时长” 时间，则为过期请求，直接返回 403。</li>
+<li>若当前时间未超过 “timestamp + 有效时长” 时间，则请求未过期，继续校验 md5 字符串。</li>注意：当 AuthType 为 TypeA、TypeB、TypeC、TypeD 之一时，此字段必填。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def BackupSecretKey(self):
+        """备鉴权密钥，由 6～40 位大小写英文字母或数字组成，不能包含 " 和 $。
+        :rtype: str
+        """
+        return self._BackupSecretKey
+
+    @BackupSecretKey.setter
+    def BackupSecretKey(self, BackupSecretKey):
+        self._BackupSecretKey = BackupSecretKey
+
+    @property
+    def AuthParam(self):
+        """鉴权参数名称，节点将校验此参数名对应的值。由 1～100 位大小写字母、数字或下划线组成。<br>注意：当 AuthType 为 TypeA、TypeD 之一时，此字段必填。
+        :rtype: str
+        """
+        return self._AuthParam
+
+    @AuthParam.setter
+    def AuthParam(self, AuthParam):
+        self._AuthParam = AuthParam
+
+    @property
+    def TimeParam(self):
+        """鉴权时间戳，和 AuthParam 字段的值不能相同。<br>注意：当 AuthType 为 TypeD 时，此字段必填。
+        :rtype: str
+        """
+        return self._TimeParam
+
+    @TimeParam.setter
+    def TimeParam(self, TimeParam):
+        self._TimeParam = TimeParam
+
+    @property
+    def TimeFormat(self):
+        """鉴权时间格式，取值有：
+<li>dec：十进制；</li>
+<li>hex：十六进制。</li>注意：当 AuthType 为 TypeD 时，此字段必填。默认为 hex。
+        :rtype: str
+        """
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
+
+    def _deserialize(self, params):
+        self._AuthType = params.get("AuthType")
+        self._SecretKey = params.get("SecretKey")
+        self._Timeout = params.get("Timeout")
+        self._BackupSecretKey = params.get("BackupSecretKey")
+        self._AuthParam = params.get("AuthParam")
+        self._TimeParam = params.get("TimeParam")
+        self._TimeFormat = params.get("TimeFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillingData(AbstractModel):
     """计费数据项
 
@@ -4007,6 +4347,139 @@ class CacheConfig(AbstractModel):
         
 
 
+class CacheConfigCustomTime(AbstractModel):
+    """节点缓存 TTL 自定义缓存时间配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 自定义缓存时间开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _CacheTime: 自定义缓存时间数值，单位为秒，取值：0-315360000。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type CacheTime: int
+        """
+        self._Switch = None
+        self._CacheTime = None
+
+    @property
+    def Switch(self):
+        """自定义缓存时间开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def CacheTime(self):
+        """自定义缓存时间数值，单位为秒，取值：0-315360000。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheConfigParameters(AbstractModel):
+    """节点缓存 TTL 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FollowOrigin: 遵循源站缓存配置。FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowOrigin: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
+        :param _NoCache: 不缓存配置。FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoCache: :class:`tencentcloud.teo.v20220901.models.NoCache`
+        :param _CustomTime: 自定义缓存时间配置。FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomTime: :class:`tencentcloud.teo.v20220901.models.CacheConfigCustomTime`
+        """
+        self._FollowOrigin = None
+        self._NoCache = None
+        self._CustomTime = None
+
+    @property
+    def FollowOrigin(self):
+        """遵循源站缓存配置。FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
+        """
+        return self._FollowOrigin
+
+    @FollowOrigin.setter
+    def FollowOrigin(self, FollowOrigin):
+        self._FollowOrigin = FollowOrigin
+
+    @property
+    def NoCache(self):
+        """不缓存配置。FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NoCache`
+        """
+        return self._NoCache
+
+    @NoCache.setter
+    def NoCache(self, NoCache):
+        self._NoCache = NoCache
+
+    @property
+    def CustomTime(self):
+        """自定义缓存时间配置。FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheConfigCustomTime`
+        """
+        return self._CustomTime
+
+    @CustomTime.setter
+    def CustomTime(self, CustomTime):
+        self._CustomTime = CustomTime
+
+
+    def _deserialize(self, params):
+        if params.get("FollowOrigin") is not None:
+            self._FollowOrigin = FollowOrigin()
+            self._FollowOrigin._deserialize(params.get("FollowOrigin"))
+        if params.get("NoCache") is not None:
+            self._NoCache = NoCache()
+            self._NoCache._deserialize(params.get("NoCache"))
+        if params.get("CustomTime") is not None:
+            self._CustomTime = CacheConfigCustomTime()
+            self._CustomTime._deserialize(params.get("CustomTime"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CacheKey(AbstractModel):
     """缓存键配置。
 
@@ -4089,6 +4562,554 @@ class CacheKey(AbstractModel):
         
 
 
+class CacheKeyConfigParameters(AbstractModel):
+    """缓存键配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullURLCache: 是否开启全路径缓存，取值有：
+<li>on：开启全路径缓存（即关闭参数忽略）；</li>
+<li>off：关闭全路径缓存（即开启参数忽略）。</li>
+        :type FullURLCache: str
+        :param _IgnoreCase: 是否忽略大小写缓存，取值有：
+<li>on：忽略；</li>
+<li>off：不忽略。</li>
+        :type IgnoreCase: str
+        :param _QueryString: 查询字符串保留配置参数。此字段和 FullURLCache 必须同时设置，但不能同为 on。
+        :type QueryString: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
+        """
+        self._FullURLCache = None
+        self._IgnoreCase = None
+        self._QueryString = None
+
+    @property
+    def FullURLCache(self):
+        """是否开启全路径缓存，取值有：
+<li>on：开启全路径缓存（即关闭参数忽略）；</li>
+<li>off：关闭全路径缓存（即开启参数忽略）。</li>
+        :rtype: str
+        """
+        return self._FullURLCache
+
+    @FullURLCache.setter
+    def FullURLCache(self, FullURLCache):
+        self._FullURLCache = FullURLCache
+
+    @property
+    def IgnoreCase(self):
+        """是否忽略大小写缓存，取值有：
+<li>on：忽略；</li>
+<li>off：不忽略。</li>
+        :rtype: str
+        """
+        return self._IgnoreCase
+
+    @IgnoreCase.setter
+    def IgnoreCase(self, IgnoreCase):
+        self._IgnoreCase = IgnoreCase
+
+    @property
+    def QueryString(self):
+        """查询字符串保留配置参数。此字段和 FullURLCache 必须同时设置，但不能同为 on。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+
+    def _deserialize(self, params):
+        self._FullURLCache = params.get("FullURLCache")
+        self._IgnoreCase = params.get("IgnoreCase")
+        if params.get("QueryString") is not None:
+            self._QueryString = CacheKeyQueryString()
+            self._QueryString._deserialize(params.get("QueryString"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheKeyCookie(AbstractModel):
+    """自定义 Cache Key Cookie 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 功能开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _Action: 缓存动作，取值有：
+<li>full：全部保留；</li>
+<li> ignore：全部忽略；</li>
+<li> includeCustom：保留指定参数；</li>
+<li>excludeCustom：忽略指定参数。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type Action: str
+        :param _Values: 自定义 Cache Key Cookie 名称列表。<br>注意：当 Action 为 includeCustom 或 excludeCustom 时，此字段必填；当 Action 为 full 或 ignore 时，无需填写此字段，若填写则不生效。
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Action = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """功能开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Action(self):
+        """缓存动作，取值有：
+<li>full：全部保留；</li>
+<li> ignore：全部忽略；</li>
+<li> includeCustom：保留指定参数；</li>
+<li>excludeCustom：忽略指定参数。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Values(self):
+        """自定义 Cache Key Cookie 名称列表。<br>注意：当 Action 为 includeCustom 或 excludeCustom 时，此字段必填；当 Action 为 full 或 ignore 时，无需填写此字段，若填写则不生效。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Action = params.get("Action")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheKeyHeader(AbstractModel):
+    """自定义 Cache Key HTTP 请求头配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 功能开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _Values: 自定义 Cache Key HTTP 请求头列表。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """功能开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Values(self):
+        """自定义 Cache Key HTTP 请求头列表。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheKeyParameters(AbstractModel):
+    """自定义 Cache Key 配置参数。该配置参数的 FullURLCache 和 QueryString 采用组合表达，具体示例可以参考：
+    - 查询字符串全部保留。开启忽略大小写。
+    ```
+    {
+      "CacheKey": {
+        "FullURLCache": "on",
+        "QueryString": {
+          "Switch": "off"
+        },
+        "IgnoreCase": "on"
+      }
+    }
+    ```
+    - 查询字符串全部忽略。开启忽略大小写。
+    ```
+    {
+      "CacheKey": {
+        "FullURLCache": "off",
+        "QueryString": {
+          "Switch": "off"
+        },
+        "IgnoreCase": "on"
+      }
+    }
+    ```
+    - 查询字符串保留指定参数。关闭忽略大小写。
+    ```
+    {
+      "CacheKey": {
+        "FullURLCache": "off",
+        "QueryString": {
+            "Switch": "on",
+            "Action": "includeCustom",
+            "Values": ["name1","name2","name3"]
+        },
+        "IgnoreCase": "off"
+      }
+    }
+    ```
+    - 查询字符串忽略指定参数。关闭忽略大小写。
+    ```
+    {
+      "CacheKey": {
+        "FullURLCache": "off",
+        "QueryString": {
+            "Switch": "on",
+            "Action": "excludeCustom",
+            "Values": ["name1","name2","name3"]
+        },
+        "IgnoreCase": "off"
+      }
+    }
+    ```
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullURLCache: 查询字符串全部保留开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>注意：FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。此字段和 QueryString.Switch 必须同时设置，但不能同为 on。
+        :type FullURLCache: str
+        :param _QueryString: 查询字符串保留配置参数。此字段和 FullURLCache 必须同时设置，但不能同为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryString: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
+        :param _IgnoreCase: 忽略大小写开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>注意：FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。
+        :type IgnoreCase: str
+        :param _Header: HTTP 请求头配置参数。FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Header: :class:`tencentcloud.teo.v20220901.models.CacheKeyHeader`
+        :param _Scheme: 请求协议开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>注意：FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。
+        :type Scheme: str
+        :param _Cookie: Cookie 配置参数。FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cookie: :class:`tencentcloud.teo.v20220901.models.CacheKeyCookie`
+        """
+        self._FullURLCache = None
+        self._QueryString = None
+        self._IgnoreCase = None
+        self._Header = None
+        self._Scheme = None
+        self._Cookie = None
+
+    @property
+    def FullURLCache(self):
+        """查询字符串全部保留开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>注意：FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。此字段和 QueryString.Switch 必须同时设置，但不能同为 on。
+        :rtype: str
+        """
+        return self._FullURLCache
+
+    @FullURLCache.setter
+    def FullURLCache(self, FullURLCache):
+        self._FullURLCache = FullURLCache
+
+    @property
+    def QueryString(self):
+        """查询字符串保留配置参数。此字段和 FullURLCache 必须同时设置，但不能同为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+    @property
+    def IgnoreCase(self):
+        """忽略大小写开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>注意：FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。
+        :rtype: str
+        """
+        return self._IgnoreCase
+
+    @IgnoreCase.setter
+    def IgnoreCase(self, IgnoreCase):
+        self._IgnoreCase = IgnoreCase
+
+    @property
+    def Header(self):
+        """HTTP 请求头配置参数。FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyHeader`
+        """
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+    @property
+    def Scheme(self):
+        """请求协议开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>注意：FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def Cookie(self):
+        """Cookie 配置参数。FullURLCache、IgnoreCase、Header、Scheme、Cookie 至少设置一个配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyCookie`
+        """
+        return self._Cookie
+
+    @Cookie.setter
+    def Cookie(self, Cookie):
+        self._Cookie = Cookie
+
+
+    def _deserialize(self, params):
+        self._FullURLCache = params.get("FullURLCache")
+        if params.get("QueryString") is not None:
+            self._QueryString = CacheKeyQueryString()
+            self._QueryString._deserialize(params.get("QueryString"))
+        self._IgnoreCase = params.get("IgnoreCase")
+        if params.get("Header") is not None:
+            self._Header = CacheKeyHeader()
+            self._Header._deserialize(params.get("Header"))
+        self._Scheme = params.get("Scheme")
+        if params.get("Cookie") is not None:
+            self._Cookie = CacheKeyCookie()
+            self._Cookie._deserialize(params.get("Cookie"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheKeyQueryString(AbstractModel):
+    """自定义 Cache Key 查询字符串配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 查询字符串保留/忽略指定参数开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _Action: 查询字符串保留/忽略指定参数动作。取值有：
+<li>includeCustom：表示保留部分参数；</li>
+<li>excludeCustom：表示忽略部分参数。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type Action: str
+        :param _Values: 查询字符串中需保留/忽略的参数名列表。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Action = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """查询字符串保留/忽略指定参数开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Action(self):
+        """查询字符串保留/忽略指定参数动作。取值有：
+<li>includeCustom：表示保留部分参数；</li>
+<li>excludeCustom：表示忽略部分参数。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Values(self):
+        """查询字符串中需保留/忽略的参数名列表。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Action = params.get("Action")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheParameters(AbstractModel):
+    """节点缓存 TTL 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FollowOrigin: 缓存遵循源站。不填表示不设置该配置，FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowOrigin: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
+        :param _NoCache: 不缓存。不填表示不设置该配置，FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoCache: :class:`tencentcloud.teo.v20220901.models.NoCache`
+        :param _CustomTime: 自定义缓存时间。不填表示不设置该配置，FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomTime: :class:`tencentcloud.teo.v20220901.models.CustomTime`
+        """
+        self._FollowOrigin = None
+        self._NoCache = None
+        self._CustomTime = None
+
+    @property
+    def FollowOrigin(self):
+        """缓存遵循源站。不填表示不设置该配置，FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
+        """
+        return self._FollowOrigin
+
+    @FollowOrigin.setter
+    def FollowOrigin(self, FollowOrigin):
+        self._FollowOrigin = FollowOrigin
+
+    @property
+    def NoCache(self):
+        """不缓存。不填表示不设置该配置，FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NoCache`
+        """
+        return self._NoCache
+
+    @NoCache.setter
+    def NoCache(self, NoCache):
+        self._NoCache = NoCache
+
+    @property
+    def CustomTime(self):
+        """自定义缓存时间。不填表示不设置该配置，FollowOrigin、NoCache、CustomTime 最多只能配置一个 Switch 为 on。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CustomTime`
+        """
+        return self._CustomTime
+
+    @CustomTime.setter
+    def CustomTime(self, CustomTime):
+        self._CustomTime = CustomTime
+
+
+    def _deserialize(self, params):
+        if params.get("FollowOrigin") is not None:
+            self._FollowOrigin = FollowOrigin()
+            self._FollowOrigin._deserialize(params.get("FollowOrigin"))
+        if params.get("NoCache") is not None:
+            self._NoCache = NoCache()
+            self._NoCache._deserialize(params.get("NoCache"))
+        if params.get("CustomTime") is not None:
+            self._CustomTime = CustomTime()
+            self._CustomTime._deserialize(params.get("CustomTime"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CachePrefresh(AbstractModel):
     """缓存预刷新
 
@@ -4136,6 +5157,61 @@ class CachePrefresh(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CachePrefreshParameters(AbstractModel):
+    """缓存预刷新 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 缓存预刷新开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _CacheTimePercent: 预刷新时间设置为节点缓存时间的百分比数值，取值：1～99。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type CacheTimePercent: int
+        """
+        self._Switch = None
+        self._CacheTimePercent = None
+
+    @property
+    def Switch(self):
+        """缓存预刷新开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def CacheTimePercent(self):
+        """预刷新时间设置为节点缓存时间的百分比数值，取值：1～99。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: int
+        """
+        return self._CacheTimePercent
+
+    @CacheTimePercent.setter
+    def CacheTimePercent(self, CacheTimePercent):
+        self._CacheTimePercent = CacheTimePercent
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._CacheTimePercent = params.get("CacheTimePercent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4500,6 +5576,116 @@ class CheckRegionHealthStatus(AbstractModel):
         
 
 
+class ClientIPCountryParameters(AbstractModel):
+    """回源时携带客户端 IP 所属地域信息，值的格式为 ISO-3166-1 两位字母代码。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _HeaderName: 存放客户端 IP 所属地域信息的请求头名称，当 Switch=on 时有效。为空则使用默认值：EO-Client-IPCountry。
+        :type HeaderName: str
+        """
+        self._Switch = None
+        self._HeaderName = None
+
+    @property
+    def Switch(self):
+        """配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def HeaderName(self):
+        """存放客户端 IP 所属地域信息的请求头名称，当 Switch=on 时有效。为空则使用默认值：EO-Client-IPCountry。
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._HeaderName = params.get("HeaderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClientIPHeaderParameters(AbstractModel):
+    """存储客户端请求IP的头部信息配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _HeaderName: 回源时，存放客户端 IP 的请求头名称。当 Switch 为 on 时，该参数必填。该参数不允许填写 X-Forwarded-For。
+        :type HeaderName: str
+        """
+        self._Switch = None
+        self._HeaderName = None
+
+    @property
+    def Switch(self):
+        """配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def HeaderName(self):
+        """回源时，存放客户端 IP 的请求头名称。当 Switch 为 on 时，该参数必填。该参数不允许填写 X-Forwarded-For。
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._HeaderName = params.get("HeaderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientIpCountry(AbstractModel):
     """回源时携带客户端IP所属地域信息，值的格式为ISO-3166-1两位字母代码。
 
@@ -4783,6 +5969,65 @@ class Compression(AbstractModel):
 <li>brotli：brotli算法；</li>
 <li>gzip：gzip算法。</li>
 注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Algorithms
+
+    @Algorithms.setter
+    def Algorithms(self, Algorithms):
+        self._Algorithms = Algorithms
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Algorithms = params.get("Algorithms")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompressionParameters(AbstractModel):
+    """智能压缩配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 智能压缩配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _Algorithms: 支持的压缩算法列表。当 Switch 为 on 时，此字段必填，否则此字段不生效。取值有：
+<li>brotli：brotli 算法；</li>
+<li>gzip：gzip 算法。</li>
+        :type Algorithms: list of str
+        """
+        self._Switch = None
+        self._Algorithms = None
+
+    @property
+    def Switch(self):
+        """智能压缩配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Algorithms(self):
+        """支持的压缩算法列表。当 Switch 为 on 时，此字段必填，否则此字段不生效。取值有：
+<li>brotli：brotli 算法；</li>
+<li>gzip：gzip 算法。</li>
         :rtype: list of str
         """
         return self._Algorithms
@@ -7151,6 +8396,105 @@ class CreateL4ProxyRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateL7AccRulesRequest(AbstractModel):
+    """CreateL7AccRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Rules: 规则内容。
+        :type Rules: list of RuleEngineItem
+        """
+        self._ZoneId = None
+        self._Rules = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Rules(self):
+        """规则内容。
+        :rtype: list of RuleEngineItem
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RuleEngineItem()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateL7AccRulesResponse(AbstractModel):
+    """CreateL7AccRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIds: 规则 ID 列表。
+        :type RuleIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleIds = None
+        self._RequestId = None
+
+    @property
+    def RuleIds(self):
+        """规则 ID 列表。
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLoadBalancerRequest(AbstractModel):
     """CreateLoadBalancer请求参数结构体
 
@@ -9367,6 +10711,80 @@ class CustomField(AbstractModel):
         
 
 
+class CustomTime(AbstractModel):
+    """节点缓存 TTL 自定义缓存时间参数配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 自定义缓存时间开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _IgnoreCacheControl: 忽略源站 CacheControl 开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type IgnoreCacheControl: str
+        :param _CacheTime: 自定义缓存时间数值，单位为秒，取值：0～315360000。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type CacheTime: int
+        """
+        self._Switch = None
+        self._IgnoreCacheControl = None
+        self._CacheTime = None
+
+    @property
+    def Switch(self):
+        """自定义缓存时间开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def IgnoreCacheControl(self):
+        """忽略源站 CacheControl 开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._IgnoreCacheControl
+
+    @IgnoreCacheControl.setter
+    def IgnoreCacheControl(self, IgnoreCacheControl):
+        self._IgnoreCacheControl = IgnoreCacheControl
+
+    @property
+    def CacheTime(self):
+        """自定义缓存时间数值，单位为秒，取值：0～315360000。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._IgnoreCacheControl = params.get("IgnoreCacheControl")
+        self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomizedHeader(AbstractModel):
     """负载均衡实例 HTTP/HTTPS 健康检查策略下可配置的自定义头部。
 
@@ -10897,6 +12315,85 @@ class DeleteL4ProxyRulesRequest(AbstractModel):
 
 class DeleteL4ProxyRulesResponse(AbstractModel):
     """DeleteL4ProxyRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteL7AccRulesRequest(AbstractModel):
+    """DeleteL7AccRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _RuleIds: 需要删除的规则 ID 列表。您可以通过 DescribeL7AccRules 获取 Ruleid。
+        :type RuleIds: list of str
+        """
+        self._ZoneId = None
+        self._RuleIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleIds(self):
+        """需要删除的规则 ID 列表。您可以通过 DescribeL7AccRules 获取 Ruleid。
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteL7AccRulesResponse(AbstractModel):
+    """DeleteL7AccRules返回参数结构体
 
     """
 
@@ -15601,6 +17098,242 @@ class DescribeL4ProxyRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeL7AccRulesRequest(AbstractModel):
+    """DescribeL7AccRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20，不填写此参数时默认按顺序返回站点下的规则。详细的过滤条件如下：
+<li>rule-id：按照规则 ID 进行过滤。</li>
+        :type Filters: list of Filter
+        :param _Limit: 分页查询限制数目，默认值：20，上限：1000。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量，默认为 0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        """过滤条件，Filters.Values 的上限为 20，不填写此参数时默认按顺序返回站点下的规则。详细的过滤条件如下：
+<li>rule-id：按照规则 ID 进行过滤。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """分页查询限制数目，默认值：20，上限：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量，默认为 0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeL7AccRulesResponse(AbstractModel):
+    """DescribeL7AccRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 规则总数。
+        :type TotalCount: int
+        :param _Rules: 规则列表，规则按照从上到下的顺序执行，详情参考[规则生效优先级](https://cloud.tencent.com/document/product/1552/70901#.E4.BC.98.E5.85.88.E7.BA.A7)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of RuleEngineItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """规则总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Rules(self):
+        """规则列表，规则按照从上到下的顺序执行，详情参考[规则生效优先级](https://cloud.tencent.com/document/product/1552/70901#.E4.BC.98.E5.85.88.E7.BA.A7)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleEngineItem
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RuleEngineItem()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeL7AccSettingRequest(AbstractModel):
+    """DescribeL7AccSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeL7AccSettingResponse(AbstractModel):
+    """DescribeL7AccSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneSetting: 站点加速全局配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneSetting: :class:`tencentcloud.teo.v20220901.models.ZoneConfigParameters`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneSetting = None
+        self._RequestId = None
+
+    @property
+    def ZoneSetting(self):
+        """站点加速全局配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneConfigParameters`
+        """
+        return self._ZoneSetting
+
+    @ZoneSetting.setter
+    def ZoneSetting(self, ZoneSetting):
+        self._ZoneSetting = ZoneSetting
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneSetting") is not None:
+            self._ZoneSetting = ZoneConfigParameters()
+            self._ZoneSetting._deserialize(params.get("ZoneSetting"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLoadBalancerListRequest(AbstractModel):
     """DescribeLoadBalancerList请求参数结构体
 
@@ -16968,7 +18701,7 @@ class DescribeRulesRequest(AbstractModel):
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
         :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>rule-id<br>   按照【<strong>规则ID</strong>】进行过滤。<br>   类型：string<br>   必选：否</li>
+<li>rule-id：按照规则 ID 进行过滤。</li>
         :type Filters: list of Filter
         """
         self._ZoneId = None
@@ -16988,7 +18721,7 @@ class DescribeRulesRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>rule-id<br>   按照【<strong>规则ID</strong>】进行过滤。<br>   类型：string<br>   必选：否</li>
+<li>rule-id：按照规则 ID 进行过滤。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -20783,6 +22516,100 @@ class EnvInfo(AbstractModel):
         
 
 
+class ErrorPage(AbstractModel):
+    """自定义错误页面。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: 状态码。支持范围为 400、403、404、405、414、416、451、500、501、502、503、504。
+        :type StatusCode: int
+        :param _RedirectURL: 重定向 URL，需要为完整跳转路径，如 https://www.test.com/error.html。
+        :type RedirectURL: str
+        """
+        self._StatusCode = None
+        self._RedirectURL = None
+
+    @property
+    def StatusCode(self):
+        """状态码。支持范围为 400、403、404、405、414、416、451、500、501、502、503、504。
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def RedirectURL(self):
+        """重定向 URL，需要为完整跳转路径，如 https://www.test.com/error.html。
+        :rtype: str
+        """
+        return self._RedirectURL
+
+    @RedirectURL.setter
+    def RedirectURL(self, RedirectURL):
+        self._RedirectURL = RedirectURL
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._RedirectURL = params.get("RedirectURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ErrorPageParameters(AbstractModel):
+    """自定义错误页面配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorPageParams: 自定义错误页面配置列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPageParams: list of ErrorPage
+        """
+        self._ErrorPageParams = None
+
+    @property
+    def ErrorPageParams(self):
+        """自定义错误页面配置列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ErrorPage
+        """
+        return self._ErrorPageParams
+
+    @ErrorPageParams.setter
+    def ErrorPageParams(self, ErrorPageParams):
+        self._ErrorPageParams = ErrorPageParams
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorPageParams") is not None:
+            self._ErrorPageParams = []
+            for item in params.get("ErrorPageParams"):
+                obj = ErrorPage()
+                obj._deserialize(item)
+                self._ErrorPageParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ErrorPageReference(AbstractModel):
     """自定义错误页面被引用的来源
 
@@ -21800,6 +23627,65 @@ class ForceRedirect(AbstractModel):
         
 
 
+class ForceRedirectHTTPSParameters(AbstractModel):
+    """访问协议强制 HTTPS 跳转配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 访问强制跳转配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _RedirectStatusCode: 重定向状态码。当 Switch 为 on 时，此字段必填，否则此字段不生效。取值有：
+<li>301：301跳转；</li>
+<li>302：302跳转。</li>
+        :type RedirectStatusCode: int
+        """
+        self._Switch = None
+        self._RedirectStatusCode = None
+
+    @property
+    def Switch(self):
+        """访问强制跳转配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def RedirectStatusCode(self):
+        """重定向状态码。当 Switch 为 on 时，此字段必填，否则此字段不生效。取值有：
+<li>301：301跳转；</li>
+<li>302：302跳转。</li>
+        :rtype: int
+        """
+        return self._RedirectStatusCode
+
+    @RedirectStatusCode.setter
+    def RedirectStatusCode(self, RedirectStatusCode):
+        self._RedirectStatusCode = RedirectStatusCode
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._RedirectStatusCode = params.get("RedirectStatusCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Function(AbstractModel):
     """边缘函数详情
 
@@ -22238,6 +24124,266 @@ class Grpc(AbstractModel):
         
 
 
+class GrpcParameters(AbstractModel):
+    """gRPC 配置项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: gRPC 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """gRPC 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HSTSParameters(AbstractModel):
+    """HSTS 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: HSTS 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _Timeout: 缓存 HSTS 头部时间，单位为秒，取值：1-31536000。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type Timeout: int
+        :param _IncludeSubDomains: 是否允许其他子域名继承相同的 HSTS 头部，取值有：
+<li>on：允许其他子域名继承相同的 HSTS 头部；</li>
+<li>off：不允许其他子域名继承相同的 HSTS 头部。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type IncludeSubDomains: str
+        :param _Preload: 是否允许浏览器预加载 HSTS 头部，取值有：
+<li>on：允许浏览器预加载 HSTS 头部；</li>
+<li>off：不允许浏览器预加载 HSTS 头部。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type Preload: str
+        """
+        self._Switch = None
+        self._Timeout = None
+        self._IncludeSubDomains = None
+        self._Preload = None
+
+    @property
+    def Switch(self):
+        """HSTS 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Timeout(self):
+        """缓存 HSTS 头部时间，单位为秒，取值：1-31536000。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def IncludeSubDomains(self):
+        """是否允许其他子域名继承相同的 HSTS 头部，取值有：
+<li>on：允许其他子域名继承相同的 HSTS 头部；</li>
+<li>off：不允许其他子域名继承相同的 HSTS 头部。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._IncludeSubDomains
+
+    @IncludeSubDomains.setter
+    def IncludeSubDomains(self, IncludeSubDomains):
+        self._IncludeSubDomains = IncludeSubDomains
+
+    @property
+    def Preload(self):
+        """是否允许浏览器预加载 HSTS 头部，取值有：
+<li>on：允许浏览器预加载 HSTS 头部；</li>
+<li>off：不允许浏览器预加载 HSTS 头部。</li>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._Preload
+
+    @Preload.setter
+    def Preload(self, Preload):
+        self._Preload = Preload
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Timeout = params.get("Timeout")
+        self._IncludeSubDomains = params.get("IncludeSubDomains")
+        self._Preload = params.get("Preload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTP2Parameters(AbstractModel):
+    """HTTP2 接入配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: HTTP2 接入配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """HTTP2 接入配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPResponseParameters(AbstractModel):
+    """HTTP 应答配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: 响应状态码。支持 2XX、4XX、5XX，不包括 499、514、101、301、302、303、509、520-599。
+        :type StatusCode: int
+        :param _ResponsePage: 响应页面 ID。
+        :type ResponsePage: str
+        """
+        self._StatusCode = None
+        self._ResponsePage = None
+
+    @property
+    def StatusCode(self):
+        """响应状态码。支持 2XX、4XX、5XX，不包括 499、514、101、301、302、303、509、520-599。
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def ResponsePage(self):
+        """响应页面 ID。
+        :rtype: str
+        """
+        return self._ResponsePage
+
+    @ResponsePage.setter
+    def ResponsePage(self, ResponsePage):
+        self._ResponsePage = ResponsePage
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._ResponsePage = params.get("ResponsePage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPUpstreamTimeoutParameters(AbstractModel):
+    """七层回源超时配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResponseTimeout: HTTP 应答超时时间，单位为秒，取值：5～600。
+        :type ResponseTimeout: int
+        """
+        self._ResponseTimeout = None
+
+    @property
+    def ResponseTimeout(self):
+        """HTTP 应答超时时间，单位为秒，取值：5～600。
+        :rtype: int
+        """
+        return self._ResponseTimeout
+
+    @ResponseTimeout.setter
+    def ResponseTimeout(self, ResponseTimeout):
+        self._ResponseTimeout = ResponseTimeout
+
+
+    def _deserialize(self, params):
+        self._ResponseTimeout = params.get("ResponseTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HandleFunctionRuntimeEnvironmentRequest(AbstractModel):
     """HandleFunctionRuntimeEnvironment请求参数结构体
 
@@ -22399,6 +24545,78 @@ class Header(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HeaderAction(AbstractModel):
+    """HTTP 头部设置规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: HTTP 头部设置方式。取值有：
+<li>set：设置。变更指定头部参数的取值为设置后的值；</li>
+<li>del：删除。删除指定的头部参数；</li>
+<li>add：增加。增加指定的头部参数。</li>
+        :type Action: str
+        :param _Name: HTTP 头部名称。
+        :type Name: str
+        :param _Value: HTTP 头部值。当 Action 取值为 set 或者 add 时，该参数必填；当 Action 取值为 del 时，该参数无需填写。
+        :type Value: str
+        """
+        self._Action = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Action(self):
+        """HTTP 头部设置方式。取值有：
+<li>set：设置。变更指定头部参数的取值为设置后的值；</li>
+<li>del：删除。删除指定的头部参数；</li>
+<li>add：增加。增加指定的头部参数。</li>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Name(self):
+        """HTTP 头部名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """HTTP 头部值。当 Action 取值为 set 或者 add 时，该参数必填；当 Action 取值为 del 时，该参数无需填写。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
         self._Name = params.get("Name")
         self._Value = params.get("Value")
         memeber_set = set(params.keys())
@@ -22642,6 +24860,116 @@ class HealthChecker(AbstractModel):
         self._FollowRedirect = params.get("FollowRedirect")
         self._SendContext = params.get("SendContext")
         self._RecvContext = params.get("RecvContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostHeaderParameters(AbstractModel):
+    """Host Header 重写配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: 执行动作，取值有：
+<li>followOrigin：跟随源站域名；</li>
+<li>custom：自定义。</li>
+        :type Action: str
+        :param _ServerName: Host Header 重写，需要填写完整域名。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type ServerName: str
+        """
+        self._Action = None
+        self._ServerName = None
+
+    @property
+    def Action(self):
+        """执行动作，取值有：
+<li>followOrigin：跟随源站域名；</li>
+<li>custom：自定义。</li>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def ServerName(self):
+        """Host Header 重写，需要填写完整域名。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._ServerName = params.get("ServerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostName(AbstractModel):
+    """访问 URL 重定向 HostName 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: 目标 HostName 配置，取值有：
+<li>follow：跟随请求；</li>
+<li>custom：自定义。</li>
+        :type Action: str
+        :param _Value: 目标 HostName 自定义取值，最大长度 1024。<br>注意：当 Action 为 custom 时，此字段必填；当 Action 为 follow 时，此字段不生效。
+        :type Value: str
+        """
+        self._Action = None
+        self._Value = None
+
+    @property
+    def Action(self):
+        """目标 HostName 配置，取值有：
+<li>follow：跟随请求；</li>
+<li>custom：自定义。</li>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Value(self):
+        """目标 HostName 自定义取值，最大长度 1024。<br>注意：当 Action 为 custom 时，此字段必填；当 Action 为 follow 时，此字段不生效。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23086,6 +25414,46 @@ class IPWhitelist(AbstractModel):
     def _deserialize(self, params):
         self._IPv4 = params.get("IPv4")
         self._IPv6 = params.get("IPv6")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPv6Parameters(AbstractModel):
+    """IPv6 访问配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: IPv6 访问功能配置，取值有：
+<li>on：开启 IPv6 访问功能；</li>
+<li>off：关闭 IPv6 访问功能。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """IPv6 访问功能配置，取值有：
+<li>on：开启 IPv6 访问功能；</li>
+<li>off：关闭 IPv6 访问功能。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25340,6 +27708,61 @@ class MaxAge(AbstractModel):
     def _deserialize(self, params):
         self._FollowOrigin = params.get("FollowOrigin")
         self._MaxAgeTime = params.get("MaxAgeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaxAgeParameters(AbstractModel):
+    """浏览器缓存 TTL 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FollowOrigin: 遵循源站 Cache-Control 开关，取值有：
+<li>on：遵循源站，忽略 CacheTime 时间设置；</li>
+<li>off：不遵循源站，使用 CacheTime 时间设置。</li>
+        :type FollowOrigin: str
+        :param _CacheTime: 自定义缓存时间数值，单位为秒，取值：0～315360000。<br>注意：当 FollowOrigin 为 off 时，表示不遵循源站，使用 CacheTime 设置缓存时间，否则此字段不生效。
+        :type CacheTime: int
+        """
+        self._FollowOrigin = None
+        self._CacheTime = None
+
+    @property
+    def FollowOrigin(self):
+        """遵循源站 Cache-Control 开关，取值有：
+<li>on：遵循源站，忽略 CacheTime 时间设置；</li>
+<li>off：不遵循源站，使用 CacheTime 时间设置。</li>
+        :rtype: str
+        """
+        return self._FollowOrigin
+
+    @FollowOrigin.setter
+    def FollowOrigin(self, FollowOrigin):
+        self._FollowOrigin = FollowOrigin
+
+    @property
+    def CacheTime(self):
+        """自定义缓存时间数值，单位为秒，取值：0～315360000。<br>注意：当 FollowOrigin 为 off 时，表示不遵循源站，使用 CacheTime 设置缓存时间，否则此字段不生效。
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._FollowOrigin = params.get("FollowOrigin")
+        self._CacheTime = params.get("CacheTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27815,6 +30238,172 @@ class ModifyL4ProxyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyL7AccRuleRequest(AbstractModel):
+    """ModifyL7AccRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Rule: 需要修改的规则。您可以先通过 DescribeL7AccRules 接口来获取需要修改的规则的 Ruleid，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
+        :type Rule: :class:`tencentcloud.teo.v20220901.models.RuleEngineItem`
+        """
+        self._ZoneId = None
+        self._Rule = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Rule(self):
+        """需要修改的规则。您可以先通过 DescribeL7AccRules 接口来获取需要修改的规则的 Ruleid，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RuleEngineItem`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Rule") is not None:
+            self._Rule = RuleEngineItem()
+            self._Rule._deserialize(params.get("Rule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL7AccRuleResponse(AbstractModel):
+    """ModifyL7AccRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyL7AccSettingRequest(AbstractModel):
+    """ModifyL7AccSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _ZoneConfig: 站点加速全局配置，该参数中的配置会对站点下的所有域名生效。您只需直接修改所需的配置，未传入的其他配置将保持原有状态。
+
+
+        :type ZoneConfig: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        self._ZoneId = None
+        self._ZoneConfig = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneConfig(self):
+        """站点加速全局配置，该参数中的配置会对站点下的所有域名生效。您只需直接修改所需的配置，未传入的其他配置将保持原有状态。
+
+
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        return self._ZoneConfig
+
+    @ZoneConfig.setter
+    def ZoneConfig(self, ZoneConfig):
+        self._ZoneConfig = ZoneConfig
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("ZoneConfig") is not None:
+            self._ZoneConfig = ZoneConfig()
+            self._ZoneConfig._deserialize(params.get("ZoneConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL7AccSettingResponse(AbstractModel):
+    """ModifyL7AccSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyLoadBalancerRequest(AbstractModel):
     """ModifyLoadBalancer请求参数结构体
 
@@ -28128,6 +30717,166 @@ class ModifyOriginGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyOriginParameters(AbstractModel):
+    """修改源站配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginType: 源站类型。取值有：
+<li>IPDomain：IPV4、IPV6 或域名类型源站；</li>
+<li>OriginGroup：源站组类型源站；</li>
+<li>LoadBalance：负载均衡，该功能内测中，如需使用，请提工单或联系智能客服；</li>
+<li>COS：腾讯云 COS 对象存储源站；</li>
+<li>AWSS3：支持 AWS S3 协议的所有对象存储源站。</li>
+        :type OriginType: str
+        :param _Origin: 源站地址，根据 OriginType 的取值分为以下情况：
+<li>当 OriginType = IPDomain 时，该参数请填写 IPV4、IPV6 地址或域名；</li>
+<li>当 OriginType = COS 时，该参数请填写 COS 桶的访问域名；</li>
+<li>当 OriginType = AWSS3，该参数请填写 S3 桶的访问域名；</li>
+<li>当 OriginType = OriginGroup 时，该参数请填写源站组 ID；</li>
+<li>当 OriginType = LoadBalance 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放。</li>
+        :type Origin: str
+        :param _OriginProtocol: 回源协议配置。当 OriginType 取值为 IPDomain、OriginGroup、LoadBalance 时该参数必填。取值有：
+<li>http：使用 HTTP 协议；</li>
+<li>https：使用 HTTPS 协议；</li>
+<li>follow：协议跟随。</li>
+        :type OriginProtocol: str
+        :param _HTTPOriginPort: HTTP 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 http 或者 follow 时生效。
+        :type HTTPOriginPort: int
+        :param _HTTPSOriginPort: HTTPS 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 https 或者 follow 时生效。
+        :type HTTPSOriginPort: int
+        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWSS3 时会生效，取值有：
+<li>on：使用私有鉴权；</li>
+<li>off：不使用私有鉴权。</li>不填写时，默认值为off。
+        :type PrivateAccess: str
+        :param _PrivateParameters: 私有鉴权使用参数，该参数仅当 OriginType = AWSS3 且 PrivateAccess = on 时会生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateParameters: :class:`tencentcloud.teo.v20220901.models.OriginPrivateParameters`
+        """
+        self._OriginType = None
+        self._Origin = None
+        self._OriginProtocol = None
+        self._HTTPOriginPort = None
+        self._HTTPSOriginPort = None
+        self._PrivateAccess = None
+        self._PrivateParameters = None
+
+    @property
+    def OriginType(self):
+        """源站类型。取值有：
+<li>IPDomain：IPV4、IPV6 或域名类型源站；</li>
+<li>OriginGroup：源站组类型源站；</li>
+<li>LoadBalance：负载均衡，该功能内测中，如需使用，请提工单或联系智能客服；</li>
+<li>COS：腾讯云 COS 对象存储源站；</li>
+<li>AWSS3：支持 AWS S3 协议的所有对象存储源站。</li>
+        :rtype: str
+        """
+        return self._OriginType
+
+    @OriginType.setter
+    def OriginType(self, OriginType):
+        self._OriginType = OriginType
+
+    @property
+    def Origin(self):
+        """源站地址，根据 OriginType 的取值分为以下情况：
+<li>当 OriginType = IPDomain 时，该参数请填写 IPV4、IPV6 地址或域名；</li>
+<li>当 OriginType = COS 时，该参数请填写 COS 桶的访问域名；</li>
+<li>当 OriginType = AWSS3，该参数请填写 S3 桶的访问域名；</li>
+<li>当 OriginType = OriginGroup 时，该参数请填写源站组 ID；</li>
+<li>当 OriginType = LoadBalance 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放。</li>
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def OriginProtocol(self):
+        """回源协议配置。当 OriginType 取值为 IPDomain、OriginGroup、LoadBalance 时该参数必填。取值有：
+<li>http：使用 HTTP 协议；</li>
+<li>https：使用 HTTPS 协议；</li>
+<li>follow：协议跟随。</li>
+        :rtype: str
+        """
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HTTPOriginPort(self):
+        """HTTP 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 http 或者 follow 时生效。
+        :rtype: int
+        """
+        return self._HTTPOriginPort
+
+    @HTTPOriginPort.setter
+    def HTTPOriginPort(self, HTTPOriginPort):
+        self._HTTPOriginPort = HTTPOriginPort
+
+    @property
+    def HTTPSOriginPort(self):
+        """HTTPS 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 https 或者 follow 时生效。
+        :rtype: int
+        """
+        return self._HTTPSOriginPort
+
+    @HTTPSOriginPort.setter
+    def HTTPSOriginPort(self, HTTPSOriginPort):
+        self._HTTPSOriginPort = HTTPSOriginPort
+
+    @property
+    def PrivateAccess(self):
+        """指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWSS3 时会生效，取值有：
+<li>on：使用私有鉴权；</li>
+<li>off：不使用私有鉴权。</li>不填写时，默认值为off。
+        :rtype: str
+        """
+        return self._PrivateAccess
+
+    @PrivateAccess.setter
+    def PrivateAccess(self, PrivateAccess):
+        self._PrivateAccess = PrivateAccess
+
+    @property
+    def PrivateParameters(self):
+        """私有鉴权使用参数，该参数仅当 OriginType = AWSS3 且 PrivateAccess = on 时会生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPrivateParameters`
+        """
+        return self._PrivateParameters
+
+    @PrivateParameters.setter
+    def PrivateParameters(self, PrivateParameters):
+        self._PrivateParameters = PrivateParameters
+
+
+    def _deserialize(self, params):
+        self._OriginType = params.get("OriginType")
+        self._Origin = params.get("Origin")
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HTTPOriginPort = params.get("HTTPOriginPort")
+        self._HTTPSOriginPort = params.get("HTTPSOriginPort")
+        self._PrivateAccess = params.get("PrivateAccess")
+        if params.get("PrivateParameters") is not None:
+            self._PrivateParameters = OriginPrivateParameters()
+            self._PrivateParameters._deserialize(params.get("PrivateParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyPlanRequest(AbstractModel):
@@ -28464,6 +31213,92 @@ class ModifyRealtimeLogDeliveryTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyRequestHeaderParameters(AbstractModel):
+    """修改 HTTP 回源请求头配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeaderActions: HTTP 头部设置规则列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderActions: list of HeaderAction
+        """
+        self._HeaderActions = None
+
+    @property
+    def HeaderActions(self):
+        """HTTP 头部设置规则列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HeaderAction
+        """
+        return self._HeaderActions
+
+    @HeaderActions.setter
+    def HeaderActions(self, HeaderActions):
+        self._HeaderActions = HeaderActions
+
+
+    def _deserialize(self, params):
+        if params.get("HeaderActions") is not None:
+            self._HeaderActions = []
+            for item in params.get("HeaderActions"):
+                obj = HeaderAction()
+                obj._deserialize(item)
+                self._HeaderActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResponseHeaderParameters(AbstractModel):
+    """修改 HTTP 节点响应头配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeaderActions: HTTP 回源头部规则列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderActions: list of HeaderAction
+        """
+        self._HeaderActions = None
+
+    @property
+    def HeaderActions(self):
+        """HTTP 回源头部规则列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HeaderAction
+        """
+        return self._HeaderActions
+
+    @HeaderActions.setter
+    def HeaderActions(self, HeaderActions):
+        self._HeaderActions = HeaderActions
+
+
+    def _deserialize(self, params):
+        if params.get("HeaderActions") is not None:
+            self._HeaderActions = []
+            for item in params.get("HeaderActions"):
+                obj = HeaderAction()
+                obj._deserialize(item)
+                self._HeaderActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyRuleRequest(AbstractModel):
@@ -29743,6 +32578,46 @@ class NsVerification(AbstractModel):
         
 
 
+class OCSPStaplingParameters(AbstractModel):
+    """OCSP 装订配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: OCSP 装订配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """OCSP 装订配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OfflineCache(AbstractModel):
     """离线缓存是否开启
 
@@ -29760,6 +32635,46 @@ class OfflineCache(AbstractModel):
     @property
     def Switch(self):
         """离线缓存是否开启，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OfflineCacheParameters(AbstractModel):
+    """离线缓存是否开启。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 离线缓存开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """离线缓存开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :rtype: str
@@ -30826,6 +33741,91 @@ class OriginInfo(AbstractModel):
         
 
 
+class OriginPrivateParameters(AbstractModel):
+    """对象存储源站私有鉴权参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessKeyId: 鉴权参数 Access Key ID。
+        :type AccessKeyId: str
+        :param _SecretAccessKey: 鉴权参数 Secret Access Key。
+        :type SecretAccessKey: str
+        :param _SignatureVersion: 鉴权版本。取值有：
+<li>v2：v2版本；</li>
+<li>v4：v4版本。</li>
+        :type SignatureVersion: str
+        :param _Region: 存储桶地域。
+        :type Region: str
+        """
+        self._AccessKeyId = None
+        self._SecretAccessKey = None
+        self._SignatureVersion = None
+        self._Region = None
+
+    @property
+    def AccessKeyId(self):
+        """鉴权参数 Access Key ID。
+        :rtype: str
+        """
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretAccessKey(self):
+        """鉴权参数 Secret Access Key。
+        :rtype: str
+        """
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+    @property
+    def SignatureVersion(self):
+        """鉴权版本。取值有：
+<li>v2：v2版本；</li>
+<li>v4：v4版本。</li>
+        :rtype: str
+        """
+        return self._SignatureVersion
+
+    @SignatureVersion.setter
+    def SignatureVersion(self, SignatureVersion):
+        self._SignatureVersion = SignatureVersion
+
+    @property
+    def Region(self):
+        """存储桶地域。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        self._SignatureVersion = params.get("SignatureVersion")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OriginProtectionInfo(AbstractModel):
     """源站防护信息
 
@@ -31498,6 +34498,57 @@ class PostMaxSize(AbstractModel):
         
 
 
+class PostMaxSizeParameters(AbstractModel):
+    """POST 请求上传文件流式传输最大限制。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 是否开启 POST 请求上传文件限制，单位为 Byte，平台默认为限制为 32 * 2<sup>20</sup> Byte，取值有：<li>on：开启限制；</li><li>off：关闭限制。</li>
+        :type Switch: str
+        :param _MaxSize: POST 请求上传文件流式传输最大限制，单位为 Byte，取值：1 * 2<sup>20</sup> Byte～500 * 2<sup>20</sup> Byte。
+        :type MaxSize: int
+        """
+        self._Switch = None
+        self._MaxSize = None
+
+    @property
+    def Switch(self):
+        """是否开启 POST 请求上传文件限制，单位为 Byte，平台默认为限制为 32 * 2<sup>20</sup> Byte，取值有：<li>on：开启限制；</li><li>off：关闭限制。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def MaxSize(self):
+        """POST 请求上传文件流式传输最大限制，单位为 Byte，取值：1 * 2<sup>20</sup> Byte～500 * 2<sup>20</sup> Byte。
+        :rtype: int
+        """
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._MaxSize = params.get("MaxSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrepaidPlanParam(AbstractModel):
     """预付费套餐计费参数
 
@@ -31608,6 +34659,46 @@ class PrivateParameter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QUICParameters(AbstractModel):
+    """QUIC 配置项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: QUIC 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """QUIC 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31899,6 +34990,46 @@ class Quota(AbstractModel):
         self._Daily = params.get("Daily")
         self._DailyAvailable = params.get("DailyAvailable")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RangeOriginPullParameters(AbstractModel):
+    """分片回源配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 分片回源开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """分片回源开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33329,6 +36460,78 @@ class Resource(AbstractModel):
         
 
 
+class ResponseSpeedLimitParameters(AbstractModel):
+    """单连接下载限速配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 下载限速模式，取值有：
+<li>LimitUponDownload：全过程下载限速；</li>
+<li>LimitAfterSpecificBytesDownloaded：全速下载特定字节后开始限速；</li>
+<li>LimitAfterSpecificSecondsDownloaded：全速下载特定时间后开始限速。</li>
+        :type Mode: str
+        :param _MaxSpeed: 限速值，单位为：KB/s，填写数值，指定限速大小。
+        :type MaxSpeed: str
+        :param _StartAt: 限速开始值，可以为下载大小或指定时长，单位为：KB或s，当 Mode 取值为 LimitAfterSpecificBytesDownloaded 或 LimitAfterSpecificSecondsDownloaded 时，该参数必填。填写数值，指定下载大小或指定时长。
+        :type StartAt: str
+        """
+        self._Mode = None
+        self._MaxSpeed = None
+        self._StartAt = None
+
+    @property
+    def Mode(self):
+        """下载限速模式，取值有：
+<li>LimitUponDownload：全过程下载限速；</li>
+<li>LimitAfterSpecificBytesDownloaded：全速下载特定字节后开始限速；</li>
+<li>LimitAfterSpecificSecondsDownloaded：全速下载特定时间后开始限速。</li>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def MaxSpeed(self):
+        """限速值，单位为：KB/s，填写数值，指定限速大小。
+        :rtype: str
+        """
+        return self._MaxSpeed
+
+    @MaxSpeed.setter
+    def MaxSpeed(self, MaxSpeed):
+        self._MaxSpeed = MaxSpeed
+
+    @property
+    def StartAt(self):
+        """限速开始值，可以为下载大小或指定时长，单位为：KB或s，当 Mode 取值为 LimitAfterSpecificBytesDownloaded 或 LimitAfterSpecificSecondsDownloaded 时，该参数必填。填写数值，指定下载大小或指定时长。
+        :rtype: str
+        """
+        return self._StartAt
+
+    @StartAt.setter
+    def StartAt(self, StartAt):
+        self._StartAt = StartAt
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._MaxSpeed = params.get("MaxSpeed")
+        self._StartAt = params.get("StartAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RewriteAction(AbstractModel):
     """规则引擎HTTP请求头/响应头类型的动作
 
@@ -33499,6 +36702,88 @@ class RuleAndConditions(AbstractModel):
                 obj = RuleCondition()
                 obj._deserialize(item)
                 self._Conditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleBranch(AbstractModel):
+    """子规则分支。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Condition: [匹配条件
+](https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d)。
+        :type Condition: str
+        :param _Actions: [操作](https://cloud.tencent.com/document/product/1552/90438#c7bd7e02-9247-4a72-b0e4-11c27cadb198)。<br>注意：Actions 和 SubRules 不可同时为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Actions: list of RuleEngineAction
+        :param _SubRules: 子规则列表。此列表中时存在多条规则，按照从上往下的顺序依次执行。<br>注意：SubRules 和 Actions 不可同时为空。且当前只支持填写一层 SubRules。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubRules: list of RuleEngineSubRule
+        """
+        self._Condition = None
+        self._Actions = None
+        self._SubRules = None
+
+    @property
+    def Condition(self):
+        """[匹配条件
+](https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d)。
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Actions(self):
+        """[操作](https://cloud.tencent.com/document/product/1552/90438#c7bd7e02-9247-4a72-b0e4-11c27cadb198)。<br>注意：Actions 和 SubRules 不可同时为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleEngineAction
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def SubRules(self):
+        """子规则列表。此列表中时存在多条规则，按照从上往下的顺序依次执行。<br>注意：SubRules 和 Actions 不可同时为空。且当前只支持填写一层 SubRules。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleEngineSubRule
+        """
+        return self._SubRules
+
+    @SubRules.setter
+    def SubRules(self, SubRules):
+        self._SubRules = SubRules
+
+
+    def _deserialize(self, params):
+        self._Condition = params.get("Condition")
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = RuleEngineAction()
+                obj._deserialize(item)
+                self._Actions.append(obj)
+        if params.get("SubRules") is not None:
+            self._SubRules = []
+            for item in params.get("SubRules"):
+                obj = RuleEngineSubRule()
+                obj._deserialize(item)
+                self._SubRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33877,6 +37162,938 @@ class RuleCondition(AbstractModel):
         self._IgnoreCase = params.get("IgnoreCase")
         self._Name = params.get("Name")
         self._IgnoreNameCase = params.get("IgnoreNameCase")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineAction(AbstractModel):
+    """规则引擎操作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。
+<li>Cache：节点缓存 TTL；</li>
+<li>CacheKey：自定义 Cache Key；</li>
+<li>CachePrefresh：缓存预刷新；</li>
+<li>AccessURLRedirect：访问 URL 重定向；</li>
+<li>UpstreamURLRewrite：回源 URL 重写；</li>
+<li>QUIC：QUIC；</li>
+<li>WebSocket：WebSocket；</li>
+<li>Authentication：Token 鉴权；</li>
+<li>MaxAge：浏览器缓存 TTL；</li>
+<li>StatusCodeCache：状态码缓存 TTL；</li>
+<li>OfflineCache：离线缓存；</li>
+<li>SmartRouting：智能加速；</li>
+<li>RangeOriginPull：分片回源 ；</li>
+<li>UpstreamHTTP2：HTTP2 回源；</li>
+<li>HostHeader：Host Header 重写；</li>
+<li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li>
+<li>OriginPullProtocol：回源 HTTPS；</li>
+<li>Compression：智能压缩配置；</li>
+<li>HSTS：HSTS；</li>
+<li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li>
+<li>OCSPStapling：OCSP 装订；</li>
+<li>HTTP2：HTTP2 接入；</li>
+<li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li>
+<li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li>
+<li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li>
+<li>UpstreamRequest：回源请求参数；</li>
+<li>TLSConfig：SSL/TLS 安全；</li>
+<li>ModifyOrigin：修改源站；</li>
+<li>HTTPUpstreamTimeout：七层回源超时配置；</li>
+<li>HttpResponse：HTTP 应答；</li>
+<li>ErrorPage：自定义错误页面；</li>
+<li>ModifyResponseHeader：修改 HTTP 节点响应头；</li>
+<li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
+<li>ResponseSpeedLimit：单连接下载限速。</li>
+<li>SetContentIdentifierParameters：设置内容标识符。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _CacheParameters: 节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheParameters: :class:`tencentcloud.teo.v20220901.models.CacheParameters`
+        :param _CacheKeyParameters: 自定义 Cache Key 配置参数，当 Name 取值为 CacheKey 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheKeyParameters: :class:`tencentcloud.teo.v20220901.models.CacheKeyParameters`
+        :param _CachePrefreshParameters: 缓存预刷新配置参数，当 Name 取值为 CachePrefresh 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CachePrefreshParameters: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
+        :param _AccessURLRedirectParameters: 访问 URL 重定向配置参数，当 Name 取值为 AccessURLRedirect 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessURLRedirectParameters: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectParameters`
+        :param _UpstreamURLRewriteParameters: 回源 URL 重写配置参数，当 Name 取值为 UpstreamURLRewrite 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamURLRewriteParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
+        :param _QUICParameters: QUIC 配置参数，当 Name 取值为 QUIC 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QUICParameters: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
+        :param _WebSocketParameters: WebSocket 配置参数，当 Name 取值为 WebSocket 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebSocketParameters: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
+        :param _AuthenticationParameters: Token 鉴权配置参数，当 Name 取值为 Authentication 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthenticationParameters: :class:`tencentcloud.teo.v20220901.models.AuthenticationParameters`
+        :param _MaxAgeParameters: 浏览器缓存 TTL 配置参数，当 Name 取值为 MaxAge 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAgeParameters: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
+        :param _StatusCodeCacheParameters: 状态码缓存 TTL 配置参数，当 Name 取值为 StatusCodeCache 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCodeCacheParameters: :class:`tencentcloud.teo.v20220901.models.StatusCodeCacheParameters`
+        :param _OfflineCacheParameters: 离线缓存配置参数，当 Name 取值为 OfflineCache 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineCacheParameters: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
+        :param _SmartRoutingParameters: 智能加速配置参数，当 Name 取值为 SmartRouting 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartRoutingParameters: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
+        :param _RangeOriginPullParameters: 分片回源配置参数，当 Name 取值为 RangeOriginPull 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangeOriginPullParameters: :class:`tencentcloud.teo.v20220901.models.RangeOriginPullParameters`
+        :param _UpstreamHTTP2Parameters: HTTP2 回源配置参数，当 Name 取值为 UpstreamHTTP2 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamHTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        :param _HostHeaderParameters: Host Header 重写配置参数，当 Name 取值为 HostHeader 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostHeaderParameters: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
+        :param _ForceRedirectHTTPSParameters: 访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceRedirectHTTPSParameters: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        :param _CompressionParameters: 智能压缩配置，当 Name 取值为 Compression 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompressionParameters: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
+        :param _HSTSParameters: HSTS 配置参数，当 Name 取值为 HSTS 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HSTSParameters: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
+        :param _ClientIPHeaderParameters: 存储客户端请求 IP 的头部信息配置，当 Name 取值为 ClientIPHeader 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIPHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
+        :param _OCSPStaplingParameters: OCSP 装订配置参数，当 Name 取值为 OCSPStapling 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OCSPStaplingParameters: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
+        :param _HTTP2Parameters: HTTP2 接入配置参数，当 Name 取值为 HTTP2 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
+        :param _PostMaxSizeParameters: POST 请求上传文件流式传输最大限制配置，当 Name 取值为 PostMaxSize 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostMaxSizeParameters: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
+        :param _ClientIPCountryParameters: 回源时携带客户端 IP 所属地域信息配置参数，当 Name 取值为 ClientIPCountry 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIPCountryParameters: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
+        :param _UpstreamFollowRedirectParameters: 回源跟随重定向参数配置，当 Name 取值为 UpstreamFollowRedirect 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamFollowRedirectParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamFollowRedirectParameters`
+        :param _UpstreamRequestParameters: 回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamRequestParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
+        :param _TLSConfigParameters: SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TLSConfigParameters: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
+        :param _ModifyOriginParameters: 修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyOriginParameters: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
+        :param _HTTPUpstreamTimeoutParameters: 七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HTTPUpstreamTimeoutParameters: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
+        :param _HttpResponseParameters: HTTP 应答配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpResponseParameters: :class:`tencentcloud.teo.v20220901.models.HTTPResponseParameters`
+        :param _ErrorPageParameters: 自定义错误页面配置参数，当 Name 取值为 ErrorPage 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPageParameters: :class:`tencentcloud.teo.v20220901.models.ErrorPageParameters`
+        :param _ModifyResponseHeaderParameters: 修改 HTTP 节点响应头配置参数，当 Name 取值为 ModifyResponseHeader 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyResponseHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ModifyResponseHeaderParameters`
+        :param _ModifyRequestHeaderParameters: 修改 HTTP 节点请求头配置参数，当 Name 取值为 ModifyRequestHeader 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyRequestHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ModifyRequestHeaderParameters`
+        :param _ResponseSpeedLimitParameters: 单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseSpeedLimitParameters: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
+        :param _SetContentIdentifierParameters: 内容标识配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetContentIdentifierParameters: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
+        """
+        self._Name = None
+        self._CacheParameters = None
+        self._CacheKeyParameters = None
+        self._CachePrefreshParameters = None
+        self._AccessURLRedirectParameters = None
+        self._UpstreamURLRewriteParameters = None
+        self._QUICParameters = None
+        self._WebSocketParameters = None
+        self._AuthenticationParameters = None
+        self._MaxAgeParameters = None
+        self._StatusCodeCacheParameters = None
+        self._OfflineCacheParameters = None
+        self._SmartRoutingParameters = None
+        self._RangeOriginPullParameters = None
+        self._UpstreamHTTP2Parameters = None
+        self._HostHeaderParameters = None
+        self._ForceRedirectHTTPSParameters = None
+        self._CompressionParameters = None
+        self._HSTSParameters = None
+        self._ClientIPHeaderParameters = None
+        self._OCSPStaplingParameters = None
+        self._HTTP2Parameters = None
+        self._PostMaxSizeParameters = None
+        self._ClientIPCountryParameters = None
+        self._UpstreamFollowRedirectParameters = None
+        self._UpstreamRequestParameters = None
+        self._TLSConfigParameters = None
+        self._ModifyOriginParameters = None
+        self._HTTPUpstreamTimeoutParameters = None
+        self._HttpResponseParameters = None
+        self._ErrorPageParameters = None
+        self._ModifyResponseHeaderParameters = None
+        self._ModifyRequestHeaderParameters = None
+        self._ResponseSpeedLimitParameters = None
+        self._SetContentIdentifierParameters = None
+
+    @property
+    def Name(self):
+        """操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。
+<li>Cache：节点缓存 TTL；</li>
+<li>CacheKey：自定义 Cache Key；</li>
+<li>CachePrefresh：缓存预刷新；</li>
+<li>AccessURLRedirect：访问 URL 重定向；</li>
+<li>UpstreamURLRewrite：回源 URL 重写；</li>
+<li>QUIC：QUIC；</li>
+<li>WebSocket：WebSocket；</li>
+<li>Authentication：Token 鉴权；</li>
+<li>MaxAge：浏览器缓存 TTL；</li>
+<li>StatusCodeCache：状态码缓存 TTL；</li>
+<li>OfflineCache：离线缓存；</li>
+<li>SmartRouting：智能加速；</li>
+<li>RangeOriginPull：分片回源 ；</li>
+<li>UpstreamHTTP2：HTTP2 回源；</li>
+<li>HostHeader：Host Header 重写；</li>
+<li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li>
+<li>OriginPullProtocol：回源 HTTPS；</li>
+<li>Compression：智能压缩配置；</li>
+<li>HSTS：HSTS；</li>
+<li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li>
+<li>OCSPStapling：OCSP 装订；</li>
+<li>HTTP2：HTTP2 接入；</li>
+<li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li>
+<li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li>
+<li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li>
+<li>UpstreamRequest：回源请求参数；</li>
+<li>TLSConfig：SSL/TLS 安全；</li>
+<li>ModifyOrigin：修改源站；</li>
+<li>HTTPUpstreamTimeout：七层回源超时配置；</li>
+<li>HttpResponse：HTTP 应答；</li>
+<li>ErrorPage：自定义错误页面；</li>
+<li>ModifyResponseHeader：修改 HTTP 节点响应头；</li>
+<li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
+<li>ResponseSpeedLimit：单连接下载限速。</li>
+<li>SetContentIdentifierParameters：设置内容标识符。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CacheParameters(self):
+        """节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheParameters`
+        """
+        return self._CacheParameters
+
+    @CacheParameters.setter
+    def CacheParameters(self, CacheParameters):
+        self._CacheParameters = CacheParameters
+
+    @property
+    def CacheKeyParameters(self):
+        """自定义 Cache Key 配置参数，当 Name 取值为 CacheKey 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyParameters`
+        """
+        return self._CacheKeyParameters
+
+    @CacheKeyParameters.setter
+    def CacheKeyParameters(self, CacheKeyParameters):
+        self._CacheKeyParameters = CacheKeyParameters
+
+    @property
+    def CachePrefreshParameters(self):
+        """缓存预刷新配置参数，当 Name 取值为 CachePrefresh 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
+        """
+        return self._CachePrefreshParameters
+
+    @CachePrefreshParameters.setter
+    def CachePrefreshParameters(self, CachePrefreshParameters):
+        self._CachePrefreshParameters = CachePrefreshParameters
+
+    @property
+    def AccessURLRedirectParameters(self):
+        """访问 URL 重定向配置参数，当 Name 取值为 AccessURLRedirect 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectParameters`
+        """
+        return self._AccessURLRedirectParameters
+
+    @AccessURLRedirectParameters.setter
+    def AccessURLRedirectParameters(self, AccessURLRedirectParameters):
+        self._AccessURLRedirectParameters = AccessURLRedirectParameters
+
+    @property
+    def UpstreamURLRewriteParameters(self):
+        """回源 URL 重写配置参数，当 Name 取值为 UpstreamURLRewrite 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
+        """
+        return self._UpstreamURLRewriteParameters
+
+    @UpstreamURLRewriteParameters.setter
+    def UpstreamURLRewriteParameters(self, UpstreamURLRewriteParameters):
+        self._UpstreamURLRewriteParameters = UpstreamURLRewriteParameters
+
+    @property
+    def QUICParameters(self):
+        """QUIC 配置参数，当 Name 取值为 QUIC 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
+        """
+        return self._QUICParameters
+
+    @QUICParameters.setter
+    def QUICParameters(self, QUICParameters):
+        self._QUICParameters = QUICParameters
+
+    @property
+    def WebSocketParameters(self):
+        """WebSocket 配置参数，当 Name 取值为 WebSocket 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
+        """
+        return self._WebSocketParameters
+
+    @WebSocketParameters.setter
+    def WebSocketParameters(self, WebSocketParameters):
+        self._WebSocketParameters = WebSocketParameters
+
+    @property
+    def AuthenticationParameters(self):
+        """Token 鉴权配置参数，当 Name 取值为 Authentication 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AuthenticationParameters`
+        """
+        return self._AuthenticationParameters
+
+    @AuthenticationParameters.setter
+    def AuthenticationParameters(self, AuthenticationParameters):
+        self._AuthenticationParameters = AuthenticationParameters
+
+    @property
+    def MaxAgeParameters(self):
+        """浏览器缓存 TTL 配置参数，当 Name 取值为 MaxAge 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
+        """
+        return self._MaxAgeParameters
+
+    @MaxAgeParameters.setter
+    def MaxAgeParameters(self, MaxAgeParameters):
+        self._MaxAgeParameters = MaxAgeParameters
+
+    @property
+    def StatusCodeCacheParameters(self):
+        """状态码缓存 TTL 配置参数，当 Name 取值为 StatusCodeCache 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.StatusCodeCacheParameters`
+        """
+        return self._StatusCodeCacheParameters
+
+    @StatusCodeCacheParameters.setter
+    def StatusCodeCacheParameters(self, StatusCodeCacheParameters):
+        self._StatusCodeCacheParameters = StatusCodeCacheParameters
+
+    @property
+    def OfflineCacheParameters(self):
+        """离线缓存配置参数，当 Name 取值为 OfflineCache 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
+        """
+        return self._OfflineCacheParameters
+
+    @OfflineCacheParameters.setter
+    def OfflineCacheParameters(self, OfflineCacheParameters):
+        self._OfflineCacheParameters = OfflineCacheParameters
+
+    @property
+    def SmartRoutingParameters(self):
+        """智能加速配置参数，当 Name 取值为 SmartRouting 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
+        """
+        return self._SmartRoutingParameters
+
+    @SmartRoutingParameters.setter
+    def SmartRoutingParameters(self, SmartRoutingParameters):
+        self._SmartRoutingParameters = SmartRoutingParameters
+
+    @property
+    def RangeOriginPullParameters(self):
+        """分片回源配置参数，当 Name 取值为 RangeOriginPull 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RangeOriginPullParameters`
+        """
+        return self._RangeOriginPullParameters
+
+    @RangeOriginPullParameters.setter
+    def RangeOriginPullParameters(self, RangeOriginPullParameters):
+        self._RangeOriginPullParameters = RangeOriginPullParameters
+
+    @property
+    def UpstreamHTTP2Parameters(self):
+        """HTTP2 回源配置参数，当 Name 取值为 UpstreamHTTP2 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        """
+        return self._UpstreamHTTP2Parameters
+
+    @UpstreamHTTP2Parameters.setter
+    def UpstreamHTTP2Parameters(self, UpstreamHTTP2Parameters):
+        self._UpstreamHTTP2Parameters = UpstreamHTTP2Parameters
+
+    @property
+    def HostHeaderParameters(self):
+        """Host Header 重写配置参数，当 Name 取值为 HostHeader 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
+        """
+        return self._HostHeaderParameters
+
+    @HostHeaderParameters.setter
+    def HostHeaderParameters(self, HostHeaderParameters):
+        self._HostHeaderParameters = HostHeaderParameters
+
+    @property
+    def ForceRedirectHTTPSParameters(self):
+        """访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        """
+        return self._ForceRedirectHTTPSParameters
+
+    @ForceRedirectHTTPSParameters.setter
+    def ForceRedirectHTTPSParameters(self, ForceRedirectHTTPSParameters):
+        self._ForceRedirectHTTPSParameters = ForceRedirectHTTPSParameters
+
+    @property
+    def CompressionParameters(self):
+        """智能压缩配置，当 Name 取值为 Compression 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
+        """
+        return self._CompressionParameters
+
+    @CompressionParameters.setter
+    def CompressionParameters(self, CompressionParameters):
+        self._CompressionParameters = CompressionParameters
+
+    @property
+    def HSTSParameters(self):
+        """HSTS 配置参数，当 Name 取值为 HSTS 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
+        """
+        return self._HSTSParameters
+
+    @HSTSParameters.setter
+    def HSTSParameters(self, HSTSParameters):
+        self._HSTSParameters = HSTSParameters
+
+    @property
+    def ClientIPHeaderParameters(self):
+        """存储客户端请求 IP 的头部信息配置，当 Name 取值为 ClientIPHeader 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
+        """
+        return self._ClientIPHeaderParameters
+
+    @ClientIPHeaderParameters.setter
+    def ClientIPHeaderParameters(self, ClientIPHeaderParameters):
+        self._ClientIPHeaderParameters = ClientIPHeaderParameters
+
+    @property
+    def OCSPStaplingParameters(self):
+        """OCSP 装订配置参数，当 Name 取值为 OCSPStapling 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
+        """
+        return self._OCSPStaplingParameters
+
+    @OCSPStaplingParameters.setter
+    def OCSPStaplingParameters(self, OCSPStaplingParameters):
+        self._OCSPStaplingParameters = OCSPStaplingParameters
+
+    @property
+    def HTTP2Parameters(self):
+        """HTTP2 接入配置参数，当 Name 取值为 HTTP2 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
+        """
+        return self._HTTP2Parameters
+
+    @HTTP2Parameters.setter
+    def HTTP2Parameters(self, HTTP2Parameters):
+        self._HTTP2Parameters = HTTP2Parameters
+
+    @property
+    def PostMaxSizeParameters(self):
+        """POST 请求上传文件流式传输最大限制配置，当 Name 取值为 PostMaxSize 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
+        """
+        return self._PostMaxSizeParameters
+
+    @PostMaxSizeParameters.setter
+    def PostMaxSizeParameters(self, PostMaxSizeParameters):
+        self._PostMaxSizeParameters = PostMaxSizeParameters
+
+    @property
+    def ClientIPCountryParameters(self):
+        """回源时携带客户端 IP 所属地域信息配置参数，当 Name 取值为 ClientIPCountry 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
+        """
+        return self._ClientIPCountryParameters
+
+    @ClientIPCountryParameters.setter
+    def ClientIPCountryParameters(self, ClientIPCountryParameters):
+        self._ClientIPCountryParameters = ClientIPCountryParameters
+
+    @property
+    def UpstreamFollowRedirectParameters(self):
+        """回源跟随重定向参数配置，当 Name 取值为 UpstreamFollowRedirect 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamFollowRedirectParameters`
+        """
+        return self._UpstreamFollowRedirectParameters
+
+    @UpstreamFollowRedirectParameters.setter
+    def UpstreamFollowRedirectParameters(self, UpstreamFollowRedirectParameters):
+        self._UpstreamFollowRedirectParameters = UpstreamFollowRedirectParameters
+
+    @property
+    def UpstreamRequestParameters(self):
+        """回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
+        """
+        return self._UpstreamRequestParameters
+
+    @UpstreamRequestParameters.setter
+    def UpstreamRequestParameters(self, UpstreamRequestParameters):
+        self._UpstreamRequestParameters = UpstreamRequestParameters
+
+    @property
+    def TLSConfigParameters(self):
+        """SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
+        """
+        return self._TLSConfigParameters
+
+    @TLSConfigParameters.setter
+    def TLSConfigParameters(self, TLSConfigParameters):
+        self._TLSConfigParameters = TLSConfigParameters
+
+    @property
+    def ModifyOriginParameters(self):
+        """修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
+        """
+        return self._ModifyOriginParameters
+
+    @ModifyOriginParameters.setter
+    def ModifyOriginParameters(self, ModifyOriginParameters):
+        self._ModifyOriginParameters = ModifyOriginParameters
+
+    @property
+    def HTTPUpstreamTimeoutParameters(self):
+        """七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
+        """
+        return self._HTTPUpstreamTimeoutParameters
+
+    @HTTPUpstreamTimeoutParameters.setter
+    def HTTPUpstreamTimeoutParameters(self, HTTPUpstreamTimeoutParameters):
+        self._HTTPUpstreamTimeoutParameters = HTTPUpstreamTimeoutParameters
+
+    @property
+    def HttpResponseParameters(self):
+        """HTTP 应答配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HTTPResponseParameters`
+        """
+        return self._HttpResponseParameters
+
+    @HttpResponseParameters.setter
+    def HttpResponseParameters(self, HttpResponseParameters):
+        self._HttpResponseParameters = HttpResponseParameters
+
+    @property
+    def ErrorPageParameters(self):
+        """自定义错误页面配置参数，当 Name 取值为 ErrorPage 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ErrorPageParameters`
+        """
+        return self._ErrorPageParameters
+
+    @ErrorPageParameters.setter
+    def ErrorPageParameters(self, ErrorPageParameters):
+        self._ErrorPageParameters = ErrorPageParameters
+
+    @property
+    def ModifyResponseHeaderParameters(self):
+        """修改 HTTP 节点响应头配置参数，当 Name 取值为 ModifyResponseHeader 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyResponseHeaderParameters`
+        """
+        return self._ModifyResponseHeaderParameters
+
+    @ModifyResponseHeaderParameters.setter
+    def ModifyResponseHeaderParameters(self, ModifyResponseHeaderParameters):
+        self._ModifyResponseHeaderParameters = ModifyResponseHeaderParameters
+
+    @property
+    def ModifyRequestHeaderParameters(self):
+        """修改 HTTP 节点请求头配置参数，当 Name 取值为 ModifyRequestHeader 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyRequestHeaderParameters`
+        """
+        return self._ModifyRequestHeaderParameters
+
+    @ModifyRequestHeaderParameters.setter
+    def ModifyRequestHeaderParameters(self, ModifyRequestHeaderParameters):
+        self._ModifyRequestHeaderParameters = ModifyRequestHeaderParameters
+
+    @property
+    def ResponseSpeedLimitParameters(self):
+        """单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
+        """
+        return self._ResponseSpeedLimitParameters
+
+    @ResponseSpeedLimitParameters.setter
+    def ResponseSpeedLimitParameters(self, ResponseSpeedLimitParameters):
+        self._ResponseSpeedLimitParameters = ResponseSpeedLimitParameters
+
+    @property
+    def SetContentIdentifierParameters(self):
+        """内容标识配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
+        """
+        return self._SetContentIdentifierParameters
+
+    @SetContentIdentifierParameters.setter
+    def SetContentIdentifierParameters(self, SetContentIdentifierParameters):
+        self._SetContentIdentifierParameters = SetContentIdentifierParameters
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("CacheParameters") is not None:
+            self._CacheParameters = CacheParameters()
+            self._CacheParameters._deserialize(params.get("CacheParameters"))
+        if params.get("CacheKeyParameters") is not None:
+            self._CacheKeyParameters = CacheKeyParameters()
+            self._CacheKeyParameters._deserialize(params.get("CacheKeyParameters"))
+        if params.get("CachePrefreshParameters") is not None:
+            self._CachePrefreshParameters = CachePrefreshParameters()
+            self._CachePrefreshParameters._deserialize(params.get("CachePrefreshParameters"))
+        if params.get("AccessURLRedirectParameters") is not None:
+            self._AccessURLRedirectParameters = AccessURLRedirectParameters()
+            self._AccessURLRedirectParameters._deserialize(params.get("AccessURLRedirectParameters"))
+        if params.get("UpstreamURLRewriteParameters") is not None:
+            self._UpstreamURLRewriteParameters = UpstreamURLRewriteParameters()
+            self._UpstreamURLRewriteParameters._deserialize(params.get("UpstreamURLRewriteParameters"))
+        if params.get("QUICParameters") is not None:
+            self._QUICParameters = QUICParameters()
+            self._QUICParameters._deserialize(params.get("QUICParameters"))
+        if params.get("WebSocketParameters") is not None:
+            self._WebSocketParameters = WebSocketParameters()
+            self._WebSocketParameters._deserialize(params.get("WebSocketParameters"))
+        if params.get("AuthenticationParameters") is not None:
+            self._AuthenticationParameters = AuthenticationParameters()
+            self._AuthenticationParameters._deserialize(params.get("AuthenticationParameters"))
+        if params.get("MaxAgeParameters") is not None:
+            self._MaxAgeParameters = MaxAgeParameters()
+            self._MaxAgeParameters._deserialize(params.get("MaxAgeParameters"))
+        if params.get("StatusCodeCacheParameters") is not None:
+            self._StatusCodeCacheParameters = StatusCodeCacheParameters()
+            self._StatusCodeCacheParameters._deserialize(params.get("StatusCodeCacheParameters"))
+        if params.get("OfflineCacheParameters") is not None:
+            self._OfflineCacheParameters = OfflineCacheParameters()
+            self._OfflineCacheParameters._deserialize(params.get("OfflineCacheParameters"))
+        if params.get("SmartRoutingParameters") is not None:
+            self._SmartRoutingParameters = SmartRoutingParameters()
+            self._SmartRoutingParameters._deserialize(params.get("SmartRoutingParameters"))
+        if params.get("RangeOriginPullParameters") is not None:
+            self._RangeOriginPullParameters = RangeOriginPullParameters()
+            self._RangeOriginPullParameters._deserialize(params.get("RangeOriginPullParameters"))
+        if params.get("UpstreamHTTP2Parameters") is not None:
+            self._UpstreamHTTP2Parameters = UpstreamHTTP2Parameters()
+            self._UpstreamHTTP2Parameters._deserialize(params.get("UpstreamHTTP2Parameters"))
+        if params.get("HostHeaderParameters") is not None:
+            self._HostHeaderParameters = HostHeaderParameters()
+            self._HostHeaderParameters._deserialize(params.get("HostHeaderParameters"))
+        if params.get("ForceRedirectHTTPSParameters") is not None:
+            self._ForceRedirectHTTPSParameters = ForceRedirectHTTPSParameters()
+            self._ForceRedirectHTTPSParameters._deserialize(params.get("ForceRedirectHTTPSParameters"))
+        if params.get("CompressionParameters") is not None:
+            self._CompressionParameters = CompressionParameters()
+            self._CompressionParameters._deserialize(params.get("CompressionParameters"))
+        if params.get("HSTSParameters") is not None:
+            self._HSTSParameters = HSTSParameters()
+            self._HSTSParameters._deserialize(params.get("HSTSParameters"))
+        if params.get("ClientIPHeaderParameters") is not None:
+            self._ClientIPHeaderParameters = ClientIPHeaderParameters()
+            self._ClientIPHeaderParameters._deserialize(params.get("ClientIPHeaderParameters"))
+        if params.get("OCSPStaplingParameters") is not None:
+            self._OCSPStaplingParameters = OCSPStaplingParameters()
+            self._OCSPStaplingParameters._deserialize(params.get("OCSPStaplingParameters"))
+        if params.get("HTTP2Parameters") is not None:
+            self._HTTP2Parameters = HTTP2Parameters()
+            self._HTTP2Parameters._deserialize(params.get("HTTP2Parameters"))
+        if params.get("PostMaxSizeParameters") is not None:
+            self._PostMaxSizeParameters = PostMaxSizeParameters()
+            self._PostMaxSizeParameters._deserialize(params.get("PostMaxSizeParameters"))
+        if params.get("ClientIPCountryParameters") is not None:
+            self._ClientIPCountryParameters = ClientIPCountryParameters()
+            self._ClientIPCountryParameters._deserialize(params.get("ClientIPCountryParameters"))
+        if params.get("UpstreamFollowRedirectParameters") is not None:
+            self._UpstreamFollowRedirectParameters = UpstreamFollowRedirectParameters()
+            self._UpstreamFollowRedirectParameters._deserialize(params.get("UpstreamFollowRedirectParameters"))
+        if params.get("UpstreamRequestParameters") is not None:
+            self._UpstreamRequestParameters = UpstreamRequestParameters()
+            self._UpstreamRequestParameters._deserialize(params.get("UpstreamRequestParameters"))
+        if params.get("TLSConfigParameters") is not None:
+            self._TLSConfigParameters = TLSConfigParameters()
+            self._TLSConfigParameters._deserialize(params.get("TLSConfigParameters"))
+        if params.get("ModifyOriginParameters") is not None:
+            self._ModifyOriginParameters = ModifyOriginParameters()
+            self._ModifyOriginParameters._deserialize(params.get("ModifyOriginParameters"))
+        if params.get("HTTPUpstreamTimeoutParameters") is not None:
+            self._HTTPUpstreamTimeoutParameters = HTTPUpstreamTimeoutParameters()
+            self._HTTPUpstreamTimeoutParameters._deserialize(params.get("HTTPUpstreamTimeoutParameters"))
+        if params.get("HttpResponseParameters") is not None:
+            self._HttpResponseParameters = HTTPResponseParameters()
+            self._HttpResponseParameters._deserialize(params.get("HttpResponseParameters"))
+        if params.get("ErrorPageParameters") is not None:
+            self._ErrorPageParameters = ErrorPageParameters()
+            self._ErrorPageParameters._deserialize(params.get("ErrorPageParameters"))
+        if params.get("ModifyResponseHeaderParameters") is not None:
+            self._ModifyResponseHeaderParameters = ModifyResponseHeaderParameters()
+            self._ModifyResponseHeaderParameters._deserialize(params.get("ModifyResponseHeaderParameters"))
+        if params.get("ModifyRequestHeaderParameters") is not None:
+            self._ModifyRequestHeaderParameters = ModifyRequestHeaderParameters()
+            self._ModifyRequestHeaderParameters._deserialize(params.get("ModifyRequestHeaderParameters"))
+        if params.get("ResponseSpeedLimitParameters") is not None:
+            self._ResponseSpeedLimitParameters = ResponseSpeedLimitParameters()
+            self._ResponseSpeedLimitParameters._deserialize(params.get("ResponseSpeedLimitParameters"))
+        if params.get("SetContentIdentifierParameters") is not None:
+            self._SetContentIdentifierParameters = SetContentIdentifierParameters()
+            self._SetContentIdentifierParameters._deserialize(params.get("SetContentIdentifierParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineItem(AbstractModel):
+    """规则引擎规则详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 规则状态。取值有：<li> enable: 启用； </li><li> disable: 未启用。</li>
+        :type Status: str
+        :param _RuleId: 规则 ID。规则的唯一性标识，当调用 ModifyL7AccRules 时，该参数必填。
+        :type RuleId: str
+        :param _RuleName: 规则名称。名称长度限制不超过 255 个字符。
+        :type RuleName: str
+        :param _Description: 规则注释。可以填写多个注释。
+        :type Description: list of str
+        :param _Branches: 子规则分支。此列表当前只支持填写一项规则，多填无效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branches: list of RuleBranch
+        :param _RulePriority: 规则优先级。仅作为出参使用。
+        :type RulePriority: int
+        """
+        self._Status = None
+        self._RuleId = None
+        self._RuleName = None
+        self._Description = None
+        self._Branches = None
+        self._RulePriority = None
+
+    @property
+    def Status(self):
+        """规则状态。取值有：<li> enable: 启用； </li><li> disable: 未启用。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleId(self):
+        """规则 ID。规则的唯一性标识，当调用 ModifyL7AccRules 时，该参数必填。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """规则名称。名称长度限制不超过 255 个字符。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Description(self):
+        """规则注释。可以填写多个注释。
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Branches(self):
+        """子规则分支。此列表当前只支持填写一项规则，多填无效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def RulePriority(self):
+        """规则优先级。仅作为出参使用。
+        :rtype: int
+        """
+        return self._RulePriority
+
+    @RulePriority.setter
+    def RulePriority(self, RulePriority):
+        self._RulePriority = RulePriority
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Description = params.get("Description")
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = RuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        self._RulePriority = params.get("RulePriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineSubRule(AbstractModel):
+    """子规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Branches: 子规则分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branches: list of RuleBranch
+        :param _Description: 规则注释。
+        :type Description: list of str
+        """
+        self._Branches = None
+        self._Description = None
+
+    @property
+    def Branches(self):
+        """子规则分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def Description(self):
+        """规则注释。
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = RuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35220,6 +39437,42 @@ class ServerCertInfo(AbstractModel):
         
 
 
+class SetContentIdentifierParameters(AbstractModel):
+    """内容标识配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentIdentifier: 内容标识id
+        :type ContentIdentifier: str
+        """
+        self._ContentIdentifier = None
+
+    @property
+    def ContentIdentifier(self):
+        """内容标识id
+        :rtype: str
+        """
+        return self._ContentIdentifier
+
+    @ContentIdentifier.setter
+    def ContentIdentifier(self, ContentIdentifier):
+        self._ContentIdentifier = ContentIdentifier
+
+
+    def _deserialize(self, params):
+        self._ContentIdentifier = params.get("ContentIdentifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkipCondition(AbstractModel):
     """例外规则的跳过匹配条件，即在例外时根据本匹配条件，略过指定字段及内容。
 
@@ -35599,6 +39852,46 @@ class SmartRouting(AbstractModel):
         
 
 
+class SmartRoutingParameters(AbstractModel):
+    """智能加速配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 智能加速配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """智能加速配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StandardDebug(AbstractModel):
     """支持标准debug结构体
 
@@ -35659,6 +39952,170 @@ class StandardDebug(AbstractModel):
         self._Switch = params.get("Switch")
         self._AllowClientIPList = params.get("AllowClientIPList")
         self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandardDebugParameters(AbstractModel):
+    """Debug 调试结构体。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Debug 功能开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _AllowClientIPList: 允许的客户端来源。支持填写 IPv4 以及 IPv6 的 IP 网段。0.0.0.0/0 表示允许所有 IPv4 客户端进行调试；::/0 表示允许所有 IPv6 客户端进行调试；不能填写 127.0.0.1。<br>注意：当 Switch 字段为 on 时，此字段必填，且填写个数为 1～100；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type AllowClientIPList: list of str
+        :param _Expires: Debug 功能到期时间。超出设置的时间，则功能失效。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type Expires: str
+        """
+        self._Switch = None
+        self._AllowClientIPList = None
+        self._Expires = None
+
+    @property
+    def Switch(self):
+        """Debug 功能开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def AllowClientIPList(self):
+        """允许的客户端来源。支持填写 IPv4 以及 IPv6 的 IP 网段。0.0.0.0/0 表示允许所有 IPv4 客户端进行调试；::/0 表示允许所有 IPv6 客户端进行调试；不能填写 127.0.0.1。<br>注意：当 Switch 字段为 on 时，此字段必填，且填写个数为 1～100；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: list of str
+        """
+        return self._AllowClientIPList
+
+    @AllowClientIPList.setter
+    def AllowClientIPList(self, AllowClientIPList):
+        self._AllowClientIPList = AllowClientIPList
+
+    @property
+    def Expires(self):
+        """Debug 功能到期时间。超出设置的时间，则功能失效。<br>注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._Expires
+
+    @Expires.setter
+    def Expires(self, Expires):
+        self._Expires = Expires
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._AllowClientIPList = params.get("AllowClientIPList")
+        self._Expires = params.get("Expires")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatusCodeCacheParam(AbstractModel):
+    """状态码缓存 TTL 配置参数内部结构。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: 状态码，取值为 400、 401、403、 404、 405、 407、 414、 500、 501、 502、 503、 504、 509、 514 之一。
+        :type StatusCode: int
+        :param _CacheTime: 缓存时间数值，单位为秒，取值：0～31536000。
+        :type CacheTime: int
+        """
+        self._StatusCode = None
+        self._CacheTime = None
+
+    @property
+    def StatusCode(self):
+        """状态码，取值为 400、 401、403、 404、 405、 407、 414、 500、 501、 502、 503、 504、 509、 514 之一。
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def CacheTime(self):
+        """缓存时间数值，单位为秒，取值：0～31536000。
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatusCodeCacheParameters(AbstractModel):
+    """状态码缓存 TTL 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCodeCacheParams: 状态码缓存 TTL 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCodeCacheParams: list of StatusCodeCacheParam
+        """
+        self._StatusCodeCacheParams = None
+
+    @property
+    def StatusCodeCacheParams(self):
+        """状态码缓存 TTL 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StatusCodeCacheParam
+        """
+        return self._StatusCodeCacheParams
+
+    @StatusCodeCacheParams.setter
+    def StatusCodeCacheParams(self, StatusCodeCacheParams):
+        self._StatusCodeCacheParams = StatusCodeCacheParams
+
+
+    def _deserialize(self, params):
+        if params.get("StatusCodeCacheParams") is not None:
+            self._StatusCodeCacheParams = []
+            for item in params.get("StatusCodeCacheParams"):
+                obj = StatusCodeCacheParam()
+                obj._deserialize(item)
+                self._StatusCodeCacheParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35930,6 +40387,57 @@ class SwitchConfig(AbstractModel):
 
     def _deserialize(self, params):
         self._WebSwitch = params.get("WebSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TLSConfigParameters(AbstractModel):
+    """SSL/TLS 安全配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: TLS 版本。至少填写一个，如果是多个时，需要为连续版本号，例如：开启 TLS1、1.1、1.2 和 1.3，不可仅开启 1 和 1.2 而关闭 1.1。取值有：<li>TLSv1：TLSv1 版本；</li><li>TLSv1.1：TLSv1.1 版本；</li><li>TLSv1.2：TLSv1.2 版本；</li><li>TLSv1.3：TLSv1.3 版本。</li>
+        :type Version: list of str
+        :param _CipherSuite: 密码套件。详细介绍请参考 [TLS 版本及密码套件说明](https://cloud.tencent.com/document/product/1552/86545)。取值有：<li>loose-v2023：loose-v2023 密码套件；</li><li>general-v2023：general-v2023 密码套件；</li><li>strict-v2023：strict-v2023 密码套件。</li>
+        :type CipherSuite: str
+        """
+        self._Version = None
+        self._CipherSuite = None
+
+    @property
+    def Version(self):
+        """TLS 版本。至少填写一个，如果是多个时，需要为连续版本号，例如：开启 TLS1、1.1、1.2 和 1.3，不可仅开启 1 和 1.2 而关闭 1.1。取值有：<li>TLSv1：TLSv1 版本；</li><li>TLSv1.1：TLSv1.1 版本；</li><li>TLSv1.2：TLSv1.2 版本；</li><li>TLSv1.3：TLSv1.3 版本。</li>
+        :rtype: list of str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def CipherSuite(self):
+        """密码套件。详细介绍请参考 [TLS 版本及密码套件说明](https://cloud.tencent.com/document/product/1552/86545)。取值有：<li>loose-v2023：loose-v2023 密码套件；</li><li>general-v2023：general-v2023 密码套件；</li><li>strict-v2023：strict-v2023 密码套件。</li>
+        :rtype: str
+        """
+        return self._CipherSuite
+
+    @CipherSuite.setter
+    def CipherSuite(self, CipherSuite):
+        self._CipherSuite = CipherSuite
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._CipherSuite = params.get("CipherSuite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36670,6 +41178,78 @@ class TopEntryValue(AbstractModel):
         
 
 
+class URLPath(AbstractModel):
+    """访问 URL 重定向路径配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: 执行动作，取值有：
+<li>follow：跟随请求；</li>
+<li>custom：自定义；</li>
+<li>regex：正则匹配。</li>
+        :type Action: str
+        :param _Regex: 正则匹配的表达式，长度范围为 1～1024。<br>注意：当 Action 为 regex 时，此字段必填；当 Action 为 follow 或 custom 时，无需填写此字段，若填写则不生效。
+        :type Regex: str
+        :param _Value: 重定向的目标URL，长度范围为 1～1024。<br>注意：当 Action 为 regex 或 custom 时，此字段必填；当 Action 为 follow 时，无需填写此字段，若填写则不生效。
+        :type Value: str
+        """
+        self._Action = None
+        self._Regex = None
+        self._Value = None
+
+    @property
+    def Action(self):
+        """执行动作，取值有：
+<li>follow：跟随请求；</li>
+<li>custom：自定义；</li>
+<li>regex：正则匹配。</li>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Regex(self):
+        """正则匹配的表达式，长度范围为 1～1024。<br>注意：当 Action 为 regex 时，此字段必填；当 Action 为 follow 或 custom 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
+
+    @property
+    def Value(self):
+        """重定向的目标URL，长度范围为 1～1024。<br>注意：当 Action 为 regex 或 custom 时，此字段必填；当 Action 为 follow 时，无需填写此字段，若填写则不生效。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._Regex = params.get("Regex")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpgradePlanRequest(AbstractModel):
     """UpgradePlan请求参数结构体
 
@@ -36817,6 +41397,103 @@ class UpstreamCertInfo(AbstractModel):
         
 
 
+class UpstreamFollowRedirectParameters(AbstractModel):
+    """回源跟随重定向参数配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 回源跟随重定向配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _MaxTimes: 最大重定向次数。取值为 1-5。
+注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :type MaxTimes: int
+        """
+        self._Switch = None
+        self._MaxTimes = None
+
+    @property
+    def Switch(self):
+        """回源跟随重定向配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def MaxTimes(self):
+        """最大重定向次数。取值为 1-5。
+注意：当 Switch 为 on 时，此字段必填；当 Switch 为 off 时，无需填写此字段，若填写则不生效。
+        :rtype: int
+        """
+        return self._MaxTimes
+
+    @MaxTimes.setter
+    def MaxTimes(self, MaxTimes):
+        self._MaxTimes = MaxTimes
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._MaxTimes = params.get("MaxTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamHTTP2Parameters(AbstractModel):
+    """HTTP2 回源配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: HTTP2 回源配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """HTTP2 回源配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpstreamHttp2(AbstractModel):
     """Http2回源配置
 
@@ -36847,6 +41524,293 @@ class UpstreamHttp2(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamRequestCookie(AbstractModel):
+    """回源请求参数 Cookie 配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 回源请求参数 Cookie 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _Action: 回源请求参数 Cookie 模式。当 Switch 为 on 时，该参数必填。取值有：
+<li>full：表示全部保留；</li>
+<li>ignore：表示全部忽略；</li>
+<li>includeCustom：表示保留部分参数；</li>
+<li>excludeCustom：表示忽略部分参数。</li>
+        :type Action: str
+        :param _Values: 指定参数值。仅当查询字符串模式 Action 为 includeCustom 或者 excludeCustom 时该参数生效，用于指定需要保留或者忽略的参数。最大支持 10 个参数。
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Action = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """回源请求参数 Cookie 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Action(self):
+        """回源请求参数 Cookie 模式。当 Switch 为 on 时，该参数必填。取值有：
+<li>full：表示全部保留；</li>
+<li>ignore：表示全部忽略；</li>
+<li>includeCustom：表示保留部分参数；</li>
+<li>excludeCustom：表示忽略部分参数。</li>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Values(self):
+        """指定参数值。仅当查询字符串模式 Action 为 includeCustom 或者 excludeCustom 时该参数生效，用于指定需要保留或者忽略的参数。最大支持 10 个参数。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Action = params.get("Action")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamRequestParameters(AbstractModel):
+    """回源请求参数配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueryString: 查询字符串配置。可选配置项，不填表示不配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryString: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestQueryString`
+        :param _Cookie: Cookie 配置。可选配置项，不填表示不配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cookie: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestCookie`
+        """
+        self._QueryString = None
+        self._Cookie = None
+
+    @property
+    def QueryString(self):
+        """查询字符串配置。可选配置项，不填表示不配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestQueryString`
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+    @property
+    def Cookie(self):
+        """Cookie 配置。可选配置项，不填表示不配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestCookie`
+        """
+        return self._Cookie
+
+    @Cookie.setter
+    def Cookie(self, Cookie):
+        self._Cookie = Cookie
+
+
+    def _deserialize(self, params):
+        if params.get("QueryString") is not None:
+            self._QueryString = UpstreamRequestQueryString()
+            self._QueryString._deserialize(params.get("QueryString"))
+        if params.get("Cookie") is not None:
+            self._Cookie = UpstreamRequestCookie()
+            self._Cookie._deserialize(params.get("Cookie"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamRequestQueryString(AbstractModel):
+    """回源请求参数查询字符串配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 回源请求参数查询字符串配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _Action: 查询字符串模式。当 Switch 为 on 时，该参数必填。取值有：
+<li>full：全部保留；</li>
+<li>ignore：全部忽略；</li>
+<li>includeCustom：保留部分参数；</li>
+<li>excludeCustom：忽略部分参数。</li>
+        :type Action: str
+        :param _Values: 指定参数值。仅当查询字符串模式 Action 为 includeCustom 或者 excludeCustom 时该参数生效，用于指定需要保留或者忽略的参数。最大支持 10 个参数。
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Action = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """回源请求参数查询字符串配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Action(self):
+        """查询字符串模式。当 Switch 为 on 时，该参数必填。取值有：
+<li>full：全部保留；</li>
+<li>ignore：全部忽略；</li>
+<li>includeCustom：保留部分参数；</li>
+<li>excludeCustom：忽略部分参数。</li>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Values(self):
+        """指定参数值。仅当查询字符串模式 Action 为 includeCustom 或者 excludeCustom 时该参数生效，用于指定需要保留或者忽略的参数。最大支持 10 个参数。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Action = params.get("Action")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamURLRewriteParameters(AbstractModel):
+    """回源 URL 重写 配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 回源 URL 重写类型，仅支持填写 Path。
+        :type Type: str
+        :param _Action: 回源 URL 重写动作。取值有：
+<li>replace：替换路径前缀；</li>
+<li>addPrefix：增加路径前缀；</li>
+<li>rmvPrefix：移除路径前缀。</li>
+        :type Action: str
+        :param _Value: 回源 URL 重写值，最大长度 1024，必须以 / 开头。<br>注意：当 Action 为 addPrefix 时，不能以 / 结尾；当 Action 为 rmvPrefix 时，不能存在 *。
+        :type Value: str
+        """
+        self._Type = None
+        self._Action = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        """回源 URL 重写类型，仅支持填写 Path。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Action(self):
+        """回源 URL 重写动作。取值有：
+<li>replace：替换路径前缀；</li>
+<li>addPrefix：增加路径前缀；</li>
+<li>rmvPrefix：移除路径前缀。</li>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Value(self):
+        """回源 URL 重写值，最大长度 1024，必须以 / 开头。<br>注意：当 Action 为 addPrefix 时，不能以 / 结尾；当 Action 为 rmvPrefix 时，不能存在 *。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Action = params.get("Action")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37359,6 +42323,61 @@ class WebSocket(AbstractModel):
         
 
 
+class WebSocketParameters(AbstractModel):
+    """WebSocket 配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: WebSocket 超时时间配置开关，取值有：
+<li>on：使用 Timeout 作为 WebSocket 超时时间；</li>
+<li>off：平台仍支持 WebSocket 连接，此时使用系统默认的 15 秒为超时时间。</li>
+        :type Switch: str
+        :param _Timeout: 超时时间，单位为秒，最大超时时间 120 秒。<br>注意：当 Switch 为 on 时，此字段必填，否则此字段不生效。
+        :type Timeout: int
+        """
+        self._Switch = None
+        self._Timeout = None
+
+    @property
+    def Switch(self):
+        """WebSocket 超时时间配置开关，取值有：
+<li>on：使用 Timeout 作为 WebSocket 超时时间；</li>
+<li>off：平台仍支持 WebSocket 连接，此时使用系统默认的 15 秒为超时时间。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Timeout(self):
+        """超时时间，单位为秒，最大超时时间 120 秒。<br>注意：当 Switch 为 on 时，此字段必填，否则此字段不生效。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Timeout = params.get("Timeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Zone(AbstractModel):
     """站点信息
 
@@ -37752,6 +42771,500 @@ class Zone(AbstractModel):
         if params.get("OwnershipVerification") is not None:
             self._OwnershipVerification = OwnershipVerification()
             self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneConfig(AbstractModel):
+    """站点加速配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SmartRouting: 智能加速配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartRouting: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
+        :param _Cache: 缓存过期时间配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cache: :class:`tencentcloud.teo.v20220901.models.CacheConfigParameters`
+        :param _MaxAge: 浏览器缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAge: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
+        :param _CacheKey: 节点缓存键配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheKey: :class:`tencentcloud.teo.v20220901.models.CacheKeyConfigParameters`
+        :param _CachePrefresh: 缓存预刷新配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CachePrefresh: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
+        :param _OfflineCache: 离线缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineCache: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
+        :param _Compression: 智能压缩配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compression: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
+        :param _ForceRedirectHTTPS: 访问协议强制 HTTPS 跳转配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceRedirectHTTPS: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        :param _HSTS: HSTS 相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HSTS: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
+        :param _TLSConfig: TLS 相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TLSConfig: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
+        :param _OCSPStapling: OCSP 装订配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OCSPStapling: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
+        :param _HTTP2: HTTP2 相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HTTP2: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
+        :param _QUIC: QUIC 访问配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QUIC: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
+        :param _UpstreamHTTP2: HTTP2 回源配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamHTTP2: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        :param _IPv6: IPv6 访问配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6: :class:`tencentcloud.teo.v20220901.models.IPv6Parameters`
+        :param _WebSocket: WebSocket 配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebSocket: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
+        :param _PostMaxSize: POST 请求传输配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostMaxSize: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
+        :param _ClientIPHeader: 客户端 IP 回源请求头配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIPHeader: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
+        :param _ClientIPCountry: 回源时是否携带客户端 IP 所属地域信息的配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIPCountry: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
+        :param _Grpc: gRPC 协议支持配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grpc: :class:`tencentcloud.teo.v20220901.models.GrpcParameters`
+        :param _AccelerateMainland: 中国大陆加速优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainlandParameters`
+        :param _StandardDebug: 标准 Debug 配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebugParameters`
+        """
+        self._SmartRouting = None
+        self._Cache = None
+        self._MaxAge = None
+        self._CacheKey = None
+        self._CachePrefresh = None
+        self._OfflineCache = None
+        self._Compression = None
+        self._ForceRedirectHTTPS = None
+        self._HSTS = None
+        self._TLSConfig = None
+        self._OCSPStapling = None
+        self._HTTP2 = None
+        self._QUIC = None
+        self._UpstreamHTTP2 = None
+        self._IPv6 = None
+        self._WebSocket = None
+        self._PostMaxSize = None
+        self._ClientIPHeader = None
+        self._ClientIPCountry = None
+        self._Grpc = None
+        self._AccelerateMainland = None
+        self._StandardDebug = None
+
+    @property
+    def SmartRouting(self):
+        """智能加速配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
+        """
+        return self._SmartRouting
+
+    @SmartRouting.setter
+    def SmartRouting(self, SmartRouting):
+        self._SmartRouting = SmartRouting
+
+    @property
+    def Cache(self):
+        """缓存过期时间配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheConfigParameters`
+        """
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
+    @property
+    def MaxAge(self):
+        """浏览器缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
+        """
+        return self._MaxAge
+
+    @MaxAge.setter
+    def MaxAge(self, MaxAge):
+        self._MaxAge = MaxAge
+
+    @property
+    def CacheKey(self):
+        """节点缓存键配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyConfigParameters`
+        """
+        return self._CacheKey
+
+    @CacheKey.setter
+    def CacheKey(self, CacheKey):
+        self._CacheKey = CacheKey
+
+    @property
+    def CachePrefresh(self):
+        """缓存预刷新配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
+        """
+        return self._CachePrefresh
+
+    @CachePrefresh.setter
+    def CachePrefresh(self, CachePrefresh):
+        self._CachePrefresh = CachePrefresh
+
+    @property
+    def OfflineCache(self):
+        """离线缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
+        """
+        return self._OfflineCache
+
+    @OfflineCache.setter
+    def OfflineCache(self, OfflineCache):
+        self._OfflineCache = OfflineCache
+
+    @property
+    def Compression(self):
+        """智能压缩配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
+        """
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
+
+    @property
+    def ForceRedirectHTTPS(self):
+        """访问协议强制 HTTPS 跳转配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        """
+        return self._ForceRedirectHTTPS
+
+    @ForceRedirectHTTPS.setter
+    def ForceRedirectHTTPS(self, ForceRedirectHTTPS):
+        self._ForceRedirectHTTPS = ForceRedirectHTTPS
+
+    @property
+    def HSTS(self):
+        """HSTS 相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
+        """
+        return self._HSTS
+
+    @HSTS.setter
+    def HSTS(self, HSTS):
+        self._HSTS = HSTS
+
+    @property
+    def TLSConfig(self):
+        """TLS 相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
+        """
+        return self._TLSConfig
+
+    @TLSConfig.setter
+    def TLSConfig(self, TLSConfig):
+        self._TLSConfig = TLSConfig
+
+    @property
+    def OCSPStapling(self):
+        """OCSP 装订配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
+        """
+        return self._OCSPStapling
+
+    @OCSPStapling.setter
+    def OCSPStapling(self, OCSPStapling):
+        self._OCSPStapling = OCSPStapling
+
+    @property
+    def HTTP2(self):
+        """HTTP2 相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
+        """
+        return self._HTTP2
+
+    @HTTP2.setter
+    def HTTP2(self, HTTP2):
+        self._HTTP2 = HTTP2
+
+    @property
+    def QUIC(self):
+        """QUIC 访问配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
+        """
+        return self._QUIC
+
+    @QUIC.setter
+    def QUIC(self, QUIC):
+        self._QUIC = QUIC
+
+    @property
+    def UpstreamHTTP2(self):
+        """HTTP2 回源配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        """
+        return self._UpstreamHTTP2
+
+    @UpstreamHTTP2.setter
+    def UpstreamHTTP2(self, UpstreamHTTP2):
+        self._UpstreamHTTP2 = UpstreamHTTP2
+
+    @property
+    def IPv6(self):
+        """IPv6 访问配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.IPv6Parameters`
+        """
+        return self._IPv6
+
+    @IPv6.setter
+    def IPv6(self, IPv6):
+        self._IPv6 = IPv6
+
+    @property
+    def WebSocket(self):
+        """WebSocket 配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
+        """
+        return self._WebSocket
+
+    @WebSocket.setter
+    def WebSocket(self, WebSocket):
+        self._WebSocket = WebSocket
+
+    @property
+    def PostMaxSize(self):
+        """POST 请求传输配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
+        """
+        return self._PostMaxSize
+
+    @PostMaxSize.setter
+    def PostMaxSize(self, PostMaxSize):
+        self._PostMaxSize = PostMaxSize
+
+    @property
+    def ClientIPHeader(self):
+        """客户端 IP 回源请求头配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
+        """
+        return self._ClientIPHeader
+
+    @ClientIPHeader.setter
+    def ClientIPHeader(self, ClientIPHeader):
+        self._ClientIPHeader = ClientIPHeader
+
+    @property
+    def ClientIPCountry(self):
+        """回源时是否携带客户端 IP 所属地域信息的配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
+        """
+        return self._ClientIPCountry
+
+    @ClientIPCountry.setter
+    def ClientIPCountry(self, ClientIPCountry):
+        self._ClientIPCountry = ClientIPCountry
+
+    @property
+    def Grpc(self):
+        """gRPC 协议支持配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.GrpcParameters`
+        """
+        return self._Grpc
+
+    @Grpc.setter
+    def Grpc(self, Grpc):
+        self._Grpc = Grpc
+
+    @property
+    def AccelerateMainland(self):
+        """中国大陆加速优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccelerateMainlandParameters`
+        """
+        return self._AccelerateMainland
+
+    @AccelerateMainland.setter
+    def AccelerateMainland(self, AccelerateMainland):
+        self._AccelerateMainland = AccelerateMainland
+
+    @property
+    def StandardDebug(self):
+        """标准 Debug 配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.StandardDebugParameters`
+        """
+        return self._StandardDebug
+
+    @StandardDebug.setter
+    def StandardDebug(self, StandardDebug):
+        self._StandardDebug = StandardDebug
+
+
+    def _deserialize(self, params):
+        if params.get("SmartRouting") is not None:
+            self._SmartRouting = SmartRoutingParameters()
+            self._SmartRouting._deserialize(params.get("SmartRouting"))
+        if params.get("Cache") is not None:
+            self._Cache = CacheConfigParameters()
+            self._Cache._deserialize(params.get("Cache"))
+        if params.get("MaxAge") is not None:
+            self._MaxAge = MaxAgeParameters()
+            self._MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("CacheKey") is not None:
+            self._CacheKey = CacheKeyConfigParameters()
+            self._CacheKey._deserialize(params.get("CacheKey"))
+        if params.get("CachePrefresh") is not None:
+            self._CachePrefresh = CachePrefreshParameters()
+            self._CachePrefresh._deserialize(params.get("CachePrefresh"))
+        if params.get("OfflineCache") is not None:
+            self._OfflineCache = OfflineCacheParameters()
+            self._OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("Compression") is not None:
+            self._Compression = CompressionParameters()
+            self._Compression._deserialize(params.get("Compression"))
+        if params.get("ForceRedirectHTTPS") is not None:
+            self._ForceRedirectHTTPS = ForceRedirectHTTPSParameters()
+            self._ForceRedirectHTTPS._deserialize(params.get("ForceRedirectHTTPS"))
+        if params.get("HSTS") is not None:
+            self._HSTS = HSTSParameters()
+            self._HSTS._deserialize(params.get("HSTS"))
+        if params.get("TLSConfig") is not None:
+            self._TLSConfig = TLSConfigParameters()
+            self._TLSConfig._deserialize(params.get("TLSConfig"))
+        if params.get("OCSPStapling") is not None:
+            self._OCSPStapling = OCSPStaplingParameters()
+            self._OCSPStapling._deserialize(params.get("OCSPStapling"))
+        if params.get("HTTP2") is not None:
+            self._HTTP2 = HTTP2Parameters()
+            self._HTTP2._deserialize(params.get("HTTP2"))
+        if params.get("QUIC") is not None:
+            self._QUIC = QUICParameters()
+            self._QUIC._deserialize(params.get("QUIC"))
+        if params.get("UpstreamHTTP2") is not None:
+            self._UpstreamHTTP2 = UpstreamHTTP2Parameters()
+            self._UpstreamHTTP2._deserialize(params.get("UpstreamHTTP2"))
+        if params.get("IPv6") is not None:
+            self._IPv6 = IPv6Parameters()
+            self._IPv6._deserialize(params.get("IPv6"))
+        if params.get("WebSocket") is not None:
+            self._WebSocket = WebSocketParameters()
+            self._WebSocket._deserialize(params.get("WebSocket"))
+        if params.get("PostMaxSize") is not None:
+            self._PostMaxSize = PostMaxSizeParameters()
+            self._PostMaxSize._deserialize(params.get("PostMaxSize"))
+        if params.get("ClientIPHeader") is not None:
+            self._ClientIPHeader = ClientIPHeaderParameters()
+            self._ClientIPHeader._deserialize(params.get("ClientIPHeader"))
+        if params.get("ClientIPCountry") is not None:
+            self._ClientIPCountry = ClientIPCountryParameters()
+            self._ClientIPCountry._deserialize(params.get("ClientIPCountry"))
+        if params.get("Grpc") is not None:
+            self._Grpc = GrpcParameters()
+            self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("AccelerateMainland") is not None:
+            self._AccelerateMainland = AccelerateMainlandParameters()
+            self._AccelerateMainland._deserialize(params.get("AccelerateMainland"))
+        if params.get("StandardDebug") is not None:
+            self._StandardDebug = StandardDebugParameters()
+            self._StandardDebug._deserialize(params.get("StandardDebug"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneConfigParameters(AbstractModel):
+    """站点配置相关信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneName: 站点名称。
+        :type ZoneName: str
+        :param _ZoneConfig: 站点配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneConfig: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        self._ZoneName = None
+        self._ZoneConfig = None
+
+    @property
+    def ZoneName(self):
+        """站点名称。
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ZoneConfig(self):
+        """站点配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        return self._ZoneConfig
+
+    @ZoneConfig.setter
+    def ZoneConfig(self, ZoneConfig):
+        self._ZoneConfig = ZoneConfig
+
+
+    def _deserialize(self, params):
+        self._ZoneName = params.get("ZoneName")
+        if params.get("ZoneConfig") is not None:
+            self._ZoneConfig = ZoneConfig()
+            self._ZoneConfig._deserialize(params.get("ZoneConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

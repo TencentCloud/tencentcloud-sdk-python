@@ -31446,11 +31446,11 @@ class TPartition(AbstractModel):
         :type Type: str
         :param _Comment: 字段描述
         :type Comment: str
-        :param _PartitionType: 分区类型
+        :param _PartitionType: 分区类型（已废弃）
         :type PartitionType: str
-        :param _PartitionFormat: 分区格式
+        :param _PartitionFormat: 分区格式（已废弃）
         :type PartitionFormat: str
-        :param _PartitionDot: 分区分隔数
+        :param _PartitionDot: 分区分隔数（已废弃）
         :type PartitionDot: int
         :param _Transform: 分区转换策略
         :type Transform: str
@@ -31501,7 +31501,7 @@ class TPartition(AbstractModel):
 
     @property
     def PartitionType(self):
-        """分区类型
+        """分区类型（已废弃）
         :rtype: str
         """
         return self._PartitionType
@@ -31512,7 +31512,7 @@ class TPartition(AbstractModel):
 
     @property
     def PartitionFormat(self):
-        """分区格式
+        """分区格式（已废弃）
         :rtype: str
         """
         return self._PartitionFormat
@@ -31523,7 +31523,7 @@ class TPartition(AbstractModel):
 
     @property
     def PartitionDot(self):
-        """分区分隔数
+        """分区分隔数（已废弃）
         :rtype: int
         """
         return self._PartitionDot

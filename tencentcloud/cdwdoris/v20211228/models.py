@@ -226,7 +226,6 @@ class BackUpJobDisplay(AbstractModel):
         :param _BackUpSize: 备份数据量
         :type BackUpSize: int
         :param _BackUpSingleSize: 备份单副本数据量
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackUpSingleSize: int
         :param _BackUpTime: 实例创建时间
         :type BackUpTime: str
@@ -235,23 +234,19 @@ class BackUpJobDisplay(AbstractModel):
         :param _JobStatus: 实例状态
         :type JobStatus: str
         :param _BackupType: 0为默认。1时是对远端的doris进行备份，不周期，一次性
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupType: int
         :param _BackupTimeType: 0为默认。1时是立即备份。2时是迁移
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupTimeType: int
         :param _DorisSourceInfo: 远端doris的连接信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
         :param _JobStatusNum: 实例状态对应的数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobStatusNum: int
         :param _BackupCosInfo: 备份实例中关于cos的信息	
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupCosInfo: :class:`tencentcloud.cdwdoris.v20211228.models.BackupCosInfo`
         :param _IsUserDefineBucket: 是否使用的自定义桶
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUserDefineBucket: bool
+        :param _ErrorReason: 错误原因
+        :type ErrorReason: str
         """
         self._JobId = None
         self._Snapshot = None
@@ -266,6 +261,7 @@ class BackUpJobDisplay(AbstractModel):
         self._JobStatusNum = None
         self._BackupCosInfo = None
         self._IsUserDefineBucket = None
+        self._ErrorReason = None
 
     @property
     def JobId(self):
@@ -303,7 +299,6 @@ class BackUpJobDisplay(AbstractModel):
     @property
     def BackUpSingleSize(self):
         """备份单副本数据量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackUpSingleSize
@@ -348,7 +343,6 @@ class BackUpJobDisplay(AbstractModel):
     @property
     def BackupType(self):
         """0为默认。1时是对远端的doris进行备份，不周期，一次性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackupType
@@ -360,7 +354,6 @@ class BackUpJobDisplay(AbstractModel):
     @property
     def BackupTimeType(self):
         """0为默认。1时是立即备份。2时是迁移
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackupTimeType
@@ -372,7 +365,6 @@ class BackUpJobDisplay(AbstractModel):
     @property
     def DorisSourceInfo(self):
         """远端doris的连接信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
         """
         return self._DorisSourceInfo
@@ -384,7 +376,6 @@ class BackUpJobDisplay(AbstractModel):
     @property
     def JobStatusNum(self):
         """实例状态对应的数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._JobStatusNum
@@ -396,7 +387,6 @@ class BackUpJobDisplay(AbstractModel):
     @property
     def BackupCosInfo(self):
         """备份实例中关于cos的信息	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.BackupCosInfo`
         """
         return self._BackupCosInfo
@@ -408,7 +398,6 @@ class BackUpJobDisplay(AbstractModel):
     @property
     def IsUserDefineBucket(self):
         """是否使用的自定义桶
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUserDefineBucket
@@ -416,6 +405,17 @@ class BackUpJobDisplay(AbstractModel):
     @IsUserDefineBucket.setter
     def IsUserDefineBucket(self, IsUserDefineBucket):
         self._IsUserDefineBucket = IsUserDefineBucket
+
+    @property
+    def ErrorReason(self):
+        """错误原因
+        :rtype: str
+        """
+        return self._ErrorReason
+
+    @ErrorReason.setter
+    def ErrorReason(self, ErrorReason):
+        self._ErrorReason = ErrorReason
 
 
     def _deserialize(self, params):
@@ -436,6 +436,7 @@ class BackUpJobDisplay(AbstractModel):
             self._BackupCosInfo = BackupCosInfo()
             self._BackupCosInfo._deserialize(params.get("BackupCosInfo"))
         self._IsUserDefineBucket = params.get("IsUserDefineBucket")
+        self._ErrorReason = params.get("ErrorReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2435,6 +2436,8 @@ class CreateInstanceNewRequest(AbstractModel):
         :type EnableMultiZones: bool
         :param _UserMultiZoneInfos: 开启多可用区后，用户的所有可用区和子网信息
         :type UserMultiZoneInfos: :class:`tencentcloud.cdwdoris.v20211228.models.NetworkInfo`
+        :param _UserMultiZoneInfoArr: 开启多可用区后，用户的所有可用区和子网信息
+        :type UserMultiZoneInfoArr: list of NetworkInfo
         """
         self._Zone = None
         self._FeSpec = None
@@ -2451,6 +2454,7 @@ class CreateInstanceNewRequest(AbstractModel):
         self._CaseSensitive = None
         self._EnableMultiZones = None
         self._UserMultiZoneInfos = None
+        self._UserMultiZoneInfoArr = None
 
     @property
     def Zone(self):
@@ -2611,6 +2615,8 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def UserMultiZoneInfos(self):
+        warnings.warn("parameter `UserMultiZoneInfos` is deprecated", DeprecationWarning) 
+
         """开启多可用区后，用户的所有可用区和子网信息
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.NetworkInfo`
         """
@@ -2618,7 +2624,20 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @UserMultiZoneInfos.setter
     def UserMultiZoneInfos(self, UserMultiZoneInfos):
+        warnings.warn("parameter `UserMultiZoneInfos` is deprecated", DeprecationWarning) 
+
         self._UserMultiZoneInfos = UserMultiZoneInfos
+
+    @property
+    def UserMultiZoneInfoArr(self):
+        """开启多可用区后，用户的所有可用区和子网信息
+        :rtype: list of NetworkInfo
+        """
+        return self._UserMultiZoneInfoArr
+
+    @UserMultiZoneInfoArr.setter
+    def UserMultiZoneInfoArr(self, UserMultiZoneInfoArr):
+        self._UserMultiZoneInfoArr = UserMultiZoneInfoArr
 
 
     def _deserialize(self, params):
@@ -2650,6 +2669,12 @@ class CreateInstanceNewRequest(AbstractModel):
         if params.get("UserMultiZoneInfos") is not None:
             self._UserMultiZoneInfos = NetworkInfo()
             self._UserMultiZoneInfos._deserialize(params.get("UserMultiZoneInfos"))
+        if params.get("UserMultiZoneInfoArr") is not None:
+            self._UserMultiZoneInfoArr = []
+            for item in params.get("UserMultiZoneInfoArr"):
+                obj = NetworkInfo()
+                obj._deserialize(item)
+                self._UserMultiZoneInfoArr.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3375,10 +3400,8 @@ class DescribeAreaRegionResponse(AbstractModel):
         :param _Items: 地域列表
         :type Items: list of RegionAreaInfo
         :param _FrontEndRules: 前端规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type FrontEndRules: list of FrontEndRule
         :param _AvailableWhiteListNames: 返回可用的白名单名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableWhiteListNames: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3402,7 +3425,6 @@ class DescribeAreaRegionResponse(AbstractModel):
     @property
     def FrontEndRules(self):
         """前端规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FrontEndRule
         """
         return self._FrontEndRules
@@ -3414,7 +3436,6 @@ class DescribeAreaRegionResponse(AbstractModel):
     @property
     def AvailableWhiteListNames(self):
         """返回可用的白名单名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AvailableWhiteListNames
@@ -3511,18 +3532,25 @@ class DescribeBackUpJobDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TableContents: 备份表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableContents: list of BackupTableContent
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
+        :param _IsUnknownVersion: 是否是未知版本
+        :type IsUnknownVersion: bool
+        :param _Msg: 返回对象用字符串表示
+        :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TableContents = None
+        self._ErrorMsg = None
+        self._IsUnknownVersion = None
+        self._Msg = None
         self._RequestId = None
 
     @property
     def TableContents(self):
         """备份表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupTableContent
         """
         return self._TableContents
@@ -3530,6 +3558,39 @@ class DescribeBackUpJobDetailResponse(AbstractModel):
     @TableContents.setter
     def TableContents(self, TableContents):
         self._TableContents = TableContents
+
+    @property
+    def ErrorMsg(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def IsUnknownVersion(self):
+        """是否是未知版本
+        :rtype: bool
+        """
+        return self._IsUnknownVersion
+
+    @IsUnknownVersion.setter
+    def IsUnknownVersion(self, IsUnknownVersion):
+        self._IsUnknownVersion = IsUnknownVersion
+
+    @property
+    def Msg(self):
+        """返回对象用字符串表示
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
 
     @property
     def RequestId(self):
@@ -3550,6 +3611,9 @@ class DescribeBackUpJobDetailResponse(AbstractModel):
                 obj = BackupTableContent()
                 obj._deserialize(item)
                 self._TableContents.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._IsUnknownVersion = params.get("IsUnknownVersion")
+        self._Msg = params.get("Msg")
         self._RequestId = params.get("RequestId")
 
 
@@ -3693,13 +3757,10 @@ class DescribeBackUpJobResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BackUpJobs: 任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackUpJobs: list of BackUpJobDisplay
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3712,7 +3773,6 @@ class DescribeBackUpJobResponse(AbstractModel):
     @property
     def BackUpJobs(self):
         """任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackUpJobDisplay
         """
         return self._BackUpJobs
@@ -3724,7 +3784,6 @@ class DescribeBackUpJobResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -3736,7 +3795,6 @@ class DescribeBackUpJobResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -3934,13 +3992,10 @@ class DescribeBackUpTablesResponse(AbstractModel):
         :param _AvailableTables: 可备份表列表
         :type AvailableTables: list of BackupTableContent
         :param _Msg: msg
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _IsUnknownVersion: 未知version
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUnknownVersion: bool
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3965,7 +4020,6 @@ class DescribeBackUpTablesResponse(AbstractModel):
     @property
     def Msg(self):
         """msg
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -3977,7 +4031,6 @@ class DescribeBackUpTablesResponse(AbstractModel):
     @property
     def IsUnknownVersion(self):
         """未知version
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUnknownVersion
@@ -3989,7 +4042,6 @@ class DescribeBackUpTablesResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -4082,10 +4134,8 @@ class DescribeBackUpTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BackupStatus: 备份任务进度详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupStatus: list of BackupStatus
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4097,7 +4147,6 @@ class DescribeBackUpTaskDetailResponse(AbstractModel):
     @property
     def BackupStatus(self):
         """备份任务进度详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupStatus
         """
         return self._BackupStatus
@@ -4109,7 +4158,6 @@ class DescribeBackUpTaskDetailResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -4425,7 +4473,6 @@ class DescribeClusterConfigsResponse(AbstractModel):
         :param _BuildVersion: 返回当前内核版本 如果不存在则返回空字符串
         :type BuildVersion: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _HasCN: 是否包含CN节点
         :type HasCN: bool
@@ -4463,7 +4510,6 @@ class DescribeClusterConfigsResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -4552,10 +4598,8 @@ class DescribeCoolDownBackendsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _List: 节点信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of CoolDownBackend
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4567,7 +4611,6 @@ class DescribeCoolDownBackendsResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -4579,7 +4622,6 @@ class DescribeCoolDownBackendsResponse(AbstractModel):
     @property
     def List(self):
         """节点信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CoolDownBackend
         """
         return self._List
@@ -4655,10 +4697,8 @@ class DescribeCoolDownPoliciesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _List: 冷热分层策略列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of CoolDownPolicyInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4670,7 +4710,6 @@ class DescribeCoolDownPoliciesResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -4682,7 +4721,6 @@ class DescribeCoolDownPoliciesResponse(AbstractModel):
     @property
     def List(self):
         """冷热分层策略列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CoolDownPolicyInfo
         """
         return self._List
@@ -4773,10 +4811,8 @@ class DescribeCoolDownTableDataResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _List: 冷热分层Table数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of CoolDownTableDataInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4788,7 +4824,6 @@ class DescribeCoolDownTableDataResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -4800,7 +4835,6 @@ class DescribeCoolDownTableDataResponse(AbstractModel):
     @property
     def List(self):
         """冷热分层Table数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CoolDownTableDataInfo
         """
         return self._List
@@ -5506,18 +5540,14 @@ class DescribeInstanceNodesInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BeNodes: Be节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeNodes: list of str
         :param _FeNodes: Fe节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeNodes: list of str
         :param _FeMaster: Fe master节点
         :type FeMaster: str
         :param _BeNodeInfos: Be节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeNodeInfos: list of NodeInfo
         :param _FeNodeInfos: Fe节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeNodeInfos: list of NodeInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5532,7 +5562,6 @@ class DescribeInstanceNodesInfoResponse(AbstractModel):
     @property
     def BeNodes(self):
         """Be节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BeNodes
@@ -5544,7 +5573,6 @@ class DescribeInstanceNodesInfoResponse(AbstractModel):
     @property
     def FeNodes(self):
         """Fe节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FeNodes
@@ -5567,7 +5595,6 @@ class DescribeInstanceNodesInfoResponse(AbstractModel):
     @property
     def BeNodeInfos(self):
         """Be节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeInfo
         """
         return self._BeNodeInfos
@@ -5579,7 +5606,6 @@ class DescribeInstanceNodesInfoResponse(AbstractModel):
     @property
     def FeNodeInfos(self):
         """Fe节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeInfo
         """
         return self._FeNodeInfos
@@ -5725,7 +5751,6 @@ class DescribeInstanceNodesResponse(AbstractModel):
         :param _TotalCount: 总数
         :type TotalCount: int
         :param _InstanceNodesList: 实例节点总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNodesList: list of InstanceNode
         :param _NodeRoles: 节点类型
         :type NodeRoles: list of str
@@ -5751,7 +5776,6 @@ class DescribeInstanceNodesResponse(AbstractModel):
     @property
     def InstanceNodesList(self):
         """实例节点总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceNode
         """
         return self._InstanceNodesList
@@ -6030,7 +6054,6 @@ class DescribeInstanceOperationsResponse(AbstractModel):
         :param _TotalCount: 操作记录总数
         :type TotalCount: int
         :param _Operations: 操作记录具体数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operations: list of InstanceOperation
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6053,7 +6076,6 @@ class DescribeInstanceOperationsResponse(AbstractModel):
     @property
     def Operations(self):
         """操作记录具体数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceOperation
         """
         return self._Operations
@@ -6212,19 +6234,14 @@ class DescribeInstanceStateResponse(AbstractModel):
         :param _InstanceState: 集群状态，例如：Serving
         :type InstanceState: str
         :param _FlowCreateTime: 集群操作创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowCreateTime: str
         :param _FlowName: 集群操作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowName: str
         :param _FlowProgress: 集群操作进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowProgress: float
         :param _InstanceStateDesc: 集群状态描述，例如：运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStateDesc: str
         :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6251,7 +6268,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def FlowCreateTime(self):
         """集群操作创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowCreateTime
@@ -6263,7 +6279,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def FlowName(self):
         """集群操作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowName
@@ -6275,7 +6290,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def FlowProgress(self):
         """集群操作进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._FlowProgress
@@ -6287,7 +6301,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def InstanceStateDesc(self):
         """集群状态描述，例如：运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceStateDesc
@@ -6299,7 +6312,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def FlowMsg(self):
         """集群流程错误信息，例如：“创建失败，资源不足”
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowMsg
@@ -6374,10 +6386,8 @@ class DescribeInstanceUsedSubnetsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: 集群使用的vpc信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _UsedSubnets: 集群使用的subnet信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedSubnets: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6389,7 +6399,6 @@ class DescribeInstanceUsedSubnetsResponse(AbstractModel):
     @property
     def VpcId(self):
         """集群使用的vpc信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -6401,7 +6410,6 @@ class DescribeInstanceUsedSubnetsResponse(AbstractModel):
     @property
     def UsedSubnets(self):
         """集群使用的subnet信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._UsedSubnets
@@ -6491,7 +6499,6 @@ class DescribeInstancesHealthStateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: base64编码后的数据，包含了集群的健康信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6502,7 +6509,6 @@ class DescribeInstancesHealthStateResponse(AbstractModel):
     @property
     def Data(self):
         """base64编码后的数据，包含了集群的健康信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -6751,10 +6757,8 @@ class DescribeRestoreTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RestoreStatus: 恢复任务进度详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type RestoreStatus: list of RestoreStatus
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6766,7 +6770,6 @@ class DescribeRestoreTaskDetailResponse(AbstractModel):
     @property
     def RestoreStatus(self):
         """恢复任务进度详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RestoreStatus
         """
         return self._RestoreStatus
@@ -6778,7 +6781,6 @@ class DescribeRestoreTaskDetailResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg

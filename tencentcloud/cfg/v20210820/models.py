@@ -1939,6 +1939,8 @@ class DescribeTaskListRequest(AbstractModel):
         :type TaskStatusList: list of int non-negative
         :param _ArchId: 架构ID
         :type ArchId: str
+        :param _ArchName: 架构名称
+        :type ArchName: str
         """
         self._Limit = None
         self._Offset = None
@@ -1955,6 +1957,7 @@ class DescribeTaskListRequest(AbstractModel):
         self._ApplicationName = None
         self._TaskStatusList = None
         self._ArchId = None
+        self._ArchName = None
 
     @property
     def Limit(self):
@@ -2121,6 +2124,17 @@ class DescribeTaskListRequest(AbstractModel):
     def ArchId(self, ArchId):
         self._ArchId = ArchId
 
+    @property
+    def ArchName(self):
+        """架构名称
+        :rtype: str
+        """
+        return self._ArchName
+
+    @ArchName.setter
+    def ArchName(self, ArchName):
+        self._ArchName = ArchName
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -2148,6 +2162,7 @@ class DescribeTaskListRequest(AbstractModel):
         self._ApplicationName = params.get("ApplicationName")
         self._TaskStatusList = params.get("TaskStatusList")
         self._ArchId = params.get("ArchId")
+        self._ArchName = params.get("ArchName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5709,6 +5724,10 @@ class TaskListItem(AbstractModel):
         :param _TaskStatusType: 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatusType: int
+        :param _ArchId: 架构ID
+        :type ArchId: str
+        :param _ArchName: 架构名称
+        :type ArchName: str
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -5724,6 +5743,8 @@ class TaskListItem(AbstractModel):
         self._ApplicationName = None
         self._VerifyId = None
         self._TaskStatusType = None
+        self._ArchId = None
+        self._ArchName = None
 
     @property
     def TaskId(self):
@@ -5887,6 +5908,28 @@ class TaskListItem(AbstractModel):
     def TaskStatusType(self, TaskStatusType):
         self._TaskStatusType = TaskStatusType
 
+    @property
+    def ArchId(self):
+        """架构ID
+        :rtype: str
+        """
+        return self._ArchId
+
+    @ArchId.setter
+    def ArchId(self, ArchId):
+        self._ArchId = ArchId
+
+    @property
+    def ArchName(self):
+        """架构名称
+        :rtype: str
+        """
+        return self._ArchName
+
+    @ArchName.setter
+    def ArchName(self, ArchName):
+        self._ArchName = ArchName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -5903,6 +5946,8 @@ class TaskListItem(AbstractModel):
         self._ApplicationName = params.get("ApplicationName")
         self._VerifyId = params.get("VerifyId")
         self._TaskStatusType = params.get("TaskStatusType")
+        self._ArchId = params.get("ArchId")
+        self._ArchName = params.get("ArchName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

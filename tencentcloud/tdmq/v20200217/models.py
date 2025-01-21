@@ -7776,7 +7776,7 @@ class DeleteRabbitMQPermissionRequest(AbstractModel):
         :type InstanceId: str
         :param _User: 用户名，登录时使用
         :type User: str
-        :param _VirtualHost: vhost名
+        :param _VirtualHost: vhost名称
         :type VirtualHost: str
         """
         self._InstanceId = None
@@ -7807,7 +7807,7 @@ class DeleteRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        """vhost名称
         :rtype: str
         """
         return self._VirtualHost

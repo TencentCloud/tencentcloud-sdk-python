@@ -2837,56 +2837,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAttackSource(self, request):
-        """已废弃
-
-        查询攻击溯源
-
-        :param request: Request instance for DescribeAttackSource.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAttackSource", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAttackSourceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAttackSourceEvents(self, request):
-        """已废弃
-
-        查询攻击溯源事件
-
-        :param request: Request instance for DescribeAttackSourceEvents.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceEventsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceEventsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAttackSourceEvents", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAttackSourceEventsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAttackStatistics(self, request):
         """网络攻击数据统计
 

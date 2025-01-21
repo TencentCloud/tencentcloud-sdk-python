@@ -18,6 +18,651 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AgentProcedure(AbstractModel):
+    """思考事件过程信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: int
+        :param _Name: 执行过程英语名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Title: 中文名, 用于展示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Status: 状态常量: 使用中: processing, 成功: success, 失败: failed
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Icon: 图标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Icon: str
+        :param _Debugging: Agent调试信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Debugging: :class:`tencentcloud.lke.v20231130.models.AgentProcedureDebugging`
+        :param _Switch: 是否切换Agent，取值为"main"或者"workflow",不切换为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _Elapsed: 当前请求执行时间, 单位 ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Elapsed: int
+        """
+        self._Index = None
+        self._Name = None
+        self._Title = None
+        self._Status = None
+        self._Icon = None
+        self._Debugging = None
+        self._Switch = None
+        self._WorkflowName = None
+        self._Elapsed = None
+
+    @property
+    def Index(self):
+        """索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Name(self):
+        """执行过程英语名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Title(self):
+        """中文名, 用于展示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Status(self):
+        """状态常量: 使用中: processing, 成功: success, 失败: failed
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Icon(self):
+        """图标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Icon
+
+    @Icon.setter
+    def Icon(self, Icon):
+        self._Icon = Icon
+
+    @property
+    def Debugging(self):
+        """Agent调试信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentProcedureDebugging`
+        """
+        return self._Debugging
+
+    @Debugging.setter
+    def Debugging(self, Debugging):
+        self._Debugging = Debugging
+
+    @property
+    def Switch(self):
+        """是否切换Agent，取值为"main"或者"workflow",不切换为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def WorkflowName(self):
+        """工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def Elapsed(self):
+        """当前请求执行时间, 单位 ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Elapsed
+
+    @Elapsed.setter
+    def Elapsed(self, Elapsed):
+        self._Elapsed = Elapsed
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Name = params.get("Name")
+        self._Title = params.get("Title")
+        self._Status = params.get("Status")
+        self._Icon = params.get("Icon")
+        if params.get("Debugging") is not None:
+            self._Debugging = AgentProcedureDebugging()
+            self._Debugging._deserialize(params.get("Debugging"))
+        self._Switch = params.get("Switch")
+        self._WorkflowName = params.get("WorkflowName")
+        self._Elapsed = params.get("Elapsed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentProcedureDebugging(AbstractModel):
+    """Agent思考过程调试信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 模型思考内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _DisplayContent: 展示的具体文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayContent: str
+        :param _DisplayType: 展示类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayType: int
+        :param _QuoteInfos: 搜索引擎展示的索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuoteInfos: list of QuoteInfo
+        :param _References: 具体的参考来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type References: list of AgentReference
+        """
+        self._Content = None
+        self._DisplayContent = None
+        self._DisplayType = None
+        self._QuoteInfos = None
+        self._References = None
+
+    @property
+    def Content(self):
+        """模型思考内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def DisplayContent(self):
+        """展示的具体文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DisplayContent
+
+    @DisplayContent.setter
+    def DisplayContent(self, DisplayContent):
+        self._DisplayContent = DisplayContent
+
+    @property
+    def DisplayType(self):
+        """展示类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DisplayType
+
+    @DisplayType.setter
+    def DisplayType(self, DisplayType):
+        self._DisplayType = DisplayType
+
+    @property
+    def QuoteInfos(self):
+        """搜索引擎展示的索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QuoteInfo
+        """
+        return self._QuoteInfos
+
+    @QuoteInfos.setter
+    def QuoteInfos(self, QuoteInfos):
+        self._QuoteInfos = QuoteInfos
+
+    @property
+    def References(self):
+        """具体的参考来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AgentReference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._DisplayContent = params.get("DisplayContent")
+        self._DisplayType = params.get("DisplayType")
+        if params.get("QuoteInfos") is not None:
+            self._QuoteInfos = []
+            for item in params.get("QuoteInfos"):
+                obj = QuoteInfo()
+                obj._deserialize(item)
+                self._QuoteInfos.append(obj)
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = AgentReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentReference(AbstractModel):
+    """Agent中的参考来源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocId: 来源文档ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocId: str
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Url: 链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _DocBizId: 文档业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocBizId: str
+        :param _DocName: 文档名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocName: str
+        :param _QaBizId: 问答业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QaBizId: str
+        :param _Index: 搜索引擎索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: int
+        :param _Title: 标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        """
+        self._DocId = None
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._Url = None
+        self._DocBizId = None
+        self._DocName = None
+        self._QaBizId = None
+        self._Index = None
+        self._Title = None
+
+    @property
+    def DocId(self):
+        """来源文档ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def Id(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        """链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def DocBizId(self):
+        """文档业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def DocName(self):
+        """文档名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DocName
+
+    @DocName.setter
+    def DocName(self, DocName):
+        self._DocName = DocName
+
+    @property
+    def QaBizId(self):
+        """问答业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QaBizId
+
+    @QaBizId.setter
+    def QaBizId(self, QaBizId):
+        self._QaBizId = QaBizId
+
+    @property
+    def Index(self):
+        """搜索引擎索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Title(self):
+        """标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+
+    def _deserialize(self, params):
+        self._DocId = params.get("DocId")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
+        self._DocBizId = params.get("DocBizId")
+        self._DocName = params.get("DocName")
+        self._QaBizId = params.get("QaBizId")
+        self._Index = params.get("Index")
+        self._Title = params.get("Title")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentThought(AbstractModel):
+    """Agent的思考过程
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 会话 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _RequestId: 请求 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestId: str
+        :param _RecordId: 对应哪条会话, 会话 ID, 用于回答的消息存储使用, 可提前生成, 保存消息时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param _Elapsed: 当前请求执行时间, 单位 ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Elapsed: int
+        :param _IsWorkflow: 当前是否为工作流
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsWorkflow: bool
+        :param _WorkflowName: 如果当前是工作流，工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _Procedures: 具体思考过程详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Procedures: list of AgentProcedure
+        :param _TraceId: TraceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceId: str
+        """
+        self._SessionId = None
+        self._RequestId = None
+        self._RecordId = None
+        self._Elapsed = None
+        self._IsWorkflow = None
+        self._WorkflowName = None
+        self._Procedures = None
+        self._TraceId = None
+
+    @property
+    def SessionId(self):
+        """会话 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        """请求 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def RecordId(self):
+        """对应哪条会话, 会话 ID, 用于回答的消息存储使用, 可提前生成, 保存消息时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Elapsed(self):
+        """当前请求执行时间, 单位 ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Elapsed
+
+    @Elapsed.setter
+    def Elapsed(self, Elapsed):
+        self._Elapsed = Elapsed
+
+    @property
+    def IsWorkflow(self):
+        """当前是否为工作流
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsWorkflow
+
+    @IsWorkflow.setter
+    def IsWorkflow(self, IsWorkflow):
+        self._IsWorkflow = IsWorkflow
+
+    @property
+    def WorkflowName(self):
+        """如果当前是工作流，工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def Procedures(self):
+        """具体思考过程详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AgentProcedure
+        """
+        return self._Procedures
+
+    @Procedures.setter
+    def Procedures(self, Procedures):
+        self._Procedures = Procedures
+
+    @property
+    def TraceId(self):
+        """TraceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+        self._RecordId = params.get("RecordId")
+        self._Elapsed = params.get("Elapsed")
+        self._IsWorkflow = params.get("IsWorkflow")
+        self._WorkflowName = params.get("WorkflowName")
+        if params.get("Procedures") is not None:
+            self._Procedures = []
+            for item in params.get("Procedures"):
+                obj = AgentProcedure()
+                obj._deserialize(item)
+                self._Procedures.append(obj)
+        self._TraceId = params.get("TraceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiVarAttrInfo(AbstractModel):
     """自定义变量和标签关系数据
 
@@ -191,9 +836,15 @@ class AppInfo(AbstractModel):
         :param _ModelName: 模型名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelName: str
-        :param _ModelAliasName: 模型别名
+        :param _ModelAliasName: 生成模型别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelAliasName: str
+        :param _Pattern: 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pattern: str
+        :param _ThoughtModelAliasName: 思考模型别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThoughtModelAliasName: str
         """
         self._AppType = None
         self._AppTypeDesc = None
@@ -207,6 +858,8 @@ class AppInfo(AbstractModel):
         self._Operator = None
         self._ModelName = None
         self._ModelAliasName = None
+        self._Pattern = None
+        self._ThoughtModelAliasName = None
 
     @property
     def AppType(self):
@@ -342,7 +995,7 @@ class AppInfo(AbstractModel):
 
     @property
     def ModelAliasName(self):
-        """模型别名
+        """生成模型别名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -351,6 +1004,30 @@ class AppInfo(AbstractModel):
     @ModelAliasName.setter
     def ModelAliasName(self, ModelAliasName):
         self._ModelAliasName = ModelAliasName
+
+    @property
+    def Pattern(self):
+        """应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def ThoughtModelAliasName(self):
+        """思考模型别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ThoughtModelAliasName
+
+    @ThoughtModelAliasName.setter
+    def ThoughtModelAliasName(self, ThoughtModelAliasName):
+        self._ThoughtModelAliasName = ThoughtModelAliasName
 
 
     def _deserialize(self, params):
@@ -366,6 +1043,8 @@ class AppInfo(AbstractModel):
         self._Operator = params.get("Operator")
         self._ModelName = params.get("ModelName")
         self._ModelAliasName = params.get("ModelAliasName")
+        self._Pattern = params.get("Pattern")
+        self._ThoughtModelAliasName = params.get("ThoughtModelAliasName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -407,6 +1086,12 @@ class AppModel(AbstractModel):
         :param _UsageType: 使用类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsageType: str
+        :param _Temperature: 模型温度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Temperature: str
+        :param _TopP: 模型TopP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopP: str
         """
         self._Name = None
         self._Desc = None
@@ -416,6 +1101,8 @@ class AppModel(AbstractModel):
         self._IsUseContext = None
         self._HistoryLimit = None
         self._UsageType = None
+        self._Temperature = None
+        self._TopP = None
 
     @property
     def Name(self):
@@ -513,6 +1200,30 @@ class AppModel(AbstractModel):
     def UsageType(self, UsageType):
         self._UsageType = UsageType
 
+    @property
+    def Temperature(self):
+        """模型温度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        """模型TopP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -523,6 +1234,8 @@ class AppModel(AbstractModel):
         self._IsUseContext = params.get("IsUseContext")
         self._HistoryLimit = params.get("HistoryLimit")
         self._UsageType = params.get("UsageType")
+        self._Temperature = params.get("Temperature")
+        self._TopP = params.get("TopP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10043,8 +10756,7 @@ class GetDocPreviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileName: 文件名
-
+        :param _FileName: 文件名, 发布端固定使用这个名称
         :type FileName: str
         :param _FileType: 文件类型
         :type FileType: str
@@ -10057,6 +10769,8 @@ class GetDocPreviewResponse(AbstractModel):
         :param _Bucket: cos桶
 
         :type Bucket: str
+        :param _NewName: 存在文档重命名情况下的新名称, 评测端优先使用这个名称
+        :type NewName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10065,12 +10779,12 @@ class GetDocPreviewResponse(AbstractModel):
         self._CosUrl = None
         self._Url = None
         self._Bucket = None
+        self._NewName = None
         self._RequestId = None
 
     @property
     def FileName(self):
-        """文件名
-
+        """文件名, 发布端固定使用这个名称
         :rtype: str
         """
         return self._FileName
@@ -10127,6 +10841,17 @@ class GetDocPreviewResponse(AbstractModel):
         self._Bucket = Bucket
 
     @property
+    def NewName(self):
+        """存在文档重命名情况下的新名称, 评测端优先使用这个名称
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10144,6 +10869,7 @@ class GetDocPreviewResponse(AbstractModel):
         self._CosUrl = params.get("CosUrl")
         self._Url = params.get("Url")
         self._Bucket = params.get("Bucket")
+        self._NewName = params.get("NewName")
         self._RequestId = params.get("RequestId")
 
 
@@ -11053,7 +11779,7 @@ class GetWsTokenRequest(AbstractModel):
         :type BotAppKey: str
         :param _VisitorBizId: 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
         :type VisitorBizId: str
-        :param _VisitorLabels: 知识标签（用于知识库中知识的检索过滤）
+        :param _VisitorLabels: 知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
         :type VisitorLabels: list of GetWsTokenReq_Label
         """
         self._Type = None
@@ -11096,7 +11822,7 @@ class GetWsTokenRequest(AbstractModel):
 
     @property
     def VisitorLabels(self):
-        """知识标签（用于知识库中知识的检索过滤）
+        """知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
         :rtype: list of GetWsTokenReq_Label
         """
         return self._VisitorLabels
@@ -11133,24 +11859,30 @@ class GetWsTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Token: token值（有效期60s）
+        :param _Token: token值（有效期60s，仅一次有效，多次校验会报错）
         :type Token: str
         :param _Balance: 余额; 余额大于 0 时表示有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type Balance: float
         :param _InputLenLimit: 对话窗输入字符限制
         :type InputLenLimit: int
+        :param _Pattern: 应用模式，standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+        :type Pattern: str
+        :param _SingleWorkflow: SingleWorkflow
+        :type SingleWorkflow: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaSingleWorkflow`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Token = None
         self._Balance = None
         self._InputLenLimit = None
+        self._Pattern = None
+        self._SingleWorkflow = None
         self._RequestId = None
 
     @property
     def Token(self):
-        """token值（有效期60s）
+        """token值（有效期60s，仅一次有效，多次校验会报错）
         :rtype: str
         """
         return self._Token
@@ -11183,6 +11915,28 @@ class GetWsTokenResponse(AbstractModel):
         self._InputLenLimit = InputLenLimit
 
     @property
+    def Pattern(self):
+        """应用模式，standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def SingleWorkflow(self):
+        """SingleWorkflow
+        :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaSingleWorkflow`
+        """
+        return self._SingleWorkflow
+
+    @SingleWorkflow.setter
+    def SingleWorkflow(self, SingleWorkflow):
+        self._SingleWorkflow = SingleWorkflow
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11198,6 +11952,10 @@ class GetWsTokenResponse(AbstractModel):
         self._Token = params.get("Token")
         self._Balance = params.get("Balance")
         self._InputLenLimit = params.get("InputLenLimit")
+        self._Pattern = params.get("Pattern")
+        if params.get("SingleWorkflow") is not None:
+            self._SingleWorkflow = KnowledgeQaSingleWorkflow()
+            self._SingleWorkflow._deserialize(params.get("SingleWorkflow"))
         self._RequestId = params.get("RequestId")
 
 
@@ -12071,7 +12829,7 @@ class KnowledgeQaConfig(AbstractModel):
         :param _RoleDescription: 角色描述，300字符以内
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleDescription: str
-        :param _Model: 模型配置
+        :param _Model: 生成模型配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Model: :class:`tencentcloud.lke.v20231130.models.AppModel`
         :param _Search: 知识搜索配置
@@ -12086,6 +12844,21 @@ class KnowledgeQaConfig(AbstractModel):
         :param _SearchRange: 检索范围
 注意：此字段可能返回 null，表示取不到有效值。
         :type SearchRange: :class:`tencentcloud.lke.v20231130.models.SearchRange`
+        :param _Pattern: 应用模式，standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pattern: str
+        :param _SearchStrategy: 检索策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchStrategy: :class:`tencentcloud.lke.v20231130.models.SearchStrategy`
+        :param _SingleWorkflow: 单工作流ID，Pattern为single_workflow时传入
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SingleWorkflow: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaSingleWorkflow`
+        :param _Plugins: 应用关联插件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Plugins: list of KnowledgeQaPlugin
+        :param _ThoughtModel: 思考模型配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThoughtModel: :class:`tencentcloud.lke.v20231130.models.AppModel`
         """
         self._Greeting = None
         self._RoleDescription = None
@@ -12094,6 +12867,11 @@ class KnowledgeQaConfig(AbstractModel):
         self._Output = None
         self._Workflow = None
         self._SearchRange = None
+        self._Pattern = None
+        self._SearchStrategy = None
+        self._SingleWorkflow = None
+        self._Plugins = None
+        self._ThoughtModel = None
 
     @property
     def Greeting(self):
@@ -12121,7 +12899,7 @@ class KnowledgeQaConfig(AbstractModel):
 
     @property
     def Model(self):
-        """模型配置
+        """生成模型配置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.AppModel`
         """
@@ -12179,6 +12957,66 @@ class KnowledgeQaConfig(AbstractModel):
     def SearchRange(self, SearchRange):
         self._SearchRange = SearchRange
 
+    @property
+    def Pattern(self):
+        """应用模式，standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def SearchStrategy(self):
+        """检索策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.SearchStrategy`
+        """
+        return self._SearchStrategy
+
+    @SearchStrategy.setter
+    def SearchStrategy(self, SearchStrategy):
+        self._SearchStrategy = SearchStrategy
+
+    @property
+    def SingleWorkflow(self):
+        """单工作流ID，Pattern为single_workflow时传入
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaSingleWorkflow`
+        """
+        return self._SingleWorkflow
+
+    @SingleWorkflow.setter
+    def SingleWorkflow(self, SingleWorkflow):
+        self._SingleWorkflow = SingleWorkflow
+
+    @property
+    def Plugins(self):
+        """应用关联插件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KnowledgeQaPlugin
+        """
+        return self._Plugins
+
+    @Plugins.setter
+    def Plugins(self, Plugins):
+        self._Plugins = Plugins
+
+    @property
+    def ThoughtModel(self):
+        """思考模型配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AppModel`
+        """
+        return self._ThoughtModel
+
+    @ThoughtModel.setter
+    def ThoughtModel(self, ThoughtModel):
+        self._ThoughtModel = ThoughtModel
+
 
     def _deserialize(self, params):
         self._Greeting = params.get("Greeting")
@@ -12201,6 +13039,22 @@ class KnowledgeQaConfig(AbstractModel):
         if params.get("SearchRange") is not None:
             self._SearchRange = SearchRange()
             self._SearchRange._deserialize(params.get("SearchRange"))
+        self._Pattern = params.get("Pattern")
+        if params.get("SearchStrategy") is not None:
+            self._SearchStrategy = SearchStrategy()
+            self._SearchStrategy._deserialize(params.get("SearchStrategy"))
+        if params.get("SingleWorkflow") is not None:
+            self._SingleWorkflow = KnowledgeQaSingleWorkflow()
+            self._SingleWorkflow._deserialize(params.get("SingleWorkflow"))
+        if params.get("Plugins") is not None:
+            self._Plugins = []
+            for item in params.get("Plugins"):
+                obj = KnowledgeQaPlugin()
+                obj._deserialize(item)
+                self._Plugins.append(obj)
+        if params.get("ThoughtModel") is not None:
+            self._ThoughtModel = AppModel()
+            self._ThoughtModel._deserialize(params.get("ThoughtModel"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12341,6 +13195,154 @@ class KnowledgeQaOutput(AbstractModel):
         self._UseQuestionClarify = params.get("UseQuestionClarify")
         self._QuestionClarifyKeywords = params.get("QuestionClarifyKeywords")
         self._UseRecommended = params.get("UseRecommended")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeQaPlugin(AbstractModel):
+    """应用关联插件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: 插件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PluginId: str
+        :param _PluginName: 插件名称
+        :type PluginName: str
+        :param _PluginIcon: 插件图标
+        :type PluginIcon: str
+        :param _ToolId: 工具ID
+        :type ToolId: str
+        :param _ToolName: 工具名称
+        :type ToolName: str
+        :param _ToolDesc: 工具描述
+        :type ToolDesc: str
+        :param _Inputs: 工具输入参数
+        :type Inputs: list of PluginToolReqParam
+        :param _IsBindingKnowledge: 插件是否和知识库绑定
+        :type IsBindingKnowledge: bool
+        """
+        self._PluginId = None
+        self._PluginName = None
+        self._PluginIcon = None
+        self._ToolId = None
+        self._ToolName = None
+        self._ToolDesc = None
+        self._Inputs = None
+        self._IsBindingKnowledge = None
+
+    @property
+    def PluginId(self):
+        """插件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def PluginName(self):
+        """插件名称
+        :rtype: str
+        """
+        return self._PluginName
+
+    @PluginName.setter
+    def PluginName(self, PluginName):
+        self._PluginName = PluginName
+
+    @property
+    def PluginIcon(self):
+        """插件图标
+        :rtype: str
+        """
+        return self._PluginIcon
+
+    @PluginIcon.setter
+    def PluginIcon(self, PluginIcon):
+        self._PluginIcon = PluginIcon
+
+    @property
+    def ToolId(self):
+        """工具ID
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def ToolName(self):
+        """工具名称
+        :rtype: str
+        """
+        return self._ToolName
+
+    @ToolName.setter
+    def ToolName(self, ToolName):
+        self._ToolName = ToolName
+
+    @property
+    def ToolDesc(self):
+        """工具描述
+        :rtype: str
+        """
+        return self._ToolDesc
+
+    @ToolDesc.setter
+    def ToolDesc(self, ToolDesc):
+        self._ToolDesc = ToolDesc
+
+    @property
+    def Inputs(self):
+        """工具输入参数
+        :rtype: list of PluginToolReqParam
+        """
+        return self._Inputs
+
+    @Inputs.setter
+    def Inputs(self, Inputs):
+        self._Inputs = Inputs
+
+    @property
+    def IsBindingKnowledge(self):
+        """插件是否和知识库绑定
+        :rtype: bool
+        """
+        return self._IsBindingKnowledge
+
+    @IsBindingKnowledge.setter
+    def IsBindingKnowledge(self, IsBindingKnowledge):
+        self._IsBindingKnowledge = IsBindingKnowledge
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._PluginName = params.get("PluginName")
+        self._PluginIcon = params.get("PluginIcon")
+        self._ToolId = params.get("ToolId")
+        self._ToolName = params.get("ToolName")
+        self._ToolDesc = params.get("ToolDesc")
+        if params.get("Inputs") is not None:
+            self._Inputs = []
+            for item in params.get("Inputs"):
+                obj = PluginToolReqParam()
+                obj._deserialize(item)
+                self._Inputs.append(obj)
+        self._IsBindingKnowledge = params.get("IsBindingKnowledge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12525,6 +13527,102 @@ class KnowledgeQaSearch(AbstractModel):
         
 
 
+class KnowledgeQaSingleWorkflow(AbstractModel):
+    """问答知识库单工作流模式下指定单工作流配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+        :type WorkflowName: str
+        :param _WorkflowDesc: 工作流描述
+        :type WorkflowDesc: str
+        :param _Status: 工作流状态，发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 FAIL:发布失败)
+        :type Status: str
+        :param _IsEnable: 工作流是否启用
+        :type IsEnable: bool
+        """
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._WorkflowDesc = None
+        self._Status = None
+        self._IsEnable = None
+
+    @property
+    def WorkflowId(self):
+        """工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        """工作流名称
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def WorkflowDesc(self):
+        """工作流描述
+        :rtype: str
+        """
+        return self._WorkflowDesc
+
+    @WorkflowDesc.setter
+    def WorkflowDesc(self, WorkflowDesc):
+        self._WorkflowDesc = WorkflowDesc
+
+    @property
+    def Status(self):
+        """工作流状态，发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 FAIL:发布失败)
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsEnable(self):
+        """工作流是否启用
+        :rtype: bool
+        """
+        return self._IsEnable
+
+    @IsEnable.setter
+    def IsEnable(self, IsEnable):
+        self._IsEnable = IsEnable
+
+
+    def _deserialize(self, params):
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._WorkflowDesc = params.get("WorkflowDesc")
+        self._Status = params.get("Status")
+        self._IsEnable = params.get("IsEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KnowledgeSummary(AbstractModel):
     """检索知识
 
@@ -12590,8 +13688,12 @@ class KnowledgeWorkflow(AbstractModel):
         :param _IsEnabled: 是否启用工作流
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsEnabled: bool
+        :param _UsePdl: 是否启用PDL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsePdl: bool
         """
         self._IsEnabled = None
+        self._UsePdl = None
 
     @property
     def IsEnabled(self):
@@ -12605,9 +13707,22 @@ class KnowledgeWorkflow(AbstractModel):
     def IsEnabled(self, IsEnabled):
         self._IsEnabled = IsEnabled
 
+    @property
+    def UsePdl(self):
+        """是否启用PDL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._UsePdl
+
+    @UsePdl.setter
+    def UsePdl(self, UsePdl):
+        self._UsePdl = UsePdl
+
 
     def _deserialize(self, params):
         self._IsEnabled = params.get("IsEnabled")
+        self._UsePdl = params.get("UsePdl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13360,6 +14475,8 @@ class ListDocItem(AbstractModel):
         :param _FileName: 文件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
+        :param _NewName: 重命名的新文档名称，在重命名提交之后，文档发布之前都是这个名称
+        :type NewName: str
         :param _FileType: 文件类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
@@ -13442,6 +14559,7 @@ class ListDocItem(AbstractModel):
         """
         self._DocBizId = None
         self._FileName = None
+        self._NewName = None
         self._FileType = None
         self._CosUrl = None
         self._UpdateTime = None
@@ -13492,6 +14610,17 @@ class ListDocItem(AbstractModel):
     @FileName.setter
     def FileName(self, FileName):
         self._FileName = FileName
+
+    @property
+    def NewName(self):
+        """重命名的新文档名称，在重命名提交之后，文档发布之前都是这个名称
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
 
     @property
     def FileType(self):
@@ -13810,6 +14939,7 @@ class ListDocItem(AbstractModel):
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
         self._FileName = params.get("FileName")
+        self._NewName = params.get("NewName")
         self._FileType = params.get("FileType")
         self._CosUrl = params.get("CosUrl")
         self._UpdateTime = params.get("UpdateTime")
@@ -14049,12 +15179,18 @@ class ListModelRequest(AbstractModel):
         r"""
         :param _AppType: 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
         :type AppType: str
+        :param _Pattern: 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+        :type Pattern: str
+        :param _ModelCategory: 模型类别 generate：生成模型，thought：思考模型
+        :type ModelCategory: str
         :param _LoginUin: 登录用户主账号(集成商模式必填)	
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)	
         :type LoginSubAccountUin: str
         """
         self._AppType = None
+        self._Pattern = None
+        self._ModelCategory = None
         self._LoginUin = None
         self._LoginSubAccountUin = None
 
@@ -14068,6 +15204,28 @@ class ListModelRequest(AbstractModel):
     @AppType.setter
     def AppType(self, AppType):
         self._AppType = AppType
+
+    @property
+    def Pattern(self):
+        """应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def ModelCategory(self):
+        """模型类别 generate：生成模型，thought：思考模型
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
 
     @property
     def LoginUin(self):
@@ -14094,6 +15252,8 @@ class ListModelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._AppType = params.get("AppType")
+        self._Pattern = params.get("Pattern")
+        self._ModelCategory = params.get("ModelCategory")
         self._LoginUin = params.get("LoginUin")
         self._LoginSubAccountUin = params.get("LoginSubAccountUin")
         memeber_set = set(params.keys())
@@ -14596,6 +15756,8 @@ class ListQaItem(AbstractModel):
         :type AttrLabels: list of AttrLabel
         :param _SimilarQuestionNum: 相似问个数
         :type SimilarQuestionNum: int
+        :param _SimilarQuestionTips: 返回问答关联的相似问,联动搜索,仅展示一条
+        :type SimilarQuestionTips: str
         """
         self._QaBizId = None
         self._Question = None
@@ -14618,6 +15780,7 @@ class ListQaItem(AbstractModel):
         self._AttrRange = None
         self._AttrLabels = None
         self._SimilarQuestionNum = None
+        self._SimilarQuestionTips = None
 
     @property
     def QaBizId(self):
@@ -14850,6 +16013,17 @@ class ListQaItem(AbstractModel):
     def SimilarQuestionNum(self, SimilarQuestionNum):
         self._SimilarQuestionNum = SimilarQuestionNum
 
+    @property
+    def SimilarQuestionTips(self):
+        """返回问答关联的相似问,联动搜索,仅展示一条
+        :rtype: str
+        """
+        return self._SimilarQuestionTips
+
+    @SimilarQuestionTips.setter
+    def SimilarQuestionTips(self, SimilarQuestionTips):
+        self._SimilarQuestionTips = SimilarQuestionTips
+
 
     def _deserialize(self, params):
         self._QaBizId = params.get("QaBizId")
@@ -14878,6 +16052,7 @@ class ListQaItem(AbstractModel):
                 obj._deserialize(item)
                 self._AttrLabels.append(obj)
         self._SimilarQuestionNum = params.get("SimilarQuestionNum")
+        self._SimilarQuestionTips = params.get("SimilarQuestionTips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18531,6 +19706,9 @@ class MsgRecord(AbstractModel):
         :param _QuoteInfos: 参考来源引用位置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuoteInfos: list of QuoteInfo
+        :param _AgentThought: Agent的思考过程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentThought: :class:`tencentcloud.lke.v20231130.models.AgentThought`
         """
         self._Content = None
         self._SessionId = None
@@ -18555,6 +19733,7 @@ class MsgRecord(AbstractModel):
         self._TaskFlow = None
         self._FileInfos = None
         self._QuoteInfos = None
+        self._AgentThought = None
 
     @property
     def Content(self):
@@ -18832,6 +20011,18 @@ class MsgRecord(AbstractModel):
     def QuoteInfos(self, QuoteInfos):
         self._QuoteInfos = QuoteInfos
 
+    @property
+    def AgentThought(self):
+        """Agent的思考过程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentThought`
+        """
+        return self._AgentThought
+
+    @AgentThought.setter
+    def AgentThought(self, AgentThought):
+        self._AgentThought = AgentThought
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -18876,6 +20067,9 @@ class MsgRecord(AbstractModel):
                 obj = QuoteInfo()
                 obj._deserialize(item)
                 self._QuoteInfos.append(obj)
+        if params.get("AgentThought") is not None:
+            self._AgentThought = AgentThought()
+            self._AgentThought._deserialize(params.get("AgentThought"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19212,6 +20406,122 @@ class ParseDocResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class PluginToolReqParam(AbstractModel):
+    """插件参数请求结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 参数名称
+        :type Name: str
+        :param _Desc: 参数描述
+        :type Desc: str
+        :param _Type: 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+        :type Type: int
+        :param _IsRequired: 参数是否必填
+        :type IsRequired: bool
+        :param _DefaultValue: 参数默认值
+        :type DefaultValue: str
+        :param _SubParams: 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        :type SubParams: list of PluginToolReqParam
+        """
+        self._Name = None
+        self._Desc = None
+        self._Type = None
+        self._IsRequired = None
+        self._DefaultValue = None
+        self._SubParams = None
+
+    @property
+    def Name(self):
+        """参数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        """参数描述
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Type(self):
+        """参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsRequired(self):
+        """参数是否必填
+        :rtype: bool
+        """
+        return self._IsRequired
+
+    @IsRequired.setter
+    def IsRequired(self, IsRequired):
+        self._IsRequired = IsRequired
+
+    @property
+    def DefaultValue(self):
+        """参数默认值
+        :rtype: str
+        """
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def SubParams(self):
+        """子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        :rtype: list of PluginToolReqParam
+        """
+        return self._SubParams
+
+    @SubParams.setter
+    def SubParams(self, SubParams):
+        self._SubParams = SubParams
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._Type = params.get("Type")
+        self._IsRequired = params.get("IsRequired")
+        self._DefaultValue = params.get("DefaultValue")
+        if params.get("SubParams") is not None:
+            self._SubParams = []
+            for item in params.get("SubParams"):
+                obj = PluginToolReqParam()
+                obj._deserialize(item)
+                self._SubParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Polygon(AbstractModel):
@@ -21463,7 +22773,7 @@ class ReleaseQA(AbstractModel):
         :type Action: int
         :param _ActionDesc: 状态描述
         :type ActionDesc: str
-        :param _Source: 来源
+        :param _Source: 来源1:文档生成，2：批量导入，3：手动添加
         :type Source: int
         :param _SourceDesc: 来源描述
         :type SourceDesc: str
@@ -21539,7 +22849,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def Source(self):
-        """来源
+        """来源1:文档生成，2：批量导入，3：手动添加
         :rtype: int
         """
         return self._Source
@@ -22774,6 +24084,61 @@ class SearchRange(AbstractModel):
                 obj = ApiVarAttrInfo()
                 obj._deserialize(item)
                 self._ApiVarAttrInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchStrategy(AbstractModel):
+    """知识库检索策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyType: 检索策略类型 0:混合检索，1：语义检索
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyType: int
+        :param _TableEnhancement: Excel检索增强开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableEnhancement: bool
+        """
+        self._StrategyType = None
+        self._TableEnhancement = None
+
+    @property
+    def StrategyType(self):
+        """检索策略类型 0:混合检索，1：语义检索
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def TableEnhancement(self):
+        """Excel检索增强开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TableEnhancement
+
+    @TableEnhancement.setter
+    def TableEnhancement(self, TableEnhancement):
+        self._TableEnhancement = TableEnhancement
+
+
+    def _deserialize(self, params):
+        self._StrategyType = params.get("StrategyType")
+        self._TableEnhancement = params.get("TableEnhancement")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

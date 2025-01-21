@@ -1022,6 +1022,10 @@ class CreateDatasourceRequest(AbstractModel):
         :type VpcId: str
         :param _OperationAuthLimit: 操作权限限制
         :type OperationAuthLimit: list of str
+        :param _UseVPC: 开启vpc
+        :type UseVPC: bool
+        :param _RegionId: 地域
+        :type RegionId: str
         """
         self._DbHost = None
         self._DbPort = None
@@ -1043,6 +1047,8 @@ class CreateDatasourceRequest(AbstractModel):
         self._Vport = None
         self._VpcId = None
         self._OperationAuthLimit = None
+        self._UseVPC = None
+        self._RegionId = None
 
     @property
     def DbHost(self):
@@ -1264,6 +1270,28 @@ class CreateDatasourceRequest(AbstractModel):
     def OperationAuthLimit(self, OperationAuthLimit):
         self._OperationAuthLimit = OperationAuthLimit
 
+    @property
+    def UseVPC(self):
+        """开启vpc
+        :rtype: bool
+        """
+        return self._UseVPC
+
+    @UseVPC.setter
+    def UseVPC(self, UseVPC):
+        self._UseVPC = UseVPC
+
+    @property
+    def RegionId(self):
+        """地域
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
 
     def _deserialize(self, params):
         self._DbHost = params.get("DbHost")
@@ -1286,6 +1314,8 @@ class CreateDatasourceRequest(AbstractModel):
         self._Vport = params.get("Vport")
         self._VpcId = params.get("VpcId")
         self._OperationAuthLimit = params.get("OperationAuthLimit")
+        self._UseVPC = params.get("UseVPC")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2541,6 +2571,9 @@ class DatasourceInfo(AbstractModel):
         :param _DbTypeName: 数据源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbTypeName: str
+        :param _UseVPC: 开启vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseVPC: bool
         """
         self._Id = None
         self._DbName = None
@@ -2578,6 +2611,7 @@ class DatasourceInfo(AbstractModel):
         self._DataOriginDatasourceId = None
         self._ClusterId = None
         self._DbTypeName = None
+        self._UseVPC = None
 
     @property
     def Id(self):
@@ -3001,6 +3035,18 @@ class DatasourceInfo(AbstractModel):
     def DbTypeName(self, DbTypeName):
         self._DbTypeName = DbTypeName
 
+    @property
+    def UseVPC(self):
+        """开启vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._UseVPC
+
+    @UseVPC.setter
+    def UseVPC(self, UseVPC):
+        self._UseVPC = UseVPC
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3046,6 +3092,7 @@ class DatasourceInfo(AbstractModel):
         self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
         self._ClusterId = params.get("ClusterId")
         self._DbTypeName = params.get("DbTypeName")
+        self._UseVPC = params.get("UseVPC")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6336,6 +6383,10 @@ class ModifyDatasourceRequest(AbstractModel):
         :type Vport: str
         :param _VpcId: 腾讯云私有网络标识
         :type VpcId: str
+        :param _UseVPC: 开启vpc	
+        :type UseVPC: bool
+        :param _RegionId: 地域
+        :type RegionId: str
         """
         self._DbHost = None
         self._DbPort = None
@@ -6357,6 +6408,8 @@ class ModifyDatasourceRequest(AbstractModel):
         self._Vip = None
         self._Vport = None
         self._VpcId = None
+        self._UseVPC = None
+        self._RegionId = None
 
     @property
     def DbHost(self):
@@ -6578,6 +6631,28 @@ class ModifyDatasourceRequest(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def UseVPC(self):
+        """开启vpc	
+        :rtype: bool
+        """
+        return self._UseVPC
+
+    @UseVPC.setter
+    def UseVPC(self, UseVPC):
+        self._UseVPC = UseVPC
+
+    @property
+    def RegionId(self):
+        """地域
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
 
     def _deserialize(self, params):
         self._DbHost = params.get("DbHost")
@@ -6600,6 +6675,8 @@ class ModifyDatasourceRequest(AbstractModel):
         self._Vip = params.get("Vip")
         self._Vport = params.get("Vport")
         self._VpcId = params.get("VpcId")
+        self._UseVPC = params.get("UseVPC")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7209,6 +7286,12 @@ class ModifyUserRoleRequest(AbstractModel):
         :type AppUserId: str
         :param _LoginSecurityStatus: 是否开启手机验证码登录（0 关闭，1 开启）
         :type LoginSecurityStatus: int
+        :param _ResetPassWordTip: 是否开启密码过期提醒（0 关闭，1 开启
+        :type ResetPassWordTip: int
+        :param _ForceResetPassWord: 强制修改密码（0 关闭，1 开启）
+        :type ForceResetPassWord: int
+        :param _PasswordExpired: 密码过期提醒时间，30、60、90（默认）、180天
+        :type PasswordExpired: int
         """
         self._UserId = None
         self._RoleIdList = None
@@ -7218,6 +7301,9 @@ class ModifyUserRoleRequest(AbstractModel):
         self._AreaCode = None
         self._AppUserId = None
         self._LoginSecurityStatus = None
+        self._ResetPassWordTip = None
+        self._ForceResetPassWord = None
+        self._PasswordExpired = None
 
     @property
     def UserId(self):
@@ -7307,6 +7393,39 @@ class ModifyUserRoleRequest(AbstractModel):
     def LoginSecurityStatus(self, LoginSecurityStatus):
         self._LoginSecurityStatus = LoginSecurityStatus
 
+    @property
+    def ResetPassWordTip(self):
+        """是否开启密码过期提醒（0 关闭，1 开启
+        :rtype: int
+        """
+        return self._ResetPassWordTip
+
+    @ResetPassWordTip.setter
+    def ResetPassWordTip(self, ResetPassWordTip):
+        self._ResetPassWordTip = ResetPassWordTip
+
+    @property
+    def ForceResetPassWord(self):
+        """强制修改密码（0 关闭，1 开启）
+        :rtype: int
+        """
+        return self._ForceResetPassWord
+
+    @ForceResetPassWord.setter
+    def ForceResetPassWord(self, ForceResetPassWord):
+        self._ForceResetPassWord = ForceResetPassWord
+
+    @property
+    def PasswordExpired(self):
+        """密码过期提醒时间，30、60、90（默认）、180天
+        :rtype: int
+        """
+        return self._PasswordExpired
+
+    @PasswordExpired.setter
+    def PasswordExpired(self, PasswordExpired):
+        self._PasswordExpired = PasswordExpired
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -7317,6 +7436,9 @@ class ModifyUserRoleRequest(AbstractModel):
         self._AreaCode = params.get("AreaCode")
         self._AppUserId = params.get("AppUserId")
         self._LoginSecurityStatus = params.get("LoginSecurityStatus")
+        self._ResetPassWordTip = params.get("ResetPassWordTip")
+        self._ForceResetPassWord = params.get("ForceResetPassWord")
+        self._PasswordExpired = params.get("PasswordExpired")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
