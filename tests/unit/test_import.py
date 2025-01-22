@@ -1144,6 +1144,11 @@ def test_import_tcbr():
     from tencentcloud.tcbr.v20220217 import models
 
 
+def test_import_tccatalog():
+    from tencentcloud.tccatalog.v20241024 import tccatalog_client
+    from tencentcloud.tccatalog.v20241024 import models
+
+
 def test_import_tcex():
     from tencentcloud.tcex.v20200727 import tcex_client
     from tencentcloud.tcex.v20200727 import models

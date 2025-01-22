@@ -7262,6 +7262,8 @@ class DescribeRedisTopHotKeysRequest(AbstractModel):
         :type InstanceNodeIds: list of str
         :param _Limit: top 数目，默认为20，最大值为100。
         :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
         """
         self._InstanceId = None
         self._StartTime = None
@@ -7269,6 +7271,7 @@ class DescribeRedisTopHotKeysRequest(AbstractModel):
         self._Product = None
         self._InstanceNodeIds = None
         self._Limit = None
+        self._Offset = None
 
     @property
     def InstanceId(self):
@@ -7336,6 +7339,17 @@ class DescribeRedisTopHotKeysRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7344,6 +7358,7 @@ class DescribeRedisTopHotKeysRequest(AbstractModel):
         self._Product = params.get("Product")
         self._InstanceNodeIds = params.get("InstanceNodeIds")
         self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

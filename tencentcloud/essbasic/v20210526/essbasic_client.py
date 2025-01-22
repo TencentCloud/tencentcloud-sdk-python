@@ -1655,6 +1655,34 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBatchOrganizationAuthorizationUrl(self, request):
+        """此接口用于获取企业批量认证链接-单链接包含多条认证流。
+
+        前提条件：已调用 [CreateBatchOrganizationRegistrationTasks创建子企业批量认证链接任务接口](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks) 和[查询子企业批量认证链接DescribeBatchOrganizationRegistrationUrls](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls) 确保认证任务已经完成。
+
+        异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间。
+        此链接包含多条认证流程，使用该链接可以批量的对企业进行认证。
+
+        :param request: Request instance for CreateBatchOrganizationAuthorizationUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateBatchOrganizationAuthorizationUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateBatchOrganizationAuthorizationUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchOrganizationAuthorizationUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchOrganizationAuthorizationUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBatchOrganizationRegistrationTasks(self, request):
         """该接口用于批量创建企业认证链接， 可以支持PC浏览器，H5和小程序三种途径。
         此接口为异步提交任务接口，需要与[查询子企业批量认证链接](https://qcloudimg.tencent-cloud.cn/raw/1d3737991b2a3be78002bd78a47d6917.png)配合使用，整体流程如下图。

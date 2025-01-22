@@ -4822,7 +4822,7 @@ class DescribeUserRoleListResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Extra: 扩展
+        :param _Extra: 扩展描述信息(提供更多异常信息,用于辅助判断)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
         :param _Data: 数据
@@ -4854,7 +4854,7 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def Extra(self):
-        """扩展
+        """扩展描述信息(提供更多异常信息,用于辅助判断)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
