@@ -16,6 +16,7 @@ try:
     cpf = ClientProfile()
     # 预先建立连接可以降低访问延迟
     cpf.httpProfile.pre_conn_pool_size = 3
+    cpf.httpProfile.reqTimeout = 400  # 流式接口可能耗时较长
     client = hunyuan_client.HunyuanClient(cred, "ap-guangzhou", cpf)
 
     req = models.ChatCompletionsRequest()
