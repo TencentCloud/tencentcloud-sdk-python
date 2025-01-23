@@ -513,6 +513,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAICallExtractResult(self, request):
+        """获取 AI 通话内容提取结果。
+
+        :param request: Request instance for DescribeAICallExtractResult.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAICallExtractResultRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAICallExtractResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAICallExtractResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAICallExtractResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeActiveCarrierPrivilegeNumber(self, request):
         """查询生效运营商白名单规则
 

@@ -1435,6 +1435,56 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QuestionOCR(self, request):
+        """题目识别是教育的基础OCR识别能力。可支持扫描、拍照场景的单题题目识别。接口支持印刷体文本、手写体文本及公式的OCR识别和坐标返回，此外，接口还可对题目中的配图位置进行检测并返回坐标位置。适用于智能批改等场景的题目内容识别作为检索输入。
+
+        默认接口请求频率限制：2次/秒。
+
+        :param request: Request instance for QuestionOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.QuestionOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.QuestionOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QuestionOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.QuestionOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QuestionSplitOCR(self, request):
+        """试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。
+
+        默认接口请求频率限制：2次/秒。
+
+        :param request: Request instance for QuestionSplitOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.QuestionSplitOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.QuestionSplitOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QuestionSplitOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.QuestionSplitOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QuotaInvoiceOCR(self, request):
         """本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
 
@@ -1581,20 +1631,22 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RecognizeGeneralCardWarn(self, request):
-        """支持通用证照的有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能，支持通用证照的ps伪造检测，可以应用于各种证件信息有效性校验场景。
+    def RecognizeFormulaOCR(self, request):
+        """公式识别是教育的基础OCR识别能力，可支持理科（数学、物理、化学、生物）的印刷体和手写体的公式识别。
 
-        :param request: Request instance for RecognizeGeneralCardWarn.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralCardWarnRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralCardWarnResponse`
+        默认接口请求频率限制：2次/秒。
+
+        :param request: Request instance for RecognizeFormulaOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeFormulaOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeFormulaOCRResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("RecognizeGeneralCardWarn", params, headers=headers)
+            body = self.call("RecognizeFormulaOCR", params, headers=headers)
             response = json.loads(body)
-            model = models.RecognizeGeneralCardWarnResponse()
+            model = models.RecognizeFormulaOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

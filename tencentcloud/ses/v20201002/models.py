@@ -999,10 +999,80 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 收件人总数
+        :type TotalCount: int
+        :param _ValidCount: 实际上传数量
+        :type ValidCount: int
+        :param _TooLongCount: 数据过长数量
+        :type TooLongCount: int
+        :param _EmptyEmailCount: 邮件地址为空数量
+        :type EmptyEmailCount: int
+        :param _RepeatCount: 重复数量
+        :type RepeatCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._ValidCount = None
+        self._TooLongCount = None
+        self._EmptyEmailCount = None
+        self._RepeatCount = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """收件人总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ValidCount(self):
+        """实际上传数量
+        :rtype: int
+        """
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def TooLongCount(self):
+        """数据过长数量
+        :rtype: int
+        """
+        return self._TooLongCount
+
+    @TooLongCount.setter
+    def TooLongCount(self, TooLongCount):
+        self._TooLongCount = TooLongCount
+
+    @property
+    def EmptyEmailCount(self):
+        """邮件地址为空数量
+        :rtype: int
+        """
+        return self._EmptyEmailCount
+
+    @EmptyEmailCount.setter
+    def EmptyEmailCount(self, EmptyEmailCount):
+        self._EmptyEmailCount = EmptyEmailCount
+
+    @property
+    def RepeatCount(self):
+        """重复数量
+        :rtype: int
+        """
+        return self._RepeatCount
+
+    @RepeatCount.setter
+    def RepeatCount(self, RepeatCount):
+        self._RepeatCount = RepeatCount
 
     @property
     def RequestId(self):
@@ -1017,6 +1087,11 @@ class CreateReceiverDetailResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ValidCount = params.get("ValidCount")
+        self._TooLongCount = params.get("TooLongCount")
+        self._EmptyEmailCount = params.get("EmptyEmailCount")
+        self._RepeatCount = params.get("RepeatCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -1935,15 +2010,16 @@ class EmailSender(AbstractModel):
         :param _EmailAddress: 发信地址
         :type EmailAddress: str
         :param _EmailSenderName: 发信人别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type EmailSenderName: str
         :param _CreatedTimestamp: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTimestamp: int
+        :param _SmtpPwdType: smtp密码类型,0=没有设置密码,1=已经设置了密码
+        :type SmtpPwdType: int
         """
         self._EmailAddress = None
         self._EmailSenderName = None
         self._CreatedTimestamp = None
+        self._SmtpPwdType = None
 
     @property
     def EmailAddress(self):
@@ -1959,7 +2035,6 @@ class EmailSender(AbstractModel):
     @property
     def EmailSenderName(self):
         """发信人别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EmailSenderName
@@ -1971,7 +2046,6 @@ class EmailSender(AbstractModel):
     @property
     def CreatedTimestamp(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreatedTimestamp
@@ -1980,11 +2054,23 @@ class EmailSender(AbstractModel):
     def CreatedTimestamp(self, CreatedTimestamp):
         self._CreatedTimestamp = CreatedTimestamp
 
+    @property
+    def SmtpPwdType(self):
+        """smtp密码类型,0=没有设置密码,1=已经设置了密码
+        :rtype: int
+        """
+        return self._SmtpPwdType
+
+    @SmtpPwdType.setter
+    def SmtpPwdType(self, SmtpPwdType):
+        self._SmtpPwdType = SmtpPwdType
+
 
     def _deserialize(self, params):
         self._EmailAddress = params.get("EmailAddress")
         self._EmailSenderName = params.get("EmailSenderName")
         self._CreatedTimestamp = params.get("CreatedTimestamp")
+        self._SmtpPwdType = params.get("SmtpPwdType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2842,7 +2928,6 @@ class ListEmailAddressResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _EmailSenders: 发信地址列表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type EmailSenders: list of EmailSender
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2853,7 +2938,6 @@ class ListEmailAddressResponse(AbstractModel):
     @property
     def EmailSenders(self):
         """发信地址列表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EmailSender
         """
         return self._EmailSenders
@@ -3923,7 +4007,7 @@ class SendEmailRequest(AbstractModel):
         :type ReplyToAddresses: str
         :param _Cc: 抄送人邮箱地址，最多支持抄送20人。
         :type Cc: list of str
-        :param _Bcc: 密送人邮箱地址，最多支持抄送20人。
+        :param _Bcc: 密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。
         :type Bcc: list of str
         :param _Template: 使用模板发送时，填写模板相关参数。
 <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
@@ -4013,7 +4097,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Bcc(self):
-        """密送人邮箱地址，最多支持抄送20人。
+        """密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。
         :rtype: list of str
         """
         return self._Bcc

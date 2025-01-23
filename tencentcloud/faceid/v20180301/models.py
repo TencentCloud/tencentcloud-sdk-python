@@ -4673,7 +4673,7 @@ class GetEidResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
+        :param _EidToken: E证通流程的唯一标识，调用[GetEidToken](https://cloud.tencent.com/document/product/1007/54089)接口时生成。
         :type EidToken: str
         :param _InfoType: 指定拉取的结果信息。
 - 取值范围：
@@ -4707,7 +4707,7 @@ class GetEidResultRequest(AbstractModel):
 
     @property
     def EidToken(self):
-        """E证通流程的唯一标识，调用GetEidToken接口时生成。
+        """E证通流程的唯一标识，调用[GetEidToken](https://cloud.tencent.com/document/product/1007/54089)接口时生成。
         :rtype: str
         """
         return self._EidToken

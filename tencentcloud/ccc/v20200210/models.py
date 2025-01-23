@@ -18,6 +18,282 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AICallExtractConfigElement(AbstractModel):
+    """AI 通话提取配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoType: 配置项类型，包括
+Text 文本
+Selector 选项
+Boolean 布尔值
+Number 数字
+        :type InfoType: str
+        :param _InfoName: 配置项名称，不可重复
+        :type InfoName: str
+        :param _InfoContent: 配置项具体内容
+        :type InfoContent: str
+        :param _Examples: 配置项提取内容示例
+        :type Examples: list of str
+        :param _Choices: InfoType 为 Selector，需要配置此字段
+        :type Choices: list of str
+        """
+        self._InfoType = None
+        self._InfoName = None
+        self._InfoContent = None
+        self._Examples = None
+        self._Choices = None
+
+    @property
+    def InfoType(self):
+        """配置项类型，包括
+Text 文本
+Selector 选项
+Boolean 布尔值
+Number 数字
+        :rtype: str
+        """
+        return self._InfoType
+
+    @InfoType.setter
+    def InfoType(self, InfoType):
+        self._InfoType = InfoType
+
+    @property
+    def InfoName(self):
+        """配置项名称，不可重复
+        :rtype: str
+        """
+        return self._InfoName
+
+    @InfoName.setter
+    def InfoName(self, InfoName):
+        self._InfoName = InfoName
+
+    @property
+    def InfoContent(self):
+        """配置项具体内容
+        :rtype: str
+        """
+        return self._InfoContent
+
+    @InfoContent.setter
+    def InfoContent(self, InfoContent):
+        self._InfoContent = InfoContent
+
+    @property
+    def Examples(self):
+        """配置项提取内容示例
+        :rtype: list of str
+        """
+        return self._Examples
+
+    @Examples.setter
+    def Examples(self, Examples):
+        self._Examples = Examples
+
+    @property
+    def Choices(self):
+        """InfoType 为 Selector，需要配置此字段
+        :rtype: list of str
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+
+    def _deserialize(self, params):
+        self._InfoType = params.get("InfoType")
+        self._InfoName = params.get("InfoName")
+        self._InfoContent = params.get("InfoContent")
+        self._Examples = params.get("Examples")
+        self._Choices = params.get("Choices")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AICallExtractResultElement(AbstractModel):
+    """AI 通话提取结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoType: 提取信息的类型
+Text 文本
+Selector 选项
+Boolean 布尔值
+Number 数字
+        :type InfoType: str
+        :param _InfoName: 提取信息的名称
+        :type InfoName: str
+        :param _InfoContent: 提取信息的具体描述
+        :type InfoContent: str
+        :param _Result: 提取信息的具体结果
+        :type Result: :class:`tencentcloud.ccc.v20200210.models.AICallExtractResultInfo`
+        """
+        self._InfoType = None
+        self._InfoName = None
+        self._InfoContent = None
+        self._Result = None
+
+    @property
+    def InfoType(self):
+        """提取信息的类型
+Text 文本
+Selector 选项
+Boolean 布尔值
+Number 数字
+        :rtype: str
+        """
+        return self._InfoType
+
+    @InfoType.setter
+    def InfoType(self, InfoType):
+        self._InfoType = InfoType
+
+    @property
+    def InfoName(self):
+        """提取信息的名称
+        :rtype: str
+        """
+        return self._InfoName
+
+    @InfoName.setter
+    def InfoName(self, InfoName):
+        self._InfoName = InfoName
+
+    @property
+    def InfoContent(self):
+        """提取信息的具体描述
+        :rtype: str
+        """
+        return self._InfoContent
+
+    @InfoContent.setter
+    def InfoContent(self, InfoContent):
+        self._InfoContent = InfoContent
+
+    @property
+    def Result(self):
+        """提取信息的具体结果
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AICallExtractResultInfo`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._InfoType = params.get("InfoType")
+        self._InfoName = params.get("InfoName")
+        self._InfoContent = params.get("InfoContent")
+        if params.get("Result") is not None:
+            self._Result = AICallExtractResultInfo()
+            self._Result._deserialize(params.get("Result"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AICallExtractResultInfo(AbstractModel):
+    """AI 通话结果具体信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 提取的类型是文本
+        :type Text: str
+        :param _Chosen: 提取的内型是选项
+        :type Chosen: list of str
+        :param _Boolean: 提取类型是布尔值
+        :type Boolean: bool
+        :param _Number: 提取类型是数字
+        :type Number: float
+        """
+        self._Text = None
+        self._Chosen = None
+        self._Boolean = None
+        self._Number = None
+
+    @property
+    def Text(self):
+        """提取的类型是文本
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Chosen(self):
+        """提取的内型是选项
+        :rtype: list of str
+        """
+        return self._Chosen
+
+    @Chosen.setter
+    def Chosen(self, Chosen):
+        self._Chosen = Chosen
+
+    @property
+    def Boolean(self):
+        """提取类型是布尔值
+        :rtype: bool
+        """
+        return self._Boolean
+
+    @Boolean.setter
+    def Boolean(self, Boolean):
+        self._Boolean = Boolean
+
+    @property
+    def Number(self):
+        """提取类型是数字
+        :rtype: float
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Chosen = params.get("Chosen")
+        self._Boolean = params.get("Boolean")
+        self._Number = params.get("Number")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AITransferItem(AbstractModel):
     """AI转人工配置项
 
@@ -2155,6 +2431,8 @@ HoaiMy
         :param _WelcomeType: 0：使用welcomeMessage(为空时，被叫先说话；不为空时，机器人先说话)
 1:   使用ai根据prompt自动生成welcomeMessage并先说话
         :type WelcomeType: int
+        :param _WelcomeMessagePriority: 0: 默认可打断， 1：高优先不可打断
+        :type WelcomeMessagePriority: int
         :param _MaxDuration: 最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断
         :type MaxDuration: int
         :param _Languages: 语音识别支持的语言, 默认是"zh" 中文,
@@ -2182,7 +2460,7 @@ HoaiMy
 19. Italian = "it" # 意大利语
 20. Russian = "ru" # 俄语
         :type Languages: list of str
-        :param _InterruptMode: 打断AI说话模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+        :param _InterruptMode: 打断AI说话模式，默认为0，0表示自动打断，1表示不打断。
         :type InterruptMode: int
         :param _InterruptSpeechDuration: InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
         :type InterruptSpeechDuration: int
@@ -2284,6 +2562,8 @@ HoaiMy
         :type PromptVariables: list of Variable
         :param _VadSilenceTime: 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
         :type VadSilenceTime: int
+        :param _ExtractConfig: 通话内容提取配置
+        :type ExtractConfig: list of AICallExtractConfigElement
         """
         self._SdkAppId = None
         self._Callee = None
@@ -2296,6 +2576,7 @@ HoaiMy
         self._Callers = None
         self._WelcomeMessage = None
         self._WelcomeType = None
+        self._WelcomeMessagePriority = None
         self._MaxDuration = None
         self._Languages = None
         self._InterruptMode = None
@@ -2310,6 +2591,7 @@ HoaiMy
         self._CustomTTSConfig = None
         self._PromptVariables = None
         self._VadSilenceTime = None
+        self._ExtractConfig = None
 
     @property
     def SdkAppId(self):
@@ -2498,6 +2780,17 @@ HoaiMy
         self._WelcomeType = WelcomeType
 
     @property
+    def WelcomeMessagePriority(self):
+        """0: 默认可打断， 1：高优先不可打断
+        :rtype: int
+        """
+        return self._WelcomeMessagePriority
+
+    @WelcomeMessagePriority.setter
+    def WelcomeMessagePriority(self, WelcomeMessagePriority):
+        self._WelcomeMessagePriority = WelcomeMessagePriority
+
+    @property
     def MaxDuration(self):
         """最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断
         :rtype: int
@@ -2544,7 +2837,7 @@ HoaiMy
 
     @property
     def InterruptMode(self):
-        """打断AI说话模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+        """打断AI说话模式，默认为0，0表示自动打断，1表示不打断。
         :rtype: int
         """
         return self._InterruptMode
@@ -2752,6 +3045,17 @@ HoaiMy
     def VadSilenceTime(self, VadSilenceTime):
         self._VadSilenceTime = VadSilenceTime
 
+    @property
+    def ExtractConfig(self):
+        """通话内容提取配置
+        :rtype: list of AICallExtractConfigElement
+        """
+        return self._ExtractConfig
+
+    @ExtractConfig.setter
+    def ExtractConfig(self, ExtractConfig):
+        self._ExtractConfig = ExtractConfig
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -2765,6 +3069,7 @@ HoaiMy
         self._Callers = params.get("Callers")
         self._WelcomeMessage = params.get("WelcomeMessage")
         self._WelcomeType = params.get("WelcomeType")
+        self._WelcomeMessagePriority = params.get("WelcomeMessagePriority")
         self._MaxDuration = params.get("MaxDuration")
         self._Languages = params.get("Languages")
         self._InterruptMode = params.get("InterruptMode")
@@ -2789,6 +3094,12 @@ HoaiMy
                 obj._deserialize(item)
                 self._PromptVariables.append(obj)
         self._VadSilenceTime = params.get("VadSilenceTime")
+        if params.get("ExtractConfig") is not None:
+            self._ExtractConfig = []
+            for item in params.get("ExtractConfig"):
+                obj = AICallExtractConfigElement()
+                obj._deserialize(item)
+                self._ExtractConfig.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5066,6 +5377,135 @@ class DeleteStaffResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._OnlineStaffList = params.get("OnlineStaffList")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAICallExtractResultRequest(AbstractModel):
+    """DescribeAICallExtractResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _SessionId: 会话 ID
+        :type SessionId: str
+        :param _StartTime: 查找起始时间
+        :type StartTime: int
+        :param _EndTime: 查找结束时间
+        :type EndTime: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def StartTime(self):
+        """查找起始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """查找结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAICallExtractResultResponse(AbstractModel):
+    """DescribeAICallExtractResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: 结果列表
+        :type ResultList: list of AICallExtractResultElement
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        """结果列表
+        :rtype: list of AICallExtractResultElement
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = AICallExtractResultElement()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

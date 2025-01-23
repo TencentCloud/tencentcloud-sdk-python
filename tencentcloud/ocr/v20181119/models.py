@@ -7343,6 +7343,111 @@ class ElectronicTrainTicketFull(AbstractModel):
         
 
 
+class Element(AbstractModel):
+    """试题识别结果-元素内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 元素内容，当type为figure时该字段内容为图片的位置
+        :type Text: str
+        :param _Coord: 元素坐标
+        :type Coord: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        :param _GroupType: 元素group类型，包括multiple-choice(选择题)、fill-in-the-blank(填空题)、problem-solving(解答题)、arithmetic(算术题)
+        :type GroupType: str
+        :param _ResultList: 结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultList: list of ResultList
+        :param _Index: 元素索引
+        :type Index: int
+        """
+        self._Text = None
+        self._Coord = None
+        self._GroupType = None
+        self._ResultList = None
+        self._Index = None
+
+    @property
+    def Text(self):
+        """元素内容，当type为figure时该字段内容为图片的位置
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Coord(self):
+        """元素坐标
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        return self._Coord
+
+    @Coord.setter
+    def Coord(self, Coord):
+        self._Coord = Coord
+
+    @property
+    def GroupType(self):
+        """元素group类型，包括multiple-choice(选择题)、fill-in-the-blank(填空题)、problem-solving(解答题)、arithmetic(算术题)
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def ResultList(self):
+        """结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResultList
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def Index(self):
+        """元素索引
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        if params.get("Coord") is not None:
+            self._Coord = Polygon()
+            self._Coord._deserialize(params.get("Coord"))
+        self._GroupType = params.get("GroupType")
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = ResultList()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Encryption(AbstractModel):
     """敏感数据加密
 
@@ -10258,77 +10363,6 @@ class GeneralBasicOCRResponse(AbstractModel):
         self._PdfPageSize = params.get("PdfPageSize")
         self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")
-
-
-class GeneralCardWarnInfo(AbstractModel):
-    """通用卡证鉴伪告警信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IsWarn: 是否存在该告警
-        :type IsWarn: bool
-        :param _RiskConfidence: 风险程度
-        :type RiskConfidence: float
-        :param _Polygon: 告警位置四点坐标
-        :type Polygon: list of Polygon
-        """
-        self._IsWarn = None
-        self._RiskConfidence = None
-        self._Polygon = None
-
-    @property
-    def IsWarn(self):
-        """是否存在该告警
-        :rtype: bool
-        """
-        return self._IsWarn
-
-    @IsWarn.setter
-    def IsWarn(self, IsWarn):
-        self._IsWarn = IsWarn
-
-    @property
-    def RiskConfidence(self):
-        """风险程度
-        :rtype: float
-        """
-        return self._RiskConfidence
-
-    @RiskConfidence.setter
-    def RiskConfidence(self, RiskConfidence):
-        self._RiskConfidence = RiskConfidence
-
-    @property
-    def Polygon(self):
-        """告警位置四点坐标
-        :rtype: list of Polygon
-        """
-        return self._Polygon
-
-    @Polygon.setter
-    def Polygon(self, Polygon):
-        self._Polygon = Polygon
-
-
-    def _deserialize(self, params):
-        self._IsWarn = params.get("IsWarn")
-        self._RiskConfidence = params.get("RiskConfidence")
-        if params.get("Polygon") is not None:
-            self._Polygon = []
-            for item in params.get("Polygon"):
-                obj = Polygon()
-                obj._deserialize(item)
-                self._Polygon.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class GeneralEfficientOCRRequest(AbstractModel):
@@ -21004,6 +21038,283 @@ class QuestionBlockObj(AbstractModel):
         
 
 
+class QuestionInfo(AbstractModel):
+    """试题识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Angle: 旋转角度
+        :type Angle: float
+        :param _Height: 预处理后图片高度
+        :type Height: int
+        :param _Width: 预处理后图片宽度
+        :type Width: int
+        :param _ResultList: 文档元素
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultList: list of ResultList
+        :param _OrgHeight: 输入图片高度
+        :type OrgHeight: int
+        :param _OrgWidth: 输入图片宽度
+        :type OrgWidth: int
+        :param _ImageBase64: 预处理后的图片base64编码
+        :type ImageBase64: str
+        """
+        self._Angle = None
+        self._Height = None
+        self._Width = None
+        self._ResultList = None
+        self._OrgHeight = None
+        self._OrgWidth = None
+        self._ImageBase64 = None
+
+    @property
+    def Angle(self):
+        """旋转角度
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def Height(self):
+        """预处理后图片高度
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Width(self):
+        """预处理后图片宽度
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def ResultList(self):
+        """文档元素
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResultList
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def OrgHeight(self):
+        """输入图片高度
+        :rtype: int
+        """
+        return self._OrgHeight
+
+    @OrgHeight.setter
+    def OrgHeight(self, OrgHeight):
+        self._OrgHeight = OrgHeight
+
+    @property
+    def OrgWidth(self):
+        """输入图片宽度
+        :rtype: int
+        """
+        return self._OrgWidth
+
+    @OrgWidth.setter
+    def OrgWidth(self, OrgWidth):
+        self._OrgWidth = OrgWidth
+
+    @property
+    def ImageBase64(self):
+        """预处理后的图片base64编码
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+
+    def _deserialize(self, params):
+        self._Angle = params.get("Angle")
+        self._Height = params.get("Height")
+        self._Width = params.get("Width")
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = ResultList()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._OrgHeight = params.get("OrgHeight")
+        self._OrgWidth = params.get("OrgWidth")
+        self._ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionOCRRequest(AbstractModel):
+    """QuestionOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type IsPdf: bool
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
+        :param _EnableImageCrop: 是否开启切边增强和弯曲矫正,默认为false不开启
+        :type EnableImageCrop: bool
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._IsPdf = None
+        self._PdfPageNumber = None
+        self._EnableImageCrop = None
+
+    @property
+    def ImageUrl(self):
+        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def IsPdf(self):
+        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :rtype: bool
+        """
+        return self._IsPdf
+
+    @IsPdf.setter
+    def IsPdf(self, IsPdf):
+        self._IsPdf = IsPdf
+
+    @property
+    def PdfPageNumber(self):
+        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def EnableImageCrop(self):
+        """是否开启切边增强和弯曲矫正,默认为false不开启
+        :rtype: bool
+        """
+        return self._EnableImageCrop
+
+    @EnableImageCrop.setter
+    def EnableImageCrop(self, EnableImageCrop):
+        self._EnableImageCrop = EnableImageCrop
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._IsPdf = params.get("IsPdf")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._EnableImageCrop = params.get("EnableImageCrop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionOCRResponse(AbstractModel):
+    """QuestionOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuestionInfo: 检测到的文本信息
+        :type QuestionInfo: list of QuestionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QuestionInfo = None
+        self._RequestId = None
+
+    @property
+    def QuestionInfo(self):
+        """检测到的文本信息
+        :rtype: list of QuestionInfo
+        """
+        return self._QuestionInfo
+
+    @QuestionInfo.setter
+    def QuestionInfo(self, QuestionInfo):
+        self._QuestionInfo = QuestionInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QuestionInfo") is not None:
+            self._QuestionInfo = []
+            for item in params.get("QuestionInfo"):
+                obj = QuestionInfo()
+                obj._deserialize(item)
+                self._QuestionInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class QuestionObj(AbstractModel):
     """试题识别结构化信息
 
@@ -21124,6 +21435,150 @@ class QuestionObj(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QuestionSplitOCRRequest(AbstractModel):
+    """QuestionSplitOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type IsPdf: bool
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
+        :param _EnableImageCrop: 是否开启切边增强和弯曲矫正,默认为false不开启
+        :type EnableImageCrop: bool
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._IsPdf = None
+        self._PdfPageNumber = None
+        self._EnableImageCrop = None
+
+    @property
+    def ImageUrl(self):
+        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def IsPdf(self):
+        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :rtype: bool
+        """
+        return self._IsPdf
+
+    @IsPdf.setter
+    def IsPdf(self, IsPdf):
+        self._IsPdf = IsPdf
+
+    @property
+    def PdfPageNumber(self):
+        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def EnableImageCrop(self):
+        """是否开启切边增强和弯曲矫正,默认为false不开启
+        :rtype: bool
+        """
+        return self._EnableImageCrop
+
+    @EnableImageCrop.setter
+    def EnableImageCrop(self, EnableImageCrop):
+        self._EnableImageCrop = EnableImageCrop
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._IsPdf = params.get("IsPdf")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._EnableImageCrop = params.get("EnableImageCrop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionSplitOCRResponse(AbstractModel):
+    """QuestionSplitOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuestionInfo: 检测到的文本信息
+        :type QuestionInfo: list of QuestionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QuestionInfo = None
+        self._RequestId = None
+
+    @property
+    def QuestionInfo(self):
+        """检测到的文本信息
+        :rtype: list of QuestionInfo
+        """
+        return self._QuestionInfo
+
+    @QuestionInfo.setter
+    def QuestionInfo(self, QuestionInfo):
+        self._QuestionInfo = QuestionInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QuestionInfo") is not None:
+            self._QuestionInfo = []
+            for item in params.get("QuestionInfo"):
+                obj = QuestionInfo()
+                obj._deserialize(item)
+                self._QuestionInfo.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class QuotaInvoice(AbstractModel):
@@ -22940,29 +23395,17 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class RecognizeGeneralCardWarnRequest(AbstractModel):
-    """RecognizeGeneralCardWarn请求参数结构体
+class RecognizeFormulaOCRRequest(AbstractModel):
+    """RecognizeFormulaOCR请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _ImageUrl: 图片链接
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param _ImageBase64: 图片base64
+        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param _CardType: 卡证类型参数，包含以下范围：  
-default：通用卡证  
-idcard：身份证  
-passport：护照  
-bizlicense：营业执照  
-regcertificate：登记证书  
-residpermit：居住证  
-transpermit：通行证  
-signboard：门头照  
-bankcard：银行卡  
-drivinglicense：驾驶证、行驶证
-        :type CardType: str
         :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :type IsPdf: bool
         :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
@@ -22970,13 +23413,12 @@ drivinglicense：驾驶证、行驶证
         """
         self._ImageUrl = None
         self._ImageBase64 = None
-        self._CardType = None
         self._IsPdf = None
         self._PdfPageNumber = None
 
     @property
     def ImageUrl(self):
-        """图片链接
+        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -22987,7 +23429,7 @@ drivinglicense：驾驶证、行驶证
 
     @property
     def ImageBase64(self):
-        """图片base64
+        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -22995,27 +23437,6 @@ drivinglicense：驾驶证、行驶证
     @ImageBase64.setter
     def ImageBase64(self, ImageBase64):
         self._ImageBase64 = ImageBase64
-
-    @property
-    def CardType(self):
-        """卡证类型参数，包含以下范围：  
-default：通用卡证  
-idcard：身份证  
-passport：护照  
-bizlicense：营业执照  
-regcertificate：登记证书  
-residpermit：居住证  
-transpermit：通行证  
-signboard：门头照  
-bankcard：银行卡  
-drivinglicense：驾驶证、行驶证
-        :rtype: str
-        """
-        return self._CardType
-
-    @CardType.setter
-    def CardType(self, CardType):
-        self._CardType = CardType
 
     @property
     def IsPdf(self):
@@ -23043,7 +23464,6 @@ drivinglicense：驾驶证、行驶证
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
-        self._CardType = params.get("CardType")
         self._IsPdf = params.get("IsPdf")
         self._PdfPageNumber = params.get("PdfPageNumber")
         memeber_set = set(params.keys())
@@ -23056,135 +23476,45 @@ drivinglicense：驾驶证、行驶证
         
 
 
-class RecognizeGeneralCardWarnResponse(AbstractModel):
-    """RecognizeGeneralCardWarn返回参数结构体
+class RecognizeFormulaOCRResponse(AbstractModel):
+    """RecognizeFormulaOCR返回参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _CardType: 卡证类型参数，包含以下范围： 
-default：通用卡证
-idcard：身份证 
-passport：护照 
-bizlicense：营业执照 
-regcertificate：登记证书 
-residpermit：居住证 
-transpermit：通行证 
-signboard：门头照 
-bankcard：银行卡 
-drivinglicense：驾驶证、行驶证
-        :type CardType: str
-        :param _Blur: 模糊信息
-        :type Blur: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _BorderIncomplete: 边框不完整信息
-        :type BorderIncomplete: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Copy: 复印件信息
-        :type Copy: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Ps: ps篡改信息
-        :type Ps: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Reflection: 反光信息
-        :type Reflection: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Reprint: 翻拍件信息
-        :type Reprint: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        :type Angle: float
+        :param _FormulaInfoList: 检测到的文本信息
+        :type FormulaInfoList: list of TextFormulaInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._CardType = None
-        self._Blur = None
-        self._BorderIncomplete = None
-        self._Copy = None
-        self._Ps = None
-        self._Reflection = None
-        self._Reprint = None
+        self._Angle = None
+        self._FormulaInfoList = None
         self._RequestId = None
 
     @property
-    def CardType(self):
-        """卡证类型参数，包含以下范围： 
-default：通用卡证
-idcard：身份证 
-passport：护照 
-bizlicense：营业执照 
-regcertificate：登记证书 
-residpermit：居住证 
-transpermit：通行证 
-signboard：门头照 
-bankcard：银行卡 
-drivinglicense：驾驶证、行驶证
-        :rtype: str
+    def Angle(self):
+        """图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        :rtype: float
         """
-        return self._CardType
+        return self._Angle
 
-    @CardType.setter
-    def CardType(self, CardType):
-        self._CardType = CardType
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
 
     @property
-    def Blur(self):
-        """模糊信息
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+    def FormulaInfoList(self):
+        """检测到的文本信息
+        :rtype: list of TextFormulaInfo
         """
-        return self._Blur
+        return self._FormulaInfoList
 
-    @Blur.setter
-    def Blur(self, Blur):
-        self._Blur = Blur
-
-    @property
-    def BorderIncomplete(self):
-        """边框不完整信息
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        """
-        return self._BorderIncomplete
-
-    @BorderIncomplete.setter
-    def BorderIncomplete(self, BorderIncomplete):
-        self._BorderIncomplete = BorderIncomplete
-
-    @property
-    def Copy(self):
-        """复印件信息
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        """
-        return self._Copy
-
-    @Copy.setter
-    def Copy(self, Copy):
-        self._Copy = Copy
-
-    @property
-    def Ps(self):
-        """ps篡改信息
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        """
-        return self._Ps
-
-    @Ps.setter
-    def Ps(self, Ps):
-        self._Ps = Ps
-
-    @property
-    def Reflection(self):
-        """反光信息
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        """
-        return self._Reflection
-
-    @Reflection.setter
-    def Reflection(self, Reflection):
-        self._Reflection = Reflection
-
-    @property
-    def Reprint(self):
-        """翻拍件信息
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        """
-        return self._Reprint
-
-    @Reprint.setter
-    def Reprint(self, Reprint):
-        self._Reprint = Reprint
+    @FormulaInfoList.setter
+    def FormulaInfoList(self, FormulaInfoList):
+        self._FormulaInfoList = FormulaInfoList
 
     @property
     def RequestId(self):
@@ -23199,25 +23529,13 @@ drivinglicense：驾驶证、行驶证
 
 
     def _deserialize(self, params):
-        self._CardType = params.get("CardType")
-        if params.get("Blur") is not None:
-            self._Blur = GeneralCardWarnInfo()
-            self._Blur._deserialize(params.get("Blur"))
-        if params.get("BorderIncomplete") is not None:
-            self._BorderIncomplete = GeneralCardWarnInfo()
-            self._BorderIncomplete._deserialize(params.get("BorderIncomplete"))
-        if params.get("Copy") is not None:
-            self._Copy = GeneralCardWarnInfo()
-            self._Copy._deserialize(params.get("Copy"))
-        if params.get("Ps") is not None:
-            self._Ps = GeneralCardWarnInfo()
-            self._Ps._deserialize(params.get("Ps"))
-        if params.get("Reflection") is not None:
-            self._Reflection = GeneralCardWarnInfo()
-            self._Reflection._deserialize(params.get("Reflection"))
-        if params.get("Reprint") is not None:
-            self._Reprint = GeneralCardWarnInfo()
-            self._Reprint._deserialize(params.get("Reprint"))
+        self._Angle = params.get("Angle")
+        if params.get("FormulaInfoList") is not None:
+            self._FormulaInfoList = []
+            for item in params.get("FormulaInfoList"):
+                obj = TextFormulaInfo()
+                obj._deserialize(item)
+                self._FormulaInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -26866,6 +27184,159 @@ class ResidencePermitInfo(AbstractModel):
         if params.get("IssueNum") is not None:
             self._IssueNum = ContentInfo()
             self._IssueNum._deserialize(params.get("IssueNum"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResultList(AbstractModel):
+    """结果列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: 题干
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Question: list of Element
+        :param _Option: 选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Option: list of Element
+        :param _Figure: 插图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Figure: list of Element
+        :param _Table: 表格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Table: list of Element
+        :param _Answer: 答案
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Answer: list of Element
+        :param _Coord: 整题的坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Coord: list of Polygon
+        """
+        self._Question = None
+        self._Option = None
+        self._Figure = None
+        self._Table = None
+        self._Answer = None
+        self._Coord = None
+
+    @property
+    def Question(self):
+        """题干
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Element
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Option(self):
+        """选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Element
+        """
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+    @property
+    def Figure(self):
+        """插图
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Element
+        """
+        return self._Figure
+
+    @Figure.setter
+    def Figure(self, Figure):
+        self._Figure = Figure
+
+    @property
+    def Table(self):
+        """表格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Element
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Answer(self):
+        """答案
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Element
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def Coord(self):
+        """整题的坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Polygon
+        """
+        return self._Coord
+
+    @Coord.setter
+    def Coord(self, Coord):
+        self._Coord = Coord
+
+
+    def _deserialize(self, params):
+        if params.get("Question") is not None:
+            self._Question = []
+            for item in params.get("Question"):
+                obj = Element()
+                obj._deserialize(item)
+                self._Question.append(obj)
+        if params.get("Option") is not None:
+            self._Option = []
+            for item in params.get("Option"):
+                obj = Element()
+                obj._deserialize(item)
+                self._Option.append(obj)
+        if params.get("Figure") is not None:
+            self._Figure = []
+            for item in params.get("Figure"):
+                obj = Element()
+                obj._deserialize(item)
+                self._Figure.append(obj)
+        if params.get("Table") is not None:
+            self._Table = []
+            for item in params.get("Table"):
+                obj = Element()
+                obj._deserialize(item)
+                self._Table.append(obj)
+        if params.get("Answer") is not None:
+            self._Answer = []
+            for item in params.get("Answer"):
+                obj = Element()
+                obj._deserialize(item)
+                self._Answer.append(obj)
+        if params.get("Coord") is not None:
+            self._Coord = []
+            for item in params.get("Coord"):
+                obj = Polygon()
+                obj._deserialize(item)
+                self._Coord.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31612,6 +32083,59 @@ class TextFormula(AbstractModel):
 
     def _deserialize(self, params):
         self._DetectedText = params.get("DetectedText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextFormulaInfo(AbstractModel):
+    """公式识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectedText: 识别出的文本行内容
+        :type DetectedText: str
+        :param _Coord: 识别出的文本行内容坐标
+        :type Coord: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        self._DetectedText = None
+        self._Coord = None
+
+    @property
+    def DetectedText(self):
+        """识别出的文本行内容
+        :rtype: str
+        """
+        return self._DetectedText
+
+    @DetectedText.setter
+    def DetectedText(self, DetectedText):
+        self._DetectedText = DetectedText
+
+    @property
+    def Coord(self):
+        """识别出的文本行内容坐标
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        return self._Coord
+
+    @Coord.setter
+    def Coord(self, Coord):
+        self._Coord = Coord
+
+
+    def _deserialize(self, params):
+        self._DetectedText = params.get("DetectedText")
+        if params.get("Coord") is not None:
+            self._Coord = Polygon()
+            self._Coord._deserialize(params.get("Coord"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
