@@ -1419,7 +1419,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeResetInstanceBlueprints(self, request):
-        """本接口（DescribeResetInstanceBlueprints）查询重置实例的镜像信息。
+        """本接口（DescribeResetInstanceBlueprints）查询重置实例的镜像信息。对于游戏专区实例，该接口只会返回当前镜像，且不支持 Filters 参数。
 
         :param request: Request instance for DescribeResetInstanceBlueprints.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeResetInstanceBlueprintsRequest`
@@ -2387,6 +2387,7 @@ class LighthouseClient(AbstractClient):
         * 系统盘将会被格式化，并重置；请确保系统盘中无重要文件。
         * 目前不支持实例使用该接口实现 LINUX_UNIX 和 WINDOWS 操作系统切换。
         * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 <a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+        * 对于游戏专区实例，仅支持重装当前镜像。
 
         :param request: Request instance for ResetInstance.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ResetInstanceRequest`

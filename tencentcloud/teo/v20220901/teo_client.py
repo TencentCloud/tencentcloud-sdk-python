@@ -609,7 +609,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """规则引擎创建规则。
+        """本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，详情请参考 [CreateL7AccRules](https://cloud.tencent.com/document/product/1552/115822)。
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRuleRequest`
@@ -3067,7 +3067,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """修改规则引擎规则。
+        """本接口为旧版，EdgeOne 已对规则引擎相关接口全面升级，详情请参考 [ModifyL7AccRule](https://cloud.tencent.com/document/product/1552/115818)。
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRuleRequest`
