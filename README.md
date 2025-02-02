@@ -22,15 +22,24 @@
 
 通过pip方式安装或更新请在命令行中执行以下命令:
 
+### 安装指定产品 SDK（推荐）
+例如：安装 CVM 产品
+```bash
+pip install --upgrade tencentcloud-sdk-python-common  # 安装公共包，必选
+pip install --upgrade tencentcloud-sdk-python-cvm  # 安装 CVM 产品包
+```
+具体产品的缩写表请参考 [products.md](./products.md) 中的包名字段。
+如果同时安装多个产品的包，建议这些产品的包保持在同一个版本。
+
+### 安装全产品 SDK
 ```bash
 pip install --upgrade tencentcloud-sdk-python
 ```
+注意，全产品包含所有产品，体积会比较大，并且不能和分包同时工作。
 
 中国大陆地区的用户可以使用国内镜像源提高下载速度，例如`pip install -i https://mirrors.tencent.com/pypi/simple/ --upgrade tencentcloud-sdk-python`。
 
 请注意，如果同时有 python2 和 python3 环境， python3 环境需要使用 pip3 命令安装。
-
-如果只想使用某个具体产品的包，例如云服务器 CVM，可以单独安装，但是注意不能和总包同时工作。`pip install --upgrade tencentcloud-sdk-python-common tencentcloud-sdk-python-cvm`
 
 ## 通过源码包安装
 
