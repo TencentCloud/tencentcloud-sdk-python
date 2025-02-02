@@ -39,7 +39,9 @@ pip install --upgrade tencentcloud-sdk-python
 
 ### 注意事项
 1、安装全产品 sdk 和安装指定产品的 sdk 两种方式只能选择其中一种。
+
 2、中国大陆地区的用户可以使用国内镜像源提高下载速度，例如`pip install -i https://mirrors.tencent.com/pypi/simple/ --upgrade tencentcloud-sdk-python`。
+
 3、如果同时有 python2 和 python3 环境， python3 环境需要使用 pip3 命令安装。
 
 ## 通过源码包安装
