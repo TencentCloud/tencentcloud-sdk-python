@@ -26,6 +26,24 @@ class LkeapClient(AbstractClient):
     _service = 'lkeap'
 
 
+    def ChatCompletions(self, request):
+        """对话
+
+        :param request: Request instance for ChatCompletions.
+        :type request: :class:`tencentcloud.lkeap.v20240522.models.ChatCompletionsRequest`
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.ChatCompletionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("ChatCompletions", params, models.ChatCompletionsResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAttributeLabel(self, request):
         """用于为问答对创建属性标签，以便对内容进行分类和管理。 使用场景：当需要为问答对添加分类标签和属性标记时使用，比如为问答对添加“售后”标签。
 
