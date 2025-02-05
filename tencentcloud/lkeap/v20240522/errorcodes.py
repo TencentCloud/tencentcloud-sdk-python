@@ -20,6 +20,9 @@ FAILEDOPERATION = 'FailedOperation'
 # FailedOperation.DownLoadError
 FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 
+# 引擎层内部错误；
+FAILEDOPERATION_ENGINESERVERERROR = 'FailedOperation.EngineServerError'
+
 # FailedOperation.FileDecodeFailed
 FAILEDOPERATION_FILEDECODEFAILED = 'FailedOperation.FileDecodeFailed'
 

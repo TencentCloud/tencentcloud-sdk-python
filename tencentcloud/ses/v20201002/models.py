@@ -442,7 +442,6 @@ class BlackEmailAddress(AbstractModel):
         :param _EmailAddress: 被拉黑的邮箱地址
         :type EmailAddress: str
         :param _IspDesc: 被拉黑的理由
-注意：此字段可能返回 null，表示取不到有效值。
         :type IspDesc: str
         """
         self._BounceTime = None
@@ -474,7 +473,6 @@ class BlackEmailAddress(AbstractModel):
     @property
     def IspDesc(self):
         """被拉黑的理由
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IspDesc
@@ -1159,19 +1157,14 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 收件人总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _ValidCount: 实际上传数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidCount: int
         :param _TooLongCount: 数据过长数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TooLongCount: int
         :param _EmptyEmailCount: 邮件地址为空数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type EmptyEmailCount: int
         :param _RepeatCount: 重复数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepeatCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1186,7 +1179,6 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
     @property
     def TotalCount(self):
         """收件人总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -1198,7 +1190,6 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
     @property
     def ValidCount(self):
         """实际上传数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ValidCount
@@ -1210,7 +1201,6 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
     @property
     def TooLongCount(self):
         """数据过长数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TooLongCount
@@ -1222,7 +1212,6 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
     @property
     def EmptyEmailCount(self):
         """邮件地址为空数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EmptyEmailCount
@@ -1234,7 +1223,6 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
     @property
     def RepeatCount(self):
         """重复数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RepeatCount
@@ -3702,15 +3690,12 @@ class ReceiverData(AbstractModel):
         :param _Count: 收件人地址总数
         :type Count: int
         :param _Desc: 收件人列表描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _ReceiversStatus: 列表状态(1 待上传 2 上传中 3 上传完成)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiversStatus: int
         :param _CreateTime: 创建时间,如:2021-09-28 16:40:35
         :type CreateTime: str
         :param _InvalidCount: 无效收件人数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvalidCount: int
         """
         self._ReceiverId = None
@@ -3757,7 +3742,6 @@ class ReceiverData(AbstractModel):
     @property
     def Desc(self):
         """收件人列表描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -3769,7 +3753,6 @@ class ReceiverData(AbstractModel):
     @property
     def ReceiversStatus(self):
         """列表状态(1 待上传 2 上传中 3 上传完成)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReceiversStatus
@@ -3792,7 +3775,6 @@ class ReceiverData(AbstractModel):
     @property
     def InvalidCount(self):
         """无效收件人数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InvalidCount
@@ -3834,13 +3816,10 @@ class ReceiverDetail(AbstractModel):
         :param _TemplateData: 模板参数
         :type TemplateData: str
         :param _Reason: 无效原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _Status: 1:有效，2:无效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _EmailId: 收件人地址id
-注意：此字段可能返回 null，表示取不到有效值。
         :type EmailId: int
         """
         self._Email = None
@@ -3886,7 +3865,6 @@ class ReceiverDetail(AbstractModel):
     @property
     def Reason(self):
         """无效原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -3898,7 +3876,6 @@ class ReceiverDetail(AbstractModel):
     @property
     def Status(self):
         """1:有效，2:无效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -3910,7 +3887,6 @@ class ReceiverDetail(AbstractModel):
     @property
     def EmailId(self):
         """收件人地址id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EmailId

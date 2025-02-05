@@ -1898,7 +1898,11 @@ class CreateDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
         :type SubnetId: str
-        :param _Password: 实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
+        :param _Password: 实例密码。设置要求如下：
+- 字符个数为[8,32]。
+- 可输入[A,Z]、[a,z]、[0,9]范围内的字符。
+- 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#“、百分号”%”、插入号“^”、星号“*”、括号“()”、下划线“_”。
+- 不能设置单一的字母或者数字。
         :type Password: str
         :param _Tags: 实例标签信息。
         :type Tags: list of TagInfo
@@ -2137,7 +2141,11 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Password(self):
-        """实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
+        """实例密码。设置要求如下：
+- 字符个数为[8,32]。
+- 可输入[A,Z]、[a,z]、[0,9]范围内的字符。
+- 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#“、百分号”%”、插入号“^”、星号“*”、括号“()”、下划线“_”。
+- 不能设置单一的字母或者数字。
         :rtype: str
         """
         return self._Password
@@ -6736,7 +6744,7 @@ class InquirePriceRenewDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+        :param _InstanceIds: 实例ID，格式如：cmgo-p8vn****。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID，且单次最多同时查询5个实例。
         :type InstanceIds: list of str
         :param _InstanceChargePrepaid: 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
         :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`
@@ -6746,7 +6754,7 @@ class InquirePriceRenewDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+        """实例ID，格式如：cmgo-p8vn****。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID，且单次最多同时查询5个实例。
         :rtype: list of str
         """
         return self._InstanceIds

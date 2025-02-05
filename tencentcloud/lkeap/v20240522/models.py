@@ -235,10 +235,16 @@ class ChatCompletionsRequest(AbstractModel):
         :type Messages: list of Message
         :param _Stream: 是否流式输出
         :type Stream: bool
+        :param _Temperature: 控制生成的随机性，较高的值会产生更多样化的输出。
+        :type Temperature: float
+        :param _MaxTokens: 最大生成的token数量
+        :type MaxTokens: int
         """
         self._Model = None
         self._Messages = None
         self._Stream = None
+        self._Temperature = None
+        self._MaxTokens = None
 
     @property
     def Model(self):
@@ -273,6 +279,28 @@ class ChatCompletionsRequest(AbstractModel):
     def Stream(self, Stream):
         self._Stream = Stream
 
+    @property
+    def Temperature(self):
+        """控制生成的随机性，较高的值会产生更多样化的输出。
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def MaxTokens(self):
+        """最大生成的token数量
+        :rtype: int
+        """
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -283,6 +311,8 @@ class ChatCompletionsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Messages.append(obj)
         self._Stream = params.get("Stream")
+        self._Temperature = params.get("Temperature")
+        self._MaxTokens = params.get("MaxTokens")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -300,10 +330,82 @@ class ChatCompletionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Created: Unix 时间戳，单位为秒。
+        :type Created: int
+        :param _Usage: Token 统计信息。
+按照总 Token 数量计费。
+        :type Usage: :class:`tencentcloud.lkeap.v20240522.models.ChatUsage`
+        :param _Id: 本次请求的 RequestId。
+        :type Id: str
+        :param _Choices: 回复内容。
+        :type Choices: list of Choice
+        :param _Model: 模型名称。
+        :type Model: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
+        self._Created = None
+        self._Usage = None
+        self._Id = None
+        self._Choices = None
+        self._Model = None
         self._RequestId = None
+
+    @property
+    def Created(self):
+        """Unix 时间戳，单位为秒。
+        :rtype: int
+        """
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Usage(self):
+        """Token 统计信息。
+按照总 Token 数量计费。
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.ChatUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def Id(self):
+        """本次请求的 RequestId。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Choices(self):
+        """回复内容。
+        :rtype: list of Choice
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def Model(self):
+        """模型名称。
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
 
     @property
     def RequestId(self):
@@ -318,7 +420,176 @@ class ChatCompletionsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Created = params.get("Created")
+        if params.get("Usage") is not None:
+            self._Usage = ChatUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._Id = params.get("Id")
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = Choice()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        self._Model = params.get("Model")
         self._RequestId = params.get("RequestId")
+
+
+class ChatUsage(AbstractModel):
+    """消耗量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTokens: 输入token数
+        :type PromptTokens: int
+        :param _CompletionTokens: 输出token数
+        :type CompletionTokens: int
+        :param _TotalTokens: 总token数
+        :type TotalTokens: int
+        """
+        self._PromptTokens = None
+        self._CompletionTokens = None
+        self._TotalTokens = None
+
+    @property
+    def PromptTokens(self):
+        """输入token数
+        :rtype: int
+        """
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def CompletionTokens(self):
+        """输出token数
+        :rtype: int
+        """
+        return self._CompletionTokens
+
+    @CompletionTokens.setter
+    def CompletionTokens(self, CompletionTokens):
+        self._CompletionTokens = CompletionTokens
+
+    @property
+    def TotalTokens(self):
+        """总token数
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._PromptTokens = params.get("PromptTokens")
+        self._CompletionTokens = params.get("CompletionTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Choice(AbstractModel):
+    """返回的回复, 支持多个
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FinishReason: 结束标志位，可能为 stop、 sensitive或者tool_calls。
+stop 表示输出正常结束。
+sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
+tool_calls 标识函数调用。
+        :type FinishReason: str
+        :param _Delta: 增量返回值，流式调用时使用该字段。
+        :type Delta: :class:`tencentcloud.lkeap.v20240522.models.Delta`
+        :param _Message: 返回值，非流式调用时使用该字段。
+        :type Message: :class:`tencentcloud.lkeap.v20240522.models.Message`
+        :param _Index: 索引值，流式调用时使用该字段。
+        :type Index: int
+        """
+        self._FinishReason = None
+        self._Delta = None
+        self._Message = None
+        self._Index = None
+
+    @property
+    def FinishReason(self):
+        """结束标志位，可能为 stop、 sensitive或者tool_calls。
+stop 表示输出正常结束。
+sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
+tool_calls 标识函数调用。
+        :rtype: str
+        """
+        return self._FinishReason
+
+    @FinishReason.setter
+    def FinishReason(self, FinishReason):
+        self._FinishReason = FinishReason
+
+    @property
+    def Delta(self):
+        """增量返回值，流式调用时使用该字段。
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.Delta`
+        """
+        return self._Delta
+
+    @Delta.setter
+    def Delta(self, Delta):
+        self._Delta = Delta
+
+    @property
+    def Message(self):
+        """返回值，非流式调用时使用该字段。
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.Message`
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Index(self):
+        """索引值，流式调用时使用该字段。
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._FinishReason = params.get("FinishReason")
+        if params.get("Delta") is not None:
+            self._Delta = Delta()
+            self._Delta._deserialize(params.get("Delta"))
+        if params.get("Message") is not None:
+            self._Message = Message()
+            self._Message._deserialize(params.get("Message"))
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateAttributeLabelRequest(AbstractModel):
@@ -1263,6 +1534,57 @@ class DeleteQAsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Delta(AbstractModel):
+    """返回的内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色名称。
+        :type Role: str
+        :param _Content: 内容详情。
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        """角色名称。
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        """内容详情。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeDocRequest(AbstractModel):
     """DescribeDoc请求参数结构体
 
@@ -2203,9 +2525,13 @@ class Message(AbstractModel):
         :type Role: str
         :param _Content: 内容
         :type Content: str
+        :param _ReasoningContent: 思维链内容。
+ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
+        :type ReasoningContent: str
         """
         self._Role = None
         self._Content = None
+        self._ReasoningContent = None
 
     @property
     def Role(self):
@@ -2229,10 +2555,23 @@ class Message(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def ReasoningContent(self):
+        """思维链内容。
+ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
+        :rtype: str
+        """
+        return self._ReasoningContent
+
+    @ReasoningContent.setter
+    def ReasoningContent(self, ReasoningContent):
+        self._ReasoningContent = ReasoningContent
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
+        self._ReasoningContent = params.get("ReasoningContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
