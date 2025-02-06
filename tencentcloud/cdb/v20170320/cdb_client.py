@@ -1521,7 +1521,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCpuExpandStrategy(self, request):
-        """通过该 API 可以查询实例的 CPU 弹性扩容策略
+        """DescribeCpuExpandStrategy
+
+        通过该 API 可以查询实例的 CPU 弹性扩容策略
 
         :param request: Request instance for DescribeCpuExpandStrategy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyRequest`

@@ -1141,6 +1141,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceEndpoint(self, request):
+        """修改 RocketMQ 5.x 集群接入点。
+
+        :param request: Request instance for ModifyInstanceEndpoint.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyInstanceEndpointRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ModifyInstanceEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceEndpointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMQTTInsPublicEndpoint(self, request):
         """更新MQTT实例公网接入点
 

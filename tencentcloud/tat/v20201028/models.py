@@ -1129,13 +1129,16 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Description: 注册码描述。
+        :param _Description: 注册码描述。最大长度为 128 字符。
         :type Description: str
-        :param _InstanceNamePrefix: 注册实例名称前缀。
+        :param _InstanceNamePrefix: 注册实例名称前缀。最大长度为 32 字符。
         :type InstanceNamePrefix: str
-        :param _RegisterLimit: 该注册码允许注册的实例数目。默认限制为10个。
+        :param _RegisterLimit: 该注册码允许注册的实例数目。默认值为 10，最小值为 1，最大值为 10000。
         :type RegisterLimit: int
-        :param _EffectiveTime: 该注册码的有效时间，单位为小时。默认为4小时。
+        :param _EffectiveTime: 该注册码的有效时间，单位为小时。默认值为 4。
+
+- 若传入值小于等于 99999，则以小时为单位设置有效时间。
+- 若传入值大于 99999，则设置为长期有效。
         :type EffectiveTime: int
         :param _IpAddressRange: 该注册码限制tat_agent只能从IpAddressRange所描述公网出口进行注册。默认不做限制。
         :type IpAddressRange: str
@@ -1148,7 +1151,7 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """注册码描述。
+        """注册码描述。最大长度为 128 字符。
         :rtype: str
         """
         return self._Description
@@ -1159,7 +1162,7 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def InstanceNamePrefix(self):
-        """注册实例名称前缀。
+        """注册实例名称前缀。最大长度为 32 字符。
         :rtype: str
         """
         return self._InstanceNamePrefix
@@ -1170,7 +1173,7 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def RegisterLimit(self):
-        """该注册码允许注册的实例数目。默认限制为10个。
+        """该注册码允许注册的实例数目。默认值为 10，最小值为 1，最大值为 10000。
         :rtype: int
         """
         return self._RegisterLimit
@@ -1181,7 +1184,10 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def EffectiveTime(self):
-        """该注册码的有效时间，单位为小时。默认为4小时。
+        """该注册码的有效时间，单位为小时。默认值为 4。
+
+- 若传入值小于等于 99999，则以小时为单位设置有效时间。
+- 若传入值大于 99999，则设置为长期有效。
         :rtype: int
         """
         return self._EffectiveTime

@@ -818,20 +818,29 @@ class TccConnection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EndpointServiceId: 终端节点服务Id
+        :param _EndpointServiceId: 引擎终端节点服务Id
         :type EndpointServiceId: str
         :param _MetaStoreUrl: 元数据连接串
         :type MetaStoreUrl: str
-        :param _NetWork: 	网络信息
+        :param _NetWork: 网络信息
         :type NetWork: :class:`tencentcloud.tccatalog.v20241024.models.NetWork`
+        :param _HiveVersion: hive版本
+        :type HiveVersion: str
+        :param _Location: hive location
+        :type Location: str
+        :param _HmsEndpointServiceId: HMS终端节点服务
+        :type HmsEndpointServiceId: str
         """
         self._EndpointServiceId = None
         self._MetaStoreUrl = None
         self._NetWork = None
+        self._HiveVersion = None
+        self._Location = None
+        self._HmsEndpointServiceId = None
 
     @property
     def EndpointServiceId(self):
-        """终端节点服务Id
+        """引擎终端节点服务Id
         :rtype: str
         """
         return self._EndpointServiceId
@@ -853,7 +862,7 @@ class TccConnection(AbstractModel):
 
     @property
     def NetWork(self):
-        """	网络信息
+        """网络信息
         :rtype: :class:`tencentcloud.tccatalog.v20241024.models.NetWork`
         """
         return self._NetWork
@@ -862,6 +871,39 @@ class TccConnection(AbstractModel):
     def NetWork(self, NetWork):
         self._NetWork = NetWork
 
+    @property
+    def HiveVersion(self):
+        """hive版本
+        :rtype: str
+        """
+        return self._HiveVersion
+
+    @HiveVersion.setter
+    def HiveVersion(self, HiveVersion):
+        self._HiveVersion = HiveVersion
+
+    @property
+    def Location(self):
+        """hive location
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def HmsEndpointServiceId(self):
+        """HMS终端节点服务
+        :rtype: str
+        """
+        return self._HmsEndpointServiceId
+
+    @HmsEndpointServiceId.setter
+    def HmsEndpointServiceId(self, HmsEndpointServiceId):
+        self._HmsEndpointServiceId = HmsEndpointServiceId
+
 
     def _deserialize(self, params):
         self._EndpointServiceId = params.get("EndpointServiceId")
@@ -869,6 +911,9 @@ class TccConnection(AbstractModel):
         if params.get("NetWork") is not None:
             self._NetWork = NetWork()
             self._NetWork._deserialize(params.get("NetWork"))
+        self._HiveVersion = params.get("HiveVersion")
+        self._Location = params.get("Location")
+        self._HmsEndpointServiceId = params.get("HmsEndpointServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

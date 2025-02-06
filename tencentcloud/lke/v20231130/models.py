@@ -17960,6 +17960,12 @@ class ModelInfo(AbstractModel):
         :param _MaxTokens: 最多能生成的token数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxTokens: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
+        :param _Source: 模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验
+        :type Source: str
+        :param _Icon: 模型图标
+        :type Icon: str
+        :param _IsFree: 是否免费
+        :type IsFree: bool
         """
         self._ModelName = None
         self._ModelDesc = None
@@ -17969,6 +17975,9 @@ class ModelInfo(AbstractModel):
         self._TopP = None
         self._Temperature = None
         self._MaxTokens = None
+        self._Source = None
+        self._Icon = None
+        self._IsFree = None
 
     @property
     def ModelName(self):
@@ -18066,6 +18075,39 @@ class ModelInfo(AbstractModel):
     def MaxTokens(self, MaxTokens):
         self._MaxTokens = MaxTokens
 
+    @property
+    def Source(self):
+        """模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Icon(self):
+        """模型图标
+        :rtype: str
+        """
+        return self._Icon
+
+    @Icon.setter
+    def Icon(self, Icon):
+        self._Icon = Icon
+
+    @property
+    def IsFree(self):
+        """是否免费
+        :rtype: bool
+        """
+        return self._IsFree
+
+    @IsFree.setter
+    def IsFree(self, IsFree):
+        self._IsFree = IsFree
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -18082,6 +18124,9 @@ class ModelInfo(AbstractModel):
         if params.get("MaxTokens") is not None:
             self._MaxTokens = ModelParameter()
             self._MaxTokens._deserialize(params.get("MaxTokens"))
+        self._Source = params.get("Source")
+        self._Icon = params.get("Icon")
+        self._IsFree = params.get("IsFree")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
