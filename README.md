@@ -3,7 +3,7 @@
 
 # 依赖环境
 
-1. 依赖环境：Python 2.7, 3.6-3.9 版本。
+1. 依赖环境：Python 2.7、3.6 ~ 3.12 版本。
 2. 从 腾讯云控制台 开通相应产品。
 3. 获取 SecretID、SecretKey 以及调用地址（endpoint），endpoint 一般形式为\*.tencentcloudapi.com，如CVM 的调用地址为 cvm.tencentcloudapi.com，具体参考各产品说明。
 
