@@ -2230,37 +2230,28 @@ class DeviceNetInfo(AbstractModel):
 2:有线
         :type Type: int
         :param _DataEnable: 启用/禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataEnable: bool
         :param _UploadLimit: 上行限速
-注意：此字段可能返回 null，表示取不到有效值。
         :type UploadLimit: str
         :param _DownloadLimit: 下行限速
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadLimit: str
         :param _DataRx: 接收实时速率
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataRx: int
         :param _DataTx: 发送实时速率
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataTx: int
         :param _Vendor: 运营商类型：
 1: 中国移动；
 2: 中国电信; 
 3: 中国联通
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vendor: int
         :param _State: 连接状态：
 0:无连接
 1:连接中
 2:已连接
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: int
         :param _PublicIp: 公网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIp: str
         :param _SignalStrength: 信号强度/单位：dbm
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignalStrength: int
         :param _Rat: 数据网络类型：
 -1 ：无效值   
@@ -2268,7 +2259,6 @@ class DeviceNetInfo(AbstractModel):
 3：3G 
 4：4G 
 5：5G
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rat: int
         :param _NetInfoName: 网卡名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2312,7 +2302,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def DataEnable(self):
         """启用/禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DataEnable
@@ -2324,7 +2313,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def UploadLimit(self):
         """上行限速
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UploadLimit
@@ -2336,7 +2324,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def DownloadLimit(self):
         """下行限速
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadLimit
@@ -2348,7 +2335,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def DataRx(self):
         """接收实时速率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataRx
@@ -2360,7 +2346,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def DataTx(self):
         """发送实时速率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataTx
@@ -2375,7 +2360,6 @@ class DeviceNetInfo(AbstractModel):
 1: 中国移动；
 2: 中国电信; 
 3: 中国联通
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Vendor
@@ -2390,7 +2374,6 @@ class DeviceNetInfo(AbstractModel):
 0:无连接
 1:连接中
 2:已连接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._State
@@ -2402,7 +2385,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def PublicIp(self):
         """公网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicIp
@@ -2414,7 +2396,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def SignalStrength(self):
         """信号强度/单位：dbm
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SignalStrength
@@ -2431,7 +2412,6 @@ class DeviceNetInfo(AbstractModel):
 3：3G 
 4：4G 
 5：5G
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Rat

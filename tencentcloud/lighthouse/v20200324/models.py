@@ -10917,6 +10917,11 @@ class FirewallRule(AbstractModel):
 
 和Ipv6CidrBlock互斥，两者都不指定时，如果Protocol不是ICMPv6，则取默认值0.0.0.0/0。
         :type CidrBlock: str
+        :param _Ipv6CidrBlock: IPv6网段或IPv6地址(互斥)。
+示例值：::/0。
+
+和CidrBlock互斥，两者都不指定时，如果Protocol是ICMPv6，则取默认值::/0。
+        :type Ipv6CidrBlock: str
         :param _Action: 取值：ACCEPT，DROP。默认为 ACCEPT。
         :type Action: str
         :param _FirewallRuleDescription: 防火墙规则描述。
@@ -10925,6 +10930,7 @@ class FirewallRule(AbstractModel):
         self._Protocol = None
         self._Port = None
         self._CidrBlock = None
+        self._Ipv6CidrBlock = None
         self._Action = None
         self._FirewallRuleDescription = None
 
@@ -10965,6 +10971,20 @@ class FirewallRule(AbstractModel):
         self._CidrBlock = CidrBlock
 
     @property
+    def Ipv6CidrBlock(self):
+        """IPv6网段或IPv6地址(互斥)。
+示例值：::/0。
+
+和CidrBlock互斥，两者都不指定时，如果Protocol是ICMPv6，则取默认值::/0。
+        :rtype: str
+        """
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
     def Action(self):
         """取值：ACCEPT，DROP。默认为 ACCEPT。
         :rtype: str
@@ -10991,6 +11011,7 @@ class FirewallRule(AbstractModel):
         self._Protocol = params.get("Protocol")
         self._Port = params.get("Port")
         self._CidrBlock = params.get("CidrBlock")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         self._Action = params.get("Action")
         self._FirewallRuleDescription = params.get("FirewallRuleDescription")
         memeber_set = set(params.keys())
@@ -11021,6 +11042,11 @@ class FirewallRuleInfo(AbstractModel):
 
 和Ipv6CidrBlock互斥，两者都不指定时，如果Protocol不是ICMPv6，则取默认值0.0.0.0/0。
         :type CidrBlock: str
+        :param _Ipv6CidrBlock: IPv6网段或IPv6地址(互斥)。
+示例值：::/0。
+
+和CidrBlock互斥，两者都不指定时，如果Protocol是ICMPv6，则取默认值::/0。
+        :type Ipv6CidrBlock: str
         :param _Action: 取值：ACCEPT，DROP。默认为 ACCEPT。
         :type Action: str
         :param _FirewallRuleDescription: 防火墙规则描述。
@@ -11030,6 +11056,7 @@ class FirewallRuleInfo(AbstractModel):
         self._Protocol = None
         self._Port = None
         self._CidrBlock = None
+        self._Ipv6CidrBlock = None
         self._Action = None
         self._FirewallRuleDescription = None
 
@@ -11081,6 +11108,20 @@ class FirewallRuleInfo(AbstractModel):
         self._CidrBlock = CidrBlock
 
     @property
+    def Ipv6CidrBlock(self):
+        """IPv6网段或IPv6地址(互斥)。
+示例值：::/0。
+
+和CidrBlock互斥，两者都不指定时，如果Protocol是ICMPv6，则取默认值::/0。
+        :rtype: str
+        """
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
     def Action(self):
         """取值：ACCEPT，DROP。默认为 ACCEPT。
         :rtype: str
@@ -11108,6 +11149,7 @@ class FirewallRuleInfo(AbstractModel):
         self._Protocol = params.get("Protocol")
         self._Port = params.get("Port")
         self._CidrBlock = params.get("CidrBlock")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         self._Action = params.get("Action")
         self._FirewallRuleDescription = params.get("FirewallRuleDescription")
         memeber_set = set(params.keys())
@@ -12434,6 +12476,10 @@ FAILED：表示操作失败
         :param _InstanceRestrictState: 实例封禁状态。取值范围：
 <li>NORMAL实例正常。</li><li>NETWORK_RESTRICT：网络封禁。</li>
         :type InstanceRestrictState: str
+        :param _SupportIpv6Detail: 描述实例是否支持IPv6。
+        :type SupportIpv6Detail: :class:`tencentcloud.lighthouse.v20200324.models.SupportIpv6Detail`
+        :param _PublicIpv6Addresses: 公网IPv6地址列表。
+        :type PublicIpv6Addresses: list of str
         :param _InitInvocationId: 创建实例后自动执行TAT命令的调用ID。
         :type InitInvocationId: str
         :param _InstanceViolationDetail: 实例违规详情。
@@ -12468,6 +12514,8 @@ FAILED：表示操作失败
         self._Zone = None
         self._Tags = None
         self._InstanceRestrictState = None
+        self._SupportIpv6Detail = None
+        self._PublicIpv6Addresses = None
         self._InitInvocationId = None
         self._InstanceViolationDetail = None
 
@@ -12799,6 +12847,28 @@ FAILED：表示操作失败
         self._InstanceRestrictState = InstanceRestrictState
 
     @property
+    def SupportIpv6Detail(self):
+        """描述实例是否支持IPv6。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.SupportIpv6Detail`
+        """
+        return self._SupportIpv6Detail
+
+    @SupportIpv6Detail.setter
+    def SupportIpv6Detail(self, SupportIpv6Detail):
+        self._SupportIpv6Detail = SupportIpv6Detail
+
+    @property
+    def PublicIpv6Addresses(self):
+        """公网IPv6地址列表。
+        :rtype: list of str
+        """
+        return self._PublicIpv6Addresses
+
+    @PublicIpv6Addresses.setter
+    def PublicIpv6Addresses(self, PublicIpv6Addresses):
+        self._PublicIpv6Addresses = PublicIpv6Addresses
+
+    @property
     def InitInvocationId(self):
         """创建实例后自动执行TAT命令的调用ID。
         :rtype: str
@@ -12862,6 +12932,10 @@ FAILED：表示操作失败
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._InstanceRestrictState = params.get("InstanceRestrictState")
+        if params.get("SupportIpv6Detail") is not None:
+            self._SupportIpv6Detail = SupportIpv6Detail()
+            self._SupportIpv6Detail._deserialize(params.get("SupportIpv6Detail"))
+        self._PublicIpv6Addresses = params.get("PublicIpv6Addresses")
         self._InitInvocationId = params.get("InitInvocationId")
         if params.get("InstanceViolationDetail") is not None:
             self._InstanceViolationDetail = InstanceViolationDetail()
@@ -17982,6 +18056,112 @@ class StopInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SupportIpv6Detail(AbstractModel):
+    """实例支持IPv6详情描述。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsSupport: 是否支持开启IPv6。
+        :type IsSupport: bool
+        :param _Detail: 详情。
+
+当IsSupport为True，Detail枚举值为:
+
+EFFECTIVE_IMMEDIATELY: 立即生效
+
+EFFECTIVE_AFTER_REBOOT: 分配过程需要开关机，用户需备份数据
+
+ 
+
+当IsSupport为False，Detail枚举值为:
+
+HAD_BEEN_ASSIGNED: 已分配IPv6地址
+
+REGION_NOT_SUPPORT: 地域不支持
+
+BLUEPRINT_NOT_SUPPORT: 镜像不支持
+
+BUNDLE_INSTANCE_NOT_SUPPORT: 套餐实例不支持
+
+BUNDLE_BANDWIDTH_NOT_SUPPORT: 套餐带宽不支持
+        :type Detail: str
+        :param _Message: 提示信息。
+        :type Message: str
+        """
+        self._IsSupport = None
+        self._Detail = None
+        self._Message = None
+
+    @property
+    def IsSupport(self):
+        """是否支持开启IPv6。
+        :rtype: bool
+        """
+        return self._IsSupport
+
+    @IsSupport.setter
+    def IsSupport(self, IsSupport):
+        self._IsSupport = IsSupport
+
+    @property
+    def Detail(self):
+        """详情。
+
+当IsSupport为True，Detail枚举值为:
+
+EFFECTIVE_IMMEDIATELY: 立即生效
+
+EFFECTIVE_AFTER_REBOOT: 分配过程需要开关机，用户需备份数据
+
+ 
+
+当IsSupport为False，Detail枚举值为:
+
+HAD_BEEN_ASSIGNED: 已分配IPv6地址
+
+REGION_NOT_SUPPORT: 地域不支持
+
+BLUEPRINT_NOT_SUPPORT: 镜像不支持
+
+BUNDLE_INSTANCE_NOT_SUPPORT: 套餐实例不支持
+
+BUNDLE_BANDWIDTH_NOT_SUPPORT: 套餐带宽不支持
+        :rtype: str
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Message(self):
+        """提示信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._IsSupport = params.get("IsSupport")
+        self._Detail = params.get("Detail")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SystemDisk(AbstractModel):

@@ -32846,6 +32846,8 @@ UserName和Password必须同时填写或同时为空。
         :type Password: str
         :param _AuthRange: 授权范围：all 授权全部  manual：手动指定
         :type AuthRange: str
+        :param _ResourceName: 自建数据资产的名称，支持修改
+        :type ResourceName: str
         """
         self._DspaId = None
         self._ResourceId = None
@@ -32853,6 +32855,7 @@ UserName和Password必须同时填写或同时为空。
         self._UserName = None
         self._Password = None
         self._AuthRange = None
+        self._ResourceName = None
 
     @property
     def DspaId(self):
@@ -32922,6 +32925,17 @@ UserName和Password必须同时填写或同时为空。
     def AuthRange(self, AuthRange):
         self._AuthRange = AuthRange
 
+    @property
+    def ResourceName(self):
+        """自建数据资产的名称，支持修改
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -32930,6 +32944,7 @@ UserName和Password必须同时填写或同时为空。
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
         self._AuthRange = params.get("AuthRange")
+        self._ResourceName = params.get("ResourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

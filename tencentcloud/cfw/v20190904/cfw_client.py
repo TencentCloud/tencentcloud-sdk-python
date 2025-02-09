@@ -26,31 +26,6 @@ class CfwClient(AbstractClient):
     _service = 'cfw'
 
 
-    def AddAcRule(self, request):
-        """接口不再使用，已有新接口AddAclRule
-
-        添加互联网边界规则
-
-        :param request: Request instance for AddAcRule.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("AddAcRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.AddAcRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def AddAclRule(self, request):
         """添加互联网边界访问控制规则
 

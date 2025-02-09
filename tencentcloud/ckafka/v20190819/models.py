@@ -24259,7 +24259,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesConfig`
         :param _DynamicRetentionConfig: 动态消息保留策略配置
         :type DynamicRetentionConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
-        :param _RebalanceTime: 升配Rebalance时间 参数已废弃,忽略不填!!!
+        :param _RebalanceTime: 用于修改升级版本或升配定时任务的执行时间，Unix时间戳，精确到秒
         :type RebalanceTime: int
         :param _PublicNetwork: 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
         :type PublicNetwork: int
@@ -24267,6 +24267,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         :param _MaxMessageByte: 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
         :type MaxMessageByte: int
+        :param _UncleanLeaderElectionEnable: 集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
+        :type UncleanLeaderElectionEnable: int
         """
         self._InstanceId = None
         self._MsgRetentionTime = None
@@ -24277,6 +24279,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         self._PublicNetwork = None
         self._DynamicDiskConfig = None
         self._MaxMessageByte = None
+        self._UncleanLeaderElectionEnable = None
 
     @property
     def InstanceId(self):
@@ -24335,7 +24338,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def RebalanceTime(self):
-        """升配Rebalance时间 参数已废弃,忽略不填!!!
+        """用于修改升级版本或升配定时任务的执行时间，Unix时间戳，精确到秒
         :rtype: int
         """
         return self._RebalanceTime
@@ -24381,6 +24384,17 @@ class ModifyInstanceAttributesRequest(AbstractModel):
     def MaxMessageByte(self, MaxMessageByte):
         self._MaxMessageByte = MaxMessageByte
 
+    @property
+    def UncleanLeaderElectionEnable(self):
+        """集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
+        :rtype: int
+        """
+        return self._UncleanLeaderElectionEnable
+
+    @UncleanLeaderElectionEnable.setter
+    def UncleanLeaderElectionEnable(self, UncleanLeaderElectionEnable):
+        self._UncleanLeaderElectionEnable = UncleanLeaderElectionEnable
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -24398,6 +24412,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
             self._DynamicDiskConfig = DynamicDiskConfig()
             self._DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         self._MaxMessageByte = params.get("MaxMessageByte")
+        self._UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -461,11 +461,17 @@ class NetWork(AbstractModel):
         :type SubnetId: str
         :param _SubnetCidrBlock: 子网网段
         :type SubnetCidrBlock: str
+        :param _ClbIp: 服务clbip
+        :type ClbIp: str
+        :param _ClbPort: 服务clbPort
+        :type ClbPort: str
         """
         self._VpcId = None
         self._VpcCidrBlock = None
         self._SubnetId = None
         self._SubnetCidrBlock = None
+        self._ClbIp = None
+        self._ClbPort = None
 
     @property
     def VpcId(self):
@@ -511,12 +517,36 @@ class NetWork(AbstractModel):
     def SubnetCidrBlock(self, SubnetCidrBlock):
         self._SubnetCidrBlock = SubnetCidrBlock
 
+    @property
+    def ClbIp(self):
+        """服务clbip
+        :rtype: str
+        """
+        return self._ClbIp
+
+    @ClbIp.setter
+    def ClbIp(self, ClbIp):
+        self._ClbIp = ClbIp
+
+    @property
+    def ClbPort(self):
+        """服务clbPort
+        :rtype: str
+        """
+        return self._ClbPort
+
+    @ClbPort.setter
+    def ClbPort(self, ClbPort):
+        self._ClbPort = ClbPort
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._VpcCidrBlock = params.get("VpcCidrBlock")
         self._SubnetId = params.get("SubnetId")
         self._SubnetCidrBlock = params.get("SubnetCidrBlock")
+        self._ClbIp = params.get("ClbIp")
+        self._ClbPort = params.get("ClbPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

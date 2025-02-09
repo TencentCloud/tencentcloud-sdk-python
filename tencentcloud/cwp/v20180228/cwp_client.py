@@ -2812,31 +2812,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAttackLogs(self, request):
-        """DescribeAttackEvents 代替
-
-        按分页形式展示网络攻击日志列表
-
-        :param request: Request instance for DescribeAttackLogs.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAttackLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAttackLogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAttackStatistics(self, request):
         """网络攻击数据统计
 
@@ -3978,31 +3953,6 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeClientException", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClientExceptionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeComponentStatistics(self, request):
-        """接口已无效
-
-        本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
-
-        :param request: Request instance for DescribeComponentStatistics.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeComponentStatistics", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeComponentStatisticsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

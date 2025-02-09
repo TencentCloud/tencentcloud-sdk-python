@@ -35288,6 +35288,8 @@ class RemoteWrite(AbstractModel):
 
     @property
     def MaxBlockSize(self):
+        warnings.warn("parameter `MaxBlockSize` is deprecated", DeprecationWarning) 
+
         """最大block
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -35296,10 +35298,14 @@ class RemoteWrite(AbstractModel):
 
     @MaxBlockSize.setter
     def MaxBlockSize(self, MaxBlockSize):
+        warnings.warn("parameter `MaxBlockSize` is deprecated", DeprecationWarning) 
+
         self._MaxBlockSize = MaxBlockSize
 
     @property
     def Label(self):
+        warnings.warn("parameter `Label` is deprecated", DeprecationWarning) 
+
         """Label
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -35308,6 +35314,8 @@ class RemoteWrite(AbstractModel):
 
     @Label.setter
     def Label(self, Label):
+        warnings.warn("parameter `Label` is deprecated", DeprecationWarning) 
+
         self._Label = Label
 
     @property
