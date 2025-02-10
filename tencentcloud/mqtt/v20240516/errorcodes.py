@@ -32,6 +32,9 @@ MISSINGPARAMETER = 'MissingParameter'
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
+# 资源被占用。
+RESOURCEINUSE = 'ResourceInUse'
+
 # ResourceNotFound.Instance
 RESOURCENOTFOUND_INSTANCE = 'ResourceNotFound.Instance'
 
@@ -40,6 +43,9 @@ RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
 
 # ResourceNotFound.Topic
 RESOURCENOTFOUND_TOPIC = 'ResourceNotFound.Topic'
+
+# 资源不可用。
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
 # UnsupportedOperation.ResourceAlreadyExists
 UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = 'UnsupportedOperation.ResourceAlreadyExists'

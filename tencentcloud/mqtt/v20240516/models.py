@@ -685,6 +685,368 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInsPublicEndpointRequest(AbstractModel):
+    """CreateInsPublicEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Bandwidth: 带宽,单位Mbps
+        :type Bandwidth: int
+        :param _Rules: 公网访问规则
+        :type Rules: list of PublicAccessRule
+        """
+        self._InstanceId = None
+        self._Bandwidth = None
+        self._Rules = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Bandwidth(self):
+        """带宽,单位Mbps
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Rules(self):
+        """公网访问规则
+        :rtype: list of PublicAccessRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Bandwidth = params.get("Bandwidth")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PublicAccessRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInsPublicEndpointResponse(AbstractModel):
+    """CreateInsPublicEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateInstanceRequest(AbstractModel):
+    """CreateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 实例类型，
+BASIC 基础版
+PRO  专业版
+        :type InstanceType: str
+        :param _Name: 实例名称
+        :type Name: str
+        :param _SkuCode: 商品规格，可用规格可通过接口DescribeProductSKUList查询
+        :type SkuCode: str
+        :param _Remark: 备注信息
+        :type Remark: str
+        :param _TagList: 标签列表
+        :type TagList: list of Tag
+        :param _VpcList: 实例绑定的VPC信息
+        :type VpcList: list of VpcInfo
+        :param _EnablePublic: 是否开启公网
+        :type EnablePublic: bool
+        :param _Bandwidth: 公网带宽（单位：兆）
+        :type Bandwidth: int
+        :param _IpRules: 公网访问白名单
+        :type IpRules: list of IpRule
+        :param _RenewFlag: 是否自动续费（0: 不自动续费；1: 自动续费）
+        :type RenewFlag: int
+        :param _TimeSpan: 购买时长（单位：月）
+        :type TimeSpan: int
+        :param _PayMode: 付费模式（0: 后付费；1: 预付费）
+        :type PayMode: int
+        """
+        self._InstanceType = None
+        self._Name = None
+        self._SkuCode = None
+        self._Remark = None
+        self._TagList = None
+        self._VpcList = None
+        self._EnablePublic = None
+        self._Bandwidth = None
+        self._IpRules = None
+        self._RenewFlag = None
+        self._TimeSpan = None
+        self._PayMode = None
+
+    @property
+    def InstanceType(self):
+        """实例类型，
+BASIC 基础版
+PRO  专业版
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Name(self):
+        """实例名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SkuCode(self):
+        """商品规格，可用规格可通过接口DescribeProductSKUList查询
+        :rtype: str
+        """
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def Remark(self):
+        """备注信息
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TagList(self):
+        """标签列表
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def VpcList(self):
+        """实例绑定的VPC信息
+        :rtype: list of VpcInfo
+        """
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+    @property
+    def EnablePublic(self):
+        """是否开启公网
+        :rtype: bool
+        """
+        return self._EnablePublic
+
+    @EnablePublic.setter
+    def EnablePublic(self, EnablePublic):
+        self._EnablePublic = EnablePublic
+
+    @property
+    def Bandwidth(self):
+        """公网带宽（单位：兆）
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def IpRules(self):
+        """公网访问白名单
+        :rtype: list of IpRule
+        """
+        return self._IpRules
+
+    @IpRules.setter
+    def IpRules(self, IpRules):
+        self._IpRules = IpRules
+
+    @property
+    def RenewFlag(self):
+        """是否自动续费（0: 不自动续费；1: 自动续费）
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def TimeSpan(self):
+        """购买时长（单位：月）
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def PayMode(self):
+        """付费模式（0: 后付费；1: 预付费）
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._Name = params.get("Name")
+        self._SkuCode = params.get("SkuCode")
+        self._Remark = params.get("Remark")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        if params.get("VpcList") is not None:
+            self._VpcList = []
+            for item in params.get("VpcList"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcList.append(obj)
+        self._EnablePublic = params.get("EnablePublic")
+        self._Bandwidth = params.get("Bandwidth")
+        if params.get("IpRules") is not None:
+            self._IpRules = []
+            for item in params.get("IpRules"):
+                obj = IpRule()
+                obj._deserialize(item)
+                self._IpRules.append(obj)
+        self._RenewFlag = params.get("RenewFlag")
+        self._TimeSpan = params.get("TimeSpan")
+        self._PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstanceResponse(AbstractModel):
+    """CreateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateJWKSAuthenticatorRequest(AbstractModel):
     """CreateJWKSAuthenticator请求参数结构体
 
@@ -1121,6 +1483,115 @@ class CreateTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateUserRequest(AbstractModel):
+    """CreateUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Username: 用户名
+        :type Username: str
+        :param _Password: 密码，该字段为空时候则后端会默认生成
+        :type Password: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._Username = None
+        self._Password = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Username(self):
+        """用户名
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        """密码，该字段为空时候则后端会默认生成
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserResponse(AbstractModel):
+    """CreateUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeactivateDeviceCertificateRequest(AbstractModel):
     """DeactivateDeviceCertificate请求参数结构体
 
@@ -1443,6 +1914,134 @@ class DeleteDeviceCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteInsPublicEndpointRequest(AbstractModel):
+    """DeleteInsPublicEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInsPublicEndpointResponse(AbstractModel):
+    """DeleteInsPublicEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteInstanceRequest(AbstractModel):
+    """DeleteInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstanceResponse(AbstractModel):
+    """DeleteInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteTopicRequest(AbstractModel):
     """DeleteTopic请求参数结构体
 
@@ -1496,6 +2095,85 @@ class DeleteTopicRequest(AbstractModel):
 
 class DeleteTopicResponse(AbstractModel):
     """DeleteTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteUserRequest(AbstractModel):
+    """DeleteUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Username: 用户名
+        :type Username: str
+        """
+        self._InstanceId = None
+        self._Username = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Username(self):
+        """用户名
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Username = params.get("Username")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserResponse(AbstractModel):
+    """DeleteUser返回参数结构体
 
     """
 
@@ -2165,6 +2843,165 @@ class DescribeDeviceCertificatesResponse(AbstractModel):
                 obj = DeviceCertificateItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInsPublicEndpointsRequest(AbstractModel):
+    """DescribeInsPublicEndpoints请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInsPublicEndpointsResponse(AbstractModel):
+    """DescribeInsPublicEndpoints返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Endpoints: 接入点
+        :type Endpoints: list of MQTTEndpointItem
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Bandwidth: 带宽
+        :type Bandwidth: int
+        :param _Rules: 公网访问规则
+        :type Rules: list of PublicAccessRule
+        :param _Status: 公网状态：
+    NORMAL-正常
+    CLOSING-关闭中
+    MODIFYING-修改中
+    CREATING-开启中
+    CLOSE-关闭
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Endpoints = None
+        self._InstanceId = None
+        self._Bandwidth = None
+        self._Rules = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Endpoints(self):
+        """接入点
+        :rtype: list of MQTTEndpointItem
+        """
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
+
+    @property
+    def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Bandwidth(self):
+        """带宽
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Rules(self):
+        """公网访问规则
+        :rtype: list of PublicAccessRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def Status(self):
+        """公网状态：
+    NORMAL-正常
+    CLOSING-关闭中
+    MODIFYING-修改中
+    CREATING-开启中
+    CLOSE-关闭
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Endpoints") is not None:
+            self._Endpoints = []
+            for item in params.get("Endpoints"):
+                obj = MQTTEndpointItem()
+                obj._deserialize(item)
+                self._Endpoints.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        self._Bandwidth = params.get("Bandwidth")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PublicAccessRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -3039,6 +3876,159 @@ class DescribeTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserListRequest(AbstractModel):
+    """DescribeUserList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Filters: 查询条件列表支持字段
+Username：Username模糊查询
+        :type Filters: list of Filter
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        """查询条件列表支持字段
+Username：Username模糊查询
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserListResponse(AbstractModel):
+    """DescribeUserList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 角色信息列表
+        :type Data: list of MQTTUserItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """角色信息列表
+        :rtype: list of MQTTUserItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = MQTTUserItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DeviceCertificateItem(AbstractModel):
     """设备证书信息
 
@@ -3347,6 +4337,74 @@ class Filter(AbstractModel):
         
 
 
+class IpRule(AbstractModel):
+    """IP规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: IP地址
+        :type Ip: str
+        :param _Allow: 是否允许放行
+        :type Allow: bool
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self._Ip = None
+        self._Allow = None
+        self._Remark = None
+
+    @property
+    def Ip(self):
+        """IP地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Allow(self):
+        """是否允许放行
+        :rtype: bool
+        """
+        return self._Allow
+
+    @Allow.setter
+    def Allow(self, Allow):
+        self._Allow = Allow
+
+    @property
+    def Remark(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Allow = params.get("Allow")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MQTTAuthenticatorItem(AbstractModel):
     """MQTT认证器信息
 
@@ -3443,6 +4501,146 @@ class MQTTAuthenticatorItem(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MQTTEndpointItem(AbstractModel):
+    """MQTTEndpoint
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Url: 接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _VpcId: vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _Host: 主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _Ip: 接入点ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        """
+        self._Type = None
+        self._Url = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Host = None
+        self._Port = None
+        self._Ip = None
+
+    @property
+    def Type(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        """接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def VpcId(self):
+        """vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Host(self):
+        """主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        """端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Ip(self):
+        """接入点ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Ip = params.get("Ip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3894,6 +5092,102 @@ class MQTTTopicItem(AbstractModel):
         
 
 
+class MQTTUserItem(AbstractModel):
+    """MQTT集群用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Username: 用户名
+        :type Username: str
+        :param _Password: 密码
+        :type Password: str
+        :param _Remark: 备注信息
+        :type Remark: str
+        :param _CreatedTime: 创建时间，秒为单位
+        :type CreatedTime: int
+        :param _ModifiedTime: 修改时间，秒为单位
+        :type ModifiedTime: int
+        """
+        self._Username = None
+        self._Password = None
+        self._Remark = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+
+    @property
+    def Username(self):
+        """用户名
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        """密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Remark(self):
+        """备注信息
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreatedTime(self):
+        """创建时间，秒为单位
+        :rtype: int
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        """修改时间，秒为单位
+        :rtype: int
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+
+    def _deserialize(self, params):
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._Remark = params.get("Remark")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAuthorizationPolicyRequest(AbstractModel):
     """ModifyAuthorizationPolicy请求参数结构体
 
@@ -4127,6 +5421,248 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
 class ModifyAuthorizationPolicyResponse(AbstractModel):
     """ModifyAuthorizationPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInsPublicEndpointRequest(AbstractModel):
+    """ModifyInsPublicEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Bandwidth: 带宽，单位：Mbps
+        :type Bandwidth: int
+        :param _Rules: 公网访问规则
+        :type Rules: list of PublicAccessRule
+        """
+        self._InstanceId = None
+        self._Bandwidth = None
+        self._Rules = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Bandwidth(self):
+        """带宽，单位：Mbps
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Rules(self):
+        """公网访问规则
+        :rtype: list of PublicAccessRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Bandwidth = params.get("Bandwidth")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PublicAccessRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInsPublicEndpointResponse(AbstractModel):
+    """ModifyInsPublicEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceRequest(AbstractModel):
+    """ModifyInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Name: 要修改实例名称
+        :type Name: str
+        :param _Remark: 要修改的备注信息
+        :type Remark: str
+        :param _SkuCode: 要变更的配置规格
+        :type SkuCode: str
+        :param _DeviceCertificateProvisionType: 客户端证书注册方式：
+JITP：自动注册
+API：手动通过API注册
+        :type DeviceCertificateProvisionType: str
+        :param _AutomaticActivation: 自动注册证书是否自动激活
+        :type AutomaticActivation: bool
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Remark = None
+        self._SkuCode = None
+        self._DeviceCertificateProvisionType = None
+        self._AutomaticActivation = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        """要修改实例名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        """要修改的备注信息
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def SkuCode(self):
+        """要变更的配置规格
+        :rtype: str
+        """
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def DeviceCertificateProvisionType(self):
+        """客户端证书注册方式：
+JITP：自动注册
+API：手动通过API注册
+        :rtype: str
+        """
+        return self._DeviceCertificateProvisionType
+
+    @DeviceCertificateProvisionType.setter
+    def DeviceCertificateProvisionType(self, DeviceCertificateProvisionType):
+        self._DeviceCertificateProvisionType = DeviceCertificateProvisionType
+
+    @property
+    def AutomaticActivation(self):
+        """自动注册证书是否自动激活
+        :rtype: bool
+        """
+        return self._AutomaticActivation
+
+    @AutomaticActivation.setter
+    def AutomaticActivation(self, AutomaticActivation):
+        self._AutomaticActivation = AutomaticActivation
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._SkuCode = params.get("SkuCode")
+        self._DeviceCertificateProvisionType = params.get("DeviceCertificateProvisionType")
+        self._AutomaticActivation = params.get("AutomaticActivation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceResponse(AbstractModel):
+    """ModifyInstance返回参数结构体
 
     """
 
@@ -4559,6 +6095,172 @@ class ModifyTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserRequest(AbstractModel):
+    """ModifyUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Username: 用户名
+        :type Username: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._Username = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Username(self):
+        """用户名
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Username = params.get("Username")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserResponse(AbstractModel):
+    """ModifyUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class PublicAccessRule(AbstractModel):
+    """公网访问安全规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpRule: ip网段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpRule: str
+        :param _Allow: 允许或者拒绝
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Allow: bool
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self._IpRule = None
+        self._Allow = None
+        self._Remark = None
+
+    @property
+    def IpRule(self):
+        """ip网段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IpRule
+
+    @IpRule.setter
+    def IpRule(self, IpRule):
+        self._IpRule = IpRule
+
+    @property
+    def Allow(self):
+        """允许或者拒绝
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Allow
+
+    @Allow.setter
+    def Allow(self, Allow):
+        self._Allow = Allow
+
+    @property
+    def Remark(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._IpRule = params.get("IpRule")
+        self._Allow = params.get("Allow")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegisterDeviceCertificateRequest(AbstractModel):
     """RegisterDeviceCertificate请求参数结构体
 
@@ -4777,6 +6479,61 @@ class RevokedDeviceCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Tag(AbstractModel):
+    """标签数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        """标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TagFilter(AbstractModel):
     """标签过滤器
 
@@ -4910,3 +6667,54 @@ class UpdateAuthorizationPolicyPriorityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class VpcInfo(AbstractModel):
+    """VPC信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC ID
+        :type VpcId: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

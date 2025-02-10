@@ -9266,8 +9266,9 @@ class CreateTopicRequest(AbstractModel):
         :type MaxSplitPartitions: int
         :param _StorageType: 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
         :type StorageType: str
-        :param _Period: 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600天。取值为3640时代表永久保存。
-不传此值，默认获取该日志主题对应日志集的Period值（当获取失败时默认为30天）。
+        :param _Period: 存储时间，单位天。
+- 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
+- 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
         :type Period: int
         :param _Describes: 日志主题描述
         :type Describes: str
@@ -9275,6 +9276,10 @@ class CreateTopicRequest(AbstractModel):
 非0：开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
 仅在StorageType为 hot 时生效。
         :type HotPeriod: int
+        :param _TopicId: 主题自定义ID，格式为：用户自定义部分-APPID。未填写该参数时将自动生成ID。
+- 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
+- APPID可在https://console.cloud.tencent.com/developer页面查询
+        :type TopicId: str
         :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。默认为false。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
         :type IsWebTracking: bool
@@ -9291,6 +9296,7 @@ class CreateTopicRequest(AbstractModel):
         self._Period = None
         self._Describes = None
         self._HotPeriod = None
+        self._TopicId = None
         self._IsWebTracking = None
         self._Extends = None
 
@@ -9373,8 +9379,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Period(self):
-        """生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600天。取值为3640时代表永久保存。
-不传此值，默认获取该日志主题对应日志集的Period值（当获取失败时默认为30天）。
+        """存储时间，单位天。
+- 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
+- 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
         :rtype: int
         """
         return self._Period
@@ -9406,6 +9413,19 @@ class CreateTopicRequest(AbstractModel):
     @HotPeriod.setter
     def HotPeriod(self, HotPeriod):
         self._HotPeriod = HotPeriod
+
+    @property
+    def TopicId(self):
+        """主题自定义ID，格式为：用户自定义部分-APPID。未填写该参数时将自动生成ID。
+- 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
+- APPID可在https://console.cloud.tencent.com/developer页面查询
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
 
     @property
     def IsWebTracking(self):
@@ -9447,6 +9467,7 @@ class CreateTopicRequest(AbstractModel):
         self._Period = params.get("Period")
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
+        self._TopicId = params.get("TopicId")
         self._IsWebTracking = params.get("IsWebTracking")
         if params.get("Extends") is not None:
             self._Extends = TopicExtendInfo()

@@ -95,6 +95,52 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CertificateInfoSubmit(self, request):
+        """付费提交证书资料
+
+        :param request: Request instance for CertificateInfoSubmit.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CertificateInfoSubmitRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateInfoSubmitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CertificateInfoSubmit", params, headers=headers)
+            response = json.loads(body)
+            model = models.CertificateInfoSubmitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CertificateOrderSubmit(self, request):
+        """提交付费证书订单
+
+        :param request: Request instance for CertificateOrderSubmit.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CertificateOrderSubmitRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateOrderSubmitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CertificateOrderSubmit", params, headers=headers)
+            response = json.loads(body)
+            model = models.CertificateOrderSubmitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckCertificateChain(self, request):
         """本接口（CheckCertificateChain）用于检查证书链是否完整。
 

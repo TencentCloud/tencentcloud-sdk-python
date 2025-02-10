@@ -4423,7 +4423,6 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CcnAttachedInstanceSet: 云联网关联的实例列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnAttachedInstanceSet: list of CcnAttachedInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4434,7 +4433,6 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
     @property
     def CcnAttachedInstanceSet(self):
         """云联网关联的实例列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CcnAttachedInstance
         """
         return self._CcnAttachedInstanceSet
@@ -12298,10 +12296,8 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
         :param _Price: 询价信息。默认为列表中第一个实例的价格信息。
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
         :param _DataDiskPriceSet: 数据盘价格信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataDiskPriceSet: list of DataDiskPrice
         :param _InstancePriceDetailSet: 待续费实例价格列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePriceDetailSet: list of InstancePriceDetail
         :param _TotalPrice: 总计价格。
         :type TotalPrice: :class:`tencentcloud.lighthouse.v20200324.models.TotalPrice`
@@ -12328,7 +12324,6 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
     @property
     def DataDiskPriceSet(self):
         """数据盘价格信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataDiskPrice
         """
         return self._DataDiskPriceSet
@@ -12340,7 +12335,6 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
     @property
     def InstancePriceDetailSet(self):
         """待续费实例价格列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstancePriceDetail
         """
         return self._InstancePriceDetailSet

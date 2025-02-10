@@ -2261,13 +2261,10 @@ class DeviceNetInfo(AbstractModel):
 5：5G
         :type Rat: int
         :param _NetInfoName: 网卡名
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetInfoName: str
         :param _DownRate: 下行实时速率（浮点数类型代替上一版本DataRx的整型）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownRate: float
         :param _UpRate: 上行实时速率（浮点数类型代替上一版本TxRate的整型）
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpRate: float
         """
         self._Type = None
@@ -2423,7 +2420,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def NetInfoName(self):
         """网卡名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetInfoName
@@ -2435,7 +2431,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def DownRate(self):
         """下行实时速率（浮点数类型代替上一版本DataRx的整型）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DownRate
@@ -2447,7 +2442,6 @@ class DeviceNetInfo(AbstractModel):
     @property
     def UpRate(self):
         """上行实时速率（浮点数类型代替上一版本TxRate的整型）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UpRate
@@ -2643,19 +2637,14 @@ class FlowDetails(AbstractModel):
     def __init__(self):
         r"""
         :param _NetDetails: 流量数据点
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetDetails: list of NetDetails
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _MaxValue: 流量最大值（单位：bytes）
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxValue: float
         :param _AvgValue: 流量平均值（单位：bytes）
-注意：此字段可能返回 null，表示取不到有效值。
         :type AvgValue: float
         :param _TotalValue: 流量总值（单位：bytes）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalValue: float
         """
         self._NetDetails = None
@@ -2667,7 +2656,6 @@ class FlowDetails(AbstractModel):
     @property
     def NetDetails(self):
         """流量数据点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -2679,7 +2667,6 @@ class FlowDetails(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -2691,7 +2678,6 @@ class FlowDetails(AbstractModel):
     @property
     def MaxValue(self):
         """流量最大值（单位：bytes）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MaxValue
@@ -2703,7 +2689,6 @@ class FlowDetails(AbstractModel):
     @property
     def AvgValue(self):
         """流量平均值（单位：bytes）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._AvgValue
@@ -2715,7 +2700,6 @@ class FlowDetails(AbstractModel):
     @property
     def TotalValue(self):
         """流量总值（单位：bytes）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalValue

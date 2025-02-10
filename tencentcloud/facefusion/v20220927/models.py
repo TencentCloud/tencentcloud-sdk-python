@@ -826,12 +826,12 @@ class FusionUltraParam(AbstractModel):
 该参数仅对SwapModelType（模型类型）取值1-5生效
         :type WarpRadio: float
         :param _EnhanceRadio: 人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
-取值范围：0-1之间。默认取值1。
+取值范围：0-1之间。默认取值0.5。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
         :type EnhanceRadio: float
         :param _MpRadio: 磨皮强度。当生成脸的图像面部显脏时，可进行设置。
-取值范围：0-1之间。默认取值1。
+取值范围：0-1之间。默认取值0.5。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
         :type MpRadio: float
@@ -877,7 +877,7 @@ class FusionUltraParam(AbstractModel):
     @property
     def EnhanceRadio(self):
         """人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
-取值范围：0-1之间。默认取值1。
+取值范围：0-1之间。默认取值0.5。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
         :rtype: float
@@ -891,7 +891,7 @@ class FusionUltraParam(AbstractModel):
     @property
     def MpRadio(self):
         """磨皮强度。当生成脸的图像面部显脏时，可进行设置。
-取值范围：0-1之间。默认取值1。
+取值范围：0-1之间。默认取值0.5。
 
 该参数仅对SwapModelType（模型类型）取值1-5生效
         :rtype: float

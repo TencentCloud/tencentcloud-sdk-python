@@ -72,6 +72,52 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInsPublicEndpoint(self, request):
+        """为MQTT实例创建公网接入点
+
+        :param request: Request instance for CreateInsPublicEndpoint.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateInsPublicEndpointRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.CreateInsPublicEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInsPublicEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInsPublicEndpointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateInstance(self, request):
+        """购买新的MQTT实例
+
+        :param request: Request instance for CreateInstance.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateInstanceRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.CreateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateJWKSAuthenticator(self, request):
         """创建一个jwks的认证
 
@@ -132,6 +178,29 @@ class MqttClient(AbstractClient):
             body = self.call("CreateTopic", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateUser(self, request):
+        """添加mqtt角色
+
+        :param request: Request instance for CreateUser.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateUserRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.CreateUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -233,6 +302,52 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteInsPublicEndpoint(self, request):
+        """删除MQTT实例的公网接入点
+
+        :param request: Request instance for DeleteInsPublicEndpoint.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteInsPublicEndpointRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeleteInsPublicEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInsPublicEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInsPublicEndpointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteInstance(self, request):
+        """删除MQTT实例
+
+        :param request: Request instance for DeleteInstance.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteInstanceRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeleteInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteTopic(self, request):
         """删除MQTT主题
 
@@ -247,6 +362,29 @@ class MqttClient(AbstractClient):
             body = self.call("DeleteTopic", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUser(self, request):
+        """删除MQTT访问用户
+
+        :param request: Request instance for DeleteUser.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteUserRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeleteUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -339,6 +477,29 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeDeviceCertificates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeviceCertificatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInsPublicEndpoints(self, request):
+        """查询MQTT实例公网接入点
+
+        :param request: Request instance for DescribeInsPublicEndpoints.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeInsPublicEndpointsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeInsPublicEndpointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInsPublicEndpoints", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInsPublicEndpointsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -448,6 +609,31 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserList(self, request):
+        """查询用户列表，Filter参数使用说明如下：
+
+        1. Username，用户名称模糊搜索
+
+        :param request: Request instance for DescribeUserList.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeUserListRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeUserListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAuthorizationPolicy(self, request):
         """修改策略规则
 
@@ -462,6 +648,52 @@ class MqttClient(AbstractClient):
             body = self.call("ModifyAuthorizationPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAuthorizationPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInsPublicEndpoint(self, request):
+        """更新MQTT实例公网接入点
+
+        :param request: Request instance for ModifyInsPublicEndpoint.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyInsPublicEndpointRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ModifyInsPublicEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInsPublicEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInsPublicEndpointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstance(self, request):
+        """修改实例属性
+
+        :param request: Request instance for ModifyInstance.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyInstanceRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ModifyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -531,6 +763,29 @@ class MqttClient(AbstractClient):
             body = self.call("ModifyTopic", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUser(self, request):
+        """修改MQTT角色
+
+        :param request: Request instance for ModifyUser.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyUserRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ModifyUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1456,6 +1456,764 @@ class CertificateExtra(AbstractModel):
         
 
 
+class CertificateInfoSubmitRequest(AbstractModel):
+    """CertificateInfoSubmit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: 证书 ID。
+        :type CertId: str
+        :param _GenCsrType: CSR 生成方式：online = 在线生成, upload = 手动上传。
+        :type GenCsrType: str
+        :param _CertCommonName: 绑定证书的主域名。
+        :type CertCommonName: str
+        :param _CompanyType: 组织信息类型：1，个人； 2， 公司； 
+        :type CompanyType: int
+        :param _OrgIdType: 公司证件类型（）
+        :type OrgIdType: str
+        :param _OrgIdNumber: 公司证件号码
+        :type OrgIdNumber: str
+        :param _AdminIdType: 管理人证件类型
+        :type AdminIdType: str
+        :param _AdminIdNumber: 管理人证件号码
+        :type AdminIdNumber: str
+        :param _TechIdType: 联系人证件类型
+        :type TechIdType: str
+        :param _TechIdNumber: 联系人证件号码
+        :type TechIdNumber: str
+        :param _CompanyId: 公司ID
+        :type CompanyId: str
+        :param _Csr: 上传的 CSR 内容。如果GenCsrType为upload则该字段必传
+        :type Csr: str
+        :param _DnsNames: 域名数组（多域名证书可以上传）。
+        :type DnsNames: list of str
+        :param _KeyPass: 私钥密码（非必填）。
+        :type KeyPass: str
+        :param _OrgOrganization: 公司名称。
+        :type OrgOrganization: str
+        :param _OrgDivision: 部门名称。
+        :type OrgDivision: str
+        :param _OrgAddress: 公司详细地址。
+        :type OrgAddress: str
+        :param _OrgCountry: 国家名称，如中国：CN 。
+        :type OrgCountry: str
+        :param _OrgCity: 公司所在城市。
+        :type OrgCity: str
+        :param _OrgRegion: 公司所在省份。
+        :type OrgRegion: str
+        :param _OrgPhoneArea: 公司座机区号。
+        :type OrgPhoneArea: str
+        :param _OrgPhoneNumber: 公司座机号码。
+        :type OrgPhoneNumber: str
+        :param _VerifyType: 证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
+        :type VerifyType: str
+        :param _AdminFirstName: 管理人名。
+        :type AdminFirstName: str
+        :param _AdminLastName: 管理人姓。
+        :type AdminLastName: str
+        :param _AdminPhone: 管理人手机号码。
+        :type AdminPhone: str
+        :param _AdminEmail: 管理人邮箱地址。
+        :type AdminEmail: str
+        :param _AdminTitle: 管理人职位。
+        :type AdminTitle: str
+        :param _TechFirstName: 联系人名。
+        :type TechFirstName: str
+        :param _TechLastName: 联系人姓。
+        :type TechLastName: str
+        :param _ContactEmail: 联系人邮箱地址。
+        :type ContactEmail: str
+        :param _AutoRenewFlag: 是否开启自动续费： 0， 不开启；  1， 开启； 默认为0
+        :type AutoRenewFlag: int
+        :param _CsrKeyParameter: 证书加密参数
+        :type CsrKeyParameter: str
+        :param _CsrEncryptAlgo: 证书加密方式
+        :type CsrEncryptAlgo: str
+        :param _ManagerId: 管理人ID
+        :type ManagerId: str
+        :param _TechPhone: 联系人电话
+        :type TechPhone: str
+        :param _TechEmail: 联系人邮箱
+        :type TechEmail: str
+        :param _TechTitle: 联系人职位
+        :type TechTitle: str
+        """
+        self._CertId = None
+        self._GenCsrType = None
+        self._CertCommonName = None
+        self._CompanyType = None
+        self._OrgIdType = None
+        self._OrgIdNumber = None
+        self._AdminIdType = None
+        self._AdminIdNumber = None
+        self._TechIdType = None
+        self._TechIdNumber = None
+        self._CompanyId = None
+        self._Csr = None
+        self._DnsNames = None
+        self._KeyPass = None
+        self._OrgOrganization = None
+        self._OrgDivision = None
+        self._OrgAddress = None
+        self._OrgCountry = None
+        self._OrgCity = None
+        self._OrgRegion = None
+        self._OrgPhoneArea = None
+        self._OrgPhoneNumber = None
+        self._VerifyType = None
+        self._AdminFirstName = None
+        self._AdminLastName = None
+        self._AdminPhone = None
+        self._AdminEmail = None
+        self._AdminTitle = None
+        self._TechFirstName = None
+        self._TechLastName = None
+        self._ContactEmail = None
+        self._AutoRenewFlag = None
+        self._CsrKeyParameter = None
+        self._CsrEncryptAlgo = None
+        self._ManagerId = None
+        self._TechPhone = None
+        self._TechEmail = None
+        self._TechTitle = None
+
+    @property
+    def CertId(self):
+        """证书 ID。
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def GenCsrType(self):
+        """CSR 生成方式：online = 在线生成, upload = 手动上传。
+        :rtype: str
+        """
+        return self._GenCsrType
+
+    @GenCsrType.setter
+    def GenCsrType(self, GenCsrType):
+        self._GenCsrType = GenCsrType
+
+    @property
+    def CertCommonName(self):
+        """绑定证书的主域名。
+        :rtype: str
+        """
+        return self._CertCommonName
+
+    @CertCommonName.setter
+    def CertCommonName(self, CertCommonName):
+        self._CertCommonName = CertCommonName
+
+    @property
+    def CompanyType(self):
+        """组织信息类型：1，个人； 2， 公司； 
+        :rtype: int
+        """
+        return self._CompanyType
+
+    @CompanyType.setter
+    def CompanyType(self, CompanyType):
+        self._CompanyType = CompanyType
+
+    @property
+    def OrgIdType(self):
+        """公司证件类型（）
+        :rtype: str
+        """
+        return self._OrgIdType
+
+    @OrgIdType.setter
+    def OrgIdType(self, OrgIdType):
+        self._OrgIdType = OrgIdType
+
+    @property
+    def OrgIdNumber(self):
+        """公司证件号码
+        :rtype: str
+        """
+        return self._OrgIdNumber
+
+    @OrgIdNumber.setter
+    def OrgIdNumber(self, OrgIdNumber):
+        self._OrgIdNumber = OrgIdNumber
+
+    @property
+    def AdminIdType(self):
+        """管理人证件类型
+        :rtype: str
+        """
+        return self._AdminIdType
+
+    @AdminIdType.setter
+    def AdminIdType(self, AdminIdType):
+        self._AdminIdType = AdminIdType
+
+    @property
+    def AdminIdNumber(self):
+        """管理人证件号码
+        :rtype: str
+        """
+        return self._AdminIdNumber
+
+    @AdminIdNumber.setter
+    def AdminIdNumber(self, AdminIdNumber):
+        self._AdminIdNumber = AdminIdNumber
+
+    @property
+    def TechIdType(self):
+        """联系人证件类型
+        :rtype: str
+        """
+        return self._TechIdType
+
+    @TechIdType.setter
+    def TechIdType(self, TechIdType):
+        self._TechIdType = TechIdType
+
+    @property
+    def TechIdNumber(self):
+        """联系人证件号码
+        :rtype: str
+        """
+        return self._TechIdNumber
+
+    @TechIdNumber.setter
+    def TechIdNumber(self, TechIdNumber):
+        self._TechIdNumber = TechIdNumber
+
+    @property
+    def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def Csr(self):
+        """上传的 CSR 内容。如果GenCsrType为upload则该字段必传
+        :rtype: str
+        """
+        return self._Csr
+
+    @Csr.setter
+    def Csr(self, Csr):
+        self._Csr = Csr
+
+    @property
+    def DnsNames(self):
+        """域名数组（多域名证书可以上传）。
+        :rtype: list of str
+        """
+        return self._DnsNames
+
+    @DnsNames.setter
+    def DnsNames(self, DnsNames):
+        self._DnsNames = DnsNames
+
+    @property
+    def KeyPass(self):
+        """私钥密码（非必填）。
+        :rtype: str
+        """
+        return self._KeyPass
+
+    @KeyPass.setter
+    def KeyPass(self, KeyPass):
+        self._KeyPass = KeyPass
+
+    @property
+    def OrgOrganization(self):
+        """公司名称。
+        :rtype: str
+        """
+        return self._OrgOrganization
+
+    @OrgOrganization.setter
+    def OrgOrganization(self, OrgOrganization):
+        self._OrgOrganization = OrgOrganization
+
+    @property
+    def OrgDivision(self):
+        """部门名称。
+        :rtype: str
+        """
+        return self._OrgDivision
+
+    @OrgDivision.setter
+    def OrgDivision(self, OrgDivision):
+        self._OrgDivision = OrgDivision
+
+    @property
+    def OrgAddress(self):
+        """公司详细地址。
+        :rtype: str
+        """
+        return self._OrgAddress
+
+    @OrgAddress.setter
+    def OrgAddress(self, OrgAddress):
+        self._OrgAddress = OrgAddress
+
+    @property
+    def OrgCountry(self):
+        """国家名称，如中国：CN 。
+        :rtype: str
+        """
+        return self._OrgCountry
+
+    @OrgCountry.setter
+    def OrgCountry(self, OrgCountry):
+        self._OrgCountry = OrgCountry
+
+    @property
+    def OrgCity(self):
+        """公司所在城市。
+        :rtype: str
+        """
+        return self._OrgCity
+
+    @OrgCity.setter
+    def OrgCity(self, OrgCity):
+        self._OrgCity = OrgCity
+
+    @property
+    def OrgRegion(self):
+        """公司所在省份。
+        :rtype: str
+        """
+        return self._OrgRegion
+
+    @OrgRegion.setter
+    def OrgRegion(self, OrgRegion):
+        self._OrgRegion = OrgRegion
+
+    @property
+    def OrgPhoneArea(self):
+        """公司座机区号。
+        :rtype: str
+        """
+        return self._OrgPhoneArea
+
+    @OrgPhoneArea.setter
+    def OrgPhoneArea(self, OrgPhoneArea):
+        self._OrgPhoneArea = OrgPhoneArea
+
+    @property
+    def OrgPhoneNumber(self):
+        """公司座机号码。
+        :rtype: str
+        """
+        return self._OrgPhoneNumber
+
+    @OrgPhoneNumber.setter
+    def OrgPhoneNumber(self, OrgPhoneNumber):
+        self._OrgPhoneNumber = OrgPhoneNumber
+
+    @property
+    def VerifyType(self):
+        """证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
+        :rtype: str
+        """
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+    @property
+    def AdminFirstName(self):
+        """管理人名。
+        :rtype: str
+        """
+        return self._AdminFirstName
+
+    @AdminFirstName.setter
+    def AdminFirstName(self, AdminFirstName):
+        self._AdminFirstName = AdminFirstName
+
+    @property
+    def AdminLastName(self):
+        """管理人姓。
+        :rtype: str
+        """
+        return self._AdminLastName
+
+    @AdminLastName.setter
+    def AdminLastName(self, AdminLastName):
+        self._AdminLastName = AdminLastName
+
+    @property
+    def AdminPhone(self):
+        """管理人手机号码。
+        :rtype: str
+        """
+        return self._AdminPhone
+
+    @AdminPhone.setter
+    def AdminPhone(self, AdminPhone):
+        self._AdminPhone = AdminPhone
+
+    @property
+    def AdminEmail(self):
+        """管理人邮箱地址。
+        :rtype: str
+        """
+        return self._AdminEmail
+
+    @AdminEmail.setter
+    def AdminEmail(self, AdminEmail):
+        self._AdminEmail = AdminEmail
+
+    @property
+    def AdminTitle(self):
+        """管理人职位。
+        :rtype: str
+        """
+        return self._AdminTitle
+
+    @AdminTitle.setter
+    def AdminTitle(self, AdminTitle):
+        self._AdminTitle = AdminTitle
+
+    @property
+    def TechFirstName(self):
+        """联系人名。
+        :rtype: str
+        """
+        return self._TechFirstName
+
+    @TechFirstName.setter
+    def TechFirstName(self, TechFirstName):
+        self._TechFirstName = TechFirstName
+
+    @property
+    def TechLastName(self):
+        """联系人姓。
+        :rtype: str
+        """
+        return self._TechLastName
+
+    @TechLastName.setter
+    def TechLastName(self, TechLastName):
+        self._TechLastName = TechLastName
+
+    @property
+    def ContactEmail(self):
+        """联系人邮箱地址。
+        :rtype: str
+        """
+        return self._ContactEmail
+
+    @ContactEmail.setter
+    def ContactEmail(self, ContactEmail):
+        self._ContactEmail = ContactEmail
+
+    @property
+    def AutoRenewFlag(self):
+        """是否开启自动续费： 0， 不开启；  1， 开启； 默认为0
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def CsrKeyParameter(self):
+        """证书加密参数
+        :rtype: str
+        """
+        return self._CsrKeyParameter
+
+    @CsrKeyParameter.setter
+    def CsrKeyParameter(self, CsrKeyParameter):
+        self._CsrKeyParameter = CsrKeyParameter
+
+    @property
+    def CsrEncryptAlgo(self):
+        """证书加密方式
+        :rtype: str
+        """
+        return self._CsrEncryptAlgo
+
+    @CsrEncryptAlgo.setter
+    def CsrEncryptAlgo(self, CsrEncryptAlgo):
+        self._CsrEncryptAlgo = CsrEncryptAlgo
+
+    @property
+    def ManagerId(self):
+        """管理人ID
+        :rtype: str
+        """
+        return self._ManagerId
+
+    @ManagerId.setter
+    def ManagerId(self, ManagerId):
+        self._ManagerId = ManagerId
+
+    @property
+    def TechPhone(self):
+        """联系人电话
+        :rtype: str
+        """
+        return self._TechPhone
+
+    @TechPhone.setter
+    def TechPhone(self, TechPhone):
+        self._TechPhone = TechPhone
+
+    @property
+    def TechEmail(self):
+        """联系人邮箱
+        :rtype: str
+        """
+        return self._TechEmail
+
+    @TechEmail.setter
+    def TechEmail(self, TechEmail):
+        self._TechEmail = TechEmail
+
+    @property
+    def TechTitle(self):
+        """联系人职位
+        :rtype: str
+        """
+        return self._TechTitle
+
+    @TechTitle.setter
+    def TechTitle(self, TechTitle):
+        self._TechTitle = TechTitle
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._GenCsrType = params.get("GenCsrType")
+        self._CertCommonName = params.get("CertCommonName")
+        self._CompanyType = params.get("CompanyType")
+        self._OrgIdType = params.get("OrgIdType")
+        self._OrgIdNumber = params.get("OrgIdNumber")
+        self._AdminIdType = params.get("AdminIdType")
+        self._AdminIdNumber = params.get("AdminIdNumber")
+        self._TechIdType = params.get("TechIdType")
+        self._TechIdNumber = params.get("TechIdNumber")
+        self._CompanyId = params.get("CompanyId")
+        self._Csr = params.get("Csr")
+        self._DnsNames = params.get("DnsNames")
+        self._KeyPass = params.get("KeyPass")
+        self._OrgOrganization = params.get("OrgOrganization")
+        self._OrgDivision = params.get("OrgDivision")
+        self._OrgAddress = params.get("OrgAddress")
+        self._OrgCountry = params.get("OrgCountry")
+        self._OrgCity = params.get("OrgCity")
+        self._OrgRegion = params.get("OrgRegion")
+        self._OrgPhoneArea = params.get("OrgPhoneArea")
+        self._OrgPhoneNumber = params.get("OrgPhoneNumber")
+        self._VerifyType = params.get("VerifyType")
+        self._AdminFirstName = params.get("AdminFirstName")
+        self._AdminLastName = params.get("AdminLastName")
+        self._AdminPhone = params.get("AdminPhone")
+        self._AdminEmail = params.get("AdminEmail")
+        self._AdminTitle = params.get("AdminTitle")
+        self._TechFirstName = params.get("TechFirstName")
+        self._TechLastName = params.get("TechLastName")
+        self._ContactEmail = params.get("ContactEmail")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._CsrKeyParameter = params.get("CsrKeyParameter")
+        self._CsrEncryptAlgo = params.get("CsrEncryptAlgo")
+        self._ManagerId = params.get("ManagerId")
+        self._TechPhone = params.get("TechPhone")
+        self._TechEmail = params.get("TechEmail")
+        self._TechTitle = params.get("TechTitle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CertificateInfoSubmitResponse(AbstractModel):
+    """CertificateInfoSubmit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CertificateOrderSubmitRequest(AbstractModel):
+    """CertificateOrderSubmit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: 证书 ID。
+        :type CertId: str
+        :param _DeleteDnsAutoRecord: 是否删除自动DNS验证值：0，不删除； 1，删除； 默认不删除
+        :type DeleteDnsAutoRecord: int
+        :param _VerifyType: 域名验证方式：DNS_AUTO 自动DNS验证， DNS DNS验证， FILE 文件验证
+        :type VerifyType: str
+        """
+        self._CertId = None
+        self._DeleteDnsAutoRecord = None
+        self._VerifyType = None
+
+    @property
+    def CertId(self):
+        """证书 ID。
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def DeleteDnsAutoRecord(self):
+        """是否删除自动DNS验证值：0，不删除； 1，删除； 默认不删除
+        :rtype: int
+        """
+        return self._DeleteDnsAutoRecord
+
+    @DeleteDnsAutoRecord.setter
+    def DeleteDnsAutoRecord(self, DeleteDnsAutoRecord):
+        self._DeleteDnsAutoRecord = DeleteDnsAutoRecord
+
+    @property
+    def VerifyType(self):
+        """域名验证方式：DNS_AUTO 自动DNS验证， DNS DNS验证， FILE 文件验证
+        :rtype: str
+        """
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._DeleteDnsAutoRecord = params.get("DeleteDnsAutoRecord")
+        self._VerifyType = params.get("VerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CertificateOrderSubmitResponse(AbstractModel):
+    """CertificateOrderSubmit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: CA机构侧订单号。
+        :type OrderId: str
+        :param _Status: 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+        :type Status: int
+        :param _IsAudited: 是否预审核
+        :type IsAudited: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrderId = None
+        self._Status = None
+        self._IsAudited = None
+        self._RequestId = None
+
+    @property
+    def OrderId(self):
+        """CA机构侧订单号。
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Status(self):
+        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsAudited(self):
+        """是否预审核
+        :rtype: bool
+        """
+        return self._IsAudited
+
+    @IsAudited.setter
+    def IsAudited(self, IsAudited):
+        self._IsAudited = IsAudited
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._Status = params.get("Status")
+        self._IsAudited = params.get("IsAudited")
+        self._RequestId = params.get("RequestId")
+
+
 class Certificates(AbstractModel):
     """获取证书列表（DescribeCertificates）返回参数键为 Certificates 的内容。
 

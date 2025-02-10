@@ -155,6 +155,8 @@ class Acl(AbstractModel):
         :type WhiteCmds: list of str
         :param _AllowKeyboardLogger: 是否允许记录键盘
         :type AllowKeyboardLogger: bool
+        :param _AppAssetSet: 关联的应用资产列表
+        :type AppAssetSet: list of AppAsset
         """
         self._Id = None
         self._Name = None
@@ -187,6 +189,7 @@ class Acl(AbstractModel):
         self._ACTemplateSet = None
         self._WhiteCmds = None
         self._AllowKeyboardLogger = None
+        self._AppAssetSet = None
 
     @property
     def Id(self):
@@ -531,6 +534,17 @@ class Acl(AbstractModel):
     def AllowKeyboardLogger(self, AllowKeyboardLogger):
         self._AllowKeyboardLogger = AllowKeyboardLogger
 
+    @property
+    def AppAssetSet(self):
+        """关联的应用资产列表
+        :rtype: list of AppAsset
+        """
+        return self._AppAssetSet
+
+    @AppAssetSet.setter
+    def AppAssetSet(self, AppAssetSet):
+        self._AppAssetSet = AppAssetSet
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -596,6 +610,12 @@ class Acl(AbstractModel):
                 self._ACTemplateSet.append(obj)
         self._WhiteCmds = params.get("WhiteCmds")
         self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
+        if params.get("AppAssetSet") is not None:
+            self._AppAssetSet = []
+            for item in params.get("AppAssetSet"):
+                obj = AppAsset()
+                obj._deserialize(item)
+                self._AppAssetSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -762,6 +782,321 @@ class AddUserGroupMembersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class AppAsset(AbstractModel):
+    """应用资产信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 应用资产id
+        :type Id: int
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Name: 资产名称
+        :type Name: str
+        :param _DeviceId: 应用服务器id
+        :type DeviceId: int
+        :param _DeviceAccountId: 应用服务器账号id
+        :type DeviceAccountId: int
+        :param _Kind: 应用资产类型。1-web应用
+        :type Kind: int
+        :param _ClientAppPath: 客户端工具路径
+        :type ClientAppPath: str
+        :param _ClientAppKind: 客户端工具类型
+        :type ClientAppKind: str
+        :param _Url: 应用资产url
+        :type Url: str
+        :param _BindStatus: 托管状态。0-未托管，1-已托管
+        :type BindStatus: int
+        :param _DeviceInstanceId: 应用服务器实例id
+        :type DeviceInstanceId: str
+        :param _DeviceName: 应用服务器名称
+        :type DeviceName: str
+        :param _DeviceAccountName: 应用服务器账号名称
+        :type DeviceAccountName: str
+        :param _ResourceId: 堡垒机实例id
+        :type ResourceId: str
+        :param _Resource: 堡垒机实例信息
+        :type Resource: :class:`tencentcloud.bh.v20230418.models.Resource`
+        :param _DomainId: 网络域id
+        :type DomainId: str
+        :param _DomainName: 网络域名称
+        :type DomainName: str
+        :param _GroupSet: 资产组信息
+        :type GroupSet: list of Group
+        :param _Department: 资产所属部门
+        :type Department: :class:`tencentcloud.bh.v20230418.models.Department`
+        """
+        self._Id = None
+        self._InstanceId = None
+        self._Name = None
+        self._DeviceId = None
+        self._DeviceAccountId = None
+        self._Kind = None
+        self._ClientAppPath = None
+        self._ClientAppKind = None
+        self._Url = None
+        self._BindStatus = None
+        self._DeviceInstanceId = None
+        self._DeviceName = None
+        self._DeviceAccountName = None
+        self._ResourceId = None
+        self._Resource = None
+        self._DomainId = None
+        self._DomainName = None
+        self._GroupSet = None
+        self._Department = None
+
+    @property
+    def Id(self):
+        """应用资产id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        """资产名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DeviceId(self):
+        """应用服务器id
+        :rtype: int
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceAccountId(self):
+        """应用服务器账号id
+        :rtype: int
+        """
+        return self._DeviceAccountId
+
+    @DeviceAccountId.setter
+    def DeviceAccountId(self, DeviceAccountId):
+        self._DeviceAccountId = DeviceAccountId
+
+    @property
+    def Kind(self):
+        """应用资产类型。1-web应用
+        :rtype: int
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def ClientAppPath(self):
+        """客户端工具路径
+        :rtype: str
+        """
+        return self._ClientAppPath
+
+    @ClientAppPath.setter
+    def ClientAppPath(self, ClientAppPath):
+        self._ClientAppPath = ClientAppPath
+
+    @property
+    def ClientAppKind(self):
+        """客户端工具类型
+        :rtype: str
+        """
+        return self._ClientAppKind
+
+    @ClientAppKind.setter
+    def ClientAppKind(self, ClientAppKind):
+        self._ClientAppKind = ClientAppKind
+
+    @property
+    def Url(self):
+        """应用资产url
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def BindStatus(self):
+        """托管状态。0-未托管，1-已托管
+        :rtype: int
+        """
+        return self._BindStatus
+
+    @BindStatus.setter
+    def BindStatus(self, BindStatus):
+        self._BindStatus = BindStatus
+
+    @property
+    def DeviceInstanceId(self):
+        """应用服务器实例id
+        :rtype: str
+        """
+        return self._DeviceInstanceId
+
+    @DeviceInstanceId.setter
+    def DeviceInstanceId(self, DeviceInstanceId):
+        self._DeviceInstanceId = DeviceInstanceId
+
+    @property
+    def DeviceName(self):
+        """应用服务器名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def DeviceAccountName(self):
+        """应用服务器账号名称
+        :rtype: str
+        """
+        return self._DeviceAccountName
+
+    @DeviceAccountName.setter
+    def DeviceAccountName(self, DeviceAccountName):
+        self._DeviceAccountName = DeviceAccountName
+
+    @property
+    def ResourceId(self):
+        """堡垒机实例id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Resource(self):
+        """堡垒机实例信息
+        :rtype: :class:`tencentcloud.bh.v20230418.models.Resource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def DomainId(self):
+        """网络域id
+        :rtype: str
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DomainName(self):
+        """网络域名称
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def GroupSet(self):
+        """资产组信息
+        :rtype: list of Group
+        """
+        return self._GroupSet
+
+    @GroupSet.setter
+    def GroupSet(self, GroupSet):
+        self._GroupSet = GroupSet
+
+    @property
+    def Department(self):
+        """资产所属部门
+        :rtype: :class:`tencentcloud.bh.v20230418.models.Department`
+        """
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceAccountId = params.get("DeviceAccountId")
+        self._Kind = params.get("Kind")
+        self._ClientAppPath = params.get("ClientAppPath")
+        self._ClientAppKind = params.get("ClientAppKind")
+        self._Url = params.get("Url")
+        self._BindStatus = params.get("BindStatus")
+        self._DeviceInstanceId = params.get("DeviceInstanceId")
+        self._DeviceName = params.get("DeviceName")
+        self._DeviceAccountName = params.get("DeviceAccountName")
+        self._ResourceId = params.get("ResourceId")
+        if params.get("Resource") is not None:
+            self._Resource = Resource()
+            self._Resource._deserialize(params.get("Resource"))
+        self._DomainId = params.get("DomainId")
+        self._DomainName = params.get("DomainName")
+        if params.get("GroupSet") is not None:
+            self._GroupSet = []
+            for item in params.get("GroupSet"):
+                obj = Group()
+                obj._deserialize(item)
+                self._GroupSet.append(obj)
+        if params.get("Department") is not None:
+            self._Department = Department()
+            self._Department._deserialize(params.get("Department"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AssetSyncStatus(AbstractModel):
@@ -1660,6 +1995,8 @@ class CreateAclRequest(AbstractModel):
         :type UserGroupIdSet: list of int non-negative
         :param _DeviceIdSet: 关联的资产ID集合
         :type DeviceIdSet: list of int non-negative
+        :param _AppAssetIdSet: 关联的应用资产ID集合
+        :type AppAssetIdSet: list of int non-negative
         :param _DeviceGroupIdSet: 关联的资产组ID
         :type DeviceGroupIdSet: list of int non-negative
         :param _AccountSet: 关联的账号
@@ -1705,6 +2042,7 @@ class CreateAclRequest(AbstractModel):
         self._UserIdSet = None
         self._UserGroupIdSet = None
         self._DeviceIdSet = None
+        self._AppAssetIdSet = None
         self._DeviceGroupIdSet = None
         self._AccountSet = None
         self._CmdTemplateIdSet = None
@@ -1873,6 +2211,17 @@ class CreateAclRequest(AbstractModel):
     @DeviceIdSet.setter
     def DeviceIdSet(self, DeviceIdSet):
         self._DeviceIdSet = DeviceIdSet
+
+    @property
+    def AppAssetIdSet(self):
+        """关联的应用资产ID集合
+        :rtype: list of int non-negative
+        """
+        return self._AppAssetIdSet
+
+    @AppAssetIdSet.setter
+    def AppAssetIdSet(self, AppAssetIdSet):
+        self._AppAssetIdSet = AppAssetIdSet
 
     @property
     def DeviceGroupIdSet(self):
@@ -2046,6 +2395,7 @@ class CreateAclRequest(AbstractModel):
         self._UserIdSet = params.get("UserIdSet")
         self._UserGroupIdSet = params.get("UserGroupIdSet")
         self._DeviceIdSet = params.get("DeviceIdSet")
+        self._AppAssetIdSet = params.get("AppAssetIdSet")
         self._DeviceGroupIdSet = params.get("DeviceGroupIdSet")
         self._AccountSet = params.get("AccountSet")
         self._CmdTemplateIdSet = params.get("CmdTemplateIdSet")
@@ -4397,6 +4747,8 @@ class DescribeAclsRequest(AbstractModel):
         :type AuthorizedUserIdSet: list of int non-negative
         :param _AuthorizedDeviceIdSet: 有访问权限的资产ID集合
         :type AuthorizedDeviceIdSet: list of int non-negative
+        :param _AuthorizedAppAssetIdSet: 有访问权限的应用资产ID集合
+        :type AuthorizedAppAssetIdSet: list of int non-negative
         :param _Status: 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
         :type Status: int
         :param _DepartmentId: 部门ID，用于过滤属于某个部门的访问权限
@@ -4413,6 +4765,7 @@ class DescribeAclsRequest(AbstractModel):
         self._Exact = None
         self._AuthorizedUserIdSet = None
         self._AuthorizedDeviceIdSet = None
+        self._AuthorizedAppAssetIdSet = None
         self._Status = None
         self._DepartmentId = None
         self._ExactAccount = None
@@ -4496,6 +4849,17 @@ class DescribeAclsRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = AuthorizedDeviceIdSet
 
     @property
+    def AuthorizedAppAssetIdSet(self):
+        """有访问权限的应用资产ID集合
+        :rtype: list of int non-negative
+        """
+        return self._AuthorizedAppAssetIdSet
+
+    @AuthorizedAppAssetIdSet.setter
+    def AuthorizedAppAssetIdSet(self, AuthorizedAppAssetIdSet):
+        self._AuthorizedAppAssetIdSet = AuthorizedAppAssetIdSet
+
+    @property
     def Status(self):
         """访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
         :rtype: int
@@ -4548,6 +4912,7 @@ class DescribeAclsRequest(AbstractModel):
         self._Exact = params.get("Exact")
         self._AuthorizedUserIdSet = params.get("AuthorizedUserIdSet")
         self._AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
+        self._AuthorizedAppAssetIdSet = params.get("AuthorizedAppAssetIdSet")
         self._Status = params.get("Status")
         self._DepartmentId = params.get("DepartmentId")
         self._ExactAccount = params.get("ExactAccount")
@@ -5343,6 +5708,8 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         :type Limit: int
         :param _Kind: 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
         :type Kind: int
+        :param _KindSet: 资产类型集合，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
+        :type KindSet: list of int non-negative
         :param _DepartmentId: 所属部门ID
         :type DepartmentId: str
         :param _TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
@@ -5355,6 +5722,7 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._Kind = None
+        self._KindSet = None
         self._DepartmentId = None
         self._TagFilters = None
 
@@ -5436,6 +5804,17 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self._Kind = Kind
 
     @property
+    def KindSet(self):
+        """资产类型集合，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
+        :rtype: list of int non-negative
+        """
+        return self._KindSet
+
+    @KindSet.setter
+    def KindSet(self, KindSet):
+        self._KindSet = KindSet
+
+    @property
     def DepartmentId(self):
         """所属部门ID
         :rtype: str
@@ -5466,6 +5845,7 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Kind = params.get("Kind")
+        self._KindSet = params.get("KindSet")
         self._DepartmentId = params.get("DepartmentId")
         if params.get("TagFilters") is not None:
             self._TagFilters = []
@@ -7099,6 +7479,8 @@ class DescribeUsersRequest(AbstractModel):
         :type Email: str
         :param _AuthorizedDeviceIdSet: 查询具有指定资产ID访问权限的用户
         :type AuthorizedDeviceIdSet: list of int non-negative
+        :param _AuthorizedAppAssetIdSet: 查询具有指定应用资产ID访问权限的用户
+        :type AuthorizedAppAssetIdSet: list of int non-negative
         :param _AuthTypeSet: 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
         :type AuthTypeSet: list of int non-negative
         :param _DepartmentId: 部门ID，用于过滤属于某个部门的用户
@@ -7115,6 +7497,7 @@ class DescribeUsersRequest(AbstractModel):
         self._Phone = None
         self._Email = None
         self._AuthorizedDeviceIdSet = None
+        self._AuthorizedAppAssetIdSet = None
         self._AuthTypeSet = None
         self._DepartmentId = None
         self._Filters = None
@@ -7209,6 +7592,17 @@ class DescribeUsersRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = AuthorizedDeviceIdSet
 
     @property
+    def AuthorizedAppAssetIdSet(self):
+        """查询具有指定应用资产ID访问权限的用户
+        :rtype: list of int non-negative
+        """
+        return self._AuthorizedAppAssetIdSet
+
+    @AuthorizedAppAssetIdSet.setter
+    def AuthorizedAppAssetIdSet(self, AuthorizedAppAssetIdSet):
+        self._AuthorizedAppAssetIdSet = AuthorizedAppAssetIdSet
+
+    @property
     def AuthTypeSet(self):
         """认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
         :rtype: list of int non-negative
@@ -7252,6 +7646,7 @@ class DescribeUsersRequest(AbstractModel):
         self._Phone = params.get("Phone")
         self._Email = params.get("Email")
         self._AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
+        self._AuthorizedAppAssetIdSet = params.get("AuthorizedAppAssetIdSet")
         self._AuthTypeSet = params.get("AuthTypeSet")
         self._DepartmentId = params.get("DepartmentId")
         if params.get("Filters") is not None:
@@ -8345,6 +8740,8 @@ class ModifyAclRequest(AbstractModel):
         :type UserGroupIdSet: list of int non-negative
         :param _DeviceIdSet: 关联的资产ID
         :type DeviceIdSet: list of int non-negative
+        :param _AppAssetIdSet: 关联的应用资产ID集合
+        :type AppAssetIdSet: list of int non-negative
         :param _DeviceGroupIdSet: 关联的资产组ID
         :type DeviceGroupIdSet: list of int non-negative
         :param _AccountSet: 关联的账号
@@ -8391,6 +8788,7 @@ class ModifyAclRequest(AbstractModel):
         self._UserIdSet = None
         self._UserGroupIdSet = None
         self._DeviceIdSet = None
+        self._AppAssetIdSet = None
         self._DeviceGroupIdSet = None
         self._AccountSet = None
         self._CmdTemplateIdSet = None
@@ -8572,6 +8970,17 @@ class ModifyAclRequest(AbstractModel):
         self._DeviceIdSet = DeviceIdSet
 
     @property
+    def AppAssetIdSet(self):
+        """关联的应用资产ID集合
+        :rtype: list of int non-negative
+        """
+        return self._AppAssetIdSet
+
+    @AppAssetIdSet.setter
+    def AppAssetIdSet(self, AppAssetIdSet):
+        self._AppAssetIdSet = AppAssetIdSet
+
+    @property
     def DeviceGroupIdSet(self):
         """关联的资产组ID
         :rtype: list of int non-negative
@@ -8744,6 +9153,7 @@ class ModifyAclRequest(AbstractModel):
         self._UserIdSet = params.get("UserIdSet")
         self._UserGroupIdSet = params.get("UserGroupIdSet")
         self._DeviceIdSet = params.get("DeviceIdSet")
+        self._AppAssetIdSet = params.get("AppAssetIdSet")
         self._DeviceGroupIdSet = params.get("DeviceGroupIdSet")
         self._AccountSet = params.get("AccountSet")
         self._CmdTemplateIdSet = params.get("CmdTemplateIdSet")
@@ -13517,6 +13927,10 @@ class SearchSessionRequest(AbstractModel):
         :type Status: int
         :param _Id: 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
         :type Id: str
+        :param _AppAssetKindSet: 应用资产类型, 1-web
+        :type AppAssetKindSet: list of int non-negative
+        :param _AppAssetUrl: 应用资产Url
+        :type AppAssetUrl: str
         """
         self._PrivateIp = None
         self._PublicIp = None
@@ -13532,6 +13946,8 @@ class SearchSessionRequest(AbstractModel):
         self._DeviceName = None
         self._Status = None
         self._Id = None
+        self._AppAssetKindSet = None
+        self._AppAssetUrl = None
 
     @property
     def PrivateIp(self):
@@ -13687,6 +14103,28 @@ class SearchSessionRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def AppAssetKindSet(self):
+        """应用资产类型, 1-web
+        :rtype: list of int non-negative
+        """
+        return self._AppAssetKindSet
+
+    @AppAssetKindSet.setter
+    def AppAssetKindSet(self, AppAssetKindSet):
+        self._AppAssetKindSet = AppAssetKindSet
+
+    @property
+    def AppAssetUrl(self):
+        """应用资产Url
+        :rtype: str
+        """
+        return self._AppAssetUrl
+
+    @AppAssetUrl.setter
+    def AppAssetUrl(self, AppAssetUrl):
+        self._AppAssetUrl = AppAssetUrl
+
 
     def _deserialize(self, params):
         self._PrivateIp = params.get("PrivateIp")
@@ -13703,6 +14141,8 @@ class SearchSessionRequest(AbstractModel):
         self._DeviceName = params.get("DeviceName")
         self._Status = params.get("Status")
         self._Id = params.get("Id")
+        self._AppAssetKindSet = params.get("AppAssetKindSet")
+        self._AppAssetUrl = params.get("AppAssetUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13722,10 +14162,13 @@ class SearchSessionResponse(AbstractModel):
         r"""
         :param _TotalCount: 记录数
         :type TotalCount: int
+        :param _SessionSet: 会话信息列表
+        :type SessionSet: list of SessionResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
+        self._SessionSet = None
         self._RequestId = None
 
     @property
@@ -13738,6 +14181,17 @@ class SearchSessionResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def SessionSet(self):
+        """会话信息列表
+        :rtype: list of SessionResult
+        """
+        return self._SessionSet
+
+    @SessionSet.setter
+    def SessionSet(self, SessionSet):
+        self._SessionSet = SessionSet
 
     @property
     def RequestId(self):
@@ -13753,7 +14207,334 @@ class SearchSessionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
+        if params.get("SessionSet") is not None:
+            self._SessionSet = []
+            for item in params.get("SessionSet"):
+                obj = SessionResult()
+                obj._deserialize(item)
+                self._SessionSet.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class SessionResult(AbstractModel):
+    """搜索字符或图形会话时返回的SessionResul结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _RealName: 姓名
+        :type RealName: str
+        :param _Account: 主机账号
+        :type Account: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Size: 会话大小
+        :type Size: int
+        :param _InstanceId: 设备ID
+        :type InstanceId: str
+        :param _DeviceName: 设备名
+        :type DeviceName: str
+        :param _PrivateIp: 内部Ip
+        :type PrivateIp: str
+        :param _PublicIp: 外部Ip
+        :type PublicIp: str
+        :param _FromIp: 来源Ip
+        :type FromIp: str
+        :param _Duration: 会话持续时长
+        :type Duration: float
+        :param _Count: 该会话内命令数量 ，搜索图形会话时该字段无意义
+        :type Count: int
+        :param _DangerCount: 该会话内高危命令数，搜索图形时该字段无意义
+        :type DangerCount: int
+        :param _Status: 会话状态，如1会话活跃  2会话结束  3强制离线  4其他错误
+        :type Status: int
+        :param _Id: 会话Id
+        :type Id: str
+        :param _ApCode: 设备所属的地域
+        :type ApCode: str
+        :param _Protocol: 会话协议
+        :type Protocol: str
+        :param _AppAssetKind: 应用资产类型：1-web
+        :type AppAssetKind: int
+        :param _AppAssetUrl: 应用资产url
+        :type AppAssetUrl: str
+        """
+        self._UserName = None
+        self._RealName = None
+        self._Account = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Size = None
+        self._InstanceId = None
+        self._DeviceName = None
+        self._PrivateIp = None
+        self._PublicIp = None
+        self._FromIp = None
+        self._Duration = None
+        self._Count = None
+        self._DangerCount = None
+        self._Status = None
+        self._Id = None
+        self._ApCode = None
+        self._Protocol = None
+        self._AppAssetKind = None
+        self._AppAssetUrl = None
+
+    @property
+    def UserName(self):
+        """用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def RealName(self):
+        """姓名
+        :rtype: str
+        """
+        return self._RealName
+
+    @RealName.setter
+    def RealName(self, RealName):
+        self._RealName = RealName
+
+    @property
+    def Account(self):
+        """主机账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Size(self):
+        """会话大小
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def InstanceId(self):
+        """设备ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceName(self):
+        """设备名
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def PrivateIp(self):
+        """内部Ip
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def PublicIp(self):
+        """外部Ip
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def FromIp(self):
+        """来源Ip
+        :rtype: str
+        """
+        return self._FromIp
+
+    @FromIp.setter
+    def FromIp(self, FromIp):
+        self._FromIp = FromIp
+
+    @property
+    def Duration(self):
+        """会话持续时长
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Count(self):
+        """该会话内命令数量 ，搜索图形会话时该字段无意义
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def DangerCount(self):
+        """该会话内高危命令数，搜索图形时该字段无意义
+        :rtype: int
+        """
+        return self._DangerCount
+
+    @DangerCount.setter
+    def DangerCount(self, DangerCount):
+        self._DangerCount = DangerCount
+
+    @property
+    def Status(self):
+        """会话状态，如1会话活跃  2会话结束  3强制离线  4其他错误
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Id(self):
+        """会话Id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ApCode(self):
+        """设备所属的地域
+        :rtype: str
+        """
+        return self._ApCode
+
+    @ApCode.setter
+    def ApCode(self, ApCode):
+        self._ApCode = ApCode
+
+    @property
+    def Protocol(self):
+        """会话协议
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def AppAssetKind(self):
+        """应用资产类型：1-web
+        :rtype: int
+        """
+        return self._AppAssetKind
+
+    @AppAssetKind.setter
+    def AppAssetKind(self, AppAssetKind):
+        self._AppAssetKind = AppAssetKind
+
+    @property
+    def AppAssetUrl(self):
+        """应用资产url
+        :rtype: str
+        """
+        return self._AppAssetUrl
+
+    @AppAssetUrl.setter
+    def AppAssetUrl(self, AppAssetUrl):
+        self._AppAssetUrl = AppAssetUrl
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._RealName = params.get("RealName")
+        self._Account = params.get("Account")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Size = params.get("Size")
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceName = params.get("DeviceName")
+        self._PrivateIp = params.get("PrivateIp")
+        self._PublicIp = params.get("PublicIp")
+        self._FromIp = params.get("FromIp")
+        self._Duration = params.get("Duration")
+        self._Count = params.get("Count")
+        self._DangerCount = params.get("DangerCount")
+        self._Status = params.get("Status")
+        self._Id = params.get("Id")
+        self._ApCode = params.get("ApCode")
+        self._Protocol = params.get("Protocol")
+        self._AppAssetKind = params.get("AppAssetKind")
+        self._AppAssetUrl = params.get("AppAssetUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TagFilter(AbstractModel):

@@ -28,7 +28,6 @@ class AbnormalEvent(AbstractModel):
         :param _AbnormalEventId: 异常事件ID，具体值查看附录：异常体验ID映射表：https://cloud.tencent.com/document/product/647/44916
         :type AbnormalEventId: int
         :param _PeerId: 远端用户ID,""：表示异常事件不是由远端用户产生
-注意：此字段可能返回 null，表示取不到有效值。
         :type PeerId: str
         """
         self._AbnormalEventId = None
@@ -48,7 +47,6 @@ class AbnormalEvent(AbstractModel):
     @property
     def PeerId(self):
         """远端用户ID,""：表示异常事件不是由远端用户产生
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PeerId
@@ -9849,7 +9847,6 @@ class QualityData(AbstractModel):
         :param _UserId: 用户ID
         :type UserId: str
         :param _PeerId: 对端Id,为空时表示上行数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type PeerId: str
         :param _DataType: 数据类型
         :type DataType: str
@@ -9884,7 +9881,6 @@ class QualityData(AbstractModel):
     @property
     def PeerId(self):
         """对端Id,为空时表示上行数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PeerId

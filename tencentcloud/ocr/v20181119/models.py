@@ -32964,6 +32964,12 @@ class TextVehicleFront(AbstractModel):
         :param _Seal: 印章
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seal: str
+        :param _StateElectronic: 状态
+        :type StateElectronic: str
+        :param _InspectionValidityTimeElectronic: 检验有效期
+        :type InspectionValidityTimeElectronic: str
+        :param _GenerationTimeElectronic: 生成时间
+        :type GenerationTimeElectronic: str
         """
         self._PlateNo = None
         self._VehicleType = None
@@ -32976,6 +32982,9 @@ class TextVehicleFront(AbstractModel):
         self._RegisterDate = None
         self._IssueDate = None
         self._Seal = None
+        self._StateElectronic = None
+        self._InspectionValidityTimeElectronic = None
+        self._GenerationTimeElectronic = None
 
     @property
     def PlateNo(self):
@@ -33109,6 +33118,39 @@ class TextVehicleFront(AbstractModel):
     def Seal(self, Seal):
         self._Seal = Seal
 
+    @property
+    def StateElectronic(self):
+        """状态
+        :rtype: str
+        """
+        return self._StateElectronic
+
+    @StateElectronic.setter
+    def StateElectronic(self, StateElectronic):
+        self._StateElectronic = StateElectronic
+
+    @property
+    def InspectionValidityTimeElectronic(self):
+        """检验有效期
+        :rtype: str
+        """
+        return self._InspectionValidityTimeElectronic
+
+    @InspectionValidityTimeElectronic.setter
+    def InspectionValidityTimeElectronic(self, InspectionValidityTimeElectronic):
+        self._InspectionValidityTimeElectronic = InspectionValidityTimeElectronic
+
+    @property
+    def GenerationTimeElectronic(self):
+        """生成时间
+        :rtype: str
+        """
+        return self._GenerationTimeElectronic
+
+    @GenerationTimeElectronic.setter
+    def GenerationTimeElectronic(self, GenerationTimeElectronic):
+        self._GenerationTimeElectronic = GenerationTimeElectronic
+
 
     def _deserialize(self, params):
         self._PlateNo = params.get("PlateNo")
@@ -33122,6 +33164,9 @@ class TextVehicleFront(AbstractModel):
         self._RegisterDate = params.get("RegisterDate")
         self._IssueDate = params.get("IssueDate")
         self._Seal = params.get("Seal")
+        self._StateElectronic = params.get("StateElectronic")
+        self._InspectionValidityTimeElectronic = params.get("InspectionValidityTimeElectronic")
+        self._GenerationTimeElectronic = params.get("GenerationTimeElectronic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

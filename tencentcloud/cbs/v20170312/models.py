@@ -1579,7 +1579,7 @@ class CreateDisksRequest(AbstractModel):
         :type DiskCount: int
         :param _ThroughputPerformance: 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
         :type ThroughputPerformance: int
-        :param _DiskSize: 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小</li><br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小</li><br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。</li>
+        :param _DiskSize: 云硬盘大小，单位为GiB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小</li><br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小</li><br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。</li>
         :type DiskSize: int
         :param _Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
         :type Shareable: bool
@@ -1709,7 +1709,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        """云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小</li><br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小</li><br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。</li>
+        """云硬盘大小，单位为GiB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小</li><br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小</li><br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。</li>
         :rtype: int
         """
         return self._DiskSize
@@ -4072,7 +4072,7 @@ class Disk(AbstractModel):
         :type DeadlineTime: str
         :param _Attached: 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载</li><li>true:表示已挂载。</li>
         :type Attached: bool
-        :param _DiskSize: 云硬盘大小，单位GB。
+        :param _DiskSize: 云硬盘大小，单位GiB。
         :type DiskSize: int
         :param _MigratePercent: 云盘类型变更的迁移进度，取值0到100。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4117,6 +4117,9 @@ class Disk(AbstractModel):
         :param _BurstPerformance: 云盘是否开启性能突发
 注意：此字段可能返回 null，表示取不到有效值。
         :type BurstPerformance: bool
+        :param _EncryptType: 云硬盘加密类型，值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptType: str
         """
         self._DeleteWithInstance = None
         self._RenewFlag = None
@@ -4160,6 +4163,7 @@ class Disk(AbstractModel):
         self._LastAttachInsId = None
         self._ErrorPrompt = None
         self._BurstPerformance = None
+        self._EncryptType = None
 
     @property
     def DeleteWithInstance(self):
@@ -4425,7 +4429,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """云硬盘大小，单位GB。
+        """云硬盘大小，单位GiB。
         :rtype: int
         """
         return self._DiskSize
@@ -4639,6 +4643,18 @@ class Disk(AbstractModel):
     def BurstPerformance(self, BurstPerformance):
         self._BurstPerformance = BurstPerformance
 
+    @property
+    def EncryptType(self):
+        """云硬盘加密类型，值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
+
 
     def _deserialize(self, params):
         self._DeleteWithInstance = params.get("DeleteWithInstance")
@@ -4690,6 +4706,7 @@ class Disk(AbstractModel):
         self._LastAttachInsId = params.get("LastAttachInsId")
         self._ErrorPrompt = params.get("ErrorPrompt")
         self._BurstPerformance = params.get("BurstPerformance")
+        self._EncryptType = params.get("EncryptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

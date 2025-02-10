@@ -16844,6 +16844,8 @@ class CreateOutputInfo(AbstractModel):
         :type OutputType: str
         :param _RISTSettings: 输出的RIST的配置。
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
+        :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
         """
         self._OutputName = None
         self._Description = None
@@ -16858,6 +16860,7 @@ class CreateOutputInfo(AbstractModel):
         self._Zones = None
         self._OutputType = None
         self._RISTSettings = None
+        self._PidSelector = None
 
     @property
     def OutputName(self):
@@ -17003,6 +17006,17 @@ class CreateOutputInfo(AbstractModel):
     def RISTSettings(self, RISTSettings):
         self._RISTSettings = RISTSettings
 
+    @property
+    def PidSelector(self):
+        """对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PidSelector`
+        """
+        return self._PidSelector
+
+    @PidSelector.setter
+    def PidSelector(self, PidSelector):
+        self._PidSelector = PidSelector
+
 
     def _deserialize(self, params):
         self._OutputName = params.get("OutputName")
@@ -17026,6 +17040,9 @@ class CreateOutputInfo(AbstractModel):
         if params.get("RISTSettings") is not None:
             self._RISTSettings = CreateOutputRistSettings()
             self._RISTSettings._deserialize(params.get("RISTSettings"))
+        if params.get("PidSelector") is not None:
+            self._PidSelector = PidSelector()
+            self._PidSelector._deserialize(params.get("PidSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22265,6 +22282,10 @@ class DescribeFlow(AbstractModel):
         :type EventId: str
         :param _Region: 媒体传输输入流所属的区域，取值和InputRegion相同。
         :type Region: str
+        :param _AllowedInputProtocols: 该Flow允许创建的输入协议
+        :type AllowedInputProtocols: list of str
+        :param _AllowedOutputProtocols: 该Flow允许创建的输出协议
+        :type AllowedOutputProtocols: list of str
         """
         self._FlowId = None
         self._FlowName = None
@@ -22274,6 +22295,8 @@ class DescribeFlow(AbstractModel):
         self._OutputGroup = None
         self._EventId = None
         self._Region = None
+        self._AllowedInputProtocols = None
+        self._AllowedOutputProtocols = None
 
     @property
     def FlowId(self):
@@ -22364,6 +22387,28 @@ class DescribeFlow(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def AllowedInputProtocols(self):
+        """该Flow允许创建的输入协议
+        :rtype: list of str
+        """
+        return self._AllowedInputProtocols
+
+    @AllowedInputProtocols.setter
+    def AllowedInputProtocols(self, AllowedInputProtocols):
+        self._AllowedInputProtocols = AllowedInputProtocols
+
+    @property
+    def AllowedOutputProtocols(self):
+        """该Flow允许创建的输出协议
+        :rtype: list of str
+        """
+        return self._AllowedOutputProtocols
+
+    @AllowedOutputProtocols.setter
+    def AllowedOutputProtocols(self, AllowedOutputProtocols):
+        self._AllowedOutputProtocols = AllowedOutputProtocols
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -22384,6 +22429,8 @@ class DescribeFlow(AbstractModel):
                 self._OutputGroup.append(obj)
         self._EventId = params.get("EventId")
         self._Region = params.get("Region")
+        self._AllowedInputProtocols = params.get("AllowedInputProtocols")
+        self._AllowedOutputProtocols = params.get("AllowedOutputProtocols")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23823,6 +23870,8 @@ class DescribeOutput(AbstractModel):
         :param _RISTSettings: 输出的RIST配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRISTSettings`
+        :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
         """
         self._OutputId = None
         self._OutputName = None
@@ -23842,6 +23891,7 @@ class DescribeOutput(AbstractModel):
         self._SecurityGroupIds = None
         self._Zones = None
         self._RISTSettings = None
+        self._PidSelector = None
 
     @property
     def OutputId(self):
@@ -24053,6 +24103,17 @@ class DescribeOutput(AbstractModel):
     def RISTSettings(self, RISTSettings):
         self._RISTSettings = RISTSettings
 
+    @property
+    def PidSelector(self):
+        """对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PidSelector`
+        """
+        return self._PidSelector
+
+    @PidSelector.setter
+    def PidSelector(self, PidSelector):
+        self._PidSelector = PidSelector
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -24092,6 +24153,9 @@ class DescribeOutput(AbstractModel):
         if params.get("RISTSettings") is not None:
             self._RISTSettings = DescribeOutputRISTSettings()
             self._RISTSettings._deserialize(params.get("RISTSettings"))
+        if params.get("PidSelector") is not None:
+            self._PidSelector = PidSelector()
+            self._PidSelector._deserialize(params.get("PidSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42425,6 +42489,8 @@ class ModifyOutputInfo(AbstractModel):
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
         :param _OutputType: 输出类型：Internet/TencentCSS/StreamLive
         :type OutputType: str
+        :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
         """
         self._OutputId = None
         self._OutputName = None
@@ -42439,6 +42505,7 @@ class ModifyOutputInfo(AbstractModel):
         self._Zones = None
         self._RISTSettings = None
         self._OutputType = None
+        self._PidSelector = None
 
     @property
     def OutputId(self):
@@ -42584,6 +42651,17 @@ class ModifyOutputInfo(AbstractModel):
     def OutputType(self, OutputType):
         self._OutputType = OutputType
 
+    @property
+    def PidSelector(self):
+        """对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PidSelector`
+        """
+        return self._PidSelector
+
+    @PidSelector.setter
+    def PidSelector(self, PidSelector):
+        self._PidSelector = PidSelector
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -42607,6 +42685,9 @@ class ModifyOutputInfo(AbstractModel):
             self._RISTSettings = CreateOutputRistSettings()
             self._RISTSettings._deserialize(params.get("RISTSettings"))
         self._OutputType = params.get("OutputType")
+        if params.get("PidSelector") is not None:
+            self._PidSelector = PidSelector()
+            self._PidSelector._deserialize(params.get("PidSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45844,6 +45925,61 @@ class ParseNotificationResponse(AbstractModel):
         self._Timestamp = params.get("Timestamp")
         self._Sign = params.get("Sign")
         self._RequestId = params.get("RequestId")
+
+
+class PidSelector(AbstractModel):
+    """对于含有多个音/视频轨的流，可以指定需要使用的轨道
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioPID: 对于含有多音轨的流, 可以通过输入PID来指定需要使用的音轨，PID可以输入1到8191之间的正整数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioPID: list of int
+        :param _VideoPID: 对于含有多个视频轨的流，可以通过输入PID来指定需要使用的视频轨，PID可以输入1到8191之间的正整数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoPID: list of int
+        """
+        self._AudioPID = None
+        self._VideoPID = None
+
+    @property
+    def AudioPID(self):
+        """对于含有多音轨的流, 可以通过输入PID来指定需要使用的音轨，PID可以输入1到8191之间的正整数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._AudioPID
+
+    @AudioPID.setter
+    def AudioPID(self, AudioPID):
+        self._AudioPID = AudioPID
+
+    @property
+    def VideoPID(self):
+        """对于含有多个视频轨的流，可以通过输入PID来指定需要使用的视频轨，PID可以输入1到8191之间的正整数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._VideoPID
+
+    @VideoPID.setter
+    def VideoPID(self, VideoPID):
+        self._VideoPID = VideoPID
+
+
+    def _deserialize(self, params):
+        self._AudioPID = params.get("AudioPID")
+        self._VideoPID = params.get("VideoPID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):

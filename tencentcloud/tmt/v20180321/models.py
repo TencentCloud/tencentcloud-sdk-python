@@ -40,6 +40,8 @@ ja：日语
 pt：葡萄牙语
 ru：俄语
 ko：韩语
+tr：土耳其语
+vi：越南语
 th：泰语
         :type Source: str
         :param _Target: 目标语言，各源语言的目标语言支持列表如下
@@ -100,6 +102,8 @@ ja：日语
 pt：葡萄牙语
 ru：俄语
 ko：韩语
+tr：土耳其语
+vi：越南语
 th：泰语
         :rtype: str
         """
