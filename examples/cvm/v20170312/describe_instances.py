@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+import logging
+import logging.handlers
 import os
+import sys
 
-from tencentcloud.common import credential
+from tencentcloud.common import credential, retry
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 # 导入对应产品模块的client models。
 from tencentcloud.cvm.v20170312 import cvm_client, models
@@ -9,6 +12,7 @@ from tencentcloud.cvm.v20170312 import cvm_client, models
 # 导入可选配置类
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
+
 try:
     # 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey
     cred = credential.Credential(
@@ -20,7 +24,7 @@ try:
     # 如果需要指定proxy访问接口，可以按照如下方式初始化hp
     # httpProfile = HttpProfile(proxy="http://用户名:密码@代理IP:代理端口")
     httpProfile.reqMethod = "GET"  # post请求(默认为post请求)
-    httpProfile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
+    httpProfile.reqTimeout = 30  # 请求超时时间，单位为秒(默认60秒)
     httpProfile.endpoint = "cvm.ap-shanghai.tencentcloudapi.com"  # 指定接入地域域名(默认就近接入)
     # httpProfile.rootDomain = 'ap-shanghai.tencentcloudapi.com'    # 指定根域名, 默认为 tencentcloudapi.com
 
@@ -29,6 +33,12 @@ try:
     clientProfile.signMethod = "TC3-HMAC-SHA256"  # 指定签名算法
     clientProfile.language = "en-US"
     clientProfile.httpProfile = httpProfile
+    # 当发生网络/限频错误时, 重试3次, 并通过logger打印日志
+    logger = logging.getLogger("retry")
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(logging.StreamHandler(sys.stderr))
+    clientProfile.retryer = retry.StandardRetryer(max_attempts=3, logger=logger)
+
 
     # 实例化要请求产品(以cvm为例)的client对象，clientProfile是可选的。
     client = cvm_client.CvmClient(cred, "ap-shanghai", clientProfile)

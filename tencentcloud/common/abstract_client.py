@@ -39,6 +39,7 @@ from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.sign import Sign
 from tencentcloud.common.circuit_breaker import CircuitBreaker
+from tencentcloud.common.retry import NoopRetryer
 
 warnings.filterwarnings("ignore", module="tencentcloud", category=UserWarning)
 
@@ -428,11 +429,16 @@ class AbstractClient(object):
         return self.request.send_request(req)
 
     def call(self, action, params, options=None, headers=None):
-        resp = self._call(action, params, options, headers)
-        self._check_status(resp)
-        self._check_error(resp)
-        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
-        return resp.content
+
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return retryer.send_request(_call_once).content
 
     def _call_with_region_breaker(self, action, params, options=None, headers=None):
         endpoint = self._get_endpoint()
