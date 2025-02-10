@@ -34,7 +34,7 @@ class StandardRetryer:
                 return resp
 
             sleep = self._backoff_fn(n)
-            self._logger.debug("retry: n=%d sleep=%ss err=%s", n, sleep, err)
+            self.on_retry(n, sleep, resp, err)
             time.sleep(sleep)
 
         raise err
@@ -59,3 +59,6 @@ class StandardRetryer:
     @staticmethod
     def backoff(n):
         return 2 ** n
+
+    def on_retry(self, n, sleep, resp, err):
+        self._logger.debug("retry: n=%d sleep=%ss err=%s", n, sleep, err)
