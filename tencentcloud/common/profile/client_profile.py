@@ -21,7 +21,7 @@ class ClientProfile(object):
     unsignedPayload = False
 
     def __init__(self, signMethod=None, httpProfile=None, language="zh-CN",
-                 disable_region_breaker=True, region_breaker_profile=None, request_client=None):
+                 disable_region_breaker=True, region_breaker_profile=None, request_client=None, retryer=None):
         """SDK profile.
 
         :param signMethod: The signature method, valid choice: HmacSHA1, HmacSHA256, TC3-HMAC-SHA256
@@ -55,13 +55,15 @@ class ClientProfile(object):
         elif request_client is not None:
             warnings.warn("RequestClient not match the regexp: ^[0-9a-zA-Z-_,;.]+$, ignored")
 
+        self.retryer = retryer
+
 
 class RegionBreakerProfile(object):
 
     def __init__(self, backup_endpoint="ap-guangzhou.tencentcloudapi.com",
                  max_fail_num=5,
                  max_fail_percent=0.75,
-                 window_interval=60*5,
+                 window_interval=60 * 5,
                  timeout=60,
                  max_requests=5):
         """RegionBreaker profile.
@@ -102,4 +104,3 @@ class RegionBreakerProfile(object):
             if len(region.split("-")) != 2:
                 return False
         return True
-

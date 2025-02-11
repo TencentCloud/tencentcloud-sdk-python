@@ -39,6 +39,7 @@ from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.sign import Sign
 from tencentcloud.common.circuit_breaker import CircuitBreaker
+from tencentcloud.common.retry import NoopRetryer
 
 warnings.filterwarnings("ignore", module="tencentcloud", category=UserWarning)
 
@@ -428,11 +429,16 @@ class AbstractClient(object):
         return self.request.send_request(req)
 
     def call(self, action, params, options=None, headers=None):
-        resp = self._call(action, params, options, headers)
-        self._check_status(resp)
-        self._check_error(resp)
-        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
-        return resp.content
+
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return retryer.send_request(_call_once).content
 
     def _call_with_region_breaker(self, action, params, options=None, headers=None):
         endpoint = self._get_endpoint()
@@ -508,23 +514,36 @@ class AbstractClient(object):
         :type options: dict
         :param options: request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         """
-        resp = self._call(action, params, options, headers)
-        self._check_status(resp)
-        self._check_error(resp)
-        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
-        return json.loads(resp.content)
+
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return json.loads(retryer.send_request(_call_once).content)
 
     def call_sse(self, action, params, headers=None, options=None):
-        resp = self._call(action, params, options, headers)
-        self._check_status(resp)
-        self._check_error(resp)
-        return self._process_response_sse(resp)
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return self._process_response_sse(retryer.send_request(_call_once))
 
     def _call_and_deserialize(self, action, params, resp_type, headers=None, options=None):
-        resp = self._call(action, params, options, headers)
-        self._check_status(resp)
-        self._check_error(resp)
-        return self._process_response(resp, resp_type)
+        def _call_once():
+            resp = self._call(action, params, options, headers)
+            self._check_status(resp)
+            self._check_error(resp)
+            return resp
+
+        retryer = self.profile.retryer or NoopRetryer()
+        return self._process_response(retryer.send_request(_call_once), resp_type)
 
     def _process_response(self, resp, resp_type):
         if resp.headers.get('Content-Type') == "text/event-stream":

@@ -86,7 +86,7 @@ import os
 import sys
 import logging
 
-from tencentcloud.common import credential
+from tencentcloud.common import credential, retry
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 # 导入对应产品模块的client models。
 from tencentcloud.cvm.v20170312 import cvm_client, models
@@ -119,6 +119,11 @@ try:
     clientProfile.signMethod = "TC3-HMAC-SHA256"  # 指定签名算法
     clientProfile.language = "en-US"  # 指定展示英文（默认为中文）
     clientProfile.httpProfile = httpProfile
+    # 当发生网络/限频错误时, 重试3次, 并通过logger打印日志
+    logger = logging.getLogger("retry")
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(logging.StreamHandler(sys.stderr))
+    clientProfile.retryer = retry.StandardRetryer(max_attempts=3, logger=logger)
 
     # 实例化要请求产品(以cvm为例)的client对象，clientProfile是可选的。
     client = cvm_client.CvmClient(cred, "ap-shanghai", clientProfile)
