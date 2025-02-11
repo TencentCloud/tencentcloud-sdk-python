@@ -4,18 +4,15 @@ import time
 from tencentcloud.common.exception import TencentCloudSDKException
 
 
-class NoopRetryer:
+class NoopRetryer(object):
     def send_request(self, fn):
         return fn()
 
 
-class StandardRetryer:
+class StandardRetryer(object):
     def __init__(self, max_attempts=3, backoff_fn=None, logger=None):
         self._max_attempts = max_attempts
         self._backoff_fn = backoff_fn or self.backoff
-        if not logger:
-            LOGGER_NAME = "tencentcloud_sdk_common"
-            logger = logging.getLogger(LOGGER_NAME)
         self._logger = logger
 
     def send_request(self, fn):
@@ -61,4 +58,5 @@ class StandardRetryer:
         return 2 ** n
 
     def on_retry(self, n, sleep, resp, err):
-        self._logger.debug("retry: n=%d sleep=%ss err=%s", n, sleep, err)
+        if self._logger:
+            self._logger.debug("retry: n=%d sleep=%ss err=%s", n, sleep, err)
