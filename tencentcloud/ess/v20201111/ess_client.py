@@ -600,6 +600,31 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateFileCounterSign(self, request):
+        """此接口用于发起数字文件CA加签操作。可以使用同步或者异步模式进行。
+
+        **注意： 1. 文件类型暂时仅支持PDF类型文件。2. 此接口为『数字文件CA加签服务』白名单功能，使用前请联系对接的客户经理沟通。**
+
+        :param request: Request instance for CreateFileCounterSign.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateFileCounterSignRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateFileCounterSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFileCounterSign", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFileCounterSignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFlow(self, request):
         """通过模板创建签署流程<br/>
         适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
@@ -2210,6 +2235,31 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFileCounterSignResult(self, request):
+        """文件CA加签任务结果查询接口，用于查询 CreateFileCounterSign接口 发起的异步加签任务。
+
+        注意：`此接口为『数字文件CA加签服务』白名单功能，使用前请联系对接的客户经理沟通。`
+
+        :param request: Request instance for DescribeFileCounterSignResult.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFileCounterSignResultRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeFileCounterSignResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFileCounterSignResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFileCounterSignResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFileUrls(self, request):
         """本接口（DescribeFileUrls）用于查询文件的下载URL。
         适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
@@ -3093,6 +3143,29 @@ class EssClient(AbstractClient):
             body = self.call("UploadFiles", params, headers=headers)
             response = json.loads(body)
             model = models.UploadFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyDigitFile(self, request):
+        """对加签后的文件进行数字签名验证，判断数字签名是否有效。
+
+        :param request: Request instance for VerifyDigitFile.
+        :type request: :class:`tencentcloud.ess.v20201111.models.VerifyDigitFileRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.VerifyDigitFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyDigitFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyDigitFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

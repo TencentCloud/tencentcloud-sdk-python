@@ -152,16 +152,12 @@ class SubmitTaskEventResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OrderId: 任务的唯一订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
         :param _Code: 信息码。0表示成功，-1标识失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Data: 任务处理结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TaskEventData
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -175,7 +171,6 @@ class SubmitTaskEventResponse(AbstractModel):
     @property
     def OrderId(self):
         """任务的唯一订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderId
@@ -187,7 +182,6 @@ class SubmitTaskEventResponse(AbstractModel):
     @property
     def Code(self):
         """信息码。0表示成功，-1标识失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Code
@@ -199,7 +193,6 @@ class SubmitTaskEventResponse(AbstractModel):
     @property
     def Message(self):
         """提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -211,7 +204,6 @@ class SubmitTaskEventResponse(AbstractModel):
     @property
     def Data(self):
         """任务处理结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskEventData
         """
         return self._Data
@@ -253,43 +245,30 @@ class TaskEventData(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 状态码，0为成功，-1为失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _TaskOrderId: 当前完成或正在完成的安心用户运营平台的任务订单ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskOrderId: str
         :param _TaskCode: 当前任务订单状态码。1代表未完成；2代表已完成但未提交任务；3表示已完成，且已提交获得积分任务；4表示过期任务，提交后不获得积分。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCode: int
         :param _TaskCoinNumber: 获得积分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCoinNumber: int
         :param _TaskType: 任务类型后台代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: int
         :param _TotalCoin: 用户的当前积分
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCoin: int
         :param _Attach: 用户透传的附加数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Attach: str
         :param _DoneTimes: 计次任务当前完成次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DoneTimes: int
         :param _TotalTimes: 计次任务当前所需完成次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTimes: int
         :param _TaskName: 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
         :param _GrowScore: 用户当前成长值
-注意：此字段可能返回 null，表示取不到有效值。
         :type GrowScore: int
         """
         self._Code = None
@@ -309,7 +288,6 @@ class TaskEventData(AbstractModel):
     @property
     def Code(self):
         """状态码，0为成功，-1为失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Code
@@ -321,7 +299,6 @@ class TaskEventData(AbstractModel):
     @property
     def Message(self):
         """提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -333,7 +310,6 @@ class TaskEventData(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -345,7 +321,6 @@ class TaskEventData(AbstractModel):
     @property
     def TaskOrderId(self):
         """当前完成或正在完成的安心用户运营平台的任务订单ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskOrderId
@@ -357,7 +332,6 @@ class TaskEventData(AbstractModel):
     @property
     def TaskCode(self):
         """当前任务订单状态码。1代表未完成；2代表已完成但未提交任务；3表示已完成，且已提交获得积分任务；4表示过期任务，提交后不获得积分。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskCode
@@ -369,7 +343,6 @@ class TaskEventData(AbstractModel):
     @property
     def TaskCoinNumber(self):
         """获得积分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskCoinNumber
@@ -381,7 +354,6 @@ class TaskEventData(AbstractModel):
     @property
     def TaskType(self):
         """任务类型后台代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskType
@@ -393,7 +365,6 @@ class TaskEventData(AbstractModel):
     @property
     def TotalCoin(self):
         """用户的当前积分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCoin
@@ -405,7 +376,6 @@ class TaskEventData(AbstractModel):
     @property
     def Attach(self):
         """用户透传的附加数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Attach
@@ -417,7 +387,6 @@ class TaskEventData(AbstractModel):
     @property
     def DoneTimes(self):
         """计次任务当前完成次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DoneTimes
@@ -429,7 +398,6 @@ class TaskEventData(AbstractModel):
     @property
     def TotalTimes(self):
         """计次任务当前所需完成次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalTimes
@@ -441,7 +409,6 @@ class TaskEventData(AbstractModel):
     @property
     def TaskName(self):
         """任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskName
@@ -453,7 +420,6 @@ class TaskEventData(AbstractModel):
     @property
     def GrowScore(self):
         """用户当前成长值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GrowScore

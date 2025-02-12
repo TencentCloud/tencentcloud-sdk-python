@@ -3956,19 +3956,29 @@ class ContentInfo(AbstractModel):
         :type Content: str
         :param _Confidence: 结果置信度
         :type Confidence: int
-        :param _IsInComplete: 字段是否不完整
+        :param _IsInComplete: 字段是否不完整（value内容）
 0 字段正常
 1 字段不完整
         :type IsInComplete: int
-        :param _IsReflect: 字段反光
+        :param _IsReflect: 字段反光（value内容）
 0 字段正常
 1 字段有反光
         :type IsReflect: int
+        :param _IsKeyInComplete: 字段是否不完整（key内容）
+0 字段正常
+1 字段不完整
+        :type IsKeyInComplete: int
+        :param _IsKeyReflect: 字段反光（key内容）
+0 字段正常
+1 字段有反光
+        :type IsKeyReflect: int
         """
         self._Content = None
         self._Confidence = None
         self._IsInComplete = None
         self._IsReflect = None
+        self._IsKeyInComplete = None
+        self._IsKeyReflect = None
 
     @property
     def Content(self):
@@ -3994,7 +4004,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def IsInComplete(self):
-        """字段是否不完整
+        """字段是否不完整（value内容）
 0 字段正常
 1 字段不完整
         :rtype: int
@@ -4007,7 +4017,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def IsReflect(self):
-        """字段反光
+        """字段反光（value内容）
 0 字段正常
 1 字段有反光
         :rtype: int
@@ -4018,12 +4028,40 @@ class ContentInfo(AbstractModel):
     def IsReflect(self, IsReflect):
         self._IsReflect = IsReflect
 
+    @property
+    def IsKeyInComplete(self):
+        """字段是否不完整（key内容）
+0 字段正常
+1 字段不完整
+        :rtype: int
+        """
+        return self._IsKeyInComplete
+
+    @IsKeyInComplete.setter
+    def IsKeyInComplete(self, IsKeyInComplete):
+        self._IsKeyInComplete = IsKeyInComplete
+
+    @property
+    def IsKeyReflect(self):
+        """字段反光（key内容）
+0 字段正常
+1 字段有反光
+        :rtype: int
+        """
+        return self._IsKeyReflect
+
+    @IsKeyReflect.setter
+    def IsKeyReflect(self, IsKeyReflect):
+        self._IsKeyReflect = IsKeyReflect
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
         self._Confidence = params.get("Confidence")
         self._IsInComplete = params.get("IsInComplete")
         self._IsReflect = params.get("IsReflect")
+        self._IsKeyInComplete = params.get("IsKeyInComplete")
+        self._IsKeyReflect = params.get("IsKeyReflect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

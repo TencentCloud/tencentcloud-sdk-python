@@ -13216,7 +13216,6 @@ class InstancePriceDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
         :param _DiscountDetail: 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountDetail: list of DiscountDetail
         """
         self._InstanceId = None
@@ -13250,7 +13249,6 @@ class InstancePriceDetail(AbstractModel):
     @property
     def DiscountDetail(self):
         """折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiscountDetail
         """
         return self._DiscountDetail
@@ -13426,16 +13424,12 @@ class InstanceViolationDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Source:  来源：RESTRICT：封禁、FREEZW：冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _State: 是否允许自助解封：1是，2否
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         :param _Reason: 违规类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _Content: 违规内容（URL、关联域名）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         """
         self._Source = None
@@ -13446,7 +13440,6 @@ class InstanceViolationDetail(AbstractModel):
     @property
     def Source(self):
         """ 来源：RESTRICT：封禁、FREEZW：冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Source
@@ -13458,7 +13451,6 @@ class InstanceViolationDetail(AbstractModel):
     @property
     def State(self):
         """是否允许自助解封：1是，2否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._State
@@ -13470,7 +13462,6 @@ class InstanceViolationDetail(AbstractModel):
     @property
     def Reason(self):
         """违规类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -13482,7 +13473,6 @@ class InstanceViolationDetail(AbstractModel):
     @property
     def Content(self):
         """违规内容（URL、关联域名）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content

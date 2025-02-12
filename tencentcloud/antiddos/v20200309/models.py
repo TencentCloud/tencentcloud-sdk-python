@@ -4214,7 +4214,7 @@ class CreateBoundIPRequest(AbstractModel):
         :type UnBoundDevList: list of BoundIpInfo
         :param _CopyPolicy: 已弃用，不填
         :type CopyPolicy: str
-        :param _FilterRegion: 如果该资源实例为域名化资产则，该参数必填
+        :param _FilterRegion: 如果该资源实例为域名化资产以及跨地域绑定则，该参数必填
         :type FilterRegion: str
         """
         self._Business = None
@@ -4281,7 +4281,7 @@ class CreateBoundIPRequest(AbstractModel):
 
     @property
     def FilterRegion(self):
-        """如果该资源实例为域名化资产则，该参数必填
+        """如果该资源实例为域名化资产以及跨地域绑定则，该参数必填
         :rtype: str
         """
         return self._FilterRegion

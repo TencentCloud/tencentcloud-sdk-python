@@ -6537,6 +6537,186 @@ class CreateExtendedServiceAuthInfosResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFileCounterSignRequest(AbstractModel):
+    """CreateFileCounterSign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 需要加签的文件Id。
+
+注: `暂时只支持pdf类型的文件`
+        :type FileId: str
+        :param _Operator: 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _SyncMode: 是否使用同步模式。
+<ul><li><b>false</b>:异步模式，返回taskId。需要使用taskId轮询结果查询接口。</li>
+<li><b>true</b>: 同步模式，此接口将直接返回taskId和ResultFileId(加签后文件id)。</li></ul>
+注：
+1. 当加签文件较大的时候，建议使用异步接口进行操作。否则文件加签时间过长会导致接口超时。
+        :type SyncMode: bool
+        """
+        self._FileId = None
+        self._Operator = None
+        self._Agent = None
+        self._SyncMode = None
+
+    @property
+    def FileId(self):
+        """需要加签的文件Id。
+
+注: `暂时只支持pdf类型的文件`
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SyncMode(self):
+        """是否使用同步模式。
+<ul><li><b>false</b>:异步模式，返回taskId。需要使用taskId轮询结果查询接口。</li>
+<li><b>true</b>: 同步模式，此接口将直接返回taskId和ResultFileId(加签后文件id)。</li></ul>
+注：
+1. 当加签文件较大的时候，建议使用异步接口进行操作。否则文件加签时间过长会导致接口超时。
+        :rtype: bool
+        """
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SyncMode = params.get("SyncMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFileCounterSignResponse(AbstractModel):
+    """CreateFileCounterSign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 加签任务的状态。
+
+<ul>
+<li><b>PROCESSING</b>: 任务正在执行中。</li>
+<li><b>FINISHED</b>: 已执行成功</li>
+</ul>
+        :type Status: str
+        :param _ResultFileId: 加签完成后新的文件Id
+        :type ResultFileId: str
+        :param _TaskId: 异步模式下用于轮询状态的任务Id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ResultFileId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """加签任务的状态。
+
+<ul>
+<li><b>PROCESSING</b>: 任务正在执行中。</li>
+<li><b>FINISHED</b>: 已执行成功</li>
+</ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResultFileId(self):
+        """加签完成后新的文件Id
+        :rtype: str
+        """
+        return self._ResultFileId
+
+    @ResultFileId.setter
+    def ResultFileId(self, ResultFileId):
+        self._ResultFileId = ResultFileId
+
+    @property
+    def TaskId(self):
+        """异步模式下用于轮询状态的任务Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ResultFileId = params.get("ResultFileId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFlowApproversRequest(AbstractModel):
     """CreateFlowApprovers请求参数结构体
 
@@ -17989,6 +18169,161 @@ class DescribeExtendedServiceAuthInfosResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFileCounterSignResultRequest(AbstractModel):
+    """DescribeFileCounterSignResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _TaskId: 加签任务Id
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._Agent = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def TaskId(self):
+        """加签任务Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileCounterSignResultResponse(AbstractModel):
+    """DescribeFileCounterSignResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 加签任务的状态。
+
+<ul>
+<li><b>PROCESSING</b>: 任务正在执行中。</li>
+<li><b>FINISHED</b>: 已执行成功</li>
+<li><b>FAILED</b>: 执行失败</li>
+</ul>
+        :type Status: str
+        :param _ResultFileId: 加签完成后新的文件Id
+        :type ResultFileId: str
+        :param _ErrorDetail: 失败的错误信息，加签任务失败的情况下会返回。
+        :type ErrorDetail: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ResultFileId = None
+        self._ErrorDetail = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """加签任务的状态。
+
+<ul>
+<li><b>PROCESSING</b>: 任务正在执行中。</li>
+<li><b>FINISHED</b>: 已执行成功</li>
+<li><b>FAILED</b>: 执行失败</li>
+</ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResultFileId(self):
+        """加签完成后新的文件Id
+        :rtype: str
+        """
+        return self._ResultFileId
+
+    @ResultFileId.setter
+    def ResultFileId(self, ResultFileId):
+        self._ResultFileId = ResultFileId
+
+    @property
+    def ErrorDetail(self):
+        """失败的错误信息，加签任务失败的情况下会返回。
+        :rtype: str
+        """
+        return self._ErrorDetail
+
+    @ErrorDetail.setter
+    def ErrorDetail(self, ErrorDetail):
+        self._ErrorDetail = ErrorDetail
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ResultFileId = params.get("ResultFileId")
+        self._ErrorDetail = params.get("ErrorDetail")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFileUrlsRequest(AbstractModel):
     """DescribeFileUrls请求参数结构体
 
@@ -17999,22 +18334,9 @@ class DescribeFileUrlsRequest(AbstractModel):
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _BusinessType: 文件对应的业务类型，目前支持：
-<ul>
-<li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li>
-<li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
-<li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
-<li>**SEAL  **: 如需下载印章图片请选择此项</li>
-</ul>
+        :param _BusinessType: 文件对应的业务类型，目前支持：<ul><li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li><li>**TEMPLATE ** : 如需下载模板文件请选择此项</li><li>**DOCUMENT  **: 如需下载文档文件请选择此项</li><li>**SEAL  **: 如需下载印章图片请选择此项</li><li>**DIGITFILE**: 如需下载加签文件请选择此项</li></ul>
         :type BusinessType: str
-        :param _BusinessIds: 业务编号的数组，取值如下：
-<ul>
-<li>流程编号</li>
-<li>模板编号</li>
-<li>文档编号</li>
-<li>印章编号</li>
-<li>如需下载合同文件请传入FlowId，最大支持20个资源</li>
-</ul>
+        :param _BusinessIds: 业务编号的数组，取值如下：<ul><li>流程编号</li><li>模板编号</li><li>文档编号</li><li>印章编号</li><li>加签文件编号</li><li>如需下载合同文件请传入FlowId，最大支持20个资源</li></ul>
         :type BusinessIds: list of str
         :param _FileName: 下载后的文件命名，只有FileType为zip的时候生效
         :type FileName: str
@@ -18065,13 +18387,7 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def BusinessType(self):
-        """文件对应的业务类型，目前支持：
-<ul>
-<li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li>
-<li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
-<li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
-<li>**SEAL  **: 如需下载印章图片请选择此项</li>
-</ul>
+        """文件对应的业务类型，目前支持：<ul><li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li><li>**TEMPLATE ** : 如需下载模板文件请选择此项</li><li>**DOCUMENT  **: 如需下载文档文件请选择此项</li><li>**SEAL  **: 如需下载印章图片请选择此项</li><li>**DIGITFILE**: 如需下载加签文件请选择此项</li></ul>
         :rtype: str
         """
         return self._BusinessType
@@ -18082,14 +18398,7 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def BusinessIds(self):
-        """业务编号的数组，取值如下：
-<ul>
-<li>流程编号</li>
-<li>模板编号</li>
-<li>文档编号</li>
-<li>印章编号</li>
-<li>如需下载合同文件请传入FlowId，最大支持20个资源</li>
-</ul>
+        """业务编号的数组，取值如下：<ul><li>流程编号</li><li>模板编号</li><li>文档编号</li><li>印章编号</li><li>加签文件编号</li><li>如需下载合同文件请传入FlowId，最大支持20个资源</li></ul>
         :rtype: list of str
         """
         return self._BusinessIds
@@ -32729,6 +33038,307 @@ class UserThreeFactor(AbstractModel):
         self._Name = params.get("Name")
         self._IdCardType = params.get("IdCardType")
         self._IdCardNumber = params.get("IdCardNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyDigitFileRequest(AbstractModel):
+    """VerifyDigitFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _FileId: 加签接口返回的文件Id
+        :type FileId: str
+        """
+        self._Operator = None
+        self._Agent = None
+        self._FileId = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FileId(self):
+        """加签接口返回的文件Id
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyDigitFileResponse(AbstractModel):
+    """VerifyDigitFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PdfResourceMd5: 加签文件MD5哈希值
+        :type PdfResourceMd5: str
+        :param _VerifyResult: 验签结果代码，代码的含义如下：<ul><li>**1**：文件验证成功。</li><li>**2**：文件验证失败。</li></ul>
+        :type VerifyResult: int
+        :param _VerifySerialNo: 验签序列号, 为11为数组组成的字符串
+        :type VerifySerialNo: str
+        :param _VerifyDigitFileResults: 验签结果详情，每个签名域对应的验签结果。
+        :type VerifyDigitFileResults: list of VerifyDigitFileResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PdfResourceMd5 = None
+        self._VerifyResult = None
+        self._VerifySerialNo = None
+        self._VerifyDigitFileResults = None
+        self._RequestId = None
+
+    @property
+    def PdfResourceMd5(self):
+        """加签文件MD5哈希值
+        :rtype: str
+        """
+        return self._PdfResourceMd5
+
+    @PdfResourceMd5.setter
+    def PdfResourceMd5(self, PdfResourceMd5):
+        self._PdfResourceMd5 = PdfResourceMd5
+
+    @property
+    def VerifyResult(self):
+        """验签结果代码，代码的含义如下：<ul><li>**1**：文件验证成功。</li><li>**2**：文件验证失败。</li></ul>
+        :rtype: int
+        """
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def VerifySerialNo(self):
+        """验签序列号, 为11为数组组成的字符串
+        :rtype: str
+        """
+        return self._VerifySerialNo
+
+    @VerifySerialNo.setter
+    def VerifySerialNo(self, VerifySerialNo):
+        self._VerifySerialNo = VerifySerialNo
+
+    @property
+    def VerifyDigitFileResults(self):
+        """验签结果详情，每个签名域对应的验签结果。
+        :rtype: list of VerifyDigitFileResult
+        """
+        return self._VerifyDigitFileResults
+
+    @VerifyDigitFileResults.setter
+    def VerifyDigitFileResults(self, VerifyDigitFileResults):
+        self._VerifyDigitFileResults = VerifyDigitFileResults
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PdfResourceMd5 = params.get("PdfResourceMd5")
+        self._VerifyResult = params.get("VerifyResult")
+        self._VerifySerialNo = params.get("VerifySerialNo")
+        if params.get("VerifyDigitFileResults") is not None:
+            self._VerifyDigitFileResults = []
+            for item in params.get("VerifyDigitFileResults"):
+                obj = VerifyDigitFileResult()
+                obj._deserialize(item)
+                self._VerifyDigitFileResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyDigitFileResult(AbstractModel):
+    """数字加签文件验签结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertNotBefore: 证书起始时间的Unix时间戳，单位毫秒
+        :type CertNotBefore: int
+        :param _CertNotAfter: 证书过期时间的时间戳，单位毫秒
+        :type CertNotAfter: int
+        :param _CertSn: 证书序列号，在数字证书申请过程中，系统会自动生成一个独一无二的序号。	
+        :type CertSn: str
+        :param _SignAlgorithm: 证书签名算法, 如SHA1withRSA等算法
+        :type SignAlgorithm: str
+        :param _SignTime: 签署时间的Unix时间戳，单位毫秒
+        :type SignTime: int
+        :param _SignType: 签名类型。0表示带签章的数字签名，1表示仅数字签名
+        :type SignType: int
+        :param _SignerName: 申请证书的主体的名字
+
+如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
+**企业**:  ESS@企业名称@编码
+**个人**: ESS@个人姓名@证件号@808854
+
+如果在其他平台签署的, 主体的名字参考其他平台的说明
+        :type SignerName: str
+        """
+        self._CertNotBefore = None
+        self._CertNotAfter = None
+        self._CertSn = None
+        self._SignAlgorithm = None
+        self._SignTime = None
+        self._SignType = None
+        self._SignerName = None
+
+    @property
+    def CertNotBefore(self):
+        """证书起始时间的Unix时间戳，单位毫秒
+        :rtype: int
+        """
+        return self._CertNotBefore
+
+    @CertNotBefore.setter
+    def CertNotBefore(self, CertNotBefore):
+        self._CertNotBefore = CertNotBefore
+
+    @property
+    def CertNotAfter(self):
+        """证书过期时间的时间戳，单位毫秒
+        :rtype: int
+        """
+        return self._CertNotAfter
+
+    @CertNotAfter.setter
+    def CertNotAfter(self, CertNotAfter):
+        self._CertNotAfter = CertNotAfter
+
+    @property
+    def CertSn(self):
+        """证书序列号，在数字证书申请过程中，系统会自动生成一个独一无二的序号。	
+        :rtype: str
+        """
+        return self._CertSn
+
+    @CertSn.setter
+    def CertSn(self, CertSn):
+        self._CertSn = CertSn
+
+    @property
+    def SignAlgorithm(self):
+        """证书签名算法, 如SHA1withRSA等算法
+        :rtype: str
+        """
+        return self._SignAlgorithm
+
+    @SignAlgorithm.setter
+    def SignAlgorithm(self, SignAlgorithm):
+        self._SignAlgorithm = SignAlgorithm
+
+    @property
+    def SignTime(self):
+        """签署时间的Unix时间戳，单位毫秒
+        :rtype: int
+        """
+        return self._SignTime
+
+    @SignTime.setter
+    def SignTime(self, SignTime):
+        self._SignTime = SignTime
+
+    @property
+    def SignType(self):
+        """签名类型。0表示带签章的数字签名，1表示仅数字签名
+        :rtype: int
+        """
+        return self._SignType
+
+    @SignType.setter
+    def SignType(self, SignType):
+        self._SignType = SignType
+
+    @property
+    def SignerName(self):
+        """申请证书的主体的名字
+
+如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
+**企业**:  ESS@企业名称@编码
+**个人**: ESS@个人姓名@证件号@808854
+
+如果在其他平台签署的, 主体的名字参考其他平台的说明
+        :rtype: str
+        """
+        return self._SignerName
+
+    @SignerName.setter
+    def SignerName(self, SignerName):
+        self._SignerName = SignerName
+
+
+    def _deserialize(self, params):
+        self._CertNotBefore = params.get("CertNotBefore")
+        self._CertNotAfter = params.get("CertNotAfter")
+        self._CertSn = params.get("CertSn")
+        self._SignAlgorithm = params.get("SignAlgorithm")
+        self._SignTime = params.get("SignTime")
+        self._SignType = params.get("SignType")
+        self._SignerName = params.get("SignerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

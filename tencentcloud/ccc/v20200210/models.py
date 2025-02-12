@@ -14247,7 +14247,7 @@ class TelCdrInfo(AbstractModel):
 电话呼出	        210	           notInService	不在服务区
 
 电话呼入&呼出	211    clientError    客户端错误
-
+电话呼出        212     carrierBlocked      运营商拦截
         :type EndStatus: int
         :param _SkillGroup: 技能组名称
         :type SkillGroup: str
@@ -14322,7 +14322,7 @@ class TelCdrInfo(AbstractModel):
 电话呼出	        210	           notInService	不在服务区
 
 电话呼入&呼出	211    clientError    客户端错误
-
+电话呼出        212     carrierBlocked      运营商拦截
         :type EndStatusString: str
         :param _StartTimestamp: 会话开始时间戳，UNIX 秒级时间戳
         :type StartTimestamp: int
@@ -14546,7 +14546,7 @@ NotExists
 电话呼出	        210	           notInService	不在服务区
 
 电话呼入&呼出	211    clientError    客户端错误
-
+电话呼出        212     carrierBlocked      运营商拦截
         :rtype: int
         """
         return self._EndStatus
@@ -14720,7 +14720,7 @@ NotExists
 电话呼出	        210	           notInService	不在服务区
 
 电话呼入&呼出	211    clientError    客户端错误
-
+电话呼出        212     carrierBlocked      运营商拦截
         :rtype: str
         """
         return self._EndStatusString

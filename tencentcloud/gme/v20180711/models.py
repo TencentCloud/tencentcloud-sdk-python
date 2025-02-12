@@ -158,27 +158,20 @@ class AppStatisticsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _RealtimeSpeechStatisticsItem: 实时语音统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealtimeSpeechStatisticsItem: :class:`tencentcloud.gme.v20180711.models.RealTimeSpeechStatisticsItem`
         :param _VoiceMessageStatisticsItem: 语音消息统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceMessageStatisticsItem: :class:`tencentcloud.gme.v20180711.models.VoiceMessageStatisticsItem`
         :param _VoiceFilterStatisticsItem: 语音过滤统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceFilterStatisticsItem: :class:`tencentcloud.gme.v20180711.models.VoiceFilterStatisticsItem`
         :param _Date: 统计时间
         :type Date: str
         :param _AudioTextStatisticsItem: 录音转文本用量统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.AudioTextStatisticsItem`
         :param _StreamTextStatisticsItem: 流式转文本用量数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.StreamTextStatisticsItem`
         :param _OverseaTextStatisticsItem: 海外转文本用量数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type OverseaTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.OverseaTextStatisticsItem`
         :param _RealtimeTextStatisticsItem: 实时语音转文本用量数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealtimeTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.RealtimeTextStatisticsItem`
         """
         self._RealtimeSpeechStatisticsItem = None
@@ -193,7 +186,6 @@ class AppStatisticsItem(AbstractModel):
     @property
     def RealtimeSpeechStatisticsItem(self):
         """实时语音统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.RealTimeSpeechStatisticsItem`
         """
         return self._RealtimeSpeechStatisticsItem
@@ -205,7 +197,6 @@ class AppStatisticsItem(AbstractModel):
     @property
     def VoiceMessageStatisticsItem(self):
         """语音消息统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceMessageStatisticsItem`
         """
         return self._VoiceMessageStatisticsItem
@@ -217,7 +208,6 @@ class AppStatisticsItem(AbstractModel):
     @property
     def VoiceFilterStatisticsItem(self):
         """语音过滤统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterStatisticsItem`
         """
         return self._VoiceFilterStatisticsItem
@@ -240,7 +230,6 @@ class AppStatisticsItem(AbstractModel):
     @property
     def AudioTextStatisticsItem(self):
         """录音转文本用量统计数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.AudioTextStatisticsItem`
         """
         return self._AudioTextStatisticsItem
@@ -252,7 +241,6 @@ class AppStatisticsItem(AbstractModel):
     @property
     def StreamTextStatisticsItem(self):
         """流式转文本用量数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.StreamTextStatisticsItem`
         """
         return self._StreamTextStatisticsItem
@@ -264,7 +252,6 @@ class AppStatisticsItem(AbstractModel):
     @property
     def OverseaTextStatisticsItem(self):
         """海外转文本用量数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.OverseaTextStatisticsItem`
         """
         return self._OverseaTextStatisticsItem
@@ -276,7 +263,6 @@ class AppStatisticsItem(AbstractModel):
     @property
     def RealtimeTextStatisticsItem(self):
         """实时语音转文本用量数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.RealtimeTextStatisticsItem`
         """
         return self._RealtimeTextStatisticsItem
@@ -752,7 +738,6 @@ class AudioTextStatisticsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 统计值，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: float
         """
         self._Data = None
@@ -760,7 +745,6 @@ class AudioTextStatisticsItem(AbstractModel):
     @property
     def Data(self):
         """统计值，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Data
@@ -4523,7 +4507,6 @@ class OverseaTextStatisticsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 统计值，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: float
         """
         self._Data = None
@@ -4531,7 +4514,6 @@ class OverseaTextStatisticsItem(AbstractModel):
     @property
     def Data(self):
         """统计值，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Data
@@ -4723,7 +4705,6 @@ class RealtimeTextStatisticsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 统计值，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: float
         """
         self._Data = None
@@ -4731,7 +4712,6 @@ class RealtimeTextStatisticsItem(AbstractModel):
     @property
     def Data(self):
         """统计值，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Data
@@ -5439,6 +5419,70 @@ class SceneInfo(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _SceneId: 'RealTime','实时语音分析',
+'VoiceMessage','语音消息',
+'GMECloudApi':'GME云API接口'
+        :type SceneId: str
+        :param _Status: 开关状态，true开启/false关闭
+        :type Status: bool
+        :param _CallbackUrl: 用户回调地址
+        :type CallbackUrl: str
+        """
+        self._SceneId = None
+        self._Status = None
+        self._CallbackUrl = None
+
+    @property
+    def SceneId(self):
+        """'RealTime','实时语音分析',
+'VoiceMessage','语音消息',
+'GMECloudApi':'GME云API接口'
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def Status(self):
+        """开关状态，true开启/false关闭
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CallbackUrl(self):
+        """用户回调地址
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+
+    def _deserialize(self, params):
+        self._SceneId = params.get("SceneId")
+        self._Status = params.get("Status")
+        self._CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ServiceStatus(AbstractModel):
     """服务开关状态
@@ -5875,7 +5919,6 @@ class StreamTextStatisticsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 统计值，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: float
         """
         self._Data = None
@@ -5883,7 +5926,6 @@ class StreamTextStatisticsItem(AbstractModel):
     @property
     def Data(self):
         """统计值，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Data
@@ -5968,10 +6010,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -5980,7 +6020,6 @@ class Tag(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -5992,7 +6031,6 @@ class Tag(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

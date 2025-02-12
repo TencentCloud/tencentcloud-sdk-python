@@ -45,7 +45,8 @@ class LkeapClient(AbstractClient):
 
         本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价。
         - 标准计费（2025年2月26日起生效）
-        ![image](https://cdn.xiaowei.qq.com/static/lke/deepseek-token.png)
+
+         ![image](https://cdn.xiaowei.qq.com/static/lke/deekseep-token0212.png)
 
         ### Openai兼容协议接口
         知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)。

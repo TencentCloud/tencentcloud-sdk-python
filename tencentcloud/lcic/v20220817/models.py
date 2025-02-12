@@ -6667,10 +6667,8 @@ class DescribeRoomStatisticsResponse(AbstractModel):
         :param _MemberRecords: 成员记录列表。
         :type MemberRecords: list of MemberRecord
         :param _RealStartTime: 秒级unix时间戳，实际房间开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealStartTime: int
         :param _RealEndTime: 秒级unix时间戳，实际房间结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealEndTime: int
         :param _MessageCount: 房间消息总数。
         :type MessageCount: int
@@ -6736,7 +6734,6 @@ class DescribeRoomStatisticsResponse(AbstractModel):
     @property
     def RealStartTime(self):
         """秒级unix时间戳，实际房间开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RealStartTime
@@ -6748,7 +6745,6 @@ class DescribeRoomStatisticsResponse(AbstractModel):
     @property
     def RealEndTime(self):
         """秒级unix时间戳，实际房间结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RealEndTime
@@ -7289,7 +7285,6 @@ class DescribeUserResponse(AbstractModel):
         :param _Avatar: 用户头像Url。
         :type Avatar: str
         :param _OriginId: 用户在客户系统的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7348,7 +7343,6 @@ class DescribeUserResponse(AbstractModel):
     @property
     def OriginId(self):
         """用户在客户系统的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginId
@@ -8323,7 +8317,6 @@ class GetRoomEventResponse(AbstractModel):
         :param _Total: 该房间的事件总数，keyword搜索不影响该值。
         :type Total: int
         :param _Events: 详细事件内容。包含相应的类型、发生的时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of EventInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8346,7 +8339,6 @@ class GetRoomEventResponse(AbstractModel):
     @property
     def Events(self):
         """详细事件内容。包含相应的类型、发生的时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EventInfo
         """
         return self._Events
@@ -8729,16 +8721,12 @@ class GetWatermarkResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TeacherLogo: 老师视频区域的水印参数配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type TeacherLogo: :class:`tencentcloud.lcic.v20220817.models.WatermarkConfig`
         :param _BoardLogo: 白板区域的水印参数配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type BoardLogo: :class:`tencentcloud.lcic.v20220817.models.WatermarkConfig`
         :param _BackgroundPicture: 背景图片配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackgroundPicture: :class:`tencentcloud.lcic.v20220817.models.BackgroundPictureConfig`
         :param _Text: 文字水印配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.lcic.v20220817.models.TextMarkConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8752,7 +8740,6 @@ class GetWatermarkResponse(AbstractModel):
     @property
     def TeacherLogo(self):
         """老师视频区域的水印参数配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.WatermarkConfig`
         """
         return self._TeacherLogo
@@ -8764,7 +8751,6 @@ class GetWatermarkResponse(AbstractModel):
     @property
     def BoardLogo(self):
         """白板区域的水印参数配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.WatermarkConfig`
         """
         return self._BoardLogo
@@ -8776,7 +8762,6 @@ class GetWatermarkResponse(AbstractModel):
     @property
     def BackgroundPicture(self):
         """背景图片配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.BackgroundPictureConfig`
         """
         return self._BackgroundPicture
@@ -8788,7 +8773,6 @@ class GetWatermarkResponse(AbstractModel):
     @property
     def Text(self):
         """文字水印配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.TextMarkConfig`
         """
         return self._Text

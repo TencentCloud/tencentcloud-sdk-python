@@ -27187,7 +27187,7 @@ class RunJobFlowResponse(AbstractModel):
 
 
 class SLInstanceInfo(AbstractModel):
-    """Serverless HBase 实例信息
+    """Serverless HBase实例信息
 
     """
 
@@ -27199,6 +27199,8 @@ class SLInstanceInfo(AbstractModel):
         :type Id: int
         :param _StatusDesc: 状态描述
         :type StatusDesc: str
+        :param _HealthStatus: 健康状态
+        :type HealthStatus: str
         :param _ClusterName: 实例名称
         :type ClusterName: str
         :param _RegionId: 地域ID
@@ -27235,6 +27237,7 @@ class SLInstanceInfo(AbstractModel):
         self._ClusterId = None
         self._Id = None
         self._StatusDesc = None
+        self._HealthStatus = None
         self._ClusterName = None
         self._RegionId = None
         self._ZoneId = None
@@ -27283,6 +27286,17 @@ class SLInstanceInfo(AbstractModel):
     @StatusDesc.setter
     def StatusDesc(self, StatusDesc):
         self._StatusDesc = StatusDesc
+
+    @property
+    def HealthStatus(self):
+        """健康状态
+        :rtype: str
+        """
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
 
     @property
     def ClusterName(self):
@@ -27456,6 +27470,7 @@ class SLInstanceInfo(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._Id = params.get("Id")
         self._StatusDesc = params.get("StatusDesc")
+        self._HealthStatus = params.get("HealthStatus")
         self._ClusterName = params.get("ClusterName")
         self._RegionId = params.get("RegionId")
         self._ZoneId = params.get("ZoneId")

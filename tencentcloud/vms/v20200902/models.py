@@ -171,7 +171,6 @@ class SendStatus(AbstractModel):
         :param _CallId: 标识本次发送 ID，标识一次下发记录。
         :type CallId: str
         :param _SessionContext: 用户的 session 内容，腾讯 server 回包中会原样返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionContext: str
         """
         self._CallId = None
@@ -191,7 +190,6 @@ class SendStatus(AbstractModel):
     @property
     def SessionContext(self):
         """用户的 session 内容，腾讯 server 回包中会原样返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SessionContext

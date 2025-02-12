@@ -98,6 +98,9 @@ INVALIDPARAMETER_ACLTYPEMISMATCH = 'InvalidParameter.AclTypeMismatch'
 # 参数不支持同时指定。
 INVALIDPARAMETER_COEXIST = 'InvalidParameter.Coexist'
 
+# 当前IP已在其他公网IP类型的流量镜像中使用。
+INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = 'InvalidParameter.DuplicatedLbTrafficMirrorCollectors'
+
 # 指定过滤条件不存在。
 INVALIDPARAMETER_FILTERINVALIDKEY = 'InvalidParameter.FilterInvalidKey'
 
@@ -124,6 +127,9 @@ INVALIDPARAMETER_NOTLIST = 'InvalidParameter.NotList'
 
 # 指定键值不是一个字符串型。
 INVALIDPARAMETER_NOTSTR = 'InvalidParameter.NotStr'
+
+# 当前公网IP所在的地区不支持流量采集。
+INVALIDPARAMETER_UNSUPPORTEDLBTRAFFICMIRRORAZ = 'InvalidParameter.UnsupportedLbTrafficMirrorAz'
 
 # 专线网关跨可用区容灾组不存在。
 INVALIDPARAMETER_VPGHAGROUPNOTFOUND = 'InvalidParameter.VpgHaGroupNotFound'
@@ -209,6 +215,12 @@ INVALIDPARAMETERVALUE_DUPLICATEPARA = 'InvalidParameterValue.DuplicatePara'
 # 本端地域和端地域重复。
 INVALIDPARAMETERVALUE_DUPLICATEREGION = 'InvalidParameterValue.DuplicateRegion'
 
+# 当前IP已在其他公网IP类型的流量镜像中使用。
+INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = 'InvalidParameterValue.DuplicatedLbTrafficMirrorCollectors'
+
+# 当前接收端已在其他的公网IP类型的流量镜像中使用。
+INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORRECIVERENDPOINT = 'InvalidParameterValue.DuplicatedLbTrafficMirrorReciverEndpoint'
+
 # 值超过上限。
 INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = 'InvalidParameterValue.EIPBrandWidthOutInvalid'
 
@@ -275,6 +287,9 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = 'InvalidParameterValue.InvalidInsta
 # 无效的IPv6地址。
 INVALIDPARAMETERVALUE_INVALIDIPV6 = 'InvalidParameterValue.InvalidIpv6'
 
+# 接收端不是一个存在的虚机IP也不是可路由的idc机房IP。
+INVALIDPARAMETERVALUE_INVALIDLBTRAFFICMIRRORRECIVERENDPOINT = 'InvalidParameterValue.InvalidLbTrafficMirrorReciverEndpoint'
+
 # 旧的带宽值无效。
 INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = 'InvalidParameterValue.InvalidOldBandwidth'
 
@@ -307,6 +322,9 @@ INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONREJECTED = 'InvalidParameterValue
 
 # 该请求需要走BPAAS流程服务审批，当前发起审批中。
 INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONSTARTED = 'InvalidParameterValue.MemberApprovalApplicationStarted'
+
+# 流量镜像target的内网带宽不足。
+INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = 'InvalidParameterValue.MirrorLackTargetResource'
 
 # 缺少绑定的实例。
 INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAssociateEntity'
@@ -355,6 +373,12 @@ INVALIDPARAMETERVALUE_NOTINVPCCIDR = 'InvalidParameterValue.NotInVpcCidr'
 
 # 不是UTF8编码。
 INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = 'InvalidParameterValue.NotUtf8EncodingError'
+
+# 流量镜像采集对象已经被使用。
+INVALIDPARAMETERVALUE_OBJECTUSEINTRAFFICMIRROR = 'InvalidParameterValue.ObjectUseInTrafficMirror'
+
+# 流量镜像采集的VPC不是当前VPCID。
+INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = 'InvalidParameterValue.ObjectVpcNotCurrentVpc'
 
 # 该操作仅对主网卡支持。
 INVALIDPARAMETERVALUE_ONLYSUPPORTEDFORMASTERNETWORKCARD = 'InvalidParameterValue.OnlySupportedForMasterNetworkCard'
@@ -478,6 +502,12 @@ INVALIDPARAMETERVALUE_TRAFFICPACKAGERESOURCEIDMALFORMED = 'InvalidParameterValue
 
 # 该可用区不可用。
 INVALIDPARAMETERVALUE_UNAVAILABLEZONE = 'InvalidParameterValue.UnavailableZone'
+
+# 当前公网IP所在的地区不支持流量采集。
+INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = 'InvalidParameterValue.UnsupportedLbTrafficMirrorAz'
+
+# 当前流量镜像不支持此操作。
+INVALIDPARAMETERVALUE_UNSUPPORTEDTRAFFICMIRRORACTION = 'InvalidParameterValue.UnsupportedTrafficMirrorAction'
 
 # 目的网段和当前VPC的CIDR冲突。
 INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = 'InvalidParameterValue.VpcCidrConflict'
@@ -965,6 +995,9 @@ UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
 # 当前状态不支持发布至云联网，请重试。
 UNSUPPORTEDOPERATION_INVALIDSTATUSNOTIFYCCN = 'UnsupportedOperation.InvalidStatusNotifyCcn'
 
+# 不支持IPV6。
+UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = 'UnsupportedOperation.Ipv6NotSupport'
+
 # 关联当前云联网的实例的账号存在不是金融云账号。
 UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = 'UnsupportedOperation.IsNotFinanceAccount'
 
@@ -1085,6 +1118,9 @@ UNSUPPORTEDOPERATION_PRIMARYIP = 'UnsupportedOperation.PrimaryIp'
 # 私网NAT网关存在关联规则。
 UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = 'UnsupportedOperation.PrivateNatGatewayAssociationExists'
 
+# 不支持公网CLB。
+UNSUPPORTEDOPERATION_PUBLICCLBNOTSUPPORT = 'UnsupportedOperation.PublicClbNotSupport'
+
 # Nat网关至少存在一个弹性IP，弹性IP不能解绑。
 UNSUPPORTEDOPERATION_PUBLICIPADDRESSDISASSOCIATE = 'UnsupportedOperation.PublicIpAddressDisassociate'
 
@@ -1189,6 +1225,12 @@ UNSUPPORTEDOPERATION_TAGNOTPERMIT = 'UnsupportedOperation.TagNotPermit'
 
 # 不支持使用系统预留的标签键。
 UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = 'UnsupportedOperation.TagSystemReservedTagKey'
+
+# 流量镜像不支持目标Clb。
+UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = 'UnsupportedOperation.TrafficMirrorNotSupportClb'
+
+# 流量镜像源、目的不可同端。
+UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = 'UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget'
 
 # 账号ID不存在。
 UNSUPPORTEDOPERATION_UINNOTFOUND = 'UnsupportedOperation.UinNotFound'

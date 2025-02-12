@@ -9776,6 +9776,61 @@ class CountOpsInstanceStateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAndDDLSupport(AbstractModel):
+    """是否支持creat 或ddl
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SupportSelect: 是否支持select
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportSelect: bool
+        :param _SupportDdl: 是否支持ddl
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDdl: bool
+        """
+        self._SupportSelect = None
+        self._SupportDdl = None
+
+    @property
+    def SupportSelect(self):
+        """是否支持select
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SupportSelect
+
+    @SupportSelect.setter
+    def SupportSelect(self, SupportSelect):
+        self._SupportSelect = SupportSelect
+
+    @property
+    def SupportDdl(self):
+        """是否支持ddl
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SupportDdl
+
+    @SupportDdl.setter
+    def SupportDdl(self, SupportDdl):
+        self._SupportDdl = SupportDdl
+
+
+    def _deserialize(self, params):
+        self._SupportSelect = params.get("SupportSelect")
+        self._SupportDdl = params.get("SupportDdl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCustomFunctionRequest(AbstractModel):
     """CreateCustomFunction请求参数结构体
 
@@ -15570,6 +15625,12 @@ class DatabaseMeta(AbstractModel):
         :param _ClusterName: 引擎名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
+        :param _ModifiedTimeByTables: 库下表的最新更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTimeByTables: int
+        :param _LastAccessTimeByTables: 库下表的最新访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAccessTimeByTables: int
         """
         self._ProjectId = None
         self._MetastoreType = None
@@ -15596,6 +15657,8 @@ class DatabaseMeta(AbstractModel):
         self._CollectJobName = None
         self._ClusterId = None
         self._ClusterName = None
+        self._ModifiedTimeByTables = None
+        self._LastAccessTimeByTables = None
 
     @property
     def ProjectId(self):
@@ -15897,6 +15960,30 @@ class DatabaseMeta(AbstractModel):
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def ModifiedTimeByTables(self):
+        """库下表的最新更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ModifiedTimeByTables
+
+    @ModifiedTimeByTables.setter
+    def ModifiedTimeByTables(self, ModifiedTimeByTables):
+        self._ModifiedTimeByTables = ModifiedTimeByTables
+
+    @property
+    def LastAccessTimeByTables(self):
+        """库下表的最新访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastAccessTimeByTables
+
+    @LastAccessTimeByTables.setter
+    def LastAccessTimeByTables(self, LastAccessTimeByTables):
+        self._LastAccessTimeByTables = LastAccessTimeByTables
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -15929,6 +16016,8 @@ class DatabaseMeta(AbstractModel):
         self._CollectJobName = params.get("CollectJobName")
         self._ClusterId = params.get("ClusterId")
         self._ClusterName = params.get("ClusterName")
+        self._ModifiedTimeByTables = params.get("ModifiedTimeByTables")
+        self._LastAccessTimeByTables = params.get("LastAccessTimeByTables")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75081,6 +75170,15 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _HasBizPermission: 是否有修改业务权限
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasBizPermission: bool
+        :param _OwnerByEngine: 引擎侧创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerByEngine: str
+        :param _ErrorTips: 用户无映射账户，请先完成账户映射后再来申请。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorTips: str
+        :param _IfSupportCreateAndDDL: 是否支持select or ddl
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IfSupportCreateAndDDL: :class:`tencentcloud.wedata.v20210820.models.CreateAndDDLSupport`
         """
         self._TableId = None
         self._TableName = None
@@ -75143,6 +75241,9 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._CollectJobName = None
         self._Urn = None
         self._HasBizPermission = None
+        self._OwnerByEngine = None
+        self._ErrorTips = None
+        self._IfSupportCreateAndDDL = None
 
     @property
     def TableId(self):
@@ -75877,6 +75978,42 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
     def HasBizPermission(self, HasBizPermission):
         self._HasBizPermission = HasBizPermission
 
+    @property
+    def OwnerByEngine(self):
+        """引擎侧创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerByEngine
+
+    @OwnerByEngine.setter
+    def OwnerByEngine(self, OwnerByEngine):
+        self._OwnerByEngine = OwnerByEngine
+
+    @property
+    def ErrorTips(self):
+        """用户无映射账户，请先完成账户映射后再来申请。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorTips
+
+    @ErrorTips.setter
+    def ErrorTips(self, ErrorTips):
+        self._ErrorTips = ErrorTips
+
+    @property
+    def IfSupportCreateAndDDL(self):
+        """是否支持select or ddl
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateAndDDLSupport`
+        """
+        return self._IfSupportCreateAndDDL
+
+    @IfSupportCreateAndDDL.setter
+    def IfSupportCreateAndDDL(self, IfSupportCreateAndDDL):
+        self._IfSupportCreateAndDDL = IfSupportCreateAndDDL
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -75959,6 +76096,11 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._CollectJobName = params.get("CollectJobName")
         self._Urn = params.get("Urn")
         self._HasBizPermission = params.get("HasBizPermission")
+        self._OwnerByEngine = params.get("OwnerByEngine")
+        self._ErrorTips = params.get("ErrorTips")
+        if params.get("IfSupportCreateAndDDL") is not None:
+            self._IfSupportCreateAndDDL = CreateAndDDLSupport()
+            self._IfSupportCreateAndDDL._deserialize(params.get("IfSupportCreateAndDDL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -4255,7 +4255,6 @@ class DescribeBackupUrlResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Filenames: list of str
         :param _BackupInfos: 备份文件信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupInfos: list of BackupDownloadInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4303,7 +4302,6 @@ class DescribeBackupUrlResponse(AbstractModel):
     @property
     def BackupInfos(self):
         """备份文件信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupDownloadInfo
         """
         return self._BackupInfos
@@ -4999,10 +4997,8 @@ class DescribeInstanceAccountResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Accounts: 账号详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Accounts: list of Account
         :param _TotalCount: 账号个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5014,7 +5010,6 @@ class DescribeInstanceAccountResponse(AbstractModel):
     @property
     def Accounts(self):
         """账号详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Account
         """
         return self._Accounts
@@ -5026,7 +5021,6 @@ class DescribeInstanceAccountResponse(AbstractModel):
     @property
     def TotalCount(self):
         """账号个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5303,28 +5297,20 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _JobId: DTS任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _JobName: DTS任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobName: str
         :param _Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _StatusDesc: 状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param _Offset: 同步时延，单位：字节
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         :param _CutDownTime: 断开时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CutDownTime: str
         :param _SrcInfo: 源实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
         :param _DstInfo: 目标实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5342,7 +5328,6 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     @property
     def JobId(self):
         """DTS任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -5354,7 +5339,6 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     @property
     def JobName(self):
         """DTS任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobName
@@ -5366,7 +5350,6 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     @property
     def Status(self):
         """任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -5378,7 +5361,6 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     @property
     def StatusDesc(self):
         """状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusDesc
@@ -5390,7 +5372,6 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     @property
     def Offset(self):
         """同步时延，单位：字节
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offset
@@ -5402,7 +5383,6 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     @property
     def CutDownTime(self):
         """断开时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CutDownTime
@@ -5414,7 +5394,6 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     @property
     def SrcInfo(self):
         """源实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
         """
         return self._SrcInfo
@@ -5426,7 +5405,6 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     @property
     def DstInfo(self):
         """目标实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
         """
         return self._DstInfo
@@ -6920,17 +6898,14 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
         :param _ProxyCount: Proxy节点数量。
         :type ProxyCount: int
         :param _Proxy: Proxy节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Proxy: list of ProxyNodes
         :param _RedisCount: Redis节点数量。
         :type RedisCount: int
         :param _Redis: Redis节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Redis: list of RedisNodes
         :param _TendisCount: 该参数不再使用，请忽略。
         :type TendisCount: int
         :param _Tendis: 该参数不再使用，请忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tendis: list of TendisNodes
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6957,7 +6932,6 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     @property
     def Proxy(self):
         """Proxy节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProxyNodes
         """
         return self._Proxy
@@ -6980,7 +6954,6 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     @property
     def Redis(self):
         """Redis节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RedisNodes
         """
         return self._Redis
@@ -7003,7 +6976,6 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     @property
     def Tendis(self):
         """该参数不再使用，请忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TendisNodes
         """
         return self._Tendis
@@ -11315,7 +11287,6 @@ class DisableReplicaReadonlyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11326,7 +11297,6 @@ class DisableReplicaReadonlyResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -11511,10 +11481,8 @@ class EnableReplicaReadonlyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 错误：ERROR，正确OK（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11526,7 +11494,6 @@ class EnableReplicaReadonlyResponse(AbstractModel):
     @property
     def Status(self):
         """错误：ERROR，正确OK（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -11538,7 +11505,6 @@ class EnableReplicaReadonlyResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -12194,7 +12160,6 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Price: 价格，单位：分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12205,7 +12170,6 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
     @property
     def Price(self):
         """价格，单位：分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Price
@@ -12290,7 +12254,6 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Price: 价格，单位：分。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12301,7 +12264,6 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
     @property
     def Price(self):
         """价格，单位：分。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Price
@@ -12416,7 +12378,6 @@ class InquiryPriceUpgradeInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Price: 价格，单位：分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12427,7 +12388,6 @@ class InquiryPriceUpgradeInstanceResponse(AbstractModel):
     @property
     def Price(self):
         """价格，单位：分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Price

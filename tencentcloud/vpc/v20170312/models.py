@@ -7878,6 +7878,135 @@ class CheckNetDetectStateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckTrafficMirrorRequest(AbstractModel):
+    """CheckTrafficMirror请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 流量镜像所属的vpc
+        :type VpcId: str
+        :param _TrafficMirrorId: 流量镜像的实例id
+        :type TrafficMirrorId: str
+        :param _CollectorSources: 流量镜像的采集端IP列表
+        :type CollectorSources: list of str
+        :param _SubnetId: 流量镜像的接收端的子网
+        :type SubnetId: str
+        :param _CollectorTarget: 流量镜像采集端的
+        :type CollectorTarget: list of TrafficMirrorTarget
+        """
+        self._VpcId = None
+        self._TrafficMirrorId = None
+        self._CollectorSources = None
+        self._SubnetId = None
+        self._CollectorTarget = None
+
+    @property
+    def VpcId(self):
+        """流量镜像所属的vpc
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像的实例id
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def CollectorSources(self):
+        """流量镜像的采集端IP列表
+        :rtype: list of str
+        """
+        return self._CollectorSources
+
+    @CollectorSources.setter
+    def CollectorSources(self, CollectorSources):
+        self._CollectorSources = CollectorSources
+
+    @property
+    def SubnetId(self):
+        """流量镜像的接收端的子网
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def CollectorTarget(self):
+        """流量镜像采集端的
+        :rtype: list of TrafficMirrorTarget
+        """
+        return self._CollectorTarget
+
+    @CollectorTarget.setter
+    def CollectorTarget(self, CollectorTarget):
+        self._CollectorTarget = CollectorTarget
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._CollectorSources = params.get("CollectorSources")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("CollectorTarget") is not None:
+            self._CollectorTarget = []
+            for item in params.get("CollectorTarget"):
+                obj = TrafficMirrorTarget()
+                obj._deserialize(item)
+                self._CollectorTarget.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckTrafficMirrorResponse(AbstractModel):
+    """CheckTrafficMirror返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CidrForCcn(AbstractModel):
     """用于发布云联网的cidr信息
 
@@ -8629,6 +8758,8 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type Tags: list of Tag
         :param _AttachType: 绑定类型：0 标准型 1 扩展型。
         :type AttachType: int
+        :param _IsRdma: 是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false。
+        :type IsRdma: bool
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
         :type ClientToken: str
         """
@@ -8643,6 +8774,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self._NetworkInterfaceDescription = None
         self._Tags = None
         self._AttachType = None
+        self._IsRdma = None
         self._ClientToken = None
 
     @property
@@ -8767,6 +8899,17 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self._AttachType = AttachType
 
     @property
+    def IsRdma(self):
+        """是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false。
+        :rtype: bool
+        """
+        return self._IsRdma
+
+    @IsRdma.setter
+    def IsRdma(self, IsRdma):
+        self._IsRdma = IsRdma
+
+    @property
     def ClientToken(self):
         """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
         :rtype: str
@@ -8800,6 +8943,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._AttachType = params.get("AttachType")
+        self._IsRdma = params.get("IsRdma")
         self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12181,6 +12325,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type Tags: list of Tag
         :param _TrunkingFlag: 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
         :type TrunkingFlag: str
+        :param _IsRdma: 是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false
+        :type IsRdma: bool
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
         :type ClientToken: str
         """
@@ -12194,6 +12340,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self._PrivateIpAddresses = None
         self._Tags = None
         self._TrunkingFlag = None
+        self._IsRdma = None
         self._ClientToken = None
 
     @property
@@ -12308,6 +12455,17 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self._TrunkingFlag = TrunkingFlag
 
     @property
+    def IsRdma(self):
+        """是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false
+        :rtype: bool
+        """
+        return self._IsRdma
+
+    @IsRdma.setter
+    def IsRdma(self, IsRdma):
+        self._IsRdma = IsRdma
+
+    @property
     def ClientToken(self):
         """用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
         :rtype: str
@@ -12340,6 +12498,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._TrunkingFlag = params.get("TrunkingFlag")
+        self._IsRdma = params.get("IsRdma")
         self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -14364,6 +14523,264 @@ class CreateSubnetsResponse(AbstractModel):
                 obj = Subnet()
                 obj._deserialize(item)
                 self._SubnetSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTrafficMirrorRequest(AbstractModel):
+    """CreateTrafficMirror请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC实例ID。
+        :type VpcId: str
+        :param _TrafficMirrorName: 流量镜像名字。
+        :type TrafficMirrorName: str
+        :param _TrafficMirrorDescribe: 流量镜像描述。
+        :type TrafficMirrorDescribe: str
+        :param _State: 流量镜像状态, 支持RUNNING/STOPED（vpc），RUNNING（公网IP），当采集vpc流量镜像时，此参数为必填。
+        :type State: str
+        :param _Direction: 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
+        :type Direction: str
+        :param _CollectorSrcs: 流量镜像的采集对象，支持eni_xxxx。
+        :type CollectorSrcs: list of str
+        :param _NatId: 流量镜像过滤的natgw实例。
+        :type NatId: str
+        :param _CollectorNormalFilters: 需要过滤的五元组规则。
+        :type CollectorNormalFilters: list of TrafficMirrorFilter
+        :param _CollectorTarget: 流量镜像的目的地址。
+        :type CollectorTarget: :class:`tencentcloud.vpc.v20170312.models.TrafficMirrorTarget`
+        :param _SubnetId: 流量镜像采集流量的发送端所属子网ID。
+        :type SubnetId: str
+        :param _Type: 创建的流量镜像的类型，支持VPC/PUBLICIP，默认为VPC类型。
+        :type Type: str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
+        """
+        self._VpcId = None
+        self._TrafficMirrorName = None
+        self._TrafficMirrorDescribe = None
+        self._State = None
+        self._Direction = None
+        self._CollectorSrcs = None
+        self._NatId = None
+        self._CollectorNormalFilters = None
+        self._CollectorTarget = None
+        self._SubnetId = None
+        self._Type = None
+        self._Tags = None
+
+    @property
+    def VpcId(self):
+        """VPC实例ID。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def TrafficMirrorName(self):
+        """流量镜像名字。
+        :rtype: str
+        """
+        return self._TrafficMirrorName
+
+    @TrafficMirrorName.setter
+    def TrafficMirrorName(self, TrafficMirrorName):
+        self._TrafficMirrorName = TrafficMirrorName
+
+    @property
+    def TrafficMirrorDescribe(self):
+        """流量镜像描述。
+        :rtype: str
+        """
+        return self._TrafficMirrorDescribe
+
+    @TrafficMirrorDescribe.setter
+    def TrafficMirrorDescribe(self, TrafficMirrorDescribe):
+        self._TrafficMirrorDescribe = TrafficMirrorDescribe
+
+    @property
+    def State(self):
+        """流量镜像状态, 支持RUNNING/STOPED（vpc），RUNNING（公网IP），当采集vpc流量镜像时，此参数为必填。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Direction(self):
+        """流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def CollectorSrcs(self):
+        """流量镜像的采集对象，支持eni_xxxx。
+        :rtype: list of str
+        """
+        return self._CollectorSrcs
+
+    @CollectorSrcs.setter
+    def CollectorSrcs(self, CollectorSrcs):
+        self._CollectorSrcs = CollectorSrcs
+
+    @property
+    def NatId(self):
+        """流量镜像过滤的natgw实例。
+        :rtype: str
+        """
+        return self._NatId
+
+    @NatId.setter
+    def NatId(self, NatId):
+        self._NatId = NatId
+
+    @property
+    def CollectorNormalFilters(self):
+        """需要过滤的五元组规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._CollectorNormalFilters
+
+    @CollectorNormalFilters.setter
+    def CollectorNormalFilters(self, CollectorNormalFilters):
+        self._CollectorNormalFilters = CollectorNormalFilters
+
+    @property
+    def CollectorTarget(self):
+        """流量镜像的目的地址。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.TrafficMirrorTarget`
+        """
+        return self._CollectorTarget
+
+    @CollectorTarget.setter
+    def CollectorTarget(self, CollectorTarget):
+        self._CollectorTarget = CollectorTarget
+
+    @property
+    def SubnetId(self):
+        """流量镜像采集流量的发送端所属子网ID。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Type(self):
+        """创建的流量镜像的类型，支持VPC/PUBLICIP，默认为VPC类型。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._TrafficMirrorName = params.get("TrafficMirrorName")
+        self._TrafficMirrorDescribe = params.get("TrafficMirrorDescribe")
+        self._State = params.get("State")
+        self._Direction = params.get("Direction")
+        self._CollectorSrcs = params.get("CollectorSrcs")
+        self._NatId = params.get("NatId")
+        if params.get("CollectorNormalFilters") is not None:
+            self._CollectorNormalFilters = []
+            for item in params.get("CollectorNormalFilters"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._CollectorNormalFilters.append(obj)
+        if params.get("CollectorTarget") is not None:
+            self._CollectorTarget = TrafficMirrorTarget()
+            self._CollectorTarget._deserialize(params.get("CollectorTarget"))
+        self._SubnetId = params.get("SubnetId")
+        self._Type = params.get("Type")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTrafficMirrorResponse(AbstractModel):
+    """CreateTrafficMirror返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirror: 流量镜像实例
+        :type TrafficMirror: :class:`tencentcloud.vpc.v20170312.models.TrafficMirror`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TrafficMirror = None
+        self._RequestId = None
+
+    @property
+    def TrafficMirror(self):
+        """流量镜像实例
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.TrafficMirror`
+        """
+        return self._TrafficMirror
+
+    @TrafficMirror.setter
+    def TrafficMirror(self, TrafficMirror):
+        self._TrafficMirror = TrafficMirror
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TrafficMirror") is not None:
+            self._TrafficMirror = TrafficMirror()
+            self._TrafficMirror._deserialize(params.get("TrafficMirror"))
         self._RequestId = params.get("RequestId")
 
 
@@ -20345,6 +20762,70 @@ class DeleteTemplateMemberRequest(AbstractModel):
 
 class DeleteTemplateMemberResponse(AbstractModel):
     """DeleteTemplateMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTrafficMirrorRequest(AbstractModel):
+    """DeleteTrafficMirror请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        """
+        self._TrafficMirrorId = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTrafficMirrorResponse(AbstractModel):
+    """DeleteTrafficMirror返回参数结构体
 
     """
 
@@ -33512,6 +33993,137 @@ class DescribeTenantCcnsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._CcnSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTrafficMirrorsRequest(AbstractModel):
+    """DescribeTrafficMirrors请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorIds: 流量镜像实例ID集合
+        :type TrafficMirrorIds: list of str
+        :param _Filters: 流量镜像查询过滤调节
+        :type Filters: :class:`tencentcloud.vpc.v20170312.models.Filter`
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._TrafficMirrorIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TrafficMirrorIds(self):
+        """流量镜像实例ID集合
+        :rtype: list of str
+        """
+        return self._TrafficMirrorIds
+
+    @TrafficMirrorIds.setter
+    def TrafficMirrorIds(self, TrafficMirrorIds):
+        self._TrafficMirrorIds = TrafficMirrorIds
+
+    @property
+    def Filters(self):
+        """流量镜像查询过滤调节
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.Filter`
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorIds = params.get("TrafficMirrorIds")
+        if params.get("Filters") is not None:
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrafficMirrorsResponse(AbstractModel):
+    """DescribeTrafficMirrors返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorSet: 流量镜像实例信息
+        :type TrafficMirrorSet: list of TrafficMirror
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TrafficMirrorSet = None
+        self._RequestId = None
+
+    @property
+    def TrafficMirrorSet(self):
+        """流量镜像实例信息
+        :rtype: list of TrafficMirror
+        """
+        return self._TrafficMirrorSet
+
+    @TrafficMirrorSet.setter
+    def TrafficMirrorSet(self, TrafficMirrorSet):
+        self._TrafficMirrorSet = TrafficMirrorSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TrafficMirrorSet") is not None:
+            self._TrafficMirrorSet = []
+            for item in params.get("TrafficMirrorSet"):
+                obj = TrafficMirror()
+                obj._deserialize(item)
+                self._TrafficMirrorSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -50566,6 +51178,100 @@ class ModifyTemplateMemberResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTrafficMirrorAttributeRequest(AbstractModel):
+    """ModifyTrafficMirrorAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        :param _TrafficMirrorName: 流量镜像实例名称
+        :type TrafficMirrorName: str
+        :param _TrafficMirrorDescription: 流量镜像实例描述信息
+        :type TrafficMirrorDescription: str
+        """
+        self._TrafficMirrorId = None
+        self._TrafficMirrorName = None
+        self._TrafficMirrorDescription = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def TrafficMirrorName(self):
+        """流量镜像实例名称
+        :rtype: str
+        """
+        return self._TrafficMirrorName
+
+    @TrafficMirrorName.setter
+    def TrafficMirrorName(self, TrafficMirrorName):
+        self._TrafficMirrorName = TrafficMirrorName
+
+    @property
+    def TrafficMirrorDescription(self):
+        """流量镜像实例描述信息
+        :rtype: str
+        """
+        return self._TrafficMirrorDescription
+
+    @TrafficMirrorDescription.setter
+    def TrafficMirrorDescription(self, TrafficMirrorDescription):
+        self._TrafficMirrorDescription = TrafficMirrorDescription
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._TrafficMirrorName = params.get("TrafficMirrorName")
+        self._TrafficMirrorDescription = params.get("TrafficMirrorDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTrafficMirrorAttributeResponse(AbstractModel):
+    """ModifyTrafficMirrorAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyVpcAttributeRequest(AbstractModel):
     """ModifyVpcAttribute请求参数结构体
 
@@ -58064,6 +58770,280 @@ class ResetRoutesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResetTrafficMirrorFilterRequest(AbstractModel):
+    """ResetTrafficMirrorFilter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        :param _NatId: 流量镜像需要过滤的natgw实例ID
+        :type NatId: str
+        :param _CollectorNormalFilters: 流量镜像需要过滤的五元组规则
+        :type CollectorNormalFilters: list of TrafficMirrorFilter
+        """
+        self._TrafficMirrorId = None
+        self._NatId = None
+        self._CollectorNormalFilters = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def NatId(self):
+        """流量镜像需要过滤的natgw实例ID
+        :rtype: str
+        """
+        return self._NatId
+
+    @NatId.setter
+    def NatId(self, NatId):
+        self._NatId = NatId
+
+    @property
+    def CollectorNormalFilters(self):
+        """流量镜像需要过滤的五元组规则
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._CollectorNormalFilters
+
+    @CollectorNormalFilters.setter
+    def CollectorNormalFilters(self, CollectorNormalFilters):
+        self._CollectorNormalFilters = CollectorNormalFilters
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._NatId = params.get("NatId")
+        if params.get("CollectorNormalFilters") is not None:
+            self._CollectorNormalFilters = []
+            for item in params.get("CollectorNormalFilters"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._CollectorNormalFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetTrafficMirrorFilterResponse(AbstractModel):
+    """ResetTrafficMirrorFilter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetTrafficMirrorSrcsRequest(AbstractModel):
+    """ResetTrafficMirrorSrcs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        :param _CollectorSrcs: 流量镜像采集对象
+        :type CollectorSrcs: list of str
+        """
+        self._TrafficMirrorId = None
+        self._CollectorSrcs = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def CollectorSrcs(self):
+        """流量镜像采集对象
+        :rtype: list of str
+        """
+        return self._CollectorSrcs
+
+    @CollectorSrcs.setter
+    def CollectorSrcs(self, CollectorSrcs):
+        self._CollectorSrcs = CollectorSrcs
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._CollectorSrcs = params.get("CollectorSrcs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetTrafficMirrorSrcsResponse(AbstractModel):
+    """ResetTrafficMirrorSrcs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetTrafficMirrorTargetRequest(AbstractModel):
+    """ResetTrafficMirrorTarget请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        :param _CollectorTarget: 流量镜像的接收目的信息
+        :type CollectorTarget: :class:`tencentcloud.vpc.v20170312.models.TrafficMirrorTarget`
+        :param _SubnetId: 公网IP类型的流量镜像采集流量的发送端所属子网
+        :type SubnetId: str
+        """
+        self._TrafficMirrorId = None
+        self._CollectorTarget = None
+        self._SubnetId = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def CollectorTarget(self):
+        """流量镜像的接收目的信息
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.TrafficMirrorTarget`
+        """
+        return self._CollectorTarget
+
+    @CollectorTarget.setter
+    def CollectorTarget(self, CollectorTarget):
+        self._CollectorTarget = CollectorTarget
+
+    @property
+    def SubnetId(self):
+        """公网IP类型的流量镜像采集流量的发送端所属子网
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        if params.get("CollectorTarget") is not None:
+            self._CollectorTarget = TrafficMirrorTarget()
+            self._CollectorTarget._deserialize(params.get("CollectorTarget"))
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetTrafficMirrorTargetResponse(AbstractModel):
+    """ResetTrafficMirrorTarget返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResetVpnConnectionRequest(AbstractModel):
     """ResetVpnConnection请求参数结构体
 
@@ -62576,6 +63556,134 @@ class SslVpnSever(AbstractModel):
         
 
 
+class StartTrafficMirrorRequest(AbstractModel):
+    """StartTrafficMirror请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        """
+        self._TrafficMirrorId = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartTrafficMirrorResponse(AbstractModel):
+    """StartTrafficMirror返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopTrafficMirrorRequest(AbstractModel):
+    """StopTrafficMirror请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        """
+        self._TrafficMirrorId = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopTrafficMirrorResponse(AbstractModel):
+    """StopTrafficMirror返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Subnet(AbstractModel):
     """子网对象
 
@@ -63193,6 +64301,487 @@ class TrafficFlow(AbstractModel):
         self._Value = params.get("Value")
         self._FormatValue = params.get("FormatValue")
         self._FormatUnit = params.get("FormatUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrafficMirror(AbstractModel):
+    """流量镜像实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC实例ID。
+        :type VpcId: str
+        :param _TrafficMirrorId: 流量镜像实例。
+        :type TrafficMirrorId: str
+        :param _TrafficMirrorName: 流量镜像名字。
+        :type TrafficMirrorName: str
+        :param _TrafficMirrorDescribe: 流量镜像描述。
+        :type TrafficMirrorDescribe: str
+        :param _State: 流量镜像状态。
+        :type State: str
+        :param _Direction: 流量镜像采集方向。
+        :type Direction: str
+        :param _CollectorSrcs: 流量镜像采集对象。
+        :type CollectorSrcs: list of str
+        :param _NatId: 流量镜像过滤的nat网关实例ID。
+        :type NatId: str
+        :param _CollectorNormalFilters: 流量镜像过滤的五元组规则。
+        :type CollectorNormalFilters: list of TrafficMirrorFilter
+        :param _CollectorTarget: 流量镜接收目标。
+        :type CollectorTarget: :class:`tencentcloud.vpc.v20170312.models.TrafficMirrorTarget`
+        :param _CreateTime: 流量镜像创建时间。
+        :type CreateTime: str
+        :param _Type: 流量镜像的类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _SubnetId: 流量镜像所属的子网ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _TargetInfo: 流量镜接收目标资源信息，当接收目标为ENI和CLB时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetInfo: list of TrafficMirrorTargetResourceInfo
+        """
+        self._VpcId = None
+        self._TrafficMirrorId = None
+        self._TrafficMirrorName = None
+        self._TrafficMirrorDescribe = None
+        self._State = None
+        self._Direction = None
+        self._CollectorSrcs = None
+        self._NatId = None
+        self._CollectorNormalFilters = None
+        self._CollectorTarget = None
+        self._CreateTime = None
+        self._Type = None
+        self._SubnetId = None
+        self._TargetInfo = None
+
+    @property
+    def VpcId(self):
+        """VPC实例ID。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例。
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def TrafficMirrorName(self):
+        """流量镜像名字。
+        :rtype: str
+        """
+        return self._TrafficMirrorName
+
+    @TrafficMirrorName.setter
+    def TrafficMirrorName(self, TrafficMirrorName):
+        self._TrafficMirrorName = TrafficMirrorName
+
+    @property
+    def TrafficMirrorDescribe(self):
+        """流量镜像描述。
+        :rtype: str
+        """
+        return self._TrafficMirrorDescribe
+
+    @TrafficMirrorDescribe.setter
+    def TrafficMirrorDescribe(self, TrafficMirrorDescribe):
+        self._TrafficMirrorDescribe = TrafficMirrorDescribe
+
+    @property
+    def State(self):
+        """流量镜像状态。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Direction(self):
+        """流量镜像采集方向。
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def CollectorSrcs(self):
+        """流量镜像采集对象。
+        :rtype: list of str
+        """
+        return self._CollectorSrcs
+
+    @CollectorSrcs.setter
+    def CollectorSrcs(self, CollectorSrcs):
+        self._CollectorSrcs = CollectorSrcs
+
+    @property
+    def NatId(self):
+        """流量镜像过滤的nat网关实例ID。
+        :rtype: str
+        """
+        return self._NatId
+
+    @NatId.setter
+    def NatId(self, NatId):
+        self._NatId = NatId
+
+    @property
+    def CollectorNormalFilters(self):
+        """流量镜像过滤的五元组规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._CollectorNormalFilters
+
+    @CollectorNormalFilters.setter
+    def CollectorNormalFilters(self, CollectorNormalFilters):
+        self._CollectorNormalFilters = CollectorNormalFilters
+
+    @property
+    def CollectorTarget(self):
+        """流量镜接收目标。
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.TrafficMirrorTarget`
+        """
+        return self._CollectorTarget
+
+    @CollectorTarget.setter
+    def CollectorTarget(self, CollectorTarget):
+        self._CollectorTarget = CollectorTarget
+
+    @property
+    def CreateTime(self):
+        """流量镜像创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Type(self):
+        """流量镜像的类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SubnetId(self):
+        """流量镜像所属的子网ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def TargetInfo(self):
+        """流量镜接收目标资源信息，当接收目标为ENI和CLB时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TrafficMirrorTargetResourceInfo
+        """
+        return self._TargetInfo
+
+    @TargetInfo.setter
+    def TargetInfo(self, TargetInfo):
+        self._TargetInfo = TargetInfo
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._TrafficMirrorName = params.get("TrafficMirrorName")
+        self._TrafficMirrorDescribe = params.get("TrafficMirrorDescribe")
+        self._State = params.get("State")
+        self._Direction = params.get("Direction")
+        self._CollectorSrcs = params.get("CollectorSrcs")
+        self._NatId = params.get("NatId")
+        if params.get("CollectorNormalFilters") is not None:
+            self._CollectorNormalFilters = []
+            for item in params.get("CollectorNormalFilters"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._CollectorNormalFilters.append(obj)
+        if params.get("CollectorTarget") is not None:
+            self._CollectorTarget = TrafficMirrorTarget()
+            self._CollectorTarget._deserialize(params.get("CollectorTarget"))
+        self._CreateTime = params.get("CreateTime")
+        self._Type = params.get("Type")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("TargetInfo") is not None:
+            self._TargetInfo = []
+            for item in params.get("TargetInfo"):
+                obj = TrafficMirrorTargetResourceInfo()
+                obj._deserialize(item)
+                self._TargetInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrafficMirrorFilter(AbstractModel):
+    """流量镜像五元组过滤规则对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcNet: 过滤规则的源网段
+        :type SrcNet: str
+        :param _DstNet: 过滤规则的目的网段
+        :type DstNet: str
+        :param _Protocol: 过滤规则的协议
+        :type Protocol: str
+        :param _SrcPort: 过滤规则的源端口，默认值1-65535
+        :type SrcPort: str
+        :param _DstPort: 过滤规则的目的端口，默认值1-65535
+        :type DstPort: str
+        """
+        self._SrcNet = None
+        self._DstNet = None
+        self._Protocol = None
+        self._SrcPort = None
+        self._DstPort = None
+
+    @property
+    def SrcNet(self):
+        """过滤规则的源网段
+        :rtype: str
+        """
+        return self._SrcNet
+
+    @SrcNet.setter
+    def SrcNet(self, SrcNet):
+        self._SrcNet = SrcNet
+
+    @property
+    def DstNet(self):
+        """过滤规则的目的网段
+        :rtype: str
+        """
+        return self._DstNet
+
+    @DstNet.setter
+    def DstNet(self, DstNet):
+        self._DstNet = DstNet
+
+    @property
+    def Protocol(self):
+        """过滤规则的协议
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def SrcPort(self):
+        """过滤规则的源端口，默认值1-65535
+        :rtype: str
+        """
+        return self._SrcPort
+
+    @SrcPort.setter
+    def SrcPort(self, SrcPort):
+        self._SrcPort = SrcPort
+
+    @property
+    def DstPort(self):
+        """过滤规则的目的端口，默认值1-65535
+        :rtype: str
+        """
+        return self._DstPort
+
+    @DstPort.setter
+    def DstPort(self, DstPort):
+        self._DstPort = DstPort
+
+
+    def _deserialize(self, params):
+        self._SrcNet = params.get("SrcNet")
+        self._DstNet = params.get("DstNet")
+        self._Protocol = params.get("Protocol")
+        self._SrcPort = params.get("SrcPort")
+        self._DstPort = params.get("DstPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrafficMirrorTarget(AbstractModel):
+    """流量镜像采集目标类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetIps: 流量镜像的接收IP
+        :type TargetIps: list of str
+        :param _AlgHash: 流量镜像接收IP组，均衡规则，支持ENI/FIVE_TUPLE_FLOW（vpc），FIVE_TUPLE_FLOW（公网IP）
+        :type AlgHash: str
+        :param _TargetEndPoints: 流量镜像的接收endpoint（公网IP）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetEndPoints: list of str
+        :param _TargetType: 流量镜像的接收类型，分别为：IP/ENI/CLB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetType: str
+        """
+        self._TargetIps = None
+        self._AlgHash = None
+        self._TargetEndPoints = None
+        self._TargetType = None
+
+    @property
+    def TargetIps(self):
+        """流量镜像的接收IP
+        :rtype: list of str
+        """
+        return self._TargetIps
+
+    @TargetIps.setter
+    def TargetIps(self, TargetIps):
+        self._TargetIps = TargetIps
+
+    @property
+    def AlgHash(self):
+        """流量镜像接收IP组，均衡规则，支持ENI/FIVE_TUPLE_FLOW（vpc），FIVE_TUPLE_FLOW（公网IP）
+        :rtype: str
+        """
+        return self._AlgHash
+
+    @AlgHash.setter
+    def AlgHash(self, AlgHash):
+        self._AlgHash = AlgHash
+
+    @property
+    def TargetEndPoints(self):
+        """流量镜像的接收endpoint（公网IP）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TargetEndPoints
+
+    @TargetEndPoints.setter
+    def TargetEndPoints(self, TargetEndPoints):
+        self._TargetEndPoints = TargetEndPoints
+
+    @property
+    def TargetType(self):
+        """流量镜像的接收类型，分别为：IP/ENI/CLB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+
+    def _deserialize(self, params):
+        self._TargetIps = params.get("TargetIps")
+        self._AlgHash = params.get("AlgHash")
+        self._TargetEndPoints = params.get("TargetEndPoints")
+        self._TargetType = params.get("TargetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrafficMirrorTargetResourceInfo(AbstractModel):
+    """流量镜像接收流量信息，当接收目标为ENI和CLB时返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetId: 接收目标的资源Id
+        :type TargetId: str
+        :param _TargetName: 接收目标的资源名称
+        :type TargetName: str
+        """
+        self._TargetId = None
+        self._TargetName = None
+
+    @property
+    def TargetId(self):
+        """接收目标的资源Id
+        :rtype: str
+        """
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def TargetName(self):
+        """接收目标的资源名称
+        :rtype: str
+        """
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
+
+
+    def _deserialize(self, params):
+        self._TargetId = params.get("TargetId")
+        self._TargetName = params.get("TargetName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64504,6 +66093,214 @@ class UnlockCcnsRequest(AbstractModel):
 
 class UnlockCcnsResponse(AbstractModel):
     """UnlockCcns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
+    """UpdateTrafficMirrorAllFilter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        :param _Direction: 流量镜像采集方向
+        :type Direction: str
+        :param _CollectorSrcs: 流量镜像采集对象
+        :type CollectorSrcs: list of str
+        :param _NatId: 流量镜像需要过滤的natgw实例
+        :type NatId: str
+        :param _CollectorNormalFilters: 流量镜像需要过滤的五元组规则
+        :type CollectorNormalFilters: list of TrafficMirrorFilter
+        """
+        self._TrafficMirrorId = None
+        self._Direction = None
+        self._CollectorSrcs = None
+        self._NatId = None
+        self._CollectorNormalFilters = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def Direction(self):
+        """流量镜像采集方向
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def CollectorSrcs(self):
+        """流量镜像采集对象
+        :rtype: list of str
+        """
+        return self._CollectorSrcs
+
+    @CollectorSrcs.setter
+    def CollectorSrcs(self, CollectorSrcs):
+        self._CollectorSrcs = CollectorSrcs
+
+    @property
+    def NatId(self):
+        """流量镜像需要过滤的natgw实例
+        :rtype: str
+        """
+        return self._NatId
+
+    @NatId.setter
+    def NatId(self, NatId):
+        self._NatId = NatId
+
+    @property
+    def CollectorNormalFilters(self):
+        """流量镜像需要过滤的五元组规则
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._CollectorNormalFilters
+
+    @CollectorNormalFilters.setter
+    def CollectorNormalFilters(self, CollectorNormalFilters):
+        self._CollectorNormalFilters = CollectorNormalFilters
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._Direction = params.get("Direction")
+        self._CollectorSrcs = params.get("CollectorSrcs")
+        self._NatId = params.get("NatId")
+        if params.get("CollectorNormalFilters") is not None:
+            self._CollectorNormalFilters = []
+            for item in params.get("CollectorNormalFilters"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._CollectorNormalFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTrafficMirrorAllFilterResponse(AbstractModel):
+    """UpdateTrafficMirrorAllFilter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTrafficMirrorDirectionRequest(AbstractModel):
+    """UpdateTrafficMirrorDirection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例ID
+        :type TrafficMirrorId: str
+        :param _Direction: 流量镜像采集方向
+        :type Direction: str
+        """
+        self._TrafficMirrorId = None
+        self._Direction = None
+
+    @property
+    def TrafficMirrorId(self):
+        """流量镜像实例ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def Direction(self):
+        """流量镜像采集方向
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTrafficMirrorDirectionResponse(AbstractModel):
+    """UpdateTrafficMirrorDirection返回参数结构体
 
     """
 
