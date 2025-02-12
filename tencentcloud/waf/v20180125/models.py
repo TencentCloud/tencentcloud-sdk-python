@@ -24395,6 +24395,10 @@ class InstanceInfo(AbstractModel):
         :type BillingItem: str
         :param _FreeDelayFlag: 实例延期释放标识
         :type FreeDelayFlag: int
+        :param _Last3MaxQPS: 最近3天最大qps
+        :type Last3MaxQPS: int
+        :param _Last3MaxBandwidth: 最近3天最大带宽
+        :type Last3MaxBandwidth: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -24437,6 +24441,8 @@ class InstanceInfo(AbstractModel):
         self._MiniExtendPkg = None
         self._BillingItem = None
         self._FreeDelayFlag = None
+        self._Last3MaxQPS = None
+        self._Last3MaxBandwidth = None
 
     @property
     def InstanceId(self):
@@ -24899,6 +24905,28 @@ class InstanceInfo(AbstractModel):
     def FreeDelayFlag(self, FreeDelayFlag):
         self._FreeDelayFlag = FreeDelayFlag
 
+    @property
+    def Last3MaxQPS(self):
+        """最近3天最大qps
+        :rtype: int
+        """
+        return self._Last3MaxQPS
+
+    @Last3MaxQPS.setter
+    def Last3MaxQPS(self, Last3MaxQPS):
+        self._Last3MaxQPS = Last3MaxQPS
+
+    @property
+    def Last3MaxBandwidth(self):
+        """最近3天最大带宽
+        :rtype: int
+        """
+        return self._Last3MaxBandwidth
+
+    @Last3MaxBandwidth.setter
+    def Last3MaxBandwidth(self, Last3MaxBandwidth):
+        self._Last3MaxBandwidth = Last3MaxBandwidth
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -24962,6 +24990,8 @@ class InstanceInfo(AbstractModel):
             self._MiniExtendPkg._deserialize(params.get("MiniExtendPkg"))
         self._BillingItem = params.get("BillingItem")
         self._FreeDelayFlag = params.get("FreeDelayFlag")
+        self._Last3MaxQPS = params.get("Last3MaxQPS")
+        self._Last3MaxBandwidth = params.get("Last3MaxBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

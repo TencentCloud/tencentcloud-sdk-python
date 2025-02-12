@@ -466,6 +466,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBInstanceURL(self, request):
+        """本接口（DescribeDBInstanceURL）用于获取指定实例的 URI 形式的连接串访问地址示例。
+
+        :param request: Request instance for DescribeDBInstanceURL.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceURLRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceURLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstances(self, request):
         """本接口（DescribeDBInstances）用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选主实例、灾备实例和只读实例信息列表。
 

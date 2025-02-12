@@ -3959,7 +3959,7 @@ off：关闭
         :param _AccessKey: 访问ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKey: str
-        :param _SecretKey: 密钥。
+        :param _SecretKey: 密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param _Region: 地域
@@ -4002,7 +4002,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥。
+        """密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20416,7 +20416,7 @@ off：关闭
         :param _AccessKey: 访问 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKey: str
-        :param _SecretKey: 密钥
+        :param _SecretKey: 密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param _Bucket: bucketname
@@ -20455,7 +20455,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥
+        """密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25597,7 +25597,7 @@ off：关闭
         :param _AccessKey: 访问ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKey: str
-        :param _SecretKey: 密钥。
+        :param _SecretKey: 密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param _Region: 地域
@@ -25640,7 +25640,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥。
+        """密钥，字段为脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25705,7 +25705,7 @@ off：关闭
         :param _AccessKey: 访问ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKey: str
-        :param _SecretKey: 密钥。
+        :param _SecretKey: 密钥，字段位脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param _Region: 地域。
@@ -25748,7 +25748,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥。
+        """密钥，字段位脱敏返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27550,7 +27550,7 @@ off：关闭
         :param _AccessKey: 访问 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKey: str
-        :param _SecretKey: 密钥
+        :param _SecretKey: 密钥，字段为脱敏返回。
         :type SecretKey: str
         """
         self._Switch = None
@@ -27584,7 +27584,7 @@ off：关闭
 
     @property
     def SecretKey(self):
-        """密钥
+        """密钥，字段为脱敏返回。
         :rtype: str
         """
         return self._SecretKey

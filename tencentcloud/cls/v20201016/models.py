@@ -25854,7 +25854,7 @@ class NoticeReceiver(AbstractModel):
         :type ReceiverType: str
         :param _ReceiverIds: 接收者。
 当ReceiverType为Uin时，ReceiverIds的值为用户uid。[子用户信息查询](https://cloud.tencent.com/document/api/598/53486)
-当ReceiverType为Group时，ReceiverIds的值为用户组id。[CAM用户组](https://cloud.tencent.com/document/product/598/14985)
+当ReceiverType为Group时，ReceiverIds的值为用户组id。[CAM用户组](https://cloud.tencent.com/document/product/598/34589)
         :type ReceiverIds: list of int
         :param _ReceiverChannels: 通知接收渠道。
 - Email - 邮件
@@ -25901,7 +25901,7 @@ class NoticeReceiver(AbstractModel):
     def ReceiverIds(self):
         """接收者。
 当ReceiverType为Uin时，ReceiverIds的值为用户uid。[子用户信息查询](https://cloud.tencent.com/document/api/598/53486)
-当ReceiverType为Group时，ReceiverIds的值为用户组id。[CAM用户组](https://cloud.tencent.com/document/product/598/14985)
+当ReceiverType为Group时，ReceiverIds的值为用户组id。[CAM用户组](https://cloud.tencent.com/document/product/598/34589)
         :rtype: list of int
         """
         return self._ReceiverIds

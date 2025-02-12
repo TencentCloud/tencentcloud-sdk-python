@@ -939,7 +939,7 @@ class CdnInstanceDetail(AbstractModel):
         :type Domain: str
         :param _CertId: 已部署证书ID
         :type CertId: str
-        :param _Status: 域名状态
+        :param _Status: 域名状态 rejected：域名审核未通过，域名备案过期/被注销导致，processing：部署中，online：已启动，offline：已关闭
         :type Status: str
         :param _HttpsBillingSwitch: 域名计费状态
         :type HttpsBillingSwitch: str
@@ -973,7 +973,7 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """域名状态
+        """域名状态 rejected：域名审核未通过，域名备案过期/被注销导致，processing：部署中，online：已启动，offline：已关闭
         :rtype: str
         """
         return self._Status
@@ -11023,7 +11023,7 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
         :type CertificateId: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
-        :param _Filters: 过滤参数列表
+        :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
         :param _ResourceType: 部署资源类型 lighthouse
         :type ResourceType: str
@@ -11057,7 +11057,7 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -12123,7 +12123,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
         :type CertificateId: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
-        :param _Filters: 过滤参数列表
+        :param _Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :type Filters: list of Filter
         :param _ResourceType: 部署资源类型 vod
         :type ResourceType: str
@@ -12160,7 +12160,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤参数列表
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
         :rtype: list of Filter
         """
         return self._Filters
@@ -13245,30 +13245,31 @@ class DescribePackagesResponse(AbstractModel):
 
 
 class DomainValidationResult(AbstractModel):
-    """域名验证结果
+    """证书域名验证结果
 
     """
 
     def __init__(self):
         r"""
-        :param _Domain: 域名。
+        :param _Domain: 证书绑定的域名。
         :type Domain: str
-        :param _VerifyType: 验证类型。
+        :param _VerifyType: 域名验证类型。 取值为：DNS、FILE、DNS_AUTO、DNS_PROXY、FILE_PROXY
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyType: str
-        :param _LocalCheck: 本地检查结果。
+        :param _LocalCheck: 腾讯云检测结果，取值：1（验证通过）； -1（被限频或者 txt record not found）；-2（txt record not match）；-3（ns record not found）；-4（file not found）；-5（file not match）；-6（cname record not found）；-7（cname record not match）；-8（ns record not found）-9（file not found）；-10（file not match）
+
         :type LocalCheck: int
-        :param _CaCheck: CA检查结果。
+        :param _CaCheck: CA检查结果。取值： -1（未检测通过）；2（检测通过）
         :type CaCheck: int
-        :param _LocalCheckFailReason: 检查失败原因。
+        :param _LocalCheckFailReason: 检查失败原因。状态LocalCheck的具体描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalCheckFailReason: str
         :param _CheckValue: 检查到的值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckValue: list of str
-        :param _Frequently: 是否频繁请求。
+        :param _Frequently: 是否被限频拦截， 取值：false（未被限频）；true（被限频）
         :type Frequently: bool
-        :param _Issued: 是否已经签发。
+        :param _Issued: 证书是否已经签发。取值： false（未签发）；true（已签发）
         :type Issued: bool
         """
         self._Domain = None
@@ -13282,7 +13283,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Domain(self):
-        """域名。
+        """证书绑定的域名。
         :rtype: str
         """
         return self._Domain
@@ -13293,7 +13294,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def VerifyType(self):
-        """验证类型。
+        """域名验证类型。 取值为：DNS、FILE、DNS_AUTO、DNS_PROXY、FILE_PROXY
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13305,7 +13306,8 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def LocalCheck(self):
-        """本地检查结果。
+        """腾讯云检测结果，取值：1（验证通过）； -1（被限频或者 txt record not found）；-2（txt record not match）；-3（ns record not found）；-4（file not found）；-5（file not match）；-6（cname record not found）；-7（cname record not match）；-8（ns record not found）-9（file not found）；-10（file not match）
+
         :rtype: int
         """
         return self._LocalCheck
@@ -13316,7 +13318,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def CaCheck(self):
-        """CA检查结果。
+        """CA检查结果。取值： -1（未检测通过）；2（检测通过）
         :rtype: int
         """
         return self._CaCheck
@@ -13327,7 +13329,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def LocalCheckFailReason(self):
-        """检查失败原因。
+        """检查失败原因。状态LocalCheck的具体描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13351,7 +13353,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Frequently(self):
-        """是否频繁请求。
+        """是否被限频拦截， 取值：false（未被限频）；true（被限频）
         :rtype: bool
         """
         return self._Frequently
@@ -13362,7 +13364,7 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Issued(self):
-        """是否已经签发。
+        """证书是否已经签发。取值： false（未签发）；true（已签发）
         :rtype: bool
         """
         return self._Issued
@@ -18242,6 +18244,11 @@ class TeoInstanceDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: str
         :param _Status: 域名状态
+deployed：已部署；
+processing：部署中；
+applying：申请中；
+failed：申请失败；
+issued：绑定失败。
         :type Status: str
         """
         self._Host = None
@@ -18286,6 +18293,11 @@ class TeoInstanceDetail(AbstractModel):
     @property
     def Status(self):
         """域名状态
+deployed：已部署；
+processing：部署中；
+applying：申请中；
+failed：申请失败；
+issued：绑定失败。
         :rtype: str
         """
         return self._Status

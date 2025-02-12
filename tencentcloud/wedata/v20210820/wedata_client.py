@@ -2188,6 +2188,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceDetailInfo(self, request):
+        """实例详情页，返回某个实例所有生命周期信息
+
+        :param request: Request instance for DescribeInstanceDetailInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceDetailInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceDetailInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceDetailInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceDetailInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceLastLog(self, request):
         """日志获取详情页面
 

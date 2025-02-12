@@ -30889,11 +30889,14 @@ class InstallAddonRequest(AbstractModel):
         :type AddonVersion: str
         :param _RawValues: addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
         :type RawValues: str
+        :param _DryRun: 是否仅做安装检查，设置为true时仅做检查，不会安装组件
+        :type DryRun: bool
         """
         self._ClusterId = None
         self._AddonName = None
         self._AddonVersion = None
         self._RawValues = None
+        self._DryRun = None
 
     @property
     def ClusterId(self):
@@ -30939,12 +30942,24 @@ class InstallAddonRequest(AbstractModel):
     def RawValues(self, RawValues):
         self._RawValues = RawValues
 
+    @property
+    def DryRun(self):
+        """是否仅做安装检查，设置为true时仅做检查，不会安装组件
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._AddonName = params.get("AddonName")
         self._AddonVersion = params.get("AddonVersion")
         self._RawValues = params.get("RawValues")
+        self._DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46637,12 +46652,15 @@ class UpdateAddonRequest(AbstractModel):
         :type RawValues: str
         :param _UpdateStrategy: addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
         :type UpdateStrategy: str
+        :param _DryRun: 是否仅做更新检查，设置为true时仅做检查，不会更新组件
+        :type DryRun: bool
         """
         self._ClusterId = None
         self._AddonName = None
         self._AddonVersion = None
         self._RawValues = None
         self._UpdateStrategy = None
+        self._DryRun = None
 
     @property
     def ClusterId(self):
@@ -46699,6 +46717,17 @@ class UpdateAddonRequest(AbstractModel):
     def UpdateStrategy(self, UpdateStrategy):
         self._UpdateStrategy = UpdateStrategy
 
+    @property
+    def DryRun(self):
+        """是否仅做更新检查，设置为true时仅做检查，不会更新组件
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -46706,6 +46735,7 @@ class UpdateAddonRequest(AbstractModel):
         self._AddonVersion = params.get("AddonVersion")
         self._RawValues = params.get("RawValues")
         self._UpdateStrategy = params.get("UpdateStrategy")
+        self._DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

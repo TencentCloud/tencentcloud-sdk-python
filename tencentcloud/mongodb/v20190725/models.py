@@ -2742,6 +2742,77 @@ class DBInstancePrice(AbstractModel):
         
 
 
+class DbURL(AbstractModel):
+    """数据库实例 URI 形式的连接串访问地址示例。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _URLType: 指 URI 类别，包括：，
+- CLUSTER_ALL：指通过该 URI 连接库实例的主节点，可读写。
+- CLUSTER_READ_READONLY：指通过该 URI 连接实例只读节点。
+- CLUSTER_READ_SECONDARY：指通过该 URI 连接实例从节点。
+- CLUSTER_READ_SECONDARY_AND_READONLY：指通过该 URI 连接实例只读从节点。
+- CLUSTER_PRIMARY_AND_SECONDARY：指通过该 URI 连接实例 主节点与从节点。
+- MONGOS_ALL：指通过该  URI 连接每个 Mongos 节点，可读写。
+- MONGOS_READ_READONLY：指通过该 URI 连接 Mongos 的只读节点。
+- MONGOS_READ_SECONDARY：指通过该 URI 连接 Mongos 的从节点。
+- MONGOS_READ_PRIMARY_AND_SECONDARY：指通过该URI 连接 Mongos 的主节点与从节点。
+- MONGOS_READ_SECONDARY_AND_READONLY：指通过该URI 连接 Mongos 的从节点与只读节点。
+        :type URLType: str
+        :param _Address: 实例 URI 形式的连接串访问地址示例。
+        :type Address: str
+        """
+        self._URLType = None
+        self._Address = None
+
+    @property
+    def URLType(self):
+        """指 URI 类别，包括：，
+- CLUSTER_ALL：指通过该 URI 连接库实例的主节点，可读写。
+- CLUSTER_READ_READONLY：指通过该 URI 连接实例只读节点。
+- CLUSTER_READ_SECONDARY：指通过该 URI 连接实例从节点。
+- CLUSTER_READ_SECONDARY_AND_READONLY：指通过该 URI 连接实例只读从节点。
+- CLUSTER_PRIMARY_AND_SECONDARY：指通过该 URI 连接实例 主节点与从节点。
+- MONGOS_ALL：指通过该  URI 连接每个 Mongos 节点，可读写。
+- MONGOS_READ_READONLY：指通过该 URI 连接 Mongos 的只读节点。
+- MONGOS_READ_SECONDARY：指通过该 URI 连接 Mongos 的从节点。
+- MONGOS_READ_PRIMARY_AND_SECONDARY：指通过该URI 连接 Mongos 的主节点与从节点。
+- MONGOS_READ_SECONDARY_AND_READONLY：指通过该URI 连接 Mongos 的从节点与只读节点。
+        :rtype: str
+        """
+        return self._URLType
+
+    @URLType.setter
+    def URLType(self, URLType):
+        self._URLType = URLType
+
+    @property
+    def Address(self):
+        """实例 URI 形式的连接串访问地址示例。
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+
+    def _deserialize(self, params):
+        self._URLType = params.get("URLType")
+        self._Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAccountUserRequest(AbstractModel):
     """DeleteAccountUser请求参数结构体
 
@@ -4567,6 +4638,90 @@ class DescribeDBInstanceParamTplResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ParamTpls.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceURLRequest(AbstractModel):
+    """DescribeDBInstanceURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceURLResponse(AbstractModel):
+    """DescribeDBInstanceURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Urls: 实例 URI 形式的连接串访问地址示例。包含：URI 类型及连接串地址。
+        :type Urls: list of DbURL
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Urls = None
+        self._RequestId = None
+
+    @property
+    def Urls(self):
+        """实例 URI 形式的连接串访问地址示例。包含：URI 类型及连接串地址。
+        :rtype: list of DbURL
+        """
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Urls") is not None:
+            self._Urls = []
+            for item in params.get("Urls"):
+                obj = DbURL()
+                obj._deserialize(item)
+                self._Urls.append(obj)
         self._RequestId = params.get("RequestId")
 
 

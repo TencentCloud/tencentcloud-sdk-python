@@ -1268,7 +1268,6 @@ class BatchRegisterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Users: 注册成功的用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of BatchUserInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1279,7 +1278,6 @@ class BatchRegisterResponse(AbstractModel):
     @property
     def Users(self):
         """注册成功的用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BatchUserInfo
         """
         return self._Users
@@ -5950,7 +5948,6 @@ class DescribeRoomForbiddenUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MutedAccountList: 禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
-注意：此字段可能返回 null，表示取不到有效值。
         :type MutedAccountList: list of MutedAccountList
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5961,7 +5958,6 @@ class DescribeRoomForbiddenUserResponse(AbstractModel):
     @property
     def MutedAccountList(self):
         """禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MutedAccountList
         """
         return self._MutedAccountList
@@ -6888,7 +6884,6 @@ class DescribeScoreListResponse(AbstractModel):
         :param _Total: 总数
         :type Total: int
         :param _Scores: 课堂评分列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scores: list of ClassScoreItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6911,7 +6906,6 @@ class DescribeScoreListResponse(AbstractModel):
     @property
     def Scores(self):
         """课堂评分列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClassScoreItem
         """
         return self._Scores
@@ -7019,7 +7013,6 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
         :param _Total: 用户总数
         :type Total: int
         :param _Users: 当前获取用户信息数组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of UserInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7042,7 +7035,6 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
     @property
     def Users(self):
         """当前获取用户信息数组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserInfo
         """
         return self._Users

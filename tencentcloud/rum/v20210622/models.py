@@ -8385,6 +8385,8 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def IsDemo(self):
+        warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
+
         """该参数已废弃，demo模式请在Filters内注明
         :rtype: int
         """
@@ -8392,6 +8394,8 @@ class DescribeProjectsRequest(AbstractModel):
 
     @IsDemo.setter
     def IsDemo(self, IsDemo):
+        warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
+
         self._IsDemo = IsDemo
 
 
@@ -9716,6 +9720,8 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def IsDemo(self):
+        warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
+
         """该参数已废弃
         :rtype: int
         """
@@ -9723,6 +9729,8 @@ class DescribeScoresRequest(AbstractModel):
 
     @IsDemo.setter
     def IsDemo(self, IsDemo):
+        warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
+
         self._IsDemo = IsDemo
 
 
@@ -10052,6 +10060,8 @@ class DescribeTawInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
+
         """实例Id, 该参数已废弃，请在Filters内注明
         :rtype: list of str
         """
@@ -10059,6 +10069,8 @@ class DescribeTawInstancesRequest(AbstractModel):
 
     @InstanceIds.setter
     def InstanceIds(self, InstanceIds):
+        warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
+
         self._InstanceIds = InstanceIds
 
     @property
@@ -10074,6 +10086,8 @@ class DescribeTawInstancesRequest(AbstractModel):
 
     @property
     def IsDemo(self):
+        warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
+
         """该参数已废弃，demo模式请在Filters内注明
         :rtype: int
         """
@@ -10081,6 +10095,8 @@ class DescribeTawInstancesRequest(AbstractModel):
 
     @IsDemo.setter
     def IsDemo(self, IsDemo):
+        warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
+
         self._IsDemo = IsDemo
 
 

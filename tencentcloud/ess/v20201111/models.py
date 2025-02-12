@@ -20152,22 +20152,16 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 符合查询条件的资源实例总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _JoinedTotal: 已授权待激活的子企业总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type JoinedTotal: int
         :param _ActivedTotal: 已加入的企业数量(废弃,请使用ActivatedTotal)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivedTotal: int
         :param _ExportUrl: 如果入参Export为 true 时使用，表示导出Excel的url
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExportUrl: str
         :param _List: 成员企业信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of GroupOrganization
         :param _ActivatedTotal: 已加入的子企业总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivatedTotal: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20183,7 +20177,6 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
     @property
     def Total(self):
         """符合查询条件的资源实例总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -20195,7 +20188,6 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
     @property
     def JoinedTotal(self):
         """已授权待激活的子企业总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._JoinedTotal
@@ -20209,7 +20201,6 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
         warnings.warn("parameter `ActivedTotal` is deprecated", DeprecationWarning) 
 
         """已加入的企业数量(废弃,请使用ActivatedTotal)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ActivedTotal
@@ -20223,7 +20214,6 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
     @property
     def ExportUrl(self):
         """如果入参Export为 true 时使用，表示导出Excel的url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExportUrl
@@ -20235,7 +20225,6 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
     @property
     def List(self):
         """成员企业信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupOrganization
         """
         return self._List
@@ -20247,7 +20236,6 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
     @property
     def ActivatedTotal(self):
         """已加入的子企业总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ActivatedTotal

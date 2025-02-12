@@ -8067,7 +8067,7 @@ class CloneSecurityGroupRequest(AbstractModel):
         :type RemoteRegion: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 若指定Tags入参且指定IsCloneTags为true，会合并源安全组的标签和新增的标签。
-        :type Tags: :class:`tencentcloud.vpc.v20170312.models.Tag`
+        :type Tags: list of Tag
         """
         self._SecurityGroupId = None
         self._GroupName = None
@@ -8135,7 +8135,7 @@ class CloneSecurityGroupRequest(AbstractModel):
     def Tags(self):
         """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 若指定Tags入参且指定IsCloneTags为true，会合并源安全组的标签和新增的标签。
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.Tag`
+        :rtype: list of Tag
         """
         return self._Tags
 
@@ -8151,8 +8151,11 @@ class CloneSecurityGroupRequest(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._RemoteRegion = params.get("RemoteRegion")
         if params.get("Tags") is not None:
-            self._Tags = Tag()
-            self._Tags._deserialize(params.get("Tags"))
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

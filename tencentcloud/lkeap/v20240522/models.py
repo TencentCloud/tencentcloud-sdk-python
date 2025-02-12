@@ -609,10 +609,52 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _AttributeKey: 属性标识，最大40个英文字符，如style
+        :type AttributeKey: str
+        :param _AttributeName: 属性名称，最大80个英文字符，如风格
+        :type AttributeName: str
         :param _Labels: 属性标签信息
         :type Labels: list of AttributeLabelItem
         """
+        self._KnowledgeBaseId = None
+        self._AttributeKey = None
+        self._AttributeName = None
         self._Labels = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def AttributeKey(self):
+        """属性标识，最大40个英文字符，如style
+        :rtype: str
+        """
+        return self._AttributeKey
+
+    @AttributeKey.setter
+    def AttributeKey(self, AttributeKey):
+        self._AttributeKey = AttributeKey
+
+    @property
+    def AttributeName(self):
+        """属性名称，最大80个英文字符，如风格
+        :rtype: str
+        """
+        return self._AttributeName
+
+    @AttributeName.setter
+    def AttributeName(self, AttributeName):
+        self._AttributeName = AttributeName
 
     @property
     def Labels(self):
@@ -627,6 +669,9 @@ class CreateAttributeLabelRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._AttributeKey = params.get("AttributeKey")
+        self._AttributeName = params.get("AttributeName")
         if params.get("Labels") is not None:
             self._Labels = []
             for item in params.get("Labels"):
@@ -727,10 +772,52 @@ class CreateQARequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _Question: 问题，最大1000个英文字符
+        :type Question: str
+        :param _Answer: 答案，最大4000个英文字符
+        :type Answer: str
         :param _AttributeLabels: 属性标签
         :type AttributeLabels: list of AttributeLabelReferItem
         """
+        self._KnowledgeBaseId = None
+        self._Question = None
+        self._Answer = None
         self._AttributeLabels = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def Question(self):
+        """问题，最大1000个英文字符
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answer(self):
+        """答案，最大4000个英文字符
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
 
     @property
     def AttributeLabels(self):
@@ -745,6 +832,9 @@ class CreateQARequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._Question = params.get("Question")
+        self._Answer = params.get("Answer")
         if params.get("AttributeLabels") is not None:
             self._AttributeLabels = []
             for item in params.get("AttributeLabels"):
@@ -768,10 +858,24 @@ class CreateQAResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _QaId: 问答对ID
+        :type QaId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._QaId = None
         self._RequestId = None
+
+    @property
+    def QaId(self):
+        """问答对ID
+        :rtype: str
+        """
+        return self._QaId
+
+    @QaId.setter
+    def QaId(self, QaId):
+        self._QaId = QaId
 
     @property
     def RequestId(self):
@@ -786,6 +890,7 @@ class CreateQAResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._QaId = params.get("QaId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1383,6 +1488,51 @@ class DeleteAttributeLabelsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _AttributeIds: 属性ID
+        :type AttributeIds: list of str
+        """
+        self._KnowledgeBaseId = None
+        self._AttributeIds = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def AttributeIds(self):
+        """属性ID
+        :rtype: list of str
+        """
+        return self._AttributeIds
+
+    @AttributeIds.setter
+    def AttributeIds(self, AttributeIds):
+        self._AttributeIds = AttributeIds
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._AttributeIds = params.get("AttributeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteAttributeLabelsResponse(AbstractModel):
     """DeleteAttributeLabels返回参数结构体
@@ -1416,6 +1566,51 @@ class DeleteDocsRequest(AbstractModel):
     """DeleteDocs请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _DocIds: 文档ID列表。支持批量删除，数量不超过100
+        :type DocIds: list of str
+        """
+        self._KnowledgeBaseId = None
+        self._DocIds = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def DocIds(self):
+        """文档ID列表。支持批量删除，数量不超过100
+        :rtype: list of str
+        """
+        return self._DocIds
+
+    @DocIds.setter
+    def DocIds(self, DocIds):
+        self._DocIds = DocIds
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._DocIds = params.get("DocIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteDocsResponse(AbstractModel):
@@ -1515,6 +1710,51 @@ class DeleteQAsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _QaIds: 问答对ID列表。支持批量删除，数量不超过100
+        :type QaIds: list of str
+        """
+        self._KnowledgeBaseId = None
+        self._QaIds = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def QaIds(self):
+        """问答对ID列表。支持批量删除，数量不超过100
+        :rtype: list of str
+        """
+        return self._QaIds
+
+    @QaIds.setter
+    def QaIds(self, QaIds):
+        self._QaIds = QaIds
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._QaIds = params.get("QaIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteQAsResponse(AbstractModel):
     """DeleteQAs返回参数结构体
@@ -1600,6 +1840,51 @@ class DescribeDocRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _DocId: 文档ID
+        :type DocId: str
+        """
+        self._KnowledgeBaseId = None
+        self._DocId = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def DocId(self):
+        """文档ID
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._DocId = params.get("DocId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeDocResponse(AbstractModel):
     """DescribeDoc返回参数结构体
@@ -1608,13 +1893,87 @@ class DescribeDocResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DocId: 文档ID
+        :type DocId: str
+        :param _Status: 状态，
+
+- Uploading  上传中  
+- Auditing 审核中
+- Parsing 解析中  
+- ParseFailed 解析失败
+- Indexing 创建索引中  
+- IndexFailed 创建索引失败
+- Success  发布成功
+- Failed  失败
+        :type Status: str
+        :param _FileName: 文件名
+        :type FileName: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
         :param _AttributeLabels: 属性标签
         :type AttributeLabels: list of AttributeLabelReferItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DocId = None
+        self._Status = None
+        self._FileName = None
+        self._UpdateTime = None
         self._AttributeLabels = None
         self._RequestId = None
+
+    @property
+    def DocId(self):
+        """文档ID
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def Status(self):
+        """状态，
+
+- Uploading  上传中  
+- Auditing 审核中
+- Parsing 解析中  
+- ParseFailed 解析失败
+- Indexing 创建索引中  
+- IndexFailed 创建索引失败
+- Success  发布成功
+- Failed  失败
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FileName(self):
+        """文件名
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
     @property
     def AttributeLabels(self):
@@ -1640,6 +1999,10 @@ class DescribeDocResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DocId = params.get("DocId")
+        self._Status = params.get("Status")
+        self._FileName = params.get("FileName")
+        self._UpdateTime = params.get("UpdateTime")
         if params.get("AttributeLabels") is not None:
             self._AttributeLabels = []
             for item in params.get("AttributeLabels"):
@@ -1661,6 +2024,7 @@ class DocItem(AbstractModel):
         :type DocId: str
         :param _Status:  状态，
 - Uploading  上传中  
+- Auditing 审核中
 - Parsing 解析中  
 - ParseFailed 解析失败
 - Indexing 创建索引中  
@@ -1701,6 +2065,7 @@ class DocItem(AbstractModel):
     def Status(self):
         """ 状态，
 - Uploading  上传中  
+- Auditing 审核中
 - Parsing 解析中  
 - ParseFailed 解析失败
 - Indexing 创建索引中  
@@ -2282,6 +2647,83 @@ class ImportQAsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _FileName: 文件名
+        :type FileName: str
+        :param _FileUrl: 文件的 Url 地址。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+导入模板：https://cdn.xiaowei.qq.com/lke/assets//static/批量导入问答模板v6.xlsx
+        :type FileUrl: str
+        :param _FileType: 文件类型，仅支持XLSX格式，请使用模板
+        :type FileType: str
+        """
+        self._KnowledgeBaseId = None
+        self._FileName = None
+        self._FileUrl = None
+        self._FileType = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def FileName(self):
+        """文件名
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileUrl(self):
+        """文件的 Url 地址。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+导入模板：https://cdn.xiaowei.qq.com/lke/assets//static/批量导入问答模板v6.xlsx
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileType(self):
+        """文件类型，仅支持XLSX格式，请使用模板
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._FileName = params.get("FileName")
+        self._FileUrl = params.get("FileUrl")
+        self._FileType = params.get("FileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ImportQAsResponse(AbstractModel):
     """ImportQAs返回参数结构体
@@ -2367,6 +2809,66 @@ class ListAttributeLabelsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _PageNumber: 页码，默认1
+        :type PageNumber: int
+        :param _PageSize: 每页数目，最大50，默认20
+        :type PageSize: int
+        """
+        self._KnowledgeBaseId = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def PageNumber(self):
+        """页码，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """每页数目，最大50，默认20
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ListAttributeLabelsResponse(AbstractModel):
     """ListAttributeLabels返回参数结构体
@@ -2375,13 +2877,27 @@ class ListAttributeLabelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 属性总数
+        :type TotalCount: int
         :param _List: 属性标签列表
         :type List: list of AttributeItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
         self._List = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """属性总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def List(self):
@@ -2407,6 +2923,7 @@ class ListAttributeLabelsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
         if params.get("List") is not None:
             self._List = []
             for item in params.get("List"):
@@ -2421,6 +2938,66 @@ class ListDocsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _PageNumber: 页码，默认1
+        :type PageNumber: int
+        :param _PageSize: 每页数目，最大50，默认20
+        :type PageSize: int
+        """
+        self._KnowledgeBaseId = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def PageNumber(self):
+        """页码，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """每页数目，最大50，默认20
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ListDocsResponse(AbstractModel):
     """ListDocs返回参数结构体
@@ -2429,13 +3006,27 @@ class ListDocsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 文档总数
+        :type TotalCount: int
         :param _List: 文档信息
         :type List: list of DocItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
         self._List = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """文档总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def List(self):
@@ -2461,6 +3052,7 @@ class ListDocsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
         if params.get("List") is not None:
             self._List = []
             for item in params.get("List"):
@@ -2475,6 +3067,66 @@ class ListQAsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _PageNumber: 页码，默认1
+        :type PageNumber: int
+        :param _PageSize: 每页数目，最大50，默认20
+        :type PageSize: int
+        """
+        self._KnowledgeBaseId = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def PageNumber(self):
+        """页码，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """每页数目，最大50，默认20
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ListQAsResponse(AbstractModel):
     """ListQAs返回参数结构体
@@ -2483,13 +3135,27 @@ class ListQAsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 问答对总数量
+        :type TotalCount: int
         :param _List: 问答对信息
         :type List: list of QaItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
         self._List = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """问答对总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def List(self):
@@ -2515,6 +3181,7 @@ class ListQAsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
         if params.get("List") is not None:
             self._List = []
             for item in params.get("List"):
@@ -2599,10 +3266,66 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _AttributeId: 属性ID
+        :type AttributeId: str
+        :param _AttributeKey: 属性标识，最大40个英文字符，如style
+        :type AttributeKey: str
+        :param _AttributeName: 属性名称，最大80个英文字符，如风格
+        :type AttributeName: str
         :param _Labels: 属性标签
         :type Labels: list of AttributeLabelItem
         """
+        self._KnowledgeBaseId = None
+        self._AttributeId = None
+        self._AttributeKey = None
+        self._AttributeName = None
         self._Labels = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def AttributeId(self):
+        """属性ID
+        :rtype: str
+        """
+        return self._AttributeId
+
+    @AttributeId.setter
+    def AttributeId(self, AttributeId):
+        self._AttributeId = AttributeId
+
+    @property
+    def AttributeKey(self):
+        """属性标识，最大40个英文字符，如style
+        :rtype: str
+        """
+        return self._AttributeKey
+
+    @AttributeKey.setter
+    def AttributeKey(self, AttributeKey):
+        self._AttributeKey = AttributeKey
+
+    @property
+    def AttributeName(self):
+        """属性名称，最大80个英文字符，如风格
+        :rtype: str
+        """
+        return self._AttributeName
+
+    @AttributeName.setter
+    def AttributeName(self, AttributeName):
+        self._AttributeName = AttributeName
 
     @property
     def Labels(self):
@@ -2617,6 +3340,10 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._AttributeId = params.get("AttributeId")
+        self._AttributeKey = params.get("AttributeKey")
+        self._AttributeName = params.get("AttributeName")
         if params.get("Labels") is not None:
             self._Labels = []
             for item in params.get("Labels"):
@@ -2668,10 +3395,66 @@ class ModifyQARequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _QaId: 问答对ID
+        :type QaId: str
+        :param _Question: 问题，最大1000个英文字符
+        :type Question: str
+        :param _Answer: 答案，最大4000个英文字符
+        :type Answer: str
         :param _AttributeLabels: 属性标签
         :type AttributeLabels: list of AttributeLabelReferItem
         """
+        self._KnowledgeBaseId = None
+        self._QaId = None
+        self._Question = None
+        self._Answer = None
         self._AttributeLabels = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def QaId(self):
+        """问答对ID
+        :rtype: str
+        """
+        return self._QaId
+
+    @QaId.setter
+    def QaId(self, QaId):
+        self._QaId = QaId
+
+    @property
+    def Question(self):
+        """问题，最大1000个英文字符
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answer(self):
+        """答案，最大4000个英文字符
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
 
     @property
     def AttributeLabels(self):
@@ -2686,6 +3469,10 @@ class ModifyQARequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._QaId = params.get("QaId")
+        self._Question = params.get("Question")
+        self._Answer = params.get("Answer")
         if params.get("AttributeLabels") is not None:
             self._AttributeLabels = []
             for item in params.get("AttributeLabels"):

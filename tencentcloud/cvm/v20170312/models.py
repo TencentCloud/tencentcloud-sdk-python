@@ -10528,10 +10528,24 @@ class ImportImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ImageId: 镜像 ID
+        :type ImageId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ImageId = None
         self._RequestId = None
+
+    @property
+    def ImageId(self):
+        """镜像 ID
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
 
     @property
     def RequestId(self):
@@ -10546,6 +10560,7 @@ class ImportImageResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
         self._RequestId = params.get("RequestId")
 
 

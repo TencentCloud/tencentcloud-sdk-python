@@ -36719,8 +36719,7 @@ class RuleBranch(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Condition: [匹配条件
-](https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d)。
+        :param _Condition: [匹配条件](https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d)。
         :type Condition: str
         :param _Actions: [操作](https://cloud.tencent.com/document/product/1552/90438#c7bd7e02-9247-4a72-b0e4-11c27cadb198)。<br>注意：Actions 和 SubRules 不可同时为空。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -36735,8 +36734,7 @@ class RuleBranch(AbstractModel):
 
     @property
     def Condition(self):
-        """[匹配条件
-](https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d)。
+        """[匹配条件](https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d)。
         :rtype: str
         """
         return self._Condition

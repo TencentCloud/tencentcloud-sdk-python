@@ -25035,6 +25035,195 @@ class DescribeInstanceByCycleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceDetailInfoRequest(AbstractModel):
+    """DescribeInstanceDetailInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _CurRunDate: 实例数据时间
+        :type CurRunDate: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _LifeRound: 实例的第几次执行
+        :type LifeRound: int
+        :param _LifeRoundStartIndex: 生命周期查询起始index
+        :type LifeRoundStartIndex: int
+        :param _LifeRoundSize: 生命周期查询批次数量
+        :type LifeRoundSize: int
+        :param _TotalLifeRound: 生命周期总数，可省略
+        :type TotalLifeRound: str
+        :param _Dynamic: 动态加载日志标识
+        :type Dynamic: bool
+        """
+        self._TaskId = None
+        self._CurRunDate = None
+        self._ProjectId = None
+        self._LifeRound = None
+        self._LifeRoundStartIndex = None
+        self._LifeRoundSize = None
+        self._TotalLifeRound = None
+        self._Dynamic = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def CurRunDate(self):
+        """实例数据时间
+        :rtype: str
+        """
+        return self._CurRunDate
+
+    @CurRunDate.setter
+    def CurRunDate(self, CurRunDate):
+        self._CurRunDate = CurRunDate
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def LifeRound(self):
+        """实例的第几次执行
+        :rtype: int
+        """
+        return self._LifeRound
+
+    @LifeRound.setter
+    def LifeRound(self, LifeRound):
+        self._LifeRound = LifeRound
+
+    @property
+    def LifeRoundStartIndex(self):
+        """生命周期查询起始index
+        :rtype: int
+        """
+        return self._LifeRoundStartIndex
+
+    @LifeRoundStartIndex.setter
+    def LifeRoundStartIndex(self, LifeRoundStartIndex):
+        self._LifeRoundStartIndex = LifeRoundStartIndex
+
+    @property
+    def LifeRoundSize(self):
+        """生命周期查询批次数量
+        :rtype: int
+        """
+        return self._LifeRoundSize
+
+    @LifeRoundSize.setter
+    def LifeRoundSize(self, LifeRoundSize):
+        self._LifeRoundSize = LifeRoundSize
+
+    @property
+    def TotalLifeRound(self):
+        """生命周期总数，可省略
+        :rtype: str
+        """
+        return self._TotalLifeRound
+
+    @TotalLifeRound.setter
+    def TotalLifeRound(self, TotalLifeRound):
+        self._TotalLifeRound = TotalLifeRound
+
+    @property
+    def Dynamic(self):
+        """动态加载日志标识
+        :rtype: bool
+        """
+        return self._Dynamic
+
+    @Dynamic.setter
+    def Dynamic(self, Dynamic):
+        self._Dynamic = Dynamic
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._CurRunDate = params.get("CurRunDate")
+        self._ProjectId = params.get("ProjectId")
+        self._LifeRound = params.get("LifeRound")
+        self._LifeRoundStartIndex = params.get("LifeRoundStartIndex")
+        self._LifeRoundSize = params.get("LifeRoundSize")
+        self._TotalLifeRound = params.get("TotalLifeRound")
+        self._Dynamic = params.get("Dynamic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceDetailInfoResponse(AbstractModel):
+    """DescribeInstanceDetailInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 生命周期结果
+        :type Data: list of InstanceLifeCycleOpsDto
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """生命周期结果
+        :rtype: list of InstanceLifeCycleOpsDto
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = InstanceLifeCycleOpsDto()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceLastLogRequest(AbstractModel):
     """DescribeInstanceLastLog请求参数结构体
 
