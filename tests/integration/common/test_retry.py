@@ -10,7 +10,7 @@ from tencentcloud.common.profile.client_profile import ClientProfile
 
 class StandardRetryCounter(StandardRetryer):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(StandardRetryCounter, self).__init__(*args, **kwargs)
         self.attempts = 0
 
     def on_retry(self, n, sleep, resp, err):
