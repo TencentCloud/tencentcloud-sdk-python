@@ -118,9 +118,15 @@ class ApplyDiskBackupRequest(AbstractModel):
         :type DiskBackupId: str
         :param _DiskId: 云硬盘备份点原云硬盘ID，可通过DescribeDisks接口查询。
         :type DiskId: str
+        :param _AutoStopInstance: 回滚云硬盘备份点前是否自动关机，默认为FALSE，表示不自动关机
+        :type AutoStopInstance: bool
+        :param _AutoStartInstance: 回滚云硬盘备份点完成后是否自动开机，默认为FALSE，表示不自动开机
+        :type AutoStartInstance: bool
         """
         self._DiskBackupId = None
         self._DiskId = None
+        self._AutoStopInstance = None
+        self._AutoStartInstance = None
 
     @property
     def DiskBackupId(self):
@@ -144,10 +150,34 @@ class ApplyDiskBackupRequest(AbstractModel):
     def DiskId(self, DiskId):
         self._DiskId = DiskId
 
+    @property
+    def AutoStopInstance(self):
+        """回滚云硬盘备份点前是否自动关机，默认为FALSE，表示不自动关机
+        :rtype: bool
+        """
+        return self._AutoStopInstance
+
+    @AutoStopInstance.setter
+    def AutoStopInstance(self, AutoStopInstance):
+        self._AutoStopInstance = AutoStopInstance
+
+    @property
+    def AutoStartInstance(self):
+        """回滚云硬盘备份点完成后是否自动开机，默认为FALSE，表示不自动开机
+        :rtype: bool
+        """
+        return self._AutoStartInstance
+
+    @AutoStartInstance.setter
+    def AutoStartInstance(self, AutoStartInstance):
+        self._AutoStartInstance = AutoStartInstance
+
 
     def _deserialize(self, params):
         self._DiskBackupId = params.get("DiskBackupId")
         self._DiskId = params.get("DiskId")
+        self._AutoStopInstance = params.get("AutoStopInstance")
+        self._AutoStartInstance = params.get("AutoStartInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

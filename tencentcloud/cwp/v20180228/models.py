@@ -22285,7 +22285,7 @@ class DescribeAgentInstallCommandRequest(AbstractModel):
         :type VpcId: str
         :param _TagIds: 标签ID列表，IsCloud=false时才会生效
         :type TagIds: list of int non-negative
-        :param _ExpireDate: 命令有效期，非腾讯云时必填
+        :param _ExpireDate: 命令有效期，非腾讯云时必填（已废弃，命令永久生效）
         :type ExpireDate: str
         :param _Vip: 代理方式接入的vip
         :type Vip: str
@@ -22355,7 +22355,7 @@ class DescribeAgentInstallCommandRequest(AbstractModel):
 
     @property
     def ExpireDate(self):
-        """命令有效期，非腾讯云时必填
+        """命令有效期，非腾讯云时必填（已废弃，命令永久生效）
         :rtype: str
         """
         return self._ExpireDate
@@ -84952,10 +84952,24 @@ class ModifyRiskDnsPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Repeat: 0：没有重复，1：和现有策略重复
+        :type Repeat: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Repeat = None
         self._RequestId = None
+
+    @property
+    def Repeat(self):
+        """0：没有重复，1：和现有策略重复
+        :rtype: int
+        """
+        return self._Repeat
+
+    @Repeat.setter
+    def Repeat(self, Repeat):
+        self._Repeat = Repeat
 
     @property
     def RequestId(self):
@@ -84970,6 +84984,7 @@ class ModifyRiskDnsPolicyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Repeat = params.get("Repeat")
         self._RequestId = params.get("RequestId")
 
 

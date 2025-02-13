@@ -14543,7 +14543,7 @@ class CreateTrafficMirrorRequest(AbstractModel):
         :type State: str
         :param _Direction: 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
         :type Direction: str
-        :param _CollectorSrcs: 流量镜像的采集对象，支持eni_xxxx。
+        :param _CollectorSrcs: 流量镜像的采集对象。
         :type CollectorSrcs: list of str
         :param _NatId: 流量镜像过滤的natgw实例。
         :type NatId: str
@@ -14628,7 +14628,7 @@ class CreateTrafficMirrorRequest(AbstractModel):
 
     @property
     def CollectorSrcs(self):
-        """流量镜像的采集对象，支持eni_xxxx。
+        """流量镜像的采集对象。
         :rtype: list of str
         """
         return self._CollectorSrcs
@@ -16676,9 +16676,9 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         :type SslVpnProtocol: str
         :param _SslVpnPort: SSL VPN服务端监听协议端口，默认1194。
         :type SslVpnPort: int
-        :param _IntegrityAlgorithm: 认证算法。可选 'SHA1', 'MD5', 'NONE'，默认NONE。
+        :param _IntegrityAlgorithm: 认证算法。可选 'SHA1'，默认SHA1。
         :type IntegrityAlgorithm: str
-        :param _EncryptAlgorithm: 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
+        :param _EncryptAlgorithm: 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
         :type EncryptAlgorithm: str
         :param _Compress: 是否支持压缩。当前不支持压缩，默认False。
         :type Compress: bool
@@ -16773,7 +16773,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def IntegrityAlgorithm(self):
-        """认证算法。可选 'SHA1', 'MD5', 'NONE'，默认NONE。
+        """认证算法。可选 'SHA1'，默认SHA1。
         :rtype: str
         """
         return self._IntegrityAlgorithm
@@ -16784,7 +16784,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
-        """加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
+        """加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -34005,7 +34005,11 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
         r"""
         :param _TrafficMirrorIds: 流量镜像实例ID集合
         :type TrafficMirrorIds: list of str
-        :param _Filters: 流量镜像查询过滤调节
+        :param _Filters: 流量镜像查询过滤调节。
+vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。
+traffic-mirror-id：流量镜像实例ID。
+traffic-mirror-name：流量镜像名称。
+tag-key ：按照标签键进行过滤。
         :type Filters: :class:`tencentcloud.vpc.v20170312.models.Filter`
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -34030,7 +34034,11 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """流量镜像查询过滤调节
+        """流量镜像查询过滤调节。
+vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。
+traffic-mirror-id：流量镜像实例ID。
+traffic-mirror-name：流量镜像名称。
+tag-key ：按照标签键进行过滤。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.Filter`
         """
         return self._Filters
@@ -52527,9 +52535,9 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
         :type SslVpnProtocol: str
         :param _SslVpnPort: SSL VPN服务端监听协议端口。
         :type SslVpnPort: int
-        :param _EncryptAlgorithm: 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+        :param _EncryptAlgorithm: 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
         :type EncryptAlgorithm: str
-        :param _IntegrityAlgorithm: 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+        :param _IntegrityAlgorithm: 认证算法。可选 'SHA1'，默认SHA1。
         :type IntegrityAlgorithm: str
         :param _Compress: 是否支持压缩。当前不支持压缩。默认False。
         :type Compress: bool
@@ -52618,7 +52626,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
-        """加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+        """加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -52629,7 +52637,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def IntegrityAlgorithm(self):
-        """认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+        """认证算法。可选 'SHA1'，默认SHA1。
         :rtype: str
         """
         return self._IntegrityAlgorithm

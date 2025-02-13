@@ -1794,6 +1794,10 @@ class CallBackTemplateInfo(AbstractModel):
         :param _AudioAuditNotifyUrl: 音频审核回调 URL。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioAuditNotifyUrl: str
+        :param _RecordExceptionNotifyUrl: 录制异常回调 URL。
+        :type RecordExceptionNotifyUrl: str
+        :param _RecordExceptionLevels: 录制异常回调级别，可选择：error: 错误。alarm: 告警。
+        :type RecordExceptionLevels: list of str
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -1807,6 +1811,8 @@ class CallBackTemplateInfo(AbstractModel):
         self._CallbackKey = None
         self._PushExceptionNotifyUrl = None
         self._AudioAuditNotifyUrl = None
+        self._RecordExceptionNotifyUrl = None
+        self._RecordExceptionLevels = None
 
     @property
     def TemplateId(self):
@@ -1942,6 +1948,28 @@ class CallBackTemplateInfo(AbstractModel):
     def AudioAuditNotifyUrl(self, AudioAuditNotifyUrl):
         self._AudioAuditNotifyUrl = AudioAuditNotifyUrl
 
+    @property
+    def RecordExceptionNotifyUrl(self):
+        """录制异常回调 URL。
+        :rtype: str
+        """
+        return self._RecordExceptionNotifyUrl
+
+    @RecordExceptionNotifyUrl.setter
+    def RecordExceptionNotifyUrl(self, RecordExceptionNotifyUrl):
+        self._RecordExceptionNotifyUrl = RecordExceptionNotifyUrl
+
+    @property
+    def RecordExceptionLevels(self):
+        """录制异常回调级别，可选择：error: 错误。alarm: 告警。
+        :rtype: list of str
+        """
+        return self._RecordExceptionLevels
+
+    @RecordExceptionLevels.setter
+    def RecordExceptionLevels(self, RecordExceptionLevels):
+        self._RecordExceptionLevels = RecordExceptionLevels
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -1956,6 +1984,8 @@ class CallBackTemplateInfo(AbstractModel):
         self._CallbackKey = params.get("CallbackKey")
         self._PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         self._AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
+        self._RecordExceptionNotifyUrl = params.get("RecordExceptionNotifyUrl")
+        self._RecordExceptionLevels = params.get("RecordExceptionLevels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6167,6 +6197,10 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :type PushExceptionNotifyUrl: str
         :param _AudioAuditNotifyUrl: 音频审核回调 URL。
         :type AudioAuditNotifyUrl: str
+        :param _RecordExceptionNotifyUrl: 录制异常回调 URL。
+        :type RecordExceptionNotifyUrl: str
+        :param _RecordExceptionLevels: 录制异常回调级别，可选择：error、warning、info。
+        :type RecordExceptionLevels: list of str
         """
         self._TemplateName = None
         self._Description = None
@@ -6180,6 +6214,8 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self._StreamMixNotifyUrl = None
         self._PushExceptionNotifyUrl = None
         self._AudioAuditNotifyUrl = None
+        self._RecordExceptionNotifyUrl = None
+        self._RecordExceptionLevels = None
 
     @property
     def TemplateName(self):
@@ -6324,6 +6360,28 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
     def AudioAuditNotifyUrl(self, AudioAuditNotifyUrl):
         self._AudioAuditNotifyUrl = AudioAuditNotifyUrl
 
+    @property
+    def RecordExceptionNotifyUrl(self):
+        """录制异常回调 URL。
+        :rtype: str
+        """
+        return self._RecordExceptionNotifyUrl
+
+    @RecordExceptionNotifyUrl.setter
+    def RecordExceptionNotifyUrl(self, RecordExceptionNotifyUrl):
+        self._RecordExceptionNotifyUrl = RecordExceptionNotifyUrl
+
+    @property
+    def RecordExceptionLevels(self):
+        """录制异常回调级别，可选择：error、warning、info。
+        :rtype: list of str
+        """
+        return self._RecordExceptionLevels
+
+    @RecordExceptionLevels.setter
+    def RecordExceptionLevels(self, RecordExceptionLevels):
+        self._RecordExceptionLevels = RecordExceptionLevels
+
 
     def _deserialize(self, params):
         self._TemplateName = params.get("TemplateName")
@@ -6338,6 +6396,8 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self._StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
         self._PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         self._AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
+        self._RecordExceptionNotifyUrl = params.get("RecordExceptionNotifyUrl")
+        self._RecordExceptionLevels = params.get("RecordExceptionLevels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28757,6 +28817,10 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :type PushExceptionNotifyUrl: str
         :param _AudioAuditNotifyUrl: 音频审核回调 URL。
         :type AudioAuditNotifyUrl: str
+        :param _RecordExceptionNotifyUrl: 录制异常回调 URL。	
+        :type RecordExceptionNotifyUrl: str
+        :param _RecordExceptionLevels: 录制异常回调级别，可选择：error、warning、info。
+        :type RecordExceptionLevels: list of str
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -28770,6 +28834,8 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self._CallbackKey = None
         self._PushExceptionNotifyUrl = None
         self._AudioAuditNotifyUrl = None
+        self._RecordExceptionNotifyUrl = None
+        self._RecordExceptionLevels = None
 
     @property
     def TemplateId(self):
@@ -28904,6 +28970,28 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
     def AudioAuditNotifyUrl(self, AudioAuditNotifyUrl):
         self._AudioAuditNotifyUrl = AudioAuditNotifyUrl
 
+    @property
+    def RecordExceptionNotifyUrl(self):
+        """录制异常回调 URL。	
+        :rtype: str
+        """
+        return self._RecordExceptionNotifyUrl
+
+    @RecordExceptionNotifyUrl.setter
+    def RecordExceptionNotifyUrl(self, RecordExceptionNotifyUrl):
+        self._RecordExceptionNotifyUrl = RecordExceptionNotifyUrl
+
+    @property
+    def RecordExceptionLevels(self):
+        """录制异常回调级别，可选择：error、warning、info。
+        :rtype: list of str
+        """
+        return self._RecordExceptionLevels
+
+    @RecordExceptionLevels.setter
+    def RecordExceptionLevels(self, RecordExceptionLevels):
+        self._RecordExceptionLevels = RecordExceptionLevels
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -28918,6 +29006,8 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self._CallbackKey = params.get("CallbackKey")
         self._PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         self._AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
+        self._RecordExceptionNotifyUrl = params.get("RecordExceptionNotifyUrl")
+        self._RecordExceptionLevels = params.get("RecordExceptionLevels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -12143,6 +12143,8 @@ class IDCardConfig(AbstractModel):
         :type InvalidDateWarn: bool
         :param _ReflectWarn: 是否开启反光检测，默认为false
         :type ReflectWarn: bool
+        :param _CropPortrait: 是否开启头像剪切
+        :type CropPortrait: bool
         """
         self._CopyWarn = None
         self._BorderCheckWarn = None
@@ -12151,6 +12153,7 @@ class IDCardConfig(AbstractModel):
         self._TempIdWarn = None
         self._InvalidDateWarn = None
         self._ReflectWarn = None
+        self._CropPortrait = None
 
     @property
     def CopyWarn(self):
@@ -12229,6 +12232,17 @@ class IDCardConfig(AbstractModel):
     def ReflectWarn(self, ReflectWarn):
         self._ReflectWarn = ReflectWarn
 
+    @property
+    def CropPortrait(self):
+        """是否开启头像剪切
+        :rtype: bool
+        """
+        return self._CropPortrait
+
+    @CropPortrait.setter
+    def CropPortrait(self, CropPortrait):
+        self._CropPortrait = CropPortrait
+
 
     def _deserialize(self, params):
         self._CopyWarn = params.get("CopyWarn")
@@ -12238,6 +12252,7 @@ class IDCardConfig(AbstractModel):
         self._TempIdWarn = params.get("TempIdWarn")
         self._InvalidDateWarn = params.get("InvalidDateWarn")
         self._ReflectWarn = params.get("ReflectWarn")
+        self._CropPortrait = params.get("CropPortrait")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12466,28 +12481,28 @@ class IDCardInfoResult(AbstractModel):
         :param _WarnCodes: 警告代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarnCodes: list of int
-        :param _Address: 地址
+        :param _Address: 地址（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
-        :param _Authority: 签发机关
+        :param _Authority: 发证机关（国徽面）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Authority: str
-        :param _Birth: 出生日期
+        :param _Birth: 出生日期（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Birth: str
-        :param _IdNum: 身份证号
+        :param _IdNum: 身份证号（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdNum: str
-        :param _Name: 名字
+        :param _Name: 名字（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Nation: 地区
+        :param _Nation: 民族（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nation: str
-        :param _Sex: 性别
+        :param _Sex: 性别（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sex: str
-        :param _ValidDate: 到期时间
+        :param _ValidDate: 证件有效期（国徽面）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidDate: str
         :param _RequestId: 请求的id
@@ -12501,6 +12516,8 @@ class IDCardInfoResult(AbstractModel):
         :type ErrorMessage: str
         :param _ImageUrl: 原图地址
         :type ImageUrl: str
+        :param _PortraitUrl: 身份证头像照片的地址（人像面）
+        :type PortraitUrl: str
         """
         self._WarnCodes = None
         self._Address = None
@@ -12515,6 +12532,7 @@ class IDCardInfoResult(AbstractModel):
         self._ErrorCode = None
         self._ErrorMessage = None
         self._ImageUrl = None
+        self._PortraitUrl = None
 
     @property
     def WarnCodes(self):
@@ -12530,7 +12548,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Address(self):
-        """地址
+        """地址（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12542,7 +12560,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Authority(self):
-        """签发机关
+        """发证机关（国徽面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12554,7 +12572,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Birth(self):
-        """出生日期
+        """出生日期（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12566,7 +12584,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def IdNum(self):
-        """身份证号
+        """身份证号（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12578,7 +12596,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Name(self):
-        """名字
+        """名字（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12590,7 +12608,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Nation(self):
-        """地区
+        """民族（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12602,7 +12620,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def Sex(self):
-        """性别
+        """性别（人像面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12614,7 +12632,7 @@ class IDCardInfoResult(AbstractModel):
 
     @property
     def ValidDate(self):
-        """到期时间
+        """证件有效期（国徽面）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12671,6 +12689,17 @@ class IDCardInfoResult(AbstractModel):
     def ImageUrl(self, ImageUrl):
         self._ImageUrl = ImageUrl
 
+    @property
+    def PortraitUrl(self):
+        """身份证头像照片的地址（人像面）
+        :rtype: str
+        """
+        return self._PortraitUrl
+
+    @PortraitUrl.setter
+    def PortraitUrl(self, PortraitUrl):
+        self._PortraitUrl = PortraitUrl
+
 
     def _deserialize(self, params):
         self._WarnCodes = params.get("WarnCodes")
@@ -12686,6 +12715,7 @@ class IDCardInfoResult(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._ErrorMessage = params.get("ErrorMessage")
         self._ImageUrl = params.get("ImageUrl")
+        self._PortraitUrl = params.get("PortraitUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -568,16 +568,12 @@ class CreateUserResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountUserId: str
         :param _Comment: 备注。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param _Nickname: 昵称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nickname: str
         :param _Avatar: 用户头像地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Avatar: str
         :param _Customize: 自定义信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Customize: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -716,7 +712,6 @@ class CreateUserResponse(AbstractModel):
     @property
     def Comment(self):
         """备注。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Comment
@@ -728,7 +723,6 @@ class CreateUserResponse(AbstractModel):
     @property
     def Nickname(self):
         """昵称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Nickname
@@ -740,7 +734,6 @@ class CreateUserResponse(AbstractModel):
     @property
     def Avatar(self):
         """用户头像地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Avatar
@@ -752,7 +745,6 @@ class CreateUserResponse(AbstractModel):
     @property
     def Customize(self):
         """自定义信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Customize
@@ -1797,6 +1789,11 @@ class Instance(AbstractModel):
         :param _SuperAdminAccount: 超级管理员账号，如果未选择查询实例绑定的超级管理员账号或当前实例未绑定超级管理员账号，则该属性为 null。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperAdminAccount: str
+        :param _Bucket: 自选桶模式下，展示存储桶使用
+        :type Bucket: str
+        :param _LogBucket: 自选桶模式下，展示日志桶使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogBucket: str
         """
         self._InstanceId = None
         self._Domain = None
@@ -1808,6 +1805,8 @@ class Instance(AbstractModel):
         self._Isolated = None
         self._AutoRenew = None
         self._SuperAdminAccount = None
+        self._Bucket = None
+        self._LogBucket = None
 
     @property
     def InstanceId(self):
@@ -1925,6 +1924,29 @@ class Instance(AbstractModel):
     def SuperAdminAccount(self, SuperAdminAccount):
         self._SuperAdminAccount = SuperAdminAccount
 
+    @property
+    def Bucket(self):
+        """自选桶模式下，展示存储桶使用
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def LogBucket(self):
+        """自选桶模式下，展示日志桶使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogBucket
+
+    @LogBucket.setter
+    def LogBucket(self, LogBucket):
+        self._LogBucket = LogBucket
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1937,6 +1959,8 @@ class Instance(AbstractModel):
         self._Isolated = params.get("Isolated")
         self._AutoRenew = params.get("AutoRenew")
         self._SuperAdminAccount = params.get("SuperAdminAccount")
+        self._Bucket = params.get("Bucket")
+        self._LogBucket = params.get("LogBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

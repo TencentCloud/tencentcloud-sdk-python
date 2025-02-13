@@ -4374,7 +4374,7 @@ class CreateCCPrecisionPolicyRequest(AbstractModel):
         :type InstanceId: str
         :param _Ip: IP值
         :type Ip: str
-        :param _Protocol: 协议， 可取值HTTP，HTTPS
+        :param _Protocol: 协议， 可取值http，https，http/https
         :type Protocol: str
         :param _Domain: 域名
         :type Domain: str
@@ -4414,7 +4414,7 @@ class CreateCCPrecisionPolicyRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议， 可取值HTTP，HTTPS
+        """协议， 可取值http，https，http/https
         :rtype: str
         """
         return self._Protocol
@@ -4518,13 +4518,13 @@ class CreateCCReqLimitPolicyRequest(AbstractModel):
         :type InstanceId: str
         :param _Ip: IP值
         :type Ip: str
-        :param _Protocol: 协议，可取值HTTP，HTTPS
+        :param _Protocol: 协议，可取值http, https, http/https
         :type Protocol: str
         :param _Domain: 域名
         :type Domain: str
         :param _Policy: 策略项
         :type Policy: :class:`tencentcloud.antiddos.v20200309.models.CCReqLimitPolicyRecord`
-        :param _IsGlobal: 是否为兜底频控
+        :param _IsGlobal: 是否为兜底频控 0表示不是 1表示是
         :type IsGlobal: int
         """
         self._InstanceId = None
@@ -4558,7 +4558,7 @@ class CreateCCReqLimitPolicyRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议，可取值HTTP，HTTPS
+        """协议，可取值http, https, http/https
         :rtype: str
         """
         return self._Protocol
@@ -4591,7 +4591,7 @@ class CreateCCReqLimitPolicyRequest(AbstractModel):
 
     @property
     def IsGlobal(self):
-        """是否为兜底频控
+        """是否为兜底频控 0表示不是 1表示是
         :rtype: int
         """
         return self._IsGlobal
@@ -8304,7 +8304,7 @@ class DescribeBgpBizTrendRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 统计结束时间。 例：“2020-09-22 00:00:00”，注意该时间必须为5分钟的倍数
         :type EndTime: str
-        :param _MetricName: 统计纬度，可取值intraffic, outtraffic, inpkg, outpkg
+        :param _MetricName: 统计维度，可取值intraffic, outtraffic, inpkg, outpkg； intraffic：入流量 outtraffic：出流量 inpkg：入包速率 outpkg：出包速率
         :type MetricName: str
         :param _InstanceId: 资源实例ID
         :type InstanceId: str
@@ -8353,7 +8353,7 @@ class DescribeBgpBizTrendRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """统计纬度，可取值intraffic, outtraffic, inpkg, outpkg
+        """统计维度，可取值intraffic, outtraffic, inpkg, outpkg； intraffic：入流量 outtraffic：出流量 inpkg：入包速率 outpkg：出包速率
         :rtype: str
         """
         return self._MetricName
@@ -17826,7 +17826,7 @@ class ModifyCCPrecisionPolicyRequest(AbstractModel):
         :type InstanceId: str
         :param _PolicyId: 策略Id
         :type PolicyId: str
-        :param _PolicyAction: 策略方式。可取值：alg、drop。alg指返回验证码方式验证，drop表示该访问丢弃。
+        :param _PolicyAction: 策略方式。可取值：alg、drop、trans。alg指返回验证码方式验证，drop表示该访问丢弃，trans表示该访问放行。
         :type PolicyAction: str
         :param _PolicyList: 策略记录
         :type PolicyList: list of CCPrecisionPlyRecord
@@ -17860,7 +17860,7 @@ class ModifyCCPrecisionPolicyRequest(AbstractModel):
 
     @property
     def PolicyAction(self):
-        """策略方式。可取值：alg、drop。alg指返回验证码方式验证，drop表示该访问丢弃。
+        """策略方式。可取值：alg、drop、trans。alg指返回验证码方式验证，drop表示该访问丢弃，trans表示该访问放行。
         :rtype: str
         """
         return self._PolicyAction
@@ -18038,7 +18038,7 @@ class ModifyCCThresholdPolicyRequest(AbstractModel):
         :type Ip: str
         :param _Domain: 域名
         :type Domain: str
-        :param _Protocol: 协议，可取值HTTP，HTTPS
+        :param _Protocol: 协议，可取值http，https，http/https
         :type Protocol: str
         :param _Threshold: 清洗阈值，-1表示开启“默认”模式
         :type Threshold: int
@@ -18084,7 +18084,7 @@ class ModifyCCThresholdPolicyRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议，可取值HTTP，HTTPS
+        """协议，可取值http，https，http/https
         :rtype: str
         """
         return self._Protocol
@@ -20044,8 +20044,8 @@ class PacketFilterConfig(AbstractModel):
 drop(丢弃)
 transmit(放行)
 drop_black(丢弃并拉黑)
-drop_rst(拦截)
-drop_black_rst(拦截并拉黑)
+drop_rst(拦截)（已废弃，不支持drop_rst）
+drop_black_rst(拦截并拉黑)（已废弃，不支持drop_black_rst）
 forward(继续防护)
 ]
         :type Action: str
@@ -20058,13 +20058,10 @@ no_match(不匹配)
         :type MatchBegin: str
         :param _MatchType: 检测类型，取值[
 sunday(关键字)
-pcre(正则表达式)
+pcre(正则表达式) （已废弃，仅支持sunday）
 ]
         :type MatchType: str
-        :param _Str: 检测值，关键字符串或正则表达式,取值[
-当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
-当检测类型为pcre时, 请填写正则表达式字符串;
-]
+        :param _Str: 检测值，关键字符串或正则表达式,取值[ 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码; 最多支持63位; ]
         :type Str: str
         :param _Depth: 从检测位置开始的检测深度，取值[0,1500]
         :type Depth: int
@@ -20072,39 +20069,28 @@ pcre(正则表达式)
         :type Offset: int
         :param _IsNot: 是否包含检测值，取值[
 0(包含)
-1(不包含)
+1(不包含) （已废弃，仅支持0）
 ]
         :type IsNot: int
-        :param _MatchLogic: 当有第二个检测条件时，与第一检测条件的且或关系，取值[
-and(且的关系)
+        :param _MatchLogic: 
+当有第二个检测条件时，与第一检测条件的且或关系，取值[
+and(且的关系) （已废弃，仅支持none）
 none(当没有第二个检测条件时填写此值)
 ]
         :type MatchLogic: str
-        :param _MatchBegin2: 第二个检测位置，取值[
-begin_l5(载荷)
-no_match(不匹配)
-]
+        :param _MatchBegin2: （已废弃）
         :type MatchBegin2: str
-        :param _MatchType2: 第二个检测类型，取值[
-sunday(关键字)
-pcre(正则表达式)
-]
+        :param _MatchType2: （已废弃）
         :type MatchType2: str
-        :param _Str2: 第二个检测值，关键字符串或正则表达式,取值[
-当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
-当检测类型为pcre时, 请填写正则表达式字符串;
-]
+        :param _Str2: （已废弃）
         :type Str2: str
-        :param _Depth2: 从第二个检测位置开始的第二个检测深度，取值[0,1500]
+        :param _Depth2: （已废弃）
         :type Depth2: int
-        :param _Offset2: 从第二个检测位置开始的偏移量，取值范围[0,Depth2]
+        :param _Offset2: （已废弃）
         :type Offset2: int
-        :param _IsNot2: 第二个检测是否包含检测值，取值[
-0(包含)
-1(不包含)
-]
+        :param _IsNot2: （已废弃）
         :type IsNot2: int
-        :param _Id: 特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；
+        :param _Id: 特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；当修改/删除新特征过滤配置时，此字段必填；
         :type Id: str
         :param _PktLenGT: 大于报文长度，取值1+
         :type PktLenGT: int
@@ -20216,8 +20202,8 @@ pcre(正则表达式)
 drop(丢弃)
 transmit(放行)
 drop_black(丢弃并拉黑)
-drop_rst(拦截)
-drop_black_rst(拦截并拉黑)
+drop_rst(拦截)（已废弃，不支持drop_rst）
+drop_black_rst(拦截并拉黑)（已废弃，不支持drop_black_rst）
 forward(继续防护)
 ]
         :rtype: str
@@ -20248,7 +20234,7 @@ no_match(不匹配)
     def MatchType(self):
         """检测类型，取值[
 sunday(关键字)
-pcre(正则表达式)
+pcre(正则表达式) （已废弃，仅支持sunday）
 ]
         :rtype: str
         """
@@ -20260,10 +20246,7 @@ pcre(正则表达式)
 
     @property
     def Str(self):
-        """检测值，关键字符串或正则表达式,取值[
-当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
-当检测类型为pcre时, 请填写正则表达式字符串;
-]
+        """检测值，关键字符串或正则表达式,取值[ 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码; 最多支持63位; ]
         :rtype: str
         """
         return self._Str
@@ -20298,7 +20281,7 @@ pcre(正则表达式)
     def IsNot(self):
         """是否包含检测值，取值[
 0(包含)
-1(不包含)
+1(不包含) （已废弃，仅支持0）
 ]
         :rtype: int
         """
@@ -20310,8 +20293,9 @@ pcre(正则表达式)
 
     @property
     def MatchLogic(self):
-        """当有第二个检测条件时，与第一检测条件的且或关系，取值[
-and(且的关系)
+        """
+当有第二个检测条件时，与第一检测条件的且或关系，取值[
+and(且的关系) （已废弃，仅支持none）
 none(当没有第二个检测条件时填写此值)
 ]
         :rtype: str
@@ -20324,10 +20308,7 @@ none(当没有第二个检测条件时填写此值)
 
     @property
     def MatchBegin2(self):
-        """第二个检测位置，取值[
-begin_l5(载荷)
-no_match(不匹配)
-]
+        """（已废弃）
         :rtype: str
         """
         return self._MatchBegin2
@@ -20338,10 +20319,7 @@ no_match(不匹配)
 
     @property
     def MatchType2(self):
-        """第二个检测类型，取值[
-sunday(关键字)
-pcre(正则表达式)
-]
+        """（已废弃）
         :rtype: str
         """
         return self._MatchType2
@@ -20352,10 +20330,7 @@ pcre(正则表达式)
 
     @property
     def Str2(self):
-        """第二个检测值，关键字符串或正则表达式,取值[
-当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
-当检测类型为pcre时, 请填写正则表达式字符串;
-]
+        """（已废弃）
         :rtype: str
         """
         return self._Str2
@@ -20366,7 +20341,7 @@ pcre(正则表达式)
 
     @property
     def Depth2(self):
-        """从第二个检测位置开始的第二个检测深度，取值[0,1500]
+        """（已废弃）
         :rtype: int
         """
         return self._Depth2
@@ -20377,7 +20352,7 @@ pcre(正则表达式)
 
     @property
     def Offset2(self):
-        """从第二个检测位置开始的偏移量，取值范围[0,Depth2]
+        """（已废弃）
         :rtype: int
         """
         return self._Offset2
@@ -20388,10 +20363,7 @@ pcre(正则表达式)
 
     @property
     def IsNot2(self):
-        """第二个检测是否包含检测值，取值[
-0(包含)
-1(不包含)
-]
+        """（已废弃）
         :rtype: int
         """
         return self._IsNot2
@@ -20402,7 +20374,7 @@ pcre(正则表达式)
 
     @property
     def Id(self):
-        """特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；
+        """特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；当修改/删除新特征过滤配置时，此字段必填；
         :rtype: str
         """
         return self._Id
@@ -21978,7 +21950,6 @@ shortfpcheckall（精简模式）
 ]
         :type Verify: str
         :param _CloudSdkProxy: 是否开启代理，1开启则忽略IP+端口校验；0关闭则需要IP+端口校验
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudSdkProxy: int
         """
         self._Offset = None
@@ -22052,7 +22023,6 @@ shortfpcheckall（精简模式）
     @property
     def CloudSdkProxy(self):
         """是否开启代理，1开启则忽略IP+端口校验；0关闭则需要IP+端口校验
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CloudSdkProxy

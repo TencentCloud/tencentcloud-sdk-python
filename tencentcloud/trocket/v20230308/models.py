@@ -1422,18 +1422,24 @@ class CreateRoleRequest(AbstractModel):
         :type InstanceId: str
         :param _Role: 角色名称
         :type Role: str
-        :param _Remark: 备注
-        :type Remark: str
         :param _PermWrite: 是否开启生产权限
         :type PermWrite: bool
         :param _PermRead: 是否开启消费权限
         :type PermRead: bool
+        :param _Remark: 备注
+        :type Remark: str
+        :param _PermType: 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        :type PermType: str
+        :param _DetailedPerms: Topic&Group维度权限配置
+        :type DetailedPerms: list of DetailedRolePerm
         """
         self._InstanceId = None
         self._Role = None
-        self._Remark = None
         self._PermWrite = None
         self._PermRead = None
+        self._Remark = None
+        self._PermType = None
+        self._DetailedPerms = None
 
     @property
     def InstanceId(self):
@@ -1458,17 +1464,6 @@ class CreateRoleRequest(AbstractModel):
         self._Role = Role
 
     @property
-    def Remark(self):
-        """备注
-        :rtype: str
-        """
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
-    @property
     def PermWrite(self):
         """是否开启生产权限
         :rtype: bool
@@ -1490,13 +1485,53 @@ class CreateRoleRequest(AbstractModel):
     def PermRead(self, PermRead):
         self._PermRead = PermRead
 
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PermType(self):
+        """权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        :rtype: str
+        """
+        return self._PermType
+
+    @PermType.setter
+    def PermType(self, PermType):
+        self._PermType = PermType
+
+    @property
+    def DetailedPerms(self):
+        """Topic&Group维度权限配置
+        :rtype: list of DetailedRolePerm
+        """
+        return self._DetailedPerms
+
+    @DetailedPerms.setter
+    def DetailedPerms(self, DetailedPerms):
+        self._DetailedPerms = DetailedPerms
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Role = params.get("Role")
-        self._Remark = params.get("Remark")
         self._PermWrite = params.get("PermWrite")
         self._PermRead = params.get("PermRead")
+        self._Remark = params.get("Remark")
+        self._PermType = params.get("PermType")
+        if params.get("DetailedPerms") is not None:
+            self._DetailedPerms = []
+            for item in params.get("DetailedPerms"):
+                obj = DetailedRolePerm()
+                obj._deserialize(item)
+                self._DetailedPerms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7441,6 +7476,102 @@ TRANSACTION:事务消息
         self._RequestId = params.get("RequestId")
 
 
+class DetailedRolePerm(AbstractModel):
+    """Topic&Group维度的权限配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 权限对应的资源
+        :type Resource: str
+        :param _PermWrite: 是否开启生产权限
+        :type PermWrite: bool
+        :param _PermRead: 是否开启消费权限
+        :type PermRead: bool
+        :param _ResourceType: 授权资源类型（Topic:主题; Group:消费组）
+        :type ResourceType: str
+        :param _Remark: 资源备注
+        :type Remark: str
+        """
+        self._Resource = None
+        self._PermWrite = None
+        self._PermRead = None
+        self._ResourceType = None
+        self._Remark = None
+
+    @property
+    def Resource(self):
+        """权限对应的资源
+        :rtype: str
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def PermWrite(self):
+        """是否开启生产权限
+        :rtype: bool
+        """
+        return self._PermWrite
+
+    @PermWrite.setter
+    def PermWrite(self, PermWrite):
+        self._PermWrite = PermWrite
+
+    @property
+    def PermRead(self):
+        """是否开启消费权限
+        :rtype: bool
+        """
+        return self._PermRead
+
+    @PermRead.setter
+    def PermRead(self, PermRead):
+        self._PermRead = PermRead
+
+    @property
+    def ResourceType(self):
+        """授权资源类型（Topic:主题; Group:消费组）
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Remark(self):
+        """资源备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Resource = params.get("Resource")
+        self._PermWrite = params.get("PermWrite")
+        self._PermRead = params.get("PermRead")
+        self._ResourceType = params.get("ResourceType")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Endpoint(AbstractModel):
     """接入点信息
 
@@ -11116,14 +11247,20 @@ class ModifyRoleRequest(AbstractModel):
         :type PermRead: bool
         :param _PermWrite: 是否开启生产
         :type PermWrite: bool
+        :param _PermType: 权限类型，默认按集群授权（Cluster：集群维度；TopicAndGroup：主题和消费组维度）
+        :type PermType: str
         :param _Remark: 备注
         :type Remark: str
+        :param _DetailedPerms: Topic&Group维度权限配置
+        :type DetailedPerms: list of DetailedRolePerm
         """
         self._InstanceId = None
         self._Role = None
         self._PermRead = None
         self._PermWrite = None
+        self._PermType = None
         self._Remark = None
+        self._DetailedPerms = None
 
     @property
     def InstanceId(self):
@@ -11170,6 +11307,17 @@ class ModifyRoleRequest(AbstractModel):
         self._PermWrite = PermWrite
 
     @property
+    def PermType(self):
+        """权限类型，默认按集群授权（Cluster：集群维度；TopicAndGroup：主题和消费组维度）
+        :rtype: str
+        """
+        return self._PermType
+
+    @PermType.setter
+    def PermType(self, PermType):
+        self._PermType = PermType
+
+    @property
     def Remark(self):
         """备注
         :rtype: str
@@ -11180,13 +11328,31 @@ class ModifyRoleRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def DetailedPerms(self):
+        """Topic&Group维度权限配置
+        :rtype: list of DetailedRolePerm
+        """
+        return self._DetailedPerms
+
+    @DetailedPerms.setter
+    def DetailedPerms(self, DetailedPerms):
+        self._DetailedPerms = DetailedPerms
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Role = params.get("Role")
         self._PermRead = params.get("PermRead")
         self._PermWrite = params.get("PermWrite")
+        self._PermType = params.get("PermType")
         self._Remark = params.get("Remark")
+        if params.get("DetailedPerms") is not None:
+            self._DetailedPerms = []
+            for item in params.get("DetailedPerms"):
+                obj = DetailedRolePerm()
+                obj._deserialize(item)
+                self._DetailedPerms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11927,6 +12093,11 @@ class RoleItem(AbstractModel):
         :type CreatedTime: int
         :param _ModifiedTime: 修改时间，秒为单位
         :type ModifiedTime: int
+        :param _PermType: 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        :type PermType: str
+        :param _DetailedRolePerms: Topic和Group维度权限配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetailedRolePerms: list of DetailedRolePerm
         """
         self._RoleName = None
         self._PermRead = None
@@ -11936,6 +12107,8 @@ class RoleItem(AbstractModel):
         self._Remark = None
         self._CreatedTime = None
         self._ModifiedTime = None
+        self._PermType = None
+        self._DetailedRolePerms = None
 
     @property
     def RoleName(self):
@@ -12025,6 +12198,29 @@ class RoleItem(AbstractModel):
     def ModifiedTime(self, ModifiedTime):
         self._ModifiedTime = ModifiedTime
 
+    @property
+    def PermType(self):
+        """权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        :rtype: str
+        """
+        return self._PermType
+
+    @PermType.setter
+    def PermType(self, PermType):
+        self._PermType = PermType
+
+    @property
+    def DetailedRolePerms(self):
+        """Topic和Group维度权限配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DetailedRolePerm
+        """
+        return self._DetailedRolePerms
+
+    @DetailedRolePerms.setter
+    def DetailedRolePerms(self, DetailedRolePerms):
+        self._DetailedRolePerms = DetailedRolePerms
+
 
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
@@ -12035,6 +12231,13 @@ class RoleItem(AbstractModel):
         self._Remark = params.get("Remark")
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
+        self._PermType = params.get("PermType")
+        if params.get("DetailedRolePerms") is not None:
+            self._DetailedRolePerms = []
+            for item in params.get("DetailedRolePerms"):
+                obj = DetailedRolePerm()
+                obj._deserialize(item)
+                self._DetailedRolePerms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -17595,11 +17595,11 @@ class DeleteResourceFilesRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目id
         :type ProjectId: str
-        :param _UseStatus: 使用状态
+        :param _UseStatus: 使用状态， 为ture 判断资源的使用状态，如果使用中则不能删除
         :type UseStatus: bool
         :param _ResourceIds: 资源id列表
         :type ResourceIds: list of str
-        :param _FilePaths: 资源路径列表
+        :param _FilePaths: 需要删除的资源路径列表 即资源管理中的目录结构
         :type FilePaths: list of str
         """
         self._ProjectId = None
@@ -17620,7 +17620,7 @@ class DeleteResourceFilesRequest(AbstractModel):
 
     @property
     def UseStatus(self):
-        """使用状态
+        """使用状态， 为ture 判断资源的使用状态，如果使用中则不能删除
         :rtype: bool
         """
         return self._UseStatus
@@ -17642,7 +17642,7 @@ class DeleteResourceFilesRequest(AbstractModel):
 
     @property
     def FilePaths(self):
-        """资源路径列表
+        """需要删除的资源路径列表 即资源管理中的目录结构
         :rtype: list of str
         """
         return self._FilePaths
@@ -46968,6 +46968,8 @@ class InstanceLogInfoOpsDto(AbstractModel):
         :type FileSize: str
         :param _MatchedBrokerIp: 日志匹配节点信息
         :type MatchedBrokerIp: str
+        :param _ExecutionExtendedProps: 执行平台通用协议
+        :type ExecutionExtendedProps: list of PairDto
         """
         self._LogInfo = None
         self._YarnLogInfo = None
@@ -46979,6 +46981,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
         self._IsEnd = None
         self._FileSize = None
         self._MatchedBrokerIp = None
+        self._ExecutionExtendedProps = None
 
     @property
     def LogInfo(self):
@@ -47099,6 +47102,17 @@ class InstanceLogInfoOpsDto(AbstractModel):
     def MatchedBrokerIp(self, MatchedBrokerIp):
         self._MatchedBrokerIp = MatchedBrokerIp
 
+    @property
+    def ExecutionExtendedProps(self):
+        """执行平台通用协议
+        :rtype: list of PairDto
+        """
+        return self._ExecutionExtendedProps
+
+    @ExecutionExtendedProps.setter
+    def ExecutionExtendedProps(self, ExecutionExtendedProps):
+        self._ExecutionExtendedProps = ExecutionExtendedProps
+
 
     def _deserialize(self, params):
         self._LogInfo = params.get("LogInfo")
@@ -47111,6 +47125,12 @@ class InstanceLogInfoOpsDto(AbstractModel):
         self._IsEnd = params.get("IsEnd")
         self._FileSize = params.get("FileSize")
         self._MatchedBrokerIp = params.get("MatchedBrokerIp")
+        if params.get("ExecutionExtendedProps") is not None:
+            self._ExecutionExtendedProps = []
+            for item in params.get("ExecutionExtendedProps"):
+                obj = PairDto()
+                obj._deserialize(item)
+                self._ExecutionExtendedProps.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59412,9 +59432,12 @@ class PairDto(AbstractModel):
         :param _Value: 值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
+        :param _Description: 描述
+        :type Description: str
         """
         self._Key = None
         self._Value = None
+        self._Description = None
 
     @property
     def Key(self):
@@ -59440,10 +59463,22 @@ class PairDto(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def Description(self):
+        """描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

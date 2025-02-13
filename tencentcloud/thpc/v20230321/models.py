@@ -5678,6 +5678,8 @@ class QueueConfig(AbstractModel):
         :type ExpansionNodeConfigs: list of ExpansionNodeConfig
         :param _DesiredIdleNodeCapacity: 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
         :type DesiredIdleNodeCapacity: int
+        :param _DesiredNodeCount: 队列中期望的总节点数。
+        :type DesiredNodeCount: int
         :param _ScaleOutRatio: 扩容比例。默认值：100。取值范围：1～100。
 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
         :type ScaleOutRatio: int
@@ -5707,6 +5709,7 @@ class QueueConfig(AbstractModel):
         self._InternetAccessible = None
         self._ExpansionNodeConfigs = None
         self._DesiredIdleNodeCapacity = None
+        self._DesiredNodeCount = None
         self._ScaleOutRatio = None
         self._ScaleOutNodeThreshold = None
         self._MaxNodesPerCycle = None
@@ -5835,6 +5838,17 @@ class QueueConfig(AbstractModel):
         self._DesiredIdleNodeCapacity = DesiredIdleNodeCapacity
 
     @property
+    def DesiredNodeCount(self):
+        """队列中期望的总节点数。
+        :rtype: int
+        """
+        return self._DesiredNodeCount
+
+    @DesiredNodeCount.setter
+    def DesiredNodeCount(self, DesiredNodeCount):
+        self._DesiredNodeCount = DesiredNodeCount
+
+    @property
     def ScaleOutRatio(self):
         """扩容比例。默认值：100。取值范围：1～100。
 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
@@ -5923,6 +5937,7 @@ class QueueConfig(AbstractModel):
                 obj._deserialize(item)
                 self._ExpansionNodeConfigs.append(obj)
         self._DesiredIdleNodeCapacity = params.get("DesiredIdleNodeCapacity")
+        self._DesiredNodeCount = params.get("DesiredNodeCount")
         self._ScaleOutRatio = params.get("ScaleOutRatio")
         self._ScaleOutNodeThreshold = params.get("ScaleOutNodeThreshold")
         self._MaxNodesPerCycle = params.get("MaxNodesPerCycle")
@@ -5962,6 +5977,8 @@ class QueueConfigOverview(AbstractModel):
         :param _DesiredIdleNodeCapacity: 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredIdleNodeCapacity: int
+        :param _DesiredNodeCount: 队列中期望的总节点数。
+        :type DesiredNodeCount: int
         :param _ScaleOutRatio: 扩容比例。默认值：100。取值范围：1～100。
 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5989,6 +6006,7 @@ class QueueConfigOverview(AbstractModel):
         self._EnableAutoShrink = None
         self._ExpansionNodeConfigs = None
         self._DesiredIdleNodeCapacity = None
+        self._DesiredNodeCount = None
         self._ScaleOutRatio = None
         self._ScaleOutNodeThreshold = None
         self._MaxNodesPerCycle = None
@@ -6073,6 +6091,17 @@ class QueueConfigOverview(AbstractModel):
         self._DesiredIdleNodeCapacity = DesiredIdleNodeCapacity
 
     @property
+    def DesiredNodeCount(self):
+        """队列中期望的总节点数。
+        :rtype: int
+        """
+        return self._DesiredNodeCount
+
+    @DesiredNodeCount.setter
+    def DesiredNodeCount(self, DesiredNodeCount):
+        self._DesiredNodeCount = DesiredNodeCount
+
+    @property
     def ScaleOutRatio(self):
         """扩容比例。默认值：100。取值范围：1～100。
 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
@@ -6141,6 +6170,7 @@ class QueueConfigOverview(AbstractModel):
                 obj._deserialize(item)
                 self._ExpansionNodeConfigs.append(obj)
         self._DesiredIdleNodeCapacity = params.get("DesiredIdleNodeCapacity")
+        self._DesiredNodeCount = params.get("DesiredNodeCount")
         self._ScaleOutRatio = params.get("ScaleOutRatio")
         self._ScaleOutNodeThreshold = params.get("ScaleOutNodeThreshold")
         self._MaxNodesPerCycle = params.get("MaxNodesPerCycle")

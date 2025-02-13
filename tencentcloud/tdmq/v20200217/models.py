@@ -5508,11 +5508,14 @@ class CreateRocketMQEnvironmentRoleRequest(AbstractModel):
         :type Permissions: list of str
         :param _ClusterId: 必填字段，集群的ID
         :type ClusterId: str
+        :param _DetailedPerms: Topic&Group维度权限配置
+        :type DetailedPerms: list of DetailedRolePerm
         """
         self._EnvironmentId = None
         self._RoleName = None
         self._Permissions = None
         self._ClusterId = None
+        self._DetailedPerms = None
 
     @property
     def EnvironmentId(self):
@@ -5558,12 +5561,29 @@ class CreateRocketMQEnvironmentRoleRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def DetailedPerms(self):
+        """Topic&Group维度权限配置
+        :rtype: list of DetailedRolePerm
+        """
+        return self._DetailedPerms
+
+    @DetailedPerms.setter
+    def DetailedPerms(self, DetailedPerms):
+        self._DetailedPerms = DetailedPerms
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._RoleName = params.get("RoleName")
         self._Permissions = params.get("Permissions")
         self._ClusterId = params.get("ClusterId")
+        if params.get("DetailedPerms") is not None:
+            self._DetailedPerms = []
+            for item in params.get("DetailedPerms"):
+                obj = DetailedRolePerm()
+                obj._deserialize(item)
+                self._DetailedPerms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5908,10 +5928,13 @@ class CreateRocketMQRoleRequest(AbstractModel):
         :type ClusterId: str
         :param _Remark: 备注说明，长度必须大等于0且小等于128。
         :type Remark: str
+        :param _PermType: 角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）
+        :type PermType: str
         """
         self._RoleName = None
         self._ClusterId = None
         self._Remark = None
+        self._PermType = None
 
     @property
     def RoleName(self):
@@ -5946,11 +5969,23 @@ class CreateRocketMQRoleRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def PermType(self):
+        """角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）
+        :rtype: str
+        """
+        return self._PermType
+
+    @PermType.setter
+    def PermType(self, PermType):
+        self._PermType = PermType
+
 
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
         self._ClusterId = params.get("ClusterId")
         self._Remark = params.get("Remark")
+        self._PermType = params.get("PermType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20561,6 +20596,102 @@ class DescribeTopicsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetailedRolePerm(AbstractModel):
+    """Topic&Group维度的权限配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 权限对应的资源
+        :type Resource: str
+        :param _PermWrite: 是否开启生产权限
+        :type PermWrite: bool
+        :param _PermRead: 是否开启消费权限
+        :type PermRead: bool
+        :param _ResourceType: 授权资源类型（Topic:主题; Group:消费组）
+        :type ResourceType: str
+        :param _Remark: 资源备注
+        :type Remark: str
+        """
+        self._Resource = None
+        self._PermWrite = None
+        self._PermRead = None
+        self._ResourceType = None
+        self._Remark = None
+
+    @property
+    def Resource(self):
+        """权限对应的资源
+        :rtype: str
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def PermWrite(self):
+        """是否开启生产权限
+        :rtype: bool
+        """
+        return self._PermWrite
+
+    @PermWrite.setter
+    def PermWrite(self, PermWrite):
+        self._PermWrite = PermWrite
+
+    @property
+    def PermRead(self):
+        """是否开启消费权限
+        :rtype: bool
+        """
+        return self._PermRead
+
+    @PermRead.setter
+    def PermRead(self, PermRead):
+        self._PermRead = PermRead
+
+    @property
+    def ResourceType(self):
+        """授权资源类型（Topic:主题; Group:消费组）
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Remark(self):
+        """资源备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Resource = params.get("Resource")
+        self._PermWrite = params.get("PermWrite")
+        self._PermRead = params.get("PermRead")
+        self._ResourceType = params.get("ResourceType")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Environment(AbstractModel):
     """命名空间信息
 
@@ -24306,11 +24437,14 @@ class ModifyRocketMQEnvironmentRoleRequest(AbstractModel):
         :type Permissions: list of str
         :param _ClusterId: 必填字段，集群的ID
         :type ClusterId: str
+        :param _DetailedPerms: Topic&Group维度权限配置
+        :type DetailedPerms: list of DetailedRolePerm
         """
         self._EnvironmentId = None
         self._RoleName = None
         self._Permissions = None
         self._ClusterId = None
+        self._DetailedPerms = None
 
     @property
     def EnvironmentId(self):
@@ -24356,12 +24490,29 @@ class ModifyRocketMQEnvironmentRoleRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def DetailedPerms(self):
+        """Topic&Group维度权限配置
+        :rtype: list of DetailedRolePerm
+        """
+        return self._DetailedPerms
+
+    @DetailedPerms.setter
+    def DetailedPerms(self, DetailedPerms):
+        self._DetailedPerms = DetailedPerms
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._RoleName = params.get("RoleName")
         self._Permissions = params.get("Permissions")
         self._ClusterId = params.get("ClusterId")
+        if params.get("DetailedPerms") is not None:
+            self._DetailedPerms = []
+            for item in params.get("DetailedPerms"):
+                obj = DetailedRolePerm()
+                obj._deserialize(item)
+                self._DetailedPerms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24949,10 +25100,13 @@ class ModifyRocketMQRoleRequest(AbstractModel):
         :type ClusterId: str
         :param _Remark: 备注说明，长度必须大等于0且小等于128。
         :type Remark: str
+        :param _PermType: 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        :type PermType: str
         """
         self._RoleName = None
         self._ClusterId = None
         self._Remark = None
+        self._PermType = None
 
     @property
     def RoleName(self):
@@ -24987,11 +25141,23 @@ class ModifyRocketMQRoleRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def PermType(self):
+        """权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        :rtype: str
+        """
+        return self._PermType
+
+    @PermType.setter
+    def PermType(self, PermType):
+        self._PermType = PermType
+
 
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
         self._ClusterId = params.get("ClusterId")
         self._Remark = params.get("Remark")
+        self._PermType = params.get("PermType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
