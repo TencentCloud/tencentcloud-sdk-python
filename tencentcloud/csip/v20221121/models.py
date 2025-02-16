@@ -21919,10 +21919,8 @@ class StatisticalFilter(AbstractModel):
 1:发生次数高于固定值
 2:发生次数高于周期平均值的百分之
 3:发生次数高于用户平均值的百分之
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorType: int
         :param _Value: 统计值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: float
         """
         self._OperatorType = None
@@ -21934,7 +21932,6 @@ class StatisticalFilter(AbstractModel):
 1:发生次数高于固定值
 2:发生次数高于周期平均值的百分之
 3:发生次数高于用户平均值的百分之
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OperatorType
@@ -21946,7 +21943,6 @@ class StatisticalFilter(AbstractModel):
     @property
     def Value(self):
         """统计值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Value
@@ -23865,15 +23861,12 @@ class UebaRule(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleID: 策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleID: str
         :param _RuleName: 规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _RuleType: 策略类型
 0:系统策略
 1:自定义策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: int
         :param _RuleLevel: 策略等级
 0:提示
@@ -23881,36 +23874,26 @@ class UebaRule(AbstractModel):
 2:中危
 3:高危
 4:严重
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleLevel: int
         :param _RuleContent: 策略内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleContent: str
         :param _RuleStatus: 策略开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleStatus: bool
         :param _HitCount: 命中次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type HitCount: int
         :param _AppID: 所属账号Appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppID: str
         :param _MemberID: 多账号，成员ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberID: str
         :param _Uin: Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _Nickname: 昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nickname: str
         :param _CustomRuleDetail: 自定义规则具体内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRuleDetail: :class:`tencentcloud.csip.v20221121.models.UebaCustomRule`
         :param _CloudType: 云类型
 腾讯云：0
 aws：1
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: int
         """
         self._RuleID = None
@@ -23930,7 +23913,6 @@ aws：1
     @property
     def RuleID(self):
         """策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleID
@@ -23942,7 +23924,6 @@ aws：1
     @property
     def RuleName(self):
         """规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -23956,7 +23937,6 @@ aws：1
         """策略类型
 0:系统策略
 1:自定义策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleType
@@ -23973,7 +23953,6 @@ aws：1
 2:中危
 3:高危
 4:严重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleLevel
@@ -23985,7 +23964,6 @@ aws：1
     @property
     def RuleContent(self):
         """策略内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleContent
@@ -23997,7 +23975,6 @@ aws：1
     @property
     def RuleStatus(self):
         """策略开关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RuleStatus
@@ -24009,7 +23986,6 @@ aws：1
     @property
     def HitCount(self):
         """命中次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HitCount
@@ -24021,7 +23997,6 @@ aws：1
     @property
     def AppID(self):
         """所属账号Appid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppID
@@ -24033,7 +24008,6 @@ aws：1
     @property
     def MemberID(self):
         """多账号，成员ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemberID
@@ -24045,7 +24019,6 @@ aws：1
     @property
     def Uin(self):
         """Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -24057,7 +24030,6 @@ aws：1
     @property
     def Nickname(self):
         """昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Nickname
@@ -24069,7 +24041,6 @@ aws：1
     @property
     def CustomRuleDetail(self):
         """自定义规则具体内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.csip.v20221121.models.UebaCustomRule`
         """
         return self._CustomRuleDetail
@@ -24083,7 +24054,6 @@ aws：1
         """云类型
 腾讯云：0
 aws：1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CloudType

@@ -52,6 +52,12 @@ class AgentProcedure(AbstractModel):
         :param _Elapsed: 当前请求执行时间, 单位 ms
 注意：此字段可能返回 null，表示取不到有效值。
         :type Elapsed: int
+        :param _NodeName: 工作流节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param _ReplyIndex: 用于展示思考放在哪个回复气泡中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplyIndex: int
         """
         self._Index = None
         self._Name = None
@@ -62,6 +68,8 @@ class AgentProcedure(AbstractModel):
         self._Switch = None
         self._WorkflowName = None
         self._Elapsed = None
+        self._NodeName = None
+        self._ReplyIndex = None
 
     @property
     def Index(self):
@@ -171,6 +179,30 @@ class AgentProcedure(AbstractModel):
     def Elapsed(self, Elapsed):
         self._Elapsed = Elapsed
 
+    @property
+    def NodeName(self):
+        """工作流节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def ReplyIndex(self):
+        """用于展示思考放在哪个回复气泡中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ReplyIndex
+
+    @ReplyIndex.setter
+    def ReplyIndex(self, ReplyIndex):
+        self._ReplyIndex = ReplyIndex
+
 
     def _deserialize(self, params):
         self._Index = params.get("Index")
@@ -184,6 +216,8 @@ class AgentProcedure(AbstractModel):
         self._Switch = params.get("Switch")
         self._WorkflowName = params.get("WorkflowName")
         self._Elapsed = params.get("Elapsed")
+        self._NodeName = params.get("NodeName")
+        self._ReplyIndex = params.get("ReplyIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

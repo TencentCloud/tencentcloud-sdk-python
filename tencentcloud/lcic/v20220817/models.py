@@ -269,22 +269,16 @@ class AppConfig(AbstractModel):
         :param _ApplicationId: 应用ID
         :type ApplicationId: str
         :param _AppName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
         :param _State: 应用状态 1正常 2停用
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: int
         :param _AppVersion: 1试用 2轻量版 3标准版 4旗舰版
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppVersion: int
         :param _CreatedAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _Callback: 回调
-注意：此字段可能返回 null，表示取不到有效值。
         :type Callback: str
         :param _CallbackKey: 回调Key
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackKey: str
         """
         self._ApplicationId = None
@@ -309,7 +303,6 @@ class AppConfig(AbstractModel):
     @property
     def AppName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppName
@@ -321,7 +314,6 @@ class AppConfig(AbstractModel):
     @property
     def State(self):
         """应用状态 1正常 2停用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._State
@@ -333,7 +325,6 @@ class AppConfig(AbstractModel):
     @property
     def AppVersion(self):
         """1试用 2轻量版 3标准版 4旗舰版
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppVersion
@@ -345,7 +336,6 @@ class AppConfig(AbstractModel):
     @property
     def CreatedAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -357,7 +347,6 @@ class AppConfig(AbstractModel):
     @property
     def Callback(self):
         """回调
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Callback
@@ -369,7 +358,6 @@ class AppConfig(AbstractModel):
     @property
     def CallbackKey(self):
         """回调Key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CallbackKey
@@ -501,7 +489,6 @@ class BackgroundPictureConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: 背景图片的url
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self._Url = None
@@ -509,7 +496,6 @@ class BackgroundPictureConfig(AbstractModel):
     @property
     def Url(self):
         """背景图片的url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url

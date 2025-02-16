@@ -1609,6 +1609,8 @@ class CreateDisksRequest(AbstractModel):
         :type DiskCount: int
         :param _ThroughputPerformance: 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
         :type ThroughputPerformance: int
+        :param _KmsKeyId: 可选参数。购买加密盘时自定义密钥， 当传入该参数时, Encrypt入参不为空
+        :type KmsKeyId: str
         :param _DiskSize: 云硬盘大小，单位为GiB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小</li><br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小</li><br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。</li>
         :type DiskSize: int
         :param _Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
@@ -1638,6 +1640,7 @@ class CreateDisksRequest(AbstractModel):
         self._SnapshotId = None
         self._DiskCount = None
         self._ThroughputPerformance = None
+        self._KmsKeyId = None
         self._DiskSize = None
         self._Shareable = None
         self._ClientToken = None
@@ -1736,6 +1739,17 @@ class CreateDisksRequest(AbstractModel):
     @ThroughputPerformance.setter
     def ThroughputPerformance(self, ThroughputPerformance):
         self._ThroughputPerformance = ThroughputPerformance
+
+    @property
+    def KmsKeyId(self):
+        """可选参数。购买加密盘时自定义密钥， 当传入该参数时, Encrypt入参不为空
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
 
     @property
     def DiskSize(self):
@@ -1864,6 +1878,7 @@ class CreateDisksRequest(AbstractModel):
         self._SnapshotId = params.get("SnapshotId")
         self._DiskCount = params.get("DiskCount")
         self._ThroughputPerformance = params.get("ThroughputPerformance")
+        self._KmsKeyId = params.get("KmsKeyId")
         self._DiskSize = params.get("DiskSize")
         self._Shareable = params.get("Shareable")
         self._ClientToken = params.get("ClientToken")

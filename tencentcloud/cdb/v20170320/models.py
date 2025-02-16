@@ -2878,29 +2878,37 @@ class AuditRuleTemplateInfo(AbstractModel):
 
 
 class AutoStrategy(AbstractModel):
-    """CPU弹性扩容的自动扩容策略
+    """CPU 弹性扩容的自动扩容策略。
 
     """
 
     def __init__(self):
         r"""
-        :param _ExpandThreshold: 自动扩容阈值，可选值70、80、90，代表CPU利用率达到70%、80%、90%时后台进行自动扩容
+        :param _ExpandThreshold: 自动扩容阈值，可选值40、50、60、70、80、90，代表 CPU 利用率达到40%、50%、60%、70%、80%、90%时后台进行自动扩容。
         :type ExpandThreshold: int
-        :param _ExpandPeriod: 自动扩容观测周期，单位是分钟，可选值1、3、5、10、15、30。后台会按照配置的周期进行扩容判断。
-        :type ExpandPeriod: int
         :param _ShrinkThreshold: 自动缩容阈值，可选值10、20、30，代表CPU利用率达到10%、20%、30%时后台进行自动缩容
         :type ShrinkThreshold: int
+        :param _ExpandPeriod: 自动扩容观测周期，单位是分钟，可选值1、3、5、10、15、30。后台会按照配置的周期进行扩容判断。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpandPeriod: int
         :param _ShrinkPeriod: 自动缩容观测周期，单位是分钟，可选值5、10、15、30。后台会按照配置的周期进行缩容判断。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ShrinkPeriod: int
+        :param _ExpandSecondPeriod: 弹性扩容观测周期（秒级）
+        :type ExpandSecondPeriod: int
+        :param _ShrinkSecondPeriod: 缩容观测周期（秒级）
+        :type ShrinkSecondPeriod: int
         """
         self._ExpandThreshold = None
-        self._ExpandPeriod = None
         self._ShrinkThreshold = None
+        self._ExpandPeriod = None
         self._ShrinkPeriod = None
+        self._ExpandSecondPeriod = None
+        self._ShrinkSecondPeriod = None
 
     @property
     def ExpandThreshold(self):
-        """自动扩容阈值，可选值70、80、90，代表CPU利用率达到70%、80%、90%时后台进行自动扩容
+        """自动扩容阈值，可选值40、50、60、70、80、90，代表 CPU 利用率达到40%、50%、60%、70%、80%、90%时后台进行自动扩容。
         :rtype: int
         """
         return self._ExpandThreshold
@@ -2908,17 +2916,6 @@ class AutoStrategy(AbstractModel):
     @ExpandThreshold.setter
     def ExpandThreshold(self, ExpandThreshold):
         self._ExpandThreshold = ExpandThreshold
-
-    @property
-    def ExpandPeriod(self):
-        """自动扩容观测周期，单位是分钟，可选值1、3、5、10、15、30。后台会按照配置的周期进行扩容判断。
-        :rtype: int
-        """
-        return self._ExpandPeriod
-
-    @ExpandPeriod.setter
-    def ExpandPeriod(self, ExpandPeriod):
-        self._ExpandPeriod = ExpandPeriod
 
     @property
     def ShrinkThreshold(self):
@@ -2932,22 +2929,67 @@ class AutoStrategy(AbstractModel):
         self._ShrinkThreshold = ShrinkThreshold
 
     @property
+    def ExpandPeriod(self):
+        warnings.warn("parameter `ExpandPeriod` is deprecated", DeprecationWarning) 
+
+        """自动扩容观测周期，单位是分钟，可选值1、3、5、10、15、30。后台会按照配置的周期进行扩容判断。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpandPeriod
+
+    @ExpandPeriod.setter
+    def ExpandPeriod(self, ExpandPeriod):
+        warnings.warn("parameter `ExpandPeriod` is deprecated", DeprecationWarning) 
+
+        self._ExpandPeriod = ExpandPeriod
+
+    @property
     def ShrinkPeriod(self):
+        warnings.warn("parameter `ShrinkPeriod` is deprecated", DeprecationWarning) 
+
         """自动缩容观测周期，单位是分钟，可选值5、10、15、30。后台会按照配置的周期进行缩容判断。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ShrinkPeriod
 
     @ShrinkPeriod.setter
     def ShrinkPeriod(self, ShrinkPeriod):
+        warnings.warn("parameter `ShrinkPeriod` is deprecated", DeprecationWarning) 
+
         self._ShrinkPeriod = ShrinkPeriod
+
+    @property
+    def ExpandSecondPeriod(self):
+        """弹性扩容观测周期（秒级）
+        :rtype: int
+        """
+        return self._ExpandSecondPeriod
+
+    @ExpandSecondPeriod.setter
+    def ExpandSecondPeriod(self, ExpandSecondPeriod):
+        self._ExpandSecondPeriod = ExpandSecondPeriod
+
+    @property
+    def ShrinkSecondPeriod(self):
+        """缩容观测周期（秒级）
+        :rtype: int
+        """
+        return self._ShrinkSecondPeriod
+
+    @ShrinkSecondPeriod.setter
+    def ShrinkSecondPeriod(self, ShrinkSecondPeriod):
+        self._ShrinkSecondPeriod = ShrinkSecondPeriod
 
 
     def _deserialize(self, params):
         self._ExpandThreshold = params.get("ExpandThreshold")
-        self._ExpandPeriod = params.get("ExpandPeriod")
         self._ShrinkThreshold = params.get("ShrinkThreshold")
+        self._ExpandPeriod = params.get("ExpandPeriod")
         self._ShrinkPeriod = params.get("ShrinkPeriod")
+        self._ExpandSecondPeriod = params.get("ExpandSecondPeriod")
+        self._ShrinkSecondPeriod = params.get("ShrinkSecondPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

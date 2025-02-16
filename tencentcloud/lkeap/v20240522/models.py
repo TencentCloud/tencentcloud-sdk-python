@@ -4747,6 +4747,116 @@ class UploadDocRealtimeRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID
+        :type KnowledgeBaseId: str
+        :param _FileName: 文件名，可选。
+**需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
+        :type FileName: str
+        :param _FileType: 文件类型。
+**支持的文件类型：**
+- `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
+
+**支持的文件大小：**
+ - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M 
+ - `TXT`、`MD` 最大10M 
+ - 其他 最大20M
+        :type FileType: str
+        :param _FileUrl: 文件的 URL 地址。
+文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
+        :type FileUrl: str
+        :param _ExpireTime: 过期时间的秒数，最长24小时，默认24小时
+        :type ExpireTime: int
+        """
+        self._KnowledgeBaseId = None
+        self._FileName = None
+        self._FileType = None
+        self._FileUrl = None
+        self._ExpireTime = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def FileName(self):
+        """文件名，可选。
+**需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        """文件类型。
+**支持的文件类型：**
+- `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
+
+**支持的文件大小：**
+ - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M 
+ - `TXT`、`MD` 最大10M 
+ - 其他 最大20M
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        """文件的 URL 地址。
+文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def ExpireTime(self):
+        """过期时间的秒数，最长24小时，默认24小时
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class UploadDocRealtimeResponse(AbstractModel):
     """UploadDocRealtime返回参数结构体

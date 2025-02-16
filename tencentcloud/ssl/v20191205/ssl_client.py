@@ -165,7 +165,7 @@ class SslClient(AbstractClient):
 
 
     def CheckCertificateDomainVerification(self, request):
-        """检查证书域名验证
+        """检查证书域名验证结果
 
         :param request: Request instance for CheckCertificateDomainVerification.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateDomainVerificationRequest`
@@ -211,7 +211,7 @@ class SslClient(AbstractClient):
 
 
     def CommitCertificateInformation(self, request):
-        """提交证书订单到CA机构。
+        """付费证书提交订单； 本接口不维护新功能， 可使用新接口进行提交， [CertificateOrderSubmit](https://cloud.tencent.com/document/product/400/116032)
 
         :param request: Request instance for CommitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CommitCertificateInformationRequest`
@@ -448,7 +448,7 @@ class SslClient(AbstractClient):
 
 
     def DeployCertificateRecordRollback(self, request):
-        """云资源部署一键回滚
+        """云资源部署成功记录回滚， 部署失败的记录不会回滚； 接口调用成功后， 会创建一个用于回滚的部署任务， 并返回该任务的ID
 
         :param request: Request instance for DeployCertificateRecordRollback.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateRecordRollbackRequest`
@@ -977,7 +977,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUpdateRecordDetail(self, request):
-        """查询证书云资源更新记录详情列表
+        """查询证书云资源更新记录详情
 
         :param request: Request instance for DescribeHostUpdateRecordDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordDetailRequest`
@@ -1299,7 +1299,7 @@ class SslClient(AbstractClient):
 
 
     def SubmitCertificateInformation(self, request):
-        """提交证书资料。输入参数信息可以分多次提交，但提交的证书资料应最低限度保持完整。
+        """付费证书提交资料； 本接口不维护新功能， 可使用新接口进行资料提交， [CertificateInfoSubmit](https://cloud.tencent.com/document/product/400/116033)
 
         :param request: Request instance for SubmitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.SubmitCertificateInformationRequest`
@@ -1368,7 +1368,7 @@ class SslClient(AbstractClient):
 
 
     def UpdateCertificateRecordRollback(self, request):
-        """云资源更新一键回滚
+        """云资源更新成功记录回滚， 只对更新已成功的记录回滚
 
         :param request: Request instance for UpdateCertificateRecordRollback.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRollbackRequest`
