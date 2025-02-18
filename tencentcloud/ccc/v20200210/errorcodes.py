@@ -14,6 +14,12 @@
 # limitations under the License.
 
 
+# 无可用的AI并发许可，请去控制台进行购买
+FAILEDOPERATION_AICONCURRENTNOPACKAGE = 'FailedOperation.AIConcurrentNoPackage'
+
+# AI并发超频
+FAILEDOPERATION_AICONCURRENTOVERFREQUENCY = 'FailedOperation.AIConcurrentOverFrequency'
+
 # 外呼失败。
 FAILEDOPERATION_CALLOUTFAILED = 'FailedOperation.CallOutFailed'
 

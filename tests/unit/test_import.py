@@ -1314,6 +1314,11 @@ def test_import_tourism():
     from tencentcloud.tourism.v20230215 import models
 
 
+def test_import_trabbit():
+    from tencentcloud.trabbit.v20230418 import trabbit_client
+    from tencentcloud.trabbit.v20230418 import models
+
+
 def test_import_trdp():
     from tencentcloud.trdp.v20220726 import trdp_client
     from tencentcloud.trdp.v20220726 import models

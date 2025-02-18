@@ -991,6 +991,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
         :type FileUrl: str
         :param _FileBase64: 文件的 Base64 值。
+支持的文件类型： PNG、JPG、JPEG、PDF、GIF、BMP、TIFF
 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
 支持的图片像素：单边介于20-10000px之间。
 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
@@ -1048,6 +1049,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
     @property
     def FileBase64(self):
         """文件的 Base64 值。
+支持的文件类型： PNG、JPG、JPEG、PDF、GIF、BMP、TIFF
 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
 支持的图片像素：单边介于20-10000px之间。
 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
@@ -4895,8 +4897,8 @@ class UploadDocRequest(AbstractModel):
         r"""
         :param _KnowledgeBaseId: 知识库ID
         :type KnowledgeBaseId: str
-        :param _FileName: 文件名，可选。
-**需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
+        :param _FileName: 文件名。
+**需带文件类型后缀**
         :type FileName: str
         :param _FileType: 文件类型。
 
@@ -4941,8 +4943,8 @@ class UploadDocRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """文件名，可选。
-**需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
+        """文件名。
+**需带文件类型后缀**
         :rtype: str
         """
         return self._FileName

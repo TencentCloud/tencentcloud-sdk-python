@@ -693,14 +693,12 @@ class Blueprint(AbstractModel):
         :param _RequiredMemorySize: 镜像所需内存大小, 单位: GB
         :type RequiredMemorySize: int
         :param _ImageId: CVM镜像共享到轻量应用服务器轻量应用服务器后的CVM镜像ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
         :param _CommunityUrl: 官方网站Url。
         :type CommunityUrl: str
         :param _GuideUrl: 指导文章Url。
         :type GuideUrl: str
         :param _SceneIdSet: 镜像关联使用场景Id列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneIdSet: list of str
         :param _DockerVersion: Docker版本号。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -901,7 +899,6 @@ class Blueprint(AbstractModel):
     @property
     def ImageId(self):
         """CVM镜像共享到轻量应用服务器轻量应用服务器后的CVM镜像ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageId
@@ -935,7 +932,6 @@ class Blueprint(AbstractModel):
     @property
     def SceneIdSet(self):
         """镜像关联使用场景Id列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SceneIdSet
@@ -1199,7 +1195,6 @@ class Bundle(AbstractModel):
 <li>BEFAST_BUNDLE：蜂驰型 </li>
         :type BundleType: str
         :param _BundleTypeDescription: 套餐类型描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BundleTypeDescription: str
         :param _BundleDisplayLabel: 套餐展示标签.
 取值范围:
@@ -1381,7 +1376,6 @@ class Bundle(AbstractModel):
     @property
     def BundleTypeDescription(self):
         """套餐类型描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BundleTypeDescription
@@ -1722,8 +1716,10 @@ class ContainerEnv(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 环境变量Key
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 环境变量值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -1732,6 +1728,7 @@ class ContainerEnv(AbstractModel):
     @property
     def Key(self):
         """环境变量Key
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -1743,6 +1740,7 @@ class ContainerEnv(AbstractModel):
     @property
     def Value(self):
         """环境变量值
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -3032,7 +3030,6 @@ class DataDiskPrice(AbstractModel):
         :param _DiscountPrice: 折后总价。
         :type DiscountPrice: float
         :param _InstanceId: 数据盘挂载的实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         """
         self._DiskId = None
@@ -3100,7 +3097,6 @@ class DataDiskPrice(AbstractModel):
     @property
     def InstanceId(self):
         """数据盘挂载的实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -9612,13 +9608,10 @@ class DiskBackup(AbstractModel):
         :param _Percent: 创建或回滚云硬盘备份点进度百分比，成功后此字段取值为 100。
         :type Percent: int
         :param _LatestOperation: 上一次操作
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperation: str
         :param _LatestOperationState: 上一次操作状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationState: str
         :param _LatestOperationRequestId: 上一次请求ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationRequestId: str
         :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
@@ -9720,7 +9713,6 @@ class DiskBackup(AbstractModel):
     @property
     def LatestOperation(self):
         """上一次操作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperation
@@ -9732,7 +9724,6 @@ class DiskBackup(AbstractModel):
     @property
     def LatestOperationState(self):
         """上一次操作状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperationState
@@ -9744,7 +9735,6 @@ class DiskBackup(AbstractModel):
     @property
     def LatestOperationRequestId(self):
         """上一次请求ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperationRequestId
@@ -10283,7 +10273,6 @@ class DockerActivity(AbstractModel):
         :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
         :type CreatedTime: str
         :param _EndTime: 结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._ActivityId = None
@@ -10367,7 +10356,6 @@ class DockerActivity(AbstractModel):
     @property
     def EndTime(self):
         """结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -10714,10 +10702,8 @@ class DockerContainerPublishPort(AbstractModel):
         :param _ContainerPort: 容器端口
         :type ContainerPort: int
         :param _Ip: 对外绑定IP，默认0.0.0.0
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Protocol: 协议，默认tcp，支持tcp/udp/sctp
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         """
         self._HostPort = None
@@ -10750,7 +10736,6 @@ class DockerContainerPublishPort(AbstractModel):
     @property
     def Ip(self):
         """对外绑定IP，默认0.0.0.0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -10762,7 +10747,6 @@ class DockerContainerPublishPort(AbstractModel):
     @property
     def Protocol(self):
         """协议，默认tcp，支持tcp/udp/sctp
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -12477,7 +12461,6 @@ FAILED：表示操作失败
         :param _InitInvocationId: 创建实例后自动执行TAT命令的调用ID。
         :type InitInvocationId: str
         :param _InstanceViolationDetail: 实例违规详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceViolationDetail: :class:`tencentcloud.lighthouse.v20200324.models.InstanceViolationDetail`
         """
         self._InstanceId = None
@@ -12876,7 +12859,6 @@ FAILED：表示操作失败
     @property
     def InstanceViolationDetail(self):
         """实例违规详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceViolationDetail`
         """
         return self._InstanceViolationDetail
@@ -13003,7 +12985,6 @@ class InstanceDeniedActions(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _DeniedActions: 操作限制列表。
         :type DeniedActions: list of DeniedAction
@@ -13014,7 +12995,6 @@ class InstanceDeniedActions(AbstractModel):
     @property
     def InstanceId(self):
         """实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -13120,7 +13100,6 @@ class InstancePrice(AbstractModel):
         :param _DiscountPrice: 折后价。
         :type DiscountPrice: float
         :param _Currency: 价格货币单位。取值范围CNY:人民币。USD:美元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Currency: str
         """
         self._OriginalBundlePrice = None
@@ -13176,7 +13155,6 @@ class InstancePrice(AbstractModel):
     @property
     def Currency(self):
         """价格货币单位。取值范围CNY:人民币。USD:美元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Currency
@@ -13210,10 +13188,8 @@ class InstancePriceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstancePrice: 询价信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
         :param _DiscountDetail: 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
         :type DiscountDetail: list of DiscountDetail
@@ -13225,7 +13201,6 @@ class InstancePriceDetail(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -13237,7 +13212,6 @@ class InstancePriceDetail(AbstractModel):
     @property
     def InstancePrice(self):
         """询价信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
         """
         return self._InstancePrice
@@ -18407,10 +18381,8 @@ class TotalPrice(AbstractModel):
     def __init__(self):
         r"""
         :param _OriginalPrice: 原始总计价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
         :param _DiscountPrice: 折扣总计价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         """
         self._OriginalPrice = None
@@ -18419,7 +18391,6 @@ class TotalPrice(AbstractModel):
     @property
     def OriginalPrice(self):
         """原始总计价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._OriginalPrice
@@ -18431,7 +18402,6 @@ class TotalPrice(AbstractModel):
     @property
     def DiscountPrice(self):
         """折扣总计价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountPrice
@@ -18473,15 +18443,12 @@ class TrafficPackage(AbstractModel):
         :type TrafficOverflow: int
         :param _StartTime: 流量包生效周期开始时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 流量包生效周期结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Deadline: 流量包到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deadline: str
         :param _Status: 流量包状态：
 <li>NETWORK_NORMAL：正常</li>
@@ -18557,7 +18524,6 @@ class TrafficPackage(AbstractModel):
     def StartTime(self):
         """流量包生效周期开始时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -18570,7 +18536,6 @@ class TrafficPackage(AbstractModel):
     def EndTime(self):
         """流量包生效周期结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -18583,7 +18548,6 @@ class TrafficPackage(AbstractModel):
     def Deadline(self):
         """流量包到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Deadline

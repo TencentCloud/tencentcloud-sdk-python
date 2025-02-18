@@ -10403,6 +10403,77 @@ class GeneralBasicOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GeneralCardWarnInfo(AbstractModel):
+    """通用卡证鉴伪告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsWarn: 是否存在该告警
+        :type IsWarn: bool
+        :param _RiskConfidence: 风险程度
+        :type RiskConfidence: float
+        :param _Polygon: 告警位置四点坐标
+        :type Polygon: list of Polygon
+        """
+        self._IsWarn = None
+        self._RiskConfidence = None
+        self._Polygon = None
+
+    @property
+    def IsWarn(self):
+        """是否存在该告警
+        :rtype: bool
+        """
+        return self._IsWarn
+
+    @IsWarn.setter
+    def IsWarn(self, IsWarn):
+        self._IsWarn = IsWarn
+
+    @property
+    def RiskConfidence(self):
+        """风险程度
+        :rtype: float
+        """
+        return self._RiskConfidence
+
+    @RiskConfidence.setter
+    def RiskConfidence(self, RiskConfidence):
+        self._RiskConfidence = RiskConfidence
+
+    @property
+    def Polygon(self):
+        """告警位置四点坐标
+        :rtype: list of Polygon
+        """
+        return self._Polygon
+
+    @Polygon.setter
+    def Polygon(self, Polygon):
+        self._Polygon = Polygon
+
+
+    def _deserialize(self, params):
+        self._IsWarn = params.get("IsWarn")
+        self._RiskConfidence = params.get("RiskConfidence")
+        if params.get("Polygon") is not None:
+            self._Polygon = []
+            for item in params.get("Polygon"):
+                obj = Polygon()
+                obj._deserialize(item)
+                self._Polygon.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GeneralEfficientOCRRequest(AbstractModel):
     """GeneralEfficientOCR请求参数结构体
 
@@ -23604,6 +23675,287 @@ class RecognizeFormulaOCRResponse(AbstractModel):
                 obj = TextFormulaInfo()
                 obj._deserialize(item)
                 self._FormulaInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class RecognizeGeneralCardWarnRequest(AbstractModel):
+    """RecognizeGeneralCardWarn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 图片链接
+        :type ImageUrl: str
+        :param _ImageBase64: 图片base64
+        :type ImageBase64: str
+        :param _CardType: 卡证类型参数，包含以下范围：  
+General：通用卡证
+IDCard：身份证 
+Passport：护照 
+BankCard：银行卡
+VehicleLicense：行驶证
+DriverLicense：驾驶证
+BizLicense：营业执照 
+HmtResidentPermit：港澳台居住证
+ForeignPermanentResident：外国人永居证
+MainlandPermit：港澳台来往内地通行证
+        :type CardType: str
+        :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type IsPdf: bool
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._CardType = None
+        self._IsPdf = None
+        self._PdfPageNumber = None
+
+    @property
+    def ImageUrl(self):
+        """图片链接
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        """图片base64
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def CardType(self):
+        """卡证类型参数，包含以下范围：  
+General：通用卡证
+IDCard：身份证 
+Passport：护照 
+BankCard：银行卡
+VehicleLicense：行驶证
+DriverLicense：驾驶证
+BizLicense：营业执照 
+HmtResidentPermit：港澳台居住证
+ForeignPermanentResident：外国人永居证
+MainlandPermit：港澳台来往内地通行证
+        :rtype: str
+        """
+        return self._CardType
+
+    @CardType.setter
+    def CardType(self, CardType):
+        self._CardType = CardType
+
+    @property
+    def IsPdf(self):
+        """是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :rtype: bool
+        """
+        return self._IsPdf
+
+    @IsPdf.setter
+    def IsPdf(self, IsPdf):
+        self._IsPdf = IsPdf
+
+    @property
+    def PdfPageNumber(self):
+        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._CardType = params.get("CardType")
+        self._IsPdf = params.get("IsPdf")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeGeneralCardWarnResponse(AbstractModel):
+    """RecognizeGeneralCardWarn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CardType: 卡证类型参数，包含以下范围： 
+General：通用卡证
+IDCard：身份证 
+Passport：护照 
+BankCard：银行卡
+VehicleLicense：行驶证
+DriverLicense：驾驶证
+BizLicense：营业执照 
+HmtResidentPermit：港澳台居住证
+ForeignPermanentResident：外国人永居证
+MainlandPermit：港澳台来往内地通行证
+        :type CardType: str
+        :param _Blur: 模糊信息
+        :type Blur: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _BorderIncomplete: 边框不完整信息
+        :type BorderIncomplete: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Copy: 复印件信息
+        :type Copy: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Ps: ps篡改信息
+        :type Ps: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Reflection: 反光信息
+        :type Reflection: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Reprint: 翻拍件信息
+        :type Reprint: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CardType = None
+        self._Blur = None
+        self._BorderIncomplete = None
+        self._Copy = None
+        self._Ps = None
+        self._Reflection = None
+        self._Reprint = None
+        self._RequestId = None
+
+    @property
+    def CardType(self):
+        """卡证类型参数，包含以下范围： 
+General：通用卡证
+IDCard：身份证 
+Passport：护照 
+BankCard：银行卡
+VehicleLicense：行驶证
+DriverLicense：驾驶证
+BizLicense：营业执照 
+HmtResidentPermit：港澳台居住证
+ForeignPermanentResident：外国人永居证
+MainlandPermit：港澳台来往内地通行证
+        :rtype: str
+        """
+        return self._CardType
+
+    @CardType.setter
+    def CardType(self, CardType):
+        self._CardType = CardType
+
+    @property
+    def Blur(self):
+        """模糊信息
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Blur
+
+    @Blur.setter
+    def Blur(self, Blur):
+        self._Blur = Blur
+
+    @property
+    def BorderIncomplete(self):
+        """边框不完整信息
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._BorderIncomplete
+
+    @BorderIncomplete.setter
+    def BorderIncomplete(self, BorderIncomplete):
+        self._BorderIncomplete = BorderIncomplete
+
+    @property
+    def Copy(self):
+        """复印件信息
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Copy
+
+    @Copy.setter
+    def Copy(self, Copy):
+        self._Copy = Copy
+
+    @property
+    def Ps(self):
+        """ps篡改信息
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Ps
+
+    @Ps.setter
+    def Ps(self, Ps):
+        self._Ps = Ps
+
+    @property
+    def Reflection(self):
+        """反光信息
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Reflection
+
+    @Reflection.setter
+    def Reflection(self, Reflection):
+        self._Reflection = Reflection
+
+    @property
+    def Reprint(self):
+        """翻拍件信息
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Reprint
+
+    @Reprint.setter
+    def Reprint(self, Reprint):
+        self._Reprint = Reprint
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CardType = params.get("CardType")
+        if params.get("Blur") is not None:
+            self._Blur = GeneralCardWarnInfo()
+            self._Blur._deserialize(params.get("Blur"))
+        if params.get("BorderIncomplete") is not None:
+            self._BorderIncomplete = GeneralCardWarnInfo()
+            self._BorderIncomplete._deserialize(params.get("BorderIncomplete"))
+        if params.get("Copy") is not None:
+            self._Copy = GeneralCardWarnInfo()
+            self._Copy._deserialize(params.get("Copy"))
+        if params.get("Ps") is not None:
+            self._Ps = GeneralCardWarnInfo()
+            self._Ps._deserialize(params.get("Ps"))
+        if params.get("Reflection") is not None:
+            self._Reflection = GeneralCardWarnInfo()
+            self._Reflection._deserialize(params.get("Reflection"))
+        if params.get("Reprint") is not None:
+            self._Reprint = GeneralCardWarnInfo()
+            self._Reprint._deserialize(params.get("Reprint"))
         self._RequestId = params.get("RequestId")
 
 

@@ -338,6 +338,9 @@ class FuseFaceRequest(AbstractModel):
         :param _RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
         :type RspImgType: str
         :param _MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。不能超过6个。
+●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于4096*4096（单边限制）。
+●图片大小限制：base64 编码后大小不可超过5M， url不超过10M。
+●支持图片格式：支持jpg或png
         :type MergeInfos: list of MergeInfo
         :param _FuseProfileDegree: 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
 若此参数不填写，则使用人脸融合控制台中脸型参数数值。（换脸版算法暂不支持此参数调整）
@@ -403,6 +406,9 @@ class FuseFaceRequest(AbstractModel):
     @property
     def MergeInfos(self):
         """用户人脸图片、素材模板图的人脸位置信息。不能超过6个。
+●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于4096*4096（单边限制）。
+●图片大小限制：base64 编码后大小不可超过5M， url不超过10M。
+●支持图片格式：支持jpg或png
         :rtype: list of MergeInfo
         """
         return self._MergeInfos
@@ -560,12 +566,15 @@ class FuseFaceUltraRequest(AbstractModel):
         :type MergeInfos: list of MergeInfo
         :param _ModelUrl: 素材模版图片的url地址。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。
+●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
 ●图片格式：支持jpg或png
+
         :type ModelUrl: str
         :param _ModelImage: 素材模版图片base64数据。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。
+●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
 ●支持图片格式：支持jpg或png
         :type ModelImage: str
         :param _FusionUltraParam: 图片人脸融合（专业版）效果参数。可用于设置拉脸、人脸增强、磨皮、牙齿增强、妆容迁移等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
@@ -624,8 +633,10 @@ class FuseFaceUltraRequest(AbstractModel):
     def ModelUrl(self):
         """素材模版图片的url地址。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。
+●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
 ●图片格式：支持jpg或png
+
         :rtype: str
         """
         return self._ModelUrl
@@ -638,7 +649,8 @@ class FuseFaceUltraRequest(AbstractModel):
     def ModelImage(self):
         """素材模版图片base64数据。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。
+●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
 ●支持图片格式：支持jpg或png
         :rtype: str
         """

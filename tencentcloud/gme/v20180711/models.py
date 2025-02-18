@@ -3056,10 +3056,8 @@ class DescribeScanResult(AbstractModel):
         :param _Live: 是否为流
         :type Live: bool
         :param _Msg: 业务返回描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _ScanPiece: 检测结果，Code 为 0 时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPiece: list of ScanPiece
         :param _ScanStartTime: 提交检测的时间戳
         :type ScanStartTime: int
@@ -3149,7 +3147,6 @@ class DescribeScanResult(AbstractModel):
     @property
     def Msg(self):
         """业务返回描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -3161,7 +3158,6 @@ class DescribeScanResult(AbstractModel):
     @property
     def ScanPiece(self):
         """检测结果，Code 为 0 时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScanPiece
         """
         return self._ScanPiece
@@ -4825,13 +4821,10 @@ class RoomUser(AbstractModel):
         :param _RoomId: 房间id
         :type RoomId: int
         :param _Uins: 房间里用户uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uins: list of int non-negative
         :param _StrRoomId: 字符串房间id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrRoomId: str
         :param _StrUins: 房间里用户字符串uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrUins: list of str
         """
         self._RoomId = None
@@ -4853,7 +4846,6 @@ class RoomUser(AbstractModel):
     @property
     def Uins(self):
         """房间里用户uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._Uins
@@ -4865,7 +4857,6 @@ class RoomUser(AbstractModel):
     @property
     def StrRoomId(self):
         """字符串房间id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StrRoomId
@@ -4877,7 +4868,6 @@ class RoomUser(AbstractModel):
     @property
     def StrUins(self):
         """房间里用户字符串uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._StrUins
@@ -5006,32 +4996,24 @@ class ScanPiece(AbstractModel):
     def __init__(self):
         r"""
         :param _DumpUrl: 流检测时返回，音频转存地址，保留30min
-注意：此字段可能返回 null，表示取不到有效值。
         :type DumpUrl: str
         :param _HitFlag: 是否违规
         :type HitFlag: bool
         :param _MainType: 违规主要类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type MainType: str
         :param _ScanDetail: 语音检测详情
         :type ScanDetail: list of ScanDetail
         :param _RoomId: gme实时语音房间ID，透传任务传入时的RoomId
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoomId: str
         :param _OpenId: gme实时语音用户ID，透传任务传入时的OpenId
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         :param _Info: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Info: str
         :param _Offset: 流检测时分片在流中的偏移时间，单位毫秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         :param _Duration: 流检测时分片时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param _PieceStartTime: 分片开始检测时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PieceStartTime: int
         """
         self._DumpUrl = None
@@ -5048,7 +5030,6 @@ class ScanPiece(AbstractModel):
     @property
     def DumpUrl(self):
         """流检测时返回，音频转存地址，保留30min
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DumpUrl
@@ -5071,7 +5052,6 @@ class ScanPiece(AbstractModel):
     @property
     def MainType(self):
         """违规主要类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MainType
@@ -5094,7 +5074,6 @@ class ScanPiece(AbstractModel):
     @property
     def RoomId(self):
         """gme实时语音房间ID，透传任务传入时的RoomId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoomId
@@ -5106,7 +5085,6 @@ class ScanPiece(AbstractModel):
     @property
     def OpenId(self):
         """gme实时语音用户ID，透传任务传入时的OpenId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OpenId
@@ -5118,7 +5096,6 @@ class ScanPiece(AbstractModel):
     @property
     def Info(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Info
@@ -5130,7 +5107,6 @@ class ScanPiece(AbstractModel):
     @property
     def Offset(self):
         """流检测时分片在流中的偏移时间，单位毫秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offset
@@ -5142,7 +5118,6 @@ class ScanPiece(AbstractModel):
     @property
     def Duration(self):
         """流检测时分片时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Duration
@@ -5154,7 +5129,6 @@ class ScanPiece(AbstractModel):
     @property
     def PieceStartTime(self):
         """分片开始检测时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PieceStartTime
@@ -6430,7 +6404,6 @@ class VoiceFilterConf(AbstractModel):
         :param _Status: 语音过滤服务开关，取值：open/close
         :type Status: str
         :param _SceneInfos: 场景配置信息，如开关状态，回调地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneInfos: list of SceneInfo
         """
         self._Status = None
@@ -6450,7 +6423,6 @@ class VoiceFilterConf(AbstractModel):
     @property
     def SceneInfos(self):
         """场景配置信息，如开关状态，回调地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SceneInfo
         """
         return self._SceneInfos

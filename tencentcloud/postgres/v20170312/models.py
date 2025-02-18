@@ -565,11 +565,32 @@ class BackupPlan(AbstractModel):
         :type MinBackupStartTime: str
         :param _MaxBackupStartTime: 开始备份的最晚时间
         :type MaxBackupStartTime: str
+        :param _PlanId: 备份计划ID
+        :type PlanId: str
+        :param _PlanName: 备份计划自定义名称。
+        :type PlanName: str
+        :param _LogBackupRetentionPeriod: 日志备份保留时长。
+        :type LogBackupRetentionPeriod: int
+        :param _CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param _UpdatedTime: 最近一次的修改时间。
+        :type UpdatedTime: str
+        :param _PlanType: 备份计划类型。系统默认创建的为default，自定义的为custom。
+        :type PlanType: str
+        :param _BackupPeriodType: 备份周期类型。当前支持week、month。
+        :type BackupPeriodType: str
         """
         self._BackupPeriod = None
         self._BaseBackupRetentionPeriod = None
         self._MinBackupStartTime = None
         self._MaxBackupStartTime = None
+        self._PlanId = None
+        self._PlanName = None
+        self._LogBackupRetentionPeriod = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._PlanType = None
+        self._BackupPeriodType = None
 
     @property
     def BackupPeriod(self):
@@ -615,12 +636,96 @@ class BackupPlan(AbstractModel):
     def MaxBackupStartTime(self, MaxBackupStartTime):
         self._MaxBackupStartTime = MaxBackupStartTime
 
+    @property
+    def PlanId(self):
+        """备份计划ID
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def PlanName(self):
+        """备份计划自定义名称。
+        :rtype: str
+        """
+        return self._PlanName
+
+    @PlanName.setter
+    def PlanName(self, PlanName):
+        self._PlanName = PlanName
+
+    @property
+    def LogBackupRetentionPeriod(self):
+        """日志备份保留时长。
+        :rtype: int
+        """
+        return self._LogBackupRetentionPeriod
+
+    @LogBackupRetentionPeriod.setter
+    def LogBackupRetentionPeriod(self, LogBackupRetentionPeriod):
+        self._LogBackupRetentionPeriod = LogBackupRetentionPeriod
+
+    @property
+    def CreatedTime(self):
+        """创建时间。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        """最近一次的修改时间。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def PlanType(self):
+        """备份计划类型。系统默认创建的为default，自定义的为custom。
+        :rtype: str
+        """
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def BackupPeriodType(self):
+        """备份周期类型。当前支持week、month。
+        :rtype: str
+        """
+        return self._BackupPeriodType
+
+    @BackupPeriodType.setter
+    def BackupPeriodType(self, BackupPeriodType):
+        self._BackupPeriodType = BackupPeriodType
+
 
     def _deserialize(self, params):
         self._BackupPeriod = params.get("BackupPeriod")
         self._BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
         self._MinBackupStartTime = params.get("MinBackupStartTime")
         self._MaxBackupStartTime = params.get("MaxBackupStartTime")
+        self._PlanId = params.get("PlanId")
+        self._PlanName = params.get("PlanName")
+        self._LogBackupRetentionPeriod = params.get("LogBackupRetentionPeriod")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._PlanType = params.get("PlanType")
+        self._BackupPeriodType = params.get("BackupPeriodType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1808,6 +1913,175 @@ class CreateAccountResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBackupPlanRequest(AbstractModel):
+    """CreateBackupPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param _PlanName: 备份计划名称。
+        :type PlanName: str
+        :param _BackupPeriodType: 创建的备份计划类型，当前仅支持month创建。
+        :type BackupPeriodType: str
+        :param _BackupPeriod: 备份的日期，示例是每个月的2号开启备份。
+        :type BackupPeriod: list of str
+        :param _MinBackupStartTime: 备份开始时间，不传跟随默认备份计划。
+        :type MinBackupStartTime: str
+        :param _MaxBackupStartTime: 备份结束时间，不传跟随默认计划。
+        :type MaxBackupStartTime: str
+        :param _BaseBackupRetentionPeriod: 数据备份保留时长，week默认是7,month为30。
+        :type BaseBackupRetentionPeriod: int
+        """
+        self._DBInstanceId = None
+        self._PlanName = None
+        self._BackupPeriodType = None
+        self._BackupPeriod = None
+        self._MinBackupStartTime = None
+        self._MaxBackupStartTime = None
+        self._BaseBackupRetentionPeriod = None
+
+    @property
+    def DBInstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def PlanName(self):
+        """备份计划名称。
+        :rtype: str
+        """
+        return self._PlanName
+
+    @PlanName.setter
+    def PlanName(self, PlanName):
+        self._PlanName = PlanName
+
+    @property
+    def BackupPeriodType(self):
+        """创建的备份计划类型，当前仅支持month创建。
+        :rtype: str
+        """
+        return self._BackupPeriodType
+
+    @BackupPeriodType.setter
+    def BackupPeriodType(self, BackupPeriodType):
+        self._BackupPeriodType = BackupPeriodType
+
+    @property
+    def BackupPeriod(self):
+        """备份的日期，示例是每个月的2号开启备份。
+        :rtype: list of str
+        """
+        return self._BackupPeriod
+
+    @BackupPeriod.setter
+    def BackupPeriod(self, BackupPeriod):
+        self._BackupPeriod = BackupPeriod
+
+    @property
+    def MinBackupStartTime(self):
+        """备份开始时间，不传跟随默认备份计划。
+        :rtype: str
+        """
+        return self._MinBackupStartTime
+
+    @MinBackupStartTime.setter
+    def MinBackupStartTime(self, MinBackupStartTime):
+        self._MinBackupStartTime = MinBackupStartTime
+
+    @property
+    def MaxBackupStartTime(self):
+        """备份结束时间，不传跟随默认计划。
+        :rtype: str
+        """
+        return self._MaxBackupStartTime
+
+    @MaxBackupStartTime.setter
+    def MaxBackupStartTime(self, MaxBackupStartTime):
+        self._MaxBackupStartTime = MaxBackupStartTime
+
+    @property
+    def BaseBackupRetentionPeriod(self):
+        """数据备份保留时长，week默认是7,month为30。
+        :rtype: int
+        """
+        return self._BaseBackupRetentionPeriod
+
+    @BaseBackupRetentionPeriod.setter
+    def BaseBackupRetentionPeriod(self, BaseBackupRetentionPeriod):
+        self._BaseBackupRetentionPeriod = BaseBackupRetentionPeriod
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._PlanName = params.get("PlanName")
+        self._BackupPeriodType = params.get("BackupPeriodType")
+        self._BackupPeriod = params.get("BackupPeriod")
+        self._MinBackupStartTime = params.get("MinBackupStartTime")
+        self._MaxBackupStartTime = params.get("MaxBackupStartTime")
+        self._BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackupPlanResponse(AbstractModel):
+    """CreateBackupPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 备份策略的ID.
+        :type PlanId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PlanId = None
+        self._RequestId = None
+
+    @property
+    def PlanId(self):
+        """备份策略的ID.
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6111,6 +6385,85 @@ class DeleteAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBackupPlanRequest(AbstractModel):
+    """DeleteBackupPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。	
+        :type DBInstanceId: str
+        :param _PlanId: 备份计划的ID。
+        :type PlanId: str
+        """
+        self._DBInstanceId = None
+        self._PlanId = None
+
+    @property
+    def DBInstanceId(self):
+        """实例ID。	
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def PlanId(self):
+        """备份计划的ID。
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupPlanResponse(AbstractModel):
+    """DeleteBackupPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteBaseBackupRequest(AbstractModel):
     """DeleteBaseBackup请求参数结构体
 
@@ -8964,6 +9317,115 @@ class DescribeDBInstanceParametersResponse(AbstractModel):
                 obj = ParamInfo()
                 obj._deserialize(item)
                 self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceSSLConfigRequest(AbstractModel):
+    """DescribeDBInstanceSSLConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID，形如postgres-6bwgamo3
+        :type DBInstanceId: str
+        """
+        self._DBInstanceId = None
+
+    @property
+    def DBInstanceId(self):
+        """实例ID，形如postgres-6bwgamo3
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceSSLConfigResponse(AbstractModel):
+    """DescribeDBInstanceSSLConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SSLEnabled: true 代表开通 ，false 代表未开通
+        :type SSLEnabled: bool
+        :param _CAUrl: 云端根证书下载链接
+        :type CAUrl: str
+        :param _ConnectAddress: 服务器证书中配置的内网或外网连接地址
+        :type ConnectAddress: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SSLEnabled = None
+        self._CAUrl = None
+        self._ConnectAddress = None
+        self._RequestId = None
+
+    @property
+    def SSLEnabled(self):
+        """true 代表开通 ，false 代表未开通
+        :rtype: bool
+        """
+        return self._SSLEnabled
+
+    @SSLEnabled.setter
+    def SSLEnabled(self, SSLEnabled):
+        self._SSLEnabled = SSLEnabled
+
+    @property
+    def CAUrl(self):
+        """云端根证书下载链接
+        :rtype: str
+        """
+        return self._CAUrl
+
+    @CAUrl.setter
+    def CAUrl(self, CAUrl):
+        self._CAUrl = CAUrl
+
+    @property
+    def ConnectAddress(self):
+        """服务器证书中配置的内网或外网连接地址
+        :rtype: str
+        """
+        return self._ConnectAddress
+
+    @ConnectAddress.setter
+    def ConnectAddress(self, ConnectAddress):
+        self._ConnectAddress = ConnectAddress
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SSLEnabled = params.get("SSLEnabled")
+        self._CAUrl = params.get("CAUrl")
+        self._ConnectAddress = params.get("ConnectAddress")
         self._RequestId = params.get("RequestId")
 
 
@@ -12110,6 +12572,210 @@ class DescribeSlowQueryListResponse(AbstractModel):
                 obj = RawSlowQuery()
                 obj._deserialize(item)
                 self._RawSlowQueryList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTasksRequest(AbstractModel):
+    """DescribeTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+        :type TaskId: int
+        :param _DBInstanceId: 按照数据库实例ID进行查询。
+        :type DBInstanceId: str
+        :param _MinStartTime: 任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+        :type MinStartTime: str
+        :param _MaxStartTime: 任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+        :type MaxStartTime: str
+        :param _Limit: 每页显示数量，取值范围为1-100，默认为返回20条。
+        :type Limit: int
+        :param _Offset: 数据偏移量，从0开始。
+        :type Offset: int
+        :param _OrderBy: 排序字段，支持StartTime,EndTime，默认为StartTime。
+        :type OrderBy: str
+        :param _OrderByType: 排序方式，包括升序：asc，降序：desc，默认为desc。
+        :type OrderByType: str
+        """
+        self._TaskId = None
+        self._DBInstanceId = None
+        self._MinStartTime = None
+        self._MaxStartTime = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def TaskId(self):
+        """按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DBInstanceId(self):
+        """按照数据库实例ID进行查询。
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def MinStartTime(self):
+        """任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+        :rtype: str
+        """
+        return self._MinStartTime
+
+    @MinStartTime.setter
+    def MinStartTime(self, MinStartTime):
+        self._MinStartTime = MinStartTime
+
+    @property
+    def MaxStartTime(self):
+        """任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+        :rtype: str
+        """
+        return self._MaxStartTime
+
+    @MaxStartTime.setter
+    def MaxStartTime(self, MaxStartTime):
+        self._MaxStartTime = MaxStartTime
+
+    @property
+    def Limit(self):
+        """每页显示数量，取值范围为1-100，默认为返回20条。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """数据偏移量，从0开始。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        """排序字段，支持StartTime,EndTime，默认为StartTime。
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        """排序方式，包括升序：asc，降序：desc，默认为desc。
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._MinStartTime = params.get("MinStartTime")
+        self._MaxStartTime = params.get("MaxStartTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTasksResponse(AbstractModel):
+    """DescribeTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询到的任务数量
+        :type TotalCount: int
+        :param _TaskSet: 任务信息列表
+        :type TaskSet: list of TaskSet
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询到的任务数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskSet(self):
+        """任务信息列表
+        :rtype: list of TaskSet
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = TaskSet()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15267,6 +15933,115 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceSSLConfigRequest(AbstractModel):
+    """ModifyDBInstanceSSLConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例 ID
+        :type DBInstanceId: str
+        :param _SSLEnabled: 开启或关闭SSL
+        :type SSLEnabled: bool
+        :param _ConnectAddress: SSL证书保护的唯一连接地址，若为主实例，可设置为内外网IP地址；若为只读实例，可设置为实例IP或只读组IP。在开启SSL或修改SSL保护的连接地址时，该参数为必传项；在关闭SSL时，该参数将被忽略。
+        :type ConnectAddress: str
+        """
+        self._DBInstanceId = None
+        self._SSLEnabled = None
+        self._ConnectAddress = None
+
+    @property
+    def DBInstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def SSLEnabled(self):
+        """开启或关闭SSL
+        :rtype: bool
+        """
+        return self._SSLEnabled
+
+    @SSLEnabled.setter
+    def SSLEnabled(self, SSLEnabled):
+        self._SSLEnabled = SSLEnabled
+
+    @property
+    def ConnectAddress(self):
+        """SSL证书保护的唯一连接地址，若为主实例，可设置为内外网IP地址；若为只读实例，可设置为实例IP或只读组IP。在开启SSL或修改SSL保护的连接地址时，该参数为必传项；在关闭SSL时，该参数将被忽略。
+        :rtype: str
+        """
+        return self._ConnectAddress
+
+    @ConnectAddress.setter
+    def ConnectAddress(self, ConnectAddress):
+        self._ConnectAddress = ConnectAddress
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._SSLEnabled = params.get("SSLEnabled")
+        self._ConnectAddress = params.get("ConnectAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSSLConfigResponse(AbstractModel):
+    """ModifyDBInstanceSSLConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroups请求参数结构体
 
@@ -16106,6 +16881,100 @@ class ModifyPrivilege(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
+    """ModifyReadOnlyDBInstanceWeight请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param _ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param _Weight: 只读实例在只读组中的流量权重(1-50)
+        :type Weight: int
+        """
+        self._DBInstanceId = None
+        self._ReadOnlyGroupId = None
+        self._Weight = None
+
+    @property
+    def DBInstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ReadOnlyGroupId(self):
+        """只读组ID
+        :rtype: str
+        """
+        return self._ReadOnlyGroupId
+
+    @ReadOnlyGroupId.setter
+    def ReadOnlyGroupId(self, ReadOnlyGroupId):
+        self._ReadOnlyGroupId = ReadOnlyGroupId
+
+    @property
+    def Weight(self):
+        """只读实例在只读组中的流量权重(1-50)
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReadOnlyDBInstanceWeightResponse(AbstractModel):
+    """ModifyReadOnlyDBInstanceWeight返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyReadOnlyGroupConfigRequest(AbstractModel):
@@ -20335,6 +21204,301 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskDetail(AbstractModel):
+    """任务的详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentStep: 当前执行的子任务步骤名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentStep: str
+        :param _AllSteps: 当前任务所拥有的子步骤描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllSteps: str
+        :param _Input: 任务的输入参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: str
+        :param _Output: 任务的输出参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: str
+        :param _SwitchTag: 指定实例配置完成变更后的切换时间，默认值：0
+0:   此任务不需要切换
+1：立即切换
+2：指定时间切换
+3：维护时间窗口内切换。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchTag: int
+        :param _SwitchTime: 指定的切换时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchTime: str
+        :param _Message: 任务的提示信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self._CurrentStep = None
+        self._AllSteps = None
+        self._Input = None
+        self._Output = None
+        self._SwitchTag = None
+        self._SwitchTime = None
+        self._Message = None
+
+    @property
+    def CurrentStep(self):
+        """当前执行的子任务步骤名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CurrentStep
+
+    @CurrentStep.setter
+    def CurrentStep(self, CurrentStep):
+        self._CurrentStep = CurrentStep
+
+    @property
+    def AllSteps(self):
+        """当前任务所拥有的子步骤描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AllSteps
+
+    @AllSteps.setter
+    def AllSteps(self, AllSteps):
+        self._AllSteps = AllSteps
+
+    @property
+    def Input(self):
+        """任务的输入参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """任务的输出参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SwitchTag(self):
+        """指定实例配置完成变更后的切换时间，默认值：0
+0:   此任务不需要切换
+1：立即切换
+2：指定时间切换
+3：维护时间窗口内切换。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SwitchTag
+
+    @SwitchTag.setter
+    def SwitchTag(self, SwitchTag):
+        self._SwitchTag = SwitchTag
+
+    @property
+    def SwitchTime(self):
+        """指定的切换时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SwitchTime
+
+    @SwitchTime.setter
+    def SwitchTime(self, SwitchTime):
+        self._SwitchTime = SwitchTime
+
+    @property
+    def Message(self):
+        """任务的提示信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._CurrentStep = params.get("CurrentStep")
+        self._AllSteps = params.get("AllSteps")
+        self._Input = params.get("Input")
+        self._Output = params.get("Output")
+        self._SwitchTag = params.get("SwitchTag")
+        self._SwitchTime = params.get("SwitchTime")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskSet(AbstractModel):
+    """任务列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID。
+        :type TaskId: int
+        :param _TaskType: 任务的类型。
+        :type TaskType: str
+        :param _DBInstanceId: 任务实例的实例ID。
+        :type DBInstanceId: str
+        :param _StartTime: 任务的开始时间。
+        :type StartTime: str
+        :param _EndTime: 任务的结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _Status: 任务的运行状态，包括Running,Success,WaitSwitch,Fail,Pause。
+        :type Status: str
+        :param _Progress: 任务的执行进度，取值范围0-100。
+        :type Progress: int
+        :param _TaskDetail: 任务的详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskDetail: :class:`tencentcloud.postgres.v20170312.models.TaskDetail`
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._DBInstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._Progress = None
+        self._TaskDetail = None
+
+    @property
+    def TaskId(self):
+        """任务ID。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        """任务的类型。
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def DBInstanceId(self):
+        """任务实例的实例ID。
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def StartTime(self):
+        """任务的开始时间。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """任务的结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        """任务的运行状态，包括Running,Success,WaitSwitch,Fail,Pause。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        """任务的执行进度，取值范围0-100。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TaskDetail(self):
+        """任务的详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.TaskDetail`
+        """
+        return self._TaskDetail
+
+    @TaskDetail.setter
+    def TaskDetail(self, TaskDetail):
+        self._TaskDetail = TaskDetail
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        if params.get("TaskDetail") is not None:
+            self._TaskDetail = TaskDetail()
+            self._TaskDetail._deserialize(params.get("TaskDetail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

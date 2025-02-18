@@ -141,6 +141,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBackupPlan(self, request):
+        """此接口用于创建备份策略。
+
+        :param request: Request instance for CreateBackupPlan.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateBackupPlanRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBackupPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBackupPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBaseBackup(self, request):
         """本接口（CreateBaseBackup）用于创建实例的数据备份。
 
@@ -387,6 +410,29 @@ class PostgresClient(AbstractClient):
             body = self.call("DeleteAccount", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBackupPlan(self, request):
+        """删除备份策略
+
+        :param request: Request instance for DeleteBackupPlan.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteBackupPlanRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBackupPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBackupPlanResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -927,6 +973,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBInstanceSSLConfig(self, request):
+        """本接口用于查询实例SSL状态
+
+        :param request: Request instance for DescribeDBInstanceSSLConfig.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceSSLConfigRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceSSLConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceSSLConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceSSLConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstanceSecurityGroups(self, request):
         """本接口（DescribeDBInstanceSecurityGroups）用于查询实例安全组。
 
@@ -1433,6 +1502,30 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTasks(self, request):
+        """本接口（DescribeTasks）用于查询任务列表，展示异步任务的执行进度。
+        注：本接口中展示的步骤为总结性步骤，可能伴随着版本迭代进行调整，不建议作为关键逻辑使用
+
+        :param request: Request instance for DescribeTasks.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeTasksRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeZones(self, request):
         """本接口 (DescribeZones) 用于查询支持的可用区信息。
 
@@ -1895,6 +1988,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBInstanceSSLConfig(self, request):
+        """本接口用于修改实例SSL配置，功能包含开启、关闭、修改SSL证书保护的连接地址。
+
+        :param request: Request instance for ModifyDBInstanceSSLConfig.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSSLConfigRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSSLConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSSLConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceSSLConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceSecurityGroups(self, request):
         """本接口（ModifyDBInstanceSecurityGroups）用于修改实例安全组。
 
@@ -2024,6 +2140,29 @@ class PostgresClient(AbstractClient):
             body = self.call("ModifyParameterTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyParameterTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyReadOnlyDBInstanceWeight(self, request):
+        """本接口（ModifyReadOnlyDBInstanceWeight）用于修改只读实例权重
+
+        :param request: Request instance for ModifyReadOnlyDBInstanceWeight.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyReadOnlyDBInstanceWeightRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyReadOnlyDBInstanceWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReadOnlyDBInstanceWeight", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReadOnlyDBInstanceWeightResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

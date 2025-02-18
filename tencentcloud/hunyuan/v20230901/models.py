@@ -187,6 +187,8 @@ class ChatCompletionsRequest(AbstractModel):
 1. 未传值时默认关闭。
 2. 开启后，在返回值的最后一个包中会增加 RecommendedQuestions 字段表示推荐问答， 最多返回3条。
         :type EnableRecommendedQuestions: bool
+        :param _EnableDeepRead: 是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
+        :type EnableDeepRead: bool
         """
         self._Model = None
         self._Messages = None
@@ -207,6 +209,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._ForceSearchEnhancement = None
         self._Stop = None
         self._EnableRecommendedQuestions = None
+        self._EnableDeepRead = None
 
     @property
     def Model(self):
@@ -477,6 +480,17 @@ class ChatCompletionsRequest(AbstractModel):
     def EnableRecommendedQuestions(self, EnableRecommendedQuestions):
         self._EnableRecommendedQuestions = EnableRecommendedQuestions
 
+    @property
+    def EnableDeepRead(self):
+        """是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
+        :rtype: bool
+        """
+        return self._EnableDeepRead
+
+    @EnableDeepRead.setter
+    def EnableDeepRead(self, EnableDeepRead):
+        self._EnableDeepRead = EnableDeepRead
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -510,6 +524,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._ForceSearchEnhancement = params.get("ForceSearchEnhancement")
         self._Stop = params.get("Stop")
         self._EnableRecommendedQuestions = params.get("EnableRecommendedQuestions")
+        self._EnableDeepRead = params.get("EnableDeepRead")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

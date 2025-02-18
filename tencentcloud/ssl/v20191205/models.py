@@ -32,7 +32,6 @@ class ApiGatewayInstanceDetail(AbstractModel):
         :param _Domain: 域名
         :type Domain: str
         :param _CertId: 证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param _Protocol: 使用协议
         :type Protocol: str
@@ -79,7 +78,6 @@ class ApiGatewayInstanceDetail(AbstractModel):
     @property
     def CertId(self):
         """证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -126,12 +124,10 @@ class ApiGatewayInstanceList(AbstractModel):
         :param _Region: 地域
         :type Region: str
         :param _InstanceList: apigateway实例详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of ApiGatewayInstanceDetail
         :param _TotalCount: 该地域下apigateway实例总数	
         :type TotalCount: int
         :param _Error: 是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._Region = None
@@ -153,7 +149,6 @@ class ApiGatewayInstanceList(AbstractModel):
     @property
     def InstanceList(self):
         """apigateway实例详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiGatewayInstanceDetail
         """
         return self._InstanceList
@@ -176,7 +171,6 @@ class ApiGatewayInstanceList(AbstractModel):
     @property
     def Error(self):
         """是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -509,10 +503,8 @@ class BatchDeleteFail(AbstractModel):
     def __init__(self):
         r"""
         :param _CertId: 失败的证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param _Msg: 失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         """
         self._CertId = None
@@ -521,7 +513,6 @@ class BatchDeleteFail(AbstractModel):
     @property
     def CertId(self):
         """失败的证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -533,7 +524,6 @@ class BatchDeleteFail(AbstractModel):
     @property
     def Msg(self):
         """失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -564,12 +554,10 @@ class BindResourceRegionResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _TotalCount: 关联资源总数
         :type TotalCount: int
         :param _Error: 是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._Region = None
@@ -579,7 +567,6 @@ class BindResourceRegionResult(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -602,7 +589,6 @@ class BindResourceRegionResult(AbstractModel):
     @property
     def Error(self):
         """是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -690,16 +676,12 @@ class COSInstanceList(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _InstanceList: 实例详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of CosInstanceDetail
         :param _TotalCount: 地域下总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._Region = None
@@ -710,7 +692,6 @@ class COSInstanceList(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -722,7 +703,6 @@ class COSInstanceList(AbstractModel):
     @property
     def InstanceList(self):
         """实例详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CosInstanceDetail
         """
         return self._InstanceList
@@ -734,7 +714,6 @@ class COSInstanceList(AbstractModel):
     @property
     def TotalCount(self):
         """地域下总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -746,7 +725,6 @@ class COSInstanceList(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -1025,10 +1003,8 @@ class CdnInstanceList(AbstractModel):
         :param _TotalCount: 该地域下CDN域名总数	
         :type TotalCount: int
         :param _InstanceList: cdn域名详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of CdnInstanceDetail
         :param _Error: 是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._TotalCount = None
@@ -1049,7 +1025,6 @@ class CdnInstanceList(AbstractModel):
     @property
     def InstanceList(self):
         """cdn域名详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CdnInstanceDetail
         """
         return self._InstanceList
@@ -1061,7 +1036,6 @@ class CdnInstanceList(AbstractModel):
     @property
     def Error(self):
         """是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -1249,10 +1223,8 @@ class Certificate(AbstractModel):
         :param _DnsNames: 证书绑定的域名
         :type DnsNames: list of str
         :param _CertCaId: 根证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertCaId: str
         :param _SSLMode: 证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
-注意：此字段可能返回 null，表示取不到有效值。
         :type SSLMode: str
         """
         self._CertId = None
@@ -1285,7 +1257,6 @@ class Certificate(AbstractModel):
     @property
     def CertCaId(self):
         """根证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertCaId
@@ -1297,7 +1268,6 @@ class Certificate(AbstractModel):
     @property
     def SSLMode(self):
         """证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SSLMode
@@ -1330,7 +1300,6 @@ class CertificateExtra(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainNumber: 证书可配置域名数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainNumber: str
         :param _OriginCertificateId: 续费原证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1345,10 +1314,8 @@ class CertificateExtra(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewOrder: str
         :param _SMCert: 是否是国密证书
-注意：此字段可能返回 null，表示取不到有效值。
         :type SMCert: int
         :param _CompanyType: 公司类型，取值：1（个人）；2（公司）
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompanyType: int
         """
         self._DomainNumber = None
@@ -1362,7 +1329,6 @@ class CertificateExtra(AbstractModel):
     @property
     def DomainNumber(self):
         """证书可配置域名数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainNumber
@@ -1422,7 +1388,6 @@ class CertificateExtra(AbstractModel):
     @property
     def SMCert(self):
         """是否是国密证书
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SMCert
@@ -1434,7 +1399,6 @@ class CertificateExtra(AbstractModel):
     @property
     def CompanyType(self):
         """公司类型，取值：1（个人）；2（公司）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CompanyType
@@ -2286,17 +2250,14 @@ class Certificates(AbstractModel):
     def __init__(self):
         r"""
         :param _OwnerUin: 用户 UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
         :param _ProjectId: 项目 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _From: 证书来源：
 trustasia：亚洲诚信，
 upload：用户上传。
 wosign：沃通
 sheca：上海CA
-注意：此字段可能返回 null，表示取不到有效值。
         :type From: str
         :param _PackageType: 证书套餐类型：
 null：用户上传证书（没有套餐类型），
@@ -2383,163 +2344,110 @@ null：用户上传证书（没有套餐类型），
 99：CFCA 企业型多域名(OV)SSL证书
 100：CFCA 企业型通配符(OV)SSL证书
 101：CFCA 增强型(EV)SSL证书
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param _CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateType: str
         :param _ProductZhName: 证书产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductZhName: str
         :param _Domain: 主域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _Alias: 备注名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _Status: 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CertificateExtra: 证书扩展信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         :param _VulnerabilityStatus: 漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityStatus: str
         :param _StatusMsg: 状态信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusMsg: str
         :param _VerifyType: 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
-注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyType: str
         :param _CertBeginTime: 证书生效时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertBeginTime: str
         :param _CertEndTime: 证书过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
         :param _ValidityPeriod: 证书有效期，单位（月）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: str
         :param _InsertTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
         :param _CertificateId: 证书 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateId: str
         :param _SubjectAltName: 证书包含的多个域名（包含主域名）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectAltName: list of str
         :param _PackageTypeName: 证书类型名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageTypeName: str
         :param _StatusName: 状态名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusName: str
         :param _IsVip: 是否为 VIP 客户。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsVip: bool
         :param _IsDv: 是否为 DV 版证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDv: bool
         :param _IsWildcard: 是否为泛域名证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsWildcard: bool
         :param _IsVulnerability: 是否启用了漏洞扫描功能。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsVulnerability: bool
         :param _RenewAble: 是否可续费。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewAble: bool
         :param _ProjectInfo: 项目信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectInfo: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
         :param _BoundResource: 关联的云资源，暂不可用
-注意：此字段可能返回 null，表示取不到有效值。
         :type BoundResource: list of str
         :param _Deployable: 是否可部署。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deployable: bool
         :param _Tags: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
         :param _IsIgnore: 是否已忽略到期通知
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsIgnore: bool
         :param _IsSM: 是否国密证书
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSM: bool
         :param _EncryptAlgorithm: 证书算法
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptAlgorithm: str
         :param _CAEncryptAlgorithms: 上传CA证书的加密算法
-注意：此字段可能返回 null，表示取不到有效值。
         :type CAEncryptAlgorithms: list of str
         :param _CAEndTimes: 上传CA证书的过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CAEndTimes: list of str
         :param _CACommonNames: 上传CA证书的通用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CACommonNames: list of str
         :param _PreAuditInfo: 证书预审核信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreAuditInfo: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
         :param _AutoRenewFlag: 是否自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _HostingStatus: 托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostingStatus: int
         :param _HostingCompleteTime: 托管完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostingCompleteTime: str
         :param _HostingRenewCertId: 托管新证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostingRenewCertId: str
         :param _HasRenewOrder: 存在的续费证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasRenewOrder: str
         :param _ReplaceOriCertIsDelete: 重颁发证书原证书是否删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReplaceOriCertIsDelete: bool
         :param _IsExpiring: 是否即将过期， 证书即将到期的30天内为即将过期
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsExpiring: bool
         :param _DVAuthDeadline: DV证书添加验证截止时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DVAuthDeadline: str
         :param _ValidationPassedTime: 域名验证通过时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidationPassedTime: str
         :param _CertSANs: 证书关联的多域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertSANs: list of str
         :param _AwaitingValidationMsg: 域名验证驳回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AwaitingValidationMsg: str
         :param _AllowDownload: 是否允许下载
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowDownload: bool
         :param _IsDNSPODResolve: 证书域名是否全部在DNSPOD托管解析
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDNSPODResolve: bool
         :param _IsPackage: 是否是权益点购买的证书
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPackage: bool
         :param _KeyPasswordCustomFlag: 是否存在私钥密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyPasswordCustomFlag: bool
         :param _SupportDownloadType: 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDownloadType: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
         :param _CertRevokedTime: 证书吊销完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertRevokedTime: str
         :param _HostingResourceTypes: 托管资源类型列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostingResourceTypes: list of str
         :param _HostingConfig: 托管配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostingConfig: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
         """
         self._OwnerUin = None
@@ -2602,7 +2510,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def OwnerUin(self):
         """用户 UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUin
@@ -2614,7 +2521,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ProjectId(self):
         """项目 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -2630,7 +2536,6 @@ trustasia：亚洲诚信，
 upload：用户上传。
 wosign：沃通
 sheca：上海CA
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._From
@@ -2726,7 +2631,6 @@ null：用户上传证书（没有套餐类型），
 99：CFCA 企业型多域名(OV)SSL证书
 100：CFCA 企业型通配符(OV)SSL证书
 101：CFCA 增强型(EV)SSL证书
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageType
@@ -2738,7 +2642,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertificateType(self):
         """证书类型：CA = 客户端证书，SVR = 服务器证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateType
@@ -2750,7 +2653,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ProductZhName(self):
         """证书产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductZhName
@@ -2762,7 +2664,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Domain(self):
         """主域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -2774,7 +2675,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Alias(self):
         """备注名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Alias
@@ -2786,7 +2686,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Status(self):
         """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -2798,7 +2697,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertificateExtra(self):
         """证书扩展信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         """
         return self._CertificateExtra
@@ -2810,7 +2708,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def VulnerabilityStatus(self):
         """漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VulnerabilityStatus
@@ -2822,7 +2719,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def StatusMsg(self):
         """状态信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusMsg
@@ -2834,7 +2730,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def VerifyType(self):
         """验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VerifyType
@@ -2846,7 +2741,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertBeginTime(self):
         """证书生效时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertBeginTime
@@ -2858,7 +2752,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertEndTime(self):
         """证书过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertEndTime
@@ -2870,7 +2763,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ValidityPeriod(self):
         """证书有效期，单位（月）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidityPeriod
@@ -2882,7 +2774,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def InsertTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InsertTime
@@ -2894,7 +2785,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertificateId(self):
         """证书 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateId
@@ -2906,7 +2796,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def SubjectAltName(self):
         """证书包含的多个域名（包含主域名）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SubjectAltName
@@ -2918,7 +2807,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def PackageTypeName(self):
         """证书类型名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageTypeName
@@ -2930,7 +2818,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def StatusName(self):
         """状态名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusName
@@ -2942,7 +2829,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsVip(self):
         """是否为 VIP 客户。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsVip
@@ -2954,7 +2840,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsDv(self):
         """是否为 DV 版证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDv
@@ -2966,7 +2851,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsWildcard(self):
         """是否为泛域名证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsWildcard
@@ -2978,7 +2862,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsVulnerability(self):
         """是否启用了漏洞扫描功能。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsVulnerability
@@ -2990,7 +2873,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def RenewAble(self):
         """是否可续费。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RenewAble
@@ -3002,7 +2884,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ProjectInfo(self):
         """项目信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
         """
         return self._ProjectInfo
@@ -3014,7 +2895,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def BoundResource(self):
         """关联的云资源，暂不可用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BoundResource
@@ -3026,7 +2906,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Deployable(self):
         """是否可部署。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Deployable
@@ -3038,7 +2917,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Tags(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tags
         """
         return self._Tags
@@ -3050,7 +2928,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsIgnore(self):
         """是否已忽略到期通知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsIgnore
@@ -3062,7 +2939,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsSM(self):
         """是否国密证书
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsSM
@@ -3074,7 +2950,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def EncryptAlgorithm(self):
         """证书算法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -3086,7 +2961,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CAEncryptAlgorithms(self):
         """上传CA证书的加密算法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CAEncryptAlgorithms
@@ -3098,7 +2972,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CAEndTimes(self):
         """上传CA证书的过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CAEndTimes
@@ -3110,7 +2983,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CACommonNames(self):
         """上传CA证书的通用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CACommonNames
@@ -3122,7 +2994,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def PreAuditInfo(self):
         """证书预审核信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
         """
         return self._PreAuditInfo
@@ -3134,7 +3005,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def AutoRenewFlag(self):
         """是否自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3146,7 +3016,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def HostingStatus(self):
         """托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HostingStatus
@@ -3158,7 +3027,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def HostingCompleteTime(self):
         """托管完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostingCompleteTime
@@ -3170,7 +3038,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def HostingRenewCertId(self):
         """托管新证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostingRenewCertId
@@ -3182,7 +3049,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def HasRenewOrder(self):
         """存在的续费证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HasRenewOrder
@@ -3194,7 +3060,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ReplaceOriCertIsDelete(self):
         """重颁发证书原证书是否删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ReplaceOriCertIsDelete
@@ -3206,7 +3071,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsExpiring(self):
         """是否即将过期， 证书即将到期的30天内为即将过期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsExpiring
@@ -3218,7 +3082,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def DVAuthDeadline(self):
         """DV证书添加验证截止时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DVAuthDeadline
@@ -3230,7 +3093,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ValidationPassedTime(self):
         """域名验证通过时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidationPassedTime
@@ -3242,7 +3104,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertSANs(self):
         """证书关联的多域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CertSANs
@@ -3254,7 +3115,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def AwaitingValidationMsg(self):
         """域名验证驳回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AwaitingValidationMsg
@@ -3266,7 +3126,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def AllowDownload(self):
         """是否允许下载
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AllowDownload
@@ -3278,7 +3137,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsDNSPODResolve(self):
         """证书域名是否全部在DNSPOD托管解析
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDNSPODResolve
@@ -3290,7 +3148,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsPackage(self):
         """是否是权益点购买的证书
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsPackage
@@ -3302,7 +3159,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def KeyPasswordCustomFlag(self):
         """是否存在私钥密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._KeyPasswordCustomFlag
@@ -3314,7 +3170,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def SupportDownloadType(self):
         """支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
         """
         return self._SupportDownloadType
@@ -3326,7 +3181,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertRevokedTime(self):
         """证书吊销完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertRevokedTime
@@ -3338,7 +3192,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def HostingResourceTypes(self):
         """托管资源类型列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._HostingResourceTypes
@@ -3350,7 +3203,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def HostingConfig(self):
         """托管配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
         """
         return self._HostingConfig
@@ -3730,7 +3582,6 @@ class ClbInstanceDetail(AbstractModel):
         :param _LoadBalancerName: CLB实例名称
         :type LoadBalancerName: str
         :param _Listeners: CLB监听器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Listeners: list of ClbListener
         """
         self._LoadBalancerId = None
@@ -3762,7 +3613,6 @@ class ClbInstanceDetail(AbstractModel):
     @property
     def Listeners(self):
         """CLB监听器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClbListener
         """
         return self._Listeners
@@ -3801,12 +3651,10 @@ class ClbInstanceList(AbstractModel):
         :param _Region: 地域
         :type Region: str
         :param _InstanceList: clb实例详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of ClbInstanceDetail
         :param _TotalCount: 该地域下Clb实例总数
         :type TotalCount: int
         :param _Error: 是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._Region = None
@@ -3828,7 +3676,6 @@ class ClbInstanceList(AbstractModel):
     @property
     def InstanceList(self):
         """clb实例详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClbInstanceDetail
         """
         return self._InstanceList
@@ -3851,7 +3698,6 @@ class ClbInstanceList(AbstractModel):
     @property
     def Error(self):
         """是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -3897,13 +3743,10 @@ class ClbListener(AbstractModel):
         :param _Protocol: 监听器协议类型， HTTPS|TCP_SSL
         :type Protocol: str
         :param _Certificate: 监听器绑定的证书数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Certificate: :class:`tencentcloud.ssl.v20191205.models.Certificate`
         :param _Rules: 监听器规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of ClbListenerRule
         :param _NoMatchDomains: 不匹配域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoMatchDomains: list of str
         """
         self._ListenerId = None
@@ -3961,7 +3804,6 @@ class ClbListener(AbstractModel):
     @property
     def Certificate(self):
         """监听器绑定的证书数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
         """
         return self._Certificate
@@ -3973,7 +3815,6 @@ class ClbListener(AbstractModel):
     @property
     def Rules(self):
         """监听器规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClbListenerRule
         """
         return self._Rules
@@ -3985,7 +3826,6 @@ class ClbListener(AbstractModel):
     @property
     def NoMatchDomains(self):
         """不匹配域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._NoMatchDomains
@@ -4034,13 +3874,10 @@ class ClbListenerRule(AbstractModel):
         :param _IsMatch: 规则是否匹配待绑定证书的域名
         :type IsMatch: bool
         :param _Certificate: 规则已绑定的证书数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Certificate: :class:`tencentcloud.ssl.v20191205.models.Certificate`
         :param _NoMatchDomains: 不匹配域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoMatchDomains: list of str
         :param _Url: 规则绑定的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self._LocationId = None
@@ -4086,7 +3923,6 @@ class ClbListenerRule(AbstractModel):
     @property
     def Certificate(self):
         """规则已绑定的证书数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
         """
         return self._Certificate
@@ -4098,7 +3934,6 @@ class ClbListenerRule(AbstractModel):
     @property
     def NoMatchDomains(self):
         """不匹配域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._NoMatchDomains
@@ -4110,7 +3945,6 @@ class ClbListenerRule(AbstractModel):
     @property
     def Url(self):
         """规则绑定的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -4278,14 +4112,11 @@ class CompanyInfo(AbstractModel):
         :param _IdType: 公司证件类型，取值范围：
 TYDMZ（统一社会信用代码 ）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
 OTHERS（其他）
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdType: str
         :param _IdNumber: 公司证件号码，取值范围：
 TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdNumber: str
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
         """
         self._CompanyName = None
@@ -4381,7 +4212,6 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
         """公司证件类型，取值范围：
 TYDMZ（统一社会信用代码 ）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
 OTHERS（其他）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdType
@@ -4394,7 +4224,6 @@ OTHERS（其他）
     def IdNumber(self):
         """公司证件号码，取值范围：
 TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdNumber
@@ -4406,7 +4235,6 @@ TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tags
         """
         return self._Tags
@@ -4531,16 +4359,13 @@ class CosInstanceDetail(AbstractModel):
         :param _Domain: 域名
         :type Domain: str
         :param _CertId: 已绑定的证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param _Status: ENABLED: 域名上线状态
 DISABLED:域名下线状态
         :type Status: str
         :param _Bucket: 存储桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         :param _Region: 存储桶地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
         self._Domain = None
@@ -4563,7 +4388,6 @@ DISABLED:域名下线状态
     @property
     def CertId(self):
         """已绑定的证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -4587,7 +4411,6 @@ DISABLED:域名下线状态
     @property
     def Bucket(self):
         """存储桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -4599,7 +4422,6 @@ DISABLED:域名下线状态
     @property
     def Region(self):
         """存储桶地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -5495,7 +5317,6 @@ class DdosInstanceDetail(AbstractModel):
         :param _Protocol: 协议类型
         :type Protocol: str
         :param _CertId: 证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param _VirtualPort: 转发端口
         :type VirtualPort: str
@@ -5542,7 +5363,6 @@ class DdosInstanceDetail(AbstractModel):
     @property
     def CertId(self):
         """证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -5589,10 +5409,8 @@ class DdosInstanceList(AbstractModel):
         :param _TotalCount: 该地域下ddos域名总数	
         :type TotalCount: int
         :param _InstanceList: ddos实例详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of DdosInstanceDetail
         :param _Error: 是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._TotalCount = None
@@ -5613,7 +5431,6 @@ class DdosInstanceList(AbstractModel):
     @property
     def InstanceList(self):
         """ddos实例详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DdosInstanceDetail
         """
         return self._InstanceList
@@ -5625,7 +5442,6 @@ class DdosInstanceList(AbstractModel):
     @property
     def Error(self):
         """是否查询异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -5992,13 +5808,10 @@ class DeleteTaskResult(AbstractModel):
         :param _Status: 异步查询结果： 0表示任务进行中、 1表示任务成功、 2表示任务失败、3表示未授权服务角色导致任务失败、4表示有未解绑的云资源导致任务失败、5表示查询关联云资源超时导致任务失败
         :type Status: int
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         :param _CacheTime: 当前结果缓存时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CacheTime: str
         :param _Domains: 包含的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domains: list of str
         """
         self._TaskId = None
@@ -6044,7 +5857,6 @@ class DeleteTaskResult(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -6056,7 +5868,6 @@ class DeleteTaskResult(AbstractModel):
     @property
     def CacheTime(self):
         """当前结果缓存时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CacheTime
@@ -6068,7 +5879,6 @@ class DeleteTaskResult(AbstractModel):
     @property
     def Domains(self):
         """包含的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Domains
@@ -6485,24 +6295,20 @@ class DeployRecordDetail(AbstractModel):
         :param _CertId: 部署证书ID
         :type CertId: str
         :param _OldCertId: 原绑定证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldCertId: str
         :param _InstanceId: 部署实例ID
         :type InstanceId: str
         :param _InstanceName: 部署实例名称
         :type InstanceName: str
         :param _ListenerId: 部署监听器ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerId: str
         :param _Domains: 部署域名列表
         :type Domains: list of str
         :param _Protocol: 部署监听器协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Status: 部署状态
         :type Status: int
         :param _ErrorMsg: 部署错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _CreateTime: 部署记录详情创建时间
         :type CreateTime: str
@@ -6513,28 +6319,20 @@ class DeployRecordDetail(AbstractModel):
         :param _SniSwitch: 是否开启SNI
         :type SniSwitch: int
         :param _Bucket: COS存储桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         :param _Namespace: 命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _SecretName: secret名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretName: str
         :param _Port: 端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _EnvId: TCB环境ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvId: str
         :param _TCBType: 部署的TCB类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TCBType: str
         :param _Region: 部署的TCB地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Url: 部署CLB监听器的Url
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: list of str
         """
         self._Id = None
@@ -6585,7 +6383,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def OldCertId(self):
         """原绑定证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldCertId
@@ -6619,7 +6416,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def ListenerId(self):
         """部署监听器ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ListenerId
@@ -6642,7 +6438,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def Protocol(self):
         """部署监听器协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -6665,7 +6460,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def ErrorMsg(self):
         """部署错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -6721,7 +6515,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def Bucket(self):
         """COS存储桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -6733,7 +6526,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def Namespace(self):
         """命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -6745,7 +6537,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def SecretName(self):
         """secret名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecretName
@@ -6757,7 +6548,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def Port(self):
         """端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -6769,7 +6559,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def EnvId(self):
         """TCB环境ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvId
@@ -6781,7 +6570,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def TCBType(self):
         """部署的TCB类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TCBType
@@ -6793,7 +6581,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def Region(self):
         """部署的TCB地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -6805,7 +6592,6 @@ class DeployRecordDetail(AbstractModel):
     @property
     def Url(self):
         """部署CLB监听器的Url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Url
@@ -6988,10 +6774,8 @@ class DeployedResources(AbstractModel):
         :param _Type: 资源标识:clb,cdn,live,waf,antiddos
         :type Type: str
         :param _ResourceIds: 不建议使用。字段返回和Resources相同。本字段后续只返回null
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
         :param _Resources: 关联资源ID或关联域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: list of str
         """
         self._CertificateId = None
@@ -7036,7 +6820,6 @@ class DeployedResources(AbstractModel):
     @property
     def ResourceIds(self):
         """不建议使用。字段返回和Resources相同。本字段后续只返回null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResourceIds
@@ -7048,7 +6831,6 @@ class DeployedResources(AbstractModel):
     @property
     def Resources(self):
         """关联资源ID或关联域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Resources
@@ -13053,7 +12835,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: 待部署的证书ID
+        :param _CertificateId: 待部署的证书ID,必填选项
         :type CertificateId: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
@@ -13072,7 +12854,7 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """待部署的证书ID
+        """待部署的证书ID,必填选项
         :rtype: str
         """
         return self._CertificateId
@@ -13520,6 +13302,8 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         """状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
         :rtype: str
         """
@@ -13527,6 +13311,8 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @Status.setter
     def Status(self, Status):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         self._Status = Status
 
     @property
@@ -14190,7 +13976,6 @@ class DomainValidationResult(AbstractModel):
         :param _Domain: 证书绑定的域名。
         :type Domain: str
         :param _VerifyType: 域名验证类型。 取值为：DNS、FILE、DNS_AUTO、DNS_PROXY、FILE_PROXY
-注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyType: str
         :param _LocalCheck: 腾讯云检测结果，取值：1（验证通过）； -1（被限频或者 txt record not found）；-2（txt record not match）；-3（ns record not found）；-4（file not found）；-5（file not match）；-6（cname record not found）；-7（cname record not match）；-8（ns record not found）-9（file not found）；-10（file not match）
 
@@ -14198,10 +13983,8 @@ class DomainValidationResult(AbstractModel):
         :param _CaCheck: CA检查结果。取值： -1（未检测通过）；2（检测通过）
         :type CaCheck: int
         :param _LocalCheckFailReason: 检查失败原因。状态LocalCheck的具体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalCheckFailReason: str
         :param _CheckValue: 检查到的值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckValue: list of str
         :param _Frequently: 是否被限频拦截， 取值：false（未被限频）；true（被限频）
         :type Frequently: bool
@@ -14231,7 +14014,6 @@ class DomainValidationResult(AbstractModel):
     @property
     def VerifyType(self):
         """域名验证类型。 取值为：DNS、FILE、DNS_AUTO、DNS_PROXY、FILE_PROXY
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VerifyType
@@ -14266,7 +14048,6 @@ class DomainValidationResult(AbstractModel):
     @property
     def LocalCheckFailReason(self):
         """检查失败原因。状态LocalCheck的具体描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalCheckFailReason
@@ -14278,7 +14059,6 @@ class DomainValidationResult(AbstractModel):
     @property
     def CheckValue(self):
         """检查到的值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CheckValue
@@ -16341,7 +16121,6 @@ class PackageTransferOutInfo(AbstractModel):
         :param _TransferCount: 本次转移点数。
         :type TransferCount: int
         :param _ReceivePackageId: 转入的PackageID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceivePackageId: str
         :param _ExpireTime: 本次转移过期时间。
         :type ExpireTime: str
@@ -16352,10 +16131,8 @@ class PackageTransferOutInfo(AbstractModel):
         :param _TransferStatus: 转移状态。
         :type TransferStatus: str
         :param _ReceiverUin: 接收者uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiverUin: int
         :param _ReceiveTime: 接收时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveTime: str
         """
         self._PackageId = None
@@ -16405,7 +16182,6 @@ class PackageTransferOutInfo(AbstractModel):
     @property
     def ReceivePackageId(self):
         """转入的PackageID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReceivePackageId
@@ -16461,7 +16237,6 @@ class PackageTransferOutInfo(AbstractModel):
     @property
     def ReceiverUin(self):
         """接收者uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReceiverUin
@@ -16473,7 +16248,6 @@ class PackageTransferOutInfo(AbstractModel):
     @property
     def ReceiveTime(self):
         """接收时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReceiveTime
